@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAction = 0;
 api.Action buildAction() {
-  var o = api.Action();
+  final o = api.Action();
   buildCounterAction++;
   if (buildCounterAction < 3) {
     o.actor = buildActor();
@@ -45,10 +44,10 @@ api.Action buildAction() {
 void checkAction(api.Action o) {
   buildCounterAction++;
   if (buildCounterAction < 3) {
-    checkActor(o.actor! as api.Actor);
-    checkActionDetail(o.detail! as api.ActionDetail);
-    checkTarget(o.target! as api.Target);
-    checkTimeRange(o.timeRange! as api.TimeRange);
+    checkActor(o.actor!);
+    checkActionDetail(o.detail!);
+    checkTarget(o.target!);
+    checkTimeRange(o.timeRange!);
     unittest.expect(
       o.timestamp!,
       unittest.equals('foo'),
@@ -59,7 +58,7 @@ void checkAction(api.Action o) {
 
 core.int buildCounterActionDetail = 0;
 api.ActionDetail buildActionDetail() {
-  var o = api.ActionDetail();
+  final o = api.ActionDetail();
   buildCounterActionDetail++;
   if (buildCounterActionDetail < 3) {
     o.comment = buildComment();
@@ -81,24 +80,24 @@ api.ActionDetail buildActionDetail() {
 void checkActionDetail(api.ActionDetail o) {
   buildCounterActionDetail++;
   if (buildCounterActionDetail < 3) {
-    checkComment(o.comment! as api.Comment);
-    checkCreate(o.create! as api.Create);
-    checkDelete(o.delete! as api.Delete);
-    checkDataLeakPreventionChange(o.dlpChange! as api.DataLeakPreventionChange);
-    checkEdit(o.edit! as api.Edit);
-    checkMove(o.move! as api.Move);
-    checkPermissionChange(o.permissionChange! as api.PermissionChange);
-    checkApplicationReference(o.reference! as api.ApplicationReference);
-    checkRename(o.rename! as api.Rename);
-    checkRestore(o.restore! as api.Restore);
-    checkSettingsChange(o.settingsChange! as api.SettingsChange);
+    checkComment(o.comment!);
+    checkCreate(o.create!);
+    checkDelete(o.delete!);
+    checkDataLeakPreventionChange(o.dlpChange!);
+    checkEdit(o.edit!);
+    checkMove(o.move!);
+    checkPermissionChange(o.permissionChange!);
+    checkApplicationReference(o.reference!);
+    checkRename(o.rename!);
+    checkRestore(o.restore!);
+    checkSettingsChange(o.settingsChange!);
   }
   buildCounterActionDetail--;
 }
 
 core.int buildCounterActor = 0;
 api.Actor buildActor() {
-  var o = api.Actor();
+  final o = api.Actor();
   buildCounterActor++;
   if (buildCounterActor < 3) {
     o.administrator = buildAdministrator();
@@ -114,18 +113,18 @@ api.Actor buildActor() {
 void checkActor(api.Actor o) {
   buildCounterActor++;
   if (buildCounterActor < 3) {
-    checkAdministrator(o.administrator! as api.Administrator);
-    checkAnonymousUser(o.anonymous! as api.AnonymousUser);
-    checkImpersonation(o.impersonation! as api.Impersonation);
-    checkSystemEvent(o.system! as api.SystemEvent);
-    checkUser(o.user! as api.User);
+    checkAdministrator(o.administrator!);
+    checkAnonymousUser(o.anonymous!);
+    checkImpersonation(o.impersonation!);
+    checkSystemEvent(o.system!);
+    checkUser(o.user!);
   }
   buildCounterActor--;
 }
 
 core.int buildCounterAdministrator = 0;
 api.Administrator buildAdministrator() {
-  var o = api.Administrator();
+  final o = api.Administrator();
   buildCounterAdministrator++;
   if (buildCounterAdministrator < 3) {}
   buildCounterAdministrator--;
@@ -140,7 +139,7 @@ void checkAdministrator(api.Administrator o) {
 
 core.int buildCounterAnonymousUser = 0;
 api.AnonymousUser buildAnonymousUser() {
-  var o = api.AnonymousUser();
+  final o = api.AnonymousUser();
   buildCounterAnonymousUser++;
   if (buildCounterAnonymousUser < 3) {}
   buildCounterAnonymousUser--;
@@ -155,7 +154,7 @@ void checkAnonymousUser(api.AnonymousUser o) {
 
 core.int buildCounterAnyone = 0;
 api.Anyone buildAnyone() {
-  var o = api.Anyone();
+  final o = api.Anyone();
   buildCounterAnyone++;
   if (buildCounterAnyone < 3) {}
   buildCounterAnyone--;
@@ -170,7 +169,7 @@ void checkAnyone(api.Anyone o) {
 
 core.int buildCounterApplicationReference = 0;
 api.ApplicationReference buildApplicationReference() {
-  var o = api.ApplicationReference();
+  final o = api.ApplicationReference();
   buildCounterApplicationReference++;
   if (buildCounterApplicationReference < 3) {
     o.type = 'foo';
@@ -192,7 +191,7 @@ void checkApplicationReference(api.ApplicationReference o) {
 
 core.int buildCounterAssignment = 0;
 api.Assignment buildAssignment() {
-  var o = api.Assignment();
+  final o = api.Assignment();
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
     o.assignedUser = buildUser();
@@ -205,7 +204,7 @@ api.Assignment buildAssignment() {
 void checkAssignment(api.Assignment o) {
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
-    checkUser(o.assignedUser! as api.User);
+    checkUser(o.assignedUser!);
     unittest.expect(
       o.subtype!,
       unittest.equals('foo'),
@@ -215,7 +214,7 @@ void checkAssignment(api.Assignment o) {
 }
 
 core.List<api.User> buildUnnamed5255() {
-  var o = <api.User>[];
+  final o = <api.User>[];
   o.add(buildUser());
   o.add(buildUser());
   return o;
@@ -223,13 +222,13 @@ core.List<api.User> buildUnnamed5255() {
 
 void checkUnnamed5255(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUser(o[0] as api.User);
-  checkUser(o[1] as api.User);
+  checkUser(o[0]);
+  checkUser(o[1]);
 }
 
 core.int buildCounterComment = 0;
 api.Comment buildComment() {
-  var o = api.Comment();
+  final o = api.Comment();
   buildCounterComment++;
   if (buildCounterComment < 3) {
     o.assignment = buildAssignment();
@@ -244,17 +243,17 @@ api.Comment buildComment() {
 void checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
-    checkAssignment(o.assignment! as api.Assignment);
+    checkAssignment(o.assignment!);
     checkUnnamed5255(o.mentionedUsers!);
-    checkPost(o.post! as api.Post);
-    checkSuggestion(o.suggestion! as api.Suggestion);
+    checkPost(o.post!);
+    checkSuggestion(o.suggestion!);
   }
   buildCounterComment--;
 }
 
 core.int buildCounterConsolidationStrategy = 0;
 api.ConsolidationStrategy buildConsolidationStrategy() {
-  var o = api.ConsolidationStrategy();
+  final o = api.ConsolidationStrategy();
   buildCounterConsolidationStrategy++;
   if (buildCounterConsolidationStrategy < 3) {
     o.legacy = buildLegacy();
@@ -267,15 +266,15 @@ api.ConsolidationStrategy buildConsolidationStrategy() {
 void checkConsolidationStrategy(api.ConsolidationStrategy o) {
   buildCounterConsolidationStrategy++;
   if (buildCounterConsolidationStrategy < 3) {
-    checkLegacy(o.legacy! as api.Legacy);
-    checkNoConsolidation(o.none! as api.NoConsolidation);
+    checkLegacy(o.legacy!);
+    checkNoConsolidation(o.none!);
   }
   buildCounterConsolidationStrategy--;
 }
 
 core.int buildCounterCopy = 0;
 api.Copy buildCopy() {
-  var o = api.Copy();
+  final o = api.Copy();
   buildCounterCopy++;
   if (buildCounterCopy < 3) {
     o.originalObject = buildTargetReference();
@@ -287,14 +286,14 @@ api.Copy buildCopy() {
 void checkCopy(api.Copy o) {
   buildCounterCopy++;
   if (buildCounterCopy < 3) {
-    checkTargetReference(o.originalObject! as api.TargetReference);
+    checkTargetReference(o.originalObject!);
   }
   buildCounterCopy--;
 }
 
 core.int buildCounterCreate = 0;
 api.Create buildCreate() {
-  var o = api.Create();
+  final o = api.Create();
   buildCounterCreate++;
   if (buildCounterCreate < 3) {
     o.copy = buildCopy();
@@ -308,16 +307,16 @@ api.Create buildCreate() {
 void checkCreate(api.Create o) {
   buildCounterCreate++;
   if (buildCounterCreate < 3) {
-    checkCopy(o.copy! as api.Copy);
-    checkNew(o.new_! as api.New);
-    checkUpload(o.upload! as api.Upload);
+    checkCopy(o.copy!);
+    checkNew(o.new_!);
+    checkUpload(o.upload!);
   }
   buildCounterCreate--;
 }
 
 core.int buildCounterDataLeakPreventionChange = 0;
 api.DataLeakPreventionChange buildDataLeakPreventionChange() {
-  var o = api.DataLeakPreventionChange();
+  final o = api.DataLeakPreventionChange();
   buildCounterDataLeakPreventionChange++;
   if (buildCounterDataLeakPreventionChange < 3) {
     o.type = 'foo';
@@ -339,7 +338,7 @@ void checkDataLeakPreventionChange(api.DataLeakPreventionChange o) {
 
 core.int buildCounterDelete = 0;
 api.Delete buildDelete() {
-  var o = api.Delete();
+  final o = api.Delete();
   buildCounterDelete++;
   if (buildCounterDelete < 3) {
     o.type = 'foo';
@@ -361,7 +360,7 @@ void checkDelete(api.Delete o) {
 
 core.int buildCounterDeletedUser = 0;
 api.DeletedUser buildDeletedUser() {
-  var o = api.DeletedUser();
+  final o = api.DeletedUser();
   buildCounterDeletedUser++;
   if (buildCounterDeletedUser < 3) {}
   buildCounterDeletedUser--;
@@ -376,7 +375,7 @@ void checkDeletedUser(api.DeletedUser o) {
 
 core.int buildCounterDomain = 0;
 api.Domain buildDomain() {
-  var o = api.Domain();
+  final o = api.Domain();
   buildCounterDomain++;
   if (buildCounterDomain < 3) {
     o.legacyId = 'foo';
@@ -403,7 +402,7 @@ void checkDomain(api.Domain o) {
 
 core.int buildCounterDrive = 0;
 api.Drive buildDrive() {
-  var o = api.Drive();
+  final o = api.Drive();
   buildCounterDrive++;
   if (buildCounterDrive < 3) {
     o.name = 'foo';
@@ -421,7 +420,7 @@ void checkDrive(api.Drive o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkDriveItem(o.root! as api.DriveItem);
+    checkDriveItem(o.root!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -431,7 +430,7 @@ void checkDrive(api.Drive o) {
 }
 
 core.List<api.Action> buildUnnamed5256() {
-  var o = <api.Action>[];
+  final o = <api.Action>[];
   o.add(buildAction());
   o.add(buildAction());
   return o;
@@ -439,12 +438,12 @@ core.List<api.Action> buildUnnamed5256() {
 
 void checkUnnamed5256(core.List<api.Action> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAction(o[0] as api.Action);
-  checkAction(o[1] as api.Action);
+  checkAction(o[0]);
+  checkAction(o[1]);
 }
 
 core.List<api.Actor> buildUnnamed5257() {
-  var o = <api.Actor>[];
+  final o = <api.Actor>[];
   o.add(buildActor());
   o.add(buildActor());
   return o;
@@ -452,12 +451,12 @@ core.List<api.Actor> buildUnnamed5257() {
 
 void checkUnnamed5257(core.List<api.Actor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActor(o[0] as api.Actor);
-  checkActor(o[1] as api.Actor);
+  checkActor(o[0]);
+  checkActor(o[1]);
 }
 
 core.List<api.Target> buildUnnamed5258() {
-  var o = <api.Target>[];
+  final o = <api.Target>[];
   o.add(buildTarget());
   o.add(buildTarget());
   return o;
@@ -465,13 +464,13 @@ core.List<api.Target> buildUnnamed5258() {
 
 void checkUnnamed5258(core.List<api.Target> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTarget(o[0] as api.Target);
-  checkTarget(o[1] as api.Target);
+  checkTarget(o[0]);
+  checkTarget(o[1]);
 }
 
 core.int buildCounterDriveActivity = 0;
 api.DriveActivity buildDriveActivity() {
-  var o = api.DriveActivity();
+  final o = api.DriveActivity();
   buildCounterDriveActivity++;
   if (buildCounterDriveActivity < 3) {
     o.actions = buildUnnamed5256();
@@ -490,9 +489,9 @@ void checkDriveActivity(api.DriveActivity o) {
   if (buildCounterDriveActivity < 3) {
     checkUnnamed5256(o.actions!);
     checkUnnamed5257(o.actors!);
-    checkActionDetail(o.primaryActionDetail! as api.ActionDetail);
+    checkActionDetail(o.primaryActionDetail!);
     checkUnnamed5258(o.targets!);
-    checkTimeRange(o.timeRange! as api.TimeRange);
+    checkTimeRange(o.timeRange!);
     unittest.expect(
       o.timestamp!,
       unittest.equals('foo'),
@@ -503,7 +502,7 @@ void checkDriveActivity(api.DriveActivity o) {
 
 core.int buildCounterDriveFile = 0;
 api.DriveFile buildDriveFile() {
-  var o = api.DriveFile();
+  final o = api.DriveFile();
   buildCounterDriveFile++;
   if (buildCounterDriveFile < 3) {}
   buildCounterDriveFile--;
@@ -518,7 +517,7 @@ void checkDriveFile(api.DriveFile o) {
 
 core.int buildCounterDriveFolder = 0;
 api.DriveFolder buildDriveFolder() {
-  var o = api.DriveFolder();
+  final o = api.DriveFolder();
   buildCounterDriveFolder++;
   if (buildCounterDriveFolder < 3) {
     o.type = 'foo';
@@ -540,7 +539,7 @@ void checkDriveFolder(api.DriveFolder o) {
 
 core.int buildCounterDriveItem = 0;
 api.DriveItem buildDriveItem() {
-  var o = api.DriveItem();
+  final o = api.DriveItem();
   buildCounterDriveItem++;
   if (buildCounterDriveItem < 3) {
     o.driveFile = buildDriveFile();
@@ -559,10 +558,10 @@ api.DriveItem buildDriveItem() {
 void checkDriveItem(api.DriveItem o) {
   buildCounterDriveItem++;
   if (buildCounterDriveItem < 3) {
-    checkDriveFile(o.driveFile! as api.DriveFile);
-    checkDriveFolder(o.driveFolder! as api.DriveFolder);
-    checkFile(o.file! as api.File);
-    checkFolder(o.folder! as api.Folder);
+    checkDriveFile(o.driveFile!);
+    checkDriveFolder(o.driveFolder!);
+    checkFile(o.file!);
+    checkFolder(o.folder!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -571,7 +570,7 @@ void checkDriveItem(api.DriveItem o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkOwner(o.owner! as api.Owner);
+    checkOwner(o.owner!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -582,7 +581,7 @@ void checkDriveItem(api.DriveItem o) {
 
 core.int buildCounterDriveItemReference = 0;
 api.DriveItemReference buildDriveItemReference() {
-  var o = api.DriveItemReference();
+  final o = api.DriveItemReference();
   buildCounterDriveItemReference++;
   if (buildCounterDriveItemReference < 3) {
     o.driveFile = buildDriveFile();
@@ -599,10 +598,10 @@ api.DriveItemReference buildDriveItemReference() {
 void checkDriveItemReference(api.DriveItemReference o) {
   buildCounterDriveItemReference++;
   if (buildCounterDriveItemReference < 3) {
-    checkDriveFile(o.driveFile! as api.DriveFile);
-    checkDriveFolder(o.driveFolder! as api.DriveFolder);
-    checkFile(o.file! as api.File);
-    checkFolder(o.folder! as api.Folder);
+    checkDriveFile(o.driveFile!);
+    checkDriveFolder(o.driveFolder!);
+    checkFile(o.file!);
+    checkFolder(o.folder!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -617,7 +616,7 @@ void checkDriveItemReference(api.DriveItemReference o) {
 
 core.int buildCounterDriveReference = 0;
 api.DriveReference buildDriveReference() {
-  var o = api.DriveReference();
+  final o = api.DriveReference();
   buildCounterDriveReference++;
   if (buildCounterDriveReference < 3) {
     o.name = 'foo';
@@ -644,7 +643,7 @@ void checkDriveReference(api.DriveReference o) {
 
 core.int buildCounterEdit = 0;
 api.Edit buildEdit() {
-  var o = api.Edit();
+  final o = api.Edit();
   buildCounterEdit++;
   if (buildCounterEdit < 3) {}
   buildCounterEdit--;
@@ -659,7 +658,7 @@ void checkEdit(api.Edit o) {
 
 core.int buildCounterFile = 0;
 api.File buildFile() {
-  var o = api.File();
+  final o = api.File();
   buildCounterFile++;
   if (buildCounterFile < 3) {}
   buildCounterFile--;
@@ -674,7 +673,7 @@ void checkFile(api.File o) {
 
 core.int buildCounterFileComment = 0;
 api.FileComment buildFileComment() {
-  var o = api.FileComment();
+  final o = api.FileComment();
   buildCounterFileComment++;
   if (buildCounterFileComment < 3) {
     o.legacyCommentId = 'foo';
@@ -701,14 +700,14 @@ void checkFileComment(api.FileComment o) {
       o.linkToDiscussion!,
       unittest.equals('foo'),
     );
-    checkDriveItem(o.parent! as api.DriveItem);
+    checkDriveItem(o.parent!);
   }
   buildCounterFileComment--;
 }
 
 core.int buildCounterFolder = 0;
 api.Folder buildFolder() {
-  var o = api.Folder();
+  final o = api.Folder();
   buildCounterFolder++;
   if (buildCounterFolder < 3) {
     o.type = 'foo';
@@ -730,7 +729,7 @@ void checkFolder(api.Folder o) {
 
 core.int buildCounterGroup = 0;
 api.Group buildGroup() {
-  var o = api.Group();
+  final o = api.Group();
   buildCounterGroup++;
   if (buildCounterGroup < 3) {
     o.email = 'foo';
@@ -757,7 +756,7 @@ void checkGroup(api.Group o) {
 
 core.int buildCounterImpersonation = 0;
 api.Impersonation buildImpersonation() {
-  var o = api.Impersonation();
+  final o = api.Impersonation();
   buildCounterImpersonation++;
   if (buildCounterImpersonation < 3) {
     o.impersonatedUser = buildUser();
@@ -769,14 +768,14 @@ api.Impersonation buildImpersonation() {
 void checkImpersonation(api.Impersonation o) {
   buildCounterImpersonation++;
   if (buildCounterImpersonation < 3) {
-    checkUser(o.impersonatedUser! as api.User);
+    checkUser(o.impersonatedUser!);
   }
   buildCounterImpersonation--;
 }
 
 core.int buildCounterKnownUser = 0;
 api.KnownUser buildKnownUser() {
-  var o = api.KnownUser();
+  final o = api.KnownUser();
   buildCounterKnownUser++;
   if (buildCounterKnownUser < 3) {
     o.isCurrentUser = true;
@@ -800,7 +799,7 @@ void checkKnownUser(api.KnownUser o) {
 
 core.int buildCounterLegacy = 0;
 api.Legacy buildLegacy() {
-  var o = api.Legacy();
+  final o = api.Legacy();
   buildCounterLegacy++;
   if (buildCounterLegacy < 3) {}
   buildCounterLegacy--;
@@ -814,7 +813,7 @@ void checkLegacy(api.Legacy o) {
 }
 
 core.List<api.TargetReference> buildUnnamed5259() {
-  var o = <api.TargetReference>[];
+  final o = <api.TargetReference>[];
   o.add(buildTargetReference());
   o.add(buildTargetReference());
   return o;
@@ -822,12 +821,12 @@ core.List<api.TargetReference> buildUnnamed5259() {
 
 void checkUnnamed5259(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTargetReference(o[0] as api.TargetReference);
-  checkTargetReference(o[1] as api.TargetReference);
+  checkTargetReference(o[0]);
+  checkTargetReference(o[1]);
 }
 
 core.List<api.TargetReference> buildUnnamed5260() {
-  var o = <api.TargetReference>[];
+  final o = <api.TargetReference>[];
   o.add(buildTargetReference());
   o.add(buildTargetReference());
   return o;
@@ -835,13 +834,13 @@ core.List<api.TargetReference> buildUnnamed5260() {
 
 void checkUnnamed5260(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTargetReference(o[0] as api.TargetReference);
-  checkTargetReference(o[1] as api.TargetReference);
+  checkTargetReference(o[0]);
+  checkTargetReference(o[1]);
 }
 
 core.int buildCounterMove = 0;
 api.Move buildMove() {
-  var o = api.Move();
+  final o = api.Move();
   buildCounterMove++;
   if (buildCounterMove < 3) {
     o.addedParents = buildUnnamed5259();
@@ -862,7 +861,7 @@ void checkMove(api.Move o) {
 
 core.int buildCounterNew = 0;
 api.New buildNew() {
-  var o = api.New();
+  final o = api.New();
   buildCounterNew++;
   if (buildCounterNew < 3) {}
   buildCounterNew--;
@@ -877,7 +876,7 @@ void checkNew(api.New o) {
 
 core.int buildCounterNoConsolidation = 0;
 api.NoConsolidation buildNoConsolidation() {
-  var o = api.NoConsolidation();
+  final o = api.NoConsolidation();
   buildCounterNoConsolidation++;
   if (buildCounterNoConsolidation < 3) {}
   buildCounterNoConsolidation--;
@@ -892,7 +891,7 @@ void checkNoConsolidation(api.NoConsolidation o) {
 
 core.int buildCounterOwner = 0;
 api.Owner buildOwner() {
-  var o = api.Owner();
+  final o = api.Owner();
   buildCounterOwner++;
   if (buildCounterOwner < 3) {
     o.domain = buildDomain();
@@ -907,17 +906,17 @@ api.Owner buildOwner() {
 void checkOwner(api.Owner o) {
   buildCounterOwner++;
   if (buildCounterOwner < 3) {
-    checkDomain(o.domain! as api.Domain);
-    checkDriveReference(o.drive! as api.DriveReference);
-    checkTeamDriveReference(o.teamDrive! as api.TeamDriveReference);
-    checkUser(o.user! as api.User);
+    checkDomain(o.domain!);
+    checkDriveReference(o.drive!);
+    checkTeamDriveReference(o.teamDrive!);
+    checkUser(o.user!);
   }
   buildCounterOwner--;
 }
 
 core.int buildCounterPermission = 0;
 api.Permission buildPermission() {
-  var o = api.Permission();
+  final o = api.Permission();
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
     o.allowDiscovery = true;
@@ -935,20 +934,20 @@ void checkPermission(api.Permission o) {
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
     unittest.expect(o.allowDiscovery!, unittest.isTrue);
-    checkAnyone(o.anyone! as api.Anyone);
-    checkDomain(o.domain! as api.Domain);
-    checkGroup(o.group! as api.Group);
+    checkAnyone(o.anyone!);
+    checkDomain(o.domain!);
+    checkGroup(o.group!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
     );
-    checkUser(o.user! as api.User);
+    checkUser(o.user!);
   }
   buildCounterPermission--;
 }
 
 core.List<api.Permission> buildUnnamed5261() {
-  var o = <api.Permission>[];
+  final o = <api.Permission>[];
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
@@ -956,12 +955,12 @@ core.List<api.Permission> buildUnnamed5261() {
 
 void checkUnnamed5261(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermission(o[0] as api.Permission);
-  checkPermission(o[1] as api.Permission);
+  checkPermission(o[0]);
+  checkPermission(o[1]);
 }
 
 core.List<api.Permission> buildUnnamed5262() {
-  var o = <api.Permission>[];
+  final o = <api.Permission>[];
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
@@ -969,13 +968,13 @@ core.List<api.Permission> buildUnnamed5262() {
 
 void checkUnnamed5262(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermission(o[0] as api.Permission);
-  checkPermission(o[1] as api.Permission);
+  checkPermission(o[0]);
+  checkPermission(o[1]);
 }
 
 core.int buildCounterPermissionChange = 0;
 api.PermissionChange buildPermissionChange() {
-  var o = api.PermissionChange();
+  final o = api.PermissionChange();
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
     o.addedPermissions = buildUnnamed5261();
@@ -996,7 +995,7 @@ void checkPermissionChange(api.PermissionChange o) {
 
 core.int buildCounterPost = 0;
 api.Post buildPost() {
-  var o = api.Post();
+  final o = api.Post();
   buildCounterPost++;
   if (buildCounterPost < 3) {
     o.subtype = 'foo';
@@ -1018,7 +1017,7 @@ void checkPost(api.Post o) {
 
 core.int buildCounterQueryDriveActivityRequest = 0;
 api.QueryDriveActivityRequest buildQueryDriveActivityRequest() {
-  var o = api.QueryDriveActivityRequest();
+  final o = api.QueryDriveActivityRequest();
   buildCounterQueryDriveActivityRequest++;
   if (buildCounterQueryDriveActivityRequest < 3) {
     o.ancestorName = 'foo';
@@ -1039,8 +1038,7 @@ void checkQueryDriveActivityRequest(api.QueryDriveActivityRequest o) {
       o.ancestorName!,
       unittest.equals('foo'),
     );
-    checkConsolidationStrategy(
-        o.consolidationStrategy! as api.ConsolidationStrategy);
+    checkConsolidationStrategy(o.consolidationStrategy!);
     unittest.expect(
       o.filter!,
       unittest.equals('foo'),
@@ -1062,7 +1060,7 @@ void checkQueryDriveActivityRequest(api.QueryDriveActivityRequest o) {
 }
 
 core.List<api.DriveActivity> buildUnnamed5263() {
-  var o = <api.DriveActivity>[];
+  final o = <api.DriveActivity>[];
   o.add(buildDriveActivity());
   o.add(buildDriveActivity());
   return o;
@@ -1070,13 +1068,13 @@ core.List<api.DriveActivity> buildUnnamed5263() {
 
 void checkUnnamed5263(core.List<api.DriveActivity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDriveActivity(o[0] as api.DriveActivity);
-  checkDriveActivity(o[1] as api.DriveActivity);
+  checkDriveActivity(o[0]);
+  checkDriveActivity(o[1]);
 }
 
 core.int buildCounterQueryDriveActivityResponse = 0;
 api.QueryDriveActivityResponse buildQueryDriveActivityResponse() {
-  var o = api.QueryDriveActivityResponse();
+  final o = api.QueryDriveActivityResponse();
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
     o.activities = buildUnnamed5263();
@@ -1100,7 +1098,7 @@ void checkQueryDriveActivityResponse(api.QueryDriveActivityResponse o) {
 
 core.int buildCounterRename = 0;
 api.Rename buildRename() {
-  var o = api.Rename();
+  final o = api.Rename();
   buildCounterRename++;
   if (buildCounterRename < 3) {
     o.newTitle = 'foo';
@@ -1127,7 +1125,7 @@ void checkRename(api.Rename o) {
 
 core.int buildCounterRestore = 0;
 api.Restore buildRestore() {
-  var o = api.Restore();
+  final o = api.Restore();
   buildCounterRestore++;
   if (buildCounterRestore < 3) {
     o.type = 'foo';
@@ -1149,7 +1147,7 @@ void checkRestore(api.Restore o) {
 
 core.int buildCounterRestrictionChange = 0;
 api.RestrictionChange buildRestrictionChange() {
-  var o = api.RestrictionChange();
+  final o = api.RestrictionChange();
   buildCounterRestrictionChange++;
   if (buildCounterRestrictionChange < 3) {
     o.feature = 'foo';
@@ -1175,7 +1173,7 @@ void checkRestrictionChange(api.RestrictionChange o) {
 }
 
 core.List<api.RestrictionChange> buildUnnamed5264() {
-  var o = <api.RestrictionChange>[];
+  final o = <api.RestrictionChange>[];
   o.add(buildRestrictionChange());
   o.add(buildRestrictionChange());
   return o;
@@ -1183,13 +1181,13 @@ core.List<api.RestrictionChange> buildUnnamed5264() {
 
 void checkUnnamed5264(core.List<api.RestrictionChange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRestrictionChange(o[0] as api.RestrictionChange);
-  checkRestrictionChange(o[1] as api.RestrictionChange);
+  checkRestrictionChange(o[0]);
+  checkRestrictionChange(o[1]);
 }
 
 core.int buildCounterSettingsChange = 0;
 api.SettingsChange buildSettingsChange() {
-  var o = api.SettingsChange();
+  final o = api.SettingsChange();
   buildCounterSettingsChange++;
   if (buildCounterSettingsChange < 3) {
     o.restrictionChanges = buildUnnamed5264();
@@ -1208,7 +1206,7 @@ void checkSettingsChange(api.SettingsChange o) {
 
 core.int buildCounterSuggestion = 0;
 api.Suggestion buildSuggestion() {
-  var o = api.Suggestion();
+  final o = api.Suggestion();
   buildCounterSuggestion++;
   if (buildCounterSuggestion < 3) {
     o.subtype = 'foo';
@@ -1230,7 +1228,7 @@ void checkSuggestion(api.Suggestion o) {
 
 core.int buildCounterSystemEvent = 0;
 api.SystemEvent buildSystemEvent() {
-  var o = api.SystemEvent();
+  final o = api.SystemEvent();
   buildCounterSystemEvent++;
   if (buildCounterSystemEvent < 3) {
     o.type = 'foo';
@@ -1252,7 +1250,7 @@ void checkSystemEvent(api.SystemEvent o) {
 
 core.int buildCounterTarget = 0;
 api.Target buildTarget() {
-  var o = api.Target();
+  final o = api.Target();
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
     o.drive = buildDrive();
@@ -1267,17 +1265,17 @@ api.Target buildTarget() {
 void checkTarget(api.Target o) {
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
-    checkDrive(o.drive! as api.Drive);
-    checkDriveItem(o.driveItem! as api.DriveItem);
-    checkFileComment(o.fileComment! as api.FileComment);
-    checkTeamDrive(o.teamDrive! as api.TeamDrive);
+    checkDrive(o.drive!);
+    checkDriveItem(o.driveItem!);
+    checkFileComment(o.fileComment!);
+    checkTeamDrive(o.teamDrive!);
   }
   buildCounterTarget--;
 }
 
 core.int buildCounterTargetReference = 0;
 api.TargetReference buildTargetReference() {
-  var o = api.TargetReference();
+  final o = api.TargetReference();
   buildCounterTargetReference++;
   if (buildCounterTargetReference < 3) {
     o.drive = buildDriveReference();
@@ -1291,16 +1289,16 @@ api.TargetReference buildTargetReference() {
 void checkTargetReference(api.TargetReference o) {
   buildCounterTargetReference++;
   if (buildCounterTargetReference < 3) {
-    checkDriveReference(o.drive! as api.DriveReference);
-    checkDriveItemReference(o.driveItem! as api.DriveItemReference);
-    checkTeamDriveReference(o.teamDrive! as api.TeamDriveReference);
+    checkDriveReference(o.drive!);
+    checkDriveItemReference(o.driveItem!);
+    checkTeamDriveReference(o.teamDrive!);
   }
   buildCounterTargetReference--;
 }
 
 core.int buildCounterTeamDrive = 0;
 api.TeamDrive buildTeamDrive() {
-  var o = api.TeamDrive();
+  final o = api.TeamDrive();
   buildCounterTeamDrive++;
   if (buildCounterTeamDrive < 3) {
     o.name = 'foo';
@@ -1318,7 +1316,7 @@ void checkTeamDrive(api.TeamDrive o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkDriveItem(o.root! as api.DriveItem);
+    checkDriveItem(o.root!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -1329,7 +1327,7 @@ void checkTeamDrive(api.TeamDrive o) {
 
 core.int buildCounterTeamDriveReference = 0;
 api.TeamDriveReference buildTeamDriveReference() {
-  var o = api.TeamDriveReference();
+  final o = api.TeamDriveReference();
   buildCounterTeamDriveReference++;
   if (buildCounterTeamDriveReference < 3) {
     o.name = 'foo';
@@ -1356,7 +1354,7 @@ void checkTeamDriveReference(api.TeamDriveReference o) {
 
 core.int buildCounterTimeRange = 0;
 api.TimeRange buildTimeRange() {
-  var o = api.TimeRange();
+  final o = api.TimeRange();
   buildCounterTimeRange++;
   if (buildCounterTimeRange < 3) {
     o.endTime = 'foo';
@@ -1383,7 +1381,7 @@ void checkTimeRange(api.TimeRange o) {
 
 core.int buildCounterUnknownUser = 0;
 api.UnknownUser buildUnknownUser() {
-  var o = api.UnknownUser();
+  final o = api.UnknownUser();
   buildCounterUnknownUser++;
   if (buildCounterUnknownUser < 3) {}
   buildCounterUnknownUser--;
@@ -1398,7 +1396,7 @@ void checkUnknownUser(api.UnknownUser o) {
 
 core.int buildCounterUpload = 0;
 api.Upload buildUpload() {
-  var o = api.Upload();
+  final o = api.Upload();
   buildCounterUpload++;
   if (buildCounterUpload < 3) {}
   buildCounterUpload--;
@@ -1413,7 +1411,7 @@ void checkUpload(api.Upload o) {
 
 core.int buildCounterUser = 0;
 api.User buildUser() {
-  var o = api.User();
+  final o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
     o.deletedUser = buildDeletedUser();
@@ -1427,9 +1425,9 @@ api.User buildUser() {
 void checkUser(api.User o) {
   buildCounterUser++;
   if (buildCounterUser < 3) {
-    checkDeletedUser(o.deletedUser! as api.DeletedUser);
-    checkKnownUser(o.knownUser! as api.KnownUser);
-    checkUnknownUser(o.unknownUser! as api.UnknownUser);
+    checkDeletedUser(o.deletedUser!);
+    checkKnownUser(o.knownUser!);
+    checkUnknownUser(o.unknownUser!);
   }
   buildCounterUser--;
 }
@@ -1437,568 +1435,578 @@ void checkUser(api.User o) {
 void main() {
   unittest.group('obj-schema-Action', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Action.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAction(od as api.Action);
+      checkAction(od);
     });
   });
 
   unittest.group('obj-schema-ActionDetail', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildActionDetail();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ActionDetail.fromJson(
+      final o = buildActionDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ActionDetail.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkActionDetail(od as api.ActionDetail);
+      checkActionDetail(od);
     });
   });
 
   unittest.group('obj-schema-Actor', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildActor();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Actor.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkActor(od as api.Actor);
+      final o = buildActor();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Actor.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkActor(od);
     });
   });
 
   unittest.group('obj-schema-Administrator', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAdministrator();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Administrator.fromJson(
+      final o = buildAdministrator();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Administrator.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAdministrator(od as api.Administrator);
+      checkAdministrator(od);
     });
   });
 
   unittest.group('obj-schema-AnonymousUser', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnonymousUser();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AnonymousUser.fromJson(
+      final o = buildAnonymousUser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnonymousUser.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAnonymousUser(od as api.AnonymousUser);
+      checkAnonymousUser(od);
     });
   });
 
   unittest.group('obj-schema-Anyone', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnyone();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAnyone();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Anyone.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAnyone(od as api.Anyone);
+      checkAnyone(od);
     });
   });
 
   unittest.group('obj-schema-ApplicationReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildApplicationReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ApplicationReference.fromJson(
+      final o = buildApplicationReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApplicationReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkApplicationReference(od as api.ApplicationReference);
+      checkApplicationReference(od);
     });
   });
 
   unittest.group('obj-schema-Assignment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAssignment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAssignment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Assignment.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAssignment(od as api.Assignment);
+      checkAssignment(od);
     });
   });
 
   unittest.group('obj-schema-Comment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildComment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildComment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Comment.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkComment(od as api.Comment);
+      checkComment(od);
     });
   });
 
   unittest.group('obj-schema-ConsolidationStrategy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildConsolidationStrategy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ConsolidationStrategy.fromJson(
+      final o = buildConsolidationStrategy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConsolidationStrategy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkConsolidationStrategy(od as api.ConsolidationStrategy);
+      checkConsolidationStrategy(od);
     });
   });
 
   unittest.group('obj-schema-Copy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCopy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Copy.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCopy(od as api.Copy);
+      final o = buildCopy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Copy.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCopy(od);
     });
   });
 
   unittest.group('obj-schema-Create', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCreate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Create.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCreate(od as api.Create);
+      checkCreate(od);
     });
   });
 
   unittest.group('obj-schema-DataLeakPreventionChange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDataLeakPreventionChange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DataLeakPreventionChange.fromJson(
+      final o = buildDataLeakPreventionChange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataLeakPreventionChange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDataLeakPreventionChange(od as api.DataLeakPreventionChange);
+      checkDataLeakPreventionChange(od);
     });
   });
 
   unittest.group('obj-schema-Delete', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDelete();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDelete();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Delete.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDelete(od as api.Delete);
+      checkDelete(od);
     });
   });
 
   unittest.group('obj-schema-DeletedUser', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeletedUser();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeletedUser.fromJson(
+      final o = buildDeletedUser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeletedUser.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeletedUser(od as api.DeletedUser);
+      checkDeletedUser(od);
     });
   });
 
   unittest.group('obj-schema-Domain', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDomain();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDomain();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Domain.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDomain(od as api.Domain);
+      checkDomain(od);
     });
   });
 
   unittest.group('obj-schema-Drive', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDrive();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Drive.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDrive(od as api.Drive);
+      final o = buildDrive();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Drive.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDrive(od);
     });
   });
 
   unittest.group('obj-schema-DriveActivity', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDriveActivity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DriveActivity.fromJson(
+      final o = buildDriveActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DriveActivity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDriveActivity(od as api.DriveActivity);
+      checkDriveActivity(od);
     });
   });
 
   unittest.group('obj-schema-DriveFile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDriveFile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDriveFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.DriveFile.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDriveFile(od as api.DriveFile);
+      checkDriveFile(od);
     });
   });
 
   unittest.group('obj-schema-DriveFolder', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDriveFolder();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DriveFolder.fromJson(
+      final o = buildDriveFolder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DriveFolder.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDriveFolder(od as api.DriveFolder);
+      checkDriveFolder(od);
     });
   });
 
   unittest.group('obj-schema-DriveItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDriveItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDriveItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.DriveItem.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDriveItem(od as api.DriveItem);
+      checkDriveItem(od);
     });
   });
 
   unittest.group('obj-schema-DriveItemReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDriveItemReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DriveItemReference.fromJson(
+      final o = buildDriveItemReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DriveItemReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDriveItemReference(od as api.DriveItemReference);
+      checkDriveItemReference(od);
     });
   });
 
   unittest.group('obj-schema-DriveReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDriveReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DriveReference.fromJson(
+      final o = buildDriveReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DriveReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDriveReference(od as api.DriveReference);
+      checkDriveReference(od);
     });
   });
 
   unittest.group('obj-schema-Edit', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEdit();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Edit.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEdit(od as api.Edit);
+      final o = buildEdit();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Edit.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEdit(od);
     });
   });
 
   unittest.group('obj-schema-File', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.File.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFile(od as api.File);
+      final o = buildFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.File.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFile(od);
     });
   });
 
   unittest.group('obj-schema-FileComment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFileComment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FileComment.fromJson(
+      final o = buildFileComment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FileComment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFileComment(od as api.FileComment);
+      checkFileComment(od);
     });
   });
 
   unittest.group('obj-schema-Folder', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFolder();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildFolder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Folder.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFolder(od as api.Folder);
+      checkFolder(od);
     });
   });
 
   unittest.group('obj-schema-Group', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGroup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Group.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGroup(od as api.Group);
+      final o = buildGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Group.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGroup(od);
     });
   });
 
   unittest.group('obj-schema-Impersonation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImpersonation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Impersonation.fromJson(
+      final o = buildImpersonation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Impersonation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImpersonation(od as api.Impersonation);
+      checkImpersonation(od);
     });
   });
 
   unittest.group('obj-schema-KnownUser', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildKnownUser();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildKnownUser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.KnownUser.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkKnownUser(od as api.KnownUser);
+      checkKnownUser(od);
     });
   });
 
   unittest.group('obj-schema-Legacy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLegacy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLegacy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Legacy.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLegacy(od as api.Legacy);
+      checkLegacy(od);
     });
   });
 
   unittest.group('obj-schema-Move', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMove();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Move.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMove(od as api.Move);
+      final o = buildMove();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Move.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkMove(od);
     });
   });
 
   unittest.group('obj-schema-New', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNew();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.New.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkNew(od as api.New);
+      final o = buildNew();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.New.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkNew(od);
     });
   });
 
   unittest.group('obj-schema-NoConsolidation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNoConsolidation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NoConsolidation.fromJson(
+      final o = buildNoConsolidation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NoConsolidation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNoConsolidation(od as api.NoConsolidation);
+      checkNoConsolidation(od);
     });
   });
 
   unittest.group('obj-schema-Owner', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOwner();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Owner.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkOwner(od as api.Owner);
+      final o = buildOwner();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Owner.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkOwner(od);
     });
   });
 
   unittest.group('obj-schema-Permission', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPermission();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildPermission();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Permission.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPermission(od as api.Permission);
+      checkPermission(od);
     });
   });
 
   unittest.group('obj-schema-PermissionChange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPermissionChange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PermissionChange.fromJson(
+      final o = buildPermissionChange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PermissionChange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPermissionChange(od as api.PermissionChange);
+      checkPermissionChange(od);
     });
   });
 
   unittest.group('obj-schema-Post', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPost();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Post.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPost(od as api.Post);
+      final o = buildPost();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Post.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPost(od);
     });
   });
 
   unittest.group('obj-schema-QueryDriveActivityRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildQueryDriveActivityRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.QueryDriveActivityRequest.fromJson(
+      final o = buildQueryDriveActivityRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueryDriveActivityRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkQueryDriveActivityRequest(od as api.QueryDriveActivityRequest);
+      checkQueryDriveActivityRequest(od);
     });
   });
 
   unittest.group('obj-schema-QueryDriveActivityResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildQueryDriveActivityResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.QueryDriveActivityResponse.fromJson(
+      final o = buildQueryDriveActivityResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueryDriveActivityResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkQueryDriveActivityResponse(od as api.QueryDriveActivityResponse);
+      checkQueryDriveActivityResponse(od);
     });
   });
 
   unittest.group('obj-schema-Rename', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRename();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRename();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Rename.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRename(od as api.Rename);
+      checkRename(od);
     });
   });
 
   unittest.group('obj-schema-Restore', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRestore();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRestore();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Restore.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRestore(od as api.Restore);
+      checkRestore(od);
     });
   });
 
   unittest.group('obj-schema-RestrictionChange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRestrictionChange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RestrictionChange.fromJson(
+      final o = buildRestrictionChange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestrictionChange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRestrictionChange(od as api.RestrictionChange);
+      checkRestrictionChange(od);
     });
   });
 
   unittest.group('obj-schema-SettingsChange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettingsChange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettingsChange.fromJson(
+      final o = buildSettingsChange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettingsChange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettingsChange(od as api.SettingsChange);
+      checkSettingsChange(od);
     });
   });
 
   unittest.group('obj-schema-Suggestion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSuggestion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Suggestion.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestion(od as api.Suggestion);
+      checkSuggestion(od);
     });
   });
 
   unittest.group('obj-schema-SystemEvent', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSystemEvent();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SystemEvent.fromJson(
+      final o = buildSystemEvent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SystemEvent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSystemEvent(od as api.SystemEvent);
+      checkSystemEvent(od);
     });
   });
 
   unittest.group('obj-schema-Target', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTarget();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTarget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Target.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTarget(od as api.Target);
+      checkTarget(od);
     });
   });
 
   unittest.group('obj-schema-TargetReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTargetReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TargetReference.fromJson(
+      final o = buildTargetReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TargetReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTargetReference(od as api.TargetReference);
+      checkTargetReference(od);
     });
   });
 
   unittest.group('obj-schema-TeamDrive', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTeamDrive();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTeamDrive();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TeamDrive.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTeamDrive(od as api.TeamDrive);
+      checkTeamDrive(od);
     });
   });
 
   unittest.group('obj-schema-TeamDriveReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTeamDriveReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TeamDriveReference.fromJson(
+      final o = buildTeamDriveReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TeamDriveReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTeamDriveReference(od as api.TeamDriveReference);
+      checkTeamDriveReference(od);
     });
   });
 
   unittest.group('obj-schema-TimeRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTimeRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTimeRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TimeRange.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTimeRange(od as api.TimeRange);
+      checkTimeRange(od);
     });
   });
 
   unittest.group('obj-schema-UnknownUser', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUnknownUser();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UnknownUser.fromJson(
+      final o = buildUnknownUser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnknownUser.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUnknownUser(od as api.UnknownUser);
+      checkUnknownUser(od);
     });
   });
 
   unittest.group('obj-schema-Upload', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpload();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildUpload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Upload.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkUpload(od as api.Upload);
+      checkUpload(od);
     });
   });
 
   unittest.group('obj-schema-User', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUser();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.User.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkUser(od as api.User);
+      final o = buildUser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.User.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkUser(od);
     });
   });
 
   unittest.group('resource-ActivityResource', () {
     unittest.test('method--query', () async {
-      var mock = HttpServerMock();
-      var res = api.DriveActivityApi(mock).activity;
-      var arg_request = buildQueryDriveActivityRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DriveActivityApi(mock).activity;
+      final arg_request = buildQueryDriveActivityRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.QueryDriveActivityRequest.fromJson(
+        final obj = api.QueryDriveActivityRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkQueryDriveActivityRequest(obj as api.QueryDriveActivityRequest);
+        checkQueryDriveActivityRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("v2/activity:query"),
+          unittest.equals('v2/activity:query'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2006,14 +2014,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildQueryDriveActivityResponse());
+        final resp = convert.json.encode(buildQueryDriveActivityResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.query(arg_request, $fields: arg_$fields);

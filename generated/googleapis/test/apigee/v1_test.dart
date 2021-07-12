@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.Map<core.String, core.Object> buildUnnamed6377() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -75,7 +74,7 @@ void checkUnnamed6377(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed6378() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed6377());
   o.add(buildUnnamed6377());
   return o;
@@ -89,7 +88,7 @@ void checkUnnamed6378(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterGoogleApiHttpBody = 0;
 api.GoogleApiHttpBody buildGoogleApiHttpBody() {
-  var o = api.GoogleApiHttpBody();
+  final o = api.GoogleApiHttpBody();
   buildCounterGoogleApiHttpBody++;
   if (buildCounterGoogleApiHttpBody < 3) {
     o.contentType = 'foo';
@@ -118,7 +117,7 @@ void checkGoogleApiHttpBody(api.GoogleApiHttpBody o) {
 
 core.int buildCounterGoogleCloudApigeeV1Access = 0;
 api.GoogleCloudApigeeV1Access buildGoogleCloudApigeeV1Access() {
-  var o = api.GoogleCloudApigeeV1Access();
+  final o = api.GoogleCloudApigeeV1Access();
   buildCounterGoogleCloudApigeeV1Access++;
   if (buildCounterGoogleCloudApigeeV1Access < 3) {
     o.Get = buildGoogleCloudApigeeV1AccessGet();
@@ -132,19 +131,16 @@ api.GoogleCloudApigeeV1Access buildGoogleCloudApigeeV1Access() {
 void checkGoogleCloudApigeeV1Access(api.GoogleCloudApigeeV1Access o) {
   buildCounterGoogleCloudApigeeV1Access++;
   if (buildCounterGoogleCloudApigeeV1Access < 3) {
-    checkGoogleCloudApigeeV1AccessGet(
-        o.Get! as api.GoogleCloudApigeeV1AccessGet);
-    checkGoogleCloudApigeeV1AccessRemove(
-        o.Remove! as api.GoogleCloudApigeeV1AccessRemove);
-    checkGoogleCloudApigeeV1AccessSet(
-        o.Set! as api.GoogleCloudApigeeV1AccessSet);
+    checkGoogleCloudApigeeV1AccessGet(o.Get!);
+    checkGoogleCloudApigeeV1AccessRemove(o.Remove!);
+    checkGoogleCloudApigeeV1AccessSet(o.Set!);
   }
   buildCounterGoogleCloudApigeeV1Access--;
 }
 
 core.int buildCounterGoogleCloudApigeeV1AccessGet = 0;
 api.GoogleCloudApigeeV1AccessGet buildGoogleCloudApigeeV1AccessGet() {
-  var o = api.GoogleCloudApigeeV1AccessGet();
+  final o = api.GoogleCloudApigeeV1AccessGet();
   buildCounterGoogleCloudApigeeV1AccessGet++;
   if (buildCounterGoogleCloudApigeeV1AccessGet < 3) {
     o.name = 'foo';
@@ -171,7 +167,7 @@ void checkGoogleCloudApigeeV1AccessGet(api.GoogleCloudApigeeV1AccessGet o) {
 
 core.int buildCounterGoogleCloudApigeeV1AccessRemove = 0;
 api.GoogleCloudApigeeV1AccessRemove buildGoogleCloudApigeeV1AccessRemove() {
-  var o = api.GoogleCloudApigeeV1AccessRemove();
+  final o = api.GoogleCloudApigeeV1AccessRemove();
   buildCounterGoogleCloudApigeeV1AccessRemove++;
   if (buildCounterGoogleCloudApigeeV1AccessRemove < 3) {
     o.name = 'foo';
@@ -196,7 +192,7 @@ void checkGoogleCloudApigeeV1AccessRemove(
 
 core.int buildCounterGoogleCloudApigeeV1AccessSet = 0;
 api.GoogleCloudApigeeV1AccessSet buildGoogleCloudApigeeV1AccessSet() {
-  var o = api.GoogleCloudApigeeV1AccessSet();
+  final o = api.GoogleCloudApigeeV1AccessSet();
   buildCounterGoogleCloudApigeeV1AccessSet++;
   if (buildCounterGoogleCloudApigeeV1AccessSet < 3) {
     o.name = 'foo';
@@ -226,7 +222,7 @@ void checkGoogleCloudApigeeV1AccessSet(api.GoogleCloudApigeeV1AccessSet o) {
 core.int buildCounterGoogleCloudApigeeV1ActivateNatAddressRequest = 0;
 api.GoogleCloudApigeeV1ActivateNatAddressRequest
     buildGoogleCloudApigeeV1ActivateNatAddressRequest() {
-  var o = api.GoogleCloudApigeeV1ActivateNatAddressRequest();
+  final o = api.GoogleCloudApigeeV1ActivateNatAddressRequest();
   buildCounterGoogleCloudApigeeV1ActivateNatAddressRequest++;
   if (buildCounterGoogleCloudApigeeV1ActivateNatAddressRequest < 3) {}
   buildCounterGoogleCloudApigeeV1ActivateNatAddressRequest--;
@@ -242,7 +238,7 @@ void checkGoogleCloudApigeeV1ActivateNatAddressRequest(
 
 core.int buildCounterGoogleCloudApigeeV1AddonsConfig = 0;
 api.GoogleCloudApigeeV1AddonsConfig buildGoogleCloudApigeeV1AddonsConfig() {
-  var o = api.GoogleCloudApigeeV1AddonsConfig();
+  final o = api.GoogleCloudApigeeV1AddonsConfig();
   buildCounterGoogleCloudApigeeV1AddonsConfig++;
   if (buildCounterGoogleCloudApigeeV1AddonsConfig < 3) {
     o.advancedApiOpsConfig = buildGoogleCloudApigeeV1AdvancedApiOpsConfig();
@@ -257,12 +253,9 @@ void checkGoogleCloudApigeeV1AddonsConfig(
     api.GoogleCloudApigeeV1AddonsConfig o) {
   buildCounterGoogleCloudApigeeV1AddonsConfig++;
   if (buildCounterGoogleCloudApigeeV1AddonsConfig < 3) {
-    checkGoogleCloudApigeeV1AdvancedApiOpsConfig(
-        o.advancedApiOpsConfig! as api.GoogleCloudApigeeV1AdvancedApiOpsConfig);
-    checkGoogleCloudApigeeV1IntegrationConfig(
-        o.integrationConfig! as api.GoogleCloudApigeeV1IntegrationConfig);
-    checkGoogleCloudApigeeV1MonetizationConfig(
-        o.monetizationConfig! as api.GoogleCloudApigeeV1MonetizationConfig);
+    checkGoogleCloudApigeeV1AdvancedApiOpsConfig(o.advancedApiOpsConfig!);
+    checkGoogleCloudApigeeV1IntegrationConfig(o.integrationConfig!);
+    checkGoogleCloudApigeeV1MonetizationConfig(o.monetizationConfig!);
   }
   buildCounterGoogleCloudApigeeV1AddonsConfig--;
 }
@@ -270,7 +263,7 @@ void checkGoogleCloudApigeeV1AddonsConfig(
 core.int buildCounterGoogleCloudApigeeV1AdvancedApiOpsConfig = 0;
 api.GoogleCloudApigeeV1AdvancedApiOpsConfig
     buildGoogleCloudApigeeV1AdvancedApiOpsConfig() {
-  var o = api.GoogleCloudApigeeV1AdvancedApiOpsConfig();
+  final o = api.GoogleCloudApigeeV1AdvancedApiOpsConfig();
   buildCounterGoogleCloudApigeeV1AdvancedApiOpsConfig++;
   if (buildCounterGoogleCloudApigeeV1AdvancedApiOpsConfig < 3) {
     o.enabled = true;
@@ -290,7 +283,7 @@ void checkGoogleCloudApigeeV1AdvancedApiOpsConfig(
 
 core.int buildCounterGoogleCloudApigeeV1Alias = 0;
 api.GoogleCloudApigeeV1Alias buildGoogleCloudApigeeV1Alias() {
-  var o = api.GoogleCloudApigeeV1Alias();
+  final o = api.GoogleCloudApigeeV1Alias();
   buildCounterGoogleCloudApigeeV1Alias++;
   if (buildCounterGoogleCloudApigeeV1Alias < 3) {
     o.alias = 'foo';
@@ -308,8 +301,7 @@ void checkGoogleCloudApigeeV1Alias(api.GoogleCloudApigeeV1Alias o) {
       o.alias!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1Certificate(
-        o.certsInfo! as api.GoogleCloudApigeeV1Certificate);
+    checkGoogleCloudApigeeV1Certificate(o.certsInfo!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -321,7 +313,7 @@ void checkGoogleCloudApigeeV1Alias(api.GoogleCloudApigeeV1Alias o) {
 core.int buildCounterGoogleCloudApigeeV1AliasRevisionConfig = 0;
 api.GoogleCloudApigeeV1AliasRevisionConfig
     buildGoogleCloudApigeeV1AliasRevisionConfig() {
-  var o = api.GoogleCloudApigeeV1AliasRevisionConfig();
+  final o = api.GoogleCloudApigeeV1AliasRevisionConfig();
   buildCounterGoogleCloudApigeeV1AliasRevisionConfig++;
   if (buildCounterGoogleCloudApigeeV1AliasRevisionConfig < 3) {
     o.location = 'foo';
@@ -354,7 +346,7 @@ void checkGoogleCloudApigeeV1AliasRevisionConfig(
 
 core.int buildCounterGoogleCloudApigeeV1ApiCategory = 0;
 api.GoogleCloudApigeeV1ApiCategory buildGoogleCloudApigeeV1ApiCategory() {
-  var o = api.GoogleCloudApigeeV1ApiCategory();
+  final o = api.GoogleCloudApigeeV1ApiCategory();
   buildCounterGoogleCloudApigeeV1ApiCategory++;
   if (buildCounterGoogleCloudApigeeV1ApiCategory < 3) {
     o.data = buildGoogleCloudApigeeV1ApiCategoryData();
@@ -370,8 +362,7 @@ api.GoogleCloudApigeeV1ApiCategory buildGoogleCloudApigeeV1ApiCategory() {
 void checkGoogleCloudApigeeV1ApiCategory(api.GoogleCloudApigeeV1ApiCategory o) {
   buildCounterGoogleCloudApigeeV1ApiCategory++;
   if (buildCounterGoogleCloudApigeeV1ApiCategory < 3) {
-    checkGoogleCloudApigeeV1ApiCategoryData(
-        o.data! as api.GoogleCloudApigeeV1ApiCategoryData);
+    checkGoogleCloudApigeeV1ApiCategoryData(o.data!);
     unittest.expect(
       o.errorCode!,
       unittest.equals('foo'),
@@ -395,7 +386,7 @@ void checkGoogleCloudApigeeV1ApiCategory(api.GoogleCloudApigeeV1ApiCategory o) {
 core.int buildCounterGoogleCloudApigeeV1ApiCategoryData = 0;
 api.GoogleCloudApigeeV1ApiCategoryData
     buildGoogleCloudApigeeV1ApiCategoryData() {
-  var o = api.GoogleCloudApigeeV1ApiCategoryData();
+  final o = api.GoogleCloudApigeeV1ApiCategoryData();
   buildCounterGoogleCloudApigeeV1ApiCategoryData++;
   if (buildCounterGoogleCloudApigeeV1ApiCategoryData < 3) {
     o.id = 'foo';
@@ -432,7 +423,7 @@ void checkGoogleCloudApigeeV1ApiCategoryData(
 }
 
 core.List<core.String> buildUnnamed6379() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -451,7 +442,7 @@ void checkUnnamed6379(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6380() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -459,12 +450,12 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6380() {
 
 void checkUnnamed6380(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.List<core.String> buildUnnamed6381() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -483,7 +474,7 @@ void checkUnnamed6381(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6382() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -502,7 +493,7 @@ void checkUnnamed6382(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6383() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -522,7 +513,7 @@ void checkUnnamed6383(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1ApiProduct = 0;
 api.GoogleCloudApigeeV1ApiProduct buildGoogleCloudApigeeV1ApiProduct() {
-  var o = api.GoogleCloudApigeeV1ApiProduct();
+  final o = api.GoogleCloudApigeeV1ApiProduct();
   buildCounterGoogleCloudApigeeV1ApiProduct++;
   if (buildCounterGoogleCloudApigeeV1ApiProduct < 3) {
     o.apiResources = buildUnnamed6379();
@@ -568,8 +559,7 @@ void checkGoogleCloudApigeeV1ApiProduct(api.GoogleCloudApigeeV1ApiProduct o) {
       unittest.equals('foo'),
     );
     checkUnnamed6381(o.environments!);
-    checkGoogleCloudApigeeV1GraphQLOperationGroup(o.graphqlOperationGroup!
-        as api.GoogleCloudApigeeV1GraphQLOperationGroup);
+    checkGoogleCloudApigeeV1GraphQLOperationGroup(o.graphqlOperationGroup!);
     unittest.expect(
       o.lastModifiedAt!,
       unittest.equals('foo'),
@@ -578,8 +568,7 @@ void checkGoogleCloudApigeeV1ApiProduct(api.GoogleCloudApigeeV1ApiProduct o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1OperationGroup(
-        o.operationGroup! as api.GoogleCloudApigeeV1OperationGroup);
+    checkGoogleCloudApigeeV1OperationGroup(o.operationGroup!);
     checkUnnamed6382(o.proxies!);
     unittest.expect(
       o.quota!,
@@ -600,7 +589,7 @@ void checkGoogleCloudApigeeV1ApiProduct(api.GoogleCloudApigeeV1ApiProduct o) {
 
 core.int buildCounterGoogleCloudApigeeV1ApiProductRef = 0;
 api.GoogleCloudApigeeV1ApiProductRef buildGoogleCloudApigeeV1ApiProductRef() {
-  var o = api.GoogleCloudApigeeV1ApiProductRef();
+  final o = api.GoogleCloudApigeeV1ApiProductRef();
   buildCounterGoogleCloudApigeeV1ApiProductRef++;
   if (buildCounterGoogleCloudApigeeV1ApiProductRef < 3) {
     o.apiproduct = 'foo';
@@ -627,7 +616,7 @@ void checkGoogleCloudApigeeV1ApiProductRef(
 }
 
 core.List<core.String> buildUnnamed6384() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -647,7 +636,7 @@ void checkUnnamed6384(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1ApiProxy = 0;
 api.GoogleCloudApigeeV1ApiProxy buildGoogleCloudApigeeV1ApiProxy() {
-  var o = api.GoogleCloudApigeeV1ApiProxy();
+  final o = api.GoogleCloudApigeeV1ApiProxy();
   buildCounterGoogleCloudApigeeV1ApiProxy++;
   if (buildCounterGoogleCloudApigeeV1ApiProxy < 3) {
     o.latestRevisionId = 'foo';
@@ -666,8 +655,7 @@ void checkGoogleCloudApigeeV1ApiProxy(api.GoogleCloudApigeeV1ApiProxy o) {
       o.latestRevisionId!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1EntityMetadata(
-        o.metaData! as api.GoogleCloudApigeeV1EntityMetadata);
+    checkGoogleCloudApigeeV1EntityMetadata(o.metaData!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -678,7 +666,7 @@ void checkGoogleCloudApigeeV1ApiProxy(api.GoogleCloudApigeeV1ApiProxy o) {
 }
 
 core.List<core.String> buildUnnamed6385() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -697,7 +685,7 @@ void checkUnnamed6385(core.List<core.String> o) {
 }
 
 core.Map<core.String, core.String> buildUnnamed6386() {
-  var o = <core.String, core.String>{};
+  final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
@@ -716,7 +704,7 @@ void checkUnnamed6386(core.Map<core.String, core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6387() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -735,7 +723,7 @@ void checkUnnamed6387(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6388() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -754,7 +742,7 @@ void checkUnnamed6388(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6389() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -773,7 +761,7 @@ void checkUnnamed6389(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6390() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -792,7 +780,7 @@ void checkUnnamed6390(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6391() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -811,7 +799,7 @@ void checkUnnamed6391(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6392() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -830,7 +818,7 @@ void checkUnnamed6392(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6393() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -849,7 +837,7 @@ void checkUnnamed6393(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6394() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -868,7 +856,7 @@ void checkUnnamed6394(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6395() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -889,7 +877,7 @@ void checkUnnamed6395(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1ApiProxyRevision = 0;
 api.GoogleCloudApigeeV1ApiProxyRevision
     buildGoogleCloudApigeeV1ApiProxyRevision() {
-  var o = api.GoogleCloudApigeeV1ApiProxyRevision();
+  final o = api.GoogleCloudApigeeV1ApiProxyRevision();
   buildCounterGoogleCloudApigeeV1ApiProxyRevision++;
   if (buildCounterGoogleCloudApigeeV1ApiProxyRevision < 3) {
     o.basepaths = buildUnnamed6385();
@@ -924,8 +912,7 @@ void checkGoogleCloudApigeeV1ApiProxyRevision(
   buildCounterGoogleCloudApigeeV1ApiProxyRevision++;
   if (buildCounterGoogleCloudApigeeV1ApiProxyRevision < 3) {
     checkUnnamed6385(o.basepaths!);
-    checkGoogleCloudApigeeV1ConfigVersion(
-        o.configurationVersion! as api.GoogleCloudApigeeV1ConfigVersion);
+    checkGoogleCloudApigeeV1ConfigVersion(o.configurationVersion!);
     unittest.expect(
       o.contextInfo!,
       unittest.equals('foo'),
@@ -954,8 +941,7 @@ void checkGoogleCloudApigeeV1ApiProxyRevision(
     checkUnnamed6387(o.policies!);
     checkUnnamed6388(o.proxies!);
     checkUnnamed6389(o.proxyEndpoints!);
-    checkGoogleCloudApigeeV1ResourceFiles(
-        o.resourceFiles! as api.GoogleCloudApigeeV1ResourceFiles);
+    checkGoogleCloudApigeeV1ResourceFiles(o.resourceFiles!);
     checkUnnamed6390(o.resources!);
     unittest.expect(
       o.revision!,
@@ -981,7 +967,7 @@ void checkGoogleCloudApigeeV1ApiProxyRevision(
 core.int buildCounterGoogleCloudApigeeV1ApiResponseWrapper = 0;
 api.GoogleCloudApigeeV1ApiResponseWrapper
     buildGoogleCloudApigeeV1ApiResponseWrapper() {
-  var o = api.GoogleCloudApigeeV1ApiResponseWrapper();
+  final o = api.GoogleCloudApigeeV1ApiResponseWrapper();
   buildCounterGoogleCloudApigeeV1ApiResponseWrapper++;
   if (buildCounterGoogleCloudApigeeV1ApiResponseWrapper < 3) {
     o.errorCode = 'foo';
@@ -1018,7 +1004,7 @@ void checkGoogleCloudApigeeV1ApiResponseWrapper(
 }
 
 core.List<api.GoogleCloudApigeeV1ApiProductRef> buildUnnamed6396() {
-  var o = <api.GoogleCloudApigeeV1ApiProductRef>[];
+  final o = <api.GoogleCloudApigeeV1ApiProductRef>[];
   o.add(buildGoogleCloudApigeeV1ApiProductRef());
   o.add(buildGoogleCloudApigeeV1ApiProductRef());
   return o;
@@ -1026,14 +1012,12 @@ core.List<api.GoogleCloudApigeeV1ApiProductRef> buildUnnamed6396() {
 
 void checkUnnamed6396(core.List<api.GoogleCloudApigeeV1ApiProductRef> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ApiProductRef(
-      o[0] as api.GoogleCloudApigeeV1ApiProductRef);
-  checkGoogleCloudApigeeV1ApiProductRef(
-      o[1] as api.GoogleCloudApigeeV1ApiProductRef);
+  checkGoogleCloudApigeeV1ApiProductRef(o[0]);
+  checkGoogleCloudApigeeV1ApiProductRef(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6397() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -1041,12 +1025,12 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6397() {
 
 void checkUnnamed6397(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1Credential> buildUnnamed6398() {
-  var o = <api.GoogleCloudApigeeV1Credential>[];
+  final o = <api.GoogleCloudApigeeV1Credential>[];
   o.add(buildGoogleCloudApigeeV1Credential());
   o.add(buildGoogleCloudApigeeV1Credential());
   return o;
@@ -1054,12 +1038,12 @@ core.List<api.GoogleCloudApigeeV1Credential> buildUnnamed6398() {
 
 void checkUnnamed6398(core.List<api.GoogleCloudApigeeV1Credential> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Credential(o[0] as api.GoogleCloudApigeeV1Credential);
-  checkGoogleCloudApigeeV1Credential(o[1] as api.GoogleCloudApigeeV1Credential);
+  checkGoogleCloudApigeeV1Credential(o[0]);
+  checkGoogleCloudApigeeV1Credential(o[1]);
 }
 
 core.List<core.String> buildUnnamed6399() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1079,7 +1063,7 @@ void checkUnnamed6399(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1App = 0;
 api.GoogleCloudApigeeV1App buildGoogleCloudApigeeV1App() {
-  var o = api.GoogleCloudApigeeV1App();
+  final o = api.GoogleCloudApigeeV1App();
   buildCounterGoogleCloudApigeeV1App++;
   if (buildCounterGoogleCloudApigeeV1App < 3) {
     o.apiProducts = buildUnnamed6396();
@@ -1149,7 +1133,7 @@ void checkGoogleCloudApigeeV1App(api.GoogleCloudApigeeV1App o) {
 
 core.int buildCounterGoogleCloudApigeeV1AsyncQuery = 0;
 api.GoogleCloudApigeeV1AsyncQuery buildGoogleCloudApigeeV1AsyncQuery() {
-  var o = api.GoogleCloudApigeeV1AsyncQuery();
+  final o = api.GoogleCloudApigeeV1AsyncQuery();
   buildCounterGoogleCloudApigeeV1AsyncQuery++;
   if (buildCounterGoogleCloudApigeeV1AsyncQuery < 3) {
     o.created = 'foo';
@@ -1193,14 +1177,12 @@ void checkGoogleCloudApigeeV1AsyncQuery(api.GoogleCloudApigeeV1AsyncQuery o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1QueryMetadata(
-        o.queryParams! as api.GoogleCloudApigeeV1QueryMetadata);
+    checkGoogleCloudApigeeV1QueryMetadata(o.queryParams!);
     unittest.expect(
       o.reportDefinitionId!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1AsyncQueryResult(
-        o.result! as api.GoogleCloudApigeeV1AsyncQueryResult);
+    checkGoogleCloudApigeeV1AsyncQueryResult(o.result!);
     unittest.expect(
       o.resultFileSize!,
       unittest.equals('foo'),
@@ -1228,7 +1210,7 @@ void checkGoogleCloudApigeeV1AsyncQuery(api.GoogleCloudApigeeV1AsyncQuery o) {
 core.int buildCounterGoogleCloudApigeeV1AsyncQueryResult = 0;
 api.GoogleCloudApigeeV1AsyncQueryResult
     buildGoogleCloudApigeeV1AsyncQueryResult() {
-  var o = api.GoogleCloudApigeeV1AsyncQueryResult();
+  final o = api.GoogleCloudApigeeV1AsyncQueryResult();
   buildCounterGoogleCloudApigeeV1AsyncQueryResult++;
   if (buildCounterGoogleCloudApigeeV1AsyncQueryResult < 3) {
     o.expires = 'foo';
@@ -1255,7 +1237,7 @@ void checkGoogleCloudApigeeV1AsyncQueryResult(
 }
 
 core.List<core.Object> buildUnnamed6400() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -1304,7 +1286,7 @@ void checkUnnamed6400(core.List<core.Object> o) {
 core.int buildCounterGoogleCloudApigeeV1AsyncQueryResultView = 0;
 api.GoogleCloudApigeeV1AsyncQueryResultView
     buildGoogleCloudApigeeV1AsyncQueryResultView() {
-  var o = api.GoogleCloudApigeeV1AsyncQueryResultView();
+  final o = api.GoogleCloudApigeeV1AsyncQueryResultView();
   buildCounterGoogleCloudApigeeV1AsyncQueryResultView++;
   if (buildCounterGoogleCloudApigeeV1AsyncQueryResultView < 3) {
     o.code = 42;
@@ -1329,8 +1311,7 @@ void checkGoogleCloudApigeeV1AsyncQueryResultView(
       o.error!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1QueryMetadata(
-        o.metadata! as api.GoogleCloudApigeeV1QueryMetadata);
+    checkGoogleCloudApigeeV1QueryMetadata(o.metadata!);
     checkUnnamed6400(o.rows!);
     unittest.expect(
       o.state!,
@@ -1342,7 +1323,7 @@ void checkGoogleCloudApigeeV1AsyncQueryResultView(
 
 core.int buildCounterGoogleCloudApigeeV1Attribute = 0;
 api.GoogleCloudApigeeV1Attribute buildGoogleCloudApigeeV1Attribute() {
-  var o = api.GoogleCloudApigeeV1Attribute();
+  final o = api.GoogleCloudApigeeV1Attribute();
   buildCounterGoogleCloudApigeeV1Attribute++;
   if (buildCounterGoogleCloudApigeeV1Attribute < 3) {
     o.name = 'foo';
@@ -1368,7 +1349,7 @@ void checkGoogleCloudApigeeV1Attribute(api.GoogleCloudApigeeV1Attribute o) {
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6401() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -1376,13 +1357,13 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6401() {
 
 void checkUnnamed6401(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Attributes = 0;
 api.GoogleCloudApigeeV1Attributes buildGoogleCloudApigeeV1Attributes() {
-  var o = api.GoogleCloudApigeeV1Attributes();
+  final o = api.GoogleCloudApigeeV1Attributes();
   buildCounterGoogleCloudApigeeV1Attributes++;
   if (buildCounterGoogleCloudApigeeV1Attributes < 3) {
     o.attribute = buildUnnamed6401();
@@ -1402,7 +1383,7 @@ void checkGoogleCloudApigeeV1Attributes(api.GoogleCloudApigeeV1Attributes o) {
 core.int buildCounterGoogleCloudApigeeV1CanaryEvaluation = 0;
 api.GoogleCloudApigeeV1CanaryEvaluation
     buildGoogleCloudApigeeV1CanaryEvaluation() {
-  var o = api.GoogleCloudApigeeV1CanaryEvaluation();
+  final o = api.GoogleCloudApigeeV1CanaryEvaluation();
   buildCounterGoogleCloudApigeeV1CanaryEvaluation++;
   if (buildCounterGoogleCloudApigeeV1CanaryEvaluation < 3) {
     o.control = 'foo';
@@ -1435,8 +1416,7 @@ void checkGoogleCloudApigeeV1CanaryEvaluation(
       o.endTime!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1CanaryEvaluationMetricLabels(
-        o.metricLabels! as api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels);
+    checkGoogleCloudApigeeV1CanaryEvaluationMetricLabels(o.metricLabels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1464,7 +1444,7 @@ void checkGoogleCloudApigeeV1CanaryEvaluation(
 core.int buildCounterGoogleCloudApigeeV1CanaryEvaluationMetricLabels = 0;
 api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels
     buildGoogleCloudApigeeV1CanaryEvaluationMetricLabels() {
-  var o = api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels();
+  final o = api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels();
   buildCounterGoogleCloudApigeeV1CanaryEvaluationMetricLabels++;
   if (buildCounterGoogleCloudApigeeV1CanaryEvaluationMetricLabels < 3) {
     o.env = 'foo';
@@ -1496,7 +1476,7 @@ void checkGoogleCloudApigeeV1CanaryEvaluationMetricLabels(
 }
 
 core.List<core.String> buildUnnamed6402() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1516,7 +1496,7 @@ void checkUnnamed6402(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1CertInfo = 0;
 api.GoogleCloudApigeeV1CertInfo buildGoogleCloudApigeeV1CertInfo() {
-  var o = api.GoogleCloudApigeeV1CertInfo();
+  final o = api.GoogleCloudApigeeV1CertInfo();
   buildCounterGoogleCloudApigeeV1CertInfo++;
   if (buildCounterGoogleCloudApigeeV1CertInfo < 3) {
     o.basicConstraints = 'foo';
@@ -1584,7 +1564,7 @@ void checkGoogleCloudApigeeV1CertInfo(api.GoogleCloudApigeeV1CertInfo o) {
 }
 
 core.List<api.GoogleCloudApigeeV1CertInfo> buildUnnamed6403() {
-  var o = <api.GoogleCloudApigeeV1CertInfo>[];
+  final o = <api.GoogleCloudApigeeV1CertInfo>[];
   o.add(buildGoogleCloudApigeeV1CertInfo());
   o.add(buildGoogleCloudApigeeV1CertInfo());
   return o;
@@ -1592,13 +1572,13 @@ core.List<api.GoogleCloudApigeeV1CertInfo> buildUnnamed6403() {
 
 void checkUnnamed6403(core.List<api.GoogleCloudApigeeV1CertInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1CertInfo(o[0] as api.GoogleCloudApigeeV1CertInfo);
-  checkGoogleCloudApigeeV1CertInfo(o[1] as api.GoogleCloudApigeeV1CertInfo);
+  checkGoogleCloudApigeeV1CertInfo(o[0]);
+  checkGoogleCloudApigeeV1CertInfo(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Certificate = 0;
 api.GoogleCloudApigeeV1Certificate buildGoogleCloudApigeeV1Certificate() {
-  var o = api.GoogleCloudApigeeV1Certificate();
+  final o = api.GoogleCloudApigeeV1Certificate();
   buildCounterGoogleCloudApigeeV1Certificate++;
   if (buildCounterGoogleCloudApigeeV1Certificate < 3) {
     o.certInfo = buildUnnamed6403();
@@ -1618,7 +1598,7 @@ void checkGoogleCloudApigeeV1Certificate(api.GoogleCloudApigeeV1Certificate o) {
 core.int buildCounterGoogleCloudApigeeV1CommonNameConfig = 0;
 api.GoogleCloudApigeeV1CommonNameConfig
     buildGoogleCloudApigeeV1CommonNameConfig() {
-  var o = api.GoogleCloudApigeeV1CommonNameConfig();
+  final o = api.GoogleCloudApigeeV1CommonNameConfig();
   buildCounterGoogleCloudApigeeV1CommonNameConfig++;
   if (buildCounterGoogleCloudApigeeV1CommonNameConfig < 3) {
     o.matchWildCards = true;
@@ -1643,7 +1623,7 @@ void checkGoogleCloudApigeeV1CommonNameConfig(
 
 core.int buildCounterGoogleCloudApigeeV1ConfigVersion = 0;
 api.GoogleCloudApigeeV1ConfigVersion buildGoogleCloudApigeeV1ConfigVersion() {
-  var o = api.GoogleCloudApigeeV1ConfigVersion();
+  final o = api.GoogleCloudApigeeV1ConfigVersion();
   buildCounterGoogleCloudApigeeV1ConfigVersion++;
   if (buildCounterGoogleCloudApigeeV1ConfigVersion < 3) {
     o.majorVersion = 42;
@@ -1670,7 +1650,7 @@ void checkGoogleCloudApigeeV1ConfigVersion(
 }
 
 core.List<api.GoogleCloudApigeeV1ApiProductRef> buildUnnamed6404() {
-  var o = <api.GoogleCloudApigeeV1ApiProductRef>[];
+  final o = <api.GoogleCloudApigeeV1ApiProductRef>[];
   o.add(buildGoogleCloudApigeeV1ApiProductRef());
   o.add(buildGoogleCloudApigeeV1ApiProductRef());
   return o;
@@ -1678,14 +1658,12 @@ core.List<api.GoogleCloudApigeeV1ApiProductRef> buildUnnamed6404() {
 
 void checkUnnamed6404(core.List<api.GoogleCloudApigeeV1ApiProductRef> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ApiProductRef(
-      o[0] as api.GoogleCloudApigeeV1ApiProductRef);
-  checkGoogleCloudApigeeV1ApiProductRef(
-      o[1] as api.GoogleCloudApigeeV1ApiProductRef);
+  checkGoogleCloudApigeeV1ApiProductRef(o[0]);
+  checkGoogleCloudApigeeV1ApiProductRef(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6405() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -1693,12 +1671,12 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6405() {
 
 void checkUnnamed6405(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.List<core.String> buildUnnamed6406() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1718,7 +1696,7 @@ void checkUnnamed6406(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1Credential = 0;
 api.GoogleCloudApigeeV1Credential buildGoogleCloudApigeeV1Credential() {
-  var o = api.GoogleCloudApigeeV1Credential();
+  final o = api.GoogleCloudApigeeV1Credential();
   buildCounterGoogleCloudApigeeV1Credential++;
   if (buildCounterGoogleCloudApigeeV1Credential < 3) {
     o.apiProducts = buildUnnamed6404();
@@ -1765,7 +1743,7 @@ void checkGoogleCloudApigeeV1Credential(api.GoogleCloudApigeeV1Credential o) {
 }
 
 core.List<core.String> buildUnnamed6407() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1784,7 +1762,7 @@ void checkUnnamed6407(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6408() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1803,7 +1781,7 @@ void checkUnnamed6408(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1CustomReportMetric> buildUnnamed6409() {
-  var o = <api.GoogleCloudApigeeV1CustomReportMetric>[];
+  final o = <api.GoogleCloudApigeeV1CustomReportMetric>[];
   o.add(buildGoogleCloudApigeeV1CustomReportMetric());
   o.add(buildGoogleCloudApigeeV1CustomReportMetric());
   return o;
@@ -1811,14 +1789,12 @@ core.List<api.GoogleCloudApigeeV1CustomReportMetric> buildUnnamed6409() {
 
 void checkUnnamed6409(core.List<api.GoogleCloudApigeeV1CustomReportMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1CustomReportMetric(
-      o[0] as api.GoogleCloudApigeeV1CustomReportMetric);
-  checkGoogleCloudApigeeV1CustomReportMetric(
-      o[1] as api.GoogleCloudApigeeV1CustomReportMetric);
+  checkGoogleCloudApigeeV1CustomReportMetric(o[0]);
+  checkGoogleCloudApigeeV1CustomReportMetric(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1ReportProperty> buildUnnamed6410() {
-  var o = <api.GoogleCloudApigeeV1ReportProperty>[];
+  final o = <api.GoogleCloudApigeeV1ReportProperty>[];
   o.add(buildGoogleCloudApigeeV1ReportProperty());
   o.add(buildGoogleCloudApigeeV1ReportProperty());
   return o;
@@ -1826,14 +1802,12 @@ core.List<api.GoogleCloudApigeeV1ReportProperty> buildUnnamed6410() {
 
 void checkUnnamed6410(core.List<api.GoogleCloudApigeeV1ReportProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ReportProperty(
-      o[0] as api.GoogleCloudApigeeV1ReportProperty);
-  checkGoogleCloudApigeeV1ReportProperty(
-      o[1] as api.GoogleCloudApigeeV1ReportProperty);
+  checkGoogleCloudApigeeV1ReportProperty(o[0]);
+  checkGoogleCloudApigeeV1ReportProperty(o[1]);
 }
 
 core.List<core.String> buildUnnamed6411() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1852,7 +1826,7 @@ void checkUnnamed6411(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6412() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1872,7 +1846,7 @@ void checkUnnamed6412(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1CustomReport = 0;
 api.GoogleCloudApigeeV1CustomReport buildGoogleCloudApigeeV1CustomReport() {
-  var o = api.GoogleCloudApigeeV1CustomReport();
+  final o = api.GoogleCloudApigeeV1CustomReport();
   buildCounterGoogleCloudApigeeV1CustomReport++;
   if (buildCounterGoogleCloudApigeeV1CustomReport < 3) {
     o.chartType = 'foo';
@@ -1983,7 +1957,7 @@ void checkGoogleCloudApigeeV1CustomReport(
 core.int buildCounterGoogleCloudApigeeV1CustomReportMetric = 0;
 api.GoogleCloudApigeeV1CustomReportMetric
     buildGoogleCloudApigeeV1CustomReportMetric() {
-  var o = api.GoogleCloudApigeeV1CustomReportMetric();
+  final o = api.GoogleCloudApigeeV1CustomReportMetric();
   buildCounterGoogleCloudApigeeV1CustomReportMetric++;
   if (buildCounterGoogleCloudApigeeV1CustomReportMetric < 3) {
     o.function = 'foo';
@@ -2011,7 +1985,7 @@ void checkGoogleCloudApigeeV1CustomReportMetric(
 
 core.int buildCounterGoogleCloudApigeeV1DataCollector = 0;
 api.GoogleCloudApigeeV1DataCollector buildGoogleCloudApigeeV1DataCollector() {
-  var o = api.GoogleCloudApigeeV1DataCollector();
+  final o = api.GoogleCloudApigeeV1DataCollector();
   buildCounterGoogleCloudApigeeV1DataCollector++;
   if (buildCounterGoogleCloudApigeeV1DataCollector < 3) {
     o.createdAt = 'foo';
@@ -2055,7 +2029,7 @@ void checkGoogleCloudApigeeV1DataCollector(
 core.int buildCounterGoogleCloudApigeeV1DataCollectorConfig = 0;
 api.GoogleCloudApigeeV1DataCollectorConfig
     buildGoogleCloudApigeeV1DataCollectorConfig() {
-  var o = api.GoogleCloudApigeeV1DataCollectorConfig();
+  final o = api.GoogleCloudApigeeV1DataCollectorConfig();
   buildCounterGoogleCloudApigeeV1DataCollectorConfig++;
   if (buildCounterGoogleCloudApigeeV1DataCollectorConfig < 3) {
     o.name = 'foo';
@@ -2083,7 +2057,7 @@ void checkGoogleCloudApigeeV1DataCollectorConfig(
 
 core.int buildCounterGoogleCloudApigeeV1Datastore = 0;
 api.GoogleCloudApigeeV1Datastore buildGoogleCloudApigeeV1Datastore() {
-  var o = api.GoogleCloudApigeeV1Datastore();
+  final o = api.GoogleCloudApigeeV1Datastore();
   buildCounterGoogleCloudApigeeV1Datastore++;
   if (buildCounterGoogleCloudApigeeV1Datastore < 3) {
     o.createTime = 'foo';
@@ -2105,8 +2079,7 @@ void checkGoogleCloudApigeeV1Datastore(api.GoogleCloudApigeeV1Datastore o) {
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1DatastoreConfig(
-        o.datastoreConfig! as api.GoogleCloudApigeeV1DatastoreConfig);
+    checkGoogleCloudApigeeV1DatastoreConfig(o.datastoreConfig!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -2134,7 +2107,7 @@ void checkGoogleCloudApigeeV1Datastore(api.GoogleCloudApigeeV1Datastore o) {
 core.int buildCounterGoogleCloudApigeeV1DatastoreConfig = 0;
 api.GoogleCloudApigeeV1DatastoreConfig
     buildGoogleCloudApigeeV1DatastoreConfig() {
-  var o = api.GoogleCloudApigeeV1DatastoreConfig();
+  final o = api.GoogleCloudApigeeV1DatastoreConfig();
   buildCounterGoogleCloudApigeeV1DatastoreConfig++;
   if (buildCounterGoogleCloudApigeeV1DatastoreConfig < 3) {
     o.bucketName = 'foo';
@@ -2177,7 +2150,7 @@ void checkGoogleCloudApigeeV1DatastoreConfig(
 
 core.int buildCounterGoogleCloudApigeeV1DateRange = 0;
 api.GoogleCloudApigeeV1DateRange buildGoogleCloudApigeeV1DateRange() {
-  var o = api.GoogleCloudApigeeV1DateRange();
+  final o = api.GoogleCloudApigeeV1DateRange();
   buildCounterGoogleCloudApigeeV1DateRange++;
   if (buildCounterGoogleCloudApigeeV1DateRange < 3) {
     o.end = 'foo';
@@ -2203,7 +2176,7 @@ void checkGoogleCloudApigeeV1DateRange(api.GoogleCloudApigeeV1DateRange o) {
 }
 
 core.List<core.String> buildUnnamed6413() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2222,7 +2195,7 @@ void checkUnnamed6413(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6414() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2241,7 +2214,7 @@ void checkUnnamed6414(core.List<core.String> o) {
 }
 
 core.Map<core.String, core.String> buildUnnamed6415() {
-  var o = <core.String, core.String>{};
+  final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
@@ -2260,7 +2233,7 @@ void checkUnnamed6415(core.Map<core.String, core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6416() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2279,7 +2252,7 @@ void checkUnnamed6416(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6417() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2298,7 +2271,7 @@ void checkUnnamed6417(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6418() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2317,7 +2290,7 @@ void checkUnnamed6418(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6419() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2336,7 +2309,7 @@ void checkUnnamed6419(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6420() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2356,7 +2329,7 @@ void checkUnnamed6420(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1DebugMask = 0;
 api.GoogleCloudApigeeV1DebugMask buildGoogleCloudApigeeV1DebugMask() {
-  var o = api.GoogleCloudApigeeV1DebugMask();
+  final o = api.GoogleCloudApigeeV1DebugMask();
   buildCounterGoogleCloudApigeeV1DebugMask++;
   if (buildCounterGoogleCloudApigeeV1DebugMask < 3) {
     o.faultJSONPaths = buildUnnamed6413();
@@ -2394,7 +2367,7 @@ void checkGoogleCloudApigeeV1DebugMask(api.GoogleCloudApigeeV1DebugMask o) {
 
 core.int buildCounterGoogleCloudApigeeV1DebugSession = 0;
 api.GoogleCloudApigeeV1DebugSession buildGoogleCloudApigeeV1DebugSession() {
-  var o = api.GoogleCloudApigeeV1DebugSession();
+  final o = api.GoogleCloudApigeeV1DebugSession();
   buildCounterGoogleCloudApigeeV1DebugSession++;
   if (buildCounterGoogleCloudApigeeV1DebugSession < 3) {
     o.count = 42;
@@ -2441,7 +2414,7 @@ void checkGoogleCloudApigeeV1DebugSession(
 }
 
 core.List<api.GoogleCloudApigeeV1Point> buildUnnamed6421() {
-  var o = <api.GoogleCloudApigeeV1Point>[];
+  final o = <api.GoogleCloudApigeeV1Point>[];
   o.add(buildGoogleCloudApigeeV1Point());
   o.add(buildGoogleCloudApigeeV1Point());
   return o;
@@ -2449,14 +2422,14 @@ core.List<api.GoogleCloudApigeeV1Point> buildUnnamed6421() {
 
 void checkUnnamed6421(core.List<api.GoogleCloudApigeeV1Point> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Point(o[0] as api.GoogleCloudApigeeV1Point);
-  checkGoogleCloudApigeeV1Point(o[1] as api.GoogleCloudApigeeV1Point);
+  checkGoogleCloudApigeeV1Point(o[0]);
+  checkGoogleCloudApigeeV1Point(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1DebugSessionTransaction = 0;
 api.GoogleCloudApigeeV1DebugSessionTransaction
     buildGoogleCloudApigeeV1DebugSessionTransaction() {
-  var o = api.GoogleCloudApigeeV1DebugSessionTransaction();
+  final o = api.GoogleCloudApigeeV1DebugSessionTransaction();
   buildCounterGoogleCloudApigeeV1DebugSessionTransaction++;
   if (buildCounterGoogleCloudApigeeV1DebugSessionTransaction < 3) {
     o.completed = true;
@@ -2479,7 +2452,7 @@ void checkGoogleCloudApigeeV1DebugSessionTransaction(
 core.int buildCounterGoogleCloudApigeeV1DeleteCustomReportResponse = 0;
 api.GoogleCloudApigeeV1DeleteCustomReportResponse
     buildGoogleCloudApigeeV1DeleteCustomReportResponse() {
-  var o = api.GoogleCloudApigeeV1DeleteCustomReportResponse();
+  final o = api.GoogleCloudApigeeV1DeleteCustomReportResponse();
   buildCounterGoogleCloudApigeeV1DeleteCustomReportResponse++;
   if (buildCounterGoogleCloudApigeeV1DeleteCustomReportResponse < 3) {
     o.message = 'foo';
@@ -2501,7 +2474,7 @@ void checkGoogleCloudApigeeV1DeleteCustomReportResponse(
 }
 
 core.List<api.GoogleRpcStatus> buildUnnamed6422() {
-  var o = <api.GoogleRpcStatus>[];
+  final o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
@@ -2509,12 +2482,12 @@ core.List<api.GoogleRpcStatus> buildUnnamed6422() {
 
 void checkUnnamed6422(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleRpcStatus(o[0] as api.GoogleRpcStatus);
-  checkGoogleRpcStatus(o[1] as api.GoogleRpcStatus);
+  checkGoogleRpcStatus(o[0]);
+  checkGoogleRpcStatus(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatus> buildUnnamed6423() {
-  var o = <api.GoogleCloudApigeeV1InstanceDeploymentStatus>[];
+  final o = <api.GoogleCloudApigeeV1InstanceDeploymentStatus>[];
   o.add(buildGoogleCloudApigeeV1InstanceDeploymentStatus());
   o.add(buildGoogleCloudApigeeV1InstanceDeploymentStatus());
   return o;
@@ -2523,14 +2496,12 @@ core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatus> buildUnnamed6423() {
 void checkUnnamed6423(
     core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1InstanceDeploymentStatus(
-      o[0] as api.GoogleCloudApigeeV1InstanceDeploymentStatus);
-  checkGoogleCloudApigeeV1InstanceDeploymentStatus(
-      o[1] as api.GoogleCloudApigeeV1InstanceDeploymentStatus);
+  checkGoogleCloudApigeeV1InstanceDeploymentStatus(o[0]);
+  checkGoogleCloudApigeeV1InstanceDeploymentStatus(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1PodStatus> buildUnnamed6424() {
-  var o = <api.GoogleCloudApigeeV1PodStatus>[];
+  final o = <api.GoogleCloudApigeeV1PodStatus>[];
   o.add(buildGoogleCloudApigeeV1PodStatus());
   o.add(buildGoogleCloudApigeeV1PodStatus());
   return o;
@@ -2538,13 +2509,13 @@ core.List<api.GoogleCloudApigeeV1PodStatus> buildUnnamed6424() {
 
 void checkUnnamed6424(core.List<api.GoogleCloudApigeeV1PodStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1PodStatus(o[0] as api.GoogleCloudApigeeV1PodStatus);
-  checkGoogleCloudApigeeV1PodStatus(o[1] as api.GoogleCloudApigeeV1PodStatus);
+  checkGoogleCloudApigeeV1PodStatus(o[0]);
+  checkGoogleCloudApigeeV1PodStatus(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>
     buildUnnamed6425() {
-  var o = <api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>[];
+  final o = <api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>[];
   o.add(buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict());
   o.add(buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict());
   return o;
@@ -2553,15 +2524,13 @@ core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>
 void checkUnnamed6425(
     core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(
-      o[0] as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict);
-  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(
-      o[1] as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict);
+  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(o[0]);
+  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Deployment = 0;
 api.GoogleCloudApigeeV1Deployment buildGoogleCloudApigeeV1Deployment() {
-  var o = api.GoogleCloudApigeeV1Deployment();
+  final o = api.GoogleCloudApigeeV1Deployment();
   buildCounterGoogleCloudApigeeV1Deployment++;
   if (buildCounterGoogleCloudApigeeV1Deployment < 3) {
     o.apiProxy = 'foo';
@@ -2611,7 +2580,7 @@ void checkGoogleCloudApigeeV1Deployment(api.GoogleCloudApigeeV1Deployment o) {
 
 core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>
     buildUnnamed6426() {
-  var o = <api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>[];
+  final o = <api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>[];
   o.add(buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange());
   o.add(buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange());
   return o;
@@ -2620,15 +2589,13 @@ core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>
 void checkUnnamed6426(
     core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(
-      o[0] as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange);
-  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(
-      o[1] as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange);
+  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(o[0]);
+  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>
     buildUnnamed6427() {
-  var o = <api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>[];
+  final o = <api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>[];
   o.add(buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict());
   o.add(buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict());
   return o;
@@ -2637,16 +2604,14 @@ core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>
 void checkUnnamed6427(
     core.List<api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(
-      o[0] as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict);
-  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(
-      o[1] as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict);
+  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(o[0]);
+  checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1DeploymentChangeReport = 0;
 api.GoogleCloudApigeeV1DeploymentChangeReport
     buildGoogleCloudApigeeV1DeploymentChangeReport() {
-  var o = api.GoogleCloudApigeeV1DeploymentChangeReport();
+  final o = api.GoogleCloudApigeeV1DeploymentChangeReport();
   buildCounterGoogleCloudApigeeV1DeploymentChangeReport++;
   if (buildCounterGoogleCloudApigeeV1DeploymentChangeReport < 3) {
     o.routingChanges = buildUnnamed6426();
@@ -2663,8 +2628,7 @@ void checkGoogleCloudApigeeV1DeploymentChangeReport(
   if (buildCounterGoogleCloudApigeeV1DeploymentChangeReport < 3) {
     checkUnnamed6426(o.routingChanges!);
     checkUnnamed6427(o.routingConflicts!);
-    checkGoogleRpcPreconditionFailure(
-        o.validationErrors! as api.GoogleRpcPreconditionFailure);
+    checkGoogleRpcPreconditionFailure(o.validationErrors!);
   }
   buildCounterGoogleCloudApigeeV1DeploymentChangeReport--;
 }
@@ -2672,7 +2636,7 @@ void checkGoogleCloudApigeeV1DeploymentChangeReport(
 core.int buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingChange = 0;
 api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
     buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange() {
-  var o = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
+  final o = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
   buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingChange++;
   if (buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingChange < 3) {
     o.description = 'foo';
@@ -2700,12 +2664,10 @@ void checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(
       unittest.equals('foo'),
     );
     checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(
-        o.fromDeployment!
-            as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment);
+        o.fromDeployment!);
     unittest.expect(o.shouldSequenceRollout!, unittest.isTrue);
     checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(
-        o.toDeployment!
-            as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment);
+        o.toDeployment!);
   }
   buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingChange--;
 }
@@ -2714,7 +2676,7 @@ core.int buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict =
     0;
 api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
     buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict() {
-  var o = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
+  final o = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
   buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict++;
   if (buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict <
       3) {
@@ -2733,8 +2695,7 @@ void checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(
   if (buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict <
       3) {
     checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(
-        o.conflictingDeployment!
-            as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment);
+        o.conflictingDeployment!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -2751,7 +2712,7 @@ core.int
     buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment = 0;
 api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
     buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment() {
-  var o = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
+  final o = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
   buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment++;
   if (buildCounterGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment <
       3) {
@@ -2790,7 +2751,7 @@ void checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(
 }
 
 core.Map<core.String, core.String> buildUnnamed6428() {
-  var o = <core.String, core.String>{};
+  final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
@@ -2811,7 +2772,7 @@ void checkUnnamed6428(core.Map<core.String, core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1DeploymentConfig = 0;
 api.GoogleCloudApigeeV1DeploymentConfig
     buildGoogleCloudApigeeV1DeploymentConfig() {
-  var o = api.GoogleCloudApigeeV1DeploymentConfig();
+  final o = api.GoogleCloudApigeeV1DeploymentConfig();
   buildCounterGoogleCloudApigeeV1DeploymentConfig++;
   if (buildCounterGoogleCloudApigeeV1DeploymentConfig < 3) {
     o.attributes = buildUnnamed6428();
@@ -2860,7 +2821,7 @@ void checkGoogleCloudApigeeV1DeploymentConfig(
 }
 
 core.List<core.String> buildUnnamed6429() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2879,7 +2840,7 @@ void checkUnnamed6429(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6430() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -2887,12 +2848,12 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6430() {
 
 void checkUnnamed6430(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.List<core.String> buildUnnamed6431() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2912,7 +2873,7 @@ void checkUnnamed6431(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1Developer = 0;
 api.GoogleCloudApigeeV1Developer buildGoogleCloudApigeeV1Developer() {
-  var o = api.GoogleCloudApigeeV1Developer();
+  final o = api.GoogleCloudApigeeV1Developer();
   buildCounterGoogleCloudApigeeV1Developer++;
   if (buildCounterGoogleCloudApigeeV1Developer < 3) {
     o.accessType = 'foo';
@@ -2989,7 +2950,7 @@ void checkGoogleCloudApigeeV1Developer(api.GoogleCloudApigeeV1Developer o) {
 }
 
 core.List<core.String> buildUnnamed6432() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3008,7 +2969,7 @@ void checkUnnamed6432(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6433() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -3016,12 +2977,12 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6433() {
 
 void checkUnnamed6433(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1Credential> buildUnnamed6434() {
-  var o = <api.GoogleCloudApigeeV1Credential>[];
+  final o = <api.GoogleCloudApigeeV1Credential>[];
   o.add(buildGoogleCloudApigeeV1Credential());
   o.add(buildGoogleCloudApigeeV1Credential());
   return o;
@@ -3029,12 +2990,12 @@ core.List<api.GoogleCloudApigeeV1Credential> buildUnnamed6434() {
 
 void checkUnnamed6434(core.List<api.GoogleCloudApigeeV1Credential> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Credential(o[0] as api.GoogleCloudApigeeV1Credential);
-  checkGoogleCloudApigeeV1Credential(o[1] as api.GoogleCloudApigeeV1Credential);
+  checkGoogleCloudApigeeV1Credential(o[0]);
+  checkGoogleCloudApigeeV1Credential(o[1]);
 }
 
 core.List<core.String> buildUnnamed6435() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3054,7 +3015,7 @@ void checkUnnamed6435(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1DeveloperApp = 0;
 api.GoogleCloudApigeeV1DeveloperApp buildGoogleCloudApigeeV1DeveloperApp() {
-  var o = api.GoogleCloudApigeeV1DeveloperApp();
+  final o = api.GoogleCloudApigeeV1DeveloperApp();
   buildCounterGoogleCloudApigeeV1DeveloperApp++;
   if (buildCounterGoogleCloudApigeeV1DeveloperApp < 3) {
     o.apiProducts = buildUnnamed6432();
@@ -3124,7 +3085,7 @@ void checkGoogleCloudApigeeV1DeveloperApp(
 }
 
 core.List<core.Object> buildUnnamed6436() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -3171,7 +3132,7 @@ void checkUnnamed6436(core.List<core.Object> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6437() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -3179,12 +3140,12 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6437() {
 
 void checkUnnamed6437(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.List<core.String> buildUnnamed6438() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3205,7 +3166,7 @@ void checkUnnamed6438(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1DeveloperAppKey = 0;
 api.GoogleCloudApigeeV1DeveloperAppKey
     buildGoogleCloudApigeeV1DeveloperAppKey() {
-  var o = api.GoogleCloudApigeeV1DeveloperAppKey();
+  final o = api.GoogleCloudApigeeV1DeveloperAppKey();
   buildCounterGoogleCloudApigeeV1DeveloperAppKey++;
   if (buildCounterGoogleCloudApigeeV1DeveloperAppKey < 3) {
     o.apiProducts = buildUnnamed6436();
@@ -3260,7 +3221,7 @@ void checkGoogleCloudApigeeV1DeveloperAppKey(
 core.int buildCounterGoogleCloudApigeeV1DeveloperSubscription = 0;
 api.GoogleCloudApigeeV1DeveloperSubscription
     buildGoogleCloudApigeeV1DeveloperSubscription() {
-  var o = api.GoogleCloudApigeeV1DeveloperSubscription();
+  final o = api.GoogleCloudApigeeV1DeveloperSubscription();
   buildCounterGoogleCloudApigeeV1DeveloperSubscription++;
   if (buildCounterGoogleCloudApigeeV1DeveloperSubscription < 3) {
     o.apiproduct = 'foo';
@@ -3307,7 +3268,7 @@ void checkGoogleCloudApigeeV1DeveloperSubscription(
 }
 
 core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed6439() {
-  var o = <api.GoogleCloudApigeeV1Metric>[];
+  final o = <api.GoogleCloudApigeeV1Metric>[];
   o.add(buildGoogleCloudApigeeV1Metric());
   o.add(buildGoogleCloudApigeeV1Metric());
   return o;
@@ -3315,14 +3276,14 @@ core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed6439() {
 
 void checkUnnamed6439(core.List<api.GoogleCloudApigeeV1Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Metric(o[0] as api.GoogleCloudApigeeV1Metric);
-  checkGoogleCloudApigeeV1Metric(o[1] as api.GoogleCloudApigeeV1Metric);
+  checkGoogleCloudApigeeV1Metric(o[0]);
+  checkGoogleCloudApigeeV1Metric(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1DimensionMetric = 0;
 api.GoogleCloudApigeeV1DimensionMetric
     buildGoogleCloudApigeeV1DimensionMetric() {
-  var o = api.GoogleCloudApigeeV1DimensionMetric();
+  final o = api.GoogleCloudApigeeV1DimensionMetric();
   buildCounterGoogleCloudApigeeV1DimensionMetric++;
   if (buildCounterGoogleCloudApigeeV1DimensionMetric < 3) {
     o.metrics = buildUnnamed6439();
@@ -3347,7 +3308,7 @@ void checkGoogleCloudApigeeV1DimensionMetric(
 
 core.int buildCounterGoogleCloudApigeeV1EntityMetadata = 0;
 api.GoogleCloudApigeeV1EntityMetadata buildGoogleCloudApigeeV1EntityMetadata() {
-  var o = api.GoogleCloudApigeeV1EntityMetadata();
+  final o = api.GoogleCloudApigeeV1EntityMetadata();
   buildCounterGoogleCloudApigeeV1EntityMetadata++;
   if (buildCounterGoogleCloudApigeeV1EntityMetadata < 3) {
     o.createdAt = 'foo';
@@ -3380,7 +3341,7 @@ void checkGoogleCloudApigeeV1EntityMetadata(
 
 core.int buildCounterGoogleCloudApigeeV1Environment = 0;
 api.GoogleCloudApigeeV1Environment buildGoogleCloudApigeeV1Environment() {
-  var o = api.GoogleCloudApigeeV1Environment();
+  final o = api.GoogleCloudApigeeV1Environment();
   buildCounterGoogleCloudApigeeV1Environment++;
   if (buildCounterGoogleCloudApigeeV1Environment < 3) {
     o.createdAt = 'foo';
@@ -3418,8 +3379,7 @@ void checkGoogleCloudApigeeV1Environment(api.GoogleCloudApigeeV1Environment o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1Properties(
-        o.properties! as api.GoogleCloudApigeeV1Properties);
+    checkGoogleCloudApigeeV1Properties(o.properties!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -3429,7 +3389,7 @@ void checkGoogleCloudApigeeV1Environment(api.GoogleCloudApigeeV1Environment o) {
 }
 
 core.List<api.GoogleCloudApigeeV1DataCollectorConfig> buildUnnamed6440() {
-  var o = <api.GoogleCloudApigeeV1DataCollectorConfig>[];
+  final o = <api.GoogleCloudApigeeV1DataCollectorConfig>[];
   o.add(buildGoogleCloudApigeeV1DataCollectorConfig());
   o.add(buildGoogleCloudApigeeV1DataCollectorConfig());
   return o;
@@ -3437,14 +3397,12 @@ core.List<api.GoogleCloudApigeeV1DataCollectorConfig> buildUnnamed6440() {
 
 void checkUnnamed6440(core.List<api.GoogleCloudApigeeV1DataCollectorConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DataCollectorConfig(
-      o[0] as api.GoogleCloudApigeeV1DataCollectorConfig);
-  checkGoogleCloudApigeeV1DataCollectorConfig(
-      o[1] as api.GoogleCloudApigeeV1DataCollectorConfig);
+  checkGoogleCloudApigeeV1DataCollectorConfig(o[0]);
+  checkGoogleCloudApigeeV1DataCollectorConfig(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1DeploymentConfig> buildUnnamed6441() {
-  var o = <api.GoogleCloudApigeeV1DeploymentConfig>[];
+  final o = <api.GoogleCloudApigeeV1DeploymentConfig>[];
   o.add(buildGoogleCloudApigeeV1DeploymentConfig());
   o.add(buildGoogleCloudApigeeV1DeploymentConfig());
   return o;
@@ -3452,14 +3410,12 @@ core.List<api.GoogleCloudApigeeV1DeploymentConfig> buildUnnamed6441() {
 
 void checkUnnamed6441(core.List<api.GoogleCloudApigeeV1DeploymentConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DeploymentConfig(
-      o[0] as api.GoogleCloudApigeeV1DeploymentConfig);
-  checkGoogleCloudApigeeV1DeploymentConfig(
-      o[1] as api.GoogleCloudApigeeV1DeploymentConfig);
+  checkGoogleCloudApigeeV1DeploymentConfig(o[0]);
+  checkGoogleCloudApigeeV1DeploymentConfig(o[1]);
 }
 
 core.Map<core.String, core.String> buildUnnamed6442() {
-  var o = <core.String, core.String>{};
+  final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
@@ -3478,7 +3434,7 @@ void checkUnnamed6442(core.Map<core.String, core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1FlowHookConfig> buildUnnamed6443() {
-  var o = <api.GoogleCloudApigeeV1FlowHookConfig>[];
+  final o = <api.GoogleCloudApigeeV1FlowHookConfig>[];
   o.add(buildGoogleCloudApigeeV1FlowHookConfig());
   o.add(buildGoogleCloudApigeeV1FlowHookConfig());
   return o;
@@ -3486,14 +3442,12 @@ core.List<api.GoogleCloudApigeeV1FlowHookConfig> buildUnnamed6443() {
 
 void checkUnnamed6443(core.List<api.GoogleCloudApigeeV1FlowHookConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1FlowHookConfig(
-      o[0] as api.GoogleCloudApigeeV1FlowHookConfig);
-  checkGoogleCloudApigeeV1FlowHookConfig(
-      o[1] as api.GoogleCloudApigeeV1FlowHookConfig);
+  checkGoogleCloudApigeeV1FlowHookConfig(o[0]);
+  checkGoogleCloudApigeeV1FlowHookConfig(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1KeystoreConfig> buildUnnamed6444() {
-  var o = <api.GoogleCloudApigeeV1KeystoreConfig>[];
+  final o = <api.GoogleCloudApigeeV1KeystoreConfig>[];
   o.add(buildGoogleCloudApigeeV1KeystoreConfig());
   o.add(buildGoogleCloudApigeeV1KeystoreConfig());
   return o;
@@ -3501,14 +3455,12 @@ core.List<api.GoogleCloudApigeeV1KeystoreConfig> buildUnnamed6444() {
 
 void checkUnnamed6444(core.List<api.GoogleCloudApigeeV1KeystoreConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1KeystoreConfig(
-      o[0] as api.GoogleCloudApigeeV1KeystoreConfig);
-  checkGoogleCloudApigeeV1KeystoreConfig(
-      o[1] as api.GoogleCloudApigeeV1KeystoreConfig);
+  checkGoogleCloudApigeeV1KeystoreConfig(o[0]);
+  checkGoogleCloudApigeeV1KeystoreConfig(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1ReferenceConfig> buildUnnamed6445() {
-  var o = <api.GoogleCloudApigeeV1ReferenceConfig>[];
+  final o = <api.GoogleCloudApigeeV1ReferenceConfig>[];
   o.add(buildGoogleCloudApigeeV1ReferenceConfig());
   o.add(buildGoogleCloudApigeeV1ReferenceConfig());
   return o;
@@ -3516,14 +3468,12 @@ core.List<api.GoogleCloudApigeeV1ReferenceConfig> buildUnnamed6445() {
 
 void checkUnnamed6445(core.List<api.GoogleCloudApigeeV1ReferenceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ReferenceConfig(
-      o[0] as api.GoogleCloudApigeeV1ReferenceConfig);
-  checkGoogleCloudApigeeV1ReferenceConfig(
-      o[1] as api.GoogleCloudApigeeV1ReferenceConfig);
+  checkGoogleCloudApigeeV1ReferenceConfig(o[0]);
+  checkGoogleCloudApigeeV1ReferenceConfig(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1ResourceConfig> buildUnnamed6446() {
-  var o = <api.GoogleCloudApigeeV1ResourceConfig>[];
+  final o = <api.GoogleCloudApigeeV1ResourceConfig>[];
   o.add(buildGoogleCloudApigeeV1ResourceConfig());
   o.add(buildGoogleCloudApigeeV1ResourceConfig());
   return o;
@@ -3531,14 +3481,12 @@ core.List<api.GoogleCloudApigeeV1ResourceConfig> buildUnnamed6446() {
 
 void checkUnnamed6446(core.List<api.GoogleCloudApigeeV1ResourceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ResourceConfig(
-      o[0] as api.GoogleCloudApigeeV1ResourceConfig);
-  checkGoogleCloudApigeeV1ResourceConfig(
-      o[1] as api.GoogleCloudApigeeV1ResourceConfig);
+  checkGoogleCloudApigeeV1ResourceConfig(o[0]);
+  checkGoogleCloudApigeeV1ResourceConfig(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1TargetServerConfig> buildUnnamed6447() {
-  var o = <api.GoogleCloudApigeeV1TargetServerConfig>[];
+  final o = <api.GoogleCloudApigeeV1TargetServerConfig>[];
   o.add(buildGoogleCloudApigeeV1TargetServerConfig());
   o.add(buildGoogleCloudApigeeV1TargetServerConfig());
   return o;
@@ -3546,16 +3494,14 @@ core.List<api.GoogleCloudApigeeV1TargetServerConfig> buildUnnamed6447() {
 
 void checkUnnamed6447(core.List<api.GoogleCloudApigeeV1TargetServerConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1TargetServerConfig(
-      o[0] as api.GoogleCloudApigeeV1TargetServerConfig);
-  checkGoogleCloudApigeeV1TargetServerConfig(
-      o[1] as api.GoogleCloudApigeeV1TargetServerConfig);
+  checkGoogleCloudApigeeV1TargetServerConfig(o[0]);
+  checkGoogleCloudApigeeV1TargetServerConfig(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1EnvironmentConfig = 0;
 api.GoogleCloudApigeeV1EnvironmentConfig
     buildGoogleCloudApigeeV1EnvironmentConfig() {
-  var o = api.GoogleCloudApigeeV1EnvironmentConfig();
+  final o = api.GoogleCloudApigeeV1EnvironmentConfig();
   buildCounterGoogleCloudApigeeV1EnvironmentConfig++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentConfig < 3) {
     o.createTime = 'foo';
@@ -3589,8 +3535,7 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
       unittest.equals('foo'),
     );
     checkUnnamed6440(o.dataCollectors!);
-    checkGoogleCloudApigeeV1DebugMask(
-        o.debugMask! as api.GoogleCloudApigeeV1DebugMask);
+    checkGoogleCloudApigeeV1DebugMask(o.debugMask!);
     checkUnnamed6441(o.deployments!);
     checkUnnamed6442(o.featureFlags!);
     checkUnnamed6443(o.flowhooks!);
@@ -3618,8 +3563,7 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
       unittest.equals('foo'),
     );
     checkUnnamed6447(o.targets!);
-    checkGoogleCloudApigeeV1RuntimeTraceConfig(
-        o.traceConfig! as api.GoogleCloudApigeeV1RuntimeTraceConfig);
+    checkGoogleCloudApigeeV1RuntimeTraceConfig(o.traceConfig!);
     unittest.expect(
       o.uid!,
       unittest.equals('foo'),
@@ -3629,7 +3573,7 @@ void checkGoogleCloudApigeeV1EnvironmentConfig(
 }
 
 core.List<core.String> buildUnnamed6448() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3650,7 +3594,7 @@ void checkUnnamed6448(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1EnvironmentGroup = 0;
 api.GoogleCloudApigeeV1EnvironmentGroup
     buildGoogleCloudApigeeV1EnvironmentGroup() {
-  var o = api.GoogleCloudApigeeV1EnvironmentGroup();
+  final o = api.GoogleCloudApigeeV1EnvironmentGroup();
   buildCounterGoogleCloudApigeeV1EnvironmentGroup++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroup < 3) {
     o.createdAt = 'foo';
@@ -3691,7 +3635,7 @@ void checkGoogleCloudApigeeV1EnvironmentGroup(
 core.int buildCounterGoogleCloudApigeeV1EnvironmentGroupAttachment = 0;
 api.GoogleCloudApigeeV1EnvironmentGroupAttachment
     buildGoogleCloudApigeeV1EnvironmentGroupAttachment() {
-  var o = api.GoogleCloudApigeeV1EnvironmentGroupAttachment();
+  final o = api.GoogleCloudApigeeV1EnvironmentGroupAttachment();
   buildCounterGoogleCloudApigeeV1EnvironmentGroupAttachment++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroupAttachment < 3) {
     o.createdAt = 'foo';
@@ -3723,7 +3667,7 @@ void checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
 }
 
 core.List<core.String> buildUnnamed6449() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3742,7 +3686,7 @@ void checkUnnamed6449(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1RoutingRule> buildUnnamed6450() {
-  var o = <api.GoogleCloudApigeeV1RoutingRule>[];
+  final o = <api.GoogleCloudApigeeV1RoutingRule>[];
   o.add(buildGoogleCloudApigeeV1RoutingRule());
   o.add(buildGoogleCloudApigeeV1RoutingRule());
   return o;
@@ -3750,16 +3694,14 @@ core.List<api.GoogleCloudApigeeV1RoutingRule> buildUnnamed6450() {
 
 void checkUnnamed6450(core.List<api.GoogleCloudApigeeV1RoutingRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1RoutingRule(
-      o[0] as api.GoogleCloudApigeeV1RoutingRule);
-  checkGoogleCloudApigeeV1RoutingRule(
-      o[1] as api.GoogleCloudApigeeV1RoutingRule);
+  checkGoogleCloudApigeeV1RoutingRule(o[0]);
+  checkGoogleCloudApigeeV1RoutingRule(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig = 0;
 api.GoogleCloudApigeeV1EnvironmentGroupConfig
     buildGoogleCloudApigeeV1EnvironmentGroupConfig() {
-  var o = api.GoogleCloudApigeeV1EnvironmentGroupConfig();
+  final o = api.GoogleCloudApigeeV1EnvironmentGroupConfig();
   buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig++;
   if (buildCounterGoogleCloudApigeeV1EnvironmentGroupConfig < 3) {
     o.hostnames = buildUnnamed6449();
@@ -3797,7 +3739,7 @@ void checkGoogleCloudApigeeV1EnvironmentGroupConfig(
 core.int buildCounterGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest = 0;
 api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
     buildGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest() {
-  var o = api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest();
+  final o = api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest();
   buildCounterGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest++;
   if (buildCounterGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest < 3) {}
   buildCounterGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest--;
@@ -3813,7 +3755,7 @@ void checkGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest(
 
 core.int buildCounterGoogleCloudApigeeV1Export = 0;
 api.GoogleCloudApigeeV1Export buildGoogleCloudApigeeV1Export() {
-  var o = api.GoogleCloudApigeeV1Export();
+  final o = api.GoogleCloudApigeeV1Export();
   buildCounterGoogleCloudApigeeV1Export++;
   if (buildCounterGoogleCloudApigeeV1Export < 3) {
     o.created = 'foo';
@@ -3875,7 +3817,7 @@ void checkGoogleCloudApigeeV1Export(api.GoogleCloudApigeeV1Export o) {
 
 core.int buildCounterGoogleCloudApigeeV1ExportRequest = 0;
 api.GoogleCloudApigeeV1ExportRequest buildGoogleCloudApigeeV1ExportRequest() {
-  var o = api.GoogleCloudApigeeV1ExportRequest();
+  final o = api.GoogleCloudApigeeV1ExportRequest();
   buildCounterGoogleCloudApigeeV1ExportRequest++;
   if (buildCounterGoogleCloudApigeeV1ExportRequest < 3) {
     o.csvDelimiter = 'foo';
@@ -3901,8 +3843,7 @@ void checkGoogleCloudApigeeV1ExportRequest(
       o.datastoreName!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1DateRange(
-        o.dateRange! as api.GoogleCloudApigeeV1DateRange);
+    checkGoogleCloudApigeeV1DateRange(o.dateRange!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -3921,7 +3862,7 @@ void checkGoogleCloudApigeeV1ExportRequest(
 
 core.int buildCounterGoogleCloudApigeeV1FlowHook = 0;
 api.GoogleCloudApigeeV1FlowHook buildGoogleCloudApigeeV1FlowHook() {
-  var o = api.GoogleCloudApigeeV1FlowHook();
+  final o = api.GoogleCloudApigeeV1FlowHook();
   buildCounterGoogleCloudApigeeV1FlowHook++;
   if (buildCounterGoogleCloudApigeeV1FlowHook < 3) {
     o.continueOnError = true;
@@ -3955,7 +3896,7 @@ void checkGoogleCloudApigeeV1FlowHook(api.GoogleCloudApigeeV1FlowHook o) {
 
 core.int buildCounterGoogleCloudApigeeV1FlowHookConfig = 0;
 api.GoogleCloudApigeeV1FlowHookConfig buildGoogleCloudApigeeV1FlowHookConfig() {
-  var o = api.GoogleCloudApigeeV1FlowHookConfig();
+  final o = api.GoogleCloudApigeeV1FlowHookConfig();
   buildCounterGoogleCloudApigeeV1FlowHookConfig++;
   if (buildCounterGoogleCloudApigeeV1FlowHookConfig < 3) {
     o.continueOnError = true;
@@ -3986,7 +3927,7 @@ void checkGoogleCloudApigeeV1FlowHookConfig(
 core.int buildCounterGoogleCloudApigeeV1GetSyncAuthorizationRequest = 0;
 api.GoogleCloudApigeeV1GetSyncAuthorizationRequest
     buildGoogleCloudApigeeV1GetSyncAuthorizationRequest() {
-  var o = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest();
+  final o = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest();
   buildCounterGoogleCloudApigeeV1GetSyncAuthorizationRequest++;
   if (buildCounterGoogleCloudApigeeV1GetSyncAuthorizationRequest < 3) {}
   buildCounterGoogleCloudApigeeV1GetSyncAuthorizationRequest--;
@@ -4001,7 +3942,7 @@ void checkGoogleCloudApigeeV1GetSyncAuthorizationRequest(
 }
 
 core.List<core.String> buildUnnamed6451() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -4022,7 +3963,7 @@ void checkUnnamed6451(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1GraphQLOperation = 0;
 api.GoogleCloudApigeeV1GraphQLOperation
     buildGoogleCloudApigeeV1GraphQLOperation() {
-  var o = api.GoogleCloudApigeeV1GraphQLOperation();
+  final o = api.GoogleCloudApigeeV1GraphQLOperation();
   buildCounterGoogleCloudApigeeV1GraphQLOperation++;
   if (buildCounterGoogleCloudApigeeV1GraphQLOperation < 3) {
     o.operation = 'foo';
@@ -4046,7 +3987,7 @@ void checkGoogleCloudApigeeV1GraphQLOperation(
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6452() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -4054,12 +3995,12 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6452() {
 
 void checkUnnamed6452(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1GraphQLOperation> buildUnnamed6453() {
-  var o = <api.GoogleCloudApigeeV1GraphQLOperation>[];
+  final o = <api.GoogleCloudApigeeV1GraphQLOperation>[];
   o.add(buildGoogleCloudApigeeV1GraphQLOperation());
   o.add(buildGoogleCloudApigeeV1GraphQLOperation());
   return o;
@@ -4067,16 +4008,14 @@ core.List<api.GoogleCloudApigeeV1GraphQLOperation> buildUnnamed6453() {
 
 void checkUnnamed6453(core.List<api.GoogleCloudApigeeV1GraphQLOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1GraphQLOperation(
-      o[0] as api.GoogleCloudApigeeV1GraphQLOperation);
-  checkGoogleCloudApigeeV1GraphQLOperation(
-      o[1] as api.GoogleCloudApigeeV1GraphQLOperation);
+  checkGoogleCloudApigeeV1GraphQLOperation(o[0]);
+  checkGoogleCloudApigeeV1GraphQLOperation(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1GraphQLOperationConfig = 0;
 api.GoogleCloudApigeeV1GraphQLOperationConfig
     buildGoogleCloudApigeeV1GraphQLOperationConfig() {
-  var o = api.GoogleCloudApigeeV1GraphQLOperationConfig();
+  final o = api.GoogleCloudApigeeV1GraphQLOperationConfig();
   buildCounterGoogleCloudApigeeV1GraphQLOperationConfig++;
   if (buildCounterGoogleCloudApigeeV1GraphQLOperationConfig < 3) {
     o.apiSource = 'foo';
@@ -4098,13 +4037,13 @@ void checkGoogleCloudApigeeV1GraphQLOperationConfig(
     );
     checkUnnamed6452(o.attributes!);
     checkUnnamed6453(o.operations!);
-    checkGoogleCloudApigeeV1Quota(o.quota! as api.GoogleCloudApigeeV1Quota);
+    checkGoogleCloudApigeeV1Quota(o.quota!);
   }
   buildCounterGoogleCloudApigeeV1GraphQLOperationConfig--;
 }
 
 core.List<api.GoogleCloudApigeeV1GraphQLOperationConfig> buildUnnamed6454() {
-  var o = <api.GoogleCloudApigeeV1GraphQLOperationConfig>[];
+  final o = <api.GoogleCloudApigeeV1GraphQLOperationConfig>[];
   o.add(buildGoogleCloudApigeeV1GraphQLOperationConfig());
   o.add(buildGoogleCloudApigeeV1GraphQLOperationConfig());
   return o;
@@ -4113,16 +4052,14 @@ core.List<api.GoogleCloudApigeeV1GraphQLOperationConfig> buildUnnamed6454() {
 void checkUnnamed6454(
     core.List<api.GoogleCloudApigeeV1GraphQLOperationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1GraphQLOperationConfig(
-      o[0] as api.GoogleCloudApigeeV1GraphQLOperationConfig);
-  checkGoogleCloudApigeeV1GraphQLOperationConfig(
-      o[1] as api.GoogleCloudApigeeV1GraphQLOperationConfig);
+  checkGoogleCloudApigeeV1GraphQLOperationConfig(o[0]);
+  checkGoogleCloudApigeeV1GraphQLOperationConfig(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1GraphQLOperationGroup = 0;
 api.GoogleCloudApigeeV1GraphQLOperationGroup
     buildGoogleCloudApigeeV1GraphQLOperationGroup() {
-  var o = api.GoogleCloudApigeeV1GraphQLOperationGroup();
+  final o = api.GoogleCloudApigeeV1GraphQLOperationGroup();
   buildCounterGoogleCloudApigeeV1GraphQLOperationGroup++;
   if (buildCounterGoogleCloudApigeeV1GraphQLOperationGroup < 3) {
     o.operationConfigType = 'foo';
@@ -4146,7 +4083,7 @@ void checkGoogleCloudApigeeV1GraphQLOperationGroup(
 }
 
 core.List<api.GoogleCloudApigeeV1EnvironmentGroupConfig> buildUnnamed6455() {
-  var o = <api.GoogleCloudApigeeV1EnvironmentGroupConfig>[];
+  final o = <api.GoogleCloudApigeeV1EnvironmentGroupConfig>[];
   o.add(buildGoogleCloudApigeeV1EnvironmentGroupConfig());
   o.add(buildGoogleCloudApigeeV1EnvironmentGroupConfig());
   return o;
@@ -4155,15 +4092,13 @@ core.List<api.GoogleCloudApigeeV1EnvironmentGroupConfig> buildUnnamed6455() {
 void checkUnnamed6455(
     core.List<api.GoogleCloudApigeeV1EnvironmentGroupConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1EnvironmentGroupConfig(
-      o[0] as api.GoogleCloudApigeeV1EnvironmentGroupConfig);
-  checkGoogleCloudApigeeV1EnvironmentGroupConfig(
-      o[1] as api.GoogleCloudApigeeV1EnvironmentGroupConfig);
+  checkGoogleCloudApigeeV1EnvironmentGroupConfig(o[0]);
+  checkGoogleCloudApigeeV1EnvironmentGroupConfig(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1IngressConfig = 0;
 api.GoogleCloudApigeeV1IngressConfig buildGoogleCloudApigeeV1IngressConfig() {
-  var o = api.GoogleCloudApigeeV1IngressConfig();
+  final o = api.GoogleCloudApigeeV1IngressConfig();
   buildCounterGoogleCloudApigeeV1IngressConfig++;
   if (buildCounterGoogleCloudApigeeV1IngressConfig < 3) {
     o.environmentGroups = buildUnnamed6455();
@@ -4203,7 +4138,7 @@ void checkGoogleCloudApigeeV1IngressConfig(
 
 core.int buildCounterGoogleCloudApigeeV1Instance = 0;
 api.GoogleCloudApigeeV1Instance buildGoogleCloudApigeeV1Instance() {
-  var o = api.GoogleCloudApigeeV1Instance();
+  final o = api.GoogleCloudApigeeV1Instance();
   buildCounterGoogleCloudApigeeV1Instance++;
   if (buildCounterGoogleCloudApigeeV1Instance < 3) {
     o.createdAt = 'foo';
@@ -4276,7 +4211,7 @@ void checkGoogleCloudApigeeV1Instance(api.GoogleCloudApigeeV1Instance o) {
 core.int buildCounterGoogleCloudApigeeV1InstanceAttachment = 0;
 api.GoogleCloudApigeeV1InstanceAttachment
     buildGoogleCloudApigeeV1InstanceAttachment() {
-  var o = api.GoogleCloudApigeeV1InstanceAttachment();
+  final o = api.GoogleCloudApigeeV1InstanceAttachment();
   buildCounterGoogleCloudApigeeV1InstanceAttachment++;
   if (buildCounterGoogleCloudApigeeV1InstanceAttachment < 3) {
     o.createdAt = 'foo';
@@ -4309,7 +4244,7 @@ void checkGoogleCloudApigeeV1InstanceAttachment(
 
 core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>
     buildUnnamed6456() {
-  var o = <api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>[];
+  final o = <api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>[];
   o.add(buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision());
   o.add(buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision());
   return o;
@@ -4319,15 +4254,13 @@ void checkUnnamed6456(
     core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(
-      o[0] as api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision);
-  checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(
-      o[1] as api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision);
+  checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(o[0]);
+  checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>
     buildUnnamed6457() {
-  var o = <api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>[];
+  final o = <api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>[];
   o.add(buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute());
   o.add(buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute());
   return o;
@@ -4336,16 +4269,14 @@ core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>
 void checkUnnamed6457(
     core.List<api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(
-      o[0] as api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute);
-  checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(
-      o[1] as api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute);
+  checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(o[0]);
+  checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus = 0;
 api.GoogleCloudApigeeV1InstanceDeploymentStatus
     buildGoogleCloudApigeeV1InstanceDeploymentStatus() {
-  var o = api.GoogleCloudApigeeV1InstanceDeploymentStatus();
+  final o = api.GoogleCloudApigeeV1InstanceDeploymentStatus();
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus++;
   if (buildCounterGoogleCloudApigeeV1InstanceDeploymentStatus < 3) {
     o.deployedRevisions = buildUnnamed6456();
@@ -4374,7 +4305,7 @@ core.int
     buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision = 0;
 api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
     buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision() {
-  var o = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
+  final o = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision++;
   if (buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision <
       3) {
@@ -4406,7 +4337,7 @@ core.int buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute =
     0;
 api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
     buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute() {
-  var o = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
+  final o = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
   buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute++;
   if (buildCounterGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute <
       3) {
@@ -4447,7 +4378,7 @@ void checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(
 core.int buildCounterGoogleCloudApigeeV1IntegrationConfig = 0;
 api.GoogleCloudApigeeV1IntegrationConfig
     buildGoogleCloudApigeeV1IntegrationConfig() {
-  var o = api.GoogleCloudApigeeV1IntegrationConfig();
+  final o = api.GoogleCloudApigeeV1IntegrationConfig();
   buildCounterGoogleCloudApigeeV1IntegrationConfig++;
   if (buildCounterGoogleCloudApigeeV1IntegrationConfig < 3) {
     o.enabled = true;
@@ -4468,7 +4399,7 @@ void checkGoogleCloudApigeeV1IntegrationConfig(
 core.int buildCounterGoogleCloudApigeeV1KeyAliasReference = 0;
 api.GoogleCloudApigeeV1KeyAliasReference
     buildGoogleCloudApigeeV1KeyAliasReference() {
-  var o = api.GoogleCloudApigeeV1KeyAliasReference();
+  final o = api.GoogleCloudApigeeV1KeyAliasReference();
   buildCounterGoogleCloudApigeeV1KeyAliasReference++;
   if (buildCounterGoogleCloudApigeeV1KeyAliasReference < 3) {
     o.aliasId = 'foo';
@@ -4496,7 +4427,7 @@ void checkGoogleCloudApigeeV1KeyAliasReference(
 
 core.int buildCounterGoogleCloudApigeeV1KeyValueMap = 0;
 api.GoogleCloudApigeeV1KeyValueMap buildGoogleCloudApigeeV1KeyValueMap() {
-  var o = api.GoogleCloudApigeeV1KeyValueMap();
+  final o = api.GoogleCloudApigeeV1KeyValueMap();
   buildCounterGoogleCloudApigeeV1KeyValueMap++;
   if (buildCounterGoogleCloudApigeeV1KeyValueMap < 3) {
     o.encrypted = true;
@@ -4519,7 +4450,7 @@ void checkGoogleCloudApigeeV1KeyValueMap(api.GoogleCloudApigeeV1KeyValueMap o) {
 }
 
 core.List<core.String> buildUnnamed6458() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -4539,7 +4470,7 @@ void checkUnnamed6458(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1Keystore = 0;
 api.GoogleCloudApigeeV1Keystore buildGoogleCloudApigeeV1Keystore() {
-  var o = api.GoogleCloudApigeeV1Keystore();
+  final o = api.GoogleCloudApigeeV1Keystore();
   buildCounterGoogleCloudApigeeV1Keystore++;
   if (buildCounterGoogleCloudApigeeV1Keystore < 3) {
     o.aliases = buildUnnamed6458();
@@ -4562,7 +4493,7 @@ void checkGoogleCloudApigeeV1Keystore(api.GoogleCloudApigeeV1Keystore o) {
 }
 
 core.List<api.GoogleCloudApigeeV1AliasRevisionConfig> buildUnnamed6459() {
-  var o = <api.GoogleCloudApigeeV1AliasRevisionConfig>[];
+  final o = <api.GoogleCloudApigeeV1AliasRevisionConfig>[];
   o.add(buildGoogleCloudApigeeV1AliasRevisionConfig());
   o.add(buildGoogleCloudApigeeV1AliasRevisionConfig());
   return o;
@@ -4570,15 +4501,13 @@ core.List<api.GoogleCloudApigeeV1AliasRevisionConfig> buildUnnamed6459() {
 
 void checkUnnamed6459(core.List<api.GoogleCloudApigeeV1AliasRevisionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1AliasRevisionConfig(
-      o[0] as api.GoogleCloudApigeeV1AliasRevisionConfig);
-  checkGoogleCloudApigeeV1AliasRevisionConfig(
-      o[1] as api.GoogleCloudApigeeV1AliasRevisionConfig);
+  checkGoogleCloudApigeeV1AliasRevisionConfig(o[0]);
+  checkGoogleCloudApigeeV1AliasRevisionConfig(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1KeystoreConfig = 0;
 api.GoogleCloudApigeeV1KeystoreConfig buildGoogleCloudApigeeV1KeystoreConfig() {
-  var o = api.GoogleCloudApigeeV1KeystoreConfig();
+  final o = api.GoogleCloudApigeeV1KeystoreConfig();
   buildCounterGoogleCloudApigeeV1KeystoreConfig++;
   if (buildCounterGoogleCloudApigeeV1KeystoreConfig < 3) {
     o.aliases = buildUnnamed6459();
@@ -4602,7 +4531,7 @@ void checkGoogleCloudApigeeV1KeystoreConfig(
 }
 
 core.List<api.GoogleCloudApigeeV1ApiCategoryData> buildUnnamed6460() {
-  var o = <api.GoogleCloudApigeeV1ApiCategoryData>[];
+  final o = <api.GoogleCloudApigeeV1ApiCategoryData>[];
   o.add(buildGoogleCloudApigeeV1ApiCategoryData());
   o.add(buildGoogleCloudApigeeV1ApiCategoryData());
   return o;
@@ -4610,16 +4539,14 @@ core.List<api.GoogleCloudApigeeV1ApiCategoryData> buildUnnamed6460() {
 
 void checkUnnamed6460(core.List<api.GoogleCloudApigeeV1ApiCategoryData> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ApiCategoryData(
-      o[0] as api.GoogleCloudApigeeV1ApiCategoryData);
-  checkGoogleCloudApigeeV1ApiCategoryData(
-      o[1] as api.GoogleCloudApigeeV1ApiCategoryData);
+  checkGoogleCloudApigeeV1ApiCategoryData(o[0]);
+  checkGoogleCloudApigeeV1ApiCategoryData(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse = 0;
 api.GoogleCloudApigeeV1ListApiCategoriesResponse
     buildGoogleCloudApigeeV1ListApiCategoriesResponse() {
-  var o = api.GoogleCloudApigeeV1ListApiCategoriesResponse();
+  final o = api.GoogleCloudApigeeV1ListApiCategoriesResponse();
   buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse < 3) {
     o.data = buildUnnamed6460();
@@ -4658,7 +4585,7 @@ void checkGoogleCloudApigeeV1ListApiCategoriesResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1ApiProduct> buildUnnamed6461() {
-  var o = <api.GoogleCloudApigeeV1ApiProduct>[];
+  final o = <api.GoogleCloudApigeeV1ApiProduct>[];
   o.add(buildGoogleCloudApigeeV1ApiProduct());
   o.add(buildGoogleCloudApigeeV1ApiProduct());
   return o;
@@ -4666,14 +4593,14 @@ core.List<api.GoogleCloudApigeeV1ApiProduct> buildUnnamed6461() {
 
 void checkUnnamed6461(core.List<api.GoogleCloudApigeeV1ApiProduct> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ApiProduct(o[0] as api.GoogleCloudApigeeV1ApiProduct);
-  checkGoogleCloudApigeeV1ApiProduct(o[1] as api.GoogleCloudApigeeV1ApiProduct);
+  checkGoogleCloudApigeeV1ApiProduct(o[0]);
+  checkGoogleCloudApigeeV1ApiProduct(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListApiProductsResponse = 0;
 api.GoogleCloudApigeeV1ListApiProductsResponse
     buildGoogleCloudApigeeV1ListApiProductsResponse() {
-  var o = api.GoogleCloudApigeeV1ListApiProductsResponse();
+  final o = api.GoogleCloudApigeeV1ListApiProductsResponse();
   buildCounterGoogleCloudApigeeV1ListApiProductsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiProductsResponse < 3) {
     o.apiProduct = buildUnnamed6461();
@@ -4692,7 +4619,7 @@ void checkGoogleCloudApigeeV1ListApiProductsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1ApiProxy> buildUnnamed6462() {
-  var o = <api.GoogleCloudApigeeV1ApiProxy>[];
+  final o = <api.GoogleCloudApigeeV1ApiProxy>[];
   o.add(buildGoogleCloudApigeeV1ApiProxy());
   o.add(buildGoogleCloudApigeeV1ApiProxy());
   return o;
@@ -4700,14 +4627,14 @@ core.List<api.GoogleCloudApigeeV1ApiProxy> buildUnnamed6462() {
 
 void checkUnnamed6462(core.List<api.GoogleCloudApigeeV1ApiProxy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ApiProxy(o[0] as api.GoogleCloudApigeeV1ApiProxy);
-  checkGoogleCloudApigeeV1ApiProxy(o[1] as api.GoogleCloudApigeeV1ApiProxy);
+  checkGoogleCloudApigeeV1ApiProxy(o[0]);
+  checkGoogleCloudApigeeV1ApiProxy(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListApiProxiesResponse = 0;
 api.GoogleCloudApigeeV1ListApiProxiesResponse
     buildGoogleCloudApigeeV1ListApiProxiesResponse() {
-  var o = api.GoogleCloudApigeeV1ListApiProxiesResponse();
+  final o = api.GoogleCloudApigeeV1ListApiProxiesResponse();
   buildCounterGoogleCloudApigeeV1ListApiProxiesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListApiProxiesResponse < 3) {
     o.proxies = buildUnnamed6462();
@@ -4726,7 +4653,7 @@ void checkGoogleCloudApigeeV1ListApiProxiesResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1App> buildUnnamed6463() {
-  var o = <api.GoogleCloudApigeeV1App>[];
+  final o = <api.GoogleCloudApigeeV1App>[];
   o.add(buildGoogleCloudApigeeV1App());
   o.add(buildGoogleCloudApigeeV1App());
   return o;
@@ -4734,14 +4661,14 @@ core.List<api.GoogleCloudApigeeV1App> buildUnnamed6463() {
 
 void checkUnnamed6463(core.List<api.GoogleCloudApigeeV1App> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1App(o[0] as api.GoogleCloudApigeeV1App);
-  checkGoogleCloudApigeeV1App(o[1] as api.GoogleCloudApigeeV1App);
+  checkGoogleCloudApigeeV1App(o[0]);
+  checkGoogleCloudApigeeV1App(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListAppsResponse = 0;
 api.GoogleCloudApigeeV1ListAppsResponse
     buildGoogleCloudApigeeV1ListAppsResponse() {
-  var o = api.GoogleCloudApigeeV1ListAppsResponse();
+  final o = api.GoogleCloudApigeeV1ListAppsResponse();
   buildCounterGoogleCloudApigeeV1ListAppsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListAppsResponse < 3) {
     o.app = buildUnnamed6463();
@@ -4760,7 +4687,7 @@ void checkGoogleCloudApigeeV1ListAppsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1AsyncQuery> buildUnnamed6464() {
-  var o = <api.GoogleCloudApigeeV1AsyncQuery>[];
+  final o = <api.GoogleCloudApigeeV1AsyncQuery>[];
   o.add(buildGoogleCloudApigeeV1AsyncQuery());
   o.add(buildGoogleCloudApigeeV1AsyncQuery());
   return o;
@@ -4768,14 +4695,14 @@ core.List<api.GoogleCloudApigeeV1AsyncQuery> buildUnnamed6464() {
 
 void checkUnnamed6464(core.List<api.GoogleCloudApigeeV1AsyncQuery> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1AsyncQuery(o[0] as api.GoogleCloudApigeeV1AsyncQuery);
-  checkGoogleCloudApigeeV1AsyncQuery(o[1] as api.GoogleCloudApigeeV1AsyncQuery);
+  checkGoogleCloudApigeeV1AsyncQuery(o[0]);
+  checkGoogleCloudApigeeV1AsyncQuery(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse = 0;
 api.GoogleCloudApigeeV1ListAsyncQueriesResponse
     buildGoogleCloudApigeeV1ListAsyncQueriesResponse() {
-  var o = api.GoogleCloudApigeeV1ListAsyncQueriesResponse();
+  final o = api.GoogleCloudApigeeV1ListAsyncQueriesResponse();
   buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListAsyncQueriesResponse < 3) {
     o.queries = buildUnnamed6464();
@@ -4794,7 +4721,7 @@ void checkGoogleCloudApigeeV1ListAsyncQueriesResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1CustomReport> buildUnnamed6465() {
-  var o = <api.GoogleCloudApigeeV1CustomReport>[];
+  final o = <api.GoogleCloudApigeeV1CustomReport>[];
   o.add(buildGoogleCloudApigeeV1CustomReport());
   o.add(buildGoogleCloudApigeeV1CustomReport());
   return o;
@@ -4802,16 +4729,14 @@ core.List<api.GoogleCloudApigeeV1CustomReport> buildUnnamed6465() {
 
 void checkUnnamed6465(core.List<api.GoogleCloudApigeeV1CustomReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1CustomReport(
-      o[0] as api.GoogleCloudApigeeV1CustomReport);
-  checkGoogleCloudApigeeV1CustomReport(
-      o[1] as api.GoogleCloudApigeeV1CustomReport);
+  checkGoogleCloudApigeeV1CustomReport(o[0]);
+  checkGoogleCloudApigeeV1CustomReport(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListCustomReportsResponse = 0;
 api.GoogleCloudApigeeV1ListCustomReportsResponse
     buildGoogleCloudApigeeV1ListCustomReportsResponse() {
-  var o = api.GoogleCloudApigeeV1ListCustomReportsResponse();
+  final o = api.GoogleCloudApigeeV1ListCustomReportsResponse();
   buildCounterGoogleCloudApigeeV1ListCustomReportsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListCustomReportsResponse < 3) {
     o.qualifier = buildUnnamed6465();
@@ -4830,7 +4755,7 @@ void checkGoogleCloudApigeeV1ListCustomReportsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1DataCollector> buildUnnamed6466() {
-  var o = <api.GoogleCloudApigeeV1DataCollector>[];
+  final o = <api.GoogleCloudApigeeV1DataCollector>[];
   o.add(buildGoogleCloudApigeeV1DataCollector());
   o.add(buildGoogleCloudApigeeV1DataCollector());
   return o;
@@ -4838,16 +4763,14 @@ core.List<api.GoogleCloudApigeeV1DataCollector> buildUnnamed6466() {
 
 void checkUnnamed6466(core.List<api.GoogleCloudApigeeV1DataCollector> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DataCollector(
-      o[0] as api.GoogleCloudApigeeV1DataCollector);
-  checkGoogleCloudApigeeV1DataCollector(
-      o[1] as api.GoogleCloudApigeeV1DataCollector);
+  checkGoogleCloudApigeeV1DataCollector(o[0]);
+  checkGoogleCloudApigeeV1DataCollector(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse = 0;
 api.GoogleCloudApigeeV1ListDataCollectorsResponse
     buildGoogleCloudApigeeV1ListDataCollectorsResponse() {
-  var o = api.GoogleCloudApigeeV1ListDataCollectorsResponse();
+  final o = api.GoogleCloudApigeeV1ListDataCollectorsResponse();
   buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDataCollectorsResponse < 3) {
     o.dataCollectors = buildUnnamed6466();
@@ -4871,7 +4794,7 @@ void checkGoogleCloudApigeeV1ListDataCollectorsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1Datastore> buildUnnamed6467() {
-  var o = <api.GoogleCloudApigeeV1Datastore>[];
+  final o = <api.GoogleCloudApigeeV1Datastore>[];
   o.add(buildGoogleCloudApigeeV1Datastore());
   o.add(buildGoogleCloudApigeeV1Datastore());
   return o;
@@ -4879,14 +4802,14 @@ core.List<api.GoogleCloudApigeeV1Datastore> buildUnnamed6467() {
 
 void checkUnnamed6467(core.List<api.GoogleCloudApigeeV1Datastore> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Datastore(o[0] as api.GoogleCloudApigeeV1Datastore);
-  checkGoogleCloudApigeeV1Datastore(o[1] as api.GoogleCloudApigeeV1Datastore);
+  checkGoogleCloudApigeeV1Datastore(o[0]);
+  checkGoogleCloudApigeeV1Datastore(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListDatastoresResponse = 0;
 api.GoogleCloudApigeeV1ListDatastoresResponse
     buildGoogleCloudApigeeV1ListDatastoresResponse() {
-  var o = api.GoogleCloudApigeeV1ListDatastoresResponse();
+  final o = api.GoogleCloudApigeeV1ListDatastoresResponse();
   buildCounterGoogleCloudApigeeV1ListDatastoresResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDatastoresResponse < 3) {
     o.datastores = buildUnnamed6467();
@@ -4905,7 +4828,7 @@ void checkGoogleCloudApigeeV1ListDatastoresResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1Session> buildUnnamed6468() {
-  var o = <api.GoogleCloudApigeeV1Session>[];
+  final o = <api.GoogleCloudApigeeV1Session>[];
   o.add(buildGoogleCloudApigeeV1Session());
   o.add(buildGoogleCloudApigeeV1Session());
   return o;
@@ -4913,14 +4836,14 @@ core.List<api.GoogleCloudApigeeV1Session> buildUnnamed6468() {
 
 void checkUnnamed6468(core.List<api.GoogleCloudApigeeV1Session> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Session(o[0] as api.GoogleCloudApigeeV1Session);
-  checkGoogleCloudApigeeV1Session(o[1] as api.GoogleCloudApigeeV1Session);
+  checkGoogleCloudApigeeV1Session(o[0]);
+  checkGoogleCloudApigeeV1Session(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse = 0;
 api.GoogleCloudApigeeV1ListDebugSessionsResponse
     buildGoogleCloudApigeeV1ListDebugSessionsResponse() {
-  var o = api.GoogleCloudApigeeV1ListDebugSessionsResponse();
+  final o = api.GoogleCloudApigeeV1ListDebugSessionsResponse();
   buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDebugSessionsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -4944,7 +4867,7 @@ void checkGoogleCloudApigeeV1ListDebugSessionsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1Deployment> buildUnnamed6469() {
-  var o = <api.GoogleCloudApigeeV1Deployment>[];
+  final o = <api.GoogleCloudApigeeV1Deployment>[];
   o.add(buildGoogleCloudApigeeV1Deployment());
   o.add(buildGoogleCloudApigeeV1Deployment());
   return o;
@@ -4952,14 +4875,14 @@ core.List<api.GoogleCloudApigeeV1Deployment> buildUnnamed6469() {
 
 void checkUnnamed6469(core.List<api.GoogleCloudApigeeV1Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Deployment(o[0] as api.GoogleCloudApigeeV1Deployment);
-  checkGoogleCloudApigeeV1Deployment(o[1] as api.GoogleCloudApigeeV1Deployment);
+  checkGoogleCloudApigeeV1Deployment(o[0]);
+  checkGoogleCloudApigeeV1Deployment(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListDeploymentsResponse = 0;
 api.GoogleCloudApigeeV1ListDeploymentsResponse
     buildGoogleCloudApigeeV1ListDeploymentsResponse() {
-  var o = api.GoogleCloudApigeeV1ListDeploymentsResponse();
+  final o = api.GoogleCloudApigeeV1ListDeploymentsResponse();
   buildCounterGoogleCloudApigeeV1ListDeploymentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeploymentsResponse < 3) {
     o.deployments = buildUnnamed6469();
@@ -4978,7 +4901,7 @@ void checkGoogleCloudApigeeV1ListDeploymentsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1DeveloperApp> buildUnnamed6470() {
-  var o = <api.GoogleCloudApigeeV1DeveloperApp>[];
+  final o = <api.GoogleCloudApigeeV1DeveloperApp>[];
   o.add(buildGoogleCloudApigeeV1DeveloperApp());
   o.add(buildGoogleCloudApigeeV1DeveloperApp());
   return o;
@@ -4986,16 +4909,14 @@ core.List<api.GoogleCloudApigeeV1DeveloperApp> buildUnnamed6470() {
 
 void checkUnnamed6470(core.List<api.GoogleCloudApigeeV1DeveloperApp> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DeveloperApp(
-      o[0] as api.GoogleCloudApigeeV1DeveloperApp);
-  checkGoogleCloudApigeeV1DeveloperApp(
-      o[1] as api.GoogleCloudApigeeV1DeveloperApp);
+  checkGoogleCloudApigeeV1DeveloperApp(o[0]);
+  checkGoogleCloudApigeeV1DeveloperApp(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse = 0;
 api.GoogleCloudApigeeV1ListDeveloperAppsResponse
     buildGoogleCloudApigeeV1ListDeveloperAppsResponse() {
-  var o = api.GoogleCloudApigeeV1ListDeveloperAppsResponse();
+  final o = api.GoogleCloudApigeeV1ListDeveloperAppsResponse();
   buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeveloperAppsResponse < 3) {
     o.app = buildUnnamed6470();
@@ -5014,7 +4935,7 @@ void checkGoogleCloudApigeeV1ListDeveloperAppsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1DeveloperSubscription> buildUnnamed6471() {
-  var o = <api.GoogleCloudApigeeV1DeveloperSubscription>[];
+  final o = <api.GoogleCloudApigeeV1DeveloperSubscription>[];
   o.add(buildGoogleCloudApigeeV1DeveloperSubscription());
   o.add(buildGoogleCloudApigeeV1DeveloperSubscription());
   return o;
@@ -5023,16 +4944,14 @@ core.List<api.GoogleCloudApigeeV1DeveloperSubscription> buildUnnamed6471() {
 void checkUnnamed6471(
     core.List<api.GoogleCloudApigeeV1DeveloperSubscription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DeveloperSubscription(
-      o[0] as api.GoogleCloudApigeeV1DeveloperSubscription);
-  checkGoogleCloudApigeeV1DeveloperSubscription(
-      o[1] as api.GoogleCloudApigeeV1DeveloperSubscription);
+  checkGoogleCloudApigeeV1DeveloperSubscription(o[0]);
+  checkGoogleCloudApigeeV1DeveloperSubscription(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse = 0;
 api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse
     buildGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse() {
-  var o = api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse();
+  final o = api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse();
   buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse < 3) {
     o.developerSubscriptions = buildUnnamed6471();
@@ -5057,7 +4976,7 @@ void checkGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse(
 
 core.List<api.GoogleCloudApigeeV1EnvironmentGroupAttachment>
     buildUnnamed6472() {
-  var o = <api.GoogleCloudApigeeV1EnvironmentGroupAttachment>[];
+  final o = <api.GoogleCloudApigeeV1EnvironmentGroupAttachment>[];
   o.add(buildGoogleCloudApigeeV1EnvironmentGroupAttachment());
   o.add(buildGoogleCloudApigeeV1EnvironmentGroupAttachment());
   return o;
@@ -5066,17 +4985,15 @@ core.List<api.GoogleCloudApigeeV1EnvironmentGroupAttachment>
 void checkUnnamed6472(
     core.List<api.GoogleCloudApigeeV1EnvironmentGroupAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
-      o[0] as api.GoogleCloudApigeeV1EnvironmentGroupAttachment);
-  checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
-      o[1] as api.GoogleCloudApigeeV1EnvironmentGroupAttachment);
+  checkGoogleCloudApigeeV1EnvironmentGroupAttachment(o[0]);
+  checkGoogleCloudApigeeV1EnvironmentGroupAttachment(o[1]);
 }
 
 core.int
     buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse = 0;
 api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
     buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse() {
-  var o = api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
+  final o = api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse <
       3) {
@@ -5102,7 +5019,7 @@ void checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1EnvironmentGroup> buildUnnamed6473() {
-  var o = <api.GoogleCloudApigeeV1EnvironmentGroup>[];
+  final o = <api.GoogleCloudApigeeV1EnvironmentGroup>[];
   o.add(buildGoogleCloudApigeeV1EnvironmentGroup());
   o.add(buildGoogleCloudApigeeV1EnvironmentGroup());
   return o;
@@ -5110,16 +5027,14 @@ core.List<api.GoogleCloudApigeeV1EnvironmentGroup> buildUnnamed6473() {
 
 void checkUnnamed6473(core.List<api.GoogleCloudApigeeV1EnvironmentGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1EnvironmentGroup(
-      o[0] as api.GoogleCloudApigeeV1EnvironmentGroup);
-  checkGoogleCloudApigeeV1EnvironmentGroup(
-      o[1] as api.GoogleCloudApigeeV1EnvironmentGroup);
+  checkGoogleCloudApigeeV1EnvironmentGroup(o[0]);
+  checkGoogleCloudApigeeV1EnvironmentGroup(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse = 0;
 api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse
     buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse() {
-  var o = api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse();
+  final o = api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse();
   buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentGroupsResponse < 3) {
     o.environmentGroups = buildUnnamed6473();
@@ -5143,7 +5058,7 @@ void checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1ResourceFile> buildUnnamed6474() {
-  var o = <api.GoogleCloudApigeeV1ResourceFile>[];
+  final o = <api.GoogleCloudApigeeV1ResourceFile>[];
   o.add(buildGoogleCloudApigeeV1ResourceFile());
   o.add(buildGoogleCloudApigeeV1ResourceFile());
   return o;
@@ -5151,16 +5066,14 @@ core.List<api.GoogleCloudApigeeV1ResourceFile> buildUnnamed6474() {
 
 void checkUnnamed6474(core.List<api.GoogleCloudApigeeV1ResourceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ResourceFile(
-      o[0] as api.GoogleCloudApigeeV1ResourceFile);
-  checkGoogleCloudApigeeV1ResourceFile(
-      o[1] as api.GoogleCloudApigeeV1ResourceFile);
+  checkGoogleCloudApigeeV1ResourceFile(o[0]);
+  checkGoogleCloudApigeeV1ResourceFile(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse = 0;
 api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse
     buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse() {
-  var o = api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse();
+  final o = api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse();
   buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListEnvironmentResourcesResponse < 3) {
     o.resourceFile = buildUnnamed6474();
@@ -5179,7 +5092,7 @@ void checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1Export> buildUnnamed6475() {
-  var o = <api.GoogleCloudApigeeV1Export>[];
+  final o = <api.GoogleCloudApigeeV1Export>[];
   o.add(buildGoogleCloudApigeeV1Export());
   o.add(buildGoogleCloudApigeeV1Export());
   return o;
@@ -5187,14 +5100,14 @@ core.List<api.GoogleCloudApigeeV1Export> buildUnnamed6475() {
 
 void checkUnnamed6475(core.List<api.GoogleCloudApigeeV1Export> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Export(o[0] as api.GoogleCloudApigeeV1Export);
-  checkGoogleCloudApigeeV1Export(o[1] as api.GoogleCloudApigeeV1Export);
+  checkGoogleCloudApigeeV1Export(o[0]);
+  checkGoogleCloudApigeeV1Export(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListExportsResponse = 0;
 api.GoogleCloudApigeeV1ListExportsResponse
     buildGoogleCloudApigeeV1ListExportsResponse() {
-  var o = api.GoogleCloudApigeeV1ListExportsResponse();
+  final o = api.GoogleCloudApigeeV1ListExportsResponse();
   buildCounterGoogleCloudApigeeV1ListExportsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListExportsResponse < 3) {
     o.exports = buildUnnamed6475();
@@ -5213,7 +5126,7 @@ void checkGoogleCloudApigeeV1ListExportsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1ServiceIssuersMapping> buildUnnamed6476() {
-  var o = <api.GoogleCloudApigeeV1ServiceIssuersMapping>[];
+  final o = <api.GoogleCloudApigeeV1ServiceIssuersMapping>[];
   o.add(buildGoogleCloudApigeeV1ServiceIssuersMapping());
   o.add(buildGoogleCloudApigeeV1ServiceIssuersMapping());
   return o;
@@ -5222,16 +5135,14 @@ core.List<api.GoogleCloudApigeeV1ServiceIssuersMapping> buildUnnamed6476() {
 void checkUnnamed6476(
     core.List<api.GoogleCloudApigeeV1ServiceIssuersMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ServiceIssuersMapping(
-      o[0] as api.GoogleCloudApigeeV1ServiceIssuersMapping);
-  checkGoogleCloudApigeeV1ServiceIssuersMapping(
-      o[1] as api.GoogleCloudApigeeV1ServiceIssuersMapping);
+  checkGoogleCloudApigeeV1ServiceIssuersMapping(o[0]);
+  checkGoogleCloudApigeeV1ServiceIssuersMapping(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse = 0;
 api.GoogleCloudApigeeV1ListHybridIssuersResponse
     buildGoogleCloudApigeeV1ListHybridIssuersResponse() {
-  var o = api.GoogleCloudApigeeV1ListHybridIssuersResponse();
+  final o = api.GoogleCloudApigeeV1ListHybridIssuersResponse();
   buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse++;
   if (buildCounterGoogleCloudApigeeV1ListHybridIssuersResponse < 3) {
     o.issuers = buildUnnamed6476();
@@ -5250,7 +5161,7 @@ void checkGoogleCloudApigeeV1ListHybridIssuersResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1InstanceAttachment> buildUnnamed6477() {
-  var o = <api.GoogleCloudApigeeV1InstanceAttachment>[];
+  final o = <api.GoogleCloudApigeeV1InstanceAttachment>[];
   o.add(buildGoogleCloudApigeeV1InstanceAttachment());
   o.add(buildGoogleCloudApigeeV1InstanceAttachment());
   return o;
@@ -5258,16 +5169,14 @@ core.List<api.GoogleCloudApigeeV1InstanceAttachment> buildUnnamed6477() {
 
 void checkUnnamed6477(core.List<api.GoogleCloudApigeeV1InstanceAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1InstanceAttachment(
-      o[0] as api.GoogleCloudApigeeV1InstanceAttachment);
-  checkGoogleCloudApigeeV1InstanceAttachment(
-      o[1] as api.GoogleCloudApigeeV1InstanceAttachment);
+  checkGoogleCloudApigeeV1InstanceAttachment(o[0]);
+  checkGoogleCloudApigeeV1InstanceAttachment(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse = 0;
 api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse
     buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse() {
-  var o = api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse();
+  final o = api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse();
   buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListInstanceAttachmentsResponse < 3) {
     o.attachments = buildUnnamed6477();
@@ -5291,7 +5200,7 @@ void checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1Instance> buildUnnamed6478() {
-  var o = <api.GoogleCloudApigeeV1Instance>[];
+  final o = <api.GoogleCloudApigeeV1Instance>[];
   o.add(buildGoogleCloudApigeeV1Instance());
   o.add(buildGoogleCloudApigeeV1Instance());
   return o;
@@ -5299,14 +5208,14 @@ core.List<api.GoogleCloudApigeeV1Instance> buildUnnamed6478() {
 
 void checkUnnamed6478(core.List<api.GoogleCloudApigeeV1Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Instance(o[0] as api.GoogleCloudApigeeV1Instance);
-  checkGoogleCloudApigeeV1Instance(o[1] as api.GoogleCloudApigeeV1Instance);
+  checkGoogleCloudApigeeV1Instance(o[0]);
+  checkGoogleCloudApigeeV1Instance(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListInstancesResponse = 0;
 api.GoogleCloudApigeeV1ListInstancesResponse
     buildGoogleCloudApigeeV1ListInstancesResponse() {
-  var o = api.GoogleCloudApigeeV1ListInstancesResponse();
+  final o = api.GoogleCloudApigeeV1ListInstancesResponse();
   buildCounterGoogleCloudApigeeV1ListInstancesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListInstancesResponse < 3) {
     o.instances = buildUnnamed6478();
@@ -5330,7 +5239,7 @@ void checkGoogleCloudApigeeV1ListInstancesResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1NatAddress> buildUnnamed6479() {
-  var o = <api.GoogleCloudApigeeV1NatAddress>[];
+  final o = <api.GoogleCloudApigeeV1NatAddress>[];
   o.add(buildGoogleCloudApigeeV1NatAddress());
   o.add(buildGoogleCloudApigeeV1NatAddress());
   return o;
@@ -5338,14 +5247,14 @@ core.List<api.GoogleCloudApigeeV1NatAddress> buildUnnamed6479() {
 
 void checkUnnamed6479(core.List<api.GoogleCloudApigeeV1NatAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1NatAddress(o[0] as api.GoogleCloudApigeeV1NatAddress);
-  checkGoogleCloudApigeeV1NatAddress(o[1] as api.GoogleCloudApigeeV1NatAddress);
+  checkGoogleCloudApigeeV1NatAddress(o[0]);
+  checkGoogleCloudApigeeV1NatAddress(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListNatAddressesResponse = 0;
 api.GoogleCloudApigeeV1ListNatAddressesResponse
     buildGoogleCloudApigeeV1ListNatAddressesResponse() {
-  var o = api.GoogleCloudApigeeV1ListNatAddressesResponse();
+  final o = api.GoogleCloudApigeeV1ListNatAddressesResponse();
   buildCounterGoogleCloudApigeeV1ListNatAddressesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListNatAddressesResponse < 3) {
     o.natAddresses = buildUnnamed6479();
@@ -5369,7 +5278,7 @@ void checkGoogleCloudApigeeV1ListNatAddressesResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1Developer> buildUnnamed6480() {
-  var o = <api.GoogleCloudApigeeV1Developer>[];
+  final o = <api.GoogleCloudApigeeV1Developer>[];
   o.add(buildGoogleCloudApigeeV1Developer());
   o.add(buildGoogleCloudApigeeV1Developer());
   return o;
@@ -5377,14 +5286,14 @@ core.List<api.GoogleCloudApigeeV1Developer> buildUnnamed6480() {
 
 void checkUnnamed6480(core.List<api.GoogleCloudApigeeV1Developer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Developer(o[0] as api.GoogleCloudApigeeV1Developer);
-  checkGoogleCloudApigeeV1Developer(o[1] as api.GoogleCloudApigeeV1Developer);
+  checkGoogleCloudApigeeV1Developer(o[0]);
+  checkGoogleCloudApigeeV1Developer(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse = 0;
 api.GoogleCloudApigeeV1ListOfDevelopersResponse
     buildGoogleCloudApigeeV1ListOfDevelopersResponse() {
-  var o = api.GoogleCloudApigeeV1ListOfDevelopersResponse();
+  final o = api.GoogleCloudApigeeV1ListOfDevelopersResponse();
   buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse++;
   if (buildCounterGoogleCloudApigeeV1ListOfDevelopersResponse < 3) {
     o.developer = buildUnnamed6480();
@@ -5404,7 +5313,7 @@ void checkGoogleCloudApigeeV1ListOfDevelopersResponse(
 
 core.List<api.GoogleCloudApigeeV1OrganizationProjectMapping>
     buildUnnamed6481() {
-  var o = <api.GoogleCloudApigeeV1OrganizationProjectMapping>[];
+  final o = <api.GoogleCloudApigeeV1OrganizationProjectMapping>[];
   o.add(buildGoogleCloudApigeeV1OrganizationProjectMapping());
   o.add(buildGoogleCloudApigeeV1OrganizationProjectMapping());
   return o;
@@ -5413,16 +5322,14 @@ core.List<api.GoogleCloudApigeeV1OrganizationProjectMapping>
 void checkUnnamed6481(
     core.List<api.GoogleCloudApigeeV1OrganizationProjectMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1OrganizationProjectMapping(
-      o[0] as api.GoogleCloudApigeeV1OrganizationProjectMapping);
-  checkGoogleCloudApigeeV1OrganizationProjectMapping(
-      o[1] as api.GoogleCloudApigeeV1OrganizationProjectMapping);
+  checkGoogleCloudApigeeV1OrganizationProjectMapping(o[0]);
+  checkGoogleCloudApigeeV1OrganizationProjectMapping(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListOrganizationsResponse = 0;
 api.GoogleCloudApigeeV1ListOrganizationsResponse
     buildGoogleCloudApigeeV1ListOrganizationsResponse() {
-  var o = api.GoogleCloudApigeeV1ListOrganizationsResponse();
+  final o = api.GoogleCloudApigeeV1ListOrganizationsResponse();
   buildCounterGoogleCloudApigeeV1ListOrganizationsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListOrganizationsResponse < 3) {
     o.organizations = buildUnnamed6481();
@@ -5441,7 +5348,7 @@ void checkGoogleCloudApigeeV1ListOrganizationsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1RatePlan> buildUnnamed6482() {
-  var o = <api.GoogleCloudApigeeV1RatePlan>[];
+  final o = <api.GoogleCloudApigeeV1RatePlan>[];
   o.add(buildGoogleCloudApigeeV1RatePlan());
   o.add(buildGoogleCloudApigeeV1RatePlan());
   return o;
@@ -5449,14 +5356,14 @@ core.List<api.GoogleCloudApigeeV1RatePlan> buildUnnamed6482() {
 
 void checkUnnamed6482(core.List<api.GoogleCloudApigeeV1RatePlan> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1RatePlan(o[0] as api.GoogleCloudApigeeV1RatePlan);
-  checkGoogleCloudApigeeV1RatePlan(o[1] as api.GoogleCloudApigeeV1RatePlan);
+  checkGoogleCloudApigeeV1RatePlan(o[0]);
+  checkGoogleCloudApigeeV1RatePlan(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListRatePlansResponse = 0;
 api.GoogleCloudApigeeV1ListRatePlansResponse
     buildGoogleCloudApigeeV1ListRatePlansResponse() {
-  var o = api.GoogleCloudApigeeV1ListRatePlansResponse();
+  final o = api.GoogleCloudApigeeV1ListRatePlansResponse();
   buildCounterGoogleCloudApigeeV1ListRatePlansResponse++;
   if (buildCounterGoogleCloudApigeeV1ListRatePlansResponse < 3) {
     o.nextStartKey = 'foo';
@@ -5480,7 +5387,7 @@ void checkGoogleCloudApigeeV1ListRatePlansResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1SharedFlow> buildUnnamed6483() {
-  var o = <api.GoogleCloudApigeeV1SharedFlow>[];
+  final o = <api.GoogleCloudApigeeV1SharedFlow>[];
   o.add(buildGoogleCloudApigeeV1SharedFlow());
   o.add(buildGoogleCloudApigeeV1SharedFlow());
   return o;
@@ -5488,14 +5395,14 @@ core.List<api.GoogleCloudApigeeV1SharedFlow> buildUnnamed6483() {
 
 void checkUnnamed6483(core.List<api.GoogleCloudApigeeV1SharedFlow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1SharedFlow(o[0] as api.GoogleCloudApigeeV1SharedFlow);
-  checkGoogleCloudApigeeV1SharedFlow(o[1] as api.GoogleCloudApigeeV1SharedFlow);
+  checkGoogleCloudApigeeV1SharedFlow(o[0]);
+  checkGoogleCloudApigeeV1SharedFlow(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse = 0;
 api.GoogleCloudApigeeV1ListSharedFlowsResponse
     buildGoogleCloudApigeeV1ListSharedFlowsResponse() {
-  var o = api.GoogleCloudApigeeV1ListSharedFlowsResponse();
+  final o = api.GoogleCloudApigeeV1ListSharedFlowsResponse();
   buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse++;
   if (buildCounterGoogleCloudApigeeV1ListSharedFlowsResponse < 3) {
     o.sharedFlows = buildUnnamed6483();
@@ -5514,7 +5421,7 @@ void checkGoogleCloudApigeeV1ListSharedFlowsResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1TraceConfigOverride> buildUnnamed6484() {
-  var o = <api.GoogleCloudApigeeV1TraceConfigOverride>[];
+  final o = <api.GoogleCloudApigeeV1TraceConfigOverride>[];
   o.add(buildGoogleCloudApigeeV1TraceConfigOverride());
   o.add(buildGoogleCloudApigeeV1TraceConfigOverride());
   return o;
@@ -5522,16 +5429,14 @@ core.List<api.GoogleCloudApigeeV1TraceConfigOverride> buildUnnamed6484() {
 
 void checkUnnamed6484(core.List<api.GoogleCloudApigeeV1TraceConfigOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1TraceConfigOverride(
-      o[0] as api.GoogleCloudApigeeV1TraceConfigOverride);
-  checkGoogleCloudApigeeV1TraceConfigOverride(
-      o[1] as api.GoogleCloudApigeeV1TraceConfigOverride);
+  checkGoogleCloudApigeeV1TraceConfigOverride(o[0]);
+  checkGoogleCloudApigeeV1TraceConfigOverride(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListTraceConfigOverridesResponse = 0;
 api.GoogleCloudApigeeV1ListTraceConfigOverridesResponse
     buildGoogleCloudApigeeV1ListTraceConfigOverridesResponse() {
-  var o = api.GoogleCloudApigeeV1ListTraceConfigOverridesResponse();
+  final o = api.GoogleCloudApigeeV1ListTraceConfigOverridesResponse();
   buildCounterGoogleCloudApigeeV1ListTraceConfigOverridesResponse++;
   if (buildCounterGoogleCloudApigeeV1ListTraceConfigOverridesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -5555,7 +5460,7 @@ void checkGoogleCloudApigeeV1ListTraceConfigOverridesResponse(
 }
 
 core.List<core.String> buildUnnamed6485() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5574,7 +5479,7 @@ void checkUnnamed6485(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6486() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5594,7 +5499,7 @@ void checkUnnamed6486(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1Metadata = 0;
 api.GoogleCloudApigeeV1Metadata buildGoogleCloudApigeeV1Metadata() {
-  var o = api.GoogleCloudApigeeV1Metadata();
+  final o = api.GoogleCloudApigeeV1Metadata();
   buildCounterGoogleCloudApigeeV1Metadata++;
   if (buildCounterGoogleCloudApigeeV1Metadata < 3) {
     o.errors = buildUnnamed6485();
@@ -5614,7 +5519,7 @@ void checkGoogleCloudApigeeV1Metadata(api.GoogleCloudApigeeV1Metadata o) {
 }
 
 core.List<core.Object> buildUnnamed6487() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -5662,7 +5567,7 @@ void checkUnnamed6487(core.List<core.Object> o) {
 
 core.int buildCounterGoogleCloudApigeeV1Metric = 0;
 api.GoogleCloudApigeeV1Metric buildGoogleCloudApigeeV1Metric() {
-  var o = api.GoogleCloudApigeeV1Metric();
+  final o = api.GoogleCloudApigeeV1Metric();
   buildCounterGoogleCloudApigeeV1Metric++;
   if (buildCounterGoogleCloudApigeeV1Metric < 3) {
     o.name = 'foo';
@@ -5687,7 +5592,7 @@ void checkGoogleCloudApigeeV1Metric(api.GoogleCloudApigeeV1Metric o) {
 core.int buildCounterGoogleCloudApigeeV1MonetizationConfig = 0;
 api.GoogleCloudApigeeV1MonetizationConfig
     buildGoogleCloudApigeeV1MonetizationConfig() {
-  var o = api.GoogleCloudApigeeV1MonetizationConfig();
+  final o = api.GoogleCloudApigeeV1MonetizationConfig();
   buildCounterGoogleCloudApigeeV1MonetizationConfig++;
   if (buildCounterGoogleCloudApigeeV1MonetizationConfig < 3) {
     o.enabled = true;
@@ -5707,7 +5612,7 @@ void checkGoogleCloudApigeeV1MonetizationConfig(
 
 core.int buildCounterGoogleCloudApigeeV1NatAddress = 0;
 api.GoogleCloudApigeeV1NatAddress buildGoogleCloudApigeeV1NatAddress() {
-  var o = api.GoogleCloudApigeeV1NatAddress();
+  final o = api.GoogleCloudApigeeV1NatAddress();
   buildCounterGoogleCloudApigeeV1NatAddress++;
   if (buildCounterGoogleCloudApigeeV1NatAddress < 3) {
     o.ipAddress = 'foo';
@@ -5738,7 +5643,7 @@ void checkGoogleCloudApigeeV1NatAddress(api.GoogleCloudApigeeV1NatAddress o) {
 }
 
 core.List<core.String> buildUnnamed6488() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5758,7 +5663,7 @@ void checkUnnamed6488(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1Operation = 0;
 api.GoogleCloudApigeeV1Operation buildGoogleCloudApigeeV1Operation() {
-  var o = api.GoogleCloudApigeeV1Operation();
+  final o = api.GoogleCloudApigeeV1Operation();
   buildCounterGoogleCloudApigeeV1Operation++;
   if (buildCounterGoogleCloudApigeeV1Operation < 3) {
     o.methods = buildUnnamed6488();
@@ -5781,7 +5686,7 @@ void checkGoogleCloudApigeeV1Operation(api.GoogleCloudApigeeV1Operation o) {
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6489() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -5789,12 +5694,12 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6489() {
 
 void checkUnnamed6489(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1Operation> buildUnnamed6490() {
-  var o = <api.GoogleCloudApigeeV1Operation>[];
+  final o = <api.GoogleCloudApigeeV1Operation>[];
   o.add(buildGoogleCloudApigeeV1Operation());
   o.add(buildGoogleCloudApigeeV1Operation());
   return o;
@@ -5802,14 +5707,14 @@ core.List<api.GoogleCloudApigeeV1Operation> buildUnnamed6490() {
 
 void checkUnnamed6490(core.List<api.GoogleCloudApigeeV1Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Operation(o[0] as api.GoogleCloudApigeeV1Operation);
-  checkGoogleCloudApigeeV1Operation(o[1] as api.GoogleCloudApigeeV1Operation);
+  checkGoogleCloudApigeeV1Operation(o[0]);
+  checkGoogleCloudApigeeV1Operation(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1OperationConfig = 0;
 api.GoogleCloudApigeeV1OperationConfig
     buildGoogleCloudApigeeV1OperationConfig() {
-  var o = api.GoogleCloudApigeeV1OperationConfig();
+  final o = api.GoogleCloudApigeeV1OperationConfig();
   buildCounterGoogleCloudApigeeV1OperationConfig++;
   if (buildCounterGoogleCloudApigeeV1OperationConfig < 3) {
     o.apiSource = 'foo';
@@ -5831,13 +5736,13 @@ void checkGoogleCloudApigeeV1OperationConfig(
     );
     checkUnnamed6489(o.attributes!);
     checkUnnamed6490(o.operations!);
-    checkGoogleCloudApigeeV1Quota(o.quota! as api.GoogleCloudApigeeV1Quota);
+    checkGoogleCloudApigeeV1Quota(o.quota!);
   }
   buildCounterGoogleCloudApigeeV1OperationConfig--;
 }
 
 core.List<api.GoogleCloudApigeeV1OperationConfig> buildUnnamed6491() {
-  var o = <api.GoogleCloudApigeeV1OperationConfig>[];
+  final o = <api.GoogleCloudApigeeV1OperationConfig>[];
   o.add(buildGoogleCloudApigeeV1OperationConfig());
   o.add(buildGoogleCloudApigeeV1OperationConfig());
   return o;
@@ -5845,15 +5750,13 @@ core.List<api.GoogleCloudApigeeV1OperationConfig> buildUnnamed6491() {
 
 void checkUnnamed6491(core.List<api.GoogleCloudApigeeV1OperationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1OperationConfig(
-      o[0] as api.GoogleCloudApigeeV1OperationConfig);
-  checkGoogleCloudApigeeV1OperationConfig(
-      o[1] as api.GoogleCloudApigeeV1OperationConfig);
+  checkGoogleCloudApigeeV1OperationConfig(o[0]);
+  checkGoogleCloudApigeeV1OperationConfig(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1OperationGroup = 0;
 api.GoogleCloudApigeeV1OperationGroup buildGoogleCloudApigeeV1OperationGroup() {
-  var o = api.GoogleCloudApigeeV1OperationGroup();
+  final o = api.GoogleCloudApigeeV1OperationGroup();
   buildCounterGoogleCloudApigeeV1OperationGroup++;
   if (buildCounterGoogleCloudApigeeV1OperationGroup < 3) {
     o.operationConfigType = 'foo';
@@ -5879,7 +5782,7 @@ void checkGoogleCloudApigeeV1OperationGroup(
 core.int buildCounterGoogleCloudApigeeV1OperationMetadata = 0;
 api.GoogleCloudApigeeV1OperationMetadata
     buildGoogleCloudApigeeV1OperationMetadata() {
-  var o = api.GoogleCloudApigeeV1OperationMetadata();
+  final o = api.GoogleCloudApigeeV1OperationMetadata();
   buildCounterGoogleCloudApigeeV1OperationMetadata++;
   if (buildCounterGoogleCloudApigeeV1OperationMetadata < 3) {
     o.operationType = 'foo';
@@ -5899,8 +5802,7 @@ void checkGoogleCloudApigeeV1OperationMetadata(
       o.operationType!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1OperationMetadataProgress(
-        o.progress! as api.GoogleCloudApigeeV1OperationMetadataProgress);
+    checkGoogleCloudApigeeV1OperationMetadataProgress(o.progress!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -5914,7 +5816,7 @@ void checkGoogleCloudApigeeV1OperationMetadata(
 }
 
 core.Map<core.String, core.Object> buildUnnamed6492() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -5963,7 +5865,7 @@ void checkUnnamed6492(core.Map<core.String, core.Object> o) {
 core.int buildCounterGoogleCloudApigeeV1OperationMetadataProgress = 0;
 api.GoogleCloudApigeeV1OperationMetadataProgress
     buildGoogleCloudApigeeV1OperationMetadataProgress() {
-  var o = api.GoogleCloudApigeeV1OperationMetadataProgress();
+  final o = api.GoogleCloudApigeeV1OperationMetadataProgress();
   buildCounterGoogleCloudApigeeV1OperationMetadataProgress++;
   if (buildCounterGoogleCloudApigeeV1OperationMetadataProgress < 3) {
     o.description = 'foo';
@@ -5998,7 +5900,7 @@ void checkGoogleCloudApigeeV1OperationMetadataProgress(
 
 core.int buildCounterGoogleCloudApigeeV1OptimizedStats = 0;
 api.GoogleCloudApigeeV1OptimizedStats buildGoogleCloudApigeeV1OptimizedStats() {
-  var o = api.GoogleCloudApigeeV1OptimizedStats();
+  final o = api.GoogleCloudApigeeV1OptimizedStats();
   buildCounterGoogleCloudApigeeV1OptimizedStats++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStats < 3) {
     o.Response = buildGoogleCloudApigeeV1OptimizedStatsResponse();
@@ -6011,14 +5913,13 @@ void checkGoogleCloudApigeeV1OptimizedStats(
     api.GoogleCloudApigeeV1OptimizedStats o) {
   buildCounterGoogleCloudApigeeV1OptimizedStats++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStats < 3) {
-    checkGoogleCloudApigeeV1OptimizedStatsResponse(
-        o.Response! as api.GoogleCloudApigeeV1OptimizedStatsResponse);
+    checkGoogleCloudApigeeV1OptimizedStatsResponse(o.Response!);
   }
   buildCounterGoogleCloudApigeeV1OptimizedStats--;
 }
 
 core.List<core.Object> buildUnnamed6493() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -6067,7 +5968,7 @@ void checkUnnamed6493(core.List<core.Object> o) {
 core.int buildCounterGoogleCloudApigeeV1OptimizedStatsNode = 0;
 api.GoogleCloudApigeeV1OptimizedStatsNode
     buildGoogleCloudApigeeV1OptimizedStatsNode() {
-  var o = api.GoogleCloudApigeeV1OptimizedStatsNode();
+  final o = api.GoogleCloudApigeeV1OptimizedStatsNode();
   buildCounterGoogleCloudApigeeV1OptimizedStatsNode++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStatsNode < 3) {
     o.data = buildUnnamed6493();
@@ -6086,7 +5987,7 @@ void checkGoogleCloudApigeeV1OptimizedStatsNode(
 }
 
 core.List<core.String> buildUnnamed6494() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -6107,7 +6008,7 @@ void checkUnnamed6494(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1OptimizedStatsResponse = 0;
 api.GoogleCloudApigeeV1OptimizedStatsResponse
     buildGoogleCloudApigeeV1OptimizedStatsResponse() {
-  var o = api.GoogleCloudApigeeV1OptimizedStatsResponse();
+  final o = api.GoogleCloudApigeeV1OptimizedStatsResponse();
   buildCounterGoogleCloudApigeeV1OptimizedStatsResponse++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStatsResponse < 3) {
     o.TimeUnit = buildUnnamed6494();
@@ -6124,17 +6025,15 @@ void checkGoogleCloudApigeeV1OptimizedStatsResponse(
   buildCounterGoogleCloudApigeeV1OptimizedStatsResponse++;
   if (buildCounterGoogleCloudApigeeV1OptimizedStatsResponse < 3) {
     checkUnnamed6494(o.TimeUnit!);
-    checkGoogleCloudApigeeV1Metadata(
-        o.metaData! as api.GoogleCloudApigeeV1Metadata);
+    checkGoogleCloudApigeeV1Metadata(o.metaData!);
     unittest.expect(o.resultTruncated!, unittest.isTrue);
-    checkGoogleCloudApigeeV1OptimizedStatsNode(
-        o.stats! as api.GoogleCloudApigeeV1OptimizedStatsNode);
+    checkGoogleCloudApigeeV1OptimizedStatsNode(o.stats!);
   }
   buildCounterGoogleCloudApigeeV1OptimizedStatsResponse--;
 }
 
 core.List<core.String> buildUnnamed6495() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -6153,7 +6052,7 @@ void checkUnnamed6495(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6496() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -6173,7 +6072,7 @@ void checkUnnamed6496(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1Organization = 0;
 api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
-  var o = api.GoogleCloudApigeeV1Organization();
+  final o = api.GoogleCloudApigeeV1Organization();
   buildCounterGoogleCloudApigeeV1Organization++;
   if (buildCounterGoogleCloudApigeeV1Organization < 3) {
     o.addonsConfig = buildGoogleCloudApigeeV1AddonsConfig();
@@ -6206,8 +6105,7 @@ void checkGoogleCloudApigeeV1Organization(
     api.GoogleCloudApigeeV1Organization o) {
   buildCounterGoogleCloudApigeeV1Organization++;
   if (buildCounterGoogleCloudApigeeV1Organization < 3) {
-    checkGoogleCloudApigeeV1AddonsConfig(
-        o.addonsConfig! as api.GoogleCloudApigeeV1AddonsConfig);
+    checkGoogleCloudApigeeV1AddonsConfig(o.addonsConfig!);
     unittest.expect(
       o.analyticsRegion!,
       unittest.equals('foo'),
@@ -6258,8 +6156,7 @@ void checkGoogleCloudApigeeV1Organization(
       o.projectId!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1Properties(
-        o.properties! as api.GoogleCloudApigeeV1Properties);
+    checkGoogleCloudApigeeV1Properties(o.properties!);
     unittest.expect(
       o.runtimeDatabaseEncryptionKeyName!,
       unittest.equals('foo'),
@@ -6285,7 +6182,7 @@ void checkGoogleCloudApigeeV1Organization(
 }
 
 core.List<core.String> buildUnnamed6497() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -6306,7 +6203,7 @@ void checkUnnamed6497(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1OrganizationProjectMapping = 0;
 api.GoogleCloudApigeeV1OrganizationProjectMapping
     buildGoogleCloudApigeeV1OrganizationProjectMapping() {
-  var o = api.GoogleCloudApigeeV1OrganizationProjectMapping();
+  final o = api.GoogleCloudApigeeV1OrganizationProjectMapping();
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping++;
   if (buildCounterGoogleCloudApigeeV1OrganizationProjectMapping < 3) {
     o.organization = 'foo';
@@ -6331,7 +6228,7 @@ void checkGoogleCloudApigeeV1OrganizationProjectMapping(
 
 core.int buildCounterGoogleCloudApigeeV1PodStatus = 0;
 api.GoogleCloudApigeeV1PodStatus buildGoogleCloudApigeeV1PodStatus() {
-  var o = api.GoogleCloudApigeeV1PodStatus();
+  final o = api.GoogleCloudApigeeV1PodStatus();
   buildCounterGoogleCloudApigeeV1PodStatus++;
   if (buildCounterGoogleCloudApigeeV1PodStatus < 3) {
     o.appVersion = 'foo';
@@ -6392,7 +6289,7 @@ void checkGoogleCloudApigeeV1PodStatus(api.GoogleCloudApigeeV1PodStatus o) {
 }
 
 core.List<api.GoogleCloudApigeeV1Result> buildUnnamed6498() {
-  var o = <api.GoogleCloudApigeeV1Result>[];
+  final o = <api.GoogleCloudApigeeV1Result>[];
   o.add(buildGoogleCloudApigeeV1Result());
   o.add(buildGoogleCloudApigeeV1Result());
   return o;
@@ -6400,13 +6297,13 @@ core.List<api.GoogleCloudApigeeV1Result> buildUnnamed6498() {
 
 void checkUnnamed6498(core.List<api.GoogleCloudApigeeV1Result> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Result(o[0] as api.GoogleCloudApigeeV1Result);
-  checkGoogleCloudApigeeV1Result(o[1] as api.GoogleCloudApigeeV1Result);
+  checkGoogleCloudApigeeV1Result(o[0]);
+  checkGoogleCloudApigeeV1Result(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Point = 0;
 api.GoogleCloudApigeeV1Point buildGoogleCloudApigeeV1Point() {
-  var o = api.GoogleCloudApigeeV1Point();
+  final o = api.GoogleCloudApigeeV1Point();
   buildCounterGoogleCloudApigeeV1Point++;
   if (buildCounterGoogleCloudApigeeV1Point < 3) {
     o.id = 'foo';
@@ -6429,7 +6326,7 @@ void checkGoogleCloudApigeeV1Point(api.GoogleCloudApigeeV1Point o) {
 }
 
 core.List<api.GoogleCloudApigeeV1Property> buildUnnamed6499() {
-  var o = <api.GoogleCloudApigeeV1Property>[];
+  final o = <api.GoogleCloudApigeeV1Property>[];
   o.add(buildGoogleCloudApigeeV1Property());
   o.add(buildGoogleCloudApigeeV1Property());
   return o;
@@ -6437,13 +6334,13 @@ core.List<api.GoogleCloudApigeeV1Property> buildUnnamed6499() {
 
 void checkUnnamed6499(core.List<api.GoogleCloudApigeeV1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Property(o[0] as api.GoogleCloudApigeeV1Property);
-  checkGoogleCloudApigeeV1Property(o[1] as api.GoogleCloudApigeeV1Property);
+  checkGoogleCloudApigeeV1Property(o[0]);
+  checkGoogleCloudApigeeV1Property(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Properties = 0;
 api.GoogleCloudApigeeV1Properties buildGoogleCloudApigeeV1Properties() {
-  var o = api.GoogleCloudApigeeV1Properties();
+  final o = api.GoogleCloudApigeeV1Properties();
   buildCounterGoogleCloudApigeeV1Properties++;
   if (buildCounterGoogleCloudApigeeV1Properties < 3) {
     o.property = buildUnnamed6499();
@@ -6462,7 +6359,7 @@ void checkGoogleCloudApigeeV1Properties(api.GoogleCloudApigeeV1Properties o) {
 
 core.int buildCounterGoogleCloudApigeeV1Property = 0;
 api.GoogleCloudApigeeV1Property buildGoogleCloudApigeeV1Property() {
-  var o = api.GoogleCloudApigeeV1Property();
+  final o = api.GoogleCloudApigeeV1Property();
   buildCounterGoogleCloudApigeeV1Property++;
   if (buildCounterGoogleCloudApigeeV1Property < 3) {
     o.name = 'foo';
@@ -6490,7 +6387,7 @@ void checkGoogleCloudApigeeV1Property(api.GoogleCloudApigeeV1Property o) {
 core.int buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest = 0;
 api.GoogleCloudApigeeV1ProvisionOrganizationRequest
     buildGoogleCloudApigeeV1ProvisionOrganizationRequest() {
-  var o = api.GoogleCloudApigeeV1ProvisionOrganizationRequest();
+  final o = api.GoogleCloudApigeeV1ProvisionOrganizationRequest();
   buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest++;
   if (buildCounterGoogleCloudApigeeV1ProvisionOrganizationRequest < 3) {
     o.analyticsRegion = 'foo';
@@ -6522,7 +6419,7 @@ void checkGoogleCloudApigeeV1ProvisionOrganizationRequest(
 }
 
 core.List<core.String> buildUnnamed6500() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -6541,7 +6438,7 @@ void checkUnnamed6500(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1QueryMetric> buildUnnamed6501() {
-  var o = <api.GoogleCloudApigeeV1QueryMetric>[];
+  final o = <api.GoogleCloudApigeeV1QueryMetric>[];
   o.add(buildGoogleCloudApigeeV1QueryMetric());
   o.add(buildGoogleCloudApigeeV1QueryMetric());
   return o;
@@ -6549,15 +6446,13 @@ core.List<api.GoogleCloudApigeeV1QueryMetric> buildUnnamed6501() {
 
 void checkUnnamed6501(core.List<api.GoogleCloudApigeeV1QueryMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1QueryMetric(
-      o[0] as api.GoogleCloudApigeeV1QueryMetric);
-  checkGoogleCloudApigeeV1QueryMetric(
-      o[1] as api.GoogleCloudApigeeV1QueryMetric);
+  checkGoogleCloudApigeeV1QueryMetric(o[0]);
+  checkGoogleCloudApigeeV1QueryMetric(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Query = 0;
 api.GoogleCloudApigeeV1Query buildGoogleCloudApigeeV1Query() {
-  var o = api.GoogleCloudApigeeV1Query();
+  final o = api.GoogleCloudApigeeV1Query();
   buildCounterGoogleCloudApigeeV1Query++;
   if (buildCounterGoogleCloudApigeeV1Query < 3) {
     o.csvDelimiter = 'foo';
@@ -6636,7 +6531,7 @@ void checkGoogleCloudApigeeV1Query(api.GoogleCloudApigeeV1Query o) {
 }
 
 core.List<core.String> buildUnnamed6502() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -6655,7 +6550,7 @@ void checkUnnamed6502(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6503() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -6675,7 +6570,7 @@ void checkUnnamed6503(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1QueryMetadata = 0;
 api.GoogleCloudApigeeV1QueryMetadata buildGoogleCloudApigeeV1QueryMetadata() {
-  var o = api.GoogleCloudApigeeV1QueryMetadata();
+  final o = api.GoogleCloudApigeeV1QueryMetadata();
   buildCounterGoogleCloudApigeeV1QueryMetadata++;
   if (buildCounterGoogleCloudApigeeV1QueryMetadata < 3) {
     o.dimensions = buildUnnamed6502();
@@ -6717,7 +6612,7 @@ void checkGoogleCloudApigeeV1QueryMetadata(
 
 core.int buildCounterGoogleCloudApigeeV1QueryMetric = 0;
 api.GoogleCloudApigeeV1QueryMetric buildGoogleCloudApigeeV1QueryMetric() {
-  var o = api.GoogleCloudApigeeV1QueryMetric();
+  final o = api.GoogleCloudApigeeV1QueryMetric();
   buildCounterGoogleCloudApigeeV1QueryMetric++;
   if (buildCounterGoogleCloudApigeeV1QueryMetric < 3) {
     o.alias = 'foo';
@@ -6759,7 +6654,7 @@ void checkGoogleCloudApigeeV1QueryMetric(api.GoogleCloudApigeeV1QueryMetric o) {
 
 core.int buildCounterGoogleCloudApigeeV1Quota = 0;
 api.GoogleCloudApigeeV1Quota buildGoogleCloudApigeeV1Quota() {
-  var o = api.GoogleCloudApigeeV1Quota();
+  final o = api.GoogleCloudApigeeV1Quota();
   buildCounterGoogleCloudApigeeV1Quota++;
   if (buildCounterGoogleCloudApigeeV1Quota < 3) {
     o.interval = 'foo';
@@ -6790,7 +6685,7 @@ void checkGoogleCloudApigeeV1Quota(api.GoogleCloudApigeeV1Quota o) {
 }
 
 core.List<api.GoogleCloudApigeeV1RateRange> buildUnnamed6504() {
-  var o = <api.GoogleCloudApigeeV1RateRange>[];
+  final o = <api.GoogleCloudApigeeV1RateRange>[];
   o.add(buildGoogleCloudApigeeV1RateRange());
   o.add(buildGoogleCloudApigeeV1RateRange());
   return o;
@@ -6798,12 +6693,12 @@ core.List<api.GoogleCloudApigeeV1RateRange> buildUnnamed6504() {
 
 void checkUnnamed6504(core.List<api.GoogleCloudApigeeV1RateRange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1RateRange(o[0] as api.GoogleCloudApigeeV1RateRange);
-  checkGoogleCloudApigeeV1RateRange(o[1] as api.GoogleCloudApigeeV1RateRange);
+  checkGoogleCloudApigeeV1RateRange(o[0]);
+  checkGoogleCloudApigeeV1RateRange(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1RevenueShareRange> buildUnnamed6505() {
-  var o = <api.GoogleCloudApigeeV1RevenueShareRange>[];
+  final o = <api.GoogleCloudApigeeV1RevenueShareRange>[];
   o.add(buildGoogleCloudApigeeV1RevenueShareRange());
   o.add(buildGoogleCloudApigeeV1RevenueShareRange());
   return o;
@@ -6811,15 +6706,13 @@ core.List<api.GoogleCloudApigeeV1RevenueShareRange> buildUnnamed6505() {
 
 void checkUnnamed6505(core.List<api.GoogleCloudApigeeV1RevenueShareRange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1RevenueShareRange(
-      o[0] as api.GoogleCloudApigeeV1RevenueShareRange);
-  checkGoogleCloudApigeeV1RevenueShareRange(
-      o[1] as api.GoogleCloudApigeeV1RevenueShareRange);
+  checkGoogleCloudApigeeV1RevenueShareRange(o[0]);
+  checkGoogleCloudApigeeV1RevenueShareRange(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1RatePlan = 0;
 api.GoogleCloudApigeeV1RatePlan buildGoogleCloudApigeeV1RatePlan() {
-  var o = api.GoogleCloudApigeeV1RatePlan();
+  final o = api.GoogleCloudApigeeV1RatePlan();
   buildCounterGoogleCloudApigeeV1RatePlan++;
   if (buildCounterGoogleCloudApigeeV1RatePlan < 3) {
     o.apiproduct = 'foo';
@@ -6886,7 +6779,7 @@ void checkGoogleCloudApigeeV1RatePlan(api.GoogleCloudApigeeV1RatePlan o) {
       o.fixedFeeFrequency!,
       unittest.equals(42),
     );
-    checkGoogleTypeMoney(o.fixedRecurringFee! as api.GoogleTypeMoney);
+    checkGoogleTypeMoney(o.fixedRecurringFee!);
     unittest.expect(
       o.lastModifiedAt!,
       unittest.equals('foo'),
@@ -6904,7 +6797,7 @@ void checkGoogleCloudApigeeV1RatePlan(api.GoogleCloudApigeeV1RatePlan o) {
       o.revenueShareType!,
       unittest.equals('foo'),
     );
-    checkGoogleTypeMoney(o.setupFee! as api.GoogleTypeMoney);
+    checkGoogleTypeMoney(o.setupFee!);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
@@ -6919,7 +6812,7 @@ void checkGoogleCloudApigeeV1RatePlan(api.GoogleCloudApigeeV1RatePlan o) {
 
 core.int buildCounterGoogleCloudApigeeV1RateRange = 0;
 api.GoogleCloudApigeeV1RateRange buildGoogleCloudApigeeV1RateRange() {
-  var o = api.GoogleCloudApigeeV1RateRange();
+  final o = api.GoogleCloudApigeeV1RateRange();
   buildCounterGoogleCloudApigeeV1RateRange++;
   if (buildCounterGoogleCloudApigeeV1RateRange < 3) {
     o.end = 'foo';
@@ -6937,7 +6830,7 @@ void checkGoogleCloudApigeeV1RateRange(api.GoogleCloudApigeeV1RateRange o) {
       o.end!,
       unittest.equals('foo'),
     );
-    checkGoogleTypeMoney(o.fee! as api.GoogleTypeMoney);
+    checkGoogleTypeMoney(o.fee!);
     unittest.expect(
       o.start!,
       unittest.equals('foo'),
@@ -6948,7 +6841,7 @@ void checkGoogleCloudApigeeV1RateRange(api.GoogleCloudApigeeV1RateRange o) {
 
 core.int buildCounterGoogleCloudApigeeV1Reference = 0;
 api.GoogleCloudApigeeV1Reference buildGoogleCloudApigeeV1Reference() {
-  var o = api.GoogleCloudApigeeV1Reference();
+  final o = api.GoogleCloudApigeeV1Reference();
   buildCounterGoogleCloudApigeeV1Reference++;
   if (buildCounterGoogleCloudApigeeV1Reference < 3) {
     o.description = 'foo';
@@ -6986,7 +6879,7 @@ void checkGoogleCloudApigeeV1Reference(api.GoogleCloudApigeeV1Reference o) {
 core.int buildCounterGoogleCloudApigeeV1ReferenceConfig = 0;
 api.GoogleCloudApigeeV1ReferenceConfig
     buildGoogleCloudApigeeV1ReferenceConfig() {
-  var o = api.GoogleCloudApigeeV1ReferenceConfig();
+  final o = api.GoogleCloudApigeeV1ReferenceConfig();
   buildCounterGoogleCloudApigeeV1ReferenceConfig++;
   if (buildCounterGoogleCloudApigeeV1ReferenceConfig < 3) {
     o.name = 'foo';
@@ -7013,7 +6906,7 @@ void checkGoogleCloudApigeeV1ReferenceConfig(
 }
 
 core.List<api.GoogleCloudApigeeV1ResourceStatus> buildUnnamed6506() {
-  var o = <api.GoogleCloudApigeeV1ResourceStatus>[];
+  final o = <api.GoogleCloudApigeeV1ResourceStatus>[];
   o.add(buildGoogleCloudApigeeV1ResourceStatus());
   o.add(buildGoogleCloudApigeeV1ResourceStatus());
   return o;
@@ -7021,16 +6914,14 @@ core.List<api.GoogleCloudApigeeV1ResourceStatus> buildUnnamed6506() {
 
 void checkUnnamed6506(core.List<api.GoogleCloudApigeeV1ResourceStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ResourceStatus(
-      o[0] as api.GoogleCloudApigeeV1ResourceStatus);
-  checkGoogleCloudApigeeV1ResourceStatus(
-      o[1] as api.GoogleCloudApigeeV1ResourceStatus);
+  checkGoogleCloudApigeeV1ResourceStatus(o[0]);
+  checkGoogleCloudApigeeV1ResourceStatus(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest = 0;
 api.GoogleCloudApigeeV1ReportInstanceStatusRequest
     buildGoogleCloudApigeeV1ReportInstanceStatusRequest() {
-  var o = api.GoogleCloudApigeeV1ReportInstanceStatusRequest();
+  final o = api.GoogleCloudApigeeV1ReportInstanceStatusRequest();
   buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest++;
   if (buildCounterGoogleCloudApigeeV1ReportInstanceStatusRequest < 3) {
     o.instanceUid = 'foo';
@@ -7061,7 +6952,7 @@ void checkGoogleCloudApigeeV1ReportInstanceStatusRequest(
 core.int buildCounterGoogleCloudApigeeV1ReportInstanceStatusResponse = 0;
 api.GoogleCloudApigeeV1ReportInstanceStatusResponse
     buildGoogleCloudApigeeV1ReportInstanceStatusResponse() {
-  var o = api.GoogleCloudApigeeV1ReportInstanceStatusResponse();
+  final o = api.GoogleCloudApigeeV1ReportInstanceStatusResponse();
   buildCounterGoogleCloudApigeeV1ReportInstanceStatusResponse++;
   if (buildCounterGoogleCloudApigeeV1ReportInstanceStatusResponse < 3) {}
   buildCounterGoogleCloudApigeeV1ReportInstanceStatusResponse--;
@@ -7076,7 +6967,7 @@ void checkGoogleCloudApigeeV1ReportInstanceStatusResponse(
 }
 
 core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6507() {
-  var o = <api.GoogleCloudApigeeV1Attribute>[];
+  final o = <api.GoogleCloudApigeeV1Attribute>[];
   o.add(buildGoogleCloudApigeeV1Attribute());
   o.add(buildGoogleCloudApigeeV1Attribute());
   return o;
@@ -7084,13 +6975,13 @@ core.List<api.GoogleCloudApigeeV1Attribute> buildUnnamed6507() {
 
 void checkUnnamed6507(core.List<api.GoogleCloudApigeeV1Attribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Attribute(o[0] as api.GoogleCloudApigeeV1Attribute);
-  checkGoogleCloudApigeeV1Attribute(o[1] as api.GoogleCloudApigeeV1Attribute);
+  checkGoogleCloudApigeeV1Attribute(o[0]);
+  checkGoogleCloudApigeeV1Attribute(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ReportProperty = 0;
 api.GoogleCloudApigeeV1ReportProperty buildGoogleCloudApigeeV1ReportProperty() {
-  var o = api.GoogleCloudApigeeV1ReportProperty();
+  final o = api.GoogleCloudApigeeV1ReportProperty();
   buildCounterGoogleCloudApigeeV1ReportProperty++;
   if (buildCounterGoogleCloudApigeeV1ReportProperty < 3) {
     o.property = 'foo';
@@ -7115,7 +7006,7 @@ void checkGoogleCloudApigeeV1ReportProperty(
 
 core.int buildCounterGoogleCloudApigeeV1ResourceConfig = 0;
 api.GoogleCloudApigeeV1ResourceConfig buildGoogleCloudApigeeV1ResourceConfig() {
-  var o = api.GoogleCloudApigeeV1ResourceConfig();
+  final o = api.GoogleCloudApigeeV1ResourceConfig();
   buildCounterGoogleCloudApigeeV1ResourceConfig++;
   if (buildCounterGoogleCloudApigeeV1ResourceConfig < 3) {
     o.location = 'foo';
@@ -7143,7 +7034,7 @@ void checkGoogleCloudApigeeV1ResourceConfig(
 
 core.int buildCounterGoogleCloudApigeeV1ResourceFile = 0;
 api.GoogleCloudApigeeV1ResourceFile buildGoogleCloudApigeeV1ResourceFile() {
-  var o = api.GoogleCloudApigeeV1ResourceFile();
+  final o = api.GoogleCloudApigeeV1ResourceFile();
   buildCounterGoogleCloudApigeeV1ResourceFile++;
   if (buildCounterGoogleCloudApigeeV1ResourceFile < 3) {
     o.name = 'foo';
@@ -7170,7 +7061,7 @@ void checkGoogleCloudApigeeV1ResourceFile(
 }
 
 core.List<api.GoogleCloudApigeeV1ResourceFile> buildUnnamed6508() {
-  var o = <api.GoogleCloudApigeeV1ResourceFile>[];
+  final o = <api.GoogleCloudApigeeV1ResourceFile>[];
   o.add(buildGoogleCloudApigeeV1ResourceFile());
   o.add(buildGoogleCloudApigeeV1ResourceFile());
   return o;
@@ -7178,15 +7069,13 @@ core.List<api.GoogleCloudApigeeV1ResourceFile> buildUnnamed6508() {
 
 void checkUnnamed6508(core.List<api.GoogleCloudApigeeV1ResourceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ResourceFile(
-      o[0] as api.GoogleCloudApigeeV1ResourceFile);
-  checkGoogleCloudApigeeV1ResourceFile(
-      o[1] as api.GoogleCloudApigeeV1ResourceFile);
+  checkGoogleCloudApigeeV1ResourceFile(o[0]);
+  checkGoogleCloudApigeeV1ResourceFile(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ResourceFiles = 0;
 api.GoogleCloudApigeeV1ResourceFiles buildGoogleCloudApigeeV1ResourceFiles() {
-  var o = api.GoogleCloudApigeeV1ResourceFiles();
+  final o = api.GoogleCloudApigeeV1ResourceFiles();
   buildCounterGoogleCloudApigeeV1ResourceFiles++;
   if (buildCounterGoogleCloudApigeeV1ResourceFiles < 3) {
     o.resourceFile = buildUnnamed6508();
@@ -7205,7 +7094,7 @@ void checkGoogleCloudApigeeV1ResourceFiles(
 }
 
 core.List<api.GoogleCloudApigeeV1RevisionStatus> buildUnnamed6509() {
-  var o = <api.GoogleCloudApigeeV1RevisionStatus>[];
+  final o = <api.GoogleCloudApigeeV1RevisionStatus>[];
   o.add(buildGoogleCloudApigeeV1RevisionStatus());
   o.add(buildGoogleCloudApigeeV1RevisionStatus());
   return o;
@@ -7213,15 +7102,13 @@ core.List<api.GoogleCloudApigeeV1RevisionStatus> buildUnnamed6509() {
 
 void checkUnnamed6509(core.List<api.GoogleCloudApigeeV1RevisionStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1RevisionStatus(
-      o[0] as api.GoogleCloudApigeeV1RevisionStatus);
-  checkGoogleCloudApigeeV1RevisionStatus(
-      o[1] as api.GoogleCloudApigeeV1RevisionStatus);
+  checkGoogleCloudApigeeV1RevisionStatus(o[0]);
+  checkGoogleCloudApigeeV1RevisionStatus(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ResourceStatus = 0;
 api.GoogleCloudApigeeV1ResourceStatus buildGoogleCloudApigeeV1ResourceStatus() {
-  var o = api.GoogleCloudApigeeV1ResourceStatus();
+  final o = api.GoogleCloudApigeeV1ResourceStatus();
   buildCounterGoogleCloudApigeeV1ResourceStatus++;
   if (buildCounterGoogleCloudApigeeV1ResourceStatus < 3) {
     o.resource = 'foo';
@@ -7255,7 +7142,7 @@ void checkGoogleCloudApigeeV1ResourceStatus(
 }
 
 core.List<api.GoogleCloudApigeeV1Access> buildUnnamed6510() {
-  var o = <api.GoogleCloudApigeeV1Access>[];
+  final o = <api.GoogleCloudApigeeV1Access>[];
   o.add(buildGoogleCloudApigeeV1Access());
   o.add(buildGoogleCloudApigeeV1Access());
   return o;
@@ -7263,12 +7150,12 @@ core.List<api.GoogleCloudApigeeV1Access> buildUnnamed6510() {
 
 void checkUnnamed6510(core.List<api.GoogleCloudApigeeV1Access> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Access(o[0] as api.GoogleCloudApigeeV1Access);
-  checkGoogleCloudApigeeV1Access(o[1] as api.GoogleCloudApigeeV1Access);
+  checkGoogleCloudApigeeV1Access(o[0]);
+  checkGoogleCloudApigeeV1Access(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1Property> buildUnnamed6511() {
-  var o = <api.GoogleCloudApigeeV1Property>[];
+  final o = <api.GoogleCloudApigeeV1Property>[];
   o.add(buildGoogleCloudApigeeV1Property());
   o.add(buildGoogleCloudApigeeV1Property());
   return o;
@@ -7276,13 +7163,13 @@ core.List<api.GoogleCloudApigeeV1Property> buildUnnamed6511() {
 
 void checkUnnamed6511(core.List<api.GoogleCloudApigeeV1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Property(o[0] as api.GoogleCloudApigeeV1Property);
-  checkGoogleCloudApigeeV1Property(o[1] as api.GoogleCloudApigeeV1Property);
+  checkGoogleCloudApigeeV1Property(o[0]);
+  checkGoogleCloudApigeeV1Property(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Result = 0;
 api.GoogleCloudApigeeV1Result buildGoogleCloudApigeeV1Result() {
-  var o = api.GoogleCloudApigeeV1Result();
+  final o = api.GoogleCloudApigeeV1Result();
   buildCounterGoogleCloudApigeeV1Result++;
   if (buildCounterGoogleCloudApigeeV1Result < 3) {
     o.ActionResult = 'foo';
@@ -7313,8 +7200,7 @@ void checkGoogleCloudApigeeV1Result(api.GoogleCloudApigeeV1Result o) {
       unittest.equals('foo'),
     );
     checkUnnamed6511(o.headers!);
-    checkGoogleCloudApigeeV1Properties(
-        o.properties! as api.GoogleCloudApigeeV1Properties);
+    checkGoogleCloudApigeeV1Properties(o.properties!);
     unittest.expect(
       o.reasonPhrase!,
       unittest.equals('foo'),
@@ -7342,7 +7228,7 @@ void checkGoogleCloudApigeeV1Result(api.GoogleCloudApigeeV1Result o) {
 core.int buildCounterGoogleCloudApigeeV1RevenueShareRange = 0;
 api.GoogleCloudApigeeV1RevenueShareRange
     buildGoogleCloudApigeeV1RevenueShareRange() {
-  var o = api.GoogleCloudApigeeV1RevenueShareRange();
+  final o = api.GoogleCloudApigeeV1RevenueShareRange();
   buildCounterGoogleCloudApigeeV1RevenueShareRange++;
   if (buildCounterGoogleCloudApigeeV1RevenueShareRange < 3) {
     o.end = 'foo';
@@ -7374,7 +7260,7 @@ void checkGoogleCloudApigeeV1RevenueShareRange(
 }
 
 core.List<api.GoogleCloudApigeeV1UpdateError> buildUnnamed6512() {
-  var o = <api.GoogleCloudApigeeV1UpdateError>[];
+  final o = <api.GoogleCloudApigeeV1UpdateError>[];
   o.add(buildGoogleCloudApigeeV1UpdateError());
   o.add(buildGoogleCloudApigeeV1UpdateError());
   return o;
@@ -7382,15 +7268,13 @@ core.List<api.GoogleCloudApigeeV1UpdateError> buildUnnamed6512() {
 
 void checkUnnamed6512(core.List<api.GoogleCloudApigeeV1UpdateError> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1UpdateError(
-      o[0] as api.GoogleCloudApigeeV1UpdateError);
-  checkGoogleCloudApigeeV1UpdateError(
-      o[1] as api.GoogleCloudApigeeV1UpdateError);
+  checkGoogleCloudApigeeV1UpdateError(o[0]);
+  checkGoogleCloudApigeeV1UpdateError(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1RevisionStatus = 0;
 api.GoogleCloudApigeeV1RevisionStatus buildGoogleCloudApigeeV1RevisionStatus() {
-  var o = api.GoogleCloudApigeeV1RevisionStatus();
+  final o = api.GoogleCloudApigeeV1RevisionStatus();
   buildCounterGoogleCloudApigeeV1RevisionStatus++;
   if (buildCounterGoogleCloudApigeeV1RevisionStatus < 3) {
     o.errors = buildUnnamed6512();
@@ -7425,7 +7309,7 @@ void checkGoogleCloudApigeeV1RevisionStatus(
 
 core.int buildCounterGoogleCloudApigeeV1RoutingRule = 0;
 api.GoogleCloudApigeeV1RoutingRule buildGoogleCloudApigeeV1RoutingRule() {
-  var o = api.GoogleCloudApigeeV1RoutingRule();
+  final o = api.GoogleCloudApigeeV1RoutingRule();
   buildCounterGoogleCloudApigeeV1RoutingRule++;
   if (buildCounterGoogleCloudApigeeV1RoutingRule < 3) {
     o.basepath = 'foo';
@@ -7467,7 +7351,7 @@ void checkGoogleCloudApigeeV1RoutingRule(api.GoogleCloudApigeeV1RoutingRule o) {
 
 core.int buildCounterGoogleCloudApigeeV1RuntimeConfig = 0;
 api.GoogleCloudApigeeV1RuntimeConfig buildGoogleCloudApigeeV1RuntimeConfig() {
-  var o = api.GoogleCloudApigeeV1RuntimeConfig();
+  final o = api.GoogleCloudApigeeV1RuntimeConfig();
   buildCounterGoogleCloudApigeeV1RuntimeConfig++;
   if (buildCounterGoogleCloudApigeeV1RuntimeConfig < 3) {
     o.analyticsBucket = 'foo';
@@ -7505,7 +7389,7 @@ void checkGoogleCloudApigeeV1RuntimeConfig(
 
 core.List<api.GoogleCloudApigeeV1RuntimeTraceConfigOverride>
     buildUnnamed6513() {
-  var o = <api.GoogleCloudApigeeV1RuntimeTraceConfigOverride>[];
+  final o = <api.GoogleCloudApigeeV1RuntimeTraceConfigOverride>[];
   o.add(buildGoogleCloudApigeeV1RuntimeTraceConfigOverride());
   o.add(buildGoogleCloudApigeeV1RuntimeTraceConfigOverride());
   return o;
@@ -7514,16 +7398,14 @@ core.List<api.GoogleCloudApigeeV1RuntimeTraceConfigOverride>
 void checkUnnamed6513(
     core.List<api.GoogleCloudApigeeV1RuntimeTraceConfigOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(
-      o[0] as api.GoogleCloudApigeeV1RuntimeTraceConfigOverride);
-  checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(
-      o[1] as api.GoogleCloudApigeeV1RuntimeTraceConfigOverride);
+  checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(o[0]);
+  checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1RuntimeTraceConfig = 0;
 api.GoogleCloudApigeeV1RuntimeTraceConfig
     buildGoogleCloudApigeeV1RuntimeTraceConfig() {
-  var o = api.GoogleCloudApigeeV1RuntimeTraceConfig();
+  final o = api.GoogleCloudApigeeV1RuntimeTraceConfig();
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfig++;
   if (buildCounterGoogleCloudApigeeV1RuntimeTraceConfig < 3) {
     o.endpoint = 'foo';
@@ -7563,8 +7445,7 @@ void checkGoogleCloudApigeeV1RuntimeTraceConfig(
       o.revisionId!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(
-        o.samplingConfig! as api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig);
+    checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(o.samplingConfig!);
   }
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfig--;
 }
@@ -7572,7 +7453,7 @@ void checkGoogleCloudApigeeV1RuntimeTraceConfig(
 core.int buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride = 0;
 api.GoogleCloudApigeeV1RuntimeTraceConfigOverride
     buildGoogleCloudApigeeV1RuntimeTraceConfigOverride() {
-  var o = api.GoogleCloudApigeeV1RuntimeTraceConfigOverride();
+  final o = api.GoogleCloudApigeeV1RuntimeTraceConfigOverride();
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride++;
   if (buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride < 3) {
     o.apiProxy = 'foo';
@@ -7606,8 +7487,7 @@ void checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(
       o.revisionId!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(
-        o.samplingConfig! as api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig);
+    checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(o.samplingConfig!);
     unittest.expect(
       o.uid!,
       unittest.equals('foo'),
@@ -7619,7 +7499,7 @@ void checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(
 core.int buildCounterGoogleCloudApigeeV1RuntimeTraceSamplingConfig = 0;
 api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig
     buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig() {
-  var o = api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig();
+  final o = api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig();
   buildCounterGoogleCloudApigeeV1RuntimeTraceSamplingConfig++;
   if (buildCounterGoogleCloudApigeeV1RuntimeTraceSamplingConfig < 3) {
     o.sampler = 'foo';
@@ -7646,7 +7526,7 @@ void checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(
 }
 
 core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> buildUnnamed6514() {
-  var o = <api.GoogleCloudApigeeV1SchemaSchemaElement>[];
+  final o = <api.GoogleCloudApigeeV1SchemaSchemaElement>[];
   o.add(buildGoogleCloudApigeeV1SchemaSchemaElement());
   o.add(buildGoogleCloudApigeeV1SchemaSchemaElement());
   return o;
@@ -7654,14 +7534,12 @@ core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> buildUnnamed6514() {
 
 void checkUnnamed6514(core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1SchemaSchemaElement(
-      o[0] as api.GoogleCloudApigeeV1SchemaSchemaElement);
-  checkGoogleCloudApigeeV1SchemaSchemaElement(
-      o[1] as api.GoogleCloudApigeeV1SchemaSchemaElement);
+  checkGoogleCloudApigeeV1SchemaSchemaElement(o[0]);
+  checkGoogleCloudApigeeV1SchemaSchemaElement(o[1]);
 }
 
 core.List<core.String> buildUnnamed6515() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -7680,7 +7558,7 @@ void checkUnnamed6515(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> buildUnnamed6516() {
-  var o = <api.GoogleCloudApigeeV1SchemaSchemaElement>[];
+  final o = <api.GoogleCloudApigeeV1SchemaSchemaElement>[];
   o.add(buildGoogleCloudApigeeV1SchemaSchemaElement());
   o.add(buildGoogleCloudApigeeV1SchemaSchemaElement());
   return o;
@@ -7688,15 +7566,13 @@ core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> buildUnnamed6516() {
 
 void checkUnnamed6516(core.List<api.GoogleCloudApigeeV1SchemaSchemaElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1SchemaSchemaElement(
-      o[0] as api.GoogleCloudApigeeV1SchemaSchemaElement);
-  checkGoogleCloudApigeeV1SchemaSchemaElement(
-      o[1] as api.GoogleCloudApigeeV1SchemaSchemaElement);
+  checkGoogleCloudApigeeV1SchemaSchemaElement(o[0]);
+  checkGoogleCloudApigeeV1SchemaSchemaElement(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Schema = 0;
 api.GoogleCloudApigeeV1Schema buildGoogleCloudApigeeV1Schema() {
-  var o = api.GoogleCloudApigeeV1Schema();
+  final o = api.GoogleCloudApigeeV1Schema();
   buildCounterGoogleCloudApigeeV1Schema++;
   if (buildCounterGoogleCloudApigeeV1Schema < 3) {
     o.dimensions = buildUnnamed6514();
@@ -7720,7 +7596,7 @@ void checkGoogleCloudApigeeV1Schema(api.GoogleCloudApigeeV1Schema o) {
 core.int buildCounterGoogleCloudApigeeV1SchemaSchemaElement = 0;
 api.GoogleCloudApigeeV1SchemaSchemaElement
     buildGoogleCloudApigeeV1SchemaSchemaElement() {
-  var o = api.GoogleCloudApigeeV1SchemaSchemaElement();
+  final o = api.GoogleCloudApigeeV1SchemaSchemaElement();
   buildCounterGoogleCloudApigeeV1SchemaSchemaElement++;
   if (buildCounterGoogleCloudApigeeV1SchemaSchemaElement < 3) {
     o.name = 'foo';
@@ -7738,8 +7614,7 @@ void checkGoogleCloudApigeeV1SchemaSchemaElement(
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1SchemaSchemaProperty(
-        o.properties! as api.GoogleCloudApigeeV1SchemaSchemaProperty);
+    checkGoogleCloudApigeeV1SchemaSchemaProperty(o.properties!);
   }
   buildCounterGoogleCloudApigeeV1SchemaSchemaElement--;
 }
@@ -7747,7 +7622,7 @@ void checkGoogleCloudApigeeV1SchemaSchemaElement(
 core.int buildCounterGoogleCloudApigeeV1SchemaSchemaProperty = 0;
 api.GoogleCloudApigeeV1SchemaSchemaProperty
     buildGoogleCloudApigeeV1SchemaSchemaProperty() {
-  var o = api.GoogleCloudApigeeV1SchemaSchemaProperty();
+  final o = api.GoogleCloudApigeeV1SchemaSchemaProperty();
   buildCounterGoogleCloudApigeeV1SchemaSchemaProperty++;
   if (buildCounterGoogleCloudApigeeV1SchemaSchemaProperty < 3) {
     o.createTime = 'foo';
@@ -7779,7 +7654,7 @@ void checkGoogleCloudApigeeV1SchemaSchemaProperty(
 }
 
 core.List<core.String> buildUnnamed6517() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -7800,7 +7675,7 @@ void checkUnnamed6517(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1ServiceIssuersMapping = 0;
 api.GoogleCloudApigeeV1ServiceIssuersMapping
     buildGoogleCloudApigeeV1ServiceIssuersMapping() {
-  var o = api.GoogleCloudApigeeV1ServiceIssuersMapping();
+  final o = api.GoogleCloudApigeeV1ServiceIssuersMapping();
   buildCounterGoogleCloudApigeeV1ServiceIssuersMapping++;
   if (buildCounterGoogleCloudApigeeV1ServiceIssuersMapping < 3) {
     o.emailIds = buildUnnamed6517();
@@ -7825,7 +7700,7 @@ void checkGoogleCloudApigeeV1ServiceIssuersMapping(
 
 core.int buildCounterGoogleCloudApigeeV1Session = 0;
 api.GoogleCloudApigeeV1Session buildGoogleCloudApigeeV1Session() {
-  var o = api.GoogleCloudApigeeV1Session();
+  final o = api.GoogleCloudApigeeV1Session();
   buildCounterGoogleCloudApigeeV1Session++;
   if (buildCounterGoogleCloudApigeeV1Session < 3) {
     o.id = 'foo';
@@ -7853,7 +7728,7 @@ void checkGoogleCloudApigeeV1Session(api.GoogleCloudApigeeV1Session o) {
 core.int buildCounterGoogleCloudApigeeV1SetAddonsRequest = 0;
 api.GoogleCloudApigeeV1SetAddonsRequest
     buildGoogleCloudApigeeV1SetAddonsRequest() {
-  var o = api.GoogleCloudApigeeV1SetAddonsRequest();
+  final o = api.GoogleCloudApigeeV1SetAddonsRequest();
   buildCounterGoogleCloudApigeeV1SetAddonsRequest++;
   if (buildCounterGoogleCloudApigeeV1SetAddonsRequest < 3) {
     o.addonsConfig = buildGoogleCloudApigeeV1AddonsConfig();
@@ -7866,14 +7741,13 @@ void checkGoogleCloudApigeeV1SetAddonsRequest(
     api.GoogleCloudApigeeV1SetAddonsRequest o) {
   buildCounterGoogleCloudApigeeV1SetAddonsRequest++;
   if (buildCounterGoogleCloudApigeeV1SetAddonsRequest < 3) {
-    checkGoogleCloudApigeeV1AddonsConfig(
-        o.addonsConfig! as api.GoogleCloudApigeeV1AddonsConfig);
+    checkGoogleCloudApigeeV1AddonsConfig(o.addonsConfig!);
   }
   buildCounterGoogleCloudApigeeV1SetAddonsRequest--;
 }
 
 core.List<core.String> buildUnnamed6518() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -7893,7 +7767,7 @@ void checkUnnamed6518(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1SharedFlow = 0;
 api.GoogleCloudApigeeV1SharedFlow buildGoogleCloudApigeeV1SharedFlow() {
-  var o = api.GoogleCloudApigeeV1SharedFlow();
+  final o = api.GoogleCloudApigeeV1SharedFlow();
   buildCounterGoogleCloudApigeeV1SharedFlow++;
   if (buildCounterGoogleCloudApigeeV1SharedFlow < 3) {
     o.latestRevisionId = 'foo';
@@ -7912,8 +7786,7 @@ void checkGoogleCloudApigeeV1SharedFlow(api.GoogleCloudApigeeV1SharedFlow o) {
       o.latestRevisionId!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1EntityMetadata(
-        o.metaData! as api.GoogleCloudApigeeV1EntityMetadata);
+    checkGoogleCloudApigeeV1EntityMetadata(o.metaData!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -7924,7 +7797,7 @@ void checkGoogleCloudApigeeV1SharedFlow(api.GoogleCloudApigeeV1SharedFlow o) {
 }
 
 core.Map<core.String, core.String> buildUnnamed6519() {
-  var o = <core.String, core.String>{};
+  final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
@@ -7943,7 +7816,7 @@ void checkUnnamed6519(core.Map<core.String, core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6520() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -7962,7 +7835,7 @@ void checkUnnamed6520(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6521() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -7981,7 +7854,7 @@ void checkUnnamed6521(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6522() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8002,7 +7875,7 @@ void checkUnnamed6522(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1SharedFlowRevision = 0;
 api.GoogleCloudApigeeV1SharedFlowRevision
     buildGoogleCloudApigeeV1SharedFlowRevision() {
-  var o = api.GoogleCloudApigeeV1SharedFlowRevision();
+  final o = api.GoogleCloudApigeeV1SharedFlowRevision();
   buildCounterGoogleCloudApigeeV1SharedFlowRevision++;
   if (buildCounterGoogleCloudApigeeV1SharedFlowRevision < 3) {
     o.configurationVersion = buildGoogleCloudApigeeV1ConfigVersion();
@@ -8028,8 +7901,7 @@ void checkGoogleCloudApigeeV1SharedFlowRevision(
     api.GoogleCloudApigeeV1SharedFlowRevision o) {
   buildCounterGoogleCloudApigeeV1SharedFlowRevision++;
   if (buildCounterGoogleCloudApigeeV1SharedFlowRevision < 3) {
-    checkGoogleCloudApigeeV1ConfigVersion(
-        o.configurationVersion! as api.GoogleCloudApigeeV1ConfigVersion);
+    checkGoogleCloudApigeeV1ConfigVersion(o.configurationVersion!);
     unittest.expect(
       o.contextInfo!,
       unittest.equals('foo'),
@@ -8056,8 +7928,7 @@ void checkGoogleCloudApigeeV1SharedFlowRevision(
       unittest.equals('foo'),
     );
     checkUnnamed6520(o.policies!);
-    checkGoogleCloudApigeeV1ResourceFiles(
-        o.resourceFiles! as api.GoogleCloudApigeeV1ResourceFiles);
+    checkGoogleCloudApigeeV1ResourceFiles(o.resourceFiles!);
     checkUnnamed6521(o.resources!);
     unittest.expect(
       o.revision!,
@@ -8073,7 +7944,7 @@ void checkGoogleCloudApigeeV1SharedFlowRevision(
 }
 
 core.List<api.GoogleCloudApigeeV1StatsEnvironmentStats> buildUnnamed6523() {
-  var o = <api.GoogleCloudApigeeV1StatsEnvironmentStats>[];
+  final o = <api.GoogleCloudApigeeV1StatsEnvironmentStats>[];
   o.add(buildGoogleCloudApigeeV1StatsEnvironmentStats());
   o.add(buildGoogleCloudApigeeV1StatsEnvironmentStats());
   return o;
@@ -8082,14 +7953,12 @@ core.List<api.GoogleCloudApigeeV1StatsEnvironmentStats> buildUnnamed6523() {
 void checkUnnamed6523(
     core.List<api.GoogleCloudApigeeV1StatsEnvironmentStats> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1StatsEnvironmentStats(
-      o[0] as api.GoogleCloudApigeeV1StatsEnvironmentStats);
-  checkGoogleCloudApigeeV1StatsEnvironmentStats(
-      o[1] as api.GoogleCloudApigeeV1StatsEnvironmentStats);
+  checkGoogleCloudApigeeV1StatsEnvironmentStats(o[0]);
+  checkGoogleCloudApigeeV1StatsEnvironmentStats(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1StatsHostStats> buildUnnamed6524() {
-  var o = <api.GoogleCloudApigeeV1StatsHostStats>[];
+  final o = <api.GoogleCloudApigeeV1StatsHostStats>[];
   o.add(buildGoogleCloudApigeeV1StatsHostStats());
   o.add(buildGoogleCloudApigeeV1StatsHostStats());
   return o;
@@ -8097,15 +7966,13 @@ core.List<api.GoogleCloudApigeeV1StatsHostStats> buildUnnamed6524() {
 
 void checkUnnamed6524(core.List<api.GoogleCloudApigeeV1StatsHostStats> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1StatsHostStats(
-      o[0] as api.GoogleCloudApigeeV1StatsHostStats);
-  checkGoogleCloudApigeeV1StatsHostStats(
-      o[1] as api.GoogleCloudApigeeV1StatsHostStats);
+  checkGoogleCloudApigeeV1StatsHostStats(o[0]);
+  checkGoogleCloudApigeeV1StatsHostStats(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1Stats = 0;
 api.GoogleCloudApigeeV1Stats buildGoogleCloudApigeeV1Stats() {
-  var o = api.GoogleCloudApigeeV1Stats();
+  final o = api.GoogleCloudApigeeV1Stats();
   buildCounterGoogleCloudApigeeV1Stats++;
   if (buildCounterGoogleCloudApigeeV1Stats < 3) {
     o.environments = buildUnnamed6523();
@@ -8121,14 +7988,13 @@ void checkGoogleCloudApigeeV1Stats(api.GoogleCloudApigeeV1Stats o) {
   if (buildCounterGoogleCloudApigeeV1Stats < 3) {
     checkUnnamed6523(o.environments!);
     checkUnnamed6524(o.hosts!);
-    checkGoogleCloudApigeeV1Metadata(
-        o.metaData! as api.GoogleCloudApigeeV1Metadata);
+    checkGoogleCloudApigeeV1Metadata(o.metaData!);
   }
   buildCounterGoogleCloudApigeeV1Stats--;
 }
 
 core.List<api.GoogleCloudApigeeV1DimensionMetric> buildUnnamed6525() {
-  var o = <api.GoogleCloudApigeeV1DimensionMetric>[];
+  final o = <api.GoogleCloudApigeeV1DimensionMetric>[];
   o.add(buildGoogleCloudApigeeV1DimensionMetric());
   o.add(buildGoogleCloudApigeeV1DimensionMetric());
   return o;
@@ -8136,14 +8002,12 @@ core.List<api.GoogleCloudApigeeV1DimensionMetric> buildUnnamed6525() {
 
 void checkUnnamed6525(core.List<api.GoogleCloudApigeeV1DimensionMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DimensionMetric(
-      o[0] as api.GoogleCloudApigeeV1DimensionMetric);
-  checkGoogleCloudApigeeV1DimensionMetric(
-      o[1] as api.GoogleCloudApigeeV1DimensionMetric);
+  checkGoogleCloudApigeeV1DimensionMetric(o[0]);
+  checkGoogleCloudApigeeV1DimensionMetric(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed6526() {
-  var o = <api.GoogleCloudApigeeV1Metric>[];
+  final o = <api.GoogleCloudApigeeV1Metric>[];
   o.add(buildGoogleCloudApigeeV1Metric());
   o.add(buildGoogleCloudApigeeV1Metric());
   return o;
@@ -8151,14 +8015,14 @@ core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed6526() {
 
 void checkUnnamed6526(core.List<api.GoogleCloudApigeeV1Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Metric(o[0] as api.GoogleCloudApigeeV1Metric);
-  checkGoogleCloudApigeeV1Metric(o[1] as api.GoogleCloudApigeeV1Metric);
+  checkGoogleCloudApigeeV1Metric(o[0]);
+  checkGoogleCloudApigeeV1Metric(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1StatsEnvironmentStats = 0;
 api.GoogleCloudApigeeV1StatsEnvironmentStats
     buildGoogleCloudApigeeV1StatsEnvironmentStats() {
-  var o = api.GoogleCloudApigeeV1StatsEnvironmentStats();
+  final o = api.GoogleCloudApigeeV1StatsEnvironmentStats();
   buildCounterGoogleCloudApigeeV1StatsEnvironmentStats++;
   if (buildCounterGoogleCloudApigeeV1StatsEnvironmentStats < 3) {
     o.dimensions = buildUnnamed6525();
@@ -8184,7 +8048,7 @@ void checkGoogleCloudApigeeV1StatsEnvironmentStats(
 }
 
 core.List<api.GoogleCloudApigeeV1DimensionMetric> buildUnnamed6527() {
-  var o = <api.GoogleCloudApigeeV1DimensionMetric>[];
+  final o = <api.GoogleCloudApigeeV1DimensionMetric>[];
   o.add(buildGoogleCloudApigeeV1DimensionMetric());
   o.add(buildGoogleCloudApigeeV1DimensionMetric());
   return o;
@@ -8192,14 +8056,12 @@ core.List<api.GoogleCloudApigeeV1DimensionMetric> buildUnnamed6527() {
 
 void checkUnnamed6527(core.List<api.GoogleCloudApigeeV1DimensionMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1DimensionMetric(
-      o[0] as api.GoogleCloudApigeeV1DimensionMetric);
-  checkGoogleCloudApigeeV1DimensionMetric(
-      o[1] as api.GoogleCloudApigeeV1DimensionMetric);
+  checkGoogleCloudApigeeV1DimensionMetric(o[0]);
+  checkGoogleCloudApigeeV1DimensionMetric(o[1]);
 }
 
 core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed6528() {
-  var o = <api.GoogleCloudApigeeV1Metric>[];
+  final o = <api.GoogleCloudApigeeV1Metric>[];
   o.add(buildGoogleCloudApigeeV1Metric());
   o.add(buildGoogleCloudApigeeV1Metric());
   return o;
@@ -8207,13 +8069,13 @@ core.List<api.GoogleCloudApigeeV1Metric> buildUnnamed6528() {
 
 void checkUnnamed6528(core.List<api.GoogleCloudApigeeV1Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1Metric(o[0] as api.GoogleCloudApigeeV1Metric);
-  checkGoogleCloudApigeeV1Metric(o[1] as api.GoogleCloudApigeeV1Metric);
+  checkGoogleCloudApigeeV1Metric(o[0]);
+  checkGoogleCloudApigeeV1Metric(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1StatsHostStats = 0;
 api.GoogleCloudApigeeV1StatsHostStats buildGoogleCloudApigeeV1StatsHostStats() {
-  var o = api.GoogleCloudApigeeV1StatsHostStats();
+  final o = api.GoogleCloudApigeeV1StatsHostStats();
   buildCounterGoogleCloudApigeeV1StatsHostStats++;
   if (buildCounterGoogleCloudApigeeV1StatsHostStats < 3) {
     o.dimensions = buildUnnamed6527();
@@ -8240,7 +8102,7 @@ void checkGoogleCloudApigeeV1StatsHostStats(
 
 core.int buildCounterGoogleCloudApigeeV1Subscription = 0;
 api.GoogleCloudApigeeV1Subscription buildGoogleCloudApigeeV1Subscription() {
-  var o = api.GoogleCloudApigeeV1Subscription();
+  final o = api.GoogleCloudApigeeV1Subscription();
   buildCounterGoogleCloudApigeeV1Subscription++;
   if (buildCounterGoogleCloudApigeeV1Subscription < 3) {
     o.name = 'foo';
@@ -8262,7 +8124,7 @@ void checkGoogleCloudApigeeV1Subscription(
 }
 
 core.List<core.String> buildUnnamed6529() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8283,7 +8145,7 @@ void checkUnnamed6529(core.List<core.String> o) {
 core.int buildCounterGoogleCloudApigeeV1SyncAuthorization = 0;
 api.GoogleCloudApigeeV1SyncAuthorization
     buildGoogleCloudApigeeV1SyncAuthorization() {
-  var o = api.GoogleCloudApigeeV1SyncAuthorization();
+  final o = api.GoogleCloudApigeeV1SyncAuthorization();
   buildCounterGoogleCloudApigeeV1SyncAuthorization++;
   if (buildCounterGoogleCloudApigeeV1SyncAuthorization < 3) {
     o.etag = 'foo';
@@ -8308,7 +8170,7 @@ void checkGoogleCloudApigeeV1SyncAuthorization(
 
 core.int buildCounterGoogleCloudApigeeV1TargetServer = 0;
 api.GoogleCloudApigeeV1TargetServer buildGoogleCloudApigeeV1TargetServer() {
-  var o = api.GoogleCloudApigeeV1TargetServer();
+  final o = api.GoogleCloudApigeeV1TargetServer();
   buildCounterGoogleCloudApigeeV1TargetServer++;
   if (buildCounterGoogleCloudApigeeV1TargetServer < 3) {
     o.description = 'foo';
@@ -8348,8 +8210,7 @@ void checkGoogleCloudApigeeV1TargetServer(
       o.protocol!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1TlsInfo(
-        o.sSLInfo! as api.GoogleCloudApigeeV1TlsInfo);
+    checkGoogleCloudApigeeV1TlsInfo(o.sSLInfo!);
   }
   buildCounterGoogleCloudApigeeV1TargetServer--;
 }
@@ -8357,7 +8218,7 @@ void checkGoogleCloudApigeeV1TargetServer(
 core.int buildCounterGoogleCloudApigeeV1TargetServerConfig = 0;
 api.GoogleCloudApigeeV1TargetServerConfig
     buildGoogleCloudApigeeV1TargetServerConfig() {
-  var o = api.GoogleCloudApigeeV1TargetServerConfig();
+  final o = api.GoogleCloudApigeeV1TargetServerConfig();
   buildCounterGoogleCloudApigeeV1TargetServerConfig++;
   if (buildCounterGoogleCloudApigeeV1TargetServerConfig < 3) {
     o.host = 'foo';
@@ -8390,8 +8251,7 @@ void checkGoogleCloudApigeeV1TargetServerConfig(
       o.protocol!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1TlsInfoConfig(
-        o.tlsInfo! as api.GoogleCloudApigeeV1TlsInfoConfig);
+    checkGoogleCloudApigeeV1TlsInfoConfig(o.tlsInfo!);
   }
   buildCounterGoogleCloudApigeeV1TargetServerConfig--;
 }
@@ -8399,7 +8259,7 @@ void checkGoogleCloudApigeeV1TargetServerConfig(
 core.int buildCounterGoogleCloudApigeeV1TestDatastoreResponse = 0;
 api.GoogleCloudApigeeV1TestDatastoreResponse
     buildGoogleCloudApigeeV1TestDatastoreResponse() {
-  var o = api.GoogleCloudApigeeV1TestDatastoreResponse();
+  final o = api.GoogleCloudApigeeV1TestDatastoreResponse();
   buildCounterGoogleCloudApigeeV1TestDatastoreResponse++;
   if (buildCounterGoogleCloudApigeeV1TestDatastoreResponse < 3) {
     o.error = 'foo';
@@ -8426,7 +8286,7 @@ void checkGoogleCloudApigeeV1TestDatastoreResponse(
 }
 
 core.List<core.String> buildUnnamed6530() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8445,7 +8305,7 @@ void checkUnnamed6530(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6531() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8465,7 +8325,7 @@ void checkUnnamed6531(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1TlsInfo = 0;
 api.GoogleCloudApigeeV1TlsInfo buildGoogleCloudApigeeV1TlsInfo() {
-  var o = api.GoogleCloudApigeeV1TlsInfo();
+  final o = api.GoogleCloudApigeeV1TlsInfo();
   buildCounterGoogleCloudApigeeV1TlsInfo++;
   if (buildCounterGoogleCloudApigeeV1TlsInfo < 3) {
     o.ciphers = buildUnnamed6530();
@@ -8487,8 +8347,7 @@ void checkGoogleCloudApigeeV1TlsInfo(api.GoogleCloudApigeeV1TlsInfo o) {
   if (buildCounterGoogleCloudApigeeV1TlsInfo < 3) {
     checkUnnamed6530(o.ciphers!);
     unittest.expect(o.clientAuthEnabled!, unittest.isTrue);
-    checkGoogleCloudApigeeV1TlsInfoCommonName(
-        o.commonName! as api.GoogleCloudApigeeV1TlsInfoCommonName);
+    checkGoogleCloudApigeeV1TlsInfoCommonName(o.commonName!);
     unittest.expect(o.enabled!, unittest.isTrue);
     unittest.expect(o.ignoreValidationErrors!, unittest.isTrue);
     unittest.expect(
@@ -8511,7 +8370,7 @@ void checkGoogleCloudApigeeV1TlsInfo(api.GoogleCloudApigeeV1TlsInfo o) {
 core.int buildCounterGoogleCloudApigeeV1TlsInfoCommonName = 0;
 api.GoogleCloudApigeeV1TlsInfoCommonName
     buildGoogleCloudApigeeV1TlsInfoCommonName() {
-  var o = api.GoogleCloudApigeeV1TlsInfoCommonName();
+  final o = api.GoogleCloudApigeeV1TlsInfoCommonName();
   buildCounterGoogleCloudApigeeV1TlsInfoCommonName++;
   if (buildCounterGoogleCloudApigeeV1TlsInfoCommonName < 3) {
     o.value = 'foo';
@@ -8535,7 +8394,7 @@ void checkGoogleCloudApigeeV1TlsInfoCommonName(
 }
 
 core.List<core.String> buildUnnamed6532() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8554,7 +8413,7 @@ void checkUnnamed6532(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6533() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8574,7 +8433,7 @@ void checkUnnamed6533(core.List<core.String> o) {
 
 core.int buildCounterGoogleCloudApigeeV1TlsInfoConfig = 0;
 api.GoogleCloudApigeeV1TlsInfoConfig buildGoogleCloudApigeeV1TlsInfoConfig() {
-  var o = api.GoogleCloudApigeeV1TlsInfoConfig();
+  final o = api.GoogleCloudApigeeV1TlsInfoConfig();
   buildCounterGoogleCloudApigeeV1TlsInfoConfig++;
   if (buildCounterGoogleCloudApigeeV1TlsInfoConfig < 3) {
     o.ciphers = buildUnnamed6532();
@@ -8597,16 +8456,14 @@ void checkGoogleCloudApigeeV1TlsInfoConfig(
   if (buildCounterGoogleCloudApigeeV1TlsInfoConfig < 3) {
     checkUnnamed6532(o.ciphers!);
     unittest.expect(o.clientAuthEnabled!, unittest.isTrue);
-    checkGoogleCloudApigeeV1CommonNameConfig(
-        o.commonName! as api.GoogleCloudApigeeV1CommonNameConfig);
+    checkGoogleCloudApigeeV1CommonNameConfig(o.commonName!);
     unittest.expect(o.enabled!, unittest.isTrue);
     unittest.expect(o.ignoreValidationErrors!, unittest.isTrue);
     unittest.expect(
       o.keyAlias!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1KeyAliasReference(
-        o.keyAliasReference! as api.GoogleCloudApigeeV1KeyAliasReference);
+    checkGoogleCloudApigeeV1KeyAliasReference(o.keyAliasReference!);
     checkUnnamed6533(o.protocols!);
     unittest.expect(
       o.trustStore!,
@@ -8618,7 +8475,7 @@ void checkGoogleCloudApigeeV1TlsInfoConfig(
 
 core.int buildCounterGoogleCloudApigeeV1TraceConfig = 0;
 api.GoogleCloudApigeeV1TraceConfig buildGoogleCloudApigeeV1TraceConfig() {
-  var o = api.GoogleCloudApigeeV1TraceConfig();
+  final o = api.GoogleCloudApigeeV1TraceConfig();
   buildCounterGoogleCloudApigeeV1TraceConfig++;
   if (buildCounterGoogleCloudApigeeV1TraceConfig < 3) {
     o.endpoint = 'foo';
@@ -8640,8 +8497,7 @@ void checkGoogleCloudApigeeV1TraceConfig(api.GoogleCloudApigeeV1TraceConfig o) {
       o.exporter!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1TraceSamplingConfig(
-        o.samplingConfig! as api.GoogleCloudApigeeV1TraceSamplingConfig);
+    checkGoogleCloudApigeeV1TraceSamplingConfig(o.samplingConfig!);
   }
   buildCounterGoogleCloudApigeeV1TraceConfig--;
 }
@@ -8649,7 +8505,7 @@ void checkGoogleCloudApigeeV1TraceConfig(api.GoogleCloudApigeeV1TraceConfig o) {
 core.int buildCounterGoogleCloudApigeeV1TraceConfigOverride = 0;
 api.GoogleCloudApigeeV1TraceConfigOverride
     buildGoogleCloudApigeeV1TraceConfigOverride() {
-  var o = api.GoogleCloudApigeeV1TraceConfigOverride();
+  final o = api.GoogleCloudApigeeV1TraceConfigOverride();
   buildCounterGoogleCloudApigeeV1TraceConfigOverride++;
   if (buildCounterGoogleCloudApigeeV1TraceConfigOverride < 3) {
     o.apiProxy = 'foo';
@@ -8672,8 +8528,7 @@ void checkGoogleCloudApigeeV1TraceConfigOverride(
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudApigeeV1TraceSamplingConfig(
-        o.samplingConfig! as api.GoogleCloudApigeeV1TraceSamplingConfig);
+    checkGoogleCloudApigeeV1TraceSamplingConfig(o.samplingConfig!);
   }
   buildCounterGoogleCloudApigeeV1TraceConfigOverride--;
 }
@@ -8681,7 +8536,7 @@ void checkGoogleCloudApigeeV1TraceConfigOverride(
 core.int buildCounterGoogleCloudApigeeV1TraceSamplingConfig = 0;
 api.GoogleCloudApigeeV1TraceSamplingConfig
     buildGoogleCloudApigeeV1TraceSamplingConfig() {
-  var o = api.GoogleCloudApigeeV1TraceSamplingConfig();
+  final o = api.GoogleCloudApigeeV1TraceSamplingConfig();
   buildCounterGoogleCloudApigeeV1TraceSamplingConfig++;
   if (buildCounterGoogleCloudApigeeV1TraceSamplingConfig < 3) {
     o.sampler = 'foo';
@@ -8709,7 +8564,7 @@ void checkGoogleCloudApigeeV1TraceSamplingConfig(
 
 core.int buildCounterGoogleCloudApigeeV1UpdateError = 0;
 api.GoogleCloudApigeeV1UpdateError buildGoogleCloudApigeeV1UpdateError() {
-  var o = api.GoogleCloudApigeeV1UpdateError();
+  final o = api.GoogleCloudApigeeV1UpdateError();
   buildCounterGoogleCloudApigeeV1UpdateError++;
   if (buildCounterGoogleCloudApigeeV1UpdateError < 3) {
     o.code = 'foo';
@@ -8745,7 +8600,7 @@ void checkGoogleCloudApigeeV1UpdateError(api.GoogleCloudApigeeV1UpdateError o) {
 }
 
 core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed6534() {
-  var o = <api.GoogleIamV1AuditLogConfig>[];
+  final o = <api.GoogleIamV1AuditLogConfig>[];
   o.add(buildGoogleIamV1AuditLogConfig());
   o.add(buildGoogleIamV1AuditLogConfig());
   return o;
@@ -8753,13 +8608,13 @@ core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed6534() {
 
 void checkUnnamed6534(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleIamV1AuditLogConfig(o[0] as api.GoogleIamV1AuditLogConfig);
-  checkGoogleIamV1AuditLogConfig(o[1] as api.GoogleIamV1AuditLogConfig);
+  checkGoogleIamV1AuditLogConfig(o[0]);
+  checkGoogleIamV1AuditLogConfig(o[1]);
 }
 
 core.int buildCounterGoogleIamV1AuditConfig = 0;
 api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
-  var o = api.GoogleIamV1AuditConfig();
+  final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
     o.auditLogConfigs = buildUnnamed6534();
@@ -8782,7 +8637,7 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
 }
 
 core.List<core.String> buildUnnamed6535() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8802,7 +8657,7 @@ void checkUnnamed6535(core.List<core.String> o) {
 
 core.int buildCounterGoogleIamV1AuditLogConfig = 0;
 api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
-  var o = api.GoogleIamV1AuditLogConfig();
+  final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
     o.exemptedMembers = buildUnnamed6535();
@@ -8825,7 +8680,7 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
 }
 
 core.List<core.String> buildUnnamed6536() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8845,7 +8700,7 @@ void checkUnnamed6536(core.List<core.String> o) {
 
 core.int buildCounterGoogleIamV1Binding = 0;
 api.GoogleIamV1Binding buildGoogleIamV1Binding() {
-  var o = api.GoogleIamV1Binding();
+  final o = api.GoogleIamV1Binding();
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
@@ -8859,7 +8714,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
 void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
-    checkGoogleTypeExpr(o.condition! as api.GoogleTypeExpr);
+    checkGoogleTypeExpr(o.condition!);
     checkUnnamed6536(o.members!);
     unittest.expect(
       o.role!,
@@ -8870,7 +8725,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
 }
 
 core.List<api.GoogleIamV1AuditConfig> buildUnnamed6537() {
-  var o = <api.GoogleIamV1AuditConfig>[];
+  final o = <api.GoogleIamV1AuditConfig>[];
   o.add(buildGoogleIamV1AuditConfig());
   o.add(buildGoogleIamV1AuditConfig());
   return o;
@@ -8878,12 +8733,12 @@ core.List<api.GoogleIamV1AuditConfig> buildUnnamed6537() {
 
 void checkUnnamed6537(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleIamV1AuditConfig(o[0] as api.GoogleIamV1AuditConfig);
-  checkGoogleIamV1AuditConfig(o[1] as api.GoogleIamV1AuditConfig);
+  checkGoogleIamV1AuditConfig(o[0]);
+  checkGoogleIamV1AuditConfig(o[1]);
 }
 
 core.List<api.GoogleIamV1Binding> buildUnnamed6538() {
-  var o = <api.GoogleIamV1Binding>[];
+  final o = <api.GoogleIamV1Binding>[];
   o.add(buildGoogleIamV1Binding());
   o.add(buildGoogleIamV1Binding());
   return o;
@@ -8891,13 +8746,13 @@ core.List<api.GoogleIamV1Binding> buildUnnamed6538() {
 
 void checkUnnamed6538(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleIamV1Binding(o[0] as api.GoogleIamV1Binding);
-  checkGoogleIamV1Binding(o[1] as api.GoogleIamV1Binding);
+  checkGoogleIamV1Binding(o[0]);
+  checkGoogleIamV1Binding(o[1]);
 }
 
 core.int buildCounterGoogleIamV1Policy = 0;
 api.GoogleIamV1Policy buildGoogleIamV1Policy() {
-  var o = api.GoogleIamV1Policy();
+  final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
     o.auditConfigs = buildUnnamed6537();
@@ -8928,7 +8783,7 @@ void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
 
 core.int buildCounterGoogleIamV1SetIamPolicyRequest = 0;
 api.GoogleIamV1SetIamPolicyRequest buildGoogleIamV1SetIamPolicyRequest() {
-  var o = api.GoogleIamV1SetIamPolicyRequest();
+  final o = api.GoogleIamV1SetIamPolicyRequest();
   buildCounterGoogleIamV1SetIamPolicyRequest++;
   if (buildCounterGoogleIamV1SetIamPolicyRequest < 3) {
     o.policy = buildGoogleIamV1Policy();
@@ -8941,7 +8796,7 @@ api.GoogleIamV1SetIamPolicyRequest buildGoogleIamV1SetIamPolicyRequest() {
 void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest++;
   if (buildCounterGoogleIamV1SetIamPolicyRequest < 3) {
-    checkGoogleIamV1Policy(o.policy! as api.GoogleIamV1Policy);
+    checkGoogleIamV1Policy(o.policy!);
     unittest.expect(
       o.updateMask!,
       unittest.equals('foo'),
@@ -8951,7 +8806,7 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
 }
 
 core.List<core.String> buildUnnamed6539() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -8972,7 +8827,7 @@ void checkUnnamed6539(core.List<core.String> o) {
 core.int buildCounterGoogleIamV1TestIamPermissionsRequest = 0;
 api.GoogleIamV1TestIamPermissionsRequest
     buildGoogleIamV1TestIamPermissionsRequest() {
-  var o = api.GoogleIamV1TestIamPermissionsRequest();
+  final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
     o.permissions = buildUnnamed6539();
@@ -8991,7 +8846,7 @@ void checkGoogleIamV1TestIamPermissionsRequest(
 }
 
 core.List<core.String> buildUnnamed6540() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -9012,7 +8867,7 @@ void checkUnnamed6540(core.List<core.String> o) {
 core.int buildCounterGoogleIamV1TestIamPermissionsResponse = 0;
 api.GoogleIamV1TestIamPermissionsResponse
     buildGoogleIamV1TestIamPermissionsResponse() {
-  var o = api.GoogleIamV1TestIamPermissionsResponse();
+  final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
     o.permissions = buildUnnamed6540();
@@ -9031,7 +8886,7 @@ void checkGoogleIamV1TestIamPermissionsResponse(
 }
 
 core.List<api.GoogleLongrunningOperation> buildUnnamed6541() {
-  var o = <api.GoogleLongrunningOperation>[];
+  final o = <api.GoogleLongrunningOperation>[];
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
@@ -9039,14 +8894,14 @@ core.List<api.GoogleLongrunningOperation> buildUnnamed6541() {
 
 void checkUnnamed6541(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleLongrunningOperation(o[0] as api.GoogleLongrunningOperation);
-  checkGoogleLongrunningOperation(o[1] as api.GoogleLongrunningOperation);
+  checkGoogleLongrunningOperation(o[0]);
+  checkGoogleLongrunningOperation(o[1]);
 }
 
 core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
 api.GoogleLongrunningListOperationsResponse
     buildGoogleLongrunningListOperationsResponse() {
-  var o = api.GoogleLongrunningListOperationsResponse();
+  final o = api.GoogleLongrunningListOperationsResponse();
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -9070,7 +8925,7 @@ void checkGoogleLongrunningListOperationsResponse(
 }
 
 core.Map<core.String, core.Object> buildUnnamed6542() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -9117,7 +8972,7 @@ void checkUnnamed6542(core.Map<core.String, core.Object> o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed6543() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -9165,7 +9020,7 @@ void checkUnnamed6543(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterGoogleLongrunningOperation = 0;
 api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
-  var o = api.GoogleLongrunningOperation();
+  final o = api.GoogleLongrunningOperation();
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
@@ -9182,7 +9037,7 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
-    checkGoogleRpcStatus(o.error! as api.GoogleRpcStatus);
+    checkGoogleRpcStatus(o.error!);
     checkUnnamed6542(o.metadata!);
     unittest.expect(
       o.name!,
@@ -9195,7 +9050,7 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
 
 core.int buildCounterGoogleProtobufEmpty = 0;
 api.GoogleProtobufEmpty buildGoogleProtobufEmpty() {
-  var o = api.GoogleProtobufEmpty();
+  final o = api.GoogleProtobufEmpty();
   buildCounterGoogleProtobufEmpty++;
   if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
@@ -9209,7 +9064,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
 }
 
 core.List<api.GoogleRpcPreconditionFailureViolation> buildUnnamed6544() {
-  var o = <api.GoogleRpcPreconditionFailureViolation>[];
+  final o = <api.GoogleRpcPreconditionFailureViolation>[];
   o.add(buildGoogleRpcPreconditionFailureViolation());
   o.add(buildGoogleRpcPreconditionFailureViolation());
   return o;
@@ -9217,15 +9072,13 @@ core.List<api.GoogleRpcPreconditionFailureViolation> buildUnnamed6544() {
 
 void checkUnnamed6544(core.List<api.GoogleRpcPreconditionFailureViolation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleRpcPreconditionFailureViolation(
-      o[0] as api.GoogleRpcPreconditionFailureViolation);
-  checkGoogleRpcPreconditionFailureViolation(
-      o[1] as api.GoogleRpcPreconditionFailureViolation);
+  checkGoogleRpcPreconditionFailureViolation(o[0]);
+  checkGoogleRpcPreconditionFailureViolation(o[1]);
 }
 
 core.int buildCounterGoogleRpcPreconditionFailure = 0;
 api.GoogleRpcPreconditionFailure buildGoogleRpcPreconditionFailure() {
-  var o = api.GoogleRpcPreconditionFailure();
+  final o = api.GoogleRpcPreconditionFailure();
   buildCounterGoogleRpcPreconditionFailure++;
   if (buildCounterGoogleRpcPreconditionFailure < 3) {
     o.violations = buildUnnamed6544();
@@ -9245,7 +9098,7 @@ void checkGoogleRpcPreconditionFailure(api.GoogleRpcPreconditionFailure o) {
 core.int buildCounterGoogleRpcPreconditionFailureViolation = 0;
 api.GoogleRpcPreconditionFailureViolation
     buildGoogleRpcPreconditionFailureViolation() {
-  var o = api.GoogleRpcPreconditionFailureViolation();
+  final o = api.GoogleRpcPreconditionFailureViolation();
   buildCounterGoogleRpcPreconditionFailureViolation++;
   if (buildCounterGoogleRpcPreconditionFailureViolation < 3) {
     o.description = 'foo';
@@ -9277,7 +9130,7 @@ void checkGoogleRpcPreconditionFailureViolation(
 }
 
 core.Map<core.String, core.Object> buildUnnamed6545() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -9324,7 +9177,7 @@ void checkUnnamed6545(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed6546() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed6545());
   o.add(buildUnnamed6545());
   return o;
@@ -9338,7 +9191,7 @@ void checkUnnamed6546(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterGoogleRpcStatus = 0;
 api.GoogleRpcStatus buildGoogleRpcStatus() {
-  var o = api.GoogleRpcStatus();
+  final o = api.GoogleRpcStatus();
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
@@ -9367,7 +9220,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
 
 core.int buildCounterGoogleTypeExpr = 0;
 api.GoogleTypeExpr buildGoogleTypeExpr() {
-  var o = api.GoogleTypeExpr();
+  final o = api.GoogleTypeExpr();
   buildCounterGoogleTypeExpr++;
   if (buildCounterGoogleTypeExpr < 3) {
     o.description = 'foo';
@@ -9404,7 +9257,7 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 
 core.int buildCounterGoogleTypeMoney = 0;
 api.GoogleTypeMoney buildGoogleTypeMoney() {
-  var o = api.GoogleTypeMoney();
+  final o = api.GoogleTypeMoney();
   buildCounterGoogleTypeMoney++;
   if (buildCounterGoogleTypeMoney < 3) {
     o.currencyCode = 'foo';
@@ -9437,477 +9290,445 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
 void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleApiHttpBody();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleApiHttpBody.fromJson(
+      final o = buildGoogleApiHttpBody();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleApiHttpBody.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleApiHttpBody(od as api.GoogleApiHttpBody);
+      checkGoogleApiHttpBody(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Access', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Access();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Access.fromJson(
+      final o = buildGoogleCloudApigeeV1Access();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Access.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Access(od as api.GoogleCloudApigeeV1Access);
+      checkGoogleCloudApigeeV1Access(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessGet', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AccessGet();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AccessGet.fromJson(
+      final o = buildGoogleCloudApigeeV1AccessGet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AccessGet.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AccessGet(od as api.GoogleCloudApigeeV1AccessGet);
+      checkGoogleCloudApigeeV1AccessGet(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessRemove', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AccessRemove();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AccessRemove.fromJson(
+      final o = buildGoogleCloudApigeeV1AccessRemove();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AccessRemove.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AccessRemove(
-          od as api.GoogleCloudApigeeV1AccessRemove);
+      checkGoogleCloudApigeeV1AccessRemove(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessSet', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AccessSet();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AccessSet.fromJson(
+      final o = buildGoogleCloudApigeeV1AccessSet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AccessSet.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AccessSet(od as api.GoogleCloudApigeeV1AccessSet);
+      checkGoogleCloudApigeeV1AccessSet(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ActivateNatAddressRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ActivateNatAddressRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(
+      final o = buildGoogleCloudApigeeV1ActivateNatAddressRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ActivateNatAddressRequest(
-          od as api.GoogleCloudApigeeV1ActivateNatAddressRequest);
+      checkGoogleCloudApigeeV1ActivateNatAddressRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AddonsConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AddonsConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AddonsConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1AddonsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AddonsConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AddonsConfig(
-          od as api.GoogleCloudApigeeV1AddonsConfig);
+      checkGoogleCloudApigeeV1AddonsConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AdvancedApiOpsConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AdvancedApiOpsConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1AdvancedApiOpsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AdvancedApiOpsConfig(
-          od as api.GoogleCloudApigeeV1AdvancedApiOpsConfig);
+      checkGoogleCloudApigeeV1AdvancedApiOpsConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Alias', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Alias();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Alias.fromJson(
+      final o = buildGoogleCloudApigeeV1Alias();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Alias.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Alias(od as api.GoogleCloudApigeeV1Alias);
+      checkGoogleCloudApigeeV1Alias(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AliasRevisionConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AliasRevisionConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AliasRevisionConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1AliasRevisionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AliasRevisionConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AliasRevisionConfig(
-          od as api.GoogleCloudApigeeV1AliasRevisionConfig);
+      checkGoogleCloudApigeeV1AliasRevisionConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategory', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ApiCategory();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ApiCategory.fromJson(
+      final o = buildGoogleCloudApigeeV1ApiCategory();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ApiCategory.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiCategory(
-          od as api.GoogleCloudApigeeV1ApiCategory);
+      checkGoogleCloudApigeeV1ApiCategory(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategoryData', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ApiCategoryData();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
+      final o = buildGoogleCloudApigeeV1ApiCategoryData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiCategoryData(
-          od as api.GoogleCloudApigeeV1ApiCategoryData);
+      checkGoogleCloudApigeeV1ApiCategoryData(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProduct', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ApiProduct();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ApiProduct.fromJson(
+      final o = buildGoogleCloudApigeeV1ApiProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ApiProduct.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiProduct(
-          od as api.GoogleCloudApigeeV1ApiProduct);
+      checkGoogleCloudApigeeV1ApiProduct(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProductRef', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ApiProductRef();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ApiProductRef.fromJson(
+      final o = buildGoogleCloudApigeeV1ApiProductRef();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ApiProductRef.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiProductRef(
-          od as api.GoogleCloudApigeeV1ApiProductRef);
+      checkGoogleCloudApigeeV1ApiProductRef(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProxy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ApiProxy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ApiProxy.fromJson(
+      final o = buildGoogleCloudApigeeV1ApiProxy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ApiProxy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiProxy(od as api.GoogleCloudApigeeV1ApiProxy);
+      checkGoogleCloudApigeeV1ApiProxy(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProxyRevision', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ApiProxyRevision();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ApiProxyRevision.fromJson(
+      final o = buildGoogleCloudApigeeV1ApiProxyRevision();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ApiProxyRevision.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiProxyRevision(
-          od as api.GoogleCloudApigeeV1ApiProxyRevision);
+      checkGoogleCloudApigeeV1ApiProxyRevision(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiResponseWrapper', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ApiResponseWrapper();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
+      final o = buildGoogleCloudApigeeV1ApiResponseWrapper();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiResponseWrapper(
-          od as api.GoogleCloudApigeeV1ApiResponseWrapper);
+      checkGoogleCloudApigeeV1ApiResponseWrapper(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1App', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1App();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1App.fromJson(
+      final o = buildGoogleCloudApigeeV1App();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1App.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1App(od as api.GoogleCloudApigeeV1App);
+      checkGoogleCloudApigeeV1App(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQuery', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AsyncQuery();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AsyncQuery.fromJson(
+      final o = buildGoogleCloudApigeeV1AsyncQuery();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AsyncQuery.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AsyncQuery(
-          od as api.GoogleCloudApigeeV1AsyncQuery);
+      checkGoogleCloudApigeeV1AsyncQuery(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQueryResult', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AsyncQueryResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AsyncQueryResult.fromJson(
+      final o = buildGoogleCloudApigeeV1AsyncQueryResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AsyncQueryResult.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AsyncQueryResult(
-          od as api.GoogleCloudApigeeV1AsyncQueryResult);
+      checkGoogleCloudApigeeV1AsyncQueryResult(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQueryResultView', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1AsyncQueryResultView();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1AsyncQueryResultView.fromJson(
+      final o = buildGoogleCloudApigeeV1AsyncQueryResultView();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AsyncQueryResultView.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1AsyncQueryResultView(
-          od as api.GoogleCloudApigeeV1AsyncQueryResultView);
+      checkGoogleCloudApigeeV1AsyncQueryResultView(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Attribute', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Attribute();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Attribute.fromJson(
+      final o = buildGoogleCloudApigeeV1Attribute();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Attribute.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Attribute(od as api.GoogleCloudApigeeV1Attribute);
+      checkGoogleCloudApigeeV1Attribute(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Attributes', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Attributes();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Attributes.fromJson(
+      final o = buildGoogleCloudApigeeV1Attributes();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Attributes.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Attributes(
-          od as api.GoogleCloudApigeeV1Attributes);
+      checkGoogleCloudApigeeV1Attributes(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CanaryEvaluation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1CanaryEvaluation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1CanaryEvaluation.fromJson(
+      final o = buildGoogleCloudApigeeV1CanaryEvaluation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1CanaryEvaluation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1CanaryEvaluation(
-          od as api.GoogleCloudApigeeV1CanaryEvaluation);
+      checkGoogleCloudApigeeV1CanaryEvaluation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CanaryEvaluationMetricLabels',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1CanaryEvaluationMetricLabels();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(
+      final o = buildGoogleCloudApigeeV1CanaryEvaluationMetricLabels();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1CanaryEvaluationMetricLabels(
-          od as api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels);
+      checkGoogleCloudApigeeV1CanaryEvaluationMetricLabels(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CertInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1CertInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1CertInfo.fromJson(
+      final o = buildGoogleCloudApigeeV1CertInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1CertInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1CertInfo(od as api.GoogleCloudApigeeV1CertInfo);
+      checkGoogleCloudApigeeV1CertInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Certificate', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Certificate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Certificate.fromJson(
+      final o = buildGoogleCloudApigeeV1Certificate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Certificate.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Certificate(
-          od as api.GoogleCloudApigeeV1Certificate);
+      checkGoogleCloudApigeeV1Certificate(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CommonNameConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1CommonNameConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1CommonNameConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1CommonNameConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1CommonNameConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1CommonNameConfig(
-          od as api.GoogleCloudApigeeV1CommonNameConfig);
+      checkGoogleCloudApigeeV1CommonNameConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ConfigVersion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ConfigVersion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ConfigVersion.fromJson(
+      final o = buildGoogleCloudApigeeV1ConfigVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ConfigVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ConfigVersion(
-          od as api.GoogleCloudApigeeV1ConfigVersion);
+      checkGoogleCloudApigeeV1ConfigVersion(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Credential', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Credential();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Credential.fromJson(
+      final o = buildGoogleCloudApigeeV1Credential();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Credential.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Credential(
-          od as api.GoogleCloudApigeeV1Credential);
+      checkGoogleCloudApigeeV1Credential(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CustomReport', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1CustomReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1CustomReport.fromJson(
+      final o = buildGoogleCloudApigeeV1CustomReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1CustomReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1CustomReport(
-          od as api.GoogleCloudApigeeV1CustomReport);
+      checkGoogleCloudApigeeV1CustomReport(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CustomReportMetric', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1CustomReportMetric();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1CustomReportMetric.fromJson(
+      final o = buildGoogleCloudApigeeV1CustomReportMetric();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1CustomReportMetric.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1CustomReportMetric(
-          od as api.GoogleCloudApigeeV1CustomReportMetric);
+      checkGoogleCloudApigeeV1CustomReportMetric(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DataCollector', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DataCollector();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DataCollector.fromJson(
+      final o = buildGoogleCloudApigeeV1DataCollector();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DataCollector.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DataCollector(
-          od as api.GoogleCloudApigeeV1DataCollector);
+      checkGoogleCloudApigeeV1DataCollector(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DataCollectorConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DataCollectorConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DataCollectorConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1DataCollectorConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DataCollectorConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DataCollectorConfig(
-          od as api.GoogleCloudApigeeV1DataCollectorConfig);
+      checkGoogleCloudApigeeV1DataCollectorConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Datastore', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Datastore();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Datastore.fromJson(
+      final o = buildGoogleCloudApigeeV1Datastore();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Datastore.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Datastore(od as api.GoogleCloudApigeeV1Datastore);
+      checkGoogleCloudApigeeV1Datastore(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DatastoreConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DatastoreConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DatastoreConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1DatastoreConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DatastoreConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DatastoreConfig(
-          od as api.GoogleCloudApigeeV1DatastoreConfig);
+      checkGoogleCloudApigeeV1DatastoreConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DateRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DateRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DateRange.fromJson(
+      final o = buildGoogleCloudApigeeV1DateRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DateRange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DateRange(od as api.GoogleCloudApigeeV1DateRange);
+      checkGoogleCloudApigeeV1DateRange(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugMask', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DebugMask();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DebugMask.fromJson(
+      final o = buildGoogleCloudApigeeV1DebugMask();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DebugMask.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DebugMask(od as api.GoogleCloudApigeeV1DebugMask);
+      checkGoogleCloudApigeeV1DebugMask(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugSession', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DebugSession();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DebugSession.fromJson(
+      final o = buildGoogleCloudApigeeV1DebugSession();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DebugSession.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DebugSession(
-          od as api.GoogleCloudApigeeV1DebugSession);
+      checkGoogleCloudApigeeV1DebugSession(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugSessionTransaction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DebugSessionTransaction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DebugSessionTransaction.fromJson(
+      final o = buildGoogleCloudApigeeV1DebugSessionTransaction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DebugSessionTransaction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DebugSessionTransaction(
-          od as api.GoogleCloudApigeeV1DebugSessionTransaction);
+      checkGoogleCloudApigeeV1DebugSessionTransaction(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeleteCustomReportResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeleteCustomReportResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1DeleteCustomReportResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeleteCustomReportResponse(
-          od as api.GoogleCloudApigeeV1DeleteCustomReportResponse);
+      checkGoogleCloudApigeeV1DeleteCustomReportResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Deployment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Deployment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Deployment.fromJson(
+      final o = buildGoogleCloudApigeeV1Deployment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Deployment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Deployment(
-          od as api.GoogleCloudApigeeV1Deployment);
+      checkGoogleCloudApigeeV1Deployment(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentChangeReport', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeploymentChangeReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
+      final o = buildGoogleCloudApigeeV1DeploymentChangeReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeploymentChangeReport(
-          od as api.GoogleCloudApigeeV1DeploymentChangeReport);
+      checkGoogleCloudApigeeV1DeploymentChangeReport(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingChange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(
-          od as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange);
+      checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(od);
     });
   });
 
@@ -9915,13 +9736,12 @@ void main() {
       'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(
-          od as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict);
+      checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(od);
     });
   });
 
@@ -9929,287 +9749,266 @@ void main() {
       'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
+      final o =
+          buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(
-          od as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment);
+      checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeploymentConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DeploymentConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1DeploymentConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeploymentConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeploymentConfig(
-          od as api.GoogleCloudApigeeV1DeploymentConfig);
+      checkGoogleCloudApigeeV1DeploymentConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Developer', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Developer();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Developer.fromJson(
+      final o = buildGoogleCloudApigeeV1Developer();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Developer.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Developer(od as api.GoogleCloudApigeeV1Developer);
+      checkGoogleCloudApigeeV1Developer(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperApp', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeveloperApp();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
+      final o = buildGoogleCloudApigeeV1DeveloperApp();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeveloperApp(
-          od as api.GoogleCloudApigeeV1DeveloperApp);
+      checkGoogleCloudApigeeV1DeveloperApp(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperAppKey', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+      final o = buildGoogleCloudApigeeV1DeveloperAppKey();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeveloperAppKey(
-          od as api.GoogleCloudApigeeV1DeveloperAppKey);
+      checkGoogleCloudApigeeV1DeveloperAppKey(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperSubscription', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DeveloperSubscription();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DeveloperSubscription.fromJson(
+      final o = buildGoogleCloudApigeeV1DeveloperSubscription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DeveloperSubscription.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DeveloperSubscription(
-          od as api.GoogleCloudApigeeV1DeveloperSubscription);
+      checkGoogleCloudApigeeV1DeveloperSubscription(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DimensionMetric', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1DimensionMetric();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1DimensionMetric.fromJson(
+      final o = buildGoogleCloudApigeeV1DimensionMetric();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1DimensionMetric.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1DimensionMetric(
-          od as api.GoogleCloudApigeeV1DimensionMetric);
+      checkGoogleCloudApigeeV1DimensionMetric(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EntityMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1EntityMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1EntityMetadata.fromJson(
+      final o = buildGoogleCloudApigeeV1EntityMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1EntityMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1EntityMetadata(
-          od as api.GoogleCloudApigeeV1EntityMetadata);
+      checkGoogleCloudApigeeV1EntityMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Environment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Environment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Environment.fromJson(
+      final o = buildGoogleCloudApigeeV1Environment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Environment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Environment(
-          od as api.GoogleCloudApigeeV1Environment);
+      checkGoogleCloudApigeeV1Environment(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1EnvironmentConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1EnvironmentConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1EnvironmentConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1EnvironmentConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1EnvironmentConfig(
-          od as api.GoogleCloudApigeeV1EnvironmentConfig);
+      checkGoogleCloudApigeeV1EnvironmentConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1EnvironmentGroup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+      final o = buildGoogleCloudApigeeV1EnvironmentGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1EnvironmentGroup(
-          od as api.GoogleCloudApigeeV1EnvironmentGroup);
+      checkGoogleCloudApigeeV1EnvironmentGroup(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroupAttachment',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
+      final o = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
-          od as api.GoogleCloudApigeeV1EnvironmentGroupAttachment);
+      checkGoogleCloudApigeeV1EnvironmentGroupAttachment(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroupConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1EnvironmentGroupConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1EnvironmentGroupConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1EnvironmentGroupConfig(
-          od as api.GoogleCloudApigeeV1EnvironmentGroupConfig);
+      checkGoogleCloudApigeeV1EnvironmentGroupConfig(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest(
-          od as api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest);
+      checkGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Export', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Export();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Export.fromJson(
+      final o = buildGoogleCloudApigeeV1Export();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Export.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Export(od as api.GoogleCloudApigeeV1Export);
+      checkGoogleCloudApigeeV1Export(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ExportRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ExportRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ExportRequest.fromJson(
+      final o = buildGoogleCloudApigeeV1ExportRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ExportRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ExportRequest(
-          od as api.GoogleCloudApigeeV1ExportRequest);
+      checkGoogleCloudApigeeV1ExportRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1FlowHook', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1FlowHook();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1FlowHook.fromJson(
+      final o = buildGoogleCloudApigeeV1FlowHook();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1FlowHook.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1FlowHook(od as api.GoogleCloudApigeeV1FlowHook);
+      checkGoogleCloudApigeeV1FlowHook(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1FlowHookConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1FlowHookConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1FlowHookConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1FlowHookConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1FlowHookConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1FlowHookConfig(
-          od as api.GoogleCloudApigeeV1FlowHookConfig);
+      checkGoogleCloudApigeeV1FlowHookConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1GetSyncAuthorizationRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
+      final o = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1GetSyncAuthorizationRequest(
-          od as api.GoogleCloudApigeeV1GetSyncAuthorizationRequest);
+      checkGoogleCloudApigeeV1GetSyncAuthorizationRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1GraphQLOperation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1GraphQLOperation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1GraphQLOperation.fromJson(
+      final o = buildGoogleCloudApigeeV1GraphQLOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1GraphQLOperation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1GraphQLOperation(
-          od as api.GoogleCloudApigeeV1GraphQLOperation);
+      checkGoogleCloudApigeeV1GraphQLOperation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1GraphQLOperationConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1GraphQLOperationConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1GraphQLOperationConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1GraphQLOperationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1GraphQLOperationConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1GraphQLOperationConfig(
-          od as api.GoogleCloudApigeeV1GraphQLOperationConfig);
+      checkGoogleCloudApigeeV1GraphQLOperationConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1GraphQLOperationGroup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1GraphQLOperationGroup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1GraphQLOperationGroup.fromJson(
+      final o = buildGoogleCloudApigeeV1GraphQLOperationGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1GraphQLOperationGroup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1GraphQLOperationGroup(
-          od as api.GoogleCloudApigeeV1GraphQLOperationGroup);
+      checkGoogleCloudApigeeV1GraphQLOperationGroup(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1IngressConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1IngressConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1IngressConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1IngressConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1IngressConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1IngressConfig(
-          od as api.GoogleCloudApigeeV1IngressConfig);
+      checkGoogleCloudApigeeV1IngressConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Instance', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Instance();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Instance.fromJson(
+      final o = buildGoogleCloudApigeeV1Instance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Instance.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Instance(od as api.GoogleCloudApigeeV1Instance);
+      checkGoogleCloudApigeeV1Instance(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1InstanceAttachment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1InstanceAttachment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(
+      final o = buildGoogleCloudApigeeV1InstanceAttachment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1InstanceAttachment(
-          od as api.GoogleCloudApigeeV1InstanceAttachment);
+      checkGoogleCloudApigeeV1InstanceAttachment(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1InstanceDeploymentStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(
+      final o = buildGoogleCloudApigeeV1InstanceDeploymentStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1InstanceDeploymentStatus(
-          od as api.GoogleCloudApigeeV1InstanceDeploymentStatus);
+      checkGoogleCloudApigeeV1InstanceDeploymentStatus(od);
     });
   });
 
@@ -10217,13 +10016,12 @@ void main() {
       'obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(od
-          as api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision);
+      checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(od);
     });
   });
 
@@ -10231,202 +10029,185 @@ void main() {
       'obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(
-          od as api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute);
+      checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1IntegrationConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1IntegrationConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1IntegrationConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1IntegrationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1IntegrationConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1IntegrationConfig(
-          od as api.GoogleCloudApigeeV1IntegrationConfig);
+      checkGoogleCloudApigeeV1IntegrationConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1KeyAliasReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1KeyAliasReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1KeyAliasReference.fromJson(
+      final o = buildGoogleCloudApigeeV1KeyAliasReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1KeyAliasReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1KeyAliasReference(
-          od as api.GoogleCloudApigeeV1KeyAliasReference);
+      checkGoogleCloudApigeeV1KeyAliasReference(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1KeyValueMap', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1KeyValueMap();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
+      final o = buildGoogleCloudApigeeV1KeyValueMap();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1KeyValueMap(
-          od as api.GoogleCloudApigeeV1KeyValueMap);
+      checkGoogleCloudApigeeV1KeyValueMap(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Keystore', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Keystore();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Keystore.fromJson(
+      final o = buildGoogleCloudApigeeV1Keystore();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Keystore.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Keystore(od as api.GoogleCloudApigeeV1Keystore);
+      checkGoogleCloudApigeeV1Keystore(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1KeystoreConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1KeystoreConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1KeystoreConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1KeystoreConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1KeystoreConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1KeystoreConfig(
-          od as api.GoogleCloudApigeeV1KeystoreConfig);
+      checkGoogleCloudApigeeV1KeystoreConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiCategoriesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListApiCategoriesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListApiCategoriesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListApiCategoriesResponse(
-          od as api.GoogleCloudApigeeV1ListApiCategoriesResponse);
+      checkGoogleCloudApigeeV1ListApiCategoriesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiProductsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListApiProductsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListApiProductsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListApiProductsResponse(
-          od as api.GoogleCloudApigeeV1ListApiProductsResponse);
+      checkGoogleCloudApigeeV1ListApiProductsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiProxiesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListApiProxiesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListApiProxiesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListApiProxiesResponse(
-          od as api.GoogleCloudApigeeV1ListApiProxiesResponse);
+      checkGoogleCloudApigeeV1ListApiProxiesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListAppsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListAppsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListAppsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListAppsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListAppsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListAppsResponse(
-          od as api.GoogleCloudApigeeV1ListAppsResponse);
+      checkGoogleCloudApigeeV1ListAppsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListAsyncQueriesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListAsyncQueriesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListAsyncQueriesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListAsyncQueriesResponse(
-          od as api.GoogleCloudApigeeV1ListAsyncQueriesResponse);
+      checkGoogleCloudApigeeV1ListAsyncQueriesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListCustomReportsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListCustomReportsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListCustomReportsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListCustomReportsResponse(
-          od as api.GoogleCloudApigeeV1ListCustomReportsResponse);
+      checkGoogleCloudApigeeV1ListCustomReportsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDataCollectorsResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListDataCollectorsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListDataCollectorsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListDataCollectorsResponse(
-          od as api.GoogleCloudApigeeV1ListDataCollectorsResponse);
+      checkGoogleCloudApigeeV1ListDataCollectorsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDatastoresResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListDatastoresResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListDatastoresResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListDatastoresResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListDatastoresResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListDatastoresResponse(
-          od as api.GoogleCloudApigeeV1ListDatastoresResponse);
+      checkGoogleCloudApigeeV1ListDatastoresResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDebugSessionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListDebugSessionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListDebugSessionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListDebugSessionsResponse(
-          od as api.GoogleCloudApigeeV1ListDebugSessionsResponse);
+      checkGoogleCloudApigeeV1ListDebugSessionsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDeploymentsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListDeploymentsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListDeploymentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListDeploymentsResponse(
-          od as api.GoogleCloudApigeeV1ListDeploymentsResponse);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDeveloperAppsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListDeveloperAppsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListDeveloperAppsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListDeveloperAppsResponse(
-          od as api.GoogleCloudApigeeV1ListDeveloperAppsResponse);
+      checkGoogleCloudApigeeV1ListDeveloperAppsResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse(
-          od as api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse);
+      checkGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse(od);
     });
   });
 
@@ -10434,1043 +10215,980 @@ void main() {
       'obj-schema-GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
+      final o =
+          buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(
-          od as api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse);
+      checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListEnvironmentGroupsResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(
-          od as api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse);
+      checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1ListEnvironmentResourcesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(
-          od as api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse);
+      final o = buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListExportsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListExportsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListExportsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListExportsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListExportsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListExportsResponse(
-          od as api.GoogleCloudApigeeV1ListExportsResponse);
+      checkGoogleCloudApigeeV1ListExportsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListHybridIssuersResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListHybridIssuersResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListHybridIssuersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListHybridIssuersResponse(
-          od as api.GoogleCloudApigeeV1ListHybridIssuersResponse);
+      checkGoogleCloudApigeeV1ListHybridIssuersResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1ListInstanceAttachmentsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(
-          od as api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse);
+      final o = buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListInstancesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListInstancesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListInstancesResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListInstancesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListInstancesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListInstancesResponse(
-          od as api.GoogleCloudApigeeV1ListInstancesResponse);
+      checkGoogleCloudApigeeV1ListInstancesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListNatAddressesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListNatAddressesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListNatAddressesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListNatAddressesResponse(
-          od as api.GoogleCloudApigeeV1ListNatAddressesResponse);
+      checkGoogleCloudApigeeV1ListNatAddressesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListOfDevelopersResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListOfDevelopersResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListOfDevelopersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListOfDevelopersResponse(
-          od as api.GoogleCloudApigeeV1ListOfDevelopersResponse);
+      checkGoogleCloudApigeeV1ListOfDevelopersResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListOrganizationsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListOrganizationsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListOrganizationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListOrganizationsResponse(
-          od as api.GoogleCloudApigeeV1ListOrganizationsResponse);
+      checkGoogleCloudApigeeV1ListOrganizationsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListRatePlansResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListRatePlansResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListRatePlansResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListRatePlansResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListRatePlansResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListRatePlansResponse(
-          od as api.GoogleCloudApigeeV1ListRatePlansResponse);
+      checkGoogleCloudApigeeV1ListRatePlansResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListSharedFlowsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListSharedFlowsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ListSharedFlowsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListSharedFlowsResponse(
-          od as api.GoogleCloudApigeeV1ListSharedFlowsResponse);
+      checkGoogleCloudApigeeV1ListSharedFlowsResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1ListTraceConfigOverridesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ListTraceConfigOverridesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ListTraceConfigOverridesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ListTraceConfigOverridesResponse(
-          od as api.GoogleCloudApigeeV1ListTraceConfigOverridesResponse);
+      final o = buildGoogleCloudApigeeV1ListTraceConfigOverridesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudApigeeV1ListTraceConfigOverridesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1ListTraceConfigOverridesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Metadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Metadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Metadata.fromJson(
+      final o = buildGoogleCloudApigeeV1Metadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Metadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Metadata(od as api.GoogleCloudApigeeV1Metadata);
+      checkGoogleCloudApigeeV1Metadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Metric', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Metric();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Metric.fromJson(
+      final o = buildGoogleCloudApigeeV1Metric();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Metric.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Metric(od as api.GoogleCloudApigeeV1Metric);
+      checkGoogleCloudApigeeV1Metric(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1MonetizationConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1MonetizationConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1MonetizationConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1MonetizationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1MonetizationConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1MonetizationConfig(
-          od as api.GoogleCloudApigeeV1MonetizationConfig);
+      checkGoogleCloudApigeeV1MonetizationConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1NatAddress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1NatAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1NatAddress.fromJson(
+      final o = buildGoogleCloudApigeeV1NatAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1NatAddress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1NatAddress(
-          od as api.GoogleCloudApigeeV1NatAddress);
+      checkGoogleCloudApigeeV1NatAddress(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Operation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Operation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Operation.fromJson(
+      final o = buildGoogleCloudApigeeV1Operation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Operation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Operation(od as api.GoogleCloudApigeeV1Operation);
+      checkGoogleCloudApigeeV1Operation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1OperationConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1OperationConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1OperationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1OperationConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1OperationConfig(
-          od as api.GoogleCloudApigeeV1OperationConfig);
+      checkGoogleCloudApigeeV1OperationConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationGroup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1OperationGroup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1OperationGroup.fromJson(
+      final o = buildGoogleCloudApigeeV1OperationGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1OperationGroup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1OperationGroup(
-          od as api.GoogleCloudApigeeV1OperationGroup);
+      checkGoogleCloudApigeeV1OperationGroup(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1OperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1OperationMetadata.fromJson(
+      final o = buildGoogleCloudApigeeV1OperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1OperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1OperationMetadata(
-          od as api.GoogleCloudApigeeV1OperationMetadata);
+      checkGoogleCloudApigeeV1OperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationMetadataProgress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1OperationMetadataProgress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1OperationMetadataProgress.fromJson(
+      final o = buildGoogleCloudApigeeV1OperationMetadataProgress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1OperationMetadataProgress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1OperationMetadataProgress(
-          od as api.GoogleCloudApigeeV1OperationMetadataProgress);
+      checkGoogleCloudApigeeV1OperationMetadataProgress(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStats', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1OptimizedStats();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1OptimizedStats.fromJson(
+      final o = buildGoogleCloudApigeeV1OptimizedStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1OptimizedStats.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1OptimizedStats(
-          od as api.GoogleCloudApigeeV1OptimizedStats);
+      checkGoogleCloudApigeeV1OptimizedStats(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStatsNode', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1OptimizedStatsNode();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1OptimizedStatsNode.fromJson(
+      final o = buildGoogleCloudApigeeV1OptimizedStatsNode();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1OptimizedStatsNode.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1OptimizedStatsNode(
-          od as api.GoogleCloudApigeeV1OptimizedStatsNode);
+      checkGoogleCloudApigeeV1OptimizedStatsNode(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStatsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1OptimizedStatsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1OptimizedStatsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1OptimizedStatsResponse(
-          od as api.GoogleCloudApigeeV1OptimizedStatsResponse);
+      checkGoogleCloudApigeeV1OptimizedStatsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Organization', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Organization();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Organization.fromJson(
+      final o = buildGoogleCloudApigeeV1Organization();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Organization.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Organization(
-          od as api.GoogleCloudApigeeV1Organization);
+      checkGoogleCloudApigeeV1Organization(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OrganizationProjectMapping',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1OrganizationProjectMapping();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
+      final o = buildGoogleCloudApigeeV1OrganizationProjectMapping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1OrganizationProjectMapping(
-          od as api.GoogleCloudApigeeV1OrganizationProjectMapping);
+      checkGoogleCloudApigeeV1OrganizationProjectMapping(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1PodStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1PodStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1PodStatus.fromJson(
+      final o = buildGoogleCloudApigeeV1PodStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1PodStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1PodStatus(od as api.GoogleCloudApigeeV1PodStatus);
+      checkGoogleCloudApigeeV1PodStatus(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Point', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Point();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Point.fromJson(
+      final o = buildGoogleCloudApigeeV1Point();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Point.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Point(od as api.GoogleCloudApigeeV1Point);
+      checkGoogleCloudApigeeV1Point(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Properties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Properties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Properties.fromJson(
+      final o = buildGoogleCloudApigeeV1Properties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Properties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Properties(
-          od as api.GoogleCloudApigeeV1Properties);
+      checkGoogleCloudApigeeV1Properties(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Property', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Property();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Property.fromJson(
+      final o = buildGoogleCloudApigeeV1Property();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Property.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Property(od as api.GoogleCloudApigeeV1Property);
+      checkGoogleCloudApigeeV1Property(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ProvisionOrganizationRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
+      final o = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ProvisionOrganizationRequest(
-          od as api.GoogleCloudApigeeV1ProvisionOrganizationRequest);
+      checkGoogleCloudApigeeV1ProvisionOrganizationRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Query', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Query();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Query.fromJson(
+      final o = buildGoogleCloudApigeeV1Query();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Query.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Query(od as api.GoogleCloudApigeeV1Query);
+      checkGoogleCloudApigeeV1Query(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1QueryMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1QueryMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1QueryMetadata.fromJson(
+      final o = buildGoogleCloudApigeeV1QueryMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1QueryMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1QueryMetadata(
-          od as api.GoogleCloudApigeeV1QueryMetadata);
+      checkGoogleCloudApigeeV1QueryMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1QueryMetric', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1QueryMetric();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1QueryMetric.fromJson(
+      final o = buildGoogleCloudApigeeV1QueryMetric();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1QueryMetric.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1QueryMetric(
-          od as api.GoogleCloudApigeeV1QueryMetric);
+      checkGoogleCloudApigeeV1QueryMetric(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Quota', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Quota();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Quota.fromJson(
+      final o = buildGoogleCloudApigeeV1Quota();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Quota.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Quota(od as api.GoogleCloudApigeeV1Quota);
+      checkGoogleCloudApigeeV1Quota(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RatePlan', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RatePlan();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RatePlan.fromJson(
+      final o = buildGoogleCloudApigeeV1RatePlan();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RatePlan.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RatePlan(od as api.GoogleCloudApigeeV1RatePlan);
+      checkGoogleCloudApigeeV1RatePlan(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RateRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RateRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RateRange.fromJson(
+      final o = buildGoogleCloudApigeeV1RateRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RateRange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RateRange(od as api.GoogleCloudApigeeV1RateRange);
+      checkGoogleCloudApigeeV1RateRange(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Reference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Reference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Reference.fromJson(
+      final o = buildGoogleCloudApigeeV1Reference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Reference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Reference(od as api.GoogleCloudApigeeV1Reference);
+      checkGoogleCloudApigeeV1Reference(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ReferenceConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ReferenceConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ReferenceConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1ReferenceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ReferenceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ReferenceConfig(
-          od as api.GoogleCloudApigeeV1ReferenceConfig);
+      checkGoogleCloudApigeeV1ReferenceConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ReportInstanceStatusRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
+      final o = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ReportInstanceStatusRequest(
-          od as api.GoogleCloudApigeeV1ReportInstanceStatusRequest);
+      checkGoogleCloudApigeeV1ReportInstanceStatusRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ReportInstanceStatusResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ReportInstanceStatusResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1ReportInstanceStatusResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ReportInstanceStatusResponse(
-          od as api.GoogleCloudApigeeV1ReportInstanceStatusResponse);
+      checkGoogleCloudApigeeV1ReportInstanceStatusResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ReportProperty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ReportProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ReportProperty.fromJson(
+      final o = buildGoogleCloudApigeeV1ReportProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ReportProperty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ReportProperty(
-          od as api.GoogleCloudApigeeV1ReportProperty);
+      checkGoogleCloudApigeeV1ReportProperty(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ResourceConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ResourceConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1ResourceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ResourceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ResourceConfig(
-          od as api.GoogleCloudApigeeV1ResourceConfig);
+      checkGoogleCloudApigeeV1ResourceConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceFile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ResourceFile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ResourceFile.fromJson(
+      final o = buildGoogleCloudApigeeV1ResourceFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ResourceFile.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ResourceFile(
-          od as api.GoogleCloudApigeeV1ResourceFile);
+      checkGoogleCloudApigeeV1ResourceFile(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceFiles', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ResourceFiles();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ResourceFiles.fromJson(
+      final o = buildGoogleCloudApigeeV1ResourceFiles();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ResourceFiles.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ResourceFiles(
-          od as api.GoogleCloudApigeeV1ResourceFiles);
+      checkGoogleCloudApigeeV1ResourceFiles(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ResourceStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ResourceStatus.fromJson(
+      final o = buildGoogleCloudApigeeV1ResourceStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ResourceStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ResourceStatus(
-          od as api.GoogleCloudApigeeV1ResourceStatus);
+      checkGoogleCloudApigeeV1ResourceStatus(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Result', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Result();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Result.fromJson(
+      final o = buildGoogleCloudApigeeV1Result();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Result.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Result(od as api.GoogleCloudApigeeV1Result);
+      checkGoogleCloudApigeeV1Result(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RevenueShareRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RevenueShareRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RevenueShareRange.fromJson(
+      final o = buildGoogleCloudApigeeV1RevenueShareRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RevenueShareRange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RevenueShareRange(
-          od as api.GoogleCloudApigeeV1RevenueShareRange);
+      checkGoogleCloudApigeeV1RevenueShareRange(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RevisionStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RevisionStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RevisionStatus.fromJson(
+      final o = buildGoogleCloudApigeeV1RevisionStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RevisionStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RevisionStatus(
-          od as api.GoogleCloudApigeeV1RevisionStatus);
+      checkGoogleCloudApigeeV1RevisionStatus(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RoutingRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RoutingRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RoutingRule.fromJson(
+      final o = buildGoogleCloudApigeeV1RoutingRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RoutingRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RoutingRule(
-          od as api.GoogleCloudApigeeV1RoutingRule);
+      checkGoogleCloudApigeeV1RoutingRule(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RuntimeConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RuntimeConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1RuntimeConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RuntimeConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RuntimeConfig(
-          od as api.GoogleCloudApigeeV1RuntimeConfig);
+      checkGoogleCloudApigeeV1RuntimeConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RuntimeTraceConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1RuntimeTraceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RuntimeTraceConfig(
-          od as api.GoogleCloudApigeeV1RuntimeTraceConfig);
+      checkGoogleCloudApigeeV1RuntimeTraceConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceConfigOverride',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RuntimeTraceConfigOverride();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
+      final o = buildGoogleCloudApigeeV1RuntimeTraceConfigOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(
-          od as api.GoogleCloudApigeeV1RuntimeTraceConfigOverride);
+      checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceSamplingConfig',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(
-          od as api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig);
+      checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Schema', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Schema();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Schema.fromJson(
+      final o = buildGoogleCloudApigeeV1Schema();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Schema.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Schema(od as api.GoogleCloudApigeeV1Schema);
+      checkGoogleCloudApigeeV1Schema(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SchemaSchemaElement', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1SchemaSchemaElement();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
+      final o = buildGoogleCloudApigeeV1SchemaSchemaElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1SchemaSchemaElement(
-          od as api.GoogleCloudApigeeV1SchemaSchemaElement);
+      checkGoogleCloudApigeeV1SchemaSchemaElement(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SchemaSchemaProperty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1SchemaSchemaProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(
+      final o = buildGoogleCloudApigeeV1SchemaSchemaProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1SchemaSchemaProperty(
-          od as api.GoogleCloudApigeeV1SchemaSchemaProperty);
+      checkGoogleCloudApigeeV1SchemaSchemaProperty(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ServiceIssuersMapping', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1ServiceIssuersMapping();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(
+      final o = buildGoogleCloudApigeeV1ServiceIssuersMapping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ServiceIssuersMapping(
-          od as api.GoogleCloudApigeeV1ServiceIssuersMapping);
+      checkGoogleCloudApigeeV1ServiceIssuersMapping(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Session', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Session();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Session.fromJson(
+      final o = buildGoogleCloudApigeeV1Session();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Session.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Session(od as api.GoogleCloudApigeeV1Session);
+      checkGoogleCloudApigeeV1Session(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SetAddonsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1SetAddonsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1SetAddonsRequest.fromJson(
+      final o = buildGoogleCloudApigeeV1SetAddonsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1SetAddonsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1SetAddonsRequest(
-          od as api.GoogleCloudApigeeV1SetAddonsRequest);
+      checkGoogleCloudApigeeV1SetAddonsRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SharedFlow', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1SharedFlow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1SharedFlow.fromJson(
+      final o = buildGoogleCloudApigeeV1SharedFlow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1SharedFlow.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1SharedFlow(
-          od as api.GoogleCloudApigeeV1SharedFlow);
+      checkGoogleCloudApigeeV1SharedFlow(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SharedFlowRevision', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1SharedFlowRevision();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1SharedFlowRevision.fromJson(
+      final o = buildGoogleCloudApigeeV1SharedFlowRevision();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1SharedFlowRevision.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1SharedFlowRevision(
-          od as api.GoogleCloudApigeeV1SharedFlowRevision);
+      checkGoogleCloudApigeeV1SharedFlowRevision(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Stats', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Stats();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Stats.fromJson(
+      final o = buildGoogleCloudApigeeV1Stats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Stats.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Stats(od as api.GoogleCloudApigeeV1Stats);
+      checkGoogleCloudApigeeV1Stats(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1StatsEnvironmentStats', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1StatsEnvironmentStats();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(
+      final o = buildGoogleCloudApigeeV1StatsEnvironmentStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1StatsEnvironmentStats(
-          od as api.GoogleCloudApigeeV1StatsEnvironmentStats);
+      checkGoogleCloudApigeeV1StatsEnvironmentStats(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1StatsHostStats', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1StatsHostStats();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1StatsHostStats.fromJson(
+      final o = buildGoogleCloudApigeeV1StatsHostStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1StatsHostStats.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1StatsHostStats(
-          od as api.GoogleCloudApigeeV1StatsHostStats);
+      checkGoogleCloudApigeeV1StatsHostStats(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Subscription', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1Subscription();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1Subscription.fromJson(
+      final o = buildGoogleCloudApigeeV1Subscription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1Subscription.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1Subscription(
-          od as api.GoogleCloudApigeeV1Subscription);
+      checkGoogleCloudApigeeV1Subscription(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SyncAuthorization', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1SyncAuthorization();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(
+      final o = buildGoogleCloudApigeeV1SyncAuthorization();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1SyncAuthorization(
-          od as api.GoogleCloudApigeeV1SyncAuthorization);
+      checkGoogleCloudApigeeV1SyncAuthorization(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TargetServer', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TargetServer();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TargetServer.fromJson(
+      final o = buildGoogleCloudApigeeV1TargetServer();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TargetServer.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TargetServer(
-          od as api.GoogleCloudApigeeV1TargetServer);
+      checkGoogleCloudApigeeV1TargetServer(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TargetServerConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TargetServerConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TargetServerConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1TargetServerConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TargetServerConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TargetServerConfig(
-          od as api.GoogleCloudApigeeV1TargetServerConfig);
+      checkGoogleCloudApigeeV1TargetServerConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TestDatastoreResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TestDatastoreResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TestDatastoreResponse.fromJson(
+      final o = buildGoogleCloudApigeeV1TestDatastoreResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TestDatastoreResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TestDatastoreResponse(
-          od as api.GoogleCloudApigeeV1TestDatastoreResponse);
+      checkGoogleCloudApigeeV1TestDatastoreResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TlsInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TlsInfo.fromJson(
+      final o = buildGoogleCloudApigeeV1TlsInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TlsInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TlsInfo(od as api.GoogleCloudApigeeV1TlsInfo);
+      checkGoogleCloudApigeeV1TlsInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfoCommonName', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TlsInfoCommonName();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TlsInfoCommonName.fromJson(
+      final o = buildGoogleCloudApigeeV1TlsInfoCommonName();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TlsInfoCommonName.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TlsInfoCommonName(
-          od as api.GoogleCloudApigeeV1TlsInfoCommonName);
+      checkGoogleCloudApigeeV1TlsInfoCommonName(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfoConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TlsInfoConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TlsInfoConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1TlsInfoConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TlsInfoConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TlsInfoConfig(
-          od as api.GoogleCloudApigeeV1TlsInfoConfig);
+      checkGoogleCloudApigeeV1TlsInfoConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TraceConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TraceConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TraceConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1TraceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TraceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TraceConfig(
-          od as api.GoogleCloudApigeeV1TraceConfig);
+      checkGoogleCloudApigeeV1TraceConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TraceConfigOverride', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TraceConfigOverride();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TraceConfigOverride.fromJson(
+      final o = buildGoogleCloudApigeeV1TraceConfigOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TraceConfigOverride.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TraceConfigOverride(
-          od as api.GoogleCloudApigeeV1TraceConfigOverride);
+      checkGoogleCloudApigeeV1TraceConfigOverride(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TraceSamplingConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1TraceSamplingConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1TraceSamplingConfig.fromJson(
+      final o = buildGoogleCloudApigeeV1TraceSamplingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1TraceSamplingConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1TraceSamplingConfig(
-          od as api.GoogleCloudApigeeV1TraceSamplingConfig);
+      checkGoogleCloudApigeeV1TraceSamplingConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1UpdateError', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudApigeeV1UpdateError();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudApigeeV1UpdateError.fromJson(
+      final o = buildGoogleCloudApigeeV1UpdateError();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1UpdateError.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1UpdateError(
-          od as api.GoogleCloudApigeeV1UpdateError);
+      checkGoogleCloudApigeeV1UpdateError(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIamV1AuditConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIamV1AuditConfig.fromJson(
+      final o = buildGoogleIamV1AuditConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIamV1AuditConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIamV1AuditConfig(od as api.GoogleIamV1AuditConfig);
+      checkGoogleIamV1AuditConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIamV1AuditLogConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIamV1AuditLogConfig.fromJson(
+      final o = buildGoogleIamV1AuditLogConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIamV1AuditLogConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIamV1AuditLogConfig(od as api.GoogleIamV1AuditLogConfig);
+      checkGoogleIamV1AuditLogConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIamV1Binding', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIamV1Binding();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIamV1Binding.fromJson(
+      final o = buildGoogleIamV1Binding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIamV1Binding.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIamV1Binding(od as api.GoogleIamV1Binding);
+      checkGoogleIamV1Binding(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIamV1Policy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIamV1Policy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIamV1Policy.fromJson(
+      final o = buildGoogleIamV1Policy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIamV1Policy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIamV1Policy(od as api.GoogleIamV1Policy);
+      checkGoogleIamV1Policy(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIamV1SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIamV1SetIamPolicyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+      final o = buildGoogleIamV1SetIamPolicyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIamV1SetIamPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIamV1SetIamPolicyRequest(
-          od as api.GoogleIamV1SetIamPolicyRequest);
+      checkGoogleIamV1SetIamPolicyRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIamV1TestIamPermissionsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
+      final o = buildGoogleIamV1TestIamPermissionsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIamV1TestIamPermissionsRequest(
-          od as api.GoogleIamV1TestIamPermissionsRequest);
+      checkGoogleIamV1TestIamPermissionsRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIamV1TestIamPermissionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(
+      final o = buildGoogleIamV1TestIamPermissionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIamV1TestIamPermissionsResponse(
-          od as api.GoogleIamV1TestIamPermissionsResponse);
+      checkGoogleIamV1TestIamPermissionsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleLongrunningListOperationsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+      final o = buildGoogleLongrunningListOperationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleLongrunningListOperationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleLongrunningListOperationsResponse(
-          od as api.GoogleLongrunningListOperationsResponse);
+      checkGoogleLongrunningListOperationsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleLongrunningOperation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleLongrunningOperation.fromJson(
+      final o = buildGoogleLongrunningOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleLongrunningOperation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
+      checkGoogleLongrunningOperation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleProtobufEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleProtobufEmpty.fromJson(
+      final o = buildGoogleProtobufEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleProtobufEmpty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
+      checkGoogleProtobufEmpty(od);
     });
   });
 
   unittest.group('obj-schema-GoogleRpcPreconditionFailure', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleRpcPreconditionFailure();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleRpcPreconditionFailure.fromJson(
+      final o = buildGoogleRpcPreconditionFailure();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleRpcPreconditionFailure.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleRpcPreconditionFailure(od as api.GoogleRpcPreconditionFailure);
+      checkGoogleRpcPreconditionFailure(od);
     });
   });
 
   unittest.group('obj-schema-GoogleRpcPreconditionFailureViolation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleRpcPreconditionFailureViolation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleRpcPreconditionFailureViolation.fromJson(
+      final o = buildGoogleRpcPreconditionFailureViolation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleRpcPreconditionFailureViolation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleRpcPreconditionFailureViolation(
-          od as api.GoogleRpcPreconditionFailureViolation);
+      checkGoogleRpcPreconditionFailureViolation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleRpcStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleRpcStatus.fromJson(
+      final o = buildGoogleRpcStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleRpcStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleRpcStatus(od as api.GoogleRpcStatus);
+      checkGoogleRpcStatus(od);
     });
   });
 
   unittest.group('obj-schema-GoogleTypeExpr', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleTypeExpr();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleTypeExpr.fromJson(
+      final o = buildGoogleTypeExpr();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeExpr.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleTypeExpr(od as api.GoogleTypeExpr);
+      checkGoogleTypeExpr(od);
     });
   });
 
   unittest.group('obj-schema-GoogleTypeMoney', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleTypeMoney();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleTypeMoney.fromJson(
+      final o = buildGoogleTypeMoney();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeMoney.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleTypeMoney(od as api.GoogleTypeMoney);
+      checkGoogleTypeMoney(od);
     });
   });
 
   unittest.group('resource-HybridIssuersResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).hybrid.issuers;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).hybrid.issuers;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11478,14 +11196,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListHybridIssuersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -11497,41 +11215,40 @@ void main() {
 
   unittest.group('resource-OrganizationsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_request = buildGoogleCloudApigeeV1Organization();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_request = buildGoogleCloudApigeeV1Organization();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Organization.fromJson(
+        final obj = api.GoogleCloudApigeeV1Organization.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Organization(
-            obj as api.GoogleCloudApigeeV1Organization);
+        checkGoogleCloudApigeeV1Organization(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("v1/organizations"),
+          unittest.equals('v1/organizations'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11539,18 +11256,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["parent"]!.first,
+          queryMap['parent']!.first,
           unittest.equals(arg_parent),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request,
@@ -11560,36 +11277,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11597,14 +11314,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -11613,36 +11330,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11650,14 +11367,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Organization());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1Organization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -11666,37 +11384,37 @@ void main() {
     });
 
     unittest.test('method--getDeployedIngressConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_name = 'foo';
-      var arg_view = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11704,18 +11422,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["view"]!.first,
+          queryMap['view']!.first,
           unittest.equals(arg_view),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1IngressConfig());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1IngressConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getDeployedIngressConfig(arg_name,
@@ -11725,36 +11444,36 @@ void main() {
     });
 
     unittest.test('method--getRuntimeConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11762,14 +11481,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1RuntimeConfig());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1RuntimeConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -11779,42 +11499,41 @@ void main() {
     });
 
     unittest.test('method--getSyncAuthorization', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_request = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_request = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
+        final obj = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1GetSyncAuthorizationRequest(
-            obj as api.GoogleCloudApigeeV1GetSyncAuthorizationRequest);
+        checkGoogleCloudApigeeV1GetSyncAuthorizationRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11822,14 +11541,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1SyncAuthorization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -11840,36 +11559,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11877,14 +11596,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListOrganizationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -11894,42 +11613,41 @@ void main() {
     });
 
     unittest.test('method--setAddons', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_request = buildGoogleCloudApigeeV1SetAddonsRequest();
-      var arg_org = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_request = buildGoogleCloudApigeeV1SetAddonsRequest();
+      final arg_org = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1SetAddonsRequest.fromJson(
+        final obj = api.GoogleCloudApigeeV1SetAddonsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1SetAddonsRequest(
-            obj as api.GoogleCloudApigeeV1SetAddonsRequest);
+        checkGoogleCloudApigeeV1SetAddonsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11937,14 +11655,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -11954,42 +11672,41 @@ void main() {
     });
 
     unittest.test('method--setSyncAuthorization', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_request = buildGoogleCloudApigeeV1SyncAuthorization();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_request = buildGoogleCloudApigeeV1SyncAuthorization();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(
+        final obj = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1SyncAuthorization(
-            obj as api.GoogleCloudApigeeV1SyncAuthorization);
+        checkGoogleCloudApigeeV1SyncAuthorization(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -11997,14 +11714,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1SyncAuthorization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -12015,42 +11732,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations;
-      var arg_request = buildGoogleCloudApigeeV1Organization();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_request = buildGoogleCloudApigeeV1Organization();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Organization.fromJson(
+        final obj = api.GoogleCloudApigeeV1Organization.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Organization(
-            obj as api.GoogleCloudApigeeV1Organization);
+        checkGoogleCloudApigeeV1Organization(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12058,14 +11774,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Organization());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1Organization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -12077,42 +11794,41 @@ void main() {
 
   unittest.group('resource-OrganizationsAnalyticsDatastoresResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_request = buildGoogleCloudApigeeV1Datastore();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.analytics.datastores;
+      final arg_request = buildGoogleCloudApigeeV1Datastore();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Datastore.fromJson(
+        final obj = api.GoogleCloudApigeeV1Datastore.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Datastore(
-            obj as api.GoogleCloudApigeeV1Datastore);
+        checkGoogleCloudApigeeV1Datastore(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12120,14 +11836,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -12137,36 +11853,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.analytics.datastores;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12174,14 +11890,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -12189,36 +11905,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.analytics.datastores;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12226,14 +11942,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -12242,37 +11958,37 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_parent = 'foo';
-      var arg_targetType = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.analytics.datastores;
+      final arg_parent = 'foo';
+      final arg_targetType = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12280,18 +11996,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["targetType"]!.first,
+          queryMap['targetType']!.first,
           unittest.equals(arg_targetType),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDatastoresResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -12302,42 +12018,41 @@ void main() {
     });
 
     unittest.test('method--test', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_request = buildGoogleCloudApigeeV1Datastore();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.analytics.datastores;
+      final arg_request = buildGoogleCloudApigeeV1Datastore();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Datastore.fromJson(
+        final obj = api.GoogleCloudApigeeV1Datastore.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Datastore(
-            obj as api.GoogleCloudApigeeV1Datastore);
+        checkGoogleCloudApigeeV1Datastore(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12345,14 +12060,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1TestDatastoreResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -12363,42 +12078,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
-      var arg_request = buildGoogleCloudApigeeV1Datastore();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.analytics.datastores;
+      final arg_request = buildGoogleCloudApigeeV1Datastore();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Datastore.fromJson(
+        final obj = api.GoogleCloudApigeeV1Datastore.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Datastore(
-            obj as api.GoogleCloudApigeeV1Datastore);
+        checkGoogleCloudApigeeV1Datastore(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12406,14 +12120,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -12425,42 +12139,41 @@ void main() {
 
   unittest.group('resource-OrganizationsApiproductsResource', () {
     unittest.test('method--attributes', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_request = buildGoogleCloudApigeeV1Attributes();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts;
+      final arg_request = buildGoogleCloudApigeeV1Attributes();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Attributes.fromJson(
+        final obj = api.GoogleCloudApigeeV1Attributes.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Attributes(
-            obj as api.GoogleCloudApigeeV1Attributes);
+        checkGoogleCloudApigeeV1Attributes(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12468,14 +12181,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -12485,42 +12198,41 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_request = buildGoogleCloudApigeeV1ApiProduct();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts;
+      final arg_request = buildGoogleCloudApigeeV1ApiProduct();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1ApiProduct.fromJson(
+        final obj = api.GoogleCloudApigeeV1ApiProduct.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ApiProduct(
-            obj as api.GoogleCloudApigeeV1ApiProduct);
+        checkGoogleCloudApigeeV1ApiProduct(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12528,14 +12240,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -12545,36 +12257,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12582,14 +12294,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -12598,36 +12310,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12635,14 +12347,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -12651,41 +12363,41 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_parent = 'foo';
-      var arg_attributename = 'foo';
-      var arg_attributevalue = 'foo';
-      var arg_count = 'foo';
-      var arg_expand = true;
-      var arg_startKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts;
+      final arg_parent = 'foo';
+      final arg_attributename = 'foo';
+      final arg_attributevalue = 'foo';
+      final arg_count = 'foo';
+      final arg_expand = true;
+      final arg_startKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12693,34 +12405,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["attributename"]!.first,
+          queryMap['attributename']!.first,
           unittest.equals(arg_attributename),
         );
         unittest.expect(
-          queryMap["attributevalue"]!.first,
+          queryMap['attributevalue']!.first,
           unittest.equals(arg_attributevalue),
         );
         unittest.expect(
-          queryMap["count"]!.first,
+          queryMap['count']!.first,
           unittest.equals(arg_count),
         );
         unittest.expect(
-          queryMap["expand"]!.first,
-          unittest.equals("$arg_expand"),
+          queryMap['expand']!.first,
+          unittest.equals('$arg_expand'),
         );
         unittest.expect(
-          queryMap["startKey"]!.first,
+          queryMap['startKey']!.first,
           unittest.equals(arg_startKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListApiProductsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -12736,42 +12448,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts;
-      var arg_request = buildGoogleCloudApigeeV1ApiProduct();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts;
+      final arg_request = buildGoogleCloudApigeeV1ApiProduct();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1ApiProduct.fromJson(
+        final obj = api.GoogleCloudApigeeV1ApiProduct.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ApiProduct(
-            obj as api.GoogleCloudApigeeV1ApiProduct);
+        checkGoogleCloudApigeeV1ApiProduct(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12779,14 +12490,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -12798,36 +12509,36 @@ void main() {
 
   unittest.group('resource-OrganizationsApiproductsAttributesResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12835,14 +12546,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -12851,36 +12562,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12888,14 +12599,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -12904,36 +12615,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -12941,14 +12652,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent, $fields: arg_$fields);
@@ -12957,42 +12668,41 @@ void main() {
     });
 
     unittest.test('method--updateApiProductAttribute', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
-      var arg_request = buildGoogleCloudApigeeV1Attribute();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
+      final arg_request = buildGoogleCloudApigeeV1Attribute();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Attribute.fromJson(
+        final obj = api.GoogleCloudApigeeV1Attribute.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Attribute(
-            obj as api.GoogleCloudApigeeV1Attribute);
+        checkGoogleCloudApigeeV1Attribute(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13000,14 +12710,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateApiProductAttribute(
@@ -13020,42 +12730,41 @@ void main() {
 
   unittest.group('resource-OrganizationsApiproductsRateplansResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
-      var arg_request = buildGoogleCloudApigeeV1RatePlan();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
+      final arg_request = buildGoogleCloudApigeeV1RatePlan();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1RatePlan.fromJson(
+        final obj = api.GoogleCloudApigeeV1RatePlan.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1RatePlan(
-            obj as api.GoogleCloudApigeeV1RatePlan);
+        checkGoogleCloudApigeeV1RatePlan(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13063,14 +12772,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1RatePlan());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1RatePlan());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -13080,36 +12789,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13117,14 +12826,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1RatePlan());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1RatePlan());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -13133,36 +12842,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13170,14 +12879,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1RatePlan());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1RatePlan());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -13186,41 +12895,41 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
-      var arg_parent = 'foo';
-      var arg_count = 42;
-      var arg_expand = true;
-      var arg_orderBy = 'foo';
-      var arg_startKey = 'foo';
-      var arg_state = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
+      final arg_parent = 'foo';
+      final arg_count = 42;
+      final arg_expand = true;
+      final arg_orderBy = 'foo';
+      final arg_startKey = 'foo';
+      final arg_state = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13228,34 +12937,34 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["count"]!.first),
+          core.int.parse(queryMap['count']!.first),
           unittest.equals(arg_count),
         );
         unittest.expect(
-          queryMap["expand"]!.first,
-          unittest.equals("$arg_expand"),
+          queryMap['expand']!.first,
+          unittest.equals('$arg_expand'),
         );
         unittest.expect(
-          queryMap["orderBy"]!.first,
+          queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
         unittest.expect(
-          queryMap["startKey"]!.first,
+          queryMap['startKey']!.first,
           unittest.equals(arg_startKey),
         );
         unittest.expect(
-          queryMap["state"]!.first,
+          queryMap['state']!.first,
           unittest.equals(arg_state),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListRatePlansResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -13271,42 +12980,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
-      var arg_request = buildGoogleCloudApigeeV1RatePlan();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apiproducts.rateplans;
+      final arg_request = buildGoogleCloudApigeeV1RatePlan();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1RatePlan.fromJson(
+        final obj = api.GoogleCloudApigeeV1RatePlan.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1RatePlan(
-            obj as api.GoogleCloudApigeeV1RatePlan);
+        checkGoogleCloudApigeeV1RatePlan(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13314,14 +13022,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1RatePlan());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1RatePlan());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -13333,44 +13041,44 @@ void main() {
 
   unittest.group('resource-OrganizationsApisResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis;
-      var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = 'foo';
-      var arg_action = 'foo';
-      var arg_name = 'foo';
-      var arg_validate = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis;
+      final arg_request = buildGoogleApiHttpBody();
+      final arg_parent = 'foo';
+      final arg_action = 'foo';
+      final arg_name = 'foo';
+      final arg_validate = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleApiHttpBody.fromJson(
+        final obj = api.GoogleApiHttpBody.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleApiHttpBody(obj as api.GoogleApiHttpBody);
+        checkGoogleApiHttpBody(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13378,26 +13086,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["action"]!.first,
+          queryMap['action']!.first,
           unittest.equals(arg_action),
         );
         unittest.expect(
-          queryMap["name"]!.first,
+          queryMap['name']!.first,
           unittest.equals(arg_name),
         );
         unittest.expect(
-          queryMap["validate"]!.first,
-          unittest.equals("$arg_validate"),
+          queryMap['validate']!.first,
+          unittest.equals('$arg_validate'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -13411,36 +13119,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13448,14 +13156,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProxy());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProxy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -13464,36 +13172,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13501,14 +13209,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProxy());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProxy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -13517,38 +13225,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis;
-      var arg_parent = 'foo';
-      var arg_includeMetaData = true;
-      var arg_includeRevisions = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis;
+      final arg_parent = 'foo';
+      final arg_includeMetaData = true;
+      final arg_includeRevisions = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13556,22 +13264,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["includeMetaData"]!.first,
-          unittest.equals("$arg_includeMetaData"),
+          queryMap['includeMetaData']!.first,
+          unittest.equals('$arg_includeMetaData'),
         );
         unittest.expect(
-          queryMap["includeRevisions"]!.first,
-          unittest.equals("$arg_includeRevisions"),
+          queryMap['includeRevisions']!.first,
+          unittest.equals('$arg_includeRevisions'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListApiProxiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -13586,36 +13294,36 @@ void main() {
 
   unittest.group('resource-OrganizationsApisDeploymentsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis.deployments;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis.deployments;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13623,14 +13331,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -13642,42 +13350,41 @@ void main() {
 
   unittest.group('resource-OrganizationsApisKeyvaluemapsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
-      var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
+      final arg_request = buildGoogleCloudApigeeV1KeyValueMap();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
+        final obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1KeyValueMap(
-            obj as api.GoogleCloudApigeeV1KeyValueMap);
+        checkGoogleCloudApigeeV1KeyValueMap(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13685,14 +13392,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -13702,36 +13409,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13739,14 +13446,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -13757,36 +13464,36 @@ void main() {
 
   unittest.group('resource-OrganizationsApisRevisionsResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis.revisions;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis.revisions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13794,14 +13501,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -13811,37 +13518,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis.revisions;
-      var arg_name = 'foo';
-      var arg_format = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis.revisions;
+      final arg_name = 'foo';
+      final arg_format = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13849,18 +13556,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["format"]!.first,
+          queryMap['format']!.first,
           unittest.equals(arg_format),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleApiHttpBody());
+        final resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -13869,42 +13576,42 @@ void main() {
     });
 
     unittest.test('method--updateApiProxyRevision', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis.revisions;
-      var arg_request = buildGoogleApiHttpBody();
-      var arg_name = 'foo';
-      var arg_validate = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis.revisions;
+      final arg_request = buildGoogleApiHttpBody();
+      final arg_name = 'foo';
+      final arg_validate = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleApiHttpBody.fromJson(
+        final obj = api.GoogleApiHttpBody.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleApiHttpBody(obj as api.GoogleApiHttpBody);
+        checkGoogleApiHttpBody(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13912,18 +13619,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["validate"]!.first,
-          unittest.equals("$arg_validate"),
+          queryMap['validate']!.first,
+          unittest.equals('$arg_validate'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -13936,36 +13643,36 @@ void main() {
 
   unittest.group('resource-OrganizationsApisRevisionsDeploymentsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apis.revisions.deployments;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apis.revisions.deployments;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -13973,14 +13680,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -13992,36 +13699,36 @@ void main() {
 
   unittest.group('resource-OrganizationsAppsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14029,14 +13736,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1App());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1App());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -14044,45 +13751,45 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.apps;
-      var arg_parent = 'foo';
-      var arg_apiProduct = 'foo';
-      var arg_apptype = 'foo';
-      var arg_expand = true;
-      var arg_ids = 'foo';
-      var arg_includeCred = true;
-      var arg_keyStatus = 'foo';
-      var arg_rows = 'foo';
-      var arg_startKey = 'foo';
-      var arg_status = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.apps;
+      final arg_parent = 'foo';
+      final arg_apiProduct = 'foo';
+      final arg_apptype = 'foo';
+      final arg_expand = true;
+      final arg_ids = 'foo';
+      final arg_includeCred = true;
+      final arg_keyStatus = 'foo';
+      final arg_rows = 'foo';
+      final arg_startKey = 'foo';
+      final arg_status = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14090,50 +13797,50 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["apiProduct"]!.first,
+          queryMap['apiProduct']!.first,
           unittest.equals(arg_apiProduct),
         );
         unittest.expect(
-          queryMap["apptype"]!.first,
+          queryMap['apptype']!.first,
           unittest.equals(arg_apptype),
         );
         unittest.expect(
-          queryMap["expand"]!.first,
-          unittest.equals("$arg_expand"),
+          queryMap['expand']!.first,
+          unittest.equals('$arg_expand'),
         );
         unittest.expect(
-          queryMap["ids"]!.first,
+          queryMap['ids']!.first,
           unittest.equals(arg_ids),
         );
         unittest.expect(
-          queryMap["includeCred"]!.first,
-          unittest.equals("$arg_includeCred"),
+          queryMap['includeCred']!.first,
+          unittest.equals('$arg_includeCred'),
         );
         unittest.expect(
-          queryMap["keyStatus"]!.first,
+          queryMap['keyStatus']!.first,
           unittest.equals(arg_keyStatus),
         );
         unittest.expect(
-          queryMap["rows"]!.first,
+          queryMap['rows']!.first,
           unittest.equals(arg_rows),
         );
         unittest.expect(
-          queryMap["startKey"]!.first,
+          queryMap['startKey']!.first,
           unittest.equals(arg_startKey),
         );
         unittest.expect(
-          queryMap["status"]!.first,
+          queryMap['status']!.first,
           unittest.equals(arg_status),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1ListAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -14155,43 +13862,42 @@ void main() {
 
   unittest.group('resource-OrganizationsDatacollectorsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.datacollectors;
-      var arg_request = buildGoogleCloudApigeeV1DataCollector();
-      var arg_parent = 'foo';
-      var arg_dataCollectorId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.datacollectors;
+      final arg_request = buildGoogleCloudApigeeV1DataCollector();
+      final arg_parent = 'foo';
+      final arg_dataCollectorId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DataCollector.fromJson(
+        final obj = api.GoogleCloudApigeeV1DataCollector.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DataCollector(
-            obj as api.GoogleCloudApigeeV1DataCollector);
+        checkGoogleCloudApigeeV1DataCollector(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14199,18 +13905,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["dataCollectorId"]!.first,
+          queryMap['dataCollectorId']!.first,
           unittest.equals(arg_dataCollectorId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -14220,36 +13927,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.datacollectors;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.datacollectors;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14257,14 +13964,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -14272,36 +13979,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.datacollectors;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.datacollectors;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14309,14 +14016,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -14325,38 +14033,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.datacollectors;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.datacollectors;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14364,22 +14072,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDataCollectorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -14392,43 +14100,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.datacollectors;
-      var arg_request = buildGoogleCloudApigeeV1DataCollector();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.datacollectors;
+      final arg_request = buildGoogleCloudApigeeV1DataCollector();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DataCollector.fromJson(
+        final obj = api.GoogleCloudApigeeV1DataCollector.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DataCollector(
-            obj as api.GoogleCloudApigeeV1DataCollector);
+        checkGoogleCloudApigeeV1DataCollector(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14436,18 +14143,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -14459,37 +14167,37 @@ void main() {
 
   unittest.group('resource-OrganizationsDeploymentsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.deployments;
-      var arg_parent = 'foo';
-      var arg_sharedFlows = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.deployments;
+      final arg_parent = 'foo';
+      final arg_sharedFlows = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14497,18 +14205,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["sharedFlows"]!.first,
-          unittest.equals("$arg_sharedFlows"),
+          queryMap['sharedFlows']!.first,
+          unittest.equals('$arg_sharedFlows'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -14521,42 +14229,41 @@ void main() {
 
   unittest.group('resource-OrganizationsDevelopersResource', () {
     unittest.test('method--attributes', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers;
-      var arg_request = buildGoogleCloudApigeeV1Attributes();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers;
+      final arg_request = buildGoogleCloudApigeeV1Attributes();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Attributes.fromJson(
+        final obj = api.GoogleCloudApigeeV1Attributes.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Attributes(
-            obj as api.GoogleCloudApigeeV1Attributes);
+        checkGoogleCloudApigeeV1Attributes(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14564,14 +14271,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -14581,42 +14288,41 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers;
-      var arg_request = buildGoogleCloudApigeeV1Developer();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers;
+      final arg_request = buildGoogleCloudApigeeV1Developer();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Developer.fromJson(
+        final obj = api.GoogleCloudApigeeV1Developer.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Developer(
-            obj as api.GoogleCloudApigeeV1Developer);
+        checkGoogleCloudApigeeV1Developer(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14624,14 +14330,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -14641,36 +14347,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14678,14 +14384,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -14694,37 +14400,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers;
-      var arg_name = 'foo';
-      var arg_action = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers;
+      final arg_name = 'foo';
+      final arg_action = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14732,18 +14438,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["action"]!.first,
+          queryMap['action']!.first,
           unittest.equals(arg_action),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -14753,42 +14459,42 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers;
-      var arg_parent = 'foo';
-      var arg_app = 'foo';
-      var arg_count = 'foo';
-      var arg_expand = true;
-      var arg_ids = 'foo';
-      var arg_includeCompany = true;
-      var arg_startKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers;
+      final arg_parent = 'foo';
+      final arg_app = 'foo';
+      final arg_count = 'foo';
+      final arg_expand = true;
+      final arg_ids = 'foo';
+      final arg_includeCompany = true;
+      final arg_startKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14796,38 +14502,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["app"]!.first,
+          queryMap['app']!.first,
           unittest.equals(arg_app),
         );
         unittest.expect(
-          queryMap["count"]!.first,
+          queryMap['count']!.first,
           unittest.equals(arg_count),
         );
         unittest.expect(
-          queryMap["expand"]!.first,
-          unittest.equals("$arg_expand"),
+          queryMap['expand']!.first,
+          unittest.equals('$arg_expand'),
         );
         unittest.expect(
-          queryMap["ids"]!.first,
+          queryMap['ids']!.first,
           unittest.equals(arg_ids),
         );
         unittest.expect(
-          queryMap["includeCompany"]!.first,
-          unittest.equals("$arg_includeCompany"),
+          queryMap['includeCompany']!.first,
+          unittest.equals('$arg_includeCompany'),
         );
         unittest.expect(
-          queryMap["startKey"]!.first,
+          queryMap['startKey']!.first,
           unittest.equals(arg_startKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListOfDevelopersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -14844,37 +14550,37 @@ void main() {
     });
 
     unittest.test('method--setDeveloperStatus', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers;
-      var arg_name = 'foo';
-      var arg_action = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers;
+      final arg_name = 'foo';
+      final arg_action = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14882,18 +14588,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["action"]!.first,
+          queryMap['action']!.first,
           unittest.equals(arg_action),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.setDeveloperStatus(arg_name,
@@ -14902,42 +14608,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers;
-      var arg_request = buildGoogleCloudApigeeV1Developer();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers;
+      final arg_request = buildGoogleCloudApigeeV1Developer();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Developer.fromJson(
+        final obj = api.GoogleCloudApigeeV1Developer.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Developer(
-            obj as api.GoogleCloudApigeeV1Developer);
+        checkGoogleCloudApigeeV1Developer(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -14945,14 +14650,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -14964,42 +14669,41 @@ void main() {
 
   unittest.group('resource-OrganizationsDevelopersAppsResource', () {
     unittest.test('method--attributes', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_request = buildGoogleCloudApigeeV1Attributes();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps;
+      final arg_request = buildGoogleCloudApigeeV1Attributes();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Attributes.fromJson(
+        final obj = api.GoogleCloudApigeeV1Attributes.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Attributes(
-            obj as api.GoogleCloudApigeeV1Attributes);
+        checkGoogleCloudApigeeV1Attributes(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15007,14 +14711,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15024,42 +14728,41 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps;
+      final arg_request = buildGoogleCloudApigeeV1DeveloperApp();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
+        final obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DeveloperApp(
-            obj as api.GoogleCloudApigeeV1DeveloperApp);
+        checkGoogleCloudApigeeV1DeveloperApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15067,14 +14770,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15084,36 +14788,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15121,14 +14825,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -15138,43 +14843,42 @@ void main() {
 
     unittest.test('method--generateKeyPairOrUpdateDeveloperAppStatus',
         () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
-      var arg_name = 'foo';
-      var arg_action = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps;
+      final arg_request = buildGoogleCloudApigeeV1DeveloperApp();
+      final arg_name = 'foo';
+      final arg_action = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
+        final obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DeveloperApp(
-            obj as api.GoogleCloudApigeeV1DeveloperApp);
+        checkGoogleCloudApigeeV1DeveloperApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15182,18 +14886,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["action"]!.first,
+          queryMap['action']!.first,
           unittest.equals(arg_action),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.generateKeyPairOrUpdateDeveloperAppStatus(
@@ -15204,38 +14909,38 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_name = 'foo';
-      var arg_entity = 'foo';
-      var arg_query = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps;
+      final arg_name = 'foo';
+      final arg_entity = 'foo';
+      final arg_query = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15243,22 +14948,23 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["entity"]!.first,
+          queryMap['entity']!.first,
           unittest.equals(arg_entity),
         );
         unittest.expect(
-          queryMap["query"]!.first,
+          queryMap['query']!.first,
           unittest.equals(arg_query),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name,
@@ -15268,40 +14974,40 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_parent = 'foo';
-      var arg_count = 'foo';
-      var arg_expand = true;
-      var arg_shallowExpand = true;
-      var arg_startKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps;
+      final arg_parent = 'foo';
+      final arg_count = 'foo';
+      final arg_expand = true;
+      final arg_shallowExpand = true;
+      final arg_startKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15309,30 +15015,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["count"]!.first,
+          queryMap['count']!.first,
           unittest.equals(arg_count),
         );
         unittest.expect(
-          queryMap["expand"]!.first,
-          unittest.equals("$arg_expand"),
+          queryMap['expand']!.first,
+          unittest.equals('$arg_expand'),
         );
         unittest.expect(
-          queryMap["shallowExpand"]!.first,
-          unittest.equals("$arg_shallowExpand"),
+          queryMap['shallowExpand']!.first,
+          unittest.equals('$arg_shallowExpand'),
         );
         unittest.expect(
-          queryMap["startKey"]!.first,
+          queryMap['startKey']!.first,
           unittest.equals(arg_startKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeveloperAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -15347,42 +15053,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps;
-      var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps;
+      final arg_request = buildGoogleCloudApigeeV1DeveloperApp();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
+        final obj = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DeveloperApp(
-            obj as api.GoogleCloudApigeeV1DeveloperApp);
+        checkGoogleCloudApigeeV1DeveloperApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15390,14 +15095,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15409,36 +15115,37 @@ void main() {
 
   unittest.group('resource-OrganizationsDevelopersAppsAttributesResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15446,14 +15153,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -15462,36 +15169,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15499,14 +15207,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -15515,36 +15223,37 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15552,14 +15261,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent, $fields: arg_$fields);
@@ -15568,42 +15277,42 @@ void main() {
     });
 
     unittest.test('method--updateDeveloperAppAttribute', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
-      var arg_request = buildGoogleCloudApigeeV1Attribute();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      final arg_request = buildGoogleCloudApigeeV1Attribute();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Attribute.fromJson(
+        final obj = api.GoogleCloudApigeeV1Attribute.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Attribute(
-            obj as api.GoogleCloudApigeeV1Attribute);
+        checkGoogleCloudApigeeV1Attribute(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15611,14 +15320,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateDeveloperAppAttribute(
@@ -15631,42 +15340,41 @@ void main() {
 
   unittest.group('resource-OrganizationsDevelopersAppsKeysResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
-      var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps.keys;
+      final arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        final obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            obj as api.GoogleCloudApigeeV1DeveloperAppKey);
+        checkGoogleCloudApigeeV1DeveloperAppKey(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15674,14 +15382,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -15692,36 +15400,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps.keys;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15729,14 +15437,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -15746,36 +15454,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps.keys;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15783,14 +15491,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -15800,42 +15508,41 @@ void main() {
     });
 
     unittest.test('method--replaceDeveloperAppKey', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
-      var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps.keys;
+      final arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        final obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            obj as api.GoogleCloudApigeeV1DeveloperAppKey);
+        checkGoogleCloudApigeeV1DeveloperAppKey(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15843,14 +15550,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -15861,43 +15568,42 @@ void main() {
     });
 
     unittest.test('method--updateDeveloperAppKey', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
-      var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var arg_name = 'foo';
-      var arg_action = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.apps.keys;
+      final arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
+      final arg_name = 'foo';
+      final arg_action = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        final obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            obj as api.GoogleCloudApigeeV1DeveloperAppKey);
+        checkGoogleCloudApigeeV1DeveloperAppKey(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15905,18 +15611,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["action"]!.first,
+          queryMap['action']!.first,
           unittest.equals(arg_action),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -15930,37 +15636,37 @@ void main() {
   unittest.group('resource-OrganizationsDevelopersAppsKeysApiproductsResource',
       () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15968,14 +15674,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -15985,38 +15691,38 @@ void main() {
     });
 
     unittest.test('method--updateDeveloperAppKeyApiProduct', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
-      var arg_name = 'foo';
-      var arg_action = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_action = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16024,18 +15730,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["action"]!.first,
+          queryMap['action']!.first,
           unittest.equals(arg_action),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateDeveloperAppKeyApiProduct(arg_name,
@@ -16046,42 +15752,42 @@ void main() {
 
   unittest.group('resource-OrganizationsDevelopersAppsKeysCreateResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.apps.keys.create_1;
-      var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.ApigeeApi(mock).organizations.developers.apps.keys.create_1;
+      final arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        final obj = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            obj as api.GoogleCloudApigeeV1DeveloperAppKey);
+        checkGoogleCloudApigeeV1DeveloperAppKey(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16089,14 +15795,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -16109,36 +15815,36 @@ void main() {
 
   unittest.group('resource-OrganizationsDevelopersAttributesResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.attributes_1;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16146,14 +15852,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -16162,36 +15868,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.attributes_1;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16199,14 +15905,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -16215,36 +15921,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.attributes_1;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16252,14 +15958,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent, $fields: arg_$fields);
@@ -16268,42 +15974,41 @@ void main() {
     });
 
     unittest.test('method--updateDeveloperAttribute', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
-      var arg_request = buildGoogleCloudApigeeV1Attribute();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.attributes_1;
+      final arg_request = buildGoogleCloudApigeeV1Attribute();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Attribute.fromJson(
+        final obj = api.GoogleCloudApigeeV1Attribute.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Attribute(
-            obj as api.GoogleCloudApigeeV1Attribute);
+        checkGoogleCloudApigeeV1Attribute(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16311,14 +16016,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateDeveloperAttribute(arg_request, arg_name,
@@ -16330,42 +16035,41 @@ void main() {
 
   unittest.group('resource-OrganizationsDevelopersSubscriptionsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.subscriptions;
-      var arg_request = buildGoogleCloudApigeeV1DeveloperSubscription();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.subscriptions;
+      final arg_request = buildGoogleCloudApigeeV1DeveloperSubscription();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DeveloperSubscription.fromJson(
+        final obj = api.GoogleCloudApigeeV1DeveloperSubscription.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DeveloperSubscription(
-            obj as api.GoogleCloudApigeeV1DeveloperSubscription);
+        checkGoogleCloudApigeeV1DeveloperSubscription(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16373,14 +16077,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeveloperSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -16391,44 +16095,43 @@ void main() {
     });
 
     unittest.test('method--expire', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.subscriptions;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.subscriptions;
+      final arg_request =
           buildGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest(
-            obj as api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest);
+        checkGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16436,14 +16139,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeveloperSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -16454,36 +16157,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.subscriptions;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.subscriptions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16491,14 +16194,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeveloperSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -16508,38 +16211,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.developers.subscriptions;
-      var arg_parent = 'foo';
-      var arg_count = 42;
-      var arg_startKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.subscriptions;
+      final arg_parent = 'foo';
+      final arg_count = 42;
+      final arg_startKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16547,22 +16250,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["count"]!.first),
+          core.int.parse(queryMap['count']!.first),
           unittest.equals(arg_count),
         );
         unittest.expect(
-          queryMap["startKey"]!.first,
+          queryMap['startKey']!.first,
           unittest.equals(arg_startKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -16575,43 +16278,42 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvgroupsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups;
-      var arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
-      var arg_parent = 'foo';
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups;
+      final arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
+      final arg_parent = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+        final obj = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1EnvironmentGroup(
-            obj as api.GoogleCloudApigeeV1EnvironmentGroup);
+        checkGoogleCloudApigeeV1EnvironmentGroup(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16619,18 +16321,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["name"]!.first,
+          queryMap['name']!.first,
           unittest.equals(arg_name),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -16640,36 +16342,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16677,14 +16379,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -16693,36 +16395,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16730,14 +16432,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1EnvironmentGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -16747,38 +16449,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16786,22 +16488,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -16814,43 +16516,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups;
-      var arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups;
+      final arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+        final obj = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1EnvironmentGroup(
-            obj as api.GoogleCloudApigeeV1EnvironmentGroup);
+        checkGoogleCloudApigeeV1EnvironmentGroup(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16858,18 +16559,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -16881,42 +16582,41 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvgroupsAttachmentsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
-      var arg_request = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups.attachments;
+      final arg_request = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
+        final obj = api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
-            obj as api.GoogleCloudApigeeV1EnvironmentGroupAttachment);
+        checkGoogleCloudApigeeV1EnvironmentGroupAttachment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16924,14 +16624,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -16941,36 +16641,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups.attachments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16978,14 +16678,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -16994,36 +16694,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups.attachments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17031,14 +16731,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1EnvironmentGroupAttachment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -17048,38 +16748,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.envgroups.attachments;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17087,22 +16787,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -17117,43 +16817,42 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_request = buildGoogleCloudApigeeV1Environment();
-      var arg_parent = 'foo';
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_request = buildGoogleCloudApigeeV1Environment();
+      final arg_parent = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Environment.fromJson(
+        final obj = api.GoogleCloudApigeeV1Environment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Environment(
-            obj as api.GoogleCloudApigeeV1Environment);
+        checkGoogleCloudApigeeV1Environment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17161,18 +16860,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["name"]!.first,
+          queryMap['name']!.first,
           unittest.equals(arg_name),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -17182,36 +16881,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17219,14 +16918,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -17235,36 +16934,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17272,14 +16971,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -17288,36 +16987,36 @@ void main() {
     });
 
     unittest.test('method--getDebugmask', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17325,14 +17024,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugMask());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1DebugMask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getDebugmask(arg_name, $fields: arg_$fields);
@@ -17341,36 +17040,36 @@ void main() {
     });
 
     unittest.test('method--getDeployedConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17378,14 +17077,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1EnvironmentConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -17396,37 +17095,37 @@ void main() {
     });
 
     unittest.test('method--getIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_resource = 'foo';
-      var arg_options_requestedPolicyVersion = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17434,18 +17133,18 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["options.requestedPolicyVersion"]!.first),
+          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
           unittest.equals(arg_options_requestedPolicyVersion),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleIamV1Policy());
+        final resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getIamPolicy(arg_resource,
@@ -17455,36 +17154,36 @@ void main() {
     });
 
     unittest.test('method--getTraceConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17492,14 +17191,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1TraceConfig());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1TraceConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getTraceConfig(arg_name, $fields: arg_$fields);
@@ -17508,42 +17207,41 @@ void main() {
     });
 
     unittest.test('method--setIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_request = buildGoogleIamV1SetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_request = buildGoogleIamV1SetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+        final obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleIamV1SetIamPolicyRequest(
-            obj as api.GoogleIamV1SetIamPolicyRequest);
+        checkGoogleIamV1SetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17551,14 +17249,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleIamV1Policy());
+        final resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.setIamPolicy(arg_request, arg_resource,
@@ -17567,36 +17265,36 @@ void main() {
     });
 
     unittest.test('method--subscribe', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17604,14 +17302,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Subscription());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1Subscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.subscribe(arg_parent, $fields: arg_$fields);
@@ -17620,42 +17319,41 @@ void main() {
     });
 
     unittest.test('method--testIamPermissions', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
+        final obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleIamV1TestIamPermissionsRequest(
-            obj as api.GoogleIamV1TestIamPermissionsRequest);
+        checkGoogleIamV1TestIamPermissionsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17663,14 +17361,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -17681,42 +17379,41 @@ void main() {
     });
 
     unittest.test('method--unsubscribe', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_request = buildGoogleCloudApigeeV1Subscription();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_request = buildGoogleCloudApigeeV1Subscription();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Subscription.fromJson(
+        final obj = api.GoogleCloudApigeeV1Subscription.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Subscription(
-            obj as api.GoogleCloudApigeeV1Subscription);
+        checkGoogleCloudApigeeV1Subscription(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17724,14 +17421,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -17740,42 +17437,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_request = buildGoogleCloudApigeeV1Environment();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_request = buildGoogleCloudApigeeV1Environment();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Environment.fromJson(
+        final obj = api.GoogleCloudApigeeV1Environment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Environment(
-            obj as api.GoogleCloudApigeeV1Environment);
+        checkGoogleCloudApigeeV1Environment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17783,14 +17479,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -17800,44 +17496,43 @@ void main() {
     });
 
     unittest.test('method--updateDebugmask', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_request = buildGoogleCloudApigeeV1DebugMask();
-      var arg_name = 'foo';
-      var arg_replaceRepeatedFields = true;
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_request = buildGoogleCloudApigeeV1DebugMask();
+      final arg_name = 'foo';
+      final arg_replaceRepeatedFields = true;
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DebugMask.fromJson(
+        final obj = api.GoogleCloudApigeeV1DebugMask.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DebugMask(
-            obj as api.GoogleCloudApigeeV1DebugMask);
+        checkGoogleCloudApigeeV1DebugMask(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17845,22 +17540,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["replaceRepeatedFields"]!.first,
-          unittest.equals("$arg_replaceRepeatedFields"),
+          queryMap['replaceRepeatedFields']!.first,
+          unittest.equals('$arg_replaceRepeatedFields'),
         );
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugMask());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1DebugMask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateDebugmask(arg_request, arg_name,
@@ -17872,42 +17567,41 @@ void main() {
     });
 
     unittest.test('method--updateEnvironment', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_request = buildGoogleCloudApigeeV1Environment();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_request = buildGoogleCloudApigeeV1Environment();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Environment.fromJson(
+        final obj = api.GoogleCloudApigeeV1Environment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Environment(
-            obj as api.GoogleCloudApigeeV1Environment);
+        checkGoogleCloudApigeeV1Environment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17915,14 +17609,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateEnvironment(arg_request, arg_name,
@@ -17932,43 +17626,42 @@ void main() {
     });
 
     unittest.test('method--updateTraceConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments;
-      var arg_request = buildGoogleCloudApigeeV1TraceConfig();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments;
+      final arg_request = buildGoogleCloudApigeeV1TraceConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1TraceConfig.fromJson(
+        final obj = api.GoogleCloudApigeeV1TraceConfig.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1TraceConfig(
-            obj as api.GoogleCloudApigeeV1TraceConfig);
+        checkGoogleCloudApigeeV1TraceConfig(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17976,18 +17669,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1TraceConfig());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1TraceConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateTraceConfig(arg_request, arg_name,
@@ -18000,38 +17693,39 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsAnalyticsAdminResource',
       () {
     unittest.test('method--getSchemav2', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.analytics.admin;
-      var arg_name = 'foo';
-      var arg_disableCache = true;
-      var arg_type = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.ApigeeApi(mock).organizations.environments.analytics.admin;
+      final arg_name = 'foo';
+      final arg_disableCache = true;
+      final arg_type = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18039,22 +17733,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["disableCache"]!.first,
-          unittest.equals("$arg_disableCache"),
+          queryMap['disableCache']!.first,
+          unittest.equals('$arg_disableCache'),
         );
         unittest.expect(
-          queryMap["type"]!.first,
+          queryMap['type']!.first,
           unittest.equals(arg_type),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Schema());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Schema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getSchemav2(arg_name,
@@ -18066,43 +17760,42 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsAnalyticsExportsResource',
       () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
-      var arg_request = buildGoogleCloudApigeeV1ExportRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleCloudApigeeV1ExportRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1ExportRequest.fromJson(
+        final obj = api.GoogleCloudApigeeV1ExportRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ExportRequest(
-            obj as api.GoogleCloudApigeeV1ExportRequest);
+        checkGoogleCloudApigeeV1ExportRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18110,14 +17803,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Export());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Export());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -18126,37 +17819,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18164,14 +17857,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Export());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Export());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -18179,37 +17872,37 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18217,14 +17910,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1ListExportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -18237,36 +17930,37 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsApisDeploymentsResource',
       () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.apis.deployments;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.ApigeeApi(mock).organizations.environments.apis.deployments;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18274,14 +17968,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -18293,38 +17987,38 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsApisRevisionsResource', () {
     unittest.test('method--deploy', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
-      var arg_name = 'foo';
-      var arg_override = true;
-      var arg_sequencedRollout = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
+      final arg_name = 'foo';
+      final arg_override = true;
+      final arg_sequencedRollout = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18332,22 +18026,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["override"]!.first,
-          unittest.equals("$arg_override"),
+          queryMap['override']!.first,
+          unittest.equals('$arg_override'),
         );
         unittest.expect(
-          queryMap["sequencedRollout"]!.first,
-          unittest.equals("$arg_sequencedRollout"),
+          queryMap['sequencedRollout']!.first,
+          unittest.equals('$arg_sequencedRollout'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.deploy(arg_name,
@@ -18359,36 +18053,36 @@ void main() {
     });
 
     unittest.test('method--getDeployments', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18396,14 +18090,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getDeployments(arg_name, $fields: arg_$fields);
@@ -18412,37 +18106,37 @@ void main() {
     });
 
     unittest.test('method--undeploy', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
-      var arg_name = 'foo';
-      var arg_sequencedRollout = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
+      final arg_name = 'foo';
+      final arg_sequencedRollout = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18450,18 +18144,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["sequencedRollout"]!.first,
-          unittest.equals("$arg_sequencedRollout"),
+          queryMap['sequencedRollout']!.first,
+          unittest.equals('$arg_sequencedRollout'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.undeploy(arg_name,
@@ -18474,48 +18168,47 @@ void main() {
       'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsResource',
       () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock)
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock)
           .organizations
           .environments
           .apis
           .revisions
           .debugsessions;
-      var arg_request = buildGoogleCloudApigeeV1DebugSession();
-      var arg_parent = 'foo';
-      var arg_timeout = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleCloudApigeeV1DebugSession();
+      final arg_parent = 'foo';
+      final arg_timeout = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1DebugSession.fromJson(
+        final obj = api.GoogleCloudApigeeV1DebugSession.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1DebugSession(
-            obj as api.GoogleCloudApigeeV1DebugSession);
+        checkGoogleCloudApigeeV1DebugSession(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18523,18 +18216,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["timeout"]!.first,
+          queryMap['timeout']!.first,
           unittest.equals(arg_timeout),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugSession());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DebugSession());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -18544,41 +18238,41 @@ void main() {
     });
 
     unittest.test('method--deleteData', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock)
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock)
           .organizations
           .environments
           .apis
           .revisions
           .debugsessions;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18586,14 +18280,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.deleteData(arg_name, $fields: arg_$fields);
@@ -18601,41 +18295,41 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock)
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock)
           .organizations
           .environments
           .apis
           .revisions
           .debugsessions;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18643,14 +18337,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugSession());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DebugSession());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -18659,43 +18354,43 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock)
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock)
           .organizations
           .environments
           .apis
           .revisions
           .debugsessions;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18703,22 +18398,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDebugSessionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -18735,42 +18430,42 @@ void main() {
       'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource',
       () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock)
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock)
           .organizations
           .environments
           .apis
           .revisions
           .debugsessions
           .data;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18778,14 +18473,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1DebugSessionTransaction());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -18798,42 +18493,42 @@ void main() {
   unittest.group(
       'resource-OrganizationsEnvironmentsApisRevisionsDeploymentsResource', () {
     unittest.test('method--generateDeployChangeReport', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock)
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock)
           .organizations
           .environments
           .apis
           .revisions
           .deployments;
-      var arg_name = 'foo';
-      var arg_override = true;
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_override = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18841,18 +18536,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["override"]!.first,
-          unittest.equals("$arg_override"),
+          queryMap['override']!.first,
+          unittest.equals('$arg_override'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeploymentChangeReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -18863,41 +18558,41 @@ void main() {
     });
 
     unittest.test('method--generateUndeployChangeReport', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock)
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock)
           .organizations
           .environments
           .apis
           .revisions
           .deployments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18905,14 +18600,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeploymentChangeReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -18925,36 +18620,36 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsCachesResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.caches;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.caches;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -18962,14 +18657,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -18979,37 +18674,37 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsDeploymentsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.deployments;
-      var arg_parent = 'foo';
-      var arg_sharedFlows = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.deployments;
+      final arg_parent = 'foo';
+      final arg_sharedFlows = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19017,18 +18712,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["sharedFlows"]!.first,
-          unittest.equals("$arg_sharedFlows"),
+          queryMap['sharedFlows']!.first,
+          unittest.equals('$arg_sharedFlows'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -19041,42 +18736,41 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsFlowhooksResource', () {
     unittest.test('method--attachSharedFlowToFlowHook', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
-      var arg_request = buildGoogleCloudApigeeV1FlowHook();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.flowhooks;
+      final arg_request = buildGoogleCloudApigeeV1FlowHook();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1FlowHook.fromJson(
+        final obj = api.GoogleCloudApigeeV1FlowHook.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1FlowHook(
-            obj as api.GoogleCloudApigeeV1FlowHook);
+        checkGoogleCloudApigeeV1FlowHook(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19084,14 +18778,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.attachSharedFlowToFlowHook(
@@ -19102,36 +18796,36 @@ void main() {
     });
 
     unittest.test('method--detachSharedFlowFromFlowHook', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.flowhooks;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19139,14 +18833,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.detachSharedFlowFromFlowHook(arg_name,
@@ -19156,36 +18850,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.flowhooks;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19193,14 +18887,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -19211,43 +18905,42 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsKeystoresResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.keystores;
-      var arg_request = buildGoogleCloudApigeeV1Keystore();
-      var arg_parent = 'foo';
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.keystores;
+      final arg_request = buildGoogleCloudApigeeV1Keystore();
+      final arg_parent = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Keystore.fromJson(
+        final obj = api.GoogleCloudApigeeV1Keystore.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Keystore(
-            obj as api.GoogleCloudApigeeV1Keystore);
+        checkGoogleCloudApigeeV1Keystore(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19255,18 +18948,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["name"]!.first,
+          queryMap['name']!.first,
           unittest.equals(arg_name),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -19276,36 +18969,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.keystores;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.keystores;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19313,14 +19006,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -19329,36 +19022,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.keystores;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.keystores;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19366,14 +19059,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -19385,47 +19078,47 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsKeystoresAliasesResource',
       () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = 'foo';
-      var arg_P_password = 'foo';
-      var arg_alias = 'foo';
-      var arg_format = 'foo';
-      var arg_ignoreExpiryValidation = true;
-      var arg_ignoreNewlineValidation = true;
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleApiHttpBody();
+      final arg_parent = 'foo';
+      final arg_P_password = 'foo';
+      final arg_alias = 'foo';
+      final arg_format = 'foo';
+      final arg_ignoreExpiryValidation = true;
+      final arg_ignoreNewlineValidation = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleApiHttpBody.fromJson(
+        final obj = api.GoogleApiHttpBody.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleApiHttpBody(obj as api.GoogleApiHttpBody);
+        checkGoogleApiHttpBody(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19433,34 +19126,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["_password"]!.first,
+          queryMap['_password']!.first,
           unittest.equals(arg_P_password),
         );
         unittest.expect(
-          queryMap["alias"]!.first,
+          queryMap['alias']!.first,
           unittest.equals(arg_alias),
         );
         unittest.expect(
-          queryMap["format"]!.first,
+          queryMap['format']!.first,
           unittest.equals(arg_format),
         );
         unittest.expect(
-          queryMap["ignoreExpiryValidation"]!.first,
-          unittest.equals("$arg_ignoreExpiryValidation"),
+          queryMap['ignoreExpiryValidation']!.first,
+          unittest.equals('$arg_ignoreExpiryValidation'),
         );
         unittest.expect(
-          queryMap["ignoreNewlineValidation"]!.first,
-          unittest.equals("$arg_ignoreNewlineValidation"),
+          queryMap['ignoreNewlineValidation']!.first,
+          unittest.equals('$arg_ignoreNewlineValidation'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -19474,37 +19167,37 @@ void main() {
     });
 
     unittest.test('method--csr', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19512,14 +19205,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleApiHttpBody());
+        final resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.csr(arg_name, $fields: arg_$fields);
@@ -19527,37 +19220,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19565,14 +19258,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -19580,37 +19273,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19618,14 +19311,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -19633,37 +19326,37 @@ void main() {
     });
 
     unittest.test('method--getCertificate', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19671,14 +19364,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleApiHttpBody());
+        final resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getCertificate(arg_name, $fields: arg_$fields);
@@ -19686,44 +19379,44 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
-      var arg_request = buildGoogleApiHttpBody();
-      var arg_name = 'foo';
-      var arg_ignoreExpiryValidation = true;
-      var arg_ignoreNewlineValidation = true;
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleApiHttpBody();
+      final arg_name = 'foo';
+      final arg_ignoreExpiryValidation = true;
+      final arg_ignoreNewlineValidation = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleApiHttpBody.fromJson(
+        final obj = api.GoogleApiHttpBody.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleApiHttpBody(obj as api.GoogleApiHttpBody);
+        checkGoogleApiHttpBody(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19731,22 +19424,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["ignoreExpiryValidation"]!.first,
-          unittest.equals("$arg_ignoreExpiryValidation"),
+          queryMap['ignoreExpiryValidation']!.first,
+          unittest.equals('$arg_ignoreExpiryValidation'),
         );
         unittest.expect(
-          queryMap["ignoreNewlineValidation"]!.first,
-          unittest.equals("$arg_ignoreNewlineValidation"),
+          queryMap['ignoreNewlineValidation']!.first,
+          unittest.equals('$arg_ignoreNewlineValidation'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_name,
@@ -19759,42 +19452,41 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsKeyvaluemapsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
-      var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
+      final arg_request = buildGoogleCloudApigeeV1KeyValueMap();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
+        final obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1KeyValueMap(
-            obj as api.GoogleCloudApigeeV1KeyValueMap);
+        checkGoogleCloudApigeeV1KeyValueMap(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19802,14 +19494,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -19819,36 +19511,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19856,14 +19548,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -19875,51 +19567,51 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsOptimizedStatsResource',
       () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.optimizedStats;
-      var arg_name = 'foo';
-      var arg_accuracy = 'foo';
-      var arg_aggTable = 'foo';
-      var arg_filter = 'foo';
-      var arg_limit = 'foo';
-      var arg_offset = 'foo';
-      var arg_realtime = true;
-      var arg_select = 'foo';
-      var arg_sonar = true;
-      var arg_sort = 'foo';
-      var arg_sortby = 'foo';
-      var arg_timeRange = 'foo';
-      var arg_timeUnit = 'foo';
-      var arg_topk = 'foo';
-      var arg_tsAscending = true;
-      var arg_tzo = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.optimizedStats;
+      final arg_name = 'foo';
+      final arg_accuracy = 'foo';
+      final arg_aggTable = 'foo';
+      final arg_filter = 'foo';
+      final arg_limit = 'foo';
+      final arg_offset = 'foo';
+      final arg_realtime = true;
+      final arg_select = 'foo';
+      final arg_sonar = true;
+      final arg_sort = 'foo';
+      final arg_sortby = 'foo';
+      final arg_timeRange = 'foo';
+      final arg_timeUnit = 'foo';
+      final arg_topk = 'foo';
+      final arg_tsAscending = true;
+      final arg_tzo = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19927,74 +19619,74 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["accuracy"]!.first,
+          queryMap['accuracy']!.first,
           unittest.equals(arg_accuracy),
         );
         unittest.expect(
-          queryMap["aggTable"]!.first,
+          queryMap['aggTable']!.first,
           unittest.equals(arg_aggTable),
         );
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap["limit"]!.first,
+          queryMap['limit']!.first,
           unittest.equals(arg_limit),
         );
         unittest.expect(
-          queryMap["offset"]!.first,
+          queryMap['offset']!.first,
           unittest.equals(arg_offset),
         );
         unittest.expect(
-          queryMap["realtime"]!.first,
-          unittest.equals("$arg_realtime"),
+          queryMap['realtime']!.first,
+          unittest.equals('$arg_realtime'),
         );
         unittest.expect(
-          queryMap["select"]!.first,
+          queryMap['select']!.first,
           unittest.equals(arg_select),
         );
         unittest.expect(
-          queryMap["sonar"]!.first,
-          unittest.equals("$arg_sonar"),
+          queryMap['sonar']!.first,
+          unittest.equals('$arg_sonar'),
         );
         unittest.expect(
-          queryMap["sort"]!.first,
+          queryMap['sort']!.first,
           unittest.equals(arg_sort),
         );
         unittest.expect(
-          queryMap["sortby"]!.first,
+          queryMap['sortby']!.first,
           unittest.equals(arg_sortby),
         );
         unittest.expect(
-          queryMap["timeRange"]!.first,
+          queryMap['timeRange']!.first,
           unittest.equals(arg_timeRange),
         );
         unittest.expect(
-          queryMap["timeUnit"]!.first,
+          queryMap['timeUnit']!.first,
           unittest.equals(arg_timeUnit),
         );
         unittest.expect(
-          queryMap["topk"]!.first,
+          queryMap['topk']!.first,
           unittest.equals(arg_topk),
         );
         unittest.expect(
-          queryMap["tsAscending"]!.first,
-          unittest.equals("$arg_tsAscending"),
+          queryMap['tsAscending']!.first,
+          unittest.equals('$arg_tsAscending'),
         );
         unittest.expect(
-          queryMap["tzo"]!.first,
+          queryMap['tzo']!.first,
           unittest.equals(arg_tzo),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1OptimizedStats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -20022,41 +19714,41 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsQueriesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.queries;
-      var arg_request = buildGoogleCloudApigeeV1Query();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.queries;
+      final arg_request = buildGoogleCloudApigeeV1Query();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Query.fromJson(
+        final obj = api.GoogleCloudApigeeV1Query.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Query(obj as api.GoogleCloudApigeeV1Query);
+        checkGoogleCloudApigeeV1Query(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20064,14 +19756,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -20081,36 +19773,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.queries;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.queries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20118,14 +19810,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -20134,36 +19826,36 @@ void main() {
     });
 
     unittest.test('method--getResult', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.queries;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.queries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20171,14 +19863,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleApiHttpBody());
+        final resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getResult(arg_name, $fields: arg_$fields);
@@ -20186,42 +19878,42 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.queries;
-      var arg_parent = 'foo';
-      var arg_dataset = 'foo';
-      var arg_from = 'foo';
-      var arg_inclQueriesWithoutReport = 'foo';
-      var arg_status = 'foo';
-      var arg_submittedBy = 'foo';
-      var arg_to = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.queries;
+      final arg_parent = 'foo';
+      final arg_dataset = 'foo';
+      final arg_from = 'foo';
+      final arg_inclQueriesWithoutReport = 'foo';
+      final arg_status = 'foo';
+      final arg_submittedBy = 'foo';
+      final arg_to = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20229,38 +19921,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["dataset"]!.first,
+          queryMap['dataset']!.first,
           unittest.equals(arg_dataset),
         );
         unittest.expect(
-          queryMap["from"]!.first,
+          queryMap['from']!.first,
           unittest.equals(arg_from),
         );
         unittest.expect(
-          queryMap["inclQueriesWithoutReport"]!.first,
+          queryMap['inclQueriesWithoutReport']!.first,
           unittest.equals(arg_inclQueriesWithoutReport),
         );
         unittest.expect(
-          queryMap["status"]!.first,
+          queryMap['status']!.first,
           unittest.equals(arg_status),
         );
         unittest.expect(
-          queryMap["submittedBy"]!.first,
+          queryMap['submittedBy']!.first,
           unittest.equals(arg_submittedBy),
         );
         unittest.expect(
-          queryMap["to"]!.first,
+          queryMap['to']!.first,
           unittest.equals(arg_to),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListAsyncQueriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -20279,42 +19971,41 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsReferencesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.references;
-      var arg_request = buildGoogleCloudApigeeV1Reference();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.references;
+      final arg_request = buildGoogleCloudApigeeV1Reference();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Reference.fromJson(
+        final obj = api.GoogleCloudApigeeV1Reference.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Reference(
-            obj as api.GoogleCloudApigeeV1Reference);
+        checkGoogleCloudApigeeV1Reference(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20322,14 +20013,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -20339,36 +20030,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.references;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.references;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20376,14 +20067,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -20392,36 +20083,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.references;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.references;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20429,14 +20120,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -20445,42 +20136,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.references;
-      var arg_request = buildGoogleCloudApigeeV1Reference();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.references;
+      final arg_request = buildGoogleCloudApigeeV1Reference();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Reference.fromJson(
+        final obj = api.GoogleCloudApigeeV1Reference.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Reference(
-            obj as api.GoogleCloudApigeeV1Reference);
+        checkGoogleCloudApigeeV1Reference(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20488,14 +20178,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -20507,43 +20197,43 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsResourcefilesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = 'foo';
-      var arg_name = 'foo';
-      var arg_type = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      final arg_request = buildGoogleApiHttpBody();
+      final arg_parent = 'foo';
+      final arg_name = 'foo';
+      final arg_type = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleApiHttpBody.fromJson(
+        final obj = api.GoogleApiHttpBody.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleApiHttpBody(obj as api.GoogleApiHttpBody);
+        checkGoogleApiHttpBody(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20551,22 +20241,23 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["name"]!.first,
+          queryMap['name']!.first,
           unittest.equals(arg_name),
         );
         unittest.expect(
-          queryMap["type"]!.first,
+          queryMap['type']!.first,
           unittest.equals(arg_type),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -20576,38 +20267,38 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_parent = 'foo';
-      var arg_type = 'foo';
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      final arg_parent = 'foo';
+      final arg_type = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20615,14 +20306,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_parent, arg_type, arg_name,
@@ -20632,38 +20324,38 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_parent = 'foo';
-      var arg_type = 'foo';
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      final arg_parent = 'foo';
+      final arg_type = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20671,14 +20363,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleApiHttpBody());
+        final resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -20687,37 +20379,37 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_parent = 'foo';
-      var arg_type = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      final arg_parent = 'foo';
+      final arg_type = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20725,18 +20417,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["type"]!.first,
+          queryMap['type']!.first,
           unittest.equals(arg_type),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -20747,37 +20439,37 @@ void main() {
     });
 
     unittest.test('method--listEnvironmentResources', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_parent = 'foo';
-      var arg_type = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      final arg_parent = 'foo';
+      final arg_type = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20785,14 +20477,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -20803,43 +20495,43 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
-      var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = 'foo';
-      var arg_type = 'foo';
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      final arg_request = buildGoogleApiHttpBody();
+      final arg_parent = 'foo';
+      final arg_type = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleApiHttpBody.fromJson(
+        final obj = api.GoogleApiHttpBody.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleApiHttpBody(obj as api.GoogleApiHttpBody);
+        checkGoogleApiHttpBody(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20847,14 +20539,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(
@@ -20868,40 +20561,40 @@ void main() {
   unittest.group(
       'resource-OrganizationsEnvironmentsSharedflowsDeploymentsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock)
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock)
           .organizations
           .environments
           .sharedflows
           .deployments;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20909,14 +20602,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -20929,38 +20622,38 @@ void main() {
   unittest.group(
       'resource-OrganizationsEnvironmentsSharedflowsRevisionsResource', () {
     unittest.test('method--deploy', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
-      var arg_name = 'foo';
-      var arg_override = true;
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_override = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20968,18 +20661,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["override"]!.first,
-          unittest.equals("$arg_override"),
+          queryMap['override']!.first,
+          unittest.equals('$arg_override'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.deploy(arg_name,
@@ -20989,37 +20682,37 @@ void main() {
     });
 
     unittest.test('method--getDeployments', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21027,14 +20720,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getDeployments(arg_name, $fields: arg_$fields);
@@ -21043,37 +20736,37 @@ void main() {
     });
 
     unittest.test('method--undeploy', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21081,14 +20774,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.undeploy(arg_name, $fields: arg_$fields);
@@ -21098,51 +20791,51 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsStatsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.stats;
-      var arg_name = 'foo';
-      var arg_accuracy = 'foo';
-      var arg_aggTable = 'foo';
-      var arg_filter = 'foo';
-      var arg_limit = 'foo';
-      var arg_offset = 'foo';
-      var arg_realtime = true;
-      var arg_select = 'foo';
-      var arg_sonar = true;
-      var arg_sort = 'foo';
-      var arg_sortby = 'foo';
-      var arg_timeRange = 'foo';
-      var arg_timeUnit = 'foo';
-      var arg_topk = 'foo';
-      var arg_tsAscending = true;
-      var arg_tzo = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.stats;
+      final arg_name = 'foo';
+      final arg_accuracy = 'foo';
+      final arg_aggTable = 'foo';
+      final arg_filter = 'foo';
+      final arg_limit = 'foo';
+      final arg_offset = 'foo';
+      final arg_realtime = true;
+      final arg_select = 'foo';
+      final arg_sonar = true;
+      final arg_sort = 'foo';
+      final arg_sortby = 'foo';
+      final arg_timeRange = 'foo';
+      final arg_timeUnit = 'foo';
+      final arg_topk = 'foo';
+      final arg_tsAscending = true;
+      final arg_tzo = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21150,74 +20843,74 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["accuracy"]!.first,
+          queryMap['accuracy']!.first,
           unittest.equals(arg_accuracy),
         );
         unittest.expect(
-          queryMap["aggTable"]!.first,
+          queryMap['aggTable']!.first,
           unittest.equals(arg_aggTable),
         );
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap["limit"]!.first,
+          queryMap['limit']!.first,
           unittest.equals(arg_limit),
         );
         unittest.expect(
-          queryMap["offset"]!.first,
+          queryMap['offset']!.first,
           unittest.equals(arg_offset),
         );
         unittest.expect(
-          queryMap["realtime"]!.first,
-          unittest.equals("$arg_realtime"),
+          queryMap['realtime']!.first,
+          unittest.equals('$arg_realtime'),
         );
         unittest.expect(
-          queryMap["select"]!.first,
+          queryMap['select']!.first,
           unittest.equals(arg_select),
         );
         unittest.expect(
-          queryMap["sonar"]!.first,
-          unittest.equals("$arg_sonar"),
+          queryMap['sonar']!.first,
+          unittest.equals('$arg_sonar'),
         );
         unittest.expect(
-          queryMap["sort"]!.first,
+          queryMap['sort']!.first,
           unittest.equals(arg_sort),
         );
         unittest.expect(
-          queryMap["sortby"]!.first,
+          queryMap['sortby']!.first,
           unittest.equals(arg_sortby),
         );
         unittest.expect(
-          queryMap["timeRange"]!.first,
+          queryMap['timeRange']!.first,
           unittest.equals(arg_timeRange),
         );
         unittest.expect(
-          queryMap["timeUnit"]!.first,
+          queryMap['timeUnit']!.first,
           unittest.equals(arg_timeUnit),
         );
         unittest.expect(
-          queryMap["topk"]!.first,
+          queryMap['topk']!.first,
           unittest.equals(arg_topk),
         );
         unittest.expect(
-          queryMap["tsAscending"]!.first,
-          unittest.equals("$arg_tsAscending"),
+          queryMap['tsAscending']!.first,
+          unittest.equals('$arg_tsAscending'),
         );
         unittest.expect(
-          queryMap["tzo"]!.first,
+          queryMap['tzo']!.first,
           unittest.equals(arg_tzo),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Stats());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Stats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name,
@@ -21243,43 +20936,42 @@ void main() {
 
   unittest.group('resource-OrganizationsEnvironmentsTargetserversResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.targetservers;
-      var arg_request = buildGoogleCloudApigeeV1TargetServer();
-      var arg_parent = 'foo';
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.targetservers;
+      final arg_request = buildGoogleCloudApigeeV1TargetServer();
+      final arg_parent = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1TargetServer.fromJson(
+        final obj = api.GoogleCloudApigeeV1TargetServer.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1TargetServer(
-            obj as api.GoogleCloudApigeeV1TargetServer);
+        checkGoogleCloudApigeeV1TargetServer(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21287,18 +20979,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["name"]!.first,
+          queryMap['name']!.first,
           unittest.equals(arg_name),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -21308,36 +21001,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.targetservers;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.targetservers;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21345,14 +21038,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -21361,36 +21055,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.targetservers;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.targetservers;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21398,14 +21092,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -21414,42 +21109,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.environments.targetservers;
-      var arg_request = buildGoogleCloudApigeeV1TargetServer();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.environments.targetservers;
+      final arg_request = buildGoogleCloudApigeeV1TargetServer();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1TargetServer.fromJson(
+        final obj = api.GoogleCloudApigeeV1TargetServer.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1TargetServer(
-            obj as api.GoogleCloudApigeeV1TargetServer);
+        checkGoogleCloudApigeeV1TargetServer(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21457,14 +21151,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -21477,43 +21172,42 @@ void main() {
   unittest.group(
       'resource-OrganizationsEnvironmentsTraceConfigOverridesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
-      var arg_request = buildGoogleCloudApigeeV1TraceConfigOverride();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleCloudApigeeV1TraceConfigOverride();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1TraceConfigOverride.fromJson(
+        final obj = api.GoogleCloudApigeeV1TraceConfigOverride.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1TraceConfigOverride(
-            obj as api.GoogleCloudApigeeV1TraceConfigOverride);
+        checkGoogleCloudApigeeV1TraceConfigOverride(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21521,14 +21215,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1TraceConfigOverride());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -21539,37 +21233,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21577,14 +21271,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -21592,37 +21286,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21630,14 +21324,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1TraceConfigOverride());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -21647,39 +21341,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21687,22 +21381,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListTraceConfigOverridesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -21715,44 +21409,43 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
-      var arg_request = buildGoogleCloudApigeeV1TraceConfigOverride();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleCloudApigeeV1TraceConfigOverride();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1TraceConfigOverride.fromJson(
+        final obj = api.GoogleCloudApigeeV1TraceConfigOverride.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1TraceConfigOverride(
-            obj as api.GoogleCloudApigeeV1TraceConfigOverride);
+        checkGoogleCloudApigeeV1TraceConfigOverride(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21760,18 +21453,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1TraceConfigOverride());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -21784,41 +21477,41 @@ void main() {
 
   unittest.group('resource-OrganizationsHostQueriesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.hostQueries;
-      var arg_request = buildGoogleCloudApigeeV1Query();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.hostQueries;
+      final arg_request = buildGoogleCloudApigeeV1Query();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Query.fromJson(
+        final obj = api.GoogleCloudApigeeV1Query.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Query(obj as api.GoogleCloudApigeeV1Query);
+        checkGoogleCloudApigeeV1Query(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21826,14 +21519,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -21843,36 +21536,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.hostQueries;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.hostQueries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21880,14 +21573,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -21896,36 +21589,36 @@ void main() {
     });
 
     unittest.test('method--getResult', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.hostQueries;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.hostQueries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21933,14 +21626,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleApiHttpBody());
+        final resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getResult(arg_name, $fields: arg_$fields);
@@ -21948,36 +21641,36 @@ void main() {
     });
 
     unittest.test('method--getResultView', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.hostQueries;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.hostQueries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21985,14 +21678,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1AsyncQueryResultView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -22002,43 +21695,43 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.hostQueries;
-      var arg_parent = 'foo';
-      var arg_dataset = 'foo';
-      var arg_envgroupHostname = 'foo';
-      var arg_from = 'foo';
-      var arg_inclQueriesWithoutReport = 'foo';
-      var arg_status = 'foo';
-      var arg_submittedBy = 'foo';
-      var arg_to = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.hostQueries;
+      final arg_parent = 'foo';
+      final arg_dataset = 'foo';
+      final arg_envgroupHostname = 'foo';
+      final arg_from = 'foo';
+      final arg_inclQueriesWithoutReport = 'foo';
+      final arg_status = 'foo';
+      final arg_submittedBy = 'foo';
+      final arg_to = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22046,42 +21739,42 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["dataset"]!.first,
+          queryMap['dataset']!.first,
           unittest.equals(arg_dataset),
         );
         unittest.expect(
-          queryMap["envgroupHostname"]!.first,
+          queryMap['envgroupHostname']!.first,
           unittest.equals(arg_envgroupHostname),
         );
         unittest.expect(
-          queryMap["from"]!.first,
+          queryMap['from']!.first,
           unittest.equals(arg_from),
         );
         unittest.expect(
-          queryMap["inclQueriesWithoutReport"]!.first,
+          queryMap['inclQueriesWithoutReport']!.first,
           unittest.equals(arg_inclQueriesWithoutReport),
         );
         unittest.expect(
-          queryMap["status"]!.first,
+          queryMap['status']!.first,
           unittest.equals(arg_status),
         );
         unittest.expect(
-          queryMap["submittedBy"]!.first,
+          queryMap['submittedBy']!.first,
           unittest.equals(arg_submittedBy),
         );
         unittest.expect(
-          queryMap["to"]!.first,
+          queryMap['to']!.first,
           unittest.equals(arg_to),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListAsyncQueriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -22101,50 +21794,50 @@ void main() {
 
   unittest.group('resource-OrganizationsHostStatsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.hostStats;
-      var arg_name = 'foo';
-      var arg_accuracy = 'foo';
-      var arg_envgroupHostname = 'foo';
-      var arg_filter = 'foo';
-      var arg_limit = 'foo';
-      var arg_offset = 'foo';
-      var arg_realtime = true;
-      var arg_select = 'foo';
-      var arg_sort = 'foo';
-      var arg_sortby = 'foo';
-      var arg_timeRange = 'foo';
-      var arg_timeUnit = 'foo';
-      var arg_topk = 'foo';
-      var arg_tsAscending = true;
-      var arg_tzo = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.hostStats;
+      final arg_name = 'foo';
+      final arg_accuracy = 'foo';
+      final arg_envgroupHostname = 'foo';
+      final arg_filter = 'foo';
+      final arg_limit = 'foo';
+      final arg_offset = 'foo';
+      final arg_realtime = true;
+      final arg_select = 'foo';
+      final arg_sort = 'foo';
+      final arg_sortby = 'foo';
+      final arg_timeRange = 'foo';
+      final arg_timeUnit = 'foo';
+      final arg_topk = 'foo';
+      final arg_tsAscending = true;
+      final arg_tzo = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22152,70 +21845,70 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["accuracy"]!.first,
+          queryMap['accuracy']!.first,
           unittest.equals(arg_accuracy),
         );
         unittest.expect(
-          queryMap["envgroupHostname"]!.first,
+          queryMap['envgroupHostname']!.first,
           unittest.equals(arg_envgroupHostname),
         );
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap["limit"]!.first,
+          queryMap['limit']!.first,
           unittest.equals(arg_limit),
         );
         unittest.expect(
-          queryMap["offset"]!.first,
+          queryMap['offset']!.first,
           unittest.equals(arg_offset),
         );
         unittest.expect(
-          queryMap["realtime"]!.first,
-          unittest.equals("$arg_realtime"),
+          queryMap['realtime']!.first,
+          unittest.equals('$arg_realtime'),
         );
         unittest.expect(
-          queryMap["select"]!.first,
+          queryMap['select']!.first,
           unittest.equals(arg_select),
         );
         unittest.expect(
-          queryMap["sort"]!.first,
+          queryMap['sort']!.first,
           unittest.equals(arg_sort),
         );
         unittest.expect(
-          queryMap["sortby"]!.first,
+          queryMap['sortby']!.first,
           unittest.equals(arg_sortby),
         );
         unittest.expect(
-          queryMap["timeRange"]!.first,
+          queryMap['timeRange']!.first,
           unittest.equals(arg_timeRange),
         );
         unittest.expect(
-          queryMap["timeUnit"]!.first,
+          queryMap['timeUnit']!.first,
           unittest.equals(arg_timeUnit),
         );
         unittest.expect(
-          queryMap["topk"]!.first,
+          queryMap['topk']!.first,
           unittest.equals(arg_topk),
         );
         unittest.expect(
-          queryMap["tsAscending"]!.first,
-          unittest.equals("$arg_tsAscending"),
+          queryMap['tsAscending']!.first,
+          unittest.equals('$arg_tsAscending'),
         );
         unittest.expect(
-          queryMap["tzo"]!.first,
+          queryMap['tzo']!.first,
           unittest.equals(arg_tzo),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Stats());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Stats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name,
@@ -22240,42 +21933,41 @@ void main() {
 
   unittest.group('resource-OrganizationsInstancesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances;
-      var arg_request = buildGoogleCloudApigeeV1Instance();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances;
+      final arg_request = buildGoogleCloudApigeeV1Instance();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1Instance.fromJson(
+        final obj = api.GoogleCloudApigeeV1Instance.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1Instance(
-            obj as api.GoogleCloudApigeeV1Instance);
+        checkGoogleCloudApigeeV1Instance(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22283,14 +21975,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22300,36 +21992,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22337,14 +22029,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -22353,36 +22045,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22390,14 +22082,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1Instance());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1Instance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -22406,38 +22098,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22445,22 +22137,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -22473,42 +22165,41 @@ void main() {
     });
 
     unittest.test('method--reportStatus', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances;
-      var arg_request = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
-      var arg_instance = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances;
+      final arg_request = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
+        final obj = api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ReportInstanceStatusRequest(
-            obj as api.GoogleCloudApigeeV1ReportInstanceStatusRequest);
+        checkGoogleCloudApigeeV1ReportInstanceStatusRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22516,14 +22207,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ReportInstanceStatusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -22536,42 +22227,41 @@ void main() {
 
   unittest.group('resource-OrganizationsInstancesAttachmentsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.attachments;
-      var arg_request = buildGoogleCloudApigeeV1InstanceAttachment();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.attachments;
+      final arg_request = buildGoogleCloudApigeeV1InstanceAttachment();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(
+        final obj = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1InstanceAttachment(
-            obj as api.GoogleCloudApigeeV1InstanceAttachment);
+        checkGoogleCloudApigeeV1InstanceAttachment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22579,14 +22269,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22596,36 +22286,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.attachments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.attachments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22633,14 +22323,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -22649,36 +22339,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.attachments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.attachments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22686,14 +22376,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1InstanceAttachment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -22703,38 +22393,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.attachments;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.attachments;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22742,22 +22432,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -22773,42 +22463,41 @@ void main() {
   unittest.group('resource-OrganizationsInstancesCanaryevaluationsResource',
       () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.canaryevaluations;
-      var arg_request = buildGoogleCloudApigeeV1CanaryEvaluation();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.canaryevaluations;
+      final arg_request = buildGoogleCloudApigeeV1CanaryEvaluation();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1CanaryEvaluation.fromJson(
+        final obj = api.GoogleCloudApigeeV1CanaryEvaluation.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1CanaryEvaluation(
-            obj as api.GoogleCloudApigeeV1CanaryEvaluation);
+        checkGoogleCloudApigeeV1CanaryEvaluation(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22816,14 +22505,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22833,36 +22522,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.canaryevaluations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.canaryevaluations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22870,14 +22559,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1CanaryEvaluation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -22889,42 +22578,41 @@ void main() {
 
   unittest.group('resource-OrganizationsInstancesNatAddressesResource', () {
     unittest.test('method--activate', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
-      var arg_request = buildGoogleCloudApigeeV1ActivateNatAddressRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.natAddresses;
+      final arg_request = buildGoogleCloudApigeeV1ActivateNatAddressRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(
+        final obj = api.GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ActivateNatAddressRequest(
-            obj as api.GoogleCloudApigeeV1ActivateNatAddressRequest);
+        checkGoogleCloudApigeeV1ActivateNatAddressRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22932,14 +22620,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22949,42 +22637,41 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
-      var arg_request = buildGoogleCloudApigeeV1NatAddress();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.natAddresses;
+      final arg_request = buildGoogleCloudApigeeV1NatAddress();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1NatAddress.fromJson(
+        final obj = api.GoogleCloudApigeeV1NatAddress.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1NatAddress(
-            obj as api.GoogleCloudApigeeV1NatAddress);
+        checkGoogleCloudApigeeV1NatAddress(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22992,14 +22679,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -23009,36 +22696,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.natAddresses;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23046,14 +22733,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -23062,36 +22749,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.natAddresses;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23099,14 +22786,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1NatAddress());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1NatAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -23115,38 +22802,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.instances.natAddresses;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23154,22 +22841,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListNatAddressesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23184,42 +22871,41 @@ void main() {
 
   unittest.group('resource-OrganizationsKeyvaluemapsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.keyvaluemaps;
-      var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.keyvaluemaps;
+      final arg_request = buildGoogleCloudApigeeV1KeyValueMap();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
+        final obj = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1KeyValueMap(
-            obj as api.GoogleCloudApigeeV1KeyValueMap);
+        checkGoogleCloudApigeeV1KeyValueMap(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23227,14 +22913,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -23244,36 +22930,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.keyvaluemaps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.keyvaluemaps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23281,14 +22967,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -23299,36 +22985,36 @@ void main() {
 
   unittest.group('resource-OrganizationsOperationsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.operations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23336,14 +23022,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -23352,39 +23038,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.operations;
-      var arg_name = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.operations;
+      final arg_name = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23392,26 +23078,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23427,50 +23113,50 @@ void main() {
 
   unittest.group('resource-OrganizationsOptimizedHostStatsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.optimizedHostStats;
-      var arg_name = 'foo';
-      var arg_accuracy = 'foo';
-      var arg_envgroupHostname = 'foo';
-      var arg_filter = 'foo';
-      var arg_limit = 'foo';
-      var arg_offset = 'foo';
-      var arg_realtime = true;
-      var arg_select = 'foo';
-      var arg_sort = 'foo';
-      var arg_sortby = 'foo';
-      var arg_timeRange = 'foo';
-      var arg_timeUnit = 'foo';
-      var arg_topk = 'foo';
-      var arg_tsAscending = true;
-      var arg_tzo = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.optimizedHostStats;
+      final arg_name = 'foo';
+      final arg_accuracy = 'foo';
+      final arg_envgroupHostname = 'foo';
+      final arg_filter = 'foo';
+      final arg_limit = 'foo';
+      final arg_offset = 'foo';
+      final arg_realtime = true;
+      final arg_select = 'foo';
+      final arg_sort = 'foo';
+      final arg_sortby = 'foo';
+      final arg_timeRange = 'foo';
+      final arg_timeUnit = 'foo';
+      final arg_topk = 'foo';
+      final arg_tsAscending = true;
+      final arg_tzo = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23478,70 +23164,70 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["accuracy"]!.first,
+          queryMap['accuracy']!.first,
           unittest.equals(arg_accuracy),
         );
         unittest.expect(
-          queryMap["envgroupHostname"]!.first,
+          queryMap['envgroupHostname']!.first,
           unittest.equals(arg_envgroupHostname),
         );
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap["limit"]!.first,
+          queryMap['limit']!.first,
           unittest.equals(arg_limit),
         );
         unittest.expect(
-          queryMap["offset"]!.first,
+          queryMap['offset']!.first,
           unittest.equals(arg_offset),
         );
         unittest.expect(
-          queryMap["realtime"]!.first,
-          unittest.equals("$arg_realtime"),
+          queryMap['realtime']!.first,
+          unittest.equals('$arg_realtime'),
         );
         unittest.expect(
-          queryMap["select"]!.first,
+          queryMap['select']!.first,
           unittest.equals(arg_select),
         );
         unittest.expect(
-          queryMap["sort"]!.first,
+          queryMap['sort']!.first,
           unittest.equals(arg_sort),
         );
         unittest.expect(
-          queryMap["sortby"]!.first,
+          queryMap['sortby']!.first,
           unittest.equals(arg_sortby),
         );
         unittest.expect(
-          queryMap["timeRange"]!.first,
+          queryMap['timeRange']!.first,
           unittest.equals(arg_timeRange),
         );
         unittest.expect(
-          queryMap["timeUnit"]!.first,
+          queryMap['timeUnit']!.first,
           unittest.equals(arg_timeUnit),
         );
         unittest.expect(
-          queryMap["topk"]!.first,
+          queryMap['topk']!.first,
           unittest.equals(arg_topk),
         );
         unittest.expect(
-          queryMap["tsAscending"]!.first,
-          unittest.equals("$arg_tsAscending"),
+          queryMap['tsAscending']!.first,
+          unittest.equals('$arg_tsAscending'),
         );
         unittest.expect(
-          queryMap["tzo"]!.first,
+          queryMap['tzo']!.first,
           unittest.equals(arg_tzo),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1OptimizedStats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23568,42 +23254,41 @@ void main() {
 
   unittest.group('resource-OrganizationsReportsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.reports;
-      var arg_request = buildGoogleCloudApigeeV1CustomReport();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.reports;
+      final arg_request = buildGoogleCloudApigeeV1CustomReport();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1CustomReport.fromJson(
+        final obj = api.GoogleCloudApigeeV1CustomReport.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1CustomReport(
-            obj as api.GoogleCloudApigeeV1CustomReport);
+        checkGoogleCloudApigeeV1CustomReport(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23611,14 +23296,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -23628,36 +23314,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.reports;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.reports;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23665,14 +23351,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1DeleteCustomReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23682,36 +23368,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.reports;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.reports;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23719,14 +23405,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -23735,37 +23422,37 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.reports;
-      var arg_parent = 'foo';
-      var arg_expand = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.reports;
+      final arg_parent = 'foo';
+      final arg_expand = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23773,18 +23460,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["expand"]!.first,
-          unittest.equals("$arg_expand"),
+          queryMap['expand']!.first,
+          unittest.equals('$arg_expand'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListCustomReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23795,42 +23482,41 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.reports;
-      var arg_request = buildGoogleCloudApigeeV1CustomReport();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.reports;
+      final arg_request = buildGoogleCloudApigeeV1CustomReport();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1CustomReport.fromJson(
+        final obj = api.GoogleCloudApigeeV1CustomReport.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1CustomReport(
-            obj as api.GoogleCloudApigeeV1CustomReport);
+        checkGoogleCloudApigeeV1CustomReport(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23838,14 +23524,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -23857,43 +23544,43 @@ void main() {
 
   unittest.group('resource-OrganizationsSharedflowsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sharedflows;
-      var arg_request = buildGoogleApiHttpBody();
-      var arg_parent = 'foo';
-      var arg_action = 'foo';
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sharedflows;
+      final arg_request = buildGoogleApiHttpBody();
+      final arg_parent = 'foo';
+      final arg_action = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleApiHttpBody.fromJson(
+        final obj = api.GoogleApiHttpBody.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleApiHttpBody(obj as api.GoogleApiHttpBody);
+        checkGoogleApiHttpBody(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23901,22 +23588,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["action"]!.first,
+          queryMap['action']!.first,
           unittest.equals(arg_action),
         );
         unittest.expect(
-          queryMap["name"]!.first,
+          queryMap['name']!.first,
           unittest.equals(arg_name),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23927,36 +23614,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sharedflows;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sharedflows;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23964,14 +23651,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1SharedFlow());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1SharedFlow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -23980,36 +23667,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sharedflows;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sharedflows;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24017,14 +23704,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1SharedFlow());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1SharedFlow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -24033,38 +23720,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sharedflows;
-      var arg_parent = 'foo';
-      var arg_includeMetaData = true;
-      var arg_includeRevisions = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sharedflows;
+      final arg_parent = 'foo';
+      final arg_includeMetaData = true;
+      final arg_includeRevisions = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24072,22 +23759,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["includeMetaData"]!.first,
-          unittest.equals("$arg_includeMetaData"),
+          queryMap['includeMetaData']!.first,
+          unittest.equals('$arg_includeMetaData'),
         );
         unittest.expect(
-          queryMap["includeRevisions"]!.first,
-          unittest.equals("$arg_includeRevisions"),
+          queryMap['includeRevisions']!.first,
+          unittest.equals('$arg_includeRevisions'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListSharedFlowsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24102,36 +23789,36 @@ void main() {
 
   unittest.group('resource-OrganizationsSharedflowsDeploymentsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sharedflows.deployments;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sharedflows.deployments;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24139,14 +23826,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24158,36 +23845,36 @@ void main() {
 
   unittest.group('resource-OrganizationsSharedflowsRevisionsResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24195,14 +23882,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24212,37 +23899,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
-      var arg_name = 'foo';
-      var arg_format = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
+      final arg_name = 'foo';
+      final arg_format = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24250,18 +23937,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["format"]!.first,
+          queryMap['format']!.first,
           unittest.equals(arg_format),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleApiHttpBody());
+        final resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -24270,42 +23957,42 @@ void main() {
     });
 
     unittest.test('method--updateSharedFlowRevision', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
-      var arg_request = buildGoogleApiHttpBody();
-      var arg_name = 'foo';
-      var arg_validate = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
+      final arg_request = buildGoogleApiHttpBody();
+      final arg_name = 'foo';
+      final arg_validate = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleApiHttpBody.fromJson(
+        final obj = api.GoogleApiHttpBody.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleApiHttpBody(obj as api.GoogleApiHttpBody);
+        checkGoogleApiHttpBody(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24313,18 +24000,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["validate"]!.first,
-          unittest.equals("$arg_validate"),
+          queryMap['validate']!.first,
+          unittest.equals('$arg_validate'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24338,37 +24025,37 @@ void main() {
   unittest.group(
       'resource-OrganizationsSharedflowsRevisionsDeploymentsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.ApigeeApi(mock).organizations.sharedflows.revisions.deployments;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24376,14 +24063,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24395,42 +24082,41 @@ void main() {
 
   unittest.group('resource-OrganizationsSitesApicategoriesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
-      var arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sites.apicategories;
+      final arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
+        final obj = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ApiCategoryData(
-            obj as api.GoogleCloudApigeeV1ApiCategoryData);
+        checkGoogleCloudApigeeV1ApiCategoryData(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24438,14 +24124,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -24455,36 +24141,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sites.apicategories;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24492,14 +24178,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudApigeeV1ApiResponseWrapper());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24509,36 +24195,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sites.apicategories;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24546,14 +24232,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -24562,36 +24248,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sites.apicategories;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24599,14 +24285,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudApigeeV1ListApiCategoriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24616,42 +24302,41 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
-      var arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.sites.apicategories;
+      final arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
+        final obj = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ApiCategoryData(
-            obj as api.GoogleCloudApigeeV1ApiCategoryData);
+        checkGoogleCloudApigeeV1ApiCategoryData(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24659,14 +24344,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
+        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -24678,42 +24363,43 @@ void main() {
 
   unittest.group('resource-ProjectsResource', () {
     unittest.test('method--provisionOrganization', () async {
-      var mock = HttpServerMock();
-      var res = api.ApigeeApi(mock).projects;
-      var arg_request = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
-      var arg_project = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).projects;
+      final arg_request =
+          buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
+      final arg_project = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ProvisionOrganizationRequest(
-            obj as api.GoogleCloudApigeeV1ProvisionOrganizationRequest);
+        final obj =
+            api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudApigeeV1ProvisionOrganizationRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24721,14 +24407,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.provisionOrganization(arg_request, arg_project,

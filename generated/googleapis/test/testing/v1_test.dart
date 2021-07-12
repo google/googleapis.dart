@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAccount = 0;
 api.Account buildAccount() {
-  var o = api.Account();
+  final o = api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
     o.googleAuto = buildGoogleAuto();
@@ -41,14 +40,14 @@ api.Account buildAccount() {
 void checkAccount(api.Account o) {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    checkGoogleAuto(o.googleAuto! as api.GoogleAuto);
+    checkGoogleAuto(o.googleAuto!);
   }
   buildCounterAccount--;
 }
 
 core.int buildCounterAndroidDevice = 0;
 api.AndroidDevice buildAndroidDevice() {
-  var o = api.AndroidDevice();
+  final o = api.AndroidDevice();
   buildCounterAndroidDevice++;
   if (buildCounterAndroidDevice < 3) {
     o.androidModelId = 'foo';
@@ -84,7 +83,7 @@ void checkAndroidDevice(api.AndroidDevice o) {
 }
 
 core.List<api.AndroidModel> buildUnnamed161() {
-  var o = <api.AndroidModel>[];
+  final o = <api.AndroidModel>[];
   o.add(buildAndroidModel());
   o.add(buildAndroidModel());
   return o;
@@ -92,12 +91,12 @@ core.List<api.AndroidModel> buildUnnamed161() {
 
 void checkUnnamed161(core.List<api.AndroidModel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAndroidModel(o[0] as api.AndroidModel);
-  checkAndroidModel(o[1] as api.AndroidModel);
+  checkAndroidModel(o[0]);
+  checkAndroidModel(o[1]);
 }
 
 core.List<api.AndroidVersion> buildUnnamed162() {
-  var o = <api.AndroidVersion>[];
+  final o = <api.AndroidVersion>[];
   o.add(buildAndroidVersion());
   o.add(buildAndroidVersion());
   return o;
@@ -105,13 +104,13 @@ core.List<api.AndroidVersion> buildUnnamed162() {
 
 void checkUnnamed162(core.List<api.AndroidVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAndroidVersion(o[0] as api.AndroidVersion);
-  checkAndroidVersion(o[1] as api.AndroidVersion);
+  checkAndroidVersion(o[0]);
+  checkAndroidVersion(o[1]);
 }
 
 core.int buildCounterAndroidDeviceCatalog = 0;
 api.AndroidDeviceCatalog buildAndroidDeviceCatalog() {
-  var o = api.AndroidDeviceCatalog();
+  final o = api.AndroidDeviceCatalog();
   buildCounterAndroidDeviceCatalog++;
   if (buildCounterAndroidDeviceCatalog < 3) {
     o.models = buildUnnamed161();
@@ -126,15 +125,14 @@ void checkAndroidDeviceCatalog(api.AndroidDeviceCatalog o) {
   buildCounterAndroidDeviceCatalog++;
   if (buildCounterAndroidDeviceCatalog < 3) {
     checkUnnamed161(o.models!);
-    checkAndroidRuntimeConfiguration(
-        o.runtimeConfiguration! as api.AndroidRuntimeConfiguration);
+    checkAndroidRuntimeConfiguration(o.runtimeConfiguration!);
     checkUnnamed162(o.versions!);
   }
   buildCounterAndroidDeviceCatalog--;
 }
 
 core.List<api.AndroidDevice> buildUnnamed163() {
-  var o = <api.AndroidDevice>[];
+  final o = <api.AndroidDevice>[];
   o.add(buildAndroidDevice());
   o.add(buildAndroidDevice());
   return o;
@@ -142,13 +140,13 @@ core.List<api.AndroidDevice> buildUnnamed163() {
 
 void checkUnnamed163(core.List<api.AndroidDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAndroidDevice(o[0] as api.AndroidDevice);
-  checkAndroidDevice(o[1] as api.AndroidDevice);
+  checkAndroidDevice(o[0]);
+  checkAndroidDevice(o[1]);
 }
 
 core.int buildCounterAndroidDeviceList = 0;
 api.AndroidDeviceList buildAndroidDeviceList() {
-  var o = api.AndroidDeviceList();
+  final o = api.AndroidDeviceList();
   buildCounterAndroidDeviceList++;
   if (buildCounterAndroidDeviceList < 3) {
     o.androidDevices = buildUnnamed163();
@@ -166,7 +164,7 @@ void checkAndroidDeviceList(api.AndroidDeviceList o) {
 }
 
 core.List<core.String> buildUnnamed164() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -186,7 +184,7 @@ void checkUnnamed164(core.List<core.String> o) {
 
 core.int buildCounterAndroidInstrumentationTest = 0;
 api.AndroidInstrumentationTest buildAndroidInstrumentationTest() {
-  var o = api.AndroidInstrumentationTest();
+  final o = api.AndroidInstrumentationTest();
   buildCounterAndroidInstrumentationTest++;
   if (buildCounterAndroidInstrumentationTest < 3) {
     o.appApk = buildFileReference();
@@ -206,8 +204,8 @@ api.AndroidInstrumentationTest buildAndroidInstrumentationTest() {
 void checkAndroidInstrumentationTest(api.AndroidInstrumentationTest o) {
   buildCounterAndroidInstrumentationTest++;
   if (buildCounterAndroidInstrumentationTest < 3) {
-    checkFileReference(o.appApk! as api.FileReference);
-    checkAppBundle(o.appBundle! as api.AppBundle);
+    checkFileReference(o.appApk!);
+    checkAppBundle(o.appBundle!);
     unittest.expect(
       o.appPackageId!,
       unittest.equals('foo'),
@@ -216,8 +214,8 @@ void checkAndroidInstrumentationTest(api.AndroidInstrumentationTest o) {
       o.orchestratorOption!,
       unittest.equals('foo'),
     );
-    checkShardingOption(o.shardingOption! as api.ShardingOption);
-    checkFileReference(o.testApk! as api.FileReference);
+    checkShardingOption(o.shardingOption!);
+    checkFileReference(o.testApk!);
     unittest.expect(
       o.testPackageId!,
       unittest.equals('foo'),
@@ -232,7 +230,7 @@ void checkAndroidInstrumentationTest(api.AndroidInstrumentationTest o) {
 }
 
 core.List<core.String> buildUnnamed165() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -251,7 +249,7 @@ void checkUnnamed165(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed166() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -270,7 +268,7 @@ void checkUnnamed166(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed167() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -289,7 +287,7 @@ void checkUnnamed167(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed168() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -309,7 +307,7 @@ void checkUnnamed168(core.List<core.String> o) {
 
 core.int buildCounterAndroidMatrix = 0;
 api.AndroidMatrix buildAndroidMatrix() {
-  var o = api.AndroidMatrix();
+  final o = api.AndroidMatrix();
   buildCounterAndroidMatrix++;
   if (buildCounterAndroidMatrix < 3) {
     o.androidModelIds = buildUnnamed165();
@@ -333,7 +331,7 @@ void checkAndroidMatrix(api.AndroidMatrix o) {
 }
 
 core.List<core.String> buildUnnamed169() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -352,7 +350,7 @@ void checkUnnamed169(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed170() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -371,7 +369,7 @@ void checkUnnamed170(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed171() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -391,7 +389,7 @@ void checkUnnamed171(core.List<core.String> o) {
 
 core.int buildCounterAndroidModel = 0;
 api.AndroidModel buildAndroidModel() {
-  var o = api.AndroidModel();
+  final o = api.AndroidModel();
   buildCounterAndroidModel++;
   if (buildCounterAndroidModel < 3) {
     o.brand = 'foo';
@@ -470,7 +468,7 @@ void checkAndroidModel(api.AndroidModel o) {
 }
 
 core.List<api.RoboDirective> buildUnnamed172() {
-  var o = <api.RoboDirective>[];
+  final o = <api.RoboDirective>[];
   o.add(buildRoboDirective());
   o.add(buildRoboDirective());
   return o;
@@ -478,12 +476,12 @@ core.List<api.RoboDirective> buildUnnamed172() {
 
 void checkUnnamed172(core.List<api.RoboDirective> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRoboDirective(o[0] as api.RoboDirective);
-  checkRoboDirective(o[1] as api.RoboDirective);
+  checkRoboDirective(o[0]);
+  checkRoboDirective(o[1]);
 }
 
 core.List<api.RoboStartingIntent> buildUnnamed173() {
-  var o = <api.RoboStartingIntent>[];
+  final o = <api.RoboStartingIntent>[];
   o.add(buildRoboStartingIntent());
   o.add(buildRoboStartingIntent());
   return o;
@@ -491,13 +489,13 @@ core.List<api.RoboStartingIntent> buildUnnamed173() {
 
 void checkUnnamed173(core.List<api.RoboStartingIntent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRoboStartingIntent(o[0] as api.RoboStartingIntent);
-  checkRoboStartingIntent(o[1] as api.RoboStartingIntent);
+  checkRoboStartingIntent(o[0]);
+  checkRoboStartingIntent(o[1]);
 }
 
 core.int buildCounterAndroidRoboTest = 0;
 api.AndroidRoboTest buildAndroidRoboTest() {
-  var o = api.AndroidRoboTest();
+  final o = api.AndroidRoboTest();
   buildCounterAndroidRoboTest++;
   if (buildCounterAndroidRoboTest < 3) {
     o.appApk = buildFileReference();
@@ -517,8 +515,8 @@ api.AndroidRoboTest buildAndroidRoboTest() {
 void checkAndroidRoboTest(api.AndroidRoboTest o) {
   buildCounterAndroidRoboTest++;
   if (buildCounterAndroidRoboTest < 3) {
-    checkFileReference(o.appApk! as api.FileReference);
-    checkAppBundle(o.appBundle! as api.AppBundle);
+    checkFileReference(o.appApk!);
+    checkAppBundle(o.appBundle!);
     unittest.expect(
       o.appInitialActivity!,
       unittest.equals('foo'),
@@ -536,14 +534,14 @@ void checkAndroidRoboTest(api.AndroidRoboTest o) {
       unittest.equals(42),
     );
     checkUnnamed172(o.roboDirectives!);
-    checkFileReference(o.roboScript! as api.FileReference);
+    checkFileReference(o.roboScript!);
     checkUnnamed173(o.startingIntents!);
   }
   buildCounterAndroidRoboTest--;
 }
 
 core.List<api.Locale> buildUnnamed174() {
-  var o = <api.Locale>[];
+  final o = <api.Locale>[];
   o.add(buildLocale());
   o.add(buildLocale());
   return o;
@@ -551,12 +549,12 @@ core.List<api.Locale> buildUnnamed174() {
 
 void checkUnnamed174(core.List<api.Locale> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocale(o[0] as api.Locale);
-  checkLocale(o[1] as api.Locale);
+  checkLocale(o[0]);
+  checkLocale(o[1]);
 }
 
 core.List<api.Orientation> buildUnnamed175() {
-  var o = <api.Orientation>[];
+  final o = <api.Orientation>[];
   o.add(buildOrientation());
   o.add(buildOrientation());
   return o;
@@ -564,13 +562,13 @@ core.List<api.Orientation> buildUnnamed175() {
 
 void checkUnnamed175(core.List<api.Orientation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrientation(o[0] as api.Orientation);
-  checkOrientation(o[1] as api.Orientation);
+  checkOrientation(o[0]);
+  checkOrientation(o[1]);
 }
 
 core.int buildCounterAndroidRuntimeConfiguration = 0;
 api.AndroidRuntimeConfiguration buildAndroidRuntimeConfiguration() {
-  var o = api.AndroidRuntimeConfiguration();
+  final o = api.AndroidRuntimeConfiguration();
   buildCounterAndroidRuntimeConfiguration++;
   if (buildCounterAndroidRuntimeConfiguration < 3) {
     o.locales = buildUnnamed174();
@@ -590,7 +588,7 @@ void checkAndroidRuntimeConfiguration(api.AndroidRuntimeConfiguration o) {
 }
 
 core.List<core.String> buildUnnamed176() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -609,7 +607,7 @@ void checkUnnamed176(core.List<core.String> o) {
 }
 
 core.List<core.int> buildUnnamed177() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -629,7 +627,7 @@ void checkUnnamed177(core.List<core.int> o) {
 
 core.int buildCounterAndroidTestLoop = 0;
 api.AndroidTestLoop buildAndroidTestLoop() {
-  var o = api.AndroidTestLoop();
+  final o = api.AndroidTestLoop();
   buildCounterAndroidTestLoop++;
   if (buildCounterAndroidTestLoop < 3) {
     o.appApk = buildFileReference();
@@ -645,8 +643,8 @@ api.AndroidTestLoop buildAndroidTestLoop() {
 void checkAndroidTestLoop(api.AndroidTestLoop o) {
   buildCounterAndroidTestLoop++;
   if (buildCounterAndroidTestLoop < 3) {
-    checkFileReference(o.appApk! as api.FileReference);
-    checkAppBundle(o.appBundle! as api.AppBundle);
+    checkFileReference(o.appApk!);
+    checkAppBundle(o.appBundle!);
     unittest.expect(
       o.appPackageId!,
       unittest.equals('foo'),
@@ -658,7 +656,7 @@ void checkAndroidTestLoop(api.AndroidTestLoop o) {
 }
 
 core.List<core.String> buildUnnamed178() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -678,7 +676,7 @@ void checkUnnamed178(core.List<core.String> o) {
 
 core.int buildCounterAndroidVersion = 0;
 api.AndroidVersion buildAndroidVersion() {
-  var o = api.AndroidVersion();
+  final o = api.AndroidVersion();
   buildCounterAndroidVersion++;
   if (buildCounterAndroidVersion < 3) {
     o.apiLevel = 42;
@@ -704,12 +702,12 @@ void checkAndroidVersion(api.AndroidVersion o) {
       o.codeName!,
       unittest.equals('foo'),
     );
-    checkDistribution(o.distribution! as api.Distribution);
+    checkDistribution(o.distribution!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
     );
-    checkDate(o.releaseDate! as api.Date);
+    checkDate(o.releaseDate!);
     checkUnnamed178(o.tags!);
     unittest.expect(
       o.versionString!,
@@ -721,7 +719,7 @@ void checkAndroidVersion(api.AndroidVersion o) {
 
 core.int buildCounterApk = 0;
 api.Apk buildApk() {
-  var o = api.Apk();
+  final o = api.Apk();
   buildCounterApk++;
   if (buildCounterApk < 3) {
     o.location = buildFileReference();
@@ -734,7 +732,7 @@ api.Apk buildApk() {
 void checkApk(api.Apk o) {
   buildCounterApk++;
   if (buildCounterApk < 3) {
-    checkFileReference(o.location! as api.FileReference);
+    checkFileReference(o.location!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
@@ -745,7 +743,7 @@ void checkApk(api.Apk o) {
 
 core.int buildCounterApkDetail = 0;
 api.ApkDetail buildApkDetail() {
-  var o = api.ApkDetail();
+  final o = api.ApkDetail();
   buildCounterApkDetail++;
   if (buildCounterApkDetail < 3) {
     o.apkManifest = buildApkManifest();
@@ -757,13 +755,13 @@ api.ApkDetail buildApkDetail() {
 void checkApkDetail(api.ApkDetail o) {
   buildCounterApkDetail++;
   if (buildCounterApkDetail < 3) {
-    checkApkManifest(o.apkManifest! as api.ApkManifest);
+    checkApkManifest(o.apkManifest!);
   }
   buildCounterApkDetail--;
 }
 
 core.List<api.IntentFilter> buildUnnamed179() {
-  var o = <api.IntentFilter>[];
+  final o = <api.IntentFilter>[];
   o.add(buildIntentFilter());
   o.add(buildIntentFilter());
   return o;
@@ -771,12 +769,12 @@ core.List<api.IntentFilter> buildUnnamed179() {
 
 void checkUnnamed179(core.List<api.IntentFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIntentFilter(o[0] as api.IntentFilter);
-  checkIntentFilter(o[1] as api.IntentFilter);
+  checkIntentFilter(o[0]);
+  checkIntentFilter(o[1]);
 }
 
 core.List<core.String> buildUnnamed180() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -796,7 +794,7 @@ void checkUnnamed180(core.List<core.String> o) {
 
 core.int buildCounterApkManifest = 0;
 api.ApkManifest buildApkManifest() {
-  var o = api.ApkManifest();
+  final o = api.ApkManifest();
   buildCounterApkManifest++;
   if (buildCounterApkManifest < 3) {
     o.applicationLabel = 'foo';
@@ -842,7 +840,7 @@ void checkApkManifest(api.ApkManifest o) {
 
 core.int buildCounterAppBundle = 0;
 api.AppBundle buildAppBundle() {
-  var o = api.AppBundle();
+  final o = api.AppBundle();
   buildCounterAppBundle++;
   if (buildCounterAppBundle < 3) {
     o.bundleLocation = buildFileReference();
@@ -854,14 +852,14 @@ api.AppBundle buildAppBundle() {
 void checkAppBundle(api.AppBundle o) {
   buildCounterAppBundle++;
   if (buildCounterAppBundle < 3) {
-    checkFileReference(o.bundleLocation! as api.FileReference);
+    checkFileReference(o.bundleLocation!);
   }
   buildCounterAppBundle--;
 }
 
 core.int buildCounterCancelTestMatrixResponse = 0;
 api.CancelTestMatrixResponse buildCancelTestMatrixResponse() {
-  var o = api.CancelTestMatrixResponse();
+  final o = api.CancelTestMatrixResponse();
   buildCounterCancelTestMatrixResponse++;
   if (buildCounterCancelTestMatrixResponse < 3) {
     o.testState = 'foo';
@@ -882,7 +880,7 @@ void checkCancelTestMatrixResponse(api.CancelTestMatrixResponse o) {
 }
 
 core.List<api.ClientInfoDetail> buildUnnamed181() {
-  var o = <api.ClientInfoDetail>[];
+  final o = <api.ClientInfoDetail>[];
   o.add(buildClientInfoDetail());
   o.add(buildClientInfoDetail());
   return o;
@@ -890,13 +888,13 @@ core.List<api.ClientInfoDetail> buildUnnamed181() {
 
 void checkUnnamed181(core.List<api.ClientInfoDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkClientInfoDetail(o[0] as api.ClientInfoDetail);
-  checkClientInfoDetail(o[1] as api.ClientInfoDetail);
+  checkClientInfoDetail(o[0]);
+  checkClientInfoDetail(o[1]);
 }
 
 core.int buildCounterClientInfo = 0;
 api.ClientInfo buildClientInfo() {
-  var o = api.ClientInfo();
+  final o = api.ClientInfo();
   buildCounterClientInfo++;
   if (buildCounterClientInfo < 3) {
     o.clientInfoDetails = buildUnnamed181();
@@ -920,7 +918,7 @@ void checkClientInfo(api.ClientInfo o) {
 
 core.int buildCounterClientInfoDetail = 0;
 api.ClientInfoDetail buildClientInfoDetail() {
-  var o = api.ClientInfoDetail();
+  final o = api.ClientInfoDetail();
   buildCounterClientInfoDetail++;
   if (buildCounterClientInfoDetail < 3) {
     o.key = 'foo';
@@ -947,7 +945,7 @@ void checkClientInfoDetail(api.ClientInfoDetail o) {
 
 core.int buildCounterDate = 0;
 api.Date buildDate() {
-  var o = api.Date();
+  final o = api.Date();
   buildCounterDate++;
   if (buildCounterDate < 3) {
     o.day = 42;
@@ -979,7 +977,7 @@ void checkDate(api.Date o) {
 
 core.int buildCounterDeviceFile = 0;
 api.DeviceFile buildDeviceFile() {
-  var o = api.DeviceFile();
+  final o = api.DeviceFile();
   buildCounterDeviceFile++;
   if (buildCounterDeviceFile < 3) {
     o.obbFile = buildObbFile();
@@ -992,15 +990,15 @@ api.DeviceFile buildDeviceFile() {
 void checkDeviceFile(api.DeviceFile o) {
   buildCounterDeviceFile++;
   if (buildCounterDeviceFile < 3) {
-    checkObbFile(o.obbFile! as api.ObbFile);
-    checkRegularFile(o.regularFile! as api.RegularFile);
+    checkObbFile(o.obbFile!);
+    checkRegularFile(o.regularFile!);
   }
   buildCounterDeviceFile--;
 }
 
 core.int buildCounterDeviceIpBlock = 0;
 api.DeviceIpBlock buildDeviceIpBlock() {
-  var o = api.DeviceIpBlock();
+  final o = api.DeviceIpBlock();
   buildCounterDeviceIpBlock++;
   if (buildCounterDeviceIpBlock < 3) {
     o.addedDate = buildDate();
@@ -1014,7 +1012,7 @@ api.DeviceIpBlock buildDeviceIpBlock() {
 void checkDeviceIpBlock(api.DeviceIpBlock o) {
   buildCounterDeviceIpBlock++;
   if (buildCounterDeviceIpBlock < 3) {
-    checkDate(o.addedDate! as api.Date);
+    checkDate(o.addedDate!);
     unittest.expect(
       o.block!,
       unittest.equals('foo'),
@@ -1028,7 +1026,7 @@ void checkDeviceIpBlock(api.DeviceIpBlock o) {
 }
 
 core.List<api.DeviceIpBlock> buildUnnamed182() {
-  var o = <api.DeviceIpBlock>[];
+  final o = <api.DeviceIpBlock>[];
   o.add(buildDeviceIpBlock());
   o.add(buildDeviceIpBlock());
   return o;
@@ -1036,13 +1034,13 @@ core.List<api.DeviceIpBlock> buildUnnamed182() {
 
 void checkUnnamed182(core.List<api.DeviceIpBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceIpBlock(o[0] as api.DeviceIpBlock);
-  checkDeviceIpBlock(o[1] as api.DeviceIpBlock);
+  checkDeviceIpBlock(o[0]);
+  checkDeviceIpBlock(o[1]);
 }
 
 core.int buildCounterDeviceIpBlockCatalog = 0;
 api.DeviceIpBlockCatalog buildDeviceIpBlockCatalog() {
-  var o = api.DeviceIpBlockCatalog();
+  final o = api.DeviceIpBlockCatalog();
   buildCounterDeviceIpBlockCatalog++;
   if (buildCounterDeviceIpBlockCatalog < 3) {
     o.ipBlocks = buildUnnamed182();
@@ -1061,7 +1059,7 @@ void checkDeviceIpBlockCatalog(api.DeviceIpBlockCatalog o) {
 
 core.int buildCounterDistribution = 0;
 api.Distribution buildDistribution() {
-  var o = api.Distribution();
+  final o = api.Distribution();
   buildCounterDistribution++;
   if (buildCounterDistribution < 3) {
     o.marketShare = 42.0;
@@ -1088,7 +1086,7 @@ void checkDistribution(api.Distribution o) {
 
 core.int buildCounterEnvironment = 0;
 api.Environment buildEnvironment() {
-  var o = api.Environment();
+  final o = api.Environment();
   buildCounterEnvironment++;
   if (buildCounterEnvironment < 3) {
     o.androidDevice = buildAndroidDevice();
@@ -1101,15 +1099,15 @@ api.Environment buildEnvironment() {
 void checkEnvironment(api.Environment o) {
   buildCounterEnvironment++;
   if (buildCounterEnvironment < 3) {
-    checkAndroidDevice(o.androidDevice! as api.AndroidDevice);
-    checkIosDevice(o.iosDevice! as api.IosDevice);
+    checkAndroidDevice(o.androidDevice!);
+    checkIosDevice(o.iosDevice!);
   }
   buildCounterEnvironment--;
 }
 
 core.int buildCounterEnvironmentMatrix = 0;
 api.EnvironmentMatrix buildEnvironmentMatrix() {
-  var o = api.EnvironmentMatrix();
+  final o = api.EnvironmentMatrix();
   buildCounterEnvironmentMatrix++;
   if (buildCounterEnvironmentMatrix < 3) {
     o.androidDeviceList = buildAndroidDeviceList();
@@ -1123,16 +1121,16 @@ api.EnvironmentMatrix buildEnvironmentMatrix() {
 void checkEnvironmentMatrix(api.EnvironmentMatrix o) {
   buildCounterEnvironmentMatrix++;
   if (buildCounterEnvironmentMatrix < 3) {
-    checkAndroidDeviceList(o.androidDeviceList! as api.AndroidDeviceList);
-    checkAndroidMatrix(o.androidMatrix! as api.AndroidMatrix);
-    checkIosDeviceList(o.iosDeviceList! as api.IosDeviceList);
+    checkAndroidDeviceList(o.androidDeviceList!);
+    checkAndroidMatrix(o.androidMatrix!);
+    checkIosDeviceList(o.iosDeviceList!);
   }
   buildCounterEnvironmentMatrix--;
 }
 
 core.int buildCounterEnvironmentVariable = 0;
 api.EnvironmentVariable buildEnvironmentVariable() {
-  var o = api.EnvironmentVariable();
+  final o = api.EnvironmentVariable();
   buildCounterEnvironmentVariable++;
   if (buildCounterEnvironmentVariable < 3) {
     o.key = 'foo';
@@ -1159,7 +1157,7 @@ void checkEnvironmentVariable(api.EnvironmentVariable o) {
 
 core.int buildCounterFileReference = 0;
 api.FileReference buildFileReference() {
-  var o = api.FileReference();
+  final o = api.FileReference();
   buildCounterFileReference++;
   if (buildCounterFileReference < 3) {
     o.gcsPath = 'foo';
@@ -1181,7 +1179,7 @@ void checkFileReference(api.FileReference o) {
 
 core.int buildCounterGetApkDetailsResponse = 0;
 api.GetApkDetailsResponse buildGetApkDetailsResponse() {
-  var o = api.GetApkDetailsResponse();
+  final o = api.GetApkDetailsResponse();
   buildCounterGetApkDetailsResponse++;
   if (buildCounterGetApkDetailsResponse < 3) {
     o.apkDetail = buildApkDetail();
@@ -1193,14 +1191,14 @@ api.GetApkDetailsResponse buildGetApkDetailsResponse() {
 void checkGetApkDetailsResponse(api.GetApkDetailsResponse o) {
   buildCounterGetApkDetailsResponse++;
   if (buildCounterGetApkDetailsResponse < 3) {
-    checkApkDetail(o.apkDetail! as api.ApkDetail);
+    checkApkDetail(o.apkDetail!);
   }
   buildCounterGetApkDetailsResponse--;
 }
 
 core.int buildCounterGoogleAuto = 0;
 api.GoogleAuto buildGoogleAuto() {
-  var o = api.GoogleAuto();
+  final o = api.GoogleAuto();
   buildCounterGoogleAuto++;
   if (buildCounterGoogleAuto < 3) {}
   buildCounterGoogleAuto--;
@@ -1215,7 +1213,7 @@ void checkGoogleAuto(api.GoogleAuto o) {
 
 core.int buildCounterGoogleCloudStorage = 0;
 api.GoogleCloudStorage buildGoogleCloudStorage() {
-  var o = api.GoogleCloudStorage();
+  final o = api.GoogleCloudStorage();
   buildCounterGoogleCloudStorage++;
   if (buildCounterGoogleCloudStorage < 3) {
     o.gcsPath = 'foo';
@@ -1236,7 +1234,7 @@ void checkGoogleCloudStorage(api.GoogleCloudStorage o) {
 }
 
 core.List<core.String> buildUnnamed183() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1255,7 +1253,7 @@ void checkUnnamed183(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed184() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1275,7 +1273,7 @@ void checkUnnamed184(core.List<core.String> o) {
 
 core.int buildCounterIntentFilter = 0;
 api.IntentFilter buildIntentFilter() {
-  var o = api.IntentFilter();
+  final o = api.IntentFilter();
   buildCounterIntentFilter++;
   if (buildCounterIntentFilter < 3) {
     o.actionNames = buildUnnamed183();
@@ -1301,7 +1299,7 @@ void checkIntentFilter(api.IntentFilter o) {
 
 core.int buildCounterIosDevice = 0;
 api.IosDevice buildIosDevice() {
-  var o = api.IosDevice();
+  final o = api.IosDevice();
   buildCounterIosDevice++;
   if (buildCounterIosDevice < 3) {
     o.iosModelId = 'foo';
@@ -1337,7 +1335,7 @@ void checkIosDevice(api.IosDevice o) {
 }
 
 core.List<api.IosModel> buildUnnamed185() {
-  var o = <api.IosModel>[];
+  final o = <api.IosModel>[];
   o.add(buildIosModel());
   o.add(buildIosModel());
   return o;
@@ -1345,12 +1343,12 @@ core.List<api.IosModel> buildUnnamed185() {
 
 void checkUnnamed185(core.List<api.IosModel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosModel(o[0] as api.IosModel);
-  checkIosModel(o[1] as api.IosModel);
+  checkIosModel(o[0]);
+  checkIosModel(o[1]);
 }
 
 core.List<api.IosVersion> buildUnnamed186() {
-  var o = <api.IosVersion>[];
+  final o = <api.IosVersion>[];
   o.add(buildIosVersion());
   o.add(buildIosVersion());
   return o;
@@ -1358,12 +1356,12 @@ core.List<api.IosVersion> buildUnnamed186() {
 
 void checkUnnamed186(core.List<api.IosVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosVersion(o[0] as api.IosVersion);
-  checkIosVersion(o[1] as api.IosVersion);
+  checkIosVersion(o[0]);
+  checkIosVersion(o[1]);
 }
 
 core.List<api.XcodeVersion> buildUnnamed187() {
-  var o = <api.XcodeVersion>[];
+  final o = <api.XcodeVersion>[];
   o.add(buildXcodeVersion());
   o.add(buildXcodeVersion());
   return o;
@@ -1371,13 +1369,13 @@ core.List<api.XcodeVersion> buildUnnamed187() {
 
 void checkUnnamed187(core.List<api.XcodeVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkXcodeVersion(o[0] as api.XcodeVersion);
-  checkXcodeVersion(o[1] as api.XcodeVersion);
+  checkXcodeVersion(o[0]);
+  checkXcodeVersion(o[1]);
 }
 
 core.int buildCounterIosDeviceCatalog = 0;
 api.IosDeviceCatalog buildIosDeviceCatalog() {
-  var o = api.IosDeviceCatalog();
+  final o = api.IosDeviceCatalog();
   buildCounterIosDeviceCatalog++;
   if (buildCounterIosDeviceCatalog < 3) {
     o.models = buildUnnamed185();
@@ -1393,8 +1391,7 @@ void checkIosDeviceCatalog(api.IosDeviceCatalog o) {
   buildCounterIosDeviceCatalog++;
   if (buildCounterIosDeviceCatalog < 3) {
     checkUnnamed185(o.models!);
-    checkIosRuntimeConfiguration(
-        o.runtimeConfiguration! as api.IosRuntimeConfiguration);
+    checkIosRuntimeConfiguration(o.runtimeConfiguration!);
     checkUnnamed186(o.versions!);
     checkUnnamed187(o.xcodeVersions!);
   }
@@ -1403,7 +1400,7 @@ void checkIosDeviceCatalog(api.IosDeviceCatalog o) {
 
 core.int buildCounterIosDeviceFile = 0;
 api.IosDeviceFile buildIosDeviceFile() {
-  var o = api.IosDeviceFile();
+  final o = api.IosDeviceFile();
   buildCounterIosDeviceFile++;
   if (buildCounterIosDeviceFile < 3) {
     o.bundleId = 'foo';
@@ -1421,7 +1418,7 @@ void checkIosDeviceFile(api.IosDeviceFile o) {
       o.bundleId!,
       unittest.equals('foo'),
     );
-    checkFileReference(o.content! as api.FileReference);
+    checkFileReference(o.content!);
     unittest.expect(
       o.devicePath!,
       unittest.equals('foo'),
@@ -1431,7 +1428,7 @@ void checkIosDeviceFile(api.IosDeviceFile o) {
 }
 
 core.List<api.IosDevice> buildUnnamed188() {
-  var o = <api.IosDevice>[];
+  final o = <api.IosDevice>[];
   o.add(buildIosDevice());
   o.add(buildIosDevice());
   return o;
@@ -1439,13 +1436,13 @@ core.List<api.IosDevice> buildUnnamed188() {
 
 void checkUnnamed188(core.List<api.IosDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosDevice(o[0] as api.IosDevice);
-  checkIosDevice(o[1] as api.IosDevice);
+  checkIosDevice(o[0]);
+  checkIosDevice(o[1]);
 }
 
 core.int buildCounterIosDeviceList = 0;
 api.IosDeviceList buildIosDeviceList() {
-  var o = api.IosDeviceList();
+  final o = api.IosDeviceList();
   buildCounterIosDeviceList++;
   if (buildCounterIosDeviceList < 3) {
     o.iosDevices = buildUnnamed188();
@@ -1463,7 +1460,7 @@ void checkIosDeviceList(api.IosDeviceList o) {
 }
 
 core.List<core.String> buildUnnamed189() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1482,7 +1479,7 @@ void checkUnnamed189(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed190() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1501,7 +1498,7 @@ void checkUnnamed190(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed191() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1521,7 +1518,7 @@ void checkUnnamed191(core.List<core.String> o) {
 
 core.int buildCounterIosModel = 0;
 api.IosModel buildIosModel() {
-  var o = api.IosModel();
+  final o = api.IosModel();
   buildCounterIosModel++;
   if (buildCounterIosModel < 3) {
     o.deviceCapabilities = buildUnnamed189();
@@ -1573,7 +1570,7 @@ void checkIosModel(api.IosModel o) {
 }
 
 core.List<api.Locale> buildUnnamed192() {
-  var o = <api.Locale>[];
+  final o = <api.Locale>[];
   o.add(buildLocale());
   o.add(buildLocale());
   return o;
@@ -1581,12 +1578,12 @@ core.List<api.Locale> buildUnnamed192() {
 
 void checkUnnamed192(core.List<api.Locale> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocale(o[0] as api.Locale);
-  checkLocale(o[1] as api.Locale);
+  checkLocale(o[0]);
+  checkLocale(o[1]);
 }
 
 core.List<api.Orientation> buildUnnamed193() {
-  var o = <api.Orientation>[];
+  final o = <api.Orientation>[];
   o.add(buildOrientation());
   o.add(buildOrientation());
   return o;
@@ -1594,13 +1591,13 @@ core.List<api.Orientation> buildUnnamed193() {
 
 void checkUnnamed193(core.List<api.Orientation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrientation(o[0] as api.Orientation);
-  checkOrientation(o[1] as api.Orientation);
+  checkOrientation(o[0]);
+  checkOrientation(o[1]);
 }
 
 core.int buildCounterIosRuntimeConfiguration = 0;
 api.IosRuntimeConfiguration buildIosRuntimeConfiguration() {
-  var o = api.IosRuntimeConfiguration();
+  final o = api.IosRuntimeConfiguration();
   buildCounterIosRuntimeConfiguration++;
   if (buildCounterIosRuntimeConfiguration < 3) {
     o.locales = buildUnnamed192();
@@ -1620,7 +1617,7 @@ void checkIosRuntimeConfiguration(api.IosRuntimeConfiguration o) {
 }
 
 core.List<core.int> buildUnnamed194() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -1640,7 +1637,7 @@ void checkUnnamed194(core.List<core.int> o) {
 
 core.int buildCounterIosTestLoop = 0;
 api.IosTestLoop buildIosTestLoop() {
-  var o = api.IosTestLoop();
+  final o = api.IosTestLoop();
   buildCounterIosTestLoop++;
   if (buildCounterIosTestLoop < 3) {
     o.appBundleId = 'foo';
@@ -1658,14 +1655,14 @@ void checkIosTestLoop(api.IosTestLoop o) {
       o.appBundleId!,
       unittest.equals('foo'),
     );
-    checkFileReference(o.appIpa! as api.FileReference);
+    checkFileReference(o.appIpa!);
     checkUnnamed194(o.scenarios!);
   }
   buildCounterIosTestLoop--;
 }
 
 core.List<api.FileReference> buildUnnamed195() {
-  var o = <api.FileReference>[];
+  final o = <api.FileReference>[];
   o.add(buildFileReference());
   o.add(buildFileReference());
   return o;
@@ -1673,12 +1670,12 @@ core.List<api.FileReference> buildUnnamed195() {
 
 void checkUnnamed195(core.List<api.FileReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFileReference(o[0] as api.FileReference);
-  checkFileReference(o[1] as api.FileReference);
+  checkFileReference(o[0]);
+  checkFileReference(o[1]);
 }
 
 core.List<api.IosDeviceFile> buildUnnamed196() {
-  var o = <api.IosDeviceFile>[];
+  final o = <api.IosDeviceFile>[];
   o.add(buildIosDeviceFile());
   o.add(buildIosDeviceFile());
   return o;
@@ -1686,12 +1683,12 @@ core.List<api.IosDeviceFile> buildUnnamed196() {
 
 void checkUnnamed196(core.List<api.IosDeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosDeviceFile(o[0] as api.IosDeviceFile);
-  checkIosDeviceFile(o[1] as api.IosDeviceFile);
+  checkIosDeviceFile(o[0]);
+  checkIosDeviceFile(o[1]);
 }
 
 core.List<api.IosDeviceFile> buildUnnamed197() {
-  var o = <api.IosDeviceFile>[];
+  final o = <api.IosDeviceFile>[];
   o.add(buildIosDeviceFile());
   o.add(buildIosDeviceFile());
   return o;
@@ -1699,13 +1696,13 @@ core.List<api.IosDeviceFile> buildUnnamed197() {
 
 void checkUnnamed197(core.List<api.IosDeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosDeviceFile(o[0] as api.IosDeviceFile);
-  checkIosDeviceFile(o[1] as api.IosDeviceFile);
+  checkIosDeviceFile(o[0]);
+  checkIosDeviceFile(o[1]);
 }
 
 core.int buildCounterIosTestSetup = 0;
 api.IosTestSetup buildIosTestSetup() {
-  var o = api.IosTestSetup();
+  final o = api.IosTestSetup();
   buildCounterIosTestSetup++;
   if (buildCounterIosTestSetup < 3) {
     o.additionalIpas = buildUnnamed195();
@@ -1732,7 +1729,7 @@ void checkIosTestSetup(api.IosTestSetup o) {
 }
 
 core.List<core.String> buildUnnamed198() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1751,7 +1748,7 @@ void checkUnnamed198(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed199() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1771,7 +1768,7 @@ void checkUnnamed199(core.List<core.String> o) {
 
 core.int buildCounterIosVersion = 0;
 api.IosVersion buildIosVersion() {
-  var o = api.IosVersion();
+  final o = api.IosVersion();
   buildCounterIosVersion++;
   if (buildCounterIosVersion < 3) {
     o.id = 'foo';
@@ -1807,7 +1804,7 @@ void checkIosVersion(api.IosVersion o) {
 
 core.int buildCounterIosXcTest = 0;
 api.IosXcTest buildIosXcTest() {
-  var o = api.IosXcTest();
+  final o = api.IosXcTest();
   buildCounterIosXcTest++;
   if (buildCounterIosXcTest < 3) {
     o.appBundleId = 'foo';
@@ -1828,19 +1825,19 @@ void checkIosXcTest(api.IosXcTest o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.testSpecialEntitlements!, unittest.isTrue);
-    checkFileReference(o.testsZip! as api.FileReference);
+    checkFileReference(o.testsZip!);
     unittest.expect(
       o.xcodeVersion!,
       unittest.equals('foo'),
     );
-    checkFileReference(o.xctestrun! as api.FileReference);
+    checkFileReference(o.xctestrun!);
   }
   buildCounterIosXcTest--;
 }
 
 core.int buildCounterLauncherActivityIntent = 0;
 api.LauncherActivityIntent buildLauncherActivityIntent() {
-  var o = api.LauncherActivityIntent();
+  final o = api.LauncherActivityIntent();
   buildCounterLauncherActivityIntent++;
   if (buildCounterLauncherActivityIntent < 3) {}
   buildCounterLauncherActivityIntent--;
@@ -1854,7 +1851,7 @@ void checkLauncherActivityIntent(api.LauncherActivityIntent o) {
 }
 
 core.List<core.String> buildUnnamed200() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1874,7 +1871,7 @@ void checkUnnamed200(core.List<core.String> o) {
 
 core.int buildCounterLocale = 0;
 api.Locale buildLocale() {
-  var o = api.Locale();
+  final o = api.Locale();
   buildCounterLocale++;
   if (buildCounterLocale < 3) {
     o.id = 'foo';
@@ -1907,7 +1904,7 @@ void checkLocale(api.Locale o) {
 }
 
 core.List<api.TestTargetsForShard> buildUnnamed201() {
-  var o = <api.TestTargetsForShard>[];
+  final o = <api.TestTargetsForShard>[];
   o.add(buildTestTargetsForShard());
   o.add(buildTestTargetsForShard());
   return o;
@@ -1915,13 +1912,13 @@ core.List<api.TestTargetsForShard> buildUnnamed201() {
 
 void checkUnnamed201(core.List<api.TestTargetsForShard> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTestTargetsForShard(o[0] as api.TestTargetsForShard);
-  checkTestTargetsForShard(o[1] as api.TestTargetsForShard);
+  checkTestTargetsForShard(o[0]);
+  checkTestTargetsForShard(o[1]);
 }
 
 core.int buildCounterManualSharding = 0;
 api.ManualSharding buildManualSharding() {
-  var o = api.ManualSharding();
+  final o = api.ManualSharding();
   buildCounterManualSharding++;
   if (buildCounterManualSharding < 3) {
     o.testTargetsForShard = buildUnnamed201();
@@ -1940,7 +1937,7 @@ void checkManualSharding(api.ManualSharding o) {
 
 core.int buildCounterNetworkConfiguration = 0;
 api.NetworkConfiguration buildNetworkConfiguration() {
-  var o = api.NetworkConfiguration();
+  final o = api.NetworkConfiguration();
   buildCounterNetworkConfiguration++;
   if (buildCounterNetworkConfiguration < 3) {
     o.downRule = buildTrafficRule();
@@ -1954,18 +1951,18 @@ api.NetworkConfiguration buildNetworkConfiguration() {
 void checkNetworkConfiguration(api.NetworkConfiguration o) {
   buildCounterNetworkConfiguration++;
   if (buildCounterNetworkConfiguration < 3) {
-    checkTrafficRule(o.downRule! as api.TrafficRule);
+    checkTrafficRule(o.downRule!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
     );
-    checkTrafficRule(o.upRule! as api.TrafficRule);
+    checkTrafficRule(o.upRule!);
   }
   buildCounterNetworkConfiguration--;
 }
 
 core.List<api.NetworkConfiguration> buildUnnamed202() {
-  var o = <api.NetworkConfiguration>[];
+  final o = <api.NetworkConfiguration>[];
   o.add(buildNetworkConfiguration());
   o.add(buildNetworkConfiguration());
   return o;
@@ -1973,13 +1970,13 @@ core.List<api.NetworkConfiguration> buildUnnamed202() {
 
 void checkUnnamed202(core.List<api.NetworkConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNetworkConfiguration(o[0] as api.NetworkConfiguration);
-  checkNetworkConfiguration(o[1] as api.NetworkConfiguration);
+  checkNetworkConfiguration(o[0]);
+  checkNetworkConfiguration(o[1]);
 }
 
 core.int buildCounterNetworkConfigurationCatalog = 0;
 api.NetworkConfigurationCatalog buildNetworkConfigurationCatalog() {
-  var o = api.NetworkConfigurationCatalog();
+  final o = api.NetworkConfigurationCatalog();
   buildCounterNetworkConfigurationCatalog++;
   if (buildCounterNetworkConfigurationCatalog < 3) {
     o.configurations = buildUnnamed202();
@@ -1998,7 +1995,7 @@ void checkNetworkConfigurationCatalog(api.NetworkConfigurationCatalog o) {
 
 core.int buildCounterObbFile = 0;
 api.ObbFile buildObbFile() {
-  var o = api.ObbFile();
+  final o = api.ObbFile();
   buildCounterObbFile++;
   if (buildCounterObbFile < 3) {
     o.obb = buildFileReference();
@@ -2011,7 +2008,7 @@ api.ObbFile buildObbFile() {
 void checkObbFile(api.ObbFile o) {
   buildCounterObbFile++;
   if (buildCounterObbFile < 3) {
-    checkFileReference(o.obb! as api.FileReference);
+    checkFileReference(o.obb!);
     unittest.expect(
       o.obbFileName!,
       unittest.equals('foo'),
@@ -2021,7 +2018,7 @@ void checkObbFile(api.ObbFile o) {
 }
 
 core.List<core.String> buildUnnamed203() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2041,7 +2038,7 @@ void checkUnnamed203(core.List<core.String> o) {
 
 core.int buildCounterOrientation = 0;
 api.Orientation buildOrientation() {
-  var o = api.Orientation();
+  final o = api.Orientation();
   buildCounterOrientation++;
   if (buildCounterOrientation < 3) {
     o.id = 'foo';
@@ -2070,7 +2067,7 @@ void checkOrientation(api.Orientation o) {
 
 core.int buildCounterProvidedSoftwareCatalog = 0;
 api.ProvidedSoftwareCatalog buildProvidedSoftwareCatalog() {
-  var o = api.ProvidedSoftwareCatalog();
+  final o = api.ProvidedSoftwareCatalog();
   buildCounterProvidedSoftwareCatalog++;
   if (buildCounterProvidedSoftwareCatalog < 3) {
     o.androidxOrchestratorVersion = 'foo';
@@ -2097,7 +2094,7 @@ void checkProvidedSoftwareCatalog(api.ProvidedSoftwareCatalog o) {
 
 core.int buildCounterRegularFile = 0;
 api.RegularFile buildRegularFile() {
-  var o = api.RegularFile();
+  final o = api.RegularFile();
   buildCounterRegularFile++;
   if (buildCounterRegularFile < 3) {
     o.content = buildFileReference();
@@ -2110,7 +2107,7 @@ api.RegularFile buildRegularFile() {
 void checkRegularFile(api.RegularFile o) {
   buildCounterRegularFile++;
   if (buildCounterRegularFile < 3) {
-    checkFileReference(o.content! as api.FileReference);
+    checkFileReference(o.content!);
     unittest.expect(
       o.devicePath!,
       unittest.equals('foo'),
@@ -2121,7 +2118,7 @@ void checkRegularFile(api.RegularFile o) {
 
 core.int buildCounterResultStorage = 0;
 api.ResultStorage buildResultStorage() {
-  var o = api.ResultStorage();
+  final o = api.ResultStorage();
   buildCounterResultStorage++;
   if (buildCounterResultStorage < 3) {
     o.googleCloudStorage = buildGoogleCloudStorage();
@@ -2136,21 +2133,20 @@ api.ResultStorage buildResultStorage() {
 void checkResultStorage(api.ResultStorage o) {
   buildCounterResultStorage++;
   if (buildCounterResultStorage < 3) {
-    checkGoogleCloudStorage(o.googleCloudStorage! as api.GoogleCloudStorage);
+    checkGoogleCloudStorage(o.googleCloudStorage!);
     unittest.expect(
       o.resultsUrl!,
       unittest.equals('foo'),
     );
-    checkToolResultsExecution(
-        o.toolResultsExecution! as api.ToolResultsExecution);
-    checkToolResultsHistory(o.toolResultsHistory! as api.ToolResultsHistory);
+    checkToolResultsExecution(o.toolResultsExecution!);
+    checkToolResultsHistory(o.toolResultsHistory!);
   }
   buildCounterResultStorage--;
 }
 
 core.int buildCounterRoboDirective = 0;
 api.RoboDirective buildRoboDirective() {
-  var o = api.RoboDirective();
+  final o = api.RoboDirective();
   buildCounterRoboDirective++;
   if (buildCounterRoboDirective < 3) {
     o.actionType = 'foo';
@@ -2182,7 +2178,7 @@ void checkRoboDirective(api.RoboDirective o) {
 
 core.int buildCounterRoboStartingIntent = 0;
 api.RoboStartingIntent buildRoboStartingIntent() {
-  var o = api.RoboStartingIntent();
+  final o = api.RoboStartingIntent();
   buildCounterRoboStartingIntent++;
   if (buildCounterRoboStartingIntent < 3) {
     o.launcherActivity = buildLauncherActivityIntent();
@@ -2196,9 +2192,8 @@ api.RoboStartingIntent buildRoboStartingIntent() {
 void checkRoboStartingIntent(api.RoboStartingIntent o) {
   buildCounterRoboStartingIntent++;
   if (buildCounterRoboStartingIntent < 3) {
-    checkLauncherActivityIntent(
-        o.launcherActivity! as api.LauncherActivityIntent);
-    checkStartActivityIntent(o.startActivity! as api.StartActivityIntent);
+    checkLauncherActivityIntent(o.launcherActivity!);
+    checkStartActivityIntent(o.startActivity!);
     unittest.expect(
       o.timeout!,
       unittest.equals('foo'),
@@ -2209,7 +2204,7 @@ void checkRoboStartingIntent(api.RoboStartingIntent o) {
 
 core.int buildCounterShard = 0;
 api.Shard buildShard() {
-  var o = api.Shard();
+  final o = api.Shard();
   buildCounterShard++;
   if (buildCounterShard < 3) {
     o.numShards = 42;
@@ -2231,14 +2226,14 @@ void checkShard(api.Shard o) {
       o.shardIndex!,
       unittest.equals(42),
     );
-    checkTestTargetsForShard(o.testTargetsForShard! as api.TestTargetsForShard);
+    checkTestTargetsForShard(o.testTargetsForShard!);
   }
   buildCounterShard--;
 }
 
 core.int buildCounterShardingOption = 0;
 api.ShardingOption buildShardingOption() {
-  var o = api.ShardingOption();
+  final o = api.ShardingOption();
   buildCounterShardingOption++;
   if (buildCounterShardingOption < 3) {
     o.manualSharding = buildManualSharding();
@@ -2251,14 +2246,14 @@ api.ShardingOption buildShardingOption() {
 void checkShardingOption(api.ShardingOption o) {
   buildCounterShardingOption++;
   if (buildCounterShardingOption < 3) {
-    checkManualSharding(o.manualSharding! as api.ManualSharding);
-    checkUniformSharding(o.uniformSharding! as api.UniformSharding);
+    checkManualSharding(o.manualSharding!);
+    checkUniformSharding(o.uniformSharding!);
   }
   buildCounterShardingOption--;
 }
 
 core.List<core.String> buildUnnamed204() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2278,7 +2273,7 @@ void checkUnnamed204(core.List<core.String> o) {
 
 core.int buildCounterStartActivityIntent = 0;
 api.StartActivityIntent buildStartActivityIntent() {
-  var o = api.StartActivityIntent();
+  final o = api.StartActivityIntent();
   buildCounterStartActivityIntent++;
   if (buildCounterStartActivityIntent < 3) {
     o.action = 'foo';
@@ -2307,7 +2302,7 @@ void checkStartActivityIntent(api.StartActivityIntent o) {
 
 core.int buildCounterSystraceSetup = 0;
 api.SystraceSetup buildSystraceSetup() {
-  var o = api.SystraceSetup();
+  final o = api.SystraceSetup();
   buildCounterSystraceSetup++;
   if (buildCounterSystraceSetup < 3) {
     o.durationSeconds = 42;
@@ -2328,7 +2323,7 @@ void checkSystraceSetup(api.SystraceSetup o) {
 }
 
 core.List<core.String> buildUnnamed205() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2348,7 +2343,7 @@ void checkUnnamed205(core.List<core.String> o) {
 
 core.int buildCounterTestDetails = 0;
 api.TestDetails buildTestDetails() {
-  var o = api.TestDetails();
+  final o = api.TestDetails();
   buildCounterTestDetails++;
   if (buildCounterTestDetails < 3) {
     o.errorMessage = 'foo';
@@ -2372,7 +2367,7 @@ void checkTestDetails(api.TestDetails o) {
 
 core.int buildCounterTestEnvironmentCatalog = 0;
 api.TestEnvironmentCatalog buildTestEnvironmentCatalog() {
-  var o = api.TestEnvironmentCatalog();
+  final o = api.TestEnvironmentCatalog();
   buildCounterTestEnvironmentCatalog++;
   if (buildCounterTestEnvironmentCatalog < 3) {
     o.androidDeviceCatalog = buildAndroidDeviceCatalog();
@@ -2388,22 +2383,18 @@ api.TestEnvironmentCatalog buildTestEnvironmentCatalog() {
 void checkTestEnvironmentCatalog(api.TestEnvironmentCatalog o) {
   buildCounterTestEnvironmentCatalog++;
   if (buildCounterTestEnvironmentCatalog < 3) {
-    checkAndroidDeviceCatalog(
-        o.androidDeviceCatalog! as api.AndroidDeviceCatalog);
-    checkDeviceIpBlockCatalog(
-        o.deviceIpBlockCatalog! as api.DeviceIpBlockCatalog);
-    checkIosDeviceCatalog(o.iosDeviceCatalog! as api.IosDeviceCatalog);
-    checkNetworkConfigurationCatalog(
-        o.networkConfigurationCatalog! as api.NetworkConfigurationCatalog);
-    checkProvidedSoftwareCatalog(
-        o.softwareCatalog! as api.ProvidedSoftwareCatalog);
+    checkAndroidDeviceCatalog(o.androidDeviceCatalog!);
+    checkDeviceIpBlockCatalog(o.deviceIpBlockCatalog!);
+    checkIosDeviceCatalog(o.iosDeviceCatalog!);
+    checkNetworkConfigurationCatalog(o.networkConfigurationCatalog!);
+    checkProvidedSoftwareCatalog(o.softwareCatalog!);
   }
   buildCounterTestEnvironmentCatalog--;
 }
 
 core.int buildCounterTestExecution = 0;
 api.TestExecution buildTestExecution() {
-  var o = api.TestExecution();
+  final o = api.TestExecution();
   buildCounterTestExecution++;
   if (buildCounterTestExecution < 3) {
     o.environment = buildEnvironment();
@@ -2424,7 +2415,7 @@ api.TestExecution buildTestExecution() {
 void checkTestExecution(api.TestExecution o) {
   buildCounterTestExecution++;
   if (buildCounterTestExecution < 3) {
-    checkEnvironment(o.environment! as api.Environment);
+    checkEnvironment(o.environment!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -2437,24 +2428,24 @@ void checkTestExecution(api.TestExecution o) {
       o.projectId!,
       unittest.equals('foo'),
     );
-    checkShard(o.shard! as api.Shard);
+    checkShard(o.shard!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
     );
-    checkTestDetails(o.testDetails! as api.TestDetails);
-    checkTestSpecification(o.testSpecification! as api.TestSpecification);
+    checkTestDetails(o.testDetails!);
+    checkTestSpecification(o.testSpecification!);
     unittest.expect(
       o.timestamp!,
       unittest.equals('foo'),
     );
-    checkToolResultsStep(o.toolResultsStep! as api.ToolResultsStep);
+    checkToolResultsStep(o.toolResultsStep!);
   }
   buildCounterTestExecution--;
 }
 
 core.List<api.TestExecution> buildUnnamed206() {
-  var o = <api.TestExecution>[];
+  final o = <api.TestExecution>[];
   o.add(buildTestExecution());
   o.add(buildTestExecution());
   return o;
@@ -2462,13 +2453,13 @@ core.List<api.TestExecution> buildUnnamed206() {
 
 void checkUnnamed206(core.List<api.TestExecution> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTestExecution(o[0] as api.TestExecution);
-  checkTestExecution(o[1] as api.TestExecution);
+  checkTestExecution(o[0]);
+  checkTestExecution(o[1]);
 }
 
 core.int buildCounterTestMatrix = 0;
 api.TestMatrix buildTestMatrix() {
-  var o = api.TestMatrix();
+  final o = api.TestMatrix();
   buildCounterTestMatrix++;
   if (buildCounterTestMatrix < 3) {
     o.clientInfo = buildClientInfo();
@@ -2492,8 +2483,8 @@ api.TestMatrix buildTestMatrix() {
 void checkTestMatrix(api.TestMatrix o) {
   buildCounterTestMatrix++;
   if (buildCounterTestMatrix < 3) {
-    checkClientInfo(o.clientInfo! as api.ClientInfo);
-    checkEnvironmentMatrix(o.environmentMatrix! as api.EnvironmentMatrix);
+    checkClientInfo(o.clientInfo!);
+    checkEnvironmentMatrix(o.environmentMatrix!);
     unittest.expect(o.failFast!, unittest.isTrue);
     unittest.expect(
       o.flakyTestAttempts!,
@@ -2511,7 +2502,7 @@ void checkTestMatrix(api.TestMatrix o) {
       o.projectId!,
       unittest.equals('foo'),
     );
-    checkResultStorage(o.resultStorage! as api.ResultStorage);
+    checkResultStorage(o.resultStorage!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -2521,7 +2512,7 @@ void checkTestMatrix(api.TestMatrix o) {
       o.testMatrixId!,
       unittest.equals('foo'),
     );
-    checkTestSpecification(o.testSpecification! as api.TestSpecification);
+    checkTestSpecification(o.testSpecification!);
     unittest.expect(
       o.timestamp!,
       unittest.equals('foo'),
@@ -2531,7 +2522,7 @@ void checkTestMatrix(api.TestMatrix o) {
 }
 
 core.List<api.Apk> buildUnnamed207() {
-  var o = <api.Apk>[];
+  final o = <api.Apk>[];
   o.add(buildApk());
   o.add(buildApk());
   return o;
@@ -2539,12 +2530,12 @@ core.List<api.Apk> buildUnnamed207() {
 
 void checkUnnamed207(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApk(o[0] as api.Apk);
-  checkApk(o[1] as api.Apk);
+  checkApk(o[0]);
+  checkApk(o[1]);
 }
 
 core.List<core.String> buildUnnamed208() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2563,7 +2554,7 @@ void checkUnnamed208(core.List<core.String> o) {
 }
 
 core.List<api.EnvironmentVariable> buildUnnamed209() {
-  var o = <api.EnvironmentVariable>[];
+  final o = <api.EnvironmentVariable>[];
   o.add(buildEnvironmentVariable());
   o.add(buildEnvironmentVariable());
   return o;
@@ -2571,12 +2562,12 @@ core.List<api.EnvironmentVariable> buildUnnamed209() {
 
 void checkUnnamed209(core.List<api.EnvironmentVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnvironmentVariable(o[0] as api.EnvironmentVariable);
-  checkEnvironmentVariable(o[1] as api.EnvironmentVariable);
+  checkEnvironmentVariable(o[0]);
+  checkEnvironmentVariable(o[1]);
 }
 
 core.List<api.DeviceFile> buildUnnamed210() {
-  var o = <api.DeviceFile>[];
+  final o = <api.DeviceFile>[];
   o.add(buildDeviceFile());
   o.add(buildDeviceFile());
   return o;
@@ -2584,13 +2575,13 @@ core.List<api.DeviceFile> buildUnnamed210() {
 
 void checkUnnamed210(core.List<api.DeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceFile(o[0] as api.DeviceFile);
-  checkDeviceFile(o[1] as api.DeviceFile);
+  checkDeviceFile(o[0]);
+  checkDeviceFile(o[1]);
 }
 
 core.int buildCounterTestSetup = 0;
 api.TestSetup buildTestSetup() {
-  var o = api.TestSetup();
+  final o = api.TestSetup();
   buildCounterTestSetup++;
   if (buildCounterTestSetup < 3) {
     o.account = buildAccount();
@@ -2609,7 +2600,7 @@ api.TestSetup buildTestSetup() {
 void checkTestSetup(api.TestSetup o) {
   buildCounterTestSetup++;
   if (buildCounterTestSetup < 3) {
-    checkAccount(o.account! as api.Account);
+    checkAccount(o.account!);
     checkUnnamed207(o.additionalApks!);
     checkUnnamed208(o.directoriesToPull!);
     unittest.expect(o.dontAutograntPermissions!, unittest.isTrue);
@@ -2619,14 +2610,14 @@ void checkTestSetup(api.TestSetup o) {
       o.networkProfile!,
       unittest.equals('foo'),
     );
-    checkSystraceSetup(o.systrace! as api.SystraceSetup);
+    checkSystraceSetup(o.systrace!);
   }
   buildCounterTestSetup--;
 }
 
 core.int buildCounterTestSpecification = 0;
 api.TestSpecification buildTestSpecification() {
-  var o = api.TestSpecification();
+  final o = api.TestSpecification();
   buildCounterTestSpecification++;
   if (buildCounterTestSpecification < 3) {
     o.androidInstrumentationTest = buildAndroidInstrumentationTest();
@@ -2647,16 +2638,15 @@ api.TestSpecification buildTestSpecification() {
 void checkTestSpecification(api.TestSpecification o) {
   buildCounterTestSpecification++;
   if (buildCounterTestSpecification < 3) {
-    checkAndroidInstrumentationTest(
-        o.androidInstrumentationTest! as api.AndroidInstrumentationTest);
-    checkAndroidRoboTest(o.androidRoboTest! as api.AndroidRoboTest);
-    checkAndroidTestLoop(o.androidTestLoop! as api.AndroidTestLoop);
+    checkAndroidInstrumentationTest(o.androidInstrumentationTest!);
+    checkAndroidRoboTest(o.androidRoboTest!);
+    checkAndroidTestLoop(o.androidTestLoop!);
     unittest.expect(o.disablePerformanceMetrics!, unittest.isTrue);
     unittest.expect(o.disableVideoRecording!, unittest.isTrue);
-    checkIosTestLoop(o.iosTestLoop! as api.IosTestLoop);
-    checkIosTestSetup(o.iosTestSetup! as api.IosTestSetup);
-    checkIosXcTest(o.iosXcTest! as api.IosXcTest);
-    checkTestSetup(o.testSetup! as api.TestSetup);
+    checkIosTestLoop(o.iosTestLoop!);
+    checkIosTestSetup(o.iosTestSetup!);
+    checkIosXcTest(o.iosXcTest!);
+    checkTestSetup(o.testSetup!);
     unittest.expect(
       o.testTimeout!,
       unittest.equals('foo'),
@@ -2666,7 +2656,7 @@ void checkTestSpecification(api.TestSpecification o) {
 }
 
 core.List<core.String> buildUnnamed211() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2686,7 +2676,7 @@ void checkUnnamed211(core.List<core.String> o) {
 
 core.int buildCounterTestTargetsForShard = 0;
 api.TestTargetsForShard buildTestTargetsForShard() {
-  var o = api.TestTargetsForShard();
+  final o = api.TestTargetsForShard();
   buildCounterTestTargetsForShard++;
   if (buildCounterTestTargetsForShard < 3) {
     o.testTargets = buildUnnamed211();
@@ -2705,7 +2695,7 @@ void checkTestTargetsForShard(api.TestTargetsForShard o) {
 
 core.int buildCounterToolResultsExecution = 0;
 api.ToolResultsExecution buildToolResultsExecution() {
-  var o = api.ToolResultsExecution();
+  final o = api.ToolResultsExecution();
   buildCounterToolResultsExecution++;
   if (buildCounterToolResultsExecution < 3) {
     o.executionId = 'foo';
@@ -2737,7 +2727,7 @@ void checkToolResultsExecution(api.ToolResultsExecution o) {
 
 core.int buildCounterToolResultsHistory = 0;
 api.ToolResultsHistory buildToolResultsHistory() {
-  var o = api.ToolResultsHistory();
+  final o = api.ToolResultsHistory();
   buildCounterToolResultsHistory++;
   if (buildCounterToolResultsHistory < 3) {
     o.historyId = 'foo';
@@ -2764,7 +2754,7 @@ void checkToolResultsHistory(api.ToolResultsHistory o) {
 
 core.int buildCounterToolResultsStep = 0;
 api.ToolResultsStep buildToolResultsStep() {
-  var o = api.ToolResultsStep();
+  final o = api.ToolResultsStep();
   buildCounterToolResultsStep++;
   if (buildCounterToolResultsStep < 3) {
     o.executionId = 'foo';
@@ -2801,7 +2791,7 @@ void checkToolResultsStep(api.ToolResultsStep o) {
 
 core.int buildCounterTrafficRule = 0;
 api.TrafficRule buildTrafficRule() {
-  var o = api.TrafficRule();
+  final o = api.TrafficRule();
   buildCounterTrafficRule++;
   if (buildCounterTrafficRule < 3) {
     o.bandwidth = 42.0;
@@ -2843,7 +2833,7 @@ void checkTrafficRule(api.TrafficRule o) {
 
 core.int buildCounterUniformSharding = 0;
 api.UniformSharding buildUniformSharding() {
-  var o = api.UniformSharding();
+  final o = api.UniformSharding();
   buildCounterUniformSharding++;
   if (buildCounterUniformSharding < 3) {
     o.numShards = 42;
@@ -2864,7 +2854,7 @@ void checkUniformSharding(api.UniformSharding o) {
 }
 
 core.List<core.String> buildUnnamed212() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2884,7 +2874,7 @@ void checkUnnamed212(core.List<core.String> o) {
 
 core.int buildCounterXcodeVersion = 0;
 api.XcodeVersion buildXcodeVersion() {
-  var o = api.XcodeVersion();
+  final o = api.XcodeVersion();
   buildCounterXcodeVersion++;
   if (buildCounterXcodeVersion < 3) {
     o.tags = buildUnnamed212();
@@ -2909,736 +2899,738 @@ void checkXcodeVersion(api.XcodeVersion o) {
 void main() {
   unittest.group('obj-schema-Account', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Account.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAccount(od as api.Account);
+      checkAccount(od);
     });
   });
 
   unittest.group('obj-schema-AndroidDevice', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidDevice();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidDevice.fromJson(
+      final o = buildAndroidDevice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidDevice.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidDevice(od as api.AndroidDevice);
+      checkAndroidDevice(od);
     });
   });
 
   unittest.group('obj-schema-AndroidDeviceCatalog', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidDeviceCatalog();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidDeviceCatalog.fromJson(
+      final o = buildAndroidDeviceCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidDeviceCatalog.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidDeviceCatalog(od as api.AndroidDeviceCatalog);
+      checkAndroidDeviceCatalog(od);
     });
   });
 
   unittest.group('obj-schema-AndroidDeviceList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidDeviceList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidDeviceList.fromJson(
+      final o = buildAndroidDeviceList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidDeviceList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidDeviceList(od as api.AndroidDeviceList);
+      checkAndroidDeviceList(od);
     });
   });
 
   unittest.group('obj-schema-AndroidInstrumentationTest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidInstrumentationTest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidInstrumentationTest.fromJson(
+      final o = buildAndroidInstrumentationTest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidInstrumentationTest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidInstrumentationTest(od as api.AndroidInstrumentationTest);
+      checkAndroidInstrumentationTest(od);
     });
   });
 
   unittest.group('obj-schema-AndroidMatrix', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidMatrix();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidMatrix.fromJson(
+      final o = buildAndroidMatrix();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidMatrix.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidMatrix(od as api.AndroidMatrix);
+      checkAndroidMatrix(od);
     });
   });
 
   unittest.group('obj-schema-AndroidModel', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidModel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidModel.fromJson(
+      final o = buildAndroidModel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidModel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidModel(od as api.AndroidModel);
+      checkAndroidModel(od);
     });
   });
 
   unittest.group('obj-schema-AndroidRoboTest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidRoboTest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidRoboTest.fromJson(
+      final o = buildAndroidRoboTest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidRoboTest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidRoboTest(od as api.AndroidRoboTest);
+      checkAndroidRoboTest(od);
     });
   });
 
   unittest.group('obj-schema-AndroidRuntimeConfiguration', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidRuntimeConfiguration();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidRuntimeConfiguration.fromJson(
+      final o = buildAndroidRuntimeConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidRuntimeConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidRuntimeConfiguration(od as api.AndroidRuntimeConfiguration);
+      checkAndroidRuntimeConfiguration(od);
     });
   });
 
   unittest.group('obj-schema-AndroidTestLoop', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidTestLoop();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidTestLoop.fromJson(
+      final o = buildAndroidTestLoop();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidTestLoop.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidTestLoop(od as api.AndroidTestLoop);
+      checkAndroidTestLoop(od);
     });
   });
 
   unittest.group('obj-schema-AndroidVersion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidVersion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidVersion.fromJson(
+      final o = buildAndroidVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidVersion(od as api.AndroidVersion);
+      checkAndroidVersion(od);
     });
   });
 
   unittest.group('obj-schema-Apk', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildApk();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Apk.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkApk(od as api.Apk);
+      final o = buildApk();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Apk.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkApk(od);
     });
   });
 
   unittest.group('obj-schema-ApkDetail', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildApkDetail();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildApkDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ApkDetail.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkApkDetail(od as api.ApkDetail);
+      checkApkDetail(od);
     });
   });
 
   unittest.group('obj-schema-ApkManifest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildApkManifest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ApkManifest.fromJson(
+      final o = buildApkManifest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApkManifest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkApkManifest(od as api.ApkManifest);
+      checkApkManifest(od);
     });
   });
 
   unittest.group('obj-schema-AppBundle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAppBundle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAppBundle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.AppBundle.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAppBundle(od as api.AppBundle);
+      checkAppBundle(od);
     });
   });
 
   unittest.group('obj-schema-CancelTestMatrixResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCancelTestMatrixResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CancelTestMatrixResponse.fromJson(
+      final o = buildCancelTestMatrixResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelTestMatrixResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCancelTestMatrixResponse(od as api.CancelTestMatrixResponse);
+      checkCancelTestMatrixResponse(od);
     });
   });
 
   unittest.group('obj-schema-ClientInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildClientInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildClientInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ClientInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkClientInfo(od as api.ClientInfo);
+      checkClientInfo(od);
     });
   });
 
   unittest.group('obj-schema-ClientInfoDetail', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildClientInfoDetail();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ClientInfoDetail.fromJson(
+      final o = buildClientInfoDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClientInfoDetail.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkClientInfoDetail(od as api.ClientInfoDetail);
+      checkClientInfoDetail(od);
     });
   });
 
   unittest.group('obj-schema-Date', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDate(od as api.Date);
+      final o = buildDate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDate(od);
     });
   });
 
   unittest.group('obj-schema-DeviceFile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeviceFile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDeviceFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.DeviceFile.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDeviceFile(od as api.DeviceFile);
+      checkDeviceFile(od);
     });
   });
 
   unittest.group('obj-schema-DeviceIpBlock', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeviceIpBlock();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeviceIpBlock.fromJson(
+      final o = buildDeviceIpBlock();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceIpBlock.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeviceIpBlock(od as api.DeviceIpBlock);
+      checkDeviceIpBlock(od);
     });
   });
 
   unittest.group('obj-schema-DeviceIpBlockCatalog', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeviceIpBlockCatalog();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeviceIpBlockCatalog.fromJson(
+      final o = buildDeviceIpBlockCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceIpBlockCatalog.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeviceIpBlockCatalog(od as api.DeviceIpBlockCatalog);
+      checkDeviceIpBlockCatalog(od);
     });
   });
 
   unittest.group('obj-schema-Distribution', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDistribution();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Distribution.fromJson(
+      final o = buildDistribution();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Distribution.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDistribution(od as api.Distribution);
+      checkDistribution(od);
     });
   });
 
   unittest.group('obj-schema-Environment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEnvironment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Environment.fromJson(
+      final o = buildEnvironment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Environment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEnvironment(od as api.Environment);
+      checkEnvironment(od);
     });
   });
 
   unittest.group('obj-schema-EnvironmentMatrix', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEnvironmentMatrix();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EnvironmentMatrix.fromJson(
+      final o = buildEnvironmentMatrix();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnvironmentMatrix.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEnvironmentMatrix(od as api.EnvironmentMatrix);
+      checkEnvironmentMatrix(od);
     });
   });
 
   unittest.group('obj-schema-EnvironmentVariable', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEnvironmentVariable();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EnvironmentVariable.fromJson(
+      final o = buildEnvironmentVariable();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnvironmentVariable.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEnvironmentVariable(od as api.EnvironmentVariable);
+      checkEnvironmentVariable(od);
     });
   });
 
   unittest.group('obj-schema-FileReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFileReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FileReference.fromJson(
+      final o = buildFileReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FileReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFileReference(od as api.FileReference);
+      checkFileReference(od);
     });
   });
 
   unittest.group('obj-schema-GetApkDetailsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGetApkDetailsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GetApkDetailsResponse.fromJson(
+      final o = buildGetApkDetailsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GetApkDetailsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGetApkDetailsResponse(od as api.GetApkDetailsResponse);
+      checkGetApkDetailsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAuto', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAuto();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleAuto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleAuto.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAuto(od as api.GoogleAuto);
+      checkGoogleAuto(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudStorage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudStorage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudStorage.fromJson(
+      final o = buildGoogleCloudStorage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudStorage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudStorage(od as api.GoogleCloudStorage);
+      checkGoogleCloudStorage(od);
     });
   });
 
   unittest.group('obj-schema-IntentFilter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIntentFilter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IntentFilter.fromJson(
+      final o = buildIntentFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IntentFilter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIntentFilter(od as api.IntentFilter);
+      checkIntentFilter(od);
     });
   });
 
   unittest.group('obj-schema-IosDevice', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosDevice();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildIosDevice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.IosDevice.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkIosDevice(od as api.IosDevice);
+      checkIosDevice(od);
     });
   });
 
   unittest.group('obj-schema-IosDeviceCatalog', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosDeviceCatalog();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IosDeviceCatalog.fromJson(
+      final o = buildIosDeviceCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IosDeviceCatalog.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIosDeviceCatalog(od as api.IosDeviceCatalog);
+      checkIosDeviceCatalog(od);
     });
   });
 
   unittest.group('obj-schema-IosDeviceFile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosDeviceFile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IosDeviceFile.fromJson(
+      final o = buildIosDeviceFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IosDeviceFile.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIosDeviceFile(od as api.IosDeviceFile);
+      checkIosDeviceFile(od);
     });
   });
 
   unittest.group('obj-schema-IosDeviceList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosDeviceList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IosDeviceList.fromJson(
+      final o = buildIosDeviceList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IosDeviceList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIosDeviceList(od as api.IosDeviceList);
+      checkIosDeviceList(od);
     });
   });
 
   unittest.group('obj-schema-IosModel', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosModel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildIosModel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.IosModel.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkIosModel(od as api.IosModel);
+      checkIosModel(od);
     });
   });
 
   unittest.group('obj-schema-IosRuntimeConfiguration', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosRuntimeConfiguration();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IosRuntimeConfiguration.fromJson(
+      final o = buildIosRuntimeConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IosRuntimeConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIosRuntimeConfiguration(od as api.IosRuntimeConfiguration);
+      checkIosRuntimeConfiguration(od);
     });
   });
 
   unittest.group('obj-schema-IosTestLoop', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosTestLoop();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IosTestLoop.fromJson(
+      final o = buildIosTestLoop();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IosTestLoop.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIosTestLoop(od as api.IosTestLoop);
+      checkIosTestLoop(od);
     });
   });
 
   unittest.group('obj-schema-IosTestSetup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosTestSetup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IosTestSetup.fromJson(
+      final o = buildIosTestSetup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IosTestSetup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIosTestSetup(od as api.IosTestSetup);
+      checkIosTestSetup(od);
     });
   });
 
   unittest.group('obj-schema-IosVersion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosVersion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildIosVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.IosVersion.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkIosVersion(od as api.IosVersion);
+      checkIosVersion(od);
     });
   });
 
   unittest.group('obj-schema-IosXcTest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosXcTest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildIosXcTest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.IosXcTest.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkIosXcTest(od as api.IosXcTest);
+      checkIosXcTest(od);
     });
   });
 
   unittest.group('obj-schema-LauncherActivityIntent', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLauncherActivityIntent();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LauncherActivityIntent.fromJson(
+      final o = buildLauncherActivityIntent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LauncherActivityIntent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLauncherActivityIntent(od as api.LauncherActivityIntent);
+      checkLauncherActivityIntent(od);
     });
   });
 
   unittest.group('obj-schema-Locale', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocale();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLocale();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Locale.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLocale(od as api.Locale);
+      checkLocale(od);
     });
   });
 
   unittest.group('obj-schema-ManualSharding', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildManualSharding();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ManualSharding.fromJson(
+      final o = buildManualSharding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ManualSharding.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkManualSharding(od as api.ManualSharding);
+      checkManualSharding(od);
     });
   });
 
   unittest.group('obj-schema-NetworkConfiguration', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNetworkConfiguration();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NetworkConfiguration.fromJson(
+      final o = buildNetworkConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNetworkConfiguration(od as api.NetworkConfiguration);
+      checkNetworkConfiguration(od);
     });
   });
 
   unittest.group('obj-schema-NetworkConfigurationCatalog', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNetworkConfigurationCatalog();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NetworkConfigurationCatalog.fromJson(
+      final o = buildNetworkConfigurationCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkConfigurationCatalog.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNetworkConfigurationCatalog(od as api.NetworkConfigurationCatalog);
+      checkNetworkConfigurationCatalog(od);
     });
   });
 
   unittest.group('obj-schema-ObbFile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildObbFile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildObbFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ObbFile.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkObbFile(od as api.ObbFile);
+      checkObbFile(od);
     });
   });
 
   unittest.group('obj-schema-Orientation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrientation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Orientation.fromJson(
+      final o = buildOrientation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Orientation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrientation(od as api.Orientation);
+      checkOrientation(od);
     });
   });
 
   unittest.group('obj-schema-ProvidedSoftwareCatalog', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProvidedSoftwareCatalog();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProvidedSoftwareCatalog.fromJson(
+      final o = buildProvidedSoftwareCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProvidedSoftwareCatalog.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProvidedSoftwareCatalog(od as api.ProvidedSoftwareCatalog);
+      checkProvidedSoftwareCatalog(od);
     });
   });
 
   unittest.group('obj-schema-RegularFile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegularFile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegularFile.fromJson(
+      final o = buildRegularFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegularFile.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegularFile(od as api.RegularFile);
+      checkRegularFile(od);
     });
   });
 
   unittest.group('obj-schema-ResultStorage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildResultStorage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ResultStorage.fromJson(
+      final o = buildResultStorage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResultStorage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkResultStorage(od as api.ResultStorage);
+      checkResultStorage(od);
     });
   });
 
   unittest.group('obj-schema-RoboDirective', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRoboDirective();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RoboDirective.fromJson(
+      final o = buildRoboDirective();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RoboDirective.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRoboDirective(od as api.RoboDirective);
+      checkRoboDirective(od);
     });
   });
 
   unittest.group('obj-schema-RoboStartingIntent', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRoboStartingIntent();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RoboStartingIntent.fromJson(
+      final o = buildRoboStartingIntent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RoboStartingIntent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRoboStartingIntent(od as api.RoboStartingIntent);
+      checkRoboStartingIntent(od);
     });
   });
 
   unittest.group('obj-schema-Shard', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShard();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Shard.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkShard(od as api.Shard);
+      final o = buildShard();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Shard.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkShard(od);
     });
   });
 
   unittest.group('obj-schema-ShardingOption', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShardingOption();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShardingOption.fromJson(
+      final o = buildShardingOption();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShardingOption.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShardingOption(od as api.ShardingOption);
+      checkShardingOption(od);
     });
   });
 
   unittest.group('obj-schema-StartActivityIntent', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStartActivityIntent();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StartActivityIntent.fromJson(
+      final o = buildStartActivityIntent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StartActivityIntent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStartActivityIntent(od as api.StartActivityIntent);
+      checkStartActivityIntent(od);
     });
   });
 
   unittest.group('obj-schema-SystraceSetup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSystraceSetup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SystraceSetup.fromJson(
+      final o = buildSystraceSetup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SystraceSetup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSystraceSetup(od as api.SystraceSetup);
+      checkSystraceSetup(od);
     });
   });
 
   unittest.group('obj-schema-TestDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestDetails.fromJson(
+      final o = buildTestDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestDetails(od as api.TestDetails);
+      checkTestDetails(od);
     });
   });
 
   unittest.group('obj-schema-TestEnvironmentCatalog', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestEnvironmentCatalog();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestEnvironmentCatalog.fromJson(
+      final o = buildTestEnvironmentCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestEnvironmentCatalog.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestEnvironmentCatalog(od as api.TestEnvironmentCatalog);
+      checkTestEnvironmentCatalog(od);
     });
   });
 
   unittest.group('obj-schema-TestExecution', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestExecution();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestExecution.fromJson(
+      final o = buildTestExecution();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestExecution.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestExecution(od as api.TestExecution);
+      checkTestExecution(od);
     });
   });
 
   unittest.group('obj-schema-TestMatrix', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestMatrix();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTestMatrix();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TestMatrix.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTestMatrix(od as api.TestMatrix);
+      checkTestMatrix(od);
     });
   });
 
   unittest.group('obj-schema-TestSetup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestSetup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTestSetup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TestSetup.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTestSetup(od as api.TestSetup);
+      checkTestSetup(od);
     });
   });
 
   unittest.group('obj-schema-TestSpecification', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestSpecification();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestSpecification.fromJson(
+      final o = buildTestSpecification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestSpecification.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestSpecification(od as api.TestSpecification);
+      checkTestSpecification(od);
     });
   });
 
   unittest.group('obj-schema-TestTargetsForShard', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestTargetsForShard();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestTargetsForShard.fromJson(
+      final o = buildTestTargetsForShard();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestTargetsForShard.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestTargetsForShard(od as api.TestTargetsForShard);
+      checkTestTargetsForShard(od);
     });
   });
 
   unittest.group('obj-schema-ToolResultsExecution', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildToolResultsExecution();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ToolResultsExecution.fromJson(
+      final o = buildToolResultsExecution();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ToolResultsExecution.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkToolResultsExecution(od as api.ToolResultsExecution);
+      checkToolResultsExecution(od);
     });
   });
 
   unittest.group('obj-schema-ToolResultsHistory', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildToolResultsHistory();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ToolResultsHistory.fromJson(
+      final o = buildToolResultsHistory();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ToolResultsHistory.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkToolResultsHistory(od as api.ToolResultsHistory);
+      checkToolResultsHistory(od);
     });
   });
 
   unittest.group('obj-schema-ToolResultsStep', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildToolResultsStep();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ToolResultsStep.fromJson(
+      final o = buildToolResultsStep();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ToolResultsStep.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkToolResultsStep(od as api.ToolResultsStep);
+      checkToolResultsStep(od);
     });
   });
 
   unittest.group('obj-schema-TrafficRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTrafficRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TrafficRule.fromJson(
+      final o = buildTrafficRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TrafficRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTrafficRule(od as api.TrafficRule);
+      checkTrafficRule(od);
     });
   });
 
   unittest.group('obj-schema-UniformSharding', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUniformSharding();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UniformSharding.fromJson(
+      final o = buildUniformSharding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UniformSharding.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUniformSharding(od as api.UniformSharding);
+      checkUniformSharding(od);
     });
   });
 
   unittest.group('obj-schema-XcodeVersion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildXcodeVersion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.XcodeVersion.fromJson(
+      final o = buildXcodeVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.XcodeVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkXcodeVersion(od as api.XcodeVersion);
+      checkXcodeVersion(od);
     });
   });
 
   unittest.group('resource-ApplicationDetailServiceResource', () {
     unittest.test('method--getApkDetails', () async {
-      var mock = HttpServerMock();
-      var res = api.TestingApi(mock).applicationDetailService;
-      var arg_request = buildFileReference();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TestingApi(mock).applicationDetailService;
+      final arg_request = buildFileReference();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FileReference.fromJson(
+        final obj = api.FileReference.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkFileReference(obj as api.FileReference);
+        checkFileReference(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 41),
-          unittest.equals("v1/applicationDetailService/getApkDetails"),
+          unittest.equals('v1/applicationDetailService/getApkDetails'),
         );
         pathOffset += 41;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3646,14 +3638,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGetApkDetailsResponse());
+        final resp = convert.json.encode(buildGetApkDetailsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3664,24 +3656,24 @@ void main() {
 
   unittest.group('resource-ProjectsTestMatricesResource', () {
     unittest.test('method--cancel', () async {
-      var mock = HttpServerMock();
-      var res = api.TestingApi(mock).projects.testMatrices;
-      var arg_projectId = 'foo';
-      var arg_testMatrixId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TestingApi(mock).projects.testMatrices;
+      final arg_projectId = 'foo';
+      final arg_testMatrixId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("v1/projects/"),
+          unittest.equals('v1/projects/'),
         );
         pathOffset += 12;
         index = path.indexOf('/testMatrices/', pathOffset);
@@ -3695,7 +3687,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("/testMatrices/"),
+          unittest.equals('/testMatrices/'),
         );
         pathOffset += 14;
         index = path.indexOf(':cancel', pathOffset);
@@ -3709,19 +3701,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals(":cancel"),
+          unittest.equals(':cancel'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3729,14 +3721,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCancelTestMatrixResponse());
+        final resp = convert.json.encode(buildCancelTestMatrixResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.cancel(arg_projectId, arg_testMatrixId,
@@ -3745,29 +3737,29 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.TestingApi(mock).projects.testMatrices;
-      var arg_request = buildTestMatrix();
-      var arg_projectId = 'foo';
-      var arg_requestId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TestingApi(mock).projects.testMatrices;
+      final arg_request = buildTestMatrix();
+      final arg_projectId = 'foo';
+      final arg_requestId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestMatrix.fromJson(
+        final obj = api.TestMatrix.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkTestMatrix(obj as api.TestMatrix);
+        checkTestMatrix(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("v1/projects/"),
+          unittest.equals('v1/projects/'),
         );
         pathOffset += 12;
         index = path.indexOf('/testMatrices', pathOffset);
@@ -3781,19 +3773,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("/testMatrices"),
+          unittest.equals('/testMatrices'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3801,18 +3793,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["requestId"]!.first,
+          queryMap['requestId']!.first,
           unittest.equals(arg_requestId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTestMatrix());
+        final resp = convert.json.encode(buildTestMatrix());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_projectId,
@@ -3821,24 +3813,24 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.TestingApi(mock).projects.testMatrices;
-      var arg_projectId = 'foo';
-      var arg_testMatrixId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TestingApi(mock).projects.testMatrices;
+      final arg_projectId = 'foo';
+      final arg_testMatrixId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("v1/projects/"),
+          unittest.equals('v1/projects/'),
         );
         pathOffset += 12;
         index = path.indexOf('/testMatrices/', pathOffset);
@@ -3852,7 +3844,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("/testMatrices/"),
+          unittest.equals('/testMatrices/'),
         );
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3862,15 +3854,15 @@ void main() {
           unittest.equals('$arg_testMatrixId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3878,14 +3870,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTestMatrix());
+        final resp = convert.json.encode(buildTestMatrix());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3896,24 +3888,24 @@ void main() {
 
   unittest.group('resource-TestEnvironmentCatalogResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.TestingApi(mock).testEnvironmentCatalog;
-      var arg_environmentType = 'foo';
-      var arg_projectId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TestingApi(mock).testEnvironmentCatalog;
+      final arg_environmentType = 'foo';
+      final arg_projectId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 26),
-          unittest.equals("v1/testEnvironmentCatalog/"),
+          unittest.equals('v1/testEnvironmentCatalog/'),
         );
         pathOffset += 26;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3923,15 +3915,15 @@ void main() {
           unittest.equals('$arg_environmentType'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3939,18 +3931,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["projectId"]!.first,
+          queryMap['projectId']!.first,
           unittest.equals(arg_projectId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTestEnvironmentCatalog());
+        final resp = convert.json.encode(buildTestEnvironmentCatalog());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_environmentType,

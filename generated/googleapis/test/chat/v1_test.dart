@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterActionParameter = 0;
 api.ActionParameter buildActionParameter() {
-  var o = api.ActionParameter();
+  final o = api.ActionParameter();
   buildCounterActionParameter++;
   if (buildCounterActionParameter < 3) {
     o.key = 'foo';
@@ -56,7 +55,7 @@ void checkActionParameter(api.ActionParameter o) {
 
 core.int buildCounterActionResponse = 0;
 api.ActionResponse buildActionResponse() {
-  var o = api.ActionResponse();
+  final o = api.ActionResponse();
   buildCounterActionResponse++;
   if (buildCounterActionResponse < 3) {
     o.type = 'foo';
@@ -83,7 +82,7 @@ void checkActionResponse(api.ActionResponse o) {
 
 core.int buildCounterAnnotation = 0;
 api.Annotation buildAnnotation() {
-  var o = api.Annotation();
+  final o = api.Annotation();
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
     o.length = 42;
@@ -103,7 +102,7 @@ void checkAnnotation(api.Annotation o) {
       o.length!,
       unittest.equals(42),
     );
-    checkSlashCommandMetadata(o.slashCommand! as api.SlashCommandMetadata);
+    checkSlashCommandMetadata(o.slashCommand!);
     unittest.expect(
       o.startIndex!,
       unittest.equals(42),
@@ -112,14 +111,14 @@ void checkAnnotation(api.Annotation o) {
       o.type!,
       unittest.equals('foo'),
     );
-    checkUserMentionMetadata(o.userMention! as api.UserMentionMetadata);
+    checkUserMentionMetadata(o.userMention!);
   }
   buildCounterAnnotation--;
 }
 
 core.int buildCounterAttachment = 0;
 api.Attachment buildAttachment() {
-  var o = api.Attachment();
+  final o = api.Attachment();
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
     o.attachmentDataRef = buildAttachmentDataRef();
@@ -138,7 +137,7 @@ api.Attachment buildAttachment() {
 void checkAttachment(api.Attachment o) {
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
-    checkAttachmentDataRef(o.attachmentDataRef! as api.AttachmentDataRef);
+    checkAttachmentDataRef(o.attachmentDataRef!);
     unittest.expect(
       o.contentName!,
       unittest.equals('foo'),
@@ -151,7 +150,7 @@ void checkAttachment(api.Attachment o) {
       o.downloadUri!,
       unittest.equals('foo'),
     );
-    checkDriveDataRef(o.driveDataRef! as api.DriveDataRef);
+    checkDriveDataRef(o.driveDataRef!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -170,7 +169,7 @@ void checkAttachment(api.Attachment o) {
 
 core.int buildCounterAttachmentDataRef = 0;
 api.AttachmentDataRef buildAttachmentDataRef() {
-  var o = api.AttachmentDataRef();
+  final o = api.AttachmentDataRef();
   buildCounterAttachmentDataRef++;
   if (buildCounterAttachmentDataRef < 3) {
     o.resourceName = 'foo';
@@ -192,7 +191,7 @@ void checkAttachmentDataRef(api.AttachmentDataRef o) {
 
 core.int buildCounterButton = 0;
 api.Button buildButton() {
-  var o = api.Button();
+  final o = api.Button();
   buildCounterButton++;
   if (buildCounterButton < 3) {
     o.imageButton = buildImageButton();
@@ -205,14 +204,14 @@ api.Button buildButton() {
 void checkButton(api.Button o) {
   buildCounterButton++;
   if (buildCounterButton < 3) {
-    checkImageButton(o.imageButton! as api.ImageButton);
-    checkTextButton(o.textButton! as api.TextButton);
+    checkImageButton(o.imageButton!);
+    checkTextButton(o.textButton!);
   }
   buildCounterButton--;
 }
 
 core.List<api.CardAction> buildUnnamed4139() {
-  var o = <api.CardAction>[];
+  final o = <api.CardAction>[];
   o.add(buildCardAction());
   o.add(buildCardAction());
   return o;
@@ -220,12 +219,12 @@ core.List<api.CardAction> buildUnnamed4139() {
 
 void checkUnnamed4139(core.List<api.CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCardAction(o[0] as api.CardAction);
-  checkCardAction(o[1] as api.CardAction);
+  checkCardAction(o[0]);
+  checkCardAction(o[1]);
 }
 
 core.List<api.Section> buildUnnamed4140() {
-  var o = <api.Section>[];
+  final o = <api.Section>[];
   o.add(buildSection());
   o.add(buildSection());
   return o;
@@ -233,13 +232,13 @@ core.List<api.Section> buildUnnamed4140() {
 
 void checkUnnamed4140(core.List<api.Section> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSection(o[0] as api.Section);
-  checkSection(o[1] as api.Section);
+  checkSection(o[0]);
+  checkSection(o[1]);
 }
 
 core.int buildCounterCard = 0;
 api.Card buildCard() {
-  var o = api.Card();
+  final o = api.Card();
   buildCounterCard++;
   if (buildCounterCard < 3) {
     o.cardActions = buildUnnamed4139();
@@ -255,7 +254,7 @@ void checkCard(api.Card o) {
   buildCounterCard++;
   if (buildCounterCard < 3) {
     checkUnnamed4139(o.cardActions!);
-    checkCardHeader(o.header! as api.CardHeader);
+    checkCardHeader(o.header!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -267,7 +266,7 @@ void checkCard(api.Card o) {
 
 core.int buildCounterCardAction = 0;
 api.CardAction buildCardAction() {
-  var o = api.CardAction();
+  final o = api.CardAction();
   buildCounterCardAction++;
   if (buildCounterCardAction < 3) {
     o.actionLabel = 'foo';
@@ -284,14 +283,14 @@ void checkCardAction(api.CardAction o) {
       o.actionLabel!,
       unittest.equals('foo'),
     );
-    checkOnClick(o.onClick! as api.OnClick);
+    checkOnClick(o.onClick!);
   }
   buildCounterCardAction--;
 }
 
 core.int buildCounterCardHeader = 0;
 api.CardHeader buildCardHeader() {
-  var o = api.CardHeader();
+  final o = api.CardHeader();
   buildCounterCardHeader++;
   if (buildCounterCardHeader < 3) {
     o.imageStyle = 'foo';
@@ -328,7 +327,7 @@ void checkCardHeader(api.CardHeader o) {
 
 core.int buildCounterCardWithId = 0;
 api.CardWithId buildCardWithId() {
-  var o = api.CardWithId();
+  final o = api.CardWithId();
   buildCounterCardWithId++;
   if (buildCounterCardWithId < 3) {
     o.card = buildGoogleAppsCardV1Card();
@@ -341,7 +340,7 @@ api.CardWithId buildCardWithId() {
 void checkCardWithId(api.CardWithId o) {
   buildCounterCardWithId++;
   if (buildCounterCardWithId < 3) {
-    checkGoogleAppsCardV1Card(o.card! as api.GoogleAppsCardV1Card);
+    checkGoogleAppsCardV1Card(o.card!);
     unittest.expect(
       o.cardId!,
       unittest.equals('foo'),
@@ -352,7 +351,7 @@ void checkCardWithId(api.CardWithId o) {
 
 core.int buildCounterColor = 0;
 api.Color buildColor() {
-  var o = api.Color();
+  final o = api.Color();
   buildCounterColor++;
   if (buildCounterColor < 3) {
     o.alpha = 42.0;
@@ -389,7 +388,7 @@ void checkColor(api.Color o) {
 
 core.int buildCounterDeprecatedEvent = 0;
 api.DeprecatedEvent buildDeprecatedEvent() {
-  var o = api.DeprecatedEvent();
+  final o = api.DeprecatedEvent();
   buildCounterDeprecatedEvent++;
   if (buildCounterDeprecatedEvent < 3) {
     o.action = buildFormAction();
@@ -409,7 +408,7 @@ api.DeprecatedEvent buildDeprecatedEvent() {
 void checkDeprecatedEvent(api.DeprecatedEvent o) {
   buildCounterDeprecatedEvent++;
   if (buildCounterDeprecatedEvent < 3) {
-    checkFormAction(o.action! as api.FormAction);
+    checkFormAction(o.action!);
     unittest.expect(
       o.configCompleteRedirectUrl!,
       unittest.equals('foo'),
@@ -418,8 +417,8 @@ void checkDeprecatedEvent(api.DeprecatedEvent o) {
       o.eventTime!,
       unittest.equals('foo'),
     );
-    checkMessage(o.message! as api.Message);
-    checkSpace(o.space! as api.Space);
+    checkMessage(o.message!);
+    checkSpace(o.space!);
     unittest.expect(
       o.threadKey!,
       unittest.equals('foo'),
@@ -432,14 +431,14 @@ void checkDeprecatedEvent(api.DeprecatedEvent o) {
       o.type!,
       unittest.equals('foo'),
     );
-    checkUser(o.user! as api.User);
+    checkUser(o.user!);
   }
   buildCounterDeprecatedEvent--;
 }
 
 core.int buildCounterDriveDataRef = 0;
 api.DriveDataRef buildDriveDataRef() {
-  var o = api.DriveDataRef();
+  final o = api.DriveDataRef();
   buildCounterDriveDataRef++;
   if (buildCounterDriveDataRef < 3) {
     o.driveFileId = 'foo';
@@ -461,7 +460,7 @@ void checkDriveDataRef(api.DriveDataRef o) {
 
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
-  var o = api.Empty();
+  final o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
@@ -475,7 +474,7 @@ void checkEmpty(api.Empty o) {
 }
 
 core.List<api.ActionParameter> buildUnnamed4141() {
-  var o = <api.ActionParameter>[];
+  final o = <api.ActionParameter>[];
   o.add(buildActionParameter());
   o.add(buildActionParameter());
   return o;
@@ -483,13 +482,13 @@ core.List<api.ActionParameter> buildUnnamed4141() {
 
 void checkUnnamed4141(core.List<api.ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActionParameter(o[0] as api.ActionParameter);
-  checkActionParameter(o[1] as api.ActionParameter);
+  checkActionParameter(o[0]);
+  checkActionParameter(o[1]);
 }
 
 core.int buildCounterFormAction = 0;
 api.FormAction buildFormAction() {
-  var o = api.FormAction();
+  final o = api.FormAction();
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     o.actionMethodName = 'foo';
@@ -512,7 +511,7 @@ void checkFormAction(api.FormAction o) {
 }
 
 core.List<api.GoogleAppsCardV1ActionParameter> buildUnnamed4142() {
-  var o = <api.GoogleAppsCardV1ActionParameter>[];
+  final o = <api.GoogleAppsCardV1ActionParameter>[];
   o.add(buildGoogleAppsCardV1ActionParameter());
   o.add(buildGoogleAppsCardV1ActionParameter());
   return o;
@@ -520,15 +519,13 @@ core.List<api.GoogleAppsCardV1ActionParameter> buildUnnamed4142() {
 
 void checkUnnamed4142(core.List<api.GoogleAppsCardV1ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCardV1ActionParameter(
-      o[0] as api.GoogleAppsCardV1ActionParameter);
-  checkGoogleAppsCardV1ActionParameter(
-      o[1] as api.GoogleAppsCardV1ActionParameter);
+  checkGoogleAppsCardV1ActionParameter(o[0]);
+  checkGoogleAppsCardV1ActionParameter(o[1]);
 }
 
 core.int buildCounterGoogleAppsCardV1Action = 0;
 api.GoogleAppsCardV1Action buildGoogleAppsCardV1Action() {
-  var o = api.GoogleAppsCardV1Action();
+  final o = api.GoogleAppsCardV1Action();
   buildCounterGoogleAppsCardV1Action++;
   if (buildCounterGoogleAppsCardV1Action < 3) {
     o.function = 'foo';
@@ -559,7 +556,7 @@ void checkGoogleAppsCardV1Action(api.GoogleAppsCardV1Action o) {
 
 core.int buildCounterGoogleAppsCardV1ActionParameter = 0;
 api.GoogleAppsCardV1ActionParameter buildGoogleAppsCardV1ActionParameter() {
-  var o = api.GoogleAppsCardV1ActionParameter();
+  final o = api.GoogleAppsCardV1ActionParameter();
   buildCounterGoogleAppsCardV1ActionParameter++;
   if (buildCounterGoogleAppsCardV1ActionParameter < 3) {
     o.key = 'foo';
@@ -587,7 +584,7 @@ void checkGoogleAppsCardV1ActionParameter(
 
 core.int buildCounterGoogleAppsCardV1BorderStyle = 0;
 api.GoogleAppsCardV1BorderStyle buildGoogleAppsCardV1BorderStyle() {
-  var o = api.GoogleAppsCardV1BorderStyle();
+  final o = api.GoogleAppsCardV1BorderStyle();
   buildCounterGoogleAppsCardV1BorderStyle++;
   if (buildCounterGoogleAppsCardV1BorderStyle < 3) {
     o.cornerRadius = 42;
@@ -605,7 +602,7 @@ void checkGoogleAppsCardV1BorderStyle(api.GoogleAppsCardV1BorderStyle o) {
       o.cornerRadius!,
       unittest.equals(42),
     );
-    checkColor(o.strokeColor! as api.Color);
+    checkColor(o.strokeColor!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -616,7 +613,7 @@ void checkGoogleAppsCardV1BorderStyle(api.GoogleAppsCardV1BorderStyle o) {
 
 core.int buildCounterGoogleAppsCardV1Button = 0;
 api.GoogleAppsCardV1Button buildGoogleAppsCardV1Button() {
-  var o = api.GoogleAppsCardV1Button();
+  final o = api.GoogleAppsCardV1Button();
   buildCounterGoogleAppsCardV1Button++;
   if (buildCounterGoogleAppsCardV1Button < 3) {
     o.altText = 'foo';
@@ -637,10 +634,10 @@ void checkGoogleAppsCardV1Button(api.GoogleAppsCardV1Button o) {
       o.altText!,
       unittest.equals('foo'),
     );
-    checkColor(o.color! as api.Color);
+    checkColor(o.color!);
     unittest.expect(o.disabled!, unittest.isTrue);
-    checkGoogleAppsCardV1Icon(o.icon! as api.GoogleAppsCardV1Icon);
-    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+    checkGoogleAppsCardV1Icon(o.icon!);
+    checkGoogleAppsCardV1OnClick(o.onClick!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -650,7 +647,7 @@ void checkGoogleAppsCardV1Button(api.GoogleAppsCardV1Button o) {
 }
 
 core.List<api.GoogleAppsCardV1Button> buildUnnamed4143() {
-  var o = <api.GoogleAppsCardV1Button>[];
+  final o = <api.GoogleAppsCardV1Button>[];
   o.add(buildGoogleAppsCardV1Button());
   o.add(buildGoogleAppsCardV1Button());
   return o;
@@ -658,13 +655,13 @@ core.List<api.GoogleAppsCardV1Button> buildUnnamed4143() {
 
 void checkUnnamed4143(core.List<api.GoogleAppsCardV1Button> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCardV1Button(o[0] as api.GoogleAppsCardV1Button);
-  checkGoogleAppsCardV1Button(o[1] as api.GoogleAppsCardV1Button);
+  checkGoogleAppsCardV1Button(o[0]);
+  checkGoogleAppsCardV1Button(o[1]);
 }
 
 core.int buildCounterGoogleAppsCardV1ButtonList = 0;
 api.GoogleAppsCardV1ButtonList buildGoogleAppsCardV1ButtonList() {
-  var o = api.GoogleAppsCardV1ButtonList();
+  final o = api.GoogleAppsCardV1ButtonList();
   buildCounterGoogleAppsCardV1ButtonList++;
   if (buildCounterGoogleAppsCardV1ButtonList < 3) {
     o.buttons = buildUnnamed4143();
@@ -682,7 +679,7 @@ void checkGoogleAppsCardV1ButtonList(api.GoogleAppsCardV1ButtonList o) {
 }
 
 core.List<api.GoogleAppsCardV1CardAction> buildUnnamed4144() {
-  var o = <api.GoogleAppsCardV1CardAction>[];
+  final o = <api.GoogleAppsCardV1CardAction>[];
   o.add(buildGoogleAppsCardV1CardAction());
   o.add(buildGoogleAppsCardV1CardAction());
   return o;
@@ -690,12 +687,12 @@ core.List<api.GoogleAppsCardV1CardAction> buildUnnamed4144() {
 
 void checkUnnamed4144(core.List<api.GoogleAppsCardV1CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCardV1CardAction(o[0] as api.GoogleAppsCardV1CardAction);
-  checkGoogleAppsCardV1CardAction(o[1] as api.GoogleAppsCardV1CardAction);
+  checkGoogleAppsCardV1CardAction(o[0]);
+  checkGoogleAppsCardV1CardAction(o[1]);
 }
 
 core.List<api.GoogleAppsCardV1Section> buildUnnamed4145() {
-  var o = <api.GoogleAppsCardV1Section>[];
+  final o = <api.GoogleAppsCardV1Section>[];
   o.add(buildGoogleAppsCardV1Section());
   o.add(buildGoogleAppsCardV1Section());
   return o;
@@ -703,13 +700,13 @@ core.List<api.GoogleAppsCardV1Section> buildUnnamed4145() {
 
 void checkUnnamed4145(core.List<api.GoogleAppsCardV1Section> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCardV1Section(o[0] as api.GoogleAppsCardV1Section);
-  checkGoogleAppsCardV1Section(o[1] as api.GoogleAppsCardV1Section);
+  checkGoogleAppsCardV1Section(o[0]);
+  checkGoogleAppsCardV1Section(o[1]);
 }
 
 core.int buildCounterGoogleAppsCardV1Card = 0;
 api.GoogleAppsCardV1Card buildGoogleAppsCardV1Card() {
-  var o = api.GoogleAppsCardV1Card();
+  final o = api.GoogleAppsCardV1Card();
   buildCounterGoogleAppsCardV1Card++;
   if (buildCounterGoogleAppsCardV1Card < 3) {
     o.cardActions = buildUnnamed4144();
@@ -732,16 +729,13 @@ void checkGoogleAppsCardV1Card(api.GoogleAppsCardV1Card o) {
       o.displayStyle!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1CardFixedFooter(
-        o.fixedFooter! as api.GoogleAppsCardV1CardFixedFooter);
-    checkGoogleAppsCardV1CardHeader(
-        o.header! as api.GoogleAppsCardV1CardHeader);
+    checkGoogleAppsCardV1CardFixedFooter(o.fixedFooter!);
+    checkGoogleAppsCardV1CardHeader(o.header!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1CardHeader(
-        o.peekCardHeader! as api.GoogleAppsCardV1CardHeader);
+    checkGoogleAppsCardV1CardHeader(o.peekCardHeader!);
     checkUnnamed4145(o.sections!);
   }
   buildCounterGoogleAppsCardV1Card--;
@@ -749,7 +743,7 @@ void checkGoogleAppsCardV1Card(api.GoogleAppsCardV1Card o) {
 
 core.int buildCounterGoogleAppsCardV1CardAction = 0;
 api.GoogleAppsCardV1CardAction buildGoogleAppsCardV1CardAction() {
-  var o = api.GoogleAppsCardV1CardAction();
+  final o = api.GoogleAppsCardV1CardAction();
   buildCounterGoogleAppsCardV1CardAction++;
   if (buildCounterGoogleAppsCardV1CardAction < 3) {
     o.actionLabel = 'foo';
@@ -766,14 +760,14 @@ void checkGoogleAppsCardV1CardAction(api.GoogleAppsCardV1CardAction o) {
       o.actionLabel!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+    checkGoogleAppsCardV1OnClick(o.onClick!);
   }
   buildCounterGoogleAppsCardV1CardAction--;
 }
 
 core.int buildCounterGoogleAppsCardV1CardFixedFooter = 0;
 api.GoogleAppsCardV1CardFixedFooter buildGoogleAppsCardV1CardFixedFooter() {
-  var o = api.GoogleAppsCardV1CardFixedFooter();
+  final o = api.GoogleAppsCardV1CardFixedFooter();
   buildCounterGoogleAppsCardV1CardFixedFooter++;
   if (buildCounterGoogleAppsCardV1CardFixedFooter < 3) {
     o.primaryButton = buildGoogleAppsCardV1Button();
@@ -787,16 +781,15 @@ void checkGoogleAppsCardV1CardFixedFooter(
     api.GoogleAppsCardV1CardFixedFooter o) {
   buildCounterGoogleAppsCardV1CardFixedFooter++;
   if (buildCounterGoogleAppsCardV1CardFixedFooter < 3) {
-    checkGoogleAppsCardV1Button(o.primaryButton! as api.GoogleAppsCardV1Button);
-    checkGoogleAppsCardV1Button(
-        o.secondaryButton! as api.GoogleAppsCardV1Button);
+    checkGoogleAppsCardV1Button(o.primaryButton!);
+    checkGoogleAppsCardV1Button(o.secondaryButton!);
   }
   buildCounterGoogleAppsCardV1CardFixedFooter--;
 }
 
 core.int buildCounterGoogleAppsCardV1CardHeader = 0;
 api.GoogleAppsCardV1CardHeader buildGoogleAppsCardV1CardHeader() {
-  var o = api.GoogleAppsCardV1CardHeader();
+  final o = api.GoogleAppsCardV1CardHeader();
   buildCounterGoogleAppsCardV1CardHeader++;
   if (buildCounterGoogleAppsCardV1CardHeader < 3) {
     o.imageAltText = 'foo';
@@ -838,7 +831,7 @@ void checkGoogleAppsCardV1CardHeader(api.GoogleAppsCardV1CardHeader o) {
 
 core.int buildCounterGoogleAppsCardV1DateTimePicker = 0;
 api.GoogleAppsCardV1DateTimePicker buildGoogleAppsCardV1DateTimePicker() {
-  var o = api.GoogleAppsCardV1DateTimePicker();
+  final o = api.GoogleAppsCardV1DateTimePicker();
   buildCounterGoogleAppsCardV1DateTimePicker++;
   if (buildCounterGoogleAppsCardV1DateTimePicker < 3) {
     o.label = 'foo';
@@ -863,8 +856,7 @@ void checkGoogleAppsCardV1DateTimePicker(api.GoogleAppsCardV1DateTimePicker o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1Action(
-        o.onChangeAction! as api.GoogleAppsCardV1Action);
+    checkGoogleAppsCardV1Action(o.onChangeAction!);
     unittest.expect(
       o.timezoneOffsetDate!,
       unittest.equals(42),
@@ -883,7 +875,7 @@ void checkGoogleAppsCardV1DateTimePicker(api.GoogleAppsCardV1DateTimePicker o) {
 
 core.int buildCounterGoogleAppsCardV1DecoratedText = 0;
 api.GoogleAppsCardV1DecoratedText buildGoogleAppsCardV1DecoratedText() {
-  var o = api.GoogleAppsCardV1DecoratedText();
+  final o = api.GoogleAppsCardV1DecoratedText();
   buildCounterGoogleAppsCardV1DecoratedText++;
   if (buildCounterGoogleAppsCardV1DecoratedText < 3) {
     o.bottomLabel = 'foo';
@@ -908,13 +900,12 @@ void checkGoogleAppsCardV1DecoratedText(api.GoogleAppsCardV1DecoratedText o) {
       o.bottomLabel!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1Button(o.button! as api.GoogleAppsCardV1Button);
-    checkGoogleAppsCardV1Icon(o.endIcon! as api.GoogleAppsCardV1Icon);
-    checkGoogleAppsCardV1Icon(o.icon! as api.GoogleAppsCardV1Icon);
-    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
-    checkGoogleAppsCardV1Icon(o.startIcon! as api.GoogleAppsCardV1Icon);
-    checkGoogleAppsCardV1SwitchControl(
-        o.switchControl! as api.GoogleAppsCardV1SwitchControl);
+    checkGoogleAppsCardV1Button(o.button!);
+    checkGoogleAppsCardV1Icon(o.endIcon!);
+    checkGoogleAppsCardV1Icon(o.icon!);
+    checkGoogleAppsCardV1OnClick(o.onClick!);
+    checkGoogleAppsCardV1Icon(o.startIcon!);
+    checkGoogleAppsCardV1SwitchControl(o.switchControl!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -930,7 +921,7 @@ void checkGoogleAppsCardV1DecoratedText(api.GoogleAppsCardV1DecoratedText o) {
 
 core.int buildCounterGoogleAppsCardV1Divider = 0;
 api.GoogleAppsCardV1Divider buildGoogleAppsCardV1Divider() {
-  var o = api.GoogleAppsCardV1Divider();
+  final o = api.GoogleAppsCardV1Divider();
   buildCounterGoogleAppsCardV1Divider++;
   if (buildCounterGoogleAppsCardV1Divider < 3) {}
   buildCounterGoogleAppsCardV1Divider--;
@@ -944,7 +935,7 @@ void checkGoogleAppsCardV1Divider(api.GoogleAppsCardV1Divider o) {
 }
 
 core.List<api.GoogleAppsCardV1GridItem> buildUnnamed4146() {
-  var o = <api.GoogleAppsCardV1GridItem>[];
+  final o = <api.GoogleAppsCardV1GridItem>[];
   o.add(buildGoogleAppsCardV1GridItem());
   o.add(buildGoogleAppsCardV1GridItem());
   return o;
@@ -952,13 +943,13 @@ core.List<api.GoogleAppsCardV1GridItem> buildUnnamed4146() {
 
 void checkUnnamed4146(core.List<api.GoogleAppsCardV1GridItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCardV1GridItem(o[0] as api.GoogleAppsCardV1GridItem);
-  checkGoogleAppsCardV1GridItem(o[1] as api.GoogleAppsCardV1GridItem);
+  checkGoogleAppsCardV1GridItem(o[0]);
+  checkGoogleAppsCardV1GridItem(o[1]);
 }
 
 core.int buildCounterGoogleAppsCardV1Grid = 0;
 api.GoogleAppsCardV1Grid buildGoogleAppsCardV1Grid() {
-  var o = api.GoogleAppsCardV1Grid();
+  final o = api.GoogleAppsCardV1Grid();
   buildCounterGoogleAppsCardV1Grid++;
   if (buildCounterGoogleAppsCardV1Grid < 3) {
     o.borderStyle = buildGoogleAppsCardV1BorderStyle();
@@ -974,14 +965,13 @@ api.GoogleAppsCardV1Grid buildGoogleAppsCardV1Grid() {
 void checkGoogleAppsCardV1Grid(api.GoogleAppsCardV1Grid o) {
   buildCounterGoogleAppsCardV1Grid++;
   if (buildCounterGoogleAppsCardV1Grid < 3) {
-    checkGoogleAppsCardV1BorderStyle(
-        o.borderStyle! as api.GoogleAppsCardV1BorderStyle);
+    checkGoogleAppsCardV1BorderStyle(o.borderStyle!);
     unittest.expect(
       o.columnCount!,
       unittest.equals(42),
     );
     checkUnnamed4146(o.items!);
-    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+    checkGoogleAppsCardV1OnClick(o.onClick!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -992,7 +982,7 @@ void checkGoogleAppsCardV1Grid(api.GoogleAppsCardV1Grid o) {
 
 core.int buildCounterGoogleAppsCardV1GridItem = 0;
 api.GoogleAppsCardV1GridItem buildGoogleAppsCardV1GridItem() {
-  var o = api.GoogleAppsCardV1GridItem();
+  final o = api.GoogleAppsCardV1GridItem();
   buildCounterGoogleAppsCardV1GridItem++;
   if (buildCounterGoogleAppsCardV1GridItem < 3) {
     o.id = 'foo';
@@ -1013,8 +1003,7 @@ void checkGoogleAppsCardV1GridItem(api.GoogleAppsCardV1GridItem o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1ImageComponent(
-        o.image! as api.GoogleAppsCardV1ImageComponent);
+    checkGoogleAppsCardV1ImageComponent(o.image!);
     unittest.expect(
       o.layout!,
       unittest.equals('foo'),
@@ -1037,7 +1026,7 @@ void checkGoogleAppsCardV1GridItem(api.GoogleAppsCardV1GridItem o) {
 
 core.int buildCounterGoogleAppsCardV1Icon = 0;
 api.GoogleAppsCardV1Icon buildGoogleAppsCardV1Icon() {
-  var o = api.GoogleAppsCardV1Icon();
+  final o = api.GoogleAppsCardV1Icon();
   buildCounterGoogleAppsCardV1Icon++;
   if (buildCounterGoogleAppsCardV1Icon < 3) {
     o.altText = 'foo';
@@ -1074,7 +1063,7 @@ void checkGoogleAppsCardV1Icon(api.GoogleAppsCardV1Icon o) {
 
 core.int buildCounterGoogleAppsCardV1Image = 0;
 api.GoogleAppsCardV1Image buildGoogleAppsCardV1Image() {
-  var o = api.GoogleAppsCardV1Image();
+  final o = api.GoogleAppsCardV1Image();
   buildCounterGoogleAppsCardV1Image++;
   if (buildCounterGoogleAppsCardV1Image < 3) {
     o.altText = 'foo';
@@ -1096,14 +1085,14 @@ void checkGoogleAppsCardV1Image(api.GoogleAppsCardV1Image o) {
       o.imageUrl!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1OnClick(o.onClick! as api.GoogleAppsCardV1OnClick);
+    checkGoogleAppsCardV1OnClick(o.onClick!);
   }
   buildCounterGoogleAppsCardV1Image--;
 }
 
 core.int buildCounterGoogleAppsCardV1ImageComponent = 0;
 api.GoogleAppsCardV1ImageComponent buildGoogleAppsCardV1ImageComponent() {
-  var o = api.GoogleAppsCardV1ImageComponent();
+  final o = api.GoogleAppsCardV1ImageComponent();
   buildCounterGoogleAppsCardV1ImageComponent++;
   if (buildCounterGoogleAppsCardV1ImageComponent < 3) {
     o.altText = 'foo';
@@ -1122,10 +1111,8 @@ void checkGoogleAppsCardV1ImageComponent(api.GoogleAppsCardV1ImageComponent o) {
       o.altText!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1BorderStyle(
-        o.borderStyle! as api.GoogleAppsCardV1BorderStyle);
-    checkGoogleAppsCardV1ImageCropStyle(
-        o.cropStyle! as api.GoogleAppsCardV1ImageCropStyle);
+    checkGoogleAppsCardV1BorderStyle(o.borderStyle!);
+    checkGoogleAppsCardV1ImageCropStyle(o.cropStyle!);
     unittest.expect(
       o.imageUri!,
       unittest.equals('foo'),
@@ -1136,7 +1123,7 @@ void checkGoogleAppsCardV1ImageComponent(api.GoogleAppsCardV1ImageComponent o) {
 
 core.int buildCounterGoogleAppsCardV1ImageCropStyle = 0;
 api.GoogleAppsCardV1ImageCropStyle buildGoogleAppsCardV1ImageCropStyle() {
-  var o = api.GoogleAppsCardV1ImageCropStyle();
+  final o = api.GoogleAppsCardV1ImageCropStyle();
   buildCounterGoogleAppsCardV1ImageCropStyle++;
   if (buildCounterGoogleAppsCardV1ImageCropStyle < 3) {
     o.aspectRatio = 42.0;
@@ -1163,7 +1150,7 @@ void checkGoogleAppsCardV1ImageCropStyle(api.GoogleAppsCardV1ImageCropStyle o) {
 
 core.int buildCounterGoogleAppsCardV1OnClick = 0;
 api.GoogleAppsCardV1OnClick buildGoogleAppsCardV1OnClick() {
-  var o = api.GoogleAppsCardV1OnClick();
+  final o = api.GoogleAppsCardV1OnClick();
   buildCounterGoogleAppsCardV1OnClick++;
   if (buildCounterGoogleAppsCardV1OnClick < 3) {
     o.action = buildGoogleAppsCardV1Action();
@@ -1178,18 +1165,17 @@ api.GoogleAppsCardV1OnClick buildGoogleAppsCardV1OnClick() {
 void checkGoogleAppsCardV1OnClick(api.GoogleAppsCardV1OnClick o) {
   buildCounterGoogleAppsCardV1OnClick++;
   if (buildCounterGoogleAppsCardV1OnClick < 3) {
-    checkGoogleAppsCardV1Action(o.action! as api.GoogleAppsCardV1Action);
-    checkGoogleAppsCardV1Card(o.card! as api.GoogleAppsCardV1Card);
-    checkGoogleAppsCardV1Action(
-        o.openDynamicLinkAction! as api.GoogleAppsCardV1Action);
-    checkGoogleAppsCardV1OpenLink(o.openLink! as api.GoogleAppsCardV1OpenLink);
+    checkGoogleAppsCardV1Action(o.action!);
+    checkGoogleAppsCardV1Card(o.card!);
+    checkGoogleAppsCardV1Action(o.openDynamicLinkAction!);
+    checkGoogleAppsCardV1OpenLink(o.openLink!);
   }
   buildCounterGoogleAppsCardV1OnClick--;
 }
 
 core.int buildCounterGoogleAppsCardV1OpenLink = 0;
 api.GoogleAppsCardV1OpenLink buildGoogleAppsCardV1OpenLink() {
-  var o = api.GoogleAppsCardV1OpenLink();
+  final o = api.GoogleAppsCardV1OpenLink();
   buildCounterGoogleAppsCardV1OpenLink++;
   if (buildCounterGoogleAppsCardV1OpenLink < 3) {
     o.onClose = 'foo';
@@ -1220,7 +1206,7 @@ void checkGoogleAppsCardV1OpenLink(api.GoogleAppsCardV1OpenLink o) {
 }
 
 core.List<api.GoogleAppsCardV1Widget> buildUnnamed4147() {
-  var o = <api.GoogleAppsCardV1Widget>[];
+  final o = <api.GoogleAppsCardV1Widget>[];
   o.add(buildGoogleAppsCardV1Widget());
   o.add(buildGoogleAppsCardV1Widget());
   return o;
@@ -1228,13 +1214,13 @@ core.List<api.GoogleAppsCardV1Widget> buildUnnamed4147() {
 
 void checkUnnamed4147(core.List<api.GoogleAppsCardV1Widget> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCardV1Widget(o[0] as api.GoogleAppsCardV1Widget);
-  checkGoogleAppsCardV1Widget(o[1] as api.GoogleAppsCardV1Widget);
+  checkGoogleAppsCardV1Widget(o[0]);
+  checkGoogleAppsCardV1Widget(o[1]);
 }
 
 core.int buildCounterGoogleAppsCardV1Section = 0;
 api.GoogleAppsCardV1Section buildGoogleAppsCardV1Section() {
-  var o = api.GoogleAppsCardV1Section();
+  final o = api.GoogleAppsCardV1Section();
   buildCounterGoogleAppsCardV1Section++;
   if (buildCounterGoogleAppsCardV1Section < 3) {
     o.collapsible = true;
@@ -1264,7 +1250,7 @@ void checkGoogleAppsCardV1Section(api.GoogleAppsCardV1Section o) {
 }
 
 core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed4148() {
-  var o = <api.GoogleAppsCardV1SelectionItem>[];
+  final o = <api.GoogleAppsCardV1SelectionItem>[];
   o.add(buildGoogleAppsCardV1SelectionItem());
   o.add(buildGoogleAppsCardV1SelectionItem());
   return o;
@@ -1272,13 +1258,13 @@ core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed4148() {
 
 void checkUnnamed4148(core.List<api.GoogleAppsCardV1SelectionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCardV1SelectionItem(o[0] as api.GoogleAppsCardV1SelectionItem);
-  checkGoogleAppsCardV1SelectionItem(o[1] as api.GoogleAppsCardV1SelectionItem);
+  checkGoogleAppsCardV1SelectionItem(o[0]);
+  checkGoogleAppsCardV1SelectionItem(o[1]);
 }
 
 core.int buildCounterGoogleAppsCardV1SelectionInput = 0;
 api.GoogleAppsCardV1SelectionInput buildGoogleAppsCardV1SelectionInput() {
-  var o = api.GoogleAppsCardV1SelectionInput();
+  final o = api.GoogleAppsCardV1SelectionInput();
   buildCounterGoogleAppsCardV1SelectionInput++;
   if (buildCounterGoogleAppsCardV1SelectionInput < 3) {
     o.items = buildUnnamed4148();
@@ -1303,8 +1289,7 @@ void checkGoogleAppsCardV1SelectionInput(api.GoogleAppsCardV1SelectionInput o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1Action(
-        o.onChangeAction! as api.GoogleAppsCardV1Action);
+    checkGoogleAppsCardV1Action(o.onChangeAction!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1315,7 +1300,7 @@ void checkGoogleAppsCardV1SelectionInput(api.GoogleAppsCardV1SelectionInput o) {
 
 core.int buildCounterGoogleAppsCardV1SelectionItem = 0;
 api.GoogleAppsCardV1SelectionItem buildGoogleAppsCardV1SelectionItem() {
-  var o = api.GoogleAppsCardV1SelectionItem();
+  final o = api.GoogleAppsCardV1SelectionItem();
   buildCounterGoogleAppsCardV1SelectionItem++;
   if (buildCounterGoogleAppsCardV1SelectionItem < 3) {
     o.selected = true;
@@ -1344,7 +1329,7 @@ void checkGoogleAppsCardV1SelectionItem(api.GoogleAppsCardV1SelectionItem o) {
 
 core.int buildCounterGoogleAppsCardV1SuggestionItem = 0;
 api.GoogleAppsCardV1SuggestionItem buildGoogleAppsCardV1SuggestionItem() {
-  var o = api.GoogleAppsCardV1SuggestionItem();
+  final o = api.GoogleAppsCardV1SuggestionItem();
   buildCounterGoogleAppsCardV1SuggestionItem++;
   if (buildCounterGoogleAppsCardV1SuggestionItem < 3) {
     o.text = 'foo';
@@ -1365,7 +1350,7 @@ void checkGoogleAppsCardV1SuggestionItem(api.GoogleAppsCardV1SuggestionItem o) {
 }
 
 core.List<api.GoogleAppsCardV1SuggestionItem> buildUnnamed4149() {
-  var o = <api.GoogleAppsCardV1SuggestionItem>[];
+  final o = <api.GoogleAppsCardV1SuggestionItem>[];
   o.add(buildGoogleAppsCardV1SuggestionItem());
   o.add(buildGoogleAppsCardV1SuggestionItem());
   return o;
@@ -1373,15 +1358,13 @@ core.List<api.GoogleAppsCardV1SuggestionItem> buildUnnamed4149() {
 
 void checkUnnamed4149(core.List<api.GoogleAppsCardV1SuggestionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCardV1SuggestionItem(
-      o[0] as api.GoogleAppsCardV1SuggestionItem);
-  checkGoogleAppsCardV1SuggestionItem(
-      o[1] as api.GoogleAppsCardV1SuggestionItem);
+  checkGoogleAppsCardV1SuggestionItem(o[0]);
+  checkGoogleAppsCardV1SuggestionItem(o[1]);
 }
 
 core.int buildCounterGoogleAppsCardV1Suggestions = 0;
 api.GoogleAppsCardV1Suggestions buildGoogleAppsCardV1Suggestions() {
-  var o = api.GoogleAppsCardV1Suggestions();
+  final o = api.GoogleAppsCardV1Suggestions();
   buildCounterGoogleAppsCardV1Suggestions++;
   if (buildCounterGoogleAppsCardV1Suggestions < 3) {
     o.items = buildUnnamed4149();
@@ -1400,7 +1383,7 @@ void checkGoogleAppsCardV1Suggestions(api.GoogleAppsCardV1Suggestions o) {
 
 core.int buildCounterGoogleAppsCardV1SwitchControl = 0;
 api.GoogleAppsCardV1SwitchControl buildGoogleAppsCardV1SwitchControl() {
-  var o = api.GoogleAppsCardV1SwitchControl();
+  final o = api.GoogleAppsCardV1SwitchControl();
   buildCounterGoogleAppsCardV1SwitchControl++;
   if (buildCounterGoogleAppsCardV1SwitchControl < 3) {
     o.controlType = 'foo';
@@ -1424,8 +1407,7 @@ void checkGoogleAppsCardV1SwitchControl(api.GoogleAppsCardV1SwitchControl o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1Action(
-        o.onChangeAction! as api.GoogleAppsCardV1Action);
+    checkGoogleAppsCardV1Action(o.onChangeAction!);
     unittest.expect(o.selected!, unittest.isTrue);
     unittest.expect(
       o.value!,
@@ -1437,7 +1419,7 @@ void checkGoogleAppsCardV1SwitchControl(api.GoogleAppsCardV1SwitchControl o) {
 
 core.int buildCounterGoogleAppsCardV1TextInput = 0;
 api.GoogleAppsCardV1TextInput buildGoogleAppsCardV1TextInput() {
-  var o = api.GoogleAppsCardV1TextInput();
+  final o = api.GoogleAppsCardV1TextInput();
   buildCounterGoogleAppsCardV1TextInput++;
   if (buildCounterGoogleAppsCardV1TextInput < 3) {
     o.autoCompleteAction = buildGoogleAppsCardV1Action();
@@ -1456,14 +1438,12 @@ api.GoogleAppsCardV1TextInput buildGoogleAppsCardV1TextInput() {
 void checkGoogleAppsCardV1TextInput(api.GoogleAppsCardV1TextInput o) {
   buildCounterGoogleAppsCardV1TextInput++;
   if (buildCounterGoogleAppsCardV1TextInput < 3) {
-    checkGoogleAppsCardV1Action(
-        o.autoCompleteAction! as api.GoogleAppsCardV1Action);
+    checkGoogleAppsCardV1Action(o.autoCompleteAction!);
     unittest.expect(
       o.hintText!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1Suggestions(
-        o.initialSuggestions! as api.GoogleAppsCardV1Suggestions);
+    checkGoogleAppsCardV1Suggestions(o.initialSuggestions!);
     unittest.expect(
       o.label!,
       unittest.equals('foo'),
@@ -1472,8 +1452,7 @@ void checkGoogleAppsCardV1TextInput(api.GoogleAppsCardV1TextInput o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1Action(
-        o.onChangeAction! as api.GoogleAppsCardV1Action);
+    checkGoogleAppsCardV1Action(o.onChangeAction!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1488,7 +1467,7 @@ void checkGoogleAppsCardV1TextInput(api.GoogleAppsCardV1TextInput o) {
 
 core.int buildCounterGoogleAppsCardV1TextParagraph = 0;
 api.GoogleAppsCardV1TextParagraph buildGoogleAppsCardV1TextParagraph() {
-  var o = api.GoogleAppsCardV1TextParagraph();
+  final o = api.GoogleAppsCardV1TextParagraph();
   buildCounterGoogleAppsCardV1TextParagraph++;
   if (buildCounterGoogleAppsCardV1TextParagraph < 3) {
     o.text = 'foo';
@@ -1510,7 +1489,7 @@ void checkGoogleAppsCardV1TextParagraph(api.GoogleAppsCardV1TextParagraph o) {
 
 core.int buildCounterGoogleAppsCardV1Widget = 0;
 api.GoogleAppsCardV1Widget buildGoogleAppsCardV1Widget() {
-  var o = api.GoogleAppsCardV1Widget();
+  final o = api.GoogleAppsCardV1Widget();
   buildCounterGoogleAppsCardV1Widget++;
   if (buildCounterGoogleAppsCardV1Widget < 3) {
     o.buttonList = buildGoogleAppsCardV1ButtonList();
@@ -1531,32 +1510,26 @@ api.GoogleAppsCardV1Widget buildGoogleAppsCardV1Widget() {
 void checkGoogleAppsCardV1Widget(api.GoogleAppsCardV1Widget o) {
   buildCounterGoogleAppsCardV1Widget++;
   if (buildCounterGoogleAppsCardV1Widget < 3) {
-    checkGoogleAppsCardV1ButtonList(
-        o.buttonList! as api.GoogleAppsCardV1ButtonList);
-    checkGoogleAppsCardV1DateTimePicker(
-        o.dateTimePicker! as api.GoogleAppsCardV1DateTimePicker);
-    checkGoogleAppsCardV1DecoratedText(
-        o.decoratedText! as api.GoogleAppsCardV1DecoratedText);
-    checkGoogleAppsCardV1Divider(o.divider! as api.GoogleAppsCardV1Divider);
-    checkGoogleAppsCardV1Grid(o.grid! as api.GoogleAppsCardV1Grid);
+    checkGoogleAppsCardV1ButtonList(o.buttonList!);
+    checkGoogleAppsCardV1DateTimePicker(o.dateTimePicker!);
+    checkGoogleAppsCardV1DecoratedText(o.decoratedText!);
+    checkGoogleAppsCardV1Divider(o.divider!);
+    checkGoogleAppsCardV1Grid(o.grid!);
     unittest.expect(
       o.horizontalAlignment!,
       unittest.equals('foo'),
     );
-    checkGoogleAppsCardV1Image(o.image! as api.GoogleAppsCardV1Image);
-    checkGoogleAppsCardV1SelectionInput(
-        o.selectionInput! as api.GoogleAppsCardV1SelectionInput);
-    checkGoogleAppsCardV1TextInput(
-        o.textInput! as api.GoogleAppsCardV1TextInput);
-    checkGoogleAppsCardV1TextParagraph(
-        o.textParagraph! as api.GoogleAppsCardV1TextParagraph);
+    checkGoogleAppsCardV1Image(o.image!);
+    checkGoogleAppsCardV1SelectionInput(o.selectionInput!);
+    checkGoogleAppsCardV1TextInput(o.textInput!);
+    checkGoogleAppsCardV1TextParagraph(o.textParagraph!);
   }
   buildCounterGoogleAppsCardV1Widget--;
 }
 
 core.int buildCounterImage = 0;
 api.Image buildImage() {
-  var o = api.Image();
+  final o = api.Image();
   buildCounterImage++;
   if (buildCounterImage < 3) {
     o.aspectRatio = 42.0;
@@ -1578,14 +1551,14 @@ void checkImage(api.Image o) {
       o.imageUrl!,
       unittest.equals('foo'),
     );
-    checkOnClick(o.onClick! as api.OnClick);
+    checkOnClick(o.onClick!);
   }
   buildCounterImage--;
 }
 
 core.int buildCounterImageButton = 0;
 api.ImageButton buildImageButton() {
-  var o = api.ImageButton();
+  final o = api.ImageButton();
   buildCounterImageButton++;
   if (buildCounterImageButton < 3) {
     o.icon = 'foo';
@@ -1612,14 +1585,14 @@ void checkImageButton(api.ImageButton o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkOnClick(o.onClick! as api.OnClick);
+    checkOnClick(o.onClick!);
   }
   buildCounterImageButton--;
 }
 
 core.int buildCounterKeyValue = 0;
 api.KeyValue buildKeyValue() {
-  var o = api.KeyValue();
+  final o = api.KeyValue();
   buildCounterKeyValue++;
   if (buildCounterKeyValue < 3) {
     o.bottomLabel = 'foo';
@@ -1642,7 +1615,7 @@ void checkKeyValue(api.KeyValue o) {
       o.bottomLabel!,
       unittest.equals('foo'),
     );
-    checkButton(o.button! as api.Button);
+    checkButton(o.button!);
     unittest.expect(
       o.content!,
       unittest.equals('foo'),
@@ -1656,7 +1629,7 @@ void checkKeyValue(api.KeyValue o) {
       o.iconUrl!,
       unittest.equals('foo'),
     );
-    checkOnClick(o.onClick! as api.OnClick);
+    checkOnClick(o.onClick!);
     unittest.expect(
       o.topLabel!,
       unittest.equals('foo'),
@@ -1666,7 +1639,7 @@ void checkKeyValue(api.KeyValue o) {
 }
 
 core.List<api.Membership> buildUnnamed4150() {
-  var o = <api.Membership>[];
+  final o = <api.Membership>[];
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
@@ -1674,13 +1647,13 @@ core.List<api.Membership> buildUnnamed4150() {
 
 void checkUnnamed4150(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMembership(o[0] as api.Membership);
-  checkMembership(o[1] as api.Membership);
+  checkMembership(o[0]);
+  checkMembership(o[1]);
 }
 
 core.int buildCounterListMembershipsResponse = 0;
 api.ListMembershipsResponse buildListMembershipsResponse() {
-  var o = api.ListMembershipsResponse();
+  final o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
     o.memberships = buildUnnamed4150();
@@ -1703,7 +1676,7 @@ void checkListMembershipsResponse(api.ListMembershipsResponse o) {
 }
 
 core.List<api.Space> buildUnnamed4151() {
-  var o = <api.Space>[];
+  final o = <api.Space>[];
   o.add(buildSpace());
   o.add(buildSpace());
   return o;
@@ -1711,13 +1684,13 @@ core.List<api.Space> buildUnnamed4151() {
 
 void checkUnnamed4151(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpace(o[0] as api.Space);
-  checkSpace(o[1] as api.Space);
+  checkSpace(o[0]);
+  checkSpace(o[1]);
 }
 
 core.int buildCounterListSpacesResponse = 0;
 api.ListSpacesResponse buildListSpacesResponse() {
-  var o = api.ListSpacesResponse();
+  final o = api.ListSpacesResponse();
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -1741,7 +1714,7 @@ void checkListSpacesResponse(api.ListSpacesResponse o) {
 
 core.int buildCounterMedia = 0;
 api.Media buildMedia() {
-  var o = api.Media();
+  final o = api.Media();
   buildCounterMedia++;
   if (buildCounterMedia < 3) {
     o.resourceName = 'foo';
@@ -1763,7 +1736,7 @@ void checkMedia(api.Media o) {
 
 core.int buildCounterMembership = 0;
 api.Membership buildMembership() {
-  var o = api.Membership();
+  final o = api.Membership();
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     o.createTime = 'foo';
@@ -1782,7 +1755,7 @@ void checkMembership(api.Membership o) {
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUser(o.member! as api.User);
+    checkUser(o.member!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1796,7 +1769,7 @@ void checkMembership(api.Membership o) {
 }
 
 core.List<api.Annotation> buildUnnamed4152() {
-  var o = <api.Annotation>[];
+  final o = <api.Annotation>[];
   o.add(buildAnnotation());
   o.add(buildAnnotation());
   return o;
@@ -1804,12 +1777,12 @@ core.List<api.Annotation> buildUnnamed4152() {
 
 void checkUnnamed4152(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotation(o[0] as api.Annotation);
-  checkAnnotation(o[1] as api.Annotation);
+  checkAnnotation(o[0]);
+  checkAnnotation(o[1]);
 }
 
 core.List<api.Attachment> buildUnnamed4153() {
-  var o = <api.Attachment>[];
+  final o = <api.Attachment>[];
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
@@ -1817,12 +1790,12 @@ core.List<api.Attachment> buildUnnamed4153() {
 
 void checkUnnamed4153(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttachment(o[0] as api.Attachment);
-  checkAttachment(o[1] as api.Attachment);
+  checkAttachment(o[0]);
+  checkAttachment(o[1]);
 }
 
 core.List<api.Card> buildUnnamed4154() {
-  var o = <api.Card>[];
+  final o = <api.Card>[];
   o.add(buildCard());
   o.add(buildCard());
   return o;
@@ -1830,12 +1803,12 @@ core.List<api.Card> buildUnnamed4154() {
 
 void checkUnnamed4154(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCard(o[0] as api.Card);
-  checkCard(o[1] as api.Card);
+  checkCard(o[0]);
+  checkCard(o[1]);
 }
 
 core.List<api.CardWithId> buildUnnamed4155() {
-  var o = <api.CardWithId>[];
+  final o = <api.CardWithId>[];
   o.add(buildCardWithId());
   o.add(buildCardWithId());
   return o;
@@ -1843,13 +1816,13 @@ core.List<api.CardWithId> buildUnnamed4155() {
 
 void checkUnnamed4155(core.List<api.CardWithId> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCardWithId(o[0] as api.CardWithId);
-  checkCardWithId(o[1] as api.CardWithId);
+  checkCardWithId(o[0]);
+  checkCardWithId(o[1]);
 }
 
 core.int buildCounterMessage = 0;
 api.Message buildMessage() {
-  var o = api.Message();
+  final o = api.Message();
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.actionResponse = buildActionResponse();
@@ -1875,7 +1848,7 @@ api.Message buildMessage() {
 void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
-    checkActionResponse(o.actionResponse! as api.ActionResponse);
+    checkActionResponse(o.actionResponse!);
     checkUnnamed4152(o.annotations!);
     unittest.expect(
       o.argumentText!,
@@ -1900,21 +1873,21 @@ void checkMessage(api.Message o) {
       o.previewText!,
       unittest.equals('foo'),
     );
-    checkUser(o.sender! as api.User);
-    checkSlashCommand(o.slashCommand! as api.SlashCommand);
-    checkSpace(o.space! as api.Space);
+    checkUser(o.sender!);
+    checkSlashCommand(o.slashCommand!);
+    checkSpace(o.space!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
     );
-    checkThread(o.thread! as api.Thread);
+    checkThread(o.thread!);
   }
   buildCounterMessage--;
 }
 
 core.int buildCounterOnClick = 0;
 api.OnClick buildOnClick() {
-  var o = api.OnClick();
+  final o = api.OnClick();
   buildCounterOnClick++;
   if (buildCounterOnClick < 3) {
     o.action = buildFormAction();
@@ -1927,15 +1900,15 @@ api.OnClick buildOnClick() {
 void checkOnClick(api.OnClick o) {
   buildCounterOnClick++;
   if (buildCounterOnClick < 3) {
-    checkFormAction(o.action! as api.FormAction);
-    checkOpenLink(o.openLink! as api.OpenLink);
+    checkFormAction(o.action!);
+    checkOpenLink(o.openLink!);
   }
   buildCounterOnClick--;
 }
 
 core.int buildCounterOpenLink = 0;
 api.OpenLink buildOpenLink() {
-  var o = api.OpenLink();
+  final o = api.OpenLink();
   buildCounterOpenLink++;
   if (buildCounterOpenLink < 3) {
     o.url = 'foo';
@@ -1956,7 +1929,7 @@ void checkOpenLink(api.OpenLink o) {
 }
 
 core.List<api.WidgetMarkup> buildUnnamed4156() {
-  var o = <api.WidgetMarkup>[];
+  final o = <api.WidgetMarkup>[];
   o.add(buildWidgetMarkup());
   o.add(buildWidgetMarkup());
   return o;
@@ -1964,13 +1937,13 @@ core.List<api.WidgetMarkup> buildUnnamed4156() {
 
 void checkUnnamed4156(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWidgetMarkup(o[0] as api.WidgetMarkup);
-  checkWidgetMarkup(o[1] as api.WidgetMarkup);
+  checkWidgetMarkup(o[0]);
+  checkWidgetMarkup(o[1]);
 }
 
 core.int buildCounterSection = 0;
 api.Section buildSection() {
-  var o = api.Section();
+  final o = api.Section();
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = 'foo';
@@ -1994,7 +1967,7 @@ void checkSection(api.Section o) {
 
 core.int buildCounterSlashCommand = 0;
 api.SlashCommand buildSlashCommand() {
-  var o = api.SlashCommand();
+  final o = api.SlashCommand();
   buildCounterSlashCommand++;
   if (buildCounterSlashCommand < 3) {
     o.commandId = 'foo';
@@ -2016,7 +1989,7 @@ void checkSlashCommand(api.SlashCommand o) {
 
 core.int buildCounterSlashCommandMetadata = 0;
 api.SlashCommandMetadata buildSlashCommandMetadata() {
-  var o = api.SlashCommandMetadata();
+  final o = api.SlashCommandMetadata();
   buildCounterSlashCommandMetadata++;
   if (buildCounterSlashCommandMetadata < 3) {
     o.bot = buildUser();
@@ -2032,7 +2005,7 @@ api.SlashCommandMetadata buildSlashCommandMetadata() {
 void checkSlashCommandMetadata(api.SlashCommandMetadata o) {
   buildCounterSlashCommandMetadata++;
   if (buildCounterSlashCommandMetadata < 3) {
-    checkUser(o.bot! as api.User);
+    checkUser(o.bot!);
     unittest.expect(
       o.commandId!,
       unittest.equals('foo'),
@@ -2052,7 +2025,7 @@ void checkSlashCommandMetadata(api.SlashCommandMetadata o) {
 
 core.int buildCounterSpace = 0;
 api.Space buildSpace() {
-  var o = api.Space();
+  final o = api.Space();
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
     o.displayName = 'foo';
@@ -2088,7 +2061,7 @@ void checkSpace(api.Space o) {
 
 core.int buildCounterTextButton = 0;
 api.TextButton buildTextButton() {
-  var o = api.TextButton();
+  final o = api.TextButton();
   buildCounterTextButton++;
   if (buildCounterTextButton < 3) {
     o.onClick = buildOnClick();
@@ -2101,7 +2074,7 @@ api.TextButton buildTextButton() {
 void checkTextButton(api.TextButton o) {
   buildCounterTextButton++;
   if (buildCounterTextButton < 3) {
-    checkOnClick(o.onClick! as api.OnClick);
+    checkOnClick(o.onClick!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -2112,7 +2085,7 @@ void checkTextButton(api.TextButton o) {
 
 core.int buildCounterTextParagraph = 0;
 api.TextParagraph buildTextParagraph() {
-  var o = api.TextParagraph();
+  final o = api.TextParagraph();
   buildCounterTextParagraph++;
   if (buildCounterTextParagraph < 3) {
     o.text = 'foo';
@@ -2134,7 +2107,7 @@ void checkTextParagraph(api.TextParagraph o) {
 
 core.int buildCounterThread = 0;
 api.Thread buildThread() {
-  var o = api.Thread();
+  final o = api.Thread();
   buildCounterThread++;
   if (buildCounterThread < 3) {
     o.name = 'foo';
@@ -2156,7 +2129,7 @@ void checkThread(api.Thread o) {
 
 core.int buildCounterUser = 0;
 api.User buildUser() {
-  var o = api.User();
+  final o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
     o.displayName = 'foo';
@@ -2195,7 +2168,7 @@ void checkUser(api.User o) {
 
 core.int buildCounterUserMentionMetadata = 0;
 api.UserMentionMetadata buildUserMentionMetadata() {
-  var o = api.UserMentionMetadata();
+  final o = api.UserMentionMetadata();
   buildCounterUserMentionMetadata++;
   if (buildCounterUserMentionMetadata < 3) {
     o.type = 'foo';
@@ -2212,13 +2185,13 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
       o.type!,
       unittest.equals('foo'),
     );
-    checkUser(o.user! as api.User);
+    checkUser(o.user!);
   }
   buildCounterUserMentionMetadata--;
 }
 
 core.List<api.Button> buildUnnamed4157() {
-  var o = <api.Button>[];
+  final o = <api.Button>[];
   o.add(buildButton());
   o.add(buildButton());
   return o;
@@ -2226,13 +2199,13 @@ core.List<api.Button> buildUnnamed4157() {
 
 void checkUnnamed4157(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkButton(o[0] as api.Button);
-  checkButton(o[1] as api.Button);
+  checkButton(o[0]);
+  checkButton(o[1]);
 }
 
 core.int buildCounterWidgetMarkup = 0;
 api.WidgetMarkup buildWidgetMarkup() {
-  var o = api.WidgetMarkup();
+  final o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
     o.buttons = buildUnnamed4157();
@@ -2248,9 +2221,9 @@ void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
     checkUnnamed4157(o.buttons!);
-    checkImage(o.image! as api.Image);
-    checkKeyValue(o.keyValue! as api.KeyValue);
-    checkTextParagraph(o.textParagraph! as api.TextParagraph);
+    checkImage(o.image!);
+    checkKeyValue(o.keyValue!);
+    checkTextParagraph(o.textParagraph!);
   }
   buildCounterWidgetMarkup--;
 }
@@ -2258,686 +2231,682 @@ void checkWidgetMarkup(api.WidgetMarkup o) {
 void main() {
   unittest.group('obj-schema-ActionParameter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildActionParameter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ActionParameter.fromJson(
+      final o = buildActionParameter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ActionParameter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkActionParameter(od as api.ActionParameter);
+      checkActionParameter(od);
     });
   });
 
   unittest.group('obj-schema-ActionResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildActionResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ActionResponse.fromJson(
+      final o = buildActionResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ActionResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkActionResponse(od as api.ActionResponse);
+      checkActionResponse(od);
     });
   });
 
   unittest.group('obj-schema-Annotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Annotation.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAnnotation(od as api.Annotation);
+      checkAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-Attachment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAttachment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAttachment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Attachment.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAttachment(od as api.Attachment);
+      checkAttachment(od);
     });
   });
 
   unittest.group('obj-schema-AttachmentDataRef', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAttachmentDataRef();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AttachmentDataRef.fromJson(
+      final o = buildAttachmentDataRef();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AttachmentDataRef.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAttachmentDataRef(od as api.AttachmentDataRef);
+      checkAttachmentDataRef(od);
     });
   });
 
   unittest.group('obj-schema-Button', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildButton();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildButton();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Button.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkButton(od as api.Button);
+      checkButton(od);
     });
   });
 
   unittest.group('obj-schema-Card', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCard();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Card.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCard(od as api.Card);
+      final o = buildCard();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Card.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCard(od);
     });
   });
 
   unittest.group('obj-schema-CardAction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCardAction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCardAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.CardAction.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCardAction(od as api.CardAction);
+      checkCardAction(od);
     });
   });
 
   unittest.group('obj-schema-CardHeader', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCardHeader();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCardHeader();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.CardHeader.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCardHeader(od as api.CardHeader);
+      checkCardHeader(od);
     });
   });
 
   unittest.group('obj-schema-CardWithId', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCardWithId();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCardWithId();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.CardWithId.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCardWithId(od as api.CardWithId);
+      checkCardWithId(od);
     });
   });
 
   unittest.group('obj-schema-Color', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildColor();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkColor(od as api.Color);
+      final o = buildColor();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkColor(od);
     });
   });
 
   unittest.group('obj-schema-DeprecatedEvent', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeprecatedEvent();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeprecatedEvent.fromJson(
+      final o = buildDeprecatedEvent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeprecatedEvent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeprecatedEvent(od as api.DeprecatedEvent);
+      checkDeprecatedEvent(od);
     });
   });
 
   unittest.group('obj-schema-DriveDataRef', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDriveDataRef();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DriveDataRef.fromJson(
+      final o = buildDriveDataRef();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DriveDataRef.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDriveDataRef(od as api.DriveDataRef);
+      checkDriveDataRef(od);
     });
   });
 
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEmpty(od as api.Empty);
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
   unittest.group('obj-schema-FormAction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFormAction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildFormAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.FormAction.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFormAction(od as api.FormAction);
+      checkFormAction(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Action', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Action();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Action.fromJson(
+      final o = buildGoogleAppsCardV1Action();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Action.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Action(od as api.GoogleAppsCardV1Action);
+      checkGoogleAppsCardV1Action(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1ActionParameter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1ActionParameter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1ActionParameter.fromJson(
+      final o = buildGoogleAppsCardV1ActionParameter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1ActionParameter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1ActionParameter(
-          od as api.GoogleAppsCardV1ActionParameter);
+      checkGoogleAppsCardV1ActionParameter(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1BorderStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1BorderStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1BorderStyle.fromJson(
+      final o = buildGoogleAppsCardV1BorderStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1BorderStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1BorderStyle(od as api.GoogleAppsCardV1BorderStyle);
+      checkGoogleAppsCardV1BorderStyle(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Button', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Button();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Button.fromJson(
+      final o = buildGoogleAppsCardV1Button();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Button.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Button(od as api.GoogleAppsCardV1Button);
+      checkGoogleAppsCardV1Button(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1ButtonList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1ButtonList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1ButtonList.fromJson(
+      final o = buildGoogleAppsCardV1ButtonList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1ButtonList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1ButtonList(od as api.GoogleAppsCardV1ButtonList);
+      checkGoogleAppsCardV1ButtonList(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Card', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Card();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Card.fromJson(
+      final o = buildGoogleAppsCardV1Card();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Card.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Card(od as api.GoogleAppsCardV1Card);
+      checkGoogleAppsCardV1Card(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1CardAction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1CardAction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1CardAction.fromJson(
+      final o = buildGoogleAppsCardV1CardAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1CardAction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1CardAction(od as api.GoogleAppsCardV1CardAction);
+      checkGoogleAppsCardV1CardAction(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1CardFixedFooter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1CardFixedFooter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1CardFixedFooter.fromJson(
+      final o = buildGoogleAppsCardV1CardFixedFooter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1CardFixedFooter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1CardFixedFooter(
-          od as api.GoogleAppsCardV1CardFixedFooter);
+      checkGoogleAppsCardV1CardFixedFooter(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1CardHeader', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1CardHeader();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1CardHeader.fromJson(
+      final o = buildGoogleAppsCardV1CardHeader();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1CardHeader.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1CardHeader(od as api.GoogleAppsCardV1CardHeader);
+      checkGoogleAppsCardV1CardHeader(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1DateTimePicker', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1DateTimePicker();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1DateTimePicker.fromJson(
+      final o = buildGoogleAppsCardV1DateTimePicker();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1DateTimePicker.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1DateTimePicker(
-          od as api.GoogleAppsCardV1DateTimePicker);
+      checkGoogleAppsCardV1DateTimePicker(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1DecoratedText', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1DecoratedText();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1DecoratedText.fromJson(
+      final o = buildGoogleAppsCardV1DecoratedText();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1DecoratedText.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1DecoratedText(
-          od as api.GoogleAppsCardV1DecoratedText);
+      checkGoogleAppsCardV1DecoratedText(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Divider', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Divider();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Divider.fromJson(
+      final o = buildGoogleAppsCardV1Divider();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Divider.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Divider(od as api.GoogleAppsCardV1Divider);
+      checkGoogleAppsCardV1Divider(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Grid', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Grid();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Grid.fromJson(
+      final o = buildGoogleAppsCardV1Grid();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Grid.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Grid(od as api.GoogleAppsCardV1Grid);
+      checkGoogleAppsCardV1Grid(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1GridItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1GridItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1GridItem.fromJson(
+      final o = buildGoogleAppsCardV1GridItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1GridItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1GridItem(od as api.GoogleAppsCardV1GridItem);
+      checkGoogleAppsCardV1GridItem(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Icon', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Icon();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Icon.fromJson(
+      final o = buildGoogleAppsCardV1Icon();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Icon.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Icon(od as api.GoogleAppsCardV1Icon);
+      checkGoogleAppsCardV1Icon(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Image', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Image();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Image.fromJson(
+      final o = buildGoogleAppsCardV1Image();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Image.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Image(od as api.GoogleAppsCardV1Image);
+      checkGoogleAppsCardV1Image(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1ImageComponent', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1ImageComponent();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1ImageComponent.fromJson(
+      final o = buildGoogleAppsCardV1ImageComponent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1ImageComponent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1ImageComponent(
-          od as api.GoogleAppsCardV1ImageComponent);
+      checkGoogleAppsCardV1ImageComponent(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1ImageCropStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1ImageCropStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1ImageCropStyle.fromJson(
+      final o = buildGoogleAppsCardV1ImageCropStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1ImageCropStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1ImageCropStyle(
-          od as api.GoogleAppsCardV1ImageCropStyle);
+      checkGoogleAppsCardV1ImageCropStyle(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1OnClick', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1OnClick();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1OnClick.fromJson(
+      final o = buildGoogleAppsCardV1OnClick();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1OnClick.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1OnClick(od as api.GoogleAppsCardV1OnClick);
+      checkGoogleAppsCardV1OnClick(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1OpenLink', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1OpenLink();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1OpenLink.fromJson(
+      final o = buildGoogleAppsCardV1OpenLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1OpenLink.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1OpenLink(od as api.GoogleAppsCardV1OpenLink);
+      checkGoogleAppsCardV1OpenLink(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Section', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Section();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Section.fromJson(
+      final o = buildGoogleAppsCardV1Section();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Section.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Section(od as api.GoogleAppsCardV1Section);
+      checkGoogleAppsCardV1Section(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1SelectionInput', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1SelectionInput();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1SelectionInput.fromJson(
+      final o = buildGoogleAppsCardV1SelectionInput();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1SelectionInput.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1SelectionInput(
-          od as api.GoogleAppsCardV1SelectionInput);
+      checkGoogleAppsCardV1SelectionInput(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1SelectionItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1SelectionItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1SelectionItem.fromJson(
+      final o = buildGoogleAppsCardV1SelectionItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1SelectionItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1SelectionItem(
-          od as api.GoogleAppsCardV1SelectionItem);
+      checkGoogleAppsCardV1SelectionItem(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1SuggestionItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1SuggestionItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1SuggestionItem.fromJson(
+      final o = buildGoogleAppsCardV1SuggestionItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1SuggestionItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1SuggestionItem(
-          od as api.GoogleAppsCardV1SuggestionItem);
+      checkGoogleAppsCardV1SuggestionItem(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Suggestions', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Suggestions();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Suggestions.fromJson(
+      final o = buildGoogleAppsCardV1Suggestions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Suggestions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Suggestions(od as api.GoogleAppsCardV1Suggestions);
+      checkGoogleAppsCardV1Suggestions(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1SwitchControl', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1SwitchControl();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1SwitchControl.fromJson(
+      final o = buildGoogleAppsCardV1SwitchControl();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1SwitchControl.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1SwitchControl(
-          od as api.GoogleAppsCardV1SwitchControl);
+      checkGoogleAppsCardV1SwitchControl(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1TextInput', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1TextInput();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1TextInput.fromJson(
+      final o = buildGoogleAppsCardV1TextInput();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1TextInput.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1TextInput(od as api.GoogleAppsCardV1TextInput);
+      checkGoogleAppsCardV1TextInput(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1TextParagraph', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1TextParagraph();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1TextParagraph.fromJson(
+      final o = buildGoogleAppsCardV1TextParagraph();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1TextParagraph.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1TextParagraph(
-          od as api.GoogleAppsCardV1TextParagraph);
+      checkGoogleAppsCardV1TextParagraph(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAppsCardV1Widget', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAppsCardV1Widget();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAppsCardV1Widget.fromJson(
+      final o = buildGoogleAppsCardV1Widget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1Widget.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCardV1Widget(od as api.GoogleAppsCardV1Widget);
+      checkGoogleAppsCardV1Widget(od);
     });
   });
 
   unittest.group('obj-schema-Image', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Image.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkImage(od as api.Image);
+      final o = buildImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Image.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkImage(od);
     });
   });
 
   unittest.group('obj-schema-ImageButton', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImageButton();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImageButton.fromJson(
+      final o = buildImageButton();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImageButton.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImageButton(od as api.ImageButton);
+      checkImageButton(od);
     });
   });
 
   unittest.group('obj-schema-KeyValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildKeyValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildKeyValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.KeyValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkKeyValue(od as api.KeyValue);
+      checkKeyValue(od);
     });
   });
 
   unittest.group('obj-schema-ListMembershipsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListMembershipsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListMembershipsResponse.fromJson(
+      final o = buildListMembershipsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListMembershipsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListMembershipsResponse(od as api.ListMembershipsResponse);
+      checkListMembershipsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListSpacesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListSpacesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListSpacesResponse.fromJson(
+      final o = buildListSpacesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSpacesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListSpacesResponse(od as api.ListSpacesResponse);
+      checkListSpacesResponse(od);
     });
   });
 
   unittest.group('obj-schema-Media', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMedia();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Media.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMedia(od as api.Media);
+      final o = buildMedia();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Media.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkMedia(od);
     });
   });
 
   unittest.group('obj-schema-Membership', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMembership();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildMembership();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Membership.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMembership(od as api.Membership);
+      checkMembership(od);
     });
   });
 
   unittest.group('obj-schema-Message', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMessage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Message.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMessage(od as api.Message);
+      checkMessage(od);
     });
   });
 
   unittest.group('obj-schema-OnClick', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOnClick();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildOnClick();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.OnClick.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkOnClick(od as api.OnClick);
+      checkOnClick(od);
     });
   });
 
   unittest.group('obj-schema-OpenLink', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOpenLink();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildOpenLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.OpenLink.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkOpenLink(od as api.OpenLink);
+      checkOpenLink(od);
     });
   });
 
   unittest.group('obj-schema-Section', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSection();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Section.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSection(od as api.Section);
+      checkSection(od);
     });
   });
 
   unittest.group('obj-schema-SlashCommand', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSlashCommand();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SlashCommand.fromJson(
+      final o = buildSlashCommand();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SlashCommand.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSlashCommand(od as api.SlashCommand);
+      checkSlashCommand(od);
     });
   });
 
   unittest.group('obj-schema-SlashCommandMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSlashCommandMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SlashCommandMetadata.fromJson(
+      final o = buildSlashCommandMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SlashCommandMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSlashCommandMetadata(od as api.SlashCommandMetadata);
+      checkSlashCommandMetadata(od);
     });
   });
 
   unittest.group('obj-schema-Space', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSpace();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Space.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSpace(od as api.Space);
+      final o = buildSpace();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Space.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSpace(od);
     });
   });
 
   unittest.group('obj-schema-TextButton', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTextButton();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTextButton();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TextButton.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTextButton(od as api.TextButton);
+      checkTextButton(od);
     });
   });
 
   unittest.group('obj-schema-TextParagraph', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTextParagraph();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TextParagraph.fromJson(
+      final o = buildTextParagraph();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TextParagraph.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTextParagraph(od as api.TextParagraph);
+      checkTextParagraph(od);
     });
   });
 
   unittest.group('obj-schema-Thread', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildThread();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildThread();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Thread.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkThread(od as api.Thread);
+      checkThread(od);
     });
   });
 
   unittest.group('obj-schema-User', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUser();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.User.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkUser(od as api.User);
+      final o = buildUser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.User.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkUser(od);
     });
   });
 
   unittest.group('obj-schema-UserMentionMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUserMentionMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UserMentionMetadata.fromJson(
+      final o = buildUserMentionMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserMentionMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUserMentionMetadata(od as api.UserMentionMetadata);
+      checkUserMentionMetadata(od);
     });
   });
 
   unittest.group('obj-schema-WidgetMarkup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWidgetMarkup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WidgetMarkup.fromJson(
+      final o = buildWidgetMarkup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WidgetMarkup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWidgetMarkup(od as api.WidgetMarkup);
+      checkWidgetMarkup(od);
     });
   });
 
   unittest.group('resource-DmsResource', () {
     unittest.test('method--messages', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).dms;
-      var arg_request = buildMessage();
-      var arg_parent = 'foo';
-      var arg_threadKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).dms;
+      final arg_request = buildMessage();
+      final arg_parent = 'foo';
+      final arg_threadKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2945,18 +2914,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["threadKey"]!.first,
+          queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
@@ -2965,42 +2934,42 @@ void main() {
     });
 
     unittest.test('method--webhooks', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).dms;
-      var arg_request = buildMessage();
-      var arg_parent = 'foo';
-      var arg_threadKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).dms;
+      final arg_request = buildMessage();
+      final arg_parent = 'foo';
+      final arg_threadKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3008,18 +2977,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["threadKey"]!.first,
+          queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
@@ -3030,42 +2999,42 @@ void main() {
 
   unittest.group('resource-DmsConversationsResource', () {
     unittest.test('method--messages', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).dms.conversations;
-      var arg_request = buildMessage();
-      var arg_parent = 'foo';
-      var arg_threadKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).dms.conversations;
+      final arg_request = buildMessage();
+      final arg_parent = 'foo';
+      final arg_threadKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3073,18 +3042,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["threadKey"]!.first,
+          queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
@@ -3098,36 +3067,36 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).media;
-      var arg_resourceName = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).media;
+      final arg_resourceName = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1/media/"),
+          unittest.equals('v1/media/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3135,14 +3104,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMedia());
+        final resp = convert.json.encode(buildMedia());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3153,42 +3122,42 @@ void main() {
 
   unittest.group('resource-RoomsResource', () {
     unittest.test('method--messages', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).rooms;
-      var arg_request = buildMessage();
-      var arg_parent = 'foo';
-      var arg_threadKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).rooms;
+      final arg_request = buildMessage();
+      final arg_parent = 'foo';
+      final arg_threadKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3196,18 +3165,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["threadKey"]!.first,
+          queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
@@ -3216,42 +3185,42 @@ void main() {
     });
 
     unittest.test('method--webhooks', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).rooms;
-      var arg_request = buildMessage();
-      var arg_parent = 'foo';
-      var arg_threadKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).rooms;
+      final arg_request = buildMessage();
+      final arg_parent = 'foo';
+      final arg_threadKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3259,18 +3228,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["threadKey"]!.first,
+          queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
@@ -3281,42 +3250,42 @@ void main() {
 
   unittest.group('resource-RoomsConversationsResource', () {
     unittest.test('method--messages', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).rooms.conversations;
-      var arg_request = buildMessage();
-      var arg_parent = 'foo';
-      var arg_threadKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).rooms.conversations;
+      final arg_request = buildMessage();
+      final arg_parent = 'foo';
+      final arg_threadKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3324,18 +3293,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["threadKey"]!.first,
+          queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
@@ -3346,36 +3315,36 @@ void main() {
 
   unittest.group('resource-SpacesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3383,14 +3352,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSpace());
+        final resp = convert.json.encode(buildSpace());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -3398,36 +3367,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces;
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1/spaces"),
+          unittest.equals('v1/spaces'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3435,22 +3404,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListSpacesResponse());
+        final resp = convert.json.encode(buildListSpacesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -3461,42 +3430,42 @@ void main() {
     });
 
     unittest.test('method--webhooks', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces;
-      var arg_request = buildMessage();
-      var arg_parent = 'foo';
-      var arg_threadKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces;
+      final arg_request = buildMessage();
+      final arg_parent = 'foo';
+      final arg_threadKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3504,18 +3473,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["threadKey"]!.first,
+          queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
@@ -3526,36 +3495,36 @@ void main() {
 
   unittest.group('resource-SpacesMembersResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces.members;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.members;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3563,14 +3532,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMembership());
+        final resp = convert.json.encode(buildMembership());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -3578,38 +3547,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces.members;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.members;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3617,22 +3586,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListMembershipsResponse());
+        final resp = convert.json.encode(buildListMembershipsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -3645,42 +3614,42 @@ void main() {
 
   unittest.group('resource-SpacesMessagesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces.messages;
-      var arg_request = buildMessage();
-      var arg_parent = 'foo';
-      var arg_threadKey = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.messages;
+      final arg_request = buildMessage();
+      final arg_parent = 'foo';
+      final arg_threadKey = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3688,18 +3657,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["threadKey"]!.first,
+          queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -3708,36 +3677,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces.messages;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.messages;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3745,14 +3714,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -3760,36 +3729,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces.messages;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.messages;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3797,14 +3766,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -3812,42 +3781,42 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces.messages;
-      var arg_request = buildMessage();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.messages;
+      final arg_request = buildMessage();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3855,18 +3824,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_name,
@@ -3877,36 +3846,36 @@ void main() {
 
   unittest.group('resource-SpacesMessagesAttachmentsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.HangoutsChatApi(mock).spaces.messages.attachments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.messages.attachments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3914,14 +3883,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAttachment());
+        final resp = convert.json.encode(buildAttachment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);

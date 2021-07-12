@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -30,7 +29,7 @@ import '../test_shared.dart';
 core.int buildCounterGoogleAdsHomeservicesLocalservicesV1AccountReport = 0;
 api.GoogleAdsHomeservicesLocalservicesV1AccountReport
     buildGoogleAdsHomeservicesLocalservicesV1AccountReport() {
-  var o = api.GoogleAdsHomeservicesLocalservicesV1AccountReport();
+  final o = api.GoogleAdsHomeservicesLocalservicesV1AccountReport();
   buildCounterGoogleAdsHomeservicesLocalservicesV1AccountReport++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1AccountReport < 3) {
     o.accountId = 'foo';
@@ -64,8 +63,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1AccountReport(
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo!
-        as api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo);
+    checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo!);
     unittest.expect(
       o.averageFiveStarRating!,
       unittest.equals(42.0),
@@ -133,7 +131,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1AccountReport(
 core.int buildCounterGoogleAdsHomeservicesLocalservicesV1AggregatorInfo = 0;
 api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo
     buildGoogleAdsHomeservicesLocalservicesV1AggregatorInfo() {
-  var o = api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
+  final o = api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
   buildCounterGoogleAdsHomeservicesLocalservicesV1AggregatorInfo++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1AggregatorInfo < 3) {
     o.aggregatorProviderId = 'foo';
@@ -157,7 +155,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(
 core.int buildCounterGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport = 0;
 api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
     buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport() {
-  var o = api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
+  final o = api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
   buildCounterGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport < 3) {
     o.accountId = 'foo';
@@ -189,8 +187,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo!
-        as api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo);
+    checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo!);
     unittest.expect(
       o.businessName!,
       unittest.equals('foo'),
@@ -231,11 +228,9 @@ void checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
       o.leadType!,
       unittest.equals('foo'),
     );
-    checkGoogleAdsHomeservicesLocalservicesV1MessageLead(
-        o.messageLead! as api.GoogleAdsHomeservicesLocalservicesV1MessageLead);
-    checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(
-        o.phoneLead! as api.GoogleAdsHomeservicesLocalservicesV1PhoneLead);
-    checkGoogleTypeTimeZone(o.timezone! as api.GoogleTypeTimeZone);
+    checkGoogleAdsHomeservicesLocalservicesV1MessageLead(o.messageLead!);
+    checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(o.phoneLead!);
+    checkGoogleTypeTimeZone(o.timezone!);
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport--;
 }
@@ -243,7 +238,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
 core.int buildCounterGoogleAdsHomeservicesLocalservicesV1MessageLead = 0;
 api.GoogleAdsHomeservicesLocalservicesV1MessageLead
     buildGoogleAdsHomeservicesLocalservicesV1MessageLead() {
-  var o = api.GoogleAdsHomeservicesLocalservicesV1MessageLead();
+  final o = api.GoogleAdsHomeservicesLocalservicesV1MessageLead();
   buildCounterGoogleAdsHomeservicesLocalservicesV1MessageLead++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1MessageLead < 3) {
     o.consumerPhoneNumber = 'foo';
@@ -282,7 +277,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1MessageLead(
 core.int buildCounterGoogleAdsHomeservicesLocalservicesV1PhoneLead = 0;
 api.GoogleAdsHomeservicesLocalservicesV1PhoneLead
     buildGoogleAdsHomeservicesLocalservicesV1PhoneLead() {
-  var o = api.GoogleAdsHomeservicesLocalservicesV1PhoneLead();
+  final o = api.GoogleAdsHomeservicesLocalservicesV1PhoneLead();
   buildCounterGoogleAdsHomeservicesLocalservicesV1PhoneLead++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1PhoneLead < 3) {
     o.chargedCallTimestamp = 'foo';
@@ -315,7 +310,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(
 
 core.List<api.GoogleAdsHomeservicesLocalservicesV1AccountReport>
     buildUnnamed3254() {
-  var o = <api.GoogleAdsHomeservicesLocalservicesV1AccountReport>[];
+  final o = <api.GoogleAdsHomeservicesLocalservicesV1AccountReport>[];
   o.add(buildGoogleAdsHomeservicesLocalservicesV1AccountReport());
   o.add(buildGoogleAdsHomeservicesLocalservicesV1AccountReport());
   return o;
@@ -324,10 +319,8 @@ core.List<api.GoogleAdsHomeservicesLocalservicesV1AccountReport>
 void checkUnnamed3254(
     core.List<api.GoogleAdsHomeservicesLocalservicesV1AccountReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAdsHomeservicesLocalservicesV1AccountReport(
-      o[0] as api.GoogleAdsHomeservicesLocalservicesV1AccountReport);
-  checkGoogleAdsHomeservicesLocalservicesV1AccountReport(
-      o[1] as api.GoogleAdsHomeservicesLocalservicesV1AccountReport);
+  checkGoogleAdsHomeservicesLocalservicesV1AccountReport(o[0]);
+  checkGoogleAdsHomeservicesLocalservicesV1AccountReport(o[1]);
 }
 
 core.int
@@ -335,7 +328,7 @@ core.int
     0;
 api.GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
     buildGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse() {
-  var o =
+  final o =
       api.GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse();
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse <
@@ -363,7 +356,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(
 
 core.List<api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>
     buildUnnamed3255() {
-  var o = <api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>[];
+  final o = <api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>[];
   o.add(buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport());
   o.add(buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport());
   return o;
@@ -372,10 +365,8 @@ core.List<api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>
 void checkUnnamed3255(
     core.List<api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
-      o[0] as api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport);
-  checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
-      o[1] as api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport);
+  checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(o[0]);
+  checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(o[1]);
 }
 
 core.int
@@ -383,7 +374,7 @@ core.int
     0;
 api.GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
     buildGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse() {
-  var o = api
+  final o = api
       .GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse();
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse <
@@ -412,7 +403,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse(
 
 core.int buildCounterGoogleTypeTimeZone = 0;
 api.GoogleTypeTimeZone buildGoogleTypeTimeZone() {
-  var o = api.GoogleTypeTimeZone();
+  final o = api.GoogleTypeTimeZone();
   buildCounterGoogleTypeTimeZone++;
   if (buildCounterGoogleTypeTimeZone < 3) {
     o.id = 'foo';
@@ -441,61 +432,57 @@ void main() {
   unittest.group('obj-schema-GoogleAdsHomeservicesLocalservicesV1AccountReport',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAdsHomeservicesLocalservicesV1AccountReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
+      final o = buildGoogleAdsHomeservicesLocalservicesV1AccountReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAdsHomeservicesLocalservicesV1AccountReport(
-          od as api.GoogleAdsHomeservicesLocalservicesV1AccountReport);
+      checkGoogleAdsHomeservicesLocalservicesV1AccountReport(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1AggregatorInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(
-          od as api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo);
+      final o = buildGoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
-          od as api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport);
+      checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAdsHomeservicesLocalservicesV1MessageLead',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAdsHomeservicesLocalservicesV1MessageLead();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
+      final o = buildGoogleAdsHomeservicesLocalservicesV1MessageLead();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAdsHomeservicesLocalservicesV1MessageLead(
-          od as api.GoogleAdsHomeservicesLocalservicesV1MessageLead);
+      checkGoogleAdsHomeservicesLocalservicesV1MessageLead(od);
     });
   });
 
   unittest.group('obj-schema-GoogleAdsHomeservicesLocalservicesV1PhoneLead',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleAdsHomeservicesLocalservicesV1PhoneLead();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
+      final o = buildGoogleAdsHomeservicesLocalservicesV1PhoneLead();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(
-          od as api.GoogleAdsHomeservicesLocalservicesV1PhoneLead);
+      checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(od);
     });
   });
 
@@ -503,15 +490,13 @@ void main() {
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(od
-          as api
-              .GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse);
+      checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(od);
     });
   });
 
@@ -519,67 +504,66 @@ void main() {
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse(
-          od as api
-              .GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse);
+          od);
     });
   });
 
   unittest.group('obj-schema-GoogleTypeTimeZone', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleTypeTimeZone();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleTypeTimeZone.fromJson(
+      final o = buildGoogleTypeTimeZone();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeTimeZone.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleTypeTimeZone(od as api.GoogleTypeTimeZone);
+      checkGoogleTypeTimeZone(od);
     });
   });
 
   unittest.group('resource-AccountReportsResource', () {
     unittest.test('method--search', () async {
-      var mock = HttpServerMock();
-      var res = api.LocalservicesApi(mock).accountReports;
-      var arg_endDate_day = 42;
-      var arg_endDate_month = 42;
-      var arg_endDate_year = 42;
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_query = 'foo';
-      var arg_startDate_day = 42;
-      var arg_startDate_month = 42;
-      var arg_startDate_year = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.LocalservicesApi(mock).accountReports;
+      final arg_endDate_day = 42;
+      final arg_endDate_month = 42;
+      final arg_endDate_year = 42;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_query = 'foo';
+      final arg_startDate_day = 42;
+      final arg_startDate_month = 42;
+      final arg_startDate_year = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 24),
-          unittest.equals("v1/accountReports:search"),
+          unittest.equals('v1/accountReports:search'),
         );
         pathOffset += 24;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -587,50 +571,50 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["endDate.day"]!.first),
+          core.int.parse(queryMap['endDate.day']!.first),
           unittest.equals(arg_endDate_day),
         );
         unittest.expect(
-          core.int.parse(queryMap["endDate.month"]!.first),
+          core.int.parse(queryMap['endDate.month']!.first),
           unittest.equals(arg_endDate_month),
         );
         unittest.expect(
-          core.int.parse(queryMap["endDate.year"]!.first),
+          core.int.parse(queryMap['endDate.year']!.first),
           unittest.equals(arg_endDate_year),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["query"]!.first,
+          queryMap['query']!.first,
           unittest.equals(arg_query),
         );
         unittest.expect(
-          core.int.parse(queryMap["startDate.day"]!.first),
+          core.int.parse(queryMap['startDate.day']!.first),
           unittest.equals(arg_startDate_day),
         );
         unittest.expect(
-          core.int.parse(queryMap["startDate.month"]!.first),
+          core.int.parse(queryMap['startDate.month']!.first),
           unittest.equals(arg_startDate_month),
         );
         unittest.expect(
-          core.int.parse(queryMap["startDate.year"]!.first),
+          core.int.parse(queryMap['startDate.year']!.first),
           unittest.equals(arg_startDate_year),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -653,43 +637,43 @@ void main() {
 
   unittest.group('resource-DetailedLeadReportsResource', () {
     unittest.test('method--search', () async {
-      var mock = HttpServerMock();
-      var res = api.LocalservicesApi(mock).detailedLeadReports;
-      var arg_endDate_day = 42;
-      var arg_endDate_month = 42;
-      var arg_endDate_year = 42;
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_query = 'foo';
-      var arg_startDate_day = 42;
-      var arg_startDate_month = 42;
-      var arg_startDate_year = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.LocalservicesApi(mock).detailedLeadReports;
+      final arg_endDate_day = 42;
+      final arg_endDate_month = 42;
+      final arg_endDate_year = 42;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_query = 'foo';
+      final arg_startDate_day = 42;
+      final arg_startDate_month = 42;
+      final arg_startDate_year = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 29),
-          unittest.equals("v1/detailedLeadReports:search"),
+          unittest.equals('v1/detailedLeadReports:search'),
         );
         pathOffset += 29;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -697,50 +681,50 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["endDate.day"]!.first),
+          core.int.parse(queryMap['endDate.day']!.first),
           unittest.equals(arg_endDate_day),
         );
         unittest.expect(
-          core.int.parse(queryMap["endDate.month"]!.first),
+          core.int.parse(queryMap['endDate.month']!.first),
           unittest.equals(arg_endDate_month),
         );
         unittest.expect(
-          core.int.parse(queryMap["endDate.year"]!.first),
+          core.int.parse(queryMap['endDate.year']!.first),
           unittest.equals(arg_endDate_year),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["query"]!.first,
+          queryMap['query']!.first,
           unittest.equals(arg_query),
         );
         unittest.expect(
-          core.int.parse(queryMap["startDate.day"]!.first),
+          core.int.parse(queryMap['startDate.day']!.first),
           unittest.equals(arg_startDate_day),
         );
         unittest.expect(
-          core.int.parse(queryMap["startDate.month"]!.first),
+          core.int.parse(queryMap['startDate.month']!.first),
           unittest.equals(arg_startDate_month),
         );
         unittest.expect(
-          core.int.parse(queryMap["startDate.year"]!.first),
+          core.int.parse(queryMap['startDate.year']!.first),
           unittest.equals(arg_startDate_year),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);

@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAddFirebaseRequest = 0;
 api.AddFirebaseRequest buildAddFirebaseRequest() {
-  var o = api.AddFirebaseRequest();
+  final o = api.AddFirebaseRequest();
   buildCounterAddFirebaseRequest++;
   if (buildCounterAddFirebaseRequest < 3) {
     o.locationId = 'foo';
@@ -51,7 +50,7 @@ void checkAddFirebaseRequest(api.AddFirebaseRequest o) {
 
 core.int buildCounterAddGoogleAnalyticsRequest = 0;
 api.AddGoogleAnalyticsRequest buildAddGoogleAnalyticsRequest() {
-  var o = api.AddGoogleAnalyticsRequest();
+  final o = api.AddGoogleAnalyticsRequest();
   buildCounterAddGoogleAnalyticsRequest++;
   if (buildCounterAddGoogleAnalyticsRequest < 3) {
     o.analyticsAccountId = 'foo';
@@ -78,7 +77,7 @@ void checkAddGoogleAnalyticsRequest(api.AddGoogleAnalyticsRequest o) {
 
 core.int buildCounterAdminSdkConfig = 0;
 api.AdminSdkConfig buildAdminSdkConfig() {
-  var o = api.AdminSdkConfig();
+  final o = api.AdminSdkConfig();
   buildCounterAdminSdkConfig++;
   if (buildCounterAdminSdkConfig < 3) {
     o.databaseURL = 'foo';
@@ -114,7 +113,7 @@ void checkAdminSdkConfig(api.AdminSdkConfig o) {
 }
 
 core.List<api.StreamMapping> buildUnnamed8159() {
-  var o = <api.StreamMapping>[];
+  final o = <api.StreamMapping>[];
   o.add(buildStreamMapping());
   o.add(buildStreamMapping());
   return o;
@@ -122,13 +121,13 @@ core.List<api.StreamMapping> buildUnnamed8159() {
 
 void checkUnnamed8159(core.List<api.StreamMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStreamMapping(o[0] as api.StreamMapping);
-  checkStreamMapping(o[1] as api.StreamMapping);
+  checkStreamMapping(o[0]);
+  checkStreamMapping(o[1]);
 }
 
 core.int buildCounterAnalyticsDetails = 0;
 api.AnalyticsDetails buildAnalyticsDetails() {
-  var o = api.AnalyticsDetails();
+  final o = api.AnalyticsDetails();
   buildCounterAnalyticsDetails++;
   if (buildCounterAnalyticsDetails < 3) {
     o.analyticsProperty = buildAnalyticsProperty();
@@ -141,7 +140,7 @@ api.AnalyticsDetails buildAnalyticsDetails() {
 void checkAnalyticsDetails(api.AnalyticsDetails o) {
   buildCounterAnalyticsDetails++;
   if (buildCounterAnalyticsDetails < 3) {
-    checkAnalyticsProperty(o.analyticsProperty! as api.AnalyticsProperty);
+    checkAnalyticsProperty(o.analyticsProperty!);
     checkUnnamed8159(o.streamMappings!);
   }
   buildCounterAnalyticsDetails--;
@@ -149,7 +148,7 @@ void checkAnalyticsDetails(api.AnalyticsDetails o) {
 
 core.int buildCounterAnalyticsProperty = 0;
 api.AnalyticsProperty buildAnalyticsProperty() {
-  var o = api.AnalyticsProperty();
+  final o = api.AnalyticsProperty();
   buildCounterAnalyticsProperty++;
   if (buildCounterAnalyticsProperty < 3) {
     o.displayName = 'foo';
@@ -176,7 +175,7 @@ void checkAnalyticsProperty(api.AnalyticsProperty o) {
 
 core.int buildCounterAndroidApp = 0;
 api.AndroidApp buildAndroidApp() {
-  var o = api.AndroidApp();
+  final o = api.AndroidApp();
   buildCounterAndroidApp++;
   if (buildCounterAndroidApp < 3) {
     o.appId = 'foo';
@@ -218,7 +217,7 @@ void checkAndroidApp(api.AndroidApp o) {
 
 core.int buildCounterAndroidAppConfig = 0;
 api.AndroidAppConfig buildAndroidAppConfig() {
-  var o = api.AndroidAppConfig();
+  final o = api.AndroidAppConfig();
   buildCounterAndroidAppConfig++;
   if (buildCounterAndroidAppConfig < 3) {
     o.configFileContents = 'foo';
@@ -245,7 +244,7 @@ void checkAndroidAppConfig(api.AndroidAppConfig o) {
 
 core.int buildCounterDefaultResources = 0;
 api.DefaultResources buildDefaultResources() {
-  var o = api.DefaultResources();
+  final o = api.DefaultResources();
   buildCounterDefaultResources++;
   if (buildCounterDefaultResources < 3) {
     o.hostingSite = 'foo';
@@ -282,7 +281,7 @@ void checkDefaultResources(api.DefaultResources o) {
 
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
-  var o = api.Empty();
+  final o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
@@ -297,7 +296,7 @@ void checkEmpty(api.Empty o) {
 
 core.int buildCounterFinalizeDefaultLocationRequest = 0;
 api.FinalizeDefaultLocationRequest buildFinalizeDefaultLocationRequest() {
-  var o = api.FinalizeDefaultLocationRequest();
+  final o = api.FinalizeDefaultLocationRequest();
   buildCounterFinalizeDefaultLocationRequest++;
   if (buildCounterFinalizeDefaultLocationRequest < 3) {
     o.locationId = 'foo';
@@ -319,7 +318,7 @@ void checkFinalizeDefaultLocationRequest(api.FinalizeDefaultLocationRequest o) {
 
 core.int buildCounterFirebaseAppInfo = 0;
 api.FirebaseAppInfo buildFirebaseAppInfo() {
-  var o = api.FirebaseAppInfo();
+  final o = api.FirebaseAppInfo();
   buildCounterFirebaseAppInfo++;
   if (buildCounterFirebaseAppInfo < 3) {
     o.appId = 'foo';
@@ -361,7 +360,7 @@ void checkFirebaseAppInfo(api.FirebaseAppInfo o) {
 
 core.int buildCounterFirebaseProject = 0;
 api.FirebaseProject buildFirebaseProject() {
-  var o = api.FirebaseProject();
+  final o = api.FirebaseProject();
   buildCounterFirebaseProject++;
   if (buildCounterFirebaseProject < 3) {
     o.displayName = 'foo';
@@ -394,7 +393,7 @@ void checkFirebaseProject(api.FirebaseProject o) {
       o.projectNumber!,
       unittest.equals('foo'),
     );
-    checkDefaultResources(o.resources! as api.DefaultResources);
+    checkDefaultResources(o.resources!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -405,7 +404,7 @@ void checkFirebaseProject(api.FirebaseProject o) {
 
 core.int buildCounterIosApp = 0;
 api.IosApp buildIosApp() {
-  var o = api.IosApp();
+  final o = api.IosApp();
   buildCounterIosApp++;
   if (buildCounterIosApp < 3) {
     o.appId = 'foo';
@@ -452,7 +451,7 @@ void checkIosApp(api.IosApp o) {
 
 core.int buildCounterIosAppConfig = 0;
 api.IosAppConfig buildIosAppConfig() {
-  var o = api.IosAppConfig();
+  final o = api.IosAppConfig();
   buildCounterIosAppConfig++;
   if (buildCounterIosAppConfig < 3) {
     o.configFileContents = 'foo';
@@ -478,7 +477,7 @@ void checkIosAppConfig(api.IosAppConfig o) {
 }
 
 core.List<api.AndroidApp> buildUnnamed8160() {
-  var o = <api.AndroidApp>[];
+  final o = <api.AndroidApp>[];
   o.add(buildAndroidApp());
   o.add(buildAndroidApp());
   return o;
@@ -486,13 +485,13 @@ core.List<api.AndroidApp> buildUnnamed8160() {
 
 void checkUnnamed8160(core.List<api.AndroidApp> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAndroidApp(o[0] as api.AndroidApp);
-  checkAndroidApp(o[1] as api.AndroidApp);
+  checkAndroidApp(o[0]);
+  checkAndroidApp(o[1]);
 }
 
 core.int buildCounterListAndroidAppsResponse = 0;
 api.ListAndroidAppsResponse buildListAndroidAppsResponse() {
-  var o = api.ListAndroidAppsResponse();
+  final o = api.ListAndroidAppsResponse();
   buildCounterListAndroidAppsResponse++;
   if (buildCounterListAndroidAppsResponse < 3) {
     o.apps = buildUnnamed8160();
@@ -515,7 +514,7 @@ void checkListAndroidAppsResponse(api.ListAndroidAppsResponse o) {
 }
 
 core.List<api.Location> buildUnnamed8161() {
-  var o = <api.Location>[];
+  final o = <api.Location>[];
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
@@ -523,13 +522,13 @@ core.List<api.Location> buildUnnamed8161() {
 
 void checkUnnamed8161(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0] as api.Location);
-  checkLocation(o[1] as api.Location);
+  checkLocation(o[0]);
+  checkLocation(o[1]);
 }
 
 core.int buildCounterListAvailableLocationsResponse = 0;
 api.ListAvailableLocationsResponse buildListAvailableLocationsResponse() {
-  var o = api.ListAvailableLocationsResponse();
+  final o = api.ListAvailableLocationsResponse();
   buildCounterListAvailableLocationsResponse++;
   if (buildCounterListAvailableLocationsResponse < 3) {
     o.locations = buildUnnamed8161();
@@ -552,7 +551,7 @@ void checkListAvailableLocationsResponse(api.ListAvailableLocationsResponse o) {
 }
 
 core.List<api.ProjectInfo> buildUnnamed8162() {
-  var o = <api.ProjectInfo>[];
+  final o = <api.ProjectInfo>[];
   o.add(buildProjectInfo());
   o.add(buildProjectInfo());
   return o;
@@ -560,13 +559,13 @@ core.List<api.ProjectInfo> buildUnnamed8162() {
 
 void checkUnnamed8162(core.List<api.ProjectInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProjectInfo(o[0] as api.ProjectInfo);
-  checkProjectInfo(o[1] as api.ProjectInfo);
+  checkProjectInfo(o[0]);
+  checkProjectInfo(o[1]);
 }
 
 core.int buildCounterListAvailableProjectsResponse = 0;
 api.ListAvailableProjectsResponse buildListAvailableProjectsResponse() {
-  var o = api.ListAvailableProjectsResponse();
+  final o = api.ListAvailableProjectsResponse();
   buildCounterListAvailableProjectsResponse++;
   if (buildCounterListAvailableProjectsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -589,7 +588,7 @@ void checkListAvailableProjectsResponse(api.ListAvailableProjectsResponse o) {
 }
 
 core.List<api.FirebaseProject> buildUnnamed8163() {
-  var o = <api.FirebaseProject>[];
+  final o = <api.FirebaseProject>[];
   o.add(buildFirebaseProject());
   o.add(buildFirebaseProject());
   return o;
@@ -597,13 +596,13 @@ core.List<api.FirebaseProject> buildUnnamed8163() {
 
 void checkUnnamed8163(core.List<api.FirebaseProject> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFirebaseProject(o[0] as api.FirebaseProject);
-  checkFirebaseProject(o[1] as api.FirebaseProject);
+  checkFirebaseProject(o[0]);
+  checkFirebaseProject(o[1]);
 }
 
 core.int buildCounterListFirebaseProjectsResponse = 0;
 api.ListFirebaseProjectsResponse buildListFirebaseProjectsResponse() {
-  var o = api.ListFirebaseProjectsResponse();
+  final o = api.ListFirebaseProjectsResponse();
   buildCounterListFirebaseProjectsResponse++;
   if (buildCounterListFirebaseProjectsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -626,7 +625,7 @@ void checkListFirebaseProjectsResponse(api.ListFirebaseProjectsResponse o) {
 }
 
 core.List<api.IosApp> buildUnnamed8164() {
-  var o = <api.IosApp>[];
+  final o = <api.IosApp>[];
   o.add(buildIosApp());
   o.add(buildIosApp());
   return o;
@@ -634,13 +633,13 @@ core.List<api.IosApp> buildUnnamed8164() {
 
 void checkUnnamed8164(core.List<api.IosApp> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosApp(o[0] as api.IosApp);
-  checkIosApp(o[1] as api.IosApp);
+  checkIosApp(o[0]);
+  checkIosApp(o[1]);
 }
 
 core.int buildCounterListIosAppsResponse = 0;
 api.ListIosAppsResponse buildListIosAppsResponse() {
-  var o = api.ListIosAppsResponse();
+  final o = api.ListIosAppsResponse();
   buildCounterListIosAppsResponse++;
   if (buildCounterListIosAppsResponse < 3) {
     o.apps = buildUnnamed8164();
@@ -663,7 +662,7 @@ void checkListIosAppsResponse(api.ListIosAppsResponse o) {
 }
 
 core.List<api.ShaCertificate> buildUnnamed8165() {
-  var o = <api.ShaCertificate>[];
+  final o = <api.ShaCertificate>[];
   o.add(buildShaCertificate());
   o.add(buildShaCertificate());
   return o;
@@ -671,13 +670,13 @@ core.List<api.ShaCertificate> buildUnnamed8165() {
 
 void checkUnnamed8165(core.List<api.ShaCertificate> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShaCertificate(o[0] as api.ShaCertificate);
-  checkShaCertificate(o[1] as api.ShaCertificate);
+  checkShaCertificate(o[0]);
+  checkShaCertificate(o[1]);
 }
 
 core.int buildCounterListShaCertificatesResponse = 0;
 api.ListShaCertificatesResponse buildListShaCertificatesResponse() {
-  var o = api.ListShaCertificatesResponse();
+  final o = api.ListShaCertificatesResponse();
   buildCounterListShaCertificatesResponse++;
   if (buildCounterListShaCertificatesResponse < 3) {
     o.certificates = buildUnnamed8165();
@@ -695,7 +694,7 @@ void checkListShaCertificatesResponse(api.ListShaCertificatesResponse o) {
 }
 
 core.List<api.WebApp> buildUnnamed8166() {
-  var o = <api.WebApp>[];
+  final o = <api.WebApp>[];
   o.add(buildWebApp());
   o.add(buildWebApp());
   return o;
@@ -703,13 +702,13 @@ core.List<api.WebApp> buildUnnamed8166() {
 
 void checkUnnamed8166(core.List<api.WebApp> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebApp(o[0] as api.WebApp);
-  checkWebApp(o[1] as api.WebApp);
+  checkWebApp(o[0]);
+  checkWebApp(o[1]);
 }
 
 core.int buildCounterListWebAppsResponse = 0;
 api.ListWebAppsResponse buildListWebAppsResponse() {
-  var o = api.ListWebAppsResponse();
+  final o = api.ListWebAppsResponse();
   buildCounterListWebAppsResponse++;
   if (buildCounterListWebAppsResponse < 3) {
     o.apps = buildUnnamed8166();
@@ -732,7 +731,7 @@ void checkListWebAppsResponse(api.ListWebAppsResponse o) {
 }
 
 core.List<core.String> buildUnnamed8167() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -752,7 +751,7 @@ void checkUnnamed8167(core.List<core.String> o) {
 
 core.int buildCounterLocation = 0;
 api.Location buildLocation() {
-  var o = api.Location();
+  final o = api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.features = buildUnnamed8167();
@@ -781,7 +780,7 @@ void checkLocation(api.Location o) {
 
 core.int buildCounterMessageSet = 0;
 api.MessageSet buildMessageSet() {
-  var o = api.MessageSet();
+  final o = api.MessageSet();
   buildCounterMessageSet++;
   if (buildCounterMessageSet < 3) {}
   buildCounterMessageSet--;
@@ -795,7 +794,7 @@ void checkMessageSet(api.MessageSet o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed8168() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -842,7 +841,7 @@ void checkUnnamed8168(core.Map<core.String, core.Object> o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed8169() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -890,7 +889,7 @@ void checkUnnamed8169(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterOperation = 0;
 api.Operation buildOperation() {
-  var o = api.Operation();
+  final o = api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     o.done = true;
@@ -907,7 +906,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
-    checkStatus(o.error! as api.Status);
+    checkStatus(o.error!);
     checkUnnamed8168(o.metadata!);
     unittest.expect(
       o.name!,
@@ -920,7 +919,7 @@ void checkOperation(api.Operation o) {
 
 core.int buildCounterProjectInfo = 0;
 api.ProjectInfo buildProjectInfo() {
-  var o = api.ProjectInfo();
+  final o = api.ProjectInfo();
   buildCounterProjectInfo++;
   if (buildCounterProjectInfo < 3) {
     o.displayName = 'foo';
@@ -952,7 +951,7 @@ void checkProjectInfo(api.ProjectInfo o) {
 
 core.int buildCounterRemoveAnalyticsRequest = 0;
 api.RemoveAnalyticsRequest buildRemoveAnalyticsRequest() {
-  var o = api.RemoveAnalyticsRequest();
+  final o = api.RemoveAnalyticsRequest();
   buildCounterRemoveAnalyticsRequest++;
   if (buildCounterRemoveAnalyticsRequest < 3) {
     o.analyticsPropertyId = 'foo';
@@ -973,7 +972,7 @@ void checkRemoveAnalyticsRequest(api.RemoveAnalyticsRequest o) {
 }
 
 core.List<api.FirebaseAppInfo> buildUnnamed8170() {
-  var o = <api.FirebaseAppInfo>[];
+  final o = <api.FirebaseAppInfo>[];
   o.add(buildFirebaseAppInfo());
   o.add(buildFirebaseAppInfo());
   return o;
@@ -981,13 +980,13 @@ core.List<api.FirebaseAppInfo> buildUnnamed8170() {
 
 void checkUnnamed8170(core.List<api.FirebaseAppInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFirebaseAppInfo(o[0] as api.FirebaseAppInfo);
-  checkFirebaseAppInfo(o[1] as api.FirebaseAppInfo);
+  checkFirebaseAppInfo(o[0]);
+  checkFirebaseAppInfo(o[1]);
 }
 
 core.int buildCounterSearchFirebaseAppsResponse = 0;
 api.SearchFirebaseAppsResponse buildSearchFirebaseAppsResponse() {
-  var o = api.SearchFirebaseAppsResponse();
+  final o = api.SearchFirebaseAppsResponse();
   buildCounterSearchFirebaseAppsResponse++;
   if (buildCounterSearchFirebaseAppsResponse < 3) {
     o.apps = buildUnnamed8170();
@@ -1011,7 +1010,7 @@ void checkSearchFirebaseAppsResponse(api.SearchFirebaseAppsResponse o) {
 
 core.int buildCounterShaCertificate = 0;
 api.ShaCertificate buildShaCertificate() {
-  var o = api.ShaCertificate();
+  final o = api.ShaCertificate();
   buildCounterShaCertificate++;
   if (buildCounterShaCertificate < 3) {
     o.certType = 'foo';
@@ -1042,7 +1041,7 @@ void checkShaCertificate(api.ShaCertificate o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed8171() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1089,7 +1088,7 @@ void checkUnnamed8171(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed8172() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed8171());
   o.add(buildUnnamed8171());
   return o;
@@ -1103,7 +1102,7 @@ void checkUnnamed8172(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterStatus = 0;
 api.Status buildStatus() {
-  var o = api.Status();
+  final o = api.Status();
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
@@ -1132,7 +1131,7 @@ void checkStatus(api.Status o) {
 
 core.int buildCounterStatusProto = 0;
 api.StatusProto buildStatusProto() {
-  var o = api.StatusProto();
+  final o = api.StatusProto();
   buildCounterStatusProto++;
   if (buildCounterStatusProto < 3) {
     o.canonicalCode = 42;
@@ -1160,7 +1159,7 @@ void checkStatusProto(api.StatusProto o) {
       o.message!,
       unittest.equals('foo'),
     );
-    checkMessageSet(o.messageSet! as api.MessageSet);
+    checkMessageSet(o.messageSet!);
     unittest.expect(
       o.space!,
       unittest.equals('foo'),
@@ -1171,7 +1170,7 @@ void checkStatusProto(api.StatusProto o) {
 
 core.int buildCounterStreamMapping = 0;
 api.StreamMapping buildStreamMapping() {
-  var o = api.StreamMapping();
+  final o = api.StreamMapping();
   buildCounterStreamMapping++;
   if (buildCounterStreamMapping < 3) {
     o.app = 'foo';
@@ -1202,7 +1201,7 @@ void checkStreamMapping(api.StreamMapping o) {
 }
 
 core.List<core.String> buildUnnamed8173() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1222,7 +1221,7 @@ void checkUnnamed8173(core.List<core.String> o) {
 
 core.int buildCounterWebApp = 0;
 api.WebApp buildWebApp() {
-  var o = api.WebApp();
+  final o = api.WebApp();
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
     o.appId = 'foo';
@@ -1266,7 +1265,7 @@ void checkWebApp(api.WebApp o) {
 
 core.int buildCounterWebAppConfig = 0;
 api.WebAppConfig buildWebAppConfig() {
-  var o = api.WebAppConfig();
+  final o = api.WebAppConfig();
   buildCounterWebAppConfig++;
   if (buildCounterWebAppConfig < 3) {
     o.apiKey = 'foo';
@@ -1329,368 +1328,366 @@ void checkWebAppConfig(api.WebAppConfig o) {
 void main() {
   unittest.group('obj-schema-AddFirebaseRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAddFirebaseRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AddFirebaseRequest.fromJson(
+      final o = buildAddFirebaseRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddFirebaseRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAddFirebaseRequest(od as api.AddFirebaseRequest);
+      checkAddFirebaseRequest(od);
     });
   });
 
   unittest.group('obj-schema-AddGoogleAnalyticsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAddGoogleAnalyticsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AddGoogleAnalyticsRequest.fromJson(
+      final o = buildAddGoogleAnalyticsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddGoogleAnalyticsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAddGoogleAnalyticsRequest(od as api.AddGoogleAnalyticsRequest);
+      checkAddGoogleAnalyticsRequest(od);
     });
   });
 
   unittest.group('obj-schema-AdminSdkConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAdminSdkConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AdminSdkConfig.fromJson(
+      final o = buildAdminSdkConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdminSdkConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAdminSdkConfig(od as api.AdminSdkConfig);
+      checkAdminSdkConfig(od);
     });
   });
 
   unittest.group('obj-schema-AnalyticsDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnalyticsDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AnalyticsDetails.fromJson(
+      final o = buildAnalyticsDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnalyticsDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAnalyticsDetails(od as api.AnalyticsDetails);
+      checkAnalyticsDetails(od);
     });
   });
 
   unittest.group('obj-schema-AnalyticsProperty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnalyticsProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AnalyticsProperty.fromJson(
+      final o = buildAnalyticsProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnalyticsProperty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAnalyticsProperty(od as api.AnalyticsProperty);
+      checkAnalyticsProperty(od);
     });
   });
 
   unittest.group('obj-schema-AndroidApp', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidApp();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAndroidApp();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.AndroidApp.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidApp(od as api.AndroidApp);
+      checkAndroidApp(od);
     });
   });
 
   unittest.group('obj-schema-AndroidAppConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidAppConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidAppConfig.fromJson(
+      final o = buildAndroidAppConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidAppConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidAppConfig(od as api.AndroidAppConfig);
+      checkAndroidAppConfig(od);
     });
   });
 
   unittest.group('obj-schema-DefaultResources', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDefaultResources();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DefaultResources.fromJson(
+      final o = buildDefaultResources();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DefaultResources.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDefaultResources(od as api.DefaultResources);
+      checkDefaultResources(od);
     });
   });
 
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEmpty(od as api.Empty);
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
   unittest.group('obj-schema-FinalizeDefaultLocationRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFinalizeDefaultLocationRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FinalizeDefaultLocationRequest.fromJson(
+      final o = buildFinalizeDefaultLocationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FinalizeDefaultLocationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFinalizeDefaultLocationRequest(
-          od as api.FinalizeDefaultLocationRequest);
+      checkFinalizeDefaultLocationRequest(od);
     });
   });
 
   unittest.group('obj-schema-FirebaseAppInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFirebaseAppInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FirebaseAppInfo.fromJson(
+      final o = buildFirebaseAppInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FirebaseAppInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFirebaseAppInfo(od as api.FirebaseAppInfo);
+      checkFirebaseAppInfo(od);
     });
   });
 
   unittest.group('obj-schema-FirebaseProject', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFirebaseProject();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FirebaseProject.fromJson(
+      final o = buildFirebaseProject();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FirebaseProject.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFirebaseProject(od as api.FirebaseProject);
+      checkFirebaseProject(od);
     });
   });
 
   unittest.group('obj-schema-IosApp', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosApp();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildIosApp();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.IosApp.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkIosApp(od as api.IosApp);
+      checkIosApp(od);
     });
   });
 
   unittest.group('obj-schema-IosAppConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIosAppConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IosAppConfig.fromJson(
+      final o = buildIosAppConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IosAppConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIosAppConfig(od as api.IosAppConfig);
+      checkIosAppConfig(od);
     });
   });
 
   unittest.group('obj-schema-ListAndroidAppsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAndroidAppsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAndroidAppsResponse.fromJson(
+      final o = buildListAndroidAppsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAndroidAppsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAndroidAppsResponse(od as api.ListAndroidAppsResponse);
+      checkListAndroidAppsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListAvailableLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAvailableLocationsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAvailableLocationsResponse.fromJson(
+      final o = buildListAvailableLocationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAvailableLocationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAvailableLocationsResponse(
-          od as api.ListAvailableLocationsResponse);
+      checkListAvailableLocationsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListAvailableProjectsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAvailableProjectsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAvailableProjectsResponse.fromJson(
+      final o = buildListAvailableProjectsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAvailableProjectsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAvailableProjectsResponse(
-          od as api.ListAvailableProjectsResponse);
+      checkListAvailableProjectsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListFirebaseProjectsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListFirebaseProjectsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListFirebaseProjectsResponse.fromJson(
+      final o = buildListFirebaseProjectsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListFirebaseProjectsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListFirebaseProjectsResponse(od as api.ListFirebaseProjectsResponse);
+      checkListFirebaseProjectsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListIosAppsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListIosAppsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListIosAppsResponse.fromJson(
+      final o = buildListIosAppsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListIosAppsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListIosAppsResponse(od as api.ListIosAppsResponse);
+      checkListIosAppsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListShaCertificatesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListShaCertificatesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListShaCertificatesResponse.fromJson(
+      final o = buildListShaCertificatesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListShaCertificatesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListShaCertificatesResponse(od as api.ListShaCertificatesResponse);
+      checkListShaCertificatesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListWebAppsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListWebAppsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListWebAppsResponse.fromJson(
+      final o = buildListWebAppsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListWebAppsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListWebAppsResponse(od as api.ListWebAppsResponse);
+      checkListWebAppsResponse(od);
     });
   });
 
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLocation(od as api.Location);
+      checkLocation(od);
     });
   });
 
   unittest.group('obj-schema-MessageSet', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMessageSet();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildMessageSet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.MessageSet.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMessageSet(od as api.MessageSet);
+      checkMessageSet(od);
     });
   });
 
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOperation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkOperation(od as api.Operation);
+      checkOperation(od);
     });
   });
 
   unittest.group('obj-schema-ProjectInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProjectInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProjectInfo.fromJson(
+      final o = buildProjectInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProjectInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProjectInfo(od as api.ProjectInfo);
+      checkProjectInfo(od);
     });
   });
 
   unittest.group('obj-schema-RemoveAnalyticsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRemoveAnalyticsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RemoveAnalyticsRequest.fromJson(
+      final o = buildRemoveAnalyticsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemoveAnalyticsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRemoveAnalyticsRequest(od as api.RemoveAnalyticsRequest);
+      checkRemoveAnalyticsRequest(od);
     });
   });
 
   unittest.group('obj-schema-SearchFirebaseAppsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSearchFirebaseAppsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SearchFirebaseAppsResponse.fromJson(
+      final o = buildSearchFirebaseAppsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SearchFirebaseAppsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSearchFirebaseAppsResponse(od as api.SearchFirebaseAppsResponse);
+      checkSearchFirebaseAppsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ShaCertificate', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShaCertificate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShaCertificate.fromJson(
+      final o = buildShaCertificate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShaCertificate.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShaCertificate(od as api.ShaCertificate);
+      checkShaCertificate(od);
     });
   });
 
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStatus(od as api.Status);
+      checkStatus(od);
     });
   });
 
   unittest.group('obj-schema-StatusProto', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStatusProto();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StatusProto.fromJson(
+      final o = buildStatusProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StatusProto.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStatusProto(od as api.StatusProto);
+      checkStatusProto(od);
     });
   });
 
   unittest.group('obj-schema-StreamMapping', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStreamMapping();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StreamMapping.fromJson(
+      final o = buildStreamMapping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StreamMapping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStreamMapping(od as api.StreamMapping);
+      checkStreamMapping(od);
     });
   });
 
   unittest.group('obj-schema-WebApp', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebApp();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWebApp();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.WebApp.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWebApp(od as api.WebApp);
+      checkWebApp(od);
     });
   });
 
   unittest.group('obj-schema-WebAppConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebAppConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WebAppConfig.fromJson(
+      final o = buildWebAppConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WebAppConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWebAppConfig(od as api.WebAppConfig);
+      checkWebAppConfig(od);
     });
   });
 
   unittest.group('resource-AvailableProjectsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).availableProjects;
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).availableProjects;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 25),
-          unittest.equals("v1beta1/availableProjects"),
+          unittest.equals('v1beta1/availableProjects'),
         );
         pathOffset += 25;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1698,22 +1695,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAvailableProjectsResponse());
+        final resp = convert.json.encode(buildListAvailableProjectsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -1727,36 +1724,36 @@ void main() {
 
   unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).operations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1764,14 +1761,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -1781,41 +1778,41 @@ void main() {
 
   unittest.group('resource-ProjectsResource', () {
     unittest.test('method--addFirebase', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_request = buildAddFirebaseRequest();
-      var arg_project = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_request = buildAddFirebaseRequest();
+      final arg_project = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AddFirebaseRequest.fromJson(
+        final obj = api.AddFirebaseRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAddFirebaseRequest(obj as api.AddFirebaseRequest);
+        checkAddFirebaseRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1823,14 +1820,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1839,41 +1836,41 @@ void main() {
     });
 
     unittest.test('method--addGoogleAnalytics', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_request = buildAddGoogleAnalyticsRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_request = buildAddGoogleAnalyticsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AddGoogleAnalyticsRequest.fromJson(
+        final obj = api.AddGoogleAnalyticsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAddGoogleAnalyticsRequest(obj as api.AddGoogleAnalyticsRequest);
+        checkAddGoogleAnalyticsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1881,14 +1878,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.addGoogleAnalytics(arg_request, arg_parent,
@@ -1897,36 +1894,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1934,14 +1931,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildFirebaseProject());
+        final resp = convert.json.encode(buildFirebaseProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -1949,36 +1946,36 @@ void main() {
     });
 
     unittest.test('method--getAdminSdkConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1986,14 +1983,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAdminSdkConfig());
+        final resp = convert.json.encode(buildAdminSdkConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2002,36 +1999,36 @@ void main() {
     });
 
     unittest.test('method--getAnalyticsDetails', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2039,14 +2036,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAnalyticsDetails());
+        final resp = convert.json.encode(buildAnalyticsDetails());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2055,36 +2052,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("v1beta1/projects"),
+          unittest.equals('v1beta1/projects'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2092,22 +2089,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListFirebaseProjectsResponse());
+        final resp = convert.json.encode(buildListFirebaseProjectsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -2119,42 +2116,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_request = buildFirebaseProject();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_request = buildFirebaseProject();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FirebaseProject.fromJson(
+        final obj = api.FirebaseProject.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkFirebaseProject(obj as api.FirebaseProject);
+        checkFirebaseProject(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2162,18 +2159,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildFirebaseProject());
+        final resp = convert.json.encode(buildFirebaseProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -2182,41 +2179,41 @@ void main() {
     });
 
     unittest.test('method--removeAnalytics', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_request = buildRemoveAnalyticsRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_request = buildRemoveAnalyticsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RemoveAnalyticsRequest.fromJson(
+        final obj = api.RemoveAnalyticsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkRemoveAnalyticsRequest(obj as api.RemoveAnalyticsRequest);
+        checkRemoveAnalyticsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2224,14 +2221,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.removeAnalytics(arg_request, arg_parent,
@@ -2240,39 +2237,39 @@ void main() {
     });
 
     unittest.test('method--searchApps', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2280,26 +2277,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSearchFirebaseAppsResponse());
+        final resp = convert.json.encode(buildSearchFirebaseAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.searchApps(arg_parent,
@@ -2314,41 +2311,41 @@ void main() {
 
   unittest.group('resource-ProjectsAndroidAppsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.androidApps;
-      var arg_request = buildAndroidApp();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps;
+      final arg_request = buildAndroidApp();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AndroidApp.fromJson(
+        final obj = api.AndroidApp.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAndroidApp(obj as api.AndroidApp);
+        checkAndroidApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2356,14 +2353,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2372,36 +2369,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.androidApps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2409,14 +2406,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAndroidApp());
+        final resp = convert.json.encode(buildAndroidApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -2424,36 +2421,36 @@ void main() {
     });
 
     unittest.test('method--getConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.androidApps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2461,14 +2458,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAndroidAppConfig());
+        final resp = convert.json.encode(buildAndroidAppConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getConfig(arg_name, $fields: arg_$fields);
@@ -2476,38 +2473,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.androidApps;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2515,22 +2512,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAndroidAppsResponse());
+        final resp = convert.json.encode(buildListAndroidAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -2541,42 +2538,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.androidApps;
-      var arg_request = buildAndroidApp();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps;
+      final arg_request = buildAndroidApp();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AndroidApp.fromJson(
+        final obj = api.AndroidApp.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAndroidApp(obj as api.AndroidApp);
+        checkAndroidApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2584,18 +2581,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAndroidApp());
+        final resp = convert.json.encode(buildAndroidApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -2606,41 +2603,41 @@ void main() {
 
   unittest.group('resource-ProjectsAndroidAppsShaResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
-      var arg_request = buildShaCertificate();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
+      final arg_request = buildShaCertificate();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ShaCertificate.fromJson(
+        final obj = api.ShaCertificate.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkShaCertificate(obj as api.ShaCertificate);
+        checkShaCertificate(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2648,14 +2645,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildShaCertificate());
+        final resp = convert.json.encode(buildShaCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2664,36 +2661,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2701,14 +2698,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -2716,36 +2713,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2753,14 +2750,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListShaCertificatesResponse());
+        final resp = convert.json.encode(buildListShaCertificatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent, $fields: arg_$fields);
@@ -2771,38 +2768,38 @@ void main() {
 
   unittest.group('resource-ProjectsAvailableLocationsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.availableLocations;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.availableLocations;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2810,22 +2807,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAvailableLocationsResponse());
+        final resp = convert.json.encode(buildListAvailableLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -2839,42 +2836,41 @@ void main() {
 
   unittest.group('resource-ProjectsDefaultLocationResource', () {
     unittest.test('method--finalize', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.defaultLocation;
-      var arg_request = buildFinalizeDefaultLocationRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.defaultLocation;
+      final arg_request = buildFinalizeDefaultLocationRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FinalizeDefaultLocationRequest.fromJson(
+        final obj = api.FinalizeDefaultLocationRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkFinalizeDefaultLocationRequest(
-            obj as api.FinalizeDefaultLocationRequest);
+        checkFinalizeDefaultLocationRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2882,14 +2878,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2900,41 +2896,41 @@ void main() {
 
   unittest.group('resource-ProjectsIosAppsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.iosApps;
-      var arg_request = buildIosApp();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.iosApps;
+      final arg_request = buildIosApp();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.IosApp.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkIosApp(obj as api.IosApp);
+        checkIosApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2942,14 +2938,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2958,36 +2954,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.iosApps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.iosApps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2995,14 +2991,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildIosApp());
+        final resp = convert.json.encode(buildIosApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -3010,36 +3006,36 @@ void main() {
     });
 
     unittest.test('method--getConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.iosApps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.iosApps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3047,14 +3043,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildIosAppConfig());
+        final resp = convert.json.encode(buildIosAppConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getConfig(arg_name, $fields: arg_$fields);
@@ -3062,38 +3058,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.iosApps;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.iosApps;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3101,22 +3097,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListIosAppsResponse());
+        final resp = convert.json.encode(buildListIosAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -3127,42 +3123,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.iosApps;
-      var arg_request = buildIosApp();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.iosApps;
+      final arg_request = buildIosApp();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.IosApp.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkIosApp(obj as api.IosApp);
+        checkIosApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3170,18 +3166,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildIosApp());
+        final resp = convert.json.encode(buildIosApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -3192,41 +3188,41 @@ void main() {
 
   unittest.group('resource-ProjectsWebAppsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.webApps;
-      var arg_request = buildWebApp();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.webApps;
+      final arg_request = buildWebApp();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.WebApp.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkWebApp(obj as api.WebApp);
+        checkWebApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3234,14 +3230,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3250,36 +3246,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.webApps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.webApps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3287,14 +3283,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildWebApp());
+        final resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -3302,36 +3298,36 @@ void main() {
     });
 
     unittest.test('method--getConfig', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.webApps;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.webApps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3339,14 +3335,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildWebAppConfig());
+        final resp = convert.json.encode(buildWebAppConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getConfig(arg_name, $fields: arg_$fields);
@@ -3354,38 +3350,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.webApps;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.webApps;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3393,22 +3389,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListWebAppsResponse());
+        final resp = convert.json.encode(buildListWebAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -3419,42 +3415,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.FirebaseManagementApi(mock).projects.webApps;
-      var arg_request = buildWebApp();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.webApps;
+      final arg_request = buildWebApp();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.WebApp.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkWebApp(obj as api.WebApp);
+        checkWebApp(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3462,18 +3458,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildWebApp());
+        final resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,

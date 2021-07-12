@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAddress = 0;
 api.Address buildAddress() {
-  var o = api.Address();
+  final o = api.Address();
   buildCounterAddress++;
   if (buildCounterAddress < 3) {
     o.pipe = buildPipe();
@@ -42,14 +41,14 @@ api.Address buildAddress() {
 void checkAddress(api.Address o) {
   buildCounterAddress++;
   if (buildCounterAddress < 3) {
-    checkPipe(o.pipe! as api.Pipe);
-    checkSocketAddress(o.socketAddress! as api.SocketAddress);
+    checkPipe(o.pipe!);
+    checkSocketAddress(o.socketAddress!);
   }
   buildCounterAddress--;
 }
 
 core.Map<core.String, core.Object> buildUnnamed2572() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -97,7 +96,7 @@ void checkUnnamed2572(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterBuildVersion = 0;
 api.BuildVersion buildBuildVersion() {
-  var o = api.BuildVersion();
+  final o = api.BuildVersion();
   buildCounterBuildVersion++;
   if (buildCounterBuildVersion < 3) {
     o.metadata = buildUnnamed2572();
@@ -111,13 +110,13 @@ void checkBuildVersion(api.BuildVersion o) {
   buildCounterBuildVersion++;
   if (buildCounterBuildVersion < 3) {
     checkUnnamed2572(o.metadata!);
-    checkSemanticVersion(o.version! as api.SemanticVersion);
+    checkSemanticVersion(o.version!);
   }
   buildCounterBuildVersion--;
 }
 
 core.List<api.PerXdsConfig> buildUnnamed2573() {
-  var o = <api.PerXdsConfig>[];
+  final o = <api.PerXdsConfig>[];
   o.add(buildPerXdsConfig());
   o.add(buildPerXdsConfig());
   return o;
@@ -125,13 +124,13 @@ core.List<api.PerXdsConfig> buildUnnamed2573() {
 
 void checkUnnamed2573(core.List<api.PerXdsConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPerXdsConfig(o[0] as api.PerXdsConfig);
-  checkPerXdsConfig(o[1] as api.PerXdsConfig);
+  checkPerXdsConfig(o[0]);
+  checkPerXdsConfig(o[1]);
 }
 
 core.int buildCounterClientConfig = 0;
 api.ClientConfig buildClientConfig() {
-  var o = api.ClientConfig();
+  final o = api.ClientConfig();
   buildCounterClientConfig++;
   if (buildCounterClientConfig < 3) {
     o.node = buildNode();
@@ -144,14 +143,14 @@ api.ClientConfig buildClientConfig() {
 void checkClientConfig(api.ClientConfig o) {
   buildCounterClientConfig++;
   if (buildCounterClientConfig < 3) {
-    checkNode(o.node! as api.Node);
+    checkNode(o.node!);
     checkUnnamed2573(o.xdsConfig!);
   }
   buildCounterClientConfig--;
 }
 
 core.List<api.NodeMatcher> buildUnnamed2574() {
-  var o = <api.NodeMatcher>[];
+  final o = <api.NodeMatcher>[];
   o.add(buildNodeMatcher());
   o.add(buildNodeMatcher());
   return o;
@@ -159,13 +158,13 @@ core.List<api.NodeMatcher> buildUnnamed2574() {
 
 void checkUnnamed2574(core.List<api.NodeMatcher> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNodeMatcher(o[0] as api.NodeMatcher);
-  checkNodeMatcher(o[1] as api.NodeMatcher);
+  checkNodeMatcher(o[0]);
+  checkNodeMatcher(o[1]);
 }
 
 core.int buildCounterClientStatusRequest = 0;
 api.ClientStatusRequest buildClientStatusRequest() {
-  var o = api.ClientStatusRequest();
+  final o = api.ClientStatusRequest();
   buildCounterClientStatusRequest++;
   if (buildCounterClientStatusRequest < 3) {
     o.nodeMatchers = buildUnnamed2574();
@@ -183,7 +182,7 @@ void checkClientStatusRequest(api.ClientStatusRequest o) {
 }
 
 core.List<api.ClientConfig> buildUnnamed2575() {
-  var o = <api.ClientConfig>[];
+  final o = <api.ClientConfig>[];
   o.add(buildClientConfig());
   o.add(buildClientConfig());
   return o;
@@ -191,13 +190,13 @@ core.List<api.ClientConfig> buildUnnamed2575() {
 
 void checkUnnamed2575(core.List<api.ClientConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkClientConfig(o[0] as api.ClientConfig);
-  checkClientConfig(o[1] as api.ClientConfig);
+  checkClientConfig(o[0]);
+  checkClientConfig(o[1]);
 }
 
 core.int buildCounterClientStatusResponse = 0;
 api.ClientStatusResponse buildClientStatusResponse() {
-  var o = api.ClientStatusResponse();
+  final o = api.ClientStatusResponse();
   buildCounterClientStatusResponse++;
   if (buildCounterClientStatusResponse < 3) {
     o.config = buildUnnamed2575();
@@ -215,7 +214,7 @@ void checkClientStatusResponse(api.ClientStatusResponse o) {
 }
 
 core.List<api.DynamicCluster> buildUnnamed2576() {
-  var o = <api.DynamicCluster>[];
+  final o = <api.DynamicCluster>[];
   o.add(buildDynamicCluster());
   o.add(buildDynamicCluster());
   return o;
@@ -223,12 +222,12 @@ core.List<api.DynamicCluster> buildUnnamed2576() {
 
 void checkUnnamed2576(core.List<api.DynamicCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDynamicCluster(o[0] as api.DynamicCluster);
-  checkDynamicCluster(o[1] as api.DynamicCluster);
+  checkDynamicCluster(o[0]);
+  checkDynamicCluster(o[1]);
 }
 
 core.List<api.DynamicCluster> buildUnnamed2577() {
-  var o = <api.DynamicCluster>[];
+  final o = <api.DynamicCluster>[];
   o.add(buildDynamicCluster());
   o.add(buildDynamicCluster());
   return o;
@@ -236,12 +235,12 @@ core.List<api.DynamicCluster> buildUnnamed2577() {
 
 void checkUnnamed2577(core.List<api.DynamicCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDynamicCluster(o[0] as api.DynamicCluster);
-  checkDynamicCluster(o[1] as api.DynamicCluster);
+  checkDynamicCluster(o[0]);
+  checkDynamicCluster(o[1]);
 }
 
 core.List<api.StaticCluster> buildUnnamed2578() {
-  var o = <api.StaticCluster>[];
+  final o = <api.StaticCluster>[];
   o.add(buildStaticCluster());
   o.add(buildStaticCluster());
   return o;
@@ -249,13 +248,13 @@ core.List<api.StaticCluster> buildUnnamed2578() {
 
 void checkUnnamed2578(core.List<api.StaticCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStaticCluster(o[0] as api.StaticCluster);
-  checkStaticCluster(o[1] as api.StaticCluster);
+  checkStaticCluster(o[0]);
+  checkStaticCluster(o[1]);
 }
 
 core.int buildCounterClustersConfigDump = 0;
 api.ClustersConfigDump buildClustersConfigDump() {
-  var o = api.ClustersConfigDump();
+  final o = api.ClustersConfigDump();
   buildCounterClustersConfigDump++;
   if (buildCounterClustersConfigDump < 3) {
     o.dynamicActiveClusters = buildUnnamed2576();
@@ -283,7 +282,7 @@ void checkClustersConfigDump(api.ClustersConfigDump o) {
 
 core.int buildCounterDoubleMatcher = 0;
 api.DoubleMatcher buildDoubleMatcher() {
-  var o = api.DoubleMatcher();
+  final o = api.DoubleMatcher();
   buildCounterDoubleMatcher++;
   if (buildCounterDoubleMatcher < 3) {
     o.exact = 42.0;
@@ -300,14 +299,14 @@ void checkDoubleMatcher(api.DoubleMatcher o) {
       o.exact!,
       unittest.equals(42.0),
     );
-    checkDoubleRange(o.range! as api.DoubleRange);
+    checkDoubleRange(o.range!);
   }
   buildCounterDoubleMatcher--;
 }
 
 core.int buildCounterDoubleRange = 0;
 api.DoubleRange buildDoubleRange() {
-  var o = api.DoubleRange();
+  final o = api.DoubleRange();
   buildCounterDoubleRange++;
   if (buildCounterDoubleRange < 3) {
     o.end = 42.0;
@@ -333,7 +332,7 @@ void checkDoubleRange(api.DoubleRange o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed2579() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -381,7 +380,7 @@ void checkUnnamed2579(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterDynamicCluster = 0;
 api.DynamicCluster buildDynamicCluster() {
-  var o = api.DynamicCluster();
+  final o = api.DynamicCluster();
   buildCounterDynamicCluster++;
   if (buildCounterDynamicCluster < 3) {
     o.cluster = buildUnnamed2579();
@@ -410,7 +409,7 @@ void checkDynamicCluster(api.DynamicCluster o) {
 
 core.int buildCounterDynamicListener = 0;
 api.DynamicListener buildDynamicListener() {
-  var o = api.DynamicListener();
+  final o = api.DynamicListener();
   buildCounterDynamicListener++;
   if (buildCounterDynamicListener < 3) {
     o.activeState = buildDynamicListenerState();
@@ -426,20 +425,20 @@ api.DynamicListener buildDynamicListener() {
 void checkDynamicListener(api.DynamicListener o) {
   buildCounterDynamicListener++;
   if (buildCounterDynamicListener < 3) {
-    checkDynamicListenerState(o.activeState! as api.DynamicListenerState);
-    checkDynamicListenerState(o.drainingState! as api.DynamicListenerState);
-    checkUpdateFailureState(o.errorState! as api.UpdateFailureState);
+    checkDynamicListenerState(o.activeState!);
+    checkDynamicListenerState(o.drainingState!);
+    checkUpdateFailureState(o.errorState!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkDynamicListenerState(o.warmingState! as api.DynamicListenerState);
+    checkDynamicListenerState(o.warmingState!);
   }
   buildCounterDynamicListener--;
 }
 
 core.Map<core.String, core.Object> buildUnnamed2580() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -487,7 +486,7 @@ void checkUnnamed2580(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterDynamicListenerState = 0;
 api.DynamicListenerState buildDynamicListenerState() {
-  var o = api.DynamicListenerState();
+  final o = api.DynamicListenerState();
   buildCounterDynamicListenerState++;
   if (buildCounterDynamicListenerState < 3) {
     o.lastUpdated = 'foo';
@@ -515,7 +514,7 @@ void checkDynamicListenerState(api.DynamicListenerState o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed2581() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -563,7 +562,7 @@ void checkUnnamed2581(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterDynamicRouteConfig = 0;
 api.DynamicRouteConfig buildDynamicRouteConfig() {
-  var o = api.DynamicRouteConfig();
+  final o = api.DynamicRouteConfig();
   buildCounterDynamicRouteConfig++;
   if (buildCounterDynamicRouteConfig < 3) {
     o.lastUpdated = 'foo';
@@ -591,7 +590,7 @@ void checkDynamicRouteConfig(api.DynamicRouteConfig o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed2582() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -638,7 +637,7 @@ void checkUnnamed2582(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed2583() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed2582());
   o.add(buildUnnamed2582());
   return o;
@@ -652,7 +651,7 @@ void checkUnnamed2583(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterDynamicScopedRouteConfigs = 0;
 api.DynamicScopedRouteConfigs buildDynamicScopedRouteConfigs() {
-  var o = api.DynamicScopedRouteConfigs();
+  final o = api.DynamicScopedRouteConfigs();
   buildCounterDynamicScopedRouteConfigs++;
   if (buildCounterDynamicScopedRouteConfigs < 3) {
     o.lastUpdated = 'foo';
@@ -686,7 +685,7 @@ void checkDynamicScopedRouteConfigs(api.DynamicScopedRouteConfigs o) {
 
 core.int buildCounterExtension = 0;
 api.Extension buildExtension() {
-  var o = api.Extension();
+  final o = api.Extension();
   buildCounterExtension++;
   if (buildCounterExtension < 3) {
     o.category = 'foo';
@@ -715,14 +714,14 @@ void checkExtension(api.Extension o) {
       o.typeDescriptor!,
       unittest.equals('foo'),
     );
-    checkBuildVersion(o.version! as api.BuildVersion);
+    checkBuildVersion(o.version!);
   }
   buildCounterExtension--;
 }
 
 core.int buildCounterGoogleRE2 = 0;
 api.GoogleRE2 buildGoogleRE2() {
-  var o = api.GoogleRE2();
+  final o = api.GoogleRE2();
   buildCounterGoogleRE2++;
   if (buildCounterGoogleRE2 < 3) {
     o.maxProgramSize = 42;
@@ -743,7 +742,7 @@ void checkGoogleRE2(api.GoogleRE2 o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed2584() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -790,7 +789,7 @@ void checkUnnamed2584(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed2585() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed2584());
   o.add(buildUnnamed2584());
   return o;
@@ -804,7 +803,7 @@ void checkUnnamed2585(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterInlineScopedRouteConfigs = 0;
 api.InlineScopedRouteConfigs buildInlineScopedRouteConfigs() {
-  var o = api.InlineScopedRouteConfigs();
+  final o = api.InlineScopedRouteConfigs();
   buildCounterInlineScopedRouteConfigs++;
   if (buildCounterInlineScopedRouteConfigs < 3) {
     o.lastUpdated = 'foo';
@@ -833,7 +832,7 @@ void checkInlineScopedRouteConfigs(api.InlineScopedRouteConfigs o) {
 
 core.int buildCounterListMatcher = 0;
 api.ListMatcher buildListMatcher() {
-  var o = api.ListMatcher();
+  final o = api.ListMatcher();
   buildCounterListMatcher++;
   if (buildCounterListMatcher < 3) {
     o.oneOf = buildValueMatcher();
@@ -845,13 +844,13 @@ api.ListMatcher buildListMatcher() {
 void checkListMatcher(api.ListMatcher o) {
   buildCounterListMatcher++;
   if (buildCounterListMatcher < 3) {
-    checkValueMatcher(o.oneOf! as api.ValueMatcher);
+    checkValueMatcher(o.oneOf!);
   }
   buildCounterListMatcher--;
 }
 
 core.List<api.DynamicListener> buildUnnamed2586() {
-  var o = <api.DynamicListener>[];
+  final o = <api.DynamicListener>[];
   o.add(buildDynamicListener());
   o.add(buildDynamicListener());
   return o;
@@ -859,12 +858,12 @@ core.List<api.DynamicListener> buildUnnamed2586() {
 
 void checkUnnamed2586(core.List<api.DynamicListener> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDynamicListener(o[0] as api.DynamicListener);
-  checkDynamicListener(o[1] as api.DynamicListener);
+  checkDynamicListener(o[0]);
+  checkDynamicListener(o[1]);
 }
 
 core.List<api.StaticListener> buildUnnamed2587() {
-  var o = <api.StaticListener>[];
+  final o = <api.StaticListener>[];
   o.add(buildStaticListener());
   o.add(buildStaticListener());
   return o;
@@ -872,13 +871,13 @@ core.List<api.StaticListener> buildUnnamed2587() {
 
 void checkUnnamed2587(core.List<api.StaticListener> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStaticListener(o[0] as api.StaticListener);
-  checkStaticListener(o[1] as api.StaticListener);
+  checkStaticListener(o[0]);
+  checkStaticListener(o[1]);
 }
 
 core.int buildCounterListenersConfigDump = 0;
 api.ListenersConfigDump buildListenersConfigDump() {
-  var o = api.ListenersConfigDump();
+  final o = api.ListenersConfigDump();
   buildCounterListenersConfigDump++;
   if (buildCounterListenersConfigDump < 3) {
     o.dynamicListeners = buildUnnamed2586();
@@ -904,7 +903,7 @@ void checkListenersConfigDump(api.ListenersConfigDump o) {
 
 core.int buildCounterLocality = 0;
 api.Locality buildLocality() {
-  var o = api.Locality();
+  final o = api.Locality();
   buildCounterLocality++;
   if (buildCounterLocality < 3) {
     o.region = 'foo';
@@ -935,7 +934,7 @@ void checkLocality(api.Locality o) {
 }
 
 core.List<core.String> buildUnnamed2588() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -954,7 +953,7 @@ void checkUnnamed2588(core.List<core.String> o) {
 }
 
 core.List<api.Extension> buildUnnamed2589() {
-  var o = <api.Extension>[];
+  final o = <api.Extension>[];
   o.add(buildExtension());
   o.add(buildExtension());
   return o;
@@ -962,12 +961,12 @@ core.List<api.Extension> buildUnnamed2589() {
 
 void checkUnnamed2589(core.List<api.Extension> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExtension(o[0] as api.Extension);
-  checkExtension(o[1] as api.Extension);
+  checkExtension(o[0]);
+  checkExtension(o[1]);
 }
 
 core.List<api.Address> buildUnnamed2590() {
-  var o = <api.Address>[];
+  final o = <api.Address>[];
   o.add(buildAddress());
   o.add(buildAddress());
   return o;
@@ -975,12 +974,12 @@ core.List<api.Address> buildUnnamed2590() {
 
 void checkUnnamed2590(core.List<api.Address> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAddress(o[0] as api.Address);
-  checkAddress(o[1] as api.Address);
+  checkAddress(o[0]);
+  checkAddress(o[1]);
 }
 
 core.Map<core.String, core.Object> buildUnnamed2591() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1028,7 +1027,7 @@ void checkUnnamed2591(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterNode = 0;
 api.Node buildNode() {
-  var o = api.Node();
+  final o = api.Node();
   buildCounterNode++;
   if (buildCounterNode < 3) {
     o.buildVersion = 'foo';
@@ -1065,9 +1064,9 @@ void checkNode(api.Node o) {
       unittest.equals('foo'),
     );
     checkUnnamed2590(o.listeningAddresses!);
-    checkLocality(o.locality! as api.Locality);
+    checkLocality(o.locality!);
     checkUnnamed2591(o.metadata!);
-    checkBuildVersion(o.userAgentBuildVersion! as api.BuildVersion);
+    checkBuildVersion(o.userAgentBuildVersion!);
     unittest.expect(
       o.userAgentName!,
       unittest.equals('foo'),
@@ -1081,7 +1080,7 @@ void checkNode(api.Node o) {
 }
 
 core.List<api.StructMatcher> buildUnnamed2592() {
-  var o = <api.StructMatcher>[];
+  final o = <api.StructMatcher>[];
   o.add(buildStructMatcher());
   o.add(buildStructMatcher());
   return o;
@@ -1089,13 +1088,13 @@ core.List<api.StructMatcher> buildUnnamed2592() {
 
 void checkUnnamed2592(core.List<api.StructMatcher> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStructMatcher(o[0] as api.StructMatcher);
-  checkStructMatcher(o[1] as api.StructMatcher);
+  checkStructMatcher(o[0]);
+  checkStructMatcher(o[1]);
 }
 
 core.int buildCounterNodeMatcher = 0;
 api.NodeMatcher buildNodeMatcher() {
-  var o = api.NodeMatcher();
+  final o = api.NodeMatcher();
   buildCounterNodeMatcher++;
   if (buildCounterNodeMatcher < 3) {
     o.nodeId = buildStringMatcher();
@@ -1108,7 +1107,7 @@ api.NodeMatcher buildNodeMatcher() {
 void checkNodeMatcher(api.NodeMatcher o) {
   buildCounterNodeMatcher++;
   if (buildCounterNodeMatcher < 3) {
-    checkStringMatcher(o.nodeId! as api.StringMatcher);
+    checkStringMatcher(o.nodeId!);
     checkUnnamed2592(o.nodeMetadatas!);
   }
   buildCounterNodeMatcher--;
@@ -1116,7 +1115,7 @@ void checkNodeMatcher(api.NodeMatcher o) {
 
 core.int buildCounterNullMatch = 0;
 api.NullMatch buildNullMatch() {
-  var o = api.NullMatch();
+  final o = api.NullMatch();
   buildCounterNullMatch++;
   if (buildCounterNullMatch < 3) {}
   buildCounterNullMatch--;
@@ -1131,7 +1130,7 @@ void checkNullMatch(api.NullMatch o) {
 
 core.int buildCounterPathSegment = 0;
 api.PathSegment buildPathSegment() {
-  var o = api.PathSegment();
+  final o = api.PathSegment();
   buildCounterPathSegment++;
   if (buildCounterPathSegment < 3) {
     o.key = 'foo';
@@ -1153,7 +1152,7 @@ void checkPathSegment(api.PathSegment o) {
 
 core.int buildCounterPerXdsConfig = 0;
 api.PerXdsConfig buildPerXdsConfig() {
-  var o = api.PerXdsConfig();
+  final o = api.PerXdsConfig();
   buildCounterPerXdsConfig++;
   if (buildCounterPerXdsConfig < 3) {
     o.clusterConfig = buildClustersConfigDump();
@@ -1169,11 +1168,10 @@ api.PerXdsConfig buildPerXdsConfig() {
 void checkPerXdsConfig(api.PerXdsConfig o) {
   buildCounterPerXdsConfig++;
   if (buildCounterPerXdsConfig < 3) {
-    checkClustersConfigDump(o.clusterConfig! as api.ClustersConfigDump);
-    checkListenersConfigDump(o.listenerConfig! as api.ListenersConfigDump);
-    checkRoutesConfigDump(o.routeConfig! as api.RoutesConfigDump);
-    checkScopedRoutesConfigDump(
-        o.scopedRouteConfig! as api.ScopedRoutesConfigDump);
+    checkClustersConfigDump(o.clusterConfig!);
+    checkListenersConfigDump(o.listenerConfig!);
+    checkRoutesConfigDump(o.routeConfig!);
+    checkScopedRoutesConfigDump(o.scopedRouteConfig!);
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -1184,7 +1182,7 @@ void checkPerXdsConfig(api.PerXdsConfig o) {
 
 core.int buildCounterPipe = 0;
 api.Pipe buildPipe() {
-  var o = api.Pipe();
+  final o = api.Pipe();
   buildCounterPipe++;
   if (buildCounterPipe < 3) {
     o.mode = 42;
@@ -1211,7 +1209,7 @@ void checkPipe(api.Pipe o) {
 
 core.int buildCounterRegexMatcher = 0;
 api.RegexMatcher buildRegexMatcher() {
-  var o = api.RegexMatcher();
+  final o = api.RegexMatcher();
   buildCounterRegexMatcher++;
   if (buildCounterRegexMatcher < 3) {
     o.googleRe2 = buildGoogleRE2();
@@ -1224,7 +1222,7 @@ api.RegexMatcher buildRegexMatcher() {
 void checkRegexMatcher(api.RegexMatcher o) {
   buildCounterRegexMatcher++;
   if (buildCounterRegexMatcher < 3) {
-    checkGoogleRE2(o.googleRe2! as api.GoogleRE2);
+    checkGoogleRE2(o.googleRe2!);
     unittest.expect(
       o.regex!,
       unittest.equals('foo'),
@@ -1234,7 +1232,7 @@ void checkRegexMatcher(api.RegexMatcher o) {
 }
 
 core.List<api.DynamicRouteConfig> buildUnnamed2593() {
-  var o = <api.DynamicRouteConfig>[];
+  final o = <api.DynamicRouteConfig>[];
   o.add(buildDynamicRouteConfig());
   o.add(buildDynamicRouteConfig());
   return o;
@@ -1242,12 +1240,12 @@ core.List<api.DynamicRouteConfig> buildUnnamed2593() {
 
 void checkUnnamed2593(core.List<api.DynamicRouteConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDynamicRouteConfig(o[0] as api.DynamicRouteConfig);
-  checkDynamicRouteConfig(o[1] as api.DynamicRouteConfig);
+  checkDynamicRouteConfig(o[0]);
+  checkDynamicRouteConfig(o[1]);
 }
 
 core.List<api.StaticRouteConfig> buildUnnamed2594() {
-  var o = <api.StaticRouteConfig>[];
+  final o = <api.StaticRouteConfig>[];
   o.add(buildStaticRouteConfig());
   o.add(buildStaticRouteConfig());
   return o;
@@ -1255,13 +1253,13 @@ core.List<api.StaticRouteConfig> buildUnnamed2594() {
 
 void checkUnnamed2594(core.List<api.StaticRouteConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStaticRouteConfig(o[0] as api.StaticRouteConfig);
-  checkStaticRouteConfig(o[1] as api.StaticRouteConfig);
+  checkStaticRouteConfig(o[0]);
+  checkStaticRouteConfig(o[1]);
 }
 
 core.int buildCounterRoutesConfigDump = 0;
 api.RoutesConfigDump buildRoutesConfigDump() {
-  var o = api.RoutesConfigDump();
+  final o = api.RoutesConfigDump();
   buildCounterRoutesConfigDump++;
   if (buildCounterRoutesConfigDump < 3) {
     o.dynamicRouteConfigs = buildUnnamed2593();
@@ -1281,7 +1279,7 @@ void checkRoutesConfigDump(api.RoutesConfigDump o) {
 }
 
 core.List<api.DynamicScopedRouteConfigs> buildUnnamed2595() {
-  var o = <api.DynamicScopedRouteConfigs>[];
+  final o = <api.DynamicScopedRouteConfigs>[];
   o.add(buildDynamicScopedRouteConfigs());
   o.add(buildDynamicScopedRouteConfigs());
   return o;
@@ -1289,12 +1287,12 @@ core.List<api.DynamicScopedRouteConfigs> buildUnnamed2595() {
 
 void checkUnnamed2595(core.List<api.DynamicScopedRouteConfigs> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDynamicScopedRouteConfigs(o[0] as api.DynamicScopedRouteConfigs);
-  checkDynamicScopedRouteConfigs(o[1] as api.DynamicScopedRouteConfigs);
+  checkDynamicScopedRouteConfigs(o[0]);
+  checkDynamicScopedRouteConfigs(o[1]);
 }
 
 core.List<api.InlineScopedRouteConfigs> buildUnnamed2596() {
-  var o = <api.InlineScopedRouteConfigs>[];
+  final o = <api.InlineScopedRouteConfigs>[];
   o.add(buildInlineScopedRouteConfigs());
   o.add(buildInlineScopedRouteConfigs());
   return o;
@@ -1302,13 +1300,13 @@ core.List<api.InlineScopedRouteConfigs> buildUnnamed2596() {
 
 void checkUnnamed2596(core.List<api.InlineScopedRouteConfigs> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInlineScopedRouteConfigs(o[0] as api.InlineScopedRouteConfigs);
-  checkInlineScopedRouteConfigs(o[1] as api.InlineScopedRouteConfigs);
+  checkInlineScopedRouteConfigs(o[0]);
+  checkInlineScopedRouteConfigs(o[1]);
 }
 
 core.int buildCounterScopedRoutesConfigDump = 0;
 api.ScopedRoutesConfigDump buildScopedRoutesConfigDump() {
-  var o = api.ScopedRoutesConfigDump();
+  final o = api.ScopedRoutesConfigDump();
   buildCounterScopedRoutesConfigDump++;
   if (buildCounterScopedRoutesConfigDump < 3) {
     o.dynamicScopedRouteConfigs = buildUnnamed2595();
@@ -1329,7 +1327,7 @@ void checkScopedRoutesConfigDump(api.ScopedRoutesConfigDump o) {
 
 core.int buildCounterSemanticVersion = 0;
 api.SemanticVersion buildSemanticVersion() {
-  var o = api.SemanticVersion();
+  final o = api.SemanticVersion();
   buildCounterSemanticVersion++;
   if (buildCounterSemanticVersion < 3) {
     o.majorNumber = 42;
@@ -1361,7 +1359,7 @@ void checkSemanticVersion(api.SemanticVersion o) {
 
 core.int buildCounterSocketAddress = 0;
 api.SocketAddress buildSocketAddress() {
-  var o = api.SocketAddress();
+  final o = api.SocketAddress();
   buildCounterSocketAddress++;
   if (buildCounterSocketAddress < 3) {
     o.address = 'foo';
@@ -1404,7 +1402,7 @@ void checkSocketAddress(api.SocketAddress o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed2597() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1452,7 +1450,7 @@ void checkUnnamed2597(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterStaticCluster = 0;
 api.StaticCluster buildStaticCluster() {
-  var o = api.StaticCluster();
+  final o = api.StaticCluster();
   buildCounterStaticCluster++;
   if (buildCounterStaticCluster < 3) {
     o.cluster = buildUnnamed2597();
@@ -1475,7 +1473,7 @@ void checkStaticCluster(api.StaticCluster o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed2598() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1523,7 +1521,7 @@ void checkUnnamed2598(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterStaticListener = 0;
 api.StaticListener buildStaticListener() {
-  var o = api.StaticListener();
+  final o = api.StaticListener();
   buildCounterStaticListener++;
   if (buildCounterStaticListener < 3) {
     o.lastUpdated = 'foo';
@@ -1546,7 +1544,7 @@ void checkStaticListener(api.StaticListener o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed2599() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1594,7 +1592,7 @@ void checkUnnamed2599(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterStaticRouteConfig = 0;
 api.StaticRouteConfig buildStaticRouteConfig() {
-  var o = api.StaticRouteConfig();
+  final o = api.StaticRouteConfig();
   buildCounterStaticRouteConfig++;
   if (buildCounterStaticRouteConfig < 3) {
     o.lastUpdated = 'foo';
@@ -1618,7 +1616,7 @@ void checkStaticRouteConfig(api.StaticRouteConfig o) {
 
 core.int buildCounterStringMatcher = 0;
 api.StringMatcher buildStringMatcher() {
-  var o = api.StringMatcher();
+  final o = api.StringMatcher();
   buildCounterStringMatcher++;
   if (buildCounterStringMatcher < 3) {
     o.exact = 'foo';
@@ -1648,7 +1646,7 @@ void checkStringMatcher(api.StringMatcher o) {
       o.regex!,
       unittest.equals('foo'),
     );
-    checkRegexMatcher(o.safeRegex! as api.RegexMatcher);
+    checkRegexMatcher(o.safeRegex!);
     unittest.expect(
       o.suffix!,
       unittest.equals('foo'),
@@ -1658,7 +1656,7 @@ void checkStringMatcher(api.StringMatcher o) {
 }
 
 core.List<api.PathSegment> buildUnnamed2600() {
-  var o = <api.PathSegment>[];
+  final o = <api.PathSegment>[];
   o.add(buildPathSegment());
   o.add(buildPathSegment());
   return o;
@@ -1666,13 +1664,13 @@ core.List<api.PathSegment> buildUnnamed2600() {
 
 void checkUnnamed2600(core.List<api.PathSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPathSegment(o[0] as api.PathSegment);
-  checkPathSegment(o[1] as api.PathSegment);
+  checkPathSegment(o[0]);
+  checkPathSegment(o[1]);
 }
 
 core.int buildCounterStructMatcher = 0;
 api.StructMatcher buildStructMatcher() {
-  var o = api.StructMatcher();
+  final o = api.StructMatcher();
   buildCounterStructMatcher++;
   if (buildCounterStructMatcher < 3) {
     o.path = buildUnnamed2600();
@@ -1686,13 +1684,13 @@ void checkStructMatcher(api.StructMatcher o) {
   buildCounterStructMatcher++;
   if (buildCounterStructMatcher < 3) {
     checkUnnamed2600(o.path!);
-    checkValueMatcher(o.value! as api.ValueMatcher);
+    checkValueMatcher(o.value!);
   }
   buildCounterStructMatcher--;
 }
 
 core.Map<core.String, core.Object> buildUnnamed2601() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1740,7 +1738,7 @@ void checkUnnamed2601(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterUpdateFailureState = 0;
 api.UpdateFailureState buildUpdateFailureState() {
-  var o = api.UpdateFailureState();
+  final o = api.UpdateFailureState();
   buildCounterUpdateFailureState++;
   if (buildCounterUpdateFailureState < 3) {
     o.details = 'foo';
@@ -1769,7 +1767,7 @@ void checkUpdateFailureState(api.UpdateFailureState o) {
 
 core.int buildCounterValueMatcher = 0;
 api.ValueMatcher buildValueMatcher() {
-  var o = api.ValueMatcher();
+  final o = api.ValueMatcher();
   buildCounterValueMatcher++;
   if (buildCounterValueMatcher < 3) {
     o.boolMatch = true;
@@ -1787,11 +1785,11 @@ void checkValueMatcher(api.ValueMatcher o) {
   buildCounterValueMatcher++;
   if (buildCounterValueMatcher < 3) {
     unittest.expect(o.boolMatch!, unittest.isTrue);
-    checkDoubleMatcher(o.doubleMatch! as api.DoubleMatcher);
-    checkListMatcher(o.listMatch! as api.ListMatcher);
-    checkNullMatch(o.nullMatch! as api.NullMatch);
+    checkDoubleMatcher(o.doubleMatch!);
+    checkListMatcher(o.listMatch!);
+    checkNullMatch(o.nullMatch!);
     unittest.expect(o.presentMatch!, unittest.isTrue);
-    checkStringMatcher(o.stringMatch! as api.StringMatcher);
+    checkStringMatcher(o.stringMatch!);
   }
   buildCounterValueMatcher--;
 }
@@ -1799,407 +1797,409 @@ void checkValueMatcher(api.ValueMatcher o) {
 void main() {
   unittest.group('obj-schema-Address', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Address.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAddress(od as api.Address);
+      checkAddress(od);
     });
   });
 
   unittest.group('obj-schema-BuildVersion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBuildVersion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BuildVersion.fromJson(
+      final o = buildBuildVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BuildVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBuildVersion(od as api.BuildVersion);
+      checkBuildVersion(od);
     });
   });
 
   unittest.group('obj-schema-ClientConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildClientConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ClientConfig.fromJson(
+      final o = buildClientConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClientConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkClientConfig(od as api.ClientConfig);
+      checkClientConfig(od);
     });
   });
 
   unittest.group('obj-schema-ClientStatusRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildClientStatusRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ClientStatusRequest.fromJson(
+      final o = buildClientStatusRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClientStatusRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkClientStatusRequest(od as api.ClientStatusRequest);
+      checkClientStatusRequest(od);
     });
   });
 
   unittest.group('obj-schema-ClientStatusResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildClientStatusResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ClientStatusResponse.fromJson(
+      final o = buildClientStatusResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClientStatusResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkClientStatusResponse(od as api.ClientStatusResponse);
+      checkClientStatusResponse(od);
     });
   });
 
   unittest.group('obj-schema-ClustersConfigDump', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildClustersConfigDump();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ClustersConfigDump.fromJson(
+      final o = buildClustersConfigDump();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClustersConfigDump.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkClustersConfigDump(od as api.ClustersConfigDump);
+      checkClustersConfigDump(od);
     });
   });
 
   unittest.group('obj-schema-DoubleMatcher', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDoubleMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DoubleMatcher.fromJson(
+      final o = buildDoubleMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DoubleMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDoubleMatcher(od as api.DoubleMatcher);
+      checkDoubleMatcher(od);
     });
   });
 
   unittest.group('obj-schema-DoubleRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDoubleRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DoubleRange.fromJson(
+      final o = buildDoubleRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DoubleRange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDoubleRange(od as api.DoubleRange);
+      checkDoubleRange(od);
     });
   });
 
   unittest.group('obj-schema-DynamicCluster', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDynamicCluster();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DynamicCluster.fromJson(
+      final o = buildDynamicCluster();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DynamicCluster.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDynamicCluster(od as api.DynamicCluster);
+      checkDynamicCluster(od);
     });
   });
 
   unittest.group('obj-schema-DynamicListener', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDynamicListener();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DynamicListener.fromJson(
+      final o = buildDynamicListener();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DynamicListener.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDynamicListener(od as api.DynamicListener);
+      checkDynamicListener(od);
     });
   });
 
   unittest.group('obj-schema-DynamicListenerState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDynamicListenerState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DynamicListenerState.fromJson(
+      final o = buildDynamicListenerState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DynamicListenerState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDynamicListenerState(od as api.DynamicListenerState);
+      checkDynamicListenerState(od);
     });
   });
 
   unittest.group('obj-schema-DynamicRouteConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDynamicRouteConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DynamicRouteConfig.fromJson(
+      final o = buildDynamicRouteConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DynamicRouteConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDynamicRouteConfig(od as api.DynamicRouteConfig);
+      checkDynamicRouteConfig(od);
     });
   });
 
   unittest.group('obj-schema-DynamicScopedRouteConfigs', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDynamicScopedRouteConfigs();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DynamicScopedRouteConfigs.fromJson(
+      final o = buildDynamicScopedRouteConfigs();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DynamicScopedRouteConfigs.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDynamicScopedRouteConfigs(od as api.DynamicScopedRouteConfigs);
+      checkDynamicScopedRouteConfigs(od);
     });
   });
 
   unittest.group('obj-schema-Extension', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildExtension();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildExtension();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Extension.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkExtension(od as api.Extension);
+      checkExtension(od);
     });
   });
 
   unittest.group('obj-schema-GoogleRE2', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleRE2();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleRE2();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleRE2.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleRE2(od as api.GoogleRE2);
+      checkGoogleRE2(od);
     });
   });
 
   unittest.group('obj-schema-InlineScopedRouteConfigs', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInlineScopedRouteConfigs();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InlineScopedRouteConfigs.fromJson(
+      final o = buildInlineScopedRouteConfigs();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InlineScopedRouteConfigs.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInlineScopedRouteConfigs(od as api.InlineScopedRouteConfigs);
+      checkInlineScopedRouteConfigs(od);
     });
   });
 
   unittest.group('obj-schema-ListMatcher', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListMatcher.fromJson(
+      final o = buildListMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListMatcher(od as api.ListMatcher);
+      checkListMatcher(od);
     });
   });
 
   unittest.group('obj-schema-ListenersConfigDump', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListenersConfigDump();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListenersConfigDump.fromJson(
+      final o = buildListenersConfigDump();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListenersConfigDump.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListenersConfigDump(od as api.ListenersConfigDump);
+      checkListenersConfigDump(od);
     });
   });
 
   unittest.group('obj-schema-Locality', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocality();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLocality();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Locality.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLocality(od as api.Locality);
+      checkLocality(od);
     });
   });
 
   unittest.group('obj-schema-Node', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNode();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Node.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkNode(od as api.Node);
+      final o = buildNode();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Node.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkNode(od);
     });
   });
 
   unittest.group('obj-schema-NodeMatcher', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNodeMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NodeMatcher.fromJson(
+      final o = buildNodeMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NodeMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNodeMatcher(od as api.NodeMatcher);
+      checkNodeMatcher(od);
     });
   });
 
   unittest.group('obj-schema-NullMatch', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNullMatch();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildNullMatch();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.NullMatch.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkNullMatch(od as api.NullMatch);
+      checkNullMatch(od);
     });
   });
 
   unittest.group('obj-schema-PathSegment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPathSegment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PathSegment.fromJson(
+      final o = buildPathSegment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PathSegment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPathSegment(od as api.PathSegment);
+      checkPathSegment(od);
     });
   });
 
   unittest.group('obj-schema-PerXdsConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPerXdsConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PerXdsConfig.fromJson(
+      final o = buildPerXdsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PerXdsConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPerXdsConfig(od as api.PerXdsConfig);
+      checkPerXdsConfig(od);
     });
   });
 
   unittest.group('obj-schema-Pipe', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPipe();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Pipe.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPipe(od as api.Pipe);
+      final o = buildPipe();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Pipe.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPipe(od);
     });
   });
 
   unittest.group('obj-schema-RegexMatcher', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegexMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegexMatcher.fromJson(
+      final o = buildRegexMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegexMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegexMatcher(od as api.RegexMatcher);
+      checkRegexMatcher(od);
     });
   });
 
   unittest.group('obj-schema-RoutesConfigDump', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRoutesConfigDump();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RoutesConfigDump.fromJson(
+      final o = buildRoutesConfigDump();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RoutesConfigDump.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRoutesConfigDump(od as api.RoutesConfigDump);
+      checkRoutesConfigDump(od);
     });
   });
 
   unittest.group('obj-schema-ScopedRoutesConfigDump', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildScopedRoutesConfigDump();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ScopedRoutesConfigDump.fromJson(
+      final o = buildScopedRoutesConfigDump();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ScopedRoutesConfigDump.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkScopedRoutesConfigDump(od as api.ScopedRoutesConfigDump);
+      checkScopedRoutesConfigDump(od);
     });
   });
 
   unittest.group('obj-schema-SemanticVersion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSemanticVersion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SemanticVersion.fromJson(
+      final o = buildSemanticVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SemanticVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSemanticVersion(od as api.SemanticVersion);
+      checkSemanticVersion(od);
     });
   });
 
   unittest.group('obj-schema-SocketAddress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSocketAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SocketAddress.fromJson(
+      final o = buildSocketAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SocketAddress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSocketAddress(od as api.SocketAddress);
+      checkSocketAddress(od);
     });
   });
 
   unittest.group('obj-schema-StaticCluster', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStaticCluster();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StaticCluster.fromJson(
+      final o = buildStaticCluster();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StaticCluster.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStaticCluster(od as api.StaticCluster);
+      checkStaticCluster(od);
     });
   });
 
   unittest.group('obj-schema-StaticListener', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStaticListener();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StaticListener.fromJson(
+      final o = buildStaticListener();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StaticListener.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStaticListener(od as api.StaticListener);
+      checkStaticListener(od);
     });
   });
 
   unittest.group('obj-schema-StaticRouteConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStaticRouteConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StaticRouteConfig.fromJson(
+      final o = buildStaticRouteConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StaticRouteConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStaticRouteConfig(od as api.StaticRouteConfig);
+      checkStaticRouteConfig(od);
     });
   });
 
   unittest.group('obj-schema-StringMatcher', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStringMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StringMatcher.fromJson(
+      final o = buildStringMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StringMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStringMatcher(od as api.StringMatcher);
+      checkStringMatcher(od);
     });
   });
 
   unittest.group('obj-schema-StructMatcher', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStructMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StructMatcher.fromJson(
+      final o = buildStructMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StructMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStructMatcher(od as api.StructMatcher);
+      checkStructMatcher(od);
     });
   });
 
   unittest.group('obj-schema-UpdateFailureState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateFailureState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateFailureState.fromJson(
+      final o = buildUpdateFailureState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateFailureState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateFailureState(od as api.UpdateFailureState);
+      checkUpdateFailureState(od);
     });
   });
 
   unittest.group('obj-schema-ValueMatcher', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildValueMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ValueMatcher.fromJson(
+      final o = buildValueMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ValueMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkValueMatcher(od as api.ValueMatcher);
+      checkValueMatcher(od);
     });
   });
 
   unittest.group('resource-DiscoveryResource', () {
     unittest.test('method--clientStatus', () async {
-      var mock = HttpServerMock();
-      var res = api.TrafficDirectorServiceApi(mock).discovery;
-      var arg_request = buildClientStatusRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TrafficDirectorServiceApi(mock).discovery;
+      final arg_request = buildClientStatusRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ClientStatusRequest.fromJson(
+        final obj = api.ClientStatusRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkClientStatusRequest(obj as api.ClientStatusRequest);
+        checkClientStatusRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 26),
-          unittest.equals("v2/discovery:client_status"),
+          unittest.equals('v2/discovery:client_status'),
         );
         pathOffset += 26;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2207,14 +2207,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildClientStatusResponse());
+        final resp = convert.json.encode(buildClientStatusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =

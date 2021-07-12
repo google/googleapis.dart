@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<core.int> buildUnnamed1646() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -47,7 +46,7 @@ void checkUnnamed1646(core.List<core.int> o) {
 }
 
 core.List<core.int> buildUnnamed1647() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -66,7 +65,7 @@ void checkUnnamed1647(core.List<core.int> o) {
 }
 
 core.List<core.int> buildUnnamed1648() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -86,7 +85,7 @@ void checkUnnamed1648(core.List<core.int> o) {
 
 core.int buildCounterArea = 0;
 api.Area buildArea() {
-  var o = api.Area();
+  final o = api.Area();
   buildCounterArea++;
   if (buildCounterArea < 3) {
     o.basemapZOrder = buildBasemapZOrder();
@@ -105,7 +104,7 @@ api.Area buildArea() {
 void checkArea(api.Area o) {
   buildCounterArea++;
   if (buildCounterArea < 3) {
-    checkBasemapZOrder(o.basemapZOrder! as api.BasemapZOrder);
+    checkBasemapZOrder(o.basemapZOrder!);
     unittest.expect(o.hasExternalEdges!, unittest.isTrue);
     checkUnnamed1646(o.internalEdges!);
     checkUnnamed1647(o.loopBreaks!);
@@ -114,7 +113,7 @@ void checkArea(api.Area o) {
       o.type!,
       unittest.equals('foo'),
     );
-    checkVertex2DList(o.vertexOffsets! as api.Vertex2DList);
+    checkVertex2DList(o.vertexOffsets!);
     unittest.expect(
       o.zOrder!,
       unittest.equals(42),
@@ -125,7 +124,7 @@ void checkArea(api.Area o) {
 
 core.int buildCounterBasemapZOrder = 0;
 api.BasemapZOrder buildBasemapZOrder() {
-  var o = api.BasemapZOrder();
+  final o = api.BasemapZOrder();
   buildCounterBasemapZOrder++;
   if (buildCounterBasemapZOrder < 3) {
     o.zGrade = 42;
@@ -157,7 +156,7 @@ void checkBasemapZOrder(api.BasemapZOrder o) {
 
 core.int buildCounterExtrudedArea = 0;
 api.ExtrudedArea buildExtrudedArea() {
-  var o = api.ExtrudedArea();
+  final o = api.ExtrudedArea();
   buildCounterExtrudedArea++;
   if (buildCounterExtrudedArea < 3) {
     o.area = buildArea();
@@ -171,7 +170,7 @@ api.ExtrudedArea buildExtrudedArea() {
 void checkExtrudedArea(api.ExtrudedArea o) {
   buildCounterExtrudedArea++;
   if (buildCounterExtrudedArea < 3) {
-    checkArea(o.area! as api.Area);
+    checkArea(o.area!);
     unittest.expect(
       o.maxZ!,
       unittest.equals(42),
@@ -185,7 +184,7 @@ void checkExtrudedArea(api.ExtrudedArea o) {
 }
 
 core.List<api.Relation> buildUnnamed1649() {
-  var o = <api.Relation>[];
+  final o = <api.Relation>[];
   o.add(buildRelation());
   o.add(buildRelation());
   return o;
@@ -193,13 +192,13 @@ core.List<api.Relation> buildUnnamed1649() {
 
 void checkUnnamed1649(core.List<api.Relation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRelation(o[0] as api.Relation);
-  checkRelation(o[1] as api.Relation);
+  checkRelation(o[0]);
+  checkRelation(o[1]);
 }
 
 core.int buildCounterFeature = 0;
 api.Feature buildFeature() {
-  var o = api.Feature();
+  final o = api.Feature();
   buildCounterFeature++;
   if (buildCounterFeature < 3) {
     o.displayName = 'foo';
@@ -220,13 +219,13 @@ void checkFeature(api.Feature o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkGeometry(o.geometry! as api.Geometry);
+    checkGeometry(o.geometry!);
     unittest.expect(
       o.placeId!,
       unittest.equals('foo'),
     );
     checkUnnamed1649(o.relations!);
-    checkSegmentInfo(o.segmentInfo! as api.SegmentInfo);
+    checkSegmentInfo(o.segmentInfo!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -236,7 +235,7 @@ void checkFeature(api.Feature o) {
 }
 
 core.List<api.Feature> buildUnnamed1650() {
-  var o = <api.Feature>[];
+  final o = <api.Feature>[];
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
@@ -244,12 +243,12 @@ core.List<api.Feature> buildUnnamed1650() {
 
 void checkUnnamed1650(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFeature(o[0] as api.Feature);
-  checkFeature(o[1] as api.Feature);
+  checkFeature(o[0]);
+  checkFeature(o[1]);
 }
 
 core.List<api.ProviderInfo> buildUnnamed1651() {
-  var o = <api.ProviderInfo>[];
+  final o = <api.ProviderInfo>[];
   o.add(buildProviderInfo());
   o.add(buildProviderInfo());
   return o;
@@ -257,13 +256,13 @@ core.List<api.ProviderInfo> buildUnnamed1651() {
 
 void checkUnnamed1651(core.List<api.ProviderInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProviderInfo(o[0] as api.ProviderInfo);
-  checkProviderInfo(o[1] as api.ProviderInfo);
+  checkProviderInfo(o[0]);
+  checkProviderInfo(o[1]);
 }
 
 core.int buildCounterFeatureTile = 0;
 api.FeatureTile buildFeatureTile() {
-  var o = api.FeatureTile();
+  final o = api.FeatureTile();
   buildCounterFeatureTile++;
   if (buildCounterFeatureTile < 3) {
     o.coordinates = buildTileCoordinates();
@@ -280,7 +279,7 @@ api.FeatureTile buildFeatureTile() {
 void checkFeatureTile(api.FeatureTile o) {
   buildCounterFeatureTile++;
   if (buildCounterFeatureTile < 3) {
-    checkTileCoordinates(o.coordinates! as api.TileCoordinates);
+    checkTileCoordinates(o.coordinates!);
     checkUnnamed1650(o.features!);
     unittest.expect(
       o.name!,
@@ -300,7 +299,7 @@ void checkFeatureTile(api.FeatureTile o) {
 }
 
 core.List<api.Row> buildUnnamed1652() {
-  var o = <api.Row>[];
+  final o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
@@ -308,13 +307,13 @@ core.List<api.Row> buildUnnamed1652() {
 
 void checkUnnamed1652(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRow(o[0] as api.Row);
-  checkRow(o[1] as api.Row);
+  checkRow(o[0]);
+  checkRow(o[1]);
 }
 
 core.int buildCounterFirstDerivativeElevationGrid = 0;
 api.FirstDerivativeElevationGrid buildFirstDerivativeElevationGrid() {
-  var o = api.FirstDerivativeElevationGrid();
+  final o = api.FirstDerivativeElevationGrid();
   buildCounterFirstDerivativeElevationGrid++;
   if (buildCounterFirstDerivativeElevationGrid < 3) {
     o.altitudeMultiplier = 42.0;
@@ -337,7 +336,7 @@ void checkFirstDerivativeElevationGrid(api.FirstDerivativeElevationGrid o) {
 }
 
 core.List<api.Area> buildUnnamed1653() {
-  var o = <api.Area>[];
+  final o = <api.Area>[];
   o.add(buildArea());
   o.add(buildArea());
   return o;
@@ -345,12 +344,12 @@ core.List<api.Area> buildUnnamed1653() {
 
 void checkUnnamed1653(core.List<api.Area> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkArea(o[0] as api.Area);
-  checkArea(o[1] as api.Area);
+  checkArea(o[0]);
+  checkArea(o[1]);
 }
 
 core.List<api.ExtrudedArea> buildUnnamed1654() {
-  var o = <api.ExtrudedArea>[];
+  final o = <api.ExtrudedArea>[];
   o.add(buildExtrudedArea());
   o.add(buildExtrudedArea());
   return o;
@@ -358,12 +357,12 @@ core.List<api.ExtrudedArea> buildUnnamed1654() {
 
 void checkUnnamed1654(core.List<api.ExtrudedArea> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExtrudedArea(o[0] as api.ExtrudedArea);
-  checkExtrudedArea(o[1] as api.ExtrudedArea);
+  checkExtrudedArea(o[0]);
+  checkExtrudedArea(o[1]);
 }
 
 core.List<api.Line> buildUnnamed1655() {
-  var o = <api.Line>[];
+  final o = <api.Line>[];
   o.add(buildLine());
   o.add(buildLine());
   return o;
@@ -371,12 +370,12 @@ core.List<api.Line> buildUnnamed1655() {
 
 void checkUnnamed1655(core.List<api.Line> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLine(o[0] as api.Line);
-  checkLine(o[1] as api.Line);
+  checkLine(o[0]);
+  checkLine(o[1]);
 }
 
 core.List<api.ModeledVolume> buildUnnamed1656() {
-  var o = <api.ModeledVolume>[];
+  final o = <api.ModeledVolume>[];
   o.add(buildModeledVolume());
   o.add(buildModeledVolume());
   return o;
@@ -384,13 +383,13 @@ core.List<api.ModeledVolume> buildUnnamed1656() {
 
 void checkUnnamed1656(core.List<api.ModeledVolume> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkModeledVolume(o[0] as api.ModeledVolume);
-  checkModeledVolume(o[1] as api.ModeledVolume);
+  checkModeledVolume(o[0]);
+  checkModeledVolume(o[1]);
 }
 
 core.int buildCounterGeometry = 0;
 api.Geometry buildGeometry() {
-  var o = api.Geometry();
+  final o = api.Geometry();
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
     o.areas = buildUnnamed1653();
@@ -415,7 +414,7 @@ void checkGeometry(api.Geometry o) {
 
 core.int buildCounterLine = 0;
 api.Line buildLine() {
-  var o = api.Line();
+  final o = api.Line();
   buildCounterLine++;
   if (buildCounterLine < 3) {
     o.basemapZOrder = buildBasemapZOrder();
@@ -429,8 +428,8 @@ api.Line buildLine() {
 void checkLine(api.Line o) {
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    checkBasemapZOrder(o.basemapZOrder! as api.BasemapZOrder);
-    checkVertex2DList(o.vertexOffsets! as api.Vertex2DList);
+    checkBasemapZOrder(o.basemapZOrder!);
+    checkVertex2DList(o.vertexOffsets!);
     unittest.expect(
       o.zOrder!,
       unittest.equals(42),
@@ -440,7 +439,7 @@ void checkLine(api.Line o) {
 }
 
 core.List<api.TriangleStrip> buildUnnamed1657() {
-  var o = <api.TriangleStrip>[];
+  final o = <api.TriangleStrip>[];
   o.add(buildTriangleStrip());
   o.add(buildTriangleStrip());
   return o;
@@ -448,13 +447,13 @@ core.List<api.TriangleStrip> buildUnnamed1657() {
 
 void checkUnnamed1657(core.List<api.TriangleStrip> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTriangleStrip(o[0] as api.TriangleStrip);
-  checkTriangleStrip(o[1] as api.TriangleStrip);
+  checkTriangleStrip(o[0]);
+  checkTriangleStrip(o[1]);
 }
 
 core.int buildCounterModeledVolume = 0;
 api.ModeledVolume buildModeledVolume() {
-  var o = api.ModeledVolume();
+  final o = api.ModeledVolume();
   buildCounterModeledVolume++;
   if (buildCounterModeledVolume < 3) {
     o.strips = buildUnnamed1657();
@@ -468,14 +467,14 @@ void checkModeledVolume(api.ModeledVolume o) {
   buildCounterModeledVolume++;
   if (buildCounterModeledVolume < 3) {
     checkUnnamed1657(o.strips!);
-    checkVertex3DList(o.vertexOffsets! as api.Vertex3DList);
+    checkVertex3DList(o.vertexOffsets!);
   }
   buildCounterModeledVolume--;
 }
 
 core.int buildCounterProviderInfo = 0;
 api.ProviderInfo buildProviderInfo() {
-  var o = api.ProviderInfo();
+  final o = api.ProviderInfo();
   buildCounterProviderInfo++;
   if (buildCounterProviderInfo < 3) {
     o.description = 'foo';
@@ -497,7 +496,7 @@ void checkProviderInfo(api.ProviderInfo o) {
 
 core.int buildCounterRelation = 0;
 api.Relation buildRelation() {
-  var o = api.Relation();
+  final o = api.Relation();
   buildCounterRelation++;
   if (buildCounterRelation < 3) {
     o.relatedFeatureIndex = 42;
@@ -524,7 +523,7 @@ void checkRelation(api.Relation o) {
 
 core.int buildCounterRoadInfo = 0;
 api.RoadInfo buildRoadInfo() {
-  var o = api.RoadInfo();
+  final o = api.RoadInfo();
   buildCounterRoadInfo++;
   if (buildCounterRoadInfo < 3) {
     o.isPrivate = true;
@@ -542,7 +541,7 @@ void checkRoadInfo(api.RoadInfo o) {
 }
 
 core.List<core.int> buildUnnamed1658() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -562,7 +561,7 @@ void checkUnnamed1658(core.List<core.int> o) {
 
 core.int buildCounterRow = 0;
 api.Row buildRow() {
-  var o = api.Row();
+  final o = api.Row();
   buildCounterRow++;
   if (buildCounterRow < 3) {
     o.altitudeDiffs = buildUnnamed1658();
@@ -581,7 +580,7 @@ void checkRow(api.Row o) {
 
 core.int buildCounterSecondDerivativeElevationGrid = 0;
 api.SecondDerivativeElevationGrid buildSecondDerivativeElevationGrid() {
-  var o = api.SecondDerivativeElevationGrid();
+  final o = api.SecondDerivativeElevationGrid();
   buildCounterSecondDerivativeElevationGrid++;
   if (buildCounterSecondDerivativeElevationGrid < 3) {
     o.altitudeMultiplier = 42.0;
@@ -618,7 +617,7 @@ void checkSecondDerivativeElevationGrid(api.SecondDerivativeElevationGrid o) {
 
 core.int buildCounterSegmentInfo = 0;
 api.SegmentInfo buildSegmentInfo() {
-  var o = api.SegmentInfo();
+  final o = api.SegmentInfo();
   buildCounterSegmentInfo++;
   if (buildCounterSegmentInfo < 3) {
     o.roadInfo = buildRoadInfo();
@@ -630,14 +629,14 @@ api.SegmentInfo buildSegmentInfo() {
 void checkSegmentInfo(api.SegmentInfo o) {
   buildCounterSegmentInfo++;
   if (buildCounterSegmentInfo < 3) {
-    checkRoadInfo(o.roadInfo! as api.RoadInfo);
+    checkRoadInfo(o.roadInfo!);
   }
   buildCounterSegmentInfo--;
 }
 
 core.int buildCounterTerrainTile = 0;
 api.TerrainTile buildTerrainTile() {
-  var o = api.TerrainTile();
+  final o = api.TerrainTile();
   buildCounterTerrainTile++;
   if (buildCounterTerrainTile < 3) {
     o.coordinates = buildTileCoordinates();
@@ -652,22 +651,20 @@ api.TerrainTile buildTerrainTile() {
 void checkTerrainTile(api.TerrainTile o) {
   buildCounterTerrainTile++;
   if (buildCounterTerrainTile < 3) {
-    checkTileCoordinates(o.coordinates! as api.TileCoordinates);
-    checkFirstDerivativeElevationGrid(
-        o.firstDerivative! as api.FirstDerivativeElevationGrid);
+    checkTileCoordinates(o.coordinates!);
+    checkFirstDerivativeElevationGrid(o.firstDerivative!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkSecondDerivativeElevationGrid(
-        o.secondDerivative! as api.SecondDerivativeElevationGrid);
+    checkSecondDerivativeElevationGrid(o.secondDerivative!);
   }
   buildCounterTerrainTile--;
 }
 
 core.int buildCounterTileCoordinates = 0;
 api.TileCoordinates buildTileCoordinates() {
-  var o = api.TileCoordinates();
+  final o = api.TileCoordinates();
   buildCounterTileCoordinates++;
   if (buildCounterTileCoordinates < 3) {
     o.x = 42;
@@ -698,7 +695,7 @@ void checkTileCoordinates(api.TileCoordinates o) {
 }
 
 core.List<core.int> buildUnnamed1659() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -718,7 +715,7 @@ void checkUnnamed1659(core.List<core.int> o) {
 
 core.int buildCounterTriangleStrip = 0;
 api.TriangleStrip buildTriangleStrip() {
-  var o = api.TriangleStrip();
+  final o = api.TriangleStrip();
   buildCounterTriangleStrip++;
   if (buildCounterTriangleStrip < 3) {
     o.vertexIndices = buildUnnamed1659();
@@ -736,7 +733,7 @@ void checkTriangleStrip(api.TriangleStrip o) {
 }
 
 core.List<core.int> buildUnnamed1660() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -755,7 +752,7 @@ void checkUnnamed1660(core.List<core.int> o) {
 }
 
 core.List<core.int> buildUnnamed1661() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -775,7 +772,7 @@ void checkUnnamed1661(core.List<core.int> o) {
 
 core.int buildCounterVertex2DList = 0;
 api.Vertex2DList buildVertex2DList() {
-  var o = api.Vertex2DList();
+  final o = api.Vertex2DList();
   buildCounterVertex2DList++;
   if (buildCounterVertex2DList < 3) {
     o.xOffsets = buildUnnamed1660();
@@ -795,7 +792,7 @@ void checkVertex2DList(api.Vertex2DList o) {
 }
 
 core.List<core.int> buildUnnamed1662() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -814,7 +811,7 @@ void checkUnnamed1662(core.List<core.int> o) {
 }
 
 core.List<core.int> buildUnnamed1663() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -833,7 +830,7 @@ void checkUnnamed1663(core.List<core.int> o) {
 }
 
 core.List<core.int> buildUnnamed1664() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -853,7 +850,7 @@ void checkUnnamed1664(core.List<core.int> o) {
 
 core.int buildCounterVertex3DList = 0;
 api.Vertex3DList buildVertex3DList() {
-  var o = api.Vertex3DList();
+  final o = api.Vertex3DList();
   buildCounterVertex3DList++;
   if (buildCounterVertex3DList < 3) {
     o.xOffsets = buildUnnamed1662();
@@ -875,7 +872,7 @@ void checkVertex3DList(api.Vertex3DList o) {
 }
 
 core.List<core.String> buildUnnamed1665() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -896,251 +893,252 @@ void checkUnnamed1665(core.List<core.String> o) {
 void main() {
   unittest.group('obj-schema-Area', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildArea();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Area.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkArea(od as api.Area);
+      final o = buildArea();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Area.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkArea(od);
     });
   });
 
   unittest.group('obj-schema-BasemapZOrder', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBasemapZOrder();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BasemapZOrder.fromJson(
+      final o = buildBasemapZOrder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BasemapZOrder.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBasemapZOrder(od as api.BasemapZOrder);
+      checkBasemapZOrder(od);
     });
   });
 
   unittest.group('obj-schema-ExtrudedArea', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildExtrudedArea();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ExtrudedArea.fromJson(
+      final o = buildExtrudedArea();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExtrudedArea.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkExtrudedArea(od as api.ExtrudedArea);
+      checkExtrudedArea(od);
     });
   });
 
   unittest.group('obj-schema-Feature', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFeature();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildFeature();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Feature.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFeature(od as api.Feature);
+      checkFeature(od);
     });
   });
 
   unittest.group('obj-schema-FeatureTile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFeatureTile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FeatureTile.fromJson(
+      final o = buildFeatureTile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FeatureTile.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFeatureTile(od as api.FeatureTile);
+      checkFeatureTile(od);
     });
   });
 
   unittest.group('obj-schema-FirstDerivativeElevationGrid', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFirstDerivativeElevationGrid();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FirstDerivativeElevationGrid.fromJson(
+      final o = buildFirstDerivativeElevationGrid();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FirstDerivativeElevationGrid.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFirstDerivativeElevationGrid(od as api.FirstDerivativeElevationGrid);
+      checkFirstDerivativeElevationGrid(od);
     });
   });
 
   unittest.group('obj-schema-Geometry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGeometry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGeometry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Geometry.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGeometry(od as api.Geometry);
+      checkGeometry(od);
     });
   });
 
   unittest.group('obj-schema-Line', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLine();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Line.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLine(od as api.Line);
+      final o = buildLine();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Line.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLine(od);
     });
   });
 
   unittest.group('obj-schema-ModeledVolume', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildModeledVolume();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ModeledVolume.fromJson(
+      final o = buildModeledVolume();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ModeledVolume.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkModeledVolume(od as api.ModeledVolume);
+      checkModeledVolume(od);
     });
   });
 
   unittest.group('obj-schema-ProviderInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProviderInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProviderInfo.fromJson(
+      final o = buildProviderInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProviderInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProviderInfo(od as api.ProviderInfo);
+      checkProviderInfo(od);
     });
   });
 
   unittest.group('obj-schema-Relation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRelation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRelation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Relation.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRelation(od as api.Relation);
+      checkRelation(od);
     });
   });
 
   unittest.group('obj-schema-RoadInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRoadInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRoadInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.RoadInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRoadInfo(od as api.RoadInfo);
+      checkRoadInfo(od);
     });
   });
 
   unittest.group('obj-schema-Row', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Row.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRow(od as api.Row);
+      final o = buildRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Row.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkRow(od);
     });
   });
 
   unittest.group('obj-schema-SecondDerivativeElevationGrid', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSecondDerivativeElevationGrid();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SecondDerivativeElevationGrid.fromJson(
+      final o = buildSecondDerivativeElevationGrid();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SecondDerivativeElevationGrid.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSecondDerivativeElevationGrid(
-          od as api.SecondDerivativeElevationGrid);
+      checkSecondDerivativeElevationGrid(od);
     });
   });
 
   unittest.group('obj-schema-SegmentInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSegmentInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SegmentInfo.fromJson(
+      final o = buildSegmentInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SegmentInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSegmentInfo(od as api.SegmentInfo);
+      checkSegmentInfo(od);
     });
   });
 
   unittest.group('obj-schema-TerrainTile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTerrainTile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TerrainTile.fromJson(
+      final o = buildTerrainTile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TerrainTile.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTerrainTile(od as api.TerrainTile);
+      checkTerrainTile(od);
     });
   });
 
   unittest.group('obj-schema-TileCoordinates', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTileCoordinates();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TileCoordinates.fromJson(
+      final o = buildTileCoordinates();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TileCoordinates.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTileCoordinates(od as api.TileCoordinates);
+      checkTileCoordinates(od);
     });
   });
 
   unittest.group('obj-schema-TriangleStrip', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTriangleStrip();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TriangleStrip.fromJson(
+      final o = buildTriangleStrip();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TriangleStrip.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTriangleStrip(od as api.TriangleStrip);
+      checkTriangleStrip(od);
     });
   });
 
   unittest.group('obj-schema-Vertex2DList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildVertex2DList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Vertex2DList.fromJson(
+      final o = buildVertex2DList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Vertex2DList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkVertex2DList(od as api.Vertex2DList);
+      checkVertex2DList(od);
     });
   });
 
   unittest.group('obj-schema-Vertex3DList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildVertex3DList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Vertex3DList.fromJson(
+      final o = buildVertex3DList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Vertex3DList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkVertex3DList(od as api.Vertex3DList);
+      checkVertex3DList(od);
     });
   });
 
   unittest.group('resource-FeaturetilesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SemanticTileApi(mock).featuretiles;
-      var arg_name = 'foo';
-      var arg_alwaysIncludeBuildingFootprints = true;
-      var arg_clientInfo_apiClient = 'foo';
-      var arg_clientInfo_applicationId = 'foo';
-      var arg_clientInfo_applicationVersion = 'foo';
-      var arg_clientInfo_deviceModel = 'foo';
-      var arg_clientInfo_operatingSystem = 'foo';
-      var arg_clientInfo_platform = 'foo';
-      var arg_clientInfo_userId = 'foo';
-      var arg_clientTileVersionId = 'foo';
-      var arg_enableDetailedHighwayTypes = true;
-      var arg_enableFeatureNames = true;
-      var arg_enableModeledVolumes = true;
-      var arg_enablePoliticalFeatures = true;
-      var arg_enablePrivateRoads = true;
-      var arg_enableUnclippedBuildings = true;
-      var arg_languageCode = 'foo';
-      var arg_regionCode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SemanticTileApi(mock).featuretiles;
+      final arg_name = 'foo';
+      final arg_alwaysIncludeBuildingFootprints = true;
+      final arg_clientInfo_apiClient = 'foo';
+      final arg_clientInfo_applicationId = 'foo';
+      final arg_clientInfo_applicationVersion = 'foo';
+      final arg_clientInfo_deviceModel = 'foo';
+      final arg_clientInfo_operatingSystem = 'foo';
+      final arg_clientInfo_platform = 'foo';
+      final arg_clientInfo_userId = 'foo';
+      final arg_clientTileVersionId = 'foo';
+      final arg_enableDetailedHighwayTypes = true;
+      final arg_enableFeatureNames = true;
+      final arg_enableModeledVolumes = true;
+      final arg_enablePoliticalFeatures = true;
+      final arg_enablePrivateRoads = true;
+      final arg_enableUnclippedBuildings = true;
+      final arg_languageCode = 'foo';
+      final arg_regionCode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1148,82 +1146,82 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["alwaysIncludeBuildingFootprints"]!.first,
-          unittest.equals("$arg_alwaysIncludeBuildingFootprints"),
+          queryMap['alwaysIncludeBuildingFootprints']!.first,
+          unittest.equals('$arg_alwaysIncludeBuildingFootprints'),
         );
         unittest.expect(
-          queryMap["clientInfo.apiClient"]!.first,
+          queryMap['clientInfo.apiClient']!.first,
           unittest.equals(arg_clientInfo_apiClient),
         );
         unittest.expect(
-          queryMap["clientInfo.applicationId"]!.first,
+          queryMap['clientInfo.applicationId']!.first,
           unittest.equals(arg_clientInfo_applicationId),
         );
         unittest.expect(
-          queryMap["clientInfo.applicationVersion"]!.first,
+          queryMap['clientInfo.applicationVersion']!.first,
           unittest.equals(arg_clientInfo_applicationVersion),
         );
         unittest.expect(
-          queryMap["clientInfo.deviceModel"]!.first,
+          queryMap['clientInfo.deviceModel']!.first,
           unittest.equals(arg_clientInfo_deviceModel),
         );
         unittest.expect(
-          queryMap["clientInfo.operatingSystem"]!.first,
+          queryMap['clientInfo.operatingSystem']!.first,
           unittest.equals(arg_clientInfo_operatingSystem),
         );
         unittest.expect(
-          queryMap["clientInfo.platform"]!.first,
+          queryMap['clientInfo.platform']!.first,
           unittest.equals(arg_clientInfo_platform),
         );
         unittest.expect(
-          queryMap["clientInfo.userId"]!.first,
+          queryMap['clientInfo.userId']!.first,
           unittest.equals(arg_clientInfo_userId),
         );
         unittest.expect(
-          queryMap["clientTileVersionId"]!.first,
+          queryMap['clientTileVersionId']!.first,
           unittest.equals(arg_clientTileVersionId),
         );
         unittest.expect(
-          queryMap["enableDetailedHighwayTypes"]!.first,
-          unittest.equals("$arg_enableDetailedHighwayTypes"),
+          queryMap['enableDetailedHighwayTypes']!.first,
+          unittest.equals('$arg_enableDetailedHighwayTypes'),
         );
         unittest.expect(
-          queryMap["enableFeatureNames"]!.first,
-          unittest.equals("$arg_enableFeatureNames"),
+          queryMap['enableFeatureNames']!.first,
+          unittest.equals('$arg_enableFeatureNames'),
         );
         unittest.expect(
-          queryMap["enableModeledVolumes"]!.first,
-          unittest.equals("$arg_enableModeledVolumes"),
+          queryMap['enableModeledVolumes']!.first,
+          unittest.equals('$arg_enableModeledVolumes'),
         );
         unittest.expect(
-          queryMap["enablePoliticalFeatures"]!.first,
-          unittest.equals("$arg_enablePoliticalFeatures"),
+          queryMap['enablePoliticalFeatures']!.first,
+          unittest.equals('$arg_enablePoliticalFeatures'),
         );
         unittest.expect(
-          queryMap["enablePrivateRoads"]!.first,
-          unittest.equals("$arg_enablePrivateRoads"),
+          queryMap['enablePrivateRoads']!.first,
+          unittest.equals('$arg_enablePrivateRoads'),
         );
         unittest.expect(
-          queryMap["enableUnclippedBuildings"]!.first,
-          unittest.equals("$arg_enableUnclippedBuildings"),
+          queryMap['enableUnclippedBuildings']!.first,
+          unittest.equals('$arg_enableUnclippedBuildings'),
         );
         unittest.expect(
-          queryMap["languageCode"]!.first,
+          queryMap['languageCode']!.first,
           unittest.equals(arg_languageCode),
         );
         unittest.expect(
-          queryMap["regionCode"]!.first,
+          queryMap['regionCode']!.first,
           unittest.equals(arg_regionCode),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildFeatureTile());
+        final resp = convert.json.encode(buildFeatureTile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name,
@@ -1251,47 +1249,47 @@ void main() {
 
   unittest.group('resource-TerraintilesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SemanticTileApi(mock).terraintiles;
-      var arg_name = 'foo';
-      var arg_altitudePrecisionCentimeters = 42;
-      var arg_clientInfo_apiClient = 'foo';
-      var arg_clientInfo_applicationId = 'foo';
-      var arg_clientInfo_applicationVersion = 'foo';
-      var arg_clientInfo_deviceModel = 'foo';
-      var arg_clientInfo_operatingSystem = 'foo';
-      var arg_clientInfo_platform = 'foo';
-      var arg_clientInfo_userId = 'foo';
-      var arg_maxElevationResolutionCells = 42;
-      var arg_minElevationResolutionCells = 42;
-      var arg_terrainFormats = buildUnnamed1665();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SemanticTileApi(mock).terraintiles;
+      final arg_name = 'foo';
+      final arg_altitudePrecisionCentimeters = 42;
+      final arg_clientInfo_apiClient = 'foo';
+      final arg_clientInfo_applicationId = 'foo';
+      final arg_clientInfo_applicationVersion = 'foo';
+      final arg_clientInfo_deviceModel = 'foo';
+      final arg_clientInfo_operatingSystem = 'foo';
+      final arg_clientInfo_platform = 'foo';
+      final arg_clientInfo_userId = 'foo';
+      final arg_maxElevationResolutionCells = 42;
+      final arg_minElevationResolutionCells = 42;
+      final arg_terrainFormats = buildUnnamed1665();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1299,58 +1297,58 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["altitudePrecisionCentimeters"]!.first),
+          core.int.parse(queryMap['altitudePrecisionCentimeters']!.first),
           unittest.equals(arg_altitudePrecisionCentimeters),
         );
         unittest.expect(
-          queryMap["clientInfo.apiClient"]!.first,
+          queryMap['clientInfo.apiClient']!.first,
           unittest.equals(arg_clientInfo_apiClient),
         );
         unittest.expect(
-          queryMap["clientInfo.applicationId"]!.first,
+          queryMap['clientInfo.applicationId']!.first,
           unittest.equals(arg_clientInfo_applicationId),
         );
         unittest.expect(
-          queryMap["clientInfo.applicationVersion"]!.first,
+          queryMap['clientInfo.applicationVersion']!.first,
           unittest.equals(arg_clientInfo_applicationVersion),
         );
         unittest.expect(
-          queryMap["clientInfo.deviceModel"]!.first,
+          queryMap['clientInfo.deviceModel']!.first,
           unittest.equals(arg_clientInfo_deviceModel),
         );
         unittest.expect(
-          queryMap["clientInfo.operatingSystem"]!.first,
+          queryMap['clientInfo.operatingSystem']!.first,
           unittest.equals(arg_clientInfo_operatingSystem),
         );
         unittest.expect(
-          queryMap["clientInfo.platform"]!.first,
+          queryMap['clientInfo.platform']!.first,
           unittest.equals(arg_clientInfo_platform),
         );
         unittest.expect(
-          queryMap["clientInfo.userId"]!.first,
+          queryMap['clientInfo.userId']!.first,
           unittest.equals(arg_clientInfo_userId),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxElevationResolutionCells"]!.first),
+          core.int.parse(queryMap['maxElevationResolutionCells']!.first),
           unittest.equals(arg_maxElevationResolutionCells),
         );
         unittest.expect(
-          core.int.parse(queryMap["minElevationResolutionCells"]!.first),
+          core.int.parse(queryMap['minElevationResolutionCells']!.first),
           unittest.equals(arg_minElevationResolutionCells),
         );
         unittest.expect(
-          queryMap["terrainFormats"]!,
+          queryMap['terrainFormats']!,
           unittest.equals(arg_terrainFormats),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTerrainTile());
+        final resp = convert.json.encode(buildTerrainTile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name,

@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<core.String> buildUnnamed3204() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -48,7 +47,7 @@ void checkUnnamed3204(core.List<core.String> o) {
 
 core.int buildCounterAuditRefs = 0;
 api.AuditRefs buildAuditRefs() {
-  var o = api.AuditRefs();
+  final o = api.AuditRefs();
   buildCounterAuditRefs++;
   if (buildCounterAuditRefs < 3) {
     o.acronym = 'foo';
@@ -87,7 +86,7 @@ void checkAuditRefs(api.AuditRefs o) {
 
 core.int buildCounterBucket = 0;
 api.Bucket buildBucket() {
-  var o = api.Bucket();
+  final o = api.Bucket();
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
     o.max = 42;
@@ -119,7 +118,7 @@ void checkBucket(api.Bucket o) {
 
 core.int buildCounterCategories = 0;
 api.Categories buildCategories() {
-  var o = api.Categories();
+  final o = api.Categories();
   buildCounterCategories++;
   if (buildCounterCategories < 3) {
     o.accessibility = buildLighthouseCategoryV5();
@@ -135,18 +134,18 @@ api.Categories buildCategories() {
 void checkCategories(api.Categories o) {
   buildCounterCategories++;
   if (buildCounterCategories < 3) {
-    checkLighthouseCategoryV5(o.accessibility! as api.LighthouseCategoryV5);
-    checkLighthouseCategoryV5(o.bestPractices! as api.LighthouseCategoryV5);
-    checkLighthouseCategoryV5(o.performance! as api.LighthouseCategoryV5);
-    checkLighthouseCategoryV5(o.pwa! as api.LighthouseCategoryV5);
-    checkLighthouseCategoryV5(o.seo! as api.LighthouseCategoryV5);
+    checkLighthouseCategoryV5(o.accessibility!);
+    checkLighthouseCategoryV5(o.bestPractices!);
+    checkLighthouseCategoryV5(o.performance!);
+    checkLighthouseCategoryV5(o.pwa!);
+    checkLighthouseCategoryV5(o.seo!);
   }
   buildCounterCategories--;
 }
 
 core.int buildCounterCategoryGroupV5 = 0;
 api.CategoryGroupV5 buildCategoryGroupV5() {
-  var o = api.CategoryGroupV5();
+  final o = api.CategoryGroupV5();
   buildCounterCategoryGroupV5++;
   if (buildCounterCategoryGroupV5 < 3) {
     o.description = 'foo';
@@ -173,7 +172,7 @@ void checkCategoryGroupV5(api.CategoryGroupV5 o) {
 
 core.int buildCounterConfigSettings = 0;
 api.ConfigSettings buildConfigSettings() {
-  var o = api.ConfigSettings();
+  final o = api.ConfigSettings();
   buildCounterConfigSettings++;
   if (buildCounterConfigSettings < 3) {
     o.channel = 'foo';
@@ -229,7 +228,7 @@ void checkConfigSettings(api.ConfigSettings o) {
 
 core.int buildCounterEnvironment = 0;
 api.Environment buildEnvironment() {
-  var o = api.Environment();
+  final o = api.Environment();
   buildCounterEnvironment++;
   if (buildCounterEnvironment < 3) {
     o.benchmarkIndex = 42.0;
@@ -261,7 +260,7 @@ void checkEnvironment(api.Environment o) {
 
 core.int buildCounterI18n = 0;
 api.I18n buildI18n() {
-  var o = api.I18n();
+  final o = api.I18n();
   buildCounterI18n++;
   if (buildCounterI18n < 3) {
     o.rendererFormattedStrings = buildRendererFormattedStrings();
@@ -273,14 +272,13 @@ api.I18n buildI18n() {
 void checkI18n(api.I18n o) {
   buildCounterI18n++;
   if (buildCounterI18n < 3) {
-    checkRendererFormattedStrings(
-        o.rendererFormattedStrings! as api.RendererFormattedStrings);
+    checkRendererFormattedStrings(o.rendererFormattedStrings!);
   }
   buildCounterI18n--;
 }
 
 core.Map<core.String, core.Object> buildUnnamed3205() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -328,7 +326,7 @@ void checkUnnamed3205(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterLighthouseAuditResultV5 = 0;
 api.LighthouseAuditResultV5 buildLighthouseAuditResultV5() {
-  var o = api.LighthouseAuditResultV5();
+  final o = api.LighthouseAuditResultV5();
   buildCounterLighthouseAuditResultV5++;
   if (buildCounterLighthouseAuditResultV5 < 3) {
     o.description = 'foo';
@@ -429,7 +427,7 @@ void checkLighthouseAuditResultV5(api.LighthouseAuditResultV5 o) {
 }
 
 core.List<api.AuditRefs> buildUnnamed3206() {
-  var o = <api.AuditRefs>[];
+  final o = <api.AuditRefs>[];
   o.add(buildAuditRefs());
   o.add(buildAuditRefs());
   return o;
@@ -437,13 +435,13 @@ core.List<api.AuditRefs> buildUnnamed3206() {
 
 void checkUnnamed3206(core.List<api.AuditRefs> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditRefs(o[0] as api.AuditRefs);
-  checkAuditRefs(o[1] as api.AuditRefs);
+  checkAuditRefs(o[0]);
+  checkAuditRefs(o[1]);
 }
 
 core.int buildCounterLighthouseCategoryV5 = 0;
 api.LighthouseCategoryV5 buildLighthouseCategoryV5() {
-  var o = api.LighthouseCategoryV5();
+  final o = api.LighthouseCategoryV5();
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
     o.auditRefs = buildUnnamed3206();
@@ -500,7 +498,7 @@ void checkLighthouseCategoryV5(api.LighthouseCategoryV5 o) {
 }
 
 core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed3207() {
-  var o = <core.String, api.LighthouseAuditResultV5>{};
+  final o = <core.String, api.LighthouseAuditResultV5>{};
   o['x'] = buildLighthouseAuditResultV5();
   o['y'] = buildLighthouseAuditResultV5();
   return o;
@@ -508,12 +506,12 @@ core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed3207() {
 
 void checkUnnamed3207(core.Map<core.String, api.LighthouseAuditResultV5> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLighthouseAuditResultV5(o['x']! as api.LighthouseAuditResultV5);
-  checkLighthouseAuditResultV5(o['y']! as api.LighthouseAuditResultV5);
+  checkLighthouseAuditResultV5(o['x']!);
+  checkLighthouseAuditResultV5(o['y']!);
 }
 
 core.Map<core.String, api.CategoryGroupV5> buildUnnamed3208() {
-  var o = <core.String, api.CategoryGroupV5>{};
+  final o = <core.String, api.CategoryGroupV5>{};
   o['x'] = buildCategoryGroupV5();
   o['y'] = buildCategoryGroupV5();
   return o;
@@ -521,12 +519,12 @@ core.Map<core.String, api.CategoryGroupV5> buildUnnamed3208() {
 
 void checkUnnamed3208(core.Map<core.String, api.CategoryGroupV5> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCategoryGroupV5(o['x']! as api.CategoryGroupV5);
-  checkCategoryGroupV5(o['y']! as api.CategoryGroupV5);
+  checkCategoryGroupV5(o['x']!);
+  checkCategoryGroupV5(o['y']!);
 }
 
 core.List<core.Object> buildUnnamed3209() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -573,7 +571,7 @@ void checkUnnamed3209(core.List<core.Object> o) {
 }
 
 core.List<api.StackPack> buildUnnamed3210() {
-  var o = <api.StackPack>[];
+  final o = <api.StackPack>[];
   o.add(buildStackPack());
   o.add(buildStackPack());
   return o;
@@ -581,13 +579,13 @@ core.List<api.StackPack> buildUnnamed3210() {
 
 void checkUnnamed3210(core.List<api.StackPack> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStackPack(o[0] as api.StackPack);
-  checkStackPack(o[1] as api.StackPack);
+  checkStackPack(o[0]);
+  checkStackPack(o[1]);
 }
 
 core.int buildCounterLighthouseResultV5 = 0;
 api.LighthouseResultV5 buildLighthouseResultV5() {
-  var o = api.LighthouseResultV5();
+  final o = api.LighthouseResultV5();
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
     o.audits = buildUnnamed3207();
@@ -614,10 +612,10 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
     checkUnnamed3207(o.audits!);
-    checkCategories(o.categories! as api.Categories);
+    checkCategories(o.categories!);
     checkUnnamed3208(o.categoryGroups!);
-    checkConfigSettings(o.configSettings! as api.ConfigSettings);
-    checkEnvironment(o.environment! as api.Environment);
+    checkConfigSettings(o.configSettings!);
+    checkEnvironment(o.environment!);
     unittest.expect(
       o.fetchTime!,
       unittest.equals('foo'),
@@ -626,7 +624,7 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
       o.finalUrl!,
       unittest.equals('foo'),
     );
-    checkI18n(o.i18n! as api.I18n);
+    checkI18n(o.i18n!);
     unittest.expect(
       o.lighthouseVersion!,
       unittest.equals('foo'),
@@ -636,9 +634,9 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
       unittest.equals('foo'),
     );
     checkUnnamed3209(o.runWarnings!);
-    checkRuntimeError(o.runtimeError! as api.RuntimeError);
+    checkRuntimeError(o.runtimeError!);
     checkUnnamed3210(o.stackPacks!);
-    checkTiming(o.timing! as api.Timing);
+    checkTiming(o.timing!);
     unittest.expect(
       o.userAgent!,
       unittest.equals('foo'),
@@ -648,7 +646,7 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
 }
 
 core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed3211() {
-  var o = <core.String, api.UserPageLoadMetricV5>{};
+  final o = <core.String, api.UserPageLoadMetricV5>{};
   o['x'] = buildUserPageLoadMetricV5();
   o['y'] = buildUserPageLoadMetricV5();
   return o;
@@ -656,13 +654,13 @@ core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed3211() {
 
 void checkUnnamed3211(core.Map<core.String, api.UserPageLoadMetricV5> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserPageLoadMetricV5(o['x']! as api.UserPageLoadMetricV5);
-  checkUserPageLoadMetricV5(o['y']! as api.UserPageLoadMetricV5);
+  checkUserPageLoadMetricV5(o['x']!);
+  checkUserPageLoadMetricV5(o['y']!);
 }
 
 core.int buildCounterPagespeedApiLoadingExperienceV5 = 0;
 api.PagespeedApiLoadingExperienceV5 buildPagespeedApiLoadingExperienceV5() {
-  var o = api.PagespeedApiLoadingExperienceV5();
+  final o = api.PagespeedApiLoadingExperienceV5();
   buildCounterPagespeedApiLoadingExperienceV5++;
   if (buildCounterPagespeedApiLoadingExperienceV5 < 3) {
     o.id = 'foo';
@@ -699,7 +697,7 @@ void checkPagespeedApiLoadingExperienceV5(
 
 core.int buildCounterPagespeedApiPagespeedResponseV5 = 0;
 api.PagespeedApiPagespeedResponseV5 buildPagespeedApiPagespeedResponseV5() {
-  var o = api.PagespeedApiPagespeedResponseV5();
+  final o = api.PagespeedApiPagespeedResponseV5();
   buildCounterPagespeedApiPagespeedResponseV5++;
   if (buildCounterPagespeedApiPagespeedResponseV5 < 3) {
     o.analysisUTCTimestamp = 'foo';
@@ -735,19 +733,17 @@ void checkPagespeedApiPagespeedResponseV5(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkLighthouseResultV5(o.lighthouseResult! as api.LighthouseResultV5);
-    checkPagespeedApiLoadingExperienceV5(
-        o.loadingExperience! as api.PagespeedApiLoadingExperienceV5);
-    checkPagespeedApiLoadingExperienceV5(
-        o.originLoadingExperience! as api.PagespeedApiLoadingExperienceV5);
-    checkPagespeedVersion(o.version! as api.PagespeedVersion);
+    checkLighthouseResultV5(o.lighthouseResult!);
+    checkPagespeedApiLoadingExperienceV5(o.loadingExperience!);
+    checkPagespeedApiLoadingExperienceV5(o.originLoadingExperience!);
+    checkPagespeedVersion(o.version!);
   }
   buildCounterPagespeedApiPagespeedResponseV5--;
 }
 
 core.int buildCounterPagespeedVersion = 0;
 api.PagespeedVersion buildPagespeedVersion() {
-  var o = api.PagespeedVersion();
+  final o = api.PagespeedVersion();
   buildCounterPagespeedVersion++;
   if (buildCounterPagespeedVersion < 3) {
     o.major = 'foo';
@@ -774,7 +770,7 @@ void checkPagespeedVersion(api.PagespeedVersion o) {
 
 core.int buildCounterRendererFormattedStrings = 0;
 api.RendererFormattedStrings buildRendererFormattedStrings() {
-  var o = api.RendererFormattedStrings();
+  final o = api.RendererFormattedStrings();
   buildCounterRendererFormattedStrings++;
   if (buildCounterRendererFormattedStrings < 3) {
     o.auditGroupExpandTooltip = 'foo';
@@ -1031,7 +1027,7 @@ void checkRendererFormattedStrings(api.RendererFormattedStrings o) {
 
 core.int buildCounterRuntimeError = 0;
 api.RuntimeError buildRuntimeError() {
-  var o = api.RuntimeError();
+  final o = api.RuntimeError();
   buildCounterRuntimeError++;
   if (buildCounterRuntimeError < 3) {
     o.code = 'foo';
@@ -1057,7 +1053,7 @@ void checkRuntimeError(api.RuntimeError o) {
 }
 
 core.Map<core.String, core.String> buildUnnamed3212() {
-  var o = <core.String, core.String>{};
+  final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
@@ -1077,7 +1073,7 @@ void checkUnnamed3212(core.Map<core.String, core.String> o) {
 
 core.int buildCounterStackPack = 0;
 api.StackPack buildStackPack() {
-  var o = api.StackPack();
+  final o = api.StackPack();
   buildCounterStackPack++;
   if (buildCounterStackPack < 3) {
     o.descriptions = buildUnnamed3212();
@@ -1111,7 +1107,7 @@ void checkStackPack(api.StackPack o) {
 
 core.int buildCounterTiming = 0;
 api.Timing buildTiming() {
-  var o = api.Timing();
+  final o = api.Timing();
   buildCounterTiming++;
   if (buildCounterTiming < 3) {
     o.total = 42.0;
@@ -1132,7 +1128,7 @@ void checkTiming(api.Timing o) {
 }
 
 core.List<api.Bucket> buildUnnamed3213() {
-  var o = <api.Bucket>[];
+  final o = <api.Bucket>[];
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
@@ -1140,13 +1136,13 @@ core.List<api.Bucket> buildUnnamed3213() {
 
 void checkUnnamed3213(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBucket(o[0] as api.Bucket);
-  checkBucket(o[1] as api.Bucket);
+  checkBucket(o[0]);
+  checkBucket(o[1]);
 }
 
 core.int buildCounterUserPageLoadMetricV5 = 0;
 api.UserPageLoadMetricV5 buildUserPageLoadMetricV5() {
-  var o = api.UserPageLoadMetricV5();
+  final o = api.UserPageLoadMetricV5();
   buildCounterUserPageLoadMetricV5++;
   if (buildCounterUserPageLoadMetricV5 < 3) {
     o.category = 'foo';
@@ -1189,7 +1185,7 @@ void checkUserPageLoadMetricV5(api.UserPageLoadMetricV5 o) {
 }
 
 core.List<core.String> buildUnnamed3214() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1210,222 +1206,221 @@ void checkUnnamed3214(core.List<core.String> o) {
 void main() {
   unittest.group('obj-schema-AuditRefs', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAuditRefs();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAuditRefs();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.AuditRefs.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAuditRefs(od as api.AuditRefs);
+      checkAuditRefs(od);
     });
   });
 
   unittest.group('obj-schema-Bucket', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBucket();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildBucket();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Bucket.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkBucket(od as api.Bucket);
+      checkBucket(od);
     });
   });
 
   unittest.group('obj-schema-Categories', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCategories();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCategories();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Categories.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCategories(od as api.Categories);
+      checkCategories(od);
     });
   });
 
   unittest.group('obj-schema-CategoryGroupV5', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCategoryGroupV5();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CategoryGroupV5.fromJson(
+      final o = buildCategoryGroupV5();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CategoryGroupV5.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCategoryGroupV5(od as api.CategoryGroupV5);
+      checkCategoryGroupV5(od);
     });
   });
 
   unittest.group('obj-schema-ConfigSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildConfigSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ConfigSettings.fromJson(
+      final o = buildConfigSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConfigSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkConfigSettings(od as api.ConfigSettings);
+      checkConfigSettings(od);
     });
   });
 
   unittest.group('obj-schema-Environment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEnvironment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Environment.fromJson(
+      final o = buildEnvironment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Environment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEnvironment(od as api.Environment);
+      checkEnvironment(od);
     });
   });
 
   unittest.group('obj-schema-I18n', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildI18n();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.I18n.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkI18n(od as api.I18n);
+      final o = buildI18n();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.I18n.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkI18n(od);
     });
   });
 
   unittest.group('obj-schema-LighthouseAuditResultV5', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLighthouseAuditResultV5();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LighthouseAuditResultV5.fromJson(
+      final o = buildLighthouseAuditResultV5();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LighthouseAuditResultV5.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLighthouseAuditResultV5(od as api.LighthouseAuditResultV5);
+      checkLighthouseAuditResultV5(od);
     });
   });
 
   unittest.group('obj-schema-LighthouseCategoryV5', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLighthouseCategoryV5();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LighthouseCategoryV5.fromJson(
+      final o = buildLighthouseCategoryV5();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LighthouseCategoryV5.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLighthouseCategoryV5(od as api.LighthouseCategoryV5);
+      checkLighthouseCategoryV5(od);
     });
   });
 
   unittest.group('obj-schema-LighthouseResultV5', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLighthouseResultV5();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LighthouseResultV5.fromJson(
+      final o = buildLighthouseResultV5();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LighthouseResultV5.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLighthouseResultV5(od as api.LighthouseResultV5);
+      checkLighthouseResultV5(od);
     });
   });
 
   unittest.group('obj-schema-PagespeedApiLoadingExperienceV5', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPagespeedApiLoadingExperienceV5();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PagespeedApiLoadingExperienceV5.fromJson(
+      final o = buildPagespeedApiLoadingExperienceV5();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PagespeedApiLoadingExperienceV5.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPagespeedApiLoadingExperienceV5(
-          od as api.PagespeedApiLoadingExperienceV5);
+      checkPagespeedApiLoadingExperienceV5(od);
     });
   });
 
   unittest.group('obj-schema-PagespeedApiPagespeedResponseV5', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPagespeedApiPagespeedResponseV5();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PagespeedApiPagespeedResponseV5.fromJson(
+      final o = buildPagespeedApiPagespeedResponseV5();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PagespeedApiPagespeedResponseV5.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPagespeedApiPagespeedResponseV5(
-          od as api.PagespeedApiPagespeedResponseV5);
+      checkPagespeedApiPagespeedResponseV5(od);
     });
   });
 
   unittest.group('obj-schema-PagespeedVersion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPagespeedVersion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PagespeedVersion.fromJson(
+      final o = buildPagespeedVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PagespeedVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPagespeedVersion(od as api.PagespeedVersion);
+      checkPagespeedVersion(od);
     });
   });
 
   unittest.group('obj-schema-RendererFormattedStrings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRendererFormattedStrings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RendererFormattedStrings.fromJson(
+      final o = buildRendererFormattedStrings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RendererFormattedStrings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRendererFormattedStrings(od as api.RendererFormattedStrings);
+      checkRendererFormattedStrings(od);
     });
   });
 
   unittest.group('obj-schema-RuntimeError', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRuntimeError();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RuntimeError.fromJson(
+      final o = buildRuntimeError();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RuntimeError.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRuntimeError(od as api.RuntimeError);
+      checkRuntimeError(od);
     });
   });
 
   unittest.group('obj-schema-StackPack', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStackPack();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildStackPack();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.StackPack.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStackPack(od as api.StackPack);
+      checkStackPack(od);
     });
   });
 
   unittest.group('obj-schema-Timing', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTiming();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTiming();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Timing.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTiming(od as api.Timing);
+      checkTiming(od);
     });
   });
 
   unittest.group('obj-schema-UserPageLoadMetricV5', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUserPageLoadMetricV5();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UserPageLoadMetricV5.fromJson(
+      final o = buildUserPageLoadMetricV5();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserPageLoadMetricV5.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUserPageLoadMetricV5(od as api.UserPageLoadMetricV5);
+      checkUserPageLoadMetricV5(od);
     });
   });
 
   unittest.group('resource-PagespeedapiResource', () {
     unittest.test('method--runpagespeed', () async {
-      var mock = HttpServerMock();
-      var res = api.PagespeedInsightsApi(mock).pagespeedapi;
-      var arg_url = 'foo';
-      var arg_captchaToken = 'foo';
-      var arg_category = buildUnnamed3214();
-      var arg_locale = 'foo';
-      var arg_strategy = 'foo';
-      var arg_utmCampaign = 'foo';
-      var arg_utmSource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.PagespeedInsightsApi(mock).pagespeedapi;
+      final arg_url = 'foo';
+      final arg_captchaToken = 'foo';
+      final arg_category = buildUnnamed3214();
+      final arg_locale = 'foo';
+      final arg_strategy = 'foo';
+      final arg_utmCampaign = 'foo';
+      final arg_utmSource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 31),
-          unittest.equals("pagespeedonline/v5/runPagespeed"),
+          unittest.equals('pagespeedonline/v5/runPagespeed'),
         );
         pathOffset += 31;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1433,42 +1428,43 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["url"]!.first,
+          queryMap['url']!.first,
           unittest.equals(arg_url),
         );
         unittest.expect(
-          queryMap["captchaToken"]!.first,
+          queryMap['captchaToken']!.first,
           unittest.equals(arg_captchaToken),
         );
         unittest.expect(
-          queryMap["category"]!,
+          queryMap['category']!,
           unittest.equals(arg_category),
         );
         unittest.expect(
-          queryMap["locale"]!.first,
+          queryMap['locale']!.first,
           unittest.equals(arg_locale),
         );
         unittest.expect(
-          queryMap["strategy"]!.first,
+          queryMap['strategy']!.first,
           unittest.equals(arg_strategy),
         );
         unittest.expect(
-          queryMap["utm_campaign"]!.first,
+          queryMap['utm_campaign']!.first,
           unittest.equals(arg_utmCampaign),
         );
         unittest.expect(
-          queryMap["utm_source"]!.first,
+          queryMap['utm_source']!.first,
           unittest.equals(arg_utmSource),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPagespeedApiPagespeedResponseV5());
+        final resp =
+            convert.json.encode(buildPagespeedApiPagespeedResponseV5());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.runpagespeed(arg_url,

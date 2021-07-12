@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -30,7 +29,7 @@ import '../test_shared.dart';
 core.int buildCounterGoogleIdentityStsV1ExchangeTokenRequest = 0;
 api.GoogleIdentityStsV1ExchangeTokenRequest
     buildGoogleIdentityStsV1ExchangeTokenRequest() {
-  var o = api.GoogleIdentityStsV1ExchangeTokenRequest();
+  final o = api.GoogleIdentityStsV1ExchangeTokenRequest();
   buildCounterGoogleIdentityStsV1ExchangeTokenRequest++;
   if (buildCounterGoogleIdentityStsV1ExchangeTokenRequest < 3) {
     o.audience = 'foo';
@@ -84,7 +83,7 @@ void checkGoogleIdentityStsV1ExchangeTokenRequest(
 core.int buildCounterGoogleIdentityStsV1ExchangeTokenResponse = 0;
 api.GoogleIdentityStsV1ExchangeTokenResponse
     buildGoogleIdentityStsV1ExchangeTokenResponse() {
-  var o = api.GoogleIdentityStsV1ExchangeTokenResponse();
+  final o = api.GoogleIdentityStsV1ExchangeTokenResponse();
   buildCounterGoogleIdentityStsV1ExchangeTokenResponse++;
   if (buildCounterGoogleIdentityStsV1ExchangeTokenResponse < 3) {
     o.accessToken = 'foo';
@@ -123,7 +122,7 @@ void checkGoogleIdentityStsV1ExchangeTokenResponse(
 core.int buildCounterGoogleIdentityStsV1IntrospectTokenRequest = 0;
 api.GoogleIdentityStsV1IntrospectTokenRequest
     buildGoogleIdentityStsV1IntrospectTokenRequest() {
-  var o = api.GoogleIdentityStsV1IntrospectTokenRequest();
+  final o = api.GoogleIdentityStsV1IntrospectTokenRequest();
   buildCounterGoogleIdentityStsV1IntrospectTokenRequest++;
   if (buildCounterGoogleIdentityStsV1IntrospectTokenRequest < 3) {
     o.token = 'foo';
@@ -152,7 +151,7 @@ void checkGoogleIdentityStsV1IntrospectTokenRequest(
 core.int buildCounterGoogleIdentityStsV1IntrospectTokenResponse = 0;
 api.GoogleIdentityStsV1IntrospectTokenResponse
     buildGoogleIdentityStsV1IntrospectTokenResponse() {
-  var o = api.GoogleIdentityStsV1IntrospectTokenResponse();
+  final o = api.GoogleIdentityStsV1IntrospectTokenResponse();
   buildCounterGoogleIdentityStsV1IntrospectTokenResponse++;
   if (buildCounterGoogleIdentityStsV1IntrospectTokenResponse < 3) {
     o.active = true;
@@ -208,84 +207,79 @@ void checkGoogleIdentityStsV1IntrospectTokenResponse(
 void main() {
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIdentityStsV1ExchangeTokenRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIdentityStsV1ExchangeTokenRequest.fromJson(
+      final o = buildGoogleIdentityStsV1ExchangeTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1ExchangeTokenRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIdentityStsV1ExchangeTokenRequest(
-          od as api.GoogleIdentityStsV1ExchangeTokenRequest);
+      checkGoogleIdentityStsV1ExchangeTokenRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIdentityStsV1ExchangeTokenResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
+      final o = buildGoogleIdentityStsV1ExchangeTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIdentityStsV1ExchangeTokenResponse(
-          od as api.GoogleIdentityStsV1ExchangeTokenResponse);
+      checkGoogleIdentityStsV1ExchangeTokenResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIdentityStsV1IntrospectTokenRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIdentityStsV1IntrospectTokenRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIdentityStsV1IntrospectTokenRequest.fromJson(
+      final o = buildGoogleIdentityStsV1IntrospectTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1IntrospectTokenRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIdentityStsV1IntrospectTokenRequest(
-          od as api.GoogleIdentityStsV1IntrospectTokenRequest);
+      checkGoogleIdentityStsV1IntrospectTokenRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleIdentityStsV1IntrospectTokenResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleIdentityStsV1IntrospectTokenResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleIdentityStsV1IntrospectTokenResponse.fromJson(
+      final o = buildGoogleIdentityStsV1IntrospectTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1IntrospectTokenResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIdentityStsV1IntrospectTokenResponse(
-          od as api.GoogleIdentityStsV1IntrospectTokenResponse);
+      checkGoogleIdentityStsV1IntrospectTokenResponse(od);
     });
   });
 
   unittest.group('resource-V1Resource', () {
     unittest.test('method--introspect', () async {
-      var mock = HttpServerMock();
-      var res = api.CloudSecurityTokenApi(mock).v1;
-      var arg_request = buildGoogleIdentityStsV1IntrospectTokenRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.CloudSecurityTokenApi(mock).v1;
+      final arg_request = buildGoogleIdentityStsV1IntrospectTokenRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleIdentityStsV1IntrospectTokenRequest.fromJson(
+        final obj = api.GoogleIdentityStsV1IntrospectTokenRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleIdentityStsV1IntrospectTokenRequest(
-            obj as api.GoogleIdentityStsV1IntrospectTokenRequest);
+        checkGoogleIdentityStsV1IntrospectTokenRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("v1/introspect"),
+          unittest.equals('v1/introspect'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -293,14 +287,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleIdentityStsV1IntrospectTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -310,40 +304,39 @@ void main() {
     });
 
     unittest.test('method--token', () async {
-      var mock = HttpServerMock();
-      var res = api.CloudSecurityTokenApi(mock).v1;
-      var arg_request = buildGoogleIdentityStsV1ExchangeTokenRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.CloudSecurityTokenApi(mock).v1;
+      final arg_request = buildGoogleIdentityStsV1ExchangeTokenRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleIdentityStsV1ExchangeTokenRequest.fromJson(
+        final obj = api.GoogleIdentityStsV1ExchangeTokenRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleIdentityStsV1ExchangeTokenRequest(
-            obj as api.GoogleIdentityStsV1ExchangeTokenRequest);
+        checkGoogleIdentityStsV1ExchangeTokenRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1/token"),
+          unittest.equals('v1/token'),
         );
         pathOffset += 8;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -351,14 +344,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleIdentityStsV1ExchangeTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);

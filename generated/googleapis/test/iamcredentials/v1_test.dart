@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<core.String> buildUnnamed6897() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -47,7 +46,7 @@ void checkUnnamed6897(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed6898() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -67,7 +66,7 @@ void checkUnnamed6898(core.List<core.String> o) {
 
 core.int buildCounterGenerateAccessTokenRequest = 0;
 api.GenerateAccessTokenRequest buildGenerateAccessTokenRequest() {
-  var o = api.GenerateAccessTokenRequest();
+  final o = api.GenerateAccessTokenRequest();
   buildCounterGenerateAccessTokenRequest++;
   if (buildCounterGenerateAccessTokenRequest < 3) {
     o.delegates = buildUnnamed6897();
@@ -93,7 +92,7 @@ void checkGenerateAccessTokenRequest(api.GenerateAccessTokenRequest o) {
 
 core.int buildCounterGenerateAccessTokenResponse = 0;
 api.GenerateAccessTokenResponse buildGenerateAccessTokenResponse() {
-  var o = api.GenerateAccessTokenResponse();
+  final o = api.GenerateAccessTokenResponse();
   buildCounterGenerateAccessTokenResponse++;
   if (buildCounterGenerateAccessTokenResponse < 3) {
     o.accessToken = 'foo';
@@ -119,7 +118,7 @@ void checkGenerateAccessTokenResponse(api.GenerateAccessTokenResponse o) {
 }
 
 core.List<core.String> buildUnnamed6899() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -139,7 +138,7 @@ void checkUnnamed6899(core.List<core.String> o) {
 
 core.int buildCounterGenerateIdTokenRequest = 0;
 api.GenerateIdTokenRequest buildGenerateIdTokenRequest() {
-  var o = api.GenerateIdTokenRequest();
+  final o = api.GenerateIdTokenRequest();
   buildCounterGenerateIdTokenRequest++;
   if (buildCounterGenerateIdTokenRequest < 3) {
     o.audience = 'foo';
@@ -165,7 +164,7 @@ void checkGenerateIdTokenRequest(api.GenerateIdTokenRequest o) {
 
 core.int buildCounterGenerateIdTokenResponse = 0;
 api.GenerateIdTokenResponse buildGenerateIdTokenResponse() {
-  var o = api.GenerateIdTokenResponse();
+  final o = api.GenerateIdTokenResponse();
   buildCounterGenerateIdTokenResponse++;
   if (buildCounterGenerateIdTokenResponse < 3) {
     o.token = 'foo';
@@ -186,7 +185,7 @@ void checkGenerateIdTokenResponse(api.GenerateIdTokenResponse o) {
 }
 
 core.List<core.String> buildUnnamed6900() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -206,7 +205,7 @@ void checkUnnamed6900(core.List<core.String> o) {
 
 core.int buildCounterSignBlobRequest = 0;
 api.SignBlobRequest buildSignBlobRequest() {
-  var o = api.SignBlobRequest();
+  final o = api.SignBlobRequest();
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
     o.delegates = buildUnnamed6900();
@@ -230,7 +229,7 @@ void checkSignBlobRequest(api.SignBlobRequest o) {
 
 core.int buildCounterSignBlobResponse = 0;
 api.SignBlobResponse buildSignBlobResponse() {
-  var o = api.SignBlobResponse();
+  final o = api.SignBlobResponse();
   buildCounterSignBlobResponse++;
   if (buildCounterSignBlobResponse < 3) {
     o.keyId = 'foo';
@@ -256,7 +255,7 @@ void checkSignBlobResponse(api.SignBlobResponse o) {
 }
 
 core.List<core.String> buildUnnamed6901() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -276,7 +275,7 @@ void checkUnnamed6901(core.List<core.String> o) {
 
 core.int buildCounterSignJwtRequest = 0;
 api.SignJwtRequest buildSignJwtRequest() {
-  var o = api.SignJwtRequest();
+  final o = api.SignJwtRequest();
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
     o.delegates = buildUnnamed6901();
@@ -300,7 +299,7 @@ void checkSignJwtRequest(api.SignJwtRequest o) {
 
 core.int buildCounterSignJwtResponse = 0;
 api.SignJwtResponse buildSignJwtResponse() {
-  var o = api.SignJwtResponse();
+  final o = api.SignJwtResponse();
   buildCounterSignJwtResponse++;
   if (buildCounterSignJwtResponse < 3) {
     o.keyId = 'foo';
@@ -328,121 +327,121 @@ void checkSignJwtResponse(api.SignJwtResponse o) {
 void main() {
   unittest.group('obj-schema-GenerateAccessTokenRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGenerateAccessTokenRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GenerateAccessTokenRequest.fromJson(
+      final o = buildGenerateAccessTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateAccessTokenRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateAccessTokenRequest(od as api.GenerateAccessTokenRequest);
+      checkGenerateAccessTokenRequest(od);
     });
   });
 
   unittest.group('obj-schema-GenerateAccessTokenResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGenerateAccessTokenResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GenerateAccessTokenResponse.fromJson(
+      final o = buildGenerateAccessTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateAccessTokenResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateAccessTokenResponse(od as api.GenerateAccessTokenResponse);
+      checkGenerateAccessTokenResponse(od);
     });
   });
 
   unittest.group('obj-schema-GenerateIdTokenRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGenerateIdTokenRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GenerateIdTokenRequest.fromJson(
+      final o = buildGenerateIdTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateIdTokenRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateIdTokenRequest(od as api.GenerateIdTokenRequest);
+      checkGenerateIdTokenRequest(od);
     });
   });
 
   unittest.group('obj-schema-GenerateIdTokenResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGenerateIdTokenResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GenerateIdTokenResponse.fromJson(
+      final o = buildGenerateIdTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateIdTokenResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateIdTokenResponse(od as api.GenerateIdTokenResponse);
+      checkGenerateIdTokenResponse(od);
     });
   });
 
   unittest.group('obj-schema-SignBlobRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSignBlobRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SignBlobRequest.fromJson(
+      final o = buildSignBlobRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignBlobRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSignBlobRequest(od as api.SignBlobRequest);
+      checkSignBlobRequest(od);
     });
   });
 
   unittest.group('obj-schema-SignBlobResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSignBlobResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SignBlobResponse.fromJson(
+      final o = buildSignBlobResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignBlobResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSignBlobResponse(od as api.SignBlobResponse);
+      checkSignBlobResponse(od);
     });
   });
 
   unittest.group('obj-schema-SignJwtRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSignJwtRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SignJwtRequest.fromJson(
+      final o = buildSignJwtRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignJwtRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSignJwtRequest(od as api.SignJwtRequest);
+      checkSignJwtRequest(od);
     });
   });
 
   unittest.group('obj-schema-SignJwtResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSignJwtResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SignJwtResponse.fromJson(
+      final o = buildSignJwtResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignJwtResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSignJwtResponse(od as api.SignJwtResponse);
+      checkSignJwtResponse(od);
     });
   });
 
   unittest.group('resource-ProjectsServiceAccountsResource', () {
     unittest.test('method--generateAccessToken', () async {
-      var mock = HttpServerMock();
-      var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
-      var arg_request = buildGenerateAccessTokenRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
+      final arg_request = buildGenerateAccessTokenRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateAccessTokenRequest.fromJson(
+        final obj = api.GenerateAccessTokenRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGenerateAccessTokenRequest(obj as api.GenerateAccessTokenRequest);
+        checkGenerateAccessTokenRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -450,14 +449,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGenerateAccessTokenResponse());
+        final resp = convert.json.encode(buildGenerateAccessTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.generateAccessToken(arg_request, arg_name,
@@ -467,41 +466,41 @@ void main() {
     });
 
     unittest.test('method--generateIdToken', () async {
-      var mock = HttpServerMock();
-      var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
-      var arg_request = buildGenerateIdTokenRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
+      final arg_request = buildGenerateIdTokenRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateIdTokenRequest.fromJson(
+        final obj = api.GenerateIdTokenRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGenerateIdTokenRequest(obj as api.GenerateIdTokenRequest);
+        checkGenerateIdTokenRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -509,14 +508,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGenerateIdTokenResponse());
+        final resp = convert.json.encode(buildGenerateIdTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.generateIdToken(arg_request, arg_name,
@@ -525,41 +524,41 @@ void main() {
     });
 
     unittest.test('method--signBlob', () async {
-      var mock = HttpServerMock();
-      var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
-      var arg_request = buildSignBlobRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
+      final arg_request = buildSignBlobRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SignBlobRequest.fromJson(
+        final obj = api.SignBlobRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSignBlobRequest(obj as api.SignBlobRequest);
+        checkSignBlobRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -567,14 +566,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSignBlobResponse());
+        final resp = convert.json.encode(buildSignBlobResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -583,41 +582,41 @@ void main() {
     });
 
     unittest.test('method--signJwt', () async {
-      var mock = HttpServerMock();
-      var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
-      var arg_request = buildSignJwtRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
+      final arg_request = buildSignJwtRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SignJwtRequest.fromJson(
+        final obj = api.SignJwtRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSignJwtRequest(obj as api.SignJwtRequest);
+        checkSignJwtRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -625,14 +624,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSignJwtResponse());
+        final resp = convert.json.encode(buildSignJwtResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =

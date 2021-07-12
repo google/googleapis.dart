@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.CreateRowRequest> buildUnnamed8524() {
-  var o = <api.CreateRowRequest>[];
+  final o = <api.CreateRowRequest>[];
   o.add(buildCreateRowRequest());
   o.add(buildCreateRowRequest());
   return o;
@@ -36,13 +35,13 @@ core.List<api.CreateRowRequest> buildUnnamed8524() {
 
 void checkUnnamed8524(core.List<api.CreateRowRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreateRowRequest(o[0] as api.CreateRowRequest);
-  checkCreateRowRequest(o[1] as api.CreateRowRequest);
+  checkCreateRowRequest(o[0]);
+  checkCreateRowRequest(o[1]);
 }
 
 core.int buildCounterBatchCreateRowsRequest = 0;
 api.BatchCreateRowsRequest buildBatchCreateRowsRequest() {
-  var o = api.BatchCreateRowsRequest();
+  final o = api.BatchCreateRowsRequest();
   buildCounterBatchCreateRowsRequest++;
   if (buildCounterBatchCreateRowsRequest < 3) {
     o.requests = buildUnnamed8524();
@@ -60,7 +59,7 @@ void checkBatchCreateRowsRequest(api.BatchCreateRowsRequest o) {
 }
 
 core.List<api.Row> buildUnnamed8525() {
-  var o = <api.Row>[];
+  final o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
@@ -68,13 +67,13 @@ core.List<api.Row> buildUnnamed8525() {
 
 void checkUnnamed8525(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRow(o[0] as api.Row);
-  checkRow(o[1] as api.Row);
+  checkRow(o[0]);
+  checkRow(o[1]);
 }
 
 core.int buildCounterBatchCreateRowsResponse = 0;
 api.BatchCreateRowsResponse buildBatchCreateRowsResponse() {
-  var o = api.BatchCreateRowsResponse();
+  final o = api.BatchCreateRowsResponse();
   buildCounterBatchCreateRowsResponse++;
   if (buildCounterBatchCreateRowsResponse < 3) {
     o.rows = buildUnnamed8525();
@@ -92,7 +91,7 @@ void checkBatchCreateRowsResponse(api.BatchCreateRowsResponse o) {
 }
 
 core.List<core.String> buildUnnamed8526() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -112,7 +111,7 @@ void checkUnnamed8526(core.List<core.String> o) {
 
 core.int buildCounterBatchDeleteRowsRequest = 0;
 api.BatchDeleteRowsRequest buildBatchDeleteRowsRequest() {
-  var o = api.BatchDeleteRowsRequest();
+  final o = api.BatchDeleteRowsRequest();
   buildCounterBatchDeleteRowsRequest++;
   if (buildCounterBatchDeleteRowsRequest < 3) {
     o.names = buildUnnamed8526();
@@ -130,7 +129,7 @@ void checkBatchDeleteRowsRequest(api.BatchDeleteRowsRequest o) {
 }
 
 core.List<api.UpdateRowRequest> buildUnnamed8527() {
-  var o = <api.UpdateRowRequest>[];
+  final o = <api.UpdateRowRequest>[];
   o.add(buildUpdateRowRequest());
   o.add(buildUpdateRowRequest());
   return o;
@@ -138,13 +137,13 @@ core.List<api.UpdateRowRequest> buildUnnamed8527() {
 
 void checkUnnamed8527(core.List<api.UpdateRowRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUpdateRowRequest(o[0] as api.UpdateRowRequest);
-  checkUpdateRowRequest(o[1] as api.UpdateRowRequest);
+  checkUpdateRowRequest(o[0]);
+  checkUpdateRowRequest(o[1]);
 }
 
 core.int buildCounterBatchUpdateRowsRequest = 0;
 api.BatchUpdateRowsRequest buildBatchUpdateRowsRequest() {
-  var o = api.BatchUpdateRowsRequest();
+  final o = api.BatchUpdateRowsRequest();
   buildCounterBatchUpdateRowsRequest++;
   if (buildCounterBatchUpdateRowsRequest < 3) {
     o.requests = buildUnnamed8527();
@@ -162,7 +161,7 @@ void checkBatchUpdateRowsRequest(api.BatchUpdateRowsRequest o) {
 }
 
 core.List<api.Row> buildUnnamed8528() {
-  var o = <api.Row>[];
+  final o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
@@ -170,13 +169,13 @@ core.List<api.Row> buildUnnamed8528() {
 
 void checkUnnamed8528(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRow(o[0] as api.Row);
-  checkRow(o[1] as api.Row);
+  checkRow(o[0]);
+  checkRow(o[1]);
 }
 
 core.int buildCounterBatchUpdateRowsResponse = 0;
 api.BatchUpdateRowsResponse buildBatchUpdateRowsResponse() {
-  var o = api.BatchUpdateRowsResponse();
+  final o = api.BatchUpdateRowsResponse();
   buildCounterBatchUpdateRowsResponse++;
   if (buildCounterBatchUpdateRowsResponse < 3) {
     o.rows = buildUnnamed8528();
@@ -194,7 +193,7 @@ void checkBatchUpdateRowsResponse(api.BatchUpdateRowsResponse o) {
 }
 
 core.List<api.LabeledItem> buildUnnamed8529() {
-  var o = <api.LabeledItem>[];
+  final o = <api.LabeledItem>[];
   o.add(buildLabeledItem());
   o.add(buildLabeledItem());
   return o;
@@ -202,13 +201,13 @@ core.List<api.LabeledItem> buildUnnamed8529() {
 
 void checkUnnamed8529(core.List<api.LabeledItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLabeledItem(o[0] as api.LabeledItem);
-  checkLabeledItem(o[1] as api.LabeledItem);
+  checkLabeledItem(o[0]);
+  checkLabeledItem(o[1]);
 }
 
 core.int buildCounterColumnDescription = 0;
 api.ColumnDescription buildColumnDescription() {
-  var o = api.ColumnDescription();
+  final o = api.ColumnDescription();
   buildCounterColumnDescription++;
   if (buildCounterColumnDescription < 3) {
     o.dataType = 'foo';
@@ -235,20 +234,20 @@ void checkColumnDescription(api.ColumnDescription o) {
       unittest.equals('foo'),
     );
     checkUnnamed8529(o.labels!);
-    checkLookupDetails(o.lookupDetails! as api.LookupDetails);
+    checkLookupDetails(o.lookupDetails!);
     unittest.expect(o.multipleValuesDisallowed!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkRelationshipDetails(o.relationshipDetails! as api.RelationshipDetails);
+    checkRelationshipDetails(o.relationshipDetails!);
   }
   buildCounterColumnDescription--;
 }
 
 core.int buildCounterCreateRowRequest = 0;
 api.CreateRowRequest buildCreateRowRequest() {
-  var o = api.CreateRowRequest();
+  final o = api.CreateRowRequest();
   buildCounterCreateRowRequest++;
   if (buildCounterCreateRowRequest < 3) {
     o.parent = 'foo';
@@ -266,7 +265,7 @@ void checkCreateRowRequest(api.CreateRowRequest o) {
       o.parent!,
       unittest.equals('foo'),
     );
-    checkRow(o.row! as api.Row);
+    checkRow(o.row!);
     unittest.expect(
       o.view!,
       unittest.equals('foo'),
@@ -277,7 +276,7 @@ void checkCreateRowRequest(api.CreateRowRequest o) {
 
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
-  var o = api.Empty();
+  final o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
@@ -292,7 +291,7 @@ void checkEmpty(api.Empty o) {
 
 core.int buildCounterLabeledItem = 0;
 api.LabeledItem buildLabeledItem() {
-  var o = api.LabeledItem();
+  final o = api.LabeledItem();
   buildCounterLabeledItem++;
   if (buildCounterLabeledItem < 3) {
     o.id = 'foo';
@@ -318,7 +317,7 @@ void checkLabeledItem(api.LabeledItem o) {
 }
 
 core.List<api.Row> buildUnnamed8530() {
-  var o = <api.Row>[];
+  final o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
@@ -326,13 +325,13 @@ core.List<api.Row> buildUnnamed8530() {
 
 void checkUnnamed8530(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRow(o[0] as api.Row);
-  checkRow(o[1] as api.Row);
+  checkRow(o[0]);
+  checkRow(o[1]);
 }
 
 core.int buildCounterListRowsResponse = 0;
 api.ListRowsResponse buildListRowsResponse() {
-  var o = api.ListRowsResponse();
+  final o = api.ListRowsResponse();
   buildCounterListRowsResponse++;
   if (buildCounterListRowsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -355,7 +354,7 @@ void checkListRowsResponse(api.ListRowsResponse o) {
 }
 
 core.List<api.Table> buildUnnamed8531() {
-  var o = <api.Table>[];
+  final o = <api.Table>[];
   o.add(buildTable());
   o.add(buildTable());
   return o;
@@ -363,13 +362,13 @@ core.List<api.Table> buildUnnamed8531() {
 
 void checkUnnamed8531(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTable(o[0] as api.Table);
-  checkTable(o[1] as api.Table);
+  checkTable(o[0]);
+  checkTable(o[1]);
 }
 
 core.int buildCounterListTablesResponse = 0;
 api.ListTablesResponse buildListTablesResponse() {
-  var o = api.ListTablesResponse();
+  final o = api.ListTablesResponse();
   buildCounterListTablesResponse++;
   if (buildCounterListTablesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -392,7 +391,7 @@ void checkListTablesResponse(api.ListTablesResponse o) {
 }
 
 core.List<api.Workspace> buildUnnamed8532() {
-  var o = <api.Workspace>[];
+  final o = <api.Workspace>[];
   o.add(buildWorkspace());
   o.add(buildWorkspace());
   return o;
@@ -400,13 +399,13 @@ core.List<api.Workspace> buildUnnamed8532() {
 
 void checkUnnamed8532(core.List<api.Workspace> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWorkspace(o[0] as api.Workspace);
-  checkWorkspace(o[1] as api.Workspace);
+  checkWorkspace(o[0]);
+  checkWorkspace(o[1]);
 }
 
 core.int buildCounterListWorkspacesResponse = 0;
 api.ListWorkspacesResponse buildListWorkspacesResponse() {
-  var o = api.ListWorkspacesResponse();
+  final o = api.ListWorkspacesResponse();
   buildCounterListWorkspacesResponse++;
   if (buildCounterListWorkspacesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -430,7 +429,7 @@ void checkListWorkspacesResponse(api.ListWorkspacesResponse o) {
 
 core.int buildCounterLookupDetails = 0;
 api.LookupDetails buildLookupDetails() {
-  var o = api.LookupDetails();
+  final o = api.LookupDetails();
   buildCounterLookupDetails++;
   if (buildCounterLookupDetails < 3) {
     o.relationshipColumn = 'foo';
@@ -457,7 +456,7 @@ void checkLookupDetails(api.LookupDetails o) {
 
 core.int buildCounterRelationshipDetails = 0;
 api.RelationshipDetails buildRelationshipDetails() {
-  var o = api.RelationshipDetails();
+  final o = api.RelationshipDetails();
   buildCounterRelationshipDetails++;
   if (buildCounterRelationshipDetails < 3) {
     o.linkedTable = 'foo';
@@ -478,7 +477,7 @@ void checkRelationshipDetails(api.RelationshipDetails o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed8533() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -526,7 +525,7 @@ void checkUnnamed8533(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterRow = 0;
 api.Row buildRow() {
-  var o = api.Row();
+  final o = api.Row();
   buildCounterRow++;
   if (buildCounterRow < 3) {
     o.createTime = 'foo';
@@ -560,7 +559,7 @@ void checkRow(api.Row o) {
 
 core.int buildCounterSavedView = 0;
 api.SavedView buildSavedView() {
-  var o = api.SavedView();
+  final o = api.SavedView();
   buildCounterSavedView++;
   if (buildCounterSavedView < 3) {
     o.id = 'foo';
@@ -586,7 +585,7 @@ void checkSavedView(api.SavedView o) {
 }
 
 core.List<api.ColumnDescription> buildUnnamed8534() {
-  var o = <api.ColumnDescription>[];
+  final o = <api.ColumnDescription>[];
   o.add(buildColumnDescription());
   o.add(buildColumnDescription());
   return o;
@@ -594,12 +593,12 @@ core.List<api.ColumnDescription> buildUnnamed8534() {
 
 void checkUnnamed8534(core.List<api.ColumnDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColumnDescription(o[0] as api.ColumnDescription);
-  checkColumnDescription(o[1] as api.ColumnDescription);
+  checkColumnDescription(o[0]);
+  checkColumnDescription(o[1]);
 }
 
 core.List<api.SavedView> buildUnnamed8535() {
-  var o = <api.SavedView>[];
+  final o = <api.SavedView>[];
   o.add(buildSavedView());
   o.add(buildSavedView());
   return o;
@@ -607,13 +606,13 @@ core.List<api.SavedView> buildUnnamed8535() {
 
 void checkUnnamed8535(core.List<api.SavedView> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSavedView(o[0] as api.SavedView);
-  checkSavedView(o[1] as api.SavedView);
+  checkSavedView(o[0]);
+  checkSavedView(o[1]);
 }
 
 core.int buildCounterTable = 0;
 api.Table buildTable() {
-  var o = api.Table();
+  final o = api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
     o.columns = buildUnnamed8534();
@@ -654,7 +653,7 @@ void checkTable(api.Table o) {
 
 core.int buildCounterUpdateRowRequest = 0;
 api.UpdateRowRequest buildUpdateRowRequest() {
-  var o = api.UpdateRowRequest();
+  final o = api.UpdateRowRequest();
   buildCounterUpdateRowRequest++;
   if (buildCounterUpdateRowRequest < 3) {
     o.row = buildRow();
@@ -668,7 +667,7 @@ api.UpdateRowRequest buildUpdateRowRequest() {
 void checkUpdateRowRequest(api.UpdateRowRequest o) {
   buildCounterUpdateRowRequest++;
   if (buildCounterUpdateRowRequest < 3) {
-    checkRow(o.row! as api.Row);
+    checkRow(o.row!);
     unittest.expect(
       o.updateMask!,
       unittest.equals('foo'),
@@ -682,7 +681,7 @@ void checkUpdateRowRequest(api.UpdateRowRequest o) {
 }
 
 core.List<api.Table> buildUnnamed8536() {
-  var o = <api.Table>[];
+  final o = <api.Table>[];
   o.add(buildTable());
   o.add(buildTable());
   return o;
@@ -690,13 +689,13 @@ core.List<api.Table> buildUnnamed8536() {
 
 void checkUnnamed8536(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTable(o[0] as api.Table);
-  checkTable(o[1] as api.Table);
+  checkTable(o[0]);
+  checkTable(o[1]);
 }
 
 core.int buildCounterWorkspace = 0;
 api.Workspace buildWorkspace() {
-  var o = api.Workspace();
+  final o = api.Workspace();
   buildCounterWorkspace++;
   if (buildCounterWorkspace < 3) {
     o.createTime = 'foo';
@@ -736,223 +735,225 @@ void checkWorkspace(api.Workspace o) {
 void main() {
   unittest.group('obj-schema-BatchCreateRowsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchCreateRowsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchCreateRowsRequest.fromJson(
+      final o = buildBatchCreateRowsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchCreateRowsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchCreateRowsRequest(od as api.BatchCreateRowsRequest);
+      checkBatchCreateRowsRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchCreateRowsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchCreateRowsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchCreateRowsResponse.fromJson(
+      final o = buildBatchCreateRowsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchCreateRowsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchCreateRowsResponse(od as api.BatchCreateRowsResponse);
+      checkBatchCreateRowsResponse(od);
     });
   });
 
   unittest.group('obj-schema-BatchDeleteRowsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchDeleteRowsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchDeleteRowsRequest.fromJson(
+      final o = buildBatchDeleteRowsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchDeleteRowsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchDeleteRowsRequest(od as api.BatchDeleteRowsRequest);
+      checkBatchDeleteRowsRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchUpdateRowsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchUpdateRowsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchUpdateRowsRequest.fromJson(
+      final o = buildBatchUpdateRowsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchUpdateRowsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchUpdateRowsRequest(od as api.BatchUpdateRowsRequest);
+      checkBatchUpdateRowsRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchUpdateRowsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchUpdateRowsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchUpdateRowsResponse.fromJson(
+      final o = buildBatchUpdateRowsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchUpdateRowsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchUpdateRowsResponse(od as api.BatchUpdateRowsResponse);
+      checkBatchUpdateRowsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ColumnDescription', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildColumnDescription();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ColumnDescription.fromJson(
+      final o = buildColumnDescription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ColumnDescription.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkColumnDescription(od as api.ColumnDescription);
+      checkColumnDescription(od);
     });
   });
 
   unittest.group('obj-schema-CreateRowRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateRowRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateRowRequest.fromJson(
+      final o = buildCreateRowRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateRowRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateRowRequest(od as api.CreateRowRequest);
+      checkCreateRowRequest(od);
     });
   });
 
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEmpty(od as api.Empty);
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
   unittest.group('obj-schema-LabeledItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLabeledItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LabeledItem.fromJson(
+      final o = buildLabeledItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LabeledItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLabeledItem(od as api.LabeledItem);
+      checkLabeledItem(od);
     });
   });
 
   unittest.group('obj-schema-ListRowsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListRowsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListRowsResponse.fromJson(
+      final o = buildListRowsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListRowsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListRowsResponse(od as api.ListRowsResponse);
+      checkListRowsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListTablesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListTablesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListTablesResponse.fromJson(
+      final o = buildListTablesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListTablesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListTablesResponse(od as api.ListTablesResponse);
+      checkListTablesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListWorkspacesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListWorkspacesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListWorkspacesResponse.fromJson(
+      final o = buildListWorkspacesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListWorkspacesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListWorkspacesResponse(od as api.ListWorkspacesResponse);
+      checkListWorkspacesResponse(od);
     });
   });
 
   unittest.group('obj-schema-LookupDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLookupDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LookupDetails.fromJson(
+      final o = buildLookupDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LookupDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLookupDetails(od as api.LookupDetails);
+      checkLookupDetails(od);
     });
   });
 
   unittest.group('obj-schema-RelationshipDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRelationshipDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RelationshipDetails.fromJson(
+      final o = buildRelationshipDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RelationshipDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRelationshipDetails(od as api.RelationshipDetails);
+      checkRelationshipDetails(od);
     });
   });
 
   unittest.group('obj-schema-Row', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Row.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRow(od as api.Row);
+      final o = buildRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Row.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkRow(od);
     });
   });
 
   unittest.group('obj-schema-SavedView', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSavedView();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSavedView();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.SavedView.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSavedView(od as api.SavedView);
+      checkSavedView(od);
     });
   });
 
   unittest.group('obj-schema-Table', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTable();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Table.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTable(od as api.Table);
+      final o = buildTable();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Table.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTable(od);
     });
   });
 
   unittest.group('obj-schema-UpdateRowRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateRowRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateRowRequest.fromJson(
+      final o = buildUpdateRowRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateRowRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateRowRequest(od as api.UpdateRowRequest);
+      checkUpdateRowRequest(od);
     });
   });
 
   unittest.group('obj-schema-Workspace', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWorkspace();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWorkspace();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Workspace.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWorkspace(od as api.Workspace);
+      checkWorkspace(od);
     });
   });
 
   unittest.group('resource-TablesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -960,14 +961,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTable());
+        final resp = convert.json.encode(buildTable());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -975,37 +976,37 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables;
-      var arg_orderBy = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables;
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("v1alpha1/tables"),
+          unittest.equals('v1alpha1/tables'),
         );
         pathOffset += 15;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1013,26 +1014,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["orderBy"]!.first,
+          queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListTablesResponse());
+        final resp = convert.json.encode(buildListTablesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -1046,41 +1047,41 @@ void main() {
 
   unittest.group('resource-TablesRowsResource', () {
     unittest.test('method--batchCreate', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables.rows;
-      var arg_request = buildBatchCreateRowsRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables.rows;
+      final arg_request = buildBatchCreateRowsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchCreateRowsRequest.fromJson(
+        final obj = api.BatchCreateRowsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchCreateRowsRequest(obj as api.BatchCreateRowsRequest);
+        checkBatchCreateRowsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1088,14 +1089,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchCreateRowsResponse());
+        final resp = convert.json.encode(buildBatchCreateRowsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1104,41 +1105,41 @@ void main() {
     });
 
     unittest.test('method--batchDelete', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables.rows;
-      var arg_request = buildBatchDeleteRowsRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables.rows;
+      final arg_request = buildBatchDeleteRowsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchDeleteRowsRequest.fromJson(
+        final obj = api.BatchDeleteRowsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchDeleteRowsRequest(obj as api.BatchDeleteRowsRequest);
+        checkBatchDeleteRowsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1146,14 +1147,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1162,41 +1163,41 @@ void main() {
     });
 
     unittest.test('method--batchUpdate', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables.rows;
-      var arg_request = buildBatchUpdateRowsRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables.rows;
+      final arg_request = buildBatchUpdateRowsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchUpdateRowsRequest.fromJson(
+        final obj = api.BatchUpdateRowsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchUpdateRowsRequest(obj as api.BatchUpdateRowsRequest);
+        checkBatchUpdateRowsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1204,14 +1205,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchUpdateRowsResponse());
+        final resp = convert.json.encode(buildBatchUpdateRowsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1220,41 +1221,42 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables.rows;
-      var arg_request = buildRow();
-      var arg_parent = 'foo';
-      var arg_view = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables.rows;
+      final arg_request = buildRow();
+      final arg_parent = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Row.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkRow(obj as api.Row);
+        final obj =
+            api.Row.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRow(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1262,18 +1264,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["view"]!.first,
+          queryMap['view']!.first,
           unittest.equals(arg_view),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRow());
+        final resp = convert.json.encode(buildRow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -1282,36 +1284,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables.rows;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables.rows;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1319,14 +1321,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -1334,37 +1336,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables.rows;
-      var arg_name = 'foo';
-      var arg_view = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables.rows;
+      final arg_name = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1372,18 +1374,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["view"]!.first,
+          queryMap['view']!.first,
           unittest.equals(arg_view),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRow());
+        final resp = convert.json.encode(buildRow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1392,41 +1394,41 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables.rows;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_view = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables.rows;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1434,34 +1436,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap["orderBy"]!.first,
+          queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["view"]!.first,
+          queryMap['view']!.first,
           unittest.equals(arg_view),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListRowsResponse());
+        final resp = convert.json.encode(buildListRowsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -1475,42 +1477,43 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).tables.rows;
-      var arg_request = buildRow();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_view = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).tables.rows;
+      final arg_request = buildRow();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Row.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkRow(obj as api.Row);
+        final obj =
+            api.Row.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRow(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1518,22 +1521,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["view"]!.first,
+          queryMap['view']!.first,
           unittest.equals(arg_view),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRow());
+        final resp = convert.json.encode(buildRow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -1544,36 +1547,36 @@ void main() {
 
   unittest.group('resource-WorkspacesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).workspaces;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).workspaces;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1581,14 +1584,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildWorkspace());
+        final resp = convert.json.encode(buildWorkspace());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -1596,36 +1599,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.Area120TablesApi(mock).workspaces;
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Area120TablesApi(mock).workspaces;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("v1alpha1/workspaces"),
+          unittest.equals('v1alpha1/workspaces'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1633,22 +1636,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListWorkspacesResponse());
+        final resp = convert.json.encode(buildListWorkspacesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(

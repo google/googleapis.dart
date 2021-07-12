@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAccountBidderLocation = 0;
 api.AccountBidderLocation buildAccountBidderLocation() {
-  var o = api.AccountBidderLocation();
+  final o = api.AccountBidderLocation();
   buildCounterAccountBidderLocation++;
   if (buildCounterAccountBidderLocation < 3) {
     o.maximumQps = 42;
@@ -60,7 +59,7 @@ void checkAccountBidderLocation(api.AccountBidderLocation o) {
 }
 
 core.List<api.AccountBidderLocation> buildUnnamed2127() {
-  var o = <api.AccountBidderLocation>[];
+  final o = <api.AccountBidderLocation>[];
   o.add(buildAccountBidderLocation());
   o.add(buildAccountBidderLocation());
   return o;
@@ -68,13 +67,13 @@ core.List<api.AccountBidderLocation> buildUnnamed2127() {
 
 void checkUnnamed2127(core.List<api.AccountBidderLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountBidderLocation(o[0] as api.AccountBidderLocation);
-  checkAccountBidderLocation(o[1] as api.AccountBidderLocation);
+  checkAccountBidderLocation(o[0]);
+  checkAccountBidderLocation(o[1]);
 }
 
 core.int buildCounterAccount = 0;
 api.Account buildAccount() {
-  var o = api.Account();
+  final o = api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
     o.bidderLocation = buildUnnamed2127();
@@ -127,7 +126,7 @@ void checkAccount(api.Account o) {
 }
 
 core.List<api.Account> buildUnnamed2128() {
-  var o = <api.Account>[];
+  final o = <api.Account>[];
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
@@ -135,13 +134,13 @@ core.List<api.Account> buildUnnamed2128() {
 
 void checkUnnamed2128(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccount(o[0] as api.Account);
-  checkAccount(o[1] as api.Account);
+  checkAccount(o[0]);
+  checkAccount(o[1]);
 }
 
 core.int buildCounterAccountsList = 0;
 api.AccountsList buildAccountsList() {
-  var o = api.AccountsList();
+  final o = api.AccountsList();
   buildCounterAccountsList++;
   if (buildCounterAccountsList < 3) {
     o.items = buildUnnamed2128();
@@ -164,7 +163,7 @@ void checkAccountsList(api.AccountsList o) {
 }
 
 core.List<core.String> buildUnnamed2129() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -184,7 +183,7 @@ void checkUnnamed2129(core.List<core.String> o) {
 
 core.int buildCounterBillingInfo = 0;
 api.BillingInfo buildBillingInfo() {
-  var o = api.BillingInfo();
+  final o = api.BillingInfo();
   buildCounterBillingInfo++;
   if (buildCounterBillingInfo < 3) {
     o.accountId = 42;
@@ -217,7 +216,7 @@ void checkBillingInfo(api.BillingInfo o) {
 }
 
 core.List<api.BillingInfo> buildUnnamed2130() {
-  var o = <api.BillingInfo>[];
+  final o = <api.BillingInfo>[];
   o.add(buildBillingInfo());
   o.add(buildBillingInfo());
   return o;
@@ -225,13 +224,13 @@ core.List<api.BillingInfo> buildUnnamed2130() {
 
 void checkUnnamed2130(core.List<api.BillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBillingInfo(o[0] as api.BillingInfo);
-  checkBillingInfo(o[1] as api.BillingInfo);
+  checkBillingInfo(o[0]);
+  checkBillingInfo(o[1]);
 }
 
 core.int buildCounterBillingInfoList = 0;
 api.BillingInfoList buildBillingInfoList() {
-  var o = api.BillingInfoList();
+  final o = api.BillingInfoList();
   buildCounterBillingInfoList++;
   if (buildCounterBillingInfoList < 3) {
     o.items = buildUnnamed2130();
@@ -255,7 +254,7 @@ void checkBillingInfoList(api.BillingInfoList o) {
 
 core.int buildCounterBudget = 0;
 api.Budget buildBudget() {
-  var o = api.Budget();
+  final o = api.Budget();
   buildCounterBudget++;
   if (buildCounterBudget < 3) {
     o.accountId = 'foo';
@@ -301,7 +300,7 @@ void checkBudget(api.Budget o) {
 }
 
 core.List<core.String> buildUnnamed2131() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -321,7 +320,7 @@ void checkUnnamed2131(core.List<core.String> o) {
 
 core.int buildCounterCreativeAdTechnologyProviders = 0;
 api.CreativeAdTechnologyProviders buildCreativeAdTechnologyProviders() {
-  var o = api.CreativeAdTechnologyProviders();
+  final o = api.CreativeAdTechnologyProviders();
   buildCounterCreativeAdTechnologyProviders++;
   if (buildCounterCreativeAdTechnologyProviders < 3) {
     o.detectedProviderIds = buildUnnamed2131();
@@ -341,7 +340,7 @@ void checkCreativeAdTechnologyProviders(api.CreativeAdTechnologyProviders o) {
 }
 
 core.List<core.String> buildUnnamed2132() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -360,7 +359,7 @@ void checkUnnamed2132(core.List<core.String> o) {
 }
 
 core.List<core.int> buildUnnamed2133() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -379,7 +378,7 @@ void checkUnnamed2133(core.List<core.int> o) {
 }
 
 core.List<core.String> buildUnnamed2134() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -398,7 +397,7 @@ void checkUnnamed2134(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2135() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -418,7 +417,7 @@ void checkUnnamed2135(core.List<core.String> o) {
 
 core.int buildCounterCreativeCorrections = 0;
 api.CreativeCorrections buildCreativeCorrections() {
-  var o = api.CreativeCorrections();
+  final o = api.CreativeCorrections();
   buildCounterCreativeCorrections++;
   if (buildCounterCreativeCorrections < 3) {
     o.details = buildUnnamed2135();
@@ -441,7 +440,7 @@ void checkCreativeCorrections(api.CreativeCorrections o) {
 }
 
 core.List<api.CreativeCorrections> buildUnnamed2136() {
-  var o = <api.CreativeCorrections>[];
+  final o = <api.CreativeCorrections>[];
   o.add(buildCreativeCorrections());
   o.add(buildCreativeCorrections());
   return o;
@@ -449,12 +448,12 @@ core.List<api.CreativeCorrections> buildUnnamed2136() {
 
 void checkUnnamed2136(core.List<api.CreativeCorrections> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreativeCorrections(o[0] as api.CreativeCorrections);
-  checkCreativeCorrections(o[1] as api.CreativeCorrections);
+  checkCreativeCorrections(o[0]);
+  checkCreativeCorrections(o[1]);
 }
 
 core.List<core.String> buildUnnamed2137() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -474,7 +473,7 @@ void checkUnnamed2137(core.List<core.String> o) {
 
 core.int buildCounterCreativeDisapprovalReasons = 0;
 api.CreativeDisapprovalReasons buildCreativeDisapprovalReasons() {
-  var o = api.CreativeDisapprovalReasons();
+  final o = api.CreativeDisapprovalReasons();
   buildCounterCreativeDisapprovalReasons++;
   if (buildCounterCreativeDisapprovalReasons < 3) {
     o.details = buildUnnamed2137();
@@ -497,7 +496,7 @@ void checkCreativeDisapprovalReasons(api.CreativeDisapprovalReasons o) {
 }
 
 core.List<api.CreativeDisapprovalReasons> buildUnnamed2138() {
-  var o = <api.CreativeDisapprovalReasons>[];
+  final o = <api.CreativeDisapprovalReasons>[];
   o.add(buildCreativeDisapprovalReasons());
   o.add(buildCreativeDisapprovalReasons());
   return o;
@@ -505,13 +504,13 @@ core.List<api.CreativeDisapprovalReasons> buildUnnamed2138() {
 
 void checkUnnamed2138(core.List<api.CreativeDisapprovalReasons> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreativeDisapprovalReasons(o[0] as api.CreativeDisapprovalReasons);
-  checkCreativeDisapprovalReasons(o[1] as api.CreativeDisapprovalReasons);
+  checkCreativeDisapprovalReasons(o[0]);
+  checkCreativeDisapprovalReasons(o[1]);
 }
 
 core.int buildCounterCreativeFilteringReasonsReasons = 0;
 api.CreativeFilteringReasonsReasons buildCreativeFilteringReasonsReasons() {
-  var o = api.CreativeFilteringReasonsReasons();
+  final o = api.CreativeFilteringReasonsReasons();
   buildCounterCreativeFilteringReasonsReasons++;
   if (buildCounterCreativeFilteringReasonsReasons < 3) {
     o.filteringCount = 'foo';
@@ -538,7 +537,7 @@ void checkCreativeFilteringReasonsReasons(
 }
 
 core.List<api.CreativeFilteringReasonsReasons> buildUnnamed2139() {
-  var o = <api.CreativeFilteringReasonsReasons>[];
+  final o = <api.CreativeFilteringReasonsReasons>[];
   o.add(buildCreativeFilteringReasonsReasons());
   o.add(buildCreativeFilteringReasonsReasons());
   return o;
@@ -546,15 +545,13 @@ core.List<api.CreativeFilteringReasonsReasons> buildUnnamed2139() {
 
 void checkUnnamed2139(core.List<api.CreativeFilteringReasonsReasons> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreativeFilteringReasonsReasons(
-      o[0] as api.CreativeFilteringReasonsReasons);
-  checkCreativeFilteringReasonsReasons(
-      o[1] as api.CreativeFilteringReasonsReasons);
+  checkCreativeFilteringReasonsReasons(o[0]);
+  checkCreativeFilteringReasonsReasons(o[1]);
 }
 
 core.int buildCounterCreativeFilteringReasons = 0;
 api.CreativeFilteringReasons buildCreativeFilteringReasons() {
-  var o = api.CreativeFilteringReasons();
+  final o = api.CreativeFilteringReasons();
   buildCounterCreativeFilteringReasons++;
   if (buildCounterCreativeFilteringReasons < 3) {
     o.date = 'foo';
@@ -577,7 +574,7 @@ void checkCreativeFilteringReasons(api.CreativeFilteringReasons o) {
 }
 
 core.List<core.String> buildUnnamed2140() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -597,7 +594,7 @@ void checkUnnamed2140(core.List<core.String> o) {
 
 core.int buildCounterCreativeNativeAdAppIcon = 0;
 api.CreativeNativeAdAppIcon buildCreativeNativeAdAppIcon() {
-  var o = api.CreativeNativeAdAppIcon();
+  final o = api.CreativeNativeAdAppIcon();
   buildCounterCreativeNativeAdAppIcon++;
   if (buildCounterCreativeNativeAdAppIcon < 3) {
     o.height = 42;
@@ -629,7 +626,7 @@ void checkCreativeNativeAdAppIcon(api.CreativeNativeAdAppIcon o) {
 
 core.int buildCounterCreativeNativeAdImage = 0;
 api.CreativeNativeAdImage buildCreativeNativeAdImage() {
-  var o = api.CreativeNativeAdImage();
+  final o = api.CreativeNativeAdImage();
   buildCounterCreativeNativeAdImage++;
   if (buildCounterCreativeNativeAdImage < 3) {
     o.height = 42;
@@ -660,7 +657,7 @@ void checkCreativeNativeAdImage(api.CreativeNativeAdImage o) {
 }
 
 core.List<core.String> buildUnnamed2141() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -680,7 +677,7 @@ void checkUnnamed2141(core.List<core.String> o) {
 
 core.int buildCounterCreativeNativeAdLogo = 0;
 api.CreativeNativeAdLogo buildCreativeNativeAdLogo() {
-  var o = api.CreativeNativeAdLogo();
+  final o = api.CreativeNativeAdLogo();
   buildCounterCreativeNativeAdLogo++;
   if (buildCounterCreativeNativeAdLogo < 3) {
     o.height = 42;
@@ -712,7 +709,7 @@ void checkCreativeNativeAdLogo(api.CreativeNativeAdLogo o) {
 
 core.int buildCounterCreativeNativeAd = 0;
 api.CreativeNativeAd buildCreativeNativeAd() {
-  var o = api.CreativeNativeAd();
+  final o = api.CreativeNativeAd();
   buildCounterCreativeNativeAd++;
   if (buildCounterCreativeNativeAd < 3) {
     o.advertiser = 'foo';
@@ -738,7 +735,7 @@ void checkCreativeNativeAd(api.CreativeNativeAd o) {
       o.advertiser!,
       unittest.equals('foo'),
     );
-    checkCreativeNativeAdAppIcon(o.appIcon! as api.CreativeNativeAdAppIcon);
+    checkCreativeNativeAdAppIcon(o.appIcon!);
     unittest.expect(
       o.body!,
       unittest.equals('foo'),
@@ -755,9 +752,9 @@ void checkCreativeNativeAd(api.CreativeNativeAd o) {
       o.headline!,
       unittest.equals('foo'),
     );
-    checkCreativeNativeAdImage(o.image! as api.CreativeNativeAdImage);
+    checkCreativeNativeAdImage(o.image!);
     checkUnnamed2141(o.impressionTrackingUrl!);
-    checkCreativeNativeAdLogo(o.logo! as api.CreativeNativeAdLogo);
+    checkCreativeNativeAdLogo(o.logo!);
     unittest.expect(
       o.price!,
       unittest.equals('foo'),
@@ -771,7 +768,7 @@ void checkCreativeNativeAd(api.CreativeNativeAd o) {
 }
 
 core.List<core.int> buildUnnamed2142() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -790,7 +787,7 @@ void checkUnnamed2142(core.List<core.int> o) {
 }
 
 core.List<core.int> buildUnnamed2143() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -809,7 +806,7 @@ void checkUnnamed2143(core.List<core.int> o) {
 }
 
 core.List<core.int> buildUnnamed2144() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -828,7 +825,7 @@ void checkUnnamed2144(core.List<core.int> o) {
 }
 
 core.List<core.int> buildUnnamed2145() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -848,7 +845,7 @@ void checkUnnamed2145(core.List<core.int> o) {
 
 core.int buildCounterCreative = 0;
 api.Creative buildCreative() {
-  var o = api.Creative();
+  final o = api.Creative();
   buildCounterCreative++;
   if (buildCounterCreative < 3) {
     o.HTMLSnippet = 'foo';
@@ -857,7 +854,7 @@ api.Creative buildCreative() {
     o.advertiserId = buildUnnamed2132();
     o.advertiserName = 'foo';
     o.agencyId = 'foo';
-    o.apiUploadTimestamp = core.DateTime.parse("2002-02-27T14:01:02");
+    o.apiUploadTimestamp = core.DateTime.parse('2002-02-27T14:01:02');
     o.attribute = buildUnnamed2133();
     o.buyerCreativeId = 'foo';
     o.clickThroughUrl = buildUnnamed2134();
@@ -892,8 +889,7 @@ void checkCreative(api.Creative o) {
       o.accountId!,
       unittest.equals(42),
     );
-    checkCreativeAdTechnologyProviders(
-        o.adTechnologyProviders! as api.CreativeAdTechnologyProviders);
+    checkCreativeAdTechnologyProviders(o.adTechnologyProviders!);
     checkUnnamed2132(o.advertiserId!);
     unittest.expect(
       o.advertiserName!,
@@ -905,7 +901,7 @@ void checkCreative(api.Creative o) {
     );
     unittest.expect(
       o.apiUploadTimestamp!,
-      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
     );
     checkUnnamed2133(o.attribute!);
     unittest.expect(
@@ -915,8 +911,7 @@ void checkCreative(api.Creative o) {
     checkUnnamed2134(o.clickThroughUrl!);
     checkUnnamed2136(o.corrections!);
     checkUnnamed2138(o.disapprovalReasons!);
-    checkCreativeFilteringReasons(
-        o.filteringReasons! as api.CreativeFilteringReasons);
+    checkCreativeFilteringReasons(o.filteringReasons!);
     unittest.expect(
       o.height!,
       unittest.equals(42),
@@ -926,7 +921,7 @@ void checkCreative(api.Creative o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkCreativeNativeAd(o.nativeAd! as api.CreativeNativeAd);
+    checkCreativeNativeAd(o.nativeAd!);
     checkUnnamed2142(o.productCategories!);
     checkUnnamed2143(o.restrictedCategories!);
     checkUnnamed2144(o.sensitiveCategories!);
@@ -952,7 +947,7 @@ void checkCreative(api.Creative o) {
 }
 
 core.List<api.Creative> buildUnnamed2146() {
-  var o = <api.Creative>[];
+  final o = <api.Creative>[];
   o.add(buildCreative());
   o.add(buildCreative());
   return o;
@@ -960,13 +955,13 @@ core.List<api.Creative> buildUnnamed2146() {
 
 void checkUnnamed2146(core.List<api.Creative> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreative(o[0] as api.Creative);
-  checkCreative(o[1] as api.Creative);
+  checkCreative(o[0]);
+  checkCreative(o[1]);
 }
 
 core.int buildCounterCreativesList = 0;
 api.CreativesList buildCreativesList() {
-  var o = api.CreativesList();
+  final o = api.CreativesList();
   buildCounterCreativesList++;
   if (buildCounterCreativesList < 3) {
     o.items = buildUnnamed2146();
@@ -995,7 +990,7 @@ void checkCreativesList(api.CreativesList o) {
 
 core.int buildCounterDirectDeal = 0;
 api.DirectDeal buildDirectDeal() {
-  var o = api.DirectDeal();
+  final o = api.DirectDeal();
   buildCounterDirectDeal++;
   if (buildCounterDirectDeal < 3) {
     o.accountId = 42;
@@ -1080,7 +1075,7 @@ void checkDirectDeal(api.DirectDeal o) {
 }
 
 core.List<api.DirectDeal> buildUnnamed2147() {
-  var o = <api.DirectDeal>[];
+  final o = <api.DirectDeal>[];
   o.add(buildDirectDeal());
   o.add(buildDirectDeal());
   return o;
@@ -1088,13 +1083,13 @@ core.List<api.DirectDeal> buildUnnamed2147() {
 
 void checkUnnamed2147(core.List<api.DirectDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDirectDeal(o[0] as api.DirectDeal);
-  checkDirectDeal(o[1] as api.DirectDeal);
+  checkDirectDeal(o[0]);
+  checkDirectDeal(o[1]);
 }
 
 core.int buildCounterDirectDealsList = 0;
 api.DirectDealsList buildDirectDealsList() {
-  var o = api.DirectDealsList();
+  final o = api.DirectDealsList();
   buildCounterDirectDealsList++;
   if (buildCounterDirectDealsList < 3) {
     o.directDeals = buildUnnamed2147();
@@ -1117,7 +1112,7 @@ void checkDirectDealsList(api.DirectDealsList o) {
 }
 
 core.List<core.Object> buildUnnamed2148() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -1164,7 +1159,7 @@ void checkUnnamed2148(core.List<core.Object> o) {
 }
 
 core.List<core.Object> buildUnnamed2149() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -1211,7 +1206,7 @@ void checkUnnamed2149(core.List<core.Object> o) {
 }
 
 core.List<core.Object> buildUnnamed2150() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -1258,7 +1253,7 @@ void checkUnnamed2150(core.List<core.Object> o) {
 }
 
 core.List<core.Object> buildUnnamed2151() {
-  var o = <core.Object>[];
+  final o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -1306,7 +1301,7 @@ void checkUnnamed2151(core.List<core.Object> o) {
 
 core.int buildCounterPerformanceReport = 0;
 api.PerformanceReport buildPerformanceReport() {
-  var o = api.PerformanceReport();
+  final o = api.PerformanceReport();
   buildCounterPerformanceReport++;
   if (buildCounterPerformanceReport < 3) {
     o.bidRate = 42.0;
@@ -1420,7 +1415,7 @@ void checkPerformanceReport(api.PerformanceReport o) {
 }
 
 core.List<api.PerformanceReport> buildUnnamed2152() {
-  var o = <api.PerformanceReport>[];
+  final o = <api.PerformanceReport>[];
   o.add(buildPerformanceReport());
   o.add(buildPerformanceReport());
   return o;
@@ -1428,13 +1423,13 @@ core.List<api.PerformanceReport> buildUnnamed2152() {
 
 void checkUnnamed2152(core.List<api.PerformanceReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPerformanceReport(o[0] as api.PerformanceReport);
-  checkPerformanceReport(o[1] as api.PerformanceReport);
+  checkPerformanceReport(o[0]);
+  checkPerformanceReport(o[1]);
 }
 
 core.int buildCounterPerformanceReportList = 0;
 api.PerformanceReportList buildPerformanceReportList() {
-  var o = api.PerformanceReportList();
+  final o = api.PerformanceReportList();
   buildCounterPerformanceReportList++;
   if (buildCounterPerformanceReportList < 3) {
     o.kind = 'foo';
@@ -1457,7 +1452,7 @@ void checkPerformanceReportList(api.PerformanceReportList o) {
 }
 
 core.List<core.String> buildUnnamed2153() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1477,7 +1472,7 @@ void checkUnnamed2153(core.List<core.String> o) {
 
 core.int buildCounterPretargetingConfigDimensions = 0;
 api.PretargetingConfigDimensions buildPretargetingConfigDimensions() {
-  var o = api.PretargetingConfigDimensions();
+  final o = api.PretargetingConfigDimensions();
   buildCounterPretargetingConfigDimensions++;
   if (buildCounterPretargetingConfigDimensions < 3) {
     o.height = 'foo';
@@ -1503,7 +1498,7 @@ void checkPretargetingConfigDimensions(api.PretargetingConfigDimensions o) {
 }
 
 core.List<api.PretargetingConfigDimensions> buildUnnamed2154() {
-  var o = <api.PretargetingConfigDimensions>[];
+  final o = <api.PretargetingConfigDimensions>[];
   o.add(buildPretargetingConfigDimensions());
   o.add(buildPretargetingConfigDimensions());
   return o;
@@ -1511,12 +1506,12 @@ core.List<api.PretargetingConfigDimensions> buildUnnamed2154() {
 
 void checkUnnamed2154(core.List<api.PretargetingConfigDimensions> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPretargetingConfigDimensions(o[0] as api.PretargetingConfigDimensions);
-  checkPretargetingConfigDimensions(o[1] as api.PretargetingConfigDimensions);
+  checkPretargetingConfigDimensions(o[0]);
+  checkPretargetingConfigDimensions(o[1]);
 }
 
 core.List<core.String> buildUnnamed2155() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1535,7 +1530,7 @@ void checkUnnamed2155(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2156() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1556,7 +1551,7 @@ void checkUnnamed2156(core.List<core.String> o) {
 core.int buildCounterPretargetingConfigExcludedPlacements = 0;
 api.PretargetingConfigExcludedPlacements
     buildPretargetingConfigExcludedPlacements() {
-  var o = api.PretargetingConfigExcludedPlacements();
+  final o = api.PretargetingConfigExcludedPlacements();
   buildCounterPretargetingConfigExcludedPlacements++;
   if (buildCounterPretargetingConfigExcludedPlacements < 3) {
     o.token = 'foo';
@@ -1583,7 +1578,7 @@ void checkPretargetingConfigExcludedPlacements(
 }
 
 core.List<api.PretargetingConfigExcludedPlacements> buildUnnamed2157() {
-  var o = <api.PretargetingConfigExcludedPlacements>[];
+  final o = <api.PretargetingConfigExcludedPlacements>[];
   o.add(buildPretargetingConfigExcludedPlacements());
   o.add(buildPretargetingConfigExcludedPlacements());
   return o;
@@ -1591,14 +1586,12 @@ core.List<api.PretargetingConfigExcludedPlacements> buildUnnamed2157() {
 
 void checkUnnamed2157(core.List<api.PretargetingConfigExcludedPlacements> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPretargetingConfigExcludedPlacements(
-      o[0] as api.PretargetingConfigExcludedPlacements);
-  checkPretargetingConfigExcludedPlacements(
-      o[1] as api.PretargetingConfigExcludedPlacements);
+  checkPretargetingConfigExcludedPlacements(o[0]);
+  checkPretargetingConfigExcludedPlacements(o[1]);
 }
 
 core.List<core.String> buildUnnamed2158() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1617,7 +1610,7 @@ void checkUnnamed2158(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2159() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1636,7 +1629,7 @@ void checkUnnamed2159(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2160() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1655,7 +1648,7 @@ void checkUnnamed2160(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2161() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1674,7 +1667,7 @@ void checkUnnamed2161(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2162() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1693,7 +1686,7 @@ void checkUnnamed2162(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2163() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1712,7 +1705,7 @@ void checkUnnamed2163(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2164() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1732,7 +1725,7 @@ void checkUnnamed2164(core.List<core.String> o) {
 
 core.int buildCounterPretargetingConfigPlacements = 0;
 api.PretargetingConfigPlacements buildPretargetingConfigPlacements() {
-  var o = api.PretargetingConfigPlacements();
+  final o = api.PretargetingConfigPlacements();
   buildCounterPretargetingConfigPlacements++;
   if (buildCounterPretargetingConfigPlacements < 3) {
     o.token = 'foo';
@@ -1758,7 +1751,7 @@ void checkPretargetingConfigPlacements(api.PretargetingConfigPlacements o) {
 }
 
 core.List<api.PretargetingConfigPlacements> buildUnnamed2165() {
-  var o = <api.PretargetingConfigPlacements>[];
+  final o = <api.PretargetingConfigPlacements>[];
   o.add(buildPretargetingConfigPlacements());
   o.add(buildPretargetingConfigPlacements());
   return o;
@@ -1766,12 +1759,12 @@ core.List<api.PretargetingConfigPlacements> buildUnnamed2165() {
 
 void checkUnnamed2165(core.List<api.PretargetingConfigPlacements> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPretargetingConfigPlacements(o[0] as api.PretargetingConfigPlacements);
-  checkPretargetingConfigPlacements(o[1] as api.PretargetingConfigPlacements);
+  checkPretargetingConfigPlacements(o[0]);
+  checkPretargetingConfigPlacements(o[1]);
 }
 
 core.List<core.String> buildUnnamed2166() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1790,7 +1783,7 @@ void checkUnnamed2166(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2167() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1809,7 +1802,7 @@ void checkUnnamed2167(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2168() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1828,7 +1821,7 @@ void checkUnnamed2168(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2169() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1847,7 +1840,7 @@ void checkUnnamed2169(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed2170() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1867,7 +1860,7 @@ void checkUnnamed2170(core.List<core.String> o) {
 
 core.int buildCounterPretargetingConfig = 0;
 api.PretargetingConfig buildPretargetingConfig() {
-  var o = api.PretargetingConfig();
+  final o = api.PretargetingConfig();
   buildCounterPretargetingConfig++;
   if (buildCounterPretargetingConfig < 3) {
     o.billingId = 'foo';
@@ -1946,7 +1939,7 @@ void checkPretargetingConfig(api.PretargetingConfig o) {
 }
 
 core.List<api.PretargetingConfig> buildUnnamed2171() {
-  var o = <api.PretargetingConfig>[];
+  final o = <api.PretargetingConfig>[];
   o.add(buildPretargetingConfig());
   o.add(buildPretargetingConfig());
   return o;
@@ -1954,13 +1947,13 @@ core.List<api.PretargetingConfig> buildUnnamed2171() {
 
 void checkUnnamed2171(core.List<api.PretargetingConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPretargetingConfig(o[0] as api.PretargetingConfig);
-  checkPretargetingConfig(o[1] as api.PretargetingConfig);
+  checkPretargetingConfig(o[0]);
+  checkPretargetingConfig(o[1]);
 }
 
 core.int buildCounterPretargetingConfigList = 0;
 api.PretargetingConfigList buildPretargetingConfigList() {
-  var o = api.PretargetingConfigList();
+  final o = api.PretargetingConfigList();
   buildCounterPretargetingConfigList++;
   if (buildCounterPretargetingConfigList < 3) {
     o.items = buildUnnamed2171();
@@ -1983,7 +1976,7 @@ void checkPretargetingConfigList(api.PretargetingConfigList o) {
 }
 
 core.List<core.int> buildUnnamed2172() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -2002,7 +1995,7 @@ void checkUnnamed2172(core.List<core.int> o) {
 }
 
 core.List<core.String> buildUnnamed2173() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2023,291 +2016,288 @@ void checkUnnamed2173(core.List<core.String> o) {
 void main() {
   unittest.group('obj-schema-AccountBidderLocation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountBidderLocation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountBidderLocation.fromJson(
+      final o = buildAccountBidderLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountBidderLocation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountBidderLocation(od as api.AccountBidderLocation);
+      checkAccountBidderLocation(od);
     });
   });
 
   unittest.group('obj-schema-Account', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Account.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAccount(od as api.Account);
+      checkAccount(od);
     });
   });
 
   unittest.group('obj-schema-AccountsList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsList.fromJson(
+      final o = buildAccountsList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsList(od as api.AccountsList);
+      checkAccountsList(od);
     });
   });
 
   unittest.group('obj-schema-BillingInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBillingInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BillingInfo.fromJson(
+      final o = buildBillingInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BillingInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBillingInfo(od as api.BillingInfo);
+      checkBillingInfo(od);
     });
   });
 
   unittest.group('obj-schema-BillingInfoList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBillingInfoList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BillingInfoList.fromJson(
+      final o = buildBillingInfoList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BillingInfoList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBillingInfoList(od as api.BillingInfoList);
+      checkBillingInfoList(od);
     });
   });
 
   unittest.group('obj-schema-Budget', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBudget();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildBudget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Budget.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkBudget(od as api.Budget);
+      checkBudget(od);
     });
   });
 
   unittest.group('obj-schema-CreativeAdTechnologyProviders', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeAdTechnologyProviders();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeAdTechnologyProviders.fromJson(
+      final o = buildCreativeAdTechnologyProviders();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeAdTechnologyProviders.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeAdTechnologyProviders(
-          od as api.CreativeAdTechnologyProviders);
+      checkCreativeAdTechnologyProviders(od);
     });
   });
 
   unittest.group('obj-schema-CreativeCorrections', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeCorrections();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeCorrections.fromJson(
+      final o = buildCreativeCorrections();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeCorrections.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeCorrections(od as api.CreativeCorrections);
+      checkCreativeCorrections(od);
     });
   });
 
   unittest.group('obj-schema-CreativeDisapprovalReasons', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeDisapprovalReasons();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeDisapprovalReasons.fromJson(
+      final o = buildCreativeDisapprovalReasons();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeDisapprovalReasons.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeDisapprovalReasons(od as api.CreativeDisapprovalReasons);
+      checkCreativeDisapprovalReasons(od);
     });
   });
 
   unittest.group('obj-schema-CreativeFilteringReasonsReasons', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeFilteringReasonsReasons();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeFilteringReasonsReasons.fromJson(
+      final o = buildCreativeFilteringReasonsReasons();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeFilteringReasonsReasons.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeFilteringReasonsReasons(
-          od as api.CreativeFilteringReasonsReasons);
+      checkCreativeFilteringReasonsReasons(od);
     });
   });
 
   unittest.group('obj-schema-CreativeFilteringReasons', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeFilteringReasons();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeFilteringReasons.fromJson(
+      final o = buildCreativeFilteringReasons();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeFilteringReasons.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeFilteringReasons(od as api.CreativeFilteringReasons);
+      checkCreativeFilteringReasons(od);
     });
   });
 
   unittest.group('obj-schema-CreativeNativeAdAppIcon', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeNativeAdAppIcon();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeNativeAdAppIcon.fromJson(
+      final o = buildCreativeNativeAdAppIcon();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeNativeAdAppIcon.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeNativeAdAppIcon(od as api.CreativeNativeAdAppIcon);
+      checkCreativeNativeAdAppIcon(od);
     });
   });
 
   unittest.group('obj-schema-CreativeNativeAdImage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeNativeAdImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeNativeAdImage.fromJson(
+      final o = buildCreativeNativeAdImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeNativeAdImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeNativeAdImage(od as api.CreativeNativeAdImage);
+      checkCreativeNativeAdImage(od);
     });
   });
 
   unittest.group('obj-schema-CreativeNativeAdLogo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeNativeAdLogo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeNativeAdLogo.fromJson(
+      final o = buildCreativeNativeAdLogo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeNativeAdLogo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeNativeAdLogo(od as api.CreativeNativeAdLogo);
+      checkCreativeNativeAdLogo(od);
     });
   });
 
   unittest.group('obj-schema-CreativeNativeAd', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativeNativeAd();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativeNativeAd.fromJson(
+      final o = buildCreativeNativeAd();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativeNativeAd.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativeNativeAd(od as api.CreativeNativeAd);
+      checkCreativeNativeAd(od);
     });
   });
 
   unittest.group('obj-schema-Creative', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreative();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCreative();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Creative.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCreative(od as api.Creative);
+      checkCreative(od);
     });
   });
 
   unittest.group('obj-schema-CreativesList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreativesList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreativesList.fromJson(
+      final o = buildCreativesList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreativesList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreativesList(od as api.CreativesList);
+      checkCreativesList(od);
     });
   });
 
   unittest.group('obj-schema-DirectDeal', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDirectDeal();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDirectDeal();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.DirectDeal.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDirectDeal(od as api.DirectDeal);
+      checkDirectDeal(od);
     });
   });
 
   unittest.group('obj-schema-DirectDealsList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDirectDealsList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DirectDealsList.fromJson(
+      final o = buildDirectDealsList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DirectDealsList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDirectDealsList(od as api.DirectDealsList);
+      checkDirectDealsList(od);
     });
   });
 
   unittest.group('obj-schema-PerformanceReport', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPerformanceReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PerformanceReport.fromJson(
+      final o = buildPerformanceReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PerformanceReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPerformanceReport(od as api.PerformanceReport);
+      checkPerformanceReport(od);
     });
   });
 
   unittest.group('obj-schema-PerformanceReportList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPerformanceReportList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PerformanceReportList.fromJson(
+      final o = buildPerformanceReportList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PerformanceReportList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPerformanceReportList(od as api.PerformanceReportList);
+      checkPerformanceReportList(od);
     });
   });
 
   unittest.group('obj-schema-PretargetingConfigDimensions', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPretargetingConfigDimensions();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PretargetingConfigDimensions.fromJson(
+      final o = buildPretargetingConfigDimensions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PretargetingConfigDimensions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPretargetingConfigDimensions(od as api.PretargetingConfigDimensions);
+      checkPretargetingConfigDimensions(od);
     });
   });
 
   unittest.group('obj-schema-PretargetingConfigExcludedPlacements', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPretargetingConfigExcludedPlacements();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PretargetingConfigExcludedPlacements.fromJson(
+      final o = buildPretargetingConfigExcludedPlacements();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PretargetingConfigExcludedPlacements.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPretargetingConfigExcludedPlacements(
-          od as api.PretargetingConfigExcludedPlacements);
+      checkPretargetingConfigExcludedPlacements(od);
     });
   });
 
   unittest.group('obj-schema-PretargetingConfigPlacements', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPretargetingConfigPlacements();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PretargetingConfigPlacements.fromJson(
+      final o = buildPretargetingConfigPlacements();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PretargetingConfigPlacements.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPretargetingConfigPlacements(od as api.PretargetingConfigPlacements);
+      checkPretargetingConfigPlacements(od);
     });
   });
 
   unittest.group('obj-schema-PretargetingConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPretargetingConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PretargetingConfig.fromJson(
+      final o = buildPretargetingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PretargetingConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPretargetingConfig(od as api.PretargetingConfig);
+      checkPretargetingConfig(od);
     });
   });
 
   unittest.group('obj-schema-PretargetingConfigList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPretargetingConfigList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PretargetingConfigList.fromJson(
+      final o = buildPretargetingConfigList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PretargetingConfigList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPretargetingConfigList(od as api.PretargetingConfigList);
+      checkPretargetingConfigList(od);
     });
   });
 
   unittest.group('resource-AccountsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).accounts;
-      var arg_id = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).accounts;
+      final arg_id = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2317,15 +2307,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2333,14 +2323,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccount());
+        final resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_id, $fields: arg_$fields);
@@ -2348,39 +2338,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).accounts;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).accounts;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("accounts"),
+          unittest.equals('accounts'),
         );
         pathOffset += 8;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2388,14 +2378,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountsList());
+        final resp = convert.json.encode(buildAccountsList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list($fields: arg_$fields);
@@ -2403,33 +2393,33 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).accounts;
-      var arg_request = buildAccount();
-      var arg_id = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).accounts;
+      final arg_request = buildAccount();
+      final arg_id = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Account.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkAccount(obj as api.Account);
+        checkAccount(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2439,15 +2429,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2455,14 +2445,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccount());
+        final resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2471,33 +2461,33 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).accounts;
-      var arg_request = buildAccount();
-      var arg_id = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).accounts;
+      final arg_request = buildAccount();
+      final arg_id = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Account.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkAccount(obj as api.Account);
+        checkAccount(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2507,15 +2497,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2523,14 +2513,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccount());
+        final resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2541,28 +2531,28 @@ void main() {
 
   unittest.group('resource-BillingInfoResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).billingInfo;
-      var arg_accountId = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).billingInfo;
+      final arg_accountId = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("billinginfo/"),
+          unittest.equals('billinginfo/'),
         );
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2572,15 +2562,15 @@ void main() {
           unittest.equals('$arg_accountId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2588,14 +2578,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBillingInfo());
+        final resp = convert.json.encode(buildBillingInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_accountId, $fields: arg_$fields);
@@ -2603,39 +2593,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).billingInfo;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).billingInfo;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("billinginfo"),
+          unittest.equals('billinginfo'),
         );
         pathOffset += 11;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2643,14 +2633,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBillingInfoList());
+        final resp = convert.json.encode(buildBillingInfoList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list($fields: arg_$fields);
@@ -2660,29 +2650,29 @@ void main() {
 
   unittest.group('resource-BudgetResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).budget;
-      var arg_accountId = 'foo';
-      var arg_billingId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).budget;
+      final arg_accountId = 'foo';
+      final arg_billingId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("billinginfo/"),
+          unittest.equals('billinginfo/'),
         );
         pathOffset += 12;
         index = path.indexOf('/', pathOffset);
@@ -2696,7 +2686,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2706,15 +2696,15 @@ void main() {
           unittest.equals('$arg_billingId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2722,14 +2712,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBudget());
+        final resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2738,34 +2728,34 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).budget;
-      var arg_request = buildBudget();
-      var arg_accountId = 'foo';
-      var arg_billingId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).budget;
+      final arg_request = buildBudget();
+      final arg_accountId = 'foo';
+      final arg_billingId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Budget.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkBudget(obj as api.Budget);
+        checkBudget(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("billinginfo/"),
+          unittest.equals('billinginfo/'),
         );
         pathOffset += 12;
         index = path.indexOf('/', pathOffset);
@@ -2779,7 +2769,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2789,15 +2779,15 @@ void main() {
           unittest.equals('$arg_billingId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2805,14 +2795,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBudget());
+        final resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(
@@ -2822,34 +2812,34 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).budget;
-      var arg_request = buildBudget();
-      var arg_accountId = 'foo';
-      var arg_billingId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).budget;
+      final arg_request = buildBudget();
+      final arg_accountId = 'foo';
+      final arg_billingId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Budget.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkBudget(obj as api.Budget);
+        checkBudget(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("billinginfo/"),
+          unittest.equals('billinginfo/'),
         );
         pathOffset += 12;
         index = path.indexOf('/', pathOffset);
@@ -2863,7 +2853,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2873,15 +2863,15 @@ void main() {
           unittest.equals('$arg_billingId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2889,14 +2879,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBudget());
+        final resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(
@@ -2908,29 +2898,29 @@ void main() {
 
   unittest.group('resource-CreativesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).creatives;
-      var arg_accountId = 42;
-      var arg_buyerCreativeId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).creatives;
+      final arg_accountId = 42;
+      final arg_buyerCreativeId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("creatives/"),
+          unittest.equals('creatives/'),
         );
         pathOffset += 10;
         index = path.indexOf('/', pathOffset);
@@ -2944,7 +2934,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2954,15 +2944,15 @@ void main() {
           unittest.equals('$arg_buyerCreativeId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2970,14 +2960,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCreative());
+        final resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_accountId, arg_buyerCreativeId,
@@ -2986,44 +2976,44 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).creatives;
-      var arg_request = buildCreative();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).creatives;
+      final arg_request = buildCreative();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Creative.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkCreative(obj as api.Creative);
+        checkCreative(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("creatives"),
+          unittest.equals('creatives'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3031,14 +3021,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCreative());
+        final resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, $fields: arg_$fields);
@@ -3046,44 +3036,44 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).creatives;
-      var arg_accountId = buildUnnamed2172();
-      var arg_buyerCreativeId = buildUnnamed2173();
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_statusFilter = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).creatives;
+      final arg_accountId = buildUnnamed2172();
+      final arg_buyerCreativeId = buildUnnamed2173();
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_statusFilter = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("creatives"),
+          unittest.equals('creatives'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3091,34 +3081,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["accountId"]!.map(core.int.parse).toList(),
+          queryMap['accountId']!.map(core.int.parse).toList(),
           unittest.equals(arg_accountId),
         );
         unittest.expect(
-          queryMap["buyerCreativeId"]!,
+          queryMap['buyerCreativeId']!,
           unittest.equals(arg_buyerCreativeId),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["statusFilter"]!.first,
+          queryMap['statusFilter']!.first,
           unittest.equals(arg_statusFilter),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCreativesList());
+        final resp = convert.json.encode(buildCreativesList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -3134,28 +3124,28 @@ void main() {
 
   unittest.group('resource-DirectDealsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).directDeals;
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).directDeals;
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("directdeals/"),
+          unittest.equals('directdeals/'),
         );
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3165,15 +3155,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3181,14 +3171,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDirectDeal());
+        final resp = convert.json.encode(buildDirectDeal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_id, $fields: arg_$fields);
@@ -3196,39 +3186,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).directDeals;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).directDeals;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("directdeals"),
+          unittest.equals('directdeals'),
         );
         pathOffset += 11;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3236,14 +3226,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDirectDealsList());
+        final resp = convert.json.encode(buildDirectDealsList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list($fields: arg_$fields);
@@ -3253,44 +3243,44 @@ void main() {
 
   unittest.group('resource-PerformanceReportResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).performanceReport;
-      var arg_accountId = 'foo';
-      var arg_endDateTime = 'foo';
-      var arg_startDateTime = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).performanceReport;
+      final arg_accountId = 'foo';
+      final arg_endDateTime = 'foo';
+      final arg_startDateTime = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("performancereport"),
+          unittest.equals('performancereport'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3298,34 +3288,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["accountId"]!.first,
+          queryMap['accountId']!.first,
           unittest.equals(arg_accountId),
         );
         unittest.expect(
-          queryMap["endDateTime"]!.first,
+          queryMap['endDateTime']!.first,
           unittest.equals(arg_endDateTime),
         );
         unittest.expect(
-          queryMap["startDateTime"]!.first,
+          queryMap['startDateTime']!.first,
           unittest.equals(arg_startDateTime),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPerformanceReportList());
+        final resp = convert.json.encode(buildPerformanceReportList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -3339,29 +3329,29 @@ void main() {
 
   unittest.group('resource-PretargetingConfigResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
-      var arg_accountId = 'foo';
-      var arg_configId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
+      final arg_accountId = 'foo';
+      final arg_configId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("pretargetingconfigs/"),
+          unittest.equals('pretargetingconfigs/'),
         );
         pathOffset += 20;
         index = path.indexOf('/', pathOffset);
@@ -3375,7 +3365,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3385,15 +3375,15 @@ void main() {
           unittest.equals('$arg_configId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3401,43 +3391,43 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_accountId, arg_configId, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
-      var arg_accountId = 'foo';
-      var arg_configId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
+      final arg_accountId = 'foo';
+      final arg_configId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("pretargetingconfigs/"),
+          unittest.equals('pretargetingconfigs/'),
         );
         pathOffset += 20;
         index = path.indexOf('/', pathOffset);
@@ -3451,7 +3441,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3461,15 +3451,15 @@ void main() {
           unittest.equals('$arg_configId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3477,14 +3467,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPretargetingConfig());
+        final resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3493,33 +3483,33 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
-      var arg_request = buildPretargetingConfig();
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
+      final arg_request = buildPretargetingConfig();
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PretargetingConfig.fromJson(
+        final obj = api.PretargetingConfig.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPretargetingConfig(obj as api.PretargetingConfig);
+        checkPretargetingConfig(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("pretargetingconfigs/"),
+          unittest.equals('pretargetingconfigs/'),
         );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3529,15 +3519,15 @@ void main() {
           unittest.equals('$arg_accountId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3545,14 +3535,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPretargetingConfig());
+        final resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3561,28 +3551,28 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("pretargetingconfigs/"),
+          unittest.equals('pretargetingconfigs/'),
         );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3592,15 +3582,15 @@ void main() {
           unittest.equals('$arg_accountId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3608,14 +3598,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPretargetingConfigList());
+        final resp = convert.json.encode(buildPretargetingConfigList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_accountId, $fields: arg_$fields);
@@ -3623,34 +3613,34 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
-      var arg_request = buildPretargetingConfig();
-      var arg_accountId = 'foo';
-      var arg_configId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
+      final arg_request = buildPretargetingConfig();
+      final arg_accountId = 'foo';
+      final arg_configId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PretargetingConfig.fromJson(
+        final obj = api.PretargetingConfig.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPretargetingConfig(obj as api.PretargetingConfig);
+        checkPretargetingConfig(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("pretargetingconfigs/"),
+          unittest.equals('pretargetingconfigs/'),
         );
         pathOffset += 20;
         index = path.indexOf('/', pathOffset);
@@ -3664,7 +3654,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3674,15 +3664,15 @@ void main() {
           unittest.equals('$arg_configId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3690,14 +3680,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPretargetingConfig());
+        final resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_accountId, arg_configId,
@@ -3706,34 +3696,34 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
-      var arg_request = buildPretargetingConfig();
-      var arg_accountId = 'foo';
-      var arg_configId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
+      final arg_request = buildPretargetingConfig();
+      final arg_accountId = 'foo';
+      final arg_configId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PretargetingConfig.fromJson(
+        final obj = api.PretargetingConfig.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPretargetingConfig(obj as api.PretargetingConfig);
+        checkPretargetingConfig(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("adexchangebuyer/v1.3/"),
+          unittest.equals('adexchangebuyer/v1.3/'),
         );
         pathOffset += 21;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("pretargetingconfigs/"),
+          unittest.equals('pretargetingconfigs/'),
         );
         pathOffset += 20;
         index = path.indexOf('/', pathOffset);
@@ -3747,7 +3737,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3757,15 +3747,15 @@ void main() {
           unittest.equals('$arg_configId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3773,14 +3763,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPretargetingConfig());
+        final resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(

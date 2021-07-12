@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAutoForwarding = 0;
 api.AutoForwarding buildAutoForwarding() {
-  var o = api.AutoForwarding();
+  final o = api.AutoForwarding();
   buildCounterAutoForwarding++;
   if (buildCounterAutoForwarding < 3) {
     o.disposition = 'foo';
@@ -57,7 +56,7 @@ void checkAutoForwarding(api.AutoForwarding o) {
 }
 
 core.List<core.String> buildUnnamed4426() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -77,7 +76,7 @@ void checkUnnamed4426(core.List<core.String> o) {
 
 core.int buildCounterBatchDeleteMessagesRequest = 0;
 api.BatchDeleteMessagesRequest buildBatchDeleteMessagesRequest() {
-  var o = api.BatchDeleteMessagesRequest();
+  final o = api.BatchDeleteMessagesRequest();
   buildCounterBatchDeleteMessagesRequest++;
   if (buildCounterBatchDeleteMessagesRequest < 3) {
     o.ids = buildUnnamed4426();
@@ -95,7 +94,7 @@ void checkBatchDeleteMessagesRequest(api.BatchDeleteMessagesRequest o) {
 }
 
 core.List<core.String> buildUnnamed4427() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -114,7 +113,7 @@ void checkUnnamed4427(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4428() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -133,7 +132,7 @@ void checkUnnamed4428(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4429() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -153,7 +152,7 @@ void checkUnnamed4429(core.List<core.String> o) {
 
 core.int buildCounterBatchModifyMessagesRequest = 0;
 api.BatchModifyMessagesRequest buildBatchModifyMessagesRequest() {
-  var o = api.BatchModifyMessagesRequest();
+  final o = api.BatchModifyMessagesRequest();
   buildCounterBatchModifyMessagesRequest++;
   if (buildCounterBatchModifyMessagesRequest < 3) {
     o.addLabelIds = buildUnnamed4427();
@@ -176,7 +175,7 @@ void checkBatchModifyMessagesRequest(api.BatchModifyMessagesRequest o) {
 
 core.int buildCounterDelegate = 0;
 api.Delegate buildDelegate() {
-  var o = api.Delegate();
+  final o = api.Delegate();
   buildCounterDelegate++;
   if (buildCounterDelegate < 3) {
     o.delegateEmail = 'foo';
@@ -203,7 +202,7 @@ void checkDelegate(api.Delegate o) {
 
 core.int buildCounterDraft = 0;
 api.Draft buildDraft() {
-  var o = api.Draft();
+  final o = api.Draft();
   buildCounterDraft++;
   if (buildCounterDraft < 3) {
     o.id = 'foo';
@@ -220,14 +219,14 @@ void checkDraft(api.Draft o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkMessage(o.message! as api.Message);
+    checkMessage(o.message!);
   }
   buildCounterDraft--;
 }
 
 core.int buildCounterFilter = 0;
 api.Filter buildFilter() {
-  var o = api.Filter();
+  final o = api.Filter();
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
     o.action = buildFilterAction();
@@ -241,8 +240,8 @@ api.Filter buildFilter() {
 void checkFilter(api.Filter o) {
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
-    checkFilterAction(o.action! as api.FilterAction);
-    checkFilterCriteria(o.criteria! as api.FilterCriteria);
+    checkFilterAction(o.action!);
+    checkFilterCriteria(o.criteria!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -252,7 +251,7 @@ void checkFilter(api.Filter o) {
 }
 
 core.List<core.String> buildUnnamed4430() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -271,7 +270,7 @@ void checkUnnamed4430(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4431() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -291,7 +290,7 @@ void checkUnnamed4431(core.List<core.String> o) {
 
 core.int buildCounterFilterAction = 0;
 api.FilterAction buildFilterAction() {
-  var o = api.FilterAction();
+  final o = api.FilterAction();
   buildCounterFilterAction++;
   if (buildCounterFilterAction < 3) {
     o.addLabelIds = buildUnnamed4430();
@@ -317,7 +316,7 @@ void checkFilterAction(api.FilterAction o) {
 
 core.int buildCounterFilterCriteria = 0;
 api.FilterCriteria buildFilterCriteria() {
-  var o = api.FilterCriteria();
+  final o = api.FilterCriteria();
   buildCounterFilterCriteria++;
   if (buildCounterFilterCriteria < 3) {
     o.excludeChats = true;
@@ -373,7 +372,7 @@ void checkFilterCriteria(api.FilterCriteria o) {
 
 core.int buildCounterForwardingAddress = 0;
 api.ForwardingAddress buildForwardingAddress() {
-  var o = api.ForwardingAddress();
+  final o = api.ForwardingAddress();
   buildCounterForwardingAddress++;
   if (buildCounterForwardingAddress < 3) {
     o.forwardingEmail = 'foo';
@@ -399,7 +398,7 @@ void checkForwardingAddress(api.ForwardingAddress o) {
 }
 
 core.List<api.HistoryLabelAdded> buildUnnamed4432() {
-  var o = <api.HistoryLabelAdded>[];
+  final o = <api.HistoryLabelAdded>[];
   o.add(buildHistoryLabelAdded());
   o.add(buildHistoryLabelAdded());
   return o;
@@ -407,12 +406,12 @@ core.List<api.HistoryLabelAdded> buildUnnamed4432() {
 
 void checkUnnamed4432(core.List<api.HistoryLabelAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHistoryLabelAdded(o[0] as api.HistoryLabelAdded);
-  checkHistoryLabelAdded(o[1] as api.HistoryLabelAdded);
+  checkHistoryLabelAdded(o[0]);
+  checkHistoryLabelAdded(o[1]);
 }
 
 core.List<api.HistoryLabelRemoved> buildUnnamed4433() {
-  var o = <api.HistoryLabelRemoved>[];
+  final o = <api.HistoryLabelRemoved>[];
   o.add(buildHistoryLabelRemoved());
   o.add(buildHistoryLabelRemoved());
   return o;
@@ -420,12 +419,12 @@ core.List<api.HistoryLabelRemoved> buildUnnamed4433() {
 
 void checkUnnamed4433(core.List<api.HistoryLabelRemoved> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHistoryLabelRemoved(o[0] as api.HistoryLabelRemoved);
-  checkHistoryLabelRemoved(o[1] as api.HistoryLabelRemoved);
+  checkHistoryLabelRemoved(o[0]);
+  checkHistoryLabelRemoved(o[1]);
 }
 
 core.List<api.Message> buildUnnamed4434() {
-  var o = <api.Message>[];
+  final o = <api.Message>[];
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
@@ -433,12 +432,12 @@ core.List<api.Message> buildUnnamed4434() {
 
 void checkUnnamed4434(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMessage(o[0] as api.Message);
-  checkMessage(o[1] as api.Message);
+  checkMessage(o[0]);
+  checkMessage(o[1]);
 }
 
 core.List<api.HistoryMessageAdded> buildUnnamed4435() {
-  var o = <api.HistoryMessageAdded>[];
+  final o = <api.HistoryMessageAdded>[];
   o.add(buildHistoryMessageAdded());
   o.add(buildHistoryMessageAdded());
   return o;
@@ -446,12 +445,12 @@ core.List<api.HistoryMessageAdded> buildUnnamed4435() {
 
 void checkUnnamed4435(core.List<api.HistoryMessageAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHistoryMessageAdded(o[0] as api.HistoryMessageAdded);
-  checkHistoryMessageAdded(o[1] as api.HistoryMessageAdded);
+  checkHistoryMessageAdded(o[0]);
+  checkHistoryMessageAdded(o[1]);
 }
 
 core.List<api.HistoryMessageDeleted> buildUnnamed4436() {
-  var o = <api.HistoryMessageDeleted>[];
+  final o = <api.HistoryMessageDeleted>[];
   o.add(buildHistoryMessageDeleted());
   o.add(buildHistoryMessageDeleted());
   return o;
@@ -459,13 +458,13 @@ core.List<api.HistoryMessageDeleted> buildUnnamed4436() {
 
 void checkUnnamed4436(core.List<api.HistoryMessageDeleted> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHistoryMessageDeleted(o[0] as api.HistoryMessageDeleted);
-  checkHistoryMessageDeleted(o[1] as api.HistoryMessageDeleted);
+  checkHistoryMessageDeleted(o[0]);
+  checkHistoryMessageDeleted(o[1]);
 }
 
 core.int buildCounterHistory = 0;
 api.History buildHistory() {
-  var o = api.History();
+  final o = api.History();
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     o.id = 'foo';
@@ -496,7 +495,7 @@ void checkHistory(api.History o) {
 }
 
 core.List<core.String> buildUnnamed4437() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -516,7 +515,7 @@ void checkUnnamed4437(core.List<core.String> o) {
 
 core.int buildCounterHistoryLabelAdded = 0;
 api.HistoryLabelAdded buildHistoryLabelAdded() {
-  var o = api.HistoryLabelAdded();
+  final o = api.HistoryLabelAdded();
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
     o.labelIds = buildUnnamed4437();
@@ -530,13 +529,13 @@ void checkHistoryLabelAdded(api.HistoryLabelAdded o) {
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
     checkUnnamed4437(o.labelIds!);
-    checkMessage(o.message! as api.Message);
+    checkMessage(o.message!);
   }
   buildCounterHistoryLabelAdded--;
 }
 
 core.List<core.String> buildUnnamed4438() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -556,7 +555,7 @@ void checkUnnamed4438(core.List<core.String> o) {
 
 core.int buildCounterHistoryLabelRemoved = 0;
 api.HistoryLabelRemoved buildHistoryLabelRemoved() {
-  var o = api.HistoryLabelRemoved();
+  final o = api.HistoryLabelRemoved();
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
     o.labelIds = buildUnnamed4438();
@@ -570,14 +569,14 @@ void checkHistoryLabelRemoved(api.HistoryLabelRemoved o) {
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
     checkUnnamed4438(o.labelIds!);
-    checkMessage(o.message! as api.Message);
+    checkMessage(o.message!);
   }
   buildCounterHistoryLabelRemoved--;
 }
 
 core.int buildCounterHistoryMessageAdded = 0;
 api.HistoryMessageAdded buildHistoryMessageAdded() {
-  var o = api.HistoryMessageAdded();
+  final o = api.HistoryMessageAdded();
   buildCounterHistoryMessageAdded++;
   if (buildCounterHistoryMessageAdded < 3) {
     o.message = buildMessage();
@@ -589,14 +588,14 @@ api.HistoryMessageAdded buildHistoryMessageAdded() {
 void checkHistoryMessageAdded(api.HistoryMessageAdded o) {
   buildCounterHistoryMessageAdded++;
   if (buildCounterHistoryMessageAdded < 3) {
-    checkMessage(o.message! as api.Message);
+    checkMessage(o.message!);
   }
   buildCounterHistoryMessageAdded--;
 }
 
 core.int buildCounterHistoryMessageDeleted = 0;
 api.HistoryMessageDeleted buildHistoryMessageDeleted() {
-  var o = api.HistoryMessageDeleted();
+  final o = api.HistoryMessageDeleted();
   buildCounterHistoryMessageDeleted++;
   if (buildCounterHistoryMessageDeleted < 3) {
     o.message = buildMessage();
@@ -608,14 +607,14 @@ api.HistoryMessageDeleted buildHistoryMessageDeleted() {
 void checkHistoryMessageDeleted(api.HistoryMessageDeleted o) {
   buildCounterHistoryMessageDeleted++;
   if (buildCounterHistoryMessageDeleted < 3) {
-    checkMessage(o.message! as api.Message);
+    checkMessage(o.message!);
   }
   buildCounterHistoryMessageDeleted--;
 }
 
 core.int buildCounterImapSettings = 0;
 api.ImapSettings buildImapSettings() {
-  var o = api.ImapSettings();
+  final o = api.ImapSettings();
   buildCounterImapSettings++;
   if (buildCounterImapSettings < 3) {
     o.autoExpunge = true;
@@ -646,7 +645,7 @@ void checkImapSettings(api.ImapSettings o) {
 
 core.int buildCounterLabel = 0;
 api.Label buildLabel() {
-  var o = api.Label();
+  final o = api.Label();
   buildCounterLabel++;
   if (buildCounterLabel < 3) {
     o.color = buildLabelColor();
@@ -667,7 +666,7 @@ api.Label buildLabel() {
 void checkLabel(api.Label o) {
   buildCounterLabel++;
   if (buildCounterLabel < 3) {
-    checkLabelColor(o.color! as api.LabelColor);
+    checkLabelColor(o.color!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -710,7 +709,7 @@ void checkLabel(api.Label o) {
 
 core.int buildCounterLabelColor = 0;
 api.LabelColor buildLabelColor() {
-  var o = api.LabelColor();
+  final o = api.LabelColor();
   buildCounterLabelColor++;
   if (buildCounterLabelColor < 3) {
     o.backgroundColor = 'foo';
@@ -737,7 +736,7 @@ void checkLabelColor(api.LabelColor o) {
 
 core.int buildCounterLanguageSettings = 0;
 api.LanguageSettings buildLanguageSettings() {
-  var o = api.LanguageSettings();
+  final o = api.LanguageSettings();
   buildCounterLanguageSettings++;
   if (buildCounterLanguageSettings < 3) {
     o.displayLanguage = 'foo';
@@ -758,7 +757,7 @@ void checkLanguageSettings(api.LanguageSettings o) {
 }
 
 core.List<api.Delegate> buildUnnamed4439() {
-  var o = <api.Delegate>[];
+  final o = <api.Delegate>[];
   o.add(buildDelegate());
   o.add(buildDelegate());
   return o;
@@ -766,13 +765,13 @@ core.List<api.Delegate> buildUnnamed4439() {
 
 void checkUnnamed4439(core.List<api.Delegate> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDelegate(o[0] as api.Delegate);
-  checkDelegate(o[1] as api.Delegate);
+  checkDelegate(o[0]);
+  checkDelegate(o[1]);
 }
 
 core.int buildCounterListDelegatesResponse = 0;
 api.ListDelegatesResponse buildListDelegatesResponse() {
-  var o = api.ListDelegatesResponse();
+  final o = api.ListDelegatesResponse();
   buildCounterListDelegatesResponse++;
   if (buildCounterListDelegatesResponse < 3) {
     o.delegates = buildUnnamed4439();
@@ -790,7 +789,7 @@ void checkListDelegatesResponse(api.ListDelegatesResponse o) {
 }
 
 core.List<api.Draft> buildUnnamed4440() {
-  var o = <api.Draft>[];
+  final o = <api.Draft>[];
   o.add(buildDraft());
   o.add(buildDraft());
   return o;
@@ -798,13 +797,13 @@ core.List<api.Draft> buildUnnamed4440() {
 
 void checkUnnamed4440(core.List<api.Draft> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDraft(o[0] as api.Draft);
-  checkDraft(o[1] as api.Draft);
+  checkDraft(o[0]);
+  checkDraft(o[1]);
 }
 
 core.int buildCounterListDraftsResponse = 0;
 api.ListDraftsResponse buildListDraftsResponse() {
-  var o = api.ListDraftsResponse();
+  final o = api.ListDraftsResponse();
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
     o.drafts = buildUnnamed4440();
@@ -832,7 +831,7 @@ void checkListDraftsResponse(api.ListDraftsResponse o) {
 }
 
 core.List<api.Filter> buildUnnamed4441() {
-  var o = <api.Filter>[];
+  final o = <api.Filter>[];
   o.add(buildFilter());
   o.add(buildFilter());
   return o;
@@ -840,13 +839,13 @@ core.List<api.Filter> buildUnnamed4441() {
 
 void checkUnnamed4441(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFilter(o[0] as api.Filter);
-  checkFilter(o[1] as api.Filter);
+  checkFilter(o[0]);
+  checkFilter(o[1]);
 }
 
 core.int buildCounterListFiltersResponse = 0;
 api.ListFiltersResponse buildListFiltersResponse() {
-  var o = api.ListFiltersResponse();
+  final o = api.ListFiltersResponse();
   buildCounterListFiltersResponse++;
   if (buildCounterListFiltersResponse < 3) {
     o.filter = buildUnnamed4441();
@@ -864,7 +863,7 @@ void checkListFiltersResponse(api.ListFiltersResponse o) {
 }
 
 core.List<api.ForwardingAddress> buildUnnamed4442() {
-  var o = <api.ForwardingAddress>[];
+  final o = <api.ForwardingAddress>[];
   o.add(buildForwardingAddress());
   o.add(buildForwardingAddress());
   return o;
@@ -872,13 +871,13 @@ core.List<api.ForwardingAddress> buildUnnamed4442() {
 
 void checkUnnamed4442(core.List<api.ForwardingAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkForwardingAddress(o[0] as api.ForwardingAddress);
-  checkForwardingAddress(o[1] as api.ForwardingAddress);
+  checkForwardingAddress(o[0]);
+  checkForwardingAddress(o[1]);
 }
 
 core.int buildCounterListForwardingAddressesResponse = 0;
 api.ListForwardingAddressesResponse buildListForwardingAddressesResponse() {
-  var o = api.ListForwardingAddressesResponse();
+  final o = api.ListForwardingAddressesResponse();
   buildCounterListForwardingAddressesResponse++;
   if (buildCounterListForwardingAddressesResponse < 3) {
     o.forwardingAddresses = buildUnnamed4442();
@@ -897,7 +896,7 @@ void checkListForwardingAddressesResponse(
 }
 
 core.List<api.History> buildUnnamed4443() {
-  var o = <api.History>[];
+  final o = <api.History>[];
   o.add(buildHistory());
   o.add(buildHistory());
   return o;
@@ -905,13 +904,13 @@ core.List<api.History> buildUnnamed4443() {
 
 void checkUnnamed4443(core.List<api.History> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHistory(o[0] as api.History);
-  checkHistory(o[1] as api.History);
+  checkHistory(o[0]);
+  checkHistory(o[1]);
 }
 
 core.int buildCounterListHistoryResponse = 0;
 api.ListHistoryResponse buildListHistoryResponse() {
-  var o = api.ListHistoryResponse();
+  final o = api.ListHistoryResponse();
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
     o.history = buildUnnamed4443();
@@ -939,7 +938,7 @@ void checkListHistoryResponse(api.ListHistoryResponse o) {
 }
 
 core.List<api.Label> buildUnnamed4444() {
-  var o = <api.Label>[];
+  final o = <api.Label>[];
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
@@ -947,13 +946,13 @@ core.List<api.Label> buildUnnamed4444() {
 
 void checkUnnamed4444(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLabel(o[0] as api.Label);
-  checkLabel(o[1] as api.Label);
+  checkLabel(o[0]);
+  checkLabel(o[1]);
 }
 
 core.int buildCounterListLabelsResponse = 0;
 api.ListLabelsResponse buildListLabelsResponse() {
-  var o = api.ListLabelsResponse();
+  final o = api.ListLabelsResponse();
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
     o.labels = buildUnnamed4444();
@@ -971,7 +970,7 @@ void checkListLabelsResponse(api.ListLabelsResponse o) {
 }
 
 core.List<api.Message> buildUnnamed4445() {
-  var o = <api.Message>[];
+  final o = <api.Message>[];
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
@@ -979,13 +978,13 @@ core.List<api.Message> buildUnnamed4445() {
 
 void checkUnnamed4445(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMessage(o[0] as api.Message);
-  checkMessage(o[1] as api.Message);
+  checkMessage(o[0]);
+  checkMessage(o[1]);
 }
 
 core.int buildCounterListMessagesResponse = 0;
 api.ListMessagesResponse buildListMessagesResponse() {
-  var o = api.ListMessagesResponse();
+  final o = api.ListMessagesResponse();
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
     o.messages = buildUnnamed4445();
@@ -1013,7 +1012,7 @@ void checkListMessagesResponse(api.ListMessagesResponse o) {
 }
 
 core.List<api.SendAs> buildUnnamed4446() {
-  var o = <api.SendAs>[];
+  final o = <api.SendAs>[];
   o.add(buildSendAs());
   o.add(buildSendAs());
   return o;
@@ -1021,13 +1020,13 @@ core.List<api.SendAs> buildUnnamed4446() {
 
 void checkUnnamed4446(core.List<api.SendAs> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSendAs(o[0] as api.SendAs);
-  checkSendAs(o[1] as api.SendAs);
+  checkSendAs(o[0]);
+  checkSendAs(o[1]);
 }
 
 core.int buildCounterListSendAsResponse = 0;
 api.ListSendAsResponse buildListSendAsResponse() {
-  var o = api.ListSendAsResponse();
+  final o = api.ListSendAsResponse();
   buildCounterListSendAsResponse++;
   if (buildCounterListSendAsResponse < 3) {
     o.sendAs = buildUnnamed4446();
@@ -1045,7 +1044,7 @@ void checkListSendAsResponse(api.ListSendAsResponse o) {
 }
 
 core.List<api.SmimeInfo> buildUnnamed4447() {
-  var o = <api.SmimeInfo>[];
+  final o = <api.SmimeInfo>[];
   o.add(buildSmimeInfo());
   o.add(buildSmimeInfo());
   return o;
@@ -1053,13 +1052,13 @@ core.List<api.SmimeInfo> buildUnnamed4447() {
 
 void checkUnnamed4447(core.List<api.SmimeInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSmimeInfo(o[0] as api.SmimeInfo);
-  checkSmimeInfo(o[1] as api.SmimeInfo);
+  checkSmimeInfo(o[0]);
+  checkSmimeInfo(o[1]);
 }
 
 core.int buildCounterListSmimeInfoResponse = 0;
 api.ListSmimeInfoResponse buildListSmimeInfoResponse() {
-  var o = api.ListSmimeInfoResponse();
+  final o = api.ListSmimeInfoResponse();
   buildCounterListSmimeInfoResponse++;
   if (buildCounterListSmimeInfoResponse < 3) {
     o.smimeInfo = buildUnnamed4447();
@@ -1077,7 +1076,7 @@ void checkListSmimeInfoResponse(api.ListSmimeInfoResponse o) {
 }
 
 core.List<api.Thread> buildUnnamed4448() {
-  var o = <api.Thread>[];
+  final o = <api.Thread>[];
   o.add(buildThread());
   o.add(buildThread());
   return o;
@@ -1085,13 +1084,13 @@ core.List<api.Thread> buildUnnamed4448() {
 
 void checkUnnamed4448(core.List<api.Thread> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThread(o[0] as api.Thread);
-  checkThread(o[1] as api.Thread);
+  checkThread(o[0]);
+  checkThread(o[1]);
 }
 
 core.int buildCounterListThreadsResponse = 0;
 api.ListThreadsResponse buildListThreadsResponse() {
-  var o = api.ListThreadsResponse();
+  final o = api.ListThreadsResponse();
   buildCounterListThreadsResponse++;
   if (buildCounterListThreadsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -1119,7 +1118,7 @@ void checkListThreadsResponse(api.ListThreadsResponse o) {
 }
 
 core.List<core.String> buildUnnamed4449() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1139,7 +1138,7 @@ void checkUnnamed4449(core.List<core.String> o) {
 
 core.int buildCounterMessage = 0;
 api.Message buildMessage() {
-  var o = api.Message();
+  final o = api.Message();
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.historyId = 'foo';
@@ -1172,7 +1171,7 @@ void checkMessage(api.Message o) {
       unittest.equals('foo'),
     );
     checkUnnamed4449(o.labelIds!);
-    checkMessagePart(o.payload! as api.MessagePart);
+    checkMessagePart(o.payload!);
     unittest.expect(
       o.raw!,
       unittest.equals('foo'),
@@ -1194,7 +1193,7 @@ void checkMessage(api.Message o) {
 }
 
 core.List<api.MessagePartHeader> buildUnnamed4450() {
-  var o = <api.MessagePartHeader>[];
+  final o = <api.MessagePartHeader>[];
   o.add(buildMessagePartHeader());
   o.add(buildMessagePartHeader());
   return o;
@@ -1202,12 +1201,12 @@ core.List<api.MessagePartHeader> buildUnnamed4450() {
 
 void checkUnnamed4450(core.List<api.MessagePartHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMessagePartHeader(o[0] as api.MessagePartHeader);
-  checkMessagePartHeader(o[1] as api.MessagePartHeader);
+  checkMessagePartHeader(o[0]);
+  checkMessagePartHeader(o[1]);
 }
 
 core.List<api.MessagePart> buildUnnamed4451() {
-  var o = <api.MessagePart>[];
+  final o = <api.MessagePart>[];
   o.add(buildMessagePart());
   o.add(buildMessagePart());
   return o;
@@ -1215,13 +1214,13 @@ core.List<api.MessagePart> buildUnnamed4451() {
 
 void checkUnnamed4451(core.List<api.MessagePart> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMessagePart(o[0] as api.MessagePart);
-  checkMessagePart(o[1] as api.MessagePart);
+  checkMessagePart(o[0]);
+  checkMessagePart(o[1]);
 }
 
 core.int buildCounterMessagePart = 0;
 api.MessagePart buildMessagePart() {
-  var o = api.MessagePart();
+  final o = api.MessagePart();
   buildCounterMessagePart++;
   if (buildCounterMessagePart < 3) {
     o.body = buildMessagePartBody();
@@ -1238,7 +1237,7 @@ api.MessagePart buildMessagePart() {
 void checkMessagePart(api.MessagePart o) {
   buildCounterMessagePart++;
   if (buildCounterMessagePart < 3) {
-    checkMessagePartBody(o.body! as api.MessagePartBody);
+    checkMessagePartBody(o.body!);
     unittest.expect(
       o.filename!,
       unittest.equals('foo'),
@@ -1259,7 +1258,7 @@ void checkMessagePart(api.MessagePart o) {
 
 core.int buildCounterMessagePartBody = 0;
 api.MessagePartBody buildMessagePartBody() {
-  var o = api.MessagePartBody();
+  final o = api.MessagePartBody();
   buildCounterMessagePartBody++;
   if (buildCounterMessagePartBody < 3) {
     o.attachmentId = 'foo';
@@ -1291,7 +1290,7 @@ void checkMessagePartBody(api.MessagePartBody o) {
 
 core.int buildCounterMessagePartHeader = 0;
 api.MessagePartHeader buildMessagePartHeader() {
-  var o = api.MessagePartHeader();
+  final o = api.MessagePartHeader();
   buildCounterMessagePartHeader++;
   if (buildCounterMessagePartHeader < 3) {
     o.name = 'foo';
@@ -1317,7 +1316,7 @@ void checkMessagePartHeader(api.MessagePartHeader o) {
 }
 
 core.List<core.String> buildUnnamed4452() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1336,7 +1335,7 @@ void checkUnnamed4452(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4453() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1356,7 +1355,7 @@ void checkUnnamed4453(core.List<core.String> o) {
 
 core.int buildCounterModifyMessageRequest = 0;
 api.ModifyMessageRequest buildModifyMessageRequest() {
-  var o = api.ModifyMessageRequest();
+  final o = api.ModifyMessageRequest();
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
     o.addLabelIds = buildUnnamed4452();
@@ -1376,7 +1375,7 @@ void checkModifyMessageRequest(api.ModifyMessageRequest o) {
 }
 
 core.List<core.String> buildUnnamed4454() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1395,7 +1394,7 @@ void checkUnnamed4454(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4455() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1415,7 +1414,7 @@ void checkUnnamed4455(core.List<core.String> o) {
 
 core.int buildCounterModifyThreadRequest = 0;
 api.ModifyThreadRequest buildModifyThreadRequest() {
-  var o = api.ModifyThreadRequest();
+  final o = api.ModifyThreadRequest();
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
     o.addLabelIds = buildUnnamed4454();
@@ -1436,7 +1435,7 @@ void checkModifyThreadRequest(api.ModifyThreadRequest o) {
 
 core.int buildCounterPopSettings = 0;
 api.PopSettings buildPopSettings() {
-  var o = api.PopSettings();
+  final o = api.PopSettings();
   buildCounterPopSettings++;
   if (buildCounterPopSettings < 3) {
     o.accessWindow = 'foo';
@@ -1463,7 +1462,7 @@ void checkPopSettings(api.PopSettings o) {
 
 core.int buildCounterProfile = 0;
 api.Profile buildProfile() {
-  var o = api.Profile();
+  final o = api.Profile();
   buildCounterProfile++;
   if (buildCounterProfile < 3) {
     o.emailAddress = 'foo';
@@ -1500,7 +1499,7 @@ void checkProfile(api.Profile o) {
 
 core.int buildCounterSendAs = 0;
 api.SendAs buildSendAs() {
-  var o = api.SendAs();
+  final o = api.SendAs();
   buildCounterSendAs++;
   if (buildCounterSendAs < 3) {
     o.displayName = 'foo';
@@ -1538,7 +1537,7 @@ void checkSendAs(api.SendAs o) {
       o.signature!,
       unittest.equals('foo'),
     );
-    checkSmtpMsa(o.smtpMsa! as api.SmtpMsa);
+    checkSmtpMsa(o.smtpMsa!);
     unittest.expect(o.treatAsAlias!, unittest.isTrue);
     unittest.expect(
       o.verificationStatus!,
@@ -1550,7 +1549,7 @@ void checkSendAs(api.SendAs o) {
 
 core.int buildCounterSmimeInfo = 0;
 api.SmimeInfo buildSmimeInfo() {
-  var o = api.SmimeInfo();
+  final o = api.SmimeInfo();
   buildCounterSmimeInfo++;
   if (buildCounterSmimeInfo < 3) {
     o.encryptedKeyPassword = 'foo';
@@ -1599,7 +1598,7 @@ void checkSmimeInfo(api.SmimeInfo o) {
 
 core.int buildCounterSmtpMsa = 0;
 api.SmtpMsa buildSmtpMsa() {
-  var o = api.SmtpMsa();
+  final o = api.SmtpMsa();
   buildCounterSmtpMsa++;
   if (buildCounterSmtpMsa < 3) {
     o.host = 'foo';
@@ -1640,7 +1639,7 @@ void checkSmtpMsa(api.SmtpMsa o) {
 }
 
 core.List<api.Message> buildUnnamed4456() {
-  var o = <api.Message>[];
+  final o = <api.Message>[];
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
@@ -1648,13 +1647,13 @@ core.List<api.Message> buildUnnamed4456() {
 
 void checkUnnamed4456(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMessage(o[0] as api.Message);
-  checkMessage(o[1] as api.Message);
+  checkMessage(o[0]);
+  checkMessage(o[1]);
 }
 
 core.int buildCounterThread = 0;
 api.Thread buildThread() {
-  var o = api.Thread();
+  final o = api.Thread();
   buildCounterThread++;
   if (buildCounterThread < 3) {
     o.historyId = 'foo';
@@ -1688,7 +1687,7 @@ void checkThread(api.Thread o) {
 
 core.int buildCounterVacationSettings = 0;
 api.VacationSettings buildVacationSettings() {
-  var o = api.VacationSettings();
+  final o = api.VacationSettings();
   buildCounterVacationSettings++;
   if (buildCounterVacationSettings < 3) {
     o.enableAutoReply = true;
@@ -1735,7 +1734,7 @@ void checkVacationSettings(api.VacationSettings o) {
 }
 
 core.List<core.String> buildUnnamed4457() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1755,7 +1754,7 @@ void checkUnnamed4457(core.List<core.String> o) {
 
 core.int buildCounterWatchRequest = 0;
 api.WatchRequest buildWatchRequest() {
-  var o = api.WatchRequest();
+  final o = api.WatchRequest();
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     o.labelFilterAction = 'foo';
@@ -1784,7 +1783,7 @@ void checkWatchRequest(api.WatchRequest o) {
 
 core.int buildCounterWatchResponse = 0;
 api.WatchResponse buildWatchResponse() {
-  var o = api.WatchResponse();
+  final o = api.WatchResponse();
   buildCounterWatchResponse++;
   if (buildCounterWatchResponse < 3) {
     o.expiration = 'foo';
@@ -1810,7 +1809,7 @@ void checkWatchResponse(api.WatchResponse o) {
 }
 
 core.List<core.String> buildUnnamed4458() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1829,7 +1828,7 @@ void checkUnnamed4458(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4459() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1848,7 +1847,7 @@ void checkUnnamed4459(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4460() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1867,7 +1866,7 @@ void checkUnnamed4460(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4461() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1886,7 +1885,7 @@ void checkUnnamed4461(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed4462() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1907,452 +1906,453 @@ void checkUnnamed4462(core.List<core.String> o) {
 void main() {
   unittest.group('obj-schema-AutoForwarding', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAutoForwarding();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AutoForwarding.fromJson(
+      final o = buildAutoForwarding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AutoForwarding.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAutoForwarding(od as api.AutoForwarding);
+      checkAutoForwarding(od);
     });
   });
 
   unittest.group('obj-schema-BatchDeleteMessagesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchDeleteMessagesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchDeleteMessagesRequest.fromJson(
+      final o = buildBatchDeleteMessagesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchDeleteMessagesRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchDeleteMessagesRequest(od as api.BatchDeleteMessagesRequest);
+      checkBatchDeleteMessagesRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchModifyMessagesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchModifyMessagesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchModifyMessagesRequest.fromJson(
+      final o = buildBatchModifyMessagesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchModifyMessagesRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchModifyMessagesRequest(od as api.BatchModifyMessagesRequest);
+      checkBatchModifyMessagesRequest(od);
     });
   });
 
   unittest.group('obj-schema-Delegate', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDelegate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDelegate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Delegate.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDelegate(od as api.Delegate);
+      checkDelegate(od);
     });
   });
 
   unittest.group('obj-schema-Draft', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDraft();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Draft.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDraft(od as api.Draft);
+      final o = buildDraft();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Draft.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDraft(od);
     });
   });
 
   unittest.group('obj-schema-Filter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFilter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Filter.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFilter(od as api.Filter);
+      checkFilter(od);
     });
   });
 
   unittest.group('obj-schema-FilterAction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFilterAction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FilterAction.fromJson(
+      final o = buildFilterAction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FilterAction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFilterAction(od as api.FilterAction);
+      checkFilterAction(od);
     });
   });
 
   unittest.group('obj-schema-FilterCriteria', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFilterCriteria();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FilterCriteria.fromJson(
+      final o = buildFilterCriteria();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FilterCriteria.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFilterCriteria(od as api.FilterCriteria);
+      checkFilterCriteria(od);
     });
   });
 
   unittest.group('obj-schema-ForwardingAddress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildForwardingAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ForwardingAddress.fromJson(
+      final o = buildForwardingAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ForwardingAddress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkForwardingAddress(od as api.ForwardingAddress);
+      checkForwardingAddress(od);
     });
   });
 
   unittest.group('obj-schema-History', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHistory();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildHistory();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.History.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkHistory(od as api.History);
+      checkHistory(od);
     });
   });
 
   unittest.group('obj-schema-HistoryLabelAdded', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHistoryLabelAdded();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.HistoryLabelAdded.fromJson(
+      final o = buildHistoryLabelAdded();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HistoryLabelAdded.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHistoryLabelAdded(od as api.HistoryLabelAdded);
+      checkHistoryLabelAdded(od);
     });
   });
 
   unittest.group('obj-schema-HistoryLabelRemoved', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHistoryLabelRemoved();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.HistoryLabelRemoved.fromJson(
+      final o = buildHistoryLabelRemoved();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HistoryLabelRemoved.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHistoryLabelRemoved(od as api.HistoryLabelRemoved);
+      checkHistoryLabelRemoved(od);
     });
   });
 
   unittest.group('obj-schema-HistoryMessageAdded', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHistoryMessageAdded();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.HistoryMessageAdded.fromJson(
+      final o = buildHistoryMessageAdded();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HistoryMessageAdded.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHistoryMessageAdded(od as api.HistoryMessageAdded);
+      checkHistoryMessageAdded(od);
     });
   });
 
   unittest.group('obj-schema-HistoryMessageDeleted', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHistoryMessageDeleted();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.HistoryMessageDeleted.fromJson(
+      final o = buildHistoryMessageDeleted();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HistoryMessageDeleted.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHistoryMessageDeleted(od as api.HistoryMessageDeleted);
+      checkHistoryMessageDeleted(od);
     });
   });
 
   unittest.group('obj-schema-ImapSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImapSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImapSettings.fromJson(
+      final o = buildImapSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImapSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImapSettings(od as api.ImapSettings);
+      checkImapSettings(od);
     });
   });
 
   unittest.group('obj-schema-Label', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLabel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Label.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLabel(od as api.Label);
+      final o = buildLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Label.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLabel(od);
     });
   });
 
   unittest.group('obj-schema-LabelColor', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLabelColor();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLabelColor();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.LabelColor.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLabelColor(od as api.LabelColor);
+      checkLabelColor(od);
     });
   });
 
   unittest.group('obj-schema-LanguageSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLanguageSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LanguageSettings.fromJson(
+      final o = buildLanguageSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LanguageSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLanguageSettings(od as api.LanguageSettings);
+      checkLanguageSettings(od);
     });
   });
 
   unittest.group('obj-schema-ListDelegatesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListDelegatesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListDelegatesResponse.fromJson(
+      final o = buildListDelegatesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListDelegatesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListDelegatesResponse(od as api.ListDelegatesResponse);
+      checkListDelegatesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListDraftsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListDraftsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListDraftsResponse.fromJson(
+      final o = buildListDraftsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListDraftsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListDraftsResponse(od as api.ListDraftsResponse);
+      checkListDraftsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListFiltersResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListFiltersResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListFiltersResponse.fromJson(
+      final o = buildListFiltersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListFiltersResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListFiltersResponse(od as api.ListFiltersResponse);
+      checkListFiltersResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListForwardingAddressesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListForwardingAddressesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListForwardingAddressesResponse.fromJson(
+      final o = buildListForwardingAddressesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListForwardingAddressesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListForwardingAddressesResponse(
-          od as api.ListForwardingAddressesResponse);
+      checkListForwardingAddressesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListHistoryResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListHistoryResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListHistoryResponse.fromJson(
+      final o = buildListHistoryResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListHistoryResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListHistoryResponse(od as api.ListHistoryResponse);
+      checkListHistoryResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListLabelsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListLabelsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListLabelsResponse.fromJson(
+      final o = buildListLabelsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListLabelsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListLabelsResponse(od as api.ListLabelsResponse);
+      checkListLabelsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListMessagesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListMessagesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListMessagesResponse.fromJson(
+      final o = buildListMessagesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListMessagesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListMessagesResponse(od as api.ListMessagesResponse);
+      checkListMessagesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListSendAsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListSendAsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListSendAsResponse.fromJson(
+      final o = buildListSendAsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSendAsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListSendAsResponse(od as api.ListSendAsResponse);
+      checkListSendAsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListSmimeInfoResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListSmimeInfoResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListSmimeInfoResponse.fromJson(
+      final o = buildListSmimeInfoResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSmimeInfoResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListSmimeInfoResponse(od as api.ListSmimeInfoResponse);
+      checkListSmimeInfoResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListThreadsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListThreadsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListThreadsResponse.fromJson(
+      final o = buildListThreadsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListThreadsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListThreadsResponse(od as api.ListThreadsResponse);
+      checkListThreadsResponse(od);
     });
   });
 
   unittest.group('obj-schema-Message', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMessage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Message.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMessage(od as api.Message);
+      checkMessage(od);
     });
   });
 
   unittest.group('obj-schema-MessagePart', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMessagePart();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MessagePart.fromJson(
+      final o = buildMessagePart();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessagePart.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMessagePart(od as api.MessagePart);
+      checkMessagePart(od);
     });
   });
 
   unittest.group('obj-schema-MessagePartBody', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMessagePartBody();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MessagePartBody.fromJson(
+      final o = buildMessagePartBody();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessagePartBody.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMessagePartBody(od as api.MessagePartBody);
+      checkMessagePartBody(od);
     });
   });
 
   unittest.group('obj-schema-MessagePartHeader', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMessagePartHeader();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MessagePartHeader.fromJson(
+      final o = buildMessagePartHeader();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MessagePartHeader.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMessagePartHeader(od as api.MessagePartHeader);
+      checkMessagePartHeader(od);
     });
   });
 
   unittest.group('obj-schema-ModifyMessageRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildModifyMessageRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ModifyMessageRequest.fromJson(
+      final o = buildModifyMessageRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ModifyMessageRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkModifyMessageRequest(od as api.ModifyMessageRequest);
+      checkModifyMessageRequest(od);
     });
   });
 
   unittest.group('obj-schema-ModifyThreadRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildModifyThreadRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ModifyThreadRequest.fromJson(
+      final o = buildModifyThreadRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ModifyThreadRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkModifyThreadRequest(od as api.ModifyThreadRequest);
+      checkModifyThreadRequest(od);
     });
   });
 
   unittest.group('obj-schema-PopSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPopSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PopSettings.fromJson(
+      final o = buildPopSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PopSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPopSettings(od as api.PopSettings);
+      checkPopSettings(od);
     });
   });
 
   unittest.group('obj-schema-Profile', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProfile();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Profile.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkProfile(od as api.Profile);
+      checkProfile(od);
     });
   });
 
   unittest.group('obj-schema-SendAs', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSendAs();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSendAs();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.SendAs.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSendAs(od as api.SendAs);
+      checkSendAs(od);
     });
   });
 
   unittest.group('obj-schema-SmimeInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSmimeInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSmimeInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.SmimeInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSmimeInfo(od as api.SmimeInfo);
+      checkSmimeInfo(od);
     });
   });
 
   unittest.group('obj-schema-SmtpMsa', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSmtpMsa();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSmtpMsa();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.SmtpMsa.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSmtpMsa(od as api.SmtpMsa);
+      checkSmtpMsa(od);
     });
   });
 
   unittest.group('obj-schema-Thread', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildThread();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildThread();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Thread.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkThread(od as api.Thread);
+      checkThread(od);
     });
   });
 
   unittest.group('obj-schema-VacationSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildVacationSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.VacationSettings.fromJson(
+      final o = buildVacationSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VacationSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkVacationSettings(od as api.VacationSettings);
+      checkVacationSettings(od);
     });
   });
 
   unittest.group('obj-schema-WatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WatchRequest.fromJson(
+      final o = buildWatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWatchRequest(od as api.WatchRequest);
+      checkWatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-WatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WatchResponse.fromJson(
+      final o = buildWatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWatchResponse(od as api.WatchResponse);
+      checkWatchResponse(od);
     });
   });
 
   unittest.group('resource-UsersResource', () {
     unittest.test('method--getProfile', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/profile', pathOffset);
@@ -2366,19 +2366,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/profile"),
+          unittest.equals('/profile'),
         );
         pathOffset += 8;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2386,14 +2386,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProfile());
+        final resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getProfile(arg_userId, $fields: arg_$fields);
@@ -2401,23 +2401,23 @@ void main() {
     });
 
     unittest.test('method--stop', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/stop', pathOffset);
@@ -2431,19 +2431,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 5),
-          unittest.equals("/stop"),
+          unittest.equals('/stop'),
         );
         pathOffset += 5;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2451,42 +2451,42 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.stop(arg_userId, $fields: arg_$fields);
     });
 
     unittest.test('method--watch', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users;
-      var arg_request = buildWatchRequest();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users;
+      final arg_request = buildWatchRequest();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.WatchRequest.fromJson(
+        final obj = api.WatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkWatchRequest(obj as api.WatchRequest);
+        checkWatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/watch', pathOffset);
@@ -2500,19 +2500,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 6),
-          unittest.equals("/watch"),
+          unittest.equals('/watch'),
         );
         pathOffset += 6;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2520,14 +2520,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildWatchResponse());
+        final resp = convert.json.encode(buildWatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2541,28 +2541,28 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.drafts;
-      var arg_request = buildDraft();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.drafts;
+      final arg_request = buildDraft();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Draft.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkDraft(obj as api.Draft);
+        checkDraft(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/drafts', pathOffset);
@@ -2576,19 +2576,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/drafts"),
+          unittest.equals('/drafts'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2596,14 +2596,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDraft());
+        final resp = convert.json.encode(buildDraft());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2612,24 +2612,24 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.drafts;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.drafts;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/drafts/', pathOffset);
@@ -2643,7 +2643,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/drafts/"),
+          unittest.equals('/drafts/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2653,15 +2653,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2669,39 +2669,39 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.drafts;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_format = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.drafts;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_format = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/drafts/', pathOffset);
@@ -2715,7 +2715,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/drafts/"),
+          unittest.equals('/drafts/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2725,15 +2725,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2741,18 +2741,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["format"]!.first,
+          queryMap['format']!.first,
           unittest.equals(arg_format),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDraft());
+        final resp = convert.json.encode(buildDraft());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_userId, arg_id,
@@ -2761,27 +2761,27 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.drafts;
-      var arg_userId = 'foo';
-      var arg_includeSpamTrash = true;
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_q = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.drafts;
+      final arg_userId = 'foo';
+      final arg_includeSpamTrash = true;
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_q = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/drafts', pathOffset);
@@ -2795,19 +2795,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/drafts"),
+          unittest.equals('/drafts'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2815,30 +2815,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["includeSpamTrash"]!.first,
-          unittest.equals("$arg_includeSpamTrash"),
+          queryMap['includeSpamTrash']!.first,
+          unittest.equals('$arg_includeSpamTrash'),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["q"]!.first,
+          queryMap['q']!.first,
           unittest.equals(arg_q),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListDraftsResponse());
+        final resp = convert.json.encode(buildListDraftsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId,
@@ -2854,28 +2854,28 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.drafts;
-      var arg_request = buildDraft();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.drafts;
+      final arg_request = buildDraft();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Draft.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkDraft(obj as api.Draft);
+        checkDraft(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/drafts/send', pathOffset);
@@ -2889,19 +2889,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("/drafts/send"),
+          unittest.equals('/drafts/send'),
         );
         pathOffset += 12;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2909,14 +2909,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2928,29 +2928,29 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.drafts;
-      var arg_request = buildDraft();
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.drafts;
+      final arg_request = buildDraft();
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Draft.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkDraft(obj as api.Draft);
+        checkDraft(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/drafts/', pathOffset);
@@ -2964,7 +2964,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/drafts/"),
+          unittest.equals('/drafts/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2974,15 +2974,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2990,14 +2990,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDraft());
+        final resp = convert.json.encode(buildDraft());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_userId, arg_id,
@@ -3008,28 +3008,28 @@ void main() {
 
   unittest.group('resource-UsersHistoryResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.history;
-      var arg_userId = 'foo';
-      var arg_historyTypes = buildUnnamed4458();
-      var arg_labelId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_startHistoryId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.history;
+      final arg_userId = 'foo';
+      final arg_historyTypes = buildUnnamed4458();
+      final arg_labelId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_startHistoryId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/history', pathOffset);
@@ -3043,19 +3043,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/history"),
+          unittest.equals('/history'),
         );
         pathOffset += 8;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3063,34 +3063,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["historyTypes"]!,
+          queryMap['historyTypes']!,
           unittest.equals(arg_historyTypes),
         );
         unittest.expect(
-          queryMap["labelId"]!.first,
+          queryMap['labelId']!.first,
           unittest.equals(arg_labelId),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["startHistoryId"]!.first,
+          queryMap['startHistoryId']!.first,
           unittest.equals(arg_startHistoryId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListHistoryResponse());
+        final resp = convert.json.encode(buildListHistoryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId,
@@ -3106,28 +3106,28 @@ void main() {
 
   unittest.group('resource-UsersLabelsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.labels;
-      var arg_request = buildLabel();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.labels;
+      final arg_request = buildLabel();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Label.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkLabel(obj as api.Label);
+        checkLabel(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/labels', pathOffset);
@@ -3141,19 +3141,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/labels"),
+          unittest.equals('/labels'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3161,14 +3161,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLabel());
+        final resp = convert.json.encode(buildLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3177,24 +3177,24 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.labels;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.labels;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/labels/', pathOffset);
@@ -3208,7 +3208,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/labels/"),
+          unittest.equals('/labels/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3218,15 +3218,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3234,38 +3234,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.labels;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.labels;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/labels/', pathOffset);
@@ -3279,7 +3279,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/labels/"),
+          unittest.equals('/labels/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3289,15 +3289,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3305,14 +3305,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLabel());
+        final resp = convert.json.encode(buildLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_userId, arg_id, $fields: arg_$fields);
@@ -3320,23 +3320,23 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.labels;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.labels;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/labels', pathOffset);
@@ -3350,19 +3350,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/labels"),
+          unittest.equals('/labels'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3370,14 +3370,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListLabelsResponse());
+        final resp = convert.json.encode(buildListLabelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId, $fields: arg_$fields);
@@ -3385,29 +3385,29 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.labels;
-      var arg_request = buildLabel();
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.labels;
+      final arg_request = buildLabel();
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Label.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkLabel(obj as api.Label);
+        checkLabel(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/labels/', pathOffset);
@@ -3421,7 +3421,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/labels/"),
+          unittest.equals('/labels/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3431,15 +3431,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3447,14 +3447,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLabel());
+        final resp = convert.json.encode(buildLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_userId, arg_id,
@@ -3463,29 +3463,29 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.labels;
-      var arg_request = buildLabel();
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.labels;
+      final arg_request = buildLabel();
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Label.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkLabel(obj as api.Label);
+        checkLabel(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/labels/', pathOffset);
@@ -3499,7 +3499,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/labels/"),
+          unittest.equals('/labels/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3509,15 +3509,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3525,14 +3525,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLabel());
+        final resp = convert.json.encode(buildLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_userId, arg_id,
@@ -3543,28 +3543,28 @@ void main() {
 
   unittest.group('resource-UsersMessagesResource', () {
     unittest.test('method--batchDelete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_request = buildBatchDeleteMessagesRequest();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_request = buildBatchDeleteMessagesRequest();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchDeleteMessagesRequest.fromJson(
+        final obj = api.BatchDeleteMessagesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchDeleteMessagesRequest(obj as api.BatchDeleteMessagesRequest);
+        checkBatchDeleteMessagesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/batchDelete', pathOffset);
@@ -3578,19 +3578,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("/messages/batchDelete"),
+          unittest.equals('/messages/batchDelete'),
         );
         pathOffset += 21;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3598,42 +3598,42 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.batchDelete(arg_request, arg_userId, $fields: arg_$fields);
     });
 
     unittest.test('method--batchModify', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_request = buildBatchModifyMessagesRequest();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_request = buildBatchModifyMessagesRequest();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchModifyMessagesRequest.fromJson(
+        final obj = api.BatchModifyMessagesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchModifyMessagesRequest(obj as api.BatchModifyMessagesRequest);
+        checkBatchModifyMessagesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/batchModify', pathOffset);
@@ -3647,19 +3647,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("/messages/batchModify"),
+          unittest.equals('/messages/batchModify'),
         );
         pathOffset += 21;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3667,38 +3667,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.batchModify(arg_request, arg_userId, $fields: arg_$fields);
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
@@ -3712,7 +3712,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("/messages/"),
+          unittest.equals('/messages/'),
         );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3722,15 +3722,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3738,40 +3738,40 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_format = 'foo';
-      var arg_metadataHeaders = buildUnnamed4459();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_format = 'foo';
+      final arg_metadataHeaders = buildUnnamed4459();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
@@ -3785,7 +3785,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("/messages/"),
+          unittest.equals('/messages/'),
         );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3795,15 +3795,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3811,22 +3811,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["format"]!.first,
+          queryMap['format']!.first,
           unittest.equals(arg_format),
         );
         unittest.expect(
-          queryMap["metadataHeaders"]!,
+          queryMap['metadataHeaders']!,
           unittest.equals(arg_metadataHeaders),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_userId, arg_id,
@@ -3840,32 +3840,32 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_request = buildMessage();
-      var arg_userId = 'foo';
-      var arg_deleted = true;
-      var arg_internalDateSource = 'foo';
-      var arg_neverMarkSpam = true;
-      var arg_processForCalendar = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_request = buildMessage();
+      final arg_userId = 'foo';
+      final arg_deleted = true;
+      final arg_internalDateSource = 'foo';
+      final arg_neverMarkSpam = true;
+      final arg_processForCalendar = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/import', pathOffset);
@@ -3879,19 +3879,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("/messages/import"),
+          unittest.equals('/messages/import'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3899,30 +3899,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["deleted"]!.first,
-          unittest.equals("$arg_deleted"),
+          queryMap['deleted']!.first,
+          unittest.equals('$arg_deleted'),
         );
         unittest.expect(
-          queryMap["internalDateSource"]!.first,
+          queryMap['internalDateSource']!.first,
           unittest.equals(arg_internalDateSource),
         );
         unittest.expect(
-          queryMap["neverMarkSpam"]!.first,
-          unittest.equals("$arg_neverMarkSpam"),
+          queryMap['neverMarkSpam']!.first,
+          unittest.equals('$arg_neverMarkSpam'),
         );
         unittest.expect(
-          queryMap["processForCalendar"]!.first,
-          unittest.equals("$arg_processForCalendar"),
+          queryMap['processForCalendar']!.first,
+          unittest.equals('$arg_processForCalendar'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.import(arg_request, arg_userId,
@@ -3938,30 +3938,30 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_request = buildMessage();
-      var arg_userId = 'foo';
-      var arg_deleted = true;
-      var arg_internalDateSource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_request = buildMessage();
+      final arg_userId = 'foo';
+      final arg_deleted = true;
+      final arg_internalDateSource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages', pathOffset);
@@ -3975,19 +3975,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/messages"),
+          unittest.equals('/messages'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3995,22 +3995,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["deleted"]!.first,
-          unittest.equals("$arg_deleted"),
+          queryMap['deleted']!.first,
+          unittest.equals('$arg_deleted'),
         );
         unittest.expect(
-          queryMap["internalDateSource"]!.first,
+          queryMap['internalDateSource']!.first,
           unittest.equals(arg_internalDateSource),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_userId,
@@ -4021,28 +4021,28 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_userId = 'foo';
-      var arg_includeSpamTrash = true;
-      var arg_labelIds = buildUnnamed4460();
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_q = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_userId = 'foo';
+      final arg_includeSpamTrash = true;
+      final arg_labelIds = buildUnnamed4460();
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_q = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages', pathOffset);
@@ -4056,19 +4056,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/messages"),
+          unittest.equals('/messages'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4076,34 +4076,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["includeSpamTrash"]!.first,
-          unittest.equals("$arg_includeSpamTrash"),
+          queryMap['includeSpamTrash']!.first,
+          unittest.equals('$arg_includeSpamTrash'),
         );
         unittest.expect(
-          queryMap["labelIds"]!,
+          queryMap['labelIds']!,
           unittest.equals(arg_labelIds),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["q"]!.first,
+          queryMap['q']!.first,
           unittest.equals(arg_q),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListMessagesResponse());
+        final resp = convert.json.encode(buildListMessagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId,
@@ -4117,29 +4117,29 @@ void main() {
     });
 
     unittest.test('method--modify', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_request = buildModifyMessageRequest();
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_request = buildModifyMessageRequest();
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyMessageRequest.fromJson(
+        final obj = api.ModifyMessageRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkModifyMessageRequest(obj as api.ModifyMessageRequest);
+        checkModifyMessageRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
@@ -4153,7 +4153,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("/messages/"),
+          unittest.equals('/messages/'),
         );
         pathOffset += 10;
         index = path.indexOf('/modify', pathOffset);
@@ -4167,19 +4167,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/modify"),
+          unittest.equals('/modify'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4187,14 +4187,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.modify(arg_request, arg_userId, arg_id,
@@ -4206,28 +4206,28 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_request = buildMessage();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_request = buildMessage();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMessage(obj as api.Message);
+        checkMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/send', pathOffset);
@@ -4241,19 +4241,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("/messages/send"),
+          unittest.equals('/messages/send'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4261,14 +4261,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4277,24 +4277,24 @@ void main() {
     });
 
     unittest.test('method--trash', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
@@ -4308,7 +4308,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("/messages/"),
+          unittest.equals('/messages/'),
         );
         pathOffset += 10;
         index = path.indexOf('/trash', pathOffset);
@@ -4322,19 +4322,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 6),
-          unittest.equals("/trash"),
+          unittest.equals('/trash'),
         );
         pathOffset += 6;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4342,14 +4342,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4358,24 +4358,24 @@ void main() {
     });
 
     unittest.test('method--untrash', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
@@ -4389,7 +4389,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("/messages/"),
+          unittest.equals('/messages/'),
         );
         pathOffset += 10;
         index = path.indexOf('/untrash', pathOffset);
@@ -4403,19 +4403,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/untrash"),
+          unittest.equals('/untrash'),
         );
         pathOffset += 8;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4423,14 +4423,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessage());
+        final resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4441,25 +4441,25 @@ void main() {
 
   unittest.group('resource-UsersMessagesAttachmentsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.messages.attachments;
-      var arg_userId = 'foo';
-      var arg_messageId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.messages.attachments;
+      final arg_userId = 'foo';
+      final arg_messageId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
@@ -4473,7 +4473,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("/messages/"),
+          unittest.equals('/messages/'),
         );
         pathOffset += 10;
         index = path.indexOf('/attachments/', pathOffset);
@@ -4487,7 +4487,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("/attachments/"),
+          unittest.equals('/attachments/'),
         );
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4497,15 +4497,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4513,14 +4513,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMessagePartBody());
+        final resp = convert.json.encode(buildMessagePartBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_userId, arg_messageId, arg_id,
@@ -4531,23 +4531,23 @@ void main() {
 
   unittest.group('resource-UsersSettingsResource', () {
     unittest.test('method--getAutoForwarding', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/autoForwarding', pathOffset);
@@ -4561,19 +4561,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 24),
-          unittest.equals("/settings/autoForwarding"),
+          unittest.equals('/settings/autoForwarding'),
         );
         pathOffset += 24;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4581,14 +4581,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAutoForwarding());
+        final resp = convert.json.encode(buildAutoForwarding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4597,23 +4597,23 @@ void main() {
     });
 
     unittest.test('method--getImap', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/imap', pathOffset);
@@ -4627,19 +4627,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("/settings/imap"),
+          unittest.equals('/settings/imap'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4647,14 +4647,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildImapSettings());
+        final resp = convert.json.encode(buildImapSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getImap(arg_userId, $fields: arg_$fields);
@@ -4662,23 +4662,23 @@ void main() {
     });
 
     unittest.test('method--getLanguage', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/language', pathOffset);
@@ -4692,19 +4692,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("/settings/language"),
+          unittest.equals('/settings/language'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4712,14 +4712,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLanguageSettings());
+        final resp = convert.json.encode(buildLanguageSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getLanguage(arg_userId, $fields: arg_$fields);
@@ -4727,23 +4727,23 @@ void main() {
     });
 
     unittest.test('method--getPop', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/pop', pathOffset);
@@ -4757,19 +4757,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("/settings/pop"),
+          unittest.equals('/settings/pop'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4777,14 +4777,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPopSettings());
+        final resp = convert.json.encode(buildPopSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getPop(arg_userId, $fields: arg_$fields);
@@ -4792,23 +4792,23 @@ void main() {
     });
 
     unittest.test('method--getVacation', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/vacation', pathOffset);
@@ -4822,19 +4822,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("/settings/vacation"),
+          unittest.equals('/settings/vacation'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4842,14 +4842,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildVacationSettings());
+        final resp = convert.json.encode(buildVacationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getVacation(arg_userId, $fields: arg_$fields);
@@ -4857,28 +4857,28 @@ void main() {
     });
 
     unittest.test('method--updateAutoForwarding', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_request = buildAutoForwarding();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_request = buildAutoForwarding();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AutoForwarding.fromJson(
+        final obj = api.AutoForwarding.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAutoForwarding(obj as api.AutoForwarding);
+        checkAutoForwarding(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/autoForwarding', pathOffset);
@@ -4892,19 +4892,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 24),
-          unittest.equals("/settings/autoForwarding"),
+          unittest.equals('/settings/autoForwarding'),
         );
         pathOffset += 24;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4912,14 +4912,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAutoForwarding());
+        final resp = convert.json.encode(buildAutoForwarding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateAutoForwarding(arg_request, arg_userId,
@@ -4928,28 +4928,28 @@ void main() {
     });
 
     unittest.test('method--updateImap', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_request = buildImapSettings();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_request = buildImapSettings();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ImapSettings.fromJson(
+        final obj = api.ImapSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkImapSettings(obj as api.ImapSettings);
+        checkImapSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/imap', pathOffset);
@@ -4963,19 +4963,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("/settings/imap"),
+          unittest.equals('/settings/imap'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4983,14 +4983,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildImapSettings());
+        final resp = convert.json.encode(buildImapSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4999,28 +4999,28 @@ void main() {
     });
 
     unittest.test('method--updateLanguage', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_request = buildLanguageSettings();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_request = buildLanguageSettings();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LanguageSettings.fromJson(
+        final obj = api.LanguageSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkLanguageSettings(obj as api.LanguageSettings);
+        checkLanguageSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/language', pathOffset);
@@ -5034,19 +5034,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("/settings/language"),
+          unittest.equals('/settings/language'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5054,14 +5054,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLanguageSettings());
+        final resp = convert.json.encode(buildLanguageSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateLanguage(arg_request, arg_userId,
@@ -5070,28 +5070,28 @@ void main() {
     });
 
     unittest.test('method--updatePop', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_request = buildPopSettings();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_request = buildPopSettings();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PopSettings.fromJson(
+        final obj = api.PopSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPopSettings(obj as api.PopSettings);
+        checkPopSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/pop', pathOffset);
@@ -5105,19 +5105,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("/settings/pop"),
+          unittest.equals('/settings/pop'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5125,14 +5125,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPopSettings());
+        final resp = convert.json.encode(buildPopSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5141,28 +5141,28 @@ void main() {
     });
 
     unittest.test('method--updateVacation', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings;
-      var arg_request = buildVacationSettings();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings;
+      final arg_request = buildVacationSettings();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.VacationSettings.fromJson(
+        final obj = api.VacationSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkVacationSettings(obj as api.VacationSettings);
+        checkVacationSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/vacation', pathOffset);
@@ -5176,19 +5176,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("/settings/vacation"),
+          unittest.equals('/settings/vacation'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5196,14 +5196,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildVacationSettings());
+        final resp = convert.json.encode(buildVacationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateVacation(arg_request, arg_userId,
@@ -5214,28 +5214,28 @@ void main() {
 
   unittest.group('resource-UsersSettingsDelegatesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.delegates;
-      var arg_request = buildDelegate();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.delegates;
+      final arg_request = buildDelegate();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Delegate.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkDelegate(obj as api.Delegate);
+        checkDelegate(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/delegates', pathOffset);
@@ -5249,19 +5249,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("/settings/delegates"),
+          unittest.equals('/settings/delegates'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5269,14 +5269,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDelegate());
+        final resp = convert.json.encode(buildDelegate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5285,24 +5285,24 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.delegates;
-      var arg_userId = 'foo';
-      var arg_delegateEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.delegates;
+      final arg_userId = 'foo';
+      final arg_delegateEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/delegates/', pathOffset);
@@ -5316,7 +5316,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("/settings/delegates/"),
+          unittest.equals('/settings/delegates/'),
         );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5326,15 +5326,15 @@ void main() {
           unittest.equals('$arg_delegateEmail'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5342,38 +5342,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_delegateEmail, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.delegates;
-      var arg_userId = 'foo';
-      var arg_delegateEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.delegates;
+      final arg_userId = 'foo';
+      final arg_delegateEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/delegates/', pathOffset);
@@ -5387,7 +5387,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("/settings/delegates/"),
+          unittest.equals('/settings/delegates/'),
         );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5397,15 +5397,15 @@ void main() {
           unittest.equals('$arg_delegateEmail'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5413,14 +5413,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDelegate());
+        final resp = convert.json.encode(buildDelegate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5429,23 +5429,23 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.delegates;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.delegates;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/delegates', pathOffset);
@@ -5459,19 +5459,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("/settings/delegates"),
+          unittest.equals('/settings/delegates'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5479,14 +5479,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListDelegatesResponse());
+        final resp = convert.json.encode(buildListDelegatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId, $fields: arg_$fields);
@@ -5496,28 +5496,28 @@ void main() {
 
   unittest.group('resource-UsersSettingsFiltersResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.filters;
-      var arg_request = buildFilter();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.filters;
+      final arg_request = buildFilter();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Filter.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkFilter(obj as api.Filter);
+        checkFilter(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/filters', pathOffset);
@@ -5531,19 +5531,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/filters"),
+          unittest.equals('/settings/filters'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5551,14 +5551,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildFilter());
+        final resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5567,24 +5567,24 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.filters;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.filters;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/filters/', pathOffset);
@@ -5598,7 +5598,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("/settings/filters/"),
+          unittest.equals('/settings/filters/'),
         );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5608,15 +5608,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5624,38 +5624,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.filters;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.filters;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/filters/', pathOffset);
@@ -5669,7 +5669,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("/settings/filters/"),
+          unittest.equals('/settings/filters/'),
         );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5679,15 +5679,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5695,14 +5695,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildFilter());
+        final resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_userId, arg_id, $fields: arg_$fields);
@@ -5710,23 +5710,23 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.filters;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.filters;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/filters', pathOffset);
@@ -5740,19 +5740,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/filters"),
+          unittest.equals('/settings/filters'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5760,14 +5760,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListFiltersResponse());
+        final resp = convert.json.encode(buildListFiltersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId, $fields: arg_$fields);
@@ -5777,28 +5777,28 @@ void main() {
 
   unittest.group('resource-UsersSettingsForwardingAddressesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.forwardingAddresses;
-      var arg_request = buildForwardingAddress();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.forwardingAddresses;
+      final arg_request = buildForwardingAddress();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ForwardingAddress.fromJson(
+        final obj = api.ForwardingAddress.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkForwardingAddress(obj as api.ForwardingAddress);
+        checkForwardingAddress(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/forwardingAddresses', pathOffset);
@@ -5812,19 +5812,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 29),
-          unittest.equals("/settings/forwardingAddresses"),
+          unittest.equals('/settings/forwardingAddresses'),
         );
         pathOffset += 29;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5832,14 +5832,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildForwardingAddress());
+        final resp = convert.json.encode(buildForwardingAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5848,24 +5848,24 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.forwardingAddresses;
-      var arg_userId = 'foo';
-      var arg_forwardingEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.forwardingAddresses;
+      final arg_userId = 'foo';
+      final arg_forwardingEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/forwardingAddresses/', pathOffset);
@@ -5879,7 +5879,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 30),
-          unittest.equals("/settings/forwardingAddresses/"),
+          unittest.equals('/settings/forwardingAddresses/'),
         );
         pathOffset += 30;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5889,15 +5889,15 @@ void main() {
           unittest.equals('$arg_forwardingEmail'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5905,38 +5905,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_forwardingEmail, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.forwardingAddresses;
-      var arg_userId = 'foo';
-      var arg_forwardingEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.forwardingAddresses;
+      final arg_userId = 'foo';
+      final arg_forwardingEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/forwardingAddresses/', pathOffset);
@@ -5950,7 +5950,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 30),
-          unittest.equals("/settings/forwardingAddresses/"),
+          unittest.equals('/settings/forwardingAddresses/'),
         );
         pathOffset += 30;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5960,15 +5960,15 @@ void main() {
           unittest.equals('$arg_forwardingEmail'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5976,14 +5976,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildForwardingAddress());
+        final resp = convert.json.encode(buildForwardingAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5992,23 +5992,23 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.forwardingAddresses;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.forwardingAddresses;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/forwardingAddresses', pathOffset);
@@ -6022,19 +6022,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 29),
-          unittest.equals("/settings/forwardingAddresses"),
+          unittest.equals('/settings/forwardingAddresses'),
         );
         pathOffset += 29;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6042,14 +6042,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListForwardingAddressesResponse());
+        final resp =
+            convert.json.encode(buildListForwardingAddressesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId, $fields: arg_$fields);
@@ -6060,28 +6061,28 @@ void main() {
 
   unittest.group('resource-UsersSettingsSendAsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs;
-      var arg_request = buildSendAs();
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs;
+      final arg_request = buildSendAs();
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.SendAs.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkSendAs(obj as api.SendAs);
+        checkSendAs(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs', pathOffset);
@@ -6095,19 +6096,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("/settings/sendAs"),
+          unittest.equals('/settings/sendAs'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6115,14 +6116,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSendAs());
+        final resp = convert.json.encode(buildSendAs());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -6131,24 +6132,24 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs;
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs;
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6162,7 +6163,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -6172,15 +6173,15 @@ void main() {
           unittest.equals('$arg_sendAsEmail'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6188,38 +6189,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_sendAsEmail, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs;
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs;
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6233,7 +6234,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -6243,15 +6244,15 @@ void main() {
           unittest.equals('$arg_sendAsEmail'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6259,14 +6260,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSendAs());
+        final resp = convert.json.encode(buildSendAs());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -6275,23 +6276,23 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs;
-      var arg_userId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs;
+      final arg_userId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs', pathOffset);
@@ -6305,19 +6306,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("/settings/sendAs"),
+          unittest.equals('/settings/sendAs'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6325,14 +6326,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListSendAsResponse());
+        final resp = convert.json.encode(buildListSendAsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId, $fields: arg_$fields);
@@ -6340,29 +6341,29 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs;
-      var arg_request = buildSendAs();
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs;
+      final arg_request = buildSendAs();
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.SendAs.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkSendAs(obj as api.SendAs);
+        checkSendAs(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6376,7 +6377,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -6386,15 +6387,15 @@ void main() {
           unittest.equals('$arg_sendAsEmail'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6402,14 +6403,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSendAs());
+        final resp = convert.json.encode(buildSendAs());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_userId, arg_sendAsEmail,
@@ -6418,29 +6419,29 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs;
-      var arg_request = buildSendAs();
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs;
+      final arg_request = buildSendAs();
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.SendAs.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkSendAs(obj as api.SendAs);
+        checkSendAs(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6454,7 +6455,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -6464,15 +6465,15 @@ void main() {
           unittest.equals('$arg_sendAsEmail'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6480,14 +6481,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSendAs());
+        final resp = convert.json.encode(buildSendAs());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(
@@ -6497,24 +6498,24 @@ void main() {
     });
 
     unittest.test('method--verify', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs;
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs;
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6528,7 +6529,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         index = path.indexOf('/verify', pathOffset);
@@ -6542,19 +6543,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/verify"),
+          unittest.equals('/verify'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6562,14 +6563,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.verify(arg_userId, arg_sendAsEmail, $fields: arg_$fields);
@@ -6578,25 +6579,25 @@ void main() {
 
   unittest.group('resource-UsersSettingsSendAsSmimeInfoResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6610,7 +6611,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo/', pathOffset);
@@ -6624,7 +6625,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("/smimeInfo/"),
+          unittest.equals('/smimeInfo/'),
         );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -6634,15 +6635,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6650,14 +6651,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_sendAsEmail, arg_id,
@@ -6665,25 +6666,25 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6697,7 +6698,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo/', pathOffset);
@@ -6711,7 +6712,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("/smimeInfo/"),
+          unittest.equals('/smimeInfo/'),
         );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -6721,15 +6722,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6737,14 +6738,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSmimeInfo());
+        final resp = convert.json.encode(buildSmimeInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_userId, arg_sendAsEmail, arg_id,
@@ -6753,29 +6754,29 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
-      var arg_request = buildSmimeInfo();
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      final arg_request = buildSmimeInfo();
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.SmimeInfo.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkSmimeInfo(obj as api.SmimeInfo);
+        checkSmimeInfo(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6789,7 +6790,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo', pathOffset);
@@ -6803,19 +6804,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("/smimeInfo"),
+          unittest.equals('/smimeInfo'),
         );
         pathOffset += 10;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6823,14 +6824,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSmimeInfo());
+        final resp = convert.json.encode(buildSmimeInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(
@@ -6840,24 +6841,24 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6871,7 +6872,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo', pathOffset);
@@ -6885,19 +6886,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("/smimeInfo"),
+          unittest.equals('/smimeInfo'),
         );
         pathOffset += 10;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6905,14 +6906,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListSmimeInfoResponse());
+        final resp = convert.json.encode(buildListSmimeInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -6921,25 +6922,25 @@ void main() {
     });
 
     unittest.test('method--setDefault', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
-      var arg_userId = 'foo';
-      var arg_sendAsEmail = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      final arg_userId = 'foo';
+      final arg_sendAsEmail = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
@@ -6953,7 +6954,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("/settings/sendAs/"),
+          unittest.equals('/settings/sendAs/'),
         );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo/', pathOffset);
@@ -6967,7 +6968,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("/smimeInfo/"),
+          unittest.equals('/smimeInfo/'),
         );
         pathOffset += 11;
         index = path.indexOf('/setDefault', pathOffset);
@@ -6981,19 +6982,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("/setDefault"),
+          unittest.equals('/setDefault'),
         );
         pathOffset += 11;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7001,14 +7002,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.setDefault(arg_userId, arg_sendAsEmail, arg_id,
@@ -7018,24 +7019,24 @@ void main() {
 
   unittest.group('resource-UsersThreadsResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.threads;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.threads;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
@@ -7049,7 +7050,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/threads/"),
+          unittest.equals('/threads/'),
         );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -7059,15 +7060,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7075,40 +7076,40 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.threads;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_format = 'foo';
-      var arg_metadataHeaders = buildUnnamed4461();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.threads;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_format = 'foo';
+      final arg_metadataHeaders = buildUnnamed4461();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
@@ -7122,7 +7123,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/threads/"),
+          unittest.equals('/threads/'),
         );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -7132,15 +7133,15 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7148,22 +7149,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["format"]!.first,
+          queryMap['format']!.first,
           unittest.equals(arg_format),
         );
         unittest.expect(
-          queryMap["metadataHeaders"]!,
+          queryMap['metadataHeaders']!,
           unittest.equals(arg_metadataHeaders),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildThread());
+        final resp = convert.json.encode(buildThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_userId, arg_id,
@@ -7174,28 +7175,28 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.threads;
-      var arg_userId = 'foo';
-      var arg_includeSpamTrash = true;
-      var arg_labelIds = buildUnnamed4462();
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_q = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.threads;
+      final arg_userId = 'foo';
+      final arg_includeSpamTrash = true;
+      final arg_labelIds = buildUnnamed4462();
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_q = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/threads', pathOffset);
@@ -7209,19 +7210,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/threads"),
+          unittest.equals('/threads'),
         );
         pathOffset += 8;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7229,34 +7230,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["includeSpamTrash"]!.first,
-          unittest.equals("$arg_includeSpamTrash"),
+          queryMap['includeSpamTrash']!.first,
+          unittest.equals('$arg_includeSpamTrash'),
         );
         unittest.expect(
-          queryMap["labelIds"]!,
+          queryMap['labelIds']!,
           unittest.equals(arg_labelIds),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["q"]!.first,
+          queryMap['q']!.first,
           unittest.equals(arg_q),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListThreadsResponse());
+        final resp = convert.json.encode(buildListThreadsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_userId,
@@ -7270,29 +7271,29 @@ void main() {
     });
 
     unittest.test('method--modify', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.threads;
-      var arg_request = buildModifyThreadRequest();
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.threads;
+      final arg_request = buildModifyThreadRequest();
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyThreadRequest.fromJson(
+        final obj = api.ModifyThreadRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkModifyThreadRequest(obj as api.ModifyThreadRequest);
+        checkModifyThreadRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
@@ -7306,7 +7307,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/threads/"),
+          unittest.equals('/threads/'),
         );
         pathOffset += 9;
         index = path.indexOf('/modify', pathOffset);
@@ -7320,19 +7321,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/modify"),
+          unittest.equals('/modify'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7340,14 +7341,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildThread());
+        final resp = convert.json.encode(buildThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.modify(arg_request, arg_userId, arg_id,
@@ -7356,24 +7357,24 @@ void main() {
     });
 
     unittest.test('method--trash', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.threads;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.threads;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
@@ -7387,7 +7388,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/threads/"),
+          unittest.equals('/threads/'),
         );
         pathOffset += 9;
         index = path.indexOf('/trash', pathOffset);
@@ -7401,19 +7402,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 6),
-          unittest.equals("/trash"),
+          unittest.equals('/trash'),
         );
         pathOffset += 6;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7421,14 +7422,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildThread());
+        final resp = convert.json.encode(buildThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -7437,24 +7438,24 @@ void main() {
     });
 
     unittest.test('method--untrash', () async {
-      var mock = HttpServerMock();
-      var res = api.GmailApi(mock).users.threads;
-      var arg_userId = 'foo';
-      var arg_id = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GmailApi(mock).users.threads;
+      final arg_userId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("gmail/v1/users/"),
+          unittest.equals('gmail/v1/users/'),
         );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
@@ -7468,7 +7469,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/threads/"),
+          unittest.equals('/threads/'),
         );
         pathOffset += 9;
         index = path.indexOf('/untrash', pathOffset);
@@ -7482,19 +7483,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/untrash"),
+          unittest.equals('/untrash'),
         );
         pathOffset += 8;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7502,14 +7503,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildThread());
+        final resp = convert.json.encode(buildThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
