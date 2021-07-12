@@ -72,12 +72,11 @@ void checkGoogleAnalyticsAdminV1alphaAccount(
   buildCounterGoogleAnalyticsAdminV1alphaAccount--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaPropertySummary> buildUnnamed8251() {
-  final o = <api.GoogleAnalyticsAdminV1alphaPropertySummary>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaPropertySummary());
-  o.add(buildGoogleAnalyticsAdminV1alphaPropertySummary());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaPropertySummary> buildUnnamed8251() =>
+    [
+      buildGoogleAnalyticsAdminV1alphaPropertySummary(),
+      buildGoogleAnalyticsAdminV1alphaPropertySummary(),
+    ];
 
 void checkUnnamed8251(
     core.List<api.GoogleAnalyticsAdminV1alphaPropertySummary> o) {
@@ -208,12 +207,10 @@ void checkGoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest(
   buildCounterGoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest--;
 }
 
-core.List<core.String> buildUnnamed8252() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8252() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8252(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -227,12 +224,10 @@ void checkUnnamed8252(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8253() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8253() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8253(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -308,12 +303,10 @@ void checkGoogleAnalyticsAdminV1alphaAuditUserLinksRequest(
   buildCounterGoogleAnalyticsAdminV1alphaAuditUserLinksRequest--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaAuditUserLink> buildUnnamed8254() {
-  final o = <api.GoogleAnalyticsAdminV1alphaAuditUserLink>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaAuditUserLink());
-  o.add(buildGoogleAnalyticsAdminV1alphaAuditUserLink());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaAuditUserLink> buildUnnamed8254() => [
+      buildGoogleAnalyticsAdminV1alphaAuditUserLink(),
+      buildGoogleAnalyticsAdminV1alphaAuditUserLink(),
+    ];
 
 void checkUnnamed8254(
     core.List<api.GoogleAnalyticsAdminV1alphaAuditUserLink> o) {
@@ -349,12 +342,10 @@ void checkGoogleAnalyticsAdminV1alphaAuditUserLinksResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaCreateUserLinkRequest>
-    buildUnnamed8255() {
-  final o = <api.GoogleAnalyticsAdminV1alphaCreateUserLinkRequest>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaCreateUserLinkRequest());
-  o.add(buildGoogleAnalyticsAdminV1alphaCreateUserLinkRequest());
-  return o;
-}
+    buildUnnamed8255() => [
+          buildGoogleAnalyticsAdminV1alphaCreateUserLinkRequest(),
+          buildGoogleAnalyticsAdminV1alphaCreateUserLinkRequest(),
+        ];
 
 void checkUnnamed8255(
     core.List<api.GoogleAnalyticsAdminV1alphaCreateUserLinkRequest> o) {
@@ -386,12 +377,10 @@ void checkGoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest(
   buildCounterGoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed8256() {
-  final o = <api.GoogleAnalyticsAdminV1alphaUserLink>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaUserLink());
-  o.add(buildGoogleAnalyticsAdminV1alphaUserLink());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed8256() => [
+      buildGoogleAnalyticsAdminV1alphaUserLink(),
+      buildGoogleAnalyticsAdminV1alphaUserLink(),
+    ];
 
 void checkUnnamed8256(core.List<api.GoogleAnalyticsAdminV1alphaUserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -422,12 +411,10 @@ void checkGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest>
-    buildUnnamed8257() {
-  final o = <api.GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest());
-  o.add(buildGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest());
-  return o;
-}
+    buildUnnamed8257() => [
+          buildGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest(),
+          buildGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest(),
+        ];
 
 void checkUnnamed8257(
     core.List<api.GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest> o) {
@@ -457,12 +444,10 @@ void checkGoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest(
   buildCounterGoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed8258() {
-  final o = <api.GoogleAnalyticsAdminV1alphaUserLink>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaUserLink());
-  o.add(buildGoogleAnalyticsAdminV1alphaUserLink());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed8258() => [
+      buildGoogleAnalyticsAdminV1alphaUserLink(),
+      buildGoogleAnalyticsAdminV1alphaUserLink(),
+    ];
 
 void checkUnnamed8258(core.List<api.GoogleAnalyticsAdminV1alphaUserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -492,12 +477,10 @@ void checkGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest>
-    buildUnnamed8259() {
-  final o = <api.GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest());
-  o.add(buildGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest());
-  return o;
-}
+    buildUnnamed8259() => [
+          buildGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest(),
+          buildGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest(),
+        ];
 
 void checkUnnamed8259(
     core.List<api.GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest> o) {
@@ -527,12 +510,10 @@ void checkGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest(
   buildCounterGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed8260() {
-  final o = <api.GoogleAnalyticsAdminV1alphaUserLink>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaUserLink());
-  o.add(buildGoogleAnalyticsAdminV1alphaUserLink());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed8260() => [
+      buildGoogleAnalyticsAdminV1alphaUserLink(),
+      buildGoogleAnalyticsAdminV1alphaUserLink(),
+    ];
 
 void checkUnnamed8260(core.List<api.GoogleAnalyticsAdminV1alphaUserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -654,12 +635,10 @@ void checkGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryChange>
-    buildUnnamed8261() {
-  final o = <api.GoogleAnalyticsAdminV1alphaChangeHistoryChange>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaChangeHistoryChange());
-  o.add(buildGoogleAnalyticsAdminV1alphaChangeHistoryChange());
-  return o;
-}
+    buildUnnamed8261() => [
+          buildGoogleAnalyticsAdminV1alphaChangeHistoryChange(),
+          buildGoogleAnalyticsAdminV1alphaChangeHistoryChange(),
+        ];
 
 void checkUnnamed8261(
     core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryChange> o) {
@@ -1176,12 +1155,10 @@ void checkGoogleAnalyticsAdminV1alphaIosAppDataStream(
   buildCounterGoogleAnalyticsAdminV1alphaIosAppDataStream--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaAccountSummary> buildUnnamed8262() {
-  final o = <api.GoogleAnalyticsAdminV1alphaAccountSummary>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaAccountSummary());
-  o.add(buildGoogleAnalyticsAdminV1alphaAccountSummary());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaAccountSummary> buildUnnamed8262() => [
+      buildGoogleAnalyticsAdminV1alphaAccountSummary(),
+      buildGoogleAnalyticsAdminV1alphaAccountSummary(),
+    ];
 
 void checkUnnamed8262(
     core.List<api.GoogleAnalyticsAdminV1alphaAccountSummary> o) {
@@ -1217,12 +1194,10 @@ void checkGoogleAnalyticsAdminV1alphaListAccountSummariesResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListAccountSummariesResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaAccount> buildUnnamed8263() {
-  final o = <api.GoogleAnalyticsAdminV1alphaAccount>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaAccount());
-  o.add(buildGoogleAnalyticsAdminV1alphaAccount());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaAccount> buildUnnamed8263() => [
+      buildGoogleAnalyticsAdminV1alphaAccount(),
+      buildGoogleAnalyticsAdminV1alphaAccount(),
+    ];
 
 void checkUnnamed8263(core.List<api.GoogleAnalyticsAdminV1alphaAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1257,12 +1232,10 @@ void checkGoogleAnalyticsAdminV1alphaListAccountsResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream>
-    buildUnnamed8264() {
-  final o = <api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream());
-  o.add(buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream());
-  return o;
-}
+    buildUnnamed8264() => [
+          buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream(),
+          buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream(),
+        ];
 
 void checkUnnamed8264(
     core.List<api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream> o) {
@@ -1301,12 +1274,11 @@ void checkGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaConversionEvent> buildUnnamed8265() {
-  final o = <api.GoogleAnalyticsAdminV1alphaConversionEvent>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaConversionEvent());
-  o.add(buildGoogleAnalyticsAdminV1alphaConversionEvent());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaConversionEvent> buildUnnamed8265() =>
+    [
+      buildGoogleAnalyticsAdminV1alphaConversionEvent(),
+      buildGoogleAnalyticsAdminV1alphaConversionEvent(),
+    ];
 
 void checkUnnamed8265(
     core.List<api.GoogleAnalyticsAdminV1alphaConversionEvent> o) {
@@ -1342,12 +1314,11 @@ void checkGoogleAnalyticsAdminV1alphaListConversionEventsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListConversionEventsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaCustomDimension> buildUnnamed8266() {
-  final o = <api.GoogleAnalyticsAdminV1alphaCustomDimension>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaCustomDimension());
-  o.add(buildGoogleAnalyticsAdminV1alphaCustomDimension());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaCustomDimension> buildUnnamed8266() =>
+    [
+      buildGoogleAnalyticsAdminV1alphaCustomDimension(),
+      buildGoogleAnalyticsAdminV1alphaCustomDimension(),
+    ];
 
 void checkUnnamed8266(
     core.List<api.GoogleAnalyticsAdminV1alphaCustomDimension> o) {
@@ -1383,12 +1354,10 @@ void checkGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaCustomMetric> buildUnnamed8267() {
-  final o = <api.GoogleAnalyticsAdminV1alphaCustomMetric>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaCustomMetric());
-  o.add(buildGoogleAnalyticsAdminV1alphaCustomMetric());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaCustomMetric> buildUnnamed8267() => [
+      buildGoogleAnalyticsAdminV1alphaCustomMetric(),
+      buildGoogleAnalyticsAdminV1alphaCustomMetric(),
+    ];
 
 void checkUnnamed8267(
     core.List<api.GoogleAnalyticsAdminV1alphaCustomMetric> o) {
@@ -1423,12 +1392,10 @@ void checkGoogleAnalyticsAdminV1alphaListCustomMetricsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListCustomMetricsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> buildUnnamed8268() {
-  final o = <api.GoogleAnalyticsAdminV1alphaFirebaseLink>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaFirebaseLink());
-  o.add(buildGoogleAnalyticsAdminV1alphaFirebaseLink());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> buildUnnamed8268() => [
+      buildGoogleAnalyticsAdminV1alphaFirebaseLink(),
+      buildGoogleAnalyticsAdminV1alphaFirebaseLink(),
+    ];
 
 void checkUnnamed8268(
     core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> o) {
@@ -1463,12 +1430,10 @@ void checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> buildUnnamed8269() {
-  final o = <api.GoogleAnalyticsAdminV1alphaGoogleAdsLink>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaGoogleAdsLink());
-  o.add(buildGoogleAnalyticsAdminV1alphaGoogleAdsLink());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> buildUnnamed8269() => [
+      buildGoogleAnalyticsAdminV1alphaGoogleAdsLink(),
+      buildGoogleAnalyticsAdminV1alphaGoogleAdsLink(),
+    ];
 
 void checkUnnamed8269(
     core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> o) {
@@ -1503,12 +1468,11 @@ void checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> buildUnnamed8270() {
-  final o = <api.GoogleAnalyticsAdminV1alphaIosAppDataStream>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaIosAppDataStream());
-  o.add(buildGoogleAnalyticsAdminV1alphaIosAppDataStream());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> buildUnnamed8270() =>
+    [
+      buildGoogleAnalyticsAdminV1alphaIosAppDataStream(),
+      buildGoogleAnalyticsAdminV1alphaIosAppDataStream(),
+    ];
 
 void checkUnnamed8270(
     core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> o) {
@@ -1547,12 +1511,10 @@ void checkGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>
-    buildUnnamed8271() {
-  final o = <api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret());
-  o.add(buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret());
-  return o;
-}
+    buildUnnamed8271() => [
+          buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(),
+          buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(),
+        ];
 
 void checkUnnamed8271(
     core.List<api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> o) {
@@ -1592,12 +1554,10 @@ void checkGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaProperty> buildUnnamed8272() {
-  final o = <api.GoogleAnalyticsAdminV1alphaProperty>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaProperty());
-  o.add(buildGoogleAnalyticsAdminV1alphaProperty());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaProperty> buildUnnamed8272() => [
+      buildGoogleAnalyticsAdminV1alphaProperty(),
+      buildGoogleAnalyticsAdminV1alphaProperty(),
+    ];
 
 void checkUnnamed8272(core.List<api.GoogleAnalyticsAdminV1alphaProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1631,12 +1591,10 @@ void checkGoogleAnalyticsAdminV1alphaListPropertiesResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed8273() {
-  final o = <api.GoogleAnalyticsAdminV1alphaUserLink>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaUserLink());
-  o.add(buildGoogleAnalyticsAdminV1alphaUserLink());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed8273() => [
+      buildGoogleAnalyticsAdminV1alphaUserLink(),
+      buildGoogleAnalyticsAdminV1alphaUserLink(),
+    ];
 
 void checkUnnamed8273(core.List<api.GoogleAnalyticsAdminV1alphaUserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1670,12 +1628,10 @@ void checkGoogleAnalyticsAdminV1alphaListUserLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> buildUnnamed8274() {
-  final o = <api.GoogleAnalyticsAdminV1alphaWebDataStream>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaWebDataStream());
-  o.add(buildGoogleAnalyticsAdminV1alphaWebDataStream());
-  return o;
-}
+core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> buildUnnamed8274() => [
+      buildGoogleAnalyticsAdminV1alphaWebDataStream(),
+      buildGoogleAnalyticsAdminV1alphaWebDataStream(),
+    ];
 
 void checkUnnamed8274(
     core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> o) {
@@ -1898,12 +1854,10 @@ void checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse(
   buildCounterGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse--;
 }
 
-core.List<core.String> buildUnnamed8275() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8275() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8275(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1917,12 +1871,10 @@ void checkUnnamed8275(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8276() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8276() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8276(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1936,12 +1888,10 @@ void checkUnnamed8276(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8277() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8277() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8277(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2009,12 +1959,10 @@ void checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent>
-    buildUnnamed8278() {
-  final o = <api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent>[];
-  o.add(buildGoogleAnalyticsAdminV1alphaChangeHistoryEvent());
-  o.add(buildGoogleAnalyticsAdminV1alphaChangeHistoryEvent());
-  return o;
-}
+    buildUnnamed8278() => [
+          buildGoogleAnalyticsAdminV1alphaChangeHistoryEvent(),
+          buildGoogleAnalyticsAdminV1alphaChangeHistoryEvent(),
+        ];
 
 void checkUnnamed8278(
     core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent> o) {
@@ -2074,12 +2022,10 @@ void checkGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest(
   buildCounterGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest--;
 }
 
-core.List<core.String> buildUnnamed8279() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8279() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8279(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2193,12 +2139,10 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<core.String> buildUnnamed8280() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8280() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8280(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2212,12 +2156,10 @@ void checkUnnamed8280(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8281() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8281() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8281(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

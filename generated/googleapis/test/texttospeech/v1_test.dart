@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed5883() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5883() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5883(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -89,12 +87,10 @@ void checkAudioConfig(api.AudioConfig o) {
   buildCounterAudioConfig--;
 }
 
-core.List<api.Voice> buildUnnamed5884() {
-  final o = <api.Voice>[];
-  o.add(buildVoice());
-  o.add(buildVoice());
-  return o;
-}
+core.List<api.Voice> buildUnnamed5884() => [
+      buildVoice(),
+      buildVoice(),
+    ];
 
 void checkUnnamed5884(core.List<api.Voice> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -193,12 +189,10 @@ void checkSynthesizeSpeechResponse(api.SynthesizeSpeechResponse o) {
   buildCounterSynthesizeSpeechResponse--;
 }
 
-core.List<core.String> buildUnnamed5885() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5885() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5885(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

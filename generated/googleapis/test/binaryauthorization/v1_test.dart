@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed4965() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4965() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4965(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -96,12 +94,10 @@ void checkAdmissionWhitelistPattern(api.AdmissionWhitelistPattern o) {
   buildCounterAdmissionWhitelistPattern--;
 }
 
-core.List<api.Jwt> buildUnnamed4966() {
-  final o = <api.Jwt>[];
-  o.add(buildJwt());
-  o.add(buildJwt());
-  return o;
-}
+core.List<api.Jwt> buildUnnamed4966() => [
+      buildJwt(),
+      buildJwt(),
+    ];
 
 void checkUnnamed4966(core.List<api.Jwt> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -109,12 +105,10 @@ void checkUnnamed4966(core.List<api.Jwt> o) {
   checkJwt(o[1]);
 }
 
-core.List<api.Signature> buildUnnamed4967() {
-  final o = <api.Signature>[];
-  o.add(buildSignature());
-  o.add(buildSignature());
-  return o;
-}
+core.List<api.Signature> buildUnnamed4967() => [
+      buildSignature(),
+      buildSignature(),
+    ];
 
 void checkUnnamed4967(core.List<api.Signature> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -216,12 +210,10 @@ void checkAttestorPublicKey(api.AttestorPublicKey o) {
   buildCounterAttestorPublicKey--;
 }
 
-core.List<core.String> buildUnnamed4968() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4968() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4968(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -313,12 +305,10 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<api.Binding> buildUnnamed4969() {
-  final o = <api.Binding>[];
-  o.add(buildBinding());
-  o.add(buildBinding());
-  return o;
-}
+core.List<api.Binding> buildUnnamed4969() => [
+      buildBinding(),
+      buildBinding(),
+    ];
 
 void checkUnnamed4969(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -377,12 +367,10 @@ void checkJwt(api.Jwt o) {
   buildCounterJwt--;
 }
 
-core.List<api.Attestor> buildUnnamed4970() {
-  final o = <api.Attestor>[];
-  o.add(buildAttestor());
-  o.add(buildAttestor());
-  return o;
-}
+core.List<api.Attestor> buildUnnamed4970() => [
+      buildAttestor(),
+      buildAttestor(),
+    ];
 
 void checkUnnamed4970(core.List<api.Attestor> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -441,12 +429,10 @@ void checkPkixPublicKey(api.PkixPublicKey o) {
   buildCounterPkixPublicKey--;
 }
 
-core.List<api.AdmissionWhitelistPattern> buildUnnamed4971() {
-  final o = <api.AdmissionWhitelistPattern>[];
-  o.add(buildAdmissionWhitelistPattern());
-  o.add(buildAdmissionWhitelistPattern());
-  return o;
-}
+core.List<api.AdmissionWhitelistPattern> buildUnnamed4971() => [
+      buildAdmissionWhitelistPattern(),
+      buildAdmissionWhitelistPattern(),
+    ];
 
 void checkUnnamed4971(core.List<api.AdmissionWhitelistPattern> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -454,12 +440,10 @@ void checkUnnamed4971(core.List<api.AdmissionWhitelistPattern> o) {
   checkAdmissionWhitelistPattern(o[1]);
 }
 
-core.Map<core.String, api.AdmissionRule> buildUnnamed4972() {
-  final o = <core.String, api.AdmissionRule>{};
-  o['x'] = buildAdmissionRule();
-  o['y'] = buildAdmissionRule();
-  return o;
-}
+core.Map<core.String, api.AdmissionRule> buildUnnamed4972() => {
+      'x': buildAdmissionRule(),
+      'y': buildAdmissionRule(),
+    };
 
 void checkUnnamed4972(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -467,12 +451,10 @@ void checkUnnamed4972(core.Map<core.String, api.AdmissionRule> o) {
   checkAdmissionRule(o['y']!);
 }
 
-core.Map<core.String, api.AdmissionRule> buildUnnamed4973() {
-  final o = <core.String, api.AdmissionRule>{};
-  o['x'] = buildAdmissionRule();
-  o['y'] = buildAdmissionRule();
-  return o;
-}
+core.Map<core.String, api.AdmissionRule> buildUnnamed4973() => {
+      'x': buildAdmissionRule(),
+      'y': buildAdmissionRule(),
+    };
 
 void checkUnnamed4973(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -480,12 +462,10 @@ void checkUnnamed4973(core.Map<core.String, api.AdmissionRule> o) {
   checkAdmissionRule(o['y']!);
 }
 
-core.Map<core.String, api.AdmissionRule> buildUnnamed4974() {
-  final o = <core.String, api.AdmissionRule>{};
-  o['x'] = buildAdmissionRule();
-  o['y'] = buildAdmissionRule();
-  return o;
-}
+core.Map<core.String, api.AdmissionRule> buildUnnamed4974() => {
+      'x': buildAdmissionRule(),
+      'y': buildAdmissionRule(),
+    };
 
 void checkUnnamed4974(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -493,12 +473,10 @@ void checkUnnamed4974(core.Map<core.String, api.AdmissionRule> o) {
   checkAdmissionRule(o['y']!);
 }
 
-core.Map<core.String, api.AdmissionRule> buildUnnamed4975() {
-  final o = <core.String, api.AdmissionRule>{};
-  o['x'] = buildAdmissionRule();
-  o['y'] = buildAdmissionRule();
-  return o;
-}
+core.Map<core.String, api.AdmissionRule> buildUnnamed4975() => {
+      'x': buildAdmissionRule(),
+      'y': buildAdmissionRule(),
+    };
 
 void checkUnnamed4975(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -601,12 +579,10 @@ void checkSignature(api.Signature o) {
   buildCounterSignature--;
 }
 
-core.List<core.String> buildUnnamed4976() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4976() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4976(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -639,12 +615,10 @@ void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed4977() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4977() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4977(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -677,12 +651,10 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.List<api.AttestorPublicKey> buildUnnamed4978() {
-  final o = <api.AttestorPublicKey>[];
-  o.add(buildAttestorPublicKey());
-  o.add(buildAttestorPublicKey());
-  return o;
-}
+core.List<api.AttestorPublicKey> buildUnnamed4978() => [
+      buildAttestorPublicKey(),
+      buildAttestorPublicKey(),
+    ];
 
 void checkUnnamed4978(core.List<api.AttestorPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));

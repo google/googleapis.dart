@@ -26,12 +26,10 @@ import 'package:test_package/toyapi/0_1.dart' as api;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed0() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed0() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -58,12 +56,10 @@ void checkListOfListOfString(api.ListOfListOfString o) {
   checkUnnamed0(o[1]);
 }
 
-core.List<api.ToyRequest> buildUnnamed1() {
-  final o = <api.ToyRequest>[];
-  o.add(buildToyRequest());
-  o.add(buildToyRequest());
-  return o;
-}
+core.List<api.ToyRequest> buildUnnamed1() => [
+      buildToyRequest(),
+      buildToyRequest(),
+    ];
 
 void checkUnnamed1(core.List<api.ToyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -84,12 +80,10 @@ void checkListOfListOfToyRequest(api.ListOfListOfToyRequest o) {
   checkUnnamed1(o[1]);
 }
 
-core.List<core.int> buildUnnamed2() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed2() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed2(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -116,12 +110,10 @@ void checkListOfListOfint(api.ListOfListOfint o) {
   checkUnnamed2(o[1]);
 }
 
-core.List<core.String> buildUnnamed3() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -135,12 +127,10 @@ void checkUnnamed3(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.List<core.String>> buildUnnamed4() {
-  final o = <core.String, core.List<core.String>>{};
-  o['x'] = buildUnnamed3();
-  o['y'] = buildUnnamed3();
-  return o;
-}
+core.Map<core.String, core.List<core.String>> buildUnnamed4() => {
+      'x': buildUnnamed3(),
+      'y': buildUnnamed3(),
+    };
 
 void checkUnnamed4(core.Map<core.String, core.List<core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -161,12 +151,10 @@ void checkListOfMapOfListOfString(api.ListOfMapOfListOfString o) {
   checkUnnamed4(o[1]);
 }
 
-core.List<core.int> buildUnnamed5() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed5() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed5(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -180,12 +168,10 @@ void checkUnnamed5(core.List<core.int> o) {
   );
 }
 
-core.Map<core.String, core.List<core.int>> buildUnnamed6() {
-  final o = <core.String, core.List<core.int>>{};
-  o['x'] = buildUnnamed5();
-  o['y'] = buildUnnamed5();
-  return o;
-}
+core.Map<core.String, core.List<core.int>> buildUnnamed6() => {
+      'x': buildUnnamed5(),
+      'y': buildUnnamed5(),
+    };
 
 void checkUnnamed6(core.Map<core.String, core.List<core.int>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -238,12 +224,10 @@ void checkListOfToyRequest(api.ListOfToyRequest o) {
   checkToyRequest(o[1]);
 }
 
-core.Map<core.String, core.bool> buildUnnamed7() {
-  final o = <core.String, core.bool>{};
-  o['x'] = true;
-  o['y'] = true;
-  return o;
-}
+core.Map<core.String, core.bool> buildUnnamed7() => {
+      'x': true,
+      'y': true,
+    };
 
 void checkUnnamed7(core.Map<core.String, core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -251,12 +235,10 @@ void checkUnnamed7(core.Map<core.String, core.bool> o) {
   unittest.expect(o['y']!, unittest.isTrue);
 }
 
-core.List<core.Map<core.String, core.bool>> buildUnnamed8() {
-  final o = <core.Map<core.String, core.bool>>[];
-  o.add(buildUnnamed7());
-  o.add(buildUnnamed7());
-  return o;
-}
+core.List<core.Map<core.String, core.bool>> buildUnnamed8() => [
+      buildUnnamed7(),
+      buildUnnamed7(),
+    ];
 
 void checkUnnamed8(core.List<core.Map<core.String, core.bool>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -277,12 +259,10 @@ void checkMapOfListOfMapOfbool(api.MapOfListOfMapOfbool o) {
   checkUnnamed8(o['b']!);
 }
 
-core.Map<core.String, core.int> buildUnnamed9() {
-  final o = <core.String, core.int>{};
-  o['x'] = 42;
-  o['y'] = 42;
-  return o;
-}
+core.Map<core.String, core.int> buildUnnamed9() => {
+      'x': 42,
+      'y': 42,
+    };
 
 void checkUnnamed9(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -296,12 +276,10 @@ void checkUnnamed9(core.Map<core.String, core.int> o) {
   );
 }
 
-core.List<core.Map<core.String, core.int>> buildUnnamed10() {
-  final o = <core.Map<core.String, core.int>>[];
-  o.add(buildUnnamed9());
-  o.add(buildUnnamed9());
-  return o;
-}
+core.List<core.Map<core.String, core.int>> buildUnnamed10() => [
+      buildUnnamed9(),
+      buildUnnamed9(),
+    ];
 
 void checkUnnamed10(core.List<core.Map<core.String, core.int>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -322,12 +300,10 @@ void checkMapOfListOfMapOfint(api.MapOfListOfMapOfint o) {
   checkUnnamed10(o['b']!);
 }
 
-core.Map<core.String, core.bool> buildUnnamed11() {
-  final o = <core.String, core.bool>{};
-  o['x'] = true;
-  o['y'] = true;
-  return o;
-}
+core.Map<core.String, core.bool> buildUnnamed11() => {
+      'x': true,
+      'y': true,
+    };
 
 void checkUnnamed11(core.Map<core.String, core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -348,12 +324,10 @@ void checkMapOfMapOfbool(api.MapOfMapOfbool o) {
   checkUnnamed11(o['b']!);
 }
 
-core.Map<core.String, core.int> buildUnnamed12() {
-  final o = <core.String, core.int>{};
-  o['x'] = 42;
-  o['y'] = 42;
-  return o;
-}
+core.Map<core.String, core.int> buildUnnamed12() => {
+      'x': 42,
+      'y': 42,
+    };
 
 void checkUnnamed12(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -456,12 +430,10 @@ void checkToyAgeRequest(api.ToyAgeRequest o) {
   buildCounterToyAgeRequest--;
 }
 
-core.Map<core.String, api.NestedResponse> buildUnnamed13() {
-  final o = <core.String, api.NestedResponse>{};
-  o['x'] = buildNestedResponse();
-  o['y'] = buildNestedResponse();
-  return o;
-}
+core.Map<core.String, api.NestedResponse> buildUnnamed13() => {
+      'x': buildNestedResponse(),
+      'y': buildNestedResponse(),
+    };
 
 void checkUnnamed13(core.Map<core.String, api.NestedResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -469,12 +441,10 @@ void checkUnnamed13(core.Map<core.String, api.NestedResponse> o) {
   checkNestedResponse(o['y']!);
 }
 
-core.Map<core.String, core.String?> buildUnnamed14() {
-  final o = <core.String, core.String?>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String?> buildUnnamed14() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed14(core.Map<core.String, core.String?> o) {
   unittest.expect(o, unittest.hasLength(2));

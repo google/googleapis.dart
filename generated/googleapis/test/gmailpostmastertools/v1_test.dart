@@ -117,12 +117,10 @@ void checkFeedbackLoop(api.FeedbackLoop o) {
   buildCounterFeedbackLoop--;
 }
 
-core.List<core.String> buildUnnamed6136() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6136() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6136(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -165,12 +163,10 @@ void checkIpReputation(api.IpReputation o) {
   buildCounterIpReputation--;
 }
 
-core.List<api.Domain> buildUnnamed6137() {
-  final o = <api.Domain>[];
-  o.add(buildDomain());
-  o.add(buildDomain());
-  return o;
-}
+core.List<api.Domain> buildUnnamed6137() => [
+      buildDomain(),
+      buildDomain(),
+    ];
 
 void checkUnnamed6137(core.List<api.Domain> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -202,12 +198,10 @@ void checkListDomainsResponse(api.ListDomainsResponse o) {
   buildCounterListDomainsResponse--;
 }
 
-core.List<api.TrafficStats> buildUnnamed6138() {
-  final o = <api.TrafficStats>[];
-  o.add(buildTrafficStats());
-  o.add(buildTrafficStats());
-  return o;
-}
+core.List<api.TrafficStats> buildUnnamed6138() => [
+      buildTrafficStats(),
+      buildTrafficStats(),
+    ];
 
 void checkUnnamed6138(core.List<api.TrafficStats> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -239,12 +233,10 @@ void checkListTrafficStatsResponse(api.ListTrafficStatsResponse o) {
   buildCounterListTrafficStatsResponse--;
 }
 
-core.List<api.DeliveryError> buildUnnamed6139() {
-  final o = <api.DeliveryError>[];
-  o.add(buildDeliveryError());
-  o.add(buildDeliveryError());
-  return o;
-}
+core.List<api.DeliveryError> buildUnnamed6139() => [
+      buildDeliveryError(),
+      buildDeliveryError(),
+    ];
 
 void checkUnnamed6139(core.List<api.DeliveryError> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -252,12 +244,10 @@ void checkUnnamed6139(core.List<api.DeliveryError> o) {
   checkDeliveryError(o[1]);
 }
 
-core.List<api.IpReputation> buildUnnamed6140() {
-  final o = <api.IpReputation>[];
-  o.add(buildIpReputation());
-  o.add(buildIpReputation());
-  return o;
-}
+core.List<api.IpReputation> buildUnnamed6140() => [
+      buildIpReputation(),
+      buildIpReputation(),
+    ];
 
 void checkUnnamed6140(core.List<api.IpReputation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -265,12 +255,10 @@ void checkUnnamed6140(core.List<api.IpReputation> o) {
   checkIpReputation(o[1]);
 }
 
-core.List<api.FeedbackLoop> buildUnnamed6141() {
-  final o = <api.FeedbackLoop>[];
-  o.add(buildFeedbackLoop());
-  o.add(buildFeedbackLoop());
-  return o;
-}
+core.List<api.FeedbackLoop> buildUnnamed6141() => [
+      buildFeedbackLoop(),
+      buildFeedbackLoop(),
+    ];
 
 void checkUnnamed6141(core.List<api.FeedbackLoop> o) {
   unittest.expect(o, unittest.hasLength(2));

@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleHomeEnterpriseSdmV1ParentRelation> buildUnnamed7272() {
-  final o = <api.GoogleHomeEnterpriseSdmV1ParentRelation>[];
-  o.add(buildGoogleHomeEnterpriseSdmV1ParentRelation());
-  o.add(buildGoogleHomeEnterpriseSdmV1ParentRelation());
-  return o;
-}
+core.List<api.GoogleHomeEnterpriseSdmV1ParentRelation> buildUnnamed7272() => [
+      buildGoogleHomeEnterpriseSdmV1ParentRelation(),
+      buildGoogleHomeEnterpriseSdmV1ParentRelation(),
+    ];
 
 void checkUnnamed7272(
     core.List<api.GoogleHomeEnterpriseSdmV1ParentRelation> o) {
@@ -40,20 +38,18 @@ void checkUnnamed7272(
   checkGoogleHomeEnterpriseSdmV1ParentRelation(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed7273() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7273() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7273(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -119,20 +115,18 @@ void checkGoogleHomeEnterpriseSdmV1Device(
   buildCounterGoogleHomeEnterpriseSdmV1Device--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7274() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7274() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7274(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -192,20 +186,18 @@ void checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest(
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7275() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7275() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7275(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -260,12 +252,10 @@ void checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse(
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse--;
 }
 
-core.List<api.GoogleHomeEnterpriseSdmV1Device> buildUnnamed7276() {
-  final o = <api.GoogleHomeEnterpriseSdmV1Device>[];
-  o.add(buildGoogleHomeEnterpriseSdmV1Device());
-  o.add(buildGoogleHomeEnterpriseSdmV1Device());
-  return o;
-}
+core.List<api.GoogleHomeEnterpriseSdmV1Device> buildUnnamed7276() => [
+      buildGoogleHomeEnterpriseSdmV1Device(),
+      buildGoogleHomeEnterpriseSdmV1Device(),
+    ];
 
 void checkUnnamed7276(core.List<api.GoogleHomeEnterpriseSdmV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -299,12 +289,10 @@ void checkGoogleHomeEnterpriseSdmV1ListDevicesResponse(
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse--;
 }
 
-core.List<api.GoogleHomeEnterpriseSdmV1Room> buildUnnamed7277() {
-  final o = <api.GoogleHomeEnterpriseSdmV1Room>[];
-  o.add(buildGoogleHomeEnterpriseSdmV1Room());
-  o.add(buildGoogleHomeEnterpriseSdmV1Room());
-  return o;
-}
+core.List<api.GoogleHomeEnterpriseSdmV1Room> buildUnnamed7277() => [
+      buildGoogleHomeEnterpriseSdmV1Room(),
+      buildGoogleHomeEnterpriseSdmV1Room(),
+    ];
 
 void checkUnnamed7277(core.List<api.GoogleHomeEnterpriseSdmV1Room> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -338,12 +326,10 @@ void checkGoogleHomeEnterpriseSdmV1ListRoomsResponse(
   buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse--;
 }
 
-core.List<api.GoogleHomeEnterpriseSdmV1Structure> buildUnnamed7278() {
-  final o = <api.GoogleHomeEnterpriseSdmV1Structure>[];
-  o.add(buildGoogleHomeEnterpriseSdmV1Structure());
-  o.add(buildGoogleHomeEnterpriseSdmV1Structure());
-  return o;
-}
+core.List<api.GoogleHomeEnterpriseSdmV1Structure> buildUnnamed7278() => [
+      buildGoogleHomeEnterpriseSdmV1Structure(),
+      buildGoogleHomeEnterpriseSdmV1Structure(),
+    ];
 
 void checkUnnamed7278(core.List<api.GoogleHomeEnterpriseSdmV1Structure> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -406,20 +392,18 @@ void checkGoogleHomeEnterpriseSdmV1ParentRelation(
   buildCounterGoogleHomeEnterpriseSdmV1ParentRelation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7279() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7279() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7279(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -477,20 +461,18 @@ void checkGoogleHomeEnterpriseSdmV1Room(api.GoogleHomeEnterpriseSdmV1Room o) {
   buildCounterGoogleHomeEnterpriseSdmV1Room--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7280() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7280() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7280(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));

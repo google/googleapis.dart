@@ -27,12 +27,10 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.GoogleCloudVideointelligenceV1VideoAnnotationProgress>
-    buildUnnamed358() {
-  final o = <api.GoogleCloudVideointelligenceV1VideoAnnotationProgress>[];
-  o.add(buildGoogleCloudVideointelligenceV1VideoAnnotationProgress());
-  o.add(buildGoogleCloudVideointelligenceV1VideoAnnotationProgress());
-  return o;
-}
+    buildUnnamed358() => [
+          buildGoogleCloudVideointelligenceV1VideoAnnotationProgress(),
+          buildGoogleCloudVideointelligenceV1VideoAnnotationProgress(),
+        ];
 
 void checkUnnamed358(
     core.List<api.GoogleCloudVideointelligenceV1VideoAnnotationProgress> o) {
@@ -62,12 +60,10 @@ void checkGoogleCloudVideointelligenceV1AnnotateVideoProgress(
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoProgress--;
 }
 
-core.List<core.String> buildUnnamed359() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed359() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed359(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -125,12 +121,10 @@ void checkGoogleCloudVideointelligenceV1AnnotateVideoRequest(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1VideoAnnotationResults>
-    buildUnnamed360() {
-  final o = <api.GoogleCloudVideointelligenceV1VideoAnnotationResults>[];
-  o.add(buildGoogleCloudVideointelligenceV1VideoAnnotationResults());
-  o.add(buildGoogleCloudVideointelligenceV1VideoAnnotationResults());
-  return o;
-}
+    buildUnnamed360() => [
+          buildGoogleCloudVideointelligenceV1VideoAnnotationResults(),
+          buildGoogleCloudVideointelligenceV1VideoAnnotationResults(),
+        ];
 
 void checkUnnamed360(
     core.List<api.GoogleCloudVideointelligenceV1VideoAnnotationResults> o) {
@@ -260,12 +254,10 @@ void checkGoogleCloudVideointelligenceV1Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1ExplicitContentFrame>
-    buildUnnamed361() {
-  final o = <api.GoogleCloudVideointelligenceV1ExplicitContentFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1ExplicitContentFrame());
-  o.add(buildGoogleCloudVideointelligenceV1ExplicitContentFrame());
-  return o;
-}
+    buildUnnamed361() => [
+          buildGoogleCloudVideointelligenceV1ExplicitContentFrame(),
+          buildGoogleCloudVideointelligenceV1ExplicitContentFrame(),
+        ];
 
 void checkUnnamed361(
     core.List<api.GoogleCloudVideointelligenceV1ExplicitContentFrame> o) {
@@ -358,12 +350,10 @@ void checkGoogleCloudVideointelligenceV1ExplicitContentFrame(
   buildCounterGoogleCloudVideointelligenceV1ExplicitContentFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1FaceFrame> buildUnnamed362() {
-  final o = <api.GoogleCloudVideointelligenceV1FaceFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1FaceFrame());
-  o.add(buildGoogleCloudVideointelligenceV1FaceFrame());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1FaceFrame> buildUnnamed362() => [
+      buildGoogleCloudVideointelligenceV1FaceFrame(),
+      buildGoogleCloudVideointelligenceV1FaceFrame(),
+    ];
 
 void checkUnnamed362(core.List<api.GoogleCloudVideointelligenceV1FaceFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -371,12 +361,10 @@ void checkUnnamed362(core.List<api.GoogleCloudVideointelligenceV1FaceFrame> o) {
   checkGoogleCloudVideointelligenceV1FaceFrame(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1FaceSegment> buildUnnamed363() {
-  final o = <api.GoogleCloudVideointelligenceV1FaceSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1FaceSegment());
-  o.add(buildGoogleCloudVideointelligenceV1FaceSegment());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1FaceSegment> buildUnnamed363() => [
+      buildGoogleCloudVideointelligenceV1FaceSegment(),
+      buildGoogleCloudVideointelligenceV1FaceSegment(),
+    ];
 
 void checkUnnamed363(
     core.List<api.GoogleCloudVideointelligenceV1FaceSegment> o) {
@@ -413,12 +401,10 @@ void checkGoogleCloudVideointelligenceV1FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed364() {
-  final o = <api.GoogleCloudVideointelligenceV1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1Track());
-  o.add(buildGoogleCloudVideointelligenceV1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed364() => [
+      buildGoogleCloudVideointelligenceV1Track(),
+      buildGoogleCloudVideointelligenceV1Track(),
+    ];
 
 void checkUnnamed364(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -486,12 +472,10 @@ void checkGoogleCloudVideointelligenceV1FaceDetectionConfig(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1NormalizedBoundingBox>
-    buildUnnamed365() {
-  final o = <api.GoogleCloudVideointelligenceV1NormalizedBoundingBox>[];
-  o.add(buildGoogleCloudVideointelligenceV1NormalizedBoundingBox());
-  o.add(buildGoogleCloudVideointelligenceV1NormalizedBoundingBox());
-  return o;
-}
+    buildUnnamed365() => [
+          buildGoogleCloudVideointelligenceV1NormalizedBoundingBox(),
+          buildGoogleCloudVideointelligenceV1NormalizedBoundingBox(),
+        ];
 
 void checkUnnamed365(
     core.List<api.GoogleCloudVideointelligenceV1NormalizedBoundingBox> o) {
@@ -547,12 +531,10 @@ void checkGoogleCloudVideointelligenceV1FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1Entity> buildUnnamed366() {
-  final o = <api.GoogleCloudVideointelligenceV1Entity>[];
-  o.add(buildGoogleCloudVideointelligenceV1Entity());
-  o.add(buildGoogleCloudVideointelligenceV1Entity());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1Entity> buildUnnamed366() => [
+      buildGoogleCloudVideointelligenceV1Entity(),
+      buildGoogleCloudVideointelligenceV1Entity(),
+    ];
 
 void checkUnnamed366(core.List<api.GoogleCloudVideointelligenceV1Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -560,12 +542,10 @@ void checkUnnamed366(core.List<api.GoogleCloudVideointelligenceV1Entity> o) {
   checkGoogleCloudVideointelligenceV1Entity(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelFrame> buildUnnamed367() {
-  final o = <api.GoogleCloudVideointelligenceV1LabelFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1LabelFrame());
-  o.add(buildGoogleCloudVideointelligenceV1LabelFrame());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1LabelFrame> buildUnnamed367() => [
+      buildGoogleCloudVideointelligenceV1LabelFrame(),
+      buildGoogleCloudVideointelligenceV1LabelFrame(),
+    ];
 
 void checkUnnamed367(
     core.List<api.GoogleCloudVideointelligenceV1LabelFrame> o) {
@@ -574,12 +554,10 @@ void checkUnnamed367(
   checkGoogleCloudVideointelligenceV1LabelFrame(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelSegment> buildUnnamed368() {
-  final o = <api.GoogleCloudVideointelligenceV1LabelSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1LabelSegment());
-  o.add(buildGoogleCloudVideointelligenceV1LabelSegment());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1LabelSegment> buildUnnamed368() => [
+      buildGoogleCloudVideointelligenceV1LabelSegment(),
+      buildGoogleCloudVideointelligenceV1LabelSegment(),
+    ];
 
 void checkUnnamed368(
     core.List<api.GoogleCloudVideointelligenceV1LabelSegment> o) {
@@ -716,12 +694,10 @@ void checkGoogleCloudVideointelligenceV1LabelSegment(
   buildCounterGoogleCloudVideointelligenceV1LabelSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed369() {
-  final o = <api.GoogleCloudVideointelligenceV1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1VideoSegment());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed369() => [
+      buildGoogleCloudVideointelligenceV1VideoSegment(),
+      buildGoogleCloudVideointelligenceV1VideoSegment(),
+    ];
 
 void checkUnnamed369(
     core.List<api.GoogleCloudVideointelligenceV1VideoSegment> o) {
@@ -730,12 +706,10 @@ void checkUnnamed369(
   checkGoogleCloudVideointelligenceV1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed370() {
-  final o = <api.GoogleCloudVideointelligenceV1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1Track());
-  o.add(buildGoogleCloudVideointelligenceV1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed370() => [
+      buildGoogleCloudVideointelligenceV1Track(),
+      buildGoogleCloudVideointelligenceV1Track(),
+    ];
 
 void checkUnnamed370(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -809,12 +783,10 @@ void checkGoogleCloudVideointelligenceV1NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1NormalizedVertex>
-    buildUnnamed371() {
-  final o = <api.GoogleCloudVideointelligenceV1NormalizedVertex>[];
-  o.add(buildGoogleCloudVideointelligenceV1NormalizedVertex());
-  o.add(buildGoogleCloudVideointelligenceV1NormalizedVertex());
-  return o;
-}
+    buildUnnamed371() => [
+          buildGoogleCloudVideointelligenceV1NormalizedVertex(),
+          buildGoogleCloudVideointelligenceV1NormalizedVertex(),
+        ];
 
 void checkUnnamed371(
     core.List<api.GoogleCloudVideointelligenceV1NormalizedVertex> o) {
@@ -874,12 +846,10 @@ void checkGoogleCloudVideointelligenceV1NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1ObjectTrackingFrame>
-    buildUnnamed372() {
-  final o = <api.GoogleCloudVideointelligenceV1ObjectTrackingFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1ObjectTrackingFrame());
-  o.add(buildGoogleCloudVideointelligenceV1ObjectTrackingFrame());
-  return o;
-}
+    buildUnnamed372() => [
+          buildGoogleCloudVideointelligenceV1ObjectTrackingFrame(),
+          buildGoogleCloudVideointelligenceV1ObjectTrackingFrame(),
+        ];
 
 void checkUnnamed372(
     core.List<api.GoogleCloudVideointelligenceV1ObjectTrackingFrame> o) {
@@ -980,12 +950,10 @@ void checkGoogleCloudVideointelligenceV1ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed373() {
-  final o = <api.GoogleCloudVideointelligenceV1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1Track());
-  o.add(buildGoogleCloudVideointelligenceV1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed373() => [
+      buildGoogleCloudVideointelligenceV1Track(),
+      buildGoogleCloudVideointelligenceV1Track(),
+    ];
 
 void checkUnnamed373(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1070,12 +1038,10 @@ void checkGoogleCloudVideointelligenceV1ShotChangeDetectionConfig(
   buildCounterGoogleCloudVideointelligenceV1ShotChangeDetectionConfig--;
 }
 
-core.List<core.String> buildUnnamed374() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed374() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed374(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1110,12 +1076,10 @@ void checkGoogleCloudVideointelligenceV1SpeechContext(
   buildCounterGoogleCloudVideointelligenceV1SpeechContext--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1WordInfo> buildUnnamed375() {
-  final o = <api.GoogleCloudVideointelligenceV1WordInfo>[];
-  o.add(buildGoogleCloudVideointelligenceV1WordInfo());
-  o.add(buildGoogleCloudVideointelligenceV1WordInfo());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1WordInfo> buildUnnamed375() => [
+      buildGoogleCloudVideointelligenceV1WordInfo(),
+      buildGoogleCloudVideointelligenceV1WordInfo(),
+    ];
 
 void checkUnnamed375(core.List<api.GoogleCloudVideointelligenceV1WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1158,12 +1122,10 @@ void checkGoogleCloudVideointelligenceV1SpeechRecognitionAlternative(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>
-    buildUnnamed376() {
-  final o = <api.GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>[];
-  o.add(buildGoogleCloudVideointelligenceV1SpeechRecognitionAlternative());
-  o.add(buildGoogleCloudVideointelligenceV1SpeechRecognitionAlternative());
-  return o;
-}
+    buildUnnamed376() => [
+          buildGoogleCloudVideointelligenceV1SpeechRecognitionAlternative(),
+          buildGoogleCloudVideointelligenceV1SpeechRecognitionAlternative(),
+        ];
 
 void checkUnnamed376(
     core.List<api.GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>
@@ -1199,12 +1161,10 @@ void checkGoogleCloudVideointelligenceV1SpeechTranscription(
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscription--;
 }
 
-core.List<core.int> buildUnnamed377() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed377() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed377(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1218,12 +1178,11 @@ void checkUnnamed377(core.List<core.int> o) {
   );
 }
 
-core.List<api.GoogleCloudVideointelligenceV1SpeechContext> buildUnnamed378() {
-  final o = <api.GoogleCloudVideointelligenceV1SpeechContext>[];
-  o.add(buildGoogleCloudVideointelligenceV1SpeechContext());
-  o.add(buildGoogleCloudVideointelligenceV1SpeechContext());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1SpeechContext> buildUnnamed378() =>
+    [
+      buildGoogleCloudVideointelligenceV1SpeechContext(),
+      buildGoogleCloudVideointelligenceV1SpeechContext(),
+    ];
 
 void checkUnnamed378(
     core.List<api.GoogleCloudVideointelligenceV1SpeechContext> o) {
@@ -1279,12 +1238,10 @@ void checkGoogleCloudVideointelligenceV1SpeechTranscriptionConfig(
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1TextSegment> buildUnnamed379() {
-  final o = <api.GoogleCloudVideointelligenceV1TextSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1TextSegment());
-  o.add(buildGoogleCloudVideointelligenceV1TextSegment());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1TextSegment> buildUnnamed379() => [
+      buildGoogleCloudVideointelligenceV1TextSegment(),
+      buildGoogleCloudVideointelligenceV1TextSegment(),
+    ];
 
 void checkUnnamed379(
     core.List<api.GoogleCloudVideointelligenceV1TextSegment> o) {
@@ -1324,12 +1281,10 @@ void checkGoogleCloudVideointelligenceV1TextAnnotation(
   buildCounterGoogleCloudVideointelligenceV1TextAnnotation--;
 }
 
-core.List<core.String> buildUnnamed380() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed380() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed380(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1397,12 +1352,10 @@ void checkGoogleCloudVideointelligenceV1TextFrame(
   buildCounterGoogleCloudVideointelligenceV1TextFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1TextFrame> buildUnnamed381() {
-  final o = <api.GoogleCloudVideointelligenceV1TextFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1TextFrame());
-  o.add(buildGoogleCloudVideointelligenceV1TextFrame());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1TextFrame> buildUnnamed381() => [
+      buildGoogleCloudVideointelligenceV1TextFrame(),
+      buildGoogleCloudVideointelligenceV1TextFrame(),
+    ];
 
 void checkUnnamed381(core.List<api.GoogleCloudVideointelligenceV1TextFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1439,12 +1392,10 @@ void checkGoogleCloudVideointelligenceV1TextSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute>
-    buildUnnamed382() {
-  final o = <api.GoogleCloudVideointelligenceV1DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1DetectedAttribute());
-  return o;
-}
+    buildUnnamed382() => [
+          buildGoogleCloudVideointelligenceV1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1DetectedAttribute(),
+        ];
 
 void checkUnnamed382(
     core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute> o) {
@@ -1454,12 +1405,10 @@ void checkUnnamed382(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1DetectedLandmark>
-    buildUnnamed383() {
-  final o = <api.GoogleCloudVideointelligenceV1DetectedLandmark>[];
-  o.add(buildGoogleCloudVideointelligenceV1DetectedLandmark());
-  o.add(buildGoogleCloudVideointelligenceV1DetectedLandmark());
-  return o;
-}
+    buildUnnamed383() => [
+          buildGoogleCloudVideointelligenceV1DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1DetectedLandmark(),
+        ];
 
 void checkUnnamed383(
     core.List<api.GoogleCloudVideointelligenceV1DetectedLandmark> o) {
@@ -1501,12 +1450,10 @@ void checkGoogleCloudVideointelligenceV1TimestampedObject(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute>
-    buildUnnamed384() {
-  final o = <api.GoogleCloudVideointelligenceV1DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1DetectedAttribute());
-  return o;
-}
+    buildUnnamed384() => [
+          buildGoogleCloudVideointelligenceV1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1DetectedAttribute(),
+        ];
 
 void checkUnnamed384(
     core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute> o) {
@@ -1516,12 +1463,10 @@ void checkUnnamed384(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1TimestampedObject>
-    buildUnnamed385() {
-  final o = <api.GoogleCloudVideointelligenceV1TimestampedObject>[];
-  o.add(buildGoogleCloudVideointelligenceV1TimestampedObject());
-  o.add(buildGoogleCloudVideointelligenceV1TimestampedObject());
-  return o;
-}
+    buildUnnamed385() => [
+          buildGoogleCloudVideointelligenceV1TimestampedObject(),
+          buildGoogleCloudVideointelligenceV1TimestampedObject(),
+        ];
 
 void checkUnnamed385(
     core.List<api.GoogleCloudVideointelligenceV1TimestampedObject> o) {
@@ -1606,12 +1551,11 @@ void checkGoogleCloudVideointelligenceV1VideoAnnotationProgress(
   buildCounterGoogleCloudVideointelligenceV1VideoAnnotationProgress--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1FaceAnnotation> buildUnnamed386() {
-  final o = <api.GoogleCloudVideointelligenceV1FaceAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1FaceAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1FaceAnnotation());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1FaceAnnotation> buildUnnamed386() =>
+    [
+      buildGoogleCloudVideointelligenceV1FaceAnnotation(),
+      buildGoogleCloudVideointelligenceV1FaceAnnotation(),
+    ];
 
 void checkUnnamed386(
     core.List<api.GoogleCloudVideointelligenceV1FaceAnnotation> o) {
@@ -1621,12 +1565,10 @@ void checkUnnamed386(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1FaceDetectionAnnotation>
-    buildUnnamed387() {
-  final o = <api.GoogleCloudVideointelligenceV1FaceDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1FaceDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1FaceDetectionAnnotation());
-  return o;
-}
+    buildUnnamed387() => [
+          buildGoogleCloudVideointelligenceV1FaceDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1FaceDetectionAnnotation(),
+        ];
 
 void checkUnnamed387(
     core.List<api.GoogleCloudVideointelligenceV1FaceDetectionAnnotation> o) {
@@ -1635,12 +1577,11 @@ void checkUnnamed387(
   checkGoogleCloudVideointelligenceV1FaceDetectionAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> buildUnnamed388() {
-  final o = <api.GoogleCloudVideointelligenceV1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
+    buildUnnamed388() => [
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+        ];
 
 void checkUnnamed388(
     core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
@@ -1650,12 +1591,10 @@ void checkUnnamed388(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1LogoRecognitionAnnotation>
-    buildUnnamed389() {
-  final o = <api.GoogleCloudVideointelligenceV1LogoRecognitionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1LogoRecognitionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1LogoRecognitionAnnotation());
-  return o;
-}
+    buildUnnamed389() => [
+          buildGoogleCloudVideointelligenceV1LogoRecognitionAnnotation(),
+          buildGoogleCloudVideointelligenceV1LogoRecognitionAnnotation(),
+        ];
 
 void checkUnnamed389(
     core.List<api.GoogleCloudVideointelligenceV1LogoRecognitionAnnotation> o) {
@@ -1665,12 +1604,10 @@ void checkUnnamed389(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>
-    buildUnnamed390() {
-  final o = <api.GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1ObjectTrackingAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1ObjectTrackingAnnotation());
-  return o;
-}
+    buildUnnamed390() => [
+          buildGoogleCloudVideointelligenceV1ObjectTrackingAnnotation(),
+          buildGoogleCloudVideointelligenceV1ObjectTrackingAnnotation(),
+        ];
 
 void checkUnnamed390(
     core.List<api.GoogleCloudVideointelligenceV1ObjectTrackingAnnotation> o) {
@@ -1680,12 +1617,10 @@ void checkUnnamed390(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation>
-    buildUnnamed391() {
-  final o = <api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1PersonDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1PersonDetectionAnnotation());
-  return o;
-}
+    buildUnnamed391() => [
+          buildGoogleCloudVideointelligenceV1PersonDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1PersonDetectionAnnotation(),
+        ];
 
 void checkUnnamed391(
     core.List<api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation> o) {
@@ -1694,12 +1629,11 @@ void checkUnnamed391(
   checkGoogleCloudVideointelligenceV1PersonDetectionAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> buildUnnamed392() {
-  final o = <api.GoogleCloudVideointelligenceV1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
+    buildUnnamed392() => [
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+        ];
 
 void checkUnnamed392(
     core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
@@ -1708,12 +1642,11 @@ void checkUnnamed392(
   checkGoogleCloudVideointelligenceV1LabelAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> buildUnnamed393() {
-  final o = <api.GoogleCloudVideointelligenceV1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
+    buildUnnamed393() => [
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+        ];
 
 void checkUnnamed393(
     core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
@@ -1722,12 +1655,10 @@ void checkUnnamed393(
   checkGoogleCloudVideointelligenceV1LabelAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed394() {
-  final o = <api.GoogleCloudVideointelligenceV1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1VideoSegment());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed394() => [
+      buildGoogleCloudVideointelligenceV1VideoSegment(),
+      buildGoogleCloudVideointelligenceV1VideoSegment(),
+    ];
 
 void checkUnnamed394(
     core.List<api.GoogleCloudVideointelligenceV1VideoSegment> o) {
@@ -1736,12 +1667,11 @@ void checkUnnamed394(
   checkGoogleCloudVideointelligenceV1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> buildUnnamed395() {
-  final o = <api.GoogleCloudVideointelligenceV1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
+    buildUnnamed395() => [
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+        ];
 
 void checkUnnamed395(
     core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
@@ -1750,12 +1680,11 @@ void checkUnnamed395(
   checkGoogleCloudVideointelligenceV1LabelAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> buildUnnamed396() {
-  final o = <api.GoogleCloudVideointelligenceV1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1LabelAnnotation());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
+    buildUnnamed396() => [
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+        ];
 
 void checkUnnamed396(
     core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
@@ -1765,12 +1694,10 @@ void checkUnnamed396(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1SpeechTranscription>
-    buildUnnamed397() {
-  final o = <api.GoogleCloudVideointelligenceV1SpeechTranscription>[];
-  o.add(buildGoogleCloudVideointelligenceV1SpeechTranscription());
-  o.add(buildGoogleCloudVideointelligenceV1SpeechTranscription());
-  return o;
-}
+    buildUnnamed397() => [
+          buildGoogleCloudVideointelligenceV1SpeechTranscription(),
+          buildGoogleCloudVideointelligenceV1SpeechTranscription(),
+        ];
 
 void checkUnnamed397(
     core.List<api.GoogleCloudVideointelligenceV1SpeechTranscription> o) {
@@ -1779,12 +1706,11 @@ void checkUnnamed397(
   checkGoogleCloudVideointelligenceV1SpeechTranscription(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1TextAnnotation> buildUnnamed398() {
-  final o = <api.GoogleCloudVideointelligenceV1TextAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1TextAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1TextAnnotation());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1TextAnnotation> buildUnnamed398() =>
+    [
+      buildGoogleCloudVideointelligenceV1TextAnnotation(),
+      buildGoogleCloudVideointelligenceV1TextAnnotation(),
+    ];
 
 void checkUnnamed398(
     core.List<api.GoogleCloudVideointelligenceV1TextAnnotation> o) {
@@ -1851,12 +1777,10 @@ void checkGoogleCloudVideointelligenceV1VideoAnnotationResults(
   buildCounterGoogleCloudVideointelligenceV1VideoAnnotationResults--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed399() {
-  final o = <api.GoogleCloudVideointelligenceV1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1VideoSegment());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed399() => [
+      buildGoogleCloudVideointelligenceV1VideoSegment(),
+      buildGoogleCloudVideointelligenceV1VideoSegment(),
+    ];
 
 void checkUnnamed399(
     core.List<api.GoogleCloudVideointelligenceV1VideoSegment> o) {
@@ -1992,12 +1916,10 @@ void checkGoogleCloudVideointelligenceV1WordInfo(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress>
-    buildUnnamed400() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress());
-  o.add(buildGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress());
-  return o;
-}
+    buildUnnamed400() => [
+          buildGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress(),
+          buildGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress(),
+        ];
 
 void checkUnnamed400(
     core.List<api.GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress>
@@ -2032,12 +1954,10 @@ void checkGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2VideoAnnotationResults>
-    buildUnnamed401() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2VideoAnnotationResults>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2VideoAnnotationResults());
-  o.add(buildGoogleCloudVideointelligenceV1beta2VideoAnnotationResults());
-  return o;
-}
+    buildUnnamed401() => [
+          buildGoogleCloudVideointelligenceV1beta2VideoAnnotationResults(),
+          buildGoogleCloudVideointelligenceV1beta2VideoAnnotationResults(),
+        ];
 
 void checkUnnamed401(
     core.List<api.GoogleCloudVideointelligenceV1beta2VideoAnnotationResults>
@@ -2171,12 +2091,10 @@ void checkGoogleCloudVideointelligenceV1beta2Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2ExplicitContentFrame>
-    buildUnnamed402() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2ExplicitContentFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2ExplicitContentFrame());
-  o.add(buildGoogleCloudVideointelligenceV1beta2ExplicitContentFrame());
-  return o;
-}
+    buildUnnamed402() => [
+          buildGoogleCloudVideointelligenceV1beta2ExplicitContentFrame(),
+          buildGoogleCloudVideointelligenceV1beta2ExplicitContentFrame(),
+        ];
 
 void checkUnnamed402(
     core.List<api.GoogleCloudVideointelligenceV1beta2ExplicitContentFrame> o) {
@@ -2245,12 +2163,11 @@ void checkGoogleCloudVideointelligenceV1beta2ExplicitContentFrame(
   buildCounterGoogleCloudVideointelligenceV1beta2ExplicitContentFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2FaceFrame> buildUnnamed403() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2FaceFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2FaceFrame());
-  o.add(buildGoogleCloudVideointelligenceV1beta2FaceFrame());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1beta2FaceFrame> buildUnnamed403() =>
+    [
+      buildGoogleCloudVideointelligenceV1beta2FaceFrame(),
+      buildGoogleCloudVideointelligenceV1beta2FaceFrame(),
+    ];
 
 void checkUnnamed403(
     core.List<api.GoogleCloudVideointelligenceV1beta2FaceFrame> o) {
@@ -2260,12 +2177,10 @@ void checkUnnamed403(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2FaceSegment>
-    buildUnnamed404() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2FaceSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2FaceSegment());
-  o.add(buildGoogleCloudVideointelligenceV1beta2FaceSegment());
-  return o;
-}
+    buildUnnamed404() => [
+          buildGoogleCloudVideointelligenceV1beta2FaceSegment(),
+          buildGoogleCloudVideointelligenceV1beta2FaceSegment(),
+        ];
 
 void checkUnnamed404(
     core.List<api.GoogleCloudVideointelligenceV1beta2FaceSegment> o) {
@@ -2302,12 +2217,10 @@ void checkGoogleCloudVideointelligenceV1beta2FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1beta2FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed405() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2Track());
-  o.add(buildGoogleCloudVideointelligenceV1beta2Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed405() => [
+      buildGoogleCloudVideointelligenceV1beta2Track(),
+      buildGoogleCloudVideointelligenceV1beta2Track(),
+    ];
 
 void checkUnnamed405(
     core.List<api.GoogleCloudVideointelligenceV1beta2Track> o) {
@@ -2351,12 +2264,10 @@ void checkGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox>
-    buildUnnamed406() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox());
-  o.add(buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox());
-  return o;
-}
+    buildUnnamed406() => [
+          buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(),
+          buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(),
+        ];
 
 void checkUnnamed406(
     core.List<api.GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox> o) {
@@ -2412,12 +2323,10 @@ void checkGoogleCloudVideointelligenceV1beta2FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1beta2FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2Entity> buildUnnamed407() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2Entity>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2Entity());
-  o.add(buildGoogleCloudVideointelligenceV1beta2Entity());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1beta2Entity> buildUnnamed407() => [
+      buildGoogleCloudVideointelligenceV1beta2Entity(),
+      buildGoogleCloudVideointelligenceV1beta2Entity(),
+    ];
 
 void checkUnnamed407(
     core.List<api.GoogleCloudVideointelligenceV1beta2Entity> o) {
@@ -2426,12 +2335,11 @@ void checkUnnamed407(
   checkGoogleCloudVideointelligenceV1beta2Entity(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2LabelFrame> buildUnnamed408() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2LabelFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelFrame());
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelFrame());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1beta2LabelFrame>
+    buildUnnamed408() => [
+          buildGoogleCloudVideointelligenceV1beta2LabelFrame(),
+          buildGoogleCloudVideointelligenceV1beta2LabelFrame(),
+        ];
 
 void checkUnnamed408(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelFrame> o) {
@@ -2441,12 +2349,10 @@ void checkUnnamed408(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelSegment>
-    buildUnnamed409() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2LabelSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelSegment());
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelSegment());
-  return o;
-}
+    buildUnnamed409() => [
+          buildGoogleCloudVideointelligenceV1beta2LabelSegment(),
+          buildGoogleCloudVideointelligenceV1beta2LabelSegment(),
+        ];
 
 void checkUnnamed409(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelSegment> o) {
@@ -2543,12 +2449,10 @@ void checkGoogleCloudVideointelligenceV1beta2LabelSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment>
-    buildUnnamed410() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1beta2VideoSegment());
-  return o;
-}
+    buildUnnamed410() => [
+          buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
+          buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
+        ];
 
 void checkUnnamed410(
     core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment> o) {
@@ -2557,12 +2461,10 @@ void checkUnnamed410(
   checkGoogleCloudVideointelligenceV1beta2VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed411() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2Track());
-  o.add(buildGoogleCloudVideointelligenceV1beta2Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed411() => [
+      buildGoogleCloudVideointelligenceV1beta2Track(),
+      buildGoogleCloudVideointelligenceV1beta2Track(),
+    ];
 
 void checkUnnamed411(
     core.List<api.GoogleCloudVideointelligenceV1beta2Track> o) {
@@ -2643,12 +2545,10 @@ void checkGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2NormalizedVertex>
-    buildUnnamed412() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2NormalizedVertex>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2NormalizedVertex());
-  o.add(buildGoogleCloudVideointelligenceV1beta2NormalizedVertex());
-  return o;
-}
+    buildUnnamed412() => [
+          buildGoogleCloudVideointelligenceV1beta2NormalizedVertex(),
+          buildGoogleCloudVideointelligenceV1beta2NormalizedVertex(),
+        ];
 
 void checkUnnamed412(
     core.List<api.GoogleCloudVideointelligenceV1beta2NormalizedVertex> o) {
@@ -2711,12 +2611,10 @@ void checkGoogleCloudVideointelligenceV1beta2NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame>
-    buildUnnamed413() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame());
-  o.add(buildGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame());
-  return o;
-}
+    buildUnnamed413() => [
+          buildGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame(),
+          buildGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame(),
+        ];
 
 void checkUnnamed413(
     core.List<api.GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame> o) {
@@ -2796,12 +2694,10 @@ void checkGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed414() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2Track());
-  o.add(buildGoogleCloudVideointelligenceV1beta2Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed414() => [
+      buildGoogleCloudVideointelligenceV1beta2Track(),
+      buildGoogleCloudVideointelligenceV1beta2Track(),
+    ];
 
 void checkUnnamed414(
     core.List<api.GoogleCloudVideointelligenceV1beta2Track> o) {
@@ -2840,12 +2736,11 @@ void checkGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2WordInfo> buildUnnamed415() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2WordInfo>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2WordInfo());
-  o.add(buildGoogleCloudVideointelligenceV1beta2WordInfo());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1beta2WordInfo> buildUnnamed415() =>
+    [
+      buildGoogleCloudVideointelligenceV1beta2WordInfo(),
+      buildGoogleCloudVideointelligenceV1beta2WordInfo(),
+    ];
 
 void checkUnnamed415(
     core.List<api.GoogleCloudVideointelligenceV1beta2WordInfo> o) {
@@ -2891,13 +2786,10 @@ void checkGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>
-    buildUnnamed416() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative());
-  o.add(buildGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative());
-  return o;
-}
+    buildUnnamed416() => [
+          buildGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative(),
+          buildGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative(),
+        ];
 
 void checkUnnamed416(
     core.List<
@@ -2935,12 +2827,10 @@ void checkGoogleCloudVideointelligenceV1beta2SpeechTranscription(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2TextSegment>
-    buildUnnamed417() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2TextSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2TextSegment());
-  o.add(buildGoogleCloudVideointelligenceV1beta2TextSegment());
-  return o;
-}
+    buildUnnamed417() => [
+          buildGoogleCloudVideointelligenceV1beta2TextSegment(),
+          buildGoogleCloudVideointelligenceV1beta2TextSegment(),
+        ];
 
 void checkUnnamed417(
     core.List<api.GoogleCloudVideointelligenceV1beta2TextSegment> o) {
@@ -3008,12 +2898,11 @@ void checkGoogleCloudVideointelligenceV1beta2TextFrame(
   buildCounterGoogleCloudVideointelligenceV1beta2TextFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2TextFrame> buildUnnamed418() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2TextFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2TextFrame());
-  o.add(buildGoogleCloudVideointelligenceV1beta2TextFrame());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1beta2TextFrame> buildUnnamed418() =>
+    [
+      buildGoogleCloudVideointelligenceV1beta2TextFrame(),
+      buildGoogleCloudVideointelligenceV1beta2TextFrame(),
+    ];
 
 void checkUnnamed418(
     core.List<api.GoogleCloudVideointelligenceV1beta2TextFrame> o) {
@@ -3051,12 +2940,10 @@ void checkGoogleCloudVideointelligenceV1beta2TextSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute>
-    buildUnnamed419() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1beta2DetectedAttribute());
-  return o;
-}
+    buildUnnamed419() => [
+          buildGoogleCloudVideointelligenceV1beta2DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1beta2DetectedAttribute(),
+        ];
 
 void checkUnnamed419(
     core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute> o) {
@@ -3066,12 +2953,10 @@ void checkUnnamed419(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2DetectedLandmark>
-    buildUnnamed420() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2DetectedLandmark>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2DetectedLandmark());
-  o.add(buildGoogleCloudVideointelligenceV1beta2DetectedLandmark());
-  return o;
-}
+    buildUnnamed420() => [
+          buildGoogleCloudVideointelligenceV1beta2DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1beta2DetectedLandmark(),
+        ];
 
 void checkUnnamed420(
     core.List<api.GoogleCloudVideointelligenceV1beta2DetectedLandmark> o) {
@@ -3113,12 +2998,10 @@ void checkGoogleCloudVideointelligenceV1beta2TimestampedObject(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute>
-    buildUnnamed421() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1beta2DetectedAttribute());
-  return o;
-}
+    buildUnnamed421() => [
+          buildGoogleCloudVideointelligenceV1beta2DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1beta2DetectedAttribute(),
+        ];
 
 void checkUnnamed421(
     core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute> o) {
@@ -3128,12 +3011,10 @@ void checkUnnamed421(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2TimestampedObject>
-    buildUnnamed422() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2TimestampedObject>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2TimestampedObject());
-  o.add(buildGoogleCloudVideointelligenceV1beta2TimestampedObject());
-  return o;
-}
+    buildUnnamed422() => [
+          buildGoogleCloudVideointelligenceV1beta2TimestampedObject(),
+          buildGoogleCloudVideointelligenceV1beta2TimestampedObject(),
+        ];
 
 void checkUnnamed422(
     core.List<api.GoogleCloudVideointelligenceV1beta2TimestampedObject> o) {
@@ -3222,12 +3103,10 @@ void checkGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2FaceAnnotation>
-    buildUnnamed423() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2FaceAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2FaceAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2FaceAnnotation());
-  return o;
-}
+    buildUnnamed423() => [
+          buildGoogleCloudVideointelligenceV1beta2FaceAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2FaceAnnotation(),
+        ];
 
 void checkUnnamed423(
     core.List<api.GoogleCloudVideointelligenceV1beta2FaceAnnotation> o) {
@@ -3237,12 +3116,10 @@ void checkUnnamed423(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>
-    buildUnnamed424() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation());
-  return o;
-}
+    buildUnnamed424() => [
+          buildGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation(),
+        ];
 
 void checkUnnamed424(
     core.List<api.GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>
@@ -3253,12 +3130,10 @@ void checkUnnamed424(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
-    buildUnnamed425() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  return o;
-}
+    buildUnnamed425() => [
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+        ];
 
 void checkUnnamed425(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
@@ -3268,13 +3143,10 @@ void checkUnnamed425(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation>
-    buildUnnamed426() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation());
-  return o;
-}
+    buildUnnamed426() => [
+          buildGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation(),
+        ];
 
 void checkUnnamed426(
     core.List<api.GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation>
@@ -3285,12 +3157,10 @@ void checkUnnamed426(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>
-    buildUnnamed427() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation());
-  return o;
-}
+    buildUnnamed427() => [
+          buildGoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation(),
+        ];
 
 void checkUnnamed427(
     core.List<api.GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>
@@ -3301,13 +3171,10 @@ void checkUnnamed427(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation>
-    buildUnnamed428() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation());
-  return o;
-}
+    buildUnnamed428() => [
+          buildGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation(),
+        ];
 
 void checkUnnamed428(
     core.List<api.GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation>
@@ -3318,12 +3185,10 @@ void checkUnnamed428(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
-    buildUnnamed429() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  return o;
-}
+    buildUnnamed429() => [
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+        ];
 
 void checkUnnamed429(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
@@ -3333,12 +3198,10 @@ void checkUnnamed429(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
-    buildUnnamed430() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  return o;
-}
+    buildUnnamed430() => [
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+        ];
 
 void checkUnnamed430(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
@@ -3348,12 +3211,10 @@ void checkUnnamed430(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment>
-    buildUnnamed431() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1beta2VideoSegment());
-  return o;
-}
+    buildUnnamed431() => [
+          buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
+          buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
+        ];
 
 void checkUnnamed431(
     core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment> o) {
@@ -3363,12 +3224,10 @@ void checkUnnamed431(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
-    buildUnnamed432() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  return o;
-}
+    buildUnnamed432() => [
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+        ];
 
 void checkUnnamed432(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
@@ -3378,12 +3237,10 @@ void checkUnnamed432(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
-    buildUnnamed433() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2LabelAnnotation());
-  return o;
-}
+    buildUnnamed433() => [
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+        ];
 
 void checkUnnamed433(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
@@ -3393,12 +3250,10 @@ void checkUnnamed433(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2SpeechTranscription>
-    buildUnnamed434() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2SpeechTranscription>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2SpeechTranscription());
-  o.add(buildGoogleCloudVideointelligenceV1beta2SpeechTranscription());
-  return o;
-}
+    buildUnnamed434() => [
+          buildGoogleCloudVideointelligenceV1beta2SpeechTranscription(),
+          buildGoogleCloudVideointelligenceV1beta2SpeechTranscription(),
+        ];
 
 void checkUnnamed434(
     core.List<api.GoogleCloudVideointelligenceV1beta2SpeechTranscription> o) {
@@ -3408,12 +3263,10 @@ void checkUnnamed434(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2TextAnnotation>
-    buildUnnamed435() {
-  final o = <api.GoogleCloudVideointelligenceV1beta2TextAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1beta2TextAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1beta2TextAnnotation());
-  return o;
-}
+    buildUnnamed435() => [
+          buildGoogleCloudVideointelligenceV1beta2TextAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2TextAnnotation(),
+        ];
 
 void checkUnnamed435(
     core.List<api.GoogleCloudVideointelligenceV1beta2TextAnnotation> o) {
@@ -3557,13 +3410,10 @@ void checkGoogleCloudVideointelligenceV1beta2WordInfo(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress>
-    buildUnnamed436() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress());
-  return o;
-}
+    buildUnnamed436() => [
+          buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress(),
+          buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress(),
+        ];
 
 void checkUnnamed436(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress>
@@ -3598,12 +3448,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults>
-    buildUnnamed437() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults());
-  return o;
-}
+    buildUnnamed437() => [
+          buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults(),
+          buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults(),
+        ];
 
 void checkUnnamed437(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults>
@@ -3737,12 +3585,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame>
-    buildUnnamed438() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame());
-  return o;
-}
+    buildUnnamed438() => [
+          buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame(),
+          buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame(),
+        ];
 
 void checkUnnamed438(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame>
@@ -3816,12 +3662,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceFrame>
-    buildUnnamed439() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1FaceFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1FaceFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1FaceFrame());
-  return o;
-}
+    buildUnnamed439() => [
+          buildGoogleCloudVideointelligenceV1p1beta1FaceFrame(),
+          buildGoogleCloudVideointelligenceV1p1beta1FaceFrame(),
+        ];
 
 void checkUnnamed439(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceFrame> o) {
@@ -3831,12 +3675,10 @@ void checkUnnamed439(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceSegment>
-    buildUnnamed440() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1FaceSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1FaceSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1FaceSegment());
-  return o;
-}
+    buildUnnamed440() => [
+          buildGoogleCloudVideointelligenceV1p1beta1FaceSegment(),
+          buildGoogleCloudVideointelligenceV1p1beta1FaceSegment(),
+        ];
 
 void checkUnnamed440(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceSegment> o) {
@@ -3873,12 +3715,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed441() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed441() => [
+      buildGoogleCloudVideointelligenceV1p1beta1Track(),
+      buildGoogleCloudVideointelligenceV1p1beta1Track(),
+    ];
 
 void checkUnnamed441(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> o) {
@@ -3923,12 +3763,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox>
-    buildUnnamed442() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox());
-  return o;
-}
+    buildUnnamed442() => [
+          buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox(),
+          buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox(),
+        ];
 
 void checkUnnamed442(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox>
@@ -3985,12 +3823,11 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1Entity> buildUnnamed443() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1Entity>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1Entity());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1Entity());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p1beta1Entity> buildUnnamed443() =>
+    [
+      buildGoogleCloudVideointelligenceV1p1beta1Entity(),
+      buildGoogleCloudVideointelligenceV1p1beta1Entity(),
+    ];
 
 void checkUnnamed443(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1Entity> o) {
@@ -4000,12 +3837,10 @@ void checkUnnamed443(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelFrame>
-    buildUnnamed444() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1LabelFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelFrame());
-  return o;
-}
+    buildUnnamed444() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LabelFrame(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelFrame(),
+        ];
 
 void checkUnnamed444(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelFrame> o) {
@@ -4015,12 +3850,10 @@ void checkUnnamed444(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelSegment>
-    buildUnnamed445() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1LabelSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelSegment());
-  return o;
-}
+    buildUnnamed445() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LabelSegment(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelSegment(),
+        ];
 
 void checkUnnamed445(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelSegment> o) {
@@ -4117,12 +3950,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1LabelSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment>
-    buildUnnamed446() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1VideoSegment());
-  return o;
-}
+    buildUnnamed446() => [
+          buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
+        ];
 
 void checkUnnamed446(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment> o) {
@@ -4131,12 +3962,10 @@ void checkUnnamed446(
   checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed447() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed447() => [
+      buildGoogleCloudVideointelligenceV1p1beta1Track(),
+      buildGoogleCloudVideointelligenceV1p1beta1Track(),
+    ];
 
 void checkUnnamed447(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> o) {
@@ -4218,12 +4047,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1NormalizedVertex>
-    buildUnnamed448() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1NormalizedVertex>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1NormalizedVertex());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1NormalizedVertex());
-  return o;
-}
+    buildUnnamed448() => [
+          buildGoogleCloudVideointelligenceV1p1beta1NormalizedVertex(),
+          buildGoogleCloudVideointelligenceV1p1beta1NormalizedVertex(),
+        ];
 
 void checkUnnamed448(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1NormalizedVertex> o) {
@@ -4286,12 +4113,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame>
-    buildUnnamed449() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame());
-  return o;
-}
+    buildUnnamed449() => [
+          buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame(),
+          buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame(),
+        ];
 
 void checkUnnamed449(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame> o) {
@@ -4375,12 +4200,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed450() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed450() => [
+      buildGoogleCloudVideointelligenceV1p1beta1Track(),
+      buildGoogleCloudVideointelligenceV1p1beta1Track(),
+    ];
 
 void checkUnnamed450(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> o) {
@@ -4420,12 +4243,11 @@ void checkGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1WordInfo> buildUnnamed451() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1WordInfo>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1WordInfo());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1WordInfo());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p1beta1WordInfo>
+    buildUnnamed451() => [
+          buildGoogleCloudVideointelligenceV1p1beta1WordInfo(),
+          buildGoogleCloudVideointelligenceV1p1beta1WordInfo(),
+        ];
 
 void checkUnnamed451(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1WordInfo> o) {
@@ -4471,15 +4293,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>
-    buildUnnamed452() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>[];
-  o.add(
-      buildGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative());
-  o.add(
-      buildGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative());
-  return o;
-}
+    buildUnnamed452() => [
+          buildGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative(),
+          buildGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative(),
+        ];
 
 void checkUnnamed452(
     core.List<
@@ -4520,12 +4337,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1SpeechTranscription(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1TextSegment>
-    buildUnnamed453() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1TextSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1TextSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1TextSegment());
-  return o;
-}
+    buildUnnamed453() => [
+          buildGoogleCloudVideointelligenceV1p1beta1TextSegment(),
+          buildGoogleCloudVideointelligenceV1p1beta1TextSegment(),
+        ];
 
 void checkUnnamed453(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1TextSegment> o) {
@@ -4594,12 +4409,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1TextFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1TextFrame>
-    buildUnnamed454() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1TextFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1TextFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1TextFrame());
-  return o;
-}
+    buildUnnamed454() => [
+          buildGoogleCloudVideointelligenceV1p1beta1TextFrame(),
+          buildGoogleCloudVideointelligenceV1p1beta1TextFrame(),
+        ];
 
 void checkUnnamed454(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1TextFrame> o) {
@@ -4637,12 +4450,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1TextSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>
-    buildUnnamed455() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute());
-  return o;
-}
+    buildUnnamed455() => [
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(),
+        ];
 
 void checkUnnamed455(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute> o) {
@@ -4652,12 +4463,10 @@ void checkUnnamed455(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedLandmark>
-    buildUnnamed456() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1DetectedLandmark>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark());
-  return o;
-}
+    buildUnnamed456() => [
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(),
+        ];
 
 void checkUnnamed456(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedLandmark> o) {
@@ -4699,12 +4508,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1TimestampedObject(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>
-    buildUnnamed457() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute());
-  return o;
-}
+    buildUnnamed457() => [
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(),
+        ];
 
 void checkUnnamed457(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute> o) {
@@ -4714,12 +4521,10 @@ void checkUnnamed457(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject>
-    buildUnnamed458() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject());
-  return o;
-}
+    buildUnnamed458() => [
+          buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject(),
+          buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject(),
+        ];
 
 void checkUnnamed458(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject> o) {
@@ -4809,12 +4614,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation>
-    buildUnnamed459() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1FaceAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1FaceAnnotation());
-  return o;
-}
+    buildUnnamed459() => [
+          buildGoogleCloudVideointelligenceV1p1beta1FaceAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1FaceAnnotation(),
+        ];
 
 void checkUnnamed459(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation> o) {
@@ -4824,13 +4627,10 @@ void checkUnnamed459(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>
-    buildUnnamed460() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation());
-  return o;
-}
+    buildUnnamed460() => [
+          buildGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation(),
+        ];
 
 void checkUnnamed460(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>
@@ -4841,12 +4641,10 @@ void checkUnnamed460(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
-    buildUnnamed461() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed461() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed461(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
@@ -4856,13 +4654,10 @@ void checkUnnamed461(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation>
-    buildUnnamed462() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation());
-  return o;
-}
+    buildUnnamed462() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation(),
+        ];
 
 void checkUnnamed462(
     core.List<
@@ -4874,13 +4669,10 @@ void checkUnnamed462(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>
-    buildUnnamed463() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation());
-  return o;
-}
+    buildUnnamed463() => [
+          buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation(),
+        ];
 
 void checkUnnamed463(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>
@@ -4891,13 +4683,10 @@ void checkUnnamed463(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation>
-    buildUnnamed464() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation());
-  return o;
-}
+    buildUnnamed464() => [
+          buildGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation(),
+        ];
 
 void checkUnnamed464(
     core.List<
@@ -4909,12 +4698,10 @@ void checkUnnamed464(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
-    buildUnnamed465() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed465() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed465(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
@@ -4924,12 +4711,10 @@ void checkUnnamed465(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
-    buildUnnamed466() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed466() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed466(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
@@ -4939,12 +4724,10 @@ void checkUnnamed466(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment>
-    buildUnnamed467() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1VideoSegment());
-  return o;
-}
+    buildUnnamed467() => [
+          buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
+        ];
 
 void checkUnnamed467(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment> o) {
@@ -4954,12 +4737,10 @@ void checkUnnamed467(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
-    buildUnnamed468() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed468() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed468(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
@@ -4969,12 +4750,10 @@ void checkUnnamed468(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
-    buildUnnamed469() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed469() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed469(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
@@ -4984,12 +4763,10 @@ void checkUnnamed469(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1SpeechTranscription>
-    buildUnnamed470() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1SpeechTranscription>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1SpeechTranscription());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1SpeechTranscription());
-  return o;
-}
+    buildUnnamed470() => [
+          buildGoogleCloudVideointelligenceV1p1beta1SpeechTranscription(),
+          buildGoogleCloudVideointelligenceV1p1beta1SpeechTranscription(),
+        ];
 
 void checkUnnamed470(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1SpeechTranscription> o) {
@@ -4999,12 +4776,10 @@ void checkUnnamed470(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation>
-    buildUnnamed471() {
-  final o = <api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1TextAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p1beta1TextAnnotation());
-  return o;
-}
+    buildUnnamed471() => [
+          buildGoogleCloudVideointelligenceV1p1beta1TextAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1TextAnnotation(),
+        ];
 
 void checkUnnamed471(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation> o) {
@@ -5148,13 +4923,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1WordInfo(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress>
-    buildUnnamed472() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress());
-  return o;
-}
+    buildUnnamed472() => [
+          buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress(),
+          buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress(),
+        ];
 
 void checkUnnamed472(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress>
@@ -5189,12 +4961,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults>
-    buildUnnamed473() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults());
-  return o;
-}
+    buildUnnamed473() => [
+          buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults(),
+          buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults(),
+        ];
 
 void checkUnnamed473(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults>
@@ -5328,12 +5098,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame>
-    buildUnnamed474() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame());
-  return o;
-}
+    buildUnnamed474() => [
+          buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame(),
+          buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame(),
+        ];
 
 void checkUnnamed474(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame>
@@ -5407,12 +5175,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceFrame>
-    buildUnnamed475() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1FaceFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1FaceFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1FaceFrame());
-  return o;
-}
+    buildUnnamed475() => [
+          buildGoogleCloudVideointelligenceV1p2beta1FaceFrame(),
+          buildGoogleCloudVideointelligenceV1p2beta1FaceFrame(),
+        ];
 
 void checkUnnamed475(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceFrame> o) {
@@ -5422,12 +5188,10 @@ void checkUnnamed475(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceSegment>
-    buildUnnamed476() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1FaceSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1FaceSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1FaceSegment());
-  return o;
-}
+    buildUnnamed476() => [
+          buildGoogleCloudVideointelligenceV1p2beta1FaceSegment(),
+          buildGoogleCloudVideointelligenceV1p2beta1FaceSegment(),
+        ];
 
 void checkUnnamed476(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceSegment> o) {
@@ -5464,12 +5228,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed477() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed477() => [
+      buildGoogleCloudVideointelligenceV1p2beta1Track(),
+      buildGoogleCloudVideointelligenceV1p2beta1Track(),
+    ];
 
 void checkUnnamed477(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> o) {
@@ -5514,12 +5276,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox>
-    buildUnnamed478() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox());
-  return o;
-}
+    buildUnnamed478() => [
+          buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox(),
+          buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox(),
+        ];
 
 void checkUnnamed478(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox>
@@ -5576,12 +5336,11 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1Entity> buildUnnamed479() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1Entity>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1Entity());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1Entity());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p2beta1Entity> buildUnnamed479() =>
+    [
+      buildGoogleCloudVideointelligenceV1p2beta1Entity(),
+      buildGoogleCloudVideointelligenceV1p2beta1Entity(),
+    ];
 
 void checkUnnamed479(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1Entity> o) {
@@ -5591,12 +5350,10 @@ void checkUnnamed479(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelFrame>
-    buildUnnamed480() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1LabelFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelFrame());
-  return o;
-}
+    buildUnnamed480() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LabelFrame(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelFrame(),
+        ];
 
 void checkUnnamed480(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelFrame> o) {
@@ -5606,12 +5363,10 @@ void checkUnnamed480(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelSegment>
-    buildUnnamed481() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1LabelSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelSegment());
-  return o;
-}
+    buildUnnamed481() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LabelSegment(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelSegment(),
+        ];
 
 void checkUnnamed481(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelSegment> o) {
@@ -5708,12 +5463,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1LabelSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment>
-    buildUnnamed482() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1VideoSegment());
-  return o;
-}
+    buildUnnamed482() => [
+          buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
+        ];
 
 void checkUnnamed482(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment> o) {
@@ -5722,12 +5475,10 @@ void checkUnnamed482(
   checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed483() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed483() => [
+      buildGoogleCloudVideointelligenceV1p2beta1Track(),
+      buildGoogleCloudVideointelligenceV1p2beta1Track(),
+    ];
 
 void checkUnnamed483(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> o) {
@@ -5809,12 +5560,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1NormalizedVertex>
-    buildUnnamed484() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1NormalizedVertex>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1NormalizedVertex());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1NormalizedVertex());
-  return o;
-}
+    buildUnnamed484() => [
+          buildGoogleCloudVideointelligenceV1p2beta1NormalizedVertex(),
+          buildGoogleCloudVideointelligenceV1p2beta1NormalizedVertex(),
+        ];
 
 void checkUnnamed484(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1NormalizedVertex> o) {
@@ -5877,12 +5626,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame>
-    buildUnnamed485() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame());
-  return o;
-}
+    buildUnnamed485() => [
+          buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame(),
+          buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame(),
+        ];
 
 void checkUnnamed485(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame> o) {
@@ -5966,12 +5713,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed486() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed486() => [
+      buildGoogleCloudVideointelligenceV1p2beta1Track(),
+      buildGoogleCloudVideointelligenceV1p2beta1Track(),
+    ];
 
 void checkUnnamed486(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> o) {
@@ -6011,12 +5756,11 @@ void checkGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1WordInfo> buildUnnamed487() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1WordInfo>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1WordInfo());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1WordInfo());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p2beta1WordInfo>
+    buildUnnamed487() => [
+          buildGoogleCloudVideointelligenceV1p2beta1WordInfo(),
+          buildGoogleCloudVideointelligenceV1p2beta1WordInfo(),
+        ];
 
 void checkUnnamed487(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1WordInfo> o) {
@@ -6062,15 +5806,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>
-    buildUnnamed488() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>[];
-  o.add(
-      buildGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative());
-  o.add(
-      buildGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative());
-  return o;
-}
+    buildUnnamed488() => [
+          buildGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative(),
+          buildGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative(),
+        ];
 
 void checkUnnamed488(
     core.List<
@@ -6111,12 +5850,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1SpeechTranscription(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1TextSegment>
-    buildUnnamed489() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1TextSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1TextSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1TextSegment());
-  return o;
-}
+    buildUnnamed489() => [
+          buildGoogleCloudVideointelligenceV1p2beta1TextSegment(),
+          buildGoogleCloudVideointelligenceV1p2beta1TextSegment(),
+        ];
 
 void checkUnnamed489(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1TextSegment> o) {
@@ -6185,12 +5922,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1TextFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1TextFrame>
-    buildUnnamed490() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1TextFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1TextFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1TextFrame());
-  return o;
-}
+    buildUnnamed490() => [
+          buildGoogleCloudVideointelligenceV1p2beta1TextFrame(),
+          buildGoogleCloudVideointelligenceV1p2beta1TextFrame(),
+        ];
 
 void checkUnnamed490(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1TextFrame> o) {
@@ -6228,12 +5963,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1TextSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>
-    buildUnnamed491() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute());
-  return o;
-}
+    buildUnnamed491() => [
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(),
+        ];
 
 void checkUnnamed491(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute> o) {
@@ -6243,12 +5976,10 @@ void checkUnnamed491(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedLandmark>
-    buildUnnamed492() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1DetectedLandmark>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark());
-  return o;
-}
+    buildUnnamed492() => [
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(),
+        ];
 
 void checkUnnamed492(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedLandmark> o) {
@@ -6290,12 +6021,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1TimestampedObject(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>
-    buildUnnamed493() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute());
-  return o;
-}
+    buildUnnamed493() => [
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(),
+        ];
 
 void checkUnnamed493(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute> o) {
@@ -6305,12 +6034,10 @@ void checkUnnamed493(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject>
-    buildUnnamed494() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject());
-  return o;
-}
+    buildUnnamed494() => [
+          buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject(),
+          buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject(),
+        ];
 
 void checkUnnamed494(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject> o) {
@@ -6400,12 +6127,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation>
-    buildUnnamed495() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1FaceAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1FaceAnnotation());
-  return o;
-}
+    buildUnnamed495() => [
+          buildGoogleCloudVideointelligenceV1p2beta1FaceAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1FaceAnnotation(),
+        ];
 
 void checkUnnamed495(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation> o) {
@@ -6415,13 +6140,10 @@ void checkUnnamed495(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>
-    buildUnnamed496() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation());
-  return o;
-}
+    buildUnnamed496() => [
+          buildGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation(),
+        ];
 
 void checkUnnamed496(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>
@@ -6432,12 +6154,10 @@ void checkUnnamed496(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
-    buildUnnamed497() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed497() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed497(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
@@ -6447,13 +6167,10 @@ void checkUnnamed497(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation>
-    buildUnnamed498() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation());
-  return o;
-}
+    buildUnnamed498() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation(),
+        ];
 
 void checkUnnamed498(
     core.List<
@@ -6465,13 +6182,10 @@ void checkUnnamed498(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>
-    buildUnnamed499() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation());
-  return o;
-}
+    buildUnnamed499() => [
+          buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation(),
+        ];
 
 void checkUnnamed499(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>
@@ -6482,13 +6196,10 @@ void checkUnnamed499(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation>
-    buildUnnamed500() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation());
-  return o;
-}
+    buildUnnamed500() => [
+          buildGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation(),
+        ];
 
 void checkUnnamed500(
     core.List<
@@ -6500,12 +6211,10 @@ void checkUnnamed500(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
-    buildUnnamed501() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed501() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed501(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
@@ -6515,12 +6224,10 @@ void checkUnnamed501(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
-    buildUnnamed502() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed502() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed502(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
@@ -6530,12 +6237,10 @@ void checkUnnamed502(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment>
-    buildUnnamed503() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1VideoSegment());
-  return o;
-}
+    buildUnnamed503() => [
+          buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
+        ];
 
 void checkUnnamed503(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment> o) {
@@ -6545,12 +6250,10 @@ void checkUnnamed503(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
-    buildUnnamed504() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed504() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed504(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
@@ -6560,12 +6263,10 @@ void checkUnnamed504(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
-    buildUnnamed505() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed505() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed505(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
@@ -6575,12 +6276,10 @@ void checkUnnamed505(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1SpeechTranscription>
-    buildUnnamed506() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1SpeechTranscription>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1SpeechTranscription());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1SpeechTranscription());
-  return o;
-}
+    buildUnnamed506() => [
+          buildGoogleCloudVideointelligenceV1p2beta1SpeechTranscription(),
+          buildGoogleCloudVideointelligenceV1p2beta1SpeechTranscription(),
+        ];
 
 void checkUnnamed506(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1SpeechTranscription> o) {
@@ -6590,12 +6289,10 @@ void checkUnnamed506(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation>
-    buildUnnamed507() {
-  final o = <api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1TextAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p2beta1TextAnnotation());
-  return o;
-}
+    buildUnnamed507() => [
+          buildGoogleCloudVideointelligenceV1p2beta1TextAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1TextAnnotation(),
+        ];
 
 void checkUnnamed507(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation> o) {
@@ -6739,13 +6436,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1WordInfo(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>
-    buildUnnamed508() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress());
-  return o;
-}
+    buildUnnamed508() => [
+          buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress(),
+          buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress(),
+        ];
 
 void checkUnnamed508(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>
@@ -6780,12 +6474,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>
-    buildUnnamed509() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults());
-  return o;
-}
+    buildUnnamed509() => [
+          buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults(),
+          buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults(),
+        ];
 
 void checkUnnamed509(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>
@@ -6854,12 +6546,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1Celebrity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack>
-    buildUnnamed510() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1CelebrityTrack());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1CelebrityTrack());
-  return o;
-}
+    buildUnnamed510() => [
+          buildGoogleCloudVideointelligenceV1p3beta1CelebrityTrack(),
+          buildGoogleCloudVideointelligenceV1p3beta1CelebrityTrack(),
+        ];
 
 void checkUnnamed510(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack> o) {
@@ -6900,12 +6590,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity>
-    buildUnnamed511() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity());
-  return o;
-}
+    buildUnnamed511() => [
+          buildGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity(),
+          buildGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity(),
+        ];
 
 void checkUnnamed511(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity> o) {
@@ -7037,12 +6725,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>
-    buildUnnamed512() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame());
-  return o;
-}
+    buildUnnamed512() => [
+          buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame(),
+          buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame(),
+        ];
 
 void checkUnnamed512(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>
@@ -7116,12 +6802,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceFrame>
-    buildUnnamed513() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1FaceFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1FaceFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1FaceFrame());
-  return o;
-}
+    buildUnnamed513() => [
+          buildGoogleCloudVideointelligenceV1p3beta1FaceFrame(),
+          buildGoogleCloudVideointelligenceV1p3beta1FaceFrame(),
+        ];
 
 void checkUnnamed513(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceFrame> o) {
@@ -7131,12 +6815,10 @@ void checkUnnamed513(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceSegment>
-    buildUnnamed514() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1FaceSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1FaceSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1FaceSegment());
-  return o;
-}
+    buildUnnamed514() => [
+          buildGoogleCloudVideointelligenceV1p3beta1FaceSegment(),
+          buildGoogleCloudVideointelligenceV1p3beta1FaceSegment(),
+        ];
 
 void checkUnnamed514(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceSegment> o) {
@@ -7173,12 +6855,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed515() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed515() => [
+      buildGoogleCloudVideointelligenceV1p3beta1Track(),
+      buildGoogleCloudVideointelligenceV1p3beta1Track(),
+    ];
 
 void checkUnnamed515(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> o) {
@@ -7223,12 +6903,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox>
-    buildUnnamed516() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox());
-  return o;
-}
+    buildUnnamed516() => [
+          buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox(),
+          buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox(),
+        ];
 
 void checkUnnamed516(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox>
@@ -7285,12 +6963,11 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1Entity> buildUnnamed517() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1Entity>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1Entity());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1Entity());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p3beta1Entity> buildUnnamed517() =>
+    [
+      buildGoogleCloudVideointelligenceV1p3beta1Entity(),
+      buildGoogleCloudVideointelligenceV1p3beta1Entity(),
+    ];
 
 void checkUnnamed517(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1Entity> o) {
@@ -7300,12 +6977,10 @@ void checkUnnamed517(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelFrame>
-    buildUnnamed518() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1LabelFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelFrame());
-  return o;
-}
+    buildUnnamed518() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelFrame(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelFrame(),
+        ];
 
 void checkUnnamed518(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelFrame> o) {
@@ -7315,12 +6990,10 @@ void checkUnnamed518(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelSegment>
-    buildUnnamed519() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1LabelSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelSegment());
-  return o;
-}
+    buildUnnamed519() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelSegment(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelSegment(),
+        ];
 
 void checkUnnamed519(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelSegment> o) {
@@ -7417,12 +7090,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1LabelSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>
-    buildUnnamed520() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoSegment());
-  return o;
-}
+    buildUnnamed520() => [
+          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+        ];
 
 void checkUnnamed520(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment> o) {
@@ -7431,12 +7102,10 @@ void checkUnnamed520(
   checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed521() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed521() => [
+      buildGoogleCloudVideointelligenceV1p3beta1Track(),
+      buildGoogleCloudVideointelligenceV1p3beta1Track(),
+    ];
 
 void checkUnnamed521(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> o) {
@@ -7518,12 +7187,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1NormalizedVertex>
-    buildUnnamed522() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1NormalizedVertex>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1NormalizedVertex());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1NormalizedVertex());
-  return o;
-}
+    buildUnnamed522() => [
+          buildGoogleCloudVideointelligenceV1p3beta1NormalizedVertex(),
+          buildGoogleCloudVideointelligenceV1p3beta1NormalizedVertex(),
+        ];
 
 void checkUnnamed522(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1NormalizedVertex> o) {
@@ -7586,12 +7253,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame>
-    buildUnnamed523() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame());
-  return o;
-}
+    buildUnnamed523() => [
+          buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame(),
+          buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame(),
+        ];
 
 void checkUnnamed523(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame> o) {
@@ -7675,12 +7340,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed524() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1Track>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1Track());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1Track());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed524() => [
+      buildGoogleCloudVideointelligenceV1p3beta1Track(),
+      buildGoogleCloudVideointelligenceV1p3beta1Track(),
+    ];
 
 void checkUnnamed524(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> o) {
@@ -7749,12 +7412,11 @@ void checkGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity(
   buildCounterGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1WordInfo> buildUnnamed525() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1WordInfo>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1WordInfo());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1WordInfo());
-  return o;
-}
+core.List<api.GoogleCloudVideointelligenceV1p3beta1WordInfo>
+    buildUnnamed525() => [
+          buildGoogleCloudVideointelligenceV1p3beta1WordInfo(),
+          buildGoogleCloudVideointelligenceV1p3beta1WordInfo(),
+        ];
 
 void checkUnnamed525(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1WordInfo> o) {
@@ -7800,15 +7462,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>
-    buildUnnamed526() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>[];
-  o.add(
-      buildGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative());
-  o.add(
-      buildGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative());
-  return o;
-}
+    buildUnnamed526() => [
+          buildGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative(),
+          buildGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative(),
+        ];
 
 void checkUnnamed526(
     core.List<
@@ -7884,12 +7541,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed527() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed527() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed527(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
@@ -7899,13 +7554,10 @@ void checkUnnamed527(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
-    buildUnnamed528() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation());
-  return o;
-}
+    buildUnnamed528() => [
+          buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(),
+        ];
 
 void checkUnnamed528(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
@@ -7916,12 +7568,10 @@ void checkUnnamed528(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>
-    buildUnnamed529() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoSegment());
-  return o;
-}
+    buildUnnamed529() => [
+          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+        ];
 
 void checkUnnamed529(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment> o) {
@@ -7971,12 +7621,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1TextSegment>
-    buildUnnamed530() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1TextSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1TextSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1TextSegment());
-  return o;
-}
+    buildUnnamed530() => [
+          buildGoogleCloudVideointelligenceV1p3beta1TextSegment(),
+          buildGoogleCloudVideointelligenceV1p3beta1TextSegment(),
+        ];
 
 void checkUnnamed530(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1TextSegment> o) {
@@ -8045,12 +7693,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1TextFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1TextFrame>
-    buildUnnamed531() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1TextFrame>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1TextFrame());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1TextFrame());
-  return o;
-}
+    buildUnnamed531() => [
+          buildGoogleCloudVideointelligenceV1p3beta1TextFrame(),
+          buildGoogleCloudVideointelligenceV1p3beta1TextFrame(),
+        ];
 
 void checkUnnamed531(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1TextFrame> o) {
@@ -8088,12 +7734,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1TextSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>
-    buildUnnamed532() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute());
-  return o;
-}
+    buildUnnamed532() => [
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(),
+        ];
 
 void checkUnnamed532(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> o) {
@@ -8103,12 +7747,10 @@ void checkUnnamed532(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedLandmark>
-    buildUnnamed533() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1DetectedLandmark>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark());
-  return o;
-}
+    buildUnnamed533() => [
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(),
+        ];
 
 void checkUnnamed533(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedLandmark> o) {
@@ -8150,12 +7792,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1TimestampedObject(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>
-    buildUnnamed534() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute());
-  return o;
-}
+    buildUnnamed534() => [
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(),
+        ];
 
 void checkUnnamed534(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> o) {
@@ -8165,12 +7805,10 @@ void checkUnnamed534(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject>
-    buildUnnamed535() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject());
-  return o;
-}
+    buildUnnamed535() => [
+          buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject(),
+          buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject(),
+        ];
 
 void checkUnnamed535(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject> o) {
@@ -8260,12 +7898,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation>
-    buildUnnamed536() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1FaceAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1FaceAnnotation());
-  return o;
-}
+    buildUnnamed536() => [
+          buildGoogleCloudVideointelligenceV1p3beta1FaceAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1FaceAnnotation(),
+        ];
 
 void checkUnnamed536(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation> o) {
@@ -8275,13 +7911,10 @@ void checkUnnamed536(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>
-    buildUnnamed537() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation());
-  return o;
-}
+    buildUnnamed537() => [
+          buildGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation(),
+        ];
 
 void checkUnnamed537(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>
@@ -8292,12 +7925,10 @@ void checkUnnamed537(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed538() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed538() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed538(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
@@ -8307,13 +7938,10 @@ void checkUnnamed538(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation>
-    buildUnnamed539() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation());
-  return o;
-}
+    buildUnnamed539() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation(),
+        ];
 
 void checkUnnamed539(
     core.List<
@@ -8325,13 +7953,10 @@ void checkUnnamed539(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
-    buildUnnamed540() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation());
-  return o;
-}
+    buildUnnamed540() => [
+          buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(),
+        ];
 
 void checkUnnamed540(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
@@ -8342,13 +7967,10 @@ void checkUnnamed540(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation>
-    buildUnnamed541() {
-  final o =
-      <api.GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation());
-  return o;
-}
+    buildUnnamed541() => [
+          buildGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation(),
+        ];
 
 void checkUnnamed541(
     core.List<
@@ -8360,12 +7982,10 @@ void checkUnnamed541(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed542() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed542() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed542(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
@@ -8375,12 +7995,10 @@ void checkUnnamed542(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed543() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed543() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed543(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
@@ -8390,12 +8008,10 @@ void checkUnnamed543(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>
-    buildUnnamed544() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoSegment());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1VideoSegment());
-  return o;
-}
+    buildUnnamed544() => [
+          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+        ];
 
 void checkUnnamed544(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment> o) {
@@ -8405,12 +8021,10 @@ void checkUnnamed544(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed545() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed545() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed545(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
@@ -8420,12 +8034,10 @@ void checkUnnamed545(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed546() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation());
-  return o;
-}
+    buildUnnamed546() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+        ];
 
 void checkUnnamed546(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
@@ -8435,12 +8047,10 @@ void checkUnnamed546(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>
-    buildUnnamed547() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1SpeechTranscription());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1SpeechTranscription());
-  return o;
-}
+    buildUnnamed547() => [
+          buildGoogleCloudVideointelligenceV1p3beta1SpeechTranscription(),
+          buildGoogleCloudVideointelligenceV1p3beta1SpeechTranscription(),
+        ];
 
 void checkUnnamed547(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1SpeechTranscription> o) {
@@ -8450,12 +8060,10 @@ void checkUnnamed547(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation>
-    buildUnnamed548() {
-  final o = <api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation>[];
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1TextAnnotation());
-  o.add(buildGoogleCloudVideointelligenceV1p3beta1TextAnnotation());
-  return o;
-}
+    buildUnnamed548() => [
+          buildGoogleCloudVideointelligenceV1p3beta1TextAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1TextAnnotation(),
+        ];
 
 void checkUnnamed548(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation> o) {
@@ -8619,12 +8227,10 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed549() {
-  final o = <api.GoogleLongrunningOperation>[];
-  o.add(buildGoogleLongrunningOperation());
-  o.add(buildGoogleLongrunningOperation());
-  return o;
-}
+core.List<api.GoogleLongrunningOperation> buildUnnamed549() => [
+      buildGoogleLongrunningOperation(),
+      buildGoogleLongrunningOperation(),
+    ];
 
 void checkUnnamed549(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8658,20 +8264,18 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed550() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed550() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed550(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8705,20 +8309,18 @@ void checkUnnamed550(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed551() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed551() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed551(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8797,20 +8399,18 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed552() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed552() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed552(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -8844,12 +8444,10 @@ void checkUnnamed552(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed553() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed552());
-  o.add(buildUnnamed552());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed553() => [
+      buildUnnamed552(),
+      buildUnnamed552(),
+    ];
 
 void checkUnnamed553(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

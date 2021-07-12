@@ -110,12 +110,10 @@ void checkGoogleCloudOrgpolicyV2ConstraintListConstraint(
   buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint--;
 }
 
-core.List<api.GoogleCloudOrgpolicyV2Constraint> buildUnnamed4679() {
-  final o = <api.GoogleCloudOrgpolicyV2Constraint>[];
-  o.add(buildGoogleCloudOrgpolicyV2Constraint());
-  o.add(buildGoogleCloudOrgpolicyV2Constraint());
-  return o;
-}
+core.List<api.GoogleCloudOrgpolicyV2Constraint> buildUnnamed4679() => [
+      buildGoogleCloudOrgpolicyV2Constraint(),
+      buildGoogleCloudOrgpolicyV2Constraint(),
+    ];
 
 void checkUnnamed4679(core.List<api.GoogleCloudOrgpolicyV2Constraint> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -149,12 +147,10 @@ void checkGoogleCloudOrgpolicyV2ListConstraintsResponse(
   buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse--;
 }
 
-core.List<api.GoogleCloudOrgpolicyV2Policy> buildUnnamed4680() {
-  final o = <api.GoogleCloudOrgpolicyV2Policy>[];
-  o.add(buildGoogleCloudOrgpolicyV2Policy());
-  o.add(buildGoogleCloudOrgpolicyV2Policy());
-  return o;
-}
+core.List<api.GoogleCloudOrgpolicyV2Policy> buildUnnamed4680() => [
+      buildGoogleCloudOrgpolicyV2Policy(),
+      buildGoogleCloudOrgpolicyV2Policy(),
+    ];
 
 void checkUnnamed4680(core.List<api.GoogleCloudOrgpolicyV2Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -212,12 +208,11 @@ void checkGoogleCloudOrgpolicyV2Policy(api.GoogleCloudOrgpolicyV2Policy o) {
   buildCounterGoogleCloudOrgpolicyV2Policy--;
 }
 
-core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> buildUnnamed4681() {
-  final o = <api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule>[];
-  o.add(buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule());
-  o.add(buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule());
-  return o;
-}
+core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> buildUnnamed4681() =>
+    [
+      buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule(),
+      buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule(),
+    ];
 
 void checkUnnamed4681(
     core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> o) {
@@ -289,12 +284,10 @@ void checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule--;
 }
 
-core.List<core.String> buildUnnamed4682() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4682() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4682(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -308,12 +301,10 @@ void checkUnnamed4682(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed4683() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4683() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4683(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

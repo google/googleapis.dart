@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed2819() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2819() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2819(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -88,12 +86,10 @@ void checkAllocateQuotaRequest(api.AllocateQuotaRequest o) {
   buildCounterAllocateQuotaRequest--;
 }
 
-core.List<api.QuotaError> buildUnnamed2820() {
-  final o = <api.QuotaError>[];
-  o.add(buildQuotaError());
-  o.add(buildQuotaError());
-  return o;
-}
+core.List<api.QuotaError> buildUnnamed2820() => [
+      buildQuotaError(),
+      buildQuotaError(),
+    ];
 
 void checkUnnamed2820(core.List<api.QuotaError> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -101,12 +97,10 @@ void checkUnnamed2820(core.List<api.QuotaError> o) {
   checkQuotaError(o[1]);
 }
 
-core.List<api.MetricValueSet> buildUnnamed2821() {
-  final o = <api.MetricValueSet>[];
-  o.add(buildMetricValueSet());
-  o.add(buildMetricValueSet());
-  return o;
-}
+core.List<api.MetricValueSet> buildUnnamed2821() => [
+      buildMetricValueSet(),
+      buildMetricValueSet(),
+    ];
 
 void checkUnnamed2821(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -173,12 +167,10 @@ void checkAttributeValue(api.AttributeValue o) {
   buildCounterAttributeValue--;
 }
 
-core.Map<core.String, api.AttributeValue> buildUnnamed2822() {
-  final o = <core.String, api.AttributeValue>{};
-  o['x'] = buildAttributeValue();
-  o['y'] = buildAttributeValue();
-  return o;
-}
+core.Map<core.String, api.AttributeValue> buildUnnamed2822() => {
+      'x': buildAttributeValue(),
+      'y': buildAttributeValue(),
+    };
 
 void checkUnnamed2822(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -210,12 +202,10 @@ void checkAttributes(api.Attributes o) {
   buildCounterAttributes--;
 }
 
-core.List<api.AuthorizationInfo> buildUnnamed2823() {
-  final o = <api.AuthorizationInfo>[];
-  o.add(buildAuthorizationInfo());
-  o.add(buildAuthorizationInfo());
-  return o;
-}
+core.List<api.AuthorizationInfo> buildUnnamed2823() => [
+      buildAuthorizationInfo(),
+      buildAuthorizationInfo(),
+    ];
 
 void checkUnnamed2823(core.List<api.AuthorizationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -223,20 +213,18 @@ void checkUnnamed2823(core.List<api.AuthorizationInfo> o) {
   checkAuthorizationInfo(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed2824() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2824() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2824(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -270,20 +258,18 @@ void checkUnnamed2824(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2825() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2825() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2825(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -317,20 +303,18 @@ void checkUnnamed2825(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2826() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2826() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2826(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -364,20 +348,18 @@ void checkUnnamed2826(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2827() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2827() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2827(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -411,20 +393,18 @@ void checkUnnamed2827(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2828() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2828() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2828(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -515,12 +495,10 @@ void checkAuditLog(api.AuditLog o) {
   buildCounterAuditLog--;
 }
 
-core.List<core.String> buildUnnamed2829() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2829() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2829(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -534,12 +512,10 @@ void checkUnnamed2829(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2830() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2830() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2830(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -553,20 +529,18 @@ void checkUnnamed2830(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2831() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2831() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2831(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -633,12 +607,10 @@ void checkAuth(api.Auth o) {
   buildCounterAuth--;
 }
 
-core.List<api.ServiceAccountDelegationInfo> buildUnnamed2832() {
-  final o = <api.ServiceAccountDelegationInfo>[];
-  o.add(buildServiceAccountDelegationInfo());
-  o.add(buildServiceAccountDelegationInfo());
-  return o;
-}
+core.List<api.ServiceAccountDelegationInfo> buildUnnamed2832() => [
+      buildServiceAccountDelegationInfo(),
+      buildServiceAccountDelegationInfo(),
+    ];
 
 void checkUnnamed2832(core.List<api.ServiceAccountDelegationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -646,20 +618,18 @@ void checkUnnamed2832(core.List<api.ServiceAccountDelegationInfo> o) {
   checkServiceAccountDelegationInfo(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed2833() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2833() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2833(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -799,12 +769,10 @@ void checkCheckError(api.CheckError o) {
   buildCounterCheckError--;
 }
 
-core.List<core.String> buildUnnamed2834() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2834() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2834(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -867,12 +835,10 @@ void checkCheckRequest(api.CheckRequest o) {
   buildCounterCheckRequest--;
 }
 
-core.List<api.CheckError> buildUnnamed2835() {
-  final o = <api.CheckError>[];
-  o.add(buildCheckError());
-  o.add(buildCheckError());
-  return o;
-}
+core.List<api.CheckError> buildUnnamed2835() => [
+      buildCheckError(),
+      buildCheckError(),
+    ];
 
 void checkUnnamed2835(core.List<api.CheckError> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -950,12 +916,10 @@ void checkConsumerInfo(api.ConsumerInfo o) {
   buildCounterConsumerInfo--;
 }
 
-core.List<core.String> buildUnnamed2836() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2836() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2836(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -969,12 +933,10 @@ void checkUnnamed2836(core.List<core.String> o) {
   );
 }
 
-core.List<api.Exemplar> buildUnnamed2837() {
-  final o = <api.Exemplar>[];
-  o.add(buildExemplar());
-  o.add(buildExemplar());
-  return o;
-}
+core.List<api.Exemplar> buildUnnamed2837() => [
+      buildExemplar(),
+      buildExemplar(),
+    ];
 
 void checkUnnamed2837(core.List<api.Exemplar> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1034,20 +996,18 @@ void checkDistribution(api.Distribution o) {
   buildCounterDistribution--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2838() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2838() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2838(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1081,12 +1041,10 @@ void checkUnnamed2838(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2839() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed2838());
-  o.add(buildUnnamed2838());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed2839() => [
+      buildUnnamed2838(),
+      buildUnnamed2838(),
+    ];
 
 void checkUnnamed2839(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1123,12 +1081,10 @@ void checkExemplar(api.Exemplar o) {
   buildCounterExemplar--;
 }
 
-core.List<core.double> buildUnnamed2840() {
-  final o = <core.double>[];
-  o.add(42.0);
-  o.add(42.0);
-  return o;
-}
+core.List<core.double> buildUnnamed2840() => [
+      42.0,
+      42.0,
+    ];
 
 void checkUnnamed2840(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1193,20 +1149,18 @@ void checkExponentialBuckets(api.ExponentialBuckets o) {
   buildCounterExponentialBuckets--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2841() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2841() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2841(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1379,12 +1333,10 @@ void checkLinearBuckets(api.LinearBuckets o) {
   buildCounterLinearBuckets--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2842() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2842() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2842(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1398,20 +1350,18 @@ void checkUnnamed2842(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2843() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2843() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2843(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1445,20 +1395,18 @@ void checkUnnamed2843(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2844() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2844() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2844(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1614,12 +1562,10 @@ void checkLogEntrySourceLocation(api.LogEntrySourceLocation o) {
   buildCounterLogEntrySourceLocation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2845() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2845() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2845(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1683,12 +1629,10 @@ void checkMetricValue(api.MetricValue o) {
   buildCounterMetricValue--;
 }
 
-core.List<api.MetricValue> buildUnnamed2846() {
-  final o = <api.MetricValue>[];
-  o.add(buildMetricValue());
-  o.add(buildMetricValue());
-  return o;
-}
+core.List<api.MetricValue> buildUnnamed2846() => [
+      buildMetricValue(),
+      buildMetricValue(),
+    ];
 
 void checkUnnamed2846(core.List<api.MetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1752,20 +1696,18 @@ void checkMoney(api.Money o) {
   buildCounterMoney--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2847() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2847() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2847(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1799,12 +1741,10 @@ void checkUnnamed2847(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2848() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed2847());
-  o.add(buildUnnamed2847());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed2848() => [
+      buildUnnamed2847(),
+      buildUnnamed2847(),
+    ];
 
 void checkUnnamed2848(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1812,12 +1752,10 @@ void checkUnnamed2848(core.List<core.Map<core.String, core.Object>> o) {
   checkUnnamed2847(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed2849() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2849() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2849(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1831,12 +1769,10 @@ void checkUnnamed2849(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.LogEntry> buildUnnamed2850() {
-  final o = <api.LogEntry>[];
-  o.add(buildLogEntry());
-  o.add(buildLogEntry());
-  return o;
-}
+core.List<api.LogEntry> buildUnnamed2850() => [
+      buildLogEntry(),
+      buildLogEntry(),
+    ];
 
 void checkUnnamed2850(core.List<api.LogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1844,12 +1780,10 @@ void checkUnnamed2850(core.List<api.LogEntry> o) {
   checkLogEntry(o[1]);
 }
 
-core.List<api.MetricValueSet> buildUnnamed2851() {
-  final o = <api.MetricValueSet>[];
-  o.add(buildMetricValueSet());
-  o.add(buildMetricValueSet());
-  return o;
-}
+core.List<api.MetricValueSet> buildUnnamed2851() => [
+      buildMetricValueSet(),
+      buildMetricValueSet(),
+    ];
 
 void checkUnnamed2851(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1857,12 +1791,10 @@ void checkUnnamed2851(core.List<api.MetricValueSet> o) {
   checkMetricValueSet(o[1]);
 }
 
-core.List<api.ResourceInfo> buildUnnamed2852() {
-  final o = <api.ResourceInfo>[];
-  o.add(buildResourceInfo());
-  o.add(buildResourceInfo());
-  return o;
-}
+core.List<api.ResourceInfo> buildUnnamed2852() => [
+      buildResourceInfo(),
+      buildResourceInfo(),
+    ];
 
 void checkUnnamed2852(core.List<api.ResourceInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1870,12 +1802,10 @@ void checkUnnamed2852(core.List<api.ResourceInfo> o) {
   checkResourceInfo(o[1]);
 }
 
-core.List<api.TraceSpan> buildUnnamed2853() {
-  final o = <api.TraceSpan>[];
-  o.add(buildTraceSpan());
-  o.add(buildTraceSpan());
-  return o;
-}
+core.List<api.TraceSpan> buildUnnamed2853() => [
+      buildTraceSpan(),
+      buildTraceSpan(),
+    ];
 
 void checkUnnamed2853(core.List<api.TraceSpan> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1883,12 +1813,10 @@ void checkUnnamed2853(core.List<api.TraceSpan> o) {
   checkTraceSpan(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed2854() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2854() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2854(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1965,12 +1893,10 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2855() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2855() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2855(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2057,12 +1983,10 @@ void checkQuotaError(api.QuotaError o) {
   buildCounterQuotaError--;
 }
 
-core.List<core.String> buildUnnamed2856() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2856() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2856(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2076,12 +2000,10 @@ void checkUnnamed2856(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.int> buildUnnamed2857() {
-  final o = <core.String, core.int>{};
-  o['x'] = 42;
-  o['y'] = 42;
-  return o;
-}
+core.Map<core.String, core.int> buildUnnamed2857() => {
+      'x': 42,
+      'y': 42,
+    };
 
 void checkUnnamed2857(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2095,12 +2017,10 @@ void checkUnnamed2857(core.Map<core.String, core.int> o) {
   );
 }
 
-core.List<api.MetricValueSet> buildUnnamed2858() {
-  final o = <api.MetricValueSet>[];
-  o.add(buildMetricValueSet());
-  o.add(buildMetricValueSet());
-  return o;
-}
+core.List<api.MetricValueSet> buildUnnamed2858() => [
+      buildMetricValueSet(),
+      buildMetricValueSet(),
+    ];
 
 void checkUnnamed2858(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2131,12 +2051,10 @@ void checkQuotaInfo(api.QuotaInfo o) {
   buildCounterQuotaInfo--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2859() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2859() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2859(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2150,12 +2068,10 @@ void checkUnnamed2859(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.MetricValueSet> buildUnnamed2860() {
-  final o = <api.MetricValueSet>[];
-  o.add(buildMetricValueSet());
-  o.add(buildMetricValueSet());
-  return o;
-}
+core.List<api.MetricValueSet> buildUnnamed2860() => [
+      buildMetricValueSet(),
+      buildMetricValueSet(),
+    ];
 
 void checkUnnamed2860(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2250,12 +2166,10 @@ void checkReportError(api.ReportError o) {
   buildCounterReportError--;
 }
 
-core.List<api.Operation> buildUnnamed2861() {
-  final o = <api.Operation>[];
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
+core.List<api.Operation> buildUnnamed2861() => [
+      buildOperation(),
+      buildOperation(),
+    ];
 
 void checkUnnamed2861(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2287,12 +2201,10 @@ void checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest--;
 }
 
-core.List<api.ReportError> buildUnnamed2862() {
-  final o = <api.ReportError>[];
-  o.add(buildReportError());
-  o.add(buildReportError());
-  return o;
-}
+core.List<api.ReportError> buildUnnamed2862() => [
+      buildReportError(),
+      buildReportError(),
+    ];
 
 void checkUnnamed2862(core.List<api.ReportError> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2329,12 +2241,10 @@ void checkReportResponse(api.ReportResponse o) {
   buildCounterReportResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2863() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2863() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2863(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2455,12 +2365,10 @@ void checkRequestMetadata(api.RequestMetadata o) {
   buildCounterRequestMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2864() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2864() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2864(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2474,12 +2382,10 @@ void checkUnnamed2864(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed2865() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2865() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2865(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2596,12 +2502,10 @@ void checkResourceInfo(api.ResourceInfo o) {
   buildCounterResourceInfo--;
 }
 
-core.List<core.String> buildUnnamed2866() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2866() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2866(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2615,12 +2519,10 @@ void checkUnnamed2866(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2867() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2867() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2867(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2703,20 +2605,18 @@ void checkSpanContext(api.SpanContext o) {
   buildCounterSpanContext--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2868() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2868() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2868(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2750,12 +2650,10 @@ void checkUnnamed2868(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2869() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed2868());
-  o.add(buildUnnamed2868());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed2869() => [
+      buildUnnamed2868(),
+      buildUnnamed2868(),
+    ];
 
 void checkUnnamed2869(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2792,20 +2690,18 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2870() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2870() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2870(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));

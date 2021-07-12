@@ -124,12 +124,10 @@ void checkExecution(api.Execution o) {
   buildCounterExecution--;
 }
 
-core.List<api.Execution> buildUnnamed6142() {
-  final o = <api.Execution>[];
-  o.add(buildExecution());
-  o.add(buildExecution());
-  return o;
-}
+core.List<api.Execution> buildUnnamed6142() => [
+      buildExecution(),
+      buildExecution(),
+    ];
 
 void checkUnnamed6142(core.List<api.Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -193,12 +191,10 @@ void checkPosition(api.Position o) {
   buildCounterPosition--;
 }
 
-core.List<api.StackTraceElement> buildUnnamed6143() {
-  final o = <api.StackTraceElement>[];
-  o.add(buildStackTraceElement());
-  o.add(buildStackTraceElement());
-  return o;
-}
+core.List<api.StackTraceElement> buildUnnamed6143() => [
+      buildStackTraceElement(),
+      buildStackTraceElement(),
+    ];
 
 void checkUnnamed6143(core.List<api.StackTraceElement> o) {
   unittest.expect(o, unittest.hasLength(2));

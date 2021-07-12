@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed3443() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3443() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3443(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -117,12 +115,10 @@ void checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-core.List<api.SiteSummaryResponse> buildUnnamed3444() {
-  final o = <api.SiteSummaryResponse>[];
-  o.add(buildSiteSummaryResponse());
-  o.add(buildSiteSummaryResponse());
-  return o;
-}
+core.List<api.SiteSummaryResponse> buildUnnamed3444() => [
+      buildSiteSummaryResponse(),
+      buildSiteSummaryResponse(),
+    ];
 
 void checkUnnamed3444(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));

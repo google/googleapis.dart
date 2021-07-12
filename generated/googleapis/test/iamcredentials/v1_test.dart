@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed6909() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6909() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6909(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -45,12 +43,10 @@ void checkUnnamed6909(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6910() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6910() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6910(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -117,12 +113,10 @@ void checkGenerateAccessTokenResponse(api.GenerateAccessTokenResponse o) {
   buildCounterGenerateAccessTokenResponse--;
 }
 
-core.List<core.String> buildUnnamed6911() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6911() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6911(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -184,12 +178,10 @@ void checkGenerateIdTokenResponse(api.GenerateIdTokenResponse o) {
   buildCounterGenerateIdTokenResponse--;
 }
 
-core.List<core.String> buildUnnamed6912() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6912() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6912(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -254,12 +246,10 @@ void checkSignBlobResponse(api.SignBlobResponse o) {
   buildCounterSignBlobResponse--;
 }
 
-core.List<core.String> buildUnnamed6913() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6913() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6913(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

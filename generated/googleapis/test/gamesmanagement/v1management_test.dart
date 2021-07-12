@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AchievementResetResponse> buildUnnamed72() {
-  final o = <api.AchievementResetResponse>[];
-  o.add(buildAchievementResetResponse());
-  o.add(buildAchievementResetResponse());
-  return o;
-}
+core.List<api.AchievementResetResponse> buildUnnamed72() => [
+      buildAchievementResetResponse(),
+      buildAchievementResetResponse(),
+    ];
 
 void checkUnnamed72(core.List<api.AchievementResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -63,12 +61,10 @@ void checkAchievementResetAllResponse(api.AchievementResetAllResponse o) {
   buildCounterAchievementResetAllResponse--;
 }
 
-core.List<core.String> buildUnnamed73() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed73() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed73(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -142,12 +138,10 @@ void checkAchievementResetResponse(api.AchievementResetResponse o) {
   buildCounterAchievementResetResponse--;
 }
 
-core.List<core.String> buildUnnamed74() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed74() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed74(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -279,12 +273,10 @@ void checkHiddenPlayer(api.HiddenPlayer o) {
   buildCounterHiddenPlayer--;
 }
 
-core.List<api.HiddenPlayer> buildUnnamed75() {
-  final o = <api.HiddenPlayer>[];
-  o.add(buildHiddenPlayer());
-  o.add(buildHiddenPlayer());
-  return o;
-}
+core.List<api.HiddenPlayer> buildUnnamed75() => [
+      buildHiddenPlayer(),
+      buildHiddenPlayer(),
+    ];
 
 void checkUnnamed75(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -411,12 +403,10 @@ void checkPlayer(api.Player o) {
   buildCounterPlayer--;
 }
 
-core.List<api.PlayerScoreResetResponse> buildUnnamed76() {
-  final o = <api.PlayerScoreResetResponse>[];
-  o.add(buildPlayerScoreResetResponse());
-  o.add(buildPlayerScoreResetResponse());
-  return o;
-}
+core.List<api.PlayerScoreResetResponse> buildUnnamed76() => [
+      buildPlayerScoreResetResponse(),
+      buildPlayerScoreResetResponse(),
+    ];
 
 void checkUnnamed76(core.List<api.PlayerScoreResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -448,12 +438,10 @@ void checkPlayerScoreResetAllResponse(api.PlayerScoreResetAllResponse o) {
   buildCounterPlayerScoreResetAllResponse--;
 }
 
-core.List<core.String> buildUnnamed77() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed77() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed77(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -520,12 +508,10 @@ void checkProfileSettings(api.ProfileSettings o) {
   buildCounterProfileSettings--;
 }
 
-core.List<core.String> buildUnnamed78() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed78() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed78(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

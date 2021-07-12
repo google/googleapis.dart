@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.String> buildUnnamed1764() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed1764() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed1764(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -45,12 +43,10 @@ void checkUnnamed1764(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1765() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1765() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1765(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -64,12 +60,10 @@ void checkUnnamed1765(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1766() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1766() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1766(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -131,12 +125,10 @@ void checkWebfont(api.Webfont o) {
   buildCounterWebfont--;
 }
 
-core.List<api.Webfont> buildUnnamed1767() {
-  final o = <api.Webfont>[];
-  o.add(buildWebfont());
-  o.add(buildWebfont());
-  return o;
-}
+core.List<api.Webfont> buildUnnamed1767() => [
+      buildWebfont(),
+      buildWebfont(),
+    ];
 
 void checkUnnamed1767(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));

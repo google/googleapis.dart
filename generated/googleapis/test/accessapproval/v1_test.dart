@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.EnrolledService> buildUnnamed5733() {
-  final o = <api.EnrolledService>[];
-  o.add(buildEnrolledService());
-  o.add(buildEnrolledService());
-  return o;
-}
+core.List<api.EnrolledService> buildUnnamed5733() => [
+      buildEnrolledService(),
+      buildEnrolledService(),
+    ];
 
 void checkUnnamed5733(core.List<api.EnrolledService> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -39,12 +37,10 @@ void checkUnnamed5733(core.List<api.EnrolledService> o) {
   checkEnrolledService(o[1]);
 }
 
-core.List<core.String> buildUnnamed5734() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5734() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5734(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -317,12 +313,10 @@ void checkEnrolledService(api.EnrolledService o) {
   buildCounterEnrolledService--;
 }
 
-core.List<api.ApprovalRequest> buildUnnamed5735() {
-  final o = <api.ApprovalRequest>[];
-  o.add(buildApprovalRequest());
-  o.add(buildApprovalRequest());
-  return o;
-}
+core.List<api.ApprovalRequest> buildUnnamed5735() => [
+      buildApprovalRequest(),
+      buildApprovalRequest(),
+    ];
 
 void checkUnnamed5735(core.List<api.ApprovalRequest> o) {
   unittest.expect(o, unittest.hasLength(2));

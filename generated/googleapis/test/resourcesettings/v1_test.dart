@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleCloudResourcesettingsV1Setting> buildUnnamed6059() {
-  final o = <api.GoogleCloudResourcesettingsV1Setting>[];
-  o.add(buildGoogleCloudResourcesettingsV1Setting());
-  o.add(buildGoogleCloudResourcesettingsV1Setting());
-  return o;
-}
+core.List<api.GoogleCloudResourcesettingsV1Setting> buildUnnamed6059() => [
+      buildGoogleCloudResourcesettingsV1Setting(),
+      buildGoogleCloudResourcesettingsV1Setting(),
+    ];
 
 void checkUnnamed6059(core.List<api.GoogleCloudResourcesettingsV1Setting> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -199,12 +197,10 @@ void checkGoogleCloudResourcesettingsV1ValueEnumValue(
   buildCounterGoogleCloudResourcesettingsV1ValueEnumValue--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6060() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed6060() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed6060(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -239,12 +235,10 @@ void checkGoogleCloudResourcesettingsV1ValueStringMap(
   buildCounterGoogleCloudResourcesettingsV1ValueStringMap--;
 }
 
-core.List<core.String> buildUnnamed6061() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6061() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6061(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

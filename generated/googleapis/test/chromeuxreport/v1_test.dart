@@ -123,12 +123,10 @@ void checkKey(api.Key o) {
   buildCounterKey--;
 }
 
-core.List<api.Bin> buildUnnamed7252() {
-  final o = <api.Bin>[];
-  o.add(buildBin());
-  o.add(buildBin());
-  return o;
-}
+core.List<api.Bin> buildUnnamed7252() => [
+      buildBin(),
+      buildBin(),
+    ];
 
 void checkUnnamed7252(core.List<api.Bin> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -193,12 +191,10 @@ void checkPercentiles(api.Percentiles o) {
   buildCounterPercentiles--;
 }
 
-core.List<core.String> buildUnnamed7253() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7253() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7253(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -272,12 +268,10 @@ void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse--;
 }
 
-core.Map<core.String, api.Metric> buildUnnamed7254() {
-  final o = <core.String, api.Metric>{};
-  o['x'] = buildMetric();
-  o['y'] = buildMetric();
-  return o;
-}
+core.Map<core.String, api.Metric> buildUnnamed7254() => {
+      'x': buildMetric(),
+      'y': buildMetric(),
+    };
 
 void checkUnnamed7254(core.Map<core.String, api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));

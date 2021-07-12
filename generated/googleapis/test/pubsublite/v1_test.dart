@@ -298,12 +298,10 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.PartitionCursor> buildUnnamed7590() {
-  final o = <api.PartitionCursor>[];
-  o.add(buildPartitionCursor());
-  o.add(buildPartitionCursor());
-  return o;
-}
+core.List<api.PartitionCursor> buildUnnamed7590() => [
+      buildPartitionCursor(),
+      buildPartitionCursor(),
+    ];
 
 void checkUnnamed7590(core.List<api.PartitionCursor> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -335,12 +333,10 @@ void checkListPartitionCursorsResponse(api.ListPartitionCursorsResponse o) {
   buildCounterListPartitionCursorsResponse--;
 }
 
-core.List<api.Subscription> buildUnnamed7591() {
-  final o = <api.Subscription>[];
-  o.add(buildSubscription());
-  o.add(buildSubscription());
-  return o;
-}
+core.List<api.Subscription> buildUnnamed7591() => [
+      buildSubscription(),
+      buildSubscription(),
+    ];
 
 void checkUnnamed7591(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -372,12 +368,10 @@ void checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
   buildCounterListSubscriptionsResponse--;
 }
 
-core.List<core.String> buildUnnamed7592() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7592() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7592(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -415,12 +409,10 @@ void checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
   buildCounterListTopicSubscriptionsResponse--;
 }
 
-core.List<api.Topic> buildUnnamed7593() {
-  final o = <api.Topic>[];
-  o.add(buildTopic());
-  o.add(buildTopic());
-  return o;
-}
+core.List<api.Topic> buildUnnamed7593() => [
+      buildTopic(),
+      buildTopic(),
+    ];
 
 void checkUnnamed7593(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));

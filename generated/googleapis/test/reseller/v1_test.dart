@@ -239,12 +239,10 @@ void checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
-core.List<core.String> buildUnnamed4684() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4684() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4684(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -398,12 +396,10 @@ void checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-core.List<core.String> buildUnnamed4685() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4685() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4685(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -562,12 +558,10 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-core.List<api.Subscription> buildUnnamed4686() {
-  final o = <api.Subscription>[];
-  o.add(buildSubscription());
-  o.add(buildSubscription());
-  return o;
-}
+core.List<api.Subscription> buildUnnamed4686() => [
+      buildSubscription(),
+      buildSubscription(),
+    ];
 
 void checkUnnamed4686(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));

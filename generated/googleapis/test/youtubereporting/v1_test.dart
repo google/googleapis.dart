@@ -344,12 +344,10 @@ void checkGdataDownloadParameters(api.GdataDownloadParameters o) {
   buildCounterGdataDownloadParameters--;
 }
 
-core.List<api.GdataCompositeMedia> buildUnnamed4497() {
-  final o = <api.GdataCompositeMedia>[];
-  o.add(buildGdataCompositeMedia());
-  o.add(buildGdataCompositeMedia());
-  return o;
-}
+core.List<api.GdataCompositeMedia> buildUnnamed4497() => [
+      buildGdataCompositeMedia(),
+      buildGdataCompositeMedia(),
+    ];
 
 void checkUnnamed4497(core.List<api.GdataCompositeMedia> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -564,12 +562,10 @@ void checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-core.List<api.Job> buildUnnamed4498() {
-  final o = <api.Job>[];
-  o.add(buildJob());
-  o.add(buildJob());
-  return o;
-}
+core.List<api.Job> buildUnnamed4498() => [
+      buildJob(),
+      buildJob(),
+    ];
 
 void checkUnnamed4498(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -601,12 +597,10 @@ void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse--;
 }
 
-core.List<api.ReportType> buildUnnamed4499() {
-  final o = <api.ReportType>[];
-  o.add(buildReportType());
-  o.add(buildReportType());
-  return o;
-}
+core.List<api.ReportType> buildUnnamed4499() => [
+      buildReportType(),
+      buildReportType(),
+    ];
 
 void checkUnnamed4499(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -638,12 +632,10 @@ void checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse--;
 }
 
-core.List<api.Report> buildUnnamed4500() {
-  final o = <api.Report>[];
-  o.add(buildReport());
-  o.add(buildReport());
-  return o;
-}
+core.List<api.Report> buildUnnamed4500() => [
+      buildReport(),
+      buildReport(),
+    ];
 
 void checkUnnamed4500(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));

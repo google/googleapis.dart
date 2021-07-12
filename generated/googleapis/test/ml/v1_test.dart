@@ -26,20 +26,18 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.Object> buildUnnamed7462() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7462() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7462(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -73,12 +71,10 @@ void checkUnnamed7462(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed7463() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed7462());
-  o.add(buildUnnamed7462());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed7463() => [
+      buildUnnamed7462(),
+      buildUnnamed7462(),
+    ];
 
 void checkUnnamed7463(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -226,12 +222,10 @@ void checkGoogleCloudMlV1MeasurementMetric(
   buildCounterGoogleCloudMlV1MeasurementMetric--;
 }
 
-core.List<core.String> buildUnnamed7464() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7464() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7464(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -269,12 +263,10 @@ void checkGoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec(
   buildCounterGoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec--;
 }
 
-core.List<core.double> buildUnnamed7465() {
-  final o = <core.double>[];
-  o.add(42.0);
-  o.add(42.0);
-  return o;
-}
+core.List<core.double> buildUnnamed7465() => [
+      42.0,
+      42.0,
+    ];
 
 void checkUnnamed7465(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -371,12 +363,10 @@ void checkGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec(
   buildCounterGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec--;
 }
 
-core.List<core.String> buildUnnamed7466() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7466() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7466(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -417,12 +407,10 @@ void checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueS
   buildCounterGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec--;
 }
 
-core.List<core.double> buildUnnamed7467() {
-  final o = <core.double>[];
-  o.add(42.0);
-  o.add(42.0);
-  return o;
-}
+core.List<core.double> buildUnnamed7467() => [
+      42.0,
+      42.0,
+    ];
 
 void checkUnnamed7467(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -463,12 +451,10 @@ void checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
   buildCounterGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec--;
 }
 
-core.List<core.String> buildUnnamed7468() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7468() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7468(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -537,12 +523,10 @@ void checkGoogleCloudMlV1StudyConfigMetricSpec(
   buildCounterGoogleCloudMlV1StudyConfigMetricSpec--;
 }
 
-core.List<api.GoogleCloudMlV1StudyConfigParameterSpec> buildUnnamed7469() {
-  final o = <api.GoogleCloudMlV1StudyConfigParameterSpec>[];
-  o.add(buildGoogleCloudMlV1StudyConfigParameterSpec());
-  o.add(buildGoogleCloudMlV1StudyConfigParameterSpec());
-  return o;
-}
+core.List<api.GoogleCloudMlV1StudyConfigParameterSpec> buildUnnamed7469() => [
+      buildGoogleCloudMlV1StudyConfigParameterSpec(),
+      buildGoogleCloudMlV1StudyConfigParameterSpec(),
+    ];
 
 void checkUnnamed7469(
     core.List<api.GoogleCloudMlV1StudyConfigParameterSpec> o) {
@@ -701,12 +685,10 @@ void checkGoogleCloudMlV1AddTrialMeasurementRequest(
   buildCounterGoogleCloudMlV1AddTrialMeasurementRequest--;
 }
 
-core.List<api.GoogleCloudMlV1MetricSpec> buildUnnamed7470() {
-  final o = <api.GoogleCloudMlV1MetricSpec>[];
-  o.add(buildGoogleCloudMlV1MetricSpec());
-  o.add(buildGoogleCloudMlV1MetricSpec());
-  return o;
-}
+core.List<api.GoogleCloudMlV1MetricSpec> buildUnnamed7470() => [
+      buildGoogleCloudMlV1MetricSpec(),
+      buildGoogleCloudMlV1MetricSpec(),
+    ];
 
 void checkUnnamed7470(core.List<api.GoogleCloudMlV1MetricSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -825,12 +807,10 @@ void checkGoogleCloudMlV1CancelJobRequest(
   buildCounterGoogleCloudMlV1CancelJobRequest--;
 }
 
-core.List<core.String> buildUnnamed7471() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7471() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7471(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1022,12 +1002,10 @@ void checkGoogleCloudMlV1ContainerPort(api.GoogleCloudMlV1ContainerPort o) {
   buildCounterGoogleCloudMlV1ContainerPort--;
 }
 
-core.List<core.String> buildUnnamed7472() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7472() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7472(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1041,12 +1019,10 @@ void checkUnnamed7472(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7473() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7473() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7473(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1060,12 +1036,10 @@ void checkUnnamed7473(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudMlV1EnvVar> buildUnnamed7474() {
-  final o = <api.GoogleCloudMlV1EnvVar>[];
-  o.add(buildGoogleCloudMlV1EnvVar());
-  o.add(buildGoogleCloudMlV1EnvVar());
-  return o;
-}
+core.List<api.GoogleCloudMlV1EnvVar> buildUnnamed7474() => [
+      buildGoogleCloudMlV1EnvVar(),
+      buildGoogleCloudMlV1EnvVar(),
+    ];
 
 void checkUnnamed7474(core.List<api.GoogleCloudMlV1EnvVar> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1073,12 +1047,10 @@ void checkUnnamed7474(core.List<api.GoogleCloudMlV1EnvVar> o) {
   checkGoogleCloudMlV1EnvVar(o[1]);
 }
 
-core.List<api.GoogleCloudMlV1ContainerPort> buildUnnamed7475() {
-  final o = <api.GoogleCloudMlV1ContainerPort>[];
-  o.add(buildGoogleCloudMlV1ContainerPort());
-  o.add(buildGoogleCloudMlV1ContainerPort());
-  return o;
-}
+core.List<api.GoogleCloudMlV1ContainerPort> buildUnnamed7475() => [
+      buildGoogleCloudMlV1ContainerPort(),
+      buildGoogleCloudMlV1ContainerPort(),
+    ];
 
 void checkUnnamed7475(core.List<api.GoogleCloudMlV1ContainerPort> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1270,12 +1242,10 @@ void checkGoogleCloudMlV1GetConfigResponse(
 }
 
 core.List<api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>
-    buildUnnamed7476() {
-  final o = <api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>[];
-  o.add(buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric());
-  o.add(buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric());
-  return o;
-}
+    buildUnnamed7476() => [
+          buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(),
+          buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(),
+        ];
 
 void checkUnnamed7476(
     core.List<api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> o) {
@@ -1284,12 +1254,10 @@ void checkUnnamed7476(
   checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed7477() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7477() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7477(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1303,12 +1271,10 @@ void checkUnnamed7477(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed7478() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7478() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7478(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1375,12 +1341,10 @@ void checkGoogleCloudMlV1HyperparameterOutput(
   buildCounterGoogleCloudMlV1HyperparameterOutput--;
 }
 
-core.List<api.GoogleCloudMlV1ParameterSpec> buildUnnamed7479() {
-  final o = <api.GoogleCloudMlV1ParameterSpec>[];
-  o.add(buildGoogleCloudMlV1ParameterSpec());
-  o.add(buildGoogleCloudMlV1ParameterSpec());
-  return o;
-}
+core.List<api.GoogleCloudMlV1ParameterSpec> buildUnnamed7479() => [
+      buildGoogleCloudMlV1ParameterSpec(),
+      buildGoogleCloudMlV1ParameterSpec(),
+    ];
 
 void checkUnnamed7479(core.List<api.GoogleCloudMlV1ParameterSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1469,12 +1433,10 @@ void checkGoogleCloudMlV1IntegratedGradientsAttribution(
   buildCounterGoogleCloudMlV1IntegratedGradientsAttribution--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7480() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7480() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7480(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1550,12 +1512,10 @@ void checkGoogleCloudMlV1Job(api.GoogleCloudMlV1Job o) {
   buildCounterGoogleCloudMlV1Job--;
 }
 
-core.List<api.GoogleCloudMlV1Job> buildUnnamed7481() {
-  final o = <api.GoogleCloudMlV1Job>[];
-  o.add(buildGoogleCloudMlV1Job());
-  o.add(buildGoogleCloudMlV1Job());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Job> buildUnnamed7481() => [
+      buildGoogleCloudMlV1Job(),
+      buildGoogleCloudMlV1Job(),
+    ];
 
 void checkUnnamed7481(core.List<api.GoogleCloudMlV1Job> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1588,12 +1548,10 @@ void checkGoogleCloudMlV1ListJobsResponse(
   buildCounterGoogleCloudMlV1ListJobsResponse--;
 }
 
-core.List<api.GoogleCloudMlV1Location> buildUnnamed7482() {
-  final o = <api.GoogleCloudMlV1Location>[];
-  o.add(buildGoogleCloudMlV1Location());
-  o.add(buildGoogleCloudMlV1Location());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Location> buildUnnamed7482() => [
+      buildGoogleCloudMlV1Location(),
+      buildGoogleCloudMlV1Location(),
+    ];
 
 void checkUnnamed7482(core.List<api.GoogleCloudMlV1Location> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1627,12 +1585,10 @@ void checkGoogleCloudMlV1ListLocationsResponse(
   buildCounterGoogleCloudMlV1ListLocationsResponse--;
 }
 
-core.List<api.GoogleCloudMlV1Model> buildUnnamed7483() {
-  final o = <api.GoogleCloudMlV1Model>[];
-  o.add(buildGoogleCloudMlV1Model());
-  o.add(buildGoogleCloudMlV1Model());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Model> buildUnnamed7483() => [
+      buildGoogleCloudMlV1Model(),
+      buildGoogleCloudMlV1Model(),
+    ];
 
 void checkUnnamed7483(core.List<api.GoogleCloudMlV1Model> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1682,12 +1638,10 @@ void checkGoogleCloudMlV1ListOptimalTrialsRequest(
   buildCounterGoogleCloudMlV1ListOptimalTrialsRequest--;
 }
 
-core.List<api.GoogleCloudMlV1Trial> buildUnnamed7484() {
-  final o = <api.GoogleCloudMlV1Trial>[];
-  o.add(buildGoogleCloudMlV1Trial());
-  o.add(buildGoogleCloudMlV1Trial());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Trial> buildUnnamed7484() => [
+      buildGoogleCloudMlV1Trial(),
+      buildGoogleCloudMlV1Trial(),
+    ];
 
 void checkUnnamed7484(core.List<api.GoogleCloudMlV1Trial> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1716,12 +1670,10 @@ void checkGoogleCloudMlV1ListOptimalTrialsResponse(
   buildCounterGoogleCloudMlV1ListOptimalTrialsResponse--;
 }
 
-core.List<api.GoogleCloudMlV1Study> buildUnnamed7485() {
-  final o = <api.GoogleCloudMlV1Study>[];
-  o.add(buildGoogleCloudMlV1Study());
-  o.add(buildGoogleCloudMlV1Study());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Study> buildUnnamed7485() => [
+      buildGoogleCloudMlV1Study(),
+      buildGoogleCloudMlV1Study(),
+    ];
 
 void checkUnnamed7485(core.List<api.GoogleCloudMlV1Study> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1750,12 +1702,10 @@ void checkGoogleCloudMlV1ListStudiesResponse(
   buildCounterGoogleCloudMlV1ListStudiesResponse--;
 }
 
-core.List<api.GoogleCloudMlV1Trial> buildUnnamed7486() {
-  final o = <api.GoogleCloudMlV1Trial>[];
-  o.add(buildGoogleCloudMlV1Trial());
-  o.add(buildGoogleCloudMlV1Trial());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Trial> buildUnnamed7486() => [
+      buildGoogleCloudMlV1Trial(),
+      buildGoogleCloudMlV1Trial(),
+    ];
 
 void checkUnnamed7486(core.List<api.GoogleCloudMlV1Trial> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1783,12 +1733,10 @@ void checkGoogleCloudMlV1ListTrialsResponse(
   buildCounterGoogleCloudMlV1ListTrialsResponse--;
 }
 
-core.List<api.GoogleCloudMlV1Version> buildUnnamed7487() {
-  final o = <api.GoogleCloudMlV1Version>[];
-  o.add(buildGoogleCloudMlV1Version());
-  o.add(buildGoogleCloudMlV1Version());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Version> buildUnnamed7487() => [
+      buildGoogleCloudMlV1Version(),
+      buildGoogleCloudMlV1Version(),
+    ];
 
 void checkUnnamed7487(core.List<api.GoogleCloudMlV1Version> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1822,12 +1770,10 @@ void checkGoogleCloudMlV1ListVersionsResponse(
   buildCounterGoogleCloudMlV1ListVersionsResponse--;
 }
 
-core.List<api.GoogleCloudMlV1Capability> buildUnnamed7488() {
-  final o = <api.GoogleCloudMlV1Capability>[];
-  o.add(buildGoogleCloudMlV1Capability());
-  o.add(buildGoogleCloudMlV1Capability());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Capability> buildUnnamed7488() => [
+      buildGoogleCloudMlV1Capability(),
+      buildGoogleCloudMlV1Capability(),
+    ];
 
 void checkUnnamed7488(core.List<api.GoogleCloudMlV1Capability> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1881,12 +1827,10 @@ void checkGoogleCloudMlV1ManualScaling(api.GoogleCloudMlV1ManualScaling o) {
   buildCounterGoogleCloudMlV1ManualScaling--;
 }
 
-core.List<api.GoogleCloudMlV1MeasurementMetric> buildUnnamed7489() {
-  final o = <api.GoogleCloudMlV1MeasurementMetric>[];
-  o.add(buildGoogleCloudMlV1MeasurementMetric());
-  o.add(buildGoogleCloudMlV1MeasurementMetric());
-  return o;
-}
+core.List<api.GoogleCloudMlV1MeasurementMetric> buildUnnamed7489() => [
+      buildGoogleCloudMlV1MeasurementMetric(),
+      buildGoogleCloudMlV1MeasurementMetric(),
+    ];
 
 void checkUnnamed7489(core.List<api.GoogleCloudMlV1MeasurementMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1950,12 +1894,10 @@ void checkGoogleCloudMlV1MetricSpec(api.GoogleCloudMlV1MetricSpec o) {
   buildCounterGoogleCloudMlV1MetricSpec--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7490() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7490() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7490(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1969,12 +1911,10 @@ void checkUnnamed7490(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7491() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7491() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7491(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2030,12 +1970,10 @@ void checkGoogleCloudMlV1Model(api.GoogleCloudMlV1Model o) {
   buildCounterGoogleCloudMlV1Model--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7492() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7492() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7492(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2103,12 +2041,10 @@ void checkGoogleCloudMlV1OperationMetadata(
   buildCounterGoogleCloudMlV1OperationMetadata--;
 }
 
-core.List<core.String> buildUnnamed7493() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7493() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7493(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2122,12 +2058,10 @@ void checkUnnamed7493(core.List<core.String> o) {
   );
 }
 
-core.List<core.double> buildUnnamed7494() {
-  final o = <core.double>[];
-  o.add(42.0);
-  o.add(42.0);
-  return o;
-}
+core.List<core.double> buildUnnamed7494() => [
+      42.0,
+      42.0,
+    ];
 
 void checkUnnamed7494(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2206,12 +2140,10 @@ void checkGoogleCloudMlV1PredictRequest(api.GoogleCloudMlV1PredictRequest o) {
   buildCounterGoogleCloudMlV1PredictRequest--;
 }
 
-core.List<core.String> buildUnnamed7495() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7495() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7495(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2337,12 +2269,10 @@ void checkGoogleCloudMlV1PredictionOutput(
   buildCounterGoogleCloudMlV1PredictionOutput--;
 }
 
-core.List<core.String> buildUnnamed7496() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7496() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7496(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2356,12 +2286,10 @@ void checkUnnamed7496(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7497() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7497() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7497(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2589,12 +2517,10 @@ void checkGoogleCloudMlV1Study(api.GoogleCloudMlV1Study o) {
   buildCounterGoogleCloudMlV1Study--;
 }
 
-core.List<api.GoogleCloudMlV1StudyConfigMetricSpec> buildUnnamed7498() {
-  final o = <api.GoogleCloudMlV1StudyConfigMetricSpec>[];
-  o.add(buildGoogleCloudMlV1StudyConfigMetricSpec());
-  o.add(buildGoogleCloudMlV1StudyConfigMetricSpec());
-  return o;
-}
+core.List<api.GoogleCloudMlV1StudyConfigMetricSpec> buildUnnamed7498() => [
+      buildGoogleCloudMlV1StudyConfigMetricSpec(),
+      buildGoogleCloudMlV1StudyConfigMetricSpec(),
+    ];
 
 void checkUnnamed7498(core.List<api.GoogleCloudMlV1StudyConfigMetricSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2602,12 +2528,10 @@ void checkUnnamed7498(core.List<api.GoogleCloudMlV1StudyConfigMetricSpec> o) {
   checkGoogleCloudMlV1StudyConfigMetricSpec(o[1]);
 }
 
-core.List<api.GoogleCloudMlV1StudyConfigParameterSpec> buildUnnamed7499() {
-  final o = <api.GoogleCloudMlV1StudyConfigParameterSpec>[];
-  o.add(buildGoogleCloudMlV1StudyConfigParameterSpec());
-  o.add(buildGoogleCloudMlV1StudyConfigParameterSpec());
-  return o;
-}
+core.List<api.GoogleCloudMlV1StudyConfigParameterSpec> buildUnnamed7499() => [
+      buildGoogleCloudMlV1StudyConfigParameterSpec(),
+      buildGoogleCloudMlV1StudyConfigParameterSpec(),
+    ];
 
 void checkUnnamed7499(
     core.List<api.GoogleCloudMlV1StudyConfigParameterSpec> o) {
@@ -2712,12 +2636,10 @@ void checkGoogleCloudMlV1SuggestTrialsRequest(
   buildCounterGoogleCloudMlV1SuggestTrialsRequest--;
 }
 
-core.List<api.GoogleCloudMlV1Trial> buildUnnamed7500() {
-  final o = <api.GoogleCloudMlV1Trial>[];
-  o.add(buildGoogleCloudMlV1Trial());
-  o.add(buildGoogleCloudMlV1Trial());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Trial> buildUnnamed7500() => [
+      buildGoogleCloudMlV1Trial(),
+      buildGoogleCloudMlV1Trial(),
+    ];
 
 void checkUnnamed7500(core.List<api.GoogleCloudMlV1Trial> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2761,12 +2683,10 @@ void checkGoogleCloudMlV1SuggestTrialsResponse(
   buildCounterGoogleCloudMlV1SuggestTrialsResponse--;
 }
 
-core.List<core.String> buildUnnamed7501() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7501() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7501(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2780,12 +2700,10 @@ void checkUnnamed7501(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7502() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7502() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7502(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2913,12 +2831,10 @@ void checkGoogleCloudMlV1TrainingInput(api.GoogleCloudMlV1TrainingInput o) {
   buildCounterGoogleCloudMlV1TrainingInput--;
 }
 
-core.List<api.GoogleCloudMlV1HyperparameterOutput> buildUnnamed7503() {
-  final o = <api.GoogleCloudMlV1HyperparameterOutput>[];
-  o.add(buildGoogleCloudMlV1HyperparameterOutput());
-  o.add(buildGoogleCloudMlV1HyperparameterOutput());
-  return o;
-}
+core.List<api.GoogleCloudMlV1HyperparameterOutput> buildUnnamed7503() => [
+      buildGoogleCloudMlV1HyperparameterOutput(),
+      buildGoogleCloudMlV1HyperparameterOutput(),
+    ];
 
 void checkUnnamed7503(core.List<api.GoogleCloudMlV1HyperparameterOutput> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2926,12 +2842,10 @@ void checkUnnamed7503(core.List<api.GoogleCloudMlV1HyperparameterOutput> o) {
   checkGoogleCloudMlV1HyperparameterOutput(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed7504() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7504() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7504(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2987,12 +2901,10 @@ void checkGoogleCloudMlV1TrainingOutput(api.GoogleCloudMlV1TrainingOutput o) {
   buildCounterGoogleCloudMlV1TrainingOutput--;
 }
 
-core.List<api.GoogleCloudMlV1Measurement> buildUnnamed7505() {
-  final o = <api.GoogleCloudMlV1Measurement>[];
-  o.add(buildGoogleCloudMlV1Measurement());
-  o.add(buildGoogleCloudMlV1Measurement());
-  return o;
-}
+core.List<api.GoogleCloudMlV1Measurement> buildUnnamed7505() => [
+      buildGoogleCloudMlV1Measurement(),
+      buildGoogleCloudMlV1Measurement(),
+    ];
 
 void checkUnnamed7505(core.List<api.GoogleCloudMlV1Measurement> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3000,12 +2912,10 @@ void checkUnnamed7505(core.List<api.GoogleCloudMlV1Measurement> o) {
   checkGoogleCloudMlV1Measurement(o[1]);
 }
 
-core.List<api.GoogleCloudMlV1TrialParameter> buildUnnamed7506() {
-  final o = <api.GoogleCloudMlV1TrialParameter>[];
-  o.add(buildGoogleCloudMlV1TrialParameter());
-  o.add(buildGoogleCloudMlV1TrialParameter());
-  return o;
-}
+core.List<api.GoogleCloudMlV1TrialParameter> buildUnnamed7506() => [
+      buildGoogleCloudMlV1TrialParameter(),
+      buildGoogleCloudMlV1TrialParameter(),
+    ];
 
 void checkUnnamed7506(core.List<api.GoogleCloudMlV1TrialParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3068,12 +2978,10 @@ void checkGoogleCloudMlV1Trial(api.GoogleCloudMlV1Trial o) {
   buildCounterGoogleCloudMlV1Trial--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7507() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7507() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7507(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3087,12 +2995,10 @@ void checkUnnamed7507(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7508() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7508() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7508(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3245,12 +3151,10 @@ void checkGoogleCloudMlV1XraiAttribution(api.GoogleCloudMlV1XraiAttribution o) {
   buildCounterGoogleCloudMlV1XraiAttribution--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed7509() {
-  final o = <api.GoogleIamV1AuditLogConfig>[];
-  o.add(buildGoogleIamV1AuditLogConfig());
-  o.add(buildGoogleIamV1AuditLogConfig());
-  return o;
-}
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed7509() => [
+      buildGoogleIamV1AuditLogConfig(),
+      buildGoogleIamV1AuditLogConfig(),
+    ];
 
 void checkUnnamed7509(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3282,12 +3186,10 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed7510() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7510() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7510(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3325,12 +3227,10 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed7511() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7511() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7511(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3370,12 +3270,10 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed7512() {
-  final o = <api.GoogleIamV1AuditConfig>[];
-  o.add(buildGoogleIamV1AuditConfig());
-  o.add(buildGoogleIamV1AuditConfig());
-  return o;
-}
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed7512() => [
+      buildGoogleIamV1AuditConfig(),
+      buildGoogleIamV1AuditConfig(),
+    ];
 
 void checkUnnamed7512(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3383,12 +3281,10 @@ void checkUnnamed7512(core.List<api.GoogleIamV1AuditConfig> o) {
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed7513() {
-  final o = <api.GoogleIamV1Binding>[];
-  o.add(buildGoogleIamV1Binding());
-  o.add(buildGoogleIamV1Binding());
-  return o;
-}
+core.List<api.GoogleIamV1Binding> buildUnnamed7513() => [
+      buildGoogleIamV1Binding(),
+      buildGoogleIamV1Binding(),
+    ];
 
 void checkUnnamed7513(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3451,12 +3347,10 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed7514() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7514() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7514(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3491,12 +3385,10 @@ void checkGoogleIamV1TestIamPermissionsRequest(
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed7515() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7515() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7515(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3531,12 +3423,10 @@ void checkGoogleIamV1TestIamPermissionsResponse(
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed7516() {
-  final o = <api.GoogleLongrunningOperation>[];
-  o.add(buildGoogleLongrunningOperation());
-  o.add(buildGoogleLongrunningOperation());
-  return o;
-}
+core.List<api.GoogleLongrunningOperation> buildUnnamed7516() => [
+      buildGoogleLongrunningOperation(),
+      buildGoogleLongrunningOperation(),
+    ];
 
 void checkUnnamed7516(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3570,20 +3460,18 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7517() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7517() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7517(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3617,20 +3505,18 @@ void checkUnnamed7517(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed7518() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7518() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7518(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3709,20 +3595,18 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7519() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7519() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7519(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3756,12 +3640,10 @@ void checkUnnamed7519(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed7520() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed7519());
-  o.add(buildUnnamed7519());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed7520() => [
+      buildUnnamed7519(),
+      buildUnnamed7519(),
+    ];
 
 void checkUnnamed7520(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

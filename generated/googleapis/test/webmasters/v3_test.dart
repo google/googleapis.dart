@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed3628() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3628() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3628(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -116,12 +114,10 @@ void checkApiDimensionFilter(api.ApiDimensionFilter o) {
   buildCounterApiDimensionFilter--;
 }
 
-core.List<api.ApiDimensionFilter> buildUnnamed3629() {
-  final o = <api.ApiDimensionFilter>[];
-  o.add(buildApiDimensionFilter());
-  o.add(buildApiDimensionFilter());
-  return o;
-}
+core.List<api.ApiDimensionFilter> buildUnnamed3629() => [
+      buildApiDimensionFilter(),
+      buildApiDimensionFilter(),
+    ];
 
 void checkUnnamed3629(core.List<api.ApiDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -153,12 +149,10 @@ void checkApiDimensionFilterGroup(api.ApiDimensionFilterGroup o) {
   buildCounterApiDimensionFilterGroup--;
 }
 
-core.List<api.ApiDimensionFilterGroup> buildUnnamed3630() {
-  final o = <api.ApiDimensionFilterGroup>[];
-  o.add(buildApiDimensionFilterGroup());
-  o.add(buildApiDimensionFilterGroup());
-  return o;
-}
+core.List<api.ApiDimensionFilterGroup> buildUnnamed3630() => [
+      buildApiDimensionFilterGroup(),
+      buildApiDimensionFilterGroup(),
+    ];
 
 void checkUnnamed3630(core.List<api.ApiDimensionFilterGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -166,12 +160,10 @@ void checkUnnamed3630(core.List<api.ApiDimensionFilterGroup> o) {
   checkApiDimensionFilterGroup(o[1]);
 }
 
-core.List<core.String> buildUnnamed3631() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3631() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3631(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -241,12 +233,10 @@ void checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
   buildCounterSearchAnalyticsQueryRequest--;
 }
 
-core.List<api.ApiDataRow> buildUnnamed3632() {
-  final o = <api.ApiDataRow>[];
-  o.add(buildApiDataRow());
-  o.add(buildApiDataRow());
-  return o;
-}
+core.List<api.ApiDataRow> buildUnnamed3632() => [
+      buildApiDataRow(),
+      buildApiDataRow(),
+    ];
 
 void checkUnnamed3632(core.List<api.ApiDataRow> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -278,12 +268,10 @@ void checkSearchAnalyticsQueryResponse(api.SearchAnalyticsQueryResponse o) {
   buildCounterSearchAnalyticsQueryResponse--;
 }
 
-core.List<api.WmxSitemap> buildUnnamed3633() {
-  final o = <api.WmxSitemap>[];
-  o.add(buildWmxSitemap());
-  o.add(buildWmxSitemap());
-  return o;
-}
+core.List<api.WmxSitemap> buildUnnamed3633() => [
+      buildWmxSitemap(),
+      buildWmxSitemap(),
+    ];
 
 void checkUnnamed3633(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -310,12 +298,10 @@ void checkSitemapsListResponse(api.SitemapsListResponse o) {
   buildCounterSitemapsListResponse--;
 }
 
-core.List<api.WmxSite> buildUnnamed3634() {
-  final o = <api.WmxSite>[];
-  o.add(buildWmxSite());
-  o.add(buildWmxSite());
-  return o;
-}
+core.List<api.WmxSite> buildUnnamed3634() => [
+      buildWmxSite(),
+      buildWmxSite(),
+    ];
 
 void checkUnnamed3634(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -369,12 +355,10 @@ void checkWmxSite(api.WmxSite o) {
   buildCounterWmxSite--;
 }
 
-core.List<api.WmxSitemapContent> buildUnnamed3635() {
-  final o = <api.WmxSitemapContent>[];
-  o.add(buildWmxSitemapContent());
-  o.add(buildWmxSitemapContent());
-  return o;
-}
+core.List<api.WmxSitemapContent> buildUnnamed3635() => [
+      buildWmxSitemapContent(),
+      buildWmxSitemapContent(),
+    ];
 
 void checkUnnamed3635(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));

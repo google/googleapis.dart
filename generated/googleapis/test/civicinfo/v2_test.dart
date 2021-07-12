@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Source> buildUnnamed2921() {
-  final o = <api.Source>[];
-  o.add(buildSource());
-  o.add(buildSource());
-  return o;
-}
+core.List<api.Source> buildUnnamed2921() => [
+      buildSource(),
+      buildSource(),
+    ];
 
 void checkUnnamed2921(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -67,12 +65,10 @@ void checkAdministrationRegion(api.AdministrationRegion o) {
   buildCounterAdministrationRegion--;
 }
 
-core.List<api.ElectionOfficial> buildUnnamed2922() {
-  final o = <api.ElectionOfficial>[];
-  o.add(buildElectionOfficial());
-  o.add(buildElectionOfficial());
-  return o;
-}
+core.List<api.ElectionOfficial> buildUnnamed2922() => [
+      buildElectionOfficial(),
+      buildElectionOfficial(),
+    ];
 
 void checkUnnamed2922(core.List<api.ElectionOfficial> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -80,12 +76,10 @@ void checkUnnamed2922(core.List<api.ElectionOfficial> o) {
   checkElectionOfficial(o[1]);
 }
 
-core.List<core.String> buildUnnamed2923() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2923() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2923(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -179,12 +173,10 @@ void checkAdministrativeBody(api.AdministrativeBody o) {
   buildCounterAdministrativeBody--;
 }
 
-core.List<api.Channel> buildUnnamed2924() {
-  final o = <api.Channel>[];
-  o.add(buildChannel());
-  o.add(buildChannel());
-  return o;
-}
+core.List<api.Channel> buildUnnamed2924() => [
+      buildChannel(),
+      buildChannel(),
+    ];
 
 void checkUnnamed2924(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -273,12 +265,10 @@ void checkChannel(api.Channel o) {
   buildCounterChannel--;
 }
 
-core.List<api.Candidate> buildUnnamed2925() {
-  final o = <api.Candidate>[];
-  o.add(buildCandidate());
-  o.add(buildCandidate());
-  return o;
-}
+core.List<api.Candidate> buildUnnamed2925() => [
+      buildCandidate(),
+      buildCandidate(),
+    ];
 
 void checkUnnamed2925(core.List<api.Candidate> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -286,12 +276,10 @@ void checkUnnamed2925(core.List<api.Candidate> o) {
   checkCandidate(o[1]);
 }
 
-core.List<core.String> buildUnnamed2926() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2926() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2926(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -305,12 +293,10 @@ void checkUnnamed2926(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2927() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2927() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2927(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -324,12 +310,10 @@ void checkUnnamed2927(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2928() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2928() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2928(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -343,12 +327,10 @@ void checkUnnamed2928(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2929() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2929() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2929(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -362,12 +344,10 @@ void checkUnnamed2929(core.List<core.String> o) {
   );
 }
 
-core.List<api.Source> buildUnnamed2930() {
-  final o = <api.Source>[];
-  o.add(buildSource());
-  o.add(buildSource());
-  return o;
-}
+core.List<api.Source> buildUnnamed2930() => [
+      buildSource(),
+      buildSource(),
+    ];
 
 void checkUnnamed2930(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -496,12 +476,10 @@ void checkContest(api.Contest o) {
   buildCounterContest--;
 }
 
-core.List<api.DivisionSearchResult> buildUnnamed2931() {
-  final o = <api.DivisionSearchResult>[];
-  o.add(buildDivisionSearchResult());
-  o.add(buildDivisionSearchResult());
-  return o;
-}
+core.List<api.DivisionSearchResult> buildUnnamed2931() => [
+      buildDivisionSearchResult(),
+      buildDivisionSearchResult(),
+    ];
 
 void checkUnnamed2931(core.List<api.DivisionSearchResult> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -533,12 +511,10 @@ void checkDivisionSearchResponse(api.DivisionSearchResponse o) {
   buildCounterDivisionSearchResponse--;
 }
 
-core.List<core.String> buildUnnamed2932() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2932() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2932(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -660,12 +636,10 @@ void checkElectionOfficial(api.ElectionOfficial o) {
   buildCounterElectionOfficial--;
 }
 
-core.List<api.Election> buildUnnamed2933() {
-  final o = <api.Election>[];
-  o.add(buildElection());
-  o.add(buildElection());
-  return o;
-}
+core.List<api.Election> buildUnnamed2933() => [
+      buildElection(),
+      buildElection(),
+    ];
 
 void checkUnnamed2933(core.List<api.Election> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -729,12 +703,10 @@ void checkElectoralDistrict(api.ElectoralDistrict o) {
   buildCounterElectoralDistrict--;
 }
 
-core.List<core.String> buildUnnamed2934() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2934() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2934(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -748,12 +720,10 @@ void checkUnnamed2934(core.List<core.String> o) {
   );
 }
 
-core.List<core.int> buildUnnamed2935() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed2935() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed2935(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -793,12 +763,10 @@ void checkGeographicDivision(api.GeographicDivision o) {
   buildCounterGeographicDivision--;
 }
 
-core.List<core.String> buildUnnamed2936() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2936() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2936(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -812,12 +780,10 @@ void checkUnnamed2936(core.List<core.String> o) {
   );
 }
 
-core.List<core.int> buildUnnamed2937() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed2937() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed2937(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -831,12 +797,10 @@ void checkUnnamed2937(core.List<core.int> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2938() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2938() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2938(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -850,12 +814,10 @@ void checkUnnamed2938(core.List<core.String> o) {
   );
 }
 
-core.List<api.Source> buildUnnamed2939() {
-  final o = <api.Source>[];
-  o.add(buildSource());
-  o.add(buildSource());
-  return o;
-}
+core.List<api.Source> buildUnnamed2939() => [
+      buildSource(),
+      buildSource(),
+    ];
 
 void checkUnnamed2939(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -898,12 +860,10 @@ void checkOffice(api.Office o) {
   buildCounterOffice--;
 }
 
-core.List<api.SimpleAddressType> buildUnnamed2940() {
-  final o = <api.SimpleAddressType>[];
-  o.add(buildSimpleAddressType());
-  o.add(buildSimpleAddressType());
-  return o;
-}
+core.List<api.SimpleAddressType> buildUnnamed2940() => [
+      buildSimpleAddressType(),
+      buildSimpleAddressType(),
+    ];
 
 void checkUnnamed2940(core.List<api.SimpleAddressType> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -911,12 +871,10 @@ void checkUnnamed2940(core.List<api.SimpleAddressType> o) {
   checkSimpleAddressType(o[1]);
 }
 
-core.List<api.Channel> buildUnnamed2941() {
-  final o = <api.Channel>[];
-  o.add(buildChannel());
-  o.add(buildChannel());
-  return o;
-}
+core.List<api.Channel> buildUnnamed2941() => [
+      buildChannel(),
+      buildChannel(),
+    ];
 
 void checkUnnamed2941(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -924,12 +882,10 @@ void checkUnnamed2941(core.List<api.Channel> o) {
   checkChannel(o[1]);
 }
 
-core.List<core.String> buildUnnamed2942() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2942() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2942(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -943,12 +899,10 @@ void checkUnnamed2942(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2943() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2943() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2943(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -962,12 +916,10 @@ void checkUnnamed2943(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2944() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2944() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2944(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1023,12 +975,10 @@ void checkOfficial(api.Official o) {
   buildCounterOfficial--;
 }
 
-core.List<api.Source> buildUnnamed2945() {
-  final o = <api.Source>[];
-  o.add(buildSource());
-  o.add(buildSource());
-  return o;
-}
+core.List<api.Source> buildUnnamed2945() => [
+      buildSource(),
+      buildSource(),
+    ];
 
 void checkUnnamed2945(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1097,12 +1047,10 @@ void checkPollingLocation(api.PollingLocation o) {
   buildCounterPollingLocation--;
 }
 
-core.Map<core.String, api.GeographicDivision> buildUnnamed2946() {
-  final o = <core.String, api.GeographicDivision>{};
-  o['x'] = buildGeographicDivision();
-  o['y'] = buildGeographicDivision();
-  return o;
-}
+core.Map<core.String, api.GeographicDivision> buildUnnamed2946() => {
+      'x': buildGeographicDivision(),
+      'y': buildGeographicDivision(),
+    };
 
 void checkUnnamed2946(core.Map<core.String, api.GeographicDivision> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1110,12 +1058,10 @@ void checkUnnamed2946(core.Map<core.String, api.GeographicDivision> o) {
   checkGeographicDivision(o['y']!);
 }
 
-core.List<api.Office> buildUnnamed2947() {
-  final o = <api.Office>[];
-  o.add(buildOffice());
-  o.add(buildOffice());
-  return o;
-}
+core.List<api.Office> buildUnnamed2947() => [
+      buildOffice(),
+      buildOffice(),
+    ];
 
 void checkUnnamed2947(core.List<api.Office> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1123,12 +1069,10 @@ void checkUnnamed2947(core.List<api.Office> o) {
   checkOffice(o[1]);
 }
 
-core.List<api.Official> buildUnnamed2948() {
-  final o = <api.Official>[];
-  o.add(buildOfficial());
-  o.add(buildOfficial());
-  return o;
-}
+core.List<api.Official> buildUnnamed2948() => [
+      buildOfficial(),
+      buildOfficial(),
+    ];
 
 void checkUnnamed2948(core.List<api.Official> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1159,12 +1103,10 @@ void checkRepresentativeInfoData(api.RepresentativeInfoData o) {
   buildCounterRepresentativeInfoData--;
 }
 
-core.Map<core.String, api.GeographicDivision> buildUnnamed2949() {
-  final o = <core.String, api.GeographicDivision>{};
-  o['x'] = buildGeographicDivision();
-  o['y'] = buildGeographicDivision();
-  return o;
-}
+core.Map<core.String, api.GeographicDivision> buildUnnamed2949() => {
+      'x': buildGeographicDivision(),
+      'y': buildGeographicDivision(),
+    };
 
 void checkUnnamed2949(core.Map<core.String, api.GeographicDivision> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1172,12 +1114,10 @@ void checkUnnamed2949(core.Map<core.String, api.GeographicDivision> o) {
   checkGeographicDivision(o['y']!);
 }
 
-core.List<api.Office> buildUnnamed2950() {
-  final o = <api.Office>[];
-  o.add(buildOffice());
-  o.add(buildOffice());
-  return o;
-}
+core.List<api.Office> buildUnnamed2950() => [
+      buildOffice(),
+      buildOffice(),
+    ];
 
 void checkUnnamed2950(core.List<api.Office> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1185,12 +1125,10 @@ void checkUnnamed2950(core.List<api.Office> o) {
   checkOffice(o[1]);
 }
 
-core.List<api.Official> buildUnnamed2951() {
-  final o = <api.Official>[];
-  o.add(buildOfficial());
-  o.add(buildOfficial());
-  return o;
-}
+core.List<api.Official> buildUnnamed2951() => [
+      buildOfficial(),
+      buildOfficial(),
+    ];
 
 void checkUnnamed2951(core.List<api.Official> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1304,12 +1242,10 @@ void checkSource(api.Source o) {
   buildCounterSource--;
 }
 
-core.List<api.Contest> buildUnnamed2952() {
-  final o = <api.Contest>[];
-  o.add(buildContest());
-  o.add(buildContest());
-  return o;
-}
+core.List<api.Contest> buildUnnamed2952() => [
+      buildContest(),
+      buildContest(),
+    ];
 
 void checkUnnamed2952(core.List<api.Contest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1317,12 +1253,10 @@ void checkUnnamed2952(core.List<api.Contest> o) {
   checkContest(o[1]);
 }
 
-core.List<api.PollingLocation> buildUnnamed2953() {
-  final o = <api.PollingLocation>[];
-  o.add(buildPollingLocation());
-  o.add(buildPollingLocation());
-  return o;
-}
+core.List<api.PollingLocation> buildUnnamed2953() => [
+      buildPollingLocation(),
+      buildPollingLocation(),
+    ];
 
 void checkUnnamed2953(core.List<api.PollingLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1330,12 +1264,10 @@ void checkUnnamed2953(core.List<api.PollingLocation> o) {
   checkPollingLocation(o[1]);
 }
 
-core.List<api.PollingLocation> buildUnnamed2954() {
-  final o = <api.PollingLocation>[];
-  o.add(buildPollingLocation());
-  o.add(buildPollingLocation());
-  return o;
-}
+core.List<api.PollingLocation> buildUnnamed2954() => [
+      buildPollingLocation(),
+      buildPollingLocation(),
+    ];
 
 void checkUnnamed2954(core.List<api.PollingLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1343,12 +1275,10 @@ void checkUnnamed2954(core.List<api.PollingLocation> o) {
   checkPollingLocation(o[1]);
 }
 
-core.List<api.Election> buildUnnamed2955() {
-  final o = <api.Election>[];
-  o.add(buildElection());
-  o.add(buildElection());
-  return o;
-}
+core.List<api.Election> buildUnnamed2955() => [
+      buildElection(),
+      buildElection(),
+    ];
 
 void checkUnnamed2955(core.List<api.Election> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1356,12 +1286,10 @@ void checkUnnamed2955(core.List<api.Election> o) {
   checkElection(o[1]);
 }
 
-core.List<api.PollingLocation> buildUnnamed2956() {
-  final o = <api.PollingLocation>[];
-  o.add(buildPollingLocation());
-  o.add(buildPollingLocation());
-  return o;
-}
+core.List<api.PollingLocation> buildUnnamed2956() => [
+      buildPollingLocation(),
+      buildPollingLocation(),
+    ];
 
 void checkUnnamed2956(core.List<api.PollingLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1369,12 +1297,10 @@ void checkUnnamed2956(core.List<api.PollingLocation> o) {
   checkPollingLocation(o[1]);
 }
 
-core.List<api.AdministrationRegion> buildUnnamed2957() {
-  final o = <api.AdministrationRegion>[];
-  o.add(buildAdministrationRegion());
-  o.add(buildAdministrationRegion());
-  return o;
-}
+core.List<api.AdministrationRegion> buildUnnamed2957() => [
+      buildAdministrationRegion(),
+      buildAdministrationRegion(),
+    ];
 
 void checkUnnamed2957(core.List<api.AdministrationRegion> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1427,12 +1353,10 @@ void checkVoterInfoResponse(api.VoterInfoResponse o) {
   buildCounterVoterInfoResponse--;
 }
 
-core.List<core.String> buildUnnamed2958() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2958() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2958(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1446,12 +1370,10 @@ void checkUnnamed2958(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2959() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2959() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2959(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1465,12 +1387,10 @@ void checkUnnamed2959(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2960() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2960() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2960(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1484,12 +1404,10 @@ void checkUnnamed2960(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2961() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2961() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2961(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

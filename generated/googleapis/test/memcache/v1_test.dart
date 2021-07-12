@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed4406() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4406() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4406(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -176,12 +174,10 @@ void checkEmpty(api.Empty o) {
 }
 
 core.Map<core.String, api.GoogleCloudMemcacheV1ZoneMetadata>
-    buildUnnamed4407() {
-  final o = <core.String, api.GoogleCloudMemcacheV1ZoneMetadata>{};
-  o['x'] = buildGoogleCloudMemcacheV1ZoneMetadata();
-  o['y'] = buildGoogleCloudMemcacheV1ZoneMetadata();
-  return o;
-}
+    buildUnnamed4407() => {
+          'x': buildGoogleCloudMemcacheV1ZoneMetadata(),
+          'y': buildGoogleCloudMemcacheV1ZoneMetadata(),
+        };
 
 void checkUnnamed4407(
     core.Map<core.String, api.GoogleCloudMemcacheV1ZoneMetadata> o) {
@@ -278,12 +274,10 @@ void checkGoogleCloudMemcacheV1ZoneMetadata(
   buildCounterGoogleCloudMemcacheV1ZoneMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed4408() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4408() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4408(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -297,12 +291,10 @@ void checkUnnamed4408(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed4409() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4409() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4409(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -318,15 +310,12 @@ void checkUnnamed4409(core.Map<core.String, core.String> o) {
 
 core.Map<core.String,
         api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>
-    buildUnnamed4410() {
-  final o = <core.String,
-      api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>{};
-  o['x'] =
-      buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule();
-  o['y'] =
-      buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule();
-  return o;
-}
+    buildUnnamed4410() => {
+          'x':
+              buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(),
+          'y':
+              buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(),
+        };
 
 void checkUnnamed4410(
     core.Map<core.String,
@@ -339,12 +328,10 @@ void checkUnnamed4410(
       o['y']!);
 }
 
-core.Map<core.String, core.String> buildUnnamed4411() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4411() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4411(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -360,15 +347,10 @@ void checkUnnamed4411(core.Map<core.String, core.String> o) {
 
 core.List<
         api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>
-    buildUnnamed4412() {
-  final o = <
-      api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>[];
-  o.add(
-      buildGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource());
-  o.add(
-      buildGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource());
-  return o;
-}
+    buildUnnamed4412() => [
+          buildGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(),
+          buildGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(),
+        ];
 
 void checkUnnamed4412(
     core.List<
@@ -379,12 +361,10 @@ void checkUnnamed4412(
   checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed4413() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4413() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4413(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -519,12 +499,10 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
   buildCounterGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule--;
 }
 
-core.Map<core.String, api.MaintenancePolicy> buildUnnamed4414() {
-  final o = <core.String, api.MaintenancePolicy>{};
-  o['x'] = buildMaintenancePolicy();
-  o['y'] = buildMaintenancePolicy();
-  return o;
-}
+core.Map<core.String, api.MaintenancePolicy> buildUnnamed4414() => {
+      'x': buildMaintenancePolicy(),
+      'y': buildMaintenancePolicy(),
+    };
 
 void checkUnnamed4414(core.Map<core.String, api.MaintenancePolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -563,12 +541,10 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(
 }
 
 core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
-    buildUnnamed4415() {
-  final o = <api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>[];
-  o.add(buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion());
-  o.add(buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion());
-  return o;
-}
+    buildUnnamed4415() => [
+          buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(),
+          buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(),
+        ];
 
 void checkUnnamed4415(
     core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
@@ -620,13 +596,12 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(
 
 core.Map<core.String,
         api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>
-    buildUnnamed4416() {
-  final o = <core.String,
-      api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>{};
-  o['x'] = buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
-  o['y'] = buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
-  return o;
-}
+    buildUnnamed4416() => {
+          'x':
+              buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(),
+          'y':
+              buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(),
+        };
 
 void checkUnnamed4416(
     core.Map<core.String,
@@ -770,12 +745,10 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
 }
 
 core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
-    buildUnnamed4417() {
-  final o = <api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>[];
-  o.add(buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion());
-  o.add(buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion());
-  return o;
-}
+    buildUnnamed4417() => [
+          buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(),
+          buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(),
+        ];
 
 void checkUnnamed4417(
     core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
@@ -786,13 +759,10 @@ void checkUnnamed4417(
 }
 
 core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
-    buildUnnamed4418() {
-  final o =
-      <api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>[];
-  o.add(buildGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata());
-  o.add(buildGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata());
-  return o;
-}
+    buildUnnamed4418() => [
+          buildGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(),
+          buildGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(),
+        ];
 
 void checkUnnamed4418(
     core.List<
@@ -838,12 +808,10 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
   buildCounterGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata--;
 }
 
-core.List<api.InstanceMessage> buildUnnamed4419() {
-  final o = <api.InstanceMessage>[];
-  o.add(buildInstanceMessage());
-  o.add(buildInstanceMessage());
-  return o;
-}
+core.List<api.InstanceMessage> buildUnnamed4419() => [
+      buildInstanceMessage(),
+      buildInstanceMessage(),
+    ];
 
 void checkUnnamed4419(core.List<api.InstanceMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -851,12 +819,10 @@ void checkUnnamed4419(core.List<api.InstanceMessage> o) {
   checkInstanceMessage(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed4420() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4420() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4420(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -870,12 +836,10 @@ void checkUnnamed4420(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.Node> buildUnnamed4421() {
-  final o = <api.Node>[];
-  o.add(buildNode());
-  o.add(buildNode());
-  return o;
-}
+core.List<api.Node> buildUnnamed4421() => [
+      buildNode(),
+      buildNode(),
+    ];
 
 void checkUnnamed4421(core.List<api.Node> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -883,12 +847,10 @@ void checkUnnamed4421(core.List<api.Node> o) {
   checkNode(o[1]);
 }
 
-core.List<core.String> buildUnnamed4422() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4422() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4422(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1008,12 +970,10 @@ void checkInstanceMessage(api.InstanceMessage o) {
   buildCounterInstanceMessage--;
 }
 
-core.List<api.Instance> buildUnnamed4423() {
-  final o = <api.Instance>[];
-  o.add(buildInstance());
-  o.add(buildInstance());
-  return o;
-}
+core.List<api.Instance> buildUnnamed4423() => [
+      buildInstance(),
+      buildInstance(),
+    ];
 
 void checkUnnamed4423(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1021,12 +981,10 @@ void checkUnnamed4423(core.List<api.Instance> o) {
   checkInstance(o[1]);
 }
 
-core.List<core.String> buildUnnamed4424() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4424() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4424(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1066,12 +1024,10 @@ void checkListInstancesResponse(api.ListInstancesResponse o) {
   buildCounterListInstancesResponse--;
 }
 
-core.List<api.Location> buildUnnamed4425() {
-  final o = <api.Location>[];
-  o.add(buildLocation());
-  o.add(buildLocation());
-  return o;
-}
+core.List<api.Location> buildUnnamed4425() => [
+      buildLocation(),
+      buildLocation(),
+    ];
 
 void checkUnnamed4425(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1103,12 +1059,10 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed4426() {
-  final o = <api.Operation>[];
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
+core.List<api.Operation> buildUnnamed4426() => [
+      buildOperation(),
+      buildOperation(),
+    ];
 
 void checkUnnamed4426(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1140,12 +1094,10 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed4427() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4427() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4427(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1159,20 +1111,18 @@ void checkUnnamed4427(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed4428() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed4428() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed4428(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1242,12 +1192,10 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.Map<core.String, api.ZoneMetadata> buildUnnamed4429() {
-  final o = <core.String, api.ZoneMetadata>{};
-  o['x'] = buildZoneMetadata();
-  o['y'] = buildZoneMetadata();
-  return o;
-}
+core.Map<core.String, api.ZoneMetadata> buildUnnamed4429() => {
+      'x': buildZoneMetadata(),
+      'y': buildZoneMetadata(),
+    };
 
 void checkUnnamed4429(core.Map<core.String, api.ZoneMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1274,12 +1222,10 @@ void checkLocationMetadata(api.LocationMetadata o) {
   buildCounterLocationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed4430() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4430() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4430(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1360,12 +1306,10 @@ void checkMaintenanceWindow(api.MaintenanceWindow o) {
   buildCounterMaintenanceWindow--;
 }
 
-core.Map<core.String, core.String> buildUnnamed4431() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4431() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4431(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1474,20 +1418,18 @@ void checkNodeConfig(api.NodeConfig o) {
   buildCounterNodeConfig--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4432() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed4432() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed4432(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1521,20 +1463,18 @@ void checkUnnamed4432(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed4433() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed4433() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed4433(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1676,20 +1616,18 @@ void checkSchedule(api.Schedule o) {
   buildCounterSchedule--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4434() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed4434() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed4434(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1723,12 +1661,10 @@ void checkUnnamed4434(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed4435() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed4434());
-  o.add(buildUnnamed4434());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed4435() => [
+      buildUnnamed4434(),
+      buildUnnamed4434(),
+    ];
 
 void checkUnnamed4435(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1826,12 +1762,10 @@ void checkUpdateParametersRequest(api.UpdateParametersRequest o) {
   buildCounterUpdateParametersRequest--;
 }
 
-core.List<api.DenyMaintenancePeriod> buildUnnamed4436() {
-  final o = <api.DenyMaintenancePeriod>[];
-  o.add(buildDenyMaintenancePeriod());
-  o.add(buildDenyMaintenancePeriod());
-  return o;
-}
+core.List<api.DenyMaintenancePeriod> buildUnnamed4436() => [
+      buildDenyMaintenancePeriod(),
+      buildDenyMaintenancePeriod(),
+    ];
 
 void checkUnnamed4436(core.List<api.DenyMaintenancePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1865,12 +1799,10 @@ void checkUpdatePolicy(api.UpdatePolicy o) {
   buildCounterUpdatePolicy--;
 }
 
-core.List<api.Schedule> buildUnnamed4437() {
-  final o = <api.Schedule>[];
-  o.add(buildSchedule());
-  o.add(buildSchedule());
-  return o;
-}
+core.List<api.Schedule> buildUnnamed4437() => [
+      buildSchedule(),
+      buildSchedule(),
+    ];
 
 void checkUnnamed4437(core.List<api.Schedule> o) {
   unittest.expect(o, unittest.hasLength(2));

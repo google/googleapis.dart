@@ -46,12 +46,10 @@ void checkCheckTransitiveMembershipResponse(
   buildCounterCheckTransitiveMembershipResponse--;
 }
 
-core.List<api.DynamicGroupQuery> buildUnnamed1925() {
-  final o = <api.DynamicGroupQuery>[];
-  o.add(buildDynamicGroupQuery());
-  o.add(buildDynamicGroupQuery());
-  return o;
-}
+core.List<api.DynamicGroupQuery> buildUnnamed1925() => [
+      buildDynamicGroupQuery(),
+      buildDynamicGroupQuery(),
+    ];
 
 void checkUnnamed1925(core.List<api.DynamicGroupQuery> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -183,12 +181,10 @@ void checkExpiryDetail(api.ExpiryDetail o) {
   buildCounterExpiryDetail--;
 }
 
-core.List<api.MembershipAdjacencyList> buildUnnamed1926() {
-  final o = <api.MembershipAdjacencyList>[];
-  o.add(buildMembershipAdjacencyList());
-  o.add(buildMembershipAdjacencyList());
-  return o;
-}
+core.List<api.MembershipAdjacencyList> buildUnnamed1926() => [
+      buildMembershipAdjacencyList(),
+      buildMembershipAdjacencyList(),
+    ];
 
 void checkUnnamed1926(core.List<api.MembershipAdjacencyList> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -196,12 +192,10 @@ void checkUnnamed1926(core.List<api.MembershipAdjacencyList> o) {
   checkMembershipAdjacencyList(o[1]);
 }
 
-core.List<api.Group> buildUnnamed1927() {
-  final o = <api.Group>[];
-  o.add(buildGroup());
-  o.add(buildGroup());
-  return o;
-}
+core.List<api.Group> buildUnnamed1927() => [
+      buildGroup(),
+      buildGroup(),
+    ];
 
 void checkUnnamed1927(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -458,12 +452,10 @@ void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse--;
 }
 
-core.List<core.String> buildUnnamed1928() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1928() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1928(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -478,13 +470,10 @@ void checkUnnamed1928(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
-    buildUnnamed1929() {
-  final o =
-      <core.String, api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>{};
-  o['x'] = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
-  o['y'] = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
-  return o;
-}
+    buildUnnamed1929() => {
+          'x': buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue(),
+          'y': buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue(),
+        };
 
 void checkUnnamed1929(
     core.Map<core.String,
@@ -599,12 +588,10 @@ void checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
   buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue--;
 }
 
-core.List<core.String> buildUnnamed1930() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1930() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1930(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -618,12 +605,10 @@ void checkUnnamed1930(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1931() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1931() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1931(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -852,12 +837,11 @@ void checkGoogleAppsCloudidentityDevicesV1DeviceUser(
   buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser--;
 }
 
-core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> buildUnnamed1932() {
-  final o = <api.GoogleAppsCloudidentityDevicesV1ClientState>[];
-  o.add(buildGoogleAppsCloudidentityDevicesV1ClientState());
-  o.add(buildGoogleAppsCloudidentityDevicesV1ClientState());
-  return o;
-}
+core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> buildUnnamed1932() =>
+    [
+      buildGoogleAppsCloudidentityDevicesV1ClientState(),
+      buildGoogleAppsCloudidentityDevicesV1ClientState(),
+    ];
 
 void checkUnnamed1932(
     core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> o) {
@@ -895,12 +879,11 @@ void checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse--;
 }
 
-core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> buildUnnamed1933() {
-  final o = <api.GoogleAppsCloudidentityDevicesV1DeviceUser>[];
-  o.add(buildGoogleAppsCloudidentityDevicesV1DeviceUser());
-  o.add(buildGoogleAppsCloudidentityDevicesV1DeviceUser());
-  return o;
-}
+core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> buildUnnamed1933() =>
+    [
+      buildGoogleAppsCloudidentityDevicesV1DeviceUser(),
+      buildGoogleAppsCloudidentityDevicesV1DeviceUser(),
+    ];
 
 void checkUnnamed1933(
     core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> o) {
@@ -936,12 +919,10 @@ void checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse--;
 }
 
-core.List<api.GoogleAppsCloudidentityDevicesV1Device> buildUnnamed1934() {
-  final o = <api.GoogleAppsCloudidentityDevicesV1Device>[];
-  o.add(buildGoogleAppsCloudidentityDevicesV1Device());
-  o.add(buildGoogleAppsCloudidentityDevicesV1Device());
-  return o;
-}
+core.List<api.GoogleAppsCloudidentityDevicesV1Device> buildUnnamed1934() => [
+      buildGoogleAppsCloudidentityDevicesV1Device(),
+      buildGoogleAppsCloudidentityDevicesV1Device(),
+    ];
 
 void checkUnnamed1934(core.List<api.GoogleAppsCloudidentityDevicesV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -975,12 +956,10 @@ void checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse--;
 }
 
-core.List<core.String> buildUnnamed1935() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1935() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1935(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1119,12 +1098,10 @@ void checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed1936() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed1936() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed1936(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1191,12 +1168,10 @@ void checkGroup(api.Group o) {
   buildCounterGroup--;
 }
 
-core.Map<core.String, core.String> buildUnnamed1937() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed1937() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed1937(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1210,12 +1185,10 @@ void checkUnnamed1937(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.TransitiveMembershipRole> buildUnnamed1938() {
-  final o = <api.TransitiveMembershipRole>[];
-  o.add(buildTransitiveMembershipRole());
-  o.add(buildTransitiveMembershipRole());
-  return o;
-}
+core.List<api.TransitiveMembershipRole> buildUnnamed1938() => [
+      buildTransitiveMembershipRole(),
+      buildTransitiveMembershipRole(),
+    ];
 
 void checkUnnamed1938(core.List<api.TransitiveMembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1261,12 +1234,10 @@ void checkGroupRelation(api.GroupRelation o) {
   buildCounterGroupRelation--;
 }
 
-core.List<api.Group> buildUnnamed1939() {
-  final o = <api.Group>[];
-  o.add(buildGroup());
-  o.add(buildGroup());
-  return o;
-}
+core.List<api.Group> buildUnnamed1939() => [
+      buildGroup(),
+      buildGroup(),
+    ];
 
 void checkUnnamed1939(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1298,12 +1269,10 @@ void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse--;
 }
 
-core.List<api.Membership> buildUnnamed1940() {
-  final o = <api.Membership>[];
-  o.add(buildMembership());
-  o.add(buildMembership());
-  return o;
-}
+core.List<api.Membership> buildUnnamed1940() => [
+      buildMembership(),
+      buildMembership(),
+    ];
 
 void checkUnnamed1940(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1379,12 +1348,10 @@ void checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
   buildCounterLookupMembershipNameResponse--;
 }
 
-core.List<api.EntityKey> buildUnnamed1941() {
-  final o = <api.EntityKey>[];
-  o.add(buildEntityKey());
-  o.add(buildEntityKey());
-  return o;
-}
+core.List<api.EntityKey> buildUnnamed1941() => [
+      buildEntityKey(),
+      buildEntityKey(),
+    ];
 
 void checkUnnamed1941(core.List<api.EntityKey> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1392,12 +1359,10 @@ void checkUnnamed1941(core.List<api.EntityKey> o) {
   checkEntityKey(o[1]);
 }
 
-core.List<api.TransitiveMembershipRole> buildUnnamed1942() {
-  final o = <api.TransitiveMembershipRole>[];
-  o.add(buildTransitiveMembershipRole());
-  o.add(buildTransitiveMembershipRole());
-  return o;
-}
+core.List<api.TransitiveMembershipRole> buildUnnamed1942() => [
+      buildTransitiveMembershipRole(),
+      buildTransitiveMembershipRole(),
+    ];
 
 void checkUnnamed1942(core.List<api.TransitiveMembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1436,12 +1401,10 @@ void checkMemberRelation(api.MemberRelation o) {
   buildCounterMemberRelation--;
 }
 
-core.List<api.MembershipRole> buildUnnamed1943() {
-  final o = <api.MembershipRole>[];
-  o.add(buildMembershipRole());
-  o.add(buildMembershipRole());
-  return o;
-}
+core.List<api.MembershipRole> buildUnnamed1943() => [
+      buildMembershipRole(),
+      buildMembershipRole(),
+    ];
 
 void checkUnnamed1943(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1490,12 +1453,10 @@ void checkMembership(api.Membership o) {
   buildCounterMembership--;
 }
 
-core.List<api.Membership> buildUnnamed1944() {
-  final o = <api.Membership>[];
-  o.add(buildMembership());
-  o.add(buildMembership());
-  return o;
-}
+core.List<api.Membership> buildUnnamed1944() => [
+      buildMembership(),
+      buildMembership(),
+    ];
 
 void checkUnnamed1944(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1551,12 +1512,10 @@ void checkMembershipRole(api.MembershipRole o) {
   buildCounterMembershipRole--;
 }
 
-core.List<api.MembershipRole> buildUnnamed1945() {
-  final o = <api.MembershipRole>[];
-  o.add(buildMembershipRole());
-  o.add(buildMembershipRole());
-  return o;
-}
+core.List<api.MembershipRole> buildUnnamed1945() => [
+      buildMembershipRole(),
+      buildMembershipRole(),
+    ];
 
 void checkUnnamed1945(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1564,12 +1523,10 @@ void checkUnnamed1945(core.List<api.MembershipRole> o) {
   checkMembershipRole(o[1]);
 }
 
-core.List<core.String> buildUnnamed1946() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1946() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1946(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1583,12 +1540,10 @@ void checkUnnamed1946(core.List<core.String> o) {
   );
 }
 
-core.List<api.UpdateMembershipRolesParams> buildUnnamed1947() {
-  final o = <api.UpdateMembershipRolesParams>[];
-  o.add(buildUpdateMembershipRolesParams());
-  o.add(buildUpdateMembershipRolesParams());
-  return o;
-}
+core.List<api.UpdateMembershipRolesParams> buildUnnamed1947() => [
+      buildUpdateMembershipRolesParams(),
+      buildUpdateMembershipRolesParams(),
+    ];
 
 void checkUnnamed1947(core.List<api.UpdateMembershipRolesParams> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1638,20 +1593,18 @@ void checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1948() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed1948() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed1948(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1685,20 +1638,18 @@ void checkUnnamed1948(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed1949() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed1949() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed1949(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1762,12 +1713,10 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.List<api.Group> buildUnnamed1950() {
-  final o = <api.Group>[];
-  o.add(buildGroup());
-  o.add(buildGroup());
-  return o;
-}
+core.List<api.Group> buildUnnamed1950() => [
+      buildGroup(),
+      buildGroup(),
+    ];
 
 void checkUnnamed1950(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1799,12 +1748,10 @@ void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse--;
 }
 
-core.List<api.GroupRelation> buildUnnamed1951() {
-  final o = <api.GroupRelation>[];
-  o.add(buildGroupRelation());
-  o.add(buildGroupRelation());
-  return o;
-}
+core.List<api.GroupRelation> buildUnnamed1951() => [
+      buildGroupRelation(),
+      buildGroupRelation(),
+    ];
 
 void checkUnnamed1951(core.List<api.GroupRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1836,12 +1783,10 @@ void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse--;
 }
 
-core.List<api.MemberRelation> buildUnnamed1952() {
-  final o = <api.MemberRelation>[];
-  o.add(buildMemberRelation());
-  o.add(buildMemberRelation());
-  return o;
-}
+core.List<api.MemberRelation> buildUnnamed1952() => [
+      buildMemberRelation(),
+      buildMemberRelation(),
+    ];
 
 void checkUnnamed1952(core.List<api.MemberRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1875,20 +1820,18 @@ void checkSearchTransitiveMembershipsResponse(
   buildCounterSearchTransitiveMembershipsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1953() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed1953() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed1953(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1922,12 +1865,10 @@ void checkUnnamed1953(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed1954() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed1953());
-  o.add(buildUnnamed1953());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed1954() => [
+      buildUnnamed1953(),
+      buildUnnamed1953(),
+    ];
 
 void checkUnnamed1954(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

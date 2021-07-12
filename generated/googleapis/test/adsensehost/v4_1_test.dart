@@ -63,12 +63,10 @@ void checkAccount(api.Account o) {
   buildCounterAccount--;
 }
 
-core.List<api.Account> buildUnnamed5692() {
-  final o = <api.Account>[];
-  o.add(buildAccount());
-  o.add(buildAccount());
-  return o;
-}
+core.List<api.Account> buildUnnamed5692() => [
+      buildAccount(),
+      buildAccount(),
+    ];
 
 void checkUnnamed5692(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -141,12 +139,10 @@ void checkAdClient(api.AdClient o) {
   buildCounterAdClient--;
 }
 
-core.List<api.AdClient> buildUnnamed5693() {
-  final o = <api.AdClient>[];
-  o.add(buildAdClient());
-  o.add(buildAdClient());
-  return o;
-}
+core.List<api.AdClient> buildUnnamed5693() => [
+      buildAdClient(),
+      buildAdClient(),
+    ];
 
 void checkUnnamed5693(core.List<api.AdClient> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -463,12 +459,10 @@ void checkAdUnit(api.AdUnit o) {
   buildCounterAdUnit--;
 }
 
-core.List<api.AdUnit> buildUnnamed5694() {
-  final o = <api.AdUnit>[];
-  o.add(buildAdUnit());
-  o.add(buildAdUnit());
-  return o;
-}
+core.List<api.AdUnit> buildUnnamed5694() => [
+      buildAdUnit(),
+      buildAdUnit(),
+    ];
 
 void checkUnnamed5694(core.List<api.AdUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -510,12 +504,10 @@ void checkAdUnits(api.AdUnits o) {
   buildCounterAdUnits--;
 }
 
-core.List<core.String> buildUnnamed5695() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5695() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5695(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -625,12 +617,10 @@ void checkCustomChannel(api.CustomChannel o) {
   buildCounterCustomChannel--;
 }
 
-core.List<api.CustomChannel> buildUnnamed5696() {
-  final o = <api.CustomChannel>[];
-  o.add(buildCustomChannel());
-  o.add(buildCustomChannel());
-  return o;
-}
+core.List<api.CustomChannel> buildUnnamed5696() => [
+      buildCustomChannel(),
+      buildCustomChannel(),
+    ];
 
 void checkUnnamed5696(core.List<api.CustomChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -672,12 +662,10 @@ void checkCustomChannels(api.CustomChannels o) {
   buildCounterCustomChannels--;
 }
 
-core.List<core.String> buildUnnamed5697() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5697() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5697(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -723,12 +711,10 @@ void checkReportHeaders(api.ReportHeaders o) {
   buildCounterReportHeaders--;
 }
 
-core.List<api.ReportHeaders> buildUnnamed5698() {
-  final o = <api.ReportHeaders>[];
-  o.add(buildReportHeaders());
-  o.add(buildReportHeaders());
-  return o;
-}
+core.List<api.ReportHeaders> buildUnnamed5698() => [
+      buildReportHeaders(),
+      buildReportHeaders(),
+    ];
 
 void checkUnnamed5698(core.List<api.ReportHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -736,12 +722,10 @@ void checkUnnamed5698(core.List<api.ReportHeaders> o) {
   checkReportHeaders(o[1]);
 }
 
-core.List<core.String> buildUnnamed5699() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5699() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5699(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -755,12 +739,10 @@ void checkUnnamed5699(core.List<core.String> o) {
   );
 }
 
-core.List<core.List<core.String>> buildUnnamed5700() {
-  final o = <core.List<core.String>>[];
-  o.add(buildUnnamed5699());
-  o.add(buildUnnamed5699());
-  return o;
-}
+core.List<core.List<core.String>> buildUnnamed5700() => [
+      buildUnnamed5699(),
+      buildUnnamed5699(),
+    ];
 
 void checkUnnamed5700(core.List<core.List<core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -768,12 +750,10 @@ void checkUnnamed5700(core.List<core.List<core.String>> o) {
   checkUnnamed5699(o[1]);
 }
 
-core.List<core.String> buildUnnamed5701() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5701() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5701(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -787,12 +767,10 @@ void checkUnnamed5701(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5702() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5702() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5702(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -875,12 +853,10 @@ void checkUrlChannel(api.UrlChannel o) {
   buildCounterUrlChannel--;
 }
 
-core.List<api.UrlChannel> buildUnnamed5703() {
-  final o = <api.UrlChannel>[];
-  o.add(buildUrlChannel());
-  o.add(buildUrlChannel());
-  return o;
-}
+core.List<api.UrlChannel> buildUnnamed5703() => [
+      buildUrlChannel(),
+      buildUrlChannel(),
+    ];
 
 void checkUnnamed5703(core.List<api.UrlChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -922,12 +898,10 @@ void checkUrlChannels(api.UrlChannels o) {
   buildCounterUrlChannels--;
 }
 
-core.List<core.String> buildUnnamed5704() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5704() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5704(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -941,12 +915,10 @@ void checkUnnamed5704(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5705() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5705() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5705(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -960,12 +932,10 @@ void checkUnnamed5705(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5706() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5706() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5706(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -979,12 +949,10 @@ void checkUnnamed5706(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5707() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5707() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5707(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -998,12 +966,10 @@ void checkUnnamed5707(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5708() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5708() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5708(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1017,12 +983,10 @@ void checkUnnamed5708(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5709() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5709() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5709(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1036,12 +1000,10 @@ void checkUnnamed5709(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5710() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5710() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5710(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1055,12 +1017,10 @@ void checkUnnamed5710(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5711() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5711() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5711(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1074,12 +1034,10 @@ void checkUnnamed5711(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5712() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5712() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5712(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1093,12 +1051,10 @@ void checkUnnamed5712(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5713() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5713() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5713(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1112,12 +1068,10 @@ void checkUnnamed5713(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5714() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5714() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5714(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

@@ -61,12 +61,10 @@ void checkGoogleExampleLibraryagentV1Book(
   buildCounterGoogleExampleLibraryagentV1Book--;
 }
 
-core.List<api.GoogleExampleLibraryagentV1Book> buildUnnamed4963() {
-  final o = <api.GoogleExampleLibraryagentV1Book>[];
-  o.add(buildGoogleExampleLibraryagentV1Book());
-  o.add(buildGoogleExampleLibraryagentV1Book());
-  return o;
-}
+core.List<api.GoogleExampleLibraryagentV1Book> buildUnnamed4963() => [
+      buildGoogleExampleLibraryagentV1Book(),
+      buildGoogleExampleLibraryagentV1Book(),
+    ];
 
 void checkUnnamed4963(core.List<api.GoogleExampleLibraryagentV1Book> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -100,12 +98,10 @@ void checkGoogleExampleLibraryagentV1ListBooksResponse(
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse--;
 }
 
-core.List<api.GoogleExampleLibraryagentV1Shelf> buildUnnamed4964() {
-  final o = <api.GoogleExampleLibraryagentV1Shelf>[];
-  o.add(buildGoogleExampleLibraryagentV1Shelf());
-  o.add(buildGoogleExampleLibraryagentV1Shelf());
-  return o;
-}
+core.List<api.GoogleExampleLibraryagentV1Shelf> buildUnnamed4964() => [
+      buildGoogleExampleLibraryagentV1Shelf(),
+      buildGoogleExampleLibraryagentV1Shelf(),
+    ];
 
 void checkUnnamed4964(core.List<api.GoogleExampleLibraryagentV1Shelf> o) {
   unittest.expect(o, unittest.hasLength(2));

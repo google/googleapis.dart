@@ -255,12 +255,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Extension(
 }
 
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Product>
-    buildUnnamed5722() {
-  final o = <api.GoogleCloudPaymentsResellerSubscriptionV1Product>[];
-  o.add(buildGoogleCloudPaymentsResellerSubscriptionV1Product());
-  o.add(buildGoogleCloudPaymentsResellerSubscriptionV1Product());
-  return o;
-}
+    buildUnnamed5722() => [
+          buildGoogleCloudPaymentsResellerSubscriptionV1Product(),
+          buildGoogleCloudPaymentsResellerSubscriptionV1Product(),
+        ];
 
 void checkUnnamed5722(
     core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Product> o) {
@@ -300,12 +298,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse(
 }
 
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Promotion>
-    buildUnnamed5723() {
-  final o = <api.GoogleCloudPaymentsResellerSubscriptionV1Promotion>[];
-  o.add(buildGoogleCloudPaymentsResellerSubscriptionV1Promotion());
-  o.add(buildGoogleCloudPaymentsResellerSubscriptionV1Promotion());
-  return o;
-}
+    buildUnnamed5723() => [
+          buildGoogleCloudPaymentsResellerSubscriptionV1Promotion(),
+          buildGoogleCloudPaymentsResellerSubscriptionV1Promotion(),
+        ];
 
 void checkUnnamed5723(
     core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Promotion> o) {
@@ -374,12 +370,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Location(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Location--;
 }
 
-core.List<core.String> buildUnnamed5724() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5724() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5724(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -393,12 +387,10 @@ void checkUnnamed5724(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleTypeLocalizedText> buildUnnamed5725() {
-  final o = <api.GoogleTypeLocalizedText>[];
-  o.add(buildGoogleTypeLocalizedText());
-  o.add(buildGoogleTypeLocalizedText());
-  return o;
-}
+core.List<api.GoogleTypeLocalizedText> buildUnnamed5725() => [
+      buildGoogleTypeLocalizedText(),
+      buildGoogleTypeLocalizedText(),
+    ];
 
 void checkUnnamed5725(core.List<api.GoogleTypeLocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -438,12 +430,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Product(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product--;
 }
 
-core.List<core.String> buildUnnamed5726() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5726() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5726(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -457,12 +447,10 @@ void checkUnnamed5726(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5727() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5727() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5727(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -476,12 +464,10 @@ void checkUnnamed5727(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleTypeLocalizedText> buildUnnamed5728() {
-  final o = <api.GoogleTypeLocalizedText>[];
-  o.add(buildGoogleTypeLocalizedText());
-  o.add(buildGoogleTypeLocalizedText());
-  return o;
-}
+core.List<api.GoogleTypeLocalizedText> buildUnnamed5728() => [
+      buildGoogleTypeLocalizedText(),
+      buildGoogleTypeLocalizedText(),
+    ];
 
 void checkUnnamed5728(core.List<api.GoogleTypeLocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -533,12 +519,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion--;
 }
 
-core.List<core.String> buildUnnamed5729() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5729() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5729(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -552,12 +536,10 @@ void checkUnnamed5729(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5730() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5730() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5730(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

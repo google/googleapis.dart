@@ -199,12 +199,10 @@ void checkAudio(api.Audio o) {
   buildCounterAudio--;
 }
 
-core.List<api.AudioChannel> buildUnnamed8516() {
-  final o = <api.AudioChannel>[];
-  o.add(buildAudioChannel());
-  o.add(buildAudioChannel());
-  return o;
-}
+core.List<api.AudioChannel> buildUnnamed8516() => [
+      buildAudioChannel(),
+      buildAudioChannel(),
+    ];
 
 void checkUnnamed8516(core.List<api.AudioChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -236,12 +234,10 @@ void checkAudioAtom(api.AudioAtom o) {
   buildCounterAudioAtom--;
 }
 
-core.List<api.AudioChannelInput> buildUnnamed8517() {
-  final o = <api.AudioChannelInput>[];
-  o.add(buildAudioChannelInput());
-  o.add(buildAudioChannelInput());
-  return o;
-}
+core.List<api.AudioChannelInput> buildUnnamed8517() => [
+      buildAudioChannelInput(),
+      buildAudioChannelInput(),
+    ];
 
 void checkUnnamed8517(core.List<api.AudioChannelInput> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -305,12 +301,10 @@ void checkAudioChannelInput(api.AudioChannelInput o) {
   buildCounterAudioChannelInput--;
 }
 
-core.List<core.String> buildUnnamed8518() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8518() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8518(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -324,12 +318,10 @@ void checkUnnamed8518(core.List<core.String> o) {
   );
 }
 
-core.List<api.AudioAtom> buildUnnamed8519() {
-  final o = <api.AudioAtom>[];
-  o.add(buildAudioAtom());
-  o.add(buildAudioAtom());
-  return o;
-}
+core.List<api.AudioAtom> buildUnnamed8519() => [
+      buildAudioAtom(),
+      buildAudioAtom(),
+    ];
 
 void checkUnnamed8519(core.List<api.AudioAtom> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -498,12 +490,10 @@ void checkDenoise(api.Denoise o) {
   buildCounterDenoise--;
 }
 
-core.List<core.String> buildUnnamed8520() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8520() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8520(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -707,12 +697,10 @@ void checkInput(api.Input o) {
   buildCounterInput--;
 }
 
-core.List<api.FailureDetail> buildUnnamed8521() {
-  final o = <api.FailureDetail>[];
-  o.add(buildFailureDetail());
-  o.add(buildFailureDetail());
-  return o;
-}
+core.List<api.FailureDetail> buildUnnamed8521() => [
+      buildFailureDetail(),
+      buildFailureDetail(),
+    ];
 
 void checkUnnamed8521(core.List<api.FailureDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -800,12 +788,10 @@ void checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-core.List<api.AdBreak> buildUnnamed8522() {
-  final o = <api.AdBreak>[];
-  o.add(buildAdBreak());
-  o.add(buildAdBreak());
-  return o;
-}
+core.List<api.AdBreak> buildUnnamed8522() => [
+      buildAdBreak(),
+      buildAdBreak(),
+    ];
 
 void checkUnnamed8522(core.List<api.AdBreak> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -813,12 +799,10 @@ void checkUnnamed8522(core.List<api.AdBreak> o) {
   checkAdBreak(o[1]);
 }
 
-core.List<api.EditAtom> buildUnnamed8523() {
-  final o = <api.EditAtom>[];
-  o.add(buildEditAtom());
-  o.add(buildEditAtom());
-  return o;
-}
+core.List<api.EditAtom> buildUnnamed8523() => [
+      buildEditAtom(),
+      buildEditAtom(),
+    ];
 
 void checkUnnamed8523(core.List<api.EditAtom> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -826,12 +810,10 @@ void checkUnnamed8523(core.List<api.EditAtom> o) {
   checkEditAtom(o[1]);
 }
 
-core.List<api.ElementaryStream> buildUnnamed8524() {
-  final o = <api.ElementaryStream>[];
-  o.add(buildElementaryStream());
-  o.add(buildElementaryStream());
-  return o;
-}
+core.List<api.ElementaryStream> buildUnnamed8524() => [
+      buildElementaryStream(),
+      buildElementaryStream(),
+    ];
 
 void checkUnnamed8524(core.List<api.ElementaryStream> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -839,12 +821,10 @@ void checkUnnamed8524(core.List<api.ElementaryStream> o) {
   checkElementaryStream(o[1]);
 }
 
-core.List<api.Input> buildUnnamed8525() {
-  final o = <api.Input>[];
-  o.add(buildInput());
-  o.add(buildInput());
-  return o;
-}
+core.List<api.Input> buildUnnamed8525() => [
+      buildInput(),
+      buildInput(),
+    ];
 
 void checkUnnamed8525(core.List<api.Input> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -852,12 +832,10 @@ void checkUnnamed8525(core.List<api.Input> o) {
   checkInput(o[1]);
 }
 
-core.List<api.Manifest> buildUnnamed8526() {
-  final o = <api.Manifest>[];
-  o.add(buildManifest());
-  o.add(buildManifest());
-  return o;
-}
+core.List<api.Manifest> buildUnnamed8526() => [
+      buildManifest(),
+      buildManifest(),
+    ];
 
 void checkUnnamed8526(core.List<api.Manifest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -865,12 +843,10 @@ void checkUnnamed8526(core.List<api.Manifest> o) {
   checkManifest(o[1]);
 }
 
-core.List<api.MuxStream> buildUnnamed8527() {
-  final o = <api.MuxStream>[];
-  o.add(buildMuxStream());
-  o.add(buildMuxStream());
-  return o;
-}
+core.List<api.MuxStream> buildUnnamed8527() => [
+      buildMuxStream(),
+      buildMuxStream(),
+    ];
 
 void checkUnnamed8527(core.List<api.MuxStream> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -878,12 +854,10 @@ void checkUnnamed8527(core.List<api.MuxStream> o) {
   checkMuxStream(o[1]);
 }
 
-core.List<api.Overlay> buildUnnamed8528() {
-  final o = <api.Overlay>[];
-  o.add(buildOverlay());
-  o.add(buildOverlay());
-  return o;
-}
+core.List<api.Overlay> buildUnnamed8528() => [
+      buildOverlay(),
+      buildOverlay(),
+    ];
 
 void checkUnnamed8528(core.List<api.Overlay> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -891,12 +865,10 @@ void checkUnnamed8528(core.List<api.Overlay> o) {
   checkOverlay(o[1]);
 }
 
-core.List<api.SpriteSheet> buildUnnamed8529() {
-  final o = <api.SpriteSheet>[];
-  o.add(buildSpriteSheet());
-  o.add(buildSpriteSheet());
-  return o;
-}
+core.List<api.SpriteSheet> buildUnnamed8529() => [
+      buildSpriteSheet(),
+      buildSpriteSheet(),
+    ];
 
 void checkUnnamed8529(core.List<api.SpriteSheet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -965,12 +937,10 @@ void checkJobTemplate(api.JobTemplate o) {
   buildCounterJobTemplate--;
 }
 
-core.List<api.JobTemplate> buildUnnamed8530() {
-  final o = <api.JobTemplate>[];
-  o.add(buildJobTemplate());
-  o.add(buildJobTemplate());
-  return o;
-}
+core.List<api.JobTemplate> buildUnnamed8530() => [
+      buildJobTemplate(),
+      buildJobTemplate(),
+    ];
 
 void checkUnnamed8530(core.List<api.JobTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1002,12 +972,10 @@ void checkListJobTemplatesResponse(api.ListJobTemplatesResponse o) {
   buildCounterListJobTemplatesResponse--;
 }
 
-core.List<api.Job> buildUnnamed8531() {
-  final o = <api.Job>[];
-  o.add(buildJob());
-  o.add(buildJob());
-  return o;
-}
+core.List<api.Job> buildUnnamed8531() => [
+      buildJob(),
+      buildJob(),
+    ];
 
 void checkUnnamed8531(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1039,12 +1007,10 @@ void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse--;
 }
 
-core.List<core.String> buildUnnamed8532() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8532() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8532(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1114,12 +1080,10 @@ void checkMpegCommonEncryption(api.MpegCommonEncryption o) {
   buildCounterMpegCommonEncryption--;
 }
 
-core.List<core.String> buildUnnamed8533() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8533() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8533(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1296,12 +1260,10 @@ void checkOutput(api.Output o) {
   buildCounterOutput--;
 }
 
-core.List<api.Animation> buildUnnamed8534() {
-  final o = <api.Animation>[];
-  o.add(buildAnimation());
-  o.add(buildAnimation());
-  return o;
-}
+core.List<api.Animation> buildUnnamed8534() => [
+      buildAnimation(),
+      buildAnimation(),
+    ];
 
 void checkUnnamed8534(core.List<api.Animation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1573,12 +1535,10 @@ void checkSpriteSheet(api.SpriteSheet o) {
   buildCounterSpriteSheet--;
 }
 
-core.List<api.TextInput> buildUnnamed8535() {
-  final o = <api.TextInput>[];
-  o.add(buildTextInput());
-  o.add(buildTextInput());
-  return o;
-}
+core.List<api.TextInput> buildUnnamed8535() => [
+      buildTextInput(),
+      buildTextInput(),
+    ];
 
 void checkUnnamed8535(core.List<api.TextInput> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1637,12 +1597,10 @@ void checkTextInput(api.TextInput o) {
   buildCounterTextInput--;
 }
 
-core.List<api.TextAtom> buildUnnamed8536() {
-  final o = <api.TextAtom>[];
-  o.add(buildTextAtom());
-  o.add(buildTextAtom());
-  return o;
-}
+core.List<api.TextAtom> buildUnnamed8536() => [
+      buildTextAtom(),
+      buildTextAtom(),
+    ];
 
 void checkUnnamed8536(core.List<api.TextAtom> o) {
   unittest.expect(o, unittest.hasLength(2));

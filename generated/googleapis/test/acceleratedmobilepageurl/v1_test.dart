@@ -90,12 +90,10 @@ void checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError--;
 }
 
-core.List<core.String> buildUnnamed4501() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4501() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4501(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -133,12 +131,10 @@ void checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
   buildCounterBatchGetAmpUrlsRequest--;
 }
 
-core.List<api.AmpUrl> buildUnnamed4502() {
-  final o = <api.AmpUrl>[];
-  o.add(buildAmpUrl());
-  o.add(buildAmpUrl());
-  return o;
-}
+core.List<api.AmpUrl> buildUnnamed4502() => [
+      buildAmpUrl(),
+      buildAmpUrl(),
+    ];
 
 void checkUnnamed4502(core.List<api.AmpUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -146,12 +142,10 @@ void checkUnnamed4502(core.List<api.AmpUrl> o) {
   checkAmpUrl(o[1]);
 }
 
-core.List<api.AmpUrlError> buildUnnamed4503() {
-  final o = <api.AmpUrlError>[];
-  o.add(buildAmpUrlError());
-  o.add(buildAmpUrlError());
-  return o;
-}
+core.List<api.AmpUrlError> buildUnnamed4503() => [
+      buildAmpUrlError(),
+      buildAmpUrlError(),
+    ];
 
 void checkUnnamed4503(core.List<api.AmpUrlError> o) {
   unittest.expect(o, unittest.hasLength(2));

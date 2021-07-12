@@ -58,12 +58,10 @@ void checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-core.List<api.TaskLinks> buildUnnamed7801() {
-  final o = <api.TaskLinks>[];
-  o.add(buildTaskLinks());
-  o.add(buildTaskLinks());
-  return o;
-}
+core.List<api.TaskLinks> buildUnnamed7801() => [
+      buildTaskLinks(),
+      buildTaskLinks(),
+    ];
 
 void checkUnnamed7801(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -201,12 +199,10 @@ void checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-core.List<api.TaskList> buildUnnamed7802() {
-  final o = <api.TaskList>[];
-  o.add(buildTaskList());
-  o.add(buildTaskList());
-  return o;
-}
+core.List<api.TaskList> buildUnnamed7802() => [
+      buildTaskList(),
+      buildTaskList(),
+    ];
 
 void checkUnnamed7802(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -248,12 +244,10 @@ void checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists--;
 }
 
-core.List<api.Task> buildUnnamed7803() {
-  final o = <api.Task>[];
-  o.add(buildTask());
-  o.add(buildTask());
-  return o;
-}
+core.List<api.Task> buildUnnamed7803() => [
+      buildTask(),
+      buildTask(),
+    ];
 
 void checkUnnamed7803(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));

@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.BucketAccessControl> buildUnnamed5351() {
-  final o = <api.BucketAccessControl>[];
-  o.add(buildBucketAccessControl());
-  o.add(buildBucketAccessControl());
-  return o;
-}
+core.List<api.BucketAccessControl> buildUnnamed5351() => [
+      buildBucketAccessControl(),
+      buildBucketAccessControl(),
+    ];
 
 void checkUnnamed5351(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -58,12 +56,10 @@ void checkBucketBilling(api.BucketBilling o) {
   buildCounterBucketBilling--;
 }
 
-core.List<core.String> buildUnnamed5352() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5352() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5352(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -77,12 +73,10 @@ void checkUnnamed5352(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5353() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5353() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5353(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -96,12 +90,10 @@ void checkUnnamed5353(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5354() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5354() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5354(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -143,12 +135,10 @@ void checkBucketCors(api.BucketCors o) {
   buildCounterBucketCors--;
 }
 
-core.List<api.BucketCors> buildUnnamed5355() {
-  final o = <api.BucketCors>[];
-  o.add(buildBucketCors());
-  o.add(buildBucketCors());
-  return o;
-}
+core.List<api.BucketCors> buildUnnamed5355() => [
+      buildBucketCors(),
+      buildBucketCors(),
+    ];
 
 void checkUnnamed5355(core.List<api.BucketCors> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -156,12 +146,10 @@ void checkUnnamed5355(core.List<api.BucketCors> o) {
   checkBucketCors(o[1]);
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed5356() {
-  final o = <api.ObjectAccessControl>[];
-  o.add(buildObjectAccessControl());
-  o.add(buildObjectAccessControl());
-  return o;
-}
+core.List<api.ObjectAccessControl> buildUnnamed5356() => [
+      buildObjectAccessControl(),
+      buildObjectAccessControl(),
+    ];
 
 void checkUnnamed5356(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -271,12 +259,10 @@ void checkBucketIamConfiguration(api.BucketIamConfiguration o) {
   buildCounterBucketIamConfiguration--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5357() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5357() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5357(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -317,12 +303,10 @@ void checkBucketLifecycleRuleAction(api.BucketLifecycleRuleAction o) {
   buildCounterBucketLifecycleRuleAction--;
 }
 
-core.List<core.String> buildUnnamed5358() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5358() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5358(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -418,12 +402,10 @@ void checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule--;
 }
 
-core.List<api.BucketLifecycleRule> buildUnnamed5359() {
-  final o = <api.BucketLifecycleRule>[];
-  o.add(buildBucketLifecycleRule());
-  o.add(buildBucketLifecycleRule());
-  return o;
-}
+core.List<api.BucketLifecycleRule> buildUnnamed5359() => [
+      buildBucketLifecycleRule(),
+      buildBucketLifecycleRule(),
+    ];
 
 void checkUnnamed5359(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -579,12 +561,10 @@ void checkBucketWebsite(api.BucketWebsite o) {
   buildCounterBucketWebsite--;
 }
 
-core.List<core.String> buildUnnamed5360() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5360() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5360(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -803,12 +783,10 @@ void checkBucketAccessControl(api.BucketAccessControl o) {
   buildCounterBucketAccessControl--;
 }
 
-core.List<api.BucketAccessControl> buildUnnamed5361() {
-  final o = <api.BucketAccessControl>[];
-  o.add(buildBucketAccessControl());
-  o.add(buildBucketAccessControl());
-  return o;
-}
+core.List<api.BucketAccessControl> buildUnnamed5361() => [
+      buildBucketAccessControl(),
+      buildBucketAccessControl(),
+    ];
 
 void checkUnnamed5361(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -840,12 +818,10 @@ void checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls--;
 }
 
-core.List<api.Bucket> buildUnnamed5362() {
-  final o = <api.Bucket>[];
-  o.add(buildBucket());
-  o.add(buildBucket());
-  return o;
-}
+core.List<api.Bucket> buildUnnamed5362() => [
+      buildBucket(),
+      buildBucket(),
+    ];
 
 void checkUnnamed5362(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -882,12 +858,10 @@ void checkBuckets(api.Buckets o) {
   buildCounterBuckets--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5363() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5363() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5363(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1016,12 +990,10 @@ void checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   buildCounterComposeRequestSourceObjects--;
 }
 
-core.List<api.ComposeRequestSourceObjects> buildUnnamed5364() {
-  final o = <api.ComposeRequestSourceObjects>[];
-  o.add(buildComposeRequestSourceObjects());
-  o.add(buildComposeRequestSourceObjects());
-  return o;
-}
+core.List<api.ComposeRequestSourceObjects> buildUnnamed5364() => [
+      buildComposeRequestSourceObjects(),
+      buildComposeRequestSourceObjects(),
+    ];
 
 void checkUnnamed5364(core.List<api.ComposeRequestSourceObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1188,12 +1160,10 @@ void checkHmacKeyMetadata(api.HmacKeyMetadata o) {
   buildCounterHmacKeyMetadata--;
 }
 
-core.List<api.HmacKeyMetadata> buildUnnamed5365() {
-  final o = <api.HmacKeyMetadata>[];
-  o.add(buildHmacKeyMetadata());
-  o.add(buildHmacKeyMetadata());
-  return o;
-}
+core.List<api.HmacKeyMetadata> buildUnnamed5365() => [
+      buildHmacKeyMetadata(),
+      buildHmacKeyMetadata(),
+    ];
 
 void checkUnnamed5365(core.List<api.HmacKeyMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1230,12 +1200,10 @@ void checkHmacKeysMetadata(api.HmacKeysMetadata o) {
   buildCounterHmacKeysMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5366() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5366() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5366(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1249,12 +1217,10 @@ void checkUnnamed5366(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5367() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5367() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5367(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1324,12 +1290,10 @@ void checkNotification(api.Notification o) {
   buildCounterNotification--;
 }
 
-core.List<api.Notification> buildUnnamed5368() {
-  final o = <api.Notification>[];
-  o.add(buildNotification());
-  o.add(buildNotification());
-  return o;
-}
+core.List<api.Notification> buildUnnamed5368() => [
+      buildNotification(),
+      buildNotification(),
+    ];
 
 void checkUnnamed5368(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1361,12 +1325,10 @@ void checkNotifications(api.Notifications o) {
   buildCounterNotifications--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed5369() {
-  final o = <api.ObjectAccessControl>[];
-  o.add(buildObjectAccessControl());
-  o.add(buildObjectAccessControl());
-  return o;
-}
+core.List<api.ObjectAccessControl> buildUnnamed5369() => [
+      buildObjectAccessControl(),
+      buildObjectAccessControl(),
+    ];
 
 void checkUnnamed5369(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1401,12 +1363,10 @@ void checkObjectCustomerEncryption(api.ObjectCustomerEncryption o) {
   buildCounterObjectCustomerEncryption--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5370() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5370() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5370(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1712,12 +1672,10 @@ void checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed5371() {
-  final o = <api.ObjectAccessControl>[];
-  o.add(buildObjectAccessControl());
-  o.add(buildObjectAccessControl());
-  return o;
-}
+core.List<api.ObjectAccessControl> buildUnnamed5371() => [
+      buildObjectAccessControl(),
+      buildObjectAccessControl(),
+    ];
 
 void checkUnnamed5371(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1749,12 +1707,10 @@ void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls--;
 }
 
-core.List<api.Object> buildUnnamed5372() {
-  final o = <api.Object>[];
-  o.add(buildObject());
-  o.add(buildObject());
-  return o;
-}
+core.List<api.Object> buildUnnamed5372() => [
+      buildObject(),
+      buildObject(),
+    ];
 
 void checkUnnamed5372(core.List<api.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1762,12 +1718,10 @@ void checkUnnamed5372(core.List<api.Object> o) {
   checkObject(o[1]);
 }
 
-core.List<core.String> buildUnnamed5373() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5373() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5373(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1812,12 +1766,10 @@ void checkObjects(api.Objects o) {
   buildCounterObjects--;
 }
 
-core.List<core.String> buildUnnamed5374() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5374() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5374(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1857,12 +1809,10 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings--;
 }
 
-core.List<api.PolicyBindings> buildUnnamed5375() {
-  final o = <api.PolicyBindings>[];
-  o.add(buildPolicyBindings());
-  o.add(buildPolicyBindings());
-  return o;
-}
+core.List<api.PolicyBindings> buildUnnamed5375() => [
+      buildPolicyBindings(),
+      buildPolicyBindings(),
+    ];
 
 void checkUnnamed5375(core.List<api.PolicyBindings> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1977,12 +1927,10 @@ void checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount--;
 }
 
-core.List<core.String> buildUnnamed5376() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5376() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5376(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2020,12 +1968,10 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.List<core.String> buildUnnamed5377() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5377() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5377(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2039,12 +1985,10 @@ void checkUnnamed5377(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5378() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5378() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5378(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

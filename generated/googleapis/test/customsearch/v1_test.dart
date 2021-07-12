@@ -63,12 +63,10 @@ void checkPromotionBodyLines(api.PromotionBodyLines o) {
   buildCounterPromotionBodyLines--;
 }
 
-core.List<api.PromotionBodyLines> buildUnnamed5342() {
-  final o = <api.PromotionBodyLines>[];
-  o.add(buildPromotionBodyLines());
-  o.add(buildPromotionBodyLines());
-  return o;
-}
+core.List<api.PromotionBodyLines> buildUnnamed5342() => [
+      buildPromotionBodyLines(),
+      buildPromotionBodyLines(),
+    ];
 
 void checkUnnamed5342(core.List<api.PromotionBodyLines> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -233,12 +231,10 @@ void checkResultLabels(api.ResultLabels o) {
   buildCounterResultLabels--;
 }
 
-core.List<api.ResultLabels> buildUnnamed5343() {
-  final o = <api.ResultLabels>[];
-  o.add(buildResultLabels());
-  o.add(buildResultLabels());
-  return o;
-}
+core.List<api.ResultLabels> buildUnnamed5343() => [
+      buildResultLabels(),
+      buildResultLabels(),
+    ];
 
 void checkUnnamed5343(core.List<api.ResultLabels> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -246,20 +242,18 @@ void checkUnnamed5343(core.List<api.ResultLabels> o) {
   checkResultLabels(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed5344() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed5344() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed5344(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -376,20 +370,18 @@ void checkResult(api.Result o) {
   buildCounterResult--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed5345() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed5345() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed5345(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -423,12 +415,10 @@ void checkUnnamed5345(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<api.Result> buildUnnamed5346() {
-  final o = <api.Result>[];
-  o.add(buildResult());
-  o.add(buildResult());
-  return o;
-}
+core.List<api.Result> buildUnnamed5346() => [
+      buildResult(),
+      buildResult(),
+    ];
 
 void checkUnnamed5346(core.List<api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -436,12 +426,10 @@ void checkUnnamed5346(core.List<api.Result> o) {
   checkResult(o[1]);
 }
 
-core.List<api.Promotion> buildUnnamed5347() {
-  final o = <api.Promotion>[];
-  o.add(buildPromotion());
-  o.add(buildPromotion());
-  return o;
-}
+core.List<api.Promotion> buildUnnamed5347() => [
+      buildPromotion(),
+      buildPromotion(),
+    ];
 
 void checkUnnamed5347(core.List<api.Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -646,12 +634,10 @@ void checkSearchQueriesNextPage(api.SearchQueriesNextPage o) {
   buildCounterSearchQueriesNextPage--;
 }
 
-core.List<api.SearchQueriesNextPage> buildUnnamed5348() {
-  final o = <api.SearchQueriesNextPage>[];
-  o.add(buildSearchQueriesNextPage());
-  o.add(buildSearchQueriesNextPage());
-  return o;
-}
+core.List<api.SearchQueriesNextPage> buildUnnamed5348() => [
+      buildSearchQueriesNextPage(),
+      buildSearchQueriesNextPage(),
+    ];
 
 void checkUnnamed5348(core.List<api.SearchQueriesNextPage> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -856,12 +842,10 @@ void checkSearchQueriesPreviousPage(api.SearchQueriesPreviousPage o) {
   buildCounterSearchQueriesPreviousPage--;
 }
 
-core.List<api.SearchQueriesPreviousPage> buildUnnamed5349() {
-  final o = <api.SearchQueriesPreviousPage>[];
-  o.add(buildSearchQueriesPreviousPage());
-  o.add(buildSearchQueriesPreviousPage());
-  return o;
-}
+core.List<api.SearchQueriesPreviousPage> buildUnnamed5349() => [
+      buildSearchQueriesPreviousPage(),
+      buildSearchQueriesPreviousPage(),
+    ];
 
 void checkUnnamed5349(core.List<api.SearchQueriesPreviousPage> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1066,12 +1050,10 @@ void checkSearchQueriesRequest(api.SearchQueriesRequest o) {
   buildCounterSearchQueriesRequest--;
 }
 
-core.List<api.SearchQueriesRequest> buildUnnamed5350() {
-  final o = <api.SearchQueriesRequest>[];
-  o.add(buildSearchQueriesRequest());
-  o.add(buildSearchQueriesRequest());
-  return o;
-}
+core.List<api.SearchQueriesRequest> buildUnnamed5350() => [
+      buildSearchQueriesRequest(),
+      buildSearchQueriesRequest(),
+    ];
 
 void checkUnnamed5350(core.List<api.SearchQueriesRequest> o) {
   unittest.expect(o, unittest.hasLength(2));

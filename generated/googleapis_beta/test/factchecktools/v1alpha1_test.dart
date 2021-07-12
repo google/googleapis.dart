@@ -27,12 +27,10 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>
-    buildUnnamed8070() {
-  final o = <api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>[];
-  o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview());
-  o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview());
-  return o;
-}
+    buildUnnamed8070() => [
+          buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(),
+          buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(),
+        ];
 
 void checkUnnamed8070(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> o) {
@@ -243,12 +241,10 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor--;
 }
 
-core.List<core.String> buildUnnamed8071() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8071() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8071(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -316,12 +312,10 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(
 }
 
 core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>
-    buildUnnamed8072() {
-  final o = <api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>[];
-  o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup());
-  o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup());
-  return o;
-}
+    buildUnnamed8072() => [
+          buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(),
+          buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(),
+        ];
 
 void checkUnnamed8072(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>
@@ -381,12 +375,10 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
 }
 
 core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim>
-    buildUnnamed8073() {
-  final o = <api.GoogleFactcheckingFactchecktoolsV1alpha1Claim>[];
-  o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1Claim());
-  o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1Claim());
-  return o;
-}
+    buildUnnamed8073() => [
+          buildGoogleFactcheckingFactchecktoolsV1alpha1Claim(),
+          buildGoogleFactcheckingFactchecktoolsV1alpha1Claim(),
+        ];
 
 void checkUnnamed8073(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim> o) {
@@ -428,13 +420,10 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
 }
 
 core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
-    buildUnnamed8074() {
-  final o =
-      <api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>[];
-  o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());
-  o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());
-  return o;
-}
+    buildUnnamed8074() => [
+          buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(),
+          buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(),
+        ];
 
 void checkUnnamed8074(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>

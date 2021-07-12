@@ -26,20 +26,18 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.Object> buildUnnamed79() {
-  final o = <core.Object>[];
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
+core.List<core.Object> buildUnnamed79() => [
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    ];
 
 void checkUnnamed79(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -130,12 +128,10 @@ void checkSearchResponse(api.SearchResponse o) {
   buildCounterSearchResponse--;
 }
 
-core.List<core.String> buildUnnamed80() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed80() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed80(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -149,12 +145,10 @@ void checkUnnamed80(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed81() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed81() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed81(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -168,12 +162,10 @@ void checkUnnamed81(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed82() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed82() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed82(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

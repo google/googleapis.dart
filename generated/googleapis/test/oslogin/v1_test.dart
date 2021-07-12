@@ -65,12 +65,10 @@ void checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-core.List<api.PosixAccount> buildUnnamed3584() {
-  final o = <api.PosixAccount>[];
-  o.add(buildPosixAccount());
-  o.add(buildPosixAccount());
-  return o;
-}
+core.List<api.PosixAccount> buildUnnamed3584() => [
+      buildPosixAccount(),
+      buildPosixAccount(),
+    ];
 
 void checkUnnamed3584(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -78,12 +76,10 @@ void checkUnnamed3584(core.List<api.PosixAccount> o) {
   checkPosixAccount(o[1]);
 }
 
-core.Map<core.String, api.SshPublicKey> buildUnnamed3585() {
-  final o = <core.String, api.SshPublicKey>{};
-  o['x'] = buildSshPublicKey();
-  o['y'] = buildSshPublicKey();
-  return o;
-}
+core.Map<core.String, api.SshPublicKey> buildUnnamed3585() => {
+      'x': buildSshPublicKey(),
+      'y': buildSshPublicKey(),
+    };
 
 void checkUnnamed3585(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));

@@ -82,12 +82,10 @@ void checkAndroidDevice(api.AndroidDevice o) {
   buildCounterAndroidDevice--;
 }
 
-core.List<api.AndroidModel> buildUnnamed161() {
-  final o = <api.AndroidModel>[];
-  o.add(buildAndroidModel());
-  o.add(buildAndroidModel());
-  return o;
-}
+core.List<api.AndroidModel> buildUnnamed161() => [
+      buildAndroidModel(),
+      buildAndroidModel(),
+    ];
 
 void checkUnnamed161(core.List<api.AndroidModel> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -95,12 +93,10 @@ void checkUnnamed161(core.List<api.AndroidModel> o) {
   checkAndroidModel(o[1]);
 }
 
-core.List<api.AndroidVersion> buildUnnamed162() {
-  final o = <api.AndroidVersion>[];
-  o.add(buildAndroidVersion());
-  o.add(buildAndroidVersion());
-  return o;
-}
+core.List<api.AndroidVersion> buildUnnamed162() => [
+      buildAndroidVersion(),
+      buildAndroidVersion(),
+    ];
 
 void checkUnnamed162(core.List<api.AndroidVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -131,12 +127,10 @@ void checkAndroidDeviceCatalog(api.AndroidDeviceCatalog o) {
   buildCounterAndroidDeviceCatalog--;
 }
 
-core.List<api.AndroidDevice> buildUnnamed163() {
-  final o = <api.AndroidDevice>[];
-  o.add(buildAndroidDevice());
-  o.add(buildAndroidDevice());
-  return o;
-}
+core.List<api.AndroidDevice> buildUnnamed163() => [
+      buildAndroidDevice(),
+      buildAndroidDevice(),
+    ];
 
 void checkUnnamed163(core.List<api.AndroidDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -163,12 +157,10 @@ void checkAndroidDeviceList(api.AndroidDeviceList o) {
   buildCounterAndroidDeviceList--;
 }
 
-core.List<core.String> buildUnnamed164() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed164() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed164(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -229,12 +221,10 @@ void checkAndroidInstrumentationTest(api.AndroidInstrumentationTest o) {
   buildCounterAndroidInstrumentationTest--;
 }
 
-core.List<core.String> buildUnnamed165() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed165() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed165(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -248,12 +238,10 @@ void checkUnnamed165(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed166() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed166() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed166(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -267,12 +255,10 @@ void checkUnnamed166(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed167() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed167() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed167(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -286,12 +272,10 @@ void checkUnnamed167(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed168() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed168() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed168(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -330,12 +314,10 @@ void checkAndroidMatrix(api.AndroidMatrix o) {
   buildCounterAndroidMatrix--;
 }
 
-core.List<core.String> buildUnnamed169() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed169() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed169(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -349,12 +331,10 @@ void checkUnnamed169(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed170() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed170() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed170(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -368,12 +348,10 @@ void checkUnnamed170(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed171() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed171() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed171(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -467,12 +445,10 @@ void checkAndroidModel(api.AndroidModel o) {
   buildCounterAndroidModel--;
 }
 
-core.List<api.RoboDirective> buildUnnamed172() {
-  final o = <api.RoboDirective>[];
-  o.add(buildRoboDirective());
-  o.add(buildRoboDirective());
-  return o;
-}
+core.List<api.RoboDirective> buildUnnamed172() => [
+      buildRoboDirective(),
+      buildRoboDirective(),
+    ];
 
 void checkUnnamed172(core.List<api.RoboDirective> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -480,12 +456,10 @@ void checkUnnamed172(core.List<api.RoboDirective> o) {
   checkRoboDirective(o[1]);
 }
 
-core.List<api.RoboStartingIntent> buildUnnamed173() {
-  final o = <api.RoboStartingIntent>[];
-  o.add(buildRoboStartingIntent());
-  o.add(buildRoboStartingIntent());
-  return o;
-}
+core.List<api.RoboStartingIntent> buildUnnamed173() => [
+      buildRoboStartingIntent(),
+      buildRoboStartingIntent(),
+    ];
 
 void checkUnnamed173(core.List<api.RoboStartingIntent> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -540,12 +514,10 @@ void checkAndroidRoboTest(api.AndroidRoboTest o) {
   buildCounterAndroidRoboTest--;
 }
 
-core.List<api.Locale> buildUnnamed174() {
-  final o = <api.Locale>[];
-  o.add(buildLocale());
-  o.add(buildLocale());
-  return o;
-}
+core.List<api.Locale> buildUnnamed174() => [
+      buildLocale(),
+      buildLocale(),
+    ];
 
 void checkUnnamed174(core.List<api.Locale> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -553,12 +525,10 @@ void checkUnnamed174(core.List<api.Locale> o) {
   checkLocale(o[1]);
 }
 
-core.List<api.Orientation> buildUnnamed175() {
-  final o = <api.Orientation>[];
-  o.add(buildOrientation());
-  o.add(buildOrientation());
-  return o;
-}
+core.List<api.Orientation> buildUnnamed175() => [
+      buildOrientation(),
+      buildOrientation(),
+    ];
 
 void checkUnnamed175(core.List<api.Orientation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -587,12 +557,10 @@ void checkAndroidRuntimeConfiguration(api.AndroidRuntimeConfiguration o) {
   buildCounterAndroidRuntimeConfiguration--;
 }
 
-core.List<core.String> buildUnnamed176() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed176() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed176(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -606,12 +574,10 @@ void checkUnnamed176(core.List<core.String> o) {
   );
 }
 
-core.List<core.int> buildUnnamed177() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed177() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed177(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -655,12 +621,10 @@ void checkAndroidTestLoop(api.AndroidTestLoop o) {
   buildCounterAndroidTestLoop--;
 }
 
-core.List<core.String> buildUnnamed178() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed178() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed178(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -760,12 +724,10 @@ void checkApkDetail(api.ApkDetail o) {
   buildCounterApkDetail--;
 }
 
-core.List<api.IntentFilter> buildUnnamed179() {
-  final o = <api.IntentFilter>[];
-  o.add(buildIntentFilter());
-  o.add(buildIntentFilter());
-  return o;
-}
+core.List<api.IntentFilter> buildUnnamed179() => [
+      buildIntentFilter(),
+      buildIntentFilter(),
+    ];
 
 void checkUnnamed179(core.List<api.IntentFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -773,12 +735,10 @@ void checkUnnamed179(core.List<api.IntentFilter> o) {
   checkIntentFilter(o[1]);
 }
 
-core.List<core.String> buildUnnamed180() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed180() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed180(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -879,12 +839,10 @@ void checkCancelTestMatrixResponse(api.CancelTestMatrixResponse o) {
   buildCounterCancelTestMatrixResponse--;
 }
 
-core.List<api.ClientInfoDetail> buildUnnamed181() {
-  final o = <api.ClientInfoDetail>[];
-  o.add(buildClientInfoDetail());
-  o.add(buildClientInfoDetail());
-  return o;
-}
+core.List<api.ClientInfoDetail> buildUnnamed181() => [
+      buildClientInfoDetail(),
+      buildClientInfoDetail(),
+    ];
 
 void checkUnnamed181(core.List<api.ClientInfoDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1025,12 +983,10 @@ void checkDeviceIpBlock(api.DeviceIpBlock o) {
   buildCounterDeviceIpBlock--;
 }
 
-core.List<api.DeviceIpBlock> buildUnnamed182() {
-  final o = <api.DeviceIpBlock>[];
-  o.add(buildDeviceIpBlock());
-  o.add(buildDeviceIpBlock());
-  return o;
-}
+core.List<api.DeviceIpBlock> buildUnnamed182() => [
+      buildDeviceIpBlock(),
+      buildDeviceIpBlock(),
+    ];
 
 void checkUnnamed182(core.List<api.DeviceIpBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1233,12 +1189,10 @@ void checkGoogleCloudStorage(api.GoogleCloudStorage o) {
   buildCounterGoogleCloudStorage--;
 }
 
-core.List<core.String> buildUnnamed183() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed183() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed183(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1252,12 +1206,10 @@ void checkUnnamed183(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed184() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed184() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed184(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1334,12 +1286,10 @@ void checkIosDevice(api.IosDevice o) {
   buildCounterIosDevice--;
 }
 
-core.List<api.IosModel> buildUnnamed185() {
-  final o = <api.IosModel>[];
-  o.add(buildIosModel());
-  o.add(buildIosModel());
-  return o;
-}
+core.List<api.IosModel> buildUnnamed185() => [
+      buildIosModel(),
+      buildIosModel(),
+    ];
 
 void checkUnnamed185(core.List<api.IosModel> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1347,12 +1297,10 @@ void checkUnnamed185(core.List<api.IosModel> o) {
   checkIosModel(o[1]);
 }
 
-core.List<api.IosVersion> buildUnnamed186() {
-  final o = <api.IosVersion>[];
-  o.add(buildIosVersion());
-  o.add(buildIosVersion());
-  return o;
-}
+core.List<api.IosVersion> buildUnnamed186() => [
+      buildIosVersion(),
+      buildIosVersion(),
+    ];
 
 void checkUnnamed186(core.List<api.IosVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1360,12 +1308,10 @@ void checkUnnamed186(core.List<api.IosVersion> o) {
   checkIosVersion(o[1]);
 }
 
-core.List<api.XcodeVersion> buildUnnamed187() {
-  final o = <api.XcodeVersion>[];
-  o.add(buildXcodeVersion());
-  o.add(buildXcodeVersion());
-  return o;
-}
+core.List<api.XcodeVersion> buildUnnamed187() => [
+      buildXcodeVersion(),
+      buildXcodeVersion(),
+    ];
 
 void checkUnnamed187(core.List<api.XcodeVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1427,12 +1373,10 @@ void checkIosDeviceFile(api.IosDeviceFile o) {
   buildCounterIosDeviceFile--;
 }
 
-core.List<api.IosDevice> buildUnnamed188() {
-  final o = <api.IosDevice>[];
-  o.add(buildIosDevice());
-  o.add(buildIosDevice());
-  return o;
-}
+core.List<api.IosDevice> buildUnnamed188() => [
+      buildIosDevice(),
+      buildIosDevice(),
+    ];
 
 void checkUnnamed188(core.List<api.IosDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1459,12 +1403,10 @@ void checkIosDeviceList(api.IosDeviceList o) {
   buildCounterIosDeviceList--;
 }
 
-core.List<core.String> buildUnnamed189() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed189() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed189(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1478,12 +1420,10 @@ void checkUnnamed189(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed190() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed190() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed190(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1497,12 +1437,10 @@ void checkUnnamed190(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed191() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed191() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed191(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1569,12 +1507,10 @@ void checkIosModel(api.IosModel o) {
   buildCounterIosModel--;
 }
 
-core.List<api.Locale> buildUnnamed192() {
-  final o = <api.Locale>[];
-  o.add(buildLocale());
-  o.add(buildLocale());
-  return o;
-}
+core.List<api.Locale> buildUnnamed192() => [
+      buildLocale(),
+      buildLocale(),
+    ];
 
 void checkUnnamed192(core.List<api.Locale> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1582,12 +1518,10 @@ void checkUnnamed192(core.List<api.Locale> o) {
   checkLocale(o[1]);
 }
 
-core.List<api.Orientation> buildUnnamed193() {
-  final o = <api.Orientation>[];
-  o.add(buildOrientation());
-  o.add(buildOrientation());
-  return o;
-}
+core.List<api.Orientation> buildUnnamed193() => [
+      buildOrientation(),
+      buildOrientation(),
+    ];
 
 void checkUnnamed193(core.List<api.Orientation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1616,12 +1550,10 @@ void checkIosRuntimeConfiguration(api.IosRuntimeConfiguration o) {
   buildCounterIosRuntimeConfiguration--;
 }
 
-core.List<core.int> buildUnnamed194() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed194() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed194(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1661,12 +1593,10 @@ void checkIosTestLoop(api.IosTestLoop o) {
   buildCounterIosTestLoop--;
 }
 
-core.List<api.FileReference> buildUnnamed195() {
-  final o = <api.FileReference>[];
-  o.add(buildFileReference());
-  o.add(buildFileReference());
-  return o;
-}
+core.List<api.FileReference> buildUnnamed195() => [
+      buildFileReference(),
+      buildFileReference(),
+    ];
 
 void checkUnnamed195(core.List<api.FileReference> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1674,12 +1604,10 @@ void checkUnnamed195(core.List<api.FileReference> o) {
   checkFileReference(o[1]);
 }
 
-core.List<api.IosDeviceFile> buildUnnamed196() {
-  final o = <api.IosDeviceFile>[];
-  o.add(buildIosDeviceFile());
-  o.add(buildIosDeviceFile());
-  return o;
-}
+core.List<api.IosDeviceFile> buildUnnamed196() => [
+      buildIosDeviceFile(),
+      buildIosDeviceFile(),
+    ];
 
 void checkUnnamed196(core.List<api.IosDeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1687,12 +1615,10 @@ void checkUnnamed196(core.List<api.IosDeviceFile> o) {
   checkIosDeviceFile(o[1]);
 }
 
-core.List<api.IosDeviceFile> buildUnnamed197() {
-  final o = <api.IosDeviceFile>[];
-  o.add(buildIosDeviceFile());
-  o.add(buildIosDeviceFile());
-  return o;
-}
+core.List<api.IosDeviceFile> buildUnnamed197() => [
+      buildIosDeviceFile(),
+      buildIosDeviceFile(),
+    ];
 
 void checkUnnamed197(core.List<api.IosDeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1728,12 +1654,10 @@ void checkIosTestSetup(api.IosTestSetup o) {
   buildCounterIosTestSetup--;
 }
 
-core.List<core.String> buildUnnamed198() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed198() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed198(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1747,12 +1671,10 @@ void checkUnnamed198(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed199() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed199() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed199(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1850,12 +1772,10 @@ void checkLauncherActivityIntent(api.LauncherActivityIntent o) {
   buildCounterLauncherActivityIntent--;
 }
 
-core.List<core.String> buildUnnamed200() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed200() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed200(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1903,12 +1823,10 @@ void checkLocale(api.Locale o) {
   buildCounterLocale--;
 }
 
-core.List<api.TestTargetsForShard> buildUnnamed201() {
-  final o = <api.TestTargetsForShard>[];
-  o.add(buildTestTargetsForShard());
-  o.add(buildTestTargetsForShard());
-  return o;
-}
+core.List<api.TestTargetsForShard> buildUnnamed201() => [
+      buildTestTargetsForShard(),
+      buildTestTargetsForShard(),
+    ];
 
 void checkUnnamed201(core.List<api.TestTargetsForShard> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1961,12 +1879,10 @@ void checkNetworkConfiguration(api.NetworkConfiguration o) {
   buildCounterNetworkConfiguration--;
 }
 
-core.List<api.NetworkConfiguration> buildUnnamed202() {
-  final o = <api.NetworkConfiguration>[];
-  o.add(buildNetworkConfiguration());
-  o.add(buildNetworkConfiguration());
-  return o;
-}
+core.List<api.NetworkConfiguration> buildUnnamed202() => [
+      buildNetworkConfiguration(),
+      buildNetworkConfiguration(),
+    ];
 
 void checkUnnamed202(core.List<api.NetworkConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2017,12 +1933,10 @@ void checkObbFile(api.ObbFile o) {
   buildCounterObbFile--;
 }
 
-core.List<core.String> buildUnnamed203() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed203() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed203(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2252,12 +2166,10 @@ void checkShardingOption(api.ShardingOption o) {
   buildCounterShardingOption--;
 }
 
-core.List<core.String> buildUnnamed204() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed204() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed204(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2322,12 +2234,10 @@ void checkSystraceSetup(api.SystraceSetup o) {
   buildCounterSystraceSetup--;
 }
 
-core.List<core.String> buildUnnamed205() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed205() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed205(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2444,12 +2354,10 @@ void checkTestExecution(api.TestExecution o) {
   buildCounterTestExecution--;
 }
 
-core.List<api.TestExecution> buildUnnamed206() {
-  final o = <api.TestExecution>[];
-  o.add(buildTestExecution());
-  o.add(buildTestExecution());
-  return o;
-}
+core.List<api.TestExecution> buildUnnamed206() => [
+      buildTestExecution(),
+      buildTestExecution(),
+    ];
 
 void checkUnnamed206(core.List<api.TestExecution> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2521,12 +2429,10 @@ void checkTestMatrix(api.TestMatrix o) {
   buildCounterTestMatrix--;
 }
 
-core.List<api.Apk> buildUnnamed207() {
-  final o = <api.Apk>[];
-  o.add(buildApk());
-  o.add(buildApk());
-  return o;
-}
+core.List<api.Apk> buildUnnamed207() => [
+      buildApk(),
+      buildApk(),
+    ];
 
 void checkUnnamed207(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2534,12 +2440,10 @@ void checkUnnamed207(core.List<api.Apk> o) {
   checkApk(o[1]);
 }
 
-core.List<core.String> buildUnnamed208() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed208() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed208(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2553,12 +2457,10 @@ void checkUnnamed208(core.List<core.String> o) {
   );
 }
 
-core.List<api.EnvironmentVariable> buildUnnamed209() {
-  final o = <api.EnvironmentVariable>[];
-  o.add(buildEnvironmentVariable());
-  o.add(buildEnvironmentVariable());
-  return o;
-}
+core.List<api.EnvironmentVariable> buildUnnamed209() => [
+      buildEnvironmentVariable(),
+      buildEnvironmentVariable(),
+    ];
 
 void checkUnnamed209(core.List<api.EnvironmentVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2566,12 +2468,10 @@ void checkUnnamed209(core.List<api.EnvironmentVariable> o) {
   checkEnvironmentVariable(o[1]);
 }
 
-core.List<api.DeviceFile> buildUnnamed210() {
-  final o = <api.DeviceFile>[];
-  o.add(buildDeviceFile());
-  o.add(buildDeviceFile());
-  return o;
-}
+core.List<api.DeviceFile> buildUnnamed210() => [
+      buildDeviceFile(),
+      buildDeviceFile(),
+    ];
 
 void checkUnnamed210(core.List<api.DeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2655,12 +2555,10 @@ void checkTestSpecification(api.TestSpecification o) {
   buildCounterTestSpecification--;
 }
 
-core.List<core.String> buildUnnamed211() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed211() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed211(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2853,12 +2751,10 @@ void checkUniformSharding(api.UniformSharding o) {
   buildCounterUniformSharding--;
 }
 
-core.List<core.String> buildUnnamed212() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed212() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed212(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

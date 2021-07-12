@@ -120,12 +120,10 @@ void checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-core.List<api.LicenseAssignment> buildUnnamed4066() {
-  final o = <api.LicenseAssignment>[];
-  o.add(buildLicenseAssignment());
-  o.add(buildLicenseAssignment());
-  return o;
-}
+core.List<api.LicenseAssignment> buildUnnamed4066() => [
+      buildLicenseAssignment(),
+      buildLicenseAssignment(),
+    ];
 
 void checkUnnamed4066(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));

@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed3215() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3215() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3215(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -277,20 +275,18 @@ void checkI18n(api.I18n o) {
   buildCounterI18n--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3216() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed3216() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed3216(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -426,12 +422,10 @@ void checkLighthouseAuditResultV5(api.LighthouseAuditResultV5 o) {
   buildCounterLighthouseAuditResultV5--;
 }
 
-core.List<api.AuditRefs> buildUnnamed3217() {
-  final o = <api.AuditRefs>[];
-  o.add(buildAuditRefs());
-  o.add(buildAuditRefs());
-  return o;
-}
+core.List<api.AuditRefs> buildUnnamed3217() => [
+      buildAuditRefs(),
+      buildAuditRefs(),
+    ];
 
 void checkUnnamed3217(core.List<api.AuditRefs> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -497,12 +491,10 @@ void checkLighthouseCategoryV5(api.LighthouseCategoryV5 o) {
   buildCounterLighthouseCategoryV5--;
 }
 
-core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed3218() {
-  final o = <core.String, api.LighthouseAuditResultV5>{};
-  o['x'] = buildLighthouseAuditResultV5();
-  o['y'] = buildLighthouseAuditResultV5();
-  return o;
-}
+core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed3218() => {
+      'x': buildLighthouseAuditResultV5(),
+      'y': buildLighthouseAuditResultV5(),
+    };
 
 void checkUnnamed3218(core.Map<core.String, api.LighthouseAuditResultV5> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -510,12 +502,10 @@ void checkUnnamed3218(core.Map<core.String, api.LighthouseAuditResultV5> o) {
   checkLighthouseAuditResultV5(o['y']!);
 }
 
-core.Map<core.String, api.CategoryGroupV5> buildUnnamed3219() {
-  final o = <core.String, api.CategoryGroupV5>{};
-  o['x'] = buildCategoryGroupV5();
-  o['y'] = buildCategoryGroupV5();
-  return o;
-}
+core.Map<core.String, api.CategoryGroupV5> buildUnnamed3219() => {
+      'x': buildCategoryGroupV5(),
+      'y': buildCategoryGroupV5(),
+    };
 
 void checkUnnamed3219(core.Map<core.String, api.CategoryGroupV5> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -523,20 +513,18 @@ void checkUnnamed3219(core.Map<core.String, api.CategoryGroupV5> o) {
   checkCategoryGroupV5(o['y']!);
 }
 
-core.List<core.Object> buildUnnamed3220() {
-  final o = <core.Object>[];
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
+core.List<core.Object> buildUnnamed3220() => [
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    ];
 
 void checkUnnamed3220(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -570,12 +558,10 @@ void checkUnnamed3220(core.List<core.Object> o) {
   );
 }
 
-core.List<api.StackPack> buildUnnamed3221() {
-  final o = <api.StackPack>[];
-  o.add(buildStackPack());
-  o.add(buildStackPack());
-  return o;
-}
+core.List<api.StackPack> buildUnnamed3221() => [
+      buildStackPack(),
+      buildStackPack(),
+    ];
 
 void checkUnnamed3221(core.List<api.StackPack> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -645,12 +631,10 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
   buildCounterLighthouseResultV5--;
 }
 
-core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed3222() {
-  final o = <core.String, api.UserPageLoadMetricV5>{};
-  o['x'] = buildUserPageLoadMetricV5();
-  o['y'] = buildUserPageLoadMetricV5();
-  return o;
-}
+core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed3222() => {
+      'x': buildUserPageLoadMetricV5(),
+      'y': buildUserPageLoadMetricV5(),
+    };
 
 void checkUnnamed3222(core.Map<core.String, api.UserPageLoadMetricV5> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1052,12 +1036,10 @@ void checkRuntimeError(api.RuntimeError o) {
   buildCounterRuntimeError--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3223() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed3223() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed3223(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1127,12 +1109,10 @@ void checkTiming(api.Timing o) {
   buildCounterTiming--;
 }
 
-core.List<api.Bucket> buildUnnamed3224() {
-  final o = <api.Bucket>[];
-  o.add(buildBucket());
-  o.add(buildBucket());
-  return o;
-}
+core.List<api.Bucket> buildUnnamed3224() => [
+      buildBucket(),
+      buildBucket(),
+    ];
 
 void checkUnnamed3224(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1184,12 +1164,10 @@ void checkUserPageLoadMetricV5(api.UserPageLoadMetricV5 o) {
   buildCounterUserPageLoadMetricV5--;
 }
 
-core.List<core.String> buildUnnamed3225() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3225() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3225(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
