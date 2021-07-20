@@ -157,7 +157,6 @@ packages:
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
     - policysimulator:v1
     - policytroubleshooter:v1
-    - poly:v1 # https://devsite.googleplex.com/poly/
     - privateca:v1
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - pubsublite:v1
@@ -337,6 +336,7 @@ skipped_apis:
 - oslogin:v1alpha # v1 available
 - oslogin:v1beta # v1 available
 - policytroubleshooter:v1beta # v1 included
+- poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
 - pubsub:v1beta2 # v1 included
 - realtimebidding:v1alpha

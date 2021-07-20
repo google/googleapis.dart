@@ -18,7 +18,7 @@
 /// resources like user, groups etc. It also provides audit and usage reports of
 /// domain.
 ///
-/// For more information, see <http://developers.google.com/admin-sdk/>
+/// For more information, see <https://developers.google.com/admin-sdk/>
 ///
 /// Create an instance of [ReportsApi] to access these resources:
 ///

@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.ApplicationTransferParam> buildUnnamed6228() => [
+core.List<api.ApplicationTransferParam> buildUnnamed6221() => [
       buildApplicationTransferParam(),
       buildApplicationTransferParam(),
     ];
 
-void checkUnnamed6228(core.List<api.ApplicationTransferParam> o) {
+void checkUnnamed6221(core.List<api.ApplicationTransferParam> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationTransferParam(o[0]);
   checkApplicationTransferParam(o[1]);
@@ -46,7 +46,7 @@ api.Application buildApplication() {
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
-    o.transferParams = buildUnnamed6228();
+    o.transferParams = buildUnnamed6221();
   }
   buildCounterApplication--;
   return o;
@@ -71,17 +71,17 @@ void checkApplication(api.Application o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed6228(o.transferParams!);
+    checkUnnamed6221(o.transferParams!);
   }
   buildCounterApplication--;
 }
 
-core.List<api.ApplicationTransferParam> buildUnnamed6229() => [
+core.List<api.ApplicationTransferParam> buildUnnamed6222() => [
       buildApplicationTransferParam(),
       buildApplicationTransferParam(),
     ];
 
-void checkUnnamed6229(core.List<api.ApplicationTransferParam> o) {
+void checkUnnamed6222(core.List<api.ApplicationTransferParam> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationTransferParam(o[0]);
   checkApplicationTransferParam(o[1]);
@@ -93,7 +93,7 @@ api.ApplicationDataTransfer buildApplicationDataTransfer() {
   buildCounterApplicationDataTransfer++;
   if (buildCounterApplicationDataTransfer < 3) {
     o.applicationId = 'foo';
-    o.applicationTransferParams = buildUnnamed6229();
+    o.applicationTransferParams = buildUnnamed6222();
     o.applicationTransferStatus = 'foo';
   }
   buildCounterApplicationDataTransfer--;
@@ -107,7 +107,7 @@ void checkApplicationDataTransfer(api.ApplicationDataTransfer o) {
       o.applicationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed6229(o.applicationTransferParams!);
+    checkUnnamed6222(o.applicationTransferParams!);
     unittest.expect(
       o.applicationTransferStatus!,
       unittest.equals('foo'),
@@ -116,12 +116,12 @@ void checkApplicationDataTransfer(api.ApplicationDataTransfer o) {
   buildCounterApplicationDataTransfer--;
 }
 
-core.List<core.String> buildUnnamed6230() => [
+core.List<core.String> buildUnnamed6223() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6230(core.List<core.String> o) {
+void checkUnnamed6223(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -139,7 +139,7 @@ api.ApplicationTransferParam buildApplicationTransferParam() {
   buildCounterApplicationTransferParam++;
   if (buildCounterApplicationTransferParam < 3) {
     o.key = 'foo';
-    o.value = buildUnnamed6230();
+    o.value = buildUnnamed6223();
   }
   buildCounterApplicationTransferParam--;
   return o;
@@ -152,17 +152,17 @@ void checkApplicationTransferParam(api.ApplicationTransferParam o) {
       o.key!,
       unittest.equals('foo'),
     );
-    checkUnnamed6230(o.value!);
+    checkUnnamed6223(o.value!);
   }
   buildCounterApplicationTransferParam--;
 }
 
-core.List<api.Application> buildUnnamed6231() => [
+core.List<api.Application> buildUnnamed6224() => [
       buildApplication(),
       buildApplication(),
     ];
 
-void checkUnnamed6231(core.List<api.Application> o) {
+void checkUnnamed6224(core.List<api.Application> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplication(o[0]);
   checkApplication(o[1]);
@@ -173,7 +173,7 @@ api.ApplicationsListResponse buildApplicationsListResponse() {
   final o = api.ApplicationsListResponse();
   buildCounterApplicationsListResponse++;
   if (buildCounterApplicationsListResponse < 3) {
-    o.applications = buildUnnamed6231();
+    o.applications = buildUnnamed6224();
     o.etag = 'foo';
     o.kind = 'foo';
     o.nextPageToken = 'foo';
@@ -185,7 +185,7 @@ api.ApplicationsListResponse buildApplicationsListResponse() {
 void checkApplicationsListResponse(api.ApplicationsListResponse o) {
   buildCounterApplicationsListResponse++;
   if (buildCounterApplicationsListResponse < 3) {
-    checkUnnamed6231(o.applications!);
+    checkUnnamed6224(o.applications!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -202,12 +202,12 @@ void checkApplicationsListResponse(api.ApplicationsListResponse o) {
   buildCounterApplicationsListResponse--;
 }
 
-core.List<api.ApplicationDataTransfer> buildUnnamed6232() => [
+core.List<api.ApplicationDataTransfer> buildUnnamed6225() => [
       buildApplicationDataTransfer(),
       buildApplicationDataTransfer(),
     ];
 
-void checkUnnamed6232(core.List<api.ApplicationDataTransfer> o) {
+void checkUnnamed6225(core.List<api.ApplicationDataTransfer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationDataTransfer(o[0]);
   checkApplicationDataTransfer(o[1]);
@@ -218,7 +218,7 @@ api.DataTransfer buildDataTransfer() {
   final o = api.DataTransfer();
   buildCounterDataTransfer++;
   if (buildCounterDataTransfer < 3) {
-    o.applicationDataTransfers = buildUnnamed6232();
+    o.applicationDataTransfers = buildUnnamed6225();
     o.etag = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
@@ -234,7 +234,7 @@ api.DataTransfer buildDataTransfer() {
 void checkDataTransfer(api.DataTransfer o) {
   buildCounterDataTransfer++;
   if (buildCounterDataTransfer < 3) {
-    checkUnnamed6232(o.applicationDataTransfers!);
+    checkUnnamed6225(o.applicationDataTransfers!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -267,12 +267,12 @@ void checkDataTransfer(api.DataTransfer o) {
   buildCounterDataTransfer--;
 }
 
-core.List<api.DataTransfer> buildUnnamed6233() => [
+core.List<api.DataTransfer> buildUnnamed6226() => [
       buildDataTransfer(),
       buildDataTransfer(),
     ];
 
-void checkUnnamed6233(core.List<api.DataTransfer> o) {
+void checkUnnamed6226(core.List<api.DataTransfer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataTransfer(o[0]);
   checkDataTransfer(o[1]);
@@ -283,7 +283,7 @@ api.DataTransfersListResponse buildDataTransfersListResponse() {
   final o = api.DataTransfersListResponse();
   buildCounterDataTransfersListResponse++;
   if (buildCounterDataTransfersListResponse < 3) {
-    o.dataTransfers = buildUnnamed6233();
+    o.dataTransfers = buildUnnamed6226();
     o.etag = 'foo';
     o.kind = 'foo';
     o.nextPageToken = 'foo';
@@ -295,7 +295,7 @@ api.DataTransfersListResponse buildDataTransfersListResponse() {
 void checkDataTransfersListResponse(api.DataTransfersListResponse o) {
   buildCounterDataTransfersListResponse++;
   if (buildCounterDataTransfersListResponse < 3) {
-    checkUnnamed6233(o.dataTransfers!);
+    checkUnnamed6226(o.dataTransfers!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),

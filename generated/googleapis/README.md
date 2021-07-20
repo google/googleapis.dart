@@ -80,7 +80,7 @@ Admin SDK lets administrators of enterprise domains to view and manage resources
 
 Admin SDK lets administrators of enterprise domains to view and manage resources like user, groups etc. It also provides audit and usage reports of domain.
 
-- [Documentation](http://developers.google.com/admin-sdk/)
+- [Documentation](https://developers.google.com/admin-sdk/)
 - [API details](https://pub.dev/documentation/googleapis/5.0.0-dev/admin.reports_v1/admin.reports_v1-library.html)
 
 #### AdMob API - `admob.v1`
@@ -1003,13 +1003,6 @@ API to create and publish custom Android apps
 
 - [Documentation](https://cloud.google.com/iam/)
 - [API details](https://pub.dev/documentation/googleapis/5.0.0-dev/policytroubleshooter.v1/policytroubleshooter.v1-library.html)
-
-#### Poly API - `poly.v1`
-
-The Poly API provides read access to assets hosted on poly.google.com to all, and upload access to poly.google.com for whitelisted accounts. 
-
-- [Documentation](https://developers.google.com/poly/)
-- [API details](https://pub.dev/documentation/googleapis/5.0.0-dev/poly.v1/poly.v1-library.html)
 
 #### Certificate Authority API - `privateca.v1`
 

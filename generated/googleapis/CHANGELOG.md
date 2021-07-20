@@ -1,5 +1,7 @@
 ## 5.0.0-dev
 
+- `poly` has been removed.
+
 ## 4.0.0
 
 - All schema types now have positional constructor parameters.

@@ -82,12 +82,12 @@ void checkAndroidAppInfo(api.AndroidAppInfo o) {
   buildCounterAndroidAppInfo--;
 }
 
-core.List<core.String> buildUnnamed8076() => [
+core.List<core.String> buildUnnamed8069() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8076(core.List<core.String> o) {
+void checkUnnamed8069(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -106,7 +106,7 @@ api.AndroidInstrumentationTest buildAndroidInstrumentationTest() {
   if (buildCounterAndroidInstrumentationTest < 3) {
     o.testPackageId = 'foo';
     o.testRunnerClass = 'foo';
-    o.testTargets = buildUnnamed8076();
+    o.testTargets = buildUnnamed8069();
     o.useOrchestrator = true;
   }
   buildCounterAndroidInstrumentationTest--;
@@ -124,7 +124,7 @@ void checkAndroidInstrumentationTest(api.AndroidInstrumentationTest o) {
       o.testRunnerClass!,
       unittest.equals('foo'),
     );
-    checkUnnamed8076(o.testTargets!);
+    checkUnnamed8069(o.testTargets!);
     unittest.expect(o.useOrchestrator!, unittest.isTrue);
   }
   buildCounterAndroidInstrumentationTest--;
@@ -309,12 +309,12 @@ void checkBasicPerfSampleSeries(api.BasicPerfSampleSeries o) {
   buildCounterBasicPerfSampleSeries--;
 }
 
-core.List<api.PerfSample> buildUnnamed8077() => [
+core.List<api.PerfSample> buildUnnamed8070() => [
       buildPerfSample(),
       buildPerfSample(),
     ];
 
-void checkUnnamed8077(core.List<api.PerfSample> o) {
+void checkUnnamed8070(core.List<api.PerfSample> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerfSample(o[0]);
   checkPerfSample(o[1]);
@@ -325,7 +325,7 @@ api.BatchCreatePerfSamplesRequest buildBatchCreatePerfSamplesRequest() {
   final o = api.BatchCreatePerfSamplesRequest();
   buildCounterBatchCreatePerfSamplesRequest++;
   if (buildCounterBatchCreatePerfSamplesRequest < 3) {
-    o.perfSamples = buildUnnamed8077();
+    o.perfSamples = buildUnnamed8070();
   }
   buildCounterBatchCreatePerfSamplesRequest--;
   return o;
@@ -334,17 +334,17 @@ api.BatchCreatePerfSamplesRequest buildBatchCreatePerfSamplesRequest() {
 void checkBatchCreatePerfSamplesRequest(api.BatchCreatePerfSamplesRequest o) {
   buildCounterBatchCreatePerfSamplesRequest++;
   if (buildCounterBatchCreatePerfSamplesRequest < 3) {
-    checkUnnamed8077(o.perfSamples!);
+    checkUnnamed8070(o.perfSamples!);
   }
   buildCounterBatchCreatePerfSamplesRequest--;
 }
 
-core.List<api.PerfSample> buildUnnamed8078() => [
+core.List<api.PerfSample> buildUnnamed8071() => [
       buildPerfSample(),
       buildPerfSample(),
     ];
 
-void checkUnnamed8078(core.List<api.PerfSample> o) {
+void checkUnnamed8071(core.List<api.PerfSample> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerfSample(o[0]);
   checkPerfSample(o[1]);
@@ -355,7 +355,7 @@ api.BatchCreatePerfSamplesResponse buildBatchCreatePerfSamplesResponse() {
   final o = api.BatchCreatePerfSamplesResponse();
   buildCounterBatchCreatePerfSamplesResponse++;
   if (buildCounterBatchCreatePerfSamplesResponse < 3) {
-    o.perfSamples = buildUnnamed8078();
+    o.perfSamples = buildUnnamed8071();
   }
   buildCounterBatchCreatePerfSamplesResponse--;
   return o;
@@ -364,7 +364,7 @@ api.BatchCreatePerfSamplesResponse buildBatchCreatePerfSamplesResponse() {
 void checkBatchCreatePerfSamplesResponse(api.BatchCreatePerfSamplesResponse o) {
   buildCounterBatchCreatePerfSamplesResponse++;
   if (buildCounterBatchCreatePerfSamplesResponse < 3) {
-    checkUnnamed8078(o.perfSamples!);
+    checkUnnamed8071(o.perfSamples!);
   }
   buildCounterBatchCreatePerfSamplesResponse--;
 }
@@ -487,12 +487,12 @@ void checkDuration(api.Duration o) {
   buildCounterDuration--;
 }
 
-core.List<core.String> buildUnnamed8079() => [
+core.List<core.String> buildUnnamed8072() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8079(core.List<core.String> o) {
+void checkUnnamed8072(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -510,7 +510,7 @@ api.EncounteredLoginScreen buildEncounteredLoginScreen() {
   buildCounterEncounteredLoginScreen++;
   if (buildCounterEncounteredLoginScreen < 3) {
     o.distinctScreens = 42;
-    o.screenIds = buildUnnamed8079();
+    o.screenIds = buildUnnamed8072();
   }
   buildCounterEncounteredLoginScreen--;
   return o;
@@ -523,17 +523,17 @@ void checkEncounteredLoginScreen(api.EncounteredLoginScreen o) {
       o.distinctScreens!,
       unittest.equals(42),
     );
-    checkUnnamed8079(o.screenIds!);
+    checkUnnamed8072(o.screenIds!);
   }
   buildCounterEncounteredLoginScreen--;
 }
 
-core.List<core.String> buildUnnamed8080() => [
+core.List<core.String> buildUnnamed8073() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8080(core.List<core.String> o) {
+void checkUnnamed8073(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -552,7 +552,7 @@ api.EncounteredNonAndroidUiWidgetScreen
   buildCounterEncounteredNonAndroidUiWidgetScreen++;
   if (buildCounterEncounteredNonAndroidUiWidgetScreen < 3) {
     o.distinctScreens = 42;
-    o.screenIds = buildUnnamed8080();
+    o.screenIds = buildUnnamed8073();
   }
   buildCounterEncounteredNonAndroidUiWidgetScreen--;
   return o;
@@ -566,28 +566,28 @@ void checkEncounteredNonAndroidUiWidgetScreen(
       o.distinctScreens!,
       unittest.equals(42),
     );
-    checkUnnamed8080(o.screenIds!);
+    checkUnnamed8073(o.screenIds!);
   }
   buildCounterEncounteredNonAndroidUiWidgetScreen--;
 }
 
-core.List<api.EnvironmentDimensionValueEntry> buildUnnamed8081() => [
+core.List<api.EnvironmentDimensionValueEntry> buildUnnamed8074() => [
       buildEnvironmentDimensionValueEntry(),
       buildEnvironmentDimensionValueEntry(),
     ];
 
-void checkUnnamed8081(core.List<api.EnvironmentDimensionValueEntry> o) {
+void checkUnnamed8074(core.List<api.EnvironmentDimensionValueEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnvironmentDimensionValueEntry(o[0]);
   checkEnvironmentDimensionValueEntry(o[1]);
 }
 
-core.List<api.ShardSummary> buildUnnamed8082() => [
+core.List<api.ShardSummary> buildUnnamed8075() => [
       buildShardSummary(),
       buildShardSummary(),
     ];
 
-void checkUnnamed8082(core.List<api.ShardSummary> o) {
+void checkUnnamed8075(core.List<api.ShardSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkShardSummary(o[0]);
   checkShardSummary(o[1]);
@@ -600,7 +600,7 @@ api.Environment buildEnvironment() {
   if (buildCounterEnvironment < 3) {
     o.completionTime = buildTimestamp();
     o.creationTime = buildTimestamp();
-    o.dimensionValue = buildUnnamed8081();
+    o.dimensionValue = buildUnnamed8074();
     o.displayName = 'foo';
     o.environmentId = 'foo';
     o.environmentResult = buildMergedResult();
@@ -608,7 +608,7 @@ api.Environment buildEnvironment() {
     o.historyId = 'foo';
     o.projectId = 'foo';
     o.resultsStorage = buildResultsStorage();
-    o.shardSummaries = buildUnnamed8082();
+    o.shardSummaries = buildUnnamed8075();
   }
   buildCounterEnvironment--;
   return o;
@@ -619,7 +619,7 @@ void checkEnvironment(api.Environment o) {
   if (buildCounterEnvironment < 3) {
     checkTimestamp(o.completionTime!);
     checkTimestamp(o.creationTime!);
-    checkUnnamed8081(o.dimensionValue!);
+    checkUnnamed8074(o.dimensionValue!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -642,7 +642,7 @@ void checkEnvironment(api.Environment o) {
       unittest.equals('foo'),
     );
     checkResultsStorage(o.resultsStorage!);
-    checkUnnamed8082(o.shardSummaries!);
+    checkUnnamed8075(o.shardSummaries!);
   }
   buildCounterEnvironment--;
 }
@@ -674,12 +674,12 @@ void checkEnvironmentDimensionValueEntry(api.EnvironmentDimensionValueEntry o) {
   buildCounterEnvironmentDimensionValueEntry--;
 }
 
-core.List<api.MatrixDimensionDefinition> buildUnnamed8083() => [
+core.List<api.MatrixDimensionDefinition> buildUnnamed8076() => [
       buildMatrixDimensionDefinition(),
       buildMatrixDimensionDefinition(),
     ];
 
-void checkUnnamed8083(core.List<api.MatrixDimensionDefinition> o) {
+void checkUnnamed8076(core.List<api.MatrixDimensionDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMatrixDimensionDefinition(o[0]);
   checkMatrixDimensionDefinition(o[1]);
@@ -692,7 +692,7 @@ api.Execution buildExecution() {
   if (buildCounterExecution < 3) {
     o.completionTime = buildTimestamp();
     o.creationTime = buildTimestamp();
-    o.dimensionDefinitions = buildUnnamed8083();
+    o.dimensionDefinitions = buildUnnamed8076();
     o.executionId = 'foo';
     o.outcome = buildOutcome();
     o.specification = buildSpecification();
@@ -708,7 +708,7 @@ void checkExecution(api.Execution o) {
   if (buildCounterExecution < 3) {
     checkTimestamp(o.completionTime!);
     checkTimestamp(o.creationTime!);
-    checkUnnamed8083(o.dimensionDefinitions!);
+    checkUnnamed8076(o.dimensionDefinitions!);
     unittest.expect(
       o.executionId!,
       unittest.equals('foo'),
@@ -814,12 +814,12 @@ void checkFileReference(api.FileReference o) {
   buildCounterFileReference--;
 }
 
-core.List<api.GraphicsStatsBucket> buildUnnamed8084() => [
+core.List<api.GraphicsStatsBucket> buildUnnamed8077() => [
       buildGraphicsStatsBucket(),
       buildGraphicsStatsBucket(),
     ];
 
-void checkUnnamed8084(core.List<api.GraphicsStatsBucket> o) {
+void checkUnnamed8077(core.List<api.GraphicsStatsBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGraphicsStatsBucket(o[0]);
   checkGraphicsStatsBucket(o[1]);
@@ -830,7 +830,7 @@ api.GraphicsStats buildGraphicsStats() {
   final o = api.GraphicsStats();
   buildCounterGraphicsStats++;
   if (buildCounterGraphicsStats < 3) {
-    o.buckets = buildUnnamed8084();
+    o.buckets = buildUnnamed8077();
     o.highInputLatencyCount = 'foo';
     o.jankyFrames = 'foo';
     o.missedVsyncCount = 'foo';
@@ -850,7 +850,7 @@ api.GraphicsStats buildGraphicsStats() {
 void checkGraphicsStats(api.GraphicsStats o) {
   buildCounterGraphicsStats++;
   if (buildCounterGraphicsStats < 3) {
-    checkUnnamed8084(o.buckets!);
+    checkUnnamed8077(o.buckets!);
     unittest.expect(
       o.highInputLatencyCount!,
       unittest.equals('foo'),
@@ -1237,12 +1237,12 @@ void checkLauncherActivityNotFound(api.LauncherActivityNotFound o) {
   buildCounterLauncherActivityNotFound--;
 }
 
-core.List<api.Environment> buildUnnamed8085() => [
+core.List<api.Environment> buildUnnamed8078() => [
       buildEnvironment(),
       buildEnvironment(),
     ];
 
-void checkUnnamed8085(core.List<api.Environment> o) {
+void checkUnnamed8078(core.List<api.Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnvironment(o[0]);
   checkEnvironment(o[1]);
@@ -1253,7 +1253,7 @@ api.ListEnvironmentsResponse buildListEnvironmentsResponse() {
   final o = api.ListEnvironmentsResponse();
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
-    o.environments = buildUnnamed8085();
+    o.environments = buildUnnamed8078();
     o.executionId = 'foo';
     o.historyId = 'foo';
     o.nextPageToken = 'foo';
@@ -1266,7 +1266,7 @@ api.ListEnvironmentsResponse buildListEnvironmentsResponse() {
 void checkListEnvironmentsResponse(api.ListEnvironmentsResponse o) {
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
-    checkUnnamed8085(o.environments!);
+    checkUnnamed8078(o.environments!);
     unittest.expect(
       o.executionId!,
       unittest.equals('foo'),
@@ -1287,12 +1287,12 @@ void checkListEnvironmentsResponse(api.ListEnvironmentsResponse o) {
   buildCounterListEnvironmentsResponse--;
 }
 
-core.List<api.Execution> buildUnnamed8086() => [
+core.List<api.Execution> buildUnnamed8079() => [
       buildExecution(),
       buildExecution(),
     ];
 
-void checkUnnamed8086(core.List<api.Execution> o) {
+void checkUnnamed8079(core.List<api.Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExecution(o[0]);
   checkExecution(o[1]);
@@ -1303,7 +1303,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
   final o = api.ListExecutionsResponse();
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    o.executions = buildUnnamed8086();
+    o.executions = buildUnnamed8079();
     o.nextPageToken = 'foo';
   }
   buildCounterListExecutionsResponse--;
@@ -1313,7 +1313,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
 void checkListExecutionsResponse(api.ListExecutionsResponse o) {
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    checkUnnamed8086(o.executions!);
+    checkUnnamed8079(o.executions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1322,12 +1322,12 @@ void checkListExecutionsResponse(api.ListExecutionsResponse o) {
   buildCounterListExecutionsResponse--;
 }
 
-core.List<api.History> buildUnnamed8087() => [
+core.List<api.History> buildUnnamed8080() => [
       buildHistory(),
       buildHistory(),
     ];
 
-void checkUnnamed8087(core.List<api.History> o) {
+void checkUnnamed8080(core.List<api.History> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistory(o[0]);
   checkHistory(o[1]);
@@ -1338,7 +1338,7 @@ api.ListHistoriesResponse buildListHistoriesResponse() {
   final o = api.ListHistoriesResponse();
   buildCounterListHistoriesResponse++;
   if (buildCounterListHistoriesResponse < 3) {
-    o.histories = buildUnnamed8087();
+    o.histories = buildUnnamed8080();
     o.nextPageToken = 'foo';
   }
   buildCounterListHistoriesResponse--;
@@ -1348,7 +1348,7 @@ api.ListHistoriesResponse buildListHistoriesResponse() {
 void checkListHistoriesResponse(api.ListHistoriesResponse o) {
   buildCounterListHistoriesResponse++;
   if (buildCounterListHistoriesResponse < 3) {
-    checkUnnamed8087(o.histories!);
+    checkUnnamed8080(o.histories!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1357,12 +1357,12 @@ void checkListHistoriesResponse(api.ListHistoriesResponse o) {
   buildCounterListHistoriesResponse--;
 }
 
-core.List<api.PerfSampleSeries> buildUnnamed8088() => [
+core.List<api.PerfSampleSeries> buildUnnamed8081() => [
       buildPerfSampleSeries(),
       buildPerfSampleSeries(),
     ];
 
-void checkUnnamed8088(core.List<api.PerfSampleSeries> o) {
+void checkUnnamed8081(core.List<api.PerfSampleSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerfSampleSeries(o[0]);
   checkPerfSampleSeries(o[1]);
@@ -1373,7 +1373,7 @@ api.ListPerfSampleSeriesResponse buildListPerfSampleSeriesResponse() {
   final o = api.ListPerfSampleSeriesResponse();
   buildCounterListPerfSampleSeriesResponse++;
   if (buildCounterListPerfSampleSeriesResponse < 3) {
-    o.perfSampleSeries = buildUnnamed8088();
+    o.perfSampleSeries = buildUnnamed8081();
   }
   buildCounterListPerfSampleSeriesResponse--;
   return o;
@@ -1382,17 +1382,17 @@ api.ListPerfSampleSeriesResponse buildListPerfSampleSeriesResponse() {
 void checkListPerfSampleSeriesResponse(api.ListPerfSampleSeriesResponse o) {
   buildCounterListPerfSampleSeriesResponse++;
   if (buildCounterListPerfSampleSeriesResponse < 3) {
-    checkUnnamed8088(o.perfSampleSeries!);
+    checkUnnamed8081(o.perfSampleSeries!);
   }
   buildCounterListPerfSampleSeriesResponse--;
 }
 
-core.List<api.PerfSample> buildUnnamed8089() => [
+core.List<api.PerfSample> buildUnnamed8082() => [
       buildPerfSample(),
       buildPerfSample(),
     ];
 
-void checkUnnamed8089(core.List<api.PerfSample> o) {
+void checkUnnamed8082(core.List<api.PerfSample> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerfSample(o[0]);
   checkPerfSample(o[1]);
@@ -1404,7 +1404,7 @@ api.ListPerfSamplesResponse buildListPerfSamplesResponse() {
   buildCounterListPerfSamplesResponse++;
   if (buildCounterListPerfSamplesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.perfSamples = buildUnnamed8089();
+    o.perfSamples = buildUnnamed8082();
   }
   buildCounterListPerfSamplesResponse--;
   return o;
@@ -1417,17 +1417,17 @@ void checkListPerfSamplesResponse(api.ListPerfSamplesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8089(o.perfSamples!);
+    checkUnnamed8082(o.perfSamples!);
   }
   buildCounterListPerfSamplesResponse--;
 }
 
-core.List<api.ScreenshotCluster> buildUnnamed8090() => [
+core.List<api.ScreenshotCluster> buildUnnamed8083() => [
       buildScreenshotCluster(),
       buildScreenshotCluster(),
     ];
 
-void checkUnnamed8090(core.List<api.ScreenshotCluster> o) {
+void checkUnnamed8083(core.List<api.ScreenshotCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScreenshotCluster(o[0]);
   checkScreenshotCluster(o[1]);
@@ -1438,7 +1438,7 @@ api.ListScreenshotClustersResponse buildListScreenshotClustersResponse() {
   final o = api.ListScreenshotClustersResponse();
   buildCounterListScreenshotClustersResponse++;
   if (buildCounterListScreenshotClustersResponse < 3) {
-    o.clusters = buildUnnamed8090();
+    o.clusters = buildUnnamed8083();
   }
   buildCounterListScreenshotClustersResponse--;
   return o;
@@ -1447,17 +1447,17 @@ api.ListScreenshotClustersResponse buildListScreenshotClustersResponse() {
 void checkListScreenshotClustersResponse(api.ListScreenshotClustersResponse o) {
   buildCounterListScreenshotClustersResponse++;
   if (buildCounterListScreenshotClustersResponse < 3) {
-    checkUnnamed8090(o.clusters!);
+    checkUnnamed8083(o.clusters!);
   }
   buildCounterListScreenshotClustersResponse--;
 }
 
-core.List<api.SuggestionClusterProto> buildUnnamed8091() => [
+core.List<api.SuggestionClusterProto> buildUnnamed8084() => [
       buildSuggestionClusterProto(),
       buildSuggestionClusterProto(),
     ];
 
-void checkUnnamed8091(core.List<api.SuggestionClusterProto> o) {
+void checkUnnamed8084(core.List<api.SuggestionClusterProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestionClusterProto(o[0]);
   checkSuggestionClusterProto(o[1]);
@@ -1469,7 +1469,7 @@ api.ListStepAccessibilityClustersResponse
   final o = api.ListStepAccessibilityClustersResponse();
   buildCounterListStepAccessibilityClustersResponse++;
   if (buildCounterListStepAccessibilityClustersResponse < 3) {
-    o.clusters = buildUnnamed8091();
+    o.clusters = buildUnnamed8084();
     o.name = 'foo';
   }
   buildCounterListStepAccessibilityClustersResponse--;
@@ -1480,7 +1480,7 @@ void checkListStepAccessibilityClustersResponse(
     api.ListStepAccessibilityClustersResponse o) {
   buildCounterListStepAccessibilityClustersResponse++;
   if (buildCounterListStepAccessibilityClustersResponse < 3) {
-    checkUnnamed8091(o.clusters!);
+    checkUnnamed8084(o.clusters!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1489,12 +1489,12 @@ void checkListStepAccessibilityClustersResponse(
   buildCounterListStepAccessibilityClustersResponse--;
 }
 
-core.List<api.Image> buildUnnamed8092() => [
+core.List<api.Image> buildUnnamed8085() => [
       buildImage(),
       buildImage(),
     ];
 
-void checkUnnamed8092(core.List<api.Image> o) {
+void checkUnnamed8085(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0]);
   checkImage(o[1]);
@@ -1506,7 +1506,7 @@ api.ListStepThumbnailsResponse buildListStepThumbnailsResponse() {
   buildCounterListStepThumbnailsResponse++;
   if (buildCounterListStepThumbnailsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.thumbnails = buildUnnamed8092();
+    o.thumbnails = buildUnnamed8085();
   }
   buildCounterListStepThumbnailsResponse--;
   return o;
@@ -1519,17 +1519,17 @@ void checkListStepThumbnailsResponse(api.ListStepThumbnailsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8092(o.thumbnails!);
+    checkUnnamed8085(o.thumbnails!);
   }
   buildCounterListStepThumbnailsResponse--;
 }
 
-core.List<api.Step> buildUnnamed8093() => [
+core.List<api.Step> buildUnnamed8086() => [
       buildStep(),
       buildStep(),
     ];
 
-void checkUnnamed8093(core.List<api.Step> o) {
+void checkUnnamed8086(core.List<api.Step> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStep(o[0]);
   checkStep(o[1]);
@@ -1541,7 +1541,7 @@ api.ListStepsResponse buildListStepsResponse() {
   buildCounterListStepsResponse++;
   if (buildCounterListStepsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.steps = buildUnnamed8093();
+    o.steps = buildUnnamed8086();
   }
   buildCounterListStepsResponse--;
   return o;
@@ -1554,17 +1554,17 @@ void checkListStepsResponse(api.ListStepsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8093(o.steps!);
+    checkUnnamed8086(o.steps!);
   }
   buildCounterListStepsResponse--;
 }
 
-core.List<api.TestCase> buildUnnamed8094() => [
+core.List<api.TestCase> buildUnnamed8087() => [
       buildTestCase(),
       buildTestCase(),
     ];
 
-void checkUnnamed8094(core.List<api.TestCase> o) {
+void checkUnnamed8087(core.List<api.TestCase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTestCase(o[0]);
   checkTestCase(o[1]);
@@ -1576,7 +1576,7 @@ api.ListTestCasesResponse buildListTestCasesResponse() {
   buildCounterListTestCasesResponse++;
   if (buildCounterListTestCasesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.testCases = buildUnnamed8094();
+    o.testCases = buildUnnamed8087();
   }
   buildCounterListTestCasesResponse--;
   return o;
@@ -1589,7 +1589,7 @@ void checkListTestCasesResponse(api.ListTestCasesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8094(o.testCases!);
+    checkUnnamed8087(o.testCases!);
   }
   buildCounterListTestCasesResponse--;
 }
@@ -1651,12 +1651,12 @@ void checkMemoryInfo(api.MemoryInfo o) {
   buildCounterMemoryInfo--;
 }
 
-core.List<api.TestSuiteOverview> buildUnnamed8095() => [
+core.List<api.TestSuiteOverview> buildUnnamed8088() => [
       buildTestSuiteOverview(),
       buildTestSuiteOverview(),
     ];
 
-void checkUnnamed8095(core.List<api.TestSuiteOverview> o) {
+void checkUnnamed8088(core.List<api.TestSuiteOverview> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTestSuiteOverview(o[0]);
   checkTestSuiteOverview(o[1]);
@@ -1669,7 +1669,7 @@ api.MergedResult buildMergedResult() {
   if (buildCounterMergedResult < 3) {
     o.outcome = buildOutcome();
     o.state = 'foo';
-    o.testSuiteOverviews = buildUnnamed8095();
+    o.testSuiteOverviews = buildUnnamed8088();
   }
   buildCounterMergedResult--;
   return o;
@@ -1683,7 +1683,7 @@ void checkMergedResult(api.MergedResult o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed8095(o.testSuiteOverviews!);
+    checkUnnamed8088(o.testSuiteOverviews!);
   }
   buildCounterMergedResult--;
 }
@@ -1736,12 +1736,12 @@ void checkNativeCrash(api.NativeCrash o) {
   buildCounterNativeCrash--;
 }
 
-core.List<core.String> buildUnnamed8096() => [
+core.List<core.String> buildUnnamed8089() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8096(core.List<core.String> o) {
+void checkUnnamed8089(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1753,12 +1753,12 @@ void checkUnnamed8096(core.List<core.String> o) {
   );
 }
 
-core.List<api.NonSdkApiInsight> buildUnnamed8097() => [
+core.List<api.NonSdkApiInsight> buildUnnamed8090() => [
       buildNonSdkApiInsight(),
       buildNonSdkApiInsight(),
     ];
 
-void checkUnnamed8097(core.List<api.NonSdkApiInsight> o) {
+void checkUnnamed8090(core.List<api.NonSdkApiInsight> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNonSdkApiInsight(o[0]);
   checkNonSdkApiInsight(o[1]);
@@ -1770,8 +1770,8 @@ api.NonSdkApi buildNonSdkApi() {
   buildCounterNonSdkApi++;
   if (buildCounterNonSdkApi < 3) {
     o.apiSignature = 'foo';
-    o.exampleStackTraces = buildUnnamed8096();
-    o.insights = buildUnnamed8097();
+    o.exampleStackTraces = buildUnnamed8089();
+    o.insights = buildUnnamed8090();
     o.invocationCount = 42;
     o.list = 'foo';
   }
@@ -1786,8 +1786,8 @@ void checkNonSdkApi(api.NonSdkApi o) {
       o.apiSignature!,
       unittest.equals('foo'),
     );
-    checkUnnamed8096(o.exampleStackTraces!);
-    checkUnnamed8097(o.insights!);
+    checkUnnamed8089(o.exampleStackTraces!);
+    checkUnnamed8090(o.insights!);
     unittest.expect(
       o.invocationCount!,
       unittest.equals(42),
@@ -1800,12 +1800,12 @@ void checkNonSdkApi(api.NonSdkApi o) {
   buildCounterNonSdkApi--;
 }
 
-core.List<core.String> buildUnnamed8098() => [
+core.List<core.String> buildUnnamed8091() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8098(core.List<core.String> o) {
+void checkUnnamed8091(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1822,7 +1822,7 @@ api.NonSdkApiInsight buildNonSdkApiInsight() {
   final o = api.NonSdkApiInsight();
   buildCounterNonSdkApiInsight++;
   if (buildCounterNonSdkApiInsight < 3) {
-    o.exampleTraceMessages = buildUnnamed8098();
+    o.exampleTraceMessages = buildUnnamed8091();
     o.matcherId = 'foo';
     o.pendingGoogleUpdateInsight = buildPendingGoogleUpdateInsight();
     o.upgradeInsight = buildUpgradeInsight();
@@ -1834,7 +1834,7 @@ api.NonSdkApiInsight buildNonSdkApiInsight() {
 void checkNonSdkApiInsight(api.NonSdkApiInsight o) {
   buildCounterNonSdkApiInsight++;
   if (buildCounterNonSdkApiInsight < 3) {
-    checkUnnamed8098(o.exampleTraceMessages!);
+    checkUnnamed8091(o.exampleTraceMessages!);
     unittest.expect(
       o.matcherId!,
       unittest.equals('foo'),
@@ -1845,12 +1845,12 @@ void checkNonSdkApiInsight(api.NonSdkApiInsight o) {
   buildCounterNonSdkApiInsight--;
 }
 
-core.List<core.String> buildUnnamed8099() => [
+core.List<core.String> buildUnnamed8092() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8099(core.List<core.String> o) {
+void checkUnnamed8092(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1867,7 +1867,7 @@ api.NonSdkApiUsageViolation buildNonSdkApiUsageViolation() {
   final o = api.NonSdkApiUsageViolation();
   buildCounterNonSdkApiUsageViolation++;
   if (buildCounterNonSdkApiUsageViolation < 3) {
-    o.apiSignatures = buildUnnamed8099();
+    o.apiSignatures = buildUnnamed8092();
     o.uniqueApis = 42;
   }
   buildCounterNonSdkApiUsageViolation--;
@@ -1877,7 +1877,7 @@ api.NonSdkApiUsageViolation buildNonSdkApiUsageViolation() {
 void checkNonSdkApiUsageViolation(api.NonSdkApiUsageViolation o) {
   buildCounterNonSdkApiUsageViolation++;
   if (buildCounterNonSdkApiUsageViolation < 3) {
-    checkUnnamed8099(o.apiSignatures!);
+    checkUnnamed8092(o.apiSignatures!);
     unittest.expect(
       o.uniqueApis!,
       unittest.equals(42),
@@ -1886,12 +1886,12 @@ void checkNonSdkApiUsageViolation(api.NonSdkApiUsageViolation o) {
   buildCounterNonSdkApiUsageViolation--;
 }
 
-core.List<api.NonSdkApi> buildUnnamed8100() => [
+core.List<api.NonSdkApi> buildUnnamed8093() => [
       buildNonSdkApi(),
       buildNonSdkApi(),
     ];
 
-void checkUnnamed8100(core.List<api.NonSdkApi> o) {
+void checkUnnamed8093(core.List<api.NonSdkApi> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNonSdkApi(o[0]);
   checkNonSdkApi(o[1]);
@@ -1902,7 +1902,7 @@ api.NonSdkApiUsageViolationReport buildNonSdkApiUsageViolationReport() {
   final o = api.NonSdkApiUsageViolationReport();
   buildCounterNonSdkApiUsageViolationReport++;
   if (buildCounterNonSdkApiUsageViolationReport < 3) {
-    o.exampleApis = buildUnnamed8100();
+    o.exampleApis = buildUnnamed8093();
     o.minSdkVersion = 42;
     o.targetSdkVersion = 42;
     o.uniqueApis = 42;
@@ -1914,7 +1914,7 @@ api.NonSdkApiUsageViolationReport buildNonSdkApiUsageViolationReport() {
 void checkNonSdkApiUsageViolationReport(api.NonSdkApiUsageViolationReport o) {
   buildCounterNonSdkApiUsageViolationReport++;
   if (buildCounterNonSdkApiUsageViolationReport < 3) {
-    checkUnnamed8100(o.exampleApis!);
+    checkUnnamed8093(o.exampleApis!);
     unittest.expect(
       o.minSdkVersion!,
       unittest.equals(42),
@@ -1961,12 +1961,12 @@ void checkOutcome(api.Outcome o) {
   buildCounterOutcome--;
 }
 
-core.List<core.String> buildUnnamed8101() => [
+core.List<core.String> buildUnnamed8094() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8101(core.List<core.String> o) {
+void checkUnnamed8094(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1983,7 +1983,7 @@ api.OverlappingUIElements buildOverlappingUIElements() {
   final o = api.OverlappingUIElements();
   buildCounterOverlappingUIElements++;
   if (buildCounterOverlappingUIElements < 3) {
-    o.resourceName = buildUnnamed8101();
+    o.resourceName = buildUnnamed8094();
     o.screenId = 'foo';
   }
   buildCounterOverlappingUIElements--;
@@ -1993,7 +1993,7 @@ api.OverlappingUIElements buildOverlappingUIElements() {
 void checkOverlappingUIElements(api.OverlappingUIElements o) {
   buildCounterOverlappingUIElements++;
   if (buildCounterOverlappingUIElements < 3) {
-    checkUnnamed8101(o.resourceName!);
+    checkUnnamed8094(o.resourceName!);
     unittest.expect(
       o.screenId!,
       unittest.equals('foo'),
@@ -2045,12 +2045,12 @@ void checkPerfEnvironment(api.PerfEnvironment o) {
   buildCounterPerfEnvironment--;
 }
 
-core.List<core.String> buildUnnamed8102() => [
+core.List<core.String> buildUnnamed8095() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8102(core.List<core.String> o) {
+void checkUnnamed8095(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2072,7 +2072,7 @@ api.PerfMetricsSummary buildPerfMetricsSummary() {
     o.graphicsStats = buildGraphicsStats();
     o.historyId = 'foo';
     o.perfEnvironment = buildPerfEnvironment();
-    o.perfMetrics = buildUnnamed8102();
+    o.perfMetrics = buildUnnamed8095();
     o.projectId = 'foo';
     o.stepId = 'foo';
   }
@@ -2094,7 +2094,7 @@ void checkPerfMetricsSummary(api.PerfMetricsSummary o) {
       unittest.equals('foo'),
     );
     checkPerfEnvironment(o.perfEnvironment!);
-    checkUnnamed8102(o.perfMetrics!);
+    checkUnnamed8095(o.perfMetrics!);
     unittest.expect(
       o.projectId!,
       unittest.equals('foo'),
@@ -2212,12 +2212,12 @@ void checkPerformedMonkeyActions(api.PerformedMonkeyActions o) {
   buildCounterPerformedMonkeyActions--;
 }
 
-core.List<api.IndividualOutcome> buildUnnamed8103() => [
+core.List<api.IndividualOutcome> buildUnnamed8096() => [
       buildIndividualOutcome(),
       buildIndividualOutcome(),
     ];
 
-void checkUnnamed8103(core.List<api.IndividualOutcome> o) {
+void checkUnnamed8096(core.List<api.IndividualOutcome> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIndividualOutcome(o[0]);
   checkIndividualOutcome(o[1]);
@@ -2228,7 +2228,7 @@ api.PrimaryStep buildPrimaryStep() {
   final o = api.PrimaryStep();
   buildCounterPrimaryStep++;
   if (buildCounterPrimaryStep < 3) {
-    o.individualOutcome = buildUnnamed8103();
+    o.individualOutcome = buildUnnamed8096();
     o.rollUp = 'foo';
   }
   buildCounterPrimaryStep--;
@@ -2238,7 +2238,7 @@ api.PrimaryStep buildPrimaryStep() {
 void checkPrimaryStep(api.PrimaryStep o) {
   buildCounterPrimaryStep++;
   if (buildCounterPrimaryStep < 3) {
-    checkUnnamed8103(o.individualOutcome!);
+    checkUnnamed8096(o.individualOutcome!);
     unittest.expect(
       o.rollUp!,
       unittest.equals('foo'),
@@ -2274,12 +2274,12 @@ void checkProjectSettings(api.ProjectSettings o) {
   buildCounterProjectSettings--;
 }
 
-core.List<api.FileReference> buildUnnamed8104() => [
+core.List<api.FileReference> buildUnnamed8097() => [
       buildFileReference(),
       buildFileReference(),
     ];
 
-void checkUnnamed8104(core.List<api.FileReference> o) {
+void checkUnnamed8097(core.List<api.FileReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFileReference(o[0]);
   checkFileReference(o[1]);
@@ -2290,7 +2290,7 @@ api.PublishXunitXmlFilesRequest buildPublishXunitXmlFilesRequest() {
   final o = api.PublishXunitXmlFilesRequest();
   buildCounterPublishXunitXmlFilesRequest++;
   if (buildCounterPublishXunitXmlFilesRequest < 3) {
-    o.xunitXmlFiles = buildUnnamed8104();
+    o.xunitXmlFiles = buildUnnamed8097();
   }
   buildCounterPublishXunitXmlFilesRequest--;
   return o;
@@ -2299,7 +2299,7 @@ api.PublishXunitXmlFilesRequest buildPublishXunitXmlFilesRequest() {
 void checkPublishXunitXmlFilesRequest(api.PublishXunitXmlFilesRequest o) {
   buildCounterPublishXunitXmlFilesRequest++;
   if (buildCounterPublishXunitXmlFilesRequest < 3) {
-    checkUnnamed8104(o.xunitXmlFiles!);
+    checkUnnamed8097(o.xunitXmlFiles!);
   }
   buildCounterPublishXunitXmlFilesRequest--;
 }
@@ -2448,12 +2448,12 @@ void checkScreen(api.Screen o) {
   buildCounterScreen--;
 }
 
-core.List<api.Screen> buildUnnamed8105() => [
+core.List<api.Screen> buildUnnamed8098() => [
       buildScreen(),
       buildScreen(),
     ];
 
-void checkUnnamed8105(core.List<api.Screen> o) {
+void checkUnnamed8098(core.List<api.Screen> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScreen(o[0]);
   checkScreen(o[1]);
@@ -2467,7 +2467,7 @@ api.ScreenshotCluster buildScreenshotCluster() {
     o.activity = 'foo';
     o.clusterId = 'foo';
     o.keyScreen = buildScreen();
-    o.screens = buildUnnamed8105();
+    o.screens = buildUnnamed8098();
   }
   buildCounterScreenshotCluster--;
   return o;
@@ -2485,17 +2485,17 @@ void checkScreenshotCluster(api.ScreenshotCluster o) {
       unittest.equals('foo'),
     );
     checkScreen(o.keyScreen!);
-    checkUnnamed8105(o.screens!);
+    checkUnnamed8098(o.screens!);
   }
   buildCounterScreenshotCluster--;
 }
 
-core.List<api.StepSummary> buildUnnamed8106() => [
+core.List<api.StepSummary> buildUnnamed8099() => [
       buildStepSummary(),
       buildStepSummary(),
     ];
 
-void checkUnnamed8106(core.List<api.StepSummary> o) {
+void checkUnnamed8099(core.List<api.StepSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStepSummary(o[0]);
   checkStepSummary(o[1]);
@@ -2506,7 +2506,7 @@ api.ShardSummary buildShardSummary() {
   final o = api.ShardSummary();
   buildCounterShardSummary++;
   if (buildCounterShardSummary < 3) {
-    o.runs = buildUnnamed8106();
+    o.runs = buildUnnamed8099();
     o.shardResult = buildMergedResult();
   }
   buildCounterShardSummary--;
@@ -2516,7 +2516,7 @@ api.ShardSummary buildShardSummary() {
 void checkShardSummary(api.ShardSummary o) {
   buildCounterShardSummary++;
   if (buildCounterShardSummary < 3) {
-    checkUnnamed8106(o.runs!);
+    checkUnnamed8099(o.runs!);
     checkMergedResult(o.shardResult!);
   }
   buildCounterShardSummary--;
@@ -2615,7 +2615,7 @@ void checkStartActivityNotFound(api.StartActivityNotFound o) {
   buildCounterStartActivityNotFound--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8107() => {
+core.Map<core.String, core.Object> buildUnnamed8100() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2628,7 +2628,7 @@ core.Map<core.String, core.Object> buildUnnamed8107() => {
       },
     };
 
-void checkUnnamed8107(core.Map<core.String, core.Object> o) {
+void checkUnnamed8100(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2660,15 +2660,15 @@ void checkUnnamed8107(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8108() => [
-      buildUnnamed8107(),
-      buildUnnamed8107(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed8101() => [
+      buildUnnamed8100(),
+      buildUnnamed8100(),
     ];
 
-void checkUnnamed8108(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed8101(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed8107(o[0]);
-  checkUnnamed8107(o[1]);
+  checkUnnamed8100(o[0]);
+  checkUnnamed8100(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2677,7 +2677,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed8108();
+    o.details = buildUnnamed8101();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2691,7 +2691,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed8108(o.details!);
+    checkUnnamed8101(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2700,23 +2700,23 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<api.StepDimensionValueEntry> buildUnnamed8109() => [
+core.List<api.StepDimensionValueEntry> buildUnnamed8102() => [
       buildStepDimensionValueEntry(),
       buildStepDimensionValueEntry(),
     ];
 
-void checkUnnamed8109(core.List<api.StepDimensionValueEntry> o) {
+void checkUnnamed8102(core.List<api.StepDimensionValueEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStepDimensionValueEntry(o[0]);
   checkStepDimensionValueEntry(o[1]);
 }
 
-core.List<api.StepLabelsEntry> buildUnnamed8110() => [
+core.List<api.StepLabelsEntry> buildUnnamed8103() => [
       buildStepLabelsEntry(),
       buildStepLabelsEntry(),
     ];
 
-void checkUnnamed8110(core.List<api.StepLabelsEntry> o) {
+void checkUnnamed8103(core.List<api.StepLabelsEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStepLabelsEntry(o[0]);
   checkStepLabelsEntry(o[1]);
@@ -2731,9 +2731,9 @@ api.Step buildStep() {
     o.creationTime = buildTimestamp();
     o.description = 'foo';
     o.deviceUsageDuration = buildDuration();
-    o.dimensionValue = buildUnnamed8109();
+    o.dimensionValue = buildUnnamed8102();
     o.hasImages = true;
-    o.labels = buildUnnamed8110();
+    o.labels = buildUnnamed8103();
     o.multiStep = buildMultiStep();
     o.name = 'foo';
     o.outcome = buildOutcome();
@@ -2757,9 +2757,9 @@ void checkStep(api.Step o) {
       unittest.equals('foo'),
     );
     checkDuration(o.deviceUsageDuration!);
-    checkUnnamed8109(o.dimensionValue!);
+    checkUnnamed8102(o.dimensionValue!);
     unittest.expect(o.hasImages!, unittest.isTrue);
-    checkUnnamed8110(o.labels!);
+    checkUnnamed8103(o.labels!);
     checkMultiStep(o.multiStep!);
     unittest.expect(
       o.name!,
@@ -2869,12 +2869,12 @@ void checkSuccessDetail(api.SuccessDetail o) {
   buildCounterSuccessDetail--;
 }
 
-core.List<api.SuggestionProto> buildUnnamed8111() => [
+core.List<api.SuggestionProto> buildUnnamed8104() => [
       buildSuggestionProto(),
       buildSuggestionProto(),
     ];
 
-void checkUnnamed8111(core.List<api.SuggestionProto> o) {
+void checkUnnamed8104(core.List<api.SuggestionProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestionProto(o[0]);
   checkSuggestionProto(o[1]);
@@ -2886,7 +2886,7 @@ api.SuggestionClusterProto buildSuggestionClusterProto() {
   buildCounterSuggestionClusterProto++;
   if (buildCounterSuggestionClusterProto < 3) {
     o.category = 'foo';
-    o.suggestions = buildUnnamed8111();
+    o.suggestions = buildUnnamed8104();
   }
   buildCounterSuggestionClusterProto--;
   return o;
@@ -2899,7 +2899,7 @@ void checkSuggestionClusterProto(api.SuggestionClusterProto o) {
       o.category!,
       unittest.equals('foo'),
     );
-    checkUnnamed8111(o.suggestions!);
+    checkUnnamed8104(o.suggestions!);
   }
   buildCounterSuggestionClusterProto--;
 }
@@ -2962,23 +2962,23 @@ void checkSuggestionProto(api.SuggestionProto o) {
   buildCounterSuggestionProto--;
 }
 
-core.List<api.StackTrace> buildUnnamed8112() => [
+core.List<api.StackTrace> buildUnnamed8105() => [
       buildStackTrace(),
       buildStackTrace(),
     ];
 
-void checkUnnamed8112(core.List<api.StackTrace> o) {
+void checkUnnamed8105(core.List<api.StackTrace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackTrace(o[0]);
   checkStackTrace(o[1]);
 }
 
-core.List<api.ToolOutputReference> buildUnnamed8113() => [
+core.List<api.ToolOutputReference> buildUnnamed8106() => [
       buildToolOutputReference(),
       buildToolOutputReference(),
     ];
 
-void checkUnnamed8113(core.List<api.ToolOutputReference> o) {
+void checkUnnamed8106(core.List<api.ToolOutputReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToolOutputReference(o[0]);
   checkToolOutputReference(o[1]);
@@ -2992,12 +2992,12 @@ api.TestCase buildTestCase() {
     o.elapsedTime = buildDuration();
     o.endTime = buildTimestamp();
     o.skippedMessage = 'foo';
-    o.stackTraces = buildUnnamed8112();
+    o.stackTraces = buildUnnamed8105();
     o.startTime = buildTimestamp();
     o.status = 'foo';
     o.testCaseId = 'foo';
     o.testCaseReference = buildTestCaseReference();
-    o.toolOutputs = buildUnnamed8113();
+    o.toolOutputs = buildUnnamed8106();
   }
   buildCounterTestCase--;
   return o;
@@ -3012,7 +3012,7 @@ void checkTestCase(api.TestCase o) {
       o.skippedMessage!,
       unittest.equals('foo'),
     );
-    checkUnnamed8112(o.stackTraces!);
+    checkUnnamed8105(o.stackTraces!);
     checkTimestamp(o.startTime!);
     unittest.expect(
       o.status!,
@@ -3023,7 +3023,7 @@ void checkTestCase(api.TestCase o) {
       unittest.equals('foo'),
     );
     checkTestCaseReference(o.testCaseReference!);
-    checkUnnamed8113(o.toolOutputs!);
+    checkUnnamed8106(o.toolOutputs!);
   }
   buildCounterTestCase--;
 }
@@ -3060,23 +3060,23 @@ void checkTestCaseReference(api.TestCaseReference o) {
   buildCounterTestCaseReference--;
 }
 
-core.List<api.TestIssue> buildUnnamed8114() => [
+core.List<api.TestIssue> buildUnnamed8107() => [
       buildTestIssue(),
       buildTestIssue(),
     ];
 
-void checkUnnamed8114(core.List<api.TestIssue> o) {
+void checkUnnamed8107(core.List<api.TestIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTestIssue(o[0]);
   checkTestIssue(o[1]);
 }
 
-core.List<api.TestSuiteOverview> buildUnnamed8115() => [
+core.List<api.TestSuiteOverview> buildUnnamed8108() => [
       buildTestSuiteOverview(),
       buildTestSuiteOverview(),
     ];
 
-void checkUnnamed8115(core.List<api.TestSuiteOverview> o) {
+void checkUnnamed8108(core.List<api.TestSuiteOverview> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTestSuiteOverview(o[0]);
   checkTestSuiteOverview(o[1]);
@@ -3087,8 +3087,8 @@ api.TestExecutionStep buildTestExecutionStep() {
   final o = api.TestExecutionStep();
   buildCounterTestExecutionStep++;
   if (buildCounterTestExecutionStep < 3) {
-    o.testIssues = buildUnnamed8114();
-    o.testSuiteOverviews = buildUnnamed8115();
+    o.testIssues = buildUnnamed8107();
+    o.testSuiteOverviews = buildUnnamed8108();
     o.testTiming = buildTestTiming();
     o.toolExecution = buildToolExecution();
   }
@@ -3099,8 +3099,8 @@ api.TestExecutionStep buildTestExecutionStep() {
 void checkTestExecutionStep(api.TestExecutionStep o) {
   buildCounterTestExecutionStep++;
   if (buildCounterTestExecutionStep < 3) {
-    checkUnnamed8114(o.testIssues!);
-    checkUnnamed8115(o.testSuiteOverviews!);
+    checkUnnamed8107(o.testIssues!);
+    checkUnnamed8108(o.testSuiteOverviews!);
     checkTestTiming(o.testTiming!);
     checkToolExecution(o.toolExecution!);
   }
@@ -3282,12 +3282,12 @@ void checkTimestamp(api.Timestamp o) {
   buildCounterTimestamp--;
 }
 
-core.List<core.String> buildUnnamed8116() => [
+core.List<core.String> buildUnnamed8109() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8116(core.List<core.String> o) {
+void checkUnnamed8109(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3299,23 +3299,23 @@ void checkUnnamed8116(core.List<core.String> o) {
   );
 }
 
-core.List<api.FileReference> buildUnnamed8117() => [
+core.List<api.FileReference> buildUnnamed8110() => [
       buildFileReference(),
       buildFileReference(),
     ];
 
-void checkUnnamed8117(core.List<api.FileReference> o) {
+void checkUnnamed8110(core.List<api.FileReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFileReference(o[0]);
   checkFileReference(o[1]);
 }
 
-core.List<api.ToolOutputReference> buildUnnamed8118() => [
+core.List<api.ToolOutputReference> buildUnnamed8111() => [
       buildToolOutputReference(),
       buildToolOutputReference(),
     ];
 
-void checkUnnamed8118(core.List<api.ToolOutputReference> o) {
+void checkUnnamed8111(core.List<api.ToolOutputReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToolOutputReference(o[0]);
   checkToolOutputReference(o[1]);
@@ -3326,10 +3326,10 @@ api.ToolExecution buildToolExecution() {
   final o = api.ToolExecution();
   buildCounterToolExecution++;
   if (buildCounterToolExecution < 3) {
-    o.commandLineArguments = buildUnnamed8116();
+    o.commandLineArguments = buildUnnamed8109();
     o.exitCode = buildToolExitCode();
-    o.toolLogs = buildUnnamed8117();
-    o.toolOutputs = buildUnnamed8118();
+    o.toolLogs = buildUnnamed8110();
+    o.toolOutputs = buildUnnamed8111();
   }
   buildCounterToolExecution--;
   return o;
@@ -3338,10 +3338,10 @@ api.ToolExecution buildToolExecution() {
 void checkToolExecution(api.ToolExecution o) {
   buildCounterToolExecution++;
   if (buildCounterToolExecution < 3) {
-    checkUnnamed8116(o.commandLineArguments!);
+    checkUnnamed8109(o.commandLineArguments!);
     checkToolExitCode(o.exitCode!);
-    checkUnnamed8117(o.toolLogs!);
-    checkUnnamed8118(o.toolOutputs!);
+    checkUnnamed8110(o.toolLogs!);
+    checkUnnamed8111(o.toolOutputs!);
   }
   buildCounterToolExecution--;
 }
@@ -3550,12 +3550,12 @@ void checkUsedRoboIgnoreDirective(api.UsedRoboIgnoreDirective o) {
   buildCounterUsedRoboIgnoreDirective--;
 }
 
-core.List<core.String> buildUnnamed8119() => [
+core.List<core.String> buildUnnamed8112() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8119(core.List<core.String> o) {
+void checkUnnamed8112(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6945,7 +6945,7 @@ void main() {
       final arg_historyId = 'foo';
       final arg_executionId = 'foo';
       final arg_stepId = 'foo';
-      final arg_filter = buildUnnamed8119();
+      final arg_filter = buildUnnamed8112();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

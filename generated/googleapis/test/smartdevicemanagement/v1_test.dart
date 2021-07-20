@@ -26,19 +26,19 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleHomeEnterpriseSdmV1ParentRelation> buildUnnamed7273() => [
+core.List<api.GoogleHomeEnterpriseSdmV1ParentRelation> buildUnnamed7266() => [
       buildGoogleHomeEnterpriseSdmV1ParentRelation(),
       buildGoogleHomeEnterpriseSdmV1ParentRelation(),
     ];
 
-void checkUnnamed7273(
+void checkUnnamed7266(
     core.List<api.GoogleHomeEnterpriseSdmV1ParentRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleHomeEnterpriseSdmV1ParentRelation(o[0]);
   checkGoogleHomeEnterpriseSdmV1ParentRelation(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed7274() => {
+core.Map<core.String, core.Object> buildUnnamed7267() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -51,7 +51,7 @@ core.Map<core.String, core.Object> buildUnnamed7274() => {
       },
     };
 
-void checkUnnamed7274(core.Map<core.String, core.Object> o) {
+void checkUnnamed7267(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -89,8 +89,8 @@ api.GoogleHomeEnterpriseSdmV1Device buildGoogleHomeEnterpriseSdmV1Device() {
   buildCounterGoogleHomeEnterpriseSdmV1Device++;
   if (buildCounterGoogleHomeEnterpriseSdmV1Device < 3) {
     o.name = 'foo';
-    o.parentRelations = buildUnnamed7273();
-    o.traits = buildUnnamed7274();
+    o.parentRelations = buildUnnamed7266();
+    o.traits = buildUnnamed7267();
     o.type = 'foo';
   }
   buildCounterGoogleHomeEnterpriseSdmV1Device--;
@@ -105,8 +105,8 @@ void checkGoogleHomeEnterpriseSdmV1Device(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7273(o.parentRelations!);
-    checkUnnamed7274(o.traits!);
+    checkUnnamed7266(o.parentRelations!);
+    checkUnnamed7267(o.traits!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -115,7 +115,7 @@ void checkGoogleHomeEnterpriseSdmV1Device(
   buildCounterGoogleHomeEnterpriseSdmV1Device--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7275() => {
+core.Map<core.String, core.Object> buildUnnamed7268() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -128,7 +128,7 @@ core.Map<core.String, core.Object> buildUnnamed7275() => {
       },
     };
 
-void checkUnnamed7275(core.Map<core.String, core.Object> o) {
+void checkUnnamed7268(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -167,7 +167,7 @@ api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest < 3) {
     o.command = 'foo';
-    o.params = buildUnnamed7275();
+    o.params = buildUnnamed7268();
   }
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest--;
   return o;
@@ -181,12 +181,12 @@ void checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest(
       o.command!,
       unittest.equals('foo'),
     );
-    checkUnnamed7275(o.params!);
+    checkUnnamed7268(o.params!);
   }
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7276() => {
+core.Map<core.String, core.Object> buildUnnamed7269() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -199,7 +199,7 @@ core.Map<core.String, core.Object> buildUnnamed7276() => {
       },
     };
 
-void checkUnnamed7276(core.Map<core.String, core.Object> o) {
+void checkUnnamed7269(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -237,7 +237,7 @@ api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse
   final o = api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse();
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse < 3) {
-    o.results = buildUnnamed7276();
+    o.results = buildUnnamed7269();
   }
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse--;
   return o;
@@ -247,17 +247,17 @@ void checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse(
     api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse o) {
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse < 3) {
-    checkUnnamed7276(o.results!);
+    checkUnnamed7269(o.results!);
   }
   buildCounterGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse--;
 }
 
-core.List<api.GoogleHomeEnterpriseSdmV1Device> buildUnnamed7277() => [
+core.List<api.GoogleHomeEnterpriseSdmV1Device> buildUnnamed7270() => [
       buildGoogleHomeEnterpriseSdmV1Device(),
       buildGoogleHomeEnterpriseSdmV1Device(),
     ];
 
-void checkUnnamed7277(core.List<api.GoogleHomeEnterpriseSdmV1Device> o) {
+void checkUnnamed7270(core.List<api.GoogleHomeEnterpriseSdmV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleHomeEnterpriseSdmV1Device(o[0]);
   checkGoogleHomeEnterpriseSdmV1Device(o[1]);
@@ -269,7 +269,7 @@ api.GoogleHomeEnterpriseSdmV1ListDevicesResponse
   final o = api.GoogleHomeEnterpriseSdmV1ListDevicesResponse();
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse < 3) {
-    o.devices = buildUnnamed7277();
+    o.devices = buildUnnamed7270();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse--;
@@ -280,7 +280,7 @@ void checkGoogleHomeEnterpriseSdmV1ListDevicesResponse(
     api.GoogleHomeEnterpriseSdmV1ListDevicesResponse o) {
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse < 3) {
-    checkUnnamed7277(o.devices!);
+    checkUnnamed7270(o.devices!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -289,12 +289,12 @@ void checkGoogleHomeEnterpriseSdmV1ListDevicesResponse(
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse--;
 }
 
-core.List<api.GoogleHomeEnterpriseSdmV1Room> buildUnnamed7278() => [
+core.List<api.GoogleHomeEnterpriseSdmV1Room> buildUnnamed7271() => [
       buildGoogleHomeEnterpriseSdmV1Room(),
       buildGoogleHomeEnterpriseSdmV1Room(),
     ];
 
-void checkUnnamed7278(core.List<api.GoogleHomeEnterpriseSdmV1Room> o) {
+void checkUnnamed7271(core.List<api.GoogleHomeEnterpriseSdmV1Room> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleHomeEnterpriseSdmV1Room(o[0]);
   checkGoogleHomeEnterpriseSdmV1Room(o[1]);
@@ -307,7 +307,7 @@ api.GoogleHomeEnterpriseSdmV1ListRoomsResponse
   buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.rooms = buildUnnamed7278();
+    o.rooms = buildUnnamed7271();
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse--;
   return o;
@@ -321,17 +321,17 @@ void checkGoogleHomeEnterpriseSdmV1ListRoomsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7278(o.rooms!);
+    checkUnnamed7271(o.rooms!);
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse--;
 }
 
-core.List<api.GoogleHomeEnterpriseSdmV1Structure> buildUnnamed7279() => [
+core.List<api.GoogleHomeEnterpriseSdmV1Structure> buildUnnamed7272() => [
       buildGoogleHomeEnterpriseSdmV1Structure(),
       buildGoogleHomeEnterpriseSdmV1Structure(),
     ];
 
-void checkUnnamed7279(core.List<api.GoogleHomeEnterpriseSdmV1Structure> o) {
+void checkUnnamed7272(core.List<api.GoogleHomeEnterpriseSdmV1Structure> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleHomeEnterpriseSdmV1Structure(o[0]);
   checkGoogleHomeEnterpriseSdmV1Structure(o[1]);
@@ -344,7 +344,7 @@ api.GoogleHomeEnterpriseSdmV1ListStructuresResponse
   buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse < 3) {
     o.nextPageToken = 'foo';
-    o.structures = buildUnnamed7279();
+    o.structures = buildUnnamed7272();
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse--;
   return o;
@@ -358,7 +358,7 @@ void checkGoogleHomeEnterpriseSdmV1ListStructuresResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7279(o.structures!);
+    checkUnnamed7272(o.structures!);
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse--;
 }
@@ -392,7 +392,7 @@ void checkGoogleHomeEnterpriseSdmV1ParentRelation(
   buildCounterGoogleHomeEnterpriseSdmV1ParentRelation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7280() => {
+core.Map<core.String, core.Object> buildUnnamed7273() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -405,7 +405,7 @@ core.Map<core.String, core.Object> buildUnnamed7280() => {
       },
     };
 
-void checkUnnamed7280(core.Map<core.String, core.Object> o) {
+void checkUnnamed7273(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -443,7 +443,7 @@ api.GoogleHomeEnterpriseSdmV1Room buildGoogleHomeEnterpriseSdmV1Room() {
   buildCounterGoogleHomeEnterpriseSdmV1Room++;
   if (buildCounterGoogleHomeEnterpriseSdmV1Room < 3) {
     o.name = 'foo';
-    o.traits = buildUnnamed7280();
+    o.traits = buildUnnamed7273();
   }
   buildCounterGoogleHomeEnterpriseSdmV1Room--;
   return o;
@@ -456,12 +456,12 @@ void checkGoogleHomeEnterpriseSdmV1Room(api.GoogleHomeEnterpriseSdmV1Room o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7280(o.traits!);
+    checkUnnamed7273(o.traits!);
   }
   buildCounterGoogleHomeEnterpriseSdmV1Room--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7281() => {
+core.Map<core.String, core.Object> buildUnnamed7274() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -474,7 +474,7 @@ core.Map<core.String, core.Object> buildUnnamed7281() => {
       },
     };
 
-void checkUnnamed7281(core.Map<core.String, core.Object> o) {
+void checkUnnamed7274(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -513,7 +513,7 @@ api.GoogleHomeEnterpriseSdmV1Structure
   buildCounterGoogleHomeEnterpriseSdmV1Structure++;
   if (buildCounterGoogleHomeEnterpriseSdmV1Structure < 3) {
     o.name = 'foo';
-    o.traits = buildUnnamed7281();
+    o.traits = buildUnnamed7274();
   }
   buildCounterGoogleHomeEnterpriseSdmV1Structure--;
   return o;
@@ -527,7 +527,7 @@ void checkGoogleHomeEnterpriseSdmV1Structure(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7281(o.traits!);
+    checkUnnamed7274(o.traits!);
   }
   buildCounterGoogleHomeEnterpriseSdmV1Structure--;
 }

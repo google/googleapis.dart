@@ -45,12 +45,12 @@ void checkEmptyResponse(api.EmptyResponse o) {
   buildCounterEmptyResponse--;
 }
 
-core.List<core.String> buildUnnamed6264() => [
+core.List<core.String> buildUnnamed6257() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6264(core.List<core.String> o) {
+void checkUnnamed6257(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -67,7 +67,7 @@ api.ErrorProto buildErrorProto() {
   final o = api.ErrorProto();
   buildCounterErrorProto++;
   if (buildCounterErrorProto < 3) {
-    o.argument = buildUnnamed6264();
+    o.argument = buildUnnamed6257();
     o.code = 'foo';
     o.debugInfo = 'foo';
     o.domain = 'foo';
@@ -82,7 +82,7 @@ api.ErrorProto buildErrorProto() {
 void checkErrorProto(api.ErrorProto o) {
   buildCounterErrorProto++;
   if (buildCounterErrorProto < 3) {
-    checkUnnamed6264(o.argument!);
+    checkUnnamed6257(o.argument!);
     unittest.expect(
       o.code!,
       unittest.equals('foo'),
@@ -111,12 +111,12 @@ void checkErrorProto(api.ErrorProto o) {
   buildCounterErrorProto--;
 }
 
-core.List<api.ErrorProto> buildUnnamed6265() => [
+core.List<api.ErrorProto> buildUnnamed6258() => [
       buildErrorProto(),
       buildErrorProto(),
     ];
 
-void checkUnnamed6265(core.List<api.ErrorProto> o) {
+void checkUnnamed6258(core.List<api.ErrorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorProto(o[0]);
   checkErrorProto(o[1]);
@@ -128,7 +128,7 @@ api.Errors buildErrors() {
   buildCounterErrors++;
   if (buildCounterErrors < 3) {
     o.code = 'foo';
-    o.error = buildUnnamed6265();
+    o.error = buildUnnamed6258();
     o.requestId = 'foo';
   }
   buildCounterErrors--;
@@ -142,7 +142,7 @@ void checkErrors(api.Errors o) {
       o.code!,
       unittest.equals('foo'),
     );
-    checkUnnamed6265(o.error!);
+    checkUnnamed6258(o.error!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -311,12 +311,12 @@ void checkGroupSnippet(api.GroupSnippet o) {
   buildCounterGroupSnippet--;
 }
 
-core.List<api.GroupItem> buildUnnamed6266() => [
+core.List<api.GroupItem> buildUnnamed6259() => [
       buildGroupItem(),
       buildGroupItem(),
     ];
 
-void checkUnnamed6266(core.List<api.GroupItem> o) {
+void checkUnnamed6259(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupItem(o[0]);
   checkGroupItem(o[1]);
@@ -329,7 +329,7 @@ api.ListGroupItemsResponse buildListGroupItemsResponse() {
   if (buildCounterListGroupItemsResponse < 3) {
     o.errors = buildErrors();
     o.etag = 'foo';
-    o.items = buildUnnamed6266();
+    o.items = buildUnnamed6259();
     o.kind = 'foo';
   }
   buildCounterListGroupItemsResponse--;
@@ -344,7 +344,7 @@ void checkListGroupItemsResponse(api.ListGroupItemsResponse o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed6266(o.items!);
+    checkUnnamed6259(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -353,12 +353,12 @@ void checkListGroupItemsResponse(api.ListGroupItemsResponse o) {
   buildCounterListGroupItemsResponse--;
 }
 
-core.List<api.Group> buildUnnamed6267() => [
+core.List<api.Group> buildUnnamed6260() => [
       buildGroup(),
       buildGroup(),
     ];
 
-void checkUnnamed6267(core.List<api.Group> o) {
+void checkUnnamed6260(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -371,7 +371,7 @@ api.ListGroupsResponse buildListGroupsResponse() {
   if (buildCounterListGroupsResponse < 3) {
     o.errors = buildErrors();
     o.etag = 'foo';
-    o.items = buildUnnamed6267();
+    o.items = buildUnnamed6260();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -387,7 +387,7 @@ void checkListGroupsResponse(api.ListGroupsResponse o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed6267(o.items!);
+    checkUnnamed6260(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -400,18 +400,18 @@ void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse--;
 }
 
-core.List<api.ResultTableColumnHeader> buildUnnamed6268() => [
+core.List<api.ResultTableColumnHeader> buildUnnamed6261() => [
       buildResultTableColumnHeader(),
       buildResultTableColumnHeader(),
     ];
 
-void checkUnnamed6268(core.List<api.ResultTableColumnHeader> o) {
+void checkUnnamed6261(core.List<api.ResultTableColumnHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeader(o[0]);
   checkResultTableColumnHeader(o[1]);
 }
 
-core.List<core.Object> buildUnnamed6269() => [
+core.List<core.Object> buildUnnamed6262() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -424,7 +424,7 @@ core.List<core.Object> buildUnnamed6269() => [
       },
     ];
 
-void checkUnnamed6269(core.List<core.Object> o) {
+void checkUnnamed6262(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -456,15 +456,15 @@ void checkUnnamed6269(core.List<core.Object> o) {
   );
 }
 
-core.List<core.List<core.Object>> buildUnnamed6270() => [
-      buildUnnamed6269(),
-      buildUnnamed6269(),
+core.List<core.List<core.Object>> buildUnnamed6263() => [
+      buildUnnamed6262(),
+      buildUnnamed6262(),
     ];
 
-void checkUnnamed6270(core.List<core.List<core.Object>> o) {
+void checkUnnamed6263(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6269(o[0]);
-  checkUnnamed6269(o[1]);
+  checkUnnamed6262(o[0]);
+  checkUnnamed6262(o[1]);
 }
 
 core.int buildCounterQueryResponse = 0;
@@ -472,10 +472,10 @@ api.QueryResponse buildQueryResponse() {
   final o = api.QueryResponse();
   buildCounterQueryResponse++;
   if (buildCounterQueryResponse < 3) {
-    o.columnHeaders = buildUnnamed6268();
+    o.columnHeaders = buildUnnamed6261();
     o.errors = buildErrors();
     o.kind = 'foo';
-    o.rows = buildUnnamed6270();
+    o.rows = buildUnnamed6263();
   }
   buildCounterQueryResponse--;
   return o;
@@ -484,13 +484,13 @@ api.QueryResponse buildQueryResponse() {
 void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse++;
   if (buildCounterQueryResponse < 3) {
-    checkUnnamed6268(o.columnHeaders!);
+    checkUnnamed6261(o.columnHeaders!);
     checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed6270(o.rows!);
+    checkUnnamed6263(o.rows!);
   }
   buildCounterQueryResponse--;
 }
