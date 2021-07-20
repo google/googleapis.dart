@@ -695,6 +695,7 @@ api.GameServerCluster buildGameServerCluster() {
   final o = api.GameServerCluster();
   buildCounterGameServerCluster++;
   if (buildCounterGameServerCluster < 3) {
+    o.clusterState = buildKubernetesClusterState();
     o.connectionInfo = buildGameServerClusterConnectionInfo();
     o.createTime = 'foo';
     o.description = 'foo';
@@ -710,6 +711,7 @@ api.GameServerCluster buildGameServerCluster() {
 void checkGameServerCluster(api.GameServerCluster o) {
   buildCounterGameServerCluster++;
   if (buildCounterGameServerCluster < 3) {
+    checkKubernetesClusterState(o.clusterState!);
     checkGameServerClusterConnectionInfo(o.connectionInfo!);
     unittest.expect(
       o.createTime!,
@@ -1003,6 +1005,53 @@ void checkGkeClusterReference(api.GkeClusterReference o) {
     );
   }
   buildCounterGkeClusterReference--;
+}
+
+core.int buildCounterKubernetesClusterState = 0;
+api.KubernetesClusterState buildKubernetesClusterState() {
+  final o = api.KubernetesClusterState();
+  buildCounterKubernetesClusterState++;
+  if (buildCounterKubernetesClusterState < 3) {
+    o.agonesVersionInstalled = 'foo';
+    o.agonesVersionTargeted = 'foo';
+    o.installationState = 'foo';
+    o.kubernetesVersionInstalled = 'foo';
+    o.provider = 'foo';
+    o.versionInstalledErrorMessage = 'foo';
+  }
+  buildCounterKubernetesClusterState--;
+  return o;
+}
+
+void checkKubernetesClusterState(api.KubernetesClusterState o) {
+  buildCounterKubernetesClusterState++;
+  if (buildCounterKubernetesClusterState < 3) {
+    unittest.expect(
+      o.agonesVersionInstalled!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.agonesVersionTargeted!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.installationState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kubernetesVersionInstalled!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.provider!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.versionInstalledErrorMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterKubernetesClusterState--;
 }
 
 core.Map<core.String, core.String> buildUnnamed125() => {
@@ -1753,6 +1802,7 @@ api.PreviewCreateGameServerClusterResponse
   final o = api.PreviewCreateGameServerClusterResponse();
   buildCounterPreviewCreateGameServerClusterResponse++;
   if (buildCounterPreviewCreateGameServerClusterResponse < 3) {
+    o.clusterState = buildKubernetesClusterState();
     o.etag = 'foo';
     o.targetState = buildTargetState();
   }
@@ -1764,6 +1814,7 @@ void checkPreviewCreateGameServerClusterResponse(
     api.PreviewCreateGameServerClusterResponse o) {
   buildCounterPreviewCreateGameServerClusterResponse++;
   if (buildCounterPreviewCreateGameServerClusterResponse < 3) {
+    checkKubernetesClusterState(o.clusterState!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -2811,6 +2862,16 @@ void main() {
       final od = api.GkeClusterReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGkeClusterReference(od);
+    });
+  });
+
+  unittest.group('obj-schema-KubernetesClusterState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildKubernetesClusterState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.KubernetesClusterState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkKubernetesClusterState(od);
     });
   });
 
@@ -5033,6 +5094,7 @@ void main() {
           .realms
           .gameServerClusters;
       final arg_name = 'foo';
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5067,6 +5129,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5077,7 +5143,8 @@ void main() {
         final resp = convert.json.encode(buildGameServerCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
       checkGameServerCluster(response as api.GameServerCluster);
     });
 
@@ -5093,6 +5160,7 @@ void main() {
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5143,6 +5211,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5158,6 +5230,7 @@ void main() {
           orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          view: arg_view,
           $fields: arg_$fields);
       checkListGameServerClustersResponse(
           response as api.ListGameServerClustersResponse);
@@ -5241,6 +5314,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_gameServerClusterId = 'foo';
       final arg_previewTime = 'foo';
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GameServerCluster.fromJson(
@@ -5287,6 +5361,10 @@ void main() {
           unittest.equals(arg_previewTime),
         );
         unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5301,6 +5379,7 @@ void main() {
       final response = await res.previewCreate(arg_request, arg_parent,
           gameServerClusterId: arg_gameServerClusterId,
           previewTime: arg_previewTime,
+          view: arg_view,
           $fields: arg_$fields);
       checkPreviewCreateGameServerClusterResponse(
           response as api.PreviewCreateGameServerClusterResponse);

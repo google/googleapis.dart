@@ -28,6 +28,8 @@
 ///   - [PropertiesConversionEventsResource]
 ///   - [PropertiesCustomDimensionsResource]
 ///   - [PropertiesCustomMetricsResource]
+///   - [PropertiesDisplayVideo360AdvertiserLinkProposalsResource]
+///   - [PropertiesDisplayVideo360AdvertiserLinksResource]
 ///   - [PropertiesFirebaseLinksResource]
 ///   - [PropertiesGoogleAdsLinksResource]
 ///   - [PropertiesIosAppDataStreamsResource]
@@ -920,6 +922,12 @@ class PropertiesResource {
       PropertiesCustomDimensionsResource(_requester);
   PropertiesCustomMetricsResource get customMetrics =>
       PropertiesCustomMetricsResource(_requester);
+  PropertiesDisplayVideo360AdvertiserLinkProposalsResource
+      get displayVideo360AdvertiserLinkProposals =>
+          PropertiesDisplayVideo360AdvertiserLinkProposalsResource(_requester);
+  PropertiesDisplayVideo360AdvertiserLinksResource
+      get displayVideo360AdvertiserLinks =>
+          PropertiesDisplayVideo360AdvertiserLinksResource(_requester);
   PropertiesFirebaseLinksResource get firebaseLinks =>
       PropertiesFirebaseLinksResource(_requester);
   PropertiesGoogleAdsLinksResource get googleAdsLinks =>
@@ -2328,6 +2336,539 @@ class PropertiesCustomMetricsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesDisplayVideo360AdvertiserLinkProposalsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesDisplayVideo360AdvertiserLinkProposalsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Approves a DisplayVideo360AdvertiserLinkProposal.
+  ///
+  /// The DisplayVideo360AdvertiserLinkProposal will be deleted and a new
+  /// DisplayVideo360AdvertiserLink will be created.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DisplayVideo360AdvertiserLinkProposal
+  /// to approve. Example format:
+  /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/displayVideo360AdvertiserLinkProposals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse>
+      approve(
+    GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
+        request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name') + ':approve';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Cancels a DisplayVideo360AdvertiserLinkProposal.
+  ///
+  /// Cancelling can mean either: - Declining a proposal initiated from Display
+  /// & Video 360 - Withdrawing a proposal initiated from Google Analytics After
+  /// being cancelled, a proposal will eventually be deleted automatically.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DisplayVideo360AdvertiserLinkProposal
+  /// to cancel. Example format:
+  /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/displayVideo360AdvertiserLinkProposals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
+      cancel(
+    GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
+        request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a DisplayVideo360AdvertiserLinkProposal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
+      create(
+    GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/displayVideo360AdvertiserLinkProposals';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a DisplayVideo360AdvertiserLinkProposal on a property.
+  ///
+  /// This can only be used on cancelled proposals.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DisplayVideo360AdvertiserLinkProposal
+  /// to delete. Example format:
+  /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/displayVideo360AdvertiserLinkProposals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single DisplayVideo360AdvertiserLinkProposal.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DisplayVideo360AdvertiserLinkProposal
+  /// to get. Example format:
+  /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/displayVideo360AdvertiserLinkProposals/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
+      get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists DisplayVideo360AdvertiserLinkProposals on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 50 resources will be returned. The maximum value is 200 (higher
+  /// values will be coerced to the maximum).
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListDisplayVideo360AdvertiserLinkProposals` call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to `ListDisplayVideo360AdvertiserLinkProposals` must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/displayVideo360AdvertiserLinkProposals';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesDisplayVideo360AdvertiserLinksResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesDisplayVideo360AdvertiserLinksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a DisplayVideo360AdvertiserLink.
+  ///
+  /// This can only be utilized by users who have proper authorization both on
+  /// the Google Analytics property and on the Display & Video 360 advertiser.
+  /// Users who do not have access to the Display & Video 360 advertiser should
+  /// instead seek to create a DisplayVideo360LinkProposal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> create(
+    GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/displayVideo360AdvertiserLinks';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a DisplayVideo360AdvertiserLink on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DisplayVideo360AdvertiserLink to
+  /// delete. Example format:
+  /// properties/1234/displayVideo360AdvertiserLinks/5678
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/displayVideo360AdvertiserLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Look up a single DisplayVideo360AdvertiserLink
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DisplayVideo360AdvertiserLink to get.
+  /// Example format: properties/1234/displayVideo360AdvertiserLink/5678
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/displayVideo360AdvertiserLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all DisplayVideo360AdvertiserLinks on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 50 resources will be returned. The maximum value is 200 (higher
+  /// values will be coerced to the maximum).
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListDisplayVideo360AdvertiserLinks` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListDisplayVideo360AdvertiserLinks` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/displayVideo360AdvertiserLinks';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a DisplayVideo360AdvertiserLink on a property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name for this
+  /// DisplayVideo360AdvertiserLink resource. Format:
+  /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note:
+  /// linkId is not the Display & Video 360 Advertiser ID
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/displayVideo360AdvertiserLinks/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
+  /// will not be updated. To replace the entire entity, use one path with the
+  /// string "*" to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> patch(
+    GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4375,6 +4916,46 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
       };
 }
 
+/// Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.
+class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest {
+  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest();
+
+  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Response message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.
+class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse {
+  /// The DisplayVideo360AdvertiserLink created as a result of approving the
+  /// proposal.
+  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink?
+      displayVideo360AdvertiserLink;
+
+  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse({
+    this.displayVideo360AdvertiserLink,
+  });
+
+  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse.fromJson(
+      core.Map _json)
+      : this(
+          displayVideo360AdvertiserLink:
+              _json.containsKey('displayVideo360AdvertiserLink')
+                  ? GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
+                      .fromJson(_json['displayVideo360AdvertiserLink']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayVideo360AdvertiserLink != null)
+          'displayVideo360AdvertiserLink':
+              displayVideo360AdvertiserLink!.toJson(),
+      };
+}
+
 /// Request message for ArchiveCustomDimension RPC.
 class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest {
   GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest();
@@ -4718,6 +5299,17 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
       };
 }
 
+/// Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.
+class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest {
+  GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest();
+
+  GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// A description of a change to a single Google Analytics resource.
 class GoogleAnalyticsAdminV1alphaChangeHistoryChange {
   /// The type of action that changed this resource.
@@ -4798,6 +5390,15 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of a CustomMetric resource in change history.
   GoogleAnalyticsAdminV1alphaCustomMetric? customMetric;
 
+  /// A snapshot of a DisplayVideo360AdvertiserLink resource in change history.
+  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink?
+      displayVideo360AdvertiserLink;
+
+  /// A snapshot of a DisplayVideo360AdvertiserLinkProposal resource in change
+  /// history.
+  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal?
+      displayVideo360AdvertiserLinkProposal;
+
   /// A snapshot of a FirebaseLink resource in change history.
   GoogleAnalyticsAdminV1alphaFirebaseLink? firebaseLink;
 
@@ -4826,6 +5427,8 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
     this.conversionEvent,
     this.customDimension,
     this.customMetric,
+    this.displayVideo360AdvertiserLink,
+    this.displayVideo360AdvertiserLinkProposal,
     this.firebaseLink,
     this.googleAdsLink,
     this.googleSignalsSettings,
@@ -4860,6 +5463,18 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
           customMetric: _json.containsKey('customMetric')
               ? GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
                   _json['customMetric'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayVideo360AdvertiserLink:
+              _json.containsKey('displayVideo360AdvertiserLink')
+                  ? GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
+                      .fromJson(_json['displayVideo360AdvertiserLink']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          displayVideo360AdvertiserLinkProposal: _json
+                  .containsKey('displayVideo360AdvertiserLinkProposal')
+              ? GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+                  .fromJson(_json['displayVideo360AdvertiserLinkProposal']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           firebaseLink: _json.containsKey('firebaseLink')
               ? GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
@@ -4904,6 +5519,12 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
         if (customDimension != null)
           'customDimension': customDimension!.toJson(),
         if (customMetric != null) 'customMetric': customMetric!.toJson(),
+        if (displayVideo360AdvertiserLink != null)
+          'displayVideo360AdvertiserLink':
+              displayVideo360AdvertiserLink!.toJson(),
+        if (displayVideo360AdvertiserLinkProposal != null)
+          'displayVideo360AdvertiserLinkProposal':
+              displayVideo360AdvertiserLinkProposal!.toJson(),
         if (firebaseLink != null) 'firebaseLink': firebaseLink!.toJson(),
         if (googleAdsLink != null) 'googleAdsLink': googleAdsLink!.toJson(),
         if (googleSignalsSettings != null)
@@ -5416,6 +6037,222 @@ class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest {
       };
 }
 
+/// A link between a GA4 property and a Display & Video 360 advertiser.
+class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
+  /// Enables personalized advertising features with this integration.
+  ///
+  /// If this field is not set on create/update, it will be defaulted to true.
+  core.bool? adsPersonalizationEnabled;
+
+  /// The display name of the Display & Video 360 Advertiser.
+  ///
+  /// Output only.
+  core.String? advertiserDisplayName;
+
+  /// The Display & Video 360 Advertiser's advertiser ID.
+  ///
+  /// Immutable.
+  core.String? advertiserId;
+
+  /// Enables the import of campaign data from Display & Video 360 into the GA4
+  /// property.
+  ///
+  /// After link creation, this can only be updated from the Display & Video 360
+  /// product. If this field is not set on create, it will be defaulted to true.
+  ///
+  /// Immutable.
+  core.bool? campaignDataSharingEnabled;
+
+  /// Enables the import of cost data from Display & Video 360 into the GA4
+  /// property.
+  ///
+  /// This can only be enabled if campaign_data_import_enabled is enabled. After
+  /// link creation, this can only be updated from the Display & Video 360
+  /// product. If this field is not set on create, it will be defaulted to true.
+  ///
+  /// Immutable.
+  core.bool? costDataSharingEnabled;
+
+  /// The resource name for this DisplayVideo360AdvertiserLink resource.
+  ///
+  /// Format: properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId}
+  /// Note: linkId is not the Display & Video 360 Advertiser ID
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink({
+    this.adsPersonalizationEnabled,
+    this.advertiserDisplayName,
+    this.advertiserId,
+    this.campaignDataSharingEnabled,
+    this.costDataSharingEnabled,
+    this.name,
+  });
+
+  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.fromJson(
+      core.Map _json)
+      : this(
+          adsPersonalizationEnabled:
+              _json.containsKey('adsPersonalizationEnabled')
+                  ? _json['adsPersonalizationEnabled'] as core.bool
+                  : null,
+          advertiserDisplayName: _json.containsKey('advertiserDisplayName')
+              ? _json['advertiserDisplayName'] as core.String
+              : null,
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          campaignDataSharingEnabled:
+              _json.containsKey('campaignDataSharingEnabled')
+                  ? _json['campaignDataSharingEnabled'] as core.bool
+                  : null,
+          costDataSharingEnabled: _json.containsKey('costDataSharingEnabled')
+              ? _json['costDataSharingEnabled'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adsPersonalizationEnabled != null)
+          'adsPersonalizationEnabled': adsPersonalizationEnabled!,
+        if (advertiserDisplayName != null)
+          'advertiserDisplayName': advertiserDisplayName!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (campaignDataSharingEnabled != null)
+          'campaignDataSharingEnabled': campaignDataSharingEnabled!,
+        if (costDataSharingEnabled != null)
+          'costDataSharingEnabled': costDataSharingEnabled!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A proposal for a link between an GA4 property and a Display & Video 360
+/// advertiser.
+///
+/// A proposal is converted to a DisplayVideo360AdvertiserLink once approved.
+/// Google Analytics admins approve inbound proposals while Display & Video 360
+/// admins approve outbound proposals.
+class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal {
+  /// Enables personalized advertising features with this integration.
+  ///
+  /// If this field is not set on create, it will be defaulted to true.
+  ///
+  /// Immutable.
+  core.bool? adsPersonalizationEnabled;
+
+  /// The display name of the Display & Video Advertiser.
+  ///
+  /// Only populated for proposals that originated from Display & Video 360.
+  ///
+  /// Output only.
+  core.String? advertiserDisplayName;
+
+  /// The Display & Video 360 Advertiser's advertiser ID.
+  ///
+  /// Immutable.
+  core.String? advertiserId;
+
+  /// Enables the import of campaign data from Display & Video 360.
+  ///
+  /// If this field is not set on create, it will be defaulted to true.
+  ///
+  /// Immutable.
+  core.bool? campaignDataSharingEnabled;
+
+  /// Enables the import of cost data from Display & Video 360.
+  ///
+  /// This can only be enabled if campaign_data_import_enabled is enabled. If
+  /// this field is not set on create, it will be defaulted to true.
+  ///
+  /// Immutable.
+  core.bool? costDataSharingEnabled;
+
+  /// The status information for this link proposal.
+  ///
+  /// Output only.
+  GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails?
+      linkProposalStatusDetails;
+
+  /// The resource name for this DisplayVideo360AdvertiserLinkProposal resource.
+  ///
+  /// Format:
+  /// properties/{propertyId}/displayVideo360AdvertiserLinkProposals/{proposalId}
+  /// Note: proposalId is not the Display & Video 360 Advertiser ID
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Input only.
+  ///
+  /// On a proposal being sent to Display & Video 360, this field must be set to
+  /// the email address of an admin on the target advertiser. This is used to
+  /// verify that the Google Analytics admin is aware of at least one admin on
+  /// the Display & Video 360 Advertiser. This does not restrict approval of the
+  /// proposal to a single user. Any admin on the Display & Video 360 Advertiser
+  /// may approve the proposal.
+  core.String? validationEmail;
+
+  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal({
+    this.adsPersonalizationEnabled,
+    this.advertiserDisplayName,
+    this.advertiserId,
+    this.campaignDataSharingEnabled,
+    this.costDataSharingEnabled,
+    this.linkProposalStatusDetails,
+    this.name,
+    this.validationEmail,
+  });
+
+  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal.fromJson(
+      core.Map _json)
+      : this(
+          adsPersonalizationEnabled:
+              _json.containsKey('adsPersonalizationEnabled')
+                  ? _json['adsPersonalizationEnabled'] as core.bool
+                  : null,
+          advertiserDisplayName: _json.containsKey('advertiserDisplayName')
+              ? _json['advertiserDisplayName'] as core.String
+              : null,
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          campaignDataSharingEnabled:
+              _json.containsKey('campaignDataSharingEnabled')
+                  ? _json['campaignDataSharingEnabled'] as core.bool
+                  : null,
+          costDataSharingEnabled: _json.containsKey('costDataSharingEnabled')
+              ? _json['costDataSharingEnabled'] as core.bool
+              : null,
+          linkProposalStatusDetails: _json
+                  .containsKey('linkProposalStatusDetails')
+              ? GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails.fromJson(
+                  _json['linkProposalStatusDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          validationEmail: _json.containsKey('validationEmail')
+              ? _json['validationEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adsPersonalizationEnabled != null)
+          'adsPersonalizationEnabled': adsPersonalizationEnabled!,
+        if (advertiserDisplayName != null)
+          'advertiserDisplayName': advertiserDisplayName!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (campaignDataSharingEnabled != null)
+          'campaignDataSharingEnabled': campaignDataSharingEnabled!,
+        if (costDataSharingEnabled != null)
+          'costDataSharingEnabled': costDataSharingEnabled!,
+        if (linkProposalStatusDetails != null)
+          'linkProposalStatusDetails': linkProposalStatusDetails!.toJson(),
+        if (name != null) 'name': name!,
+        if (validationEmail != null) 'validationEmail': validationEmail!,
+      };
+}
+
 /// Singleton resource under a WebDataStream, configuring measurement of
 /// additional site interactions and content.
 class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
@@ -5861,6 +6698,77 @@ class GoogleAnalyticsAdminV1alphaIosAppDataStream {
       };
 }
 
+/// Status information for a link proposal.
+class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails {
+  /// The source of this proposal.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LINK_PROPOSAL_INITIATING_PRODUCT_UNSPECIFIED" : Unspecified product.
+  /// - "GOOGLE_ANALYTICS" : This proposal was created by a user from Google
+  /// Analytics.
+  /// - "LINKED_PRODUCT" : This proposal was created by a user from a linked
+  /// product (not Google Analytics).
+  core.String? linkProposalInitiatingProduct;
+
+  /// The state of this proposal.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LINK_PROPOSAL_STATE_UNSPECIFIED" : Unspecified state
+  /// - "AWAITING_REVIEW_FROM_GOOGLE_ANALYTICS" : This proposal is awaiting
+  /// review from a Google Analytics user. This proposal will automatically
+  /// expire after some time.
+  /// - "AWAITING_REVIEW_FROM_LINKED_PRODUCT" : This proposal is awaiting review
+  /// from a user of a linked product. This proposal will automatically expire
+  /// after some time.
+  /// - "WITHDRAWN" : This proposal has been withdrawn by an admin on the
+  /// initiating product. This proposal will be automatically deleted after some
+  /// time.
+  /// - "DECLINED" : This proposal has been declined by an admin on the
+  /// receiving product. This proposal will be automatically deleted after some
+  /// time.
+  /// - "EXPIRED" : This proposal expired due to lack of response from an admin
+  /// on the receiving product. This proposal will be automatically deleted
+  /// after some time.
+  /// - "OBSOLETE" : This proposal has become obsolete because a link was
+  /// directly created to the same external product resource that this proposal
+  /// specifies. This proposal will be automatically deleted after some time.
+  core.String? linkProposalState;
+
+  /// The email address of the user that proposed this linkage.
+  ///
+  /// Output only.
+  core.String? requestorEmail;
+
+  GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails({
+    this.linkProposalInitiatingProduct,
+    this.linkProposalState,
+    this.requestorEmail,
+  });
+
+  GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails.fromJson(core.Map _json)
+      : this(
+          linkProposalInitiatingProduct:
+              _json.containsKey('linkProposalInitiatingProduct')
+                  ? _json['linkProposalInitiatingProduct'] as core.String
+                  : null,
+          linkProposalState: _json.containsKey('linkProposalState')
+              ? _json['linkProposalState'] as core.String
+              : null,
+          requestorEmail: _json.containsKey('requestorEmail')
+              ? _json['requestorEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (linkProposalInitiatingProduct != null)
+          'linkProposalInitiatingProduct': linkProposalInitiatingProduct!,
+        if (linkProposalState != null) 'linkProposalState': linkProposalState!,
+        if (requestorEmail != null) 'requestorEmail': requestorEmail!,
+      };
+}
+
 /// Response message for ListAccountSummaries RPC.
 class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
   /// Account summaries of all accounts the caller has access to.
@@ -6085,6 +6993,93 @@ class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
         if (customMetrics != null)
           'customMetrics':
               customMetrics!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListDisplayVideo360AdvertiserLinkProposals RPC.
+class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse {
+  /// List of DisplayVideo360AdvertiserLinkProposals.
+  core.List<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>?
+      displayVideo360AdvertiserLinkProposals;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse({
+    this.displayVideo360AdvertiserLinkProposals,
+    this.nextPageToken,
+  });
+
+  GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse.fromJson(
+      core.Map _json)
+      : this(
+          displayVideo360AdvertiserLinkProposals: _json
+                  .containsKey('displayVideo360AdvertiserLinkProposals')
+              ? (_json['displayVideo360AdvertiserLinkProposals'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>(
+                      (value) =>
+                          GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayVideo360AdvertiserLinkProposals != null)
+          'displayVideo360AdvertiserLinkProposals':
+              displayVideo360AdvertiserLinkProposals!
+                  .map((value) => value.toJson())
+                  .toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListDisplayVideo360AdvertiserLinks RPC.
+class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse {
+  /// List of DisplayVideo360AdvertiserLinks.
+  core.List<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>?
+      displayVideo360AdvertiserLinks;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse({
+    this.displayVideo360AdvertiserLinks,
+    this.nextPageToken,
+  });
+
+  GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse.fromJson(
+      core.Map _json)
+      : this(
+          displayVideo360AdvertiserLinks: _json
+                  .containsKey('displayVideo360AdvertiserLinks')
+              ? (_json['displayVideo360AdvertiserLinks'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>(
+                      (value) =>
+                          GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayVideo360AdvertiserLinks != null)
+          'displayVideo360AdvertiserLinks': displayVideo360AdvertiserLinks!
+              .map((value) => value.toJson())
+              .toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -6491,6 +7486,15 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// Immutable.
   core.String? parent;
 
+  /// The Google Analytics service level that applies to this property.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SERVICE_LEVEL_UNSPECIFIED" : Service level not specified or invalid.
+  /// - "GOOGLE_ANALYTICS_STANDARD" : The standard version of Google Analytics.
+  /// - "GOOGLE_ANALYTICS_360" : The paid, premium version of Google Analytics.
+  core.String? serviceLevel;
+
   /// Reporting Time Zone, used as the day boundary for reports, regardless of
   /// where the data originates.
   ///
@@ -6516,6 +7520,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
     this.industryCategory,
     this.name,
     this.parent,
+    this.serviceLevel,
     this.timeZone,
     this.updateTime,
   });
@@ -6544,6 +7549,9 @@ class GoogleAnalyticsAdminV1alphaProperty {
           parent: _json.containsKey('parent')
               ? _json['parent'] as core.String
               : null,
+          serviceLevel: _json.containsKey('serviceLevel')
+              ? _json['serviceLevel'] as core.String
+              : null,
           timeZone: _json.containsKey('timeZone')
               ? _json['timeZone'] as core.String
               : null,
@@ -6561,6 +7569,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
         if (industryCategory != null) 'industryCategory': industryCategory!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
+        if (serviceLevel != null) 'serviceLevel': serviceLevel!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

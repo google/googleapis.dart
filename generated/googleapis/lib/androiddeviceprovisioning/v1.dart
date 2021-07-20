@@ -1998,6 +1998,14 @@ class Device {
 /// `SECTION_TYPE_ZERO_TOUCH`. To learn more, read \[Claim devices for
 /// customers\](/zero-touch/guides/how-it-works#claim).
 class DeviceClaim {
+  /// The Additional service registered for the device.
+  /// Possible string values are:
+  /// - "ADDITIONAL_SERVICE_UNSPECIFIED" : No additional service.
+  /// - "DEVICE_PROTECTION" : Device protection service, as known as Android
+  /// Enterprise Essentials. To claim a device with the device protection
+  /// service you must enroll with the partnership team.
+  core.String? additionalService;
+
   /// The ID of the Customer that purchased the device.
   core.String? ownerCompanyId;
 
@@ -2024,6 +2032,7 @@ class DeviceClaim {
   core.String? vacationModeStartTime;
 
   DeviceClaim({
+    this.additionalService,
     this.ownerCompanyId,
     this.resellerId,
     this.sectionType,
@@ -2033,6 +2042,9 @@ class DeviceClaim {
 
   DeviceClaim.fromJson(core.Map _json)
       : this(
+          additionalService: _json.containsKey('additionalService')
+              ? _json['additionalService'] as core.String
+              : null,
           ownerCompanyId: _json.containsKey('ownerCompanyId')
               ? _json['ownerCompanyId'] as core.String
               : null,
@@ -2051,6 +2063,7 @@ class DeviceClaim {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalService != null) 'additionalService': additionalService!,
         if (ownerCompanyId != null) 'ownerCompanyId': ownerCompanyId!,
         if (resellerId != null) 'resellerId': resellerId!,
         if (sectionType != null) 'sectionType': sectionType!,

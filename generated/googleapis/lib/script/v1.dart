@@ -60,7 +60,7 @@ class ScriptApi {
   static const adminDirectoryUserScope =
       'https://www.googleapis.com/auth/admin.directory.user';
 
-  /// See, create, and edit all Google Docs documents you have access to
+  /// See, edit, create, and delete all your Google Docs documents
   static const documentsScope = 'https://www.googleapis.com/auth/documents';
 
   /// See, edit, create, and delete all of your Google Drive files
@@ -100,7 +100,7 @@ class ScriptApi {
   static const scriptProjectsReadonlyScope =
       'https://www.googleapis.com/auth/script.projects.readonly';
 
-  /// See, edit, create, and delete your spreadsheets in Google Drive
+  /// See, edit, create, and delete all your Google Sheets spreadsheets
   static const spreadsheetsScope =
       'https://www.googleapis.com/auth/spreadsheets';
 

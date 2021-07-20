@@ -14,11 +14,9 @@
 
 /// Notebooks API - v1
 ///
-/// AI Platform Notebooks API is used to manage notebook resources in Google
-/// Cloud.
+/// Notebooks API is used to manage notebook resources in Google Cloud.
 ///
-/// For more information, see
-/// <https://cloud.google.com/ai-platform/notebooks/docs/>
+/// For more information, see <https://cloud.google.com/notebooks/docs/>
 ///
 /// Create an instance of [AIPlatformNotebooksApi] to access these resources:
 ///
@@ -44,8 +42,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// AI Platform Notebooks API is used to manage notebook resources in Google
-/// Cloud.
+/// Notebooks API is used to manage notebook resources in Google Cloud.
 class AIPlatformNotebooksApi {
   /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
@@ -1852,6 +1849,48 @@ class ProjectsLocationsRuntimesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Report and process a runtime event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reportEvent(
+    ReportRuntimeEventRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':reportEvent';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Resets a Managed Notebook Runtime.
   ///
   /// [request] - The metadata request object.
@@ -2688,6 +2727,36 @@ class Environment {
       };
 }
 
+/// The definition of an Event for a managed / semi-managed notebook instance.
+class Event {
+  /// Event report time.
+  core.String? reportTime;
+
+  /// Event type.
+  /// Possible string values are:
+  /// - "EVENT_TYPE_UNSPECIFIED" : Event is not specified.
+  /// - "IDLE" : The instance / runtime is idle
+  core.String? type;
+
+  Event({
+    this.reportTime,
+    this.type,
+  });
+
+  Event.fromJson(core.Map _json)
+      : this(
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// The definition of a single executed notebook.
 class Execution {
   /// Time the Execution was instantiated.
@@ -2707,6 +2776,11 @@ class Execution {
 
   /// execute metadata including name, hardware spec, region, labels, etc.
   ExecutionTemplate? executionTemplate;
+
+  /// The URI of the external job used to execute the notebook.
+  ///
+  /// Output only.
+  core.String? jobUri;
 
   /// The resource name of the execute.
   ///
@@ -2737,6 +2811,7 @@ class Execution {
   /// describe the reason for the cancellation.
   /// - "EXPIRED" : The jobs has become expired (added for uCAIP jobs)
   /// https://cloud.google.com/vertex-ai/docs/reference/rest/v1/JobState
+  /// - "INITIALIZING" : The Execution is being created.
   core.String? state;
 
   /// Time the Execution was last updated.
@@ -2749,6 +2824,7 @@ class Execution {
     this.description,
     this.displayName,
     this.executionTemplate,
+    this.jobUri,
     this.name,
     this.outputNotebookFile,
     this.state,
@@ -2770,6 +2846,9 @@ class Execution {
               ? ExecutionTemplate.fromJson(_json['executionTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          jobUri: _json.containsKey('jobUri')
+              ? _json['jobUri'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           outputNotebookFile: _json.containsKey('outputNotebookFile')
               ? _json['outputNotebookFile'] as core.String
@@ -2787,6 +2866,7 @@ class Execution {
         if (displayName != null) 'displayName': displayName!,
         if (executionTemplate != null)
           'executionTemplate': executionTemplate!.toJson(),
+        if (jobUri != null) 'jobUri': jobUri!,
         if (name != null) 'name': name!,
         if (outputNotebookFile != null)
           'outputNotebookFile': outputNotebookFile!,
@@ -2859,6 +2939,8 @@ class ExecutionTemplate {
   core.String? paramsYamlFile;
 
   /// Scale tier of the hardware used for notebook execution.
+  ///
+  /// DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
   ///
   /// Required.
   /// Possible string values are:
@@ -3269,6 +3351,15 @@ class Instance {
   /// Output only.
   core.String? proxyUri;
 
+  /// The optional reservation affinity.
+  ///
+  /// Setting this field will apply the specified
+  /// [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+  /// to this notebook instance.
+  ///
+  /// Optional.
+  ReservationAffinity? reservationAffinity;
+
   /// The service account on this instance, giving access to other Google Cloud
   /// services.
   ///
@@ -3363,6 +3454,7 @@ class Instance {
     this.noRemoveDataDisk,
     this.postStartupScript,
     this.proxyUri,
+    this.reservationAffinity,
     this.serviceAccount,
     this.serviceAccountScopes,
     this.shieldedInstanceConfig,
@@ -3463,6 +3555,10 @@ class Instance {
           proxyUri: _json.containsKey('proxyUri')
               ? _json['proxyUri'] as core.String
               : null,
+          reservationAffinity: _json.containsKey('reservationAffinity')
+              ? ReservationAffinity.fromJson(_json['reservationAffinity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           serviceAccount: _json.containsKey('serviceAccount')
               ? _json['serviceAccount'] as core.String
               : null,
@@ -3529,6 +3625,8 @@ class Instance {
         if (noRemoveDataDisk != null) 'noRemoveDataDisk': noRemoveDataDisk!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
         if (proxyUri != null) 'proxyUri': proxyUri!,
+        if (reservationAffinity != null)
+          'reservationAffinity': reservationAffinity!.toJson(),
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceAccountScopes != null)
           'serviceAccountScopes': serviceAccountScopes!,
@@ -4595,6 +4693,90 @@ class ReportInstanceInfoRequest {
       };
 }
 
+/// Request for reporting a Managed Notebook Event.
+class ReportRuntimeEventRequest {
+  /// The Event to be reported.
+  ///
+  /// Required.
+  Event? event;
+
+  /// The VM hardware token for authenticating the VM.
+  ///
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+  ///
+  /// Required.
+  core.String? vmId;
+
+  ReportRuntimeEventRequest({
+    this.event,
+    this.vmId,
+  });
+
+  ReportRuntimeEventRequest.fromJson(core.Map _json)
+      : this(
+          event: _json.containsKey('event')
+              ? Event.fromJson(
+                  _json['event'] as core.Map<core.String, core.dynamic>)
+              : null,
+          vmId: _json.containsKey('vmId') ? _json['vmId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (event != null) 'event': event!.toJson(),
+        if (vmId != null) 'vmId': vmId!,
+      };
+}
+
+/// Reservation Affinity for consuming Zonal reservation.
+class ReservationAffinity {
+  /// Type of reservation to consume
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default type.
+  /// - "NO_RESERVATION" : Do not consume from any allocated capacity.
+  /// - "ANY_RESERVATION" : Consume any reservation available.
+  /// - "SPECIFIC_RESERVATION" : Must consume from a specific reservation. Must
+  /// specify key value fields for specifying the reservations.
+  core.String? consumeReservationType;
+
+  /// Corresponds to the label key of reservation resource.
+  ///
+  /// Optional.
+  core.String? key;
+
+  /// Corresponds to the label values of reservation resource.
+  ///
+  /// Optional.
+  core.List<core.String>? values;
+
+  ReservationAffinity({
+    this.consumeReservationType,
+    this.key,
+    this.values,
+  });
+
+  ReservationAffinity.fromJson(core.Map _json)
+      : this(
+          consumeReservationType: _json.containsKey('consumeReservationType')
+              ? _json['consumeReservationType'] as core.String
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          values: _json.containsKey('values')
+              ? (_json['values'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumeReservationType != null)
+          'consumeReservationType': consumeReservationType!,
+        if (key != null) 'key': key!,
+        if (values != null) 'values': values!,
+      };
+}
+
 /// Request for reseting a notebook instance
 class ResetInstanceRequest {
   ResetInstanceRequest();
@@ -4983,12 +5165,12 @@ class RuntimeSoftwareConfig {
 
   /// Runtime will automatically shutdown after idle_shutdown_time.
   ///
-  /// Default: False
+  /// Default: True
   core.bool? idleShutdown;
 
   /// Time in minutes to wait before shuting down runtime.
   ///
-  /// Default: 90 minutes
+  /// Default: 180 minutes
   core.int? idleShutdownTimeout;
 
   /// Install Nvidia Driver automatically.
@@ -5107,6 +5289,8 @@ class Schedule {
   /// - "UPDATE_FAILED" : The job state resulting from a failed
   /// CloudScheduler.UpdateJob operation. To recover a job from this state,
   /// retry CloudScheduler.UpdateJob until a successful response is received.
+  /// - "INITIALIZING" : The schedule resource is being created.
+  /// - "DELETING" : The schedule resource is being deleted.
   core.String? state;
 
   /// Timezone on which the cron_schedule.

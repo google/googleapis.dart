@@ -6716,7 +6716,7 @@ class GlobalForwardingRulesResource {
 
   /// Sets the labels on the specified resource.
   ///
-  /// To learn more about labels, read the Labeling Resources documentation.
+  /// To learn more about labels, read the Labeling resources documentation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -14174,6 +14174,55 @@ class InstancesResource {
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sends diagnostic interrupt to the instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [instance] - Name of the instance scoping this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> sendDiagnosticInterrupt(
+    core.String project,
+    core.String zone,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/sendDiagnosticInterrupt';
+
+    await _requester.request(
+      _url,
+      'POST',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
   }
 
   /// Sets deletion protection on the instance.
@@ -42374,7 +42423,11 @@ class Address {
   /// reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from
   /// a private IP range that are reserved for a VLAN attachment in an
   /// *IPsec-encrypted Cloud Interconnect* configuration. These addresses are
-  /// regional resources. Not currently available publicly.
+  /// regional resources. Not currently available publicly. -
+  /// `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to
+  /// multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a
+  /// private network address that is used to configure Private Service Connect.
+  /// Only global internal addresses can use this purpose.
   /// Possible string values are:
   /// - "DNS_RESOLVER" : DNS resolver address in the subnetwork.
   /// - "GCE_ENDPOINT" : VM internal/alias IP, Internal LB service IP, etc.
@@ -52032,7 +52085,7 @@ class ExternalVpnGateway {
   /// Output only.
   core.String? id;
 
-  /// List of interfaces for this external VPN gateway.
+  /// A list of interfaces for this external VPN gateway.
   ///
   /// If your peer-side gateway is an on-premises gateway and non-AWS cloud
   /// providers' gateway, at most two interfaces can be provided for an external
@@ -53136,12 +53189,13 @@ class FirewallPolicy {
   /// Provide this property when you create the resource.
   core.String? description;
 
-  /// Depreacted, please use short name instead.
+  /// Deprecated, please use short name instead.
   ///
   /// User-provided name of the Organization firewall plicy. The name should be
-  /// unique in the organization in which the firewall policy is created. The
-  /// name must be 1-63 characters long, and comply with RFC1035. Specifically,
-  /// the name must be 1-63 characters long and match the regular expression
+  /// unique in the organization in which the firewall policy is created. This
+  /// name must be set on creation and cannot be changed. The name must be 1-63
+  /// characters long, and comply with RFC1035. Specifically, the name must be
+  /// 1-63 characters long and match the regular expression
   /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
   /// lowercase letter, and all following characters must be a dash, lowercase
   /// letter, or digit, except the last character, which cannot be a dash.
@@ -53218,12 +53272,12 @@ class FirewallPolicy {
   /// User-provided name of the Organization firewall plicy.
   ///
   /// The name should be unique in the organization in which the firewall policy
-  /// is created. The name must be 1-63 characters long, and comply with
-  /// RFC1035. Specifically, the name must be 1-63 characters long and match the
-  /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
-  /// character must be a lowercase letter, and all following characters must be
-  /// a dash, lowercase letter, or digit, except the last character, which
-  /// cannot be a dash.
+  /// is created. This name must be set on creation and cannot be changed. The
+  /// name must be 1-63 characters long, and comply with RFC1035. Specifically,
+  /// the name must be 1-63 characters long and match the regular expression
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
+  /// lowercase letter, and all following characters must be a dash, lowercase
+  /// letter, or digit, except the last character, which cannot be a dash.
   core.String? shortName;
 
   FirewallPolicy({
@@ -53851,12 +53905,14 @@ class FixedOrPercent {
 
 /// Represents a Forwarding Rule resource.
 ///
-/// Forwarding rule resources in GCP can be either regional or global in scope:
-/// * \[Global\](/compute/docs/reference/rest/v1/globalForwardingRules) *
-/// \[Regional\](/compute/docs/reference/rest/v1/forwardingRules) A forwarding
-/// rule and its corresponding IP address represent the frontend configuration
-/// of a Google Cloud Platform load balancer. Forwarding rules can also
-/// reference target instances and Cloud VPN Classic gateways
+/// Forwarding rule resources in Google Cloud can be either regional or global
+/// in scope: *
+/// [Global](https://cloud.google.com/compute/docs/reference/rest/v1/globalForwardingRules)
+/// *
+/// [Regional](https://cloud.google.com/compute/docs/reference/rest/v1/forwardingRules)
+/// A forwarding rule and its corresponding IP address represent the frontend
+/// configuration of a Google Cloud Platform load balancer. Forwarding rules can
+/// also reference target instances and Cloud VPN Classic gateways
 /// (targetVpnGateway). For more information, read Forwarding rule concepts and
 /// Using protocol forwarding.
 class ForwardingRule {
@@ -53873,8 +53929,8 @@ class ForwardingRule {
   /// regions/region/addresses/address-name - global/addresses/address-name -
   /// address-name The loadBalancingScheme and the forwarding rule's target
   /// determine the type of IP address that you can use. For detailed
-  /// information, refer to \[IP address
-  /// specifications\](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+  /// information, see
+  /// [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
   /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
   /// validateForProxyless field set to true. For Private Service Connect
   /// forwarding rules that forward traffic to Google APIs, IP address must be
@@ -53885,14 +53941,8 @@ class ForwardingRule {
   ///
   /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP
   /// and L3_DEFAULT. The valid IP protocols are different for different load
-  /// balancing products: - Internal TCP/UDP Load Balancing: The load balancing
-  /// scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic
-  /// Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP
-  /// is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is
-  /// INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP
-  /// Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP
-  /// is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL,
-  /// and one of TCP, UDP or L3_DEFAULT is valid.
+  /// balancing products as described in
+  /// [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
   /// Possible string values are:
   /// - "AH"
   /// - "ESP"
@@ -54010,13 +54060,8 @@ class ForwardingRule {
 
   /// Specifies the forwarding rule type.
   ///
-  /// - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding
-  /// to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and
-  /// Network Load Balancing - INTERNAL is used for: - Protocol forwarding to
-  /// VMs from an internal IP address - Internal TCP/UDP Load Balancing -
-  /// INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing -
-  /// INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information
-  /// about forwarding rules, refer to Forwarding rule concepts.
+  /// For more information about forwarding rules, refer to Forwarding rule
+  /// concepts.
   /// Possible string values are:
   /// - "EXTERNAL"
   /// - "INTERNAL"
@@ -54025,13 +54070,13 @@ class ForwardingRule {
   /// - "INVALID"
   core.String? loadBalancingScheme;
 
-  /// Opaque filter criteria used by Loadbalancer to restrict routing
+  /// Opaque filter criteria used by load balancer to restrict routing
   /// configuration to a limited set of xDS compliant clients.
   ///
-  /// In their xDS requests to Loadbalancer, xDS clients present node metadata.
+  /// In their xDS requests to load balancer, xDS clients present node metadata.
   /// When there is a match, the relevant configuration is made available to
   /// those proxies. Otherwise, all the resources (e.g. TargetHttpProxy, UrlMap)
-  /// referenced by the ForwardingRule will not be visible to those proxies. For
+  /// referenced by the ForwardingRule are not visible to those proxies. For
   /// each metadataFilter in this list, if its filterMatchCriteria is set to
   /// MATCH_ANY, at least one of the filterLabels must match the corresponding
   /// label provided in the metadata. If its filterMatchCriteria is set to
@@ -54087,32 +54132,38 @@ class ForwardingRule {
   /// target or backend_service. You can only use one of ports, port_range, or
   /// allPorts. The three are mutually exclusive. Forwarding rules with the same
   /// \[IPAddress, IPProtocol\] pair must have disjoint ports. Some types of
-  /// forwarding target have constraints on the acceptable ports: -
-  /// TargetHttpProxy: 80, 8080 - TargetHttpsProxy: 443 - TargetGrpcProxy: no
-  /// constraints - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700,
-  /// 993, 995, 1688, 1883, 5222 - TargetSslProxy: 25, 43, 110, 143, 195, 443,
-  /// 465, 587, 700, 993, 995, 1688, 1883, 5222 - TargetVpnGateway: 500, 4500
+  /// forwarding target have constraints on the acceptable ports. For more
+  /// information, see
+  /// [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications).
   /// @pattern: \\d+(?:-\\d+)?
   core.String? portRange;
 
   /// The ports field is only supported when the forwarding rule references a
   /// backend_service directly.
   ///
-  /// Supported load balancing products are Internal TCP/UDP Load Balancing and
-  /// Network Load Balancing. Only packets addressed to the specified list of
-  /// ports are forwarded to backends. You can only use one of ports and
-  /// port_range, or allPorts. The three are mutually exclusive. You can specify
-  /// a list of up to five ports, which can be non-contiguous. Forwarding rules
-  /// with the same \[IPAddress, IPProtocol\] pair must have disjoint ports. For
-  /// more information, see \[Port
-  /// specifications\](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
-  /// @pattern: \\d+(?:-\\d+)?
+  /// Only packets addressed to the \[specified list of
+  /// ports\]((https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications))
+  /// are forwarded to backends. You can only use one of ports and port_range,
+  /// or allPorts. The three are mutually exclusive. You can specify a list of
+  /// up to five ports, which can be non-contiguous. Forwarding rules with the
+  /// same \[IPAddress, IPProtocol\] pair must have disjoint ports. @pattern:
+  /// \\d+(?:-\\d+)?
   core.List<core.String>? ports;
 
   /// The PSC connection id of the PSC Forwarding Rule.
   ///
   /// Output only.
   core.String? pscConnectionId;
+
+  ///
+  /// Possible string values are:
+  /// - "ACCEPTED" : The connection has been accepted by the producer.
+  /// - "CLOSED" : The connection has been closed by the producer and will not
+  /// serve traffic going forward.
+  /// - "PENDING" : The connection is pending acceptance by the producer.
+  /// - "REJECTED" : The connection has been rejected by the producer.
+  /// - "STATUS_UNSPECIFIED"
+  core.String? pscConnectionStatus;
 
   /// URL of the region where the regional forwarding rule resides.
   ///
@@ -54131,8 +54182,7 @@ class ForwardingRule {
   /// Service Directory resources to register this forwarding rule with.
   ///
   /// Currently, only supports a single Service Directory resource. It is only
-  /// supported for Internal TCP/UDP Load Balancing and Internal HTTP(S) Load
-  /// Balancing.
+  /// supported for internal load balancing.
   core.List<ForwardingRuleServiceDirectoryRegistration>?
       serviceDirectoryRegistrations;
 
@@ -54154,12 +54204,13 @@ class ForwardingRule {
   /// Output only.
   core.String? serviceName;
 
-  /// This field is only used for internal load balancing.
+  /// This field identifies the subnetwork that the load balanced IP should
+  /// belong to for this Forwarding Rule, used in internal load balancing and
+  /// network load balancing with IPv6.
   ///
-  /// For internal load balancing, this field identifies the subnetwork that the
-  /// load balanced IP should belong to for this Forwarding Rule. If the network
-  /// specified is in auto subnet mode, this field is optional. However, if the
-  /// network is in custom subnet mode, a subnetwork must be specified.
+  /// If the network specified is in auto subnet mode, this field is optional.
+  /// However, a subnetwork must be specified if the network is in custom subnet
+  /// mode or when creating external forwarding rule with IPv6.
   core.String? subnetwork;
   core.String? target;
 
@@ -54186,6 +54237,7 @@ class ForwardingRule {
     this.portRange,
     this.ports,
     this.pscConnectionId,
+    this.pscConnectionStatus,
     this.region,
     this.selfLink,
     this.serviceDirectoryRegistrations,
@@ -54267,6 +54319,9 @@ class ForwardingRule {
           pscConnectionId: _json.containsKey('pscConnectionId')
               ? _json['pscConnectionId'] as core.String
               : null,
+          pscConnectionStatus: _json.containsKey('pscConnectionStatus')
+              ? _json['pscConnectionStatus'] as core.String
+              : null,
           region: _json.containsKey('region')
               ? _json['region'] as core.String
               : null,
@@ -54322,6 +54377,8 @@ class ForwardingRule {
         if (portRange != null) 'portRange': portRange!,
         if (ports != null) 'ports': ports!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+        if (pscConnectionStatus != null)
+          'pscConnectionStatus': pscConnectionStatus!,
         if (region != null) 'region': region!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (serviceDirectoryRegistrations != null)
@@ -56254,7 +56311,7 @@ class HealthCheckService {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// List of URLs to the HealthCheck resources.
+  /// A list of URLs to the HealthCheck resources.
   ///
   /// Must have at least one HealthCheck, and not more than 10. HealthCheck
   /// resources must have portSpecification=USE_SERVING_PORT or
@@ -56308,13 +56365,13 @@ class HealthCheckService {
   /// dash.
   core.String? name;
 
-  /// List of URLs to the NetworkEndpointGroup resources.
+  /// A list of URLs to the NetworkEndpointGroup resources.
   ///
   /// Must not have more than 100. For regional HealthCheckService, NEGs must be
   /// in zones in the region of the HealthCheckService.
   core.List<core.String>? networkEndpointGroups;
 
-  /// List of URLs to the NotificationEndpoint resources.
+  /// A list of URLs to the NotificationEndpoint resources.
   ///
   /// Must not have more than 10. A list of endpoints for receiving
   /// notifications of change in health status. For regional HealthCheckService,
@@ -65804,7 +65861,8 @@ class InterconnectAttachment {
   /// will traverse through.
   core.String? interconnect;
 
-  /// List of URL of addresses that have been reserved for the VLAN attachment.
+  /// A list of URLs of addresses that have been reserved for the VLAN
+  /// attachment.
   ///
   /// Used only for the VLAN attachment that has the encryption option as IPSEC.
   /// The addresses must be regional internal IP address ranges. When creating
@@ -70523,7 +70581,7 @@ class NetworkEndpointGroup {
   /// Type of network endpoints in this network endpoint group.
   ///
   /// Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
-  /// INTERNET_IP_PORT, or SERVERLESS.
+  /// INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
   /// Possible string values are:
   /// - "GCE_VM_IP" : The network endpoint is represented by an IP address.
   /// - "GCE_VM_IP_PORT" : The network endpoint is represented by IP address and
@@ -71853,6 +71911,13 @@ class NetworkInterface {
   /// - "VIRTIO_NET" : VIRTIO
   core.String? nicType;
 
+  /// The networking queue count that's specified by users for the network
+  /// interface.
+  ///
+  /// Both Rx and Tx queues will be set to this number. It'll be empty if not
+  /// specified by the users.
+  core.int? queueCount;
+
   /// The stack type for this network interface to identify whether the IPv6
   /// feature is enabled or not.
   ///
@@ -71888,6 +71953,7 @@ class NetworkInterface {
     this.network,
     this.networkIP,
     this.nicType,
+    this.queueCount,
     this.stackType,
     this.subnetwork,
   });
@@ -71932,6 +71998,9 @@ class NetworkInterface {
           nicType: _json.containsKey('nicType')
               ? _json['nicType'] as core.String
               : null,
+          queueCount: _json.containsKey('queueCount')
+              ? _json['queueCount'] as core.int
+              : null,
           stackType: _json.containsKey('stackType')
               ? _json['stackType'] as core.String
               : null,
@@ -71958,6 +72027,7 @@ class NetworkInterface {
         if (network != null) 'network': network!,
         if (networkIP != null) 'networkIP': networkIP!,
         if (nicType != null) 'nicType': nicType!,
+        if (queueCount != null) 'queueCount': queueCount!,
         if (stackType != null) 'stackType': stackType!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
       };
@@ -80428,6 +80498,7 @@ class Quota {
   /// - "PREEMPTIBLE_NVIDIA_T4_VWS_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_V100_GPUS"
   /// - "PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK"
+  /// - "PSC_INTERNAL_LB_FORWARDING_RULES"
   /// - "PUBLIC_ADVERTISED_PREFIXES"
   /// - "PUBLIC_DELEGATED_PREFIXES"
   /// - "REGIONAL_AUTOSCALERS"
@@ -80441,6 +80512,7 @@ class Quota {
   /// - "SECURITY_POLICY_CEVAL_RULES"
   /// - "SECURITY_POLICY_RULES"
   /// - "SECURITY_POLICY_RULES_PER_REGION"
+  /// - "SERVICE_ATTACHMENTS"
   /// - "SNAPSHOTS" : The total number of snapshots allowed for a single
   /// project.
   /// - "SSD_TOTAL_GB"

@@ -6948,6 +6948,49 @@ class QueryInterpretation {
       };
 }
 
+/// Default options to interpret user query.
+class QueryInterpretationConfig {
+  /// Set this flag to disable supplemental results retrieval, setting a flag
+  /// here will not retrieve supplemental results for queries associated with a
+  /// given search application.
+  ///
+  /// If this flag is set to True, it will take precedence over the option set
+  /// at Query level. For the default value of False, query level flag will set
+  /// the correct interpretation for supplemental results.
+  core.bool? forceDisableSupplementalResults;
+
+  /// Enable this flag to turn off all internal optimizations like natural
+  /// language (NL) interpretation of queries, supplemental results retrieval,
+  /// and usage of synonyms including custom ones.
+  ///
+  /// If this flag is set to True, it will take precedence over the option set
+  /// at Query level. For the default value of False, query level flag will set
+  /// the correct interpretation for verbatim mode.
+  core.bool? forceVerbatimMode;
+
+  QueryInterpretationConfig({
+    this.forceDisableSupplementalResults,
+    this.forceVerbatimMode,
+  });
+
+  QueryInterpretationConfig.fromJson(core.Map _json)
+      : this(
+          forceDisableSupplementalResults:
+              _json.containsKey('forceDisableSupplementalResults')
+                  ? _json['forceDisableSupplementalResults'] as core.bool
+                  : null,
+          forceVerbatimMode: _json.containsKey('forceVerbatimMode')
+              ? _json['forceVerbatimMode'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (forceDisableSupplementalResults != null)
+          'forceDisableSupplementalResults': forceDisableSupplementalResults!,
+        if (forceVerbatimMode != null) 'forceVerbatimMode': forceVerbatimMode!,
+      };
+}
+
 /// Options to interpret user query.
 class QueryInterpretationOptions {
   /// Flag to disable natural language (NL) interpretation of queries.
@@ -6955,6 +6998,12 @@ class QueryInterpretationOptions {
   /// Default is false, Set to true to disable natural language interpretation.
   /// NL interpretation only applies to predefined datasources.
   core.bool? disableNlInterpretation;
+
+  /// Use this flag to disable supplemental results for a query.
+  ///
+  /// Supplemental results setting chosen at SearchApplication level will take
+  /// precedence if set to True.
+  core.bool? disableSupplementalResults;
 
   /// Enable this flag to turn off all internal optimizations like natural
   /// language (NL) interpretation of queries, supplemental result retrieval,
@@ -6965,6 +7014,7 @@ class QueryInterpretationOptions {
 
   QueryInterpretationOptions({
     this.disableNlInterpretation,
+    this.disableSupplementalResults,
     this.enableVerbatimMode,
   });
 
@@ -6973,6 +7023,10 @@ class QueryInterpretationOptions {
           disableNlInterpretation: _json.containsKey('disableNlInterpretation')
               ? _json['disableNlInterpretation'] as core.bool
               : null,
+          disableSupplementalResults:
+              _json.containsKey('disableSupplementalResults')
+                  ? _json['disableSupplementalResults'] as core.bool
+                  : null,
           enableVerbatimMode: _json.containsKey('enableVerbatimMode')
               ? _json['enableVerbatimMode'] as core.bool
               : null,
@@ -6981,6 +7035,8 @@ class QueryInterpretationOptions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableNlInterpretation != null)
           'disableNlInterpretation': disableNlInterpretation!,
+        if (disableSupplementalResults != null)
+          'disableSupplementalResults': disableSupplementalResults!,
         if (enableVerbatimMode != null)
           'enableVerbatimMode': enableVerbatimMode!,
       };
@@ -7709,6 +7765,9 @@ class SearchApplication {
   /// Output only.
   core.List<core.String>? operationIds;
 
+  /// The default options for query interpretation
+  QueryInterpretationConfig? queryInterpretationConfig;
+
   /// Configuration for ranking results.
   ScoringConfig? scoringConfig;
 
@@ -7723,6 +7782,7 @@ class SearchApplication {
     this.enableAuditLog,
     this.name,
     this.operationIds,
+    this.queryInterpretationConfig,
     this.scoringConfig,
     this.sourceConfig,
   });
@@ -7758,6 +7818,12 @@ class SearchApplication {
                   .map<core.String>((value) => value as core.String)
                   .toList()
               : null,
+          queryInterpretationConfig:
+              _json.containsKey('queryInterpretationConfig')
+                  ? QueryInterpretationConfig.fromJson(
+                      _json['queryInterpretationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           scoringConfig: _json.containsKey('scoringConfig')
               ? ScoringConfig.fromJson(
                   _json['scoringConfig'] as core.Map<core.String, core.dynamic>)
@@ -7783,6 +7849,8 @@ class SearchApplication {
         if (enableAuditLog != null) 'enableAuditLog': enableAuditLog!,
         if (name != null) 'name': name!,
         if (operationIds != null) 'operationIds': operationIds!,
+        if (queryInterpretationConfig != null)
+          'queryInterpretationConfig': queryInterpretationConfig!.toJson(),
         if (scoringConfig != null) 'scoringConfig': scoringConfig!.toJson(),
         if (sourceConfig != null)
           'sourceConfig': sourceConfig!.map((value) => value.toJson()).toList(),

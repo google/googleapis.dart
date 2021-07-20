@@ -997,7 +997,7 @@ class CallFunctionResponse {
 /// Describes a Cloud Function that contains user computation executed in
 /// response to an event.
 ///
-/// It encapsulate function and triggers configurations.
+/// It encapsulate function and triggers configurations. Next tag: 35
 class CloudFunction {
   /// The amount of memory in MB available for a function.
   ///
@@ -1100,6 +1100,12 @@ class CloudFunction {
   /// command reference\](/sdk/gcloud/reference/functions/deploy#--runtime).
   core.String? runtime;
 
+  /// Secret environment variables configuration.
+  core.List<SecretEnvVar>? secretEnvironmentVariables;
+
+  /// Secret volumes configuration.
+  core.List<SecretVolume>? secretVolumes;
+
   /// The email of the function's service account.
   ///
   /// If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
@@ -1191,6 +1197,8 @@ class CloudFunction {
     this.name,
     this.network,
     this.runtime,
+    this.secretEnvironmentVariables,
+    this.secretVolumes,
     this.serviceAccountEmail,
     this.sourceArchiveUrl,
     this.sourceRepository,
@@ -1271,6 +1279,19 @@ class CloudFunction {
           runtime: _json.containsKey('runtime')
               ? _json['runtime'] as core.String
               : null,
+          secretEnvironmentVariables:
+              _json.containsKey('secretEnvironmentVariables')
+                  ? (_json['secretEnvironmentVariables'] as core.List)
+                      .map<SecretEnvVar>((value) => SecretEnvVar.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          secretVolumes: _json.containsKey('secretVolumes')
+              ? (_json['secretVolumes'] as core.List)
+                  .map<SecretVolume>((value) => SecretVolume.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           serviceAccountEmail: _json.containsKey('serviceAccountEmail')
               ? _json['serviceAccountEmail'] as core.String
               : null,
@@ -1326,6 +1347,13 @@ class CloudFunction {
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (runtime != null) 'runtime': runtime!,
+        if (secretEnvironmentVariables != null)
+          'secretEnvironmentVariables': secretEnvironmentVariables!
+              .map((value) => value.toJson())
+              .toList(),
+        if (secretVolumes != null)
+          'secretVolumes':
+              secretVolumes!.map((value) => value.toJson()).toList(),
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
         if (sourceArchiveUrl != null) 'sourceArchiveUrl': sourceArchiveUrl!,
@@ -2136,6 +2164,165 @@ class Retry {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Configuration for a secret environment variable.
+///
+/// It has the information necessary to fetch the secret value from secret
+/// manager and expose it as an environment variable. Secret value is not a part
+/// of the configuration. Secret values are only fetched when a new clone
+/// starts.
+class SecretEnvVar {
+  /// Name of the environment variable.
+  core.String? key;
+
+  /// Project identifier (preferrably project number but can also be the project
+  /// ID) of the project that contains the secret.
+  ///
+  /// If not set, it will be populated with the function's project assuming that
+  /// the secret exists in the same project as of the function.
+  core.String? projectId;
+
+  /// Name of the secret in secret manager (not the full resource name).
+  core.String? secret;
+
+  /// Version of the secret (version number or the string 'latest').
+  ///
+  /// It is recommended to use a numeric version for secret environment
+  /// variables as any updates to the secret value is not reflected until new
+  /// clones start.
+  core.String? version;
+
+  SecretEnvVar({
+    this.key,
+    this.projectId,
+    this.secret,
+    this.version,
+  });
+
+  SecretEnvVar.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          secret: _json.containsKey('secret')
+              ? _json['secret'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (projectId != null) 'projectId': projectId!,
+        if (secret != null) 'secret': secret!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for a single version.
+class SecretVersion {
+  /// Relative path of the file under the mount path where the secret value for
+  /// this version will be fetched and made available.
+  ///
+  /// For example, setting the mount_path as '/etc/secrets' and path as
+  /// `/secret_foo` would mount the secret value file at
+  /// `/etc/secrets/secret_foo`.
+  core.String? path;
+
+  /// Version of the secret (version number or the string 'latest').
+  ///
+  /// It is preferrable to use `latest` version with secret volumes as secret
+  /// value changes are reflected immediately.
+  core.String? version;
+
+  SecretVersion({
+    this.path,
+    this.version,
+  });
+
+  SecretVersion.fromJson(core.Map _json)
+      : this(
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for a secret volume.
+///
+/// It has the information necessary to fetch the secret value from secret
+/// manager and make it available as files mounted at the requested paths within
+/// the application container. Secret value is not a part of the configuration.
+/// Every filesystem read operation performs a lookup in secret manager to
+/// retrieve the secret value.
+class SecretVolume {
+  /// The path within the container to mount the secret volume.
+  ///
+  /// For example, setting the mount_path as `/etc/secrets` would mount the
+  /// secret value files under the `/etc/secrets` directory. This directory will
+  /// also be completely shadowed and unavailable to mount any other secrets.
+  /// Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql,
+  /// /dev/log, /pod, /proc, /var/log
+  core.String? mountPath;
+
+  /// Project identifier (preferrably project number but can also be the project
+  /// ID) of the project that contains the secret.
+  ///
+  /// If not set, it will be populated with the function's project assuming that
+  /// the secret exists in the same project as of the function.
+  core.String? projectId;
+
+  /// Name of the secret in secret manager (not the full resource name).
+  core.String? secret;
+
+  /// List of secret versions to mount for this secret.
+  ///
+  /// If empty, the `latest` version of the secret will be made available in a
+  /// file named after the secret under the mount point.
+  core.List<SecretVersion>? versions;
+
+  SecretVolume({
+    this.mountPath,
+    this.projectId,
+    this.secret,
+    this.versions,
+  });
+
+  SecretVolume.fromJson(core.Map _json)
+      : this(
+          mountPath: _json.containsKey('mountPath')
+              ? _json['mountPath'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          secret: _json.containsKey('secret')
+              ? _json['secret'] as core.String
+              : null,
+          versions: _json.containsKey('versions')
+              ? (_json['versions'] as core.List)
+                  .map<SecretVersion>((value) => SecretVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mountPath != null) 'mountPath': mountPath!,
+        if (projectId != null) 'projectId': projectId!,
+        if (secret != null) 'secret': secret!,
+        if (versions != null)
+          'versions': versions!.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for `SetIamPolicy` method.

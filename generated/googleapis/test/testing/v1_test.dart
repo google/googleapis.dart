@@ -479,6 +479,7 @@ api.AndroidRoboTest buildAndroidRoboTest() {
     o.maxDepth = 42;
     o.maxSteps = 42;
     o.roboDirectives = buildUnnamed172();
+    o.roboMode = 'foo';
     o.roboScript = buildFileReference();
     o.startingIntents = buildUnnamed173();
   }
@@ -508,6 +509,10 @@ void checkAndroidRoboTest(api.AndroidRoboTest o) {
       unittest.equals(42),
     );
     checkUnnamed172(o.roboDirectives!);
+    unittest.expect(
+      o.roboMode!,
+      unittest.equals('foo'),
+    );
     checkFileReference(o.roboScript!);
     checkUnnamed173(o.startingIntents!);
   }

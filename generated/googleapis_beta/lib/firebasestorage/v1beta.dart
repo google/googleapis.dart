@@ -311,6 +311,126 @@ class Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Metadata for MigrateLocationDestructively LRO.
+class GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata {
+  /// The time the LRO was created.
+  core.String? createTime;
+
+  /// The time the LRO was last updated.
+  core.String? lastUpdateTime;
+
+  /// The current state of the migration.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state. Should not be used.
+  /// - "PENDING" : The MigrateLocationDestructively request has passed
+  /// precondition checks and the bucket migration will begin soon.
+  /// - "CREATING_TEMP_BUCKET" : Generating a unique bucket name, storing the
+  /// source -> temp mapping in Spanner, and actually creating the temporary
+  /// bucket via Bigstore.
+  /// - "TRANSFERRING_TO_TEMP" : The first STS transfer to move all objects from
+  /// the source bucket to the temp bucket is underway.
+  /// - "DELETING_SOURCE_BUCKET" : The source bucket is being emptied and
+  /// deleted.
+  /// - "CREATING_DESTINATION_BUCKET" : The source bucket is being recreated in
+  /// the new location.
+  /// - "TRANSFERRING_TO_DESTINATION" : The second STS transfer to move all
+  /// objects from the temp bucket to the final bucket is underway.
+  /// - "DELETING_TEMP_BUCKET" : The temp bucket is being emptied and deleted.
+  /// - "SUCCEEDED" : All stages of the migration have completed and the
+  /// operation has been marked done and updated with a response.
+  /// - "FAILED" : The migration failed at some stage and it is not possible to
+  /// continue retrying that stage. Manual recovery may be needed.
+  /// - "ROLLING_BACK" : The migration has encountered a permanent failure and
+  /// is now being rolled back so that the source bucket is restored to its
+  /// original state.
+  core.String? state;
+
+  GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata({
+    this.createTime,
+    this.lastUpdateTime,
+    this.state,
+  });
+
+  GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata.fromJson(
+      core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          lastUpdateTime: _json.containsKey('lastUpdateTime')
+              ? _json['lastUpdateTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Metadata for MigrateLocationDestructively LRO.
+class GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata {
+  /// The time the LRO was created.
+  core.String? createTime;
+
+  /// The time the LRO was last updated.
+  core.String? lastUpdateTime;
+
+  /// The current state of the migration.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state. Should not be used.
+  /// - "PENDING" : The MigrateLocationDestructively request has passed
+  /// precondition checks and the bucket migration will begin soon.
+  /// - "CREATING_TEMP_BUCKET" : Generating a unique bucket name, storing the
+  /// source -> temp mapping in Spanner, and actually creating the temporary
+  /// bucket via Bigstore.
+  /// - "TRANSFERRING_TO_TEMP" : The first STS transfer to move all objects from
+  /// the source bucket to the temp bucket is underway.
+  /// - "DELETING_SOURCE_BUCKET" : The source bucket is being emptied and
+  /// deleted.
+  /// - "CREATING_DESTINATION_BUCKET" : The source bucket is being recreated in
+  /// the new location.
+  /// - "TRANSFERRING_TO_DESTINATION" : The second STS transfer to move all
+  /// objects from the temp bucket to the final bucket is underway.
+  /// - "DELETING_TEMP_BUCKET" : The temp bucket is being emptied and deleted.
+  /// - "SUCCEEDED" : All stages of the migration have completed and the
+  /// operation has been marked done and updated with a response.
+  /// - "FAILED" : The migration failed at some stage and it is not possible to
+  /// continue retrying that stage. Manual recovery may be needed.
+  /// - "ROLLING_BACK" : The migration has encountered a permanent failure and
+  /// is now being rolled back so that the source bucket is restored to its
+  /// original state.
+  core.String? state;
+
+  GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata({
+    this.createTime,
+    this.lastUpdateTime,
+    this.state,
+  });
+
+  GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata.fromJson(
+      core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          lastUpdateTime: _json.containsKey('lastUpdateTime')
+              ? _json['lastUpdateTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// The response returned by `ListBuckets`.
 class ListBucketsResponse {
   /// The list of linked buckets.

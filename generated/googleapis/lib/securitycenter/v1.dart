@@ -3396,6 +3396,26 @@ class Finding {
   /// This field is guaranteed to be either empty or a well formed URL.
   core.String? externalUri;
 
+  /// The class of the finding.
+  /// Possible string values are:
+  /// - "FINDING_CLASS_UNSPECIFIED" : Unspecified finding class.
+  /// - "THREAT" : Describes unwanted or malicious activity.
+  /// - "VULNERABILITY" : Describes a potential weakness in software that
+  /// increases risk to Confidentiality & Integrity & Availability.
+  /// - "MISCONFIGURATION" : Describes a potential weakness in cloud
+  /// resource/asset configuration that increases risk.
+  /// - "OBSERVATION" : Describes a security observation that is for
+  /// informational purposes.
+  core.String? findingClass;
+
+  /// Represents what's commonly known as an Indicator of compromise (IoC) in
+  /// computer forensics.
+  ///
+  /// This is an artifact observed on a network or in an operating system that,
+  /// with high confidence, indicates a computer intrusion. Reference:
+  /// https://en.wikipedia.org/wiki/Indicator_of_compromise
+  Indicator? indicator;
+
   /// The relative resource name of this finding.
   ///
   /// See:
@@ -3498,6 +3518,8 @@ class Finding {
     this.createTime,
     this.eventTime,
     this.externalUri,
+    this.findingClass,
+    this.indicator,
     this.name,
     this.parent,
     this.resourceName,
@@ -3523,6 +3545,13 @@ class Finding {
               : null,
           externalUri: _json.containsKey('externalUri')
               ? _json['externalUri'] as core.String
+              : null,
+          findingClass: _json.containsKey('findingClass')
+              ? _json['findingClass'] as core.String
+              : null,
+          indicator: _json.containsKey('indicator')
+              ? Indicator.fromJson(
+                  _json['indicator'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parent: _json.containsKey('parent')
@@ -3558,6 +3587,8 @@ class Finding {
         if (createTime != null) 'createTime': createTime!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (externalUri != null) 'externalUri': externalUri!,
+        if (findingClass != null) 'findingClass': findingClass!,
+        if (indicator != null) 'indicator': indicator!.toJson(),
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (resourceName != null) 'resourceName': resourceName!,
@@ -4705,6 +4736,44 @@ class IamPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policyBlob != null) 'policyBlob': policyBlob!,
+      };
+}
+
+/// Represents what's commonly known as an Indicator of compromise (IoC) in
+/// computer forensics.
+///
+/// This is an artifact observed on a network or in an operating system that,
+/// with high confidence, indicates a computer intrusion. Reference:
+/// https://en.wikipedia.org/wiki/Indicator_of_compromise
+class Indicator {
+  /// List of domains associated to the Finding.
+  core.List<core.String>? domains;
+
+  /// List of ip addresses associated to the Finding.
+  core.List<core.String>? ipAddresses;
+
+  Indicator({
+    this.domains,
+    this.ipAddresses,
+  });
+
+  Indicator.fromJson(core.Map _json)
+      : this(
+          domains: _json.containsKey('domains')
+              ? (_json['domains'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          ipAddresses: _json.containsKey('ipAddresses')
+              ? (_json['ipAddresses'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domains != null) 'domains': domains!,
+        if (ipAddresses != null) 'ipAddresses': ipAddresses!,
       };
 }
 

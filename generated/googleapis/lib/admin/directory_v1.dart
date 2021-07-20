@@ -18,7 +18,7 @@
 /// resources like user, groups etc. It also provides audit and usage reports of
 /// domain.
 ///
-/// For more information, see <http://developers.google.com/admin-sdk/>
+/// For more information, see <https://developers.google.com/admin-sdk/>
 ///
 /// Create an instance of [DirectoryApi] to access these resources:
 ///
@@ -229,7 +229,7 @@ class AspsResource {
 
   AspsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Delete an ASP issued by a user.
+  /// Deletes an ASP issued by a user.
   ///
   /// Request parameters:
   ///
@@ -268,7 +268,7 @@ class AspsResource {
     );
   }
 
-  /// Get information about an ASP issued by a user.
+  /// Gets information about an ASP issued by a user.
   ///
   /// Request parameters:
   ///
@@ -309,7 +309,7 @@ class AspsResource {
     return Asp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// List the ASPs issued by a user.
+  /// Lists the ASPs issued by a user.
   ///
   /// Request parameters:
   ///
@@ -352,7 +352,7 @@ class ChannelsResource {
 
   ChannelsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Stop watching resources through this channel.
+  /// Stops watching resources through this channel.
   ///
   /// [request] - The metadata request object.
   ///
@@ -603,7 +603,7 @@ class ChromeosdevicesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Move or insert multiple Chrome OS devices to an organizational unit.
+  /// Moves or inserts multiple Chrome OS devices to an organizational unit.
   ///
   /// You can move up to 50 devices at once.
   ///
@@ -945,7 +945,7 @@ class CustomersResource {
     return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patch Customers via Apiary Patch Orchestration
+  /// Patches a customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1858,7 +1858,7 @@ class GroupsResource {
     return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieve all groups of a domain or of a user given a userKey (paginated)
+  /// Retrieves all groups of a domain or of a user given a userKey (paginated).
   ///
   /// Request parameters:
   ///
@@ -3262,7 +3262,7 @@ class ResourcesBuildingsResource {
     return Buildings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patches a building via Apiary Patch Orchestration.
+  /// Patches a building.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3584,7 +3584,7 @@ class ResourcesCalendarsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patches a calendar resource via Apiary Patch Orchestration.
+  /// Patches a calendar resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3862,7 +3862,7 @@ class ResourcesFeaturesResource {
     return Features.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patches a feature via Apiary Patch Orchestration.
+  /// Patches a feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4046,7 +4046,7 @@ class RoleAssignmentsResource {
     );
   }
 
-  /// Retrieve a role assignment.
+  /// Retrieves a role assignment.
   ///
   /// Request parameters:
   ///
@@ -4356,7 +4356,7 @@ class RolesResource {
     return Roles.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patch role via Apiary Patch Orchestration
+  /// Patches a role.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4452,7 +4452,7 @@ class SchemasResource {
 
   SchemasResource(commons.ApiRequester client) : _requester = client;
 
-  /// Delete schema
+  /// Deletes a schema.
   ///
   /// Request parameters:
   ///
@@ -4490,7 +4490,7 @@ class SchemasResource {
     );
   }
 
-  /// Retrieve schema
+  /// Retrieves a schema.
   ///
   /// Request parameters:
   ///
@@ -4530,7 +4530,7 @@ class SchemasResource {
     return Schema.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Create schema.
+  /// Creates a schema.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4571,7 +4571,7 @@ class SchemasResource {
     return Schema.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieve all schemas for a customer
+  /// Retrieves all schemas for a customer.
   ///
   /// Request parameters:
   ///
@@ -4607,7 +4607,7 @@ class SchemasResource {
     return Schemas.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patch Schema via Apiary Patch Orchestration
+  /// Patches a schema.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4652,7 +4652,7 @@ class SchemasResource {
     return Schema.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update schema
+  /// Updates a schema.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4703,7 +4703,7 @@ class TokensResource {
 
   TokensResource(commons.ApiRequester client) : _requester = client;
 
-  /// Delete all access tokens issued by a user for an application.
+  /// Deletes all access tokens issued by a user for an application.
   ///
   /// Request parameters:
   ///
@@ -4742,7 +4742,7 @@ class TokensResource {
     );
   }
 
-  /// Get information about an access token issued by a user.
+  /// Gets information about an access token issued by a user.
   ///
   /// Request parameters:
   ///
@@ -4828,7 +4828,7 @@ class TwoStepVerificationResource {
   TwoStepVerificationResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Turn off 2-Step Verification for user.
+  /// Turns off 2-Step Verification for user.
   ///
   /// Request parameters:
   ///
@@ -5210,7 +5210,7 @@ class UsersResource {
     return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sign a user out of all web and device sessions and reset their sign-in
+  /// Signs a user out of all web and device sessions and reset their sign-in
   /// cookies.
   ///
   /// User will have to sign in by authenticating again.
@@ -5333,7 +5333,7 @@ class UsersResource {
     return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Watch for changes in users list
+  /// Watches for changes in users list.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5582,7 +5582,7 @@ class UsersAliasesResource {
     return Aliases.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Watch for changes in users list.
+  /// Watches for changes in users list.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5801,7 +5801,7 @@ class VerificationCodesResource {
 
   VerificationCodesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Generate new backup verification codes for the user.
+  /// Generates new backup verification codes for the user.
   ///
   /// Request parameters:
   ///
@@ -5835,7 +5835,7 @@ class VerificationCodesResource {
     );
   }
 
-  /// Invalidate the current backup verification codes for the user.
+  /// Invalidates the current backup verification codes for the user.
   ///
   /// Request parameters:
   ///

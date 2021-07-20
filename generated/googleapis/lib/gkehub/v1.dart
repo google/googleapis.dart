@@ -2795,11 +2795,11 @@ class Feature {
   ///
   /// If this Feature does not support any per-Membership configuration, this
   /// field may be unused. The keys indicate which Membership the configuration
-  /// is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p}
-  /// is the project, {l} is a valid location and {m} is a valid Membership in
-  /// this project at that location. {p} WILL match the Feature's project. {p}
-  /// will always be returned as the project number, but the project ID is also
-  /// accepted during input. If the same Membership is specified in the map
+  /// is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where
+  /// {p} is the project, {l} is a valid location and {m} is a valid Membership
+  /// in this project at that location. {p} WILL match the Feature's project.
+  /// {p} will always be returned as the project number, but the project ID is
+  /// also accepted during input. If the same Membership is specified in the map
   /// twice (using the project ID form, and the project number form), exactly
   /// ONE of the entries will be saved, with no guarantees as to which. For this
   /// reason, it is recommended the same format be used for all entries when
@@ -2812,7 +2812,7 @@ class Feature {
   ///
   /// If this Feature does report any per-Membership status, this field may be
   /// unused. The keys indicate which Membership the state is for, in the form:
-  /// projects/{p}/locations/{l}/memberships/{m} Where {p} is the project
+  /// `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project
   /// number, {l} is a valid location and {m} is a valid Membership in this
   /// project at that location. {p} MUST match the Feature's project number.
   ///
@@ -3051,6 +3051,12 @@ class GenerateConnectManifestResponse {
 
 /// GkeCluster contains information specific to GKE clusters.
 class GkeCluster {
+  /// If cluster_missing is set then it denotes that the GKE cluster no longer
+  /// exists in the GKE Control Plane.
+  ///
+  /// Output only.
+  core.bool? clusterMissing;
+
   /// Self-link of the GCP resource for the GKE cluster.
   ///
   /// For example:
@@ -3061,17 +3067,22 @@ class GkeCluster {
   core.String? resourceLink;
 
   GkeCluster({
+    this.clusterMissing,
     this.resourceLink,
   });
 
   GkeCluster.fromJson(core.Map _json)
       : this(
+          clusterMissing: _json.containsKey('clusterMissing')
+              ? _json['clusterMissing'] as core.bool
+              : null,
           resourceLink: _json.containsKey('resourceLink')
               ? _json['resourceLink'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterMissing != null) 'clusterMissing': clusterMissing!,
         if (resourceLink != null) 'resourceLink': resourceLink!,
       };
 }

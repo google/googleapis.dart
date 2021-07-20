@@ -5478,9 +5478,20 @@ class GoogleCloudMlV1Scheduling {
   /// Optional.
   core.String? maxWaitTime;
 
+  /// Job scheduling will be based on this priority, which in the range \[0,
+  /// 1000\].
+  ///
+  /// The bigger the number, the higher the priority. Default to 0 if not set.
+  /// If there are multiple jobs requesting same type of accelerators, the high
+  /// priority job will be scheduled prior to ones with low priority.
+  ///
+  /// Optional.
+  core.int? priority;
+
   GoogleCloudMlV1Scheduling({
     this.maxRunningTime,
     this.maxWaitTime,
+    this.priority,
   });
 
   GoogleCloudMlV1Scheduling.fromJson(core.Map _json)
@@ -5491,11 +5502,15 @@ class GoogleCloudMlV1Scheduling {
           maxWaitTime: _json.containsKey('maxWaitTime')
               ? _json['maxWaitTime'] as core.String
               : null,
+          priority: _json.containsKey('priority')
+              ? _json['priority'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxRunningTime != null) 'maxRunningTime': maxRunningTime!,
         if (maxWaitTime != null) 'maxWaitTime': maxWaitTime!,
+        if (priority != null) 'priority': priority!,
       };
 }
 

@@ -421,7 +421,7 @@
             }
         }
     },
-    "revision": "20210701",
+    "revision": "20210713",
     "rootUrl": "https://alertcenter.googleapis.com/",
     "schemas": {
         "AccountWarning": {
@@ -967,7 +967,7 @@
                     "type": "array"
                 },
                 "date": {
-                    "description": "The date the malicious email was sent.",
+                    "description": "The date of the event related to this email.",
                     "format": "google-datetime",
                     "type": "string"
                 },

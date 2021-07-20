@@ -1214,6 +1214,7 @@ api.GkeCluster buildGkeCluster() {
   final o = api.GkeCluster();
   buildCounterGkeCluster++;
   if (buildCounterGkeCluster < 3) {
+    o.clusterMissing = true;
     o.resourceLink = 'foo';
   }
   buildCounterGkeCluster--;
@@ -1223,6 +1224,7 @@ api.GkeCluster buildGkeCluster() {
 void checkGkeCluster(api.GkeCluster o) {
   buildCounterGkeCluster++;
   if (buildCounterGkeCluster < 3) {
+    unittest.expect(o.clusterMissing!, unittest.isTrue);
     unittest.expect(
       o.resourceLink!,
       unittest.equals('foo'),

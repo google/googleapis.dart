@@ -4001,6 +4001,15 @@ class Database {
   /// Output only.
   core.String? createTime;
 
+  /// The read-write region which contains the database's leader replicas.
+  ///
+  /// This is the same as the value of default_leader database option set using
+  /// DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not
+  /// explicitly set, this is empty.
+  ///
+  /// Output only.
+  core.String? defaultLeader;
+
   /// Earliest timestamp at which older versions of the data can be read.
   ///
   /// This value is continuously updated by Cloud Spanner and becomes stale the
@@ -4075,6 +4084,7 @@ class Database {
 
   Database({
     this.createTime,
+    this.defaultLeader,
     this.earliestVersionTime,
     this.encryptionConfig,
     this.encryptionInfo,
@@ -4088,6 +4098,9 @@ class Database {
       : this(
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          defaultLeader: _json.containsKey('defaultLeader')
+              ? _json['defaultLeader'] as core.String
               : null,
           earliestVersionTime: _json.containsKey('earliestVersionTime')
               ? _json['earliestVersionTime'] as core.String
@@ -4116,6 +4129,7 @@ class Database {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (defaultLeader != null) 'defaultLeader': defaultLeader!,
         if (earliestVersionTime != null)
           'earliestVersionTime': earliestVersionTime!,
         if (encryptionConfig != null)
@@ -5071,6 +5085,10 @@ class InstanceConfig {
   /// The name of this instance configuration as it appears in UIs.
   core.String? displayName;
 
+  /// Allowed values of the “default_leader” schema option for databases in
+  /// instances that use this instance configuration.
+  core.List<core.String>? leaderOptions;
+
   /// A unique identifier for the instance configuration.
   ///
   /// Values are of the form `projects//instanceConfigs/a-z*`
@@ -5082,6 +5100,7 @@ class InstanceConfig {
 
   InstanceConfig({
     this.displayName,
+    this.leaderOptions,
     this.name,
     this.replicas,
   });
@@ -5090,6 +5109,11 @@ class InstanceConfig {
       : this(
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
+              : null,
+          leaderOptions: _json.containsKey('leaderOptions')
+              ? (_json['leaderOptions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           replicas: _json.containsKey('replicas')
@@ -5102,6 +5126,7 @@ class InstanceConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+        if (leaderOptions != null) 'leaderOptions': leaderOptions!,
         if (name != null) 'name': name!,
         if (replicas != null)
           'replicas': replicas!.map((value) => value.toJson()).toList(),
@@ -7308,7 +7333,8 @@ class RequestOptions {
   /// it's not applicable (e.g. CommitRequest). Legal characters for
   /// `request_tag` values are all printable characters (ASCII 32 - 126) and the
   /// length of a request_tag is limited to 50 characters. Values that exceed
-  /// this limit are truncated.
+  /// this limit are truncated. Any leading underscore (_) characters will be
+  /// removed from the string.
   core.String? requestTag;
 
   /// A tag used for statistics collection about this transaction.
@@ -7319,7 +7345,8 @@ class RequestOptions {
   /// doesn’t belong to any transaction, transaction_tag will be ignored. Legal
   /// characters for `transaction_tag` values are all printable characters
   /// (ASCII 32 - 126) and the length of a transaction_tag is limited to 50
-  /// characters. Values that exceed this limit are truncated.
+  /// characters. Values that exceed this limit are truncated. Any leading
+  /// underscore (_) characters will be removed from the string.
   core.String? transactionTag;
 
   RequestOptions({

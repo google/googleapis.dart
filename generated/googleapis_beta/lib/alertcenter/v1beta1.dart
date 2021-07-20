@@ -1698,7 +1698,7 @@ class GmailMessageInfo {
   /// The `SHA256` hash of email's attachment and all MIME parts.
   core.List<core.String>? attachmentsSha256Hash;
 
-  /// The date the malicious email was sent.
+  /// The date of the event related to this email.
   core.String? date;
 
   /// The hash of the message body text.

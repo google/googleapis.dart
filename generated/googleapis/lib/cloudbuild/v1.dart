@@ -2352,7 +2352,7 @@ class BuildOptions {
   /// Specification for execution on a `WorkerPool`.
   ///
   /// See
-  /// [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool)
+  /// [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool)
   /// for more information.
   ///
   /// Optional.
@@ -3467,7 +3467,7 @@ class NetworkConfig {
   /// format `projects/{project}/global/networks/{network}`, where `{project}`
   /// is a project number, such as `12345`, and `{network}` is the name of a VPC
   /// network in the project. See
-  /// [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+  /// [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
   ///
   /// Required. Immutable.
   core.String? peeredNetwork;
@@ -3819,7 +3819,7 @@ class Operation {
 /// Details about how a build should be executed on a `WorkerPool`.
 ///
 /// See
-/// [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool)
+/// [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool)
 /// for more information.
 class PoolOption {
   /// The `WorkerPool` resource to execute the build on.
@@ -4700,8 +4700,8 @@ class StorageSource {
 
   /// Google Cloud Storage object containing the source.
   ///
-  /// This object must be a gzipped archive file (`.tar.gz`) containing source
-  /// to build.
+  /// This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`)
+  /// containing source to build.
   core.String? object;
 
   StorageSource({
@@ -4952,7 +4952,7 @@ class WorkerConfig {
   /// Size of the disk attached to the worker, in GB.
   ///
   /// See
-  /// [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file).
+  /// [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema).
   /// Specify a value of up to 1000. If `0` is specified, Cloud Build will use a
   /// standard disk size.
   core.String? diskSizeGb;
@@ -4960,7 +4960,7 @@ class WorkerConfig {
   /// Machine type of a worker, such as `e2-medium`.
   ///
   /// See
-  /// [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file).
+  /// [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema).
   /// If left blank, Cloud Build will use a sensible default.
   core.String? machineType;
 
@@ -4993,8 +4993,8 @@ class WorkerConfig {
 /// resources on a private network, create and use a `WorkerPool` to run your
 /// builds. Private `WorkerPool`s give your builds access to any single VPC
 /// network that you administer, including any on-prem resources connected to
-/// that VPC network. For an overview of custom worker pools, see
-/// [Custom workers overview](https://cloud.google.com/cloud-build/docs/custom-workers/custom-workers-overview).
+/// that VPC network. For an overview of private pools, see
+/// [Private pools overview](https://cloud.google.com/build/docs/private-pools/private-pools-overview).
 class WorkerPool {
   /// User specified annotations.
   ///

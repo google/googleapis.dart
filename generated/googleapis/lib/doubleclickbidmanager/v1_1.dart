@@ -680,6 +680,7 @@ class FilterPair {
   /// - "FILTER_LINE_ITEM_PACING_PERCENTAGE"
   /// - "FILTER_INSERTION_ORDER_GOAL_VALUE"
   /// - "FILTER_OMID_CAPABLE"
+  /// - "FILTER_VENDOR_MEASUREMENT_MODE"
   core.String? type;
 
   /// Filter value.
@@ -1289,6 +1290,7 @@ class PathQueryOptionsFilter {
   /// - "FILTER_LINE_ITEM_PACING_PERCENTAGE"
   /// - "FILTER_INSERTION_ORDER_GOAL_VALUE"
   /// - "FILTER_OMID_CAPABLE"
+  /// - "FILTER_VENDOR_MEASUREMENT_MODE"
   core.String? filter;
 
   /// Indicates how the filter should be matched to the value.

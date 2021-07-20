@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AclRule> buildUnnamed5285() => [
+core.List<api.AclRule> buildUnnamed5284() => [
       buildAclRule(),
       buildAclRule(),
     ];
 
-void checkUnnamed5285(core.List<api.AclRule> o) {
+void checkUnnamed5284(core.List<api.AclRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAclRule(o[0]);
   checkAclRule(o[1]);
@@ -43,7 +43,7 @@ api.Acl buildAcl() {
   buildCounterAcl++;
   if (buildCounterAcl < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed5285();
+    o.items = buildUnnamed5284();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.nextSyncToken = 'foo';
@@ -59,7 +59,7 @@ void checkAcl(api.Acl o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed5285(o.items!);
+    checkUnnamed5284(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -196,12 +196,12 @@ void checkCalendar(api.Calendar o) {
   buildCounterCalendar--;
 }
 
-core.List<api.CalendarListEntry> buildUnnamed5286() => [
+core.List<api.CalendarListEntry> buildUnnamed5285() => [
       buildCalendarListEntry(),
       buildCalendarListEntry(),
     ];
 
-void checkUnnamed5286(core.List<api.CalendarListEntry> o) {
+void checkUnnamed5285(core.List<api.CalendarListEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCalendarListEntry(o[0]);
   checkCalendarListEntry(o[1]);
@@ -213,7 +213,7 @@ api.CalendarList buildCalendarList() {
   buildCounterCalendarList++;
   if (buildCounterCalendarList < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed5286();
+    o.items = buildUnnamed5285();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.nextSyncToken = 'foo';
@@ -229,7 +229,7 @@ void checkCalendarList(api.CalendarList o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed5286(o.items!);
+    checkUnnamed5285(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -246,23 +246,23 @@ void checkCalendarList(api.CalendarList o) {
   buildCounterCalendarList--;
 }
 
-core.List<api.EventReminder> buildUnnamed5287() => [
+core.List<api.EventReminder> buildUnnamed5286() => [
       buildEventReminder(),
       buildEventReminder(),
     ];
 
-void checkUnnamed5287(core.List<api.EventReminder> o) {
+void checkUnnamed5286(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventReminder(o[0]);
   checkEventReminder(o[1]);
 }
 
-core.List<api.CalendarNotification> buildUnnamed5288() => [
+core.List<api.CalendarNotification> buildUnnamed5287() => [
       buildCalendarNotification(),
       buildCalendarNotification(),
     ];
 
-void checkUnnamed5288(core.List<api.CalendarNotification> o) {
+void checkUnnamed5287(core.List<api.CalendarNotification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCalendarNotification(o[0]);
   checkCalendarNotification(o[1]);
@@ -274,7 +274,7 @@ api.CalendarListEntryNotificationSettings
   final o = api.CalendarListEntryNotificationSettings();
   buildCounterCalendarListEntryNotificationSettings++;
   if (buildCounterCalendarListEntryNotificationSettings < 3) {
-    o.notifications = buildUnnamed5288();
+    o.notifications = buildUnnamed5287();
   }
   buildCounterCalendarListEntryNotificationSettings--;
   return o;
@@ -284,7 +284,7 @@ void checkCalendarListEntryNotificationSettings(
     api.CalendarListEntryNotificationSettings o) {
   buildCounterCalendarListEntryNotificationSettings++;
   if (buildCounterCalendarListEntryNotificationSettings < 3) {
-    checkUnnamed5288(o.notifications!);
+    checkUnnamed5287(o.notifications!);
   }
   buildCounterCalendarListEntryNotificationSettings--;
 }
@@ -298,7 +298,7 @@ api.CalendarListEntry buildCalendarListEntry() {
     o.backgroundColor = 'foo';
     o.colorId = 'foo';
     o.conferenceProperties = buildConferenceProperties();
-    o.defaultReminders = buildUnnamed5287();
+    o.defaultReminders = buildUnnamed5286();
     o.deleted = true;
     o.description = 'foo';
     o.etag = 'foo';
@@ -334,7 +334,7 @@ void checkCalendarListEntry(api.CalendarListEntry o) {
       unittest.equals('foo'),
     );
     checkConferenceProperties(o.conferenceProperties!);
-    checkUnnamed5287(o.defaultReminders!);
+    checkUnnamed5286(o.defaultReminders!);
     unittest.expect(o.deleted!, unittest.isTrue);
     unittest.expect(
       o.description!,
@@ -407,12 +407,12 @@ void checkCalendarNotification(api.CalendarNotification o) {
   buildCounterCalendarNotification--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5289() => {
+core.Map<core.String, core.String> buildUnnamed5288() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed5289(core.Map<core.String, core.String> o) {
+void checkUnnamed5288(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -433,7 +433,7 @@ api.Channel buildChannel() {
     o.expiration = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.params = buildUnnamed5289();
+    o.params = buildUnnamed5288();
     o.payload = true;
     o.resourceId = 'foo';
     o.resourceUri = 'foo';
@@ -463,7 +463,7 @@ void checkChannel(api.Channel o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed5289(o.params!);
+    checkUnnamed5288(o.params!);
     unittest.expect(o.payload!, unittest.isTrue);
     unittest.expect(
       o.resourceId!,
@@ -512,6 +512,17 @@ void checkColorDefinition(api.ColorDefinition o) {
   buildCounterColorDefinition--;
 }
 
+core.Map<core.String, api.ColorDefinition> buildUnnamed5289() => {
+      'x': buildColorDefinition(),
+      'y': buildColorDefinition(),
+    };
+
+void checkUnnamed5289(core.Map<core.String, api.ColorDefinition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkColorDefinition(o['x']!);
+  checkColorDefinition(o['y']!);
+}
+
 core.Map<core.String, api.ColorDefinition> buildUnnamed5290() => {
       'x': buildColorDefinition(),
       'y': buildColorDefinition(),
@@ -523,24 +534,13 @@ void checkUnnamed5290(core.Map<core.String, api.ColorDefinition> o) {
   checkColorDefinition(o['y']!);
 }
 
-core.Map<core.String, api.ColorDefinition> buildUnnamed5291() => {
-      'x': buildColorDefinition(),
-      'y': buildColorDefinition(),
-    };
-
-void checkUnnamed5291(core.Map<core.String, api.ColorDefinition> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkColorDefinition(o['x']!);
-  checkColorDefinition(o['y']!);
-}
-
 core.int buildCounterColors = 0;
 api.Colors buildColors() {
   final o = api.Colors();
   buildCounterColors++;
   if (buildCounterColors < 3) {
-    o.calendar = buildUnnamed5290();
-    o.event = buildUnnamed5291();
+    o.calendar = buildUnnamed5289();
+    o.event = buildUnnamed5290();
     o.kind = 'foo';
     o.updated = core.DateTime.parse('2002-02-27T14:01:02');
   }
@@ -551,8 +551,8 @@ api.Colors buildColors() {
 void checkColors(api.Colors o) {
   buildCounterColors++;
   if (buildCounterColors < 3) {
-    checkUnnamed5290(o.calendar!);
-    checkUnnamed5291(o.event!);
+    checkUnnamed5289(o.calendar!);
+    checkUnnamed5290(o.event!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -565,12 +565,12 @@ void checkColors(api.Colors o) {
   buildCounterColors--;
 }
 
-core.List<api.EntryPoint> buildUnnamed5292() => [
+core.List<api.EntryPoint> buildUnnamed5291() => [
       buildEntryPoint(),
       buildEntryPoint(),
     ];
 
-void checkUnnamed5292(core.List<api.EntryPoint> o) {
+void checkUnnamed5291(core.List<api.EntryPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntryPoint(o[0]);
   checkEntryPoint(o[1]);
@@ -584,7 +584,7 @@ api.ConferenceData buildConferenceData() {
     o.conferenceId = 'foo';
     o.conferenceSolution = buildConferenceSolution();
     o.createRequest = buildCreateConferenceRequest();
-    o.entryPoints = buildUnnamed5292();
+    o.entryPoints = buildUnnamed5291();
     o.notes = 'foo';
     o.parameters = buildConferenceParameters();
     o.signature = 'foo';
@@ -602,7 +602,7 @@ void checkConferenceData(api.ConferenceData o) {
     );
     checkConferenceSolution(o.conferenceSolution!);
     checkCreateConferenceRequest(o.createRequest!);
-    checkUnnamed5292(o.entryPoints!);
+    checkUnnamed5291(o.entryPoints!);
     unittest.expect(
       o.notes!,
       unittest.equals('foo'),
@@ -635,12 +635,12 @@ void checkConferenceParameters(api.ConferenceParameters o) {
   buildCounterConferenceParameters--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5293() => {
+core.Map<core.String, core.String> buildUnnamed5292() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed5293(core.Map<core.String, core.String> o) {
+void checkUnnamed5292(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -658,7 +658,7 @@ api.ConferenceParametersAddOnParameters
   final o = api.ConferenceParametersAddOnParameters();
   buildCounterConferenceParametersAddOnParameters++;
   if (buildCounterConferenceParametersAddOnParameters < 3) {
-    o.parameters = buildUnnamed5293();
+    o.parameters = buildUnnamed5292();
   }
   buildCounterConferenceParametersAddOnParameters--;
   return o;
@@ -668,17 +668,17 @@ void checkConferenceParametersAddOnParameters(
     api.ConferenceParametersAddOnParameters o) {
   buildCounterConferenceParametersAddOnParameters++;
   if (buildCounterConferenceParametersAddOnParameters < 3) {
-    checkUnnamed5293(o.parameters!);
+    checkUnnamed5292(o.parameters!);
   }
   buildCounterConferenceParametersAddOnParameters--;
 }
 
-core.List<core.String> buildUnnamed5294() => [
+core.List<core.String> buildUnnamed5293() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5294(core.List<core.String> o) {
+void checkUnnamed5293(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -695,7 +695,7 @@ api.ConferenceProperties buildConferenceProperties() {
   final o = api.ConferenceProperties();
   buildCounterConferenceProperties++;
   if (buildCounterConferenceProperties < 3) {
-    o.allowedConferenceSolutionTypes = buildUnnamed5294();
+    o.allowedConferenceSolutionTypes = buildUnnamed5293();
   }
   buildCounterConferenceProperties--;
   return o;
@@ -704,7 +704,7 @@ api.ConferenceProperties buildConferenceProperties() {
 void checkConferenceProperties(api.ConferenceProperties o) {
   buildCounterConferenceProperties++;
   if (buildCounterConferenceProperties < 3) {
-    checkUnnamed5294(o.allowedConferenceSolutionTypes!);
+    checkUnnamed5293(o.allowedConferenceSolutionTypes!);
   }
   buildCounterConferenceProperties--;
 }
@@ -808,12 +808,12 @@ void checkCreateConferenceRequest(api.CreateConferenceRequest o) {
   buildCounterCreateConferenceRequest--;
 }
 
-core.List<core.String> buildUnnamed5295() => [
+core.List<core.String> buildUnnamed5294() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5295(core.List<core.String> o) {
+void checkUnnamed5294(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -831,7 +831,7 @@ api.EntryPoint buildEntryPoint() {
   buildCounterEntryPoint++;
   if (buildCounterEntryPoint < 3) {
     o.accessCode = 'foo';
-    o.entryPointFeatures = buildUnnamed5295();
+    o.entryPointFeatures = buildUnnamed5294();
     o.entryPointType = 'foo';
     o.label = 'foo';
     o.meetingCode = 'foo';
@@ -852,7 +852,7 @@ void checkEntryPoint(api.EntryPoint o) {
       o.accessCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed5295(o.entryPointFeatures!);
+    checkUnnamed5294(o.entryPointFeatures!);
     unittest.expect(
       o.entryPointType!,
       unittest.equals('foo'),
@@ -916,23 +916,23 @@ void checkError(api.Error o) {
   buildCounterError--;
 }
 
-core.List<api.EventAttachment> buildUnnamed5296() => [
+core.List<api.EventAttachment> buildUnnamed5295() => [
       buildEventAttachment(),
       buildEventAttachment(),
     ];
 
-void checkUnnamed5296(core.List<api.EventAttachment> o) {
+void checkUnnamed5295(core.List<api.EventAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventAttachment(o[0]);
   checkEventAttachment(o[1]);
 }
 
-core.List<api.EventAttendee> buildUnnamed5297() => [
+core.List<api.EventAttendee> buildUnnamed5296() => [
       buildEventAttendee(),
       buildEventAttendee(),
     ];
 
-void checkUnnamed5297(core.List<api.EventAttendee> o) {
+void checkUnnamed5296(core.List<api.EventAttendee> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventAttendee(o[0]);
   checkEventAttendee(o[1]);
@@ -972,6 +972,23 @@ void checkEventCreator(api.EventCreator o) {
   buildCounterEventCreator--;
 }
 
+core.Map<core.String, core.String> buildUnnamed5297() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed5297(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.Map<core.String, core.String> buildUnnamed5298() => {
       'x': 'foo',
       'y': 'foo',
@@ -989,30 +1006,13 @@ void checkUnnamed5298(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed5299() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed5299(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterEventExtendedProperties = 0;
 api.EventExtendedProperties buildEventExtendedProperties() {
   final o = api.EventExtendedProperties();
   buildCounterEventExtendedProperties++;
   if (buildCounterEventExtendedProperties < 3) {
-    o.private = buildUnnamed5298();
-    o.shared = buildUnnamed5299();
+    o.private = buildUnnamed5297();
+    o.shared = buildUnnamed5298();
   }
   buildCounterEventExtendedProperties--;
   return o;
@@ -1021,18 +1021,18 @@ api.EventExtendedProperties buildEventExtendedProperties() {
 void checkEventExtendedProperties(api.EventExtendedProperties o) {
   buildCounterEventExtendedProperties++;
   if (buildCounterEventExtendedProperties < 3) {
-    checkUnnamed5298(o.private!);
-    checkUnnamed5299(o.shared!);
+    checkUnnamed5297(o.private!);
+    checkUnnamed5298(o.shared!);
   }
   buildCounterEventExtendedProperties--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5300() => {
+core.Map<core.String, core.String> buildUnnamed5299() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed5300(core.Map<core.String, core.String> o) {
+void checkUnnamed5299(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1053,7 +1053,7 @@ api.EventGadget buildEventGadget() {
     o.height = 42;
     o.iconLink = 'foo';
     o.link = 'foo';
-    o.preferences = buildUnnamed5300();
+    o.preferences = buildUnnamed5299();
     o.title = 'foo';
     o.type = 'foo';
     o.width = 42;
@@ -1081,7 +1081,7 @@ void checkEventGadget(api.EventGadget o) {
       o.link!,
       unittest.equals('foo'),
     );
-    checkUnnamed5300(o.preferences!);
+    checkUnnamed5299(o.preferences!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -1132,12 +1132,12 @@ void checkEventOrganizer(api.EventOrganizer o) {
   buildCounterEventOrganizer--;
 }
 
-core.List<core.String> buildUnnamed5301() => [
+core.List<core.String> buildUnnamed5300() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5301(core.List<core.String> o) {
+void checkUnnamed5300(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1149,12 +1149,12 @@ void checkUnnamed5301(core.List<core.String> o) {
   );
 }
 
-core.List<api.EventReminder> buildUnnamed5302() => [
+core.List<api.EventReminder> buildUnnamed5301() => [
       buildEventReminder(),
       buildEventReminder(),
     ];
 
-void checkUnnamed5302(core.List<api.EventReminder> o) {
+void checkUnnamed5301(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventReminder(o[0]);
   checkEventReminder(o[1]);
@@ -1165,7 +1165,7 @@ api.EventReminders buildEventReminders() {
   final o = api.EventReminders();
   buildCounterEventReminders++;
   if (buildCounterEventReminders < 3) {
-    o.overrides = buildUnnamed5302();
+    o.overrides = buildUnnamed5301();
     o.useDefault = true;
   }
   buildCounterEventReminders--;
@@ -1175,7 +1175,7 @@ api.EventReminders buildEventReminders() {
 void checkEventReminders(api.EventReminders o) {
   buildCounterEventReminders++;
   if (buildCounterEventReminders < 3) {
-    checkUnnamed5302(o.overrides!);
+    checkUnnamed5301(o.overrides!);
     unittest.expect(o.useDefault!, unittest.isTrue);
   }
   buildCounterEventReminders--;
@@ -1214,8 +1214,8 @@ api.Event buildEvent() {
   buildCounterEvent++;
   if (buildCounterEvent < 3) {
     o.anyoneCanAddSelf = true;
-    o.attachments = buildUnnamed5296();
-    o.attendees = buildUnnamed5297();
+    o.attachments = buildUnnamed5295();
+    o.attendees = buildUnnamed5296();
     o.attendeesOmitted = true;
     o.colorId = 'foo';
     o.conferenceData = buildConferenceData();
@@ -1241,7 +1241,7 @@ api.Event buildEvent() {
     o.organizer = buildEventOrganizer();
     o.originalStartTime = buildEventDateTime();
     o.privateCopy = true;
-    o.recurrence = buildUnnamed5301();
+    o.recurrence = buildUnnamed5300();
     o.recurringEventId = 'foo';
     o.reminders = buildEventReminders();
     o.sequence = 42;
@@ -1261,8 +1261,8 @@ void checkEvent(api.Event o) {
   buildCounterEvent++;
   if (buildCounterEvent < 3) {
     unittest.expect(o.anyoneCanAddSelf!, unittest.isTrue);
-    checkUnnamed5296(o.attachments!);
-    checkUnnamed5297(o.attendees!);
+    checkUnnamed5295(o.attachments!);
+    checkUnnamed5296(o.attendees!);
     unittest.expect(o.attendeesOmitted!, unittest.isTrue);
     unittest.expect(
       o.colorId!,
@@ -1321,7 +1321,7 @@ void checkEvent(api.Event o) {
     checkEventOrganizer(o.organizer!);
     checkEventDateTime(o.originalStartTime!);
     unittest.expect(o.privateCopy!, unittest.isTrue);
-    checkUnnamed5301(o.recurrence!);
+    checkUnnamed5300(o.recurrence!);
     unittest.expect(
       o.recurringEventId!,
       unittest.equals('foo'),
@@ -1513,23 +1513,23 @@ void checkEventReminder(api.EventReminder o) {
   buildCounterEventReminder--;
 }
 
-core.List<api.EventReminder> buildUnnamed5303() => [
+core.List<api.EventReminder> buildUnnamed5302() => [
       buildEventReminder(),
       buildEventReminder(),
     ];
 
-void checkUnnamed5303(core.List<api.EventReminder> o) {
+void checkUnnamed5302(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventReminder(o[0]);
   checkEventReminder(o[1]);
 }
 
-core.List<api.Event> buildUnnamed5304() => [
+core.List<api.Event> buildUnnamed5303() => [
       buildEvent(),
       buildEvent(),
     ];
 
-void checkUnnamed5304(core.List<api.Event> o) {
+void checkUnnamed5303(core.List<api.Event> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEvent(o[0]);
   checkEvent(o[1]);
@@ -1541,10 +1541,10 @@ api.Events buildEvents() {
   buildCounterEvents++;
   if (buildCounterEvents < 3) {
     o.accessRole = 'foo';
-    o.defaultReminders = buildUnnamed5303();
+    o.defaultReminders = buildUnnamed5302();
     o.description = 'foo';
     o.etag = 'foo';
-    o.items = buildUnnamed5304();
+    o.items = buildUnnamed5303();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.nextSyncToken = 'foo';
@@ -1563,7 +1563,7 @@ void checkEvents(api.Events o) {
       o.accessRole!,
       unittest.equals('foo'),
     );
-    checkUnnamed5303(o.defaultReminders!);
+    checkUnnamed5302(o.defaultReminders!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -1572,7 +1572,7 @@ void checkEvents(api.Events o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed5304(o.items!);
+    checkUnnamed5303(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1601,23 +1601,23 @@ void checkEvents(api.Events o) {
   buildCounterEvents--;
 }
 
-core.List<api.TimePeriod> buildUnnamed5305() => [
+core.List<api.TimePeriod> buildUnnamed5304() => [
       buildTimePeriod(),
       buildTimePeriod(),
     ];
 
-void checkUnnamed5305(core.List<api.TimePeriod> o) {
+void checkUnnamed5304(core.List<api.TimePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimePeriod(o[0]);
   checkTimePeriod(o[1]);
 }
 
-core.List<api.Error> buildUnnamed5306() => [
+core.List<api.Error> buildUnnamed5305() => [
       buildError(),
       buildError(),
     ];
 
-void checkUnnamed5306(core.List<api.Error> o) {
+void checkUnnamed5305(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -1628,8 +1628,8 @@ api.FreeBusyCalendar buildFreeBusyCalendar() {
   final o = api.FreeBusyCalendar();
   buildCounterFreeBusyCalendar++;
   if (buildCounterFreeBusyCalendar < 3) {
-    o.busy = buildUnnamed5305();
-    o.errors = buildUnnamed5306();
+    o.busy = buildUnnamed5304();
+    o.errors = buildUnnamed5305();
   }
   buildCounterFreeBusyCalendar--;
   return o;
@@ -1638,18 +1638,18 @@ api.FreeBusyCalendar buildFreeBusyCalendar() {
 void checkFreeBusyCalendar(api.FreeBusyCalendar o) {
   buildCounterFreeBusyCalendar++;
   if (buildCounterFreeBusyCalendar < 3) {
-    checkUnnamed5305(o.busy!);
-    checkUnnamed5306(o.errors!);
+    checkUnnamed5304(o.busy!);
+    checkUnnamed5305(o.errors!);
   }
   buildCounterFreeBusyCalendar--;
 }
 
-core.List<core.String> buildUnnamed5307() => [
+core.List<core.String> buildUnnamed5306() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5307(core.List<core.String> o) {
+void checkUnnamed5306(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1661,12 +1661,12 @@ void checkUnnamed5307(core.List<core.String> o) {
   );
 }
 
-core.List<api.Error> buildUnnamed5308() => [
+core.List<api.Error> buildUnnamed5307() => [
       buildError(),
       buildError(),
     ];
 
-void checkUnnamed5308(core.List<api.Error> o) {
+void checkUnnamed5307(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -1677,8 +1677,8 @@ api.FreeBusyGroup buildFreeBusyGroup() {
   final o = api.FreeBusyGroup();
   buildCounterFreeBusyGroup++;
   if (buildCounterFreeBusyGroup < 3) {
-    o.calendars = buildUnnamed5307();
-    o.errors = buildUnnamed5308();
+    o.calendars = buildUnnamed5306();
+    o.errors = buildUnnamed5307();
   }
   buildCounterFreeBusyGroup--;
   return o;
@@ -1687,18 +1687,18 @@ api.FreeBusyGroup buildFreeBusyGroup() {
 void checkFreeBusyGroup(api.FreeBusyGroup o) {
   buildCounterFreeBusyGroup++;
   if (buildCounterFreeBusyGroup < 3) {
-    checkUnnamed5307(o.calendars!);
-    checkUnnamed5308(o.errors!);
+    checkUnnamed5306(o.calendars!);
+    checkUnnamed5307(o.errors!);
   }
   buildCounterFreeBusyGroup--;
 }
 
-core.List<api.FreeBusyRequestItem> buildUnnamed5309() => [
+core.List<api.FreeBusyRequestItem> buildUnnamed5308() => [
       buildFreeBusyRequestItem(),
       buildFreeBusyRequestItem(),
     ];
 
-void checkUnnamed5309(core.List<api.FreeBusyRequestItem> o) {
+void checkUnnamed5308(core.List<api.FreeBusyRequestItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreeBusyRequestItem(o[0]);
   checkFreeBusyRequestItem(o[1]);
@@ -1711,7 +1711,7 @@ api.FreeBusyRequest buildFreeBusyRequest() {
   if (buildCounterFreeBusyRequest < 3) {
     o.calendarExpansionMax = 42;
     o.groupExpansionMax = 42;
-    o.items = buildUnnamed5309();
+    o.items = buildUnnamed5308();
     o.timeMax = core.DateTime.parse('2002-02-27T14:01:02');
     o.timeMin = core.DateTime.parse('2002-02-27T14:01:02');
     o.timeZone = 'foo';
@@ -1731,7 +1731,7 @@ void checkFreeBusyRequest(api.FreeBusyRequest o) {
       o.groupExpansionMax!,
       unittest.equals(42),
     );
-    checkUnnamed5309(o.items!);
+    checkUnnamed5308(o.items!);
     unittest.expect(
       o.timeMax!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
@@ -1770,23 +1770,23 @@ void checkFreeBusyRequestItem(api.FreeBusyRequestItem o) {
   buildCounterFreeBusyRequestItem--;
 }
 
-core.Map<core.String, api.FreeBusyCalendar> buildUnnamed5310() => {
+core.Map<core.String, api.FreeBusyCalendar> buildUnnamed5309() => {
       'x': buildFreeBusyCalendar(),
       'y': buildFreeBusyCalendar(),
     };
 
-void checkUnnamed5310(core.Map<core.String, api.FreeBusyCalendar> o) {
+void checkUnnamed5309(core.Map<core.String, api.FreeBusyCalendar> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreeBusyCalendar(o['x']!);
   checkFreeBusyCalendar(o['y']!);
 }
 
-core.Map<core.String, api.FreeBusyGroup> buildUnnamed5311() => {
+core.Map<core.String, api.FreeBusyGroup> buildUnnamed5310() => {
       'x': buildFreeBusyGroup(),
       'y': buildFreeBusyGroup(),
     };
 
-void checkUnnamed5311(core.Map<core.String, api.FreeBusyGroup> o) {
+void checkUnnamed5310(core.Map<core.String, api.FreeBusyGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreeBusyGroup(o['x']!);
   checkFreeBusyGroup(o['y']!);
@@ -1797,8 +1797,8 @@ api.FreeBusyResponse buildFreeBusyResponse() {
   final o = api.FreeBusyResponse();
   buildCounterFreeBusyResponse++;
   if (buildCounterFreeBusyResponse < 3) {
-    o.calendars = buildUnnamed5310();
-    o.groups = buildUnnamed5311();
+    o.calendars = buildUnnamed5309();
+    o.groups = buildUnnamed5310();
     o.kind = 'foo';
     o.timeMax = core.DateTime.parse('2002-02-27T14:01:02');
     o.timeMin = core.DateTime.parse('2002-02-27T14:01:02');
@@ -1810,8 +1810,8 @@ api.FreeBusyResponse buildFreeBusyResponse() {
 void checkFreeBusyResponse(api.FreeBusyResponse o) {
   buildCounterFreeBusyResponse++;
   if (buildCounterFreeBusyResponse < 3) {
-    checkUnnamed5310(o.calendars!);
-    checkUnnamed5311(o.groups!);
+    checkUnnamed5309(o.calendars!);
+    checkUnnamed5310(o.groups!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1865,12 +1865,12 @@ void checkSetting(api.Setting o) {
   buildCounterSetting--;
 }
 
-core.List<api.Setting> buildUnnamed5312() => [
+core.List<api.Setting> buildUnnamed5311() => [
       buildSetting(),
       buildSetting(),
     ];
 
-void checkUnnamed5312(core.List<api.Setting> o) {
+void checkUnnamed5311(core.List<api.Setting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetting(o[0]);
   checkSetting(o[1]);
@@ -1882,7 +1882,7 @@ api.Settings buildSettings() {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed5312();
+    o.items = buildUnnamed5311();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.nextSyncToken = 'foo';
@@ -1898,7 +1898,7 @@ void checkSettings(api.Settings o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed5312(o.items!);
+    checkUnnamed5311(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1942,6 +1942,23 @@ void checkTimePeriod(api.TimePeriod o) {
   buildCounterTimePeriod--;
 }
 
+core.List<core.String> buildUnnamed5312() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed5312(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.List<core.String> buildUnnamed5313() => [
       'foo',
       'foo',
@@ -1982,23 +1999,6 @@ core.List<core.String> buildUnnamed5315() => [
     ];
 
 void checkUnnamed5315(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed5316() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed5316(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4592,9 +4592,9 @@ void main() {
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
-      final arg_privateExtendedProperty = buildUnnamed5313();
+      final arg_privateExtendedProperty = buildUnnamed5312();
       final arg_q = 'foo';
-      final arg_sharedExtendedProperty = buildUnnamed5314();
+      final arg_sharedExtendedProperty = buildUnnamed5313();
       final arg_showDeleted = true;
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;
@@ -5197,9 +5197,9 @@ void main() {
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
-      final arg_privateExtendedProperty = buildUnnamed5315();
+      final arg_privateExtendedProperty = buildUnnamed5314();
       final arg_q = 'foo';
-      final arg_sharedExtendedProperty = buildUnnamed5316();
+      final arg_sharedExtendedProperty = buildUnnamed5315();
       final arg_showDeleted = true;
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;

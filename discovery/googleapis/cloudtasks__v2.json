@@ -4,6 +4,9 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "See, edit, configure, and delete your Google Cloud Platform data"
+                },
+                "https://www.googleapis.com/auth/cloud-tasks": {
+                    "description": "Manage tasks and queues in the Cloud Tasks service"
                 }
             }
         }

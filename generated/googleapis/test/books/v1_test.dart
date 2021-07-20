@@ -118,12 +118,12 @@ void checkAnnotationLayerSummary(api.AnnotationLayerSummary o) {
   buildCounterAnnotationLayerSummary--;
 }
 
-core.List<core.String> buildUnnamed7752() => [
+core.List<core.String> buildUnnamed7753() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7752(core.List<core.String> o) {
+void checkUnnamed7753(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -152,7 +152,7 @@ api.Annotation buildAnnotation() {
     o.kind = 'foo';
     o.layerId = 'foo';
     o.layerSummary = buildAnnotationLayerSummary();
-    o.pageIds = buildUnnamed7752();
+    o.pageIds = buildUnnamed7753();
     o.selectedText = 'foo';
     o.selfLink = 'foo';
     o.updated = 'foo';
@@ -201,7 +201,7 @@ void checkAnnotation(api.Annotation o) {
       unittest.equals('foo'),
     );
     checkAnnotationLayerSummary(o.layerSummary!);
-    checkUnnamed7752(o.pageIds!);
+    checkUnnamed7753(o.pageIds!);
     unittest.expect(
       o.selectedText!,
       unittest.equals('foo'),
@@ -222,12 +222,12 @@ void checkAnnotation(api.Annotation o) {
   buildCounterAnnotation--;
 }
 
-core.List<api.Annotation> buildUnnamed7753() => [
+core.List<api.Annotation> buildUnnamed7754() => [
       buildAnnotation(),
       buildAnnotation(),
     ];
 
-void checkUnnamed7753(core.List<api.Annotation> o) {
+void checkUnnamed7754(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
@@ -238,7 +238,7 @@ api.Annotations buildAnnotations() {
   final o = api.Annotations();
   buildCounterAnnotations++;
   if (buildCounterAnnotations < 3) {
-    o.items = buildUnnamed7753();
+    o.items = buildUnnamed7754();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.totalItems = 42;
@@ -250,7 +250,7 @@ api.Annotations buildAnnotations() {
 void checkAnnotations(api.Annotations o) {
   buildCounterAnnotations++;
   if (buildCounterAnnotations < 3) {
-    checkUnnamed7753(o.items!);
+    checkUnnamed7754(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -309,12 +309,12 @@ void checkAnnotationsSummaryLayers(api.AnnotationsSummaryLayers o) {
   buildCounterAnnotationsSummaryLayers--;
 }
 
-core.List<api.AnnotationsSummaryLayers> buildUnnamed7754() => [
+core.List<api.AnnotationsSummaryLayers> buildUnnamed7755() => [
       buildAnnotationsSummaryLayers(),
       buildAnnotationsSummaryLayers(),
     ];
 
-void checkUnnamed7754(core.List<api.AnnotationsSummaryLayers> o) {
+void checkUnnamed7755(core.List<api.AnnotationsSummaryLayers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotationsSummaryLayers(o[0]);
   checkAnnotationsSummaryLayers(o[1]);
@@ -326,7 +326,7 @@ api.AnnotationsSummary buildAnnotationsSummary() {
   buildCounterAnnotationsSummary++;
   if (buildCounterAnnotationsSummary < 3) {
     o.kind = 'foo';
-    o.layers = buildUnnamed7754();
+    o.layers = buildUnnamed7755();
   }
   buildCounterAnnotationsSummary--;
   return o;
@@ -339,17 +339,17 @@ void checkAnnotationsSummary(api.AnnotationsSummary o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed7754(o.layers!);
+    checkUnnamed7755(o.layers!);
   }
   buildCounterAnnotationsSummary--;
 }
 
-core.List<api.GeoAnnotationdata> buildUnnamed7755() => [
+core.List<api.GeoAnnotationdata> buildUnnamed7756() => [
       buildGeoAnnotationdata(),
       buildGeoAnnotationdata(),
     ];
 
-void checkUnnamed7755(core.List<api.GeoAnnotationdata> o) {
+void checkUnnamed7756(core.List<api.GeoAnnotationdata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoAnnotationdata(o[0]);
   checkGeoAnnotationdata(o[1]);
@@ -360,7 +360,7 @@ api.Annotationsdata buildAnnotationsdata() {
   final o = api.Annotationsdata();
   buildCounterAnnotationsdata++;
   if (buildCounterAnnotationsdata < 3) {
-    o.items = buildUnnamed7755();
+    o.items = buildUnnamed7756();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.totalItems = 42;
@@ -372,7 +372,7 @@ api.Annotationsdata buildAnnotationsdata() {
 void checkAnnotationsdata(api.Annotationsdata o) {
   buildCounterAnnotationsdata++;
   if (buildCounterAnnotationsdata < 3) {
-    checkUnnamed7755(o.items!);
+    checkUnnamed7756(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -554,12 +554,12 @@ void checkBookshelf(api.Bookshelf o) {
   buildCounterBookshelf--;
 }
 
-core.List<api.Bookshelf> buildUnnamed7756() => [
+core.List<api.Bookshelf> buildUnnamed7757() => [
       buildBookshelf(),
       buildBookshelf(),
     ];
 
-void checkUnnamed7756(core.List<api.Bookshelf> o) {
+void checkUnnamed7757(core.List<api.Bookshelf> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBookshelf(o[0]);
   checkBookshelf(o[1]);
@@ -570,7 +570,7 @@ api.Bookshelves buildBookshelves() {
   final o = api.Bookshelves();
   buildCounterBookshelves++;
   if (buildCounterBookshelves < 3) {
-    o.items = buildUnnamed7756();
+    o.items = buildUnnamed7757();
     o.kind = 'foo';
   }
   buildCounterBookshelves--;
@@ -580,7 +580,7 @@ api.Bookshelves buildBookshelves() {
 void checkBookshelves(api.Bookshelves o) {
   buildCounterBookshelves++;
   if (buildCounterBookshelves < 3) {
-    checkUnnamed7756(o.items!);
+    checkUnnamed7757(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -621,12 +621,12 @@ void checkCategoryItems(api.CategoryItems o) {
   buildCounterCategoryItems--;
 }
 
-core.List<api.CategoryItems> buildUnnamed7757() => [
+core.List<api.CategoryItems> buildUnnamed7758() => [
       buildCategoryItems(),
       buildCategoryItems(),
     ];
 
-void checkUnnamed7757(core.List<api.CategoryItems> o) {
+void checkUnnamed7758(core.List<api.CategoryItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCategoryItems(o[0]);
   checkCategoryItems(o[1]);
@@ -637,7 +637,7 @@ api.Category buildCategory() {
   final o = api.Category();
   buildCounterCategory++;
   if (buildCounterCategory < 3) {
-    o.items = buildUnnamed7757();
+    o.items = buildUnnamed7758();
     o.kind = 'foo';
   }
   buildCounterCategory--;
@@ -647,7 +647,7 @@ api.Category buildCategory() {
 void checkCategory(api.Category o) {
   buildCounterCategory++;
   if (buildCounterCategory < 3) {
-    checkUnnamed7757(o.items!);
+    checkUnnamed7758(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -884,12 +884,12 @@ void checkDictlayerdataDictWordsDerivatives(
   buildCounterDictlayerdataDictWordsDerivatives--;
 }
 
-core.List<api.DictlayerdataDictWordsDerivatives> buildUnnamed7758() => [
+core.List<api.DictlayerdataDictWordsDerivatives> buildUnnamed7759() => [
       buildDictlayerdataDictWordsDerivatives(),
       buildDictlayerdataDictWordsDerivatives(),
     ];
 
-void checkUnnamed7758(core.List<api.DictlayerdataDictWordsDerivatives> o) {
+void checkUnnamed7759(core.List<api.DictlayerdataDictWordsDerivatives> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsDerivatives(o[0]);
   checkDictlayerdataDictWordsDerivatives(o[1]);
@@ -948,12 +948,12 @@ void checkDictlayerdataDictWordsExamples(api.DictlayerdataDictWordsExamples o) {
   buildCounterDictlayerdataDictWordsExamples--;
 }
 
-core.List<api.DictlayerdataDictWordsExamples> buildUnnamed7759() => [
+core.List<api.DictlayerdataDictWordsExamples> buildUnnamed7760() => [
       buildDictlayerdataDictWordsExamples(),
       buildDictlayerdataDictWordsExamples(),
     ];
 
-void checkUnnamed7759(core.List<api.DictlayerdataDictWordsExamples> o) {
+void checkUnnamed7760(core.List<api.DictlayerdataDictWordsExamples> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsExamples(o[0]);
   checkDictlayerdataDictWordsExamples(o[1]);
@@ -988,12 +988,12 @@ void checkDictlayerdataDictWordsSensesConjugations(
   buildCounterDictlayerdataDictWordsSensesConjugations--;
 }
 
-core.List<api.DictlayerdataDictWordsSensesConjugations> buildUnnamed7760() => [
+core.List<api.DictlayerdataDictWordsSensesConjugations> buildUnnamed7761() => [
       buildDictlayerdataDictWordsSensesConjugations(),
       buildDictlayerdataDictWordsSensesConjugations(),
     ];
 
-void checkUnnamed7760(
+void checkUnnamed7761(
     core.List<api.DictlayerdataDictWordsSensesConjugations> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesConjugations(o[0]);
@@ -1056,12 +1056,12 @@ void checkDictlayerdataDictWordsSensesDefinitionsExamples(
 }
 
 core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples>
-    buildUnnamed7761() => [
+    buildUnnamed7762() => [
           buildDictlayerdataDictWordsSensesDefinitionsExamples(),
           buildDictlayerdataDictWordsSensesDefinitionsExamples(),
         ];
 
-void checkUnnamed7761(
+void checkUnnamed7762(
     core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesDefinitionsExamples(o[0]);
@@ -1075,7 +1075,7 @@ api.DictlayerdataDictWordsSensesDefinitions
   buildCounterDictlayerdataDictWordsSensesDefinitions++;
   if (buildCounterDictlayerdataDictWordsSensesDefinitions < 3) {
     o.definition = 'foo';
-    o.examples = buildUnnamed7761();
+    o.examples = buildUnnamed7762();
   }
   buildCounterDictlayerdataDictWordsSensesDefinitions--;
   return o;
@@ -1089,17 +1089,17 @@ void checkDictlayerdataDictWordsSensesDefinitions(
       o.definition!,
       unittest.equals('foo'),
     );
-    checkUnnamed7761(o.examples!);
+    checkUnnamed7762(o.examples!);
   }
   buildCounterDictlayerdataDictWordsSensesDefinitions--;
 }
 
-core.List<api.DictlayerdataDictWordsSensesDefinitions> buildUnnamed7762() => [
+core.List<api.DictlayerdataDictWordsSensesDefinitions> buildUnnamed7763() => [
       buildDictlayerdataDictWordsSensesDefinitions(),
       buildDictlayerdataDictWordsSensesDefinitions(),
     ];
 
-void checkUnnamed7762(
+void checkUnnamed7763(
     core.List<api.DictlayerdataDictWordsSensesDefinitions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesDefinitions(o[0]);
@@ -1190,12 +1190,12 @@ void checkDictlayerdataDictWordsSensesSynonyms(
   buildCounterDictlayerdataDictWordsSensesSynonyms--;
 }
 
-core.List<api.DictlayerdataDictWordsSensesSynonyms> buildUnnamed7763() => [
+core.List<api.DictlayerdataDictWordsSensesSynonyms> buildUnnamed7764() => [
       buildDictlayerdataDictWordsSensesSynonyms(),
       buildDictlayerdataDictWordsSensesSynonyms(),
     ];
 
-void checkUnnamed7763(core.List<api.DictlayerdataDictWordsSensesSynonyms> o) {
+void checkUnnamed7764(core.List<api.DictlayerdataDictWordsSensesSynonyms> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesSynonyms(o[0]);
   checkDictlayerdataDictWordsSensesSynonyms(o[1]);
@@ -1206,14 +1206,14 @@ api.DictlayerdataDictWordsSenses buildDictlayerdataDictWordsSenses() {
   final o = api.DictlayerdataDictWordsSenses();
   buildCounterDictlayerdataDictWordsSenses++;
   if (buildCounterDictlayerdataDictWordsSenses < 3) {
-    o.conjugations = buildUnnamed7760();
-    o.definitions = buildUnnamed7762();
+    o.conjugations = buildUnnamed7761();
+    o.definitions = buildUnnamed7763();
     o.partOfSpeech = 'foo';
     o.pronunciation = 'foo';
     o.pronunciationUrl = 'foo';
     o.source = buildDictlayerdataDictWordsSensesSource();
     o.syllabification = 'foo';
-    o.synonyms = buildUnnamed7763();
+    o.synonyms = buildUnnamed7764();
   }
   buildCounterDictlayerdataDictWordsSenses--;
   return o;
@@ -1222,8 +1222,8 @@ api.DictlayerdataDictWordsSenses buildDictlayerdataDictWordsSenses() {
 void checkDictlayerdataDictWordsSenses(api.DictlayerdataDictWordsSenses o) {
   buildCounterDictlayerdataDictWordsSenses++;
   if (buildCounterDictlayerdataDictWordsSenses < 3) {
-    checkUnnamed7760(o.conjugations!);
-    checkUnnamed7762(o.definitions!);
+    checkUnnamed7761(o.conjugations!);
+    checkUnnamed7763(o.definitions!);
     unittest.expect(
       o.partOfSpeech!,
       unittest.equals('foo'),
@@ -1241,17 +1241,17 @@ void checkDictlayerdataDictWordsSenses(api.DictlayerdataDictWordsSenses o) {
       o.syllabification!,
       unittest.equals('foo'),
     );
-    checkUnnamed7763(o.synonyms!);
+    checkUnnamed7764(o.synonyms!);
   }
   buildCounterDictlayerdataDictWordsSenses--;
 }
 
-core.List<api.DictlayerdataDictWordsSenses> buildUnnamed7764() => [
+core.List<api.DictlayerdataDictWordsSenses> buildUnnamed7765() => [
       buildDictlayerdataDictWordsSenses(),
       buildDictlayerdataDictWordsSenses(),
     ];
 
-void checkUnnamed7764(core.List<api.DictlayerdataDictWordsSenses> o) {
+void checkUnnamed7765(core.List<api.DictlayerdataDictWordsSenses> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSenses(o[0]);
   checkDictlayerdataDictWordsSenses(o[1]);
@@ -1289,9 +1289,9 @@ api.DictlayerdataDictWords buildDictlayerdataDictWords() {
   final o = api.DictlayerdataDictWords();
   buildCounterDictlayerdataDictWords++;
   if (buildCounterDictlayerdataDictWords < 3) {
-    o.derivatives = buildUnnamed7758();
-    o.examples = buildUnnamed7759();
-    o.senses = buildUnnamed7764();
+    o.derivatives = buildUnnamed7759();
+    o.examples = buildUnnamed7760();
+    o.senses = buildUnnamed7765();
     o.source = buildDictlayerdataDictWordsSource();
   }
   buildCounterDictlayerdataDictWords--;
@@ -1301,20 +1301,20 @@ api.DictlayerdataDictWords buildDictlayerdataDictWords() {
 void checkDictlayerdataDictWords(api.DictlayerdataDictWords o) {
   buildCounterDictlayerdataDictWords++;
   if (buildCounterDictlayerdataDictWords < 3) {
-    checkUnnamed7758(o.derivatives!);
-    checkUnnamed7759(o.examples!);
-    checkUnnamed7764(o.senses!);
+    checkUnnamed7759(o.derivatives!);
+    checkUnnamed7760(o.examples!);
+    checkUnnamed7765(o.senses!);
     checkDictlayerdataDictWordsSource(o.source!);
   }
   buildCounterDictlayerdataDictWords--;
 }
 
-core.List<api.DictlayerdataDictWords> buildUnnamed7765() => [
+core.List<api.DictlayerdataDictWords> buildUnnamed7766() => [
       buildDictlayerdataDictWords(),
       buildDictlayerdataDictWords(),
     ];
 
-void checkUnnamed7765(core.List<api.DictlayerdataDictWords> o) {
+void checkUnnamed7766(core.List<api.DictlayerdataDictWords> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWords(o[0]);
   checkDictlayerdataDictWords(o[1]);
@@ -1326,7 +1326,7 @@ api.DictlayerdataDict buildDictlayerdataDict() {
   buildCounterDictlayerdataDict++;
   if (buildCounterDictlayerdataDict < 3) {
     o.source = buildDictlayerdataDictSource();
-    o.words = buildUnnamed7765();
+    o.words = buildUnnamed7766();
   }
   buildCounterDictlayerdataDict--;
   return o;
@@ -1336,7 +1336,7 @@ void checkDictlayerdataDict(api.DictlayerdataDict o) {
   buildCounterDictlayerdataDict++;
   if (buildCounterDictlayerdataDict < 3) {
     checkDictlayerdataDictSource(o.source!);
-    checkUnnamed7765(o.words!);
+    checkUnnamed7766(o.words!);
   }
   buildCounterDictlayerdataDict--;
 }
@@ -1416,12 +1416,12 @@ void checkDiscoveryclustersClustersBannerWithContentContainer(
   buildCounterDiscoveryclustersClustersBannerWithContentContainer--;
 }
 
-core.List<api.Volume> buildUnnamed7766() => [
+core.List<api.Volume> buildUnnamed7767() => [
       buildVolume(),
       buildVolume(),
     ];
 
-void checkUnnamed7766(core.List<api.Volume> o) {
+void checkUnnamed7767(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -1438,7 +1438,7 @@ api.DiscoveryclustersClusters buildDiscoveryclustersClusters() {
     o.title = 'foo';
     o.totalVolumes = 42;
     o.uid = 'foo';
-    o.volumes = buildUnnamed7766();
+    o.volumes = buildUnnamed7767();
   }
   buildCounterDiscoveryclustersClusters--;
   return o;
@@ -1465,17 +1465,17 @@ void checkDiscoveryclustersClusters(api.DiscoveryclustersClusters o) {
       o.uid!,
       unittest.equals('foo'),
     );
-    checkUnnamed7766(o.volumes!);
+    checkUnnamed7767(o.volumes!);
   }
   buildCounterDiscoveryclustersClusters--;
 }
 
-core.List<api.DiscoveryclustersClusters> buildUnnamed7767() => [
+core.List<api.DiscoveryclustersClusters> buildUnnamed7768() => [
       buildDiscoveryclustersClusters(),
       buildDiscoveryclustersClusters(),
     ];
 
-void checkUnnamed7767(core.List<api.DiscoveryclustersClusters> o) {
+void checkUnnamed7768(core.List<api.DiscoveryclustersClusters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDiscoveryclustersClusters(o[0]);
   checkDiscoveryclustersClusters(o[1]);
@@ -1486,7 +1486,7 @@ api.Discoveryclusters buildDiscoveryclusters() {
   final o = api.Discoveryclusters();
   buildCounterDiscoveryclusters++;
   if (buildCounterDiscoveryclusters < 3) {
-    o.clusters = buildUnnamed7767();
+    o.clusters = buildUnnamed7768();
     o.kind = 'foo';
     o.totalClusters = 42;
   }
@@ -1497,7 +1497,7 @@ api.Discoveryclusters buildDiscoveryclusters() {
 void checkDiscoveryclusters(api.Discoveryclusters o) {
   buildCounterDiscoveryclusters++;
   if (buildCounterDiscoveryclusters < 3) {
-    checkUnnamed7767(o.clusters!);
+    checkUnnamed7768(o.clusters!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1578,12 +1578,12 @@ void checkDownloadAccessRestriction(api.DownloadAccessRestriction o) {
   buildCounterDownloadAccessRestriction--;
 }
 
-core.List<api.DownloadAccessRestriction> buildUnnamed7768() => [
+core.List<api.DownloadAccessRestriction> buildUnnamed7769() => [
       buildDownloadAccessRestriction(),
       buildDownloadAccessRestriction(),
     ];
 
-void checkUnnamed7768(core.List<api.DownloadAccessRestriction> o) {
+void checkUnnamed7769(core.List<api.DownloadAccessRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDownloadAccessRestriction(o[0]);
   checkDownloadAccessRestriction(o[1]);
@@ -1594,7 +1594,7 @@ api.DownloadAccesses buildDownloadAccesses() {
   final o = api.DownloadAccesses();
   buildCounterDownloadAccesses++;
   if (buildCounterDownloadAccesses < 3) {
-    o.downloadAccessList = buildUnnamed7768();
+    o.downloadAccessList = buildUnnamed7769();
     o.kind = 'foo';
   }
   buildCounterDownloadAccesses--;
@@ -1604,7 +1604,7 @@ api.DownloadAccesses buildDownloadAccesses() {
 void checkDownloadAccesses(api.DownloadAccesses o) {
   buildCounterDownloadAccesses++;
   if (buildCounterDownloadAccesses < 3) {
-    checkUnnamed7768(o.downloadAccessList!);
+    checkUnnamed7769(o.downloadAccessList!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1792,12 +1792,12 @@ void checkGeolayerdataCommon(api.GeolayerdataCommon o) {
   buildCounterGeolayerdataCommon--;
 }
 
-core.List<core.String> buildUnnamed7769() => [
+core.List<core.String> buildUnnamed7770() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7769(core.List<core.String> o) {
+void checkUnnamed7770(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1889,7 +1889,7 @@ api.GeolayerdataGeo buildGeolayerdataGeo() {
   final o = api.GeolayerdataGeo();
   buildCounterGeolayerdataGeo++;
   if (buildCounterGeolayerdataGeo < 3) {
-    o.boundary = buildUnnamed7769();
+    o.boundary = buildUnnamed7770();
     o.cachePolicy = 'foo';
     o.countryCode = 'foo';
     o.latitude = 42.0;
@@ -1905,7 +1905,7 @@ api.GeolayerdataGeo buildGeolayerdataGeo() {
 void checkGeolayerdataGeo(api.GeolayerdataGeo o) {
   buildCounterGeolayerdataGeo++;
   if (buildCounterGeolayerdataGeo < 3) {
-    checkUnnamed7769(o.boundary!);
+    checkUnnamed7770(o.boundary!);
     unittest.expect(
       o.cachePolicy!,
       unittest.equals('foo'),
@@ -1961,12 +1961,12 @@ void checkGeolayerdata(api.Geolayerdata o) {
   buildCounterGeolayerdata--;
 }
 
-core.List<api.Layersummary> buildUnnamed7770() => [
+core.List<api.Layersummary> buildUnnamed7771() => [
       buildLayersummary(),
       buildLayersummary(),
     ];
 
-void checkUnnamed7770(core.List<api.Layersummary> o) {
+void checkUnnamed7771(core.List<api.Layersummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLayersummary(o[0]);
   checkLayersummary(o[1]);
@@ -1977,7 +1977,7 @@ api.Layersummaries buildLayersummaries() {
   final o = api.Layersummaries();
   buildCounterLayersummaries++;
   if (buildCounterLayersummaries < 3) {
-    o.items = buildUnnamed7770();
+    o.items = buildUnnamed7771();
     o.kind = 'foo';
     o.totalItems = 42;
   }
@@ -1988,7 +1988,7 @@ api.Layersummaries buildLayersummaries() {
 void checkLayersummaries(api.Layersummaries o) {
   buildCounterLayersummaries++;
   if (buildCounterLayersummaries < 3) {
-    checkUnnamed7770(o.items!);
+    checkUnnamed7771(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2001,12 +2001,12 @@ void checkLayersummaries(api.Layersummaries o) {
   buildCounterLayersummaries--;
 }
 
-core.List<core.String> buildUnnamed7771() => [
+core.List<core.String> buildUnnamed7772() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7771(core.List<core.String> o) {
+void checkUnnamed7772(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2024,7 +2024,7 @@ api.Layersummary buildLayersummary() {
   buildCounterLayersummary++;
   if (buildCounterLayersummary < 3) {
     o.annotationCount = 42;
-    o.annotationTypes = buildUnnamed7771();
+    o.annotationTypes = buildUnnamed7772();
     o.annotationsDataLink = 'foo';
     o.annotationsLink = 'foo';
     o.contentVersion = 'foo';
@@ -2048,7 +2048,7 @@ void checkLayersummary(api.Layersummary o) {
       o.annotationCount!,
       unittest.equals(42),
     );
-    checkUnnamed7771(o.annotationTypes!);
+    checkUnnamed7772(o.annotationTypes!);
     unittest.expect(
       o.annotationsDataLink!,
       unittest.equals('foo'),
@@ -2139,12 +2139,12 @@ void checkMetadataItems(api.MetadataItems o) {
   buildCounterMetadataItems--;
 }
 
-core.List<api.MetadataItems> buildUnnamed7772() => [
+core.List<api.MetadataItems> buildUnnamed7773() => [
       buildMetadataItems(),
       buildMetadataItems(),
     ];
 
-void checkUnnamed7772(core.List<api.MetadataItems> o) {
+void checkUnnamed7773(core.List<api.MetadataItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetadataItems(o[0]);
   checkMetadataItems(o[1]);
@@ -2155,7 +2155,7 @@ api.Metadata buildMetadata() {
   final o = api.Metadata();
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    o.items = buildUnnamed7772();
+    o.items = buildUnnamed7773();
     o.kind = 'foo';
   }
   buildCounterMetadata--;
@@ -2165,7 +2165,7 @@ api.Metadata buildMetadata() {
 void checkMetadata(api.Metadata o) {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    checkUnnamed7772(o.items!);
+    checkUnnamed7773(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2174,12 +2174,12 @@ void checkMetadata(api.Metadata o) {
   buildCounterMetadata--;
 }
 
-core.List<core.String> buildUnnamed7773() => [
+core.List<core.String> buildUnnamed7774() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7773(core.List<core.String> o) {
+void checkUnnamed7774(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2197,7 +2197,7 @@ api.Notification buildNotification() {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
     o.body = 'foo';
-    o.crmExperimentIds = buildUnnamed7773();
+    o.crmExperimentIds = buildUnnamed7774();
     o.docId = 'foo';
     o.docType = 'foo';
     o.dontShowNotification = true;
@@ -2224,7 +2224,7 @@ void checkNotification(api.Notification o) {
       o.body!,
       unittest.equals('foo'),
     );
-    checkUnnamed7773(o.crmExperimentIds!);
+    checkUnnamed7774(o.crmExperimentIds!);
     unittest.expect(
       o.docId!,
       unittest.equals('foo'),
@@ -2323,12 +2323,12 @@ void checkOffersItemsItems(api.OffersItemsItems o) {
   buildCounterOffersItemsItems--;
 }
 
-core.List<api.OffersItemsItems> buildUnnamed7774() => [
+core.List<api.OffersItemsItems> buildUnnamed7775() => [
       buildOffersItemsItems(),
       buildOffersItemsItems(),
     ];
 
-void checkUnnamed7774(core.List<api.OffersItemsItems> o) {
+void checkUnnamed7775(core.List<api.OffersItemsItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOffersItemsItems(o[0]);
   checkOffersItemsItems(o[1]);
@@ -2342,7 +2342,7 @@ api.OffersItems buildOffersItems() {
     o.artUrl = 'foo';
     o.gservicesKey = 'foo';
     o.id = 'foo';
-    o.items = buildUnnamed7774();
+    o.items = buildUnnamed7775();
   }
   buildCounterOffersItems--;
   return o;
@@ -2363,17 +2363,17 @@ void checkOffersItems(api.OffersItems o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed7774(o.items!);
+    checkUnnamed7775(o.items!);
   }
   buildCounterOffersItems--;
 }
 
-core.List<api.OffersItems> buildUnnamed7775() => [
+core.List<api.OffersItems> buildUnnamed7776() => [
       buildOffersItems(),
       buildOffersItems(),
     ];
 
-void checkUnnamed7775(core.List<api.OffersItems> o) {
+void checkUnnamed7776(core.List<api.OffersItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOffersItems(o[0]);
   checkOffersItems(o[1]);
@@ -2384,7 +2384,7 @@ api.Offers buildOffers() {
   final o = api.Offers();
   buildCounterOffers++;
   if (buildCounterOffers < 3) {
-    o.items = buildUnnamed7775();
+    o.items = buildUnnamed7776();
     o.kind = 'foo';
   }
   buildCounterOffers--;
@@ -2394,7 +2394,7 @@ api.Offers buildOffers() {
 void checkOffers(api.Offers o) {
   buildCounterOffers++;
   if (buildCounterOffers < 3) {
-    checkUnnamed7775(o.items!);
+    checkUnnamed7776(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2777,12 +2777,12 @@ void checkSeriesSeries(api.SeriesSeries o) {
   buildCounterSeriesSeries--;
 }
 
-core.List<api.SeriesSeries> buildUnnamed7776() => [
+core.List<api.SeriesSeries> buildUnnamed7777() => [
       buildSeriesSeries(),
       buildSeriesSeries(),
     ];
 
-void checkUnnamed7776(core.List<api.SeriesSeries> o) {
+void checkUnnamed7777(core.List<api.SeriesSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSeriesSeries(o[0]);
   checkSeriesSeries(o[1]);
@@ -2794,7 +2794,7 @@ api.Series buildSeries() {
   buildCounterSeries++;
   if (buildCounterSeries < 3) {
     o.kind = 'foo';
-    o.series = buildUnnamed7776();
+    o.series = buildUnnamed7777();
   }
   buildCounterSeries--;
   return o;
@@ -2807,17 +2807,17 @@ void checkSeries(api.Series o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed7776(o.series!);
+    checkUnnamed7777(o.series!);
   }
   buildCounterSeries--;
 }
 
-core.List<api.Volume> buildUnnamed7777() => [
+core.List<api.Volume> buildUnnamed7778() => [
       buildVolume(),
       buildVolume(),
     ];
 
-void checkUnnamed7777(core.List<api.Volume> o) {
+void checkUnnamed7778(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -2829,7 +2829,7 @@ api.Seriesmembership buildSeriesmembership() {
   buildCounterSeriesmembership++;
   if (buildCounterSeriesmembership < 3) {
     o.kind = 'foo';
-    o.member = buildUnnamed7777();
+    o.member = buildUnnamed7778();
     o.nextPageToken = 'foo';
   }
   buildCounterSeriesmembership--;
@@ -2843,7 +2843,7 @@ void checkSeriesmembership(api.Seriesmembership o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed7777(o.member!);
+    checkUnnamed7778(o.member!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -3199,12 +3199,12 @@ void checkVolumeLayerInfoLayers(api.VolumeLayerInfoLayers o) {
   buildCounterVolumeLayerInfoLayers--;
 }
 
-core.List<api.VolumeLayerInfoLayers> buildUnnamed7778() => [
+core.List<api.VolumeLayerInfoLayers> buildUnnamed7779() => [
       buildVolumeLayerInfoLayers(),
       buildVolumeLayerInfoLayers(),
     ];
 
-void checkUnnamed7778(core.List<api.VolumeLayerInfoLayers> o) {
+void checkUnnamed7779(core.List<api.VolumeLayerInfoLayers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeLayerInfoLayers(o[0]);
   checkVolumeLayerInfoLayers(o[1]);
@@ -3215,7 +3215,7 @@ api.VolumeLayerInfo buildVolumeLayerInfo() {
   final o = api.VolumeLayerInfo();
   buildCounterVolumeLayerInfo++;
   if (buildCounterVolumeLayerInfo < 3) {
-    o.layers = buildUnnamed7778();
+    o.layers = buildUnnamed7779();
   }
   buildCounterVolumeLayerInfo--;
   return o;
@@ -3224,7 +3224,7 @@ api.VolumeLayerInfo buildVolumeLayerInfo() {
 void checkVolumeLayerInfo(api.VolumeLayerInfo o) {
   buildCounterVolumeLayerInfo++;
   if (buildCounterVolumeLayerInfo < 3) {
-    checkUnnamed7778(o.layers!);
+    checkUnnamed7779(o.layers!);
   }
   buildCounterVolumeLayerInfo--;
 }
@@ -3392,12 +3392,12 @@ void checkVolumeSaleInfoOffers(api.VolumeSaleInfoOffers o) {
   buildCounterVolumeSaleInfoOffers--;
 }
 
-core.List<api.VolumeSaleInfoOffers> buildUnnamed7779() => [
+core.List<api.VolumeSaleInfoOffers> buildUnnamed7780() => [
       buildVolumeSaleInfoOffers(),
       buildVolumeSaleInfoOffers(),
     ];
 
-void checkUnnamed7779(core.List<api.VolumeSaleInfoOffers> o) {
+void checkUnnamed7780(core.List<api.VolumeSaleInfoOffers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeSaleInfoOffers(o[0]);
   checkVolumeSaleInfoOffers(o[1]);
@@ -3439,7 +3439,7 @@ api.VolumeSaleInfo buildVolumeSaleInfo() {
     o.country = 'foo';
     o.isEbook = true;
     o.listPrice = buildVolumeSaleInfoListPrice();
-    o.offers = buildUnnamed7779();
+    o.offers = buildUnnamed7780();
     o.onSaleDate = 'foo';
     o.retailPrice = buildVolumeSaleInfoRetailPrice();
     o.saleability = 'foo';
@@ -3461,7 +3461,7 @@ void checkVolumeSaleInfo(api.VolumeSaleInfo o) {
     );
     unittest.expect(o.isEbook!, unittest.isTrue);
     checkVolumeSaleInfoListPrice(o.listPrice!);
-    checkUnnamed7779(o.offers!);
+    checkUnnamed7780(o.offers!);
     unittest.expect(
       o.onSaleDate!,
       unittest.equals('foo'),
@@ -3681,12 +3681,12 @@ void checkVolumeUserInfo(api.VolumeUserInfo o) {
   buildCounterVolumeUserInfo--;
 }
 
-core.List<core.String> buildUnnamed7780() => [
+core.List<core.String> buildUnnamed7781() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7780(core.List<core.String> o) {
+void checkUnnamed7781(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3698,12 +3698,12 @@ void checkUnnamed7780(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7781() => [
+core.List<core.String> buildUnnamed7782() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7781(core.List<core.String> o) {
+void checkUnnamed7782(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3823,12 +3823,12 @@ void checkVolumeVolumeInfoIndustryIdentifiers(
   buildCounterVolumeVolumeInfoIndustryIdentifiers--;
 }
 
-core.List<api.VolumeVolumeInfoIndustryIdentifiers> buildUnnamed7782() => [
+core.List<api.VolumeVolumeInfoIndustryIdentifiers> buildUnnamed7783() => [
       buildVolumeVolumeInfoIndustryIdentifiers(),
       buildVolumeVolumeInfoIndustryIdentifiers(),
     ];
 
-void checkUnnamed7782(core.List<api.VolumeVolumeInfoIndustryIdentifiers> o) {
+void checkUnnamed7783(core.List<api.VolumeVolumeInfoIndustryIdentifiers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeVolumeInfoIndustryIdentifiers(o[0]);
   checkVolumeVolumeInfoIndustryIdentifiers(o[1]);
@@ -3894,16 +3894,16 @@ api.VolumeVolumeInfo buildVolumeVolumeInfo() {
   buildCounterVolumeVolumeInfo++;
   if (buildCounterVolumeVolumeInfo < 3) {
     o.allowAnonLogging = true;
-    o.authors = buildUnnamed7780();
+    o.authors = buildUnnamed7781();
     o.averageRating = 42.0;
     o.canonicalVolumeLink = 'foo';
-    o.categories = buildUnnamed7781();
+    o.categories = buildUnnamed7782();
     o.comicsContent = true;
     o.contentVersion = 'foo';
     o.description = 'foo';
     o.dimensions = buildVolumeVolumeInfoDimensions();
     o.imageLinks = buildVolumeVolumeInfoImageLinks();
-    o.industryIdentifiers = buildUnnamed7782();
+    o.industryIdentifiers = buildUnnamed7783();
     o.infoLink = 'foo';
     o.language = 'foo';
     o.mainCategory = 'foo';
@@ -3930,7 +3930,7 @@ void checkVolumeVolumeInfo(api.VolumeVolumeInfo o) {
   buildCounterVolumeVolumeInfo++;
   if (buildCounterVolumeVolumeInfo < 3) {
     unittest.expect(o.allowAnonLogging!, unittest.isTrue);
-    checkUnnamed7780(o.authors!);
+    checkUnnamed7781(o.authors!);
     unittest.expect(
       o.averageRating!,
       unittest.equals(42.0),
@@ -3939,7 +3939,7 @@ void checkVolumeVolumeInfo(api.VolumeVolumeInfo o) {
       o.canonicalVolumeLink!,
       unittest.equals('foo'),
     );
-    checkUnnamed7781(o.categories!);
+    checkUnnamed7782(o.categories!);
     unittest.expect(o.comicsContent!, unittest.isTrue);
     unittest.expect(
       o.contentVersion!,
@@ -3951,7 +3951,7 @@ void checkVolumeVolumeInfo(api.VolumeVolumeInfo o) {
     );
     checkVolumeVolumeInfoDimensions(o.dimensions!);
     checkVolumeVolumeInfoImageLinks(o.imageLinks!);
-    checkUnnamed7782(o.industryIdentifiers!);
+    checkUnnamed7783(o.industryIdentifiers!);
     unittest.expect(
       o.infoLink!,
       unittest.equals('foo'),
@@ -4066,12 +4066,12 @@ void checkVolume(api.Volume o) {
   buildCounterVolume--;
 }
 
-core.List<api.Volume> buildUnnamed7783() => [
+core.List<api.Volume> buildUnnamed7784() => [
       buildVolume(),
       buildVolume(),
     ];
 
-void checkUnnamed7783(core.List<api.Volume> o) {
+void checkUnnamed7784(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -4082,7 +4082,7 @@ api.Volume2 buildVolume2() {
   final o = api.Volume2();
   buildCounterVolume2++;
   if (buildCounterVolume2 < 3) {
-    o.items = buildUnnamed7783();
+    o.items = buildUnnamed7784();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -4093,7 +4093,7 @@ api.Volume2 buildVolume2() {
 void checkVolume2(api.Volume2 o) {
   buildCounterVolume2++;
   if (buildCounterVolume2 < 3) {
-    checkUnnamed7783(o.items!);
+    checkUnnamed7784(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4134,12 +4134,12 @@ void checkVolumeannotationContentRanges(api.VolumeannotationContentRanges o) {
   buildCounterVolumeannotationContentRanges--;
 }
 
-core.List<core.String> buildUnnamed7784() => [
+core.List<core.String> buildUnnamed7785() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7784(core.List<core.String> o) {
+void checkUnnamed7785(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4165,7 +4165,7 @@ api.Volumeannotation buildVolumeannotation() {
     o.id = 'foo';
     o.kind = 'foo';
     o.layerId = 'foo';
-    o.pageIds = buildUnnamed7784();
+    o.pageIds = buildUnnamed7785();
     o.selectedText = 'foo';
     o.selfLink = 'foo';
     o.updated = 'foo';
@@ -4208,7 +4208,7 @@ void checkVolumeannotation(api.Volumeannotation o) {
       o.layerId!,
       unittest.equals('foo'),
     );
-    checkUnnamed7784(o.pageIds!);
+    checkUnnamed7785(o.pageIds!);
     unittest.expect(
       o.selectedText!,
       unittest.equals('foo'),
@@ -4229,12 +4229,12 @@ void checkVolumeannotation(api.Volumeannotation o) {
   buildCounterVolumeannotation--;
 }
 
-core.List<api.Volumeannotation> buildUnnamed7785() => [
+core.List<api.Volumeannotation> buildUnnamed7786() => [
       buildVolumeannotation(),
       buildVolumeannotation(),
     ];
 
-void checkUnnamed7785(core.List<api.Volumeannotation> o) {
+void checkUnnamed7786(core.List<api.Volumeannotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeannotation(o[0]);
   checkVolumeannotation(o[1]);
@@ -4245,7 +4245,7 @@ api.Volumeannotations buildVolumeannotations() {
   final o = api.Volumeannotations();
   buildCounterVolumeannotations++;
   if (buildCounterVolumeannotations < 3) {
-    o.items = buildUnnamed7785();
+    o.items = buildUnnamed7786();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.totalItems = 42;
@@ -4258,7 +4258,7 @@ api.Volumeannotations buildVolumeannotations() {
 void checkVolumeannotations(api.Volumeannotations o) {
   buildCounterVolumeannotations++;
   if (buildCounterVolumeannotations < 3) {
-    checkUnnamed7785(o.items!);
+    checkUnnamed7786(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4279,12 +4279,12 @@ void checkVolumeannotations(api.Volumeannotations o) {
   buildCounterVolumeannotations--;
 }
 
-core.List<api.Volume> buildUnnamed7786() => [
+core.List<api.Volume> buildUnnamed7787() => [
       buildVolume(),
       buildVolume(),
     ];
 
-void checkUnnamed7786(core.List<api.Volume> o) {
+void checkUnnamed7787(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -4295,7 +4295,7 @@ api.Volumes buildVolumes() {
   final o = api.Volumes();
   buildCounterVolumes++;
   if (buildCounterVolumes < 3) {
-    o.items = buildUnnamed7786();
+    o.items = buildUnnamed7787();
     o.kind = 'foo';
     o.totalItems = 42;
   }
@@ -4306,7 +4306,7 @@ api.Volumes buildVolumes() {
 void checkVolumes(api.Volumes o) {
   buildCounterVolumes++;
   if (buildCounterVolumes < 3) {
-    checkUnnamed7786(o.items!);
+    checkUnnamed7787(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4347,12 +4347,12 @@ void checkVolumeseriesinfoVolumeSeriesIssue(
   buildCounterVolumeseriesinfoVolumeSeriesIssue--;
 }
 
-core.List<api.VolumeseriesinfoVolumeSeriesIssue> buildUnnamed7787() => [
+core.List<api.VolumeseriesinfoVolumeSeriesIssue> buildUnnamed7788() => [
       buildVolumeseriesinfoVolumeSeriesIssue(),
       buildVolumeseriesinfoVolumeSeriesIssue(),
     ];
 
-void checkUnnamed7787(core.List<api.VolumeseriesinfoVolumeSeriesIssue> o) {
+void checkUnnamed7788(core.List<api.VolumeseriesinfoVolumeSeriesIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeseriesinfoVolumeSeriesIssue(o[0]);
   checkVolumeseriesinfoVolumeSeriesIssue(o[1]);
@@ -4363,7 +4363,7 @@ api.VolumeseriesinfoVolumeSeries buildVolumeseriesinfoVolumeSeries() {
   final o = api.VolumeseriesinfoVolumeSeries();
   buildCounterVolumeseriesinfoVolumeSeries++;
   if (buildCounterVolumeseriesinfoVolumeSeries < 3) {
-    o.issue = buildUnnamed7787();
+    o.issue = buildUnnamed7788();
     o.orderNumber = 42;
     o.seriesBookType = 'foo';
     o.seriesId = 'foo';
@@ -4375,7 +4375,7 @@ api.VolumeseriesinfoVolumeSeries buildVolumeseriesinfoVolumeSeries() {
 void checkVolumeseriesinfoVolumeSeries(api.VolumeseriesinfoVolumeSeries o) {
   buildCounterVolumeseriesinfoVolumeSeries++;
   if (buildCounterVolumeseriesinfoVolumeSeries < 3) {
-    checkUnnamed7787(o.issue!);
+    checkUnnamed7788(o.issue!);
     unittest.expect(
       o.orderNumber!,
       unittest.equals(42),
@@ -4392,12 +4392,12 @@ void checkVolumeseriesinfoVolumeSeries(api.VolumeseriesinfoVolumeSeries o) {
   buildCounterVolumeseriesinfoVolumeSeries--;
 }
 
-core.List<api.VolumeseriesinfoVolumeSeries> buildUnnamed7788() => [
+core.List<api.VolumeseriesinfoVolumeSeries> buildUnnamed7789() => [
       buildVolumeseriesinfoVolumeSeries(),
       buildVolumeseriesinfoVolumeSeries(),
     ];
 
-void checkUnnamed7788(core.List<api.VolumeseriesinfoVolumeSeries> o) {
+void checkUnnamed7789(core.List<api.VolumeseriesinfoVolumeSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeseriesinfoVolumeSeries(o[0]);
   checkVolumeseriesinfoVolumeSeries(o[1]);
@@ -4411,7 +4411,7 @@ api.Volumeseriesinfo buildVolumeseriesinfo() {
     o.bookDisplayNumber = 'foo';
     o.kind = 'foo';
     o.shortSeriesBookTitle = 'foo';
-    o.volumeSeries = buildUnnamed7788();
+    o.volumeSeries = buildUnnamed7789();
   }
   buildCounterVolumeseriesinfo--;
   return o;
@@ -4432,26 +4432,9 @@ void checkVolumeseriesinfo(api.Volumeseriesinfo o) {
       o.shortSeriesBookTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed7788(o.volumeSeries!);
+    checkUnnamed7789(o.volumeSeries!);
   }
   buildCounterVolumeseriesinfo--;
-}
-
-core.List<core.String> buildUnnamed7789() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed7789(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed7790() => [
@@ -4630,6 +4613,23 @@ core.List<core.String> buildUnnamed7800() => [
     ];
 
 void checkUnnamed7800(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed7801() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed7801(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6776,7 +6776,7 @@ void main() {
       final arg_volumeId = 'foo';
       final arg_layerId = 'foo';
       final arg_contentVersion = 'foo';
-      final arg_annotationDataId = buildUnnamed7789();
+      final arg_annotationDataId = buildUnnamed7790();
       final arg_h = 42;
       final arg_locale = 'foo';
       final arg_maxResults = 42;
@@ -7231,7 +7231,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.BooksApi(mock).myconfig;
       final arg_cpksver = 'foo';
-      final arg_volumeIds = buildUnnamed7790();
+      final arg_volumeIds = buildUnnamed7791();
       final arg_locale = 'foo';
       final arg_source = 'foo';
       final arg_$fields = 'foo';
@@ -7389,11 +7389,11 @@ void main() {
       final arg_cpksver = 'foo';
       final arg_nonce = 'foo';
       final arg_source = 'foo';
-      final arg_features = buildUnnamed7791();
+      final arg_features = buildUnnamed7792();
       final arg_includeNonComicsSeries = true;
       final arg_locale = 'foo';
       final arg_showPreorders = true;
-      final arg_volumeIds = buildUnnamed7792();
+      final arg_volumeIds = buildUnnamed7793();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -7686,7 +7686,7 @@ void main() {
       final res = api.BooksApi(mock).mylibrary.annotations;
       final arg_contentVersion = 'foo';
       final arg_layerId = 'foo';
-      final arg_layerIds = buildUnnamed7793();
+      final arg_layerIds = buildUnnamed7794();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_showDeleted = true;
@@ -7795,7 +7795,7 @@ void main() {
     unittest.test('method--summary', () async {
       final mock = HttpServerMock();
       final res = api.BooksApi(mock).mylibrary.annotations;
-      final arg_layerIds = buildUnnamed7794();
+      final arg_layerIds = buildUnnamed7795();
       final arg_volumeId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8768,7 +8768,7 @@ void main() {
     unittest.test('method--listCategoryVolumes', () async {
       final mock = HttpServerMock();
       final res = api.BooksApi(mock).onboarding;
-      final arg_categoryId = buildUnnamed7795();
+      final arg_categoryId = buildUnnamed7796();
       final arg_locale = 'foo';
       final arg_maxAllowedMaturityRating = 'foo';
       final arg_pageSize = 42;
@@ -9203,7 +9203,7 @@ void main() {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.BooksApi(mock).series;
-      final arg_seriesId = buildUnnamed7796();
+      final arg_seriesId = buildUnnamed7797();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -9652,11 +9652,11 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.BooksApi(mock).volumes.mybooks;
-      final arg_acquireMethod = buildUnnamed7797();
+      final arg_acquireMethod = buildUnnamed7798();
       final arg_country = 'foo';
       final arg_locale = 'foo';
       final arg_maxResults = 42;
-      final arg_processingState = buildUnnamed7798();
+      final arg_processingState = buildUnnamed7799();
       final arg_source = 'foo';
       final arg_startIndex = 42;
       final arg_$fields = 'foo';
@@ -9893,10 +9893,10 @@ void main() {
       final res = api.BooksApi(mock).volumes.useruploaded;
       final arg_locale = 'foo';
       final arg_maxResults = 42;
-      final arg_processingState = buildUnnamed7799();
+      final arg_processingState = buildUnnamed7800();
       final arg_source = 'foo';
       final arg_startIndex = 42;
-      final arg_volumeId = buildUnnamed7800();
+      final arg_volumeId = buildUnnamed7801();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

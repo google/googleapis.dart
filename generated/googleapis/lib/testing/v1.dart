@@ -900,6 +900,18 @@ class AndroidRoboTest {
   /// password for a test account can be provided.
   core.List<RoboDirective>? roboDirectives;
 
+  /// The mode in which Robo should run.
+  ///
+  /// Most clients should allow the server to populate this field automatically.
+  /// Possible string values are:
+  /// - "ROBO_MODE_UNSPECIFIED" : LINT.IfChange This means that the server
+  /// should choose the mode. Recommended.
+  /// - "ROBO_VERSION_1" : Runs Robo in UIAutomator-only mode without app
+  /// resigning
+  /// - "ROBO_VERSION_2" : Runs Robo in standard Espresso with UIAutomator
+  /// fallback
+  core.String? roboMode;
+
   /// A JSON file with a sequence of actions Robo should perform as a prologue
   /// for the crawl.
   FileReference? roboScript;
@@ -919,6 +931,7 @@ class AndroidRoboTest {
     this.maxDepth,
     this.maxSteps,
     this.roboDirectives,
+    this.roboMode,
     this.roboScript,
     this.startingIntents,
   });
@@ -951,6 +964,9 @@ class AndroidRoboTest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          roboMode: _json.containsKey('roboMode')
+              ? _json['roboMode'] as core.String
+              : null,
           roboScript: _json.containsKey('roboScript')
               ? FileReference.fromJson(
                   _json['roboScript'] as core.Map<core.String, core.dynamic>)
@@ -975,6 +991,7 @@ class AndroidRoboTest {
         if (roboDirectives != null)
           'roboDirectives':
               roboDirectives!.map((value) => value.toJson()).toList(),
+        if (roboMode != null) 'roboMode': roboMode!,
         if (roboScript != null) 'roboScript': roboScript!.toJson(),
         if (startingIntents != null)
           'startingIntents':
@@ -3630,11 +3647,13 @@ class TestSetup {
   /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   core.String? networkProfile;
 
-  /// Systrace configuration for the run.
+  /// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01.
   ///
-  /// If set a systrace will be taken, starting on test start and lasting for
-  /// the configured duration. The systrace file thus obtained is put in the
-  /// results bucket together with the other artifacts from the run.
+  /// Support of Systrace may stop at any time, at which point no Systrace file
+  /// will be provided in the results. Systrace configuration for the run. If
+  /// set a systrace will be taken, starting on test start and lasting for the
+  /// configured duration. The systrace file thus obtained is put in the results
+  /// bucket together with the other artifacts from the run.
   SystraceSetup? systrace;
 
   TestSetup({

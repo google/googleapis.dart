@@ -18,8 +18,8 @@
 /// associated with a Workspace, with a few exceptions as noted on the
 /// individual method pages. The table entries below are presented in
 /// alphabetical order, not in order of common use. For explanations of the
-/// concepts found in the table entries, read the Cloud Monitoring
-/// documentation.
+/// concepts found in the table entries, read the Cloud Monitoring documentation
+/// (https://cloud.google.com/monitoring/docs).
 ///
 /// For more information, see <https://cloud.google.com/monitoring/api/>
 ///
@@ -62,8 +62,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Most projects must be associated with a Workspace, with a few exceptions as
 /// noted on the individual method pages. The table entries below are presented
 /// in alphabetical order, not in order of common use. For explanations of the
-/// concepts found in the table entries, read the Cloud Monitoring
-/// documentation.
+/// concepts found in the table entries, read the Cloud Monitoring documentation
+/// (https://cloud.google.com/monitoring/docs).
 class MonitoringApi {
   /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =
@@ -4593,8 +4593,8 @@ class AlertPolicy {
 /// Control over how the notification channels in notification_channels are
 /// notified when this alert fires.
 class AlertStrategy {
-  /// Required for alert policies with a LogMatch condition.Providing this for
-  /// alert policies that are not log-based is unimplemented.
+  /// Required for alert policies with a LogMatch condition.This limit is not
+  /// implemented for alert policies that are not log-based.
   NotificationRateLimit? notificationRateLimit;
 
   AlertStrategy({
@@ -7151,8 +7151,11 @@ class ListUptimeCheckIpsResponse {
       };
 }
 
-/// A condition type that checks whether a log message from any project
-/// monitored by the alert policy’s workspace satisfies the given filter.
+/// A condition type that checks whether a log message in the scoping project
+/// (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the
+/// given filter.
+///
+/// Logs from other projects in the metrics scope are not evaluated.
 class LogMatch {
   /// A logs-based filter.
   ///
@@ -7906,8 +7909,9 @@ class MonitoredResource {
   ///
   /// This field must match the type field of a MonitoredResourceDescriptor
   /// object. For example, the type of a Compute Engine VM instance is
-  /// gce_instance. For a list of types, see Monitoring resource types and
-  /// Logging resource types.
+  /// gce_instance. For a list of types, see Monitoring resource types
+  /// (https://cloud.google.com/monitoring/api/resources) and Logging resource
+  /// types (https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///
   /// Required.
   core.String? type;
@@ -9398,12 +9402,13 @@ class Telemetry {
 /// A closed time interval.
 ///
 /// It extends from the start time to the end time, and includes both:
-/// \[startTime, endTime\]. Valid time intervals depend on the MetricKind of the
-/// metric value. The end time must not be earlier than the start time. When
-/// writing data points, the start time must not be more than 25 hours in the
-/// past and the end time must not be more than five minutes in the future. For
-/// GAUGE metrics, the startTime value is technically optional; if no value is
-/// specified, the start time defaults to the value of the end time, and the
+/// \[startTime, endTime\]. Valid time intervals depend on the MetricKind
+/// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind)
+/// of the metric value. The end time must not be earlier than the start time.
+/// When writing data points, the start time must not be more than 25 hours in
+/// the past and the end time must not be more than five minutes in the future.
+/// For GAUGE metrics, the startTime value is technically optional; if no value
+/// is specified, the start time defaults to the value of the end time, and the
 /// interval represents a single point in time. If both start and end times are
 /// specified, they must be identical. Such an interval is valid only for GAUGE
 /// metrics, which are point-in-time measurements. The end time of a new

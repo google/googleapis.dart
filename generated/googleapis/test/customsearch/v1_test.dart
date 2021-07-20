@@ -63,12 +63,12 @@ void checkPromotionBodyLines(api.PromotionBodyLines o) {
   buildCounterPromotionBodyLines--;
 }
 
-core.List<api.PromotionBodyLines> buildUnnamed5342() => [
+core.List<api.PromotionBodyLines> buildUnnamed5341() => [
       buildPromotionBodyLines(),
       buildPromotionBodyLines(),
     ];
 
-void checkUnnamed5342(core.List<api.PromotionBodyLines> o) {
+void checkUnnamed5341(core.List<api.PromotionBodyLines> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPromotionBodyLines(o[0]);
   checkPromotionBodyLines(o[1]);
@@ -111,7 +111,7 @@ api.Promotion buildPromotion() {
   final o = api.Promotion();
   buildCounterPromotion++;
   if (buildCounterPromotion < 3) {
-    o.bodyLines = buildUnnamed5342();
+    o.bodyLines = buildUnnamed5341();
     o.displayLink = 'foo';
     o.htmlTitle = 'foo';
     o.image = buildPromotionImage();
@@ -125,7 +125,7 @@ api.Promotion buildPromotion() {
 void checkPromotion(api.Promotion o) {
   buildCounterPromotion++;
   if (buildCounterPromotion < 3) {
-    checkUnnamed5342(o.bodyLines!);
+    checkUnnamed5341(o.bodyLines!);
     unittest.expect(
       o.displayLink!,
       unittest.equals('foo'),
@@ -231,18 +231,18 @@ void checkResultLabels(api.ResultLabels o) {
   buildCounterResultLabels--;
 }
 
-core.List<api.ResultLabels> buildUnnamed5343() => [
+core.List<api.ResultLabels> buildUnnamed5342() => [
       buildResultLabels(),
       buildResultLabels(),
     ];
 
-void checkUnnamed5343(core.List<api.ResultLabels> o) {
+void checkUnnamed5342(core.List<api.ResultLabels> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultLabels(o[0]);
   checkResultLabels(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed5344() => {
+core.Map<core.String, core.Object> buildUnnamed5343() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -255,7 +255,7 @@ core.Map<core.String, core.Object> buildUnnamed5344() => {
       },
     };
 
-void checkUnnamed5344(core.Map<core.String, core.Object> o) {
+void checkUnnamed5343(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -301,10 +301,10 @@ api.Result buildResult() {
     o.htmlTitle = 'foo';
     o.image = buildResultImage();
     o.kind = 'foo';
-    o.labels = buildUnnamed5343();
+    o.labels = buildUnnamed5342();
     o.link = 'foo';
     o.mime = 'foo';
-    o.pagemap = buildUnnamed5344();
+    o.pagemap = buildUnnamed5343();
     o.snippet = 'foo';
     o.title = 'foo';
   }
@@ -348,7 +348,7 @@ void checkResult(api.Result o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed5343(o.labels!);
+    checkUnnamed5342(o.labels!);
     unittest.expect(
       o.link!,
       unittest.equals('foo'),
@@ -357,7 +357,7 @@ void checkResult(api.Result o) {
       o.mime!,
       unittest.equals('foo'),
     );
-    checkUnnamed5344(o.pagemap!);
+    checkUnnamed5343(o.pagemap!);
     unittest.expect(
       o.snippet!,
       unittest.equals('foo'),
@@ -370,7 +370,7 @@ void checkResult(api.Result o) {
   buildCounterResult--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed5345() => {
+core.Map<core.String, core.Object> buildUnnamed5344() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -383,7 +383,7 @@ core.Map<core.String, core.Object> buildUnnamed5345() => {
       },
     };
 
-void checkUnnamed5345(core.Map<core.String, core.Object> o) {
+void checkUnnamed5344(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -415,23 +415,23 @@ void checkUnnamed5345(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<api.Result> buildUnnamed5346() => [
+core.List<api.Result> buildUnnamed5345() => [
       buildResult(),
       buildResult(),
     ];
 
-void checkUnnamed5346(core.List<api.Result> o) {
+void checkUnnamed5345(core.List<api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResult(o[0]);
   checkResult(o[1]);
 }
 
-core.List<api.Promotion> buildUnnamed5347() => [
+core.List<api.Promotion> buildUnnamed5346() => [
       buildPromotion(),
       buildPromotion(),
     ];
 
-void checkUnnamed5347(core.List<api.Promotion> o) {
+void checkUnnamed5346(core.List<api.Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPromotion(o[0]);
   checkPromotion(o[1]);
@@ -634,12 +634,12 @@ void checkSearchQueriesNextPage(api.SearchQueriesNextPage o) {
   buildCounterSearchQueriesNextPage--;
 }
 
-core.List<api.SearchQueriesNextPage> buildUnnamed5348() => [
+core.List<api.SearchQueriesNextPage> buildUnnamed5347() => [
       buildSearchQueriesNextPage(),
       buildSearchQueriesNextPage(),
     ];
 
-void checkUnnamed5348(core.List<api.SearchQueriesNextPage> o) {
+void checkUnnamed5347(core.List<api.SearchQueriesNextPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSearchQueriesNextPage(o[0]);
   checkSearchQueriesNextPage(o[1]);
@@ -842,12 +842,12 @@ void checkSearchQueriesPreviousPage(api.SearchQueriesPreviousPage o) {
   buildCounterSearchQueriesPreviousPage--;
 }
 
-core.List<api.SearchQueriesPreviousPage> buildUnnamed5349() => [
+core.List<api.SearchQueriesPreviousPage> buildUnnamed5348() => [
       buildSearchQueriesPreviousPage(),
       buildSearchQueriesPreviousPage(),
     ];
 
-void checkUnnamed5349(core.List<api.SearchQueriesPreviousPage> o) {
+void checkUnnamed5348(core.List<api.SearchQueriesPreviousPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSearchQueriesPreviousPage(o[0]);
   checkSearchQueriesPreviousPage(o[1]);
@@ -1050,12 +1050,12 @@ void checkSearchQueriesRequest(api.SearchQueriesRequest o) {
   buildCounterSearchQueriesRequest--;
 }
 
-core.List<api.SearchQueriesRequest> buildUnnamed5350() => [
+core.List<api.SearchQueriesRequest> buildUnnamed5349() => [
       buildSearchQueriesRequest(),
       buildSearchQueriesRequest(),
     ];
 
-void checkUnnamed5350(core.List<api.SearchQueriesRequest> o) {
+void checkUnnamed5349(core.List<api.SearchQueriesRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSearchQueriesRequest(o[0]);
   checkSearchQueriesRequest(o[1]);
@@ -1066,9 +1066,9 @@ api.SearchQueries buildSearchQueries() {
   final o = api.SearchQueries();
   buildCounterSearchQueries++;
   if (buildCounterSearchQueries < 3) {
-    o.nextPage = buildUnnamed5348();
-    o.previousPage = buildUnnamed5349();
-    o.request = buildUnnamed5350();
+    o.nextPage = buildUnnamed5347();
+    o.previousPage = buildUnnamed5348();
+    o.request = buildUnnamed5349();
   }
   buildCounterSearchQueries--;
   return o;
@@ -1077,9 +1077,9 @@ api.SearchQueries buildSearchQueries() {
 void checkSearchQueries(api.SearchQueries o) {
   buildCounterSearchQueries++;
   if (buildCounterSearchQueries < 3) {
-    checkUnnamed5348(o.nextPage!);
-    checkUnnamed5349(o.previousPage!);
-    checkUnnamed5350(o.request!);
+    checkUnnamed5347(o.nextPage!);
+    checkUnnamed5348(o.previousPage!);
+    checkUnnamed5349(o.request!);
   }
   buildCounterSearchQueries--;
 }
@@ -1180,10 +1180,10 @@ api.Search buildSearch() {
   final o = api.Search();
   buildCounterSearch++;
   if (buildCounterSearch < 3) {
-    o.context = buildUnnamed5345();
-    o.items = buildUnnamed5346();
+    o.context = buildUnnamed5344();
+    o.items = buildUnnamed5345();
     o.kind = 'foo';
-    o.promotions = buildUnnamed5347();
+    o.promotions = buildUnnamed5346();
     o.queries = buildSearchQueries();
     o.searchInformation = buildSearchSearchInformation();
     o.spelling = buildSearchSpelling();
@@ -1196,13 +1196,13 @@ api.Search buildSearch() {
 void checkSearch(api.Search o) {
   buildCounterSearch++;
   if (buildCounterSearch < 3) {
-    checkUnnamed5345(o.context!);
-    checkUnnamed5346(o.items!);
+    checkUnnamed5344(o.context!);
+    checkUnnamed5345(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed5347(o.promotions!);
+    checkUnnamed5346(o.promotions!);
     checkSearchQueries(o.queries!);
     checkSearchSearchInformation(o.searchInformation!);
     checkSearchSpelling(o.spelling!);

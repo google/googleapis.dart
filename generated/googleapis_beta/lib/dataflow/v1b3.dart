@@ -4776,6 +4776,9 @@ class FlexTemplateRuntimeEnvironment {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
   core.Map<core.String, core.String>? additionalUserLabels;
 
+  /// Worker disk size, in gigabytes.
+  core.int? diskSizeGb;
+
   /// Whether to enable Streaming Engine for the job.
   core.bool? enableStreamingEngine;
 
@@ -4804,6 +4807,9 @@ class FlexTemplateRuntimeEnvironment {
   ///
   /// Defaults to the value from the template if not specified.
   core.String? machineType;
+
+  /// The maximum number of workers to cap scaling at.
+  core.int? maxNumWorkers;
 
   /// The maximum number of Google Compute Engine instances to be made available
   /// to your pipeline during execution, from 1 to 1000.
@@ -4874,11 +4880,13 @@ class FlexTemplateRuntimeEnvironment {
   FlexTemplateRuntimeEnvironment({
     this.additionalExperiments,
     this.additionalUserLabels,
+    this.diskSizeGb,
     this.enableStreamingEngine,
     this.flexrsGoal,
     this.ipConfiguration,
     this.kmsKeyName,
     this.machineType,
+    this.maxNumWorkers,
     this.maxWorkers,
     this.network,
     this.numWorkers,
@@ -4909,6 +4917,9 @@ class FlexTemplateRuntimeEnvironment {
                   ),
                 )
               : null,
+          diskSizeGb: _json.containsKey('diskSizeGb')
+              ? _json['diskSizeGb'] as core.int
+              : null,
           enableStreamingEngine: _json.containsKey('enableStreamingEngine')
               ? _json['enableStreamingEngine'] as core.bool
               : null,
@@ -4923,6 +4934,9 @@ class FlexTemplateRuntimeEnvironment {
               : null,
           machineType: _json.containsKey('machineType')
               ? _json['machineType'] as core.String
+              : null,
+          maxNumWorkers: _json.containsKey('maxNumWorkers')
+              ? _json['maxNumWorkers'] as core.int
               : null,
           maxWorkers: _json.containsKey('maxWorkers')
               ? _json['maxWorkers'] as core.int
@@ -4962,12 +4976,14 @@ class FlexTemplateRuntimeEnvironment {
           'additionalExperiments': additionalExperiments!,
         if (additionalUserLabels != null)
           'additionalUserLabels': additionalUserLabels!,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (enableStreamingEngine != null)
           'enableStreamingEngine': enableStreamingEngine!,
         if (flexrsGoal != null) 'flexrsGoal': flexrsGoal!,
         if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (machineType != null) 'machineType': machineType!,
+        if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers!,
         if (maxWorkers != null) 'maxWorkers': maxWorkers!,
         if (network != null) 'network': network!,
         if (numWorkers != null) 'numWorkers': numWorkers!,

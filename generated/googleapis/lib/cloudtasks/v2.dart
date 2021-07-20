@@ -44,6 +44,9 @@ class CloudTasksApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// Manage tasks and queues in the Cloud Tasks service
+  static const cloudTasksScope = 'https://www.googleapis.com/auth/cloud-tasks';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);

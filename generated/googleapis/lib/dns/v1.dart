@@ -24,8 +24,6 @@
 /// - [ManagedZonesResource]
 /// - [PoliciesResource]
 /// - [ProjectsResource]
-///   - [ProjectsManagedZonesResource]
-///     - [ProjectsManagedZonesRrsetsResource]
 /// - [ResourceRecordSetsResource]
 library dns.v1;
 
@@ -1097,9 +1095,6 @@ class PoliciesResource {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsManagedZonesResource get managedZones =>
-      ProjectsManagedZonesResource(_requester);
-
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Fetches the representation of an existing Project.
@@ -1143,21 +1138,10 @@ class ProjectsResource {
   }
 }
 
-class ProjectsManagedZonesResource {
+class ResourceRecordSetsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsManagedZonesRrsetsResource get rrsets =>
-      ProjectsManagedZonesRrsetsResource(_requester);
-
-  ProjectsManagedZonesResource(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ProjectsManagedZonesRrsetsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsManagedZonesRrsetsResource(commons.ApiRequester client)
-      : _requester = client;
+  ResourceRecordSetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new ResourceRecordSet.
   ///
@@ -1329,75 +1313,6 @@ class ProjectsManagedZonesRrsetsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Applies a partial update to an existing ResourceRecordSet.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [project] - Identifies the project addressed by this request.
-  ///
-  /// [managedZone] - Identifies the managed zone addressed by this request. Can
-  /// be the managed zone name or ID.
-  ///
-  /// [name] - Fully qualified domain name.
-  ///
-  /// [type] - RRSet type.
-  ///
-  /// [clientOperationId] - For mutating operation requests only. An optional
-  /// identifier specified by the client. Must be unique for operation resources
-  /// in the Operations collection.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ResourceRecordSet].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ResourceRecordSet> patch(
-    ResourceRecordSet request,
-    core.String project,
-    core.String managedZone,
-    core.String name,
-    core.String type, {
-    core.String? clientOperationId,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'dns/v1/projects/' +
-        commons.escapeVariable('$project') +
-        '/managedZones/' +
-        commons.escapeVariable('$managedZone') +
-        '/rrsets/' +
-        commons.escapeVariable('$name') +
-        '/' +
-        commons.escapeVariable('$type');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return ResourceRecordSet.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ResourceRecordSetsResource {
-  final commons.ApiRequester _requester;
-
-  ResourceRecordSetsResource(commons.ApiRequester client) : _requester = client;
-
   /// Enumerates ResourceRecordSets that you have created but not yet deleted.
   ///
   /// Request parameters:
@@ -1458,6 +1373,69 @@ class ResourceRecordSetsResource {
       queryParams: _queryParams,
     );
     return ResourceRecordSetsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Applies a partial update to an existing ResourceRecordSet.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or ID.
+  ///
+  /// [name] - Fully qualified domain name.
+  ///
+  /// [type] - RRSet type.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourceRecordSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourceRecordSet> patch(
+    ResourceRecordSet request,
+    core.String project,
+    core.String managedZone,
+    core.String name,
+    core.String type, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/managedZones/' +
+        commons.escapeVariable('$managedZone') +
+        '/rrsets/' +
+        commons.escapeVariable('$name') +
+        '/' +
+        commons.escapeVariable('$type');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResourceRecordSet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }

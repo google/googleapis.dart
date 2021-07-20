@@ -1,0 +1,14 @@
+diff --git a/discovery/googleapis/cloudtasks__v2.json b/discovery/googleapis/cloudtasks__v2.json
+index 29235ca58..87ccc2a80 100644
+--- a/discovery/googleapis/cloudtasks__v2.json
++++ b/discovery/googleapis/cloudtasks__v2.json
+@@ -4,6 +4,9 @@
+             "scopes": {
+                 "https://www.googleapis.com/auth/cloud-platform": {
+                     "description": "See, edit, configure, and delete your Google Cloud Platform data"
++                },
++                "https://www.googleapis.com/auth/cloud-tasks": {
++                    "description": "Manage tasks and queues in the Cloud Tasks service"
+                 }
+             }
+         }

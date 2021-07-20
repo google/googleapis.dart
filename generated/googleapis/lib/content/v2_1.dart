@@ -316,8 +316,8 @@ class AccountsResource {
   /// [view] - Controls which fields will be populated. Acceptable values are:
   /// "merchant" and "css". The default value is "merchant".
   /// Possible string values are:
-  /// - "MERCHANT"
-  /// - "CSS"
+  /// - "MERCHANT" : Default. View is populated with Merchant Center fields.
+  /// - "CSS" : View is populated with Comparison Shopping Services fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -462,8 +462,8 @@ class AccountsResource {
   /// [view] - Controls which fields will be populated. Acceptable values are:
   /// "merchant" and "css". The default value is "merchant".
   /// Possible string values are:
-  /// - "MERCHANT"
-  /// - "CSS"
+  /// - "MERCHANT" : Default. View is populated with Merchant Center fields.
+  /// - "CSS" : View is populated with Comparison Shopping Services fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3471,8 +3471,8 @@ class OrderreturnsResource {
   ///
   /// [orderBy] - Return the results in the specified order.
   /// Possible string values are:
-  /// - "RETURN_CREATION_TIME_DESC"
-  /// - "RETURN_CREATION_TIME_ASC"
+  /// - "RETURN_CREATION_TIME_DESC" : Return results in descending order.
+  /// - "RETURN_CREATION_TIME_ASC" : Return results in ascending order.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -4080,12 +4080,12 @@ class OrdersResource {
   ///
   /// [templateName] - The name of the template to retrieve.
   /// Possible string values are:
-  /// - "TEMPLATE1"
-  /// - "TEMPLATE2"
-  /// - "TEMPLATE1A"
-  /// - "TEMPLATE1B"
-  /// - "TEMPLATE3"
-  /// - "TEMPLATE4"
+  /// - "TEMPLATE1" : Get `template1`.
+  /// - "TEMPLATE2" : Get `template2`.
+  /// - "TEMPLATE1A" : Get `template1A`.
+  /// - "TEMPLATE1B" : Get `template1B`.
+  /// - "TEMPLATE3" : Get `template3`.
+  /// - "TEMPLATE4" : Get `template4`.
   ///
   /// [country] - The country of the template to retrieve. Defaults to `US`.
   ///
@@ -5101,7 +5101,9 @@ class ProductsResource {
   ///
   /// [productId] - The REST ID of the product.
   ///
-  /// [feedId] - The Content API Supplemental Feed ID.
+  /// [feedId] - The Content API Supplemental Feed ID. If present then product
+  /// deletion applies to the data in a supplemental feed. If absent, entire
+  /// product will be deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5186,7 +5188,8 @@ class ProductsResource {
   /// [merchantId] - The ID of the account that contains the product. This
   /// account cannot be a multi-client account.
   ///
-  /// [feedId] - The Content API Supplemental Feed ID.
+  /// [feedId] - The Content API Supplemental Feed ID. If present then product
+  /// insertion applies to the data in a supplemental feed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7410,6 +7413,8 @@ class Account {
   /// How the account is managed.
   ///
   /// Acceptable values are: - "`manual`" - "`automatic`"
+  ///
+  /// Output only.
   core.String? accountManagement;
 
   /// Linked Ads accounts that are active or pending approval.
@@ -7444,7 +7449,7 @@ class Account {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "`content#account`"
+  /// Value: the fixed string "`content#account`".
   core.String? kind;
 
   /// Manually created label IDs that are assigned to the account by CSS.
@@ -8320,7 +8325,7 @@ class AccountTax {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountTax".
+  /// Value: the fixed string "`content#accountTax`".
   core.String? kind;
 
   /// Tax rules.
@@ -8517,7 +8522,7 @@ class AccountsAuthInfoResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountsAuthInfoResponse".
+  /// Value: the fixed string "`content#accountsAuthInfoResponse`".
   core.String? kind;
 
   AccountsAuthInfoResponse({
@@ -8547,7 +8552,7 @@ class AccountsAuthInfoResponse {
 class AccountsClaimWebsiteResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountsClaimWebsiteResponse".
+  /// Value: the fixed string "`content#accountsClaimWebsiteResponse`".
   core.String? kind;
 
   AccountsClaimWebsiteResponse({
@@ -8759,7 +8764,7 @@ class AccountsCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountsCustomBatchResponse".
+  /// Value: the fixed string "`content#accountsCustomBatchResponse`".
   core.String? kind;
 
   AccountsCustomBatchResponse({
@@ -8905,7 +8910,7 @@ class AccountsLinkRequest {
 class AccountsLinkResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountsLinkResponse".
+  /// Value: the fixed string "`content#accountsLinkResponse`".
   core.String? kind;
 
   AccountsLinkResponse({
@@ -8925,7 +8930,7 @@ class AccountsLinkResponse {
 class AccountsListLinksResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountsListLinksResponse".
+  /// Value: the fixed string "`content#accountsListLinksResponse`".
   core.String? kind;
 
   /// The list of available links.
@@ -8965,7 +8970,7 @@ class AccountsListLinksResponse {
 class AccountsListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountsListResponse".
+  /// Value: the fixed string "`content#accountsListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of accounts.
@@ -9025,7 +9030,7 @@ class AccountsUpdateLabelsRequest {
 class AccountsUpdateLabelsResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountsUpdateLabelsResponse".
+  /// Value: the fixed string "`content#accountsUpdateLabelsResponse`".
   core.String? kind;
 
   AccountsUpdateLabelsResponse({
@@ -9131,7 +9136,7 @@ class AccountstatusesCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountstatusesCustomBatchResponse".
+  /// Value: the fixed string "`content#accountstatusesCustomBatchResponse`".
   core.String? kind;
 
   AccountstatusesCustomBatchResponse({
@@ -9202,7 +9207,7 @@ class AccountstatusesCustomBatchResponseEntry {
 class AccountstatusesListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accountstatusesListResponse".
+  /// Value: the fixed string "`content#accountstatusesListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of account statuses.
@@ -9326,7 +9331,7 @@ class AccounttaxCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accounttaxCustomBatchResponse".
+  /// Value: the fixed string "`content#accounttaxCustomBatchResponse`".
   core.String? kind;
 
   AccounttaxCustomBatchResponse({
@@ -9403,7 +9408,7 @@ class AccounttaxCustomBatchResponseEntry {
 class AccounttaxListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#accounttaxListResponse".
+  /// Value: the fixed string "`content#accounttaxListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of account tax settings.
@@ -10856,7 +10861,7 @@ class DatafeedsCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#datafeedsCustomBatchResponse".
+  /// Value: the fixed string "`content#datafeedsCustomBatchResponse`".
   core.String? kind;
 
   DatafeedsCustomBatchResponse({
@@ -10927,7 +10932,7 @@ class DatafeedsCustomBatchResponseEntry {
 class DatafeedsFetchNowResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#datafeedsFetchNowResponse".
+  /// Value: the fixed string "`content#datafeedsFetchNowResponse`".
   core.String? kind;
 
   DatafeedsFetchNowResponse({
@@ -10947,7 +10952,7 @@ class DatafeedsFetchNowResponse {
 class DatafeedsListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#datafeedsListResponse".
+  /// Value: the fixed string "`content#datafeedsListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of datafeeds.
@@ -11082,7 +11087,7 @@ class DatafeedstatusesCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#datafeedstatusesCustomBatchResponse".
+  /// Value: the fixed string "`content#datafeedstatusesCustomBatchResponse`".
   core.String? kind;
 
   DatafeedstatusesCustomBatchResponse({
@@ -11153,7 +11158,7 @@ class DatafeedstatusesCustomBatchResponseEntry {
 class DatafeedstatusesListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#datafeedstatusesListResponse".
+  /// Value: the fixed string "`content#datafeedstatusesListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of datafeed statuses.
@@ -12481,7 +12486,7 @@ class LiasettingsCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#liasettingsCustomBatchResponse".
+  /// Value: the fixed string "`content#liasettingsCustomBatchResponse`".
   core.String? kind;
 
   LiasettingsCustomBatchResponse({
@@ -12586,7 +12591,7 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#liasettingsGetAccessibleGmbAccountsResponse".
+  /// "`content#liasettingsGetAccessibleGmbAccountsResponse`".
   core.String? kind;
 
   LiasettingsGetAccessibleGmbAccountsResponse({
@@ -12621,7 +12626,8 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
 class LiasettingsListPosDataProvidersResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#liasettingsListPosDataProvidersResponse".
+  /// Value: the fixed string
+  /// "`content#liasettingsListPosDataProvidersResponse`".
   core.String? kind;
 
   /// The list of POS data providers for each eligible country
@@ -12654,7 +12660,7 @@ class LiasettingsListPosDataProvidersResponse {
 class LiasettingsListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#liasettingsListResponse".
+  /// Value: the fixed string "`content#liasettingsListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of LIA settings.
@@ -12692,7 +12698,7 @@ class LiasettingsListResponse {
 class LiasettingsRequestGmbAccessResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#liasettingsRequestGmbAccessResponse".
+  /// Value: the fixed string "`content#liasettingsRequestGmbAccessResponse`".
   core.String? kind;
 
   LiasettingsRequestGmbAccessResponse({
@@ -12713,7 +12719,7 @@ class LiasettingsRequestInventoryVerificationResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#liasettingsRequestInventoryVerificationResponse".
+  /// "`content#liasettingsRequestInventoryVerificationResponse`".
   core.String? kind;
 
   LiasettingsRequestInventoryVerificationResponse({
@@ -12734,7 +12740,7 @@ class LiasettingsSetInventoryVerificationContactResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#liasettingsSetInventoryVerificationContactResponse".
+  /// "`content#liasettingsSetInventoryVerificationContactResponse`".
   core.String? kind;
 
   LiasettingsSetInventoryVerificationContactResponse({
@@ -12754,7 +12760,7 @@ class LiasettingsSetInventoryVerificationContactResponse {
 class LiasettingsSetPosDataProviderResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#liasettingsSetPosDataProviderResponse".
+  /// Value: the fixed string "`content#liasettingsSetPosDataProviderResponse`".
   core.String? kind;
 
   LiasettingsSetPosDataProviderResponse({
@@ -13383,7 +13389,7 @@ class LocalinventoryCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#localinventoryCustomBatchResponse".
+  /// Value: the fixed string "`content#localinventoryCustomBatchResponse`".
   core.String? kind;
 
   LocalinventoryCustomBatchResponse({
@@ -16580,7 +16586,7 @@ class OrderinvoicesCreateChargeInvoiceResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#orderinvoicesCreateChargeInvoiceResponse".
+  /// "`content#orderinvoicesCreateChargeInvoiceResponse`".
   core.String? kind;
 
   OrderinvoicesCreateChargeInvoiceResponse({
@@ -16684,7 +16690,7 @@ class OrderinvoicesCreateRefundInvoiceResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#orderinvoicesCreateRefundInvoiceResponse".
+  /// "`content#orderinvoicesCreateRefundInvoiceResponse`".
   core.String? kind;
 
   OrderinvoicesCreateRefundInvoiceResponse({
@@ -16801,7 +16807,7 @@ class OrderreportsListDisbursementsResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#orderreportsListDisbursementsResponse".
+  /// Value: the fixed string "`content#orderreportsListDisbursementsResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of disbursements.
@@ -16840,7 +16846,7 @@ class OrderreportsListDisbursementsResponse {
 class OrderreportsListTransactionsResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#orderreportsListTransactionsResponse".
+  /// Value: the fixed string "`content#orderreportsListTransactionsResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of transactions.
@@ -16909,7 +16915,7 @@ class OrderreturnsAcknowledgeResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#orderreturnsAcknowledgeResponse".
+  /// Value: the fixed string "`content#orderreturnsAcknowledgeResponse`".
   core.String? kind;
 
   OrderreturnsAcknowledgeResponse({
@@ -16990,7 +16996,7 @@ class OrderreturnsCreateOrderReturnResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#orderreturnsCreateOrderReturnResponse".
+  /// Value: the fixed string "`content#orderreturnsCreateOrderReturnResponse`".
   core.String? kind;
 
   /// Created order return.
@@ -17066,7 +17072,7 @@ class OrderreturnsLineItem {
 class OrderreturnsListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#orderreturnsListResponse".
+  /// Value: the fixed string "`content#orderreturnsListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of returns.
@@ -17199,7 +17205,7 @@ class OrderreturnsProcessResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#orderreturnsProcessResponse".
+  /// Value: the fixed string "`content#orderreturnsProcessResponse`".
   core.String? kind;
 
   OrderreturnsProcessResponse({
@@ -17382,7 +17388,7 @@ class OrdersAcknowledgeResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersAcknowledgeResponse".
+  /// Value: the fixed string "`content#ordersAcknowledgeResponse`".
   core.String? kind;
 
   OrdersAcknowledgeResponse({
@@ -17407,7 +17413,7 @@ class OrdersAcknowledgeResponse {
 class OrdersAdvanceTestOrderResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersAdvanceTestOrderResponse".
+  /// Value: the fixed string "`content#ordersAdvanceTestOrderResponse`".
   core.String? kind;
 
   OrdersAdvanceTestOrderResponse({
@@ -17504,7 +17510,7 @@ class OrdersCancelLineItemResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersCancelLineItemResponse".
+  /// Value: the fixed string "`content#ordersCancelLineItemResponse`".
   core.String? kind;
 
   OrdersCancelLineItemResponse({
@@ -17577,7 +17583,7 @@ class OrdersCancelResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersCancelResponse".
+  /// Value: the fixed string "`content#ordersCancelResponse`".
   core.String? kind;
 
   OrdersCancelResponse({
@@ -17625,7 +17631,8 @@ class OrdersCancelTestOrderByCustomerRequest {
 class OrdersCancelTestOrderByCustomerResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersCancelTestOrderByCustomerResponse".
+  /// Value: the fixed string
+  /// "`content#ordersCancelTestOrderByCustomerResponse`".
   core.String? kind;
 
   OrdersCancelTestOrderByCustomerResponse({
@@ -17691,7 +17698,7 @@ class OrdersCreateTestOrderRequest {
 class OrdersCreateTestOrderResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersCreateTestOrderResponse".
+  /// Value: the fixed string "`content#ordersCreateTestOrderResponse`".
   core.String? kind;
 
   /// The ID of the newly created test order.
@@ -17746,7 +17753,7 @@ class OrdersCreateTestReturnRequest {
 class OrdersCreateTestReturnResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersCreateTestReturnResponse".
+  /// Value: the fixed string "`content#ordersCreateTestReturnResponse`".
   core.String? kind;
 
   /// The ID of the newly created test order return.
@@ -17980,7 +17987,7 @@ class OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails {
 class OrdersGetByMerchantOrderIdResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersGetByMerchantOrderIdResponse".
+  /// Value: the fixed string "`content#ordersGetByMerchantOrderIdResponse`".
   core.String? kind;
 
   /// The requested order.
@@ -18009,7 +18016,7 @@ class OrdersGetByMerchantOrderIdResponse {
 class OrdersGetTestOrderTemplateResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersGetTestOrderTemplateResponse".
+  /// Value: the fixed string "`content#ordersGetTestOrderTemplateResponse`".
   core.String? kind;
 
   /// The requested test order template.
@@ -18140,7 +18147,7 @@ class OrdersInStoreRefundLineItemResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersInStoreRefundLineItemResponse".
+  /// Value: the fixed string "`content#ordersInStoreRefundLineItemResponse`".
   core.String? kind;
 
   OrdersInStoreRefundLineItemResponse({
@@ -18165,7 +18172,7 @@ class OrdersInStoreRefundLineItemResponse {
 class OrdersListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersListResponse".
+  /// Value: the fixed string "`content#ordersListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of orders.
@@ -18279,7 +18286,7 @@ class OrdersRefundItemResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersRefundItemResponse".
+  /// Value: the fixed string "`content#ordersRefundItemResponse`".
   core.String? kind;
 
   OrdersRefundItemResponse({
@@ -18371,7 +18378,7 @@ class OrdersRefundOrderResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersRefundOrderResponse".
+  /// Value: the fixed string "`content#ordersRefundOrderResponse`".
   core.String? kind;
 
   OrdersRefundOrderResponse({
@@ -18471,7 +18478,7 @@ class OrdersRejectReturnLineItemResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersRejectReturnLineItemResponse".
+  /// Value: the fixed string "`content#ordersRejectReturnLineItemResponse`".
   core.String? kind;
 
   OrdersRejectReturnLineItemResponse({
@@ -18601,7 +18608,7 @@ class OrdersReturnRefundLineItemResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersReturnRefundLineItemResponse".
+  /// Value: the fixed string "`content#ordersReturnRefundLineItemResponse`".
   core.String? kind;
 
   OrdersReturnRefundLineItemResponse({
@@ -18686,7 +18693,7 @@ class OrdersSetLineItemMetadataResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersSetLineItemMetadataResponse".
+  /// Value: the fixed string "`content#ordersSetLineItemMetadataResponse`".
   core.String? kind;
 
   OrdersSetLineItemMetadataResponse({
@@ -18781,7 +18788,7 @@ class OrdersShipLineItemsResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersShipLineItemsResponse".
+  /// Value: the fixed string "`content#ordersShipLineItemsResponse`".
   core.String? kind;
 
   OrdersShipLineItemsResponse({
@@ -18877,7 +18884,7 @@ class OrdersUpdateLineItemShippingDetailsResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#ordersUpdateLineItemShippingDetailsResponse".
+  /// "`content#ordersUpdateLineItemShippingDetailsResponse`".
   core.String? kind;
 
   OrdersUpdateLineItemShippingDetailsResponse({
@@ -18939,7 +18946,7 @@ class OrdersUpdateMerchantOrderIdResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersUpdateMerchantOrderIdResponse".
+  /// Value: the fixed string "`content#ordersUpdateMerchantOrderIdResponse`".
   core.String? kind;
 
   OrdersUpdateMerchantOrderIdResponse({
@@ -19085,7 +19092,7 @@ class OrdersUpdateShipmentResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#ordersUpdateShipmentResponse".
+  /// Value: the fixed string "`content#ordersUpdateShipmentResponse`".
   core.String? kind;
 
   OrdersUpdateShipmentResponse({
@@ -19345,7 +19352,7 @@ class PosCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#posCustomBatchResponse".
+  /// Value: the fixed string "`content#posCustomBatchResponse`".
   core.String? kind;
 
   PosCustomBatchResponse({
@@ -19715,7 +19722,7 @@ class PosInventoryResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#posInventoryResponse".
+  /// Value: the fixed string "`content#posInventoryResponse`".
   core.String? kind;
 
   /// The current price of the item.
@@ -19802,7 +19809,7 @@ class PosInventoryResponse {
 class PosListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#posListResponse".
+  /// Value: the fixed string "`content#posListResponse`".
   core.String? kind;
   core.List<PosStore>? resources;
 
@@ -20058,7 +20065,7 @@ class PosSaleResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#posSaleResponse".
+  /// Value: the fixed string "`content#posSaleResponse`".
   core.String? kind;
 
   /// The price of the item.
@@ -21861,7 +21868,10 @@ class ProductsCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int? batchId;
 
-  /// The Content API feed id.
+  /// The Content API Supplemental Feed ID.
+  ///
+  /// If present then product insertion or deletion applies to a supplemental
+  /// feed instead of primary Content API feed.
   core.String? feedId;
 
   /// The ID of the managing account.
@@ -21944,7 +21954,7 @@ class ProductsCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#productsCustomBatchResponse".
+  /// Value: the fixed string "`content#productsCustomBatchResponse`".
   core.String? kind;
 
   ProductsCustomBatchResponse({
@@ -22023,7 +22033,7 @@ class ProductsCustomBatchResponseEntry {
 class ProductsListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#productsListResponse".
+  /// Value: the fixed string "`content#productsListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of products.
@@ -22153,7 +22163,7 @@ class ProductstatusesCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#productstatusesCustomBatchResponse".
+  /// Value: the fixed string "`content#productstatusesCustomBatchResponse`".
   core.String? kind;
 
   ProductstatusesCustomBatchResponse({
@@ -22233,7 +22243,7 @@ class ProductstatusesCustomBatchResponseEntry {
 class ProductstatusesListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#productstatusesListResponse".
+  /// Value: the fixed string "`content#productstatusesListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of products statuses.
@@ -22659,7 +22669,7 @@ class RegionalInventory {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#regionalInventory".
+  /// Value: the fixed string "`content#regionalInventory`".
   core.String? kind;
 
   /// The price of the product.
@@ -22819,7 +22829,7 @@ class RegionalinventoryCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#regionalinventoryCustomBatchResponse".
+  /// Value: the fixed string "`content#regionalinventoryCustomBatchResponse`".
   core.String? kind;
 
   RegionalinventoryCustomBatchResponse({
@@ -22857,7 +22867,7 @@ class RegionalinventoryCustomBatchResponseEntry {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#regionalinventoryCustomBatchResponseEntry".
+  /// "`content#regionalinventoryCustomBatchResponseEntry`".
   core.String? kind;
 
   /// Price and availability of the product.
@@ -24655,7 +24665,7 @@ class ReturnaddressCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#returnaddressCustomBatchResponse".
+  /// Value: the fixed string "`content#returnaddressCustomBatchResponse`".
   core.String? kind;
 
   ReturnaddressCustomBatchResponse({
@@ -24731,7 +24741,7 @@ class ReturnaddressCustomBatchResponseEntry {
 class ReturnaddressListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#returnaddressListResponse".
+  /// Value: the fixed string "`content#returnaddressListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of addresses.
@@ -24856,7 +24866,7 @@ class ReturnpolicyCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#returnpolicyCustomBatchResponse".
+  /// Value: the fixed string "`content#returnpolicyCustomBatchResponse`".
   core.String? kind;
 
   ReturnpolicyCustomBatchResponse({
@@ -24932,7 +24942,7 @@ class ReturnpolicyCustomBatchResponseEntry {
 class ReturnpolicyListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#returnpolicyListResponse".
+  /// Value: the fixed string "`content#returnpolicyListResponse`".
   core.String? kind;
   core.List<ReturnPolicy>? resources;
 
@@ -25762,7 +25772,7 @@ class SettlementTransactionTransaction {
 class SettlementreportsListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#settlementreportsListResponse".
+  /// Value: the fixed string "`content#settlementreportsListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of returns.
@@ -25800,7 +25810,7 @@ class SettlementreportsListResponse {
 class SettlementtransactionsListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#settlementtransactionsListResponse".
+  /// Value: the fixed string "`content#settlementtransactionsListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of returns.
@@ -26129,7 +26139,7 @@ class ShippingsettingsCustomBatchResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#shippingsettingsCustomBatchResponse".
+  /// Value: the fixed string "`content#shippingsettingsCustomBatchResponse`".
   core.String? kind;
 
   ShippingsettingsCustomBatchResponse({
@@ -26214,7 +26224,7 @@ class ShippingsettingsGetSupportedCarriersResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#shippingsettingsGetSupportedCarriersResponse".
+  /// "`content#shippingsettingsGetSupportedCarriersResponse`".
   core.String? kind;
 
   ShippingsettingsGetSupportedCarriersResponse({
@@ -26249,7 +26259,7 @@ class ShippingsettingsGetSupportedHolidaysResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#shippingsettingsGetSupportedHolidaysResponse".
+  /// "`content#shippingsettingsGetSupportedHolidaysResponse`".
   core.String? kind;
 
   ShippingsettingsGetSupportedHolidaysResponse({
@@ -26279,7 +26289,7 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "content#shippingsettingsGetSupportedPickupServicesResponse".
+  /// "`content#shippingsettingsGetSupportedPickupServicesResponse`".
   core.String? kind;
 
   /// A list of supported pickup services.
@@ -26315,7 +26325,7 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
 class ShippingsettingsListResponse {
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "content#shippingsettingsListResponse".
+  /// Value: the fixed string "`content#shippingsettingsListResponse`".
   core.String? kind;
 
   /// The token for the retrieval of the next page of shipping settings.

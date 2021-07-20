@@ -3926,6 +3926,7 @@ class GoogleCloudDatacatalogV1FieldType {
   /// - "STRING" : An UTF-8 string.
   /// - "BOOL" : A boolean value.
   /// - "TIMESTAMP" : A timestamp.
+  /// - "RICHTEXT" : A Richtext description.
   core.String? primitiveType;
 
   GoogleCloudDatacatalogV1FieldType({
@@ -5345,6 +5346,13 @@ class GoogleCloudDatacatalogV1TagField {
   /// Output only.
   core.int? order;
 
+  /// The value of a tag field with a rich text type.
+  ///
+  /// The maximum length is 10 MiB as this value holds HTML descriptions
+  /// including encoded images. The maximum length of the text without images is
+  /// 100 KiB.
+  core.String? richtextValue;
+
   /// The value of a tag field with a string type.
   ///
   /// The maximum length is 2000 UTF-8 characters.
@@ -5359,6 +5367,7 @@ class GoogleCloudDatacatalogV1TagField {
     this.doubleValue,
     this.enumValue,
     this.order,
+    this.richtextValue,
     this.stringValue,
     this.timestampValue,
   });
@@ -5379,6 +5388,9 @@ class GoogleCloudDatacatalogV1TagField {
                   _json['enumValue'] as core.Map<core.String, core.dynamic>)
               : null,
           order: _json.containsKey('order') ? _json['order'] as core.int : null,
+          richtextValue: _json.containsKey('richtextValue')
+              ? _json['richtextValue'] as core.String
+              : null,
           stringValue: _json.containsKey('stringValue')
               ? _json['stringValue'] as core.String
               : null,
@@ -5393,6 +5405,7 @@ class GoogleCloudDatacatalogV1TagField {
         if (doubleValue != null) 'doubleValue': doubleValue!,
         if (enumValue != null) 'enumValue': enumValue!.toJson(),
         if (order != null) 'order': order!,
+        if (richtextValue != null) 'richtextValue': richtextValue!,
         if (stringValue != null) 'stringValue': stringValue!,
         if (timestampValue != null) 'timestampValue': timestampValue!,
       };

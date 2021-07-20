@@ -207,12 +207,12 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<core.String> buildUnnamed2425() => [
+core.List<core.String> buildUnnamed2428() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2425(core.List<core.String> o) {
+void checkUnnamed2428(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -232,7 +232,7 @@ api.Environment buildEnvironment() {
     o.dockerImage = 'foo';
     o.id = 'foo';
     o.name = 'foo';
-    o.publicKeys = buildUnnamed2425();
+    o.publicKeys = buildUnnamed2428();
     o.sshHost = 'foo';
     o.sshPort = 42;
     o.sshUsername = 'foo';
@@ -258,7 +258,7 @@ void checkEnvironment(api.Environment o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed2425(o.publicKeys!);
+    checkUnnamed2428(o.publicKeys!);
     unittest.expect(
       o.sshHost!,
       unittest.equals('foo'),
@@ -283,12 +283,12 @@ void checkEnvironment(api.Environment o) {
   buildCounterEnvironment--;
 }
 
-core.List<api.Operation> buildUnnamed2426() => [
+core.List<api.Operation> buildUnnamed2429() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed2426(core.List<api.Operation> o) {
+void checkUnnamed2429(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -300,7 +300,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed2426();
+    o.operations = buildUnnamed2429();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -313,12 +313,12 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed2426(o.operations!);
+    checkUnnamed2429(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2427() => {
+core.Map<core.String, core.Object> buildUnnamed2430() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -331,7 +331,7 @@ core.Map<core.String, core.Object> buildUnnamed2427() => {
       },
     };
 
-void checkUnnamed2427(core.Map<core.String, core.Object> o) {
+void checkUnnamed2430(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -363,7 +363,7 @@ void checkUnnamed2427(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2428() => {
+core.Map<core.String, core.Object> buildUnnamed2431() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -376,7 +376,7 @@ core.Map<core.String, core.Object> buildUnnamed2428() => {
       },
     };
 
-void checkUnnamed2428(core.Map<core.String, core.Object> o) {
+void checkUnnamed2431(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -415,9 +415,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed2427();
+    o.metadata = buildUnnamed2430();
     o.name = 'foo';
-    o.response = buildUnnamed2428();
+    o.response = buildUnnamed2431();
   }
   buildCounterOperation--;
   return o;
@@ -428,12 +428,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed2427(o.metadata!);
+    checkUnnamed2430(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed2428(o.response!);
+    checkUnnamed2431(o.response!);
   }
   buildCounterOperation--;
 }
@@ -512,12 +512,12 @@ void checkStartEnvironmentMetadata(api.StartEnvironmentMetadata o) {
   buildCounterStartEnvironmentMetadata--;
 }
 
-core.List<core.String> buildUnnamed2429() => [
+core.List<core.String> buildUnnamed2432() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2429(core.List<core.String> o) {
+void checkUnnamed2432(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -535,7 +535,7 @@ api.StartEnvironmentRequest buildStartEnvironmentRequest() {
   buildCounterStartEnvironmentRequest++;
   if (buildCounterStartEnvironmentRequest < 3) {
     o.accessToken = 'foo';
-    o.publicKeys = buildUnnamed2429();
+    o.publicKeys = buildUnnamed2432();
   }
   buildCounterStartEnvironmentRequest--;
   return o;
@@ -548,7 +548,7 @@ void checkStartEnvironmentRequest(api.StartEnvironmentRequest o) {
       o.accessToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed2429(o.publicKeys!);
+    checkUnnamed2432(o.publicKeys!);
   }
   buildCounterStartEnvironmentRequest--;
 }
@@ -572,7 +572,7 @@ void checkStartEnvironmentResponse(api.StartEnvironmentResponse o) {
   buildCounterStartEnvironmentResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2430() => {
+core.Map<core.String, core.Object> buildUnnamed2433() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -585,7 +585,7 @@ core.Map<core.String, core.Object> buildUnnamed2430() => {
       },
     };
 
-void checkUnnamed2430(core.Map<core.String, core.Object> o) {
+void checkUnnamed2433(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -617,15 +617,15 @@ void checkUnnamed2430(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2431() => [
-      buildUnnamed2430(),
-      buildUnnamed2430(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed2434() => [
+      buildUnnamed2433(),
+      buildUnnamed2433(),
     ];
 
-void checkUnnamed2431(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed2434(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2430(o[0]);
-  checkUnnamed2430(o[1]);
+  checkUnnamed2433(o[0]);
+  checkUnnamed2433(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -634,7 +634,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2431();
+    o.details = buildUnnamed2434();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -648,7 +648,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed2431(o.details!);
+    checkUnnamed2434(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

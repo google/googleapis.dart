@@ -278,7 +278,7 @@
             }
         }
     },
-    "revision": "20210623",
+    "revision": "20210629",
     "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "schemas": {
         "ChannelGrouping": {
@@ -614,9 +614,11 @@
                         "FILTER_INSERTION_ORDER_GOAL_TYPE",
                         "FILTER_LINE_ITEM_PACING_PERCENTAGE",
                         "FILTER_INSERTION_ORDER_GOAL_VALUE",
-                        "FILTER_OMID_CAPABLE"
+                        "FILTER_OMID_CAPABLE",
+                        "FILTER_VENDOR_MEASUREMENT_MODE"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -1260,9 +1262,11 @@
                             "FILTER_INSERTION_ORDER_GOAL_TYPE",
                             "FILTER_LINE_ITEM_PACING_PERCENTAGE",
                             "FILTER_INSERTION_ORDER_GOAL_VALUE",
-                            "FILTER_OMID_CAPABLE"
+                            "FILTER_OMID_CAPABLE",
+                            "FILTER_VENDOR_MEASUREMENT_MODE"
                         ],
                         "enumDescriptions": [
+                            "",
                             "",
                             "",
                             "",
@@ -2896,9 +2900,11 @@
                         "FILTER_INSERTION_ORDER_GOAL_TYPE",
                         "FILTER_LINE_ITEM_PACING_PERCENTAGE",
                         "FILTER_INSERTION_ORDER_GOAL_VALUE",
-                        "FILTER_OMID_CAPABLE"
+                        "FILTER_OMID_CAPABLE",
+                        "FILTER_VENDOR_MEASUREMENT_MODE"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

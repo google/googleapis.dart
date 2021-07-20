@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Format> buildUnnamed5715() => [
+core.List<api.Format> buildUnnamed5714() => [
       buildFormat(),
       buildFormat(),
     ];
 
-void checkUnnamed5715(core.List<api.Format> o) {
+void checkUnnamed5714(core.List<api.Format> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFormat(o[0]);
   checkFormat(o[1]);
@@ -46,7 +46,7 @@ api.Asset buildAsset() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.formats = buildUnnamed5715();
+    o.formats = buildUnnamed5714();
     o.isCurated = true;
     o.license = 'foo';
     o.metadata = 'foo';
@@ -80,7 +80,7 @@ void checkAsset(api.Asset o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed5715(o.formats!);
+    checkUnnamed5714(o.formats!);
     unittest.expect(o.isCurated!, unittest.isTrue);
     unittest.expect(
       o.license!,
@@ -172,12 +172,12 @@ void checkFile(api.File o) {
   buildCounterFile--;
 }
 
-core.List<api.File> buildUnnamed5716() => [
+core.List<api.File> buildUnnamed5715() => [
       buildFile(),
       buildFile(),
     ];
 
-void checkUnnamed5716(core.List<api.File> o) {
+void checkUnnamed5715(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -190,7 +190,7 @@ api.Format buildFormat() {
   if (buildCounterFormat < 3) {
     o.formatComplexity = buildFormatComplexity();
     o.formatType = 'foo';
-    o.resources = buildUnnamed5716();
+    o.resources = buildUnnamed5715();
     o.root = buildFile();
   }
   buildCounterFormat--;
@@ -205,7 +205,7 @@ void checkFormat(api.Format o) {
       o.formatType!,
       unittest.equals('foo'),
     );
-    checkUnnamed5716(o.resources!);
+    checkUnnamed5715(o.resources!);
     checkFile(o.root!);
   }
   buildCounterFormat--;
@@ -265,6 +265,46 @@ void checkImageError(api.ImageError o) {
   buildCounterImageError--;
 }
 
+core.List<api.Asset> buildUnnamed5716() => [
+      buildAsset(),
+      buildAsset(),
+    ];
+
+void checkUnnamed5716(core.List<api.Asset> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAsset(o[0]);
+  checkAsset(o[1]);
+}
+
+core.int buildCounterListAssetsResponse = 0;
+api.ListAssetsResponse buildListAssetsResponse() {
+  final o = api.ListAssetsResponse();
+  buildCounterListAssetsResponse++;
+  if (buildCounterListAssetsResponse < 3) {
+    o.assets = buildUnnamed5716();
+    o.nextPageToken = 'foo';
+    o.totalSize = 42;
+  }
+  buildCounterListAssetsResponse--;
+  return o;
+}
+
+void checkListAssetsResponse(api.ListAssetsResponse o) {
+  buildCounterListAssetsResponse++;
+  if (buildCounterListAssetsResponse < 3) {
+    checkUnnamed5716(o.assets!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalSize!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterListAssetsResponse--;
+}
+
 core.List<api.Asset> buildUnnamed5717() => [
       buildAsset(),
       buildAsset(),
@@ -276,52 +316,12 @@ void checkUnnamed5717(core.List<api.Asset> o) {
   checkAsset(o[1]);
 }
 
-core.int buildCounterListAssetsResponse = 0;
-api.ListAssetsResponse buildListAssetsResponse() {
-  final o = api.ListAssetsResponse();
-  buildCounterListAssetsResponse++;
-  if (buildCounterListAssetsResponse < 3) {
-    o.assets = buildUnnamed5717();
-    o.nextPageToken = 'foo';
-    o.totalSize = 42;
-  }
-  buildCounterListAssetsResponse--;
-  return o;
-}
-
-void checkListAssetsResponse(api.ListAssetsResponse o) {
-  buildCounterListAssetsResponse++;
-  if (buildCounterListAssetsResponse < 3) {
-    checkUnnamed5717(o.assets!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.totalSize!,
-      unittest.equals(42),
-    );
-  }
-  buildCounterListAssetsResponse--;
-}
-
-core.List<api.Asset> buildUnnamed5718() => [
-      buildAsset(),
-      buildAsset(),
-    ];
-
-void checkUnnamed5718(core.List<api.Asset> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkAsset(o[0]);
-  checkAsset(o[1]);
-}
-
 core.int buildCounterListLikedAssetsResponse = 0;
 api.ListLikedAssetsResponse buildListLikedAssetsResponse() {
   final o = api.ListLikedAssetsResponse();
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
-    o.assets = buildUnnamed5718();
+    o.assets = buildUnnamed5717();
     o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
@@ -332,7 +332,7 @@ api.ListLikedAssetsResponse buildListLikedAssetsResponse() {
 void checkListLikedAssetsResponse(api.ListLikedAssetsResponse o) {
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
-    checkUnnamed5718(o.assets!);
+    checkUnnamed5717(o.assets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -345,12 +345,12 @@ void checkListLikedAssetsResponse(api.ListLikedAssetsResponse o) {
   buildCounterListLikedAssetsResponse--;
 }
 
-core.List<api.UserAsset> buildUnnamed5719() => [
+core.List<api.UserAsset> buildUnnamed5718() => [
       buildUserAsset(),
       buildUserAsset(),
     ];
 
-void checkUnnamed5719(core.List<api.UserAsset> o) {
+void checkUnnamed5718(core.List<api.UserAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAsset(o[0]);
   checkUserAsset(o[1]);
@@ -363,7 +363,7 @@ api.ListUserAssetsResponse buildListUserAssetsResponse() {
   if (buildCounterListUserAssetsResponse < 3) {
     o.nextPageToken = 'foo';
     o.totalSize = 42;
-    o.userAssets = buildUnnamed5719();
+    o.userAssets = buildUnnamed5718();
   }
   buildCounterListUserAssetsResponse--;
   return o;
@@ -380,7 +380,7 @@ void checkListUserAssetsResponse(api.ListUserAssetsResponse o) {
       o.totalSize!,
       unittest.equals(42),
     );
-    checkUnnamed5719(o.userAssets!);
+    checkUnnamed5718(o.userAssets!);
   }
   buildCounterListUserAssetsResponse--;
 }
@@ -498,12 +498,12 @@ void checkQuaternion(api.Quaternion o) {
   buildCounterQuaternion--;
 }
 
-core.List<core.String> buildUnnamed5720() => [
+core.List<core.String> buildUnnamed5719() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5720(core.List<core.String> o) {
+void checkUnnamed5719(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -520,7 +520,7 @@ api.RemixInfo buildRemixInfo() {
   final o = api.RemixInfo();
   buildCounterRemixInfo++;
   if (buildCounterRemixInfo < 3) {
-    o.sourceAsset = buildUnnamed5720();
+    o.sourceAsset = buildUnnamed5719();
   }
   buildCounterRemixInfo--;
   return o;
@@ -529,17 +529,17 @@ api.RemixInfo buildRemixInfo() {
 void checkRemixInfo(api.RemixInfo o) {
   buildCounterRemixInfo++;
   if (buildCounterRemixInfo < 3) {
-    checkUnnamed5720(o.sourceAsset!);
+    checkUnnamed5719(o.sourceAsset!);
   }
   buildCounterRemixInfo--;
 }
 
-core.List<api.AssetImportMessage> buildUnnamed5721() => [
+core.List<api.AssetImportMessage> buildUnnamed5720() => [
       buildAssetImportMessage(),
       buildAssetImportMessage(),
     ];
 
-void checkUnnamed5721(core.List<api.AssetImportMessage> o) {
+void checkUnnamed5720(core.List<api.AssetImportMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssetImportMessage(o[0]);
   checkAssetImportMessage(o[1]);
@@ -552,7 +552,7 @@ api.StartAssetImportResponse buildStartAssetImportResponse() {
   if (buildCounterStartAssetImportResponse < 3) {
     o.assetId = 'foo';
     o.assetImportId = 'foo';
-    o.assetImportMessages = buildUnnamed5721();
+    o.assetImportMessages = buildUnnamed5720();
     o.publishUrl = 'foo';
   }
   buildCounterStartAssetImportResponse--;
@@ -570,7 +570,7 @@ void checkStartAssetImportResponse(api.StartAssetImportResponse o) {
       o.assetImportId!,
       unittest.equals('foo'),
     );
-    checkUnnamed5721(o.assetImportMessages!);
+    checkUnnamed5720(o.assetImportMessages!);
     unittest.expect(
       o.publishUrl!,
       unittest.equals('foo'),

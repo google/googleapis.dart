@@ -1577,6 +1577,7 @@ class Backup {
   /// - "DELETING" : The backup is being deleted.
   /// - "ACTIVE" : The backup is active and ready to use.
   /// - "FAILED" : The backup failed.
+  /// - "RESTORING" : The backup is being restored.
   core.String? state;
 
   Backup({

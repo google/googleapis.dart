@@ -34,9 +34,11 @@
 /// - [JwksResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAppsResource]
+///     - [ProjectsAppsAppAttestConfigResource]
 ///     - [ProjectsAppsDebugTokensResource]
 ///     - [ProjectsAppsDeviceCheckConfigResource]
 ///     - [ProjectsAppsRecaptchaConfigResource]
+///     - [ProjectsAppsSafetyNetConfigResource]
 ///   - [ProjectsServicesResource]
 library firebaseappcheck.v1beta;
 
@@ -146,12 +148,16 @@ class ProjectsResource {
 class ProjectsAppsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsAppsAppAttestConfigResource get appAttestConfig =>
+      ProjectsAppsAppAttestConfigResource(_requester);
   ProjectsAppsDebugTokensResource get debugTokens =>
       ProjectsAppsDebugTokensResource(_requester);
   ProjectsAppsDeviceCheckConfigResource get deviceCheckConfig =>
       ProjectsAppsDeviceCheckConfigResource(_requester);
   ProjectsAppsRecaptchaConfigResource get recaptchaConfig =>
       ProjectsAppsRecaptchaConfigResource(_requester);
+  ProjectsAppsSafetyNetConfigResource get safetyNetConfig =>
+      ProjectsAppsSafetyNetConfigResource(_requester);
 
   ProjectsAppsResource(commons.ApiRequester client) : _requester = client;
 
@@ -552,6 +558,153 @@ class ProjectsAppsResource {
       queryParams: _queryParams,
     );
     return GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsAppsAppAttestConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAppsAppAttestConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the AppAttestConfigs for the specified list of apps atomically.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project name shared by all
+  /// AppAttestConfigs being retrieved, in the format ```
+  /// projects/{project_number} ``` The parent collection in the `name` field of
+  /// any resource being retrieved must match this field, or the entire batch
+  /// fails.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [names] - Required. The relative resource names of the AppAttestConfigs to
+  /// retrieve, in the format ```
+  /// projects/{project_number}/apps/{app_id}/appAttestConfig ``` A maximum of
+  /// 100 objects can be retrieved in a batch.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse>
+      batchGet(
+    core.String parent, {
+    core.List<core.String>? names,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (names != null) 'names': names,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' +
+        core.Uri.encodeFull('$parent') +
+        '/apps/-/appAttestConfig:batchGet';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the AppAttestConfig for the specified app.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the AppAttestConfig, in
+  /// the format: ``` projects/{project_number}/apps/{app_id}/appAttestConfig
+  /// ```
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/appAttestConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAppAttestConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAppAttestConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the AppAttestConfig for the specified app.
+  ///
+  /// While this configuration is incomplete or invalid, the app will be unable
+  /// to exchange AppAttest tokens for App Check tokens.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the App Attest
+  /// configuration object, in the format: ```
+  /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/appAttestConfig$`.
+  ///
+  /// [updateMask] - Required. A comma-separated list of names of fields in the
+  /// AppAttestConfig Gets to update. Example: `token_ttl`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAppAttestConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAppAttestConfig> patch(
+    GoogleFirebaseAppcheckV1betaAppAttestConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1113,6 +1266,153 @@ class ProjectsAppsRecaptchaConfigResource {
   }
 }
 
+class ProjectsAppsSafetyNetConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAppsSafetyNetConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the SafetyNetConfigs for the specified list of apps atomically.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project name shared by all
+  /// SafetyNetConfigs being retrieved, in the format ```
+  /// projects/{project_number} ``` The parent collection in the `name` field of
+  /// any resource being retrieved must match this field, or the entire batch
+  /// fails.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [names] - Required. The relative resource names of the SafetyNetConfigs to
+  /// retrieve, in the format ```
+  /// projects/{project_number}/apps/{app_id}/safetyNetConfig ``` A maximum of
+  /// 100 objects can be retrieved in a batch.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse>
+      batchGet(
+    core.String parent, {
+    core.List<core.String>? names,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (names != null) 'names': names,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' +
+        core.Uri.encodeFull('$parent') +
+        '/apps/-/safetyNetConfig:batchGet';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the SafetyNetConfig for the specified app.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the SafetyNetConfig, in
+  /// the format: ``` projects/{project_number}/apps/{app_id}/safetyNetConfig
+  /// ```
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/safetyNetConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaSafetyNetConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaSafetyNetConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the SafetyNetConfig for the specified app.
+  ///
+  /// While this configuration is incomplete or invalid, the app will be unable
+  /// to exchange SafetyNet tokens for App Check tokens.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the SafetyNet
+  /// configuration object, in the format: ```
+  /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/safetyNetConfig$`.
+  ///
+  /// [updateMask] - Required. A comma-separated list of names of fields in the
+  /// SafetyNetConfig Gets to update. Example: `token_ttl`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaSafetyNetConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaSafetyNetConfig> patch(
+    GoogleFirebaseAppcheckV1betaSafetyNetConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsServicesResource {
   final commons.ApiRequester _requester;
 
@@ -1354,6 +1654,47 @@ class GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse {
       };
 }
 
+/// An app's App Attest configuration object.
+///
+/// This configuration controls certain properties of the App Check token
+/// returned by ExchangeAppAttestAttestation and ExchangeAppAttestAttestation,
+/// such as its ttl. Note that the Team ID registered with your app is used as
+/// part of the validation process. Please register it via the Firebase Console
+/// or programmatically via the
+/// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps/patch).
+class GoogleFirebaseAppcheckV1betaAppAttestConfig {
+  /// The relative resource name of the App Attest configuration object, in the
+  /// format: ``` projects/{project_number}/apps/{app_id}/appAttestConfig ```
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Specifies the duration for which App Check tokens exchanged from App
+  /// Attest artifacts will be valid.
+  ///
+  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
+  /// and 7 days, inclusive.
+  core.String? tokenTtl;
+
+  GoogleFirebaseAppcheckV1betaAppAttestConfig({
+    this.name,
+    this.tokenTtl,
+  });
+
+  GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          tokenTtl: _json.containsKey('tokenTtl')
+              ? _json['tokenTtl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (tokenTtl != null) 'tokenTtl': tokenTtl!,
+      };
+}
+
 /// Encapsulates an *App Check token*, which are used to access Firebase
 /// services protected by App Check.
 class GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
@@ -1387,6 +1728,33 @@ class GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attestationToken != null) 'attestationToken': attestationToken!,
         if (ttl != null) 'ttl': ttl!,
+      };
+}
+
+/// Response message for the BatchGetAppAttestConfigs method.
+class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse {
+  /// AppAttestConfigs retrieved.
+  core.List<GoogleFirebaseAppcheckV1betaAppAttestConfig>? configs;
+
+  GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse({
+    this.configs,
+  });
+
+  GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse.fromJson(
+      core.Map _json)
+      : this(
+          configs: _json.containsKey('configs')
+              ? (_json['configs'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaAppAttestConfig>((value) =>
+                      GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configs != null)
+          'configs': configs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1433,6 +1801,33 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse {
               ? (_json['configs'] as core.List)
                   .map<GoogleFirebaseAppcheckV1betaRecaptchaConfig>((value) =>
                       GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configs != null)
+          'configs': configs!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Response message for the BatchGetSafetyNetConfigs method.
+class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
+  /// SafetyNetConfigs retrieved.
+  core.List<GoogleFirebaseAppcheckV1betaSafetyNetConfig>? configs;
+
+  GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse({
+    this.configs,
+  });
+
+  GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse.fromJson(
+      core.Map _json)
+      : this(
+          configs: _json.containsKey('configs')
+              ? (_json['configs'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaSafetyNetConfig>((value) =>
+                      GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1604,11 +1999,19 @@ class GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
   /// Output only.
   core.bool? privateKeySet;
 
+  /// Specifies the duration for which App Check tokens exchanged from
+  /// DeviceCheck tokens will be valid.
+  ///
+  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
+  /// and 7 days, inclusive.
+  core.String? tokenTtl;
+
   GoogleFirebaseAppcheckV1betaDeviceCheckConfig({
     this.keyId,
     this.name,
     this.privateKey,
     this.privateKeySet,
+    this.tokenTtl,
   });
 
   GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(core.Map _json)
@@ -1622,6 +2025,9 @@ class GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
           privateKeySet: _json.containsKey('privateKeySet')
               ? _json['privateKeySet'] as core.bool
               : null,
+          tokenTtl: _json.containsKey('tokenTtl')
+              ? _json['tokenTtl'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1629,6 +2035,7 @@ class GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
         if (name != null) 'name': name!,
         if (privateKey != null) 'privateKey': privateKey!,
         if (privateKeySet != null) 'privateKeySet': privateKeySet!,
+        if (tokenTtl != null) 'tokenTtl': tokenTtl!,
       };
 }
 
@@ -2119,10 +2526,18 @@ class GoogleFirebaseAppcheckV1betaRecaptchaConfig {
   /// Output only.
   core.bool? siteSecretSet;
 
+  /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA
+  /// tokens will be valid.
+  ///
+  /// If unset, a default value of 1 day is assumed. Must be between 30 minutes
+  /// and 7 days, inclusive.
+  core.String? tokenTtl;
+
   GoogleFirebaseAppcheckV1betaRecaptchaConfig({
     this.name,
     this.siteSecret,
     this.siteSecretSet,
+    this.tokenTtl,
   });
 
   GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(core.Map _json)
@@ -2134,12 +2549,57 @@ class GoogleFirebaseAppcheckV1betaRecaptchaConfig {
           siteSecretSet: _json.containsKey('siteSecretSet')
               ? _json['siteSecretSet'] as core.bool
               : null,
+          tokenTtl: _json.containsKey('tokenTtl')
+              ? _json['tokenTtl'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (siteSecret != null) 'siteSecret': siteSecret!,
         if (siteSecretSet != null) 'siteSecretSet': siteSecretSet!,
+        if (tokenTtl != null) 'tokenTtl': tokenTtl!,
+      };
+}
+
+/// An app's SafetyNet configuration object.
+///
+/// This configuration controls certain properties of the App Check token
+/// returned by ExchangeSafetyNetToken, such as its ttl. Note that your
+/// registered SHA-256 certificate fingerprints are used to validate tokens
+/// issued by SafetyNet; please register them via the Firebase Console or
+/// programmatically via the
+/// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.androidApps.sha/create).
+class GoogleFirebaseAppcheckV1betaSafetyNetConfig {
+  /// The relative resource name of the SafetyNet configuration object, in the
+  /// format: ``` projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Specifies the duration for which App Check tokens exchanged from SafetyNet
+  /// tokens will be valid.
+  ///
+  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
+  /// and 7 days, inclusive.
+  core.String? tokenTtl;
+
+  GoogleFirebaseAppcheckV1betaSafetyNetConfig({
+    this.name,
+    this.tokenTtl,
+  });
+
+  GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          tokenTtl: _json.containsKey('tokenTtl')
+              ? _json['tokenTtl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (tokenTtl != null) 'tokenTtl': tokenTtl!,
       };
 }
 

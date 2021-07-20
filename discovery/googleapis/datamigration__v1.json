@@ -1047,7 +1047,7 @@
             }
         }
     },
-    "revision": "20210624",
+    "revision": "20210630",
     "rootUrl": "https://datamigration.googleapis.com/",
     "schemas": {
         "AuditConfig": {

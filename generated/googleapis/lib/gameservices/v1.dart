@@ -1555,6 +1555,21 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
+  /// [view] - Optional. View for the returned GameServerCluster objects. When
+  /// `FULL` is specified, the `cluster_state` field is also returned in the
+  /// GameServerCluster object, which includes the state of the referenced
+  /// Kubernetes cluster such as versions and provider info. The default/unset
+  /// value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does
+  /// not return the `cluster_state` field.
+  /// Possible string values are:
+  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : The default / unset value. The
+  /// API will default to the BASIC view.
+  /// - "BASIC" : Include basic information of a GameServerCluster resource and
+  /// omit `cluster_state`. This is the default value (for
+  /// ListGameServerClusters, GetGameServerCluster and
+  /// PreviewCreateGameServerCluster).
+  /// - "FULL" : Include everything.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1567,9 +1582,11 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// this method will complete with the same error.
   async.Future<GameServerCluster> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1607,6 +1624,21 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// [pageToken] - Optional. The next_page_token value returned from a previous
   /// List request, if any.
   ///
+  /// [view] - Optional. View for the returned GameServerCluster objects. When
+  /// `FULL` is specified, the `cluster_state` field is also returned in the
+  /// GameServerCluster object, which includes the state of the referenced
+  /// Kubernetes cluster such as versions and provider info. The default/unset
+  /// value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does
+  /// not return the `cluster_state` field.
+  /// Possible string values are:
+  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : The default / unset value. The
+  /// API will default to the BASIC view.
+  /// - "BASIC" : Include basic information of a GameServerCluster resource and
+  /// omit `cluster_state`. This is the default value (for
+  /// ListGameServerClusters, GetGameServerCluster and
+  /// PreviewCreateGameServerCluster).
+  /// - "FULL" : Include everything.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1623,6 +1655,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -1630,6 +1663,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1712,6 +1746,17 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
+  /// [view] - Optional. This field is deprecated, preview will always return
+  /// KubernetesClusterState.
+  /// Possible string values are:
+  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : The default / unset value. The
+  /// API will default to the BASIC view.
+  /// - "BASIC" : Include basic information of a GameServerCluster resource and
+  /// omit `cluster_state`. This is the default value (for
+  /// ListGameServerClusters, GetGameServerCluster and
+  /// PreviewCreateGameServerCluster).
+  /// - "FULL" : Include everything.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1727,6 +1772,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String parent, {
     core.String? gameServerClusterId,
     core.String? previewTime,
+    core.String? view,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
@@ -1734,6 +1780,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       if (gameServerClusterId != null)
         'gameServerClusterId': [gameServerClusterId],
       if (previewTime != null) 'previewTime': [previewTime],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2722,6 +2769,12 @@ class FleetConfig {
 
 /// A game server cluster resource.
 class GameServerCluster {
+  /// The state of the Kubernetes cluster, this will be available if 'view' is
+  /// set to `FULL` in the relevant List/Get/Preview request.
+  ///
+  /// Output only.
+  KubernetesClusterState? clusterState;
+
   /// The game server cluster connection information.
   ///
   /// This information is used to manage game server clusters.
@@ -2758,6 +2811,7 @@ class GameServerCluster {
   core.String? updateTime;
 
   GameServerCluster({
+    this.clusterState,
     this.connectionInfo,
     this.createTime,
     this.description,
@@ -2769,6 +2823,10 @@ class GameServerCluster {
 
   GameServerCluster.fromJson(core.Map _json)
       : this(
+          clusterState: _json.containsKey('clusterState')
+              ? KubernetesClusterState.fromJson(
+                  _json['clusterState'] as core.Map<core.String, core.dynamic>)
+              : null,
           connectionInfo: _json.containsKey('connectionInfo')
               ? GameServerClusterConnectionInfo.fromJson(_json['connectionInfo']
                   as core.Map<core.String, core.dynamic>)
@@ -2795,6 +2853,7 @@ class GameServerCluster {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterState != null) 'clusterState': clusterState!.toJson(),
         if (connectionInfo != null) 'connectionInfo': connectionInfo!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
@@ -3140,6 +3199,112 @@ class GkeClusterReference {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
+      };
+}
+
+/// The state of the Kubernetes cluster.
+class KubernetesClusterState {
+  /// The version of Agones currently installed in the registered Kubernetes
+  /// cluster.
+  ///
+  /// Output only.
+  core.String? agonesVersionInstalled;
+
+  /// The version of Agones that is targeted to be installed in the cluster.
+  ///
+  /// Output only.
+  core.String? agonesVersionTargeted;
+
+  /// The state for the installed versions of Agones/Kubernetes.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INSTALLATION_STATE_UNSPECIFIED" : The default value. This value is used
+  /// if the state is omitted.
+  /// - "AGONES_KUBERNETES_VERSION_SUPPORTED" : The combination of Agones and
+  /// Kubernetes versions is supported by Google Cloud Game Servers.
+  /// - "AGONES_VERSION_UNSUPPORTED" : The installed version of Agones is not
+  /// supported by Google Cloud Game Servers.
+  /// - "AGONES_KUBERNETES_VERSION_UNSUPPORTED" : The installed version of
+  /// Agones is supported by Google Cloud Game Servers, but the installed
+  /// version of Kubernetes is not recommended or supported by the version of
+  /// Agones.
+  /// - "AGONES_VERSION_UNRECOGNIZED" : The installed version of Agones is not
+  /// recognized because the Agones controller's image name does not have a
+  /// version string reported as {major}.{minor}(.{patch}).
+  /// - "KUBERNETES_VERSION_UNRECOGNIZED" : The server version of Kubernetes
+  /// cluster is not recognized because the API server didn't return parsable
+  /// version info on path/version.
+  /// - "VERSION_VERIFICATION_FAILED" : Failed to read or verify the version of
+  /// Agones or Kubernetes. See version_installed_error_message for details.
+  /// - "AGONES_NOT_INSTALLED" : Agones is not installed.
+  core.String? installationState;
+
+  /// The version of Kubernetes that is currently used in the registered
+  /// Kubernetes cluster (as detected by the Cloud Game Servers service).
+  ///
+  /// Output only.
+  core.String? kubernetesVersionInstalled;
+
+  /// The cloud provider type reported by the first node's providerID in the
+  /// list of nodes on the Kubernetes endpoint.
+  ///
+  /// On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP),
+  /// the provider type will be empty.
+  ///
+  /// Output only.
+  core.String? provider;
+
+  /// The detailed error message for the installed versions of
+  /// Agones/Kubernetes.
+  ///
+  /// Output only.
+  core.String? versionInstalledErrorMessage;
+
+  KubernetesClusterState({
+    this.agonesVersionInstalled,
+    this.agonesVersionTargeted,
+    this.installationState,
+    this.kubernetesVersionInstalled,
+    this.provider,
+    this.versionInstalledErrorMessage,
+  });
+
+  KubernetesClusterState.fromJson(core.Map _json)
+      : this(
+          agonesVersionInstalled: _json.containsKey('agonesVersionInstalled')
+              ? _json['agonesVersionInstalled'] as core.String
+              : null,
+          agonesVersionTargeted: _json.containsKey('agonesVersionTargeted')
+              ? _json['agonesVersionTargeted'] as core.String
+              : null,
+          installationState: _json.containsKey('installationState')
+              ? _json['installationState'] as core.String
+              : null,
+          kubernetesVersionInstalled:
+              _json.containsKey('kubernetesVersionInstalled')
+                  ? _json['kubernetesVersionInstalled'] as core.String
+                  : null,
+          provider: _json.containsKey('provider')
+              ? _json['provider'] as core.String
+              : null,
+          versionInstalledErrorMessage:
+              _json.containsKey('versionInstalledErrorMessage')
+                  ? _json['versionInstalledErrorMessage'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agonesVersionInstalled != null)
+          'agonesVersionInstalled': agonesVersionInstalled!,
+        if (agonesVersionTargeted != null)
+          'agonesVersionTargeted': agonesVersionTargeted!,
+        if (installationState != null) 'installationState': installationState!,
+        if (kubernetesVersionInstalled != null)
+          'kubernetesVersionInstalled': kubernetesVersionInstalled!,
+        if (provider != null) 'provider': provider!,
+        if (versionInstalledErrorMessage != null)
+          'versionInstalledErrorMessage': versionInstalledErrorMessage!,
       };
 }
 
@@ -3925,6 +4090,12 @@ class Policy {
 /// Response message for
 /// GameServerClustersService.PreviewCreateGameServerCluster.
 class PreviewCreateGameServerClusterResponse {
+  /// The state of the Kubernetes cluster in preview, this will be available if
+  /// 'view' is set to `FULL` in the relevant List/Get/Preview request.
+  ///
+  /// Output only.
+  KubernetesClusterState? clusterState;
+
   /// The ETag of the game server cluster.
   core.String? etag;
 
@@ -3932,12 +4103,17 @@ class PreviewCreateGameServerClusterResponse {
   TargetState? targetState;
 
   PreviewCreateGameServerClusterResponse({
+    this.clusterState,
     this.etag,
     this.targetState,
   });
 
   PreviewCreateGameServerClusterResponse.fromJson(core.Map _json)
       : this(
+          clusterState: _json.containsKey('clusterState')
+              ? KubernetesClusterState.fromJson(
+                  _json['clusterState'] as core.Map<core.String, core.dynamic>)
+              : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           targetState: _json.containsKey('targetState')
               ? TargetState.fromJson(
@@ -3946,6 +4122,7 @@ class PreviewCreateGameServerClusterResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterState != null) 'clusterState': clusterState!.toJson(),
         if (etag != null) 'etag': etag!,
         if (targetState != null) 'targetState': targetState!.toJson(),
       };

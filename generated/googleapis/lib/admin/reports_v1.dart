@@ -90,6 +90,9 @@ class ActivitiesResource {
   /// [userKey] - Represents the profile ID or the user email for which the data
   /// should be filtered. Can be `all` for all information, or `userKey` for a
   /// user's unique Google Workspace profile ID or their primary email address.
+  /// Must not be a deleted user. For a deleted user, call `users.list` in
+  /// Directory API with `showDeleted=true`, then use the returned `ID` as the
+  /// `userKey`.
   ///
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
@@ -220,7 +223,7 @@ class ActivitiesResource {
   /// `(.+\[<,<=,==,>=,>,<>\].+,)*(.+\[<,<=,==,>=,>,<>\].+)`.
   ///
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
-  /// activities are filtered, i.e, the response will contain activities for
+  /// activities are filtered, i.e. the response will contain activities for
   /// only those users that are a part of at least one of the group ids
   /// mentioned here. Format: "id:abc123,id:xyz456"
   /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
@@ -315,6 +318,9 @@ class ActivitiesResource {
   /// [userKey] - Represents the profile ID or the user email for which the data
   /// should be filtered. Can be `all` for all information, or `userKey` for a
   /// user's unique Google Workspace profile ID or their primary email address.
+  /// Must not be a deleted user. For a deleted user, call `users.list` in
+  /// Directory API with `showDeleted=true`, then use the returned `ID` as the
+  /// `userKey`.
   ///
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
@@ -445,7 +451,7 @@ class ActivitiesResource {
   /// `(.+\[<,<=,==,>=,>,<>\].+,)*(.+\[<,<=,==,>=,>,<>\].+)`.
   ///
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
-  /// activities are filtered, i.e, the response will contain activities for
+  /// activities are filtered, i.e. the response will contain activities for
   /// only those users that are a part of at least one of the group ids
   /// mentioned here. Format: "id:abc123,id:xyz456"
   /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
@@ -799,6 +805,9 @@ class UserUsageReportResource {
   /// [userKey] - Represents the profile ID or the user email for which the data
   /// should be filtered. Can be `all` for all information, or `userKey` for a
   /// user's unique Google Workspace profile ID or their primary email address.
+  /// Must not be a deleted user. For a deleted user, call `users.list` in
+  /// Directory API with `showDeleted=true`, then use the returned `ID` as the
+  /// `userKey`.
   ///
   /// [date] - Represents the date the usage occurred. The timestamp is in the
   /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
@@ -828,7 +837,7 @@ class UserUsageReportResource {
   /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+)`.
   ///
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
-  /// activities are filtered, i.e, the response will contain activities for
+  /// activities are filtered, i.e. the response will contain activities for
   /// only those users that are a part of at least one of the group ids
   /// mentioned here. Format: "id:abc123,id:xyz456"
   /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.

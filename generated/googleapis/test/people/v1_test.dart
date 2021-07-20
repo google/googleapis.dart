@@ -3295,6 +3295,23 @@ void checkUnnamed6376(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed6377() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed6377(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-Address', () {
     unittest.test('to-json--from-json', () async {
@@ -4527,6 +4544,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_readMask = 'foo';
       final arg_requestSyncToken = true;
+      final arg_sources = buildUnnamed6365();
       final arg_syncToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4577,6 +4595,10 @@ void main() {
           unittest.equals('$arg_requestSyncToken'),
         );
         unittest.expect(
+          queryMap['sources']!,
+          unittest.equals(arg_sources),
+        );
+        unittest.expect(
           queryMap['syncToken']!.first,
           unittest.equals(arg_syncToken),
         );
@@ -4596,6 +4618,7 @@ void main() {
           pageToken: arg_pageToken,
           readMask: arg_readMask,
           requestSyncToken: arg_requestSyncToken,
+          sources: arg_sources,
           syncToken: arg_syncToken,
           $fields: arg_$fields);
       checkListOtherContactsResponse(response as api.ListOtherContactsResponse);
@@ -4847,7 +4870,7 @@ void main() {
       final res = api.PeopleServiceApi(mock).people;
       final arg_request = buildPerson();
       final arg_personFields = 'foo';
-      final arg_sources = buildUnnamed6365();
+      final arg_sources = buildUnnamed6366();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -4968,7 +4991,7 @@ void main() {
       final res = api.PeopleServiceApi(mock).people;
       final arg_resourceName = 'foo';
       final arg_personFields = 'foo';
-      final arg_sources = buildUnnamed6366();
+      final arg_sources = buildUnnamed6367();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5035,7 +5058,7 @@ void main() {
       final arg_resourceName = 'foo';
       final arg_personFields = 'foo';
       final arg_requestMask_includeField = 'foo';
-      final arg_sources = buildUnnamed6367();
+      final arg_sources = buildUnnamed6368();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5105,8 +5128,8 @@ void main() {
       final res = api.PeopleServiceApi(mock).people;
       final arg_personFields = 'foo';
       final arg_requestMask_includeField = 'foo';
-      final arg_resourceNames = buildUnnamed6368();
-      final arg_sources = buildUnnamed6369();
+      final arg_resourceNames = buildUnnamed6369();
+      final arg_sources = buildUnnamed6370();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5178,12 +5201,12 @@ void main() {
     unittest.test('method--listDirectoryPeople', () async {
       final mock = HttpServerMock();
       final res = api.PeopleServiceApi(mock).people;
-      final arg_mergeSources = buildUnnamed6370();
+      final arg_mergeSources = buildUnnamed6371();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_readMask = 'foo';
       final arg_requestSyncToken = true;
-      final arg_sources = buildUnnamed6371();
+      final arg_sources = buildUnnamed6372();
       final arg_syncToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5275,7 +5298,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_query = 'foo';
       final arg_readMask = 'foo';
-      final arg_sources = buildUnnamed6372();
+      final arg_sources = buildUnnamed6373();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5347,12 +5370,12 @@ void main() {
     unittest.test('method--searchDirectoryPeople', () async {
       final mock = HttpServerMock();
       final res = api.PeopleServiceApi(mock).people;
-      final arg_mergeSources = buildUnnamed6373();
+      final arg_mergeSources = buildUnnamed6374();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_query = 'foo';
       final arg_readMask = 'foo';
-      final arg_sources = buildUnnamed6374();
+      final arg_sources = buildUnnamed6375();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5438,7 +5461,7 @@ void main() {
       final arg_request = buildPerson();
       final arg_resourceName = 'foo';
       final arg_personFields = 'foo';
-      final arg_sources = buildUnnamed6375();
+      final arg_sources = buildUnnamed6376();
       final arg_updatePersonFields = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5580,7 +5603,7 @@ void main() {
       final arg_requestMask_includeField = 'foo';
       final arg_requestSyncToken = true;
       final arg_sortOrder = 'foo';
-      final arg_sources = buildUnnamed6376();
+      final arg_sources = buildUnnamed6377();
       final arg_syncToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

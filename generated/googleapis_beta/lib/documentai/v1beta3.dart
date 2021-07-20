@@ -1159,13 +1159,24 @@ class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata {
 
 /// Response message associated with the ExportProcessorVersion operation.
 class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse {
-  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse();
+  /// The Cloud Storage URI containing the output artifacts.
+  core.String? gcsUri;
+
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse({
+    this.gcsUri,
+  });
 
   GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
+      core.Map _json)
+      : this(
+          gcsUri: _json.containsKey('gcsUri')
+              ? _json['gcsUri'] as core.String
+              : null,
+        );
 
-  core.Map<core.String, core.dynamic> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsUri != null) 'gcsUri': gcsUri!,
+      };
 }
 
 /// The long running operation metadata for set default processor version

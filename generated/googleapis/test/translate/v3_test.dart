@@ -26,44 +26,27 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, api.TranslateTextGlossaryConfig> buildUnnamed6610() => {
+core.Map<core.String, api.TranslateTextGlossaryConfig> buildUnnamed6611() => {
       'x': buildTranslateTextGlossaryConfig(),
       'y': buildTranslateTextGlossaryConfig(),
     };
 
-void checkUnnamed6610(
+void checkUnnamed6611(
     core.Map<core.String, api.TranslateTextGlossaryConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslateTextGlossaryConfig(o['x']!);
   checkTranslateTextGlossaryConfig(o['y']!);
 }
 
-core.List<api.InputConfig> buildUnnamed6611() => [
+core.List<api.InputConfig> buildUnnamed6612() => [
       buildInputConfig(),
       buildInputConfig(),
     ];
 
-void checkUnnamed6611(core.List<api.InputConfig> o) {
+void checkUnnamed6612(core.List<api.InputConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInputConfig(o[0]);
   checkInputConfig(o[1]);
-}
-
-core.Map<core.String, core.String> buildUnnamed6612() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed6612(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
 }
 
 core.Map<core.String, core.String> buildUnnamed6613() => {
@@ -83,12 +66,29 @@ void checkUnnamed6613(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6614() => [
+core.Map<core.String, core.String> buildUnnamed6614() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed6614(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed6615() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6614(core.List<core.String> o) {
+void checkUnnamed6615(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -105,13 +105,13 @@ api.BatchTranslateTextRequest buildBatchTranslateTextRequest() {
   final o = api.BatchTranslateTextRequest();
   buildCounterBatchTranslateTextRequest++;
   if (buildCounterBatchTranslateTextRequest < 3) {
-    o.glossaries = buildUnnamed6610();
-    o.inputConfigs = buildUnnamed6611();
-    o.labels = buildUnnamed6612();
-    o.models = buildUnnamed6613();
+    o.glossaries = buildUnnamed6611();
+    o.inputConfigs = buildUnnamed6612();
+    o.labels = buildUnnamed6613();
+    o.models = buildUnnamed6614();
     o.outputConfig = buildOutputConfig();
     o.sourceLanguageCode = 'foo';
-    o.targetLanguageCodes = buildUnnamed6614();
+    o.targetLanguageCodes = buildUnnamed6615();
   }
   buildCounterBatchTranslateTextRequest--;
   return o;
@@ -120,16 +120,16 @@ api.BatchTranslateTextRequest buildBatchTranslateTextRequest() {
 void checkBatchTranslateTextRequest(api.BatchTranslateTextRequest o) {
   buildCounterBatchTranslateTextRequest++;
   if (buildCounterBatchTranslateTextRequest < 3) {
-    checkUnnamed6610(o.glossaries!);
-    checkUnnamed6611(o.inputConfigs!);
-    checkUnnamed6612(o.labels!);
-    checkUnnamed6613(o.models!);
+    checkUnnamed6611(o.glossaries!);
+    checkUnnamed6612(o.inputConfigs!);
+    checkUnnamed6613(o.labels!);
+    checkUnnamed6614(o.models!);
     checkOutputConfig(o.outputConfig!);
     unittest.expect(
       o.sourceLanguageCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed6614(o.targetLanguageCodes!);
+    checkUnnamed6615(o.targetLanguageCodes!);
   }
   buildCounterBatchTranslateTextRequest--;
 }
@@ -149,12 +149,12 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6615() => {
+core.Map<core.String, core.String> buildUnnamed6616() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6615(core.Map<core.String, core.String> o) {
+void checkUnnamed6616(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -172,7 +172,7 @@ api.DetectLanguageRequest buildDetectLanguageRequest() {
   buildCounterDetectLanguageRequest++;
   if (buildCounterDetectLanguageRequest < 3) {
     o.content = 'foo';
-    o.labels = buildUnnamed6615();
+    o.labels = buildUnnamed6616();
     o.mimeType = 'foo';
     o.model = 'foo';
   }
@@ -187,7 +187,7 @@ void checkDetectLanguageRequest(api.DetectLanguageRequest o) {
       o.content!,
       unittest.equals('foo'),
     );
-    checkUnnamed6615(o.labels!);
+    checkUnnamed6616(o.labels!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -200,12 +200,12 @@ void checkDetectLanguageRequest(api.DetectLanguageRequest o) {
   buildCounterDetectLanguageRequest--;
 }
 
-core.List<api.DetectedLanguage> buildUnnamed6616() => [
+core.List<api.DetectedLanguage> buildUnnamed6617() => [
       buildDetectedLanguage(),
       buildDetectedLanguage(),
     ];
 
-void checkUnnamed6616(core.List<api.DetectedLanguage> o) {
+void checkUnnamed6617(core.List<api.DetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDetectedLanguage(o[0]);
   checkDetectedLanguage(o[1]);
@@ -216,7 +216,7 @@ api.DetectLanguageResponse buildDetectLanguageResponse() {
   final o = api.DetectLanguageResponse();
   buildCounterDetectLanguageResponse++;
   if (buildCounterDetectLanguageResponse < 3) {
-    o.languages = buildUnnamed6616();
+    o.languages = buildUnnamed6617();
   }
   buildCounterDetectLanguageResponse--;
   return o;
@@ -225,7 +225,7 @@ api.DetectLanguageResponse buildDetectLanguageResponse() {
 void checkDetectLanguageResponse(api.DetectLanguageResponse o) {
   buildCounterDetectLanguageResponse++;
   if (buildCounterDetectLanguageResponse < 3) {
-    checkUnnamed6616(o.languages!);
+    checkUnnamed6617(o.languages!);
   }
   buildCounterDetectLanguageResponse--;
 }
@@ -429,12 +429,12 @@ void checkLanguageCodePair(api.LanguageCodePair o) {
   buildCounterLanguageCodePair--;
 }
 
-core.List<core.String> buildUnnamed6617() => [
+core.List<core.String> buildUnnamed6618() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6617(core.List<core.String> o) {
+void checkUnnamed6618(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -451,7 +451,7 @@ api.LanguageCodesSet buildLanguageCodesSet() {
   final o = api.LanguageCodesSet();
   buildCounterLanguageCodesSet++;
   if (buildCounterLanguageCodesSet < 3) {
-    o.languageCodes = buildUnnamed6617();
+    o.languageCodes = buildUnnamed6618();
   }
   buildCounterLanguageCodesSet--;
   return o;
@@ -460,17 +460,17 @@ api.LanguageCodesSet buildLanguageCodesSet() {
 void checkLanguageCodesSet(api.LanguageCodesSet o) {
   buildCounterLanguageCodesSet++;
   if (buildCounterLanguageCodesSet < 3) {
-    checkUnnamed6617(o.languageCodes!);
+    checkUnnamed6618(o.languageCodes!);
   }
   buildCounterLanguageCodesSet--;
 }
 
-core.List<api.Glossary> buildUnnamed6618() => [
+core.List<api.Glossary> buildUnnamed6619() => [
       buildGlossary(),
       buildGlossary(),
     ];
 
-void checkUnnamed6618(core.List<api.Glossary> o) {
+void checkUnnamed6619(core.List<api.Glossary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlossary(o[0]);
   checkGlossary(o[1]);
@@ -481,7 +481,7 @@ api.ListGlossariesResponse buildListGlossariesResponse() {
   final o = api.ListGlossariesResponse();
   buildCounterListGlossariesResponse++;
   if (buildCounterListGlossariesResponse < 3) {
-    o.glossaries = buildUnnamed6618();
+    o.glossaries = buildUnnamed6619();
     o.nextPageToken = 'foo';
   }
   buildCounterListGlossariesResponse--;
@@ -491,7 +491,7 @@ api.ListGlossariesResponse buildListGlossariesResponse() {
 void checkListGlossariesResponse(api.ListGlossariesResponse o) {
   buildCounterListGlossariesResponse++;
   if (buildCounterListGlossariesResponse < 3) {
-    checkUnnamed6618(o.glossaries!);
+    checkUnnamed6619(o.glossaries!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -500,12 +500,12 @@ void checkListGlossariesResponse(api.ListGlossariesResponse o) {
   buildCounterListGlossariesResponse--;
 }
 
-core.List<api.Location> buildUnnamed6619() => [
+core.List<api.Location> buildUnnamed6620() => [
       buildLocation(),
       buildLocation(),
     ];
 
-void checkUnnamed6619(core.List<api.Location> o) {
+void checkUnnamed6620(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -516,7 +516,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   final o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed6619();
+    o.locations = buildUnnamed6620();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -526,7 +526,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed6619(o.locations!);
+    checkUnnamed6620(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -535,12 +535,12 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed6620() => [
+core.List<api.Operation> buildUnnamed6621() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed6620(core.List<api.Operation> o) {
+void checkUnnamed6621(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -552,7 +552,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed6620();
+    o.operations = buildUnnamed6621();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -565,17 +565,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6620(o.operations!);
+    checkUnnamed6621(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6621() => {
+core.Map<core.String, core.String> buildUnnamed6622() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6621(core.Map<core.String, core.String> o) {
+void checkUnnamed6622(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -587,7 +587,7 @@ void checkUnnamed6621(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed6622() => {
+core.Map<core.String, core.Object> buildUnnamed6623() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -600,7 +600,7 @@ core.Map<core.String, core.Object> buildUnnamed6622() => {
       },
     };
 
-void checkUnnamed6622(core.Map<core.String, core.Object> o) {
+void checkUnnamed6623(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -638,9 +638,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed6621();
+    o.labels = buildUnnamed6622();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed6622();
+    o.metadata = buildUnnamed6623();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -654,12 +654,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed6621(o.labels!);
+    checkUnnamed6622(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed6622(o.metadata!);
+    checkUnnamed6623(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -668,7 +668,7 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6623() => {
+core.Map<core.String, core.Object> buildUnnamed6624() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -681,7 +681,7 @@ core.Map<core.String, core.Object> buildUnnamed6623() => {
       },
     };
 
-void checkUnnamed6623(core.Map<core.String, core.Object> o) {
+void checkUnnamed6624(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -713,7 +713,7 @@ void checkUnnamed6623(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed6624() => {
+core.Map<core.String, core.Object> buildUnnamed6625() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -726,7 +726,7 @@ core.Map<core.String, core.Object> buildUnnamed6624() => {
       },
     };
 
-void checkUnnamed6624(core.Map<core.String, core.Object> o) {
+void checkUnnamed6625(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -765,9 +765,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed6623();
+    o.metadata = buildUnnamed6624();
     o.name = 'foo';
-    o.response = buildUnnamed6624();
+    o.response = buildUnnamed6625();
   }
   buildCounterOperation--;
   return o;
@@ -778,12 +778,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed6623(o.metadata!);
+    checkUnnamed6624(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed6624(o.response!);
+    checkUnnamed6625(o.response!);
   }
   buildCounterOperation--;
 }
@@ -807,7 +807,7 @@ void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6625() => {
+core.Map<core.String, core.Object> buildUnnamed6626() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -820,7 +820,7 @@ core.Map<core.String, core.Object> buildUnnamed6625() => {
       },
     };
 
-void checkUnnamed6625(core.Map<core.String, core.Object> o) {
+void checkUnnamed6626(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -852,15 +852,15 @@ void checkUnnamed6625(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed6626() => [
-      buildUnnamed6625(),
-      buildUnnamed6625(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed6627() => [
+      buildUnnamed6626(),
+      buildUnnamed6626(),
     ];
 
-void checkUnnamed6626(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed6627(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6625(o[0]);
-  checkUnnamed6625(o[1]);
+  checkUnnamed6626(o[0]);
+  checkUnnamed6626(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -869,7 +869,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed6626();
+    o.details = buildUnnamed6627();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -883,7 +883,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed6626(o.details!);
+    checkUnnamed6627(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -923,12 +923,12 @@ void checkSupportedLanguage(api.SupportedLanguage o) {
   buildCounterSupportedLanguage--;
 }
 
-core.List<api.SupportedLanguage> buildUnnamed6627() => [
+core.List<api.SupportedLanguage> buildUnnamed6628() => [
       buildSupportedLanguage(),
       buildSupportedLanguage(),
     ];
 
-void checkUnnamed6627(core.List<api.SupportedLanguage> o) {
+void checkUnnamed6628(core.List<api.SupportedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSupportedLanguage(o[0]);
   checkSupportedLanguage(o[1]);
@@ -939,7 +939,7 @@ api.SupportedLanguages buildSupportedLanguages() {
   final o = api.SupportedLanguages();
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    o.languages = buildUnnamed6627();
+    o.languages = buildUnnamed6628();
   }
   buildCounterSupportedLanguages--;
   return o;
@@ -948,7 +948,7 @@ api.SupportedLanguages buildSupportedLanguages() {
 void checkSupportedLanguages(api.SupportedLanguages o) {
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    checkUnnamed6627(o.languages!);
+    checkUnnamed6628(o.languages!);
   }
   buildCounterSupportedLanguages--;
 }
@@ -977,12 +977,12 @@ void checkTranslateTextGlossaryConfig(api.TranslateTextGlossaryConfig o) {
   buildCounterTranslateTextGlossaryConfig--;
 }
 
-core.List<core.String> buildUnnamed6628() => [
+core.List<core.String> buildUnnamed6629() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6628(core.List<core.String> o) {
+void checkUnnamed6629(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -994,12 +994,12 @@ void checkUnnamed6628(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed6629() => {
+core.Map<core.String, core.String> buildUnnamed6630() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6629(core.Map<core.String, core.String> o) {
+void checkUnnamed6630(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1016,9 +1016,9 @@ api.TranslateTextRequest buildTranslateTextRequest() {
   final o = api.TranslateTextRequest();
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    o.contents = buildUnnamed6628();
+    o.contents = buildUnnamed6629();
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
-    o.labels = buildUnnamed6629();
+    o.labels = buildUnnamed6630();
     o.mimeType = 'foo';
     o.model = 'foo';
     o.sourceLanguageCode = 'foo';
@@ -1031,9 +1031,9 @@ api.TranslateTextRequest buildTranslateTextRequest() {
 void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    checkUnnamed6628(o.contents!);
+    checkUnnamed6629(o.contents!);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
-    checkUnnamed6629(o.labels!);
+    checkUnnamed6630(o.labels!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -1054,17 +1054,6 @@ void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest--;
 }
 
-core.List<api.Translation> buildUnnamed6630() => [
-      buildTranslation(),
-      buildTranslation(),
-    ];
-
-void checkUnnamed6630(core.List<api.Translation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkTranslation(o[0]);
-  checkTranslation(o[1]);
-}
-
 core.List<api.Translation> buildUnnamed6631() => [
       buildTranslation(),
       buildTranslation(),
@@ -1076,13 +1065,24 @@ void checkUnnamed6631(core.List<api.Translation> o) {
   checkTranslation(o[1]);
 }
 
+core.List<api.Translation> buildUnnamed6632() => [
+      buildTranslation(),
+      buildTranslation(),
+    ];
+
+void checkUnnamed6632(core.List<api.Translation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTranslation(o[0]);
+  checkTranslation(o[1]);
+}
+
 core.int buildCounterTranslateTextResponse = 0;
 api.TranslateTextResponse buildTranslateTextResponse() {
   final o = api.TranslateTextResponse();
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    o.glossaryTranslations = buildUnnamed6630();
-    o.translations = buildUnnamed6631();
+    o.glossaryTranslations = buildUnnamed6631();
+    o.translations = buildUnnamed6632();
   }
   buildCounterTranslateTextResponse--;
   return o;
@@ -1091,8 +1091,8 @@ api.TranslateTextResponse buildTranslateTextResponse() {
 void checkTranslateTextResponse(api.TranslateTextResponse o) {
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    checkUnnamed6630(o.glossaryTranslations!);
-    checkUnnamed6631(o.translations!);
+    checkUnnamed6631(o.glossaryTranslations!);
+    checkUnnamed6632(o.translations!);
   }
   buildCounterTranslateTextResponse--;
 }

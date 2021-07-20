@@ -2677,7 +2677,7 @@ class OrganizationsDevelopersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Email address of the developer for which attributes
-  /// are being updated in the following format:
+  /// are being updated. Use the following structure in your request:
   /// `organizations/{org}/developers/{developer_email}`
   /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
@@ -2932,19 +2932,20 @@ class OrganizationsDevelopersResource {
 
   /// Sets the status of a developer.
   ///
-  /// Valid values are `active` or `inactive`. A developer is `active` by
-  /// default. If you set a developer's status to `inactive`, the API keys
-  /// assigned to the developer apps are no longer valid even though the API
-  /// keys are set to `approved`. Inactive developers can still sign in to the
-  /// developer portal and create apps; however, any new API keys generated
-  /// during app creation won't work. If successful, the API call returns the
-  /// following HTTP status code: `204 No Content`
+  /// A developer is `active` by default. If you set a developer's status to
+  /// `inactive`, the API keys assigned to the developer apps are no longer
+  /// valid even though the API keys are set to `approved`. Inactive developers
+  /// can still sign in to the developer portal and create apps; however, any
+  /// new API keys generated during app creation won't work. To set the status
+  /// of a developer, set the `action` query parameter to `active` or
+  /// `inactive`, and the `Content-Type` header to `application/octet-stream`.
+  /// If successful, the API call returns the following HTTP status code: `204
+  /// No Content`
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Email address of the developer. Use the following
-  /// structure in your request:
-  /// `organizations/{org}/developers/{developer_email}`
+  /// [name] - Required. Name of the developer. Use the following structure in
+  /// your request: `organizations/{org}/developers/{developer_id}`
   /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [action] - Status of the developer. Valid values are `active` and
@@ -4123,7 +4124,7 @@ class OrganizationsDevelopersAttributesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Email address of the developer for which attributes
-  /// are being listed in the following format:
+  /// are being listed. Use the following structure in your request:
   /// `organizations/{org}/developers/{developer_email}`
   /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
@@ -15691,6 +15692,7 @@ class GoogleCloudApigeeV1Instance {
   /// - "SLASH_18" : `/18` CIDR range.
   /// - "SLASH_19" : `/19` CIDR range.
   /// - "SLASH_20" : `/20` CIDR range.
+  /// - "SLASH_22" : `/22` CIDR range. Supported for evaluation only.
   /// - "SLASH_23" : `/23` CIDR range. Supported for evaluation only.
   core.String? peeringCidrRange;
 

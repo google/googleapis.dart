@@ -2694,8 +2694,6 @@ class Location {
 class MTLSPolicy {
   /// Defines the mechanism to obtain the Certificate Authority certificate to
   /// validate the client certificate.
-  ///
-  /// Required.
   core.List<ValidationCA>? clientValidationCa;
 
   MTLSPolicy({
@@ -2947,15 +2945,13 @@ class Rule {
 /// This resource itself does not affect configuration unless it is attached to
 /// a target https proxy or endpoint config selector resource.
 class ServerTlsPolicy {
-  /// Determines if server allows plaintext connections.
+  ///  Determines if server allows plaintext connections.
   ///
   /// If set to true, server allows plain text connections. By default, it is
   /// set to false. This setting is not exclusive of other encryption modes. For
-  /// example, if allow_open and mtls_policy are set, server allows both plain
-  /// text and mTLS connections. See documentation of other encryption modes to
-  /// confirm compatibility.
-  ///
-  /// Optional.
+  /// example, if `allow_open` and `mtls_policy` are set, server allows both
+  /// plain text and mTLS connections. See documentation of other encryption
+  /// modes to confirm compatibility.
   core.bool? allowOpen;
 
   /// The timestamp when the resource was created.
@@ -2964,23 +2960,17 @@ class ServerTlsPolicy {
   core.String? createTime;
 
   /// Free-text description of the resource.
-  ///
-  /// Optional.
   core.String? description;
 
   /// Set of label tags associated with the resource.
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Defines a mechanism to provision peer validation certificates for peer to
   /// peer authentication (Mutual TLS - mTLS).
   ///
   /// If not specified, client certificate will not be requested. The connection
-  /// is treated as TLS and not mTLS. If allow_open and mtls_policy are set,
+  /// is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set,
   /// server allows both plain text and mTLS connections.
-  ///
-  /// Optional.
   MTLSPolicy? mtlsPolicy;
 
   /// Name of the ServerTlsPolicy resource.
@@ -2994,10 +2984,8 @@ class ServerTlsPolicy {
   /// Defines a mechanism to provision server identity (public and private
   /// keys).
   ///
-  /// Cannot be combined with allow_open as a permissive mode that allows both
+  /// Cannot be combined with `allow_open` as a permissive mode that allows both
   /// plain text and TLS is not supported.
-  ///
-  /// Optional.
   GoogleCloudNetworksecurityV1beta1CertificateProvider? serverCertificate;
 
   /// The timestamp when the resource was updated.

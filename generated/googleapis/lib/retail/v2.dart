@@ -2542,7 +2542,7 @@ class GoogleCloudRetailV2ProductDetail {
 class GoogleCloudRetailV2ProductInlineSource {
   /// A list of products to update/create.
   ///
-  /// Each product must have a valid Product.id. Recommended max of 10k items.
+  /// Each product must have a valid Product.id. Recommended max of 100 items.
   ///
   /// Required.
   core.List<GoogleCloudRetailV2Product>? products;

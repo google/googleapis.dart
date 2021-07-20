@@ -1053,9 +1053,9 @@ class V1Resource {
   /// `kmsKey:key` to find Cloud resources encrypted with a customer-managed
   /// encryption key whose name contains the word "key". * `state:ACTIVE` to
   /// find Cloud resources whose state contains "ACTIVE" as a word. * `NOT
-  /// state:ACTIVE` to find {{gcp_name}} resources whose state doesn't contain
-  /// "ACTIVE" as a word. * `createTime<1609459200` to find Cloud resources that
-  /// were created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch
+  /// state:ACTIVE` to find Cloud resources whose state doesn't contain "ACTIVE"
+  /// as a word. * `createTime<1609459200` to find Cloud resources that were
+  /// created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch
   /// timestamp of "2021-01-01 00:00:00 UTC" in seconds. *
   /// `updateTime>1609459200` to find Cloud resources that were updated after
   /// "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of
@@ -1073,14 +1073,12 @@ class V1Resource {
   /// camelCase are supported. Examples: `"*"`, `"name,location"`,
   /// `"name,versionedResources"`. The read_mask paths must be valid field paths
   /// listed but not limited to (both snake_case and camelCase are supported): *
-  /// name * asset_type or assetType * project * display_name or displayName *
-  /// description * location * labels * network_tags or networkTags * kms_key or
-  /// kmsKey * create_time or createTime * update_time or updateTime * state *
-  /// additional_attributes or additionalAttributes * versioned_resources or
-  /// versionedResources If read_mask is not specified, all fields except
-  /// versionedResources will be returned. If only '*' is specified, all fields
-  /// including versionedResources will be returned. Any invalid field path will
-  /// trigger INVALID_ARGUMENT error.
+  /// name * assetType * project * displayName * description * location * labels
+  /// * networkTags * kmsKey * createTime * updateTime * state *
+  /// additionalAttributes * versionedResources If read_mask is not specified,
+  /// all fields except versionedResources will be returned. If only '*' is
+  /// specified, all fields including versionedResources will be returned. Any
+  /// invalid field path will trigger INVALID_ARGUMENT error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1448,6 +1446,50 @@ class Asset {
         if (servicePerimeter != null)
           'servicePerimeter': servicePerimeter!.toJson(),
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Attached resource representation, which is defined by the corresponding
+/// service provider.
+///
+/// It represents an attached resource's payload.
+class AttachedResource {
+  /// The type of this attached resource.
+  ///
+  /// Example: `osconfig.googleapis.com/Inventory` You can find the supported
+  /// attached asset types of each resource in this table:
+  /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types`
+  core.String? assetType;
+
+  /// Versioned resource representations of this attached resource.
+  ///
+  /// This is repeated because there could be multiple versions of the attached
+  /// resource representations during version migration.
+  core.List<VersionedResource>? versionedResources;
+
+  AttachedResource({
+    this.assetType,
+    this.versionedResources,
+  });
+
+  AttachedResource.fromJson(core.Map _json)
+      : this(
+          assetType: _json.containsKey('assetType')
+              ? _json['assetType'] as core.String
+              : null,
+          versionedResources: _json.containsKey('versionedResources')
+              ? (_json['versionedResources'] as core.List)
+                  .map<VersionedResource>((value) => VersionedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetType != null) 'assetType': assetType!,
+        if (versionedResources != null)
+          'versionedResources':
+              versionedResources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5957,6 +5999,15 @@ class ResourceSearchResult {
   /// `asset_type`: * specify the `asset_type` field in your search request.
   core.String? assetType;
 
+  /// Attached resources of this resource.
+  ///
+  /// For example, an OSConfig Inventory is an attached resource of a Compute
+  /// Instance. This field is repeated because a resource could have multiple
+  /// attached resources. This `attached_resources` field is not searchable.
+  /// Some attributes of the attached resources are exposed in
+  /// `additional_attributes` field, so as to allow users to search on them.
+  core.List<AttachedResource>? attachedResources;
+
   /// The create timestamp of this resource, at which the resource was created.
   ///
   /// The granularity is in seconds. Timestamp.nanos will always be 0. This
@@ -6116,6 +6167,7 @@ class ResourceSearchResult {
   ResourceSearchResult({
     this.additionalAttributes,
     this.assetType,
+    this.attachedResources,
     this.createTime,
     this.description,
     this.displayName,
@@ -6148,6 +6200,12 @@ class ResourceSearchResult {
               : null,
           assetType: _json.containsKey('assetType')
               ? _json['assetType'] as core.String
+              : null,
+          attachedResources: _json.containsKey('attachedResources')
+              ? (_json['attachedResources'] as core.List)
+                  .map<AttachedResource>((value) => AttachedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
@@ -6212,6 +6270,9 @@ class ResourceSearchResult {
         if (additionalAttributes != null)
           'additionalAttributes': additionalAttributes!,
         if (assetType != null) 'assetType': assetType!,
+        if (attachedResources != null)
+          'attachedResources':
+              attachedResources!.map((value) => value.toJson()).toList(),
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,

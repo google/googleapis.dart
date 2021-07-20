@@ -7379,7 +7379,7 @@ class NodePoolAutoscaling {
 
   /// Maximum number of nodes in the NodePool.
   ///
-  /// Must be >= min_node_count. There has to enough quota to scale up the
+  /// Must be >= min_node_count. There has to be enough quota to scale up the
   /// cluster.
   core.int? maxNodeCount;
 

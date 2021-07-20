@@ -89,16 +89,20 @@ class EnterprisesResource {
   ///
   /// Request parameters:
   ///
-  /// [agreementAccepted] - This feature is not generally available yet. Whether
-  /// the managed Google Play Agreement is presented and agreed.
+  /// [agreementAccepted] - Whether the enterprise admin has seen and agreed to
+  /// the managed Google Play Agreement
+  /// (https://www.android.com/enterprise/terms/). Always set this to true when
+  /// creating an EMM-managed enterprise. Do not create the enterprise until the
+  /// admin has viewed and accepted the agreement.
   ///
   /// [enterpriseToken] - The enterprise token appended to the callback URL.
+  /// Only set this when creating a customer-managed enterprise.
   ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
   /// [signupUrlName] - The name of the SignupUrl used to sign up for the
-  /// enterprise.
+  /// enterprise. Only set this when creating a customer-managed enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -140,14 +144,14 @@ class EnterprisesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// This feature is not generally available yet.
-  ///
   /// Deletes an enterprise.
+  ///
+  /// Only available for EMM-managed enterprises.
   ///
   /// Request parameters:
   ///
-  /// [name] - This feature is not generally available yet. The name of the
-  /// enterprise in the form enterprises/{enterpriseId}.
+  /// [name] - The name of the enterprise in the form
+  /// enterprises/{enterpriseId}.
   /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -215,29 +219,27 @@ class EnterprisesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// This feature is not generally available yet.
+  /// Lists EMM-managed enterprises.
   ///
-  /// Lists enterprises that are managed by an EMM. Only partial views are
-  /// returned.
+  /// Only BASIC fields are returned.
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - This feature is not generally available yet. The requested
-  /// page size. The actual page size may be fixed to a min or max value.
+  /// [pageSize] - The requested page size. The actual page size may be fixed to
+  /// a min or max value.
   ///
-  /// [pageToken] - This feature is not generally available yet. A token
-  /// identifying a page of results returned by the server.
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
   ///
-  /// [projectId] - Required. This feature is not generally available yet. The
-  /// ID of the Cloud project of the EMM the enterprises belongs to.
+  /// [projectId] - Required. The Cloud project ID of the EMM managing the
+  /// enterprises.
   ///
-  /// [view] - This feature is not generally available yet. View that specify
-  /// that partial response should be returned.
+  /// [view] - Specifies which Enterprise fields to return. This method only
+  /// supports BASIC.
   /// Possible string values are:
-  /// - "ENTERPRISE_VIEW_UNSPECIFIED" : This feature is not generally available
-  /// yet. The API will default to the BASIC view for the List method.
-  /// - "BASIC" : This feature is not generally available yet. Includes name and
-  /// enterprise_display_name fields.
+  /// - "ENTERPRISE_VIEW_UNSPECIFIED" : The API will default to the BASIC view
+  /// for the List method.
+  /// - "BASIC" : Includes name and enterprise_display_name fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3357,9 +3359,7 @@ class Enterprise {
   /// Deprecated and unused.
   core.bool? appAutoApprovalEnabled;
 
-  /// This feature is not generally available yet.
-  ///
-  /// The enterprise contact info of an EMM owned enterprise
+  /// The enterprise contact info of an EMM-managed enterprise.
   ContactInfo? contactInfo;
 
   /// The types of Google Pub/Sub notifications enabled for the enterprise.
@@ -4071,17 +4071,11 @@ class ListDevicesResponse {
       };
 }
 
-/// This feature is not generally available yet.
-///
 /// Response to a request to list enterprises.
 class ListEnterprisesResponse {
-  /// This feature is not generally available yet.
-  ///
   /// The list of enterprises.
   core.List<Enterprise>? enterprises;
 
-  /// This feature is not generally available yet.
-  ///
   /// If there are more results, a token to retrieve next page of results.
   core.String? nextPageToken;
 

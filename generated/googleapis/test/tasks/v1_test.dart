@@ -58,12 +58,12 @@ void checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-core.List<api.TaskLinks> buildUnnamed7801() => [
+core.List<api.TaskLinks> buildUnnamed7802() => [
       buildTaskLinks(),
       buildTaskLinks(),
     ];
 
-void checkUnnamed7801(core.List<api.TaskLinks> o) {
+void checkUnnamed7802(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskLinks(o[0]);
   checkTaskLinks(o[1]);
@@ -81,7 +81,7 @@ api.Task buildTask() {
     o.hidden = true;
     o.id = 'foo';
     o.kind = 'foo';
-    o.links = buildUnnamed7801();
+    o.links = buildUnnamed7802();
     o.notes = 'foo';
     o.parent = 'foo';
     o.position = 'foo';
@@ -119,7 +119,7 @@ void checkTask(api.Task o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed7801(o.links!);
+    checkUnnamed7802(o.links!);
     unittest.expect(
       o.notes!,
       unittest.equals('foo'),
@@ -199,12 +199,12 @@ void checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-core.List<api.TaskList> buildUnnamed7802() => [
+core.List<api.TaskList> buildUnnamed7803() => [
       buildTaskList(),
       buildTaskList(),
     ];
 
-void checkUnnamed7802(core.List<api.TaskList> o) {
+void checkUnnamed7803(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskList(o[0]);
   checkTaskList(o[1]);
@@ -216,7 +216,7 @@ api.TaskLists buildTaskLists() {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed7802();
+    o.items = buildUnnamed7803();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -231,7 +231,7 @@ void checkTaskLists(api.TaskLists o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed7802(o.items!);
+    checkUnnamed7803(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -244,12 +244,12 @@ void checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists--;
 }
 
-core.List<api.Task> buildUnnamed7803() => [
+core.List<api.Task> buildUnnamed7804() => [
       buildTask(),
       buildTask(),
     ];
 
-void checkUnnamed7803(core.List<api.Task> o) {
+void checkUnnamed7804(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -261,7 +261,7 @@ api.Tasks buildTasks() {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed7803();
+    o.items = buildUnnamed7804();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -276,7 +276,7 @@ void checkTasks(api.Tasks o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed7803(o.items!);
+    checkUnnamed7804(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),

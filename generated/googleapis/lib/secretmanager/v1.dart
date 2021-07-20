@@ -396,6 +396,12 @@ class ProjectsSecretsResource {
   /// Secrets, in the format `projects / * `.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filter string, adhering to the rules in
+  /// \[List-operation
+  /// filtering\](https://cloud.google.com/secret-manager/docs/filtering). List
+  /// only secrets matching the filter. If filter is empty, all secrets are
+  /// listed.
+  ///
   /// [pageSize] - Optional. The maximum number of results to be returned in a
   /// single page. If set to 0, the server decides the number of results to
   /// return. If the number is greater than 25000, it is capped at 25000.
@@ -415,11 +421,13 @@ class ProjectsSecretsResource {
   /// this method will complete with the same error.
   async.Future<ListSecretsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -812,6 +820,12 @@ class ProjectsSecretsVersionsResource {
   /// SecretVersions to list, in the format `projects / * /secrets / * `.
   /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filter string, adhering to the rules in
+  /// \[List-operation
+  /// filtering\](https://cloud.google.com/secret-manager/docs/filtering). List
+  /// only secret versions matching the filter. If filter is empty, all secret
+  /// versions are listed.
+  ///
   /// [pageSize] - Optional. The maximum number of results to be returned in a
   /// single page. If set to 0, the server decides the number of results to
   /// return. If the number is greater than 25000, it is capped at 25000.
@@ -831,11 +845,13 @@ class ProjectsSecretsVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListSecretVersionsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],

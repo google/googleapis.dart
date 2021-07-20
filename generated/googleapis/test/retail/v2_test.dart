@@ -26,7 +26,7 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.Object> buildUnnamed3586() => {
+core.Map<core.String, core.Object> buildUnnamed3594() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -39,7 +39,7 @@ core.Map<core.String, core.Object> buildUnnamed3586() => {
       },
     };
 
-void checkUnnamed3586(core.Map<core.String, core.Object> o) {
+void checkUnnamed3594(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -71,15 +71,15 @@ void checkUnnamed3586(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed3587() => [
-      buildUnnamed3586(),
-      buildUnnamed3586(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed3595() => [
+      buildUnnamed3594(),
+      buildUnnamed3594(),
     ];
 
-void checkUnnamed3587(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed3595(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3586(o[0]);
-  checkUnnamed3586(o[1]);
+  checkUnnamed3594(o[0]);
+  checkUnnamed3594(o[1]);
 }
 
 core.int buildCounterGoogleApiHttpBody = 0;
@@ -89,7 +89,7 @@ api.GoogleApiHttpBody buildGoogleApiHttpBody() {
   if (buildCounterGoogleApiHttpBody < 3) {
     o.contentType = 'foo';
     o.data = 'foo';
-    o.extensions = buildUnnamed3587();
+    o.extensions = buildUnnamed3595();
   }
   buildCounterGoogleApiHttpBody--;
   return o;
@@ -106,7 +106,7 @@ void checkGoogleApiHttpBody(api.GoogleApiHttpBody o) {
       o.data!,
       unittest.equals('foo'),
     );
-    checkUnnamed3587(o.extensions!);
+    checkUnnamed3595(o.extensions!);
   }
   buildCounterGoogleApiHttpBody--;
 }
@@ -134,7 +134,7 @@ void checkGoogleCloudRetailLoggingErrorContext(
   buildCounterGoogleCloudRetailLoggingErrorContext--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3588() => {
+core.Map<core.String, core.Object> buildUnnamed3596() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -147,7 +147,7 @@ core.Map<core.String, core.Object> buildUnnamed3588() => {
       },
     };
 
-void checkUnnamed3588(core.Map<core.String, core.Object> o) {
+void checkUnnamed3596(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -179,7 +179,7 @@ void checkUnnamed3588(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed3589() => {
+core.Map<core.String, core.Object> buildUnnamed3597() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -192,7 +192,7 @@ core.Map<core.String, core.Object> buildUnnamed3589() => {
       },
     };
 
-void checkUnnamed3589(core.Map<core.String, core.Object> o) {
+void checkUnnamed3597(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -232,8 +232,8 @@ api.GoogleCloudRetailLoggingErrorLog buildGoogleCloudRetailLoggingErrorLog() {
     o.context = buildGoogleCloudRetailLoggingErrorContext();
     o.importPayload = buildGoogleCloudRetailLoggingImportErrorContext();
     o.message = 'foo';
-    o.requestPayload = buildUnnamed3588();
-    o.responsePayload = buildUnnamed3589();
+    o.requestPayload = buildUnnamed3596();
+    o.responsePayload = buildUnnamed3597();
     o.serviceContext = buildGoogleCloudRetailLoggingServiceContext();
     o.status = buildGoogleRpcStatus();
   }
@@ -251,8 +251,8 @@ void checkGoogleCloudRetailLoggingErrorLog(
       o.message!,
       unittest.equals('foo'),
     );
-    checkUnnamed3588(o.requestPayload!);
-    checkUnnamed3589(o.responsePayload!);
+    checkUnnamed3596(o.requestPayload!);
+    checkUnnamed3597(o.responsePayload!);
     checkGoogleCloudRetailLoggingServiceContext(o.serviceContext!);
     checkGoogleRpcStatus(o.status!);
   }
@@ -452,12 +452,12 @@ void checkGoogleCloudRetailV2Catalog(api.GoogleCloudRetailV2Catalog o) {
   buildCounterGoogleCloudRetailV2Catalog--;
 }
 
-core.List<core.double> buildUnnamed3590() => [
+core.List<core.double> buildUnnamed3598() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed3590(core.List<core.double> o) {
+void checkUnnamed3598(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -469,12 +469,12 @@ void checkUnnamed3590(core.List<core.double> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3591() => [
+core.List<core.String> buildUnnamed3599() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3591(core.List<core.String> o) {
+void checkUnnamed3599(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -492,8 +492,8 @@ api.GoogleCloudRetailV2CustomAttribute
   final o = api.GoogleCloudRetailV2CustomAttribute();
   buildCounterGoogleCloudRetailV2CustomAttribute++;
   if (buildCounterGoogleCloudRetailV2CustomAttribute < 3) {
-    o.numbers = buildUnnamed3590();
-    o.text = buildUnnamed3591();
+    o.numbers = buildUnnamed3598();
+    o.text = buildUnnamed3599();
   }
   buildCounterGoogleCloudRetailV2CustomAttribute--;
   return o;
@@ -503,18 +503,18 @@ void checkGoogleCloudRetailV2CustomAttribute(
     api.GoogleCloudRetailV2CustomAttribute o) {
   buildCounterGoogleCloudRetailV2CustomAttribute++;
   if (buildCounterGoogleCloudRetailV2CustomAttribute < 3) {
-    checkUnnamed3590(o.numbers!);
-    checkUnnamed3591(o.text!);
+    checkUnnamed3598(o.numbers!);
+    checkUnnamed3599(o.text!);
   }
   buildCounterGoogleCloudRetailV2CustomAttribute--;
 }
 
-core.List<core.String> buildUnnamed3592() => [
+core.List<core.String> buildUnnamed3600() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3592(core.List<core.String> o) {
+void checkUnnamed3600(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -532,7 +532,7 @@ api.GoogleCloudRetailV2GcsSource buildGoogleCloudRetailV2GcsSource() {
   buildCounterGoogleCloudRetailV2GcsSource++;
   if (buildCounterGoogleCloudRetailV2GcsSource < 3) {
     o.dataSchema = 'foo';
-    o.inputUris = buildUnnamed3592();
+    o.inputUris = buildUnnamed3600();
   }
   buildCounterGoogleCloudRetailV2GcsSource--;
   return o;
@@ -545,7 +545,7 @@ void checkGoogleCloudRetailV2GcsSource(api.GoogleCloudRetailV2GcsSource o) {
       o.dataSchema!,
       unittest.equals('foo'),
     );
-    checkUnnamed3592(o.inputUris!);
+    checkUnnamed3600(o.inputUris!);
   }
   buildCounterGoogleCloudRetailV2GcsSource--;
 }
@@ -672,12 +672,12 @@ void checkGoogleCloudRetailV2ImportProductsRequest(
   buildCounterGoogleCloudRetailV2ImportProductsRequest--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3593() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3601() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3593(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3601(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -689,7 +689,7 @@ api.GoogleCloudRetailV2ImportProductsResponse
   final o = api.GoogleCloudRetailV2ImportProductsResponse();
   buildCounterGoogleCloudRetailV2ImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2ImportProductsResponse < 3) {
-    o.errorSamples = buildUnnamed3593();
+    o.errorSamples = buildUnnamed3601();
     o.errorsConfig = buildGoogleCloudRetailV2ImportErrorsConfig();
   }
   buildCounterGoogleCloudRetailV2ImportProductsResponse--;
@@ -700,7 +700,7 @@ void checkGoogleCloudRetailV2ImportProductsResponse(
     api.GoogleCloudRetailV2ImportProductsResponse o) {
   buildCounterGoogleCloudRetailV2ImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2ImportProductsResponse < 3) {
-    checkUnnamed3593(o.errorSamples!);
+    checkUnnamed3601(o.errorSamples!);
     checkGoogleCloudRetailV2ImportErrorsConfig(o.errorsConfig!);
   }
   buildCounterGoogleCloudRetailV2ImportProductsResponse--;
@@ -729,12 +729,12 @@ void checkGoogleCloudRetailV2ImportUserEventsRequest(
   buildCounterGoogleCloudRetailV2ImportUserEventsRequest--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3594() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3602() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3594(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3602(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -746,7 +746,7 @@ api.GoogleCloudRetailV2ImportUserEventsResponse
   final o = api.GoogleCloudRetailV2ImportUserEventsResponse();
   buildCounterGoogleCloudRetailV2ImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2ImportUserEventsResponse < 3) {
-    o.errorSamples = buildUnnamed3594();
+    o.errorSamples = buildUnnamed3602();
     o.errorsConfig = buildGoogleCloudRetailV2ImportErrorsConfig();
     o.importSummary = buildGoogleCloudRetailV2UserEventImportSummary();
   }
@@ -758,19 +758,19 @@ void checkGoogleCloudRetailV2ImportUserEventsResponse(
     api.GoogleCloudRetailV2ImportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2ImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2ImportUserEventsResponse < 3) {
-    checkUnnamed3594(o.errorSamples!);
+    checkUnnamed3602(o.errorSamples!);
     checkGoogleCloudRetailV2ImportErrorsConfig(o.errorsConfig!);
     checkGoogleCloudRetailV2UserEventImportSummary(o.importSummary!);
   }
   buildCounterGoogleCloudRetailV2ImportUserEventsResponse--;
 }
 
-core.List<api.GoogleCloudRetailV2Catalog> buildUnnamed3595() => [
+core.List<api.GoogleCloudRetailV2Catalog> buildUnnamed3603() => [
       buildGoogleCloudRetailV2Catalog(),
       buildGoogleCloudRetailV2Catalog(),
     ];
 
-void checkUnnamed3595(core.List<api.GoogleCloudRetailV2Catalog> o) {
+void checkUnnamed3603(core.List<api.GoogleCloudRetailV2Catalog> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2Catalog(o[0]);
   checkGoogleCloudRetailV2Catalog(o[1]);
@@ -782,7 +782,7 @@ api.GoogleCloudRetailV2ListCatalogsResponse
   final o = api.GoogleCloudRetailV2ListCatalogsResponse();
   buildCounterGoogleCloudRetailV2ListCatalogsResponse++;
   if (buildCounterGoogleCloudRetailV2ListCatalogsResponse < 3) {
-    o.catalogs = buildUnnamed3595();
+    o.catalogs = buildUnnamed3603();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudRetailV2ListCatalogsResponse--;
@@ -793,7 +793,7 @@ void checkGoogleCloudRetailV2ListCatalogsResponse(
     api.GoogleCloudRetailV2ListCatalogsResponse o) {
   buildCounterGoogleCloudRetailV2ListCatalogsResponse++;
   if (buildCounterGoogleCloudRetailV2ListCatalogsResponse < 3) {
-    checkUnnamed3595(o.catalogs!);
+    checkUnnamed3603(o.catalogs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -802,12 +802,12 @@ void checkGoogleCloudRetailV2ListCatalogsResponse(
   buildCounterGoogleCloudRetailV2ListCatalogsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3596() => {
+core.Map<core.String, core.String> buildUnnamed3604() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed3596(core.Map<core.String, core.String> o) {
+void checkUnnamed3604(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -819,7 +819,7 @@ void checkUnnamed3596(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed3597() => {
+core.Map<core.String, core.Object> buildUnnamed3605() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -832,7 +832,7 @@ core.Map<core.String, core.Object> buildUnnamed3597() => {
       },
     };
 
-void checkUnnamed3597(core.Map<core.String, core.Object> o) {
+void checkUnnamed3605(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -870,10 +870,10 @@ api.GoogleCloudRetailV2PredictRequest buildGoogleCloudRetailV2PredictRequest() {
   buildCounterGoogleCloudRetailV2PredictRequest++;
   if (buildCounterGoogleCloudRetailV2PredictRequest < 3) {
     o.filter = 'foo';
-    o.labels = buildUnnamed3596();
+    o.labels = buildUnnamed3604();
     o.pageSize = 42;
     o.pageToken = 'foo';
-    o.params = buildUnnamed3597();
+    o.params = buildUnnamed3605();
     o.userEvent = buildGoogleCloudRetailV2UserEvent();
     o.validateOnly = true;
   }
@@ -889,7 +889,7 @@ void checkGoogleCloudRetailV2PredictRequest(
       o.filter!,
       unittest.equals('foo'),
     );
-    checkUnnamed3596(o.labels!);
+    checkUnnamed3604(o.labels!);
     unittest.expect(
       o.pageSize!,
       unittest.equals(42),
@@ -898,19 +898,19 @@ void checkGoogleCloudRetailV2PredictRequest(
       o.pageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3597(o.params!);
+    checkUnnamed3605(o.params!);
     checkGoogleCloudRetailV2UserEvent(o.userEvent!);
     unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterGoogleCloudRetailV2PredictRequest--;
 }
 
-core.List<core.String> buildUnnamed3598() => [
+core.List<core.String> buildUnnamed3606() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3598(core.List<core.String> o) {
+void checkUnnamed3606(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -923,12 +923,12 @@ void checkUnnamed3598(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudRetailV2PredictResponsePredictionResult>
-    buildUnnamed3599() => [
+    buildUnnamed3607() => [
           buildGoogleCloudRetailV2PredictResponsePredictionResult(),
           buildGoogleCloudRetailV2PredictResponsePredictionResult(),
         ];
 
-void checkUnnamed3599(
+void checkUnnamed3607(
     core.List<api.GoogleCloudRetailV2PredictResponsePredictionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2PredictResponsePredictionResult(o[0]);
@@ -942,8 +942,8 @@ api.GoogleCloudRetailV2PredictResponse
   buildCounterGoogleCloudRetailV2PredictResponse++;
   if (buildCounterGoogleCloudRetailV2PredictResponse < 3) {
     o.attributionToken = 'foo';
-    o.missingIds = buildUnnamed3598();
-    o.results = buildUnnamed3599();
+    o.missingIds = buildUnnamed3606();
+    o.results = buildUnnamed3607();
     o.validateOnly = true;
   }
   buildCounterGoogleCloudRetailV2PredictResponse--;
@@ -958,14 +958,14 @@ void checkGoogleCloudRetailV2PredictResponse(
       o.attributionToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3598(o.missingIds!);
-    checkUnnamed3599(o.results!);
+    checkUnnamed3606(o.missingIds!);
+    checkUnnamed3607(o.results!);
     unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterGoogleCloudRetailV2PredictResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3600() => {
+core.Map<core.String, core.Object> buildUnnamed3608() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -978,7 +978,7 @@ core.Map<core.String, core.Object> buildUnnamed3600() => {
       },
     };
 
-void checkUnnamed3600(core.Map<core.String, core.Object> o) {
+void checkUnnamed3608(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -1017,7 +1017,7 @@ api.GoogleCloudRetailV2PredictResponsePredictionResult
   buildCounterGoogleCloudRetailV2PredictResponsePredictionResult++;
   if (buildCounterGoogleCloudRetailV2PredictResponsePredictionResult < 3) {
     o.id = 'foo';
-    o.metadata = buildUnnamed3600();
+    o.metadata = buildUnnamed3608();
   }
   buildCounterGoogleCloudRetailV2PredictResponsePredictionResult--;
   return o;
@@ -1031,7 +1031,7 @@ void checkGoogleCloudRetailV2PredictResponsePredictionResult(
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed3600(o.metadata!);
+    checkUnnamed3608(o.metadata!);
   }
   buildCounterGoogleCloudRetailV2PredictResponsePredictionResult--;
 }
@@ -1074,24 +1074,24 @@ void checkGoogleCloudRetailV2PriceInfo(api.GoogleCloudRetailV2PriceInfo o) {
 }
 
 core.Map<core.String, api.GoogleCloudRetailV2CustomAttribute>
-    buildUnnamed3601() => {
+    buildUnnamed3609() => {
           'x': buildGoogleCloudRetailV2CustomAttribute(),
           'y': buildGoogleCloudRetailV2CustomAttribute(),
         };
 
-void checkUnnamed3601(
+void checkUnnamed3609(
     core.Map<core.String, api.GoogleCloudRetailV2CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2CustomAttribute(o['x']!);
   checkGoogleCloudRetailV2CustomAttribute(o['y']!);
 }
 
-core.List<core.String> buildUnnamed3602() => [
+core.List<core.String> buildUnnamed3610() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3602(core.List<core.String> o) {
+void checkUnnamed3610(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1103,23 +1103,23 @@ void checkUnnamed3602(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudRetailV2Image> buildUnnamed3603() => [
+core.List<api.GoogleCloudRetailV2Image> buildUnnamed3611() => [
       buildGoogleCloudRetailV2Image(),
       buildGoogleCloudRetailV2Image(),
     ];
 
-void checkUnnamed3603(core.List<api.GoogleCloudRetailV2Image> o) {
+void checkUnnamed3611(core.List<api.GoogleCloudRetailV2Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2Image(o[0]);
   checkGoogleCloudRetailV2Image(o[1]);
 }
 
-core.List<core.String> buildUnnamed3604() => [
+core.List<core.String> buildUnnamed3612() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3604(core.List<core.String> o) {
+void checkUnnamed3612(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1136,18 +1136,18 @@ api.GoogleCloudRetailV2Product buildGoogleCloudRetailV2Product() {
   final o = api.GoogleCloudRetailV2Product();
   buildCounterGoogleCloudRetailV2Product++;
   if (buildCounterGoogleCloudRetailV2Product < 3) {
-    o.attributes = buildUnnamed3601();
+    o.attributes = buildUnnamed3609();
     o.availability = 'foo';
     o.availableQuantity = 42;
     o.availableTime = 'foo';
-    o.categories = buildUnnamed3602();
+    o.categories = buildUnnamed3610();
     o.description = 'foo';
     o.id = 'foo';
-    o.images = buildUnnamed3603();
+    o.images = buildUnnamed3611();
     o.name = 'foo';
     o.priceInfo = buildGoogleCloudRetailV2PriceInfo();
     o.primaryProductId = 'foo';
-    o.tags = buildUnnamed3604();
+    o.tags = buildUnnamed3612();
     o.title = 'foo';
     o.type = 'foo';
     o.uri = 'foo';
@@ -1159,7 +1159,7 @@ api.GoogleCloudRetailV2Product buildGoogleCloudRetailV2Product() {
 void checkGoogleCloudRetailV2Product(api.GoogleCloudRetailV2Product o) {
   buildCounterGoogleCloudRetailV2Product++;
   if (buildCounterGoogleCloudRetailV2Product < 3) {
-    checkUnnamed3601(o.attributes!);
+    checkUnnamed3609(o.attributes!);
     unittest.expect(
       o.availability!,
       unittest.equals('foo'),
@@ -1172,7 +1172,7 @@ void checkGoogleCloudRetailV2Product(api.GoogleCloudRetailV2Product o) {
       o.availableTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3602(o.categories!);
+    checkUnnamed3610(o.categories!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -1181,7 +1181,7 @@ void checkGoogleCloudRetailV2Product(api.GoogleCloudRetailV2Product o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed3603(o.images!);
+    checkUnnamed3611(o.images!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1191,7 +1191,7 @@ void checkGoogleCloudRetailV2Product(api.GoogleCloudRetailV2Product o) {
       o.primaryProductId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3604(o.tags!);
+    checkUnnamed3612(o.tags!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -1233,12 +1233,12 @@ void checkGoogleCloudRetailV2ProductDetail(
   buildCounterGoogleCloudRetailV2ProductDetail--;
 }
 
-core.List<api.GoogleCloudRetailV2Product> buildUnnamed3605() => [
+core.List<api.GoogleCloudRetailV2Product> buildUnnamed3613() => [
       buildGoogleCloudRetailV2Product(),
       buildGoogleCloudRetailV2Product(),
     ];
 
-void checkUnnamed3605(core.List<api.GoogleCloudRetailV2Product> o) {
+void checkUnnamed3613(core.List<api.GoogleCloudRetailV2Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2Product(o[0]);
   checkGoogleCloudRetailV2Product(o[1]);
@@ -1250,7 +1250,7 @@ api.GoogleCloudRetailV2ProductInlineSource
   final o = api.GoogleCloudRetailV2ProductInlineSource();
   buildCounterGoogleCloudRetailV2ProductInlineSource++;
   if (buildCounterGoogleCloudRetailV2ProductInlineSource < 3) {
-    o.products = buildUnnamed3605();
+    o.products = buildUnnamed3613();
   }
   buildCounterGoogleCloudRetailV2ProductInlineSource--;
   return o;
@@ -1260,7 +1260,7 @@ void checkGoogleCloudRetailV2ProductInlineSource(
     api.GoogleCloudRetailV2ProductInlineSource o) {
   buildCounterGoogleCloudRetailV2ProductInlineSource++;
   if (buildCounterGoogleCloudRetailV2ProductInlineSource < 3) {
-    checkUnnamed3605(o.products!);
+    checkUnnamed3613(o.products!);
   }
   buildCounterGoogleCloudRetailV2ProductInlineSource--;
 }
@@ -1495,24 +1495,24 @@ void checkGoogleCloudRetailV2RejoinUserEventsResponse(
 }
 
 core.Map<core.String, api.GoogleCloudRetailV2CustomAttribute>
-    buildUnnamed3606() => {
+    buildUnnamed3614() => {
           'x': buildGoogleCloudRetailV2CustomAttribute(),
           'y': buildGoogleCloudRetailV2CustomAttribute(),
         };
 
-void checkUnnamed3606(
+void checkUnnamed3614(
     core.Map<core.String, api.GoogleCloudRetailV2CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2CustomAttribute(o['x']!);
   checkGoogleCloudRetailV2CustomAttribute(o['y']!);
 }
 
-core.List<core.String> buildUnnamed3607() => [
+core.List<core.String> buildUnnamed3615() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3607(core.List<core.String> o) {
+void checkUnnamed3615(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1524,12 +1524,12 @@ void checkUnnamed3607(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3608() => [
+core.List<core.String> buildUnnamed3616() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3608(core.List<core.String> o) {
+void checkUnnamed3616(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1541,12 +1541,12 @@ void checkUnnamed3608(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudRetailV2ProductDetail> buildUnnamed3609() => [
+core.List<api.GoogleCloudRetailV2ProductDetail> buildUnnamed3617() => [
       buildGoogleCloudRetailV2ProductDetail(),
       buildGoogleCloudRetailV2ProductDetail(),
     ];
 
-void checkUnnamed3609(core.List<api.GoogleCloudRetailV2ProductDetail> o) {
+void checkUnnamed3617(core.List<api.GoogleCloudRetailV2ProductDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2ProductDetail(o[0]);
   checkGoogleCloudRetailV2ProductDetail(o[1]);
@@ -1557,15 +1557,15 @@ api.GoogleCloudRetailV2UserEvent buildGoogleCloudRetailV2UserEvent() {
   final o = api.GoogleCloudRetailV2UserEvent();
   buildCounterGoogleCloudRetailV2UserEvent++;
   if (buildCounterGoogleCloudRetailV2UserEvent < 3) {
-    o.attributes = buildUnnamed3606();
+    o.attributes = buildUnnamed3614();
     o.attributionToken = 'foo';
     o.cartId = 'foo';
     o.eventTime = 'foo';
     o.eventType = 'foo';
-    o.experimentIds = buildUnnamed3607();
-    o.pageCategories = buildUnnamed3608();
+    o.experimentIds = buildUnnamed3615();
+    o.pageCategories = buildUnnamed3616();
     o.pageViewId = 'foo';
-    o.productDetails = buildUnnamed3609();
+    o.productDetails = buildUnnamed3617();
     o.purchaseTransaction = buildGoogleCloudRetailV2PurchaseTransaction();
     o.referrerUri = 'foo';
     o.searchQuery = 'foo';
@@ -1580,7 +1580,7 @@ api.GoogleCloudRetailV2UserEvent buildGoogleCloudRetailV2UserEvent() {
 void checkGoogleCloudRetailV2UserEvent(api.GoogleCloudRetailV2UserEvent o) {
   buildCounterGoogleCloudRetailV2UserEvent++;
   if (buildCounterGoogleCloudRetailV2UserEvent < 3) {
-    checkUnnamed3606(o.attributes!);
+    checkUnnamed3614(o.attributes!);
     unittest.expect(
       o.attributionToken!,
       unittest.equals('foo'),
@@ -1597,13 +1597,13 @@ void checkGoogleCloudRetailV2UserEvent(api.GoogleCloudRetailV2UserEvent o) {
       o.eventType!,
       unittest.equals('foo'),
     );
-    checkUnnamed3607(o.experimentIds!);
-    checkUnnamed3608(o.pageCategories!);
+    checkUnnamed3615(o.experimentIds!);
+    checkUnnamed3616(o.pageCategories!);
     unittest.expect(
       o.pageViewId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3609(o.productDetails!);
+    checkUnnamed3617(o.productDetails!);
     checkGoogleCloudRetailV2PurchaseTransaction(o.purchaseTransaction!);
     unittest.expect(
       o.referrerUri!,
@@ -1655,12 +1655,12 @@ void checkGoogleCloudRetailV2UserEventImportSummary(
   buildCounterGoogleCloudRetailV2UserEventImportSummary--;
 }
 
-core.List<api.GoogleCloudRetailV2UserEvent> buildUnnamed3610() => [
+core.List<api.GoogleCloudRetailV2UserEvent> buildUnnamed3618() => [
       buildGoogleCloudRetailV2UserEvent(),
       buildGoogleCloudRetailV2UserEvent(),
     ];
 
-void checkUnnamed3610(core.List<api.GoogleCloudRetailV2UserEvent> o) {
+void checkUnnamed3618(core.List<api.GoogleCloudRetailV2UserEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2UserEvent(o[0]);
   checkGoogleCloudRetailV2UserEvent(o[1]);
@@ -1672,7 +1672,7 @@ api.GoogleCloudRetailV2UserEventInlineSource
   final o = api.GoogleCloudRetailV2UserEventInlineSource();
   buildCounterGoogleCloudRetailV2UserEventInlineSource++;
   if (buildCounterGoogleCloudRetailV2UserEventInlineSource < 3) {
-    o.userEvents = buildUnnamed3610();
+    o.userEvents = buildUnnamed3618();
   }
   buildCounterGoogleCloudRetailV2UserEventInlineSource--;
   return o;
@@ -1682,7 +1682,7 @@ void checkGoogleCloudRetailV2UserEventInlineSource(
     api.GoogleCloudRetailV2UserEventInlineSource o) {
   buildCounterGoogleCloudRetailV2UserEventInlineSource++;
   if (buildCounterGoogleCloudRetailV2UserEventInlineSource < 3) {
-    checkUnnamed3610(o.userEvents!);
+    checkUnnamed3618(o.userEvents!);
   }
   buildCounterGoogleCloudRetailV2UserEventInlineSource--;
 }
@@ -1799,12 +1799,12 @@ void checkGoogleCloudRetailV2alphaExportMetadata(
   buildCounterGoogleCloudRetailV2alphaExportMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3611() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3619() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3611(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3619(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -1816,7 +1816,7 @@ api.GoogleCloudRetailV2alphaExportProductsResponse
   final o = api.GoogleCloudRetailV2alphaExportProductsResponse();
   buildCounterGoogleCloudRetailV2alphaExportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaExportProductsResponse < 3) {
-    o.errorSamples = buildUnnamed3611();
+    o.errorSamples = buildUnnamed3619();
     o.errorsConfig = buildGoogleCloudRetailV2alphaExportErrorsConfig();
   }
   buildCounterGoogleCloudRetailV2alphaExportProductsResponse--;
@@ -1827,18 +1827,18 @@ void checkGoogleCloudRetailV2alphaExportProductsResponse(
     api.GoogleCloudRetailV2alphaExportProductsResponse o) {
   buildCounterGoogleCloudRetailV2alphaExportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaExportProductsResponse < 3) {
-    checkUnnamed3611(o.errorSamples!);
+    checkUnnamed3619(o.errorSamples!);
     checkGoogleCloudRetailV2alphaExportErrorsConfig(o.errorsConfig!);
   }
   buildCounterGoogleCloudRetailV2alphaExportProductsResponse--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3612() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3620() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3612(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3620(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -1850,7 +1850,7 @@ api.GoogleCloudRetailV2alphaExportUserEventsResponse
   final o = api.GoogleCloudRetailV2alphaExportUserEventsResponse();
   buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse < 3) {
-    o.errorSamples = buildUnnamed3612();
+    o.errorSamples = buildUnnamed3620();
     o.errorsConfig = buildGoogleCloudRetailV2alphaExportErrorsConfig();
   }
   buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse--;
@@ -1861,7 +1861,7 @@ void checkGoogleCloudRetailV2alphaExportUserEventsResponse(
     api.GoogleCloudRetailV2alphaExportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse < 3) {
-    checkUnnamed3612(o.errorSamples!);
+    checkUnnamed3620(o.errorSamples!);
     checkGoogleCloudRetailV2alphaExportErrorsConfig(o.errorsConfig!);
   }
   buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse--;
@@ -1930,12 +1930,12 @@ void checkGoogleCloudRetailV2alphaImportMetadata(
   buildCounterGoogleCloudRetailV2alphaImportMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3613() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3621() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3613(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3621(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -1947,7 +1947,7 @@ api.GoogleCloudRetailV2alphaImportProductsResponse
   final o = api.GoogleCloudRetailV2alphaImportProductsResponse();
   buildCounterGoogleCloudRetailV2alphaImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaImportProductsResponse < 3) {
-    o.errorSamples = buildUnnamed3613();
+    o.errorSamples = buildUnnamed3621();
     o.errorsConfig = buildGoogleCloudRetailV2alphaImportErrorsConfig();
   }
   buildCounterGoogleCloudRetailV2alphaImportProductsResponse--;
@@ -1958,18 +1958,18 @@ void checkGoogleCloudRetailV2alphaImportProductsResponse(
     api.GoogleCloudRetailV2alphaImportProductsResponse o) {
   buildCounterGoogleCloudRetailV2alphaImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaImportProductsResponse < 3) {
-    checkUnnamed3613(o.errorSamples!);
+    checkUnnamed3621(o.errorSamples!);
     checkGoogleCloudRetailV2alphaImportErrorsConfig(o.errorsConfig!);
   }
   buildCounterGoogleCloudRetailV2alphaImportProductsResponse--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3614() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3622() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3614(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3622(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -1981,7 +1981,7 @@ api.GoogleCloudRetailV2alphaImportUserEventsResponse
   final o = api.GoogleCloudRetailV2alphaImportUserEventsResponse();
   buildCounterGoogleCloudRetailV2alphaImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaImportUserEventsResponse < 3) {
-    o.errorSamples = buildUnnamed3614();
+    o.errorSamples = buildUnnamed3622();
     o.errorsConfig = buildGoogleCloudRetailV2alphaImportErrorsConfig();
     o.importSummary = buildGoogleCloudRetailV2alphaUserEventImportSummary();
   }
@@ -1993,7 +1993,7 @@ void checkGoogleCloudRetailV2alphaImportUserEventsResponse(
     api.GoogleCloudRetailV2alphaImportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2alphaImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaImportUserEventsResponse < 3) {
-    checkUnnamed3614(o.errorSamples!);
+    checkUnnamed3622(o.errorSamples!);
     checkGoogleCloudRetailV2alphaImportErrorsConfig(o.errorsConfig!);
     checkGoogleCloudRetailV2alphaUserEventImportSummary(o.importSummary!);
   }
@@ -2164,12 +2164,12 @@ void checkGoogleCloudRetailV2betaExportMetadata(
   buildCounterGoogleCloudRetailV2betaExportMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3615() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3623() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3615(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3623(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -2181,7 +2181,7 @@ api.GoogleCloudRetailV2betaExportProductsResponse
   final o = api.GoogleCloudRetailV2betaExportProductsResponse();
   buildCounterGoogleCloudRetailV2betaExportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2betaExportProductsResponse < 3) {
-    o.errorSamples = buildUnnamed3615();
+    o.errorSamples = buildUnnamed3623();
     o.errorsConfig = buildGoogleCloudRetailV2betaExportErrorsConfig();
   }
   buildCounterGoogleCloudRetailV2betaExportProductsResponse--;
@@ -2192,18 +2192,18 @@ void checkGoogleCloudRetailV2betaExportProductsResponse(
     api.GoogleCloudRetailV2betaExportProductsResponse o) {
   buildCounterGoogleCloudRetailV2betaExportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2betaExportProductsResponse < 3) {
-    checkUnnamed3615(o.errorSamples!);
+    checkUnnamed3623(o.errorSamples!);
     checkGoogleCloudRetailV2betaExportErrorsConfig(o.errorsConfig!);
   }
   buildCounterGoogleCloudRetailV2betaExportProductsResponse--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3616() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3624() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3616(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3624(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -2215,7 +2215,7 @@ api.GoogleCloudRetailV2betaExportUserEventsResponse
   final o = api.GoogleCloudRetailV2betaExportUserEventsResponse();
   buildCounterGoogleCloudRetailV2betaExportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2betaExportUserEventsResponse < 3) {
-    o.errorSamples = buildUnnamed3616();
+    o.errorSamples = buildUnnamed3624();
     o.errorsConfig = buildGoogleCloudRetailV2betaExportErrorsConfig();
   }
   buildCounterGoogleCloudRetailV2betaExportUserEventsResponse--;
@@ -2226,7 +2226,7 @@ void checkGoogleCloudRetailV2betaExportUserEventsResponse(
     api.GoogleCloudRetailV2betaExportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2betaExportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2betaExportUserEventsResponse < 3) {
-    checkUnnamed3616(o.errorSamples!);
+    checkUnnamed3624(o.errorSamples!);
     checkGoogleCloudRetailV2betaExportErrorsConfig(o.errorsConfig!);
   }
   buildCounterGoogleCloudRetailV2betaExportUserEventsResponse--;
@@ -2295,12 +2295,12 @@ void checkGoogleCloudRetailV2betaImportMetadata(
   buildCounterGoogleCloudRetailV2betaImportMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3617() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3625() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3617(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3625(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -2312,7 +2312,7 @@ api.GoogleCloudRetailV2betaImportProductsResponse
   final o = api.GoogleCloudRetailV2betaImportProductsResponse();
   buildCounterGoogleCloudRetailV2betaImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2betaImportProductsResponse < 3) {
-    o.errorSamples = buildUnnamed3617();
+    o.errorSamples = buildUnnamed3625();
     o.errorsConfig = buildGoogleCloudRetailV2betaImportErrorsConfig();
   }
   buildCounterGoogleCloudRetailV2betaImportProductsResponse--;
@@ -2323,18 +2323,18 @@ void checkGoogleCloudRetailV2betaImportProductsResponse(
     api.GoogleCloudRetailV2betaImportProductsResponse o) {
   buildCounterGoogleCloudRetailV2betaImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2betaImportProductsResponse < 3) {
-    checkUnnamed3617(o.errorSamples!);
+    checkUnnamed3625(o.errorSamples!);
     checkGoogleCloudRetailV2betaImportErrorsConfig(o.errorsConfig!);
   }
   buildCounterGoogleCloudRetailV2betaImportProductsResponse--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed3618() => [
+core.List<api.GoogleRpcStatus> buildUnnamed3626() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed3618(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed3626(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -2346,7 +2346,7 @@ api.GoogleCloudRetailV2betaImportUserEventsResponse
   final o = api.GoogleCloudRetailV2betaImportUserEventsResponse();
   buildCounterGoogleCloudRetailV2betaImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2betaImportUserEventsResponse < 3) {
-    o.errorSamples = buildUnnamed3618();
+    o.errorSamples = buildUnnamed3626();
     o.errorsConfig = buildGoogleCloudRetailV2betaImportErrorsConfig();
     o.importSummary = buildGoogleCloudRetailV2betaUserEventImportSummary();
   }
@@ -2358,7 +2358,7 @@ void checkGoogleCloudRetailV2betaImportUserEventsResponse(
     api.GoogleCloudRetailV2betaImportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2betaImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2betaImportUserEventsResponse < 3) {
-    checkUnnamed3618(o.errorSamples!);
+    checkUnnamed3626(o.errorSamples!);
     checkGoogleCloudRetailV2betaImportErrorsConfig(o.errorsConfig!);
     checkGoogleCloudRetailV2betaUserEventImportSummary(o.importSummary!);
   }
@@ -2476,12 +2476,12 @@ void checkGoogleCloudRetailV2betaUserEventImportSummary(
   buildCounterGoogleCloudRetailV2betaUserEventImportSummary--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed3619() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed3627() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed3619(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed3627(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -2494,7 +2494,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed3619();
+    o.operations = buildUnnamed3627();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -2508,12 +2508,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3619(o.operations!);
+    checkUnnamed3627(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3620() => {
+core.Map<core.String, core.Object> buildUnnamed3628() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2526,7 +2526,7 @@ core.Map<core.String, core.Object> buildUnnamed3620() => {
       },
     };
 
-void checkUnnamed3620(core.Map<core.String, core.Object> o) {
+void checkUnnamed3628(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -2558,7 +2558,7 @@ void checkUnnamed3620(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed3621() => {
+core.Map<core.String, core.Object> buildUnnamed3629() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2571,7 +2571,7 @@ core.Map<core.String, core.Object> buildUnnamed3621() => {
       },
     };
 
-void checkUnnamed3621(core.Map<core.String, core.Object> o) {
+void checkUnnamed3629(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
@@ -2610,9 +2610,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed3620();
+    o.metadata = buildUnnamed3628();
     o.name = 'foo';
-    o.response = buildUnnamed3621();
+    o.response = buildUnnamed3629();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -2623,12 +2623,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed3620(o.metadata!);
+    checkUnnamed3628(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed3621(o.response!);
+    checkUnnamed3629(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -2648,7 +2648,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3622() => {
+core.Map<core.String, core.Object> buildUnnamed3630() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2661,7 +2661,7 @@ core.Map<core.String, core.Object> buildUnnamed3622() => {
       },
     };
 
-void checkUnnamed3622(core.Map<core.String, core.Object> o) {
+void checkUnnamed3630(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
@@ -2693,15 +2693,15 @@ void checkUnnamed3622(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed3623() => [
-      buildUnnamed3622(),
-      buildUnnamed3622(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed3631() => [
+      buildUnnamed3630(),
+      buildUnnamed3630(),
     ];
 
-void checkUnnamed3623(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed3631(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3622(o[0]);
-  checkUnnamed3622(o[1]);
+  checkUnnamed3630(o[0]);
+  checkUnnamed3630(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -2710,7 +2710,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3623();
+    o.details = buildUnnamed3631();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -2724,7 +2724,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed3623(o.details!);
+    checkUnnamed3631(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

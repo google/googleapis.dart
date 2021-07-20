@@ -98,7 +98,7 @@
     "canonicalName": "directory",
     "description": "Admin SDK lets administrators of enterprise domains to view and manage resources like user, groups etc. It also provides audit and usage reports of domain.",
     "discoveryVersion": "v1",
-    "documentationLink": "http://developers.google.com/admin-sdk/",
+    "documentationLink": "https://developers.google.com/admin-sdk/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -191,7 +191,7 @@
         "asps": {
             "methods": {
                 "delete": {
-                    "description": "Delete an ASP issued by a user.",
+                    "description": "Deletes an ASP issued by a user.",
                     "flatPath": "admin/directory/v1/users/{userKey}/asps/{codeId}",
                     "httpMethod": "DELETE",
                     "id": "directory.asps.delete",
@@ -220,7 +220,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Get information about an ASP issued by a user.",
+                    "description": "Gets information about an ASP issued by a user.",
                     "flatPath": "admin/directory/v1/users/{userKey}/asps/{codeId}",
                     "httpMethod": "GET",
                     "id": "directory.asps.get",
@@ -252,7 +252,7 @@
                     ]
                 },
                 "list": {
-                    "description": "List the ASPs issued by a user.",
+                    "description": "Lists the ASPs issued by a user.",
                     "flatPath": "admin/directory/v1/users/{userKey}/asps",
                     "httpMethod": "GET",
                     "id": "directory.asps.list",
@@ -280,7 +280,7 @@
         "channels": {
             "methods": {
                 "stop": {
-                    "description": "Stop watching resources through this channel.",
+                    "description": "Stops watching resources through this channel.",
                     "flatPath": "admin/directory_v1/channels/stop",
                     "httpMethod": "POST",
                     "id": "admin.channels.stop",
@@ -476,7 +476,7 @@
                     ]
                 },
                 "moveDevicesToOu": {
-                    "description": "Move or insert multiple Chrome OS devices to an organizational unit. You can move up to 50 devices at once.",
+                    "description": "Moves or inserts multiple Chrome OS devices to an organizational unit. You can move up to 50 devices at once.",
                     "flatPath": "admin/directory/v1/customer/{customerId}/devices/chromeos/moveDevicesToOu",
                     "httpMethod": "POST",
                     "id": "directory.chromeosdevices.moveDevicesToOu",
@@ -722,7 +722,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Patch Customers via Apiary Patch Orchestration",
+                    "description": "Patches a customer.",
                     "flatPath": "admin/directory/v1/customers/{customerKey}",
                     "httpMethod": "PATCH",
                     "id": "directory.customers.patch",
@@ -1355,7 +1355,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieve all groups of a domain or of a user given a userKey (paginated)",
+                    "description": "Retrieves all groups of a domain or of a user given a userKey (paginated).",
                     "flatPath": "admin/directory/v1/groups",
                     "httpMethod": "GET",
                     "id": "directory.groups.list",
@@ -2407,7 +2407,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Patches a building via Apiary Patch Orchestration.",
+                            "description": "Patches a building.",
                             "flatPath": "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
                             "httpMethod": "PATCH",
                             "id": "directory.resources.buildings.patch",
@@ -2646,7 +2646,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Patches a calendar resource via Apiary Patch Orchestration.",
+                            "description": "Patches a calendar resource.",
                             "flatPath": "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
                             "httpMethod": "PATCH",
                             "id": "directory.resources.calendars.patch",
@@ -2843,7 +2843,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Patches a feature via Apiary Patch Orchestration.",
+                            "description": "Patches a feature.",
                             "flatPath": "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
                             "httpMethod": "PATCH",
                             "id": "directory.resources.features.patch",
@@ -2976,7 +2976,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieve a role assignment.",
+                    "description": "Retrieves a role assignment.",
                     "flatPath": "admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}",
                     "httpMethod": "GET",
                     "id": "directory.roleAssignments.get",
@@ -3212,7 +3212,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Patch role via Apiary Patch Orchestration",
+                    "description": "Patches a role.",
                     "flatPath": "admin/directory/v1/customer/{customer}/roles/{roleId}",
                     "httpMethod": "PATCH",
                     "id": "directory.roles.patch",
@@ -3284,7 +3284,7 @@
         "schemas": {
             "methods": {
                 "delete": {
-                    "description": "Delete schema",
+                    "description": "Deletes a schema.",
                     "flatPath": "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
                     "httpMethod": "DELETE",
                     "id": "directory.schemas.delete",
@@ -3312,7 +3312,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieve schema",
+                    "description": "Retrieves a schema.",
                     "flatPath": "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
                     "httpMethod": "GET",
                     "id": "directory.schemas.get",
@@ -3344,7 +3344,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Create schema.",
+                    "description": "Creates a schema.",
                     "flatPath": "admin/directory/v1/customer/{customerId}/schemas",
                     "httpMethod": "POST",
                     "id": "directory.schemas.insert",
@@ -3371,7 +3371,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieve all schemas for a customer",
+                    "description": "Retrieves all schemas for a customer.",
                     "flatPath": "admin/directory/v1/customer/{customerId}/schemas",
                     "httpMethod": "GET",
                     "id": "directory.schemas.list",
@@ -3396,7 +3396,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Patch Schema via Apiary Patch Orchestration",
+                    "description": "Patches a schema.",
                     "flatPath": "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
                     "httpMethod": "PATCH",
                     "id": "directory.schemas.patch",
@@ -3430,7 +3430,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Update schema",
+                    "description": "Updates a schema.",
                     "flatPath": "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
                     "httpMethod": "PUT",
                     "id": "directory.schemas.update",
@@ -3468,7 +3468,7 @@
         "tokens": {
             "methods": {
                 "delete": {
-                    "description": "Delete all access tokens issued by a user for an application.",
+                    "description": "Deletes all access tokens issued by a user for an application.",
                     "flatPath": "admin/directory/v1/users/{userKey}/tokens/{clientId}",
                     "httpMethod": "DELETE",
                     "id": "directory.tokens.delete",
@@ -3496,7 +3496,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Get information about an access token issued by a user.",
+                    "description": "Gets information about an access token issued by a user.",
                     "flatPath": "admin/directory/v1/users/{userKey}/tokens/{clientId}",
                     "httpMethod": "GET",
                     "id": "directory.tokens.get",
@@ -3555,7 +3555,7 @@
         "twoStepVerification": {
             "methods": {
                 "turnOff": {
-                    "description": "Turn off 2-Step Verification for user.",
+                    "description": "Turns off 2-Step Verification for user.",
                     "flatPath": "admin/directory/v1/users/{userKey}/twoStepVerification/turnOff",
                     "httpMethod": "POST",
                     "id": "directory.twoStepVerification.turnOff",
@@ -3864,7 +3864,7 @@
                     ]
                 },
                 "signOut": {
-                    "description": "Sign a user out of all web and device sessions and reset their sign-in cookies. User will have to sign in by authenticating again.",
+                    "description": "Signs a user out of all web and device sessions and reset their sign-in cookies. User will have to sign in by authenticating again.",
                     "flatPath": "admin/directory/v1/users/{userKey}/signOut",
                     "httpMethod": "POST",
                     "id": "directory.users.signOut",
@@ -3936,7 +3936,7 @@
                     ]
                 },
                 "watch": {
-                    "description": "Watch for changes in users list",
+                    "description": "Watches for changes in users list.",
                     "flatPath": "admin/directory/v1/users/watch",
                     "httpMethod": "POST",
                     "id": "directory.users.watch",
@@ -4174,7 +4174,7 @@
                             ]
                         },
                         "watch": {
-                            "description": "Watch for changes in users list.",
+                            "description": "Watches for changes in users list.",
                             "flatPath": "admin/directory/v1/users/{userKey}/aliases/watch",
                             "httpMethod": "POST",
                             "id": "directory.users.aliases.watch",
@@ -4327,7 +4327,7 @@
         "verificationCodes": {
             "methods": {
                 "generate": {
-                    "description": "Generate new backup verification codes for the user.",
+                    "description": "Generates new backup verification codes for the user.",
                     "flatPath": "admin/directory/v1/users/{userKey}/verificationCodes/generate",
                     "httpMethod": "POST",
                     "id": "directory.verificationCodes.generate",
@@ -4348,7 +4348,7 @@
                     ]
                 },
                 "invalidate": {
-                    "description": "Invalidate the current backup verification codes for the user.",
+                    "description": "Invalidates the current backup verification codes for the user.",
                     "flatPath": "admin/directory/v1/users/{userKey}/verificationCodes/invalidate",
                     "httpMethod": "POST",
                     "id": "directory.verificationCodes.invalidate",
@@ -4395,7 +4395,7 @@
             }
         }
     },
-    "revision": "20210706",
+    "revision": "20210720",
     "rootUrl": "https://admin.googleapis.com/",
     "schemas": {
         "Alias": {
