@@ -164,12 +164,12 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.Assignment> buildUnnamed5276() => [
+core.List<api.Assignment> buildUnnamed5284() => [
       buildAssignment(),
       buildAssignment(),
     ];
 
-void checkUnnamed5276(core.List<api.Assignment> o) {
+void checkUnnamed5284(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
@@ -180,7 +180,7 @@ api.ListAssignmentsResponse buildListAssignmentsResponse() {
   final o = api.ListAssignmentsResponse();
   buildCounterListAssignmentsResponse++;
   if (buildCounterListAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5276();
+    o.assignments = buildUnnamed5284();
     o.nextPageToken = 'foo';
   }
   buildCounterListAssignmentsResponse--;
@@ -190,7 +190,7 @@ api.ListAssignmentsResponse buildListAssignmentsResponse() {
 void checkListAssignmentsResponse(api.ListAssignmentsResponse o) {
   buildCounterListAssignmentsResponse++;
   if (buildCounterListAssignmentsResponse < 3) {
-    checkUnnamed5276(o.assignments!);
+    checkUnnamed5284(o.assignments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -199,12 +199,12 @@ void checkListAssignmentsResponse(api.ListAssignmentsResponse o) {
   buildCounterListAssignmentsResponse--;
 }
 
-core.List<api.CapacityCommitment> buildUnnamed5277() => [
+core.List<api.CapacityCommitment> buildUnnamed5285() => [
       buildCapacityCommitment(),
       buildCapacityCommitment(),
     ];
 
-void checkUnnamed5277(core.List<api.CapacityCommitment> o) {
+void checkUnnamed5285(core.List<api.CapacityCommitment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCapacityCommitment(o[0]);
   checkCapacityCommitment(o[1]);
@@ -215,7 +215,7 @@ api.ListCapacityCommitmentsResponse buildListCapacityCommitmentsResponse() {
   final o = api.ListCapacityCommitmentsResponse();
   buildCounterListCapacityCommitmentsResponse++;
   if (buildCounterListCapacityCommitmentsResponse < 3) {
-    o.capacityCommitments = buildUnnamed5277();
+    o.capacityCommitments = buildUnnamed5285();
     o.nextPageToken = 'foo';
   }
   buildCounterListCapacityCommitmentsResponse--;
@@ -226,7 +226,7 @@ void checkListCapacityCommitmentsResponse(
     api.ListCapacityCommitmentsResponse o) {
   buildCounterListCapacityCommitmentsResponse++;
   if (buildCounterListCapacityCommitmentsResponse < 3) {
-    checkUnnamed5277(o.capacityCommitments!);
+    checkUnnamed5285(o.capacityCommitments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -235,12 +235,12 @@ void checkListCapacityCommitmentsResponse(
   buildCounterListCapacityCommitmentsResponse--;
 }
 
-core.List<api.Reservation> buildUnnamed5278() => [
+core.List<api.Reservation> buildUnnamed5286() => [
       buildReservation(),
       buildReservation(),
     ];
 
-void checkUnnamed5278(core.List<api.Reservation> o) {
+void checkUnnamed5286(core.List<api.Reservation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReservation(o[0]);
   checkReservation(o[1]);
@@ -252,7 +252,7 @@ api.ListReservationsResponse buildListReservationsResponse() {
   buildCounterListReservationsResponse++;
   if (buildCounterListReservationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.reservations = buildUnnamed5278();
+    o.reservations = buildUnnamed5286();
   }
   buildCounterListReservationsResponse--;
   return o;
@@ -265,17 +265,17 @@ void checkListReservationsResponse(api.ListReservationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5278(o.reservations!);
+    checkUnnamed5286(o.reservations!);
   }
   buildCounterListReservationsResponse--;
 }
 
-core.List<core.String> buildUnnamed5279() => [
+core.List<core.String> buildUnnamed5287() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5279(core.List<core.String> o) {
+void checkUnnamed5287(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -292,7 +292,7 @@ api.MergeCapacityCommitmentsRequest buildMergeCapacityCommitmentsRequest() {
   final o = api.MergeCapacityCommitmentsRequest();
   buildCounterMergeCapacityCommitmentsRequest++;
   if (buildCounterMergeCapacityCommitmentsRequest < 3) {
-    o.capacityCommitmentIds = buildUnnamed5279();
+    o.capacityCommitmentIds = buildUnnamed5287();
   }
   buildCounterMergeCapacityCommitmentsRequest--;
   return o;
@@ -302,7 +302,7 @@ void checkMergeCapacityCommitmentsRequest(
     api.MergeCapacityCommitmentsRequest o) {
   buildCounterMergeCapacityCommitmentsRequest++;
   if (buildCounterMergeCapacityCommitmentsRequest < 3) {
-    checkUnnamed5279(o.capacityCommitmentIds!);
+    checkUnnamed5287(o.capacityCommitmentIds!);
   }
   buildCounterMergeCapacityCommitmentsRequest--;
 }
@@ -368,12 +368,12 @@ void checkReservation(api.Reservation o) {
   buildCounterReservation--;
 }
 
-core.List<api.Assignment> buildUnnamed5280() => [
+core.List<api.Assignment> buildUnnamed5288() => [
       buildAssignment(),
       buildAssignment(),
     ];
 
-void checkUnnamed5280(core.List<api.Assignment> o) {
+void checkUnnamed5288(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
@@ -384,7 +384,7 @@ api.SearchAllAssignmentsResponse buildSearchAllAssignmentsResponse() {
   final o = api.SearchAllAssignmentsResponse();
   buildCounterSearchAllAssignmentsResponse++;
   if (buildCounterSearchAllAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5280();
+    o.assignments = buildUnnamed5288();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchAllAssignmentsResponse--;
@@ -394,7 +394,7 @@ api.SearchAllAssignmentsResponse buildSearchAllAssignmentsResponse() {
 void checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
   buildCounterSearchAllAssignmentsResponse++;
   if (buildCounterSearchAllAssignmentsResponse < 3) {
-    checkUnnamed5280(o.assignments!);
+    checkUnnamed5288(o.assignments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -403,12 +403,12 @@ void checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
   buildCounterSearchAllAssignmentsResponse--;
 }
 
-core.List<api.Assignment> buildUnnamed5281() => [
+core.List<api.Assignment> buildUnnamed5289() => [
       buildAssignment(),
       buildAssignment(),
     ];
 
-void checkUnnamed5281(core.List<api.Assignment> o) {
+void checkUnnamed5289(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
@@ -419,7 +419,7 @@ api.SearchAssignmentsResponse buildSearchAssignmentsResponse() {
   final o = api.SearchAssignmentsResponse();
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5281();
+    o.assignments = buildUnnamed5289();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchAssignmentsResponse--;
@@ -429,7 +429,7 @@ api.SearchAssignmentsResponse buildSearchAssignmentsResponse() {
 void checkSearchAssignmentsResponse(api.SearchAssignmentsResponse o) {
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    checkUnnamed5281(o.assignments!);
+    checkUnnamed5289(o.assignments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -482,7 +482,7 @@ void checkSplitCapacityCommitmentResponse(
   buildCounterSplitCapacityCommitmentResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed5282() => {
+core.Map<core.String, core.Object> buildUnnamed5290() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -495,7 +495,7 @@ core.Map<core.String, core.Object> buildUnnamed5282() => {
       },
     };
 
-void checkUnnamed5282(core.Map<core.String, core.Object> o) {
+void checkUnnamed5290(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -527,15 +527,15 @@ void checkUnnamed5282(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed5283() => [
-      buildUnnamed5282(),
-      buildUnnamed5282(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed5291() => [
+      buildUnnamed5290(),
+      buildUnnamed5290(),
     ];
 
-void checkUnnamed5283(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed5291(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed5282(o[0]);
-  checkUnnamed5282(o[1]);
+  checkUnnamed5290(o[0]);
+  checkUnnamed5290(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -544,7 +544,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed5283();
+    o.details = buildUnnamed5291();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -558,7 +558,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed5283(o.details!);
+    checkUnnamed5291(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

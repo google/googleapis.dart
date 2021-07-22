@@ -539,7 +539,7 @@ class EditsBundlesResource {
   ///
   /// [editId] - Identifier of the edit.
   ///
-  /// [ackBundleInstallationWarning] - Must be set to true if the bundle
+  /// [ackBundleInstallationWarning] - Must be set to true if the app bundle
   /// installation may trigger a warning on user devices (for example, if
   /// installation size may be over a threshold, typically 100 MB).
   ///
@@ -3627,7 +3627,7 @@ class AppEdit {
       };
 }
 
-/// Information about a bundle.
+/// Information about an app bundle.
 ///
 /// The resource for BundlesService.
 class Bundle {
@@ -3667,9 +3667,9 @@ class Bundle {
       };
 }
 
-/// Response listing all bundles.
+/// Response listing all app bundles.
 class BundlesListResponse {
-  /// All bundles.
+  /// All app bundles.
   core.List<Bundle>? bundles;
 
   /// The kind of this response ("androidpublisher#bundlesListResponse").

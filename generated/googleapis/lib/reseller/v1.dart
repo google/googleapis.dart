@@ -68,7 +68,7 @@ class CustomersResource {
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get a customer account.
+  /// Gets a customer account.
   ///
   /// Use this operation to see a customer account already in your reseller
   /// management, or to see the minimal account information for an existing
@@ -112,7 +112,7 @@ class CustomersResource {
     return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Order a new customer's account.
+  /// Orders a new customer's account.
   ///
   /// Before ordering a new customer account, establish whether the customer
   /// account already exists using the
@@ -175,9 +175,12 @@ class CustomersResource {
     return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update a customer account's settings.
+  /// Updates a customer account's settings.
   ///
-  /// This method supports patch semantics.
+  /// This method supports patch semantics. You cannot update `customerType` via
+  /// the Reseller API, but a `"team"` customer can verify their domain and
+  /// become `customerType = "domain"`. For more information, see
+  /// [Verify your domain to unlock Essentials features](https://support.google.com/a/answer/9122284).
   ///
   /// [request] - The metadata request object.
   ///
@@ -220,9 +223,11 @@ class CustomersResource {
     return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update a customer account's settings.
+  /// Updates a customer account's settings.
   ///
-  /// For more information, see \[update a customer's
+  /// You cannot update `customerType` via the Reseller API, but a `"team"`
+  /// customer can verify their domain and become `customerType = "domain"`. For
+  /// more information, see \[update a customer's
   /// settings\](/admin-sdk/reseller/v1/how-tos/manage_customers#update_customer).
   ///
   /// [request] - The metadata request object.
@@ -439,7 +444,7 @@ class SubscriptionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update a subscription plan.
+  /// Updates a subscription plan.
   ///
   /// Use this method to update a plan for a 30-day trial or a flexible plan
   /// subscription to an annual commitment plan with monthly or yearly payments.
@@ -499,7 +504,7 @@ class SubscriptionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update a user license's renewal settings.
+  /// Updates a user license's renewal settings.
   ///
   /// This is applicable for accounts with annual commitment plans only. For
   /// more information, see the description in \[manage
@@ -557,7 +562,7 @@ class SubscriptionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update a subscription's user license settings.
+  /// Updates a subscription's user license settings.
   ///
   /// For more information about updating an annual commitment plan or a
   /// flexible plan subscription’s licenses, see \[Manage
@@ -615,7 +620,7 @@ class SubscriptionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Cancel, suspend, or transfer a subscription to direct.
+  /// Cancels, suspends, or transfers a subscription to direct.
   ///
   /// Request parameters:
   ///
@@ -674,7 +679,7 @@ class SubscriptionsResource {
     );
   }
 
-  /// Get a specific subscription.
+  /// Gets a specific subscription.
   ///
   /// The `subscriptionId` can be found using the \[Retrieve all reseller
   /// subscriptions\](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#get_all_subscriptions)
@@ -728,7 +733,7 @@ class SubscriptionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Create or transfer a subscription.
+  /// Creates or transfer a subscription.
   ///
   /// Create a subscription for a customer's account that you ordered using the
   /// \[Order a new customer
@@ -796,7 +801,7 @@ class SubscriptionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// List of subscriptions managed by the reseller.
+  /// Lists of subscriptions managed by the reseller.
   ///
   /// The list can be all subscriptions, all of a customer's subscriptions, or
   /// all of a customer's transferable subscriptions. Optionally, this method
@@ -1179,8 +1184,9 @@ class Customer {
   /// secondary contact used if something happens to the customer's service such
   /// as service outage or a security issue.
   ///
-  /// This property is required when creating a new customer and should not use
-  /// the same domain as `customerDomain`.
+  /// This property is required when creating a new "domain" customer and should
+  /// not use the same domain as `customerDomain`. The `alternateEmail` field is
+  /// not necessary to create a "team" customer.
   core.String? alternateEmail;
 
   /// The customer's primary domain name string.
@@ -1199,11 +1205,16 @@ class Customer {
   /// identifier generated by Google.
   core.String? customerId;
 
-  /// The type of the customer (DOMAIN or TEAM), default is DOMAIN.
+  /// Identifies the type of the customer.
+  ///
+  /// Acceptable values include: * `domain`: Implies a domain-verified customer
+  /// (default). * `team`: Implies an email-verified customer. For more
+  /// information, see
+  /// [managed teams](https://support.google.com/a/users/answer/9939479).
   /// Possible string values are:
   /// - "CUSTOMER_TYPE_UNSPECIFIED" : Customer type not known
-  /// - "DOMAIN" : Domained or domain owning customers
-  /// - "TEAM" : Domainless customers
+  /// - "DOMAIN" : Domained or domain-owning customers
+  /// - "TEAM" : Domainless or email-verified customers
   core.String? customerType;
 
   /// Identifies the resource as a customer.
@@ -1298,8 +1309,12 @@ class Customer {
 
 /// JSON template for primary admin in case of TEAM customers
 class PrimaryAdmin {
-  /// Primary admin's domained email This email's domain will be used to create
-  /// TEAM customer
+  /// The business email of the primary administrator of the customer.
+  ///
+  /// The email verification link is sent to this email address at the time of
+  /// customer creation. Primary administrators have access to the customer's
+  /// Admin Console, including the ability to invite and evict users and manage
+  /// the administrative needs of the customer.
   core.String? primaryEmail;
 
   PrimaryAdmin({
@@ -1579,11 +1594,11 @@ class SubscriptionPlan {
 /// For more information, see retrieve transferable subscriptions for a
 /// customer.
 class SubscriptionTransferInfo {
-  /// Sku id of the current resold subscription.
+  /// The `skuId` of the current resold subscription.
   ///
-  /// This is populated only when customer has subscription with legacy sku and
-  /// the subscription resource is populated with recommeded sku for transfer
-  /// in.
+  /// This is populated only when the customer has a subscription with a legacy
+  /// SKU and the subscription resource is populated with the `skuId` of the SKU
+  /// recommended for the transfer.
   core.String? currentLegacySkuId;
 
   /// When inserting a subscription, this is the minimum number of seats listed

@@ -197,7 +197,7 @@ class NamespacesConfigurationsResource {
   /// or number.
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -208,7 +208,7 @@ class NamespacesConfigurationsResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -423,7 +423,7 @@ class NamespacesDomainmappingsResource {
   /// or number.
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -434,7 +434,7 @@ class NamespacesDomainmappingsResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -597,7 +597,7 @@ class NamespacesRevisionsResource {
   /// number.
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -608,7 +608,7 @@ class NamespacesRevisionsResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -712,7 +712,7 @@ class NamespacesRoutesResource {
   /// Run (fully managed), replace {namespace_id} with the project ID or number.
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -723,7 +723,7 @@ class NamespacesRoutesResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -937,7 +937,7 @@ class NamespacesServicesResource {
   /// number.
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -948,7 +948,7 @@ class NamespacesServicesResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -1294,7 +1294,7 @@ class ProjectsLocationsConfigurationsResource {
   /// or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -1305,7 +1305,7 @@ class ProjectsLocationsConfigurationsResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -1518,7 +1518,7 @@ class ProjectsLocationsDomainmappingsResource {
   /// or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -1529,7 +1529,7 @@ class ProjectsLocationsDomainmappingsResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -1692,7 +1692,7 @@ class ProjectsLocationsRevisionsResource {
   /// number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -1703,7 +1703,7 @@ class ProjectsLocationsRevisionsResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -1807,7 +1807,7 @@ class ProjectsLocationsRoutesResource {
   /// Run (fully managed), replace {namespace_id} with the project ID or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -1818,7 +1818,7 @@ class ProjectsLocationsRoutesResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -2083,7 +2083,7 @@ class ProjectsLocationsServicesResource {
   /// number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [continue_] - Optional encoded string to continue paging.
+  /// [continue_] - Optional. Encoded string to continue paging.
   ///
   /// [fieldSelector] - Allows to filter resources based on a specific value for
   /// a field name. Send this in a query string format. i.e.
@@ -2094,7 +2094,7 @@ class ProjectsLocationsServicesResource {
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of records that should be returned.
   ///
   /// [resourceVersion] - The baseline resource version from which the list or
   /// watch operation should start. Not currently used by Cloud Run.
@@ -3239,7 +3239,7 @@ class DomainMappingStatus {
   /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds
   /// the URL that will serve the traffic of the DomainMapping.
   ///
-  /// +optional
+  /// Optional.
   core.String? url;
 
   DomainMappingStatus({
@@ -4923,13 +4923,15 @@ class Revision {
 
 /// RevisionSpec holds the desired state of the Revision (from the client).
 class RevisionSpec {
-  /// (Optional) ContainerConcurrency specifies the maximum allowed in-flight
-  /// (concurrent) requests per container instance of the Revision.
+  /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+  /// requests per container instance of the Revision.
   ///
   /// Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos:
   /// supported, defaults to 0, which means concurrency to the application is
   /// not limited, and the system decides the target concurrency for the
   /// autoscaler.
+  ///
+  /// Optional.
   core.int? containerConcurrency;
 
   /// Containers holds the single container that defines the unit of execution
@@ -5030,7 +5032,7 @@ class RevisionStatus {
   /// Specifies the generated logging url for this particular revision based on
   /// the revision url template specified in the controller's config.
   ///
-  /// +optional
+  /// Optional.
   core.String? logUrl;
 
   /// ObservedGeneration is the 'Generation' of the Revision that was last
@@ -6092,12 +6094,13 @@ class TrafficTarget {
   /// currently supports a single ConfigurationName.
   core.String? configurationName;
 
-  /// LatestRevision may be optionally provided to indicate that the latest
-  /// ready Revision of the Configuration should be used for this traffic
-  /// target.
+  /// LatestRevision may be provided to indicate that the latest ready Revision
+  /// of the Configuration should be used for this traffic target.
   ///
   /// When provided LatestRevision must be true if RevisionName is empty; it
-  /// must be false when RevisionName is non-empty. +optional
+  /// must be false when RevisionName is non-empty.
+  ///
+  /// Optional.
   core.bool? latestRevision;
 
   /// Percent specifies percent of the traffic to this Revision or
@@ -6114,10 +6117,10 @@ class TrafficTarget {
   /// in spec is not currently supported by Cloud Run.
   core.String? revisionName;
 
-  /// Tag is optionally used to expose a dedicated url for referencing this
-  /// target exclusively.
+  /// Tag is used to expose a dedicated url for referencing this target
+  /// exclusively.
   ///
-  /// +optional
+  /// Optional.
   core.String? tag;
 
   /// URL displays the URL for accessing tagged traffic targets.

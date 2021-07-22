@@ -3763,7 +3763,7 @@
             }
         }
     },
-    "revision": "20210717",
+    "revision": "20210720",
     "rootUrl": "https://youtube.googleapis.com/",
     "schemas": {
         "AbuseReport": {

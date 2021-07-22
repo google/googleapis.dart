@@ -246,6 +246,7 @@ api.Build buildBuild() {
     o.availableSecrets = buildSecrets();
     o.buildTriggerId = 'foo';
     o.createTime = 'foo';
+    o.failureInfo = buildFailureInfo();
     o.finishTime = 'foo';
     o.id = 'foo';
     o.images = buildUnnamed2098();
@@ -287,6 +288,7 @@ void checkBuild(api.Build o) {
       o.createTime!,
       unittest.equals('foo'),
     );
+    checkFailureInfo(o.failureInfo!);
     unittest.expect(
       o.finishTime!,
       unittest.equals('foo'),
@@ -722,6 +724,7 @@ api.BuildTrigger buildBuildTrigger() {
     o.name = 'foo';
     o.pubsubConfig = buildPubsubConfig();
     o.resourceName = 'foo';
+    o.sourceToBuild = buildGitRepoSource();
     o.substitutions = buildUnnamed2116();
     o.tags = buildUnnamed2117();
     o.triggerTemplate = buildRepoSource();
@@ -769,6 +772,7 @@ void checkBuildTrigger(api.BuildTrigger o) {
       o.resourceName!,
       unittest.equals('foo'),
     );
+    checkGitRepoSource(o.sourceToBuild!);
     checkUnnamed2116(o.substitutions!);
     checkUnnamed2117(o.tags!);
     checkRepoSource(o.triggerTemplate!);
@@ -934,6 +938,33 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterFailureInfo = 0;
+api.FailureInfo buildFailureInfo() {
+  final o = api.FailureInfo();
+  buildCounterFailureInfo++;
+  if (buildCounterFailureInfo < 3) {
+    o.detail = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterFailureInfo--;
+  return o;
+}
+
+void checkFailureInfo(api.FailureInfo o) {
+  buildCounterFailureInfo++;
+  if (buildCounterFailureInfo < 3) {
+    unittest.expect(
+      o.detail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFailureInfo--;
+}
+
 core.List<api.Hash> buildUnnamed2118() => [
       buildHash(),
       buildHash(),
@@ -998,6 +1029,89 @@ void checkGitHubEventsConfig(api.GitHubEventsConfig o) {
     checkPushFilter(o.push!);
   }
   buildCounterGitHubEventsConfig--;
+}
+
+core.int buildCounterGitRepoSource = 0;
+api.GitRepoSource buildGitRepoSource() {
+  final o = api.GitRepoSource();
+  buildCounterGitRepoSource++;
+  if (buildCounterGitRepoSource < 3) {
+    o.ref = 'foo';
+    o.repoType = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterGitRepoSource--;
+  return o;
+}
+
+void checkGitRepoSource(api.GitRepoSource o) {
+  buildCounterGitRepoSource++;
+  if (buildCounterGitRepoSource < 3) {
+    unittest.expect(
+      o.ref!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repoType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGitRepoSource--;
+}
+
+core.int buildCounterGoogleDevtoolsCloudbuildV2OperationMetadata = 0;
+api.GoogleDevtoolsCloudbuildV2OperationMetadata
+    buildGoogleDevtoolsCloudbuildV2OperationMetadata() {
+  final o = api.GoogleDevtoolsCloudbuildV2OperationMetadata();
+  buildCounterGoogleDevtoolsCloudbuildV2OperationMetadata++;
+  if (buildCounterGoogleDevtoolsCloudbuildV2OperationMetadata < 3) {
+    o.apiVersion = 'foo';
+    o.createTime = 'foo';
+    o.endTime = 'foo';
+    o.requestedCancellation = true;
+    o.statusMessage = 'foo';
+    o.target = 'foo';
+    o.verb = 'foo';
+  }
+  buildCounterGoogleDevtoolsCloudbuildV2OperationMetadata--;
+  return o;
+}
+
+void checkGoogleDevtoolsCloudbuildV2OperationMetadata(
+    api.GoogleDevtoolsCloudbuildV2OperationMetadata o) {
+  buildCounterGoogleDevtoolsCloudbuildV2OperationMetadata++;
+  if (buildCounterGoogleDevtoolsCloudbuildV2OperationMetadata < 3) {
+    unittest.expect(
+      o.apiVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.requestedCancellation!, unittest.isTrue);
+    unittest.expect(
+      o.statusMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.target!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verb!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsCloudbuildV2OperationMetadata--;
 }
 
 core.int buildCounterHTTPDelivery = 0;
@@ -1639,6 +1753,55 @@ void checkOperation(api.Operation o) {
     checkUnnamed2128(o.response!);
   }
   buildCounterOperation--;
+}
+
+core.int buildCounterOperationMetadata = 0;
+api.OperationMetadata buildOperationMetadata() {
+  final o = api.OperationMetadata();
+  buildCounterOperationMetadata++;
+  if (buildCounterOperationMetadata < 3) {
+    o.apiVersion = 'foo';
+    o.cancelRequested = true;
+    o.createTime = 'foo';
+    o.endTime = 'foo';
+    o.statusDetail = 'foo';
+    o.target = 'foo';
+    o.verb = 'foo';
+  }
+  buildCounterOperationMetadata--;
+  return o;
+}
+
+void checkOperationMetadata(api.OperationMetadata o) {
+  buildCounterOperationMetadata++;
+  if (buildCounterOperationMetadata < 3) {
+    unittest.expect(
+      o.apiVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.cancelRequested!, unittest.isTrue);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.statusDetail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.target!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verb!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterOperationMetadata--;
 }
 
 core.int buildCounterPoolOption = 0;
@@ -2786,6 +2949,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-FailureInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFailureInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FailureInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFailureInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-FileHashes', () {
     unittest.test('to-json--from-json', () async {
       final o = buildFileHashes();
@@ -2803,6 +2976,26 @@ void main() {
       final od = api.GitHubEventsConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGitHubEventsConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-GitRepoSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGitRepoSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GitRepoSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGitRepoSource(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleDevtoolsCloudbuildV2OperationMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleDevtoolsCloudbuildV2OperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleDevtoolsCloudbuildV2OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsCloudbuildV2OperationMetadata(od);
     });
   });
 
@@ -2953,6 +3146,16 @@ void main() {
       final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-OperationMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOperationMetadata(od);
     });
   });
 

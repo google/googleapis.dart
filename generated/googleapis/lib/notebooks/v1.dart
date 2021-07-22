@@ -4034,7 +4034,7 @@ class LocalDisk {
   /// Specifies whether the disk will be auto-deleted when the instance is
   /// deleted (but not when the disk is detached from the instance).
   ///
-  /// Output only.
+  /// Optional. Output only.
   core.bool? autoDelete;
 
   /// Indicates that this is a boot disk.
@@ -4042,7 +4042,7 @@ class LocalDisk {
   /// The virtual machine will use the first partition of the disk for its root
   /// filesystem.
   ///
-  /// Output only.
+  /// Optional. Output only.
   core.bool? boot;
 
   /// Specifies a unique device name of your choice that is reflected into the
@@ -4055,7 +4055,7 @@ class LocalDisk {
   /// where x is a number assigned by Google Compute Engine. This field is only
   /// applicable for persistent disks.
   ///
-  /// Output only.
+  /// Optional. Output only.
   core.String? deviceName;
 
   /// Indicates a list of features to enable on the guest operating system.
@@ -4076,11 +4076,11 @@ class LocalDisk {
 
   /// Input only.
   ///
-  /// \[Input Only\] Specifies the parameters for a new disk that will be
-  /// created alongside the new instance. Use initialization parameters to
-  /// create boot disks or local SSDs attached to the new instance. This
-  /// property is mutually exclusive with the source property; you can only
-  /// define one or the other, but not both.
+  /// Specifies the parameters for a new disk that will be created alongside the
+  /// new instance. Use initialization parameters to create boot disks or local
+  /// SSDs attached to the new instance. This property is mutually exclusive
+  /// with the source property; you can only define one or the other, but not
+  /// both.
   LocalDiskInitializeParams? initializeParams;
 
   /// Specifies the disk interface to use for attaching this disk, which is
@@ -4192,12 +4192,12 @@ class LocalDisk {
       };
 }
 
-/// \[Input Only\] Specifies the parameters for a new disk that will be created
-/// alongside the new instance.
+/// Input only.
 ///
-/// Use initialization parameters to create boot disks or local SSDs attached to
-/// the new runtime. This property is mutually exclusive with the source
-/// property; you can only define one or the other, but not both.
+/// Specifies the parameters for a new disk that will be created alongside the
+/// new instance. Use initialization parameters to create boot disks or local
+/// SSDs attached to the new runtime. This property is mutually exclusive with
+/// the source property; you can only define one or the other, but not both.
 class LocalDiskInitializeParams {
   /// Provide this property when creating the disk.
   ///
@@ -4853,7 +4853,7 @@ class Runtime {
 
   /// The resource name of the runtime.
   ///
-  /// Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
+  /// Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
   ///
   /// Output only.
   core.String? name;
@@ -5039,15 +5039,19 @@ class RuntimeAccessConfig {
 
 /// A list of features to enable on the guest operating system.
 ///
-/// Applicable only for bootable images. Read Enabling guest operating system
-/// features to see a list of available options. Guest OS features for boot
-/// disk.
+/// Applicable only for bootable images. Read
+/// [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
+/// to see a list of available options. Guest OS features for boot disk.
+///
+/// Optional.
 class RuntimeGuestOsFeature {
   /// The ID of a supported feature.
   ///
-  /// Read Enabling guest operating system features to see a list of available
-  /// options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET
-  /// SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+  /// Read
+  /// [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
+  /// to see a list of available options. Valid values: *
+  /// FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE
+  /// * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
   core.String? type;
 
   RuntimeGuestOsFeature({
@@ -5095,8 +5099,9 @@ class RuntimeMetrics {
 
 /// A set of Shielded Instance options.
 ///
-/// Check \[Images using supported Shielded VM features\] Not all combinations
-/// are valid.
+/// Check
+/// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+/// Not all combinations are valid.
 class RuntimeShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
   ///
@@ -5146,12 +5151,11 @@ class RuntimeShieldedInstanceConfig {
       };
 }
 
-/// Specifies the selection and config of software inside the runtime.
+/// Specifies the selection and configuration of software inside the runtime.
 ///
-/// / The properties to set on runtime. Properties keys are specified in
-/// `key:value` format, for example: * idle_shutdown: idle_shutdown=true *
-/// idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health:
-/// report-system-health=true
+/// The properties to set on runtime. Properties keys are specified in
+/// `key:value` format, for example: * `idle_shutdown: true` *
+/// `idle_shutdown_timeout: 180` * `report-system-health: true`
 class RuntimeSoftwareConfig {
   /// Specify a custom Cloud Storage path where the GPU driver is stored.
   ///
