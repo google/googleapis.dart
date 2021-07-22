@@ -1999,8 +1999,9 @@ class PackageData {
   /// Possible string values are:
   /// - "PACKAGE_TYPE_UNSPECIFIED"
   /// - "OS" : Operating System
-  /// - "MAVEN"
-  /// - "GO"
+  /// - "MAVEN" : Java packages from Maven.
+  /// - "GO" : Go third-party packages.
+  /// - "GO_STDLIB" : Go toolchain + standard library packages.
   core.String? packageType;
   core.String? unused;
 

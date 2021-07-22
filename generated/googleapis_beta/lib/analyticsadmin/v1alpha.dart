@@ -5857,7 +5857,7 @@ class GoogleAnalyticsAdminV1alphaCustomMetric {
 
   /// The type for the custom metric's value.
   ///
-  /// Required. Immutable.
+  /// Required.
   /// Possible string values are:
   /// - "MEASUREMENT_UNIT_UNSPECIFIED" : MeasurementUnit unspecified or missing.
   /// - "STANDARD" : This metric uses default units.

@@ -515,8 +515,10 @@ class OtherContactsResource {
   /// increased. When the `sync_token` is specified, resources deleted since the
   /// last sync will be returned as a person with `PersonMetadata.deleted` set
   /// to true. When the `page_token` or `sync_token` is specified, all other
-  /// request parameters must match the first call. See example usage at \[List
-  /// the user's other contacts that have
+  /// request parameters must match the first call. Writes may have a
+  /// propagation delay of several minutes for sync requests. Incremental syncs
+  /// are not intended for read-after-write use cases. See example usage at
+  /// \[List the user's other contacts that have
   /// changed\](/people/v1/other-contacts#list_the_users_other_contacts_that_have_changed).
   ///
   /// Request parameters:
@@ -1068,8 +1070,10 @@ class PeopleResource {
   /// When the `sync_token` is specified, resources deleted since the last sync
   /// will be returned as a person with `PersonMetadata.deleted` set to true.
   /// When the `page_token` or `sync_token` is specified, all other request
-  /// parameters must match the first call. See example usage at \[List the
-  /// directory people that have
+  /// parameters must match the first call. Writes may have a propagation delay
+  /// of several minutes for sync requests. Incremental syncs are not intended
+  /// for read-after-write use cases. See example usage at \[List the directory
+  /// people that have
   /// changed\](/people/v1/directory#list_the_directory_people_that_have_changed).
   ///
   /// Request parameters:
@@ -1436,8 +1440,10 @@ class PeopleConnectionsResource {
   /// increased. When the `sync_token` is specified, resources deleted since the
   /// last sync will be returned as a person with `PersonMetadata.deleted` set
   /// to true. When the `page_token` or `sync_token` is specified, all other
-  /// request parameters must match the first call. See example usage at \[List
-  /// the user's contacts that have
+  /// request parameters must match the first call. Writes may have a
+  /// propagation delay of several minutes for sync requests. Incremental syncs
+  /// are not intended for read-after-write use cases. See example usage at
+  /// \[List the user's contacts that have
   /// changed\](/people/v1/contacts#list_the_users_contacts_that_have_changed).
   ///
   /// Request parameters:
@@ -2810,12 +2816,14 @@ class ExternalId {
 
 /// Metadata about a field.
 class FieldMetadata {
-  /// True if the field is the primary field; false if the field is a secondary
-  /// field.
+  /// True if the field is the primary field for the person.
   core.bool? primary;
 
   /// The source of the field.
   Source? source;
+
+  /// True if the field is the primary field for the source.
+  core.bool? sourcePrimary;
 
   /// True if the field is verified; false if the field is unverified.
   ///
@@ -2828,6 +2836,7 @@ class FieldMetadata {
   FieldMetadata({
     this.primary,
     this.source,
+    this.sourcePrimary,
     this.verified,
   });
 
@@ -2840,6 +2849,9 @@ class FieldMetadata {
               ? Source.fromJson(
                   _json['source'] as core.Map<core.String, core.dynamic>)
               : null,
+          sourcePrimary: _json.containsKey('sourcePrimary')
+              ? _json['sourcePrimary'] as core.bool
+              : null,
           verified: _json.containsKey('verified')
               ? _json['verified'] as core.bool
               : null,
@@ -2848,6 +2860,7 @@ class FieldMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (primary != null) 'primary': primary!,
         if (source != null) 'source': source!.toJson(),
+        if (sourcePrimary != null) 'sourcePrimary': sourcePrimary!,
         if (verified != null) 'verified': verified!,
       };
 }

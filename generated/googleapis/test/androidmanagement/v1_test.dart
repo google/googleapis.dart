@@ -136,34 +136,34 @@ void checkAppTrackInfo(api.AppTrackInfo o) {
   buildCounterAppTrackInfo--;
 }
 
-core.List<api.AppTrackInfo> buildUnnamed6921() => [
+core.List<api.AppTrackInfo> buildUnnamed6929() => [
       buildAppTrackInfo(),
       buildAppTrackInfo(),
     ];
 
-void checkUnnamed6921(core.List<api.AppTrackInfo> o) {
+void checkUnnamed6929(core.List<api.AppTrackInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppTrackInfo(o[0]);
   checkAppTrackInfo(o[1]);
 }
 
-core.List<api.ManagedProperty> buildUnnamed6922() => [
+core.List<api.ManagedProperty> buildUnnamed6930() => [
       buildManagedProperty(),
       buildManagedProperty(),
     ];
 
-void checkUnnamed6922(core.List<api.ManagedProperty> o) {
+void checkUnnamed6930(core.List<api.ManagedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedProperty(o[0]);
   checkManagedProperty(o[1]);
 }
 
-core.List<api.ApplicationPermission> buildUnnamed6923() => [
+core.List<api.ApplicationPermission> buildUnnamed6931() => [
       buildApplicationPermission(),
       buildApplicationPermission(),
     ];
 
-void checkUnnamed6923(core.List<api.ApplicationPermission> o) {
+void checkUnnamed6931(core.List<api.ApplicationPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationPermission(o[0]);
   checkApplicationPermission(o[1]);
@@ -174,10 +174,10 @@ api.Application buildApplication() {
   final o = api.Application();
   buildCounterApplication++;
   if (buildCounterApplication < 3) {
-    o.appTracks = buildUnnamed6921();
-    o.managedProperties = buildUnnamed6922();
+    o.appTracks = buildUnnamed6929();
+    o.managedProperties = buildUnnamed6930();
     o.name = 'foo';
-    o.permissions = buildUnnamed6923();
+    o.permissions = buildUnnamed6931();
     o.title = 'foo';
   }
   buildCounterApplication--;
@@ -187,13 +187,13 @@ api.Application buildApplication() {
 void checkApplication(api.Application o) {
   buildCounterApplication++;
   if (buildCounterApplication < 3) {
-    checkUnnamed6921(o.appTracks!);
-    checkUnnamed6922(o.managedProperties!);
+    checkUnnamed6929(o.appTracks!);
+    checkUnnamed6930(o.managedProperties!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed6923(o.permissions!);
+    checkUnnamed6931(o.permissions!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -261,12 +261,12 @@ void checkApplicationPermission(api.ApplicationPermission o) {
   buildCounterApplicationPermission--;
 }
 
-core.List<core.String> buildUnnamed6924() => [
+core.List<core.String> buildUnnamed6932() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6924(core.List<core.String> o) {
+void checkUnnamed6932(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -278,12 +278,12 @@ void checkUnnamed6924(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6925() => [
+core.List<core.String> buildUnnamed6933() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6925(core.List<core.String> o) {
+void checkUnnamed6933(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -295,7 +295,7 @@ void checkUnnamed6925(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed6926() => {
+core.Map<core.String, core.Object> buildUnnamed6934() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -308,7 +308,7 @@ core.Map<core.String, core.Object> buildUnnamed6926() => {
       },
     };
 
-void checkUnnamed6926(core.Map<core.String, core.Object> o) {
+void checkUnnamed6934(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -340,12 +340,12 @@ void checkUnnamed6926(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<api.PermissionGrant> buildUnnamed6927() => [
+core.List<api.PermissionGrant> buildUnnamed6935() => [
       buildPermissionGrant(),
       buildPermissionGrant(),
     ];
 
-void checkUnnamed6927(core.List<api.PermissionGrant> o) {
+void checkUnnamed6935(core.List<api.PermissionGrant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermissionGrant(o[0]);
   checkPermissionGrant(o[1]);
@@ -356,19 +356,19 @@ api.ApplicationPolicy buildApplicationPolicy() {
   final o = api.ApplicationPolicy();
   buildCounterApplicationPolicy++;
   if (buildCounterApplicationPolicy < 3) {
-    o.accessibleTrackIds = buildUnnamed6924();
+    o.accessibleTrackIds = buildUnnamed6932();
     o.autoUpdateMode = 'foo';
     o.connectedWorkAndPersonalApp = 'foo';
     o.defaultPermissionPolicy = 'foo';
-    o.delegatedScopes = buildUnnamed6925();
+    o.delegatedScopes = buildUnnamed6933();
     o.disabled = true;
     o.installType = 'foo';
     o.lockTaskAllowed = true;
-    o.managedConfiguration = buildUnnamed6926();
+    o.managedConfiguration = buildUnnamed6934();
     o.managedConfigurationTemplate = buildManagedConfigurationTemplate();
     o.minimumVersionCode = 42;
     o.packageName = 'foo';
-    o.permissionGrants = buildUnnamed6927();
+    o.permissionGrants = buildUnnamed6935();
   }
   buildCounterApplicationPolicy--;
   return o;
@@ -377,7 +377,7 @@ api.ApplicationPolicy buildApplicationPolicy() {
 void checkApplicationPolicy(api.ApplicationPolicy o) {
   buildCounterApplicationPolicy++;
   if (buildCounterApplicationPolicy < 3) {
-    checkUnnamed6924(o.accessibleTrackIds!);
+    checkUnnamed6932(o.accessibleTrackIds!);
     unittest.expect(
       o.autoUpdateMode!,
       unittest.equals('foo'),
@@ -390,14 +390,14 @@ void checkApplicationPolicy(api.ApplicationPolicy o) {
       o.defaultPermissionPolicy!,
       unittest.equals('foo'),
     );
-    checkUnnamed6925(o.delegatedScopes!);
+    checkUnnamed6933(o.delegatedScopes!);
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(
       o.installType!,
       unittest.equals('foo'),
     );
     unittest.expect(o.lockTaskAllowed!, unittest.isTrue);
-    checkUnnamed6926(o.managedConfiguration!);
+    checkUnnamed6934(o.managedConfiguration!);
     checkManagedConfigurationTemplate(o.managedConfigurationTemplate!);
     unittest.expect(
       o.minimumVersionCode!,
@@ -407,39 +407,39 @@ void checkApplicationPolicy(api.ApplicationPolicy o) {
       o.packageName!,
       unittest.equals('foo'),
     );
-    checkUnnamed6927(o.permissionGrants!);
+    checkUnnamed6935(o.permissionGrants!);
   }
   buildCounterApplicationPolicy--;
 }
 
-core.List<api.ApplicationEvent> buildUnnamed6928() => [
+core.List<api.ApplicationEvent> buildUnnamed6936() => [
       buildApplicationEvent(),
       buildApplicationEvent(),
     ];
 
-void checkUnnamed6928(core.List<api.ApplicationEvent> o) {
+void checkUnnamed6936(core.List<api.ApplicationEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationEvent(o[0]);
   checkApplicationEvent(o[1]);
 }
 
-core.List<api.KeyedAppState> buildUnnamed6929() => [
+core.List<api.KeyedAppState> buildUnnamed6937() => [
       buildKeyedAppState(),
       buildKeyedAppState(),
     ];
 
-void checkUnnamed6929(core.List<api.KeyedAppState> o) {
+void checkUnnamed6937(core.List<api.KeyedAppState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKeyedAppState(o[0]);
   checkKeyedAppState(o[1]);
 }
 
-core.List<core.String> buildUnnamed6930() => [
+core.List<core.String> buildUnnamed6938() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6930(core.List<core.String> o) {
+void checkUnnamed6938(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -458,12 +458,12 @@ api.ApplicationReport buildApplicationReport() {
   if (buildCounterApplicationReport < 3) {
     o.applicationSource = 'foo';
     o.displayName = 'foo';
-    o.events = buildUnnamed6928();
+    o.events = buildUnnamed6936();
     o.installerPackageName = 'foo';
-    o.keyedAppStates = buildUnnamed6929();
+    o.keyedAppStates = buildUnnamed6937();
     o.packageName = 'foo';
     o.packageSha256Hash = 'foo';
-    o.signingKeyCertFingerprints = buildUnnamed6930();
+    o.signingKeyCertFingerprints = buildUnnamed6938();
     o.state = 'foo';
     o.versionCode = 42;
     o.versionName = 'foo';
@@ -483,12 +483,12 @@ void checkApplicationReport(api.ApplicationReport o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed6928(o.events!);
+    checkUnnamed6936(o.events!);
     unittest.expect(
       o.installerPackageName!,
       unittest.equals('foo'),
     );
-    checkUnnamed6929(o.keyedAppStates!);
+    checkUnnamed6937(o.keyedAppStates!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
@@ -497,7 +497,7 @@ void checkApplicationReport(api.ApplicationReport o) {
       o.packageSha256Hash!,
       unittest.equals('foo'),
     );
-    checkUnnamed6930(o.signingKeyCertFingerprints!);
+    checkUnnamed6938(o.signingKeyCertFingerprints!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -560,12 +560,12 @@ void checkBlockAction(api.BlockAction o) {
   buildCounterBlockAction--;
 }
 
-core.List<core.String> buildUnnamed6931() => [
+core.List<core.String> buildUnnamed6939() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6931(core.List<core.String> o) {
+void checkUnnamed6939(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -582,7 +582,7 @@ api.ChoosePrivateKeyRule buildChoosePrivateKeyRule() {
   final o = api.ChoosePrivateKeyRule();
   buildCounterChoosePrivateKeyRule++;
   if (buildCounterChoosePrivateKeyRule < 3) {
-    o.packageNames = buildUnnamed6931();
+    o.packageNames = buildUnnamed6939();
     o.privateKeyAlias = 'foo';
     o.urlPattern = 'foo';
   }
@@ -593,7 +593,7 @@ api.ChoosePrivateKeyRule buildChoosePrivateKeyRule() {
 void checkChoosePrivateKeyRule(api.ChoosePrivateKeyRule o) {
   buildCounterChoosePrivateKeyRule++;
   if (buildCounterChoosePrivateKeyRule < 3) {
-    checkUnnamed6931(o.packageNames!);
+    checkUnnamed6939(o.packageNames!);
     unittest.expect(
       o.privateKeyAlias!,
       unittest.equals('foo'),
@@ -606,12 +606,12 @@ void checkChoosePrivateKeyRule(api.ChoosePrivateKeyRule o) {
   buildCounterChoosePrivateKeyRule--;
 }
 
-core.List<core.String> buildUnnamed6932() => [
+core.List<core.String> buildUnnamed6940() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6932(core.List<core.String> o) {
+void checkUnnamed6940(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -632,7 +632,7 @@ api.Command buildCommand() {
     o.duration = 'foo';
     o.errorCode = 'foo';
     o.newPassword = 'foo';
-    o.resetPasswordFlags = buildUnnamed6932();
+    o.resetPasswordFlags = buildUnnamed6940();
     o.type = 'foo';
     o.userName = 'foo';
   }
@@ -659,7 +659,7 @@ void checkCommand(api.Command o) {
       o.newPassword!,
       unittest.equals('foo'),
     );
-    checkUnnamed6932(o.resetPasswordFlags!);
+    checkUnnamed6940(o.resetPasswordFlags!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -694,12 +694,12 @@ void checkCommonCriteriaModeInfo(api.CommonCriteriaModeInfo o) {
   buildCounterCommonCriteriaModeInfo--;
 }
 
-core.List<core.String> buildUnnamed6933() => [
+core.List<core.String> buildUnnamed6941() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6933(core.List<core.String> o) {
+void checkUnnamed6941(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -719,7 +719,7 @@ api.ComplianceRule buildComplianceRule() {
     o.apiLevelCondition = buildApiLevelCondition();
     o.disableApps = true;
     o.nonComplianceDetailCondition = buildNonComplianceDetailCondition();
-    o.packageNamesToDisable = buildUnnamed6933();
+    o.packageNamesToDisable = buildUnnamed6941();
   }
   buildCounterComplianceRule--;
   return o;
@@ -731,7 +731,7 @@ void checkComplianceRule(api.ComplianceRule o) {
     checkApiLevelCondition(o.apiLevelCondition!);
     unittest.expect(o.disableApps!, unittest.isTrue);
     checkNonComplianceDetailCondition(o.nonComplianceDetailCondition!);
-    checkUnnamed6933(o.packageNamesToDisable!);
+    checkUnnamed6941(o.packageNamesToDisable!);
   }
   buildCounterComplianceRule--;
 }
@@ -788,12 +788,12 @@ void checkContactInfo(api.ContactInfo o) {
   buildCounterContactInfo--;
 }
 
-core.List<core.String> buildUnnamed6934() => [
+core.List<core.String> buildUnnamed6942() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6934(core.List<core.String> o) {
+void checkUnnamed6942(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -811,7 +811,7 @@ api.ContentProviderEndpoint buildContentProviderEndpoint() {
   buildCounterContentProviderEndpoint++;
   if (buildCounterContentProviderEndpoint < 3) {
     o.packageName = 'foo';
-    o.signingCertsSha256 = buildUnnamed6934();
+    o.signingCertsSha256 = buildUnnamed6942();
     o.uri = 'foo';
   }
   buildCounterContentProviderEndpoint--;
@@ -825,7 +825,7 @@ void checkContentProviderEndpoint(api.ContentProviderEndpoint o) {
       o.packageName!,
       unittest.equals('foo'),
     );
-    checkUnnamed6934(o.signingCertsSha256!);
+    checkUnnamed6942(o.signingCertsSha256!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
@@ -866,89 +866,89 @@ void checkDate(api.Date o) {
   buildCounterDate--;
 }
 
-core.List<api.ApplicationReport> buildUnnamed6935() => [
+core.List<api.ApplicationReport> buildUnnamed6943() => [
       buildApplicationReport(),
       buildApplicationReport(),
     ];
 
-void checkUnnamed6935(core.List<api.ApplicationReport> o) {
+void checkUnnamed6943(core.List<api.ApplicationReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationReport(o[0]);
   checkApplicationReport(o[1]);
 }
 
-core.List<api.PasswordRequirements> buildUnnamed6936() => [
+core.List<api.PasswordRequirements> buildUnnamed6944() => [
       buildPasswordRequirements(),
       buildPasswordRequirements(),
     ];
 
-void checkUnnamed6936(core.List<api.PasswordRequirements> o) {
+void checkUnnamed6944(core.List<api.PasswordRequirements> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPasswordRequirements(o[0]);
   checkPasswordRequirements(o[1]);
 }
 
-core.List<api.Display> buildUnnamed6937() => [
+core.List<api.Display> buildUnnamed6945() => [
       buildDisplay(),
       buildDisplay(),
     ];
 
-void checkUnnamed6937(core.List<api.Display> o) {
+void checkUnnamed6945(core.List<api.Display> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDisplay(o[0]);
   checkDisplay(o[1]);
 }
 
-core.List<api.HardwareStatus> buildUnnamed6938() => [
+core.List<api.HardwareStatus> buildUnnamed6946() => [
       buildHardwareStatus(),
       buildHardwareStatus(),
     ];
 
-void checkUnnamed6938(core.List<api.HardwareStatus> o) {
+void checkUnnamed6946(core.List<api.HardwareStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHardwareStatus(o[0]);
   checkHardwareStatus(o[1]);
 }
 
-core.List<api.MemoryEvent> buildUnnamed6939() => [
+core.List<api.MemoryEvent> buildUnnamed6947() => [
       buildMemoryEvent(),
       buildMemoryEvent(),
     ];
 
-void checkUnnamed6939(core.List<api.MemoryEvent> o) {
+void checkUnnamed6947(core.List<api.MemoryEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMemoryEvent(o[0]);
   checkMemoryEvent(o[1]);
 }
 
-core.List<api.NonComplianceDetail> buildUnnamed6940() => [
+core.List<api.NonComplianceDetail> buildUnnamed6948() => [
       buildNonComplianceDetail(),
       buildNonComplianceDetail(),
     ];
 
-void checkUnnamed6940(core.List<api.NonComplianceDetail> o) {
+void checkUnnamed6948(core.List<api.NonComplianceDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNonComplianceDetail(o[0]);
   checkNonComplianceDetail(o[1]);
 }
 
-core.List<api.PowerManagementEvent> buildUnnamed6941() => [
+core.List<api.PowerManagementEvent> buildUnnamed6949() => [
       buildPowerManagementEvent(),
       buildPowerManagementEvent(),
     ];
 
-void checkUnnamed6941(core.List<api.PowerManagementEvent> o) {
+void checkUnnamed6949(core.List<api.PowerManagementEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPowerManagementEvent(o[0]);
   checkPowerManagementEvent(o[1]);
 }
 
-core.List<core.String> buildUnnamed6942() => [
+core.List<core.String> buildUnnamed6950() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6942(core.List<core.String> o) {
+void checkUnnamed6950(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -960,12 +960,12 @@ void checkUnnamed6942(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed6943() => {
+core.Map<core.String, core.String> buildUnnamed6951() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6943(core.Map<core.String, core.String> o) {
+void checkUnnamed6951(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -983,38 +983,38 @@ api.Device buildDevice() {
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
     o.apiLevel = 42;
-    o.applicationReports = buildUnnamed6935();
-    o.appliedPasswordPolicies = buildUnnamed6936();
+    o.applicationReports = buildUnnamed6943();
+    o.appliedPasswordPolicies = buildUnnamed6944();
     o.appliedPolicyName = 'foo';
     o.appliedPolicyVersion = 'foo';
     o.appliedState = 'foo';
     o.commonCriteriaModeInfo = buildCommonCriteriaModeInfo();
     o.deviceSettings = buildDeviceSettings();
     o.disabledReason = buildUserFacingMessage();
-    o.displays = buildUnnamed6937();
+    o.displays = buildUnnamed6945();
     o.enrollmentTime = 'foo';
     o.enrollmentTokenData = 'foo';
     o.enrollmentTokenName = 'foo';
     o.hardwareInfo = buildHardwareInfo();
-    o.hardwareStatusSamples = buildUnnamed6938();
+    o.hardwareStatusSamples = buildUnnamed6946();
     o.lastPolicyComplianceReportTime = 'foo';
     o.lastPolicySyncTime = 'foo';
     o.lastStatusReportTime = 'foo';
     o.managementMode = 'foo';
-    o.memoryEvents = buildUnnamed6939();
+    o.memoryEvents = buildUnnamed6947();
     o.memoryInfo = buildMemoryInfo();
     o.name = 'foo';
     o.networkInfo = buildNetworkInfo();
-    o.nonComplianceDetails = buildUnnamed6940();
+    o.nonComplianceDetails = buildUnnamed6948();
     o.ownership = 'foo';
     o.policyCompliant = true;
     o.policyName = 'foo';
-    o.powerManagementEvents = buildUnnamed6941();
-    o.previousDeviceNames = buildUnnamed6942();
+    o.powerManagementEvents = buildUnnamed6949();
+    o.previousDeviceNames = buildUnnamed6950();
     o.securityPosture = buildSecurityPosture();
     o.softwareInfo = buildSoftwareInfo();
     o.state = 'foo';
-    o.systemProperties = buildUnnamed6943();
+    o.systemProperties = buildUnnamed6951();
     o.user = buildUser();
     o.userName = 'foo';
   }
@@ -1029,8 +1029,8 @@ void checkDevice(api.Device o) {
       o.apiLevel!,
       unittest.equals(42),
     );
-    checkUnnamed6935(o.applicationReports!);
-    checkUnnamed6936(o.appliedPasswordPolicies!);
+    checkUnnamed6943(o.applicationReports!);
+    checkUnnamed6944(o.appliedPasswordPolicies!);
     unittest.expect(
       o.appliedPolicyName!,
       unittest.equals('foo'),
@@ -1046,7 +1046,7 @@ void checkDevice(api.Device o) {
     checkCommonCriteriaModeInfo(o.commonCriteriaModeInfo!);
     checkDeviceSettings(o.deviceSettings!);
     checkUserFacingMessage(o.disabledReason!);
-    checkUnnamed6937(o.displays!);
+    checkUnnamed6945(o.displays!);
     unittest.expect(
       o.enrollmentTime!,
       unittest.equals('foo'),
@@ -1060,7 +1060,7 @@ void checkDevice(api.Device o) {
       unittest.equals('foo'),
     );
     checkHardwareInfo(o.hardwareInfo!);
-    checkUnnamed6938(o.hardwareStatusSamples!);
+    checkUnnamed6946(o.hardwareStatusSamples!);
     unittest.expect(
       o.lastPolicyComplianceReportTime!,
       unittest.equals('foo'),
@@ -1077,14 +1077,14 @@ void checkDevice(api.Device o) {
       o.managementMode!,
       unittest.equals('foo'),
     );
-    checkUnnamed6939(o.memoryEvents!);
+    checkUnnamed6947(o.memoryEvents!);
     checkMemoryInfo(o.memoryInfo!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkNetworkInfo(o.networkInfo!);
-    checkUnnamed6940(o.nonComplianceDetails!);
+    checkUnnamed6948(o.nonComplianceDetails!);
     unittest.expect(
       o.ownership!,
       unittest.equals('foo'),
@@ -1094,15 +1094,15 @@ void checkDevice(api.Device o) {
       o.policyName!,
       unittest.equals('foo'),
     );
-    checkUnnamed6941(o.powerManagementEvents!);
-    checkUnnamed6942(o.previousDeviceNames!);
+    checkUnnamed6949(o.powerManagementEvents!);
+    checkUnnamed6950(o.previousDeviceNames!);
     checkSecurityPosture(o.securityPosture!);
     checkSoftwareInfo(o.softwareInfo!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed6943(o.systemProperties!);
+    checkUnnamed6951(o.systemProperties!);
     checkUser(o.user!);
     unittest.expect(
       o.userName!,
@@ -1274,12 +1274,12 @@ void checkEnrollmentToken(api.EnrollmentToken o) {
   buildCounterEnrollmentToken--;
 }
 
-core.List<core.String> buildUnnamed6944() => [
+core.List<core.String> buildUnnamed6952() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6944(core.List<core.String> o) {
+void checkUnnamed6952(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1291,23 +1291,23 @@ void checkUnnamed6944(core.List<core.String> o) {
   );
 }
 
-core.List<api.SigninDetail> buildUnnamed6945() => [
+core.List<api.SigninDetail> buildUnnamed6953() => [
       buildSigninDetail(),
       buildSigninDetail(),
     ];
 
-void checkUnnamed6945(core.List<api.SigninDetail> o) {
+void checkUnnamed6953(core.List<api.SigninDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSigninDetail(o[0]);
   checkSigninDetail(o[1]);
 }
 
-core.List<api.TermsAndConditions> buildUnnamed6946() => [
+core.List<api.TermsAndConditions> buildUnnamed6954() => [
       buildTermsAndConditions(),
       buildTermsAndConditions(),
     ];
 
-void checkUnnamed6946(core.List<api.TermsAndConditions> o) {
+void checkUnnamed6954(core.List<api.TermsAndConditions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTermsAndConditions(o[0]);
   checkTermsAndConditions(o[1]);
@@ -1320,14 +1320,14 @@ api.Enterprise buildEnterprise() {
   if (buildCounterEnterprise < 3) {
     o.appAutoApprovalEnabled = true;
     o.contactInfo = buildContactInfo();
-    o.enabledNotificationTypes = buildUnnamed6944();
+    o.enabledNotificationTypes = buildUnnamed6952();
     o.enterpriseDisplayName = 'foo';
     o.logo = buildExternalData();
     o.name = 'foo';
     o.primaryColor = 42;
     o.pubsubTopic = 'foo';
-    o.signinDetails = buildUnnamed6945();
-    o.termsAndConditions = buildUnnamed6946();
+    o.signinDetails = buildUnnamed6953();
+    o.termsAndConditions = buildUnnamed6954();
   }
   buildCounterEnterprise--;
   return o;
@@ -1338,7 +1338,7 @@ void checkEnterprise(api.Enterprise o) {
   if (buildCounterEnterprise < 3) {
     unittest.expect(o.appAutoApprovalEnabled!, unittest.isTrue);
     checkContactInfo(o.contactInfo!);
-    checkUnnamed6944(o.enabledNotificationTypes!);
+    checkUnnamed6952(o.enabledNotificationTypes!);
     unittest.expect(
       o.enterpriseDisplayName!,
       unittest.equals('foo'),
@@ -1356,8 +1356,8 @@ void checkEnterprise(api.Enterprise o) {
       o.pubsubTopic!,
       unittest.equals('foo'),
     );
-    checkUnnamed6945(o.signinDetails!);
-    checkUnnamed6946(o.termsAndConditions!);
+    checkUnnamed6953(o.signinDetails!);
+    checkUnnamed6954(o.termsAndConditions!);
   }
   buildCounterEnterprise--;
 }
@@ -1408,205 +1408,6 @@ void checkFreezePeriod(api.FreezePeriod o) {
     checkDate(o.startDate!);
   }
   buildCounterFreezePeriod--;
-}
-
-core.List<core.double> buildUnnamed6947() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed6947(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.List<core.double> buildUnnamed6948() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed6948(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.List<core.double> buildUnnamed6949() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed6949(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.List<core.double> buildUnnamed6950() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed6950(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.List<core.double> buildUnnamed6951() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed6951(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.List<core.double> buildUnnamed6952() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed6952(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.List<core.double> buildUnnamed6953() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed6953(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.List<core.double> buildUnnamed6954() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed6954(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.int buildCounterHardwareInfo = 0;
-api.HardwareInfo buildHardwareInfo() {
-  final o = api.HardwareInfo();
-  buildCounterHardwareInfo++;
-  if (buildCounterHardwareInfo < 3) {
-    o.batteryShutdownTemperatures = buildUnnamed6947();
-    o.batteryThrottlingTemperatures = buildUnnamed6948();
-    o.brand = 'foo';
-    o.cpuShutdownTemperatures = buildUnnamed6949();
-    o.cpuThrottlingTemperatures = buildUnnamed6950();
-    o.deviceBasebandVersion = 'foo';
-    o.gpuShutdownTemperatures = buildUnnamed6951();
-    o.gpuThrottlingTemperatures = buildUnnamed6952();
-    o.hardware = 'foo';
-    o.manufacturer = 'foo';
-    o.model = 'foo';
-    o.serialNumber = 'foo';
-    o.skinShutdownTemperatures = buildUnnamed6953();
-    o.skinThrottlingTemperatures = buildUnnamed6954();
-  }
-  buildCounterHardwareInfo--;
-  return o;
-}
-
-void checkHardwareInfo(api.HardwareInfo o) {
-  buildCounterHardwareInfo++;
-  if (buildCounterHardwareInfo < 3) {
-    checkUnnamed6947(o.batteryShutdownTemperatures!);
-    checkUnnamed6948(o.batteryThrottlingTemperatures!);
-    unittest.expect(
-      o.brand!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed6949(o.cpuShutdownTemperatures!);
-    checkUnnamed6950(o.cpuThrottlingTemperatures!);
-    unittest.expect(
-      o.deviceBasebandVersion!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed6951(o.gpuShutdownTemperatures!);
-    checkUnnamed6952(o.gpuThrottlingTemperatures!);
-    unittest.expect(
-      o.hardware!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.manufacturer!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.model!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.serialNumber!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed6953(o.skinShutdownTemperatures!);
-    checkUnnamed6954(o.skinThrottlingTemperatures!);
-  }
-  buildCounterHardwareInfo--;
 }
 
 core.List<core.double> buildUnnamed6955() => [
@@ -1711,18 +1512,217 @@ void checkUnnamed6960(core.List<core.double> o) {
   );
 }
 
+core.List<core.double> buildUnnamed6961() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed6961(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
+core.List<core.double> buildUnnamed6962() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed6962(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
+core.int buildCounterHardwareInfo = 0;
+api.HardwareInfo buildHardwareInfo() {
+  final o = api.HardwareInfo();
+  buildCounterHardwareInfo++;
+  if (buildCounterHardwareInfo < 3) {
+    o.batteryShutdownTemperatures = buildUnnamed6955();
+    o.batteryThrottlingTemperatures = buildUnnamed6956();
+    o.brand = 'foo';
+    o.cpuShutdownTemperatures = buildUnnamed6957();
+    o.cpuThrottlingTemperatures = buildUnnamed6958();
+    o.deviceBasebandVersion = 'foo';
+    o.gpuShutdownTemperatures = buildUnnamed6959();
+    o.gpuThrottlingTemperatures = buildUnnamed6960();
+    o.hardware = 'foo';
+    o.manufacturer = 'foo';
+    o.model = 'foo';
+    o.serialNumber = 'foo';
+    o.skinShutdownTemperatures = buildUnnamed6961();
+    o.skinThrottlingTemperatures = buildUnnamed6962();
+  }
+  buildCounterHardwareInfo--;
+  return o;
+}
+
+void checkHardwareInfo(api.HardwareInfo o) {
+  buildCounterHardwareInfo++;
+  if (buildCounterHardwareInfo < 3) {
+    checkUnnamed6955(o.batteryShutdownTemperatures!);
+    checkUnnamed6956(o.batteryThrottlingTemperatures!);
+    unittest.expect(
+      o.brand!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6957(o.cpuShutdownTemperatures!);
+    checkUnnamed6958(o.cpuThrottlingTemperatures!);
+    unittest.expect(
+      o.deviceBasebandVersion!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6959(o.gpuShutdownTemperatures!);
+    checkUnnamed6960(o.gpuThrottlingTemperatures!);
+    unittest.expect(
+      o.hardware!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.manufacturer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.model!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serialNumber!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6961(o.skinShutdownTemperatures!);
+    checkUnnamed6962(o.skinThrottlingTemperatures!);
+  }
+  buildCounterHardwareInfo--;
+}
+
+core.List<core.double> buildUnnamed6963() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed6963(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
+core.List<core.double> buildUnnamed6964() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed6964(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
+core.List<core.double> buildUnnamed6965() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed6965(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
+core.List<core.double> buildUnnamed6966() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed6966(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
+core.List<core.double> buildUnnamed6967() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed6967(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
+core.List<core.double> buildUnnamed6968() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed6968(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
 core.int buildCounterHardwareStatus = 0;
 api.HardwareStatus buildHardwareStatus() {
   final o = api.HardwareStatus();
   buildCounterHardwareStatus++;
   if (buildCounterHardwareStatus < 3) {
-    o.batteryTemperatures = buildUnnamed6955();
-    o.cpuTemperatures = buildUnnamed6956();
-    o.cpuUsages = buildUnnamed6957();
+    o.batteryTemperatures = buildUnnamed6963();
+    o.cpuTemperatures = buildUnnamed6964();
+    o.cpuUsages = buildUnnamed6965();
     o.createTime = 'foo';
-    o.fanSpeeds = buildUnnamed6958();
-    o.gpuTemperatures = buildUnnamed6959();
-    o.skinTemperatures = buildUnnamed6960();
+    o.fanSpeeds = buildUnnamed6966();
+    o.gpuTemperatures = buildUnnamed6967();
+    o.skinTemperatures = buildUnnamed6968();
   }
   buildCounterHardwareStatus--;
   return o;
@@ -1731,16 +1731,16 @@ api.HardwareStatus buildHardwareStatus() {
 void checkHardwareStatus(api.HardwareStatus o) {
   buildCounterHardwareStatus++;
   if (buildCounterHardwareStatus < 3) {
-    checkUnnamed6955(o.batteryTemperatures!);
-    checkUnnamed6956(o.cpuTemperatures!);
-    checkUnnamed6957(o.cpuUsages!);
+    checkUnnamed6963(o.batteryTemperatures!);
+    checkUnnamed6964(o.cpuTemperatures!);
+    checkUnnamed6965(o.cpuUsages!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed6958(o.fanSpeeds!);
-    checkUnnamed6959(o.gpuTemperatures!);
-    checkUnnamed6960(o.skinTemperatures!);
+    checkUnnamed6966(o.fanSpeeds!);
+    checkUnnamed6967(o.gpuTemperatures!);
+    checkUnnamed6968(o.skinTemperatures!);
   }
   buildCounterHardwareStatus--;
 }
@@ -1871,12 +1871,12 @@ void checkLaunchAppAction(api.LaunchAppAction o) {
   buildCounterLaunchAppAction--;
 }
 
-core.List<api.Device> buildUnnamed6961() => [
+core.List<api.Device> buildUnnamed6969() => [
       buildDevice(),
       buildDevice(),
     ];
 
-void checkUnnamed6961(core.List<api.Device> o) {
+void checkUnnamed6969(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -1887,7 +1887,7 @@ api.ListDevicesResponse buildListDevicesResponse() {
   final o = api.ListDevicesResponse();
   buildCounterListDevicesResponse++;
   if (buildCounterListDevicesResponse < 3) {
-    o.devices = buildUnnamed6961();
+    o.devices = buildUnnamed6969();
     o.nextPageToken = 'foo';
   }
   buildCounterListDevicesResponse--;
@@ -1897,7 +1897,7 @@ api.ListDevicesResponse buildListDevicesResponse() {
 void checkListDevicesResponse(api.ListDevicesResponse o) {
   buildCounterListDevicesResponse++;
   if (buildCounterListDevicesResponse < 3) {
-    checkUnnamed6961(o.devices!);
+    checkUnnamed6969(o.devices!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1906,12 +1906,12 @@ void checkListDevicesResponse(api.ListDevicesResponse o) {
   buildCounterListDevicesResponse--;
 }
 
-core.List<api.Enterprise> buildUnnamed6962() => [
+core.List<api.Enterprise> buildUnnamed6970() => [
       buildEnterprise(),
       buildEnterprise(),
     ];
 
-void checkUnnamed6962(core.List<api.Enterprise> o) {
+void checkUnnamed6970(core.List<api.Enterprise> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterprise(o[0]);
   checkEnterprise(o[1]);
@@ -1922,7 +1922,7 @@ api.ListEnterprisesResponse buildListEnterprisesResponse() {
   final o = api.ListEnterprisesResponse();
   buildCounterListEnterprisesResponse++;
   if (buildCounterListEnterprisesResponse < 3) {
-    o.enterprises = buildUnnamed6962();
+    o.enterprises = buildUnnamed6970();
     o.nextPageToken = 'foo';
   }
   buildCounterListEnterprisesResponse--;
@@ -1932,7 +1932,7 @@ api.ListEnterprisesResponse buildListEnterprisesResponse() {
 void checkListEnterprisesResponse(api.ListEnterprisesResponse o) {
   buildCounterListEnterprisesResponse++;
   if (buildCounterListEnterprisesResponse < 3) {
-    checkUnnamed6962(o.enterprises!);
+    checkUnnamed6970(o.enterprises!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1941,12 +1941,12 @@ void checkListEnterprisesResponse(api.ListEnterprisesResponse o) {
   buildCounterListEnterprisesResponse--;
 }
 
-core.List<api.Operation> buildUnnamed6963() => [
+core.List<api.Operation> buildUnnamed6971() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed6963(core.List<api.Operation> o) {
+void checkUnnamed6971(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -1958,7 +1958,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed6963();
+    o.operations = buildUnnamed6971();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -1971,17 +1971,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6963(o.operations!);
+    checkUnnamed6971(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.Policy> buildUnnamed6964() => [
+core.List<api.Policy> buildUnnamed6972() => [
       buildPolicy(),
       buildPolicy(),
     ];
 
-void checkUnnamed6964(core.List<api.Policy> o) {
+void checkUnnamed6972(core.List<api.Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicy(o[0]);
   checkPolicy(o[1]);
@@ -1993,7 +1993,7 @@ api.ListPoliciesResponse buildListPoliciesResponse() {
   buildCounterListPoliciesResponse++;
   if (buildCounterListPoliciesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.policies = buildUnnamed6964();
+    o.policies = buildUnnamed6972();
   }
   buildCounterListPoliciesResponse--;
   return o;
@@ -2006,17 +2006,17 @@ void checkListPoliciesResponse(api.ListPoliciesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6964(o.policies!);
+    checkUnnamed6972(o.policies!);
   }
   buildCounterListPoliciesResponse--;
 }
 
-core.List<api.WebApp> buildUnnamed6965() => [
+core.List<api.WebApp> buildUnnamed6973() => [
       buildWebApp(),
       buildWebApp(),
     ];
 
-void checkUnnamed6965(core.List<api.WebApp> o) {
+void checkUnnamed6973(core.List<api.WebApp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebApp(o[0]);
   checkWebApp(o[1]);
@@ -2028,7 +2028,7 @@ api.ListWebAppsResponse buildListWebAppsResponse() {
   buildCounterListWebAppsResponse++;
   if (buildCounterListWebAppsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.webApps = buildUnnamed6965();
+    o.webApps = buildUnnamed6973();
   }
   buildCounterListWebAppsResponse--;
   return o;
@@ -2041,17 +2041,17 @@ void checkListWebAppsResponse(api.ListWebAppsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6965(o.webApps!);
+    checkUnnamed6973(o.webApps!);
   }
   buildCounterListWebAppsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6966() => {
+core.Map<core.String, core.String> buildUnnamed6974() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6966(core.Map<core.String, core.String> o) {
+void checkUnnamed6974(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2068,7 +2068,7 @@ api.ManagedConfigurationTemplate buildManagedConfigurationTemplate() {
   final o = api.ManagedConfigurationTemplate();
   buildCounterManagedConfigurationTemplate++;
   if (buildCounterManagedConfigurationTemplate < 3) {
-    o.configurationVariables = buildUnnamed6966();
+    o.configurationVariables = buildUnnamed6974();
     o.templateId = 'foo';
   }
   buildCounterManagedConfigurationTemplate--;
@@ -2078,7 +2078,7 @@ api.ManagedConfigurationTemplate buildManagedConfigurationTemplate() {
 void checkManagedConfigurationTemplate(api.ManagedConfigurationTemplate o) {
   buildCounterManagedConfigurationTemplate++;
   if (buildCounterManagedConfigurationTemplate < 3) {
-    checkUnnamed6966(o.configurationVariables!);
+    checkUnnamed6974(o.configurationVariables!);
     unittest.expect(
       o.templateId!,
       unittest.equals('foo'),
@@ -2087,23 +2087,23 @@ void checkManagedConfigurationTemplate(api.ManagedConfigurationTemplate o) {
   buildCounterManagedConfigurationTemplate--;
 }
 
-core.List<api.ManagedPropertyEntry> buildUnnamed6967() => [
+core.List<api.ManagedPropertyEntry> buildUnnamed6975() => [
       buildManagedPropertyEntry(),
       buildManagedPropertyEntry(),
     ];
 
-void checkUnnamed6967(core.List<api.ManagedPropertyEntry> o) {
+void checkUnnamed6975(core.List<api.ManagedPropertyEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedPropertyEntry(o[0]);
   checkManagedPropertyEntry(o[1]);
 }
 
-core.List<api.ManagedProperty> buildUnnamed6968() => [
+core.List<api.ManagedProperty> buildUnnamed6976() => [
       buildManagedProperty(),
       buildManagedProperty(),
     ];
 
-void checkUnnamed6968(core.List<api.ManagedProperty> o) {
+void checkUnnamed6976(core.List<api.ManagedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedProperty(o[0]);
   checkManagedProperty(o[1]);
@@ -2120,9 +2120,9 @@ api.ManagedProperty buildManagedProperty() {
       'string': 'foo'
     };
     o.description = 'foo';
-    o.entries = buildUnnamed6967();
+    o.entries = buildUnnamed6975();
     o.key = 'foo';
-    o.nestedProperties = buildUnnamed6968();
+    o.nestedProperties = buildUnnamed6976();
     o.title = 'foo';
     o.type = 'foo';
   }
@@ -2151,12 +2151,12 @@ void checkManagedProperty(api.ManagedProperty o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed6967(o.entries!);
+    checkUnnamed6975(o.entries!);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),
     );
-    checkUnnamed6968(o.nestedProperties!);
+    checkUnnamed6976(o.nestedProperties!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -2255,12 +2255,12 @@ void checkMemoryInfo(api.MemoryInfo o) {
   buildCounterMemoryInfo--;
 }
 
-core.List<api.TelephonyInfo> buildUnnamed6969() => [
+core.List<api.TelephonyInfo> buildUnnamed6977() => [
       buildTelephonyInfo(),
       buildTelephonyInfo(),
     ];
 
-void checkUnnamed6969(core.List<api.TelephonyInfo> o) {
+void checkUnnamed6977(core.List<api.TelephonyInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTelephonyInfo(o[0]);
   checkTelephonyInfo(o[1]);
@@ -2274,7 +2274,7 @@ api.NetworkInfo buildNetworkInfo() {
     o.imei = 'foo';
     o.meid = 'foo';
     o.networkOperatorName = 'foo';
-    o.telephonyInfos = buildUnnamed6969();
+    o.telephonyInfos = buildUnnamed6977();
     o.wifiMacAddress = 'foo';
   }
   buildCounterNetworkInfo--;
@@ -2296,7 +2296,7 @@ void checkNetworkInfo(api.NetworkInfo o) {
       o.networkOperatorName!,
       unittest.equals('foo'),
     );
-    checkUnnamed6969(o.telephonyInfos!);
+    checkUnnamed6977(o.telephonyInfos!);
     unittest.expect(
       o.wifiMacAddress!,
       unittest.equals('foo'),
@@ -2398,12 +2398,12 @@ void checkNonComplianceDetailCondition(api.NonComplianceDetailCondition o) {
   buildCounterNonComplianceDetailCondition--;
 }
 
-core.List<core.String> buildUnnamed6970() => [
+core.List<core.String> buildUnnamed6978() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6970(core.List<core.String> o) {
+void checkUnnamed6978(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2420,7 +2420,7 @@ api.OncCertificateProvider buildOncCertificateProvider() {
   final o = api.OncCertificateProvider();
   buildCounterOncCertificateProvider++;
   if (buildCounterOncCertificateProvider < 3) {
-    o.certificateReferences = buildUnnamed6970();
+    o.certificateReferences = buildUnnamed6978();
     o.contentProviderEndpoint = buildContentProviderEndpoint();
   }
   buildCounterOncCertificateProvider--;
@@ -2430,13 +2430,13 @@ api.OncCertificateProvider buildOncCertificateProvider() {
 void checkOncCertificateProvider(api.OncCertificateProvider o) {
   buildCounterOncCertificateProvider++;
   if (buildCounterOncCertificateProvider < 3) {
-    checkUnnamed6970(o.certificateReferences!);
+    checkUnnamed6978(o.certificateReferences!);
     checkContentProviderEndpoint(o.contentProviderEndpoint!);
   }
   buildCounterOncCertificateProvider--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6971() => {
+core.Map<core.String, core.Object> buildUnnamed6979() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2449,7 +2449,7 @@ core.Map<core.String, core.Object> buildUnnamed6971() => {
       },
     };
 
-void checkUnnamed6971(core.Map<core.String, core.Object> o) {
+void checkUnnamed6979(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2481,7 +2481,7 @@ void checkUnnamed6971(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed6972() => {
+core.Map<core.String, core.Object> buildUnnamed6980() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2494,7 +2494,7 @@ core.Map<core.String, core.Object> buildUnnamed6972() => {
       },
     };
 
-void checkUnnamed6972(core.Map<core.String, core.Object> o) {
+void checkUnnamed6980(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2533,9 +2533,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed6971();
+    o.metadata = buildUnnamed6979();
     o.name = 'foo';
-    o.response = buildUnnamed6972();
+    o.response = buildUnnamed6980();
   }
   buildCounterOperation--;
   return o;
@@ -2546,22 +2546,22 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed6971(o.metadata!);
+    checkUnnamed6979(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed6972(o.response!);
+    checkUnnamed6980(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<core.String> buildUnnamed6973() => [
+core.List<core.String> buildUnnamed6981() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6973(core.List<core.String> o) {
+void checkUnnamed6981(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2578,7 +2578,7 @@ api.PackageNameList buildPackageNameList() {
   final o = api.PackageNameList();
   buildCounterPackageNameList++;
   if (buildCounterPackageNameList < 3) {
-    o.packageNames = buildUnnamed6973();
+    o.packageNames = buildUnnamed6981();
   }
   buildCounterPackageNameList--;
   return o;
@@ -2587,7 +2587,7 @@ api.PackageNameList buildPackageNameList() {
 void checkPackageNameList(api.PackageNameList o) {
   buildCounterPackageNameList++;
   if (buildCounterPackageNameList < 3) {
-    checkUnnamed6973(o.packageNames!);
+    checkUnnamed6981(o.packageNames!);
   }
   buildCounterPackageNameList--;
 }
@@ -2701,12 +2701,12 @@ void checkPermissionGrant(api.PermissionGrant o) {
   buildCounterPermissionGrant--;
 }
 
-core.List<core.String> buildUnnamed6974() => [
+core.List<core.String> buildUnnamed6982() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6974(core.List<core.String> o) {
+void checkUnnamed6982(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2718,12 +2718,12 @@ void checkUnnamed6974(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6975() => [
+core.List<core.String> buildUnnamed6983() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6975(core.List<core.String> o) {
+void checkUnnamed6983(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2740,8 +2740,8 @@ api.PersistentPreferredActivity buildPersistentPreferredActivity() {
   final o = api.PersistentPreferredActivity();
   buildCounterPersistentPreferredActivity++;
   if (buildCounterPersistentPreferredActivity < 3) {
-    o.actions = buildUnnamed6974();
-    o.categories = buildUnnamed6975();
+    o.actions = buildUnnamed6982();
+    o.categories = buildUnnamed6983();
     o.receiverActivity = 'foo';
   }
   buildCounterPersistentPreferredActivity--;
@@ -2751,8 +2751,8 @@ api.PersistentPreferredActivity buildPersistentPreferredActivity() {
 void checkPersistentPreferredActivity(api.PersistentPreferredActivity o) {
   buildCounterPersistentPreferredActivity++;
   if (buildCounterPersistentPreferredActivity < 3) {
-    checkUnnamed6974(o.actions!);
-    checkUnnamed6975(o.categories!);
+    checkUnnamed6982(o.actions!);
+    checkUnnamed6983(o.categories!);
     unittest.expect(
       o.receiverActivity!,
       unittest.equals('foo'),
@@ -2788,153 +2788,6 @@ void checkPersonalApplicationPolicy(api.PersonalApplicationPolicy o) {
   buildCounterPersonalApplicationPolicy--;
 }
 
-core.List<core.String> buildUnnamed6976() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed6976(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.PersonalApplicationPolicy> buildUnnamed6977() => [
-      buildPersonalApplicationPolicy(),
-      buildPersonalApplicationPolicy(),
-    ];
-
-void checkUnnamed6977(core.List<api.PersonalApplicationPolicy> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkPersonalApplicationPolicy(o[0]);
-  checkPersonalApplicationPolicy(o[1]);
-}
-
-core.int buildCounterPersonalUsagePolicies = 0;
-api.PersonalUsagePolicies buildPersonalUsagePolicies() {
-  final o = api.PersonalUsagePolicies();
-  buildCounterPersonalUsagePolicies++;
-  if (buildCounterPersonalUsagePolicies < 3) {
-    o.accountTypesWithManagementDisabled = buildUnnamed6976();
-    o.cameraDisabled = true;
-    o.maxDaysWithWorkOff = 42;
-    o.personalApplications = buildUnnamed6977();
-    o.personalPlayStoreMode = 'foo';
-    o.screenCaptureDisabled = true;
-  }
-  buildCounterPersonalUsagePolicies--;
-  return o;
-}
-
-void checkPersonalUsagePolicies(api.PersonalUsagePolicies o) {
-  buildCounterPersonalUsagePolicies++;
-  if (buildCounterPersonalUsagePolicies < 3) {
-    checkUnnamed6976(o.accountTypesWithManagementDisabled!);
-    unittest.expect(o.cameraDisabled!, unittest.isTrue);
-    unittest.expect(
-      o.maxDaysWithWorkOff!,
-      unittest.equals(42),
-    );
-    checkUnnamed6977(o.personalApplications!);
-    unittest.expect(
-      o.personalPlayStoreMode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.screenCaptureDisabled!, unittest.isTrue);
-  }
-  buildCounterPersonalUsagePolicies--;
-}
-
-core.List<core.String> buildUnnamed6978() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed6978(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed6979() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed6979(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.ApplicationPolicy> buildUnnamed6980() => [
-      buildApplicationPolicy(),
-      buildApplicationPolicy(),
-    ];
-
-void checkUnnamed6980(core.List<api.ApplicationPolicy> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkApplicationPolicy(o[0]);
-  checkApplicationPolicy(o[1]);
-}
-
-core.List<api.ChoosePrivateKeyRule> buildUnnamed6981() => [
-      buildChoosePrivateKeyRule(),
-      buildChoosePrivateKeyRule(),
-    ];
-
-void checkUnnamed6981(core.List<api.ChoosePrivateKeyRule> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkChoosePrivateKeyRule(o[0]);
-  checkChoosePrivateKeyRule(o[1]);
-}
-
-core.List<api.ComplianceRule> buildUnnamed6982() => [
-      buildComplianceRule(),
-      buildComplianceRule(),
-    ];
-
-void checkUnnamed6982(core.List<api.ComplianceRule> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkComplianceRule(o[0]);
-  checkComplianceRule(o[1]);
-}
-
-core.List<core.String> buildUnnamed6983() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed6983(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed6984() => [
       'foo',
       'foo',
@@ -2952,18 +2805,165 @@ void checkUnnamed6984(core.List<core.String> o) {
   );
 }
 
-core.List<api.OncCertificateProvider> buildUnnamed6985() => [
+core.List<api.PersonalApplicationPolicy> buildUnnamed6985() => [
+      buildPersonalApplicationPolicy(),
+      buildPersonalApplicationPolicy(),
+    ];
+
+void checkUnnamed6985(core.List<api.PersonalApplicationPolicy> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPersonalApplicationPolicy(o[0]);
+  checkPersonalApplicationPolicy(o[1]);
+}
+
+core.int buildCounterPersonalUsagePolicies = 0;
+api.PersonalUsagePolicies buildPersonalUsagePolicies() {
+  final o = api.PersonalUsagePolicies();
+  buildCounterPersonalUsagePolicies++;
+  if (buildCounterPersonalUsagePolicies < 3) {
+    o.accountTypesWithManagementDisabled = buildUnnamed6984();
+    o.cameraDisabled = true;
+    o.maxDaysWithWorkOff = 42;
+    o.personalApplications = buildUnnamed6985();
+    o.personalPlayStoreMode = 'foo';
+    o.screenCaptureDisabled = true;
+  }
+  buildCounterPersonalUsagePolicies--;
+  return o;
+}
+
+void checkPersonalUsagePolicies(api.PersonalUsagePolicies o) {
+  buildCounterPersonalUsagePolicies++;
+  if (buildCounterPersonalUsagePolicies < 3) {
+    checkUnnamed6984(o.accountTypesWithManagementDisabled!);
+    unittest.expect(o.cameraDisabled!, unittest.isTrue);
+    unittest.expect(
+      o.maxDaysWithWorkOff!,
+      unittest.equals(42),
+    );
+    checkUnnamed6985(o.personalApplications!);
+    unittest.expect(
+      o.personalPlayStoreMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.screenCaptureDisabled!, unittest.isTrue);
+  }
+  buildCounterPersonalUsagePolicies--;
+}
+
+core.List<core.String> buildUnnamed6986() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed6986(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed6987() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed6987(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.ApplicationPolicy> buildUnnamed6988() => [
+      buildApplicationPolicy(),
+      buildApplicationPolicy(),
+    ];
+
+void checkUnnamed6988(core.List<api.ApplicationPolicy> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkApplicationPolicy(o[0]);
+  checkApplicationPolicy(o[1]);
+}
+
+core.List<api.ChoosePrivateKeyRule> buildUnnamed6989() => [
+      buildChoosePrivateKeyRule(),
+      buildChoosePrivateKeyRule(),
+    ];
+
+void checkUnnamed6989(core.List<api.ChoosePrivateKeyRule> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChoosePrivateKeyRule(o[0]);
+  checkChoosePrivateKeyRule(o[1]);
+}
+
+core.List<api.ComplianceRule> buildUnnamed6990() => [
+      buildComplianceRule(),
+      buildComplianceRule(),
+    ];
+
+void checkUnnamed6990(core.List<api.ComplianceRule> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkComplianceRule(o[0]);
+  checkComplianceRule(o[1]);
+}
+
+core.List<core.String> buildUnnamed6991() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed6991(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed6992() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed6992(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.OncCertificateProvider> buildUnnamed6993() => [
       buildOncCertificateProvider(),
       buildOncCertificateProvider(),
     ];
 
-void checkUnnamed6985(core.List<api.OncCertificateProvider> o) {
+void checkUnnamed6993(core.List<api.OncCertificateProvider> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOncCertificateProvider(o[0]);
   checkOncCertificateProvider(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed6986() => {
+core.Map<core.String, core.Object> buildUnnamed6994() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2976,7 +2976,7 @@ core.Map<core.String, core.Object> buildUnnamed6986() => {
       },
     };
 
-void checkUnnamed6986(core.Map<core.String, core.Object> o) {
+void checkUnnamed6994(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -3008,67 +3008,67 @@ void checkUnnamed6986(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<api.PasswordRequirements> buildUnnamed6987() => [
+core.List<api.PasswordRequirements> buildUnnamed6995() => [
       buildPasswordRequirements(),
       buildPasswordRequirements(),
     ];
 
-void checkUnnamed6987(core.List<api.PasswordRequirements> o) {
+void checkUnnamed6995(core.List<api.PasswordRequirements> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPasswordRequirements(o[0]);
   checkPasswordRequirements(o[1]);
 }
 
-core.List<api.PermissionGrant> buildUnnamed6988() => [
+core.List<api.PermissionGrant> buildUnnamed6996() => [
       buildPermissionGrant(),
       buildPermissionGrant(),
     ];
 
-void checkUnnamed6988(core.List<api.PermissionGrant> o) {
+void checkUnnamed6996(core.List<api.PermissionGrant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermissionGrant(o[0]);
   checkPermissionGrant(o[1]);
 }
 
-core.List<api.PersistentPreferredActivity> buildUnnamed6989() => [
+core.List<api.PersistentPreferredActivity> buildUnnamed6997() => [
       buildPersistentPreferredActivity(),
       buildPersistentPreferredActivity(),
     ];
 
-void checkUnnamed6989(core.List<api.PersistentPreferredActivity> o) {
+void checkUnnamed6997(core.List<api.PersistentPreferredActivity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersistentPreferredActivity(o[0]);
   checkPersistentPreferredActivity(o[1]);
 }
 
-core.List<api.PolicyEnforcementRule> buildUnnamed6990() => [
+core.List<api.PolicyEnforcementRule> buildUnnamed6998() => [
       buildPolicyEnforcementRule(),
       buildPolicyEnforcementRule(),
     ];
 
-void checkUnnamed6990(core.List<api.PolicyEnforcementRule> o) {
+void checkUnnamed6998(core.List<api.PolicyEnforcementRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyEnforcementRule(o[0]);
   checkPolicyEnforcementRule(o[1]);
 }
 
-core.List<api.SetupAction> buildUnnamed6991() => [
+core.List<api.SetupAction> buildUnnamed6999() => [
       buildSetupAction(),
       buildSetupAction(),
     ];
 
-void checkUnnamed6991(core.List<api.SetupAction> o) {
+void checkUnnamed6999(core.List<api.SetupAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetupAction(o[0]);
   checkSetupAction(o[1]);
 }
 
-core.List<core.String> buildUnnamed6992() => [
+core.List<core.String> buildUnnamed7000() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6992(core.List<core.String> o) {
+void checkUnnamed7000(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3085,14 +3085,14 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.accountTypesWithManagementDisabled = buildUnnamed6978();
+    o.accountTypesWithManagementDisabled = buildUnnamed6986();
     o.addUserDisabled = true;
     o.adjustVolumeDisabled = true;
     o.advancedSecurityOverrides = buildAdvancedSecurityOverrides();
     o.alwaysOnVpnPackage = buildAlwaysOnVpnPackage();
-    o.androidDevicePolicyTracks = buildUnnamed6979();
+    o.androidDevicePolicyTracks = buildUnnamed6987();
     o.appAutoUpdatePolicy = 'foo';
-    o.applications = buildUnnamed6980();
+    o.applications = buildUnnamed6988();
     o.autoDateAndTimeZone = 'foo';
     o.autoTimeRequired = true;
     o.blockApplicationsEnabled = true;
@@ -3101,8 +3101,8 @@ api.Policy buildPolicy() {
     o.bluetoothDisabled = true;
     o.cameraDisabled = true;
     o.cellBroadcastsConfigDisabled = true;
-    o.choosePrivateKeyRules = buildUnnamed6981();
-    o.complianceRules = buildUnnamed6982();
+    o.choosePrivateKeyRules = buildUnnamed6989();
+    o.complianceRules = buildUnnamed6990();
     o.createWindowsDisabled = true;
     o.credentialsConfigDisabled = true;
     o.dataRoamingDisabled = true;
@@ -3112,12 +3112,12 @@ api.Policy buildPolicy() {
     o.encryptionPolicy = 'foo';
     o.ensureVerifyAppsEnabled = true;
     o.factoryResetDisabled = true;
-    o.frpAdminEmails = buildUnnamed6983();
+    o.frpAdminEmails = buildUnnamed6991();
     o.funDisabled = true;
     o.installAppsDisabled = true;
     o.installUnknownSourcesAllowed = true;
     o.keyguardDisabled = true;
-    o.keyguardDisabledFeatures = buildUnnamed6984();
+    o.keyguardDisabledFeatures = buildUnnamed6992();
     o.kioskCustomLauncherEnabled = true;
     o.kioskCustomization = buildKioskCustomization();
     o.locationMode = 'foo';
@@ -3130,19 +3130,19 @@ api.Policy buildPolicy() {
     o.name = 'foo';
     o.networkEscapeHatchEnabled = true;
     o.networkResetDisabled = true;
-    o.oncCertificateProviders = buildUnnamed6985();
-    o.openNetworkConfiguration = buildUnnamed6986();
+    o.oncCertificateProviders = buildUnnamed6993();
+    o.openNetworkConfiguration = buildUnnamed6994();
     o.outgoingBeamDisabled = true;
     o.outgoingCallsDisabled = true;
-    o.passwordPolicies = buildUnnamed6987();
+    o.passwordPolicies = buildUnnamed6995();
     o.passwordRequirements = buildPasswordRequirements();
-    o.permissionGrants = buildUnnamed6988();
+    o.permissionGrants = buildUnnamed6996();
     o.permittedAccessibilityServices = buildPackageNameList();
     o.permittedInputMethods = buildPackageNameList();
-    o.persistentPreferredActivities = buildUnnamed6989();
+    o.persistentPreferredActivities = buildUnnamed6997();
     o.personalUsagePolicies = buildPersonalUsagePolicies();
     o.playStoreMode = 'foo';
-    o.policyEnforcementRules = buildUnnamed6990();
+    o.policyEnforcementRules = buildUnnamed6998();
     o.privateKeySelectionEnabled = true;
     o.recommendedGlobalProxy = buildProxyInfo();
     o.removeUserDisabled = true;
@@ -3150,14 +3150,14 @@ api.Policy buildPolicy() {
     o.screenCaptureDisabled = true;
     o.setUserIconDisabled = true;
     o.setWallpaperDisabled = true;
-    o.setupActions = buildUnnamed6991();
+    o.setupActions = buildUnnamed6999();
     o.shareLocationDisabled = true;
     o.shortSupportMessage = buildUserFacingMessage();
     o.skipFirstUseHintsEnabled = true;
     o.smsDisabled = true;
     o.statusBarDisabled = true;
     o.statusReportingSettings = buildStatusReportingSettings();
-    o.stayOnPluggedModes = buildUnnamed6992();
+    o.stayOnPluggedModes = buildUnnamed7000();
     o.systemUpdate = buildSystemUpdate();
     o.tetheringConfigDisabled = true;
     o.uninstallAppsDisabled = true;
@@ -3176,17 +3176,17 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed6978(o.accountTypesWithManagementDisabled!);
+    checkUnnamed6986(o.accountTypesWithManagementDisabled!);
     unittest.expect(o.addUserDisabled!, unittest.isTrue);
     unittest.expect(o.adjustVolumeDisabled!, unittest.isTrue);
     checkAdvancedSecurityOverrides(o.advancedSecurityOverrides!);
     checkAlwaysOnVpnPackage(o.alwaysOnVpnPackage!);
-    checkUnnamed6979(o.androidDevicePolicyTracks!);
+    checkUnnamed6987(o.androidDevicePolicyTracks!);
     unittest.expect(
       o.appAutoUpdatePolicy!,
       unittest.equals('foo'),
     );
-    checkUnnamed6980(o.applications!);
+    checkUnnamed6988(o.applications!);
     unittest.expect(
       o.autoDateAndTimeZone!,
       unittest.equals('foo'),
@@ -3198,8 +3198,8 @@ void checkPolicy(api.Policy o) {
     unittest.expect(o.bluetoothDisabled!, unittest.isTrue);
     unittest.expect(o.cameraDisabled!, unittest.isTrue);
     unittest.expect(o.cellBroadcastsConfigDisabled!, unittest.isTrue);
-    checkUnnamed6981(o.choosePrivateKeyRules!);
-    checkUnnamed6982(o.complianceRules!);
+    checkUnnamed6989(o.choosePrivateKeyRules!);
+    checkUnnamed6990(o.complianceRules!);
     unittest.expect(o.createWindowsDisabled!, unittest.isTrue);
     unittest.expect(o.credentialsConfigDisabled!, unittest.isTrue);
     unittest.expect(o.dataRoamingDisabled!, unittest.isTrue);
@@ -3215,12 +3215,12 @@ void checkPolicy(api.Policy o) {
     );
     unittest.expect(o.ensureVerifyAppsEnabled!, unittest.isTrue);
     unittest.expect(o.factoryResetDisabled!, unittest.isTrue);
-    checkUnnamed6983(o.frpAdminEmails!);
+    checkUnnamed6991(o.frpAdminEmails!);
     unittest.expect(o.funDisabled!, unittest.isTrue);
     unittest.expect(o.installAppsDisabled!, unittest.isTrue);
     unittest.expect(o.installUnknownSourcesAllowed!, unittest.isTrue);
     unittest.expect(o.keyguardDisabled!, unittest.isTrue);
-    checkUnnamed6984(o.keyguardDisabledFeatures!);
+    checkUnnamed6992(o.keyguardDisabledFeatures!);
     unittest.expect(o.kioskCustomLauncherEnabled!, unittest.isTrue);
     checkKioskCustomization(o.kioskCustomization!);
     unittest.expect(
@@ -3245,22 +3245,22 @@ void checkPolicy(api.Policy o) {
     );
     unittest.expect(o.networkEscapeHatchEnabled!, unittest.isTrue);
     unittest.expect(o.networkResetDisabled!, unittest.isTrue);
-    checkUnnamed6985(o.oncCertificateProviders!);
-    checkUnnamed6986(o.openNetworkConfiguration!);
+    checkUnnamed6993(o.oncCertificateProviders!);
+    checkUnnamed6994(o.openNetworkConfiguration!);
     unittest.expect(o.outgoingBeamDisabled!, unittest.isTrue);
     unittest.expect(o.outgoingCallsDisabled!, unittest.isTrue);
-    checkUnnamed6987(o.passwordPolicies!);
+    checkUnnamed6995(o.passwordPolicies!);
     checkPasswordRequirements(o.passwordRequirements!);
-    checkUnnamed6988(o.permissionGrants!);
+    checkUnnamed6996(o.permissionGrants!);
     checkPackageNameList(o.permittedAccessibilityServices!);
     checkPackageNameList(o.permittedInputMethods!);
-    checkUnnamed6989(o.persistentPreferredActivities!);
+    checkUnnamed6997(o.persistentPreferredActivities!);
     checkPersonalUsagePolicies(o.personalUsagePolicies!);
     unittest.expect(
       o.playStoreMode!,
       unittest.equals('foo'),
     );
-    checkUnnamed6990(o.policyEnforcementRules!);
+    checkUnnamed6998(o.policyEnforcementRules!);
     unittest.expect(o.privateKeySelectionEnabled!, unittest.isTrue);
     checkProxyInfo(o.recommendedGlobalProxy!);
     unittest.expect(o.removeUserDisabled!, unittest.isTrue);
@@ -3268,14 +3268,14 @@ void checkPolicy(api.Policy o) {
     unittest.expect(o.screenCaptureDisabled!, unittest.isTrue);
     unittest.expect(o.setUserIconDisabled!, unittest.isTrue);
     unittest.expect(o.setWallpaperDisabled!, unittest.isTrue);
-    checkUnnamed6991(o.setupActions!);
+    checkUnnamed6999(o.setupActions!);
     unittest.expect(o.shareLocationDisabled!, unittest.isTrue);
     checkUserFacingMessage(o.shortSupportMessage!);
     unittest.expect(o.skipFirstUseHintsEnabled!, unittest.isTrue);
     unittest.expect(o.smsDisabled!, unittest.isTrue);
     unittest.expect(o.statusBarDisabled!, unittest.isTrue);
     checkStatusReportingSettings(o.statusReportingSettings!);
-    checkUnnamed6992(o.stayOnPluggedModes!);
+    checkUnnamed7000(o.stayOnPluggedModes!);
     checkSystemUpdate(o.systemUpdate!);
     unittest.expect(o.tetheringConfigDisabled!, unittest.isTrue);
     unittest.expect(o.uninstallAppsDisabled!, unittest.isTrue);
@@ -3319,12 +3319,12 @@ void checkPolicyEnforcementRule(api.PolicyEnforcementRule o) {
   buildCounterPolicyEnforcementRule--;
 }
 
-core.List<api.UserFacingMessage> buildUnnamed6993() => [
+core.List<api.UserFacingMessage> buildUnnamed7001() => [
       buildUserFacingMessage(),
       buildUserFacingMessage(),
     ];
 
-void checkUnnamed6993(core.List<api.UserFacingMessage> o) {
+void checkUnnamed7001(core.List<api.UserFacingMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserFacingMessage(o[0]);
   checkUserFacingMessage(o[1]);
@@ -3335,7 +3335,7 @@ api.PostureDetail buildPostureDetail() {
   final o = api.PostureDetail();
   buildCounterPostureDetail++;
   if (buildCounterPostureDetail < 3) {
-    o.advice = buildUnnamed6993();
+    o.advice = buildUnnamed7001();
     o.securityRisk = 'foo';
   }
   buildCounterPostureDetail--;
@@ -3345,7 +3345,7 @@ api.PostureDetail buildPostureDetail() {
 void checkPostureDetail(api.PostureDetail o) {
   buildCounterPostureDetail++;
   if (buildCounterPostureDetail < 3) {
-    checkUnnamed6993(o.advice!);
+    checkUnnamed7001(o.advice!);
     unittest.expect(
       o.securityRisk!,
       unittest.equals('foo'),
@@ -3386,12 +3386,12 @@ void checkPowerManagementEvent(api.PowerManagementEvent o) {
   buildCounterPowerManagementEvent--;
 }
 
-core.List<core.String> buildUnnamed6994() => [
+core.List<core.String> buildUnnamed7002() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6994(core.List<core.String> o) {
+void checkUnnamed7002(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3408,7 +3408,7 @@ api.ProxyInfo buildProxyInfo() {
   final o = api.ProxyInfo();
   buildCounterProxyInfo++;
   if (buildCounterProxyInfo < 3) {
-    o.excludedHosts = buildUnnamed6994();
+    o.excludedHosts = buildUnnamed7002();
     o.host = 'foo';
     o.pacUri = 'foo';
     o.port = 42;
@@ -3420,7 +3420,7 @@ api.ProxyInfo buildProxyInfo() {
 void checkProxyInfo(api.ProxyInfo o) {
   buildCounterProxyInfo++;
   if (buildCounterProxyInfo < 3) {
-    checkUnnamed6994(o.excludedHosts!);
+    checkUnnamed7002(o.excludedHosts!);
     unittest.expect(
       o.host!,
       unittest.equals('foo'),
@@ -3437,12 +3437,12 @@ void checkProxyInfo(api.ProxyInfo o) {
   buildCounterProxyInfo--;
 }
 
-core.List<api.PostureDetail> buildUnnamed6995() => [
+core.List<api.PostureDetail> buildUnnamed7003() => [
       buildPostureDetail(),
       buildPostureDetail(),
     ];
 
-void checkUnnamed6995(core.List<api.PostureDetail> o) {
+void checkUnnamed7003(core.List<api.PostureDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostureDetail(o[0]);
   checkPostureDetail(o[1]);
@@ -3454,7 +3454,7 @@ api.SecurityPosture buildSecurityPosture() {
   buildCounterSecurityPosture++;
   if (buildCounterSecurityPosture < 3) {
     o.devicePosture = 'foo';
-    o.postureDetails = buildUnnamed6995();
+    o.postureDetails = buildUnnamed7003();
   }
   buildCounterSecurityPosture--;
   return o;
@@ -3467,7 +3467,7 @@ void checkSecurityPosture(api.SecurityPosture o) {
       o.devicePosture!,
       unittest.equals('foo'),
     );
-    checkUnnamed6995(o.postureDetails!);
+    checkUnnamed7003(o.postureDetails!);
   }
   buildCounterSecurityPosture--;
 }
@@ -3628,7 +3628,7 @@ void checkSoftwareInfo(api.SoftwareInfo o) {
   buildCounterSoftwareInfo--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6996() => {
+core.Map<core.String, core.Object> buildUnnamed7004() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3641,7 +3641,7 @@ core.Map<core.String, core.Object> buildUnnamed6996() => {
       },
     };
 
-void checkUnnamed6996(core.Map<core.String, core.Object> o) {
+void checkUnnamed7004(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -3673,15 +3673,15 @@ void checkUnnamed6996(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed6997() => [
-      buildUnnamed6996(),
-      buildUnnamed6996(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed7005() => [
+      buildUnnamed7004(),
+      buildUnnamed7004(),
     ];
 
-void checkUnnamed6997(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed7005(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6996(o[0]);
-  checkUnnamed6996(o[1]);
+  checkUnnamed7004(o[0]);
+  checkUnnamed7004(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -3690,7 +3690,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed6997();
+    o.details = buildUnnamed7005();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -3704,7 +3704,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed6997(o.details!);
+    checkUnnamed7005(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -3752,12 +3752,12 @@ void checkStatusReportingSettings(api.StatusReportingSettings o) {
   buildCounterStatusReportingSettings--;
 }
 
-core.List<api.FreezePeriod> buildUnnamed6998() => [
+core.List<api.FreezePeriod> buildUnnamed7006() => [
       buildFreezePeriod(),
       buildFreezePeriod(),
     ];
 
-void checkUnnamed6998(core.List<api.FreezePeriod> o) {
+void checkUnnamed7006(core.List<api.FreezePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreezePeriod(o[0]);
   checkFreezePeriod(o[1]);
@@ -3769,7 +3769,7 @@ api.SystemUpdate buildSystemUpdate() {
   buildCounterSystemUpdate++;
   if (buildCounterSystemUpdate < 3) {
     o.endMinutes = 42;
-    o.freezePeriods = buildUnnamed6998();
+    o.freezePeriods = buildUnnamed7006();
     o.startMinutes = 42;
     o.type = 'foo';
   }
@@ -3784,7 +3784,7 @@ void checkSystemUpdate(api.SystemUpdate o) {
       o.endMinutes!,
       unittest.equals(42),
     );
-    checkUnnamed6998(o.freezePeriods!);
+    checkUnnamed7006(o.freezePeriods!);
     unittest.expect(
       o.startMinutes!,
       unittest.equals(42),
@@ -3894,12 +3894,12 @@ void checkUser(api.User o) {
   buildCounterUser--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6999() => {
+core.Map<core.String, core.String> buildUnnamed7007() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6999(core.Map<core.String, core.String> o) {
+void checkUnnamed7007(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3917,7 +3917,7 @@ api.UserFacingMessage buildUserFacingMessage() {
   buildCounterUserFacingMessage++;
   if (buildCounterUserFacingMessage < 3) {
     o.defaultMessage = 'foo';
-    o.localizedMessages = buildUnnamed6999();
+    o.localizedMessages = buildUnnamed7007();
   }
   buildCounterUserFacingMessage--;
   return o;
@@ -3930,17 +3930,17 @@ void checkUserFacingMessage(api.UserFacingMessage o) {
       o.defaultMessage!,
       unittest.equals('foo'),
     );
-    checkUnnamed6999(o.localizedMessages!);
+    checkUnnamed7007(o.localizedMessages!);
   }
   buildCounterUserFacingMessage--;
 }
 
-core.List<api.WebAppIcon> buildUnnamed7000() => [
+core.List<api.WebAppIcon> buildUnnamed7008() => [
       buildWebAppIcon(),
       buildWebAppIcon(),
     ];
 
-void checkUnnamed7000(core.List<api.WebAppIcon> o) {
+void checkUnnamed7008(core.List<api.WebAppIcon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebAppIcon(o[0]);
   checkWebAppIcon(o[1]);
@@ -3952,7 +3952,7 @@ api.WebApp buildWebApp() {
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
     o.displayMode = 'foo';
-    o.icons = buildUnnamed7000();
+    o.icons = buildUnnamed7008();
     o.name = 'foo';
     o.startUrl = 'foo';
     o.title = 'foo';
@@ -3969,7 +3969,7 @@ void checkWebApp(api.WebApp o) {
       o.displayMode!,
       unittest.equals('foo'),
     );
-    checkUnnamed7000(o.icons!);
+    checkUnnamed7008(o.icons!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4012,12 +4012,12 @@ void checkWebAppIcon(api.WebAppIcon o) {
   buildCounterWebAppIcon--;
 }
 
-core.List<core.String> buildUnnamed7001() => [
+core.List<core.String> buildUnnamed7009() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7001(core.List<core.String> o) {
+void checkUnnamed7009(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4029,12 +4029,12 @@ void checkUnnamed7001(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7002() => [
+core.List<core.String> buildUnnamed7010() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7002(core.List<core.String> o) {
+void checkUnnamed7010(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4051,10 +4051,10 @@ api.WebToken buildWebToken() {
   final o = api.WebToken();
   buildCounterWebToken++;
   if (buildCounterWebToken < 3) {
-    o.enabledFeatures = buildUnnamed7001();
+    o.enabledFeatures = buildUnnamed7009();
     o.name = 'foo';
     o.parentFrameUrl = 'foo';
-    o.permissions = buildUnnamed7002();
+    o.permissions = buildUnnamed7010();
     o.value = 'foo';
   }
   buildCounterWebToken--;
@@ -4064,7 +4064,7 @@ api.WebToken buildWebToken() {
 void checkWebToken(api.WebToken o) {
   buildCounterWebToken++;
   if (buildCounterWebToken < 3) {
-    checkUnnamed7001(o.enabledFeatures!);
+    checkUnnamed7009(o.enabledFeatures!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4073,7 +4073,7 @@ void checkWebToken(api.WebToken o) {
       o.parentFrameUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed7002(o.permissions!);
+    checkUnnamed7010(o.permissions!);
     unittest.expect(
       o.value!,
       unittest.equals('foo'),
@@ -4106,12 +4106,12 @@ void checkWipeAction(api.WipeAction o) {
   buildCounterWipeAction--;
 }
 
-core.List<core.String> buildUnnamed7003() => [
+core.List<core.String> buildUnnamed7011() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7003(core.List<core.String> o) {
+void checkUnnamed7011(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5263,7 +5263,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AndroidManagementApi(mock).enterprises.devices;
       final arg_name = 'foo';
-      final arg_wipeDataFlags = buildUnnamed7003();
+      final arg_wipeDataFlags = buildUnnamed7011();
       final arg_wipeReasonMessage = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
