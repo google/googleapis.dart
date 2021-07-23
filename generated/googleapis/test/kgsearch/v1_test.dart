@@ -26,7 +26,7 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.Object> buildUnnamed79() => [
+core.List<core.Object> buildUnnamed2522() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -39,7 +39,7 @@ core.List<core.Object> buildUnnamed79() => [
       },
     ];
 
-void checkUnnamed79(core.List<core.Object> o) {
+void checkUnnamed2522(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -86,7 +86,7 @@ api.SearchResponse buildSearchResponse() {
       'bool': true,
       'string': 'foo'
     };
-    o.itemListElement = buildUnnamed79();
+    o.itemListElement = buildUnnamed2522();
   }
   buildCounterSearchResponse--;
   return o;
@@ -123,17 +123,17 @@ void checkSearchResponse(api.SearchResponse o) {
       casted4['string'],
       unittest.equals('foo'),
     );
-    checkUnnamed79(o.itemListElement!);
+    checkUnnamed2522(o.itemListElement!);
   }
   buildCounterSearchResponse--;
 }
 
-core.List<core.String> buildUnnamed80() => [
+core.List<core.String> buildUnnamed2523() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed80(core.List<core.String> o) {
+void checkUnnamed2523(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -145,12 +145,12 @@ void checkUnnamed80(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed81() => [
+core.List<core.String> buildUnnamed2524() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed81(core.List<core.String> o) {
+void checkUnnamed2524(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -162,12 +162,12 @@ void checkUnnamed81(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed82() => [
+core.List<core.String> buildUnnamed2525() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed82(core.List<core.String> o) {
+void checkUnnamed2525(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -194,13 +194,13 @@ void main() {
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
       final res = api.KgsearchApi(mock).entities;
-      final arg_ids = buildUnnamed80();
+      final arg_ids = buildUnnamed2523();
       final arg_indent = true;
-      final arg_languages = buildUnnamed81();
+      final arg_languages = buildUnnamed2524();
       final arg_limit = 42;
       final arg_prefix = true;
       final arg_query = 'foo';
-      final arg_types = buildUnnamed82();
+      final arg_types = buildUnnamed2525();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

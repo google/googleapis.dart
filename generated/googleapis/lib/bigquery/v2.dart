@@ -3650,7 +3650,8 @@ class BqmlTrainingRun {
         if (iterationResults != null)
           'iterationResults':
               iterationResults!.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': startTime!.toIso8601String(),
+        if (startTime != null)
+          'startTime': startTime!.toUtc().toIso8601String(),
         if (state != null) 'state': state!,
         if (trainingOptions != null)
           'trainingOptions': trainingOptions!.toJson(),
@@ -10468,7 +10469,7 @@ class SnapshotDefinition {
         if (baseTableReference != null)
           'baseTableReference': baseTableReference!.toJson(),
         if (snapshotTime != null)
-          'snapshotTime': snapshotTime!.toIso8601String(),
+          'snapshotTime': snapshotTime!.toUtc().toIso8601String(),
       };
 }
 

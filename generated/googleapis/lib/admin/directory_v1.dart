@@ -6932,7 +6932,8 @@ class ChromeOsDeviceCpuStatusReports {
               cpuTemperatureInfo!.map((value) => value.toJson()).toList(),
         if (cpuUtilizationPercentageInfo != null)
           'cpuUtilizationPercentageInfo': cpuUtilizationPercentageInfo!,
-        if (reportTime != null) 'reportTime': reportTime!.toIso8601String(),
+        if (reportTime != null)
+          'reportTime': reportTime!.toUtc().toIso8601String(),
       };
 }
 
@@ -6969,7 +6970,8 @@ class ChromeOsDeviceDeviceFiles {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!.toIso8601String(),
+        if (createTime != null)
+          'createTime': createTime!.toUtc().toIso8601String(),
         if (downloadUrl != null) 'downloadUrl': downloadUrl!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
@@ -7127,7 +7129,8 @@ class ChromeOsDeviceScreenshotFiles {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!.toIso8601String(),
+        if (createTime != null)
+          'createTime': createTime!.toUtc().toIso8601String(),
         if (downloadUrl != null) 'downloadUrl': downloadUrl!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
@@ -7157,7 +7160,8 @@ class ChromeOsDeviceSystemRamFreeReports {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reportTime != null) 'reportTime': reportTime!.toIso8601String(),
+        if (reportTime != null)
+          'reportTime': reportTime!.toUtc().toIso8601String(),
         if (systemRamFreeInfo != null) 'systemRamFreeInfo': systemRamFreeInfo!,
       };
 }
@@ -7617,11 +7621,11 @@ class ChromeOsDevice {
         if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
         if (kind != null) 'kind': kind!,
         if (lastEnrollmentTime != null)
-          'lastEnrollmentTime': lastEnrollmentTime!.toIso8601String(),
+          'lastEnrollmentTime': lastEnrollmentTime!.toUtc().toIso8601String(),
         if (lastKnownNetwork != null)
           'lastKnownNetwork':
               lastKnownNetwork!.map((value) => value.toJson()).toList(),
-        if (lastSync != null) 'lastSync': lastSync!.toIso8601String(),
+        if (lastSync != null) 'lastSync': lastSync!.toUtc().toIso8601String(),
         if (macAddress != null) 'macAddress': macAddress!,
         if (manufactureDate != null) 'manufactureDate': manufactureDate!,
         if (meid != null) 'meid': meid!,
@@ -7639,7 +7643,7 @@ class ChromeOsDevice {
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (status != null) 'status': status!,
         if (supportEndDate != null)
-          'supportEndDate': supportEndDate!.toIso8601String(),
+          'supportEndDate': supportEndDate!.toUtc().toIso8601String(),
         if (systemRamFreeReports != null)
           'systemRamFreeReports':
               systemRamFreeReports!.map((value) => value.toJson()).toList(),
@@ -7875,7 +7879,8 @@ class Customer {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateEmail != null) 'alternateEmail': alternateEmail!,
         if (customerCreationTime != null)
-          'customerCreationTime': customerCreationTime!.toIso8601String(),
+          'customerCreationTime':
+              customerCreationTime!.toUtc().toIso8601String(),
         if (customerDomain != null) 'customerDomain': customerDomain!,
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -9491,13 +9496,14 @@ class MobileDevice {
         if (email != null) 'email': email!,
         if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
         if (etag != null) 'etag': etag!,
-        if (firstSync != null) 'firstSync': firstSync!.toIso8601String(),
+        if (firstSync != null)
+          'firstSync': firstSync!.toUtc().toIso8601String(),
         if (hardware != null) 'hardware': hardware!,
         if (hardwareId != null) 'hardwareId': hardwareId!,
         if (imei != null) 'imei': imei!,
         if (kernelVersion != null) 'kernelVersion': kernelVersion!,
         if (kind != null) 'kind': kind!,
-        if (lastSync != null) 'lastSync': lastSync!.toIso8601String(),
+        if (lastSync != null) 'lastSync': lastSync!.toUtc().toIso8601String(),
         if (managedAccountIsOnOwnerProfile != null)
           'managedAccountIsOnOwnerProfile': managedAccountIsOnOwnerProfile!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
@@ -11168,11 +11174,11 @@ class User {
         if (changePasswordAtNextLogin != null)
           'changePasswordAtNextLogin': changePasswordAtNextLogin!,
         if (creationTime != null)
-          'creationTime': creationTime!.toIso8601String(),
+          'creationTime': creationTime!.toUtc().toIso8601String(),
         if (customSchemas != null) 'customSchemas': customSchemas!,
         if (customerId != null) 'customerId': customerId!,
         if (deletionTime != null)
-          'deletionTime': deletionTime!.toIso8601String(),
+          'deletionTime': deletionTime!.toUtc().toIso8601String(),
         if (emails != null) 'emails': emails!,
         if (etag != null) 'etag': etag!,
         if (externalIds != null) 'externalIds': externalIds!,
@@ -11192,7 +11198,7 @@ class User {
         if (kind != null) 'kind': kind!,
         if (languages != null) 'languages': languages!,
         if (lastLoginTime != null)
-          'lastLoginTime': lastLoginTime!.toIso8601String(),
+          'lastLoginTime': lastLoginTime!.toUtc().toIso8601String(),
         if (locations != null) 'locations': locations!,
         if (name != null) 'name': name!.toJson(),
         if (nonEditableAliases != null)

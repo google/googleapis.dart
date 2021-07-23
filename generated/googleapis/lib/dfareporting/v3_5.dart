@@ -12393,7 +12393,7 @@ class Ad {
           'deliverySchedule': deliverySchedule!.toJson(),
         if (dynamicClickTracker != null)
           'dynamicClickTracker': dynamicClickTracker!,
-        if (endTime != null) 'endTime': endTime!.toIso8601String(),
+        if (endTime != null) 'endTime': endTime!.toUtc().toIso8601String(),
         if (eventTagOverrides != null)
           'eventTagOverrides':
               eventTagOverrides!.map((value) => value.toJson()).toList(),
@@ -12417,7 +12417,8 @@ class Ad {
         if (size != null) 'size': size!.toJson(),
         if (sslCompliant != null) 'sslCompliant': sslCompliant!,
         if (sslRequired != null) 'sslRequired': sslRequired!,
-        if (startTime != null) 'startTime': startTime!.toIso8601String(),
+        if (startTime != null)
+          'startTime': startTime!.toUtc().toIso8601String(),
         if (subaccountId != null) 'subaccountId': subaccountId!,
         if (targetingTemplateId != null)
           'targetingTemplateId': targetingTemplateId!,
@@ -13697,7 +13698,8 @@ class ChangeLog {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (action != null) 'action': action!,
-        if (changeTime != null) 'changeTime': changeTime!.toIso8601String(),
+        if (changeTime != null)
+          'changeTime': changeTime!.toUtc().toIso8601String(),
         if (fieldName != null) 'fieldName': fieldName!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -17014,13 +17016,14 @@ class CreativeAssignment {
         if (creativeId != null) 'creativeId': creativeId!,
         if (creativeIdDimensionValue != null)
           'creativeIdDimensionValue': creativeIdDimensionValue!.toJson(),
-        if (endTime != null) 'endTime': endTime!.toIso8601String(),
+        if (endTime != null) 'endTime': endTime!.toUtc().toIso8601String(),
         if (richMediaExitOverrides != null)
           'richMediaExitOverrides':
               richMediaExitOverrides!.map((value) => value.toJson()).toList(),
         if (sequence != null) 'sequence': sequence!,
         if (sslCompliant != null) 'sslCompliant': sslCompliant!,
-        if (startTime != null) 'startTime': startTime!.toIso8601String(),
+        if (startTime != null)
+          'startTime': startTime!.toUtc().toIso8601String(),
         if (weight != null) 'weight': weight!,
       };
 }
@@ -22878,7 +22881,7 @@ class OrderDocument {
         if (lastSentRecipients != null)
           'lastSentRecipients': lastSentRecipients!,
         if (lastSentTime != null)
-          'lastSentTime': lastSentTime!.toIso8601String(),
+          'lastSentTime': lastSentTime!.toUtc().toIso8601String(),
         if (orderId != null) 'orderId': orderId!,
         if (projectId != null) 'projectId': projectId!,
         if (signed != null) 'signed': signed!,

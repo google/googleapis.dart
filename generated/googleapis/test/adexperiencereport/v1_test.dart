@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed3449() => [
+core.List<core.String> buildUnnamed7261() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3449(core.List<core.String> o) {
+void checkUnnamed7261(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -52,7 +52,7 @@ api.PlatformSummary buildPlatformSummary() {
     o.enforcementTime = 'foo';
     o.filterStatus = 'foo';
     o.lastChangeTime = 'foo';
-    o.region = buildUnnamed3449();
+    o.region = buildUnnamed7261();
     o.reportUrl = 'foo';
     o.underReview = true;
   }
@@ -79,7 +79,7 @@ void checkPlatformSummary(api.PlatformSummary o) {
       o.lastChangeTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3449(o.region!);
+    checkUnnamed7261(o.region!);
     unittest.expect(
       o.reportUrl!,
       unittest.equals('foo'),
@@ -115,12 +115,12 @@ void checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-core.List<api.SiteSummaryResponse> buildUnnamed3450() => [
+core.List<api.SiteSummaryResponse> buildUnnamed7262() => [
       buildSiteSummaryResponse(),
       buildSiteSummaryResponse(),
     ];
 
-void checkUnnamed3450(core.List<api.SiteSummaryResponse> o) {
+void checkUnnamed7262(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -131,7 +131,7 @@ api.ViolatingSitesResponse buildViolatingSitesResponse() {
   final o = api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed3450();
+    o.violatingSites = buildUnnamed7262();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -140,7 +140,7 @@ api.ViolatingSitesResponse buildViolatingSitesResponse() {
 void checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed3450(o.violatingSites!);
+    checkUnnamed7262(o.violatingSites!);
   }
   buildCounterViolatingSitesResponse--;
 }

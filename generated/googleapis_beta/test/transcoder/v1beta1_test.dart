@@ -199,12 +199,12 @@ void checkAudio(api.Audio o) {
   buildCounterAudio--;
 }
 
-core.List<api.AudioChannel> buildUnnamed8520() => [
+core.List<api.AudioChannel> buildUnnamed7806() => [
       buildAudioChannel(),
       buildAudioChannel(),
     ];
 
-void checkUnnamed8520(core.List<api.AudioChannel> o) {
+void checkUnnamed7806(core.List<api.AudioChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAudioChannel(o[0]);
   checkAudioChannel(o[1]);
@@ -215,7 +215,7 @@ api.AudioAtom buildAudioAtom() {
   final o = api.AudioAtom();
   buildCounterAudioAtom++;
   if (buildCounterAudioAtom < 3) {
-    o.channels = buildUnnamed8520();
+    o.channels = buildUnnamed7806();
     o.key = 'foo';
   }
   buildCounterAudioAtom--;
@@ -225,7 +225,7 @@ api.AudioAtom buildAudioAtom() {
 void checkAudioAtom(api.AudioAtom o) {
   buildCounterAudioAtom++;
   if (buildCounterAudioAtom < 3) {
-    checkUnnamed8520(o.channels!);
+    checkUnnamed7806(o.channels!);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),
@@ -234,12 +234,12 @@ void checkAudioAtom(api.AudioAtom o) {
   buildCounterAudioAtom--;
 }
 
-core.List<api.AudioChannelInput> buildUnnamed8521() => [
+core.List<api.AudioChannelInput> buildUnnamed7807() => [
       buildAudioChannelInput(),
       buildAudioChannelInput(),
     ];
 
-void checkUnnamed8521(core.List<api.AudioChannelInput> o) {
+void checkUnnamed7807(core.List<api.AudioChannelInput> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAudioChannelInput(o[0]);
   checkAudioChannelInput(o[1]);
@@ -250,7 +250,7 @@ api.AudioChannel buildAudioChannel() {
   final o = api.AudioChannel();
   buildCounterAudioChannel++;
   if (buildCounterAudioChannel < 3) {
-    o.inputs = buildUnnamed8521();
+    o.inputs = buildUnnamed7807();
   }
   buildCounterAudioChannel--;
   return o;
@@ -259,7 +259,7 @@ api.AudioChannel buildAudioChannel() {
 void checkAudioChannel(api.AudioChannel o) {
   buildCounterAudioChannel++;
   if (buildCounterAudioChannel < 3) {
-    checkUnnamed8521(o.inputs!);
+    checkUnnamed7807(o.inputs!);
   }
   buildCounterAudioChannel--;
 }
@@ -301,12 +301,12 @@ void checkAudioChannelInput(api.AudioChannelInput o) {
   buildCounterAudioChannelInput--;
 }
 
-core.List<core.String> buildUnnamed8522() => [
+core.List<core.String> buildUnnamed7808() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8522(core.List<core.String> o) {
+void checkUnnamed7808(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -318,12 +318,12 @@ void checkUnnamed8522(core.List<core.String> o) {
   );
 }
 
-core.List<api.AudioAtom> buildUnnamed8523() => [
+core.List<api.AudioAtom> buildUnnamed7809() => [
       buildAudioAtom(),
       buildAudioAtom(),
     ];
 
-void checkUnnamed8523(core.List<api.AudioAtom> o) {
+void checkUnnamed7809(core.List<api.AudioAtom> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAudioAtom(o[0]);
   checkAudioAtom(o[1]);
@@ -336,9 +336,9 @@ api.AudioStream buildAudioStream() {
   if (buildCounterAudioStream < 3) {
     o.bitrateBps = 42;
     o.channelCount = 42;
-    o.channelLayout = buildUnnamed8522();
+    o.channelLayout = buildUnnamed7808();
     o.codec = 'foo';
-    o.mapping = buildUnnamed8523();
+    o.mapping = buildUnnamed7809();
     o.sampleRateHertz = 42;
   }
   buildCounterAudioStream--;
@@ -356,12 +356,12 @@ void checkAudioStream(api.AudioStream o) {
       o.channelCount!,
       unittest.equals(42),
     );
-    checkUnnamed8522(o.channelLayout!);
+    checkUnnamed7808(o.channelLayout!);
     unittest.expect(
       o.codec!,
       unittest.equals('foo'),
     );
-    checkUnnamed8523(o.mapping!);
+    checkUnnamed7809(o.mapping!);
     unittest.expect(
       o.sampleRateHertz!,
       unittest.equals(42),
@@ -490,12 +490,12 @@ void checkDenoise(api.Denoise o) {
   buildCounterDenoise--;
 }
 
-core.List<core.String> buildUnnamed8524() => [
+core.List<core.String> buildUnnamed7810() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8524(core.List<core.String> o) {
+void checkUnnamed7810(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -513,7 +513,7 @@ api.EditAtom buildEditAtom() {
   buildCounterEditAtom++;
   if (buildCounterEditAtom < 3) {
     o.endTimeOffset = 'foo';
-    o.inputs = buildUnnamed8524();
+    o.inputs = buildUnnamed7810();
     o.key = 'foo';
     o.startTimeOffset = 'foo';
   }
@@ -528,7 +528,7 @@ void checkEditAtom(api.EditAtom o) {
       o.endTimeOffset!,
       unittest.equals('foo'),
     );
-    checkUnnamed8524(o.inputs!);
+    checkUnnamed7810(o.inputs!);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),
@@ -697,12 +697,12 @@ void checkInput(api.Input o) {
   buildCounterInput--;
 }
 
-core.List<api.FailureDetail> buildUnnamed8525() => [
+core.List<api.FailureDetail> buildUnnamed7811() => [
       buildFailureDetail(),
       buildFailureDetail(),
     ];
 
-void checkUnnamed8525(core.List<api.FailureDetail> o) {
+void checkUnnamed7811(core.List<api.FailureDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFailureDetail(o[0]);
   checkFailureDetail(o[1]);
@@ -716,7 +716,7 @@ api.Job buildJob() {
     o.config = buildJobConfig();
     o.createTime = 'foo';
     o.endTime = 'foo';
-    o.failureDetails = buildUnnamed8525();
+    o.failureDetails = buildUnnamed7811();
     o.failureReason = 'foo';
     o.inputUri = 'foo';
     o.name = 'foo';
@@ -745,7 +745,7 @@ void checkJob(api.Job o) {
       o.endTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed8525(o.failureDetails!);
+    checkUnnamed7811(o.failureDetails!);
     unittest.expect(
       o.failureReason!,
       unittest.equals('foo'),
@@ -788,89 +788,89 @@ void checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-core.List<api.AdBreak> buildUnnamed8526() => [
+core.List<api.AdBreak> buildUnnamed7812() => [
       buildAdBreak(),
       buildAdBreak(),
     ];
 
-void checkUnnamed8526(core.List<api.AdBreak> o) {
+void checkUnnamed7812(core.List<api.AdBreak> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdBreak(o[0]);
   checkAdBreak(o[1]);
 }
 
-core.List<api.EditAtom> buildUnnamed8527() => [
+core.List<api.EditAtom> buildUnnamed7813() => [
       buildEditAtom(),
       buildEditAtom(),
     ];
 
-void checkUnnamed8527(core.List<api.EditAtom> o) {
+void checkUnnamed7813(core.List<api.EditAtom> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEditAtom(o[0]);
   checkEditAtom(o[1]);
 }
 
-core.List<api.ElementaryStream> buildUnnamed8528() => [
+core.List<api.ElementaryStream> buildUnnamed7814() => [
       buildElementaryStream(),
       buildElementaryStream(),
     ];
 
-void checkUnnamed8528(core.List<api.ElementaryStream> o) {
+void checkUnnamed7814(core.List<api.ElementaryStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkElementaryStream(o[0]);
   checkElementaryStream(o[1]);
 }
 
-core.List<api.Input> buildUnnamed8529() => [
+core.List<api.Input> buildUnnamed7815() => [
       buildInput(),
       buildInput(),
     ];
 
-void checkUnnamed8529(core.List<api.Input> o) {
+void checkUnnamed7815(core.List<api.Input> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInput(o[0]);
   checkInput(o[1]);
 }
 
-core.List<api.Manifest> buildUnnamed8530() => [
+core.List<api.Manifest> buildUnnamed7816() => [
       buildManifest(),
       buildManifest(),
     ];
 
-void checkUnnamed8530(core.List<api.Manifest> o) {
+void checkUnnamed7816(core.List<api.Manifest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManifest(o[0]);
   checkManifest(o[1]);
 }
 
-core.List<api.MuxStream> buildUnnamed8531() => [
+core.List<api.MuxStream> buildUnnamed7817() => [
       buildMuxStream(),
       buildMuxStream(),
     ];
 
-void checkUnnamed8531(core.List<api.MuxStream> o) {
+void checkUnnamed7817(core.List<api.MuxStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMuxStream(o[0]);
   checkMuxStream(o[1]);
 }
 
-core.List<api.Overlay> buildUnnamed8532() => [
+core.List<api.Overlay> buildUnnamed7818() => [
       buildOverlay(),
       buildOverlay(),
     ];
 
-void checkUnnamed8532(core.List<api.Overlay> o) {
+void checkUnnamed7818(core.List<api.Overlay> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOverlay(o[0]);
   checkOverlay(o[1]);
 }
 
-core.List<api.SpriteSheet> buildUnnamed8533() => [
+core.List<api.SpriteSheet> buildUnnamed7819() => [
       buildSpriteSheet(),
       buildSpriteSheet(),
     ];
 
-void checkUnnamed8533(core.List<api.SpriteSheet> o) {
+void checkUnnamed7819(core.List<api.SpriteSheet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpriteSheet(o[0]);
   checkSpriteSheet(o[1]);
@@ -881,16 +881,16 @@ api.JobConfig buildJobConfig() {
   final o = api.JobConfig();
   buildCounterJobConfig++;
   if (buildCounterJobConfig < 3) {
-    o.adBreaks = buildUnnamed8526();
-    o.editList = buildUnnamed8527();
-    o.elementaryStreams = buildUnnamed8528();
-    o.inputs = buildUnnamed8529();
-    o.manifests = buildUnnamed8530();
-    o.muxStreams = buildUnnamed8531();
+    o.adBreaks = buildUnnamed7812();
+    o.editList = buildUnnamed7813();
+    o.elementaryStreams = buildUnnamed7814();
+    o.inputs = buildUnnamed7815();
+    o.manifests = buildUnnamed7816();
+    o.muxStreams = buildUnnamed7817();
     o.output = buildOutput();
-    o.overlays = buildUnnamed8532();
+    o.overlays = buildUnnamed7818();
     o.pubsubDestination = buildPubsubDestination();
-    o.spriteSheets = buildUnnamed8533();
+    o.spriteSheets = buildUnnamed7819();
   }
   buildCounterJobConfig--;
   return o;
@@ -899,16 +899,16 @@ api.JobConfig buildJobConfig() {
 void checkJobConfig(api.JobConfig o) {
   buildCounterJobConfig++;
   if (buildCounterJobConfig < 3) {
-    checkUnnamed8526(o.adBreaks!);
-    checkUnnamed8527(o.editList!);
-    checkUnnamed8528(o.elementaryStreams!);
-    checkUnnamed8529(o.inputs!);
-    checkUnnamed8530(o.manifests!);
-    checkUnnamed8531(o.muxStreams!);
+    checkUnnamed7812(o.adBreaks!);
+    checkUnnamed7813(o.editList!);
+    checkUnnamed7814(o.elementaryStreams!);
+    checkUnnamed7815(o.inputs!);
+    checkUnnamed7816(o.manifests!);
+    checkUnnamed7817(o.muxStreams!);
     checkOutput(o.output!);
-    checkUnnamed8532(o.overlays!);
+    checkUnnamed7818(o.overlays!);
     checkPubsubDestination(o.pubsubDestination!);
-    checkUnnamed8533(o.spriteSheets!);
+    checkUnnamed7819(o.spriteSheets!);
   }
   buildCounterJobConfig--;
 }
@@ -937,12 +937,12 @@ void checkJobTemplate(api.JobTemplate o) {
   buildCounterJobTemplate--;
 }
 
-core.List<api.JobTemplate> buildUnnamed8534() => [
+core.List<api.JobTemplate> buildUnnamed7820() => [
       buildJobTemplate(),
       buildJobTemplate(),
     ];
 
-void checkUnnamed8534(core.List<api.JobTemplate> o) {
+void checkUnnamed7820(core.List<api.JobTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJobTemplate(o[0]);
   checkJobTemplate(o[1]);
@@ -953,7 +953,7 @@ api.ListJobTemplatesResponse buildListJobTemplatesResponse() {
   final o = api.ListJobTemplatesResponse();
   buildCounterListJobTemplatesResponse++;
   if (buildCounterListJobTemplatesResponse < 3) {
-    o.jobTemplates = buildUnnamed8534();
+    o.jobTemplates = buildUnnamed7820();
     o.nextPageToken = 'foo';
   }
   buildCounterListJobTemplatesResponse--;
@@ -963,7 +963,7 @@ api.ListJobTemplatesResponse buildListJobTemplatesResponse() {
 void checkListJobTemplatesResponse(api.ListJobTemplatesResponse o) {
   buildCounterListJobTemplatesResponse++;
   if (buildCounterListJobTemplatesResponse < 3) {
-    checkUnnamed8534(o.jobTemplates!);
+    checkUnnamed7820(o.jobTemplates!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -972,12 +972,12 @@ void checkListJobTemplatesResponse(api.ListJobTemplatesResponse o) {
   buildCounterListJobTemplatesResponse--;
 }
 
-core.List<api.Job> buildUnnamed8535() => [
+core.List<api.Job> buildUnnamed7821() => [
       buildJob(),
       buildJob(),
     ];
 
-void checkUnnamed8535(core.List<api.Job> o) {
+void checkUnnamed7821(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -988,7 +988,7 @@ api.ListJobsResponse buildListJobsResponse() {
   final o = api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed8535();
+    o.jobs = buildUnnamed7821();
     o.nextPageToken = 'foo';
   }
   buildCounterListJobsResponse--;
@@ -998,7 +998,7 @@ api.ListJobsResponse buildListJobsResponse() {
 void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed8535(o.jobs!);
+    checkUnnamed7821(o.jobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1007,12 +1007,12 @@ void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse--;
 }
 
-core.List<core.String> buildUnnamed8536() => [
+core.List<core.String> buildUnnamed7822() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8536(core.List<core.String> o) {
+void checkUnnamed7822(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1030,7 +1030,7 @@ api.Manifest buildManifest() {
   buildCounterManifest++;
   if (buildCounterManifest < 3) {
     o.fileName = 'foo';
-    o.muxStreams = buildUnnamed8536();
+    o.muxStreams = buildUnnamed7822();
     o.type = 'foo';
   }
   buildCounterManifest--;
@@ -1044,7 +1044,7 @@ void checkManifest(api.Manifest o) {
       o.fileName!,
       unittest.equals('foo'),
     );
-    checkUnnamed8536(o.muxStreams!);
+    checkUnnamed7822(o.muxStreams!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1080,12 +1080,12 @@ void checkMpegCommonEncryption(api.MpegCommonEncryption o) {
   buildCounterMpegCommonEncryption--;
 }
 
-core.List<core.String> buildUnnamed8537() => [
+core.List<core.String> buildUnnamed7823() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8537(core.List<core.String> o) {
+void checkUnnamed7823(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1103,7 +1103,7 @@ api.MuxStream buildMuxStream() {
   buildCounterMuxStream++;
   if (buildCounterMuxStream < 3) {
     o.container = 'foo';
-    o.elementaryStreams = buildUnnamed8537();
+    o.elementaryStreams = buildUnnamed7823();
     o.encryption = buildEncryption();
     o.fileName = 'foo';
     o.key = 'foo';
@@ -1120,7 +1120,7 @@ void checkMuxStream(api.MuxStream o) {
       o.container!,
       unittest.equals('foo'),
     );
-    checkUnnamed8537(o.elementaryStreams!);
+    checkUnnamed7823(o.elementaryStreams!);
     checkEncryption(o.encryption!);
     unittest.expect(
       o.fileName!,
@@ -1260,12 +1260,12 @@ void checkOutput(api.Output o) {
   buildCounterOutput--;
 }
 
-core.List<api.Animation> buildUnnamed8538() => [
+core.List<api.Animation> buildUnnamed7824() => [
       buildAnimation(),
       buildAnimation(),
     ];
 
-void checkUnnamed8538(core.List<api.Animation> o) {
+void checkUnnamed7824(core.List<api.Animation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnimation(o[0]);
   checkAnimation(o[1]);
@@ -1276,7 +1276,7 @@ api.Overlay buildOverlay() {
   final o = api.Overlay();
   buildCounterOverlay++;
   if (buildCounterOverlay < 3) {
-    o.animations = buildUnnamed8538();
+    o.animations = buildUnnamed7824();
     o.image = buildImage();
   }
   buildCounterOverlay--;
@@ -1286,7 +1286,7 @@ api.Overlay buildOverlay() {
 void checkOverlay(api.Overlay o) {
   buildCounterOverlay++;
   if (buildCounterOverlay < 3) {
-    checkUnnamed8538(o.animations!);
+    checkUnnamed7824(o.animations!);
     checkImage(o.image!);
   }
   buildCounterOverlay--;
@@ -1535,12 +1535,12 @@ void checkSpriteSheet(api.SpriteSheet o) {
   buildCounterSpriteSheet--;
 }
 
-core.List<api.TextInput> buildUnnamed8539() => [
+core.List<api.TextInput> buildUnnamed7825() => [
       buildTextInput(),
       buildTextInput(),
     ];
 
-void checkUnnamed8539(core.List<api.TextInput> o) {
+void checkUnnamed7825(core.List<api.TextInput> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextInput(o[0]);
   checkTextInput(o[1]);
@@ -1551,7 +1551,7 @@ api.TextAtom buildTextAtom() {
   final o = api.TextAtom();
   buildCounterTextAtom++;
   if (buildCounterTextAtom < 3) {
-    o.inputs = buildUnnamed8539();
+    o.inputs = buildUnnamed7825();
     o.key = 'foo';
   }
   buildCounterTextAtom--;
@@ -1561,7 +1561,7 @@ api.TextAtom buildTextAtom() {
 void checkTextAtom(api.TextAtom o) {
   buildCounterTextAtom++;
   if (buildCounterTextAtom < 3) {
-    checkUnnamed8539(o.inputs!);
+    checkUnnamed7825(o.inputs!);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),
@@ -1597,12 +1597,12 @@ void checkTextInput(api.TextInput o) {
   buildCounterTextInput--;
 }
 
-core.List<api.TextAtom> buildUnnamed8540() => [
+core.List<api.TextAtom> buildUnnamed7826() => [
       buildTextAtom(),
       buildTextAtom(),
     ];
 
-void checkUnnamed8540(core.List<api.TextAtom> o) {
+void checkUnnamed7826(core.List<api.TextAtom> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTextAtom(o[0]);
   checkTextAtom(o[1]);
@@ -1615,7 +1615,7 @@ api.TextStream buildTextStream() {
   if (buildCounterTextStream < 3) {
     o.codec = 'foo';
     o.languageCode = 'foo';
-    o.mapping = buildUnnamed8540();
+    o.mapping = buildUnnamed7826();
   }
   buildCounterTextStream--;
   return o;
@@ -1632,7 +1632,7 @@ void checkTextStream(api.TextStream o) {
       o.languageCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed8540(o.mapping!);
+    checkUnnamed7826(o.mapping!);
   }
   buildCounterTextStream--;
 }

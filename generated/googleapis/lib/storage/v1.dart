@@ -3968,7 +3968,8 @@ class BucketIamConfigurationBucketPolicyOnly {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
-        if (lockedTime != null) 'lockedTime': lockedTime!.toIso8601String(),
+        if (lockedTime != null)
+          'lockedTime': lockedTime!.toUtc().toIso8601String(),
       };
 }
 
@@ -4002,7 +4003,8 @@ class BucketIamConfigurationUniformBucketLevelAccess {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
-        if (lockedTime != null) 'lockedTime': lockedTime!.toIso8601String(),
+        if (lockedTime != null)
+          'lockedTime': lockedTime!.toUtc().toIso8601String(),
       };
 }
 
@@ -4400,7 +4402,7 @@ class BucketRetentionPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (effectiveTime != null)
-          'effectiveTime': effectiveTime!.toIso8601String(),
+          'effectiveTime': effectiveTime!.toUtc().toIso8601String(),
         if (isLocked != null) 'isLocked': isLocked!,
         if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
       };
@@ -4770,8 +4772,9 @@ class Bucket {
         if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (storageClass != null) 'storageClass': storageClass!,
-        if (timeCreated != null) 'timeCreated': timeCreated!.toIso8601String(),
-        if (updated != null) 'updated': updated!.toIso8601String(),
+        if (timeCreated != null)
+          'timeCreated': timeCreated!.toUtc().toIso8601String(),
+        if (updated != null) 'updated': updated!.toUtc().toIso8601String(),
         if (versioning != null) 'versioning': versioning!.toJson(),
         if (website != null) 'website': website!.toJson(),
         if (zoneAffinity != null) 'zoneAffinity': zoneAffinity!,
@@ -5388,8 +5391,9 @@ class HmacKeyMetadata {
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
         if (state != null) 'state': state!,
-        if (timeCreated != null) 'timeCreated': timeCreated!.toIso8601String(),
-        if (updated != null) 'updated': updated!.toIso8601String(),
+        if (timeCreated != null)
+          'timeCreated': timeCreated!.toUtc().toIso8601String(),
+        if (updated != null) 'updated': updated!.toUtc().toIso8601String(),
       };
 }
 
@@ -5937,7 +5941,8 @@ class Object {
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (contentType != null) 'contentType': contentType!,
         if (crc32c != null) 'crc32c': crc32c!,
-        if (customTime != null) 'customTime': customTime!.toIso8601String(),
+        if (customTime != null)
+          'customTime': customTime!.toUtc().toIso8601String(),
         if (customerEncryption != null)
           'customerEncryption': customerEncryption!.toJson(),
         if (etag != null) 'etag': etag!,
@@ -5953,16 +5958,20 @@ class Object {
         if (name != null) 'name': name!,
         if (owner != null) 'owner': owner!.toJson(),
         if (retentionExpirationTime != null)
-          'retentionExpirationTime': retentionExpirationTime!.toIso8601String(),
+          'retentionExpirationTime':
+              retentionExpirationTime!.toUtc().toIso8601String(),
         if (selfLink != null) 'selfLink': selfLink!,
         if (size != null) 'size': size!,
         if (storageClass != null) 'storageClass': storageClass!,
         if (temporaryHold != null) 'temporaryHold': temporaryHold!,
-        if (timeCreated != null) 'timeCreated': timeCreated!.toIso8601String(),
-        if (timeDeleted != null) 'timeDeleted': timeDeleted!.toIso8601String(),
+        if (timeCreated != null)
+          'timeCreated': timeCreated!.toUtc().toIso8601String(),
+        if (timeDeleted != null)
+          'timeDeleted': timeDeleted!.toUtc().toIso8601String(),
         if (timeStorageClassUpdated != null)
-          'timeStorageClassUpdated': timeStorageClassUpdated!.toIso8601String(),
-        if (updated != null) 'updated': updated!.toIso8601String(),
+          'timeStorageClassUpdated':
+              timeStorageClassUpdated!.toUtc().toIso8601String(),
+        if (updated != null) 'updated': updated!.toUtc().toIso8601String(),
       };
 }
 

@@ -1894,7 +1894,7 @@ class Creative {
         if (advertiserName != null) 'advertiserName': advertiserName!,
         if (agencyId != null) 'agencyId': agencyId!,
         if (apiUploadTimestamp != null)
-          'apiUploadTimestamp': apiUploadTimestamp!.toIso8601String(),
+          'apiUploadTimestamp': apiUploadTimestamp!.toUtc().toIso8601String(),
         if (attribute != null) 'attribute': attribute!,
         if (buyerCreativeId != null) 'buyerCreativeId': buyerCreativeId!,
         if (clickThroughUrl != null) 'clickThroughUrl': clickThroughUrl!,

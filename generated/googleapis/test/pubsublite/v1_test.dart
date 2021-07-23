@@ -298,12 +298,12 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.PartitionCursor> buildUnnamed7592() => [
+core.List<api.PartitionCursor> buildUnnamed5184() => [
       buildPartitionCursor(),
       buildPartitionCursor(),
     ];
 
-void checkUnnamed7592(core.List<api.PartitionCursor> o) {
+void checkUnnamed5184(core.List<api.PartitionCursor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPartitionCursor(o[0]);
   checkPartitionCursor(o[1]);
@@ -315,7 +315,7 @@ api.ListPartitionCursorsResponse buildListPartitionCursorsResponse() {
   buildCounterListPartitionCursorsResponse++;
   if (buildCounterListPartitionCursorsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.partitionCursors = buildUnnamed7592();
+    o.partitionCursors = buildUnnamed5184();
   }
   buildCounterListPartitionCursorsResponse--;
   return o;
@@ -328,17 +328,17 @@ void checkListPartitionCursorsResponse(api.ListPartitionCursorsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7592(o.partitionCursors!);
+    checkUnnamed5184(o.partitionCursors!);
   }
   buildCounterListPartitionCursorsResponse--;
 }
 
-core.List<api.Subscription> buildUnnamed7593() => [
+core.List<api.Subscription> buildUnnamed5185() => [
       buildSubscription(),
       buildSubscription(),
     ];
 
-void checkUnnamed7593(core.List<api.Subscription> o) {
+void checkUnnamed5185(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -350,7 +350,7 @@ api.ListSubscriptionsResponse buildListSubscriptionsResponse() {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed7593();
+    o.subscriptions = buildUnnamed5185();
   }
   buildCounterListSubscriptionsResponse--;
   return o;
@@ -363,17 +363,17 @@ void checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7593(o.subscriptions!);
+    checkUnnamed5185(o.subscriptions!);
   }
   buildCounterListSubscriptionsResponse--;
 }
 
-core.List<core.String> buildUnnamed7594() => [
+core.List<core.String> buildUnnamed5186() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7594(core.List<core.String> o) {
+void checkUnnamed5186(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -391,7 +391,7 @@ api.ListTopicSubscriptionsResponse buildListTopicSubscriptionsResponse() {
   buildCounterListTopicSubscriptionsResponse++;
   if (buildCounterListTopicSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed7594();
+    o.subscriptions = buildUnnamed5186();
   }
   buildCounterListTopicSubscriptionsResponse--;
   return o;
@@ -404,17 +404,17 @@ void checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7594(o.subscriptions!);
+    checkUnnamed5186(o.subscriptions!);
   }
   buildCounterListTopicSubscriptionsResponse--;
 }
 
-core.List<api.Topic> buildUnnamed7595() => [
+core.List<api.Topic> buildUnnamed5187() => [
       buildTopic(),
       buildTopic(),
     ];
 
-void checkUnnamed7595(core.List<api.Topic> o) {
+void checkUnnamed5187(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0]);
   checkTopic(o[1]);
@@ -426,7 +426,7 @@ api.ListTopicsResponse buildListTopicsResponse() {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.topics = buildUnnamed7595();
+    o.topics = buildUnnamed5187();
   }
   buildCounterListTopicsResponse--;
   return o;
@@ -439,7 +439,7 @@ void checkListTopicsResponse(api.ListTopicsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7595(o.topics!);
+    checkUnnamed5187(o.topics!);
   }
   buildCounterListTopicsResponse--;
 }

@@ -47,7 +47,7 @@ void checkAddress(api.Address o) {
   buildCounterAddress--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2589() => {
+core.Map<core.String, core.Object> buildUnnamed5718() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -60,7 +60,7 @@ core.Map<core.String, core.Object> buildUnnamed2589() => {
       },
     };
 
-void checkUnnamed2589(core.Map<core.String, core.Object> o) {
+void checkUnnamed5718(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -97,7 +97,7 @@ api.BuildVersion buildBuildVersion() {
   final o = api.BuildVersion();
   buildCounterBuildVersion++;
   if (buildCounterBuildVersion < 3) {
-    o.metadata = buildUnnamed2589();
+    o.metadata = buildUnnamed5718();
     o.version = buildSemanticVersion();
   }
   buildCounterBuildVersion--;
@@ -107,18 +107,18 @@ api.BuildVersion buildBuildVersion() {
 void checkBuildVersion(api.BuildVersion o) {
   buildCounterBuildVersion++;
   if (buildCounterBuildVersion < 3) {
-    checkUnnamed2589(o.metadata!);
+    checkUnnamed5718(o.metadata!);
     checkSemanticVersion(o.version!);
   }
   buildCounterBuildVersion--;
 }
 
-core.List<api.PerXdsConfig> buildUnnamed2590() => [
+core.List<api.PerXdsConfig> buildUnnamed5719() => [
       buildPerXdsConfig(),
       buildPerXdsConfig(),
     ];
 
-void checkUnnamed2590(core.List<api.PerXdsConfig> o) {
+void checkUnnamed5719(core.List<api.PerXdsConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerXdsConfig(o[0]);
   checkPerXdsConfig(o[1]);
@@ -130,7 +130,7 @@ api.ClientConfig buildClientConfig() {
   buildCounterClientConfig++;
   if (buildCounterClientConfig < 3) {
     o.node = buildNode();
-    o.xdsConfig = buildUnnamed2590();
+    o.xdsConfig = buildUnnamed5719();
   }
   buildCounterClientConfig--;
   return o;
@@ -140,17 +140,17 @@ void checkClientConfig(api.ClientConfig o) {
   buildCounterClientConfig++;
   if (buildCounterClientConfig < 3) {
     checkNode(o.node!);
-    checkUnnamed2590(o.xdsConfig!);
+    checkUnnamed5719(o.xdsConfig!);
   }
   buildCounterClientConfig--;
 }
 
-core.List<api.NodeMatcher> buildUnnamed2591() => [
+core.List<api.NodeMatcher> buildUnnamed5720() => [
       buildNodeMatcher(),
       buildNodeMatcher(),
     ];
 
-void checkUnnamed2591(core.List<api.NodeMatcher> o) {
+void checkUnnamed5720(core.List<api.NodeMatcher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNodeMatcher(o[0]);
   checkNodeMatcher(o[1]);
@@ -161,7 +161,7 @@ api.ClientStatusRequest buildClientStatusRequest() {
   final o = api.ClientStatusRequest();
   buildCounterClientStatusRequest++;
   if (buildCounterClientStatusRequest < 3) {
-    o.nodeMatchers = buildUnnamed2591();
+    o.nodeMatchers = buildUnnamed5720();
   }
   buildCounterClientStatusRequest--;
   return o;
@@ -170,17 +170,17 @@ api.ClientStatusRequest buildClientStatusRequest() {
 void checkClientStatusRequest(api.ClientStatusRequest o) {
   buildCounterClientStatusRequest++;
   if (buildCounterClientStatusRequest < 3) {
-    checkUnnamed2591(o.nodeMatchers!);
+    checkUnnamed5720(o.nodeMatchers!);
   }
   buildCounterClientStatusRequest--;
 }
 
-core.List<api.ClientConfig> buildUnnamed2592() => [
+core.List<api.ClientConfig> buildUnnamed5721() => [
       buildClientConfig(),
       buildClientConfig(),
     ];
 
-void checkUnnamed2592(core.List<api.ClientConfig> o) {
+void checkUnnamed5721(core.List<api.ClientConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClientConfig(o[0]);
   checkClientConfig(o[1]);
@@ -191,7 +191,7 @@ api.ClientStatusResponse buildClientStatusResponse() {
   final o = api.ClientStatusResponse();
   buildCounterClientStatusResponse++;
   if (buildCounterClientStatusResponse < 3) {
-    o.config = buildUnnamed2592();
+    o.config = buildUnnamed5721();
   }
   buildCounterClientStatusResponse--;
   return o;
@@ -200,39 +200,39 @@ api.ClientStatusResponse buildClientStatusResponse() {
 void checkClientStatusResponse(api.ClientStatusResponse o) {
   buildCounterClientStatusResponse++;
   if (buildCounterClientStatusResponse < 3) {
-    checkUnnamed2592(o.config!);
+    checkUnnamed5721(o.config!);
   }
   buildCounterClientStatusResponse--;
 }
 
-core.List<api.DynamicCluster> buildUnnamed2593() => [
+core.List<api.DynamicCluster> buildUnnamed5722() => [
       buildDynamicCluster(),
       buildDynamicCluster(),
     ];
 
-void checkUnnamed2593(core.List<api.DynamicCluster> o) {
+void checkUnnamed5722(core.List<api.DynamicCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicCluster(o[0]);
   checkDynamicCluster(o[1]);
 }
 
-core.List<api.DynamicCluster> buildUnnamed2594() => [
+core.List<api.DynamicCluster> buildUnnamed5723() => [
       buildDynamicCluster(),
       buildDynamicCluster(),
     ];
 
-void checkUnnamed2594(core.List<api.DynamicCluster> o) {
+void checkUnnamed5723(core.List<api.DynamicCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicCluster(o[0]);
   checkDynamicCluster(o[1]);
 }
 
-core.List<api.StaticCluster> buildUnnamed2595() => [
+core.List<api.StaticCluster> buildUnnamed5724() => [
       buildStaticCluster(),
       buildStaticCluster(),
     ];
 
-void checkUnnamed2595(core.List<api.StaticCluster> o) {
+void checkUnnamed5724(core.List<api.StaticCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStaticCluster(o[0]);
   checkStaticCluster(o[1]);
@@ -243,9 +243,9 @@ api.ClustersConfigDump buildClustersConfigDump() {
   final o = api.ClustersConfigDump();
   buildCounterClustersConfigDump++;
   if (buildCounterClustersConfigDump < 3) {
-    o.dynamicActiveClusters = buildUnnamed2593();
-    o.dynamicWarmingClusters = buildUnnamed2594();
-    o.staticClusters = buildUnnamed2595();
+    o.dynamicActiveClusters = buildUnnamed5722();
+    o.dynamicWarmingClusters = buildUnnamed5723();
+    o.staticClusters = buildUnnamed5724();
     o.versionInfo = 'foo';
   }
   buildCounterClustersConfigDump--;
@@ -255,9 +255,9 @@ api.ClustersConfigDump buildClustersConfigDump() {
 void checkClustersConfigDump(api.ClustersConfigDump o) {
   buildCounterClustersConfigDump++;
   if (buildCounterClustersConfigDump < 3) {
-    checkUnnamed2593(o.dynamicActiveClusters!);
-    checkUnnamed2594(o.dynamicWarmingClusters!);
-    checkUnnamed2595(o.staticClusters!);
+    checkUnnamed5722(o.dynamicActiveClusters!);
+    checkUnnamed5723(o.dynamicWarmingClusters!);
+    checkUnnamed5724(o.staticClusters!);
     unittest.expect(
       o.versionInfo!,
       unittest.equals('foo'),
@@ -317,7 +317,7 @@ void checkDoubleRange(api.DoubleRange o) {
   buildCounterDoubleRange--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2596() => {
+core.Map<core.String, core.Object> buildUnnamed5725() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -330,7 +330,7 @@ core.Map<core.String, core.Object> buildUnnamed2596() => {
       },
     };
 
-void checkUnnamed2596(core.Map<core.String, core.Object> o) {
+void checkUnnamed5725(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -367,7 +367,7 @@ api.DynamicCluster buildDynamicCluster() {
   final o = api.DynamicCluster();
   buildCounterDynamicCluster++;
   if (buildCounterDynamicCluster < 3) {
-    o.cluster = buildUnnamed2596();
+    o.cluster = buildUnnamed5725();
     o.lastUpdated = 'foo';
     o.versionInfo = 'foo';
   }
@@ -378,7 +378,7 @@ api.DynamicCluster buildDynamicCluster() {
 void checkDynamicCluster(api.DynamicCluster o) {
   buildCounterDynamicCluster++;
   if (buildCounterDynamicCluster < 3) {
-    checkUnnamed2596(o.cluster!);
+    checkUnnamed5725(o.cluster!);
     unittest.expect(
       o.lastUpdated!,
       unittest.equals('foo'),
@@ -421,7 +421,7 @@ void checkDynamicListener(api.DynamicListener o) {
   buildCounterDynamicListener--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2597() => {
+core.Map<core.String, core.Object> buildUnnamed5726() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -434,7 +434,7 @@ core.Map<core.String, core.Object> buildUnnamed2597() => {
       },
     };
 
-void checkUnnamed2597(core.Map<core.String, core.Object> o) {
+void checkUnnamed5726(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -472,7 +472,7 @@ api.DynamicListenerState buildDynamicListenerState() {
   buildCounterDynamicListenerState++;
   if (buildCounterDynamicListenerState < 3) {
     o.lastUpdated = 'foo';
-    o.listener = buildUnnamed2597();
+    o.listener = buildUnnamed5726();
     o.versionInfo = 'foo';
   }
   buildCounterDynamicListenerState--;
@@ -486,7 +486,7 @@ void checkDynamicListenerState(api.DynamicListenerState o) {
       o.lastUpdated!,
       unittest.equals('foo'),
     );
-    checkUnnamed2597(o.listener!);
+    checkUnnamed5726(o.listener!);
     unittest.expect(
       o.versionInfo!,
       unittest.equals('foo'),
@@ -495,7 +495,7 @@ void checkDynamicListenerState(api.DynamicListenerState o) {
   buildCounterDynamicListenerState--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2598() => {
+core.Map<core.String, core.Object> buildUnnamed5727() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -508,7 +508,7 @@ core.Map<core.String, core.Object> buildUnnamed2598() => {
       },
     };
 
-void checkUnnamed2598(core.Map<core.String, core.Object> o) {
+void checkUnnamed5727(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -546,7 +546,7 @@ api.DynamicRouteConfig buildDynamicRouteConfig() {
   buildCounterDynamicRouteConfig++;
   if (buildCounterDynamicRouteConfig < 3) {
     o.lastUpdated = 'foo';
-    o.routeConfig = buildUnnamed2598();
+    o.routeConfig = buildUnnamed5727();
     o.versionInfo = 'foo';
   }
   buildCounterDynamicRouteConfig--;
@@ -560,7 +560,7 @@ void checkDynamicRouteConfig(api.DynamicRouteConfig o) {
       o.lastUpdated!,
       unittest.equals('foo'),
     );
-    checkUnnamed2598(o.routeConfig!);
+    checkUnnamed5727(o.routeConfig!);
     unittest.expect(
       o.versionInfo!,
       unittest.equals('foo'),
@@ -569,7 +569,7 @@ void checkDynamicRouteConfig(api.DynamicRouteConfig o) {
   buildCounterDynamicRouteConfig--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2599() => {
+core.Map<core.String, core.Object> buildUnnamed5728() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -582,7 +582,7 @@ core.Map<core.String, core.Object> buildUnnamed2599() => {
       },
     };
 
-void checkUnnamed2599(core.Map<core.String, core.Object> o) {
+void checkUnnamed5728(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -614,15 +614,15 @@ void checkUnnamed2599(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2600() => [
-      buildUnnamed2599(),
-      buildUnnamed2599(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed5729() => [
+      buildUnnamed5728(),
+      buildUnnamed5728(),
     ];
 
-void checkUnnamed2600(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed5729(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2599(o[0]);
-  checkUnnamed2599(o[1]);
+  checkUnnamed5728(o[0]);
+  checkUnnamed5728(o[1]);
 }
 
 core.int buildCounterDynamicScopedRouteConfigs = 0;
@@ -632,7 +632,7 @@ api.DynamicScopedRouteConfigs buildDynamicScopedRouteConfigs() {
   if (buildCounterDynamicScopedRouteConfigs < 3) {
     o.lastUpdated = 'foo';
     o.name = 'foo';
-    o.scopedRouteConfigs = buildUnnamed2600();
+    o.scopedRouteConfigs = buildUnnamed5729();
     o.versionInfo = 'foo';
   }
   buildCounterDynamicScopedRouteConfigs--;
@@ -650,7 +650,7 @@ void checkDynamicScopedRouteConfigs(api.DynamicScopedRouteConfigs o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed2600(o.scopedRouteConfigs!);
+    checkUnnamed5729(o.scopedRouteConfigs!);
     unittest.expect(
       o.versionInfo!,
       unittest.equals('foo'),
@@ -717,7 +717,7 @@ void checkGoogleRE2(api.GoogleRE2 o) {
   buildCounterGoogleRE2--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2601() => {
+core.Map<core.String, core.Object> buildUnnamed5730() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -730,7 +730,7 @@ core.Map<core.String, core.Object> buildUnnamed2601() => {
       },
     };
 
-void checkUnnamed2601(core.Map<core.String, core.Object> o) {
+void checkUnnamed5730(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -762,15 +762,15 @@ void checkUnnamed2601(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2602() => [
-      buildUnnamed2601(),
-      buildUnnamed2601(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed5731() => [
+      buildUnnamed5730(),
+      buildUnnamed5730(),
     ];
 
-void checkUnnamed2602(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed5731(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2601(o[0]);
-  checkUnnamed2601(o[1]);
+  checkUnnamed5730(o[0]);
+  checkUnnamed5730(o[1]);
 }
 
 core.int buildCounterInlineScopedRouteConfigs = 0;
@@ -780,7 +780,7 @@ api.InlineScopedRouteConfigs buildInlineScopedRouteConfigs() {
   if (buildCounterInlineScopedRouteConfigs < 3) {
     o.lastUpdated = 'foo';
     o.name = 'foo';
-    o.scopedRouteConfigs = buildUnnamed2602();
+    o.scopedRouteConfigs = buildUnnamed5731();
   }
   buildCounterInlineScopedRouteConfigs--;
   return o;
@@ -797,7 +797,7 @@ void checkInlineScopedRouteConfigs(api.InlineScopedRouteConfigs o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed2602(o.scopedRouteConfigs!);
+    checkUnnamed5731(o.scopedRouteConfigs!);
   }
   buildCounterInlineScopedRouteConfigs--;
 }
@@ -821,23 +821,23 @@ void checkListMatcher(api.ListMatcher o) {
   buildCounterListMatcher--;
 }
 
-core.List<api.DynamicListener> buildUnnamed2603() => [
+core.List<api.DynamicListener> buildUnnamed5732() => [
       buildDynamicListener(),
       buildDynamicListener(),
     ];
 
-void checkUnnamed2603(core.List<api.DynamicListener> o) {
+void checkUnnamed5732(core.List<api.DynamicListener> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicListener(o[0]);
   checkDynamicListener(o[1]);
 }
 
-core.List<api.StaticListener> buildUnnamed2604() => [
+core.List<api.StaticListener> buildUnnamed5733() => [
       buildStaticListener(),
       buildStaticListener(),
     ];
 
-void checkUnnamed2604(core.List<api.StaticListener> o) {
+void checkUnnamed5733(core.List<api.StaticListener> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStaticListener(o[0]);
   checkStaticListener(o[1]);
@@ -848,8 +848,8 @@ api.ListenersConfigDump buildListenersConfigDump() {
   final o = api.ListenersConfigDump();
   buildCounterListenersConfigDump++;
   if (buildCounterListenersConfigDump < 3) {
-    o.dynamicListeners = buildUnnamed2603();
-    o.staticListeners = buildUnnamed2604();
+    o.dynamicListeners = buildUnnamed5732();
+    o.staticListeners = buildUnnamed5733();
     o.versionInfo = 'foo';
   }
   buildCounterListenersConfigDump--;
@@ -859,8 +859,8 @@ api.ListenersConfigDump buildListenersConfigDump() {
 void checkListenersConfigDump(api.ListenersConfigDump o) {
   buildCounterListenersConfigDump++;
   if (buildCounterListenersConfigDump < 3) {
-    checkUnnamed2603(o.dynamicListeners!);
-    checkUnnamed2604(o.staticListeners!);
+    checkUnnamed5732(o.dynamicListeners!);
+    checkUnnamed5733(o.staticListeners!);
     unittest.expect(
       o.versionInfo!,
       unittest.equals('foo'),
@@ -901,12 +901,12 @@ void checkLocality(api.Locality o) {
   buildCounterLocality--;
 }
 
-core.List<core.String> buildUnnamed2605() => [
+core.List<core.String> buildUnnamed5734() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2605(core.List<core.String> o) {
+void checkUnnamed5734(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -918,29 +918,29 @@ void checkUnnamed2605(core.List<core.String> o) {
   );
 }
 
-core.List<api.Extension> buildUnnamed2606() => [
+core.List<api.Extension> buildUnnamed5735() => [
       buildExtension(),
       buildExtension(),
     ];
 
-void checkUnnamed2606(core.List<api.Extension> o) {
+void checkUnnamed5735(core.List<api.Extension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExtension(o[0]);
   checkExtension(o[1]);
 }
 
-core.List<api.Address> buildUnnamed2607() => [
+core.List<api.Address> buildUnnamed5736() => [
       buildAddress(),
       buildAddress(),
     ];
 
-void checkUnnamed2607(core.List<api.Address> o) {
+void checkUnnamed5736(core.List<api.Address> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAddress(o[0]);
   checkAddress(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed2608() => {
+core.Map<core.String, core.Object> buildUnnamed5737() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -953,7 +953,7 @@ core.Map<core.String, core.Object> buildUnnamed2608() => {
       },
     };
 
-void checkUnnamed2608(core.Map<core.String, core.Object> o) {
+void checkUnnamed5737(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
@@ -991,13 +991,13 @@ api.Node buildNode() {
   buildCounterNode++;
   if (buildCounterNode < 3) {
     o.buildVersion = 'foo';
-    o.clientFeatures = buildUnnamed2605();
+    o.clientFeatures = buildUnnamed5734();
     o.cluster = 'foo';
-    o.extensions = buildUnnamed2606();
+    o.extensions = buildUnnamed5735();
     o.id = 'foo';
-    o.listeningAddresses = buildUnnamed2607();
+    o.listeningAddresses = buildUnnamed5736();
     o.locality = buildLocality();
-    o.metadata = buildUnnamed2608();
+    o.metadata = buildUnnamed5737();
     o.userAgentBuildVersion = buildBuildVersion();
     o.userAgentName = 'foo';
     o.userAgentVersion = 'foo';
@@ -1013,19 +1013,19 @@ void checkNode(api.Node o) {
       o.buildVersion!,
       unittest.equals('foo'),
     );
-    checkUnnamed2605(o.clientFeatures!);
+    checkUnnamed5734(o.clientFeatures!);
     unittest.expect(
       o.cluster!,
       unittest.equals('foo'),
     );
-    checkUnnamed2606(o.extensions!);
+    checkUnnamed5735(o.extensions!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed2607(o.listeningAddresses!);
+    checkUnnamed5736(o.listeningAddresses!);
     checkLocality(o.locality!);
-    checkUnnamed2608(o.metadata!);
+    checkUnnamed5737(o.metadata!);
     checkBuildVersion(o.userAgentBuildVersion!);
     unittest.expect(
       o.userAgentName!,
@@ -1039,12 +1039,12 @@ void checkNode(api.Node o) {
   buildCounterNode--;
 }
 
-core.List<api.StructMatcher> buildUnnamed2609() => [
+core.List<api.StructMatcher> buildUnnamed5738() => [
       buildStructMatcher(),
       buildStructMatcher(),
     ];
 
-void checkUnnamed2609(core.List<api.StructMatcher> o) {
+void checkUnnamed5738(core.List<api.StructMatcher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructMatcher(o[0]);
   checkStructMatcher(o[1]);
@@ -1056,7 +1056,7 @@ api.NodeMatcher buildNodeMatcher() {
   buildCounterNodeMatcher++;
   if (buildCounterNodeMatcher < 3) {
     o.nodeId = buildStringMatcher();
-    o.nodeMetadatas = buildUnnamed2609();
+    o.nodeMetadatas = buildUnnamed5738();
   }
   buildCounterNodeMatcher--;
   return o;
@@ -1066,7 +1066,7 @@ void checkNodeMatcher(api.NodeMatcher o) {
   buildCounterNodeMatcher++;
   if (buildCounterNodeMatcher < 3) {
     checkStringMatcher(o.nodeId!);
-    checkUnnamed2609(o.nodeMetadatas!);
+    checkUnnamed5738(o.nodeMetadatas!);
   }
   buildCounterNodeMatcher--;
 }
@@ -1189,23 +1189,23 @@ void checkRegexMatcher(api.RegexMatcher o) {
   buildCounterRegexMatcher--;
 }
 
-core.List<api.DynamicRouteConfig> buildUnnamed2610() => [
+core.List<api.DynamicRouteConfig> buildUnnamed5739() => [
       buildDynamicRouteConfig(),
       buildDynamicRouteConfig(),
     ];
 
-void checkUnnamed2610(core.List<api.DynamicRouteConfig> o) {
+void checkUnnamed5739(core.List<api.DynamicRouteConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicRouteConfig(o[0]);
   checkDynamicRouteConfig(o[1]);
 }
 
-core.List<api.StaticRouteConfig> buildUnnamed2611() => [
+core.List<api.StaticRouteConfig> buildUnnamed5740() => [
       buildStaticRouteConfig(),
       buildStaticRouteConfig(),
     ];
 
-void checkUnnamed2611(core.List<api.StaticRouteConfig> o) {
+void checkUnnamed5740(core.List<api.StaticRouteConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStaticRouteConfig(o[0]);
   checkStaticRouteConfig(o[1]);
@@ -1216,8 +1216,8 @@ api.RoutesConfigDump buildRoutesConfigDump() {
   final o = api.RoutesConfigDump();
   buildCounterRoutesConfigDump++;
   if (buildCounterRoutesConfigDump < 3) {
-    o.dynamicRouteConfigs = buildUnnamed2610();
-    o.staticRouteConfigs = buildUnnamed2611();
+    o.dynamicRouteConfigs = buildUnnamed5739();
+    o.staticRouteConfigs = buildUnnamed5740();
   }
   buildCounterRoutesConfigDump--;
   return o;
@@ -1226,29 +1226,29 @@ api.RoutesConfigDump buildRoutesConfigDump() {
 void checkRoutesConfigDump(api.RoutesConfigDump o) {
   buildCounterRoutesConfigDump++;
   if (buildCounterRoutesConfigDump < 3) {
-    checkUnnamed2610(o.dynamicRouteConfigs!);
-    checkUnnamed2611(o.staticRouteConfigs!);
+    checkUnnamed5739(o.dynamicRouteConfigs!);
+    checkUnnamed5740(o.staticRouteConfigs!);
   }
   buildCounterRoutesConfigDump--;
 }
 
-core.List<api.DynamicScopedRouteConfigs> buildUnnamed2612() => [
+core.List<api.DynamicScopedRouteConfigs> buildUnnamed5741() => [
       buildDynamicScopedRouteConfigs(),
       buildDynamicScopedRouteConfigs(),
     ];
 
-void checkUnnamed2612(core.List<api.DynamicScopedRouteConfigs> o) {
+void checkUnnamed5741(core.List<api.DynamicScopedRouteConfigs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicScopedRouteConfigs(o[0]);
   checkDynamicScopedRouteConfigs(o[1]);
 }
 
-core.List<api.InlineScopedRouteConfigs> buildUnnamed2613() => [
+core.List<api.InlineScopedRouteConfigs> buildUnnamed5742() => [
       buildInlineScopedRouteConfigs(),
       buildInlineScopedRouteConfigs(),
     ];
 
-void checkUnnamed2613(core.List<api.InlineScopedRouteConfigs> o) {
+void checkUnnamed5742(core.List<api.InlineScopedRouteConfigs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInlineScopedRouteConfigs(o[0]);
   checkInlineScopedRouteConfigs(o[1]);
@@ -1259,8 +1259,8 @@ api.ScopedRoutesConfigDump buildScopedRoutesConfigDump() {
   final o = api.ScopedRoutesConfigDump();
   buildCounterScopedRoutesConfigDump++;
   if (buildCounterScopedRoutesConfigDump < 3) {
-    o.dynamicScopedRouteConfigs = buildUnnamed2612();
-    o.inlineScopedRouteConfigs = buildUnnamed2613();
+    o.dynamicScopedRouteConfigs = buildUnnamed5741();
+    o.inlineScopedRouteConfigs = buildUnnamed5742();
   }
   buildCounterScopedRoutesConfigDump--;
   return o;
@@ -1269,8 +1269,8 @@ api.ScopedRoutesConfigDump buildScopedRoutesConfigDump() {
 void checkScopedRoutesConfigDump(api.ScopedRoutesConfigDump o) {
   buildCounterScopedRoutesConfigDump++;
   if (buildCounterScopedRoutesConfigDump < 3) {
-    checkUnnamed2612(o.dynamicScopedRouteConfigs!);
-    checkUnnamed2613(o.inlineScopedRouteConfigs!);
+    checkUnnamed5741(o.dynamicScopedRouteConfigs!);
+    checkUnnamed5742(o.inlineScopedRouteConfigs!);
   }
   buildCounterScopedRoutesConfigDump--;
 }
@@ -1351,7 +1351,7 @@ void checkSocketAddress(api.SocketAddress o) {
   buildCounterSocketAddress--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2614() => {
+core.Map<core.String, core.Object> buildUnnamed5743() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1364,7 +1364,7 @@ core.Map<core.String, core.Object> buildUnnamed2614() => {
       },
     };
 
-void checkUnnamed2614(core.Map<core.String, core.Object> o) {
+void checkUnnamed5743(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
@@ -1401,7 +1401,7 @@ api.StaticCluster buildStaticCluster() {
   final o = api.StaticCluster();
   buildCounterStaticCluster++;
   if (buildCounterStaticCluster < 3) {
-    o.cluster = buildUnnamed2614();
+    o.cluster = buildUnnamed5743();
     o.lastUpdated = 'foo';
   }
   buildCounterStaticCluster--;
@@ -1411,7 +1411,7 @@ api.StaticCluster buildStaticCluster() {
 void checkStaticCluster(api.StaticCluster o) {
   buildCounterStaticCluster++;
   if (buildCounterStaticCluster < 3) {
-    checkUnnamed2614(o.cluster!);
+    checkUnnamed5743(o.cluster!);
     unittest.expect(
       o.lastUpdated!,
       unittest.equals('foo'),
@@ -1420,7 +1420,7 @@ void checkStaticCluster(api.StaticCluster o) {
   buildCounterStaticCluster--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2615() => {
+core.Map<core.String, core.Object> buildUnnamed5744() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1433,7 +1433,7 @@ core.Map<core.String, core.Object> buildUnnamed2615() => {
       },
     };
 
-void checkUnnamed2615(core.Map<core.String, core.Object> o) {
+void checkUnnamed5744(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted17 = (o['x']!) as core.Map;
   unittest.expect(casted17, unittest.hasLength(3));
@@ -1471,7 +1471,7 @@ api.StaticListener buildStaticListener() {
   buildCounterStaticListener++;
   if (buildCounterStaticListener < 3) {
     o.lastUpdated = 'foo';
-    o.listener = buildUnnamed2615();
+    o.listener = buildUnnamed5744();
   }
   buildCounterStaticListener--;
   return o;
@@ -1484,12 +1484,12 @@ void checkStaticListener(api.StaticListener o) {
       o.lastUpdated!,
       unittest.equals('foo'),
     );
-    checkUnnamed2615(o.listener!);
+    checkUnnamed5744(o.listener!);
   }
   buildCounterStaticListener--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2616() => {
+core.Map<core.String, core.Object> buildUnnamed5745() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1502,7 +1502,7 @@ core.Map<core.String, core.Object> buildUnnamed2616() => {
       },
     };
 
-void checkUnnamed2616(core.Map<core.String, core.Object> o) {
+void checkUnnamed5745(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted19 = (o['x']!) as core.Map;
   unittest.expect(casted19, unittest.hasLength(3));
@@ -1540,7 +1540,7 @@ api.StaticRouteConfig buildStaticRouteConfig() {
   buildCounterStaticRouteConfig++;
   if (buildCounterStaticRouteConfig < 3) {
     o.lastUpdated = 'foo';
-    o.routeConfig = buildUnnamed2616();
+    o.routeConfig = buildUnnamed5745();
   }
   buildCounterStaticRouteConfig--;
   return o;
@@ -1553,7 +1553,7 @@ void checkStaticRouteConfig(api.StaticRouteConfig o) {
       o.lastUpdated!,
       unittest.equals('foo'),
     );
-    checkUnnamed2616(o.routeConfig!);
+    checkUnnamed5745(o.routeConfig!);
   }
   buildCounterStaticRouteConfig--;
 }
@@ -1599,12 +1599,12 @@ void checkStringMatcher(api.StringMatcher o) {
   buildCounterStringMatcher--;
 }
 
-core.List<api.PathSegment> buildUnnamed2617() => [
+core.List<api.PathSegment> buildUnnamed5746() => [
       buildPathSegment(),
       buildPathSegment(),
     ];
 
-void checkUnnamed2617(core.List<api.PathSegment> o) {
+void checkUnnamed5746(core.List<api.PathSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPathSegment(o[0]);
   checkPathSegment(o[1]);
@@ -1615,7 +1615,7 @@ api.StructMatcher buildStructMatcher() {
   final o = api.StructMatcher();
   buildCounterStructMatcher++;
   if (buildCounterStructMatcher < 3) {
-    o.path = buildUnnamed2617();
+    o.path = buildUnnamed5746();
     o.value = buildValueMatcher();
   }
   buildCounterStructMatcher--;
@@ -1625,13 +1625,13 @@ api.StructMatcher buildStructMatcher() {
 void checkStructMatcher(api.StructMatcher o) {
   buildCounterStructMatcher++;
   if (buildCounterStructMatcher < 3) {
-    checkUnnamed2617(o.path!);
+    checkUnnamed5746(o.path!);
     checkValueMatcher(o.value!);
   }
   buildCounterStructMatcher--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2618() => {
+core.Map<core.String, core.Object> buildUnnamed5747() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1644,7 +1644,7 @@ core.Map<core.String, core.Object> buildUnnamed2618() => {
       },
     };
 
-void checkUnnamed2618(core.Map<core.String, core.Object> o) {
+void checkUnnamed5747(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted21 = (o['x']!) as core.Map;
   unittest.expect(casted21, unittest.hasLength(3));
@@ -1682,7 +1682,7 @@ api.UpdateFailureState buildUpdateFailureState() {
   buildCounterUpdateFailureState++;
   if (buildCounterUpdateFailureState < 3) {
     o.details = 'foo';
-    o.failedConfiguration = buildUnnamed2618();
+    o.failedConfiguration = buildUnnamed5747();
     o.lastUpdateAttempt = 'foo';
   }
   buildCounterUpdateFailureState--;
@@ -1696,7 +1696,7 @@ void checkUpdateFailureState(api.UpdateFailureState o) {
       o.details!,
       unittest.equals('foo'),
     );
-    checkUnnamed2618(o.failedConfiguration!);
+    checkUnnamed5747(o.failedConfiguration!);
     unittest.expect(
       o.lastUpdateAttempt!,
       unittest.equals('foo'),

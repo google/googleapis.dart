@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed3192() => [
+core.List<core.String> buildUnnamed6154() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3192(core.List<core.String> o) {
+void checkUnnamed6154(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -43,12 +43,12 @@ void checkUnnamed3192(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3193() => [
+core.List<core.String> buildUnnamed6155() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3193(core.List<core.String> o) {
+void checkUnnamed6155(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -65,8 +65,8 @@ api.AptSettings buildAptSettings() {
   final o = api.AptSettings();
   buildCounterAptSettings++;
   if (buildCounterAptSettings < 3) {
-    o.excludes = buildUnnamed3192();
-    o.exclusivePackages = buildUnnamed3193();
+    o.excludes = buildUnnamed6154();
+    o.exclusivePackages = buildUnnamed6155();
     o.type = 'foo';
   }
   buildCounterAptSettings--;
@@ -76,8 +76,8 @@ api.AptSettings buildAptSettings() {
 void checkAptSettings(api.AptSettings o) {
   buildCounterAptSettings++;
   if (buildCounterAptSettings < 3) {
-    checkUnnamed3192(o.excludes!);
-    checkUnnamed3193(o.exclusivePackages!);
+    checkUnnamed6154(o.excludes!);
+    checkUnnamed6155(o.exclusivePackages!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -137,12 +137,12 @@ void checkExecStep(api.ExecStep o) {
   buildCounterExecStep--;
 }
 
-core.List<core.int> buildUnnamed3194() => [
+core.List<core.int> buildUnnamed6156() => [
       42,
       42,
     ];
 
-void checkUnnamed3194(core.List<core.int> o) {
+void checkUnnamed6156(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -159,7 +159,7 @@ api.ExecStepConfig buildExecStepConfig() {
   final o = api.ExecStepConfig();
   buildCounterExecStepConfig++;
   if (buildCounterExecStepConfig < 3) {
-    o.allowedSuccessCodes = buildUnnamed3194();
+    o.allowedSuccessCodes = buildUnnamed6156();
     o.gcsObject = buildGcsObject();
     o.interpreter = 'foo';
     o.localPath = 'foo';
@@ -171,7 +171,7 @@ api.ExecStepConfig buildExecStepConfig() {
 void checkExecStepConfig(api.ExecStepConfig o) {
   buildCounterExecStepConfig++;
   if (buildCounterExecStepConfig < 3) {
-    checkUnnamed3194(o.allowedSuccessCodes!);
+    checkUnnamed6156(o.allowedSuccessCodes!);
     checkGcsObject(o.gcsObject!);
     unittest.expect(
       o.interpreter!,
@@ -299,12 +299,12 @@ void checkGooSettings(api.GooSettings o) {
   buildCounterGooSettings--;
 }
 
-core.Map<core.String, api.InventoryItem> buildUnnamed3195() => {
+core.Map<core.String, api.InventoryItem> buildUnnamed6157() => {
       'x': buildInventoryItem(),
       'y': buildInventoryItem(),
     };
 
-void checkUnnamed3195(core.Map<core.String, api.InventoryItem> o) {
+void checkUnnamed6157(core.Map<core.String, api.InventoryItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInventoryItem(o['x']!);
   checkInventoryItem(o['y']!);
@@ -315,7 +315,7 @@ api.Inventory buildInventory() {
   final o = api.Inventory();
   buildCounterInventory++;
   if (buildCounterInventory < 3) {
-    o.items = buildUnnamed3195();
+    o.items = buildUnnamed6157();
     o.osInfo = buildInventoryOsInfo();
   }
   buildCounterInventory--;
@@ -325,7 +325,7 @@ api.Inventory buildInventory() {
 void checkInventory(api.Inventory o) {
   buildCounterInventory++;
   if (buildCounterInventory < 3) {
-    checkUnnamed3195(o.items!);
+    checkUnnamed6157(o.items!);
     checkInventoryOsInfo(o.osInfo!);
   }
   buildCounterInventory--;
@@ -539,24 +539,24 @@ void checkInventoryWindowsQuickFixEngineeringPackage(
 }
 
 core.List<api.InventoryWindowsUpdatePackageWindowsUpdateCategory>
-    buildUnnamed3196() => [
+    buildUnnamed6158() => [
           buildInventoryWindowsUpdatePackageWindowsUpdateCategory(),
           buildInventoryWindowsUpdatePackageWindowsUpdateCategory(),
         ];
 
-void checkUnnamed3196(
+void checkUnnamed6158(
     core.List<api.InventoryWindowsUpdatePackageWindowsUpdateCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInventoryWindowsUpdatePackageWindowsUpdateCategory(o[0]);
   checkInventoryWindowsUpdatePackageWindowsUpdateCategory(o[1]);
 }
 
-core.List<core.String> buildUnnamed3197() => [
+core.List<core.String> buildUnnamed6159() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3197(core.List<core.String> o) {
+void checkUnnamed6159(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -568,12 +568,12 @@ void checkUnnamed3197(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3198() => [
+core.List<core.String> buildUnnamed6160() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3198(core.List<core.String> o) {
+void checkUnnamed6160(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -590,11 +590,11 @@ api.InventoryWindowsUpdatePackage buildInventoryWindowsUpdatePackage() {
   final o = api.InventoryWindowsUpdatePackage();
   buildCounterInventoryWindowsUpdatePackage++;
   if (buildCounterInventoryWindowsUpdatePackage < 3) {
-    o.categories = buildUnnamed3196();
+    o.categories = buildUnnamed6158();
     o.description = 'foo';
-    o.kbArticleIds = buildUnnamed3197();
+    o.kbArticleIds = buildUnnamed6159();
     o.lastDeploymentChangeTime = 'foo';
-    o.moreInfoUrls = buildUnnamed3198();
+    o.moreInfoUrls = buildUnnamed6160();
     o.revisionNumber = 42;
     o.supportUrl = 'foo';
     o.title = 'foo';
@@ -607,17 +607,17 @@ api.InventoryWindowsUpdatePackage buildInventoryWindowsUpdatePackage() {
 void checkInventoryWindowsUpdatePackage(api.InventoryWindowsUpdatePackage o) {
   buildCounterInventoryWindowsUpdatePackage++;
   if (buildCounterInventoryWindowsUpdatePackage < 3) {
-    checkUnnamed3196(o.categories!);
+    checkUnnamed6158(o.categories!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed3197(o.kbArticleIds!);
+    checkUnnamed6159(o.kbArticleIds!);
     unittest.expect(
       o.lastDeploymentChangeTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3198(o.moreInfoUrls!);
+    checkUnnamed6160(o.moreInfoUrls!);
     unittest.expect(
       o.revisionNumber!,
       unittest.equals(42),
@@ -704,12 +704,12 @@ void checkInventoryZypperPatch(api.InventoryZypperPatch o) {
   buildCounterInventoryZypperPatch--;
 }
 
-core.List<api.Operation> buildUnnamed3199() => [
+core.List<api.Operation> buildUnnamed6161() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed3199(core.List<api.Operation> o) {
+void checkUnnamed6161(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -721,7 +721,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed3199();
+    o.operations = buildUnnamed6161();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -734,17 +734,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3199(o.operations!);
+    checkUnnamed6161(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.PatchDeployment> buildUnnamed3200() => [
+core.List<api.PatchDeployment> buildUnnamed6162() => [
       buildPatchDeployment(),
       buildPatchDeployment(),
     ];
 
-void checkUnnamed3200(core.List<api.PatchDeployment> o) {
+void checkUnnamed6162(core.List<api.PatchDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPatchDeployment(o[0]);
   checkPatchDeployment(o[1]);
@@ -756,7 +756,7 @@ api.ListPatchDeploymentsResponse buildListPatchDeploymentsResponse() {
   buildCounterListPatchDeploymentsResponse++;
   if (buildCounterListPatchDeploymentsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.patchDeployments = buildUnnamed3200();
+    o.patchDeployments = buildUnnamed6162();
   }
   buildCounterListPatchDeploymentsResponse--;
   return o;
@@ -769,17 +769,17 @@ void checkListPatchDeploymentsResponse(api.ListPatchDeploymentsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3200(o.patchDeployments!);
+    checkUnnamed6162(o.patchDeployments!);
   }
   buildCounterListPatchDeploymentsResponse--;
 }
 
-core.List<api.PatchJobInstanceDetails> buildUnnamed3201() => [
+core.List<api.PatchJobInstanceDetails> buildUnnamed6163() => [
       buildPatchJobInstanceDetails(),
       buildPatchJobInstanceDetails(),
     ];
 
-void checkUnnamed3201(core.List<api.PatchJobInstanceDetails> o) {
+void checkUnnamed6163(core.List<api.PatchJobInstanceDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPatchJobInstanceDetails(o[0]);
   checkPatchJobInstanceDetails(o[1]);
@@ -792,7 +792,7 @@ api.ListPatchJobInstanceDetailsResponse
   buildCounterListPatchJobInstanceDetailsResponse++;
   if (buildCounterListPatchJobInstanceDetailsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.patchJobInstanceDetails = buildUnnamed3201();
+    o.patchJobInstanceDetails = buildUnnamed6163();
   }
   buildCounterListPatchJobInstanceDetailsResponse--;
   return o;
@@ -806,17 +806,17 @@ void checkListPatchJobInstanceDetailsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3201(o.patchJobInstanceDetails!);
+    checkUnnamed6163(o.patchJobInstanceDetails!);
   }
   buildCounterListPatchJobInstanceDetailsResponse--;
 }
 
-core.List<api.PatchJob> buildUnnamed3202() => [
+core.List<api.PatchJob> buildUnnamed6164() => [
       buildPatchJob(),
       buildPatchJob(),
     ];
 
-void checkUnnamed3202(core.List<api.PatchJob> o) {
+void checkUnnamed6164(core.List<api.PatchJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPatchJob(o[0]);
   checkPatchJob(o[1]);
@@ -828,7 +828,7 @@ api.ListPatchJobsResponse buildListPatchJobsResponse() {
   buildCounterListPatchJobsResponse++;
   if (buildCounterListPatchJobsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.patchJobs = buildUnnamed3202();
+    o.patchJobs = buildUnnamed6164();
   }
   buildCounterListPatchJobsResponse--;
   return o;
@@ -841,7 +841,7 @@ void checkListPatchJobsResponse(api.ListPatchJobsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3202(o.patchJobs!);
+    checkUnnamed6164(o.patchJobs!);
   }
   buildCounterListPatchJobsResponse--;
 }
@@ -936,7 +936,7 @@ void checkOneTimeSchedule(api.OneTimeSchedule o) {
   buildCounterOneTimeSchedule--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3203() => {
+core.Map<core.String, core.Object> buildUnnamed6165() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -949,7 +949,7 @@ core.Map<core.String, core.Object> buildUnnamed3203() => {
       },
     };
 
-void checkUnnamed3203(core.Map<core.String, core.Object> o) {
+void checkUnnamed6165(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -981,7 +981,7 @@ void checkUnnamed3203(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed3204() => {
+core.Map<core.String, core.Object> buildUnnamed6166() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -994,7 +994,7 @@ core.Map<core.String, core.Object> buildUnnamed3204() => {
       },
     };
 
-void checkUnnamed3204(core.Map<core.String, core.Object> o) {
+void checkUnnamed6166(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1033,9 +1033,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed3203();
+    o.metadata = buildUnnamed6165();
     o.name = 'foo';
-    o.response = buildUnnamed3204();
+    o.response = buildUnnamed6166();
   }
   buildCounterOperation--;
   return o;
@@ -1046,12 +1046,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed3203(o.metadata!);
+    checkUnnamed6165(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed3204(o.response!);
+    checkUnnamed6166(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1149,23 +1149,23 @@ void checkPatchDeployment(api.PatchDeployment o) {
   buildCounterPatchDeployment--;
 }
 
-core.List<api.PatchInstanceFilterGroupLabel> buildUnnamed3205() => [
+core.List<api.PatchInstanceFilterGroupLabel> buildUnnamed6167() => [
       buildPatchInstanceFilterGroupLabel(),
       buildPatchInstanceFilterGroupLabel(),
     ];
 
-void checkUnnamed3205(core.List<api.PatchInstanceFilterGroupLabel> o) {
+void checkUnnamed6167(core.List<api.PatchInstanceFilterGroupLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPatchInstanceFilterGroupLabel(o[0]);
   checkPatchInstanceFilterGroupLabel(o[1]);
 }
 
-core.List<core.String> buildUnnamed3206() => [
+core.List<core.String> buildUnnamed6168() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3206(core.List<core.String> o) {
+void checkUnnamed6168(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1177,12 +1177,12 @@ void checkUnnamed3206(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3207() => [
+core.List<core.String> buildUnnamed6169() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3207(core.List<core.String> o) {
+void checkUnnamed6169(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1194,12 +1194,12 @@ void checkUnnamed3207(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3208() => [
+core.List<core.String> buildUnnamed6170() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3208(core.List<core.String> o) {
+void checkUnnamed6170(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1217,10 +1217,10 @@ api.PatchInstanceFilter buildPatchInstanceFilter() {
   buildCounterPatchInstanceFilter++;
   if (buildCounterPatchInstanceFilter < 3) {
     o.all = true;
-    o.groupLabels = buildUnnamed3205();
-    o.instanceNamePrefixes = buildUnnamed3206();
-    o.instances = buildUnnamed3207();
-    o.zones = buildUnnamed3208();
+    o.groupLabels = buildUnnamed6167();
+    o.instanceNamePrefixes = buildUnnamed6168();
+    o.instances = buildUnnamed6169();
+    o.zones = buildUnnamed6170();
   }
   buildCounterPatchInstanceFilter--;
   return o;
@@ -1230,20 +1230,20 @@ void checkPatchInstanceFilter(api.PatchInstanceFilter o) {
   buildCounterPatchInstanceFilter++;
   if (buildCounterPatchInstanceFilter < 3) {
     unittest.expect(o.all!, unittest.isTrue);
-    checkUnnamed3205(o.groupLabels!);
-    checkUnnamed3206(o.instanceNamePrefixes!);
-    checkUnnamed3207(o.instances!);
-    checkUnnamed3208(o.zones!);
+    checkUnnamed6167(o.groupLabels!);
+    checkUnnamed6168(o.instanceNamePrefixes!);
+    checkUnnamed6169(o.instances!);
+    checkUnnamed6170(o.zones!);
   }
   buildCounterPatchInstanceFilter--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3209() => {
+core.Map<core.String, core.String> buildUnnamed6171() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed3209(core.Map<core.String, core.String> o) {
+void checkUnnamed6171(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1260,7 +1260,7 @@ api.PatchInstanceFilterGroupLabel buildPatchInstanceFilterGroupLabel() {
   final o = api.PatchInstanceFilterGroupLabel();
   buildCounterPatchInstanceFilterGroupLabel++;
   if (buildCounterPatchInstanceFilterGroupLabel < 3) {
-    o.labels = buildUnnamed3209();
+    o.labels = buildUnnamed6171();
   }
   buildCounterPatchInstanceFilterGroupLabel--;
   return o;
@@ -1269,7 +1269,7 @@ api.PatchInstanceFilterGroupLabel buildPatchInstanceFilterGroupLabel() {
 void checkPatchInstanceFilterGroupLabel(api.PatchInstanceFilterGroupLabel o) {
   buildCounterPatchInstanceFilterGroupLabel++;
   if (buildCounterPatchInstanceFilterGroupLabel < 3) {
-    checkUnnamed3209(o.labels!);
+    checkUnnamed6171(o.labels!);
   }
   buildCounterPatchInstanceFilterGroupLabel--;
 }
@@ -1559,7 +1559,7 @@ void checkRecurringSchedule(api.RecurringSchedule o) {
   buildCounterRecurringSchedule--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3210() => {
+core.Map<core.String, core.Object> buildUnnamed6172() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1572,7 +1572,7 @@ core.Map<core.String, core.Object> buildUnnamed3210() => {
       },
     };
 
-void checkUnnamed3210(core.Map<core.String, core.Object> o) {
+void checkUnnamed6172(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1604,15 +1604,15 @@ void checkUnnamed3210(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed3211() => [
-      buildUnnamed3210(),
-      buildUnnamed3210(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed6173() => [
+      buildUnnamed6172(),
+      buildUnnamed6172(),
     ];
 
-void checkUnnamed3211(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed6173(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3210(o[0]);
-  checkUnnamed3210(o[1]);
+  checkUnnamed6172(o[0]);
+  checkUnnamed6172(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1621,7 +1621,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3211();
+    o.details = buildUnnamed6173();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1635,7 +1635,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed3211(o.details!);
+    checkUnnamed6173(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1757,12 +1757,12 @@ void checkWeeklySchedule(api.WeeklySchedule o) {
   buildCounterWeeklySchedule--;
 }
 
-core.List<core.String> buildUnnamed3212() => [
+core.List<core.String> buildUnnamed6174() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3212(core.List<core.String> o) {
+void checkUnnamed6174(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1774,12 +1774,12 @@ void checkUnnamed3212(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3213() => [
+core.List<core.String> buildUnnamed6175() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3213(core.List<core.String> o) {
+void checkUnnamed6175(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1791,12 +1791,12 @@ void checkUnnamed3213(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3214() => [
+core.List<core.String> buildUnnamed6176() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3214(core.List<core.String> o) {
+void checkUnnamed6176(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1813,9 +1813,9 @@ api.WindowsUpdateSettings buildWindowsUpdateSettings() {
   final o = api.WindowsUpdateSettings();
   buildCounterWindowsUpdateSettings++;
   if (buildCounterWindowsUpdateSettings < 3) {
-    o.classifications = buildUnnamed3212();
-    o.excludes = buildUnnamed3213();
-    o.exclusivePatches = buildUnnamed3214();
+    o.classifications = buildUnnamed6174();
+    o.excludes = buildUnnamed6175();
+    o.exclusivePatches = buildUnnamed6176();
   }
   buildCounterWindowsUpdateSettings--;
   return o;
@@ -1824,19 +1824,19 @@ api.WindowsUpdateSettings buildWindowsUpdateSettings() {
 void checkWindowsUpdateSettings(api.WindowsUpdateSettings o) {
   buildCounterWindowsUpdateSettings++;
   if (buildCounterWindowsUpdateSettings < 3) {
-    checkUnnamed3212(o.classifications!);
-    checkUnnamed3213(o.excludes!);
-    checkUnnamed3214(o.exclusivePatches!);
+    checkUnnamed6174(o.classifications!);
+    checkUnnamed6175(o.excludes!);
+    checkUnnamed6176(o.exclusivePatches!);
   }
   buildCounterWindowsUpdateSettings--;
 }
 
-core.List<core.String> buildUnnamed3215() => [
+core.List<core.String> buildUnnamed6177() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3215(core.List<core.String> o) {
+void checkUnnamed6177(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1848,12 +1848,12 @@ void checkUnnamed3215(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3216() => [
+core.List<core.String> buildUnnamed6178() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3216(core.List<core.String> o) {
+void checkUnnamed6178(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1870,8 +1870,8 @@ api.YumSettings buildYumSettings() {
   final o = api.YumSettings();
   buildCounterYumSettings++;
   if (buildCounterYumSettings < 3) {
-    o.excludes = buildUnnamed3215();
-    o.exclusivePackages = buildUnnamed3216();
+    o.excludes = buildUnnamed6177();
+    o.exclusivePackages = buildUnnamed6178();
     o.minimal = true;
     o.security = true;
   }
@@ -1882,20 +1882,20 @@ api.YumSettings buildYumSettings() {
 void checkYumSettings(api.YumSettings o) {
   buildCounterYumSettings++;
   if (buildCounterYumSettings < 3) {
-    checkUnnamed3215(o.excludes!);
-    checkUnnamed3216(o.exclusivePackages!);
+    checkUnnamed6177(o.excludes!);
+    checkUnnamed6178(o.exclusivePackages!);
     unittest.expect(o.minimal!, unittest.isTrue);
     unittest.expect(o.security!, unittest.isTrue);
   }
   buildCounterYumSettings--;
 }
 
-core.List<core.String> buildUnnamed3217() => [
+core.List<core.String> buildUnnamed6179() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3217(core.List<core.String> o) {
+void checkUnnamed6179(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1907,12 +1907,12 @@ void checkUnnamed3217(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3218() => [
+core.List<core.String> buildUnnamed6180() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3218(core.List<core.String> o) {
+void checkUnnamed6180(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1924,12 +1924,12 @@ void checkUnnamed3218(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3219() => [
+core.List<core.String> buildUnnamed6181() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3219(core.List<core.String> o) {
+void checkUnnamed6181(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1941,12 +1941,12 @@ void checkUnnamed3219(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3220() => [
+core.List<core.String> buildUnnamed6182() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3220(core.List<core.String> o) {
+void checkUnnamed6182(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1963,10 +1963,10 @@ api.ZypperSettings buildZypperSettings() {
   final o = api.ZypperSettings();
   buildCounterZypperSettings++;
   if (buildCounterZypperSettings < 3) {
-    o.categories = buildUnnamed3217();
-    o.excludes = buildUnnamed3218();
-    o.exclusivePatches = buildUnnamed3219();
-    o.severities = buildUnnamed3220();
+    o.categories = buildUnnamed6179();
+    o.excludes = buildUnnamed6180();
+    o.exclusivePatches = buildUnnamed6181();
+    o.severities = buildUnnamed6182();
     o.withOptional = true;
     o.withUpdate = true;
   }
@@ -1977,10 +1977,10 @@ api.ZypperSettings buildZypperSettings() {
 void checkZypperSettings(api.ZypperSettings o) {
   buildCounterZypperSettings++;
   if (buildCounterZypperSettings < 3) {
-    checkUnnamed3217(o.categories!);
-    checkUnnamed3218(o.excludes!);
-    checkUnnamed3219(o.exclusivePatches!);
-    checkUnnamed3220(o.severities!);
+    checkUnnamed6179(o.categories!);
+    checkUnnamed6180(o.excludes!);
+    checkUnnamed6181(o.exclusivePatches!);
+    checkUnnamed6182(o.severities!);
     unittest.expect(o.withOptional!, unittest.isTrue);
     unittest.expect(o.withUpdate!, unittest.isTrue);
   }
