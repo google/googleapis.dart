@@ -40,6 +40,7 @@ class RSAPrivateKey {
       this.n, this.e, this.d, this.p, this.q, this.dmp1, this.dmq1, this.coeff);
 }
 
+// ignore: avoid_classes_with_only_static_members
 /// Provides a [encrypt] method for encrypting messages with a [RSAPrivateKey].
 abstract class RSAAlgorithm {
   /// Performs the encryption of [bytes] with the private [key].
