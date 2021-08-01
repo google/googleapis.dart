@@ -1,5 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
+// ignore_for_file: avoid_classes_with_only_static_members
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: file_names

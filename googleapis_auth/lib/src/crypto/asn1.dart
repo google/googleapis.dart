@@ -6,6 +6,7 @@ import 'dart:typed_data';
 
 import 'rsa.dart';
 
+// ignore: avoid_classes_with_only_static_members
 class ASN1Parser {
   static const integerTag = 0x02;
   static const octetStringTag = 0x04;
