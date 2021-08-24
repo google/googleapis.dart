@@ -52,7 +52,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// documents using state-of-the-art Google AI such as natural language,
 /// computer vision, translation, and AutoML.
 class DocumentApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -258,7 +259,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> cancelOperation(
+  async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -266,11 +267,11 @@ class ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
-      'DELETE',
+      'POST',
       queryParams: _queryParams,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -827,7 +828,7 @@ class Uiv1beta3ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> cancelOperation(
+  async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -835,11 +836,11 @@ class Uiv1beta3ProjectsLocationsOperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'uiv1beta3/' + core.Uri.encodeFull('$name');
+    final _url = 'uiv1beta3/' + core.Uri.encodeFull('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
-      'DELETE',
+      'POST',
       queryParams: _queryParams,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -942,6 +943,74 @@ class Uiv1beta3ProjectsLocationsOperationsResource {
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+}
+
+class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
+}
+
+/// Response of the delete documents operation.
+class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse {
+  GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse();
+
+  GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
+}
+
+/// Response of the batch move documents operation.
+class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse {
+  GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse();
+
+  GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The common metadata for long running operations.
@@ -1290,6 +1359,40 @@ class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse {
       };
 }
 
+/// Metadata of the import document operation.
+class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata.fromJson(core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
+}
+
+/// Response of the import document operation.
+class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse {
+  GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse();
+
+  GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// The long running operation metadata for set default processor version
 /// method.
 class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata {
@@ -1496,6 +1599,29 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
 }
 
 /// The long running operation metadata for updating the human review
@@ -2029,8 +2155,10 @@ class GoogleCloudDocumentaiV1Document {
       };
 }
 
-/// A phrase in the text that is a known entity type, such as a person, an
-/// organization, or location.
+/// An entity that could be a phrase in the text or a property belongs to the
+/// document.
+///
+/// It is a known entity type, such as a person, an organization, or location.
 class GoogleCloudDocumentaiV1DocumentEntity {
   /// Confidence of detected Schema entity.
   ///
@@ -2052,6 +2180,8 @@ class GoogleCloudDocumentaiV1DocumentEntity {
   core.String? mentionId;
 
   /// Text value in the document e.g. `1600 Amphitheatre Pkwy`.
+  ///
+  /// If the entity is not present in the document, this field will be empty.
   ///
   /// Optional.
   core.String? mentionText;
@@ -2196,21 +2326,29 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   /// https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto
   GoogleTypeDateTime? datetimeValue;
 
+  /// Float value.
+  core.double? floatValue;
+
+  /// Integer value.
+  core.int? integerValue;
+
   /// Money value.
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
   GoogleTypeMoney? moneyValue;
 
-  /// Normalized entity value stored as a string.
+  /// An optional field to store a normalized string.
   ///
-  /// This field is populated for supported document type (e.g. Invoice). For
-  /// some entity types, one of respective 'structured_value' fields may also be
-  /// populated. - Money/Currency type (`money_value`) is in the ISO 4217 text
+  /// For some entity types, one of respective 'structured_value' fields may
+  /// also be populated. Also not all the types of 'structured_value' will be
+  /// normalized. For example, some processors may not generate float or int
+  /// normalized text by default. Below are sample formats mapped to structured
+  /// values. - Money/Currency type (`money_value`) is in the ISO 4217 text
   /// format. - Date type (`date_value`) is in the ISO 8601 text format. -
   /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
   ///
-  /// Required.
+  /// Optional.
   core.String? text;
 
   GoogleCloudDocumentaiV1DocumentEntityNormalizedValue({
@@ -2218,6 +2356,8 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
     this.booleanValue,
     this.dateValue,
     this.datetimeValue,
+    this.floatValue,
+    this.integerValue,
     this.moneyValue,
     this.text,
   });
@@ -2239,6 +2379,12 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
               ? GoogleTypeDateTime.fromJson(
                   _json['datetimeValue'] as core.Map<core.String, core.dynamic>)
               : null,
+          floatValue: _json.containsKey('floatValue')
+              ? (_json['floatValue'] as core.num).toDouble()
+              : null,
+          integerValue: _json.containsKey('integerValue')
+              ? _json['integerValue'] as core.int
+              : null,
           moneyValue: _json.containsKey('moneyValue')
               ? GoogleTypeMoney.fromJson(
                   _json['moneyValue'] as core.Map<core.String, core.dynamic>)
@@ -2251,6 +2397,8 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!.toJson(),
         if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (floatValue != null) 'floatValue': floatValue!,
+        if (integerValue != null) 'integerValue': integerValue!,
         if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
         if (text != null) 'text': text!,
       };
@@ -2765,6 +2913,18 @@ class GoogleCloudDocumentaiV1DocumentPageDimension {
 
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1DocumentPageFormField {
+  /// Created for Labeling UI to export key text.
+  ///
+  /// If corrections were made to the text identified by the
+  /// `field_name.text_anchor`, this field will contain the correction.
+  core.String? correctedKeyText;
+
+  /// Created for Labeling UI to export value text.
+  ///
+  /// If corrections were made to the text identified by the
+  /// `field_value.text_anchor`, this field will contain the correction.
+  core.String? correctedValueText;
+
   /// Layout for the FormField name.
   ///
   /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
@@ -2791,6 +2951,8 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
   core.String? valueType;
 
   GoogleCloudDocumentaiV1DocumentPageFormField({
+    this.correctedKeyText,
+    this.correctedValueText,
     this.fieldName,
     this.fieldValue,
     this.nameDetectedLanguages,
@@ -2801,6 +2963,12 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 
   GoogleCloudDocumentaiV1DocumentPageFormField.fromJson(core.Map _json)
       : this(
+          correctedKeyText: _json.containsKey('correctedKeyText')
+              ? _json['correctedKeyText'] as core.String
+              : null,
+          correctedValueText: _json.containsKey('correctedValueText')
+              ? _json['correctedValueText'] as core.String
+              : null,
           fieldName: _json.containsKey('fieldName')
               ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
                   _json['fieldName'] as core.Map<core.String, core.dynamic>)
@@ -2837,6 +3005,9 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (correctedKeyText != null) 'correctedKeyText': correctedKeyText!,
+        if (correctedValueText != null)
+          'correctedValueText': correctedValueText!,
         if (fieldName != null) 'fieldName': fieldName!.toJson(),
         if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
@@ -3453,9 +3624,9 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /// The id of the parent provenance.
   core.int? id;
 
-  /// The index of the parent revisions corresponding collection of items (eg.
+  /// The index of the parent item in the corresponding item list (eg.
   ///
-  /// list of entities, properties within entities, etc.)
+  /// list of entities, properties within entities, etc.) on parent revision.
   core.int? index;
 
   /// The index of the \[Document.revisions\] identifying the parent revision.
@@ -4495,8 +4666,10 @@ class GoogleCloudDocumentaiV1beta1Document {
       };
 }
 
-/// A phrase in the text that is a known entity type, such as a person, an
-/// organization, or location.
+/// An entity that could be a phrase in the text or a property belongs to the
+/// document.
+///
+/// It is a known entity type, such as a person, an organization, or location.
 class GoogleCloudDocumentaiV1beta1DocumentEntity {
   /// Confidence of detected Schema entity.
   ///
@@ -4518,6 +4691,8 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
   core.String? mentionId;
 
   /// Text value in the document e.g. `1600 Amphitheatre Pkwy`.
+  ///
+  /// If the entity is not present in the document, this field will be empty.
   ///
   /// Optional.
   core.String? mentionText;
@@ -4662,21 +4837,29 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
   /// https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto
   GoogleTypeDateTime? datetimeValue;
 
+  /// Float value.
+  core.double? floatValue;
+
+  /// Integer value.
+  core.int? integerValue;
+
   /// Money value.
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
   GoogleTypeMoney? moneyValue;
 
-  /// Normalized entity value stored as a string.
+  /// An optional field to store a normalized string.
   ///
-  /// This field is populated for supported document type (e.g. Invoice). For
-  /// some entity types, one of respective 'structured_value' fields may also be
-  /// populated. - Money/Currency type (`money_value`) is in the ISO 4217 text
+  /// For some entity types, one of respective 'structured_value' fields may
+  /// also be populated. Also not all the types of 'structured_value' will be
+  /// normalized. For example, some processors may not generate float or int
+  /// normalized text by default. Below are sample formats mapped to structured
+  /// values. - Money/Currency type (`money_value`) is in the ISO 4217 text
   /// format. - Date type (`date_value`) is in the ISO 8601 text format. -
   /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
   ///
-  /// Required.
+  /// Optional.
   core.String? text;
 
   GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue({
@@ -4684,6 +4867,8 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
     this.booleanValue,
     this.dateValue,
     this.datetimeValue,
+    this.floatValue,
+    this.integerValue,
     this.moneyValue,
     this.text,
   });
@@ -4706,6 +4891,12 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
               ? GoogleTypeDateTime.fromJson(
                   _json['datetimeValue'] as core.Map<core.String, core.dynamic>)
               : null,
+          floatValue: _json.containsKey('floatValue')
+              ? (_json['floatValue'] as core.num).toDouble()
+              : null,
+          integerValue: _json.containsKey('integerValue')
+              ? _json['integerValue'] as core.int
+              : null,
           moneyValue: _json.containsKey('moneyValue')
               ? GoogleTypeMoney.fromJson(
                   _json['moneyValue'] as core.Map<core.String, core.dynamic>)
@@ -4718,6 +4909,8 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!.toJson(),
         if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (floatValue != null) 'floatValue': floatValue!,
+        if (integerValue != null) 'integerValue': integerValue!,
         if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
         if (text != null) 'text': text!,
       };
@@ -5191,6 +5384,18 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
 
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
+  /// Created for Labeling UI to export key text.
+  ///
+  /// If corrections were made to the text identified by the
+  /// `field_name.text_anchor`, this field will contain the correction.
+  core.String? correctedKeyText;
+
+  /// Created for Labeling UI to export value text.
+  ///
+  /// If corrections were made to the text identified by the
+  /// `field_value.text_anchor`, this field will contain the correction.
+  core.String? correctedValueText;
+
   /// Layout for the FormField name.
   ///
   /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
@@ -5217,6 +5422,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
   core.String? valueType;
 
   GoogleCloudDocumentaiV1beta1DocumentPageFormField({
+    this.correctedKeyText,
+    this.correctedValueText,
     this.fieldName,
     this.fieldValue,
     this.nameDetectedLanguages,
@@ -5227,6 +5434,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
 
   GoogleCloudDocumentaiV1beta1DocumentPageFormField.fromJson(core.Map _json)
       : this(
+          correctedKeyText: _json.containsKey('correctedKeyText')
+              ? _json['correctedKeyText'] as core.String
+              : null,
+          correctedValueText: _json.containsKey('correctedValueText')
+              ? _json['correctedValueText'] as core.String
+              : null,
           fieldName: _json.containsKey('fieldName')
               ? GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
                   _json['fieldName'] as core.Map<core.String, core.dynamic>)
@@ -5263,6 +5476,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (correctedKeyText != null) 'correctedKeyText': correctedKeyText!,
+        if (correctedValueText != null)
+          'correctedValueText': correctedValueText!,
         if (fieldName != null) 'fieldName': fieldName!.toJson(),
         if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
@@ -5883,9 +6099,9 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
   /// The id of the parent provenance.
   core.int? id;
 
-  /// The index of the parent revisions corresponding collection of items (eg.
+  /// The index of the parent item in the corresponding item list (eg.
   ///
-  /// list of entities, properties within entities, etc.)
+  /// list of entities, properties within entities, etc.) on parent revision.
   core.int? index;
 
   /// The index of the \[Document.revisions\] identifying the parent revision.
@@ -6817,8 +7033,10 @@ class GoogleCloudDocumentaiV1beta2Document {
       };
 }
 
-/// A phrase in the text that is a known entity type, such as a person, an
-/// organization, or location.
+/// An entity that could be a phrase in the text or a property belongs to the
+/// document.
+///
+/// It is a known entity type, such as a person, an organization, or location.
 class GoogleCloudDocumentaiV1beta2DocumentEntity {
   /// Confidence of detected Schema entity.
   ///
@@ -6840,6 +7058,8 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
   core.String? mentionId;
 
   /// Text value in the document e.g. `1600 Amphitheatre Pkwy`.
+  ///
+  /// If the entity is not present in the document, this field will be empty.
   ///
   /// Optional.
   core.String? mentionText;
@@ -6984,21 +7204,29 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
   /// https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto
   GoogleTypeDateTime? datetimeValue;
 
+  /// Float value.
+  core.double? floatValue;
+
+  /// Integer value.
+  core.int? integerValue;
+
   /// Money value.
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
   GoogleTypeMoney? moneyValue;
 
-  /// Normalized entity value stored as a string.
+  /// An optional field to store a normalized string.
   ///
-  /// This field is populated for supported document type (e.g. Invoice). For
-  /// some entity types, one of respective 'structured_value' fields may also be
-  /// populated. - Money/Currency type (`money_value`) is in the ISO 4217 text
+  /// For some entity types, one of respective 'structured_value' fields may
+  /// also be populated. Also not all the types of 'structured_value' will be
+  /// normalized. For example, some processors may not generate float or int
+  /// normalized text by default. Below are sample formats mapped to structured
+  /// values. - Money/Currency type (`money_value`) is in the ISO 4217 text
   /// format. - Date type (`date_value`) is in the ISO 8601 text format. -
   /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
   ///
-  /// Required.
+  /// Optional.
   core.String? text;
 
   GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue({
@@ -7006,6 +7234,8 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
     this.booleanValue,
     this.dateValue,
     this.datetimeValue,
+    this.floatValue,
+    this.integerValue,
     this.moneyValue,
     this.text,
   });
@@ -7028,6 +7258,12 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
               ? GoogleTypeDateTime.fromJson(
                   _json['datetimeValue'] as core.Map<core.String, core.dynamic>)
               : null,
+          floatValue: _json.containsKey('floatValue')
+              ? (_json['floatValue'] as core.num).toDouble()
+              : null,
+          integerValue: _json.containsKey('integerValue')
+              ? _json['integerValue'] as core.int
+              : null,
           moneyValue: _json.containsKey('moneyValue')
               ? GoogleTypeMoney.fromJson(
                   _json['moneyValue'] as core.Map<core.String, core.dynamic>)
@@ -7040,6 +7276,8 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!.toJson(),
         if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (floatValue != null) 'floatValue': floatValue!,
+        if (integerValue != null) 'integerValue': integerValue!,
         if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
         if (text != null) 'text': text!,
       };
@@ -7559,6 +7797,18 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
 
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
+  /// Created for Labeling UI to export key text.
+  ///
+  /// If corrections were made to the text identified by the
+  /// `field_name.text_anchor`, this field will contain the correction.
+  core.String? correctedKeyText;
+
+  /// Created for Labeling UI to export value text.
+  ///
+  /// If corrections were made to the text identified by the
+  /// `field_value.text_anchor`, this field will contain the correction.
+  core.String? correctedValueText;
+
   /// Layout for the FormField name.
   ///
   /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
@@ -7585,6 +7835,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
   core.String? valueType;
 
   GoogleCloudDocumentaiV1beta2DocumentPageFormField({
+    this.correctedKeyText,
+    this.correctedValueText,
     this.fieldName,
     this.fieldValue,
     this.nameDetectedLanguages,
@@ -7595,6 +7847,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
 
   GoogleCloudDocumentaiV1beta2DocumentPageFormField.fromJson(core.Map _json)
       : this(
+          correctedKeyText: _json.containsKey('correctedKeyText')
+              ? _json['correctedKeyText'] as core.String
+              : null,
+          correctedValueText: _json.containsKey('correctedValueText')
+              ? _json['correctedValueText'] as core.String
+              : null,
           fieldName: _json.containsKey('fieldName')
               ? GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
                   _json['fieldName'] as core.Map<core.String, core.dynamic>)
@@ -7631,6 +7889,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (correctedKeyText != null) 'correctedKeyText': correctedKeyText!,
+        if (correctedValueText != null)
+          'correctedValueText': correctedValueText!,
         if (fieldName != null) 'fieldName': fieldName!.toJson(),
         if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
@@ -8251,9 +8512,9 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
   /// The id of the parent provenance.
   core.int? id;
 
-  /// The index of the parent revisions corresponding collection of items (eg.
+  /// The index of the parent item in the corresponding item list (eg.
   ///
-  /// list of entities, properties within entities, etc.)
+  /// list of entities, properties within entities, etc.) on parent revision.
   core.int? index;
 
   /// The index of the \[Document.revisions\] identifying the parent revision.

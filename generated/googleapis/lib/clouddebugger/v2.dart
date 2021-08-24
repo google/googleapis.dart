@@ -44,7 +44,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Examines the call stack and variables of a running application without
 /// stopping or slowing it down.
 class CloudDebuggerApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

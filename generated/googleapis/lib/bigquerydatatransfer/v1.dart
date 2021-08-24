@@ -48,14 +48,17 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Schedule queries or transfer external data from SaaS applications to Google
 /// BigQuery on a regular basis.
 class BigQueryDataTransferApi {
-  /// View and manage your data in Google BigQuery
+  /// View and manage your data in Google BigQuery and see the email address for
+  /// your Google Account
   static const bigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -81,6 +84,54 @@ class ProjectsResource {
       ProjectsTransferConfigsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Enroll data sources in a user project.
+  ///
+  /// This allows users to create transfer configurations for these data
+  /// sources. They will also appear in the ListDataSources RPC and as such,
+  /// will appear in the BigQuery UI 'https://bigquery.cloud.google.com' (and
+  /// the documents can be found at
+  /// https://cloud.google.com/bigquery/bigquery-web-ui and
+  /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the project resource in the form:
+  /// `projects/{project_id}`
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> enrollDataSources(
+    EnrollDataSourcesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enrollDataSources';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsDataSourcesResource {
@@ -238,6 +289,54 @@ class ProjectsLocationsResource {
       ProjectsLocationsTransferConfigsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Enroll data sources in a user project.
+  ///
+  /// This allows users to create transfer configurations for these data
+  /// sources. They will also appear in the ListDataSources RPC and as such,
+  /// will appear in the BigQuery UI 'https://bigquery.cloud.google.com' (and
+  /// the documents can be found at
+  /// https://cloud.google.com/bigquery/bigquery-web-ui and
+  /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the project resource in the form:
+  /// `projects/{project_id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> enrollDataSources(
+    EnrollDataSourcesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enrollDataSources';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets information about a location.
   ///
@@ -641,7 +740,8 @@ class ProjectsLocationsTransferConfigsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns information about all data transfers in the project.
+  /// Returns information about all transfer configs owned by a project in the
+  /// specified location.
   ///
   /// Request parameters:
   ///
@@ -1263,7 +1363,8 @@ class ProjectsTransferConfigsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns information about all data transfers in the project.
+  /// Returns information about all transfer configs owned by a project in the
+  /// specified location.
   ///
   /// Request parameters:
   ///
@@ -1766,10 +1867,7 @@ class DataSource {
   /// - "GOOGLE_PLUS_AUTHORIZATION_CODE" : Return an authorization code for a
   /// given Google+ page that can then be exchanged for a refresh token on the
   /// backend.
-  /// - "FIRST_PARTY_OAUTH" : Use First Party OAuth based on Loas Owned Clients.
-  /// First Party OAuth doesn't require a refresh token to get an offline access
-  /// token. Instead, it uses a client-signed JWT assertion to retrieve an
-  /// access token.
+  /// - "FIRST_PARTY_OAUTH" : Use First Party OAuth.
   core.String? authorizationType;
 
   /// Data source client id which should be used to receive refresh token.
@@ -2182,6 +2280,32 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// A request to enroll a set of data sources so they are visible in the
+/// BigQuery UI's `Transfer` tab.
+class EnrollDataSourcesRequest {
+  /// Data sources that are enrolled.
+  ///
+  /// It is required to provide at least one data source id.
+  core.List<core.String>? dataSourceIds;
+
+  EnrollDataSourcesRequest({
+    this.dataSourceIds,
+  });
+
+  EnrollDataSourcesRequest.fromJson(core.Map _json)
+      : this(
+          dataSourceIds: _json.containsKey('dataSourceIds')
+              ? (_json['dataSourceIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSourceIds != null) 'dataSourceIds': dataSourceIds!,
+      };
 }
 
 /// Returns list of supported data sources and their metadata.
@@ -2776,7 +2900,18 @@ class TransferConfig {
 
   /// Pub/Sub topic where notifications will be sent after transfer runs
   /// associated with this transfer config finish.
+  ///
+  /// The format for specifying a pubsub topic is:
+  /// `projects/{project}/topics/{topic}`
   core.String? notificationPubsubTopic;
+
+  /// Information about the user whose credentials are used to transfer data.
+  ///
+  /// Populated only for `transferConfigs.get` requests. In case the user
+  /// information is not available, this field will not be populated.
+  ///
+  /// Output only.
+  UserInfo? ownerInfo;
 
   /// Parameters specific to each data source.
   ///
@@ -2839,6 +2974,7 @@ class TransferConfig {
     this.name,
     this.nextRunTime,
     this.notificationPubsubTopic,
+    this.ownerInfo,
     this.params,
     this.schedule,
     this.scheduleOptions,
@@ -2877,6 +3013,10 @@ class TransferConfig {
               : null,
           notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
               ? _json['notificationPubsubTopic'] as core.String
+              : null,
+          ownerInfo: _json.containsKey('ownerInfo')
+              ? UserInfo.fromJson(
+                  _json['ownerInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           params: _json.containsKey('params')
               ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
@@ -2918,6 +3058,7 @@ class TransferConfig {
         if (nextRunTime != null) 'nextRunTime': nextRunTime!,
         if (notificationPubsubTopic != null)
           'notificationPubsubTopic': notificationPubsubTopic!,
+        if (ownerInfo != null) 'ownerInfo': ownerInfo!.toJson(),
         if (params != null) 'params': params!,
         if (schedule != null) 'schedule': schedule!,
         if (scheduleOptions != null)
@@ -3007,7 +3148,10 @@ class TransferRun {
   core.String? name;
 
   /// Pub/Sub topic where a notification will be sent after this transfer run
-  /// finishes
+  /// finishes.
+  ///
+  /// The format for specifying a pubsub topic is:
+  /// `projects/{project}/topics/{topic}`
   ///
   /// Output only.
   core.String? notificationPubsubTopic;
@@ -3162,5 +3306,25 @@ class TransferRun {
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userId != null) 'userId': userId!,
+      };
+}
+
+/// Information about a user.
+class UserInfo {
+  /// E-mail address of the user.
+  core.String? email;
+
+  UserInfo({
+    this.email,
+  });
+
+  UserInfo.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
       };
 }

@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AchievementResetResponse> buildUnnamed72() => [
+core.List<api.AchievementResetResponse> buildUnnamed74() => [
       buildAchievementResetResponse(),
       buildAchievementResetResponse(),
     ];
 
-void checkUnnamed72(core.List<api.AchievementResetResponse> o) {
+void checkUnnamed74(core.List<api.AchievementResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementResetResponse(o[0]);
   checkAchievementResetResponse(o[1]);
@@ -43,7 +43,7 @@ api.AchievementResetAllResponse buildAchievementResetAllResponse() {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     o.kind = 'foo';
-    o.results = buildUnnamed72();
+    o.results = buildUnnamed74();
   }
   buildCounterAchievementResetAllResponse--;
   return o;
@@ -56,17 +56,17 @@ void checkAchievementResetAllResponse(api.AchievementResetAllResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed72(o.results!);
+    checkUnnamed74(o.results!);
   }
   buildCounterAchievementResetAllResponse--;
 }
 
-core.List<core.String> buildUnnamed73() => [
+core.List<core.String> buildUnnamed75() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed73(core.List<core.String> o) {
+void checkUnnamed75(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -84,7 +84,7 @@ api.AchievementResetMultipleForAllRequest
   final o = api.AchievementResetMultipleForAllRequest();
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
-    o.achievementIds = buildUnnamed73();
+    o.achievementIds = buildUnnamed75();
     o.kind = 'foo';
   }
   buildCounterAchievementResetMultipleForAllRequest--;
@@ -95,7 +95,7 @@ void checkAchievementResetMultipleForAllRequest(
     api.AchievementResetMultipleForAllRequest o) {
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
-    checkUnnamed73(o.achievementIds!);
+    checkUnnamed75(o.achievementIds!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -138,12 +138,12 @@ void checkAchievementResetResponse(api.AchievementResetResponse o) {
   buildCounterAchievementResetResponse--;
 }
 
-core.List<core.String> buildUnnamed74() => [
+core.List<core.String> buildUnnamed76() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed74(core.List<core.String> o) {
+void checkUnnamed76(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -160,7 +160,7 @@ api.EventsResetMultipleForAllRequest buildEventsResetMultipleForAllRequest() {
   final o = api.EventsResetMultipleForAllRequest();
   buildCounterEventsResetMultipleForAllRequest++;
   if (buildCounterEventsResetMultipleForAllRequest < 3) {
-    o.eventIds = buildUnnamed74();
+    o.eventIds = buildUnnamed76();
     o.kind = 'foo';
   }
   buildCounterEventsResetMultipleForAllRequest--;
@@ -171,7 +171,7 @@ void checkEventsResetMultipleForAllRequest(
     api.EventsResetMultipleForAllRequest o) {
   buildCounterEventsResetMultipleForAllRequest++;
   if (buildCounterEventsResetMultipleForAllRequest < 3) {
-    checkUnnamed74(o.eventIds!);
+    checkUnnamed76(o.eventIds!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -273,12 +273,12 @@ void checkHiddenPlayer(api.HiddenPlayer o) {
   buildCounterHiddenPlayer--;
 }
 
-core.List<api.HiddenPlayer> buildUnnamed75() => [
+core.List<api.HiddenPlayer> buildUnnamed77() => [
       buildHiddenPlayer(),
       buildHiddenPlayer(),
     ];
 
-void checkUnnamed75(core.List<api.HiddenPlayer> o) {
+void checkUnnamed77(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHiddenPlayer(o[0]);
   checkHiddenPlayer(o[1]);
@@ -289,7 +289,7 @@ api.HiddenPlayerList buildHiddenPlayerList() {
   final o = api.HiddenPlayerList();
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    o.items = buildUnnamed75();
+    o.items = buildUnnamed77();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -300,7 +300,7 @@ api.HiddenPlayerList buildHiddenPlayerList() {
 void checkHiddenPlayerList(api.HiddenPlayerList o) {
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    checkUnnamed75(o.items!);
+    checkUnnamed77(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -403,12 +403,12 @@ void checkPlayer(api.Player o) {
   buildCounterPlayer--;
 }
 
-core.List<api.PlayerScoreResetResponse> buildUnnamed76() => [
+core.List<api.PlayerScoreResetResponse> buildUnnamed78() => [
       buildPlayerScoreResetResponse(),
       buildPlayerScoreResetResponse(),
     ];
 
-void checkUnnamed76(core.List<api.PlayerScoreResetResponse> o) {
+void checkUnnamed78(core.List<api.PlayerScoreResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScoreResetResponse(o[0]);
   checkPlayerScoreResetResponse(o[1]);
@@ -420,7 +420,7 @@ api.PlayerScoreResetAllResponse buildPlayerScoreResetAllResponse() {
   buildCounterPlayerScoreResetAllResponse++;
   if (buildCounterPlayerScoreResetAllResponse < 3) {
     o.kind = 'foo';
-    o.results = buildUnnamed76();
+    o.results = buildUnnamed78();
   }
   buildCounterPlayerScoreResetAllResponse--;
   return o;
@@ -433,17 +433,17 @@ void checkPlayerScoreResetAllResponse(api.PlayerScoreResetAllResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed76(o.results!);
+    checkUnnamed78(o.results!);
   }
   buildCounterPlayerScoreResetAllResponse--;
 }
 
-core.List<core.String> buildUnnamed77() => [
+core.List<core.String> buildUnnamed79() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed77(core.List<core.String> o) {
+void checkUnnamed79(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -462,7 +462,7 @@ api.PlayerScoreResetResponse buildPlayerScoreResetResponse() {
   if (buildCounterPlayerScoreResetResponse < 3) {
     o.definitionId = 'foo';
     o.kind = 'foo';
-    o.resetScoreTimeSpans = buildUnnamed77();
+    o.resetScoreTimeSpans = buildUnnamed79();
   }
   buildCounterPlayerScoreResetResponse--;
   return o;
@@ -479,7 +479,7 @@ void checkPlayerScoreResetResponse(api.PlayerScoreResetResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed77(o.resetScoreTimeSpans!);
+    checkUnnamed79(o.resetScoreTimeSpans!);
   }
   buildCounterPlayerScoreResetResponse--;
 }
@@ -508,12 +508,12 @@ void checkProfileSettings(api.ProfileSettings o) {
   buildCounterProfileSettings--;
 }
 
-core.List<core.String> buildUnnamed78() => [
+core.List<core.String> buildUnnamed80() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed78(core.List<core.String> o) {
+void checkUnnamed80(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -531,7 +531,7 @@ api.ScoresResetMultipleForAllRequest buildScoresResetMultipleForAllRequest() {
   buildCounterScoresResetMultipleForAllRequest++;
   if (buildCounterScoresResetMultipleForAllRequest < 3) {
     o.kind = 'foo';
-    o.leaderboardIds = buildUnnamed78();
+    o.leaderboardIds = buildUnnamed80();
   }
   buildCounterScoresResetMultipleForAllRequest--;
   return o;
@@ -545,7 +545,7 @@ void checkScoresResetMultipleForAllRequest(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed78(o.leaderboardIds!);
+    checkUnnamed80(o.leaderboardIds!);
   }
   buildCounterScoresResetMultipleForAllRequest--;
 }

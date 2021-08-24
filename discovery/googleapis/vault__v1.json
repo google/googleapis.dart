@@ -1191,7 +1191,7 @@
             }
         }
     },
-    "revision": "20210712",
+    "revision": "20210817",
     "rootUrl": "https://vault.googleapis.com/",
     "schemas": {
         "AccountCount": {
@@ -2583,7 +2583,7 @@
         }
     },
     "servicePath": "",
-    "title": "G Suite Vault API",
+    "title": "Google Vault API",
     "version": "v1",
     "version_module": true
 }

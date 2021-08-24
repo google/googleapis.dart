@@ -40,11 +40,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Creates, reads, and updates metadata for Google Cloud Platform resource
 /// containers.
 class CloudResourceManagerApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -264,7 +266,8 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [pageSize] - Optional. The maximum number of Folders to return in the
-  /// response.
+  /// response. The server can return fewer folders than requested. If
+  /// unspecified, server picks an appropriate default.
   ///
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListFolders` that indicates where this listing should continue from.
@@ -1636,7 +1639,7 @@ class Operation {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -1772,6 +1775,9 @@ class ProjectCreationStatus {
 /// The request message for searching folders.
 class SearchFoldersRequest {
   /// The maximum number of folders to return in the response.
+  ///
+  /// The server can return fewer folders than requested. If unspecified, server
+  /// picks an appropriate default.
   ///
   /// Optional.
   core.int? pageSize;

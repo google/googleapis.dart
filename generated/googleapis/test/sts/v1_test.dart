@@ -26,6 +26,125 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.List<core.String> buildUnnamed2931() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2931(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleIamV1Binding = 0;
+api.GoogleIamV1Binding buildGoogleIamV1Binding() {
+  final o = api.GoogleIamV1Binding();
+  buildCounterGoogleIamV1Binding++;
+  if (buildCounterGoogleIamV1Binding < 3) {
+    o.condition = buildGoogleTypeExpr();
+    o.members = buildUnnamed2931();
+    o.role = 'foo';
+  }
+  buildCounterGoogleIamV1Binding--;
+  return o;
+}
+
+void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
+  buildCounterGoogleIamV1Binding++;
+  if (buildCounterGoogleIamV1Binding < 3) {
+    checkGoogleTypeExpr(o.condition!);
+    checkUnnamed2931(o.members!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleIamV1Binding--;
+}
+
+core.List<api.GoogleIdentityStsV1AccessBoundaryRule> buildUnnamed2932() => [
+      buildGoogleIdentityStsV1AccessBoundaryRule(),
+      buildGoogleIdentityStsV1AccessBoundaryRule(),
+    ];
+
+void checkUnnamed2932(core.List<api.GoogleIdentityStsV1AccessBoundaryRule> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleIdentityStsV1AccessBoundaryRule(o[0]);
+  checkGoogleIdentityStsV1AccessBoundaryRule(o[1]);
+}
+
+core.int buildCounterGoogleIdentityStsV1AccessBoundary = 0;
+api.GoogleIdentityStsV1AccessBoundary buildGoogleIdentityStsV1AccessBoundary() {
+  final o = api.GoogleIdentityStsV1AccessBoundary();
+  buildCounterGoogleIdentityStsV1AccessBoundary++;
+  if (buildCounterGoogleIdentityStsV1AccessBoundary < 3) {
+    o.accessBoundaryRules = buildUnnamed2932();
+  }
+  buildCounterGoogleIdentityStsV1AccessBoundary--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1AccessBoundary(
+    api.GoogleIdentityStsV1AccessBoundary o) {
+  buildCounterGoogleIdentityStsV1AccessBoundary++;
+  if (buildCounterGoogleIdentityStsV1AccessBoundary < 3) {
+    checkUnnamed2932(o.accessBoundaryRules!);
+  }
+  buildCounterGoogleIdentityStsV1AccessBoundary--;
+}
+
+core.List<core.String> buildUnnamed2933() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2933(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleIdentityStsV1AccessBoundaryRule = 0;
+api.GoogleIdentityStsV1AccessBoundaryRule
+    buildGoogleIdentityStsV1AccessBoundaryRule() {
+  final o = api.GoogleIdentityStsV1AccessBoundaryRule();
+  buildCounterGoogleIdentityStsV1AccessBoundaryRule++;
+  if (buildCounterGoogleIdentityStsV1AccessBoundaryRule < 3) {
+    o.availabilityCondition = buildGoogleTypeExpr();
+    o.availablePermissions = buildUnnamed2933();
+    o.availableResource = 'foo';
+  }
+  buildCounterGoogleIdentityStsV1AccessBoundaryRule--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1AccessBoundaryRule(
+    api.GoogleIdentityStsV1AccessBoundaryRule o) {
+  buildCounterGoogleIdentityStsV1AccessBoundaryRule++;
+  if (buildCounterGoogleIdentityStsV1AccessBoundaryRule < 3) {
+    checkGoogleTypeExpr(o.availabilityCondition!);
+    checkUnnamed2933(o.availablePermissions!);
+    unittest.expect(
+      o.availableResource!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleIdentityStsV1AccessBoundaryRule--;
+}
+
 core.int buildCounterGoogleIdentityStsV1ExchangeTokenRequest = 0;
 api.GoogleIdentityStsV1ExchangeTokenRequest
     buildGoogleIdentityStsV1ExchangeTokenRequest() {
@@ -119,92 +238,238 @@ void checkGoogleIdentityStsV1ExchangeTokenResponse(
   buildCounterGoogleIdentityStsV1ExchangeTokenResponse--;
 }
 
-core.int buildCounterGoogleIdentityStsV1IntrospectTokenRequest = 0;
-api.GoogleIdentityStsV1IntrospectTokenRequest
-    buildGoogleIdentityStsV1IntrospectTokenRequest() {
-  final o = api.GoogleIdentityStsV1IntrospectTokenRequest();
-  buildCounterGoogleIdentityStsV1IntrospectTokenRequest++;
-  if (buildCounterGoogleIdentityStsV1IntrospectTokenRequest < 3) {
-    o.token = 'foo';
-    o.tokenTypeHint = 'foo';
+core.List<core.String> buildUnnamed2934() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2934(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleIdentityStsV1Options = 0;
+api.GoogleIdentityStsV1Options buildGoogleIdentityStsV1Options() {
+  final o = api.GoogleIdentityStsV1Options();
+  buildCounterGoogleIdentityStsV1Options++;
+  if (buildCounterGoogleIdentityStsV1Options < 3) {
+    o.accessBoundary = buildGoogleIdentityStsV1AccessBoundary();
+    o.audiences = buildUnnamed2934();
+    o.userProject = 'foo';
   }
-  buildCounterGoogleIdentityStsV1IntrospectTokenRequest--;
+  buildCounterGoogleIdentityStsV1Options--;
   return o;
 }
 
-void checkGoogleIdentityStsV1IntrospectTokenRequest(
-    api.GoogleIdentityStsV1IntrospectTokenRequest o) {
-  buildCounterGoogleIdentityStsV1IntrospectTokenRequest++;
-  if (buildCounterGoogleIdentityStsV1IntrospectTokenRequest < 3) {
+void checkGoogleIdentityStsV1Options(api.GoogleIdentityStsV1Options o) {
+  buildCounterGoogleIdentityStsV1Options++;
+  if (buildCounterGoogleIdentityStsV1Options < 3) {
+    checkGoogleIdentityStsV1AccessBoundary(o.accessBoundary!);
+    checkUnnamed2934(o.audiences!);
     unittest.expect(
-      o.token!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.tokenTypeHint!,
+      o.userProject!,
       unittest.equals('foo'),
     );
   }
-  buildCounterGoogleIdentityStsV1IntrospectTokenRequest--;
+  buildCounterGoogleIdentityStsV1Options--;
 }
 
-core.int buildCounterGoogleIdentityStsV1IntrospectTokenResponse = 0;
-api.GoogleIdentityStsV1IntrospectTokenResponse
-    buildGoogleIdentityStsV1IntrospectTokenResponse() {
-  final o = api.GoogleIdentityStsV1IntrospectTokenResponse();
-  buildCounterGoogleIdentityStsV1IntrospectTokenResponse++;
-  if (buildCounterGoogleIdentityStsV1IntrospectTokenResponse < 3) {
-    o.active = true;
-    o.clientId = 'foo';
-    o.exp = 'foo';
-    o.iat = 'foo';
-    o.iss = 'foo';
-    o.scope = 'foo';
-    o.sub = 'foo';
-    o.username = 'foo';
+core.List<api.GoogleIdentityStsV1betaAccessBoundaryRule> buildUnnamed2935() => [
+      buildGoogleIdentityStsV1betaAccessBoundaryRule(),
+      buildGoogleIdentityStsV1betaAccessBoundaryRule(),
+    ];
+
+void checkUnnamed2935(
+    core.List<api.GoogleIdentityStsV1betaAccessBoundaryRule> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleIdentityStsV1betaAccessBoundaryRule(o[0]);
+  checkGoogleIdentityStsV1betaAccessBoundaryRule(o[1]);
+}
+
+core.int buildCounterGoogleIdentityStsV1betaAccessBoundary = 0;
+api.GoogleIdentityStsV1betaAccessBoundary
+    buildGoogleIdentityStsV1betaAccessBoundary() {
+  final o = api.GoogleIdentityStsV1betaAccessBoundary();
+  buildCounterGoogleIdentityStsV1betaAccessBoundary++;
+  if (buildCounterGoogleIdentityStsV1betaAccessBoundary < 3) {
+    o.accessBoundaryRules = buildUnnamed2935();
   }
-  buildCounterGoogleIdentityStsV1IntrospectTokenResponse--;
+  buildCounterGoogleIdentityStsV1betaAccessBoundary--;
   return o;
 }
 
-void checkGoogleIdentityStsV1IntrospectTokenResponse(
-    api.GoogleIdentityStsV1IntrospectTokenResponse o) {
-  buildCounterGoogleIdentityStsV1IntrospectTokenResponse++;
-  if (buildCounterGoogleIdentityStsV1IntrospectTokenResponse < 3) {
-    unittest.expect(o.active!, unittest.isTrue);
+void checkGoogleIdentityStsV1betaAccessBoundary(
+    api.GoogleIdentityStsV1betaAccessBoundary o) {
+  buildCounterGoogleIdentityStsV1betaAccessBoundary++;
+  if (buildCounterGoogleIdentityStsV1betaAccessBoundary < 3) {
+    checkUnnamed2935(o.accessBoundaryRules!);
+  }
+  buildCounterGoogleIdentityStsV1betaAccessBoundary--;
+}
+
+core.List<core.String> buildUnnamed2936() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2936(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleIdentityStsV1betaAccessBoundaryRule = 0;
+api.GoogleIdentityStsV1betaAccessBoundaryRule
+    buildGoogleIdentityStsV1betaAccessBoundaryRule() {
+  final o = api.GoogleIdentityStsV1betaAccessBoundaryRule();
+  buildCounterGoogleIdentityStsV1betaAccessBoundaryRule++;
+  if (buildCounterGoogleIdentityStsV1betaAccessBoundaryRule < 3) {
+    o.availabilityCondition = buildGoogleTypeExpr();
+    o.availablePermissions = buildUnnamed2936();
+    o.availableResource = 'foo';
+  }
+  buildCounterGoogleIdentityStsV1betaAccessBoundaryRule--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1betaAccessBoundaryRule(
+    api.GoogleIdentityStsV1betaAccessBoundaryRule o) {
+  buildCounterGoogleIdentityStsV1betaAccessBoundaryRule++;
+  if (buildCounterGoogleIdentityStsV1betaAccessBoundaryRule < 3) {
+    checkGoogleTypeExpr(o.availabilityCondition!);
+    checkUnnamed2936(o.availablePermissions!);
     unittest.expect(
-      o.clientId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.exp!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.iat!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.iss!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.scope!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sub!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.username!,
+      o.availableResource!,
       unittest.equals('foo'),
     );
   }
-  buildCounterGoogleIdentityStsV1IntrospectTokenResponse--;
+  buildCounterGoogleIdentityStsV1betaAccessBoundaryRule--;
+}
+
+core.List<core.String> buildUnnamed2937() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2937(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleIdentityStsV1betaOptions = 0;
+api.GoogleIdentityStsV1betaOptions buildGoogleIdentityStsV1betaOptions() {
+  final o = api.GoogleIdentityStsV1betaOptions();
+  buildCounterGoogleIdentityStsV1betaOptions++;
+  if (buildCounterGoogleIdentityStsV1betaOptions < 3) {
+    o.accessBoundary = buildGoogleIdentityStsV1betaAccessBoundary();
+    o.audiences = buildUnnamed2937();
+    o.userProject = 'foo';
+  }
+  buildCounterGoogleIdentityStsV1betaOptions--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1betaOptions(api.GoogleIdentityStsV1betaOptions o) {
+  buildCounterGoogleIdentityStsV1betaOptions++;
+  if (buildCounterGoogleIdentityStsV1betaOptions < 3) {
+    checkGoogleIdentityStsV1betaAccessBoundary(o.accessBoundary!);
+    checkUnnamed2937(o.audiences!);
+    unittest.expect(
+      o.userProject!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleIdentityStsV1betaOptions--;
+}
+
+core.int buildCounterGoogleTypeExpr = 0;
+api.GoogleTypeExpr buildGoogleTypeExpr() {
+  final o = api.GoogleTypeExpr();
+  buildCounterGoogleTypeExpr++;
+  if (buildCounterGoogleTypeExpr < 3) {
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
+  }
+  buildCounterGoogleTypeExpr--;
+  return o;
+}
+
+void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
+  buildCounterGoogleTypeExpr++;
+  if (buildCounterGoogleTypeExpr < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleTypeExpr--;
 }
 
 void main() {
+  unittest.group('obj-schema-GoogleIamV1Binding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIamV1Binding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIamV1Binding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleIamV1Binding(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleIdentityStsV1AccessBoundary', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1AccessBoundary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1AccessBoundary.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleIdentityStsV1AccessBoundary(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleIdentityStsV1AccessBoundaryRule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1AccessBoundaryRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1AccessBoundaryRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleIdentityStsV1AccessBoundaryRule(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleIdentityStsV1ExchangeTokenRequest();
@@ -225,84 +490,57 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GoogleIdentityStsV1IntrospectTokenRequest', () {
+  unittest.group('obj-schema-GoogleIdentityStsV1Options', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGoogleIdentityStsV1IntrospectTokenRequest();
+      final o = buildGoogleIdentityStsV1Options();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleIdentityStsV1IntrospectTokenRequest.fromJson(
+      final od = api.GoogleIdentityStsV1Options.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIdentityStsV1IntrospectTokenRequest(od);
+      checkGoogleIdentityStsV1Options(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleIdentityStsV1IntrospectTokenResponse', () {
+  unittest.group('obj-schema-GoogleIdentityStsV1betaAccessBoundary', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGoogleIdentityStsV1IntrospectTokenResponse();
+      final o = buildGoogleIdentityStsV1betaAccessBoundary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleIdentityStsV1IntrospectTokenResponse.fromJson(
+      final od = api.GoogleIdentityStsV1betaAccessBoundary.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleIdentityStsV1IntrospectTokenResponse(od);
+      checkGoogleIdentityStsV1betaAccessBoundary(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleIdentityStsV1betaAccessBoundaryRule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1betaAccessBoundaryRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1betaAccessBoundaryRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleIdentityStsV1betaAccessBoundaryRule(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleIdentityStsV1betaOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1betaOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1betaOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleIdentityStsV1betaOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleTypeExpr', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleTypeExpr();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeExpr.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleTypeExpr(od);
     });
   });
 
   unittest.group('resource-V1Resource', () {
-    unittest.test('method--introspect', () async {
-      final mock = HttpServerMock();
-      final res = api.CloudSecurityTokenApi(mock).v1;
-      final arg_request = buildGoogleIdentityStsV1IntrospectTokenRequest();
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleIdentityStsV1IntrospectTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleIdentityStsV1IntrospectTokenRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('v1/introspect'),
-        );
-        pathOffset += 13;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleIdentityStsV1IntrospectTokenResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.introspect(arg_request, $fields: arg_$fields);
-      checkGoogleIdentityStsV1IntrospectTokenResponse(
-          response as api.GoogleIdentityStsV1IntrospectTokenResponse);
-    });
-
     unittest.test('method--token', () async {
       final mock = HttpServerMock();
       final res = api.CloudSecurityTokenApi(mock).v1;

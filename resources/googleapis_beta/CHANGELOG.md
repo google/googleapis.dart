@@ -1,5 +1,8 @@
 ## 5.0.0-dev
 
+- `fcmdata` - new!
+- `ideahub` - new!
+
 ## 4.0.0
 
 - All schema types now have positional constructor parameters.

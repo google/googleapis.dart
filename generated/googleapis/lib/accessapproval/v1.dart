@@ -16,7 +16,8 @@
 ///
 /// An API for controlling access to data by Google personnel.
 ///
-/// For more information, see <https://cloud.google.com/access-approval/docs>
+/// For more information, see
+/// <https://cloud.google.com/cloud-provider-access-management/access-approval/docs>
 ///
 /// Create an instance of [AccessApprovalApi] to access these resources:
 ///
@@ -42,7 +43,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// An API for controlling access to data by Google personnel.
 class AccessApprovalApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

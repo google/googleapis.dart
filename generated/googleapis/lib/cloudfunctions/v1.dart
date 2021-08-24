@@ -40,7 +40,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages lightweight user-provided functions executed in response to events.
 class CloudFunctionsApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1012,18 +1013,25 @@ class CloudFunction {
   /// Output only.
   core.String? buildId;
 
+  /// The Cloud Build Name of the function deployment.
+  ///
+  /// `projects//locations//builds/`.
+  ///
+  /// Output only.
+  core.String? buildName;
+
   /// Name of the Cloud Build Custom Worker Pool that should be used to build
   /// the function.
   ///
   /// The format of this field is
   /// `projects/{project}/locations/{region}/workerPools/{workerPool}` where
-  /// {project} and {region} are the project id and region respectively where
-  /// the worker pool is defined and {workerPool} is the short name of the
-  /// worker pool. If the project id is not the same as the function, then the
-  /// Cloud Functions Service Agent
-  /// (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the
+  /// `{project}` and `{region}` are the project id and region respectively
+  /// where the worker pool is defined and `{workerPool}` is the short name of
+  /// the worker pool. If the project id is not the same as the function, then
+  /// the Cloud Functions Service Agent
+  /// (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the
   /// role Cloud Build Custom Workers Builder
-  /// (roles/cloudbuild.customworkers.builder) in the project.
+  /// (`roles/cloudbuild.customworkers.builder`) in the project.
   core.String? buildWorkerPool;
 
   /// User-provided description of a function.
@@ -1073,6 +1081,10 @@ class CloudFunction {
   /// Guide for more details.
   core.int? maxInstances;
 
+  /// A lower bound for the number function instances that may coexist at a
+  /// given time.
+  core.int? minInstances;
+
   /// A user-defined name of the function.
   ///
   /// Function names must be unique globally and match pattern `projects / *
@@ -1086,8 +1098,8 @@ class CloudFunction {
   /// the same project. Otherwise, it must belong to a project within the same
   /// organization. The format of this field is either
   /// `projects/{project}/global/networks/{network}` or `{network}`, where
-  /// {project} is a project id where the network is defined, and {network} is
-  /// the short name of the network. This field is mutually exclusive with
+  /// `{project}` is a project id where the network is defined, and `{network}`
+  /// is the short name of the network. This field is mutually exclusive with
   /// `vpc_connector` and will be replaced by it. See
   /// [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
   /// more information on connecting Cloud projects.
@@ -1097,7 +1109,8 @@ class CloudFunction {
   ///
   /// Required when deploying a new function, optional when updating an existing
   /// function. For a complete list of possible choices, see the \[`gcloud`
-  /// command reference\](/sdk/gcloud/reference/functions/deploy#--runtime).
+  /// command
+  /// reference\](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
   core.String? runtime;
 
   /// Secret environment variables configuration.
@@ -1111,7 +1124,7 @@ class CloudFunction {
   /// If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
   core.String? serviceAccountEmail;
 
-  /// The Google Cloud Storage URL, starting with gs://, pointing to the zip
+  /// The Google Cloud Storage URL, starting with `gs://`, pointing to the zip
   /// archive which contains the function.
   core.String? sourceArchiveUrl;
 
@@ -1125,7 +1138,10 @@ class CloudFunction {
   core.String? sourceToken;
 
   /// The Google Cloud Storage signed URL used for source uploading, generated
-  /// by google.cloud.functions.v1.GenerateUploadUrl
+  /// by calling \[google.cloud.functions.v1.GenerateUploadUrl\].
+  ///
+  /// The signature is validated on write methods (Create, Update) The signature
+  /// is stripped from the Function object on read methods (Get, List)
   core.String? sourceUploadUrl;
 
   /// Status of the function deployment.
@@ -1185,6 +1201,7 @@ class CloudFunction {
     this.availableMemoryMb,
     this.buildEnvironmentVariables,
     this.buildId,
+    this.buildName,
     this.buildWorkerPool,
     this.description,
     this.entryPoint,
@@ -1194,6 +1211,7 @@ class CloudFunction {
     this.ingressSettings,
     this.labels,
     this.maxInstances,
+    this.minInstances,
     this.name,
     this.network,
     this.runtime,
@@ -1230,6 +1248,9 @@ class CloudFunction {
                   : null,
           buildId: _json.containsKey('buildId')
               ? _json['buildId'] as core.String
+              : null,
+          buildName: _json.containsKey('buildName')
+              ? _json['buildName'] as core.String
               : null,
           buildWorkerPool: _json.containsKey('buildWorkerPool')
               ? _json['buildWorkerPool'] as core.String
@@ -1271,6 +1292,9 @@ class CloudFunction {
               : null,
           maxInstances: _json.containsKey('maxInstances')
               ? _json['maxInstances'] as core.int
+              : null,
+          minInstances: _json.containsKey('minInstances')
+              ? _json['minInstances'] as core.int
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           network: _json.containsKey('network')
@@ -1334,6 +1358,7 @@ class CloudFunction {
         if (buildEnvironmentVariables != null)
           'buildEnvironmentVariables': buildEnvironmentVariables!,
         if (buildId != null) 'buildId': buildId!,
+        if (buildName != null) 'buildName': buildName!,
         if (buildWorkerPool != null) 'buildWorkerPool': buildWorkerPool!,
         if (description != null) 'description': description!,
         if (entryPoint != null) 'entryPoint': entryPoint!,
@@ -1344,6 +1369,7 @@ class CloudFunction {
         if (ingressSettings != null) 'ingressSettings': ingressSettings!,
         if (labels != null) 'labels': labels!,
         if (maxInstances != null) 'maxInstances': maxInstances!,
+        if (minInstances != null) 'minInstances': minInstances!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (runtime != null) 'runtime': runtime!,
@@ -1944,7 +1970,7 @@ class OperationMetadataV1 {
   /// The Cloud Build Name of the function deployment.
   ///
   /// This field is only populated for Create and Update operations.
-  /// projects//locations//builds/.
+  /// `projects//locations//builds/`.
   core.String? buildName;
 
   /// The original request that started the operation.
@@ -1960,7 +1986,7 @@ class OperationMetadataV1 {
   core.String? sourceToken;
 
   /// Target of the operation - for example
-  /// projects/project-1/locations/region-1/functions/function-1
+  /// `projects/project-1/locations/region-1/functions/function-1`
   core.String? target;
 
   /// Type of operation.
@@ -2061,7 +2087,7 @@ class OperationMetadataV1 {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

@@ -47,7 +47,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// OS management tools that can be used for patch management, patch compliance,
 /// and configuration management on VM instances.
 class OSConfigApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -271,10 +272,8 @@ class ProjectsLocationsInstancesInventoriesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name. Format:
-  /// `projects/{project}/locations/{location}/instances/{instance}` For
-  /// `{project}`, either `project-number` or `project-id` can be provided. For
-  /// `{instance}`, only hyphen or dash character is supported to list
-  /// inventories across VMs.
+  /// `projects/{project}/locations/{location}/instances/-` For `{project}`,
+  /// either `project-number` or `project-id` can be provided.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -389,10 +388,8 @@ class ProjectsLocationsInstancesVulnerabilityReportsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name. Format:
-  /// `projects/{project}/locations/{location}/instances/{instance}` For
-  /// `{project}`, either `project-number` or `project-id` can be provided. For
-  /// `{instance}`, only `-` character is supported to list vulnerability
-  /// reports across VMs.
+  /// `projects/{project}/locations/{location}/instances/-` For `{project}`,
+  /// either `project-number` or `project-id` can be provided.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -1038,6 +1035,52 @@ class CancelOperationRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+class Date {
+  /// Day of a month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
+  core.int? day;
+
+  /// Month of a year.
+  ///
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
+  core.int? month;
+
+  /// Year of the date.
+  ///
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
+  core.int? year;
+
+  Date({
+    this.day,
+    this.month,
+    this.year,
+  });
+
+  Date.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          month: _json.containsKey('month') ? _json['month'] as core.int : null,
+          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1539,6 +1582,9 @@ class InventorySoftwarePackage {
   /// for info in Windows Quick Fix Engineering.
   InventoryWindowsQuickFixEngineeringPackage? qfePackage;
 
+  /// Details of Windows Application.
+  InventoryWindowsApplication? windowsApplication;
+
   /// Details of a Windows Update package.
   ///
   /// See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
@@ -1568,6 +1614,7 @@ class InventorySoftwarePackage {
     this.cosPackage,
     this.googetPackage,
     this.qfePackage,
+    this.windowsApplication,
     this.wuaPackage,
     this.yumPackage,
     this.zypperPackage,
@@ -1592,6 +1639,10 @@ class InventorySoftwarePackage {
               ? InventoryWindowsQuickFixEngineeringPackage.fromJson(
                   _json['qfePackage'] as core.Map<core.String, core.dynamic>)
               : null,
+          windowsApplication: _json.containsKey('windowsApplication')
+              ? InventoryWindowsApplication.fromJson(_json['windowsApplication']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           wuaPackage: _json.containsKey('wuaPackage')
               ? InventoryWindowsUpdatePackage.fromJson(
                   _json['wuaPackage'] as core.Map<core.String, core.dynamic>)
@@ -1615,6 +1666,8 @@ class InventorySoftwarePackage {
         if (cosPackage != null) 'cosPackage': cosPackage!.toJson(),
         if (googetPackage != null) 'googetPackage': googetPackage!.toJson(),
         if (qfePackage != null) 'qfePackage': qfePackage!.toJson(),
+        if (windowsApplication != null)
+          'windowsApplication': windowsApplication!.toJson(),
         if (wuaPackage != null) 'wuaPackage': wuaPackage!.toJson(),
         if (yumPackage != null) 'yumPackage': yumPackage!.toJson(),
         if (zypperPackage != null) 'zypperPackage': zypperPackage!.toJson(),
@@ -1659,6 +1712,69 @@ class InventoryVersionedPackage {
         if (architecture != null) 'architecture': architecture!,
         if (packageName != null) 'packageName': packageName!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Contains information about a Windows application as retrieved from the
+/// Windows Registry.
+///
+/// For more information about these fields, see
+/// [Windows Installer Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key){:
+/// class="external" }
+class InventoryWindowsApplication {
+  /// The name of the application or product.
+  core.String? displayName;
+
+  /// The version of the product or application in string format.
+  core.String? displayVersion;
+
+  /// The internet address for technical support.
+  core.String? helpLink;
+
+  /// The last time this product received service.
+  ///
+  /// The value of this property is replaced each time a patch is applied or
+  /// removed from the product or the command-line option is used to repair the
+  /// product.
+  Date? installDate;
+
+  /// The name of the manufacturer for the product or application.
+  core.String? publisher;
+
+  InventoryWindowsApplication({
+    this.displayName,
+    this.displayVersion,
+    this.helpLink,
+    this.installDate,
+    this.publisher,
+  });
+
+  InventoryWindowsApplication.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          displayVersion: _json.containsKey('displayVersion')
+              ? _json['displayVersion'] as core.String
+              : null,
+          helpLink: _json.containsKey('helpLink')
+              ? _json['helpLink'] as core.String
+              : null,
+          installDate: _json.containsKey('installDate')
+              ? Date.fromJson(
+                  _json['installDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          publisher: _json.containsKey('publisher')
+              ? _json['publisher'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (displayVersion != null) 'displayVersion': displayVersion!,
+        if (helpLink != null) 'helpLink': helpLink!,
+        if (installDate != null) 'installDate': installDate!.toJson(),
+        if (publisher != null) 'publisher': publisher!,
       };
 }
 
@@ -2184,6 +2300,11 @@ class OSPolicyAssignment {
   /// Length of the description is limited to 1024 characters.
   core.String? description;
 
+  /// The etag for this OS policy assignment.
+  ///
+  /// If this is provided on update, it must match the server's etag.
+  core.String? etag;
+
   /// Filter to select VMs.
   ///
   /// Required.
@@ -2250,6 +2371,7 @@ class OSPolicyAssignment {
     this.baseline,
     this.deleted,
     this.description,
+    this.etag,
     this.instanceFilter,
     this.name,
     this.osPolicies,
@@ -2272,6 +2394,7 @@ class OSPolicyAssignment {
           description: _json.containsKey('description')
               ? _json['description'] as core.String
               : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           instanceFilter: _json.containsKey('instanceFilter')
               ? OSPolicyAssignmentInstanceFilter.fromJson(
                   _json['instanceFilter']
@@ -2307,6 +2430,7 @@ class OSPolicyAssignment {
         if (baseline != null) 'baseline': baseline!,
         if (deleted != null) 'deleted': deleted!,
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (instanceFilter != null) 'instanceFilter': instanceFilter!.toJson(),
         if (name != null) 'name': name!,
         if (osPolicies != null)
@@ -2321,7 +2445,10 @@ class OSPolicyAssignment {
       };
 }
 
-/// Message to represent the filters to select VMs for an assignment
+/// Filters to select target VMs for an assignment.
+///
+/// If more than one filter criteria is specified below, a VM will be selected
+/// if and only if it satisfies all of them.
 class OSPolicyAssignmentInstanceFilter {
   /// Target all VMs in the project.
   ///
@@ -2331,9 +2458,7 @@ class OSPolicyAssignmentInstanceFilter {
   /// List of label sets used for VM exclusion.
   ///
   /// If the list has more than one label set, the VM is excluded if any of the
-  /// label sets are applicable for the VM. This filter is applied last in the
-  /// filtering chain and therefore a VM is guaranteed to be excluded if it
-  /// satisfies one of the below label sets.
+  /// label sets are applicable for the VM.
   core.List<OSPolicyAssignmentLabelSet>? exclusionLabels;
 
   /// List of label sets used for VM inclusion.
@@ -2342,14 +2467,25 @@ class OSPolicyAssignmentInstanceFilter {
   /// label sets are applicable for the VM.
   core.List<OSPolicyAssignmentLabelSet>? inclusionLabels;
 
-  /// A VM is included if it's OS short name matches with any of the values
+  /// List of inventories to select VMs.
+  ///
+  /// A VM is selected if its inventory data matches at least one of the
+  /// following inventories.
+  core.List<OSPolicyAssignmentInstanceFilterInventory>? inventories;
+
+  /// Use the `inventories` field instead.
+  ///
+  /// A VM is selected if it's OS short name matches with any of the values
   /// provided in this list.
+  ///
+  /// Deprecated.
   core.List<core.String>? osShortNames;
 
   OSPolicyAssignmentInstanceFilter({
     this.all,
     this.exclusionLabels,
     this.inclusionLabels,
+    this.inventories,
     this.osShortNames,
   });
 
@@ -2370,6 +2506,13 @@ class OSPolicyAssignmentInstanceFilter {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          inventories: _json.containsKey('inventories')
+              ? (_json['inventories'] as core.List)
+                  .map<OSPolicyAssignmentInstanceFilterInventory>((value) =>
+                      OSPolicyAssignmentInstanceFilterInventory.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           osShortNames: _json.containsKey('osShortNames')
               ? (_json['osShortNames'] as core.List)
                   .map<core.String>((value) => value as core.String)
@@ -2385,7 +2528,45 @@ class OSPolicyAssignmentInstanceFilter {
         if (inclusionLabels != null)
           'inclusionLabels':
               inclusionLabels!.map((value) => value.toJson()).toList(),
+        if (inventories != null)
+          'inventories': inventories!.map((value) => value.toJson()).toList(),
         if (osShortNames != null) 'osShortNames': osShortNames!,
+      };
+}
+
+/// VM inventory details.
+class OSPolicyAssignmentInstanceFilterInventory {
+  /// The OS short name
+  ///
+  /// Required.
+  core.String? osShortName;
+
+  /// The OS version Prefix matches are supported if asterisk(*) is provided as
+  /// the last character.
+  ///
+  /// For example, to match all versions with a major version of `7`, specify
+  /// the following value for this field `7.*` An empty string matches all OS
+  /// versions.
+  core.String? osVersion;
+
+  OSPolicyAssignmentInstanceFilterInventory({
+    this.osShortName,
+    this.osVersion,
+  });
+
+  OSPolicyAssignmentInstanceFilterInventory.fromJson(core.Map _json)
+      : this(
+          osShortName: _json.containsKey('osShortName')
+              ? _json['osShortName'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osShortName != null) 'osShortName': osShortName!,
+        if (osVersion != null) 'osVersion': osVersion!,
       };
 }
 
@@ -2534,8 +2715,43 @@ class OSPolicyAssignmentRollout {
       };
 }
 
-/// The `OSFilter` is used to specify the OS filtering criteria for the resource
-/// group.
+/// Filtering criteria to select VMs based on inventory details.
+class OSPolicyInventoryFilter {
+  /// The OS short name
+  ///
+  /// Required.
+  core.String? osShortName;
+
+  /// The OS version Prefix matches are supported if asterisk(*) is provided as
+  /// the last character.
+  ///
+  /// For example, to match all versions with a major version of `7`, specify
+  /// the following value for this field `7.*` An empty string matches all OS
+  /// versions.
+  core.String? osVersion;
+
+  OSPolicyInventoryFilter({
+    this.osShortName,
+    this.osVersion,
+  });
+
+  OSPolicyInventoryFilter.fromJson(core.Map _json)
+      : this(
+          osShortName: _json.containsKey('osShortName')
+              ? _json['osShortName'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osShortName != null) 'osShortName': osShortName!,
+        if (osVersion != null) 'osVersion': osVersion!,
+      };
+}
+
+/// Filtering criteria to select VMs based on OS details.
 class OSPolicyOSFilter {
   /// This should match OS short name emitted by the OS inventory agent.
   ///
@@ -3118,7 +3334,22 @@ class OSPolicyResourceFileResource {
 /// applied to a target VM, the appropriate resource group within the OS policy
 /// is selected based on the `OSFilter` specified within the resource group.
 class OSPolicyResourceGroup {
+  /// List of inventory filters for the resource group.
+  ///
+  /// The resources in this resource group are applied to the target VM if it
+  /// satisfies at least one of the following inventory filters. For example, to
+  /// apply this resource group to VMs running either `RHEL` or `CentOS`
+  /// operating systems, specify 2 items for the list with following values:
+  /// inventory_filters\[0\].os_short_name='rhel' and
+  /// inventory_filters\[1\].os_short_name='centos' If the list is empty, this
+  /// resource group will be applied to the target VM unconditionally.
+  core.List<OSPolicyInventoryFilter>? inventoryFilters;
+
+  /// Use the `inventory_filters` field instead.
+  ///
   /// Used to specify the OS filter for a resource group
+  ///
+  /// Deprecated.
   OSPolicyOSFilter? osFilter;
 
   /// List of resources configured for this resource group.
@@ -3129,12 +3360,20 @@ class OSPolicyResourceGroup {
   core.List<OSPolicyResource>? resources;
 
   OSPolicyResourceGroup({
+    this.inventoryFilters,
     this.osFilter,
     this.resources,
   });
 
   OSPolicyResourceGroup.fromJson(core.Map _json)
       : this(
+          inventoryFilters: _json.containsKey('inventoryFilters')
+              ? (_json['inventoryFilters'] as core.List)
+                  .map<OSPolicyInventoryFilter>((value) =>
+                      OSPolicyInventoryFilter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           osFilter: _json.containsKey('osFilter')
               ? OSPolicyOSFilter.fromJson(
                   _json['osFilter'] as core.Map<core.String, core.dynamic>)
@@ -3148,6 +3387,9 @@ class OSPolicyResourceGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (inventoryFilters != null)
+          'inventoryFilters':
+              inventoryFilters!.map((value) => value.toJson()).toList(),
         if (osFilter != null) 'osFilter': osFilter!.toJson(),
         if (resources != null)
           'resources': resources!.map((value) => value.toJson()).toList(),
@@ -4067,19 +4309,27 @@ class VulnerabilityReportVulnerabilityDetails {
 
 /// A reference for this vulnerability.
 class VulnerabilityReportVulnerabilityDetailsReference {
+  /// The source of the reference e.g. NVD.
+  core.String? source;
+
   /// The url of the reference.
   core.String? url;
 
   VulnerabilityReportVulnerabilityDetailsReference({
+    this.source,
     this.url,
   });
 
   VulnerabilityReportVulnerabilityDetailsReference.fromJson(core.Map _json)
       : this(
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
           url: _json.containsKey('url') ? _json['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (source != null) 'source': source!,
         if (url != null) 'url': url!,
       };
 }

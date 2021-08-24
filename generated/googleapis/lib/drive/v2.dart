@@ -1971,7 +1971,7 @@ class FilesResource {
   /// [q] - Query string for searching files.
   ///
   /// [spaces] - A comma-separated list of spaces to query. Supported values are
-  /// 'drive', 'appDataFolder' and 'photos'.
+  /// 'drive' and 'appDataFolder'.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -7467,12 +7467,12 @@ class File {
   /// for files in Docs Editors; it is not populated for shortcut files.
   core.String? fileSize;
 
-  /// Folder color as an RGB hex string if the file is a folder.
+  /// Folder color as an RGB hex string if the file is a folder or a shortcut to
+  /// a folder.
   ///
   /// The list of supported colors is available in the folderColorPalette field
   /// of the About resource. If an unsupported color is specified, it will be
-  /// changed to the closest color in the palette. Not populated for items in
-  /// shared drives.
+  /// changed to the closest color in the palette.
   core.String? folderColorRgb;
 
   /// The full file extension; extracted from the title.

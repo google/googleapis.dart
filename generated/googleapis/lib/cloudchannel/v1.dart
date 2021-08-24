@@ -14,6 +14,10 @@
 
 /// Cloud Channel API - v1
 ///
+/// The Cloud Channel API enables Google Cloud partners to have a single unified
+/// resale platform and APIs across all of Google Cloud including GCP,
+/// Workspace, Maps and Chrome.
+///
 /// For more information, see <https://cloud.google.com/channel>
 ///
 /// Create an instance of [CloudchannelApi] to access these resources:
@@ -41,6 +45,9 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// The Cloud Channel API enables Google Cloud partners to have a single unified
+/// resale platform and APIs across all of Google Cloud including GCP,
+/// Workspace, Maps and Chrome.
 class CloudchannelApi {
   /// Manage users on your domain
   static const appsOrderScope = 'https://www.googleapis.com/auth/apps.order';
@@ -789,6 +796,59 @@ class AccountsChannelPartnerLinksCustomersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Imports a Customer from the Cloud Identity associated with the provided
+  /// Cloud Identity ID or domain before a TransferEntitlements call.
+  ///
+  /// If a linked Customer already exists and overwrite_if_exists is true, it
+  /// will update that Customer's data. Possible error codes: *
+  /// PERMISSION_DENIED: The reseller account making the request is different
+  /// from the reseller account in the API request. * NOT_FOUND: Cloud Identity
+  /// doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
+  /// missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A
+  /// customer already exists and has conflicting critical fields. Requires an
+  /// overwrite. Return value: The Customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reseller's account. Parent
+  /// takes the format: accounts/{account_id} or
+  /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+  /// Value must have pattern `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1Customer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1Customer> import(
+    GoogleCloudChannelV1ImportCustomerRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers:import';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1Customer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// List Customers.
   ///
   /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
@@ -1033,6 +1093,59 @@ class AccountsCustomersResource {
     final _response = await _requester.request(
       _url,
       'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1Customer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports a Customer from the Cloud Identity associated with the provided
+  /// Cloud Identity ID or domain before a TransferEntitlements call.
+  ///
+  /// If a linked Customer already exists and overwrite_if_exists is true, it
+  /// will update that Customer's data. Possible error codes: *
+  /// PERMISSION_DENIED: The reseller account making the request is different
+  /// from the reseller account in the API request. * NOT_FOUND: Cloud Identity
+  /// doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
+  /// missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A
+  /// customer already exists and has conflicting critical fields. Requires an
+  /// overwrite. Return value: The Customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reseller's account. Parent
+  /// takes the format: accounts/{account_id} or
+  /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1Customer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1Customer> import(
+    GoogleCloudChannelV1ImportCustomerRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers:import';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
       queryParams: _queryParams,
     );
     return GoogleCloudChannelV1Customer.fromJson(
@@ -3792,6 +3905,94 @@ class GoogleCloudChannelV1EntitlementEvent {
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlement != null) 'entitlement': entitlement!,
         if (eventType != null) 'eventType': eventType!,
+      };
+}
+
+/// Request message for CloudChannelService.ImportCustomer
+class GoogleCloudChannelV1ImportCustomerRequest {
+  /// The super admin of the resold customer generates this token to authorize a
+  /// reseller to access their Cloud Identity and purchase entitlements on their
+  /// behalf.
+  ///
+  /// You can omit this token after authorization. See
+  /// https://support.google.com/a/answer/7643790 for more details.
+  ///
+  /// Optional.
+  core.String? authToken;
+
+  /// Cloud Identity ID of a channel partner who will be the direct reseller for
+  /// the customer's order.
+  ///
+  /// This field is required for 2-tier transfer scenarios and can be provided
+  /// via the request Parent binding as well.
+  ///
+  /// Optional.
+  core.String? channelPartnerId;
+
+  /// Customer's Cloud Identity ID
+  ///
+  /// Required.
+  core.String? cloudIdentityId;
+
+  /// Specifies the customer that will receive imported Cloud Identity
+  /// information.
+  ///
+  /// Format: accounts/{account_id}/customers/{customer_id}
+  ///
+  /// Optional.
+  core.String? customer;
+
+  /// Customer domain.
+  ///
+  /// Required.
+  core.String? domain;
+
+  /// Choose to overwrite an existing customer if found.
+  ///
+  /// This must be set to true if there is an existing customer with a
+  /// conflicting region code or domain.
+  ///
+  /// Required.
+  core.bool? overwriteIfExists;
+
+  GoogleCloudChannelV1ImportCustomerRequest({
+    this.authToken,
+    this.channelPartnerId,
+    this.cloudIdentityId,
+    this.customer,
+    this.domain,
+    this.overwriteIfExists,
+  });
+
+  GoogleCloudChannelV1ImportCustomerRequest.fromJson(core.Map _json)
+      : this(
+          authToken: _json.containsKey('authToken')
+              ? _json['authToken'] as core.String
+              : null,
+          channelPartnerId: _json.containsKey('channelPartnerId')
+              ? _json['channelPartnerId'] as core.String
+              : null,
+          cloudIdentityId: _json.containsKey('cloudIdentityId')
+              ? _json['cloudIdentityId'] as core.String
+              : null,
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+          domain: _json.containsKey('domain')
+              ? _json['domain'] as core.String
+              : null,
+          overwriteIfExists: _json.containsKey('overwriteIfExists')
+              ? _json['overwriteIfExists'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authToken != null) 'authToken': authToken!,
+        if (channelPartnerId != null) 'channelPartnerId': channelPartnerId!,
+        if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
+        if (customer != null) 'customer': customer!,
+        if (domain != null) 'domain': domain!,
+        if (overwriteIfExists != null) 'overwriteIfExists': overwriteIfExists!,
       };
 }
 

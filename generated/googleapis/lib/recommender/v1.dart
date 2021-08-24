@@ -57,7 +57,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class RecommenderApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2912,8 +2913,15 @@ class GoogleCloudRecommenderV1RecommendationContent {
   /// atomically and in an order.
   core.List<GoogleCloudRecommenderV1OperationGroup>? operationGroups;
 
+  /// Condensed overview information about the recommendation.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? overview;
+
   GoogleCloudRecommenderV1RecommendationContent({
     this.operationGroups,
+    this.overview,
   });
 
   GoogleCloudRecommenderV1RecommendationContent.fromJson(core.Map _json)
@@ -2925,12 +2933,21 @@ class GoogleCloudRecommenderV1RecommendationContent {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          overview: _json.containsKey('overview')
+              ? (_json['overview'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationGroups != null)
           'operationGroups':
               operationGroups!.map((value) => value.toJson()).toList(),
+        if (overview != null) 'overview': overview!,
       };
 }
 

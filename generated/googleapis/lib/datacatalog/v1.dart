@@ -51,7 +51,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// A fully managed and highly scalable data discovery and metadata management
 /// service.
 class DataCatalogApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -149,8 +150,8 @@ class EntriesResource {
   /// * `//pubsub.googleapis.com/projects/{PROJECT_ID}/topics/{TOPIC_ID}`
   ///
   /// [sqlResource] - The SQL name of the entry. SQL names are case-sensitive.
-  /// Examples: * `pubsub.{PROJECT_ID}.{TOPIC_ID}` *
-  /// `pubsub.{PROJECT_ID}.{TOPIC.ID.SEPARATED.WITH.DOTS}` *
+  /// Examples: * `pubsub.topic.{PROJECT_ID}.{TOPIC_ID}` *
+  /// `pubsub.topic.{PROJECT_ID}.`\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\` *
   /// `bigquery.table.{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}` *
   /// `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` *
   /// `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}`
@@ -5473,7 +5474,10 @@ class GoogleCloudDatacatalogV1TagTemplate {
   /// public tag template are referred to as public tags. You can search for a
   /// public tag by value with a simple search query instead of using a ``tag:``
   /// predicate. Public tag templates may not appear in search results depending
-  /// on scope, see: include_public_tag_templates
+  /// on scope, see: include_public_tag_templates Note: If an
+  /// [IAM domain restriction](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)
+  /// is configured in the tag template's location, the public access will not
+  /// be enabled but the simple search for tag values will still work.
   core.bool? isPubliclyReadable;
 
   /// The resource name of the tag template in URL format.
@@ -5848,7 +5852,7 @@ class GoogleCloudDatacatalogV1ViewSpec {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

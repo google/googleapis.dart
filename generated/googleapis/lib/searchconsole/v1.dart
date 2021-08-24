@@ -1265,8 +1265,7 @@ class WmxSitemap {
 
 /// Information about the various content types in the sitemap.
 class WmxSitemapContent {
-  /// The number of URLs from the sitemap that were indexed (of the content
-  /// type).
+  /// *Deprecated; do not use.*
   core.String? indexed;
 
   /// The number of URLs in the sitemap (of the content type).

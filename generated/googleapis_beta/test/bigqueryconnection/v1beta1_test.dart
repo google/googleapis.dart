@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AuditLogConfig> buildUnnamed8461() => [
+core.List<api.AuditLogConfig> buildUnnamed8562() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
     ];
 
-void checkUnnamed8461(core.List<api.AuditLogConfig> o) {
+void checkUnnamed8562(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
@@ -42,7 +42,7 @@ api.AuditConfig buildAuditConfig() {
   final o = api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed8461();
+    o.auditLogConfigs = buildUnnamed8562();
     o.service = 'foo';
   }
   buildCounterAuditConfig--;
@@ -52,7 +52,7 @@ api.AuditConfig buildAuditConfig() {
 void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed8461(o.auditLogConfigs!);
+    checkUnnamed8562(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -61,12 +61,12 @@ void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig--;
 }
 
-core.List<core.String> buildUnnamed8462() => [
+core.List<core.String> buildUnnamed8563() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8462(core.List<core.String> o) {
+void checkUnnamed8563(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -83,7 +83,7 @@ api.AuditLogConfig buildAuditLogConfig() {
   final o = api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed8462();
+    o.exemptedMembers = buildUnnamed8563();
     o.logType = 'foo';
   }
   buildCounterAuditLogConfig--;
@@ -93,7 +93,7 @@ api.AuditLogConfig buildAuditLogConfig() {
 void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed8462(o.exemptedMembers!);
+    checkUnnamed8563(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -102,12 +102,12 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed8463() => [
+core.List<core.String> buildUnnamed8564() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8463(core.List<core.String> o) {
+void checkUnnamed8564(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -125,7 +125,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed8463();
+    o.members = buildUnnamed8564();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -136,7 +136,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition!);
-    checkUnnamed8463(o.members!);
+    checkUnnamed8564(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -364,12 +364,12 @@ void checkGetPolicyOptions(api.GetPolicyOptions o) {
   buildCounterGetPolicyOptions--;
 }
 
-core.List<api.Connection> buildUnnamed8464() => [
+core.List<api.Connection> buildUnnamed8565() => [
       buildConnection(),
       buildConnection(),
     ];
 
-void checkUnnamed8464(core.List<api.Connection> o) {
+void checkUnnamed8565(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnection(o[0]);
   checkConnection(o[1]);
@@ -380,7 +380,7 @@ api.ListConnectionsResponse buildListConnectionsResponse() {
   final o = api.ListConnectionsResponse();
   buildCounterListConnectionsResponse++;
   if (buildCounterListConnectionsResponse < 3) {
-    o.connections = buildUnnamed8464();
+    o.connections = buildUnnamed8565();
     o.nextPageToken = 'foo';
   }
   buildCounterListConnectionsResponse--;
@@ -390,7 +390,7 @@ api.ListConnectionsResponse buildListConnectionsResponse() {
 void checkListConnectionsResponse(api.ListConnectionsResponse o) {
   buildCounterListConnectionsResponse++;
   if (buildCounterListConnectionsResponse < 3) {
-    checkUnnamed8464(o.connections!);
+    checkUnnamed8565(o.connections!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -399,23 +399,23 @@ void checkListConnectionsResponse(api.ListConnectionsResponse o) {
   buildCounterListConnectionsResponse--;
 }
 
-core.List<api.AuditConfig> buildUnnamed8465() => [
+core.List<api.AuditConfig> buildUnnamed8566() => [
       buildAuditConfig(),
       buildAuditConfig(),
     ];
 
-void checkUnnamed8465(core.List<api.AuditConfig> o) {
+void checkUnnamed8566(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed8466() => [
+core.List<api.Binding> buildUnnamed8567() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed8466(core.List<api.Binding> o) {
+void checkUnnamed8567(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -426,8 +426,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed8465();
-    o.bindings = buildUnnamed8466();
+    o.auditConfigs = buildUnnamed8566();
+    o.bindings = buildUnnamed8567();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -438,8 +438,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed8465(o.auditConfigs!);
-    checkUnnamed8466(o.bindings!);
+    checkUnnamed8566(o.auditConfigs!);
+    checkUnnamed8567(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -476,12 +476,12 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed8467() => [
+core.List<core.String> buildUnnamed8568() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8467(core.List<core.String> o) {
+void checkUnnamed8568(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -498,7 +498,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed8467();
+    o.permissions = buildUnnamed8568();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -507,17 +507,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed8467(o.permissions!);
+    checkUnnamed8568(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed8468() => [
+core.List<core.String> buildUnnamed8569() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8468(core.List<core.String> o) {
+void checkUnnamed8569(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -534,7 +534,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed8468();
+    o.permissions = buildUnnamed8569();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -543,7 +543,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed8468(o.permissions!);
+    checkUnnamed8569(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }

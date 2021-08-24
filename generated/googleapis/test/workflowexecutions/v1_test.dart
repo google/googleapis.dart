@@ -76,6 +76,7 @@ api.Execution buildExecution() {
   buildCounterExecution++;
   if (buildCounterExecution < 3) {
     o.argument = 'foo';
+    o.callLogLevel = 'foo';
     o.endTime = 'foo';
     o.error = buildError();
     o.name = 'foo';
@@ -93,6 +94,10 @@ void checkExecution(api.Execution o) {
   if (buildCounterExecution < 3) {
     unittest.expect(
       o.argument!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.callLogLevel!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -124,12 +129,12 @@ void checkExecution(api.Execution o) {
   buildCounterExecution--;
 }
 
-core.List<api.Execution> buildUnnamed6143() => [
+core.List<api.Execution> buildUnnamed6210() => [
       buildExecution(),
       buildExecution(),
     ];
 
-void checkUnnamed6143(core.List<api.Execution> o) {
+void checkUnnamed6210(core.List<api.Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExecution(o[0]);
   checkExecution(o[1]);
@@ -140,7 +145,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
   final o = api.ListExecutionsResponse();
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    o.executions = buildUnnamed6143();
+    o.executions = buildUnnamed6210();
     o.nextPageToken = 'foo';
   }
   buildCounterListExecutionsResponse--;
@@ -150,7 +155,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
 void checkListExecutionsResponse(api.ListExecutionsResponse o) {
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    checkUnnamed6143(o.executions!);
+    checkUnnamed6210(o.executions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -191,12 +196,12 @@ void checkPosition(api.Position o) {
   buildCounterPosition--;
 }
 
-core.List<api.StackTraceElement> buildUnnamed6144() => [
+core.List<api.StackTraceElement> buildUnnamed6211() => [
       buildStackTraceElement(),
       buildStackTraceElement(),
     ];
 
-void checkUnnamed6144(core.List<api.StackTraceElement> o) {
+void checkUnnamed6211(core.List<api.StackTraceElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackTraceElement(o[0]);
   checkStackTraceElement(o[1]);
@@ -207,7 +212,7 @@ api.StackTrace buildStackTrace() {
   final o = api.StackTrace();
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    o.elements = buildUnnamed6144();
+    o.elements = buildUnnamed6211();
   }
   buildCounterStackTrace--;
   return o;
@@ -216,7 +221,7 @@ api.StackTrace buildStackTrace() {
 void checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    checkUnnamed6144(o.elements!);
+    checkUnnamed6211(o.elements!);
   }
   buildCounterStackTrace--;
 }

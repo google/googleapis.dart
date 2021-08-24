@@ -3192,15 +3192,16 @@ class ConferenceData {
   /// displayed to users.
   /// The ID value is formed differently for each conference solution type:
   /// - eventHangout: ID is not set.
-  /// - eventNamedHangout: ID is the name of the Hangout.
+  ///
+  /// (This conference type is deprecated.)
+  /// - eventNamedHangout: ID is the name of the Hangout. (This conference type
+  /// is deprecated.)
   /// - hangoutsMeet: ID is the 10-letter meeting code, for example
   /// aaa-bbbb-ccc.
-  /// - addOn: ID is defined by the third-party provider.
-  ///
-  ///  Optional.
+  /// - addOn: ID is defined by the third-party provider.  Optional.
   core.String? conferenceId;
 
-  /// The conference solution, such as Hangouts or Google Meet.
+  /// The conference solution, such as Google Meet.
   /// Unset for a conference with a failed create request.
   /// Either conferenceSolution and at least one entryPoint, or createRequest is
   /// required.
@@ -3444,9 +3445,12 @@ class ConferenceSolutionKey {
   ///
   /// However, it should disallow modifications.
   /// The possible values are:
-  /// - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
+  /// - "eventHangout" for Hangouts for consumers (deprecated; existing events
+  /// may show this conference solution type but new conferences cannot be
+  /// created)
   /// - "eventNamedHangout" for classic Hangouts for Google Workspace users
-  /// (deprecated; http://hangouts.google.com)
+  /// (deprecated; existing events may show this conference solution type but
+  /// new conferences cannot be created)
   /// - "hangoutsMeet" for Google Meet (http://meet.google.com)
   /// - "addOn" for 3P conference providers
   core.String? type;

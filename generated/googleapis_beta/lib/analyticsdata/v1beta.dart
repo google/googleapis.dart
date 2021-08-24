@@ -159,6 +159,62 @@ class PropertiesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// This compatibility method lists dimensions and metrics that can be added
+  /// to a report request and maintain compatibility.
+  ///
+  /// This method fails if the request's dimensions and metrics are
+  /// incompatible. In Google Analytics, reports fail if they request
+  /// incompatible dimensions and/or metrics; in that case, you will need to
+  /// remove dimensions and/or metrics from the incompatible report until the
+  /// report is compatible. The Realtime and Core reports have different
+  /// compatibility rules. This method checks compatibility for Core reports.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [property] - A Google Analytics GA4 property identifier whose events are
+  /// tracked. To learn more, see
+  /// [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id).
+  /// `property` should be the same value as in your `runReport` request.
+  /// Example: properties/1234 Set the Property ID to 0 for compatibility
+  /// checking on dimensions and metrics common to all properties. In this
+  /// special mode, this method will not return custom dimensions and metrics.
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckCompatibilityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckCompatibilityResponse> checkCompatibility(
+    CheckCompatibilityRequest request,
+    core.String property, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1beta/' + core.Uri.encodeFull('$property') + ':checkCompatibility';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CheckCompatibilityResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns metadata for dimensions and metrics available in reporting
   /// methods.
   ///
@@ -546,6 +602,137 @@ class CaseExpression {
       };
 }
 
+/// The request for compatibility information for a report's dimensions and
+/// metrics.
+///
+/// Check compatibility provides a preview of the compatibility of a report;
+/// fields shared with the `runReport` request should be the same values as in
+/// your `runReport` request.
+class CheckCompatibilityRequest {
+  /// Filters the dimensions and metrics in the response to just this
+  /// compatibility.
+  ///
+  /// Commonly used as `”compatibilityFilter”: “COMPATIBLE”` to only return
+  /// compatible dimensions & metrics.
+  /// Possible string values are:
+  /// - "COMPATIBILITY_UNSPECIFIED" : Unspecified compatibility.
+  /// - "COMPATIBLE" : The dimension or metric is compatible. This dimension or
+  /// metric can be successfully added to a report.
+  /// - "INCOMPATIBLE" : The dimension or metric is incompatible. This dimension
+  /// or metric cannot be successfully added to a report.
+  core.String? compatibilityFilter;
+
+  /// The filter clause of dimensions.
+  ///
+  /// `dimensionFilter` should be the same value as in your `runReport` request.
+  FilterExpression? dimensionFilter;
+
+  /// The dimensions in this report.
+  ///
+  /// `dimensions` should be the same value as in your `runReport` request.
+  core.List<Dimension>? dimensions;
+
+  /// The filter clause of metrics.
+  ///
+  /// `metricFilter` should be the same value as in your `runReport` request
+  FilterExpression? metricFilter;
+
+  /// The metrics in this report.
+  ///
+  /// `metrics` should be the same value as in your `runReport` request.
+  core.List<Metric>? metrics;
+
+  CheckCompatibilityRequest({
+    this.compatibilityFilter,
+    this.dimensionFilter,
+    this.dimensions,
+    this.metricFilter,
+    this.metrics,
+  });
+
+  CheckCompatibilityRequest.fromJson(core.Map _json)
+      : this(
+          compatibilityFilter: _json.containsKey('compatibilityFilter')
+              ? _json['compatibilityFilter'] as core.String
+              : null,
+          dimensionFilter: _json.containsKey('dimensionFilter')
+              ? FilterExpression.fromJson(_json['dimensionFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<Dimension>((value) => Dimension.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metricFilter: _json.containsKey('metricFilter')
+              ? FilterExpression.fromJson(
+                  _json['metricFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<Metric>((value) => Metric.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (compatibilityFilter != null)
+          'compatibilityFilter': compatibilityFilter!,
+        if (dimensionFilter != null)
+          'dimensionFilter': dimensionFilter!.toJson(),
+        if (dimensions != null)
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (metricFilter != null) 'metricFilter': metricFilter!.toJson(),
+        if (metrics != null)
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The compatibility response with the compatibility of each dimension &
+/// metric.
+class CheckCompatibilityResponse {
+  /// The compatibility of each dimension.
+  core.List<DimensionCompatibility>? dimensionCompatibilities;
+
+  /// The compatibility of each metric.
+  core.List<MetricCompatibility>? metricCompatibilities;
+
+  CheckCompatibilityResponse({
+    this.dimensionCompatibilities,
+    this.metricCompatibilities,
+  });
+
+  CheckCompatibilityResponse.fromJson(core.Map _json)
+      : this(
+          dimensionCompatibilities:
+              _json.containsKey('dimensionCompatibilities')
+                  ? (_json['dimensionCompatibilities'] as core.List)
+                      .map<DimensionCompatibility>((value) =>
+                          DimensionCompatibility.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          metricCompatibilities: _json.containsKey('metricCompatibilities')
+              ? (_json['metricCompatibilities'] as core.List)
+                  .map<MetricCompatibility>((value) =>
+                      MetricCompatibility.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionCompatibilities != null)
+          'dimensionCompatibilities':
+              dimensionCompatibilities!.map((value) => value.toJson()).toList(),
+        if (metricCompatibilities != null)
+          'metricCompatibilities':
+              metricCompatibilities!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// Defines a cohort selection criteria.
 ///
 /// A cohort is a group of users who share a common characteristic. For example,
@@ -900,6 +1087,50 @@ class Dimension {
       };
 }
 
+/// The compatibility for a single dimension.
+class DimensionCompatibility {
+  /// The compatibility of this dimension.
+  ///
+  /// If the compatibility is COMPATIBLE, this dimension can be successfully
+  /// added to the report.
+  /// Possible string values are:
+  /// - "COMPATIBILITY_UNSPECIFIED" : Unspecified compatibility.
+  /// - "COMPATIBLE" : The dimension or metric is compatible. This dimension or
+  /// metric can be successfully added to a report.
+  /// - "INCOMPATIBLE" : The dimension or metric is incompatible. This dimension
+  /// or metric cannot be successfully added to a report.
+  core.String? compatibility;
+
+  /// The dimension metadata contains the API name for this compatibility
+  /// information.
+  ///
+  /// The dimension metadata also contains other helpful information like the UI
+  /// name and description.
+  DimensionMetadata? dimensionMetadata;
+
+  DimensionCompatibility({
+    this.compatibility,
+    this.dimensionMetadata,
+  });
+
+  DimensionCompatibility.fromJson(core.Map _json)
+      : this(
+          compatibility: _json.containsKey('compatibility')
+              ? _json['compatibility'] as core.String
+              : null,
+          dimensionMetadata: _json.containsKey('dimensionMetadata')
+              ? DimensionMetadata.fromJson(_json['dimensionMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (compatibility != null) 'compatibility': compatibility!,
+        if (dimensionMetadata != null)
+          'dimensionMetadata': dimensionMetadata!.toJson(),
+      };
+}
+
 /// Used to express a dimension which is the result of a formula of multiple
 /// dimensions.
 ///
@@ -977,6 +1208,11 @@ class DimensionMetadata {
   /// Useable in \[Dimension\](#Dimension)'s `name`. For example, `eventName`.
   core.String? apiName;
 
+  /// The display name of the category that this dimension belongs to.
+  ///
+  /// Similar dimensions and metrics are categorized together.
+  core.String? category;
+
   /// True if the dimension is a custom dimension for this property.
   core.bool? customDefinition;
 
@@ -997,6 +1233,7 @@ class DimensionMetadata {
 
   DimensionMetadata({
     this.apiName,
+    this.category,
     this.customDefinition,
     this.deprecatedApiNames,
     this.description,
@@ -1007,6 +1244,9 @@ class DimensionMetadata {
       : this(
           apiName: _json.containsKey('apiName')
               ? _json['apiName'] as core.String
+              : null,
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
               : null,
           customDefinition: _json.containsKey('customDefinition')
               ? _json['customDefinition'] as core.bool
@@ -1026,6 +1266,7 @@ class DimensionMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiName != null) 'apiName': apiName!,
+        if (category != null) 'category': category!,
         if (customDefinition != null) 'customDefinition': customDefinition!,
         if (deprecatedApiNames != null)
           'deprecatedApiNames': deprecatedApiNames!,
@@ -1361,6 +1602,49 @@ class Metric {
       };
 }
 
+/// The compatibility for a single metric.
+class MetricCompatibility {
+  /// The compatibility of this metric.
+  ///
+  /// If the compatibility is COMPATIBLE, this metric can be successfully added
+  /// to the report.
+  /// Possible string values are:
+  /// - "COMPATIBILITY_UNSPECIFIED" : Unspecified compatibility.
+  /// - "COMPATIBLE" : The dimension or metric is compatible. This dimension or
+  /// metric can be successfully added to a report.
+  /// - "INCOMPATIBLE" : The dimension or metric is incompatible. This dimension
+  /// or metric cannot be successfully added to a report.
+  core.String? compatibility;
+
+  /// The metric metadata contains the API name for this compatibility
+  /// information.
+  ///
+  /// The metric metadata also contains other helpful information like the UI
+  /// name and description.
+  MetricMetadata? metricMetadata;
+
+  MetricCompatibility({
+    this.compatibility,
+    this.metricMetadata,
+  });
+
+  MetricCompatibility.fromJson(core.Map _json)
+      : this(
+          compatibility: _json.containsKey('compatibility')
+              ? _json['compatibility'] as core.String
+              : null,
+          metricMetadata: _json.containsKey('metricMetadata')
+              ? MetricMetadata.fromJson(_json['metricMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (compatibility != null) 'compatibility': compatibility!,
+        if (metricMetadata != null) 'metricMetadata': metricMetadata!.toJson(),
+      };
+}
+
 /// Describes a metric column in the report.
 ///
 /// Visible metrics requested in a report produce column entries within rows and
@@ -1415,6 +1699,11 @@ class MetricMetadata {
   /// Useable in \[Metric\](#Metric)'s `name`. For example, `eventCount`.
   core.String? apiName;
 
+  /// The display name of the category that this metrics belongs to.
+  ///
+  /// Similar dimensions and metrics are categorized together.
+  core.String? category;
+
   /// True if the metric is a custom metric for this property.
   core.bool? customDefinition;
 
@@ -1462,6 +1751,7 @@ class MetricMetadata {
 
   MetricMetadata({
     this.apiName,
+    this.category,
     this.customDefinition,
     this.deprecatedApiNames,
     this.description,
@@ -1474,6 +1764,9 @@ class MetricMetadata {
       : this(
           apiName: _json.containsKey('apiName')
               ? _json['apiName'] as core.String
+              : null,
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
               : null,
           customDefinition: _json.containsKey('customDefinition')
               ? _json['customDefinition'] as core.bool
@@ -1497,6 +1790,7 @@ class MetricMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiName != null) 'apiName': apiName!,
+        if (category != null) 'category': category!,
         if (customDefinition != null) 'customDefinition': customDefinition!,
         if (deprecatedApiNames != null)
           'deprecatedApiNames': deprecatedApiNames!,
@@ -2061,26 +2355,55 @@ class QuotaStatus {
 /// Response's metadata carrying additional information about the report
 /// content.
 class ResponseMetaData {
+  /// The currency code used in this report.
+  ///
+  /// Intended to be used in formatting currency metrics like `purchaseRevenue`
+  /// for visualization. If currency_code was specified in the request, this
+  /// response parameter will echo the request parameter; otherwise, this
+  /// response parameter is the property's current currency_code. Currency codes
+  /// are string encodings of currency types from the ISO 4217 standard
+  /// (https://en.wikipedia.org/wiki/ISO_4217); for example "USD", "EUR", "JPY".
+  /// To learn more, see https://support.google.com/analytics/answer/9796179.
+  core.String? currencyCode;
+
   /// If true, indicates some buckets of dimension combinations are rolled into
   /// "(other)" row.
   ///
   /// This can happen for high cardinality reports.
   core.bool? dataLossFromOtherRow;
 
+  /// The property's current timezone.
+  ///
+  /// Intended to be used to interpret time-based dimensions like `hour` and
+  /// `minute`. Formatted as strings from the IANA Time Zone database
+  /// (https://www.iana.org/time-zones); for example "America/New_York" or
+  /// "Asia/Tokyo".
+  core.String? timeZone;
+
   ResponseMetaData({
+    this.currencyCode,
     this.dataLossFromOtherRow,
+    this.timeZone,
   });
 
   ResponseMetaData.fromJson(core.Map _json)
       : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
           dataLossFromOtherRow: _json.containsKey('dataLossFromOtherRow')
               ? _json['dataLossFromOtherRow'] as core.bool
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
         if (dataLossFromOtherRow != null)
           'dataLossFromOtherRow': dataLossFromOtherRow!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -2694,10 +3017,12 @@ class RunReportRequest {
   /// ranges. In a cohort request, this `dateRanges` must be unspecified.
   core.List<DateRange>? dateRanges;
 
-  /// The filter clause of dimensions.
+  /// Dimension filters allow you to ask for only specific dimension values in
+  /// the report.
   ///
-  /// Dimensions must be requested to be used in this filter. Metrics cannot be
-  /// used in this filter.
+  /// To learn more, see
+  /// [Fundamentals of Dimension Filters](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#dimension_filters)
+  /// for examples. Metrics cannot be used in this filter.
   FilterExpression? dimensionFilter;
 
   /// The dimensions requested and displayed.
@@ -2731,9 +3056,8 @@ class RunReportRequest {
 
   /// The filter clause of metrics.
   ///
-  /// Applied at post aggregation phase, similar to SQL having-clause. Metrics
-  /// must be requested to be used in this filter. Dimensions cannot be used in
-  /// this filter.
+  /// Applied at post aggregation phase, similar to SQL having-clause.
+  /// Dimensions cannot be used in this filter.
   FilterExpression? metricFilter;
 
   /// The metrics requested and displayed.

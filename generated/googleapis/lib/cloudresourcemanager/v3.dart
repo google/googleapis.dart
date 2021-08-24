@@ -46,11 +46,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Creates, reads, and updates metadata for Google Cloud Platform resource
 /// containers.
 class CloudResourceManagerApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -272,7 +274,8 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [pageSize] - Optional. The maximum number of folders to return in the
-  /// response. If unspecified, server picks an appropriate default.
+  /// response. The server can return fewer folders than requested. If
+  /// unspecified, server picks an appropriate default.
   ///
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListFolders` that indicates where this listing should continue from.
@@ -444,7 +447,8 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [pageSize] - Optional. The maximum number of folders to return in the
-  /// response. If unspecified, server picks an appropriate default.
+  /// response. The server can return fewer folders than requested. If
+  /// unspecified, server picks an appropriate default.
   ///
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `SearchFolders` that indicates from where search should continue.
@@ -781,7 +785,8 @@ class LiensResource {
   /// Request parameters:
   ///
   /// [pageSize] - The maximum number of items to return. This is a suggestion
-  /// for the server.
+  /// for the server. The server can return fewer liens than requested. If
+  /// unspecified, server picks an appropriate default.
   ///
   /// [pageToken] - The `next_page_token` value returned from a previous List
   /// request, if any.
@@ -975,7 +980,8 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [pageSize] - Optional. The maximum number of organizations to return in
-  /// the response. If unspecified, server picks an appropriate default.
+  /// the response. The server can return fewer organizations than requested. If
+  /// unspecified, server picks an appropriate default.
   ///
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `SearchOrganizations` that indicates from where listing should
@@ -1260,7 +1266,8 @@ class ProjectsResource {
     return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns the IAM access control policy for the specified project.
+  /// Returns the IAM access control policy for the specified project, in the
+  /// format `projects/{ProjectIdOrNumber}` e.g. projects/123.
   ///
   /// Permission is denied if the policy or the resource do not exist.
   ///
@@ -1542,7 +1549,8 @@ class ProjectsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the IAM access control policy for the specified project.
+  /// Sets the IAM access control policy for the specified project, in the
+  /// format `projects/{ProjectIdOrNumber}` e.g. projects/123.
   ///
   /// CAUTION: This method will replace the existing policy, and cannot be used
   /// to append additional IAM settings. Note: Removing service accounts from
@@ -1613,7 +1621,8 @@ class ProjectsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns permissions that a caller has on the specified project.
+  /// Returns permissions that a caller has on the specified project, in the
+  /// format `projects/{ProjectIdOrNumber}` e.g. projects/123..
   ///
   /// [request] - The metadata request object.
   ///
@@ -4036,7 +4045,7 @@ class Organization {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

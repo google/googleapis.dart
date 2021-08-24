@@ -23,12 +23,15 @@
 /// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsBuildsResource]
+///   - [ProjectsGithubEnterpriseConfigsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBuildsResource]
+///     - [ProjectsLocationsGithubEnterpriseConfigsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTriggersResource]
 ///     - [ProjectsLocationsWorkerPoolsResource]
 ///   - [ProjectsTriggersResource]
+/// - [V1Resource]
 library cloudbuild.v1;
 
 import 'dart:async' as async;
@@ -45,7 +48,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Creates and manages builds on Google Cloud Platform.
 class CloudBuildApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -53,6 +57,7 @@ class CloudBuildApi {
 
   OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
+  V1Resource get v1 => V1Resource(_requester);
 
   CloudBuildApi(http.Client client,
       {core.String rootUrl = 'https://cloudbuild.googleapis.com/',
@@ -158,6 +163,8 @@ class ProjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsBuildsResource get builds => ProjectsBuildsResource(_requester);
+  ProjectsGithubEnterpriseConfigsResource get githubEnterpriseConfigs =>
+      ProjectsGithubEnterpriseConfigsResource(_requester);
   ProjectsLocationsResource get locations =>
       ProjectsLocationsResource(_requester);
   ProjectsTriggersResource get triggers => ProjectsTriggersResource(_requester);
@@ -169,6 +176,50 @@ class ProjectsBuildsResource {
   final commons.ApiRequester _requester;
 
   ProjectsBuildsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Approves or rejects a pending build.
+  ///
+  /// If approved, the returned LRO will be analogous to the LRO returned from a
+  /// CreateBuild call. If rejected, the returned LRO will be immediately done.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the target build. For example:
+  /// "projects/{$project_id}/builds/{$build_id}"
+  /// Value must have pattern `^projects/\[^/\]+/builds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> approve(
+    ApproveBuildRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Cancels a build in progress.
   ///
@@ -437,11 +488,263 @@ class ProjectsBuildsResource {
   }
 }
 
+class ProjectsGithubEnterpriseConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsGithubEnterpriseConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create an association between a GCP project and a GitHub Enterprise
+  /// server.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Name of the parent project. For example:
+  /// projects/{$project_number} or projects/{$project_id}
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [projectId] - ID of the project.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GitHubEnterpriseConfig request,
+    core.String parent, {
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/githubEnterpriseConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete an association between a GCP project and a GitHub Enterprise
+  /// server.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This field should contain the name of the enterprise config
+  /// resource. For example:
+  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
+  ///
+  /// [configId] - Unique identifier of the `GitHubEnterpriseConfig`
+  ///
+  /// [projectId] - ID of the project
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? configId,
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (configId != null) 'configId': [configId],
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a GitHubEnterpriseConfig.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This field should contain the name of the enterprise config
+  /// resource. For example:
+  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
+  ///
+  /// [configId] - Unique identifier of the `GitHubEnterpriseConfig`
+  ///
+  /// [projectId] - ID of the project
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GitHubEnterpriseConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GitHubEnterpriseConfig> get(
+    core.String name, {
+    core.String? configId,
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (configId != null) 'configId': [configId],
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GitHubEnterpriseConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all GitHubEnterpriseConfigs for a given project.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Name of the parent project. For example:
+  /// projects/{$project_number} or projects/{$project_id}
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [projectId] - ID of the project
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGithubEnterpriseConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGithubEnterpriseConfigsResponse> list(
+    core.String parent, {
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/githubEnterpriseConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListGithubEnterpriseConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update an association between a GCP project and a GitHub Enterprise
+  /// server.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. The full resource name for the GitHubEnterpriseConfig
+  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GitHubEnterpriseConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBuildsResource get builds =>
       ProjectsLocationsBuildsResource(_requester);
+  ProjectsLocationsGithubEnterpriseConfigsResource
+      get githubEnterpriseConfigs =>
+          ProjectsLocationsGithubEnterpriseConfigsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsTriggersResource get triggers =>
@@ -457,6 +760,51 @@ class ProjectsLocationsBuildsResource {
 
   ProjectsLocationsBuildsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Approves or rejects a pending build.
+  ///
+  /// If approved, the returned LRO will be analogous to the LRO returned from a
+  /// CreateBuild call. If rejected, the returned LRO will be immediately done.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the target build. For example:
+  /// "projects/{$project_id}/builds/{$build_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/builds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> approve(
+    ApproveBuildRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Cancels a build in progress.
   ///
@@ -710,6 +1058,255 @@ class ProjectsLocationsBuildsResource {
     final _response = await _requester.request(
       _url,
       'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGithubEnterpriseConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGithubEnterpriseConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create an association between a GCP project and a GitHub Enterprise
+  /// server.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Name of the parent project. For example:
+  /// projects/{$project_number} or projects/{$project_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [projectId] - ID of the project.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GitHubEnterpriseConfig request,
+    core.String parent, {
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/githubEnterpriseConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete an association between a GCP project and a GitHub Enterprise
+  /// server.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This field should contain the name of the enterprise config
+  /// resource. For example:
+  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
+  ///
+  /// [configId] - Unique identifier of the `GitHubEnterpriseConfig`
+  ///
+  /// [projectId] - ID of the project
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? configId,
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (configId != null) 'configId': [configId],
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a GitHubEnterpriseConfig.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This field should contain the name of the enterprise config
+  /// resource. For example:
+  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
+  ///
+  /// [configId] - Unique identifier of the `GitHubEnterpriseConfig`
+  ///
+  /// [projectId] - ID of the project
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GitHubEnterpriseConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GitHubEnterpriseConfig> get(
+    core.String name, {
+    core.String? configId,
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (configId != null) 'configId': [configId],
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GitHubEnterpriseConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all GitHubEnterpriseConfigs for a given project.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Name of the parent project. For example:
+  /// projects/{$project_number} or projects/{$project_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [projectId] - ID of the project
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGithubEnterpriseConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGithubEnterpriseConfigsResponse> list(
+    core.String parent, {
+    core.String? projectId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/githubEnterpriseConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListGithubEnterpriseConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update an association between a GCP project and a GitHub Enterprise
+  /// server.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. The full resource name for the GitHubEnterpriseConfig
+  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GitHubEnterpriseConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
     );
@@ -1779,6 +2376,171 @@ class ProjectsTriggersResource {
   }
 }
 
+class V1Resource {
+  final commons.ApiRequester _requester;
+
+  V1Resource(commons.ApiRequester client) : _requester = client;
+
+  /// ReceiveWebhook is called when the API receives a GitHub webhook.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [webhookKey] - For GitHub Enterprise webhooks, this key is used to
+  /// associate the webhook request with the GitHubEnterpriseConfig to use for
+  /// validation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> webhook(
+    HttpBody request, {
+    core.String? webhookKey,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (webhookKey != null) 'webhookKey': [webhookKey],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/webhook';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// ApprovalConfig describes configuration for manual approval of a build.
+class ApprovalConfig {
+  /// Whether or not approval is needed.
+  ///
+  /// If this is set on a build, it will become pending when created, and will
+  /// need to be explicitly approved to start.
+  core.bool? approvalRequired;
+
+  ApprovalConfig({
+    this.approvalRequired,
+  });
+
+  ApprovalConfig.fromJson(core.Map _json)
+      : this(
+          approvalRequired: _json.containsKey('approvalRequired')
+              ? _json['approvalRequired'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (approvalRequired != null) 'approvalRequired': approvalRequired!,
+      };
+}
+
+/// ApprovalResult describes the decision and associated metadata of a manual
+/// approval of a build.
+class ApprovalResult {
+  /// The time when the approval decision was made.
+  ///
+  /// Output only.
+  core.String? approvalTime;
+
+  /// Email of the user that called the ApproveBuild API to approve or reject a
+  /// build at the time that the API was called.
+  ///
+  /// Output only.
+  core.String? approverAccount;
+
+  /// An optional comment for this manual approval result.
+  ///
+  /// Optional.
+  core.String? comment;
+
+  /// The decision of this manual approval.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DECISION_UNSPECIFIED" : Default enum type. This should not be used.
+  /// - "APPROVED" : Build is approved.
+  /// - "REJECTED" : Build is rejected.
+  core.String? decision;
+
+  /// An optional URL tied to this manual approval result.
+  ///
+  /// This field is essentially the same as comment, except that it will be
+  /// rendered by the UI differently. An example use case is a link to an
+  /// external job that approved this Build.
+  ///
+  /// Optional.
+  core.String? url;
+
+  ApprovalResult({
+    this.approvalTime,
+    this.approverAccount,
+    this.comment,
+    this.decision,
+    this.url,
+  });
+
+  ApprovalResult.fromJson(core.Map _json)
+      : this(
+          approvalTime: _json.containsKey('approvalTime')
+              ? _json['approvalTime'] as core.String
+              : null,
+          approverAccount: _json.containsKey('approverAccount')
+              ? _json['approverAccount'] as core.String
+              : null,
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          decision: _json.containsKey('decision')
+              ? _json['decision'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (approvalTime != null) 'approvalTime': approvalTime!,
+        if (approverAccount != null) 'approverAccount': approverAccount!,
+        if (comment != null) 'comment': comment!,
+        if (decision != null) 'decision': decision!,
+        if (url != null) 'url': url!,
+      };
+}
+
+/// Request to approve or reject a pending build.
+class ApproveBuildRequest {
+  /// Approval decision and metadata.
+  ApprovalResult? approvalResult;
+
+  ApproveBuildRequest({
+    this.approvalResult,
+  });
+
+  ApproveBuildRequest.fromJson(core.Map _json)
+      : this(
+          approvalResult: _json.containsKey('approvalResult')
+              ? ApprovalResult.fromJson(_json['approvalResult']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (approvalResult != null) 'approvalResult': approvalResult!.toJson(),
+      };
+}
+
 /// Files in the workspace to upload to Cloud Storage upon successful completion
 /// of all build steps.
 class ArtifactObjects {
@@ -1918,14 +2680,19 @@ class Artifacts {
 /// it (for example, the builder image to run on the source), and where to store
 /// the built artifacts. Fields can include the following variables, which will
 /// be expanded when the build is created: - $PROJECT_ID: the project ID of the
-/// build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the
-/// autogenerated ID of the build. - $REPO_NAME: the source repository name
-/// specified by RepoSource. - $BRANCH_NAME: the branch name specified by
-/// RepoSource. - $TAG_NAME: the tag name specified by RepoSource. -
-/// $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or
-/// resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters
-/// of $REVISION_ID or $COMMIT_SHA.
+/// build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the
+/// location/region of the build. - $BUILD_ID: the autogenerated ID of the
+/// build. - $REPO_NAME: the source repository name specified by RepoSource. -
+/// $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag
+/// name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA
+/// specified by RepoSource or resolved from the specified branch or tag. -
+/// $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 class Build {
+  /// Describes this build's approval configuration, status, and result.
+  ///
+  /// Output only.
+  BuildApproval? approval;
+
   /// Artifacts produced by the build that should be uploaded upon successful
   /// completion of all build steps.
   Artifacts? artifacts;
@@ -2042,6 +2809,8 @@ class Build {
   /// Output only.
   /// Possible string values are:
   /// - "STATUS_UNKNOWN" : Status of the build is unknown.
+  /// - "PENDING" : Build has been created and is pending execution and queuing.
+  /// It has not been queued.
   /// - "QUEUED" : Build or step is queued; work has not yet begun.
   /// - "WORKING" : Build or step is being executed.
   /// - "SUCCESS" : Build or step finished successfully.
@@ -2080,9 +2849,10 @@ class Build {
 
   /// Stores timing information for phases of the build.
   ///
-  /// Valid keys are: * BUILD: time to execute all build steps * PUSH: time to
-  /// push all specified images. * FETCHSOURCE: time to fetch source. If the
-  /// build does not specify source or images, these keys will not be included.
+  /// Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to
+  /// push all specified images. * FETCHSOURCE: time to fetch source. *
+  /// SETUPBUILD: time to set up build. If the build does not specify source or
+  /// images, these keys will not be included.
   ///
   /// Output only.
   core.Map<core.String, TimeSpan>? timing;
@@ -2093,6 +2863,7 @@ class Build {
   core.List<Warning>? warnings;
 
   Build({
+    this.approval,
     this.artifacts,
     this.availableSecrets,
     this.buildTriggerId,
@@ -2125,6 +2896,10 @@ class Build {
 
   Build.fromJson(core.Map _json)
       : this(
+          approval: _json.containsKey('approval')
+              ? BuildApproval.fromJson(
+                  _json['approval'] as core.Map<core.String, core.dynamic>)
+              : null,
           artifacts: _json.containsKey('artifacts')
               ? Artifacts.fromJson(
                   _json['artifacts'] as core.Map<core.String, core.dynamic>)
@@ -2240,6 +3015,7 @@ class Build {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (approval != null) 'approval': approval!.toJson(),
         if (artifacts != null) 'artifacts': artifacts!.toJson(),
         if (availableSecrets != null)
           'availableSecrets': availableSecrets!.toJson(),
@@ -2275,6 +3051,56 @@ class Build {
               timing!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (warnings != null)
           'warnings': warnings!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// BuildApproval describes a build's approval configuration, state, and result.
+class BuildApproval {
+  /// Configuration for manual approval of this build.
+  ///
+  /// Output only.
+  ApprovalConfig? config;
+
+  /// Result of manual approval for this Build.
+  ///
+  /// Output only.
+  ApprovalResult? result;
+
+  /// The state of this build's approval.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default enum type. This should not be used.
+  /// - "PENDING" : Build approval is pending.
+  /// - "APPROVED" : Build approval has been approved.
+  /// - "REJECTED" : Build approval has been rejected.
+  /// - "CANCELLED" : Build was cancelled while it was still pending approval.
+  core.String? state;
+
+  BuildApproval({
+    this.config,
+    this.result,
+    this.state,
+  });
+
+  BuildApproval.fromJson(core.Map _json)
+      : this(
+          config: _json.containsKey('config')
+              ? ApprovalConfig.fromJson(
+                  _json['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+          result: _json.containsKey('result')
+              ? ApprovalResult.fromJson(
+                  _json['result'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (result != null) 'result': result!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2561,6 +3387,11 @@ class BuildStep {
   /// Output only.
   TimeSpan? pullTiming;
 
+  /// A shell script to be executed in the step.
+  ///
+  /// When script is provided, the user cannot specify the entrypoint or args.
+  core.String? script;
+
   /// A list of environment variables which are encrypted using a Cloud Key
   /// Management Service crypto key.
   ///
@@ -2575,6 +3406,8 @@ class BuildStep {
   /// Output only.
   /// Possible string values are:
   /// - "STATUS_UNKNOWN" : Status of the build is unknown.
+  /// - "PENDING" : Build has been created and is pending execution and queuing.
+  /// It has not been queued.
   /// - "QUEUED" : Build or step is queued; work has not yet begun.
   /// - "WORKING" : Build or step is being executed.
   /// - "SUCCESS" : Build or step finished successfully.
@@ -2620,6 +3453,7 @@ class BuildStep {
     this.id,
     this.name,
     this.pullTiming,
+    this.script,
     this.secretEnv,
     this.status,
     this.timeout,
@@ -2649,6 +3483,9 @@ class BuildStep {
           pullTiming: _json.containsKey('pullTiming')
               ? TimeSpan.fromJson(
                   _json['pullTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          script: _json.containsKey('script')
+              ? _json['script'] as core.String
               : null,
           secretEnv: _json.containsKey('secretEnv')
               ? (_json['secretEnv'] as core.List)
@@ -2686,6 +3523,7 @@ class BuildStep {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (pullTiming != null) 'pullTiming': pullTiming!.toJson(),
+        if (script != null) 'script': script!,
         if (secretEnv != null) 'secretEnv': secretEnv!,
         if (status != null) 'status': status!,
         if (timeout != null) 'timeout': timeout!,
@@ -2699,6 +3537,10 @@ class BuildStep {
 /// Configuration for an automated build in response to source repository
 /// changes.
 class BuildTrigger {
+  /// Configuration for manual approval to start a build invocation of this
+  /// BuildTrigger.
+  ApprovalConfig? approvalConfig;
+
   /// Autodetect build configuration.
   ///
   /// The following precedence is used (case insensitive): 1. cloudbuild.yaml 2.
@@ -2725,9 +3567,10 @@ class BuildTrigger {
   core.String? filename;
 
   /// A Common Expression Language string.
-  ///
-  /// Optional.
   core.String? filter;
+
+  /// The file source describing the local or remote Build template.
+  GitFileSource? gitFileSource;
 
   /// GitHubEventsConfig describes the configuration of a trigger that creates a
   /// build whenever a GitHub event is received.
@@ -2778,6 +3621,14 @@ class BuildTrigger {
   /// {trigger} is a unique identifier generated by the service.
   core.String? resourceName;
 
+  /// The service account used for all user-controlled operations including
+  /// UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild.
+  ///
+  /// If no service account is set, then the standard Cloud Build service
+  /// account (\[PROJECT_NUM\]@system.gserviceaccount.com) will be used instead.
+  /// Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
+  core.String? serviceAccount;
+
   /// The repo and ref of the repository from which to build.
   ///
   /// This field is used only for those triggers that do not respond to SCM
@@ -2806,6 +3657,7 @@ class BuildTrigger {
   WebhookConfig? webhookConfig;
 
   BuildTrigger({
+    this.approvalConfig,
     this.autodetect,
     this.build,
     this.createTime,
@@ -2813,6 +3665,7 @@ class BuildTrigger {
     this.disabled,
     this.filename,
     this.filter,
+    this.gitFileSource,
     this.github,
     this.id,
     this.ignoredFiles,
@@ -2820,6 +3673,7 @@ class BuildTrigger {
     this.name,
     this.pubsubConfig,
     this.resourceName,
+    this.serviceAccount,
     this.sourceToBuild,
     this.substitutions,
     this.tags,
@@ -2829,6 +3683,10 @@ class BuildTrigger {
 
   BuildTrigger.fromJson(core.Map _json)
       : this(
+          approvalConfig: _json.containsKey('approvalConfig')
+              ? ApprovalConfig.fromJson(_json['approvalConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           autodetect: _json.containsKey('autodetect')
               ? _json['autodetect'] as core.bool
               : null,
@@ -2850,6 +3708,10 @@ class BuildTrigger {
               : null,
           filter: _json.containsKey('filter')
               ? _json['filter'] as core.String
+              : null,
+          gitFileSource: _json.containsKey('gitFileSource')
+              ? GitFileSource.fromJson(
+                  _json['gitFileSource'] as core.Map<core.String, core.dynamic>)
               : null,
           github: _json.containsKey('github')
               ? GitHubEventsConfig.fromJson(
@@ -2873,6 +3735,9 @@ class BuildTrigger {
               : null,
           resourceName: _json.containsKey('resourceName')
               ? _json['resourceName'] as core.String
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
               : null,
           sourceToBuild: _json.containsKey('sourceToBuild')
               ? GitRepoSource.fromJson(
@@ -2903,6 +3768,7 @@ class BuildTrigger {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (approvalConfig != null) 'approvalConfig': approvalConfig!.toJson(),
         if (autodetect != null) 'autodetect': autodetect!,
         if (build != null) 'build': build!.toJson(),
         if (createTime != null) 'createTime': createTime!,
@@ -2910,6 +3776,7 @@ class BuildTrigger {
         if (disabled != null) 'disabled': disabled!,
         if (filename != null) 'filename': filename!,
         if (filter != null) 'filter': filter!,
+        if (gitFileSource != null) 'gitFileSource': gitFileSource!.toJson(),
         if (github != null) 'github': github!.toJson(),
         if (id != null) 'id': id!,
         if (ignoredFiles != null) 'ignoredFiles': ignoredFiles!,
@@ -2917,6 +3784,7 @@ class BuildTrigger {
         if (name != null) 'name': name!,
         if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!.toJson(),
         if (resourceName != null) 'resourceName': resourceName!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (sourceToBuild != null) 'sourceToBuild': sourceToBuild!.toJson(),
         if (substitutions != null) 'substitutions': substitutions!,
         if (tags != null) 'tags': tags!,
@@ -3015,6 +3883,47 @@ class CancelOperationRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Metadata for `CreateGithubEnterpriseConfig` operation.
+class CreateGitHubEnterpriseConfigOperationMetadata {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the GitHubEnterprise to be created.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+  core.String? githubEnterpriseConfig;
+
+  CreateGitHubEnterpriseConfigOperationMetadata({
+    this.completeTime,
+    this.createTime,
+    this.githubEnterpriseConfig,
+  });
+
+  CreateGitHubEnterpriseConfigOperationMetadata.fromJson(core.Map _json)
+      : this(
+          completeTime: _json.containsKey('completeTime')
+              ? _json['completeTime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
+              ? _json['githubEnterpriseConfig'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
+      };
+}
+
 /// Metadata for the `CreateWorkerPool` operation.
 class CreateWorkerPoolOperationMetadata {
   /// Time the operation was completed.
@@ -3052,6 +3961,47 @@ class CreateWorkerPoolOperationMetadata {
         if (completeTime != null) 'completeTime': completeTime!,
         if (createTime != null) 'createTime': createTime!,
         if (workerPool != null) 'workerPool': workerPool!,
+      };
+}
+
+/// Metadata for `DeleteGitHubEnterpriseConfig` operation.
+class DeleteGitHubEnterpriseConfigOperationMetadata {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the GitHubEnterprise to be deleted.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+  core.String? githubEnterpriseConfig;
+
+  DeleteGitHubEnterpriseConfigOperationMetadata({
+    this.completeTime,
+    this.createTime,
+    this.githubEnterpriseConfig,
+  });
+
+  DeleteGitHubEnterpriseConfigOperationMetadata.fromJson(core.Map _json)
+      : this(
+          completeTime: _json.containsKey('completeTime')
+              ? _json['completeTime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
+              ? _json['githubEnterpriseConfig'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
       };
 }
 
@@ -3173,11 +4123,264 @@ class FileHashes {
       };
 }
 
+/// GitFileSource describes a file within a (possibly remote) code repository.
+class GitFileSource {
+  /// The path of the file, with the repo root as the root of the path.
+  core.String? path;
+
+  /// See RepoType above.
+  /// Possible string values are:
+  /// - "UNKNOWN" : The default, unknown repo type.
+  /// - "CLOUD_SOURCE_REPOSITORIES" : A Google Cloud Source Repositories-hosted
+  /// repo.
+  /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.
+  /// GitHub Enterprise).
+  core.String? repoType;
+
+  /// The branch, tag, arbitrary ref, or SHA version of the repo to use when
+  /// resolving the filename (optional).
+  ///
+  /// This field respects the same syntax/resolution as described here:
+  /// https://git-scm.com/docs/gitrevisions If unspecified, the revision from
+  /// which the trigger invocation originated is assumed to be the revision from
+  /// which to read the specified path.
+  core.String? revision;
+
+  /// The URI of the repo (optional).
+  ///
+  /// If unspecified, the repo from which the trigger invocation originated is
+  /// assumed to be the repo from which to read the specified path.
+  core.String? uri;
+
+  GitFileSource({
+    this.path,
+    this.repoType,
+    this.revision,
+    this.uri,
+  });
+
+  GitFileSource.fromJson(core.Map _json)
+      : this(
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          repoType: _json.containsKey('repoType')
+              ? _json['repoType'] as core.String
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (repoType != null) 'repoType': repoType!,
+        if (revision != null) 'revision': revision!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// GitHubEnterpriseConfig represents a configuration for a GitHub Enterprise
+/// server.
+class GitHubEnterpriseConfig {
+  /// The GitHub app id of the Cloud Build app on the GitHub Enterprise server.
+  ///
+  /// Required.
+  core.String? appId;
+
+  /// Time when the installation was associated with the project.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Name to display for this config.
+  core.String? displayName;
+
+  /// The URL of the github enterprise host the configuration is for.
+  core.String? hostUrl;
+
+  /// The full resource name for the GitHubEnterpriseConfig For example:
+  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// The network to be used when reaching out to the GitHub Enterprise server.
+  ///
+  /// The VPC network must be enabled for private service connection. This
+  /// should be set if the GitHub Enterprise server is hosted on-premises and
+  /// not reachable by public internet. If this field is left empty, no network
+  /// peering will occur and calls to the GitHub Enterprise server will be made
+  /// over the public internet. Must be in the format
+  /// `projects/{project}/global/networks/{network}`, where {project} is a
+  /// project number or id and {network} is the name of a VPC network in the
+  /// project.
+  ///
+  /// Optional.
+  core.String? peeredNetwork;
+
+  /// Names of secrets in Secret Manager.
+  GitHubEnterpriseSecrets? secrets;
+
+  /// SSL certificate to use for requests to GitHub Enterprise.
+  ///
+  /// Optional.
+  core.String? sslCa;
+
+  /// The key that should be attached to webhook calls to the ReceiveWebhook
+  /// endpoint.
+  core.String? webhookKey;
+
+  GitHubEnterpriseConfig({
+    this.appId,
+    this.createTime,
+    this.displayName,
+    this.hostUrl,
+    this.name,
+    this.peeredNetwork,
+    this.secrets,
+    this.sslCa,
+    this.webhookKey,
+  });
+
+  GitHubEnterpriseConfig.fromJson(core.Map _json)
+      : this(
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          hostUrl: _json.containsKey('hostUrl')
+              ? _json['hostUrl'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          peeredNetwork: _json.containsKey('peeredNetwork')
+              ? _json['peeredNetwork'] as core.String
+              : null,
+          secrets: _json.containsKey('secrets')
+              ? GitHubEnterpriseSecrets.fromJson(
+                  _json['secrets'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sslCa:
+              _json.containsKey('sslCa') ? _json['sslCa'] as core.String : null,
+          webhookKey: _json.containsKey('webhookKey')
+              ? _json['webhookKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (hostUrl != null) 'hostUrl': hostUrl!,
+        if (name != null) 'name': name!,
+        if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+        if (secrets != null) 'secrets': secrets!.toJson(),
+        if (sslCa != null) 'sslCa': sslCa!,
+        if (webhookKey != null) 'webhookKey': webhookKey!,
+      };
+}
+
+/// GitHubEnterpriseSecrets represents the names of all necessary secrets in
+/// Secret Manager for a GitHub Enterprise server.
+///
+/// Format is: projects//secrets/.
+class GitHubEnterpriseSecrets {
+  /// The resource name for the OAuth client ID secret in Secret Manager.
+  core.String? oauthClientIdName;
+
+  /// The resource name for the OAuth client ID secret version in Secret
+  /// Manager.
+  core.String? oauthClientIdVersionName;
+
+  /// The resource name for the OAuth secret in Secret Manager.
+  core.String? oauthSecretName;
+
+  /// The resource name for the OAuth secret secret version in Secret Manager.
+  core.String? oauthSecretVersionName;
+
+  /// The resource name for the private key secret.
+  core.String? privateKeyName;
+
+  /// The resource name for the private key secret version.
+  core.String? privateKeyVersionName;
+
+  /// The resource name for the webhook secret in Secret Manager.
+  core.String? webhookSecretName;
+
+  /// The resource name for the webhook secret secret version in Secret Manager.
+  core.String? webhookSecretVersionName;
+
+  GitHubEnterpriseSecrets({
+    this.oauthClientIdName,
+    this.oauthClientIdVersionName,
+    this.oauthSecretName,
+    this.oauthSecretVersionName,
+    this.privateKeyName,
+    this.privateKeyVersionName,
+    this.webhookSecretName,
+    this.webhookSecretVersionName,
+  });
+
+  GitHubEnterpriseSecrets.fromJson(core.Map _json)
+      : this(
+          oauthClientIdName: _json.containsKey('oauthClientIdName')
+              ? _json['oauthClientIdName'] as core.String
+              : null,
+          oauthClientIdVersionName:
+              _json.containsKey('oauthClientIdVersionName')
+                  ? _json['oauthClientIdVersionName'] as core.String
+                  : null,
+          oauthSecretName: _json.containsKey('oauthSecretName')
+              ? _json['oauthSecretName'] as core.String
+              : null,
+          oauthSecretVersionName: _json.containsKey('oauthSecretVersionName')
+              ? _json['oauthSecretVersionName'] as core.String
+              : null,
+          privateKeyName: _json.containsKey('privateKeyName')
+              ? _json['privateKeyName'] as core.String
+              : null,
+          privateKeyVersionName: _json.containsKey('privateKeyVersionName')
+              ? _json['privateKeyVersionName'] as core.String
+              : null,
+          webhookSecretName: _json.containsKey('webhookSecretName')
+              ? _json['webhookSecretName'] as core.String
+              : null,
+          webhookSecretVersionName:
+              _json.containsKey('webhookSecretVersionName')
+                  ? _json['webhookSecretVersionName'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oauthClientIdName != null) 'oauthClientIdName': oauthClientIdName!,
+        if (oauthClientIdVersionName != null)
+          'oauthClientIdVersionName': oauthClientIdVersionName!,
+        if (oauthSecretName != null) 'oauthSecretName': oauthSecretName!,
+        if (oauthSecretVersionName != null)
+          'oauthSecretVersionName': oauthSecretVersionName!,
+        if (privateKeyName != null) 'privateKeyName': privateKeyName!,
+        if (privateKeyVersionName != null)
+          'privateKeyVersionName': privateKeyVersionName!,
+        if (webhookSecretName != null) 'webhookSecretName': webhookSecretName!,
+        if (webhookSecretVersionName != null)
+          'webhookSecretVersionName': webhookSecretVersionName!,
+      };
+}
+
 /// GitHubEventsConfig describes the configuration of a trigger that creates a
 /// build whenever a GitHub event is received.
-///
-/// This message is experimental.
 class GitHubEventsConfig {
+  /// The resource name of the github enterprise config that should be applied
+  /// to this installation.
+  ///
+  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  ///
+  /// Optional.
+  core.String? enterpriseConfigResourceName;
+
   /// The installationID that emits the GitHub event.
   core.String? installationId;
 
@@ -3201,6 +4404,7 @@ class GitHubEventsConfig {
   PushFilter? push;
 
   GitHubEventsConfig({
+    this.enterpriseConfigResourceName,
     this.installationId,
     this.name,
     this.owner,
@@ -3210,6 +4414,10 @@ class GitHubEventsConfig {
 
   GitHubEventsConfig.fromJson(core.Map _json)
       : this(
+          enterpriseConfigResourceName:
+              _json.containsKey('enterpriseConfigResourceName')
+                  ? _json['enterpriseConfigResourceName'] as core.String
+                  : null,
           installationId: _json.containsKey('installationId')
               ? _json['installationId'] as core.String
               : null,
@@ -3227,6 +4435,8 @@ class GitHubEventsConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enterpriseConfigResourceName != null)
+          'enterpriseConfigResourceName': enterpriseConfigResourceName!,
         if (installationId != null) 'installationId': installationId!,
         if (name != null) 'name': name!,
         if (owner != null) 'owner': owner!,
@@ -3596,6 +4806,32 @@ class ListBuildsResponse {
         if (builds != null)
           'builds': builds!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// RPC response object returned by ListGithubEnterpriseConfigs RPC method.
+class ListGithubEnterpriseConfigsResponse {
+  /// A list of GitHubEnterpriseConfigs
+  core.List<GitHubEnterpriseConfig>? configs;
+
+  ListGithubEnterpriseConfigsResponse({
+    this.configs,
+  });
+
+  ListGithubEnterpriseConfigsResponse.fromJson(core.Map _json)
+      : this(
+          configs: _json.containsKey('configs')
+              ? (_json['configs'] as core.List)
+                  .map<GitHubEnterpriseConfig>((value) =>
+                      GitHubEnterpriseConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configs != null)
+          'configs': configs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4012,7 +5248,7 @@ class OperationMetadata {
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
-  /// Operations that have successfully been cancelled have Operation.error
+  /// Operations that have been cancelled successfully have Operation.error
   /// value with a google.rpc.Status.code of 1, corresponding to
   /// `Code.CANCELLED`.
   ///
@@ -4143,6 +5379,47 @@ class PrivatePoolV1Config {
   core.Map<core.String, core.dynamic> toJson() => {
         if (networkConfig != null) 'networkConfig': networkConfig!.toJson(),
         if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
+      };
+}
+
+/// Metadata for `ProcessAppManifestCallback` operation.
+class ProcessAppManifestCallbackOperationMetadata {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the GitHubEnterprise to be created.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+  core.String? githubEnterpriseConfig;
+
+  ProcessAppManifestCallbackOperationMetadata({
+    this.completeTime,
+    this.createTime,
+    this.githubEnterpriseConfig,
+  });
+
+  ProcessAppManifestCallbackOperationMetadata.fromJson(core.Map _json)
+      : this(
+          completeTime: _json.containsKey('completeTime')
+              ? _json['completeTime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
+              ? _json['githubEnterpriseConfig'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
       };
 }
 
@@ -5073,6 +6350,47 @@ class TimeSpan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Metadata for `UpdateGitHubEnterpriseConfig` operation.
+class UpdateGitHubEnterpriseConfigOperationMetadata {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the GitHubEnterprise to be updated.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+  core.String? githubEnterpriseConfig;
+
+  UpdateGitHubEnterpriseConfigOperationMetadata({
+    this.completeTime,
+    this.createTime,
+    this.githubEnterpriseConfig,
+  });
+
+  UpdateGitHubEnterpriseConfigOperationMetadata.fromJson(core.Map _json)
+      : this(
+          completeTime: _json.containsKey('completeTime')
+              ? _json['completeTime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
+              ? _json['githubEnterpriseConfig'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
       };
 }
 

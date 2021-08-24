@@ -1129,8 +1129,15 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this campaign that identifies the assigned targeting
@@ -1283,8 +1290,15 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -2665,8 +2679,15 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this insertion order that identifies the assigned
@@ -2806,8 +2827,15 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -3604,8 +3632,15 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3741,8 +3776,15 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -3880,8 +3922,15 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -4021,8 +4070,15 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -5462,7 +5518,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
-  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
@@ -5544,8 +5600,15 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5593,7 +5656,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
-  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
@@ -5675,8 +5738,15 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -5726,7 +5796,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
-  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
@@ -5808,8 +5878,15 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -5861,7 +5938,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
-  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
@@ -5943,8 +6020,15 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -6145,6 +6229,45 @@ class CustomBiddingAlgorithmsResource {
   CustomBiddingAlgorithmsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new custom bidding algorithm.
+  ///
+  /// Returns the newly created custom bidding algorithm if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomBiddingAlgorithm].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomBiddingAlgorithm> create(
+    CustomBiddingAlgorithm request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/customBiddingAlgorithms';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CustomBiddingAlgorithm.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a custom bidding algorithm.
   ///
   /// Request parameters:
@@ -6210,15 +6333,19 @@ class CustomBiddingAlgorithmsResource {
   /// {value}`. * The operator must be `CONTAINS (:)` or `EQUALS (=)`. * The
   /// operator must be `CONTAINS (:)` for the following field: - `displayName` *
   /// The operator must be `EQUALS (=)` for the following field: -
-  /// `customBiddingAlgorithmType` * For `displayName`, the value is a string.
-  /// We return all custom bidding algorithms whose display_name contains such
-  /// string. * For `customBiddingAlgorithmType`, the value is a string. We
-  /// return all algorithms whose custom_bidding_algorithm_type is equal to the
-  /// given type. Examples: * All custom bidding algorithms for which the
-  /// display name contains "politics": `displayName:politics`. * All custom
-  /// bidding algorithms for which the type is "SCRIPT_BASED":
-  /// `customBiddingAlgorithmType=SCRIPT_BASED` The length of this field should
-  /// be no more than 500 characters.
+  /// `customBiddingAlgorithmType` - `customBiddingAlgorithmState` * For
+  /// `displayName`, the value is a string. We return all custom bidding
+  /// algorithms whose display_name contains such string. * For
+  /// `customBiddingAlgorithmType`, the value is a string. We return all
+  /// algorithms whose custom_bidding_algorithm_type is equal to the given type.
+  /// * For `customBiddingAlgorithmState`, the value is a string. We return all
+  /// algorithms whose custom_bidding_algorithm_state is equal to the given
+  /// type. Examples: * All custom bidding algorithms for which the display name
+  /// contains "politics": `displayName:politics`. * All custom bidding
+  /// algorithms for which the type is "SCRIPT_BASED":
+  /// `customBiddingAlgorithmType=SCRIPT_BASED` * All custom bidding algorithms
+  /// for which the state is "ENABLED": `customBiddingAlgorithmState=ENABLED`
+  /// The length of this field should be no more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) The default sorting order is ascending. To specify
@@ -6274,6 +6401,55 @@ class CustomBiddingAlgorithmsResource {
       queryParams: _queryParams,
     );
     return ListCustomBiddingAlgorithmsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing custom bidding algorithm.
+  ///
+  /// Returns the updated custom bidding algorithm if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customBiddingAlgorithmId] - Output only. The unique ID of the custom
+  /// bidding algorithm. Assigned by the system.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomBiddingAlgorithm].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomBiddingAlgorithm> patch(
+    CustomBiddingAlgorithm request,
+    core.String customBiddingAlgorithmId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/customBiddingAlgorithms/' +
+        core.Uri.encodeFull('$customBiddingAlgorithmId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CustomBiddingAlgorithm.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -8280,8 +8456,15 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8409,8 +8592,15 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -8540,8 +8730,15 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -8673,8 +8870,15 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -8939,8 +9143,15 @@ class TargetingTypesTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -9069,8 +9280,15 @@ class TargetingTypesTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -9153,7 +9371,8 @@ class TargetingTypesTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [targetingType] - Required. The type of targeting options to retrieve.
-  /// Accepted values are: * `TARGETING_TYPE_GEO_REGION`
+  /// Accepted values are: * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_POI`
+  /// * `TARGETING_TYPE_BUSINESS_CHAIN`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -9234,8 +9453,15 @@ class TargetingTypesTargetingOptionsResource {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10677,6 +10903,12 @@ class AssignedTargetingOption {
   /// `TARGETING_TYPE_BROWSER`.
   BrowserAssignedTargetingOptionDetails? browserDetails;
 
+  /// Business chain details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_BUSINESS_CHAIN`.
+  BusinessChainAssignedTargetingOptionDetails? businessChainDetails;
+
   /// Carrier and ISP details.
   ///
   /// This field will be populated when the targeting_type is
@@ -10830,6 +11062,12 @@ class AssignedTargetingOption {
   /// lists can be assigned to a resource.
   NegativeKeywordListAssignedTargetingOptionDetails? negativeKeywordListDetails;
 
+  /// Open Measurement enabled inventory details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_OMID`.
+  OmidAssignedTargetingOptionDetails? omidDetails;
+
   /// On screen position details.
   ///
   /// This field will be populated when the targeting_type is
@@ -10847,6 +11085,12 @@ class AssignedTargetingOption {
   /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_PARENTAL_STATUS`.
   ParentalStatusAssignedTargetingOptionDetails? parentalStatusDetails;
+
+  /// POI details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_POI`.
+  PoiAssignedTargetingOptionDetails? poiDetails;
 
   /// Proximity location list details.
   ///
@@ -10961,8 +11205,15 @@ class AssignedTargetingOption {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   core.String? targetingType;
 
   /// Third party verification details.
@@ -11004,6 +11255,7 @@ class AssignedTargetingOption {
     this.audienceGroupDetails,
     this.authorizedSellerStatusDetails,
     this.browserDetails,
+    this.businessChainDetails,
     this.carrierAndIspDetails,
     this.categoryDetails,
     this.channelDetails,
@@ -11026,9 +11278,11 @@ class AssignedTargetingOption {
     this.name,
     this.nativeContentPositionDetails,
     this.negativeKeywordListDetails,
+    this.omidDetails,
     this.onScreenPositionDetails,
     this.operatingSystemDetails,
     this.parentalStatusDetails,
+    this.poiDetails,
     this.proximityLocationListDetails,
     this.regionalLocationListDetails,
     this.sensitiveCategoryExclusionDetails,
@@ -11075,6 +11329,11 @@ class AssignedTargetingOption {
           browserDetails: _json.containsKey('browserDetails')
               ? BrowserAssignedTargetingOptionDetails.fromJson(
                   _json['browserDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          businessChainDetails: _json.containsKey('businessChainDetails')
+              ? BusinessChainAssignedTargetingOptionDetails.fromJson(
+                  _json['businessChainDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
           carrierAndIspDetails: _json.containsKey('carrierAndIspDetails')
@@ -11186,6 +11445,10 @@ class AssignedTargetingOption {
                       _json['negativeKeywordListDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          omidDetails: _json.containsKey('omidDetails')
+              ? OmidAssignedTargetingOptionDetails.fromJson(
+                  _json['omidDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           onScreenPositionDetails: _json.containsKey('onScreenPositionDetails')
               ? OnScreenPositionAssignedTargetingOptionDetails.fromJson(
                   _json['onScreenPositionDetails']
@@ -11200,6 +11463,10 @@ class AssignedTargetingOption {
               ? ParentalStatusAssignedTargetingOptionDetails.fromJson(
                   _json['parentalStatusDetails']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          poiDetails: _json.containsKey('poiDetails')
+              ? PoiAssignedTargetingOptionDetails.fromJson(
+                  _json['poiDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           proximityLocationListDetails: _json
                   .containsKey('proximityLocationListDetails')
@@ -11269,6 +11536,8 @@ class AssignedTargetingOption {
           'authorizedSellerStatusDetails':
               authorizedSellerStatusDetails!.toJson(),
         if (browserDetails != null) 'browserDetails': browserDetails!.toJson(),
+        if (businessChainDetails != null)
+          'businessChainDetails': businessChainDetails!.toJson(),
         if (carrierAndIspDetails != null)
           'carrierAndIspDetails': carrierAndIspDetails!.toJson(),
         if (categoryDetails != null)
@@ -11312,12 +11581,14 @@ class AssignedTargetingOption {
               nativeContentPositionDetails!.toJson(),
         if (negativeKeywordListDetails != null)
           'negativeKeywordListDetails': negativeKeywordListDetails!.toJson(),
+        if (omidDetails != null) 'omidDetails': omidDetails!.toJson(),
         if (onScreenPositionDetails != null)
           'onScreenPositionDetails': onScreenPositionDetails!.toJson(),
         if (operatingSystemDetails != null)
           'operatingSystemDetails': operatingSystemDetails!.toJson(),
         if (parentalStatusDetails != null)
           'parentalStatusDetails': parentalStatusDetails!.toJson(),
+        if (poiDetails != null) 'poiDetails': poiDetails!.toJson(),
         if (proximityLocationListDetails != null)
           'proximityLocationListDetails':
               proximityLocationListDetails!.toJson(),
@@ -12003,7 +12274,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /// `CreateAssignedTargetingOptionsRequest`.
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
-  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   core.List<CreateAssignedTargetingOptionsRequest>? createRequests;
 
@@ -12011,7 +12282,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /// `DeleteAssignedTargetingOptionsRequest`.
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
-  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
@@ -12780,6 +13051,196 @@ class BulkListLineItemAssignedTargetingOptionsResponse {
           'assignedTargetingOptions':
               assignedTargetingOptions!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Details for assigned Business chain targeting option.
+///
+/// This will be populated in the details field of an AssignedTargetingOption
+/// when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`.
+class BusinessChainAssignedTargetingOptionDetails {
+  /// The display name of a business chain, e.g. "KFC", "Chase Bank".
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The radius of the area around the business chain that will be targeted.
+  ///
+  /// The units of the radius are specified by proximity_radius_unit. Must be 1
+  /// to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is
+  /// `DISTANCE_UNIT_MILES`. The minimum increment for both cases is 0.1. Inputs
+  /// will be rounded to the nearest acceptable value if it is too granular,
+  /// e.g. 15.57 will become 15.6.
+  ///
+  /// Required.
+  core.double? proximityRadiusAmount;
+
+  /// The unit of distance by which the targeting radius is measured.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DISTANCE_UNIT_UNSPECIFIED" : Type value is not specified or is unknown
+  /// in this version.
+  /// - "DISTANCE_UNIT_MILES" : Miles.
+  /// - "DISTANCE_UNIT_KILOMETERS" : Kilometers.
+  core.String? proximityRadiusUnit;
+
+  /// The targeting_option_id of a TargetingOption of type
+  /// `TARGETING_TYPE_BUSINESS_CHAIN`.
+  ///
+  /// Required.
+  core.String? targetingOptionId;
+
+  BusinessChainAssignedTargetingOptionDetails({
+    this.displayName,
+    this.proximityRadiusAmount,
+    this.proximityRadiusUnit,
+    this.targetingOptionId,
+  });
+
+  BusinessChainAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          proximityRadiusAmount: _json.containsKey('proximityRadiusAmount')
+              ? (_json['proximityRadiusAmount'] as core.num).toDouble()
+              : null,
+          proximityRadiusUnit: _json.containsKey('proximityRadiusUnit')
+              ? _json['proximityRadiusUnit'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (proximityRadiusAmount != null)
+          'proximityRadiusAmount': proximityRadiusAmount!,
+        if (proximityRadiusUnit != null)
+          'proximityRadiusUnit': proximityRadiusUnit!,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+      };
+}
+
+/// Search terms for Business Chain targeting options.
+///
+/// At least one of the field should be populated.
+class BusinessChainSearchTerms {
+  /// The search query for the desired business chain.
+  ///
+  /// The query must be the full name of the business, e.g. "KFC",
+  /// "mercedes-benz".
+  core.String? businessChain;
+
+  /// The search query for the desired geo region, e.g. "Seattle", "United
+  /// State".
+  core.String? region;
+
+  BusinessChainSearchTerms({
+    this.businessChain,
+    this.region,
+  });
+
+  BusinessChainSearchTerms.fromJson(core.Map _json)
+      : this(
+          businessChain: _json.containsKey('businessChain')
+              ? _json['businessChain'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (businessChain != null) 'businessChain': businessChain!,
+        if (region != null) 'region': region!,
+      };
+}
+
+/// Represents a targetable business chain within a geo region.
+///
+/// This will be populated in the business_chain_details field when
+/// targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`.
+class BusinessChainTargetingOptionDetails {
+  /// The display name of the business chain, e.g. "KFC", "Chase Bank".
+  ///
+  /// Output only.
+  core.String? businessChain;
+
+  /// The display name of the geographic region, e.g. "Ontario, Canada".
+  ///
+  /// Output only.
+  core.String? geoRegion;
+
+  /// The type of the geographic region.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GEO_REGION_TYPE_UNKNOWN" : The geographic region type is unknown.
+  /// - "GEO_REGION_TYPE_OTHER" : The geographic region type is other.
+  /// - "GEO_REGION_TYPE_COUNTRY" : The geographic region is a country.
+  /// - "GEO_REGION_TYPE_REGION" : The geographic region type is region.
+  /// - "GEO_REGION_TYPE_TERRITORY" : The geographic region is a territory.
+  /// - "GEO_REGION_TYPE_PROVINCE" : The geographic region is a province.
+  /// - "GEO_REGION_TYPE_STATE" : The geographic region is a state.
+  /// - "GEO_REGION_TYPE_PREFECTURE" : The geographic region is a prefecture.
+  /// - "GEO_REGION_TYPE_GOVERNORATE" : The geographic region is a governorate.
+  /// - "GEO_REGION_TYPE_CANTON" : The geographic region is a canton.
+  /// - "GEO_REGION_TYPE_UNION_TERRITORY" : The geographic region is a union
+  /// territory.
+  /// - "GEO_REGION_TYPE_AUTONOMOUS_COMMUNITY" : The geographic region is an
+  /// autonomous community.
+  /// - "GEO_REGION_TYPE_DMA_REGION" : The geographic region is a designated
+  /// market area (DMA) region.
+  /// - "GEO_REGION_TYPE_METRO" : The geographic region type is metro.
+  /// - "GEO_REGION_TYPE_CONGRESSIONAL_DISTRICT" : The geographic region is a
+  /// congressional district.
+  /// - "GEO_REGION_TYPE_COUNTY" : The geographic region is a county.
+  /// - "GEO_REGION_TYPE_MUNICIPALITY" : The geographic region is a
+  /// municipality.
+  /// - "GEO_REGION_TYPE_CITY" : The geographic region is a city.
+  /// - "GEO_REGION_TYPE_POSTAL_CODE" : The geographic region targeting type is
+  /// postal code.
+  /// - "GEO_REGION_TYPE_DEPARTMENT" : The geographic region targeting type is
+  /// department.
+  /// - "GEO_REGION_TYPE_AIRPORT" : The geographic region is an airport.
+  /// - "GEO_REGION_TYPE_TV_REGION" : The geographic region is a TV region.
+  /// - "GEO_REGION_TYPE_OKRUG" : The geographic region is an okrug.
+  /// - "GEO_REGION_TYPE_BOROUGH" : The geographic region is a borough.
+  /// - "GEO_REGION_TYPE_CITY_REGION" : The geographic region is a city region.
+  /// - "GEO_REGION_TYPE_ARRONDISSEMENT" : The geographic region is an
+  /// arrondissement.
+  /// - "GEO_REGION_TYPE_NEIGHBORHOOD" : The geographic region is a
+  /// neighborhood.
+  /// - "GEO_REGION_TYPE_UNIVERSITY" : The geographic region is a university.
+  /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
+  core.String? geoRegionType;
+
+  BusinessChainTargetingOptionDetails({
+    this.businessChain,
+    this.geoRegion,
+    this.geoRegionType,
+  });
+
+  BusinessChainTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          businessChain: _json.containsKey('businessChain')
+              ? _json['businessChain'] as core.String
+              : null,
+          geoRegion: _json.containsKey('geoRegion')
+              ? _json['geoRegion'] as core.String
+              : null,
+          geoRegionType: _json.containsKey('geoRegionType')
+              ? _json['geoRegionType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (businessChain != null) 'businessChain': businessChain!,
+        if (geoRegion != null) 'geoRegion': geoRegion!,
+        if (geoRegionType != null) 'geoRegionType': geoRegionType!,
       };
 }
 
@@ -14130,8 +14591,15 @@ class CreateAssignedTargetingOptionsRequest {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest({
@@ -15137,6 +15605,22 @@ class CustomBiddingAlgorithm {
   /// Output only.
   core.String? customBiddingAlgorithmId;
 
+  /// The status of custom bidding algorithm.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is not specified or is unknown in this
+  /// version.
+  /// - "ENABLED" : Algorithm is enabled, either recently used, currently used
+  /// or scheduled to be used. The algorithm is actively scoring impressions.
+  /// - "DORMANT" : Algorithm has not been used recently. Although the algorithm
+  /// still acts as `ENABLED`, it will eventually be suspended if not used.
+  /// - "SUSPENDED" : Algorithm is susepended from scoring impressions and
+  /// doesn't have a serving model trained. If the algorithm is assigned to a
+  /// line item or otherwise updated, it will switch back to the `ENABLED` state
+  /// and require time to prepare the serving model again.
+  core.String? customBiddingAlgorithmState;
+
   /// The type of custom bidding algorithm.
   ///
   /// Required. Immutable.
@@ -15146,6 +15630,7 @@ class CustomBiddingAlgorithm {
   /// - "SCRIPT_BASED" : Algorithm generated through customer-uploaded custom
   /// bidding script files.
   /// - "ADS_DATA_HUB_BASED" : Algorithm created through Ads Data Hub product.
+  /// - "GOAL_BUILDER_BASED" : Algorithm created through goal builder in DV3 UI.
   core.String? customBiddingAlgorithmType;
 
   /// The display name of the custom bidding algorithm.
@@ -15184,14 +15669,22 @@ class CustomBiddingAlgorithm {
   /// Immutable.
   core.String? partnerId;
 
+  /// The IDs of the advertisers who have access to this algorithm.
+  ///
+  /// This field will not be set if the algorithm owner is a partner and is
+  /// being retrieved using an advertiser accessor.
+  core.List<core.String>? sharedAdvertiserIds;
+
   CustomBiddingAlgorithm({
     this.advertiserId,
     this.customBiddingAlgorithmId,
+    this.customBiddingAlgorithmState,
     this.customBiddingAlgorithmType,
     this.displayName,
     this.entityStatus,
     this.name,
     this.partnerId,
+    this.sharedAdvertiserIds,
   });
 
   CustomBiddingAlgorithm.fromJson(core.Map _json)
@@ -15202,6 +15695,10 @@ class CustomBiddingAlgorithm {
           customBiddingAlgorithmId:
               _json.containsKey('customBiddingAlgorithmId')
                   ? _json['customBiddingAlgorithmId'] as core.String
+                  : null,
+          customBiddingAlgorithmState:
+              _json.containsKey('customBiddingAlgorithmState')
+                  ? _json['customBiddingAlgorithmState'] as core.String
                   : null,
           customBiddingAlgorithmType:
               _json.containsKey('customBiddingAlgorithmType')
@@ -15217,18 +15714,27 @@ class CustomBiddingAlgorithm {
           partnerId: _json.containsKey('partnerId')
               ? _json['partnerId'] as core.String
               : null,
+          sharedAdvertiserIds: _json.containsKey('sharedAdvertiserIds')
+              ? (_json['sharedAdvertiserIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
         if (customBiddingAlgorithmId != null)
           'customBiddingAlgorithmId': customBiddingAlgorithmId!,
+        if (customBiddingAlgorithmState != null)
+          'customBiddingAlgorithmState': customBiddingAlgorithmState!,
         if (customBiddingAlgorithmType != null)
           'customBiddingAlgorithmType': customBiddingAlgorithmType!,
         if (displayName != null) 'displayName': displayName!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
         if (name != null) 'name': name!,
         if (partnerId != null) 'partnerId': partnerId!,
+        if (sharedAdvertiserIds != null)
+          'sharedAdvertiserIds': sharedAdvertiserIds!,
       };
 }
 
@@ -15596,8 +16102,15 @@ class DeleteAssignedTargetingOptionsRequest {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   core.String? targetingType;
 
   DeleteAssignedTargetingOptionsRequest({
@@ -16485,7 +16998,9 @@ class ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
+  /// - "EXCHANGE_TAPJOY" : Tapjoy.
   core.String? exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -16610,7 +17125,9 @@ class ExchangeReviewStatus {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
+  /// - "EXCHANGE_TAPJOY" : Tapjoy.
   core.String? exchange;
 
   /// Status of the exchange review.
@@ -16717,7 +17234,9 @@ class ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
+  /// - "EXCHANGE_TAPJOY" : Tapjoy.
   core.String? exchange;
 
   ExchangeTargetingOptionDetails({
@@ -18752,7 +19271,9 @@ class InventorySource {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
+  /// - "EXCHANGE_TAPJOY" : Tapjoy.
   core.String? exchange;
 
   /// The unique ID of the inventory source.
@@ -21869,6 +22390,75 @@ class ObaIcon {
       };
 }
 
+/// Represents a targetable Open Measurement enabled inventory type.
+///
+/// This will be populated in the details field of an AssignedTargetingOption
+/// when targeting_type is `TARGETING_TYPE_OMID`.
+class OmidAssignedTargetingOptionDetails {
+  /// The type of Open Measurement enabled inventory.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
+  /// in this version.
+  /// - "OMID_FOR_MOBILE_DISPLAY_ADS" : Open Measurement enabled mobile display
+  /// inventory.
+  core.String? omid;
+
+  /// The targeting_option_id of a TargetingOption of type
+  /// `TARGETING_TYPE_OMID`.
+  ///
+  /// Required.
+  core.String? targetingOptionId;
+
+  OmidAssignedTargetingOptionDetails({
+    this.omid,
+    this.targetingOptionId,
+  });
+
+  OmidAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          omid: _json.containsKey('omid') ? _json['omid'] as core.String : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (omid != null) 'omid': omid!,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+      };
+}
+
+/// Represents a targetable Open Measurement enabled inventory type.
+///
+/// This will be populated in the omid_details field when targeting_type is
+/// `TARGETING_TYPE_OMID`.
+class OmidTargetingOptionDetails {
+  /// The type of Open Measurement enabled inventory.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
+  /// in this version.
+  /// - "OMID_FOR_MOBILE_DISPLAY_ADS" : Open Measurement enabled mobile display
+  /// inventory.
+  core.String? omid;
+
+  OmidTargetingOptionDetails({
+    this.omid,
+  });
+
+  OmidTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          omid: _json.containsKey('omid') ? _json['omid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (omid != null) 'omid': omid!,
+      };
+}
+
 /// On screen position targeting option details.
 ///
 /// This will be populated in the on_screen_position_details field when
@@ -22970,6 +23560,167 @@ class PerformanceGoalBidStrategy {
       };
 }
 
+/// Details for assigned POI targeting option.
+///
+/// This will be populated in the details field of an AssignedTargetingOption
+/// when targeting_type is `TARGETING_TYPE_POI`.
+class PoiAssignedTargetingOptionDetails {
+  /// The display name of a POI, e.g. "Times Square", "Space Needle", followed
+  /// by its full address if available.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Latitude of the POI rounding to 6th decimal place.
+  ///
+  /// Output only.
+  core.double? latitude;
+
+  /// Longitude of the POI rounding to 6th decimal place.
+  ///
+  /// Output only.
+  core.double? longitude;
+
+  /// The radius of the area around the POI that will be targeted.
+  ///
+  /// The units of the radius are specified by proximity_radius_unit. Must be 1
+  /// to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is
+  /// `DISTANCE_UNIT_MILES`.
+  ///
+  /// Required.
+  core.double? proximityRadiusAmount;
+
+  /// The unit of distance by which the targeting radius is measured.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DISTANCE_UNIT_UNSPECIFIED" : Type value is not specified or is unknown
+  /// in this version.
+  /// - "DISTANCE_UNIT_MILES" : Miles.
+  /// - "DISTANCE_UNIT_KILOMETERS" : Kilometers.
+  core.String? proximityRadiusUnit;
+
+  /// The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`
+  /// or reuse an existing assigned_targeting_option_id.
+  ///
+  /// Required.
+  core.String? targetingOptionId;
+
+  PoiAssignedTargetingOptionDetails({
+    this.displayName,
+    this.latitude,
+    this.longitude,
+    this.proximityRadiusAmount,
+    this.proximityRadiusUnit,
+    this.targetingOptionId,
+  });
+
+  PoiAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          latitude: _json.containsKey('latitude')
+              ? (_json['latitude'] as core.num).toDouble()
+              : null,
+          longitude: _json.containsKey('longitude')
+              ? (_json['longitude'] as core.num).toDouble()
+              : null,
+          proximityRadiusAmount: _json.containsKey('proximityRadiusAmount')
+              ? (_json['proximityRadiusAmount'] as core.num).toDouble()
+              : null,
+          proximityRadiusUnit: _json.containsKey('proximityRadiusUnit')
+              ? _json['proximityRadiusUnit'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
+        if (proximityRadiusAmount != null)
+          'proximityRadiusAmount': proximityRadiusAmount!,
+        if (proximityRadiusUnit != null)
+          'proximityRadiusUnit': proximityRadiusUnit!,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+      };
+}
+
+/// Search terms for POI targeting options.
+class PoiSearchTerms {
+  /// The search query for the desired POI name, street address, or coordinate
+  /// of the desired POI.
+  ///
+  /// The query can be a prefix, e.g. "Times squar", "40.7505045,-73.99562",
+  /// "315 W 44th St", etc.
+  core.String? poiQuery;
+
+  PoiSearchTerms({
+    this.poiQuery,
+  });
+
+  PoiSearchTerms.fromJson(core.Map _json)
+      : this(
+          poiQuery: _json.containsKey('poiQuery')
+              ? _json['poiQuery'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (poiQuery != null) 'poiQuery': poiQuery!,
+      };
+}
+
+/// Represents a targetable point of interest(POI).
+///
+/// This will be populated in the poi_details field when targeting_type is
+/// `TARGETING_TYPE_POI`.
+class PoiTargetingOptionDetails {
+  /// The display name of a POI(e.g. "Times Square", "Space Needle"), followed
+  /// by its full address if available.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Latitude of the POI rounding to 6th decimal place.
+  ///
+  /// Output only.
+  core.double? latitude;
+
+  /// Longitude of the POI rounding to 6th decimal place.
+  ///
+  /// Output only.
+  core.double? longitude;
+
+  PoiTargetingOptionDetails({
+    this.displayName,
+    this.latitude,
+    this.longitude,
+  });
+
+  PoiTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          latitude: _json.containsKey('latitude')
+              ? (_json['latitude'] as core.num).toDouble()
+              : null,
+          longitude: _json.containsKey('longitude')
+              ? (_json['longitude'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
+      };
+}
+
 /// Settings specific to the Mediaocean Prisma tool.
 class PrismaConfig {
   /// Relevant client, product, and estimate codes from the Mediaocean Prisma
@@ -23602,6 +24353,11 @@ class SearchTargetingOptionsRequest {
   /// Required.
   core.String? advertiserId;
 
+  /// Search terms for Business Chain targeting options.
+  ///
+  /// Can only be used when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`.
+  BusinessChainSearchTerms? businessChainSearchTerms;
+
   /// Search terms for geo region targeting options.
   ///
   /// Can only be used when targeting_type is `TARGETING_TYPE_GEO_REGION`.
@@ -23620,11 +24376,18 @@ class SearchTargetingOptionsRequest {
   /// of results will be returned.
   core.String? pageToken;
 
+  /// Search terms for POI targeting options.
+  ///
+  /// Can only be used when targeting_type is `TARGETING_TYPE_POI`.
+  PoiSearchTerms? poiSearchTerms;
+
   SearchTargetingOptionsRequest({
     this.advertiserId,
+    this.businessChainSearchTerms,
     this.geoRegionSearchTerms,
     this.pageSize,
     this.pageToken,
+    this.poiSearchTerms,
   });
 
   SearchTargetingOptionsRequest.fromJson(core.Map _json)
@@ -23632,6 +24395,12 @@ class SearchTargetingOptionsRequest {
           advertiserId: _json.containsKey('advertiserId')
               ? _json['advertiserId'] as core.String
               : null,
+          businessChainSearchTerms:
+              _json.containsKey('businessChainSearchTerms')
+                  ? BusinessChainSearchTerms.fromJson(
+                      _json['businessChainSearchTerms']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           geoRegionSearchTerms: _json.containsKey('geoRegionSearchTerms')
               ? GeoRegionSearchTerms.fromJson(_json['geoRegionSearchTerms']
                   as core.Map<core.String, core.dynamic>)
@@ -23642,18 +24411,25 @@ class SearchTargetingOptionsRequest {
           pageToken: _json.containsKey('pageToken')
               ? _json['pageToken'] as core.String
               : null,
+          poiSearchTerms: _json.containsKey('poiSearchTerms')
+              ? PoiSearchTerms.fromJson(_json['poiSearchTerms']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (businessChainSearchTerms != null)
+          'businessChainSearchTerms': businessChainSearchTerms!.toJson(),
         if (geoRegionSearchTerms != null)
           'geoRegionSearchTerms': geoRegionSearchTerms!.toJson(),
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
+        if (poiSearchTerms != null) 'poiSearchTerms': poiSearchTerms!.toJson(),
       };
 }
 
-/// Response message for SearchTargetingOptionsResponse.
+/// Response message for SearchTargetingOptions.
 class SearchTargetingOptionsResponse {
   /// A token to retrieve the next page of results.
   ///
@@ -24074,6 +24850,9 @@ class TargetingOption {
   /// Browser details.
   BrowserTargetingOptionDetails? browserDetails;
 
+  /// Business chain resource details.
+  BusinessChainTargetingOptionDetails? businessChainDetails;
+
   /// Carrier and ISP details.
   CarrierAndIspTargetingOptionDetails? carrierAndIspDetails;
 
@@ -24122,6 +24901,9 @@ class TargetingOption {
   /// Native content position details.
   NativeContentPositionTargetingOptionDetails? nativeContentPositionDetails;
 
+  /// Open Measurement enabled inventory details.
+  OmidTargetingOptionDetails? omidDetails;
+
   /// On screen position details.
   OnScreenPositionTargetingOptionDetails? onScreenPositionDetails;
 
@@ -24130,6 +24912,9 @@ class TargetingOption {
 
   /// Parental status details.
   ParentalStatusTargetingOptionDetails? parentalStatusDetails;
+
+  /// POI resource details.
+  PoiTargetingOptionDetails? poiDetails;
 
   /// Sensitive Category details.
   SensitiveCategoryTargetingOptionDetails? sensitiveCategoryDetails;
@@ -24226,8 +25011,15 @@ class TargetingOption {
   /// exchanges.
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -24244,6 +25036,7 @@ class TargetingOption {
     this.appCategoryDetails,
     this.authorizedSellerStatusDetails,
     this.browserDetails,
+    this.businessChainDetails,
     this.carrierAndIspDetails,
     this.categoryDetails,
     this.contentInstreamPositionDetails,
@@ -24259,9 +25052,11 @@ class TargetingOption {
     this.languageDetails,
     this.name,
     this.nativeContentPositionDetails,
+    this.omidDetails,
     this.onScreenPositionDetails,
     this.operatingSystemDetails,
     this.parentalStatusDetails,
+    this.poiDetails,
     this.sensitiveCategoryDetails,
     this.subExchangeDetails,
     this.targetingOptionId,
@@ -24291,6 +25086,11 @@ class TargetingOption {
           browserDetails: _json.containsKey('browserDetails')
               ? BrowserTargetingOptionDetails.fromJson(_json['browserDetails']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          businessChainDetails: _json.containsKey('businessChainDetails')
+              ? BusinessChainTargetingOptionDetails.fromJson(
+                  _json['businessChainDetails']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           carrierAndIspDetails: _json.containsKey('carrierAndIspDetails')
               ? CarrierAndIspTargetingOptionDetails.fromJson(
@@ -24363,6 +25163,10 @@ class TargetingOption {
                       _json['nativeContentPositionDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          omidDetails: _json.containsKey('omidDetails')
+              ? OmidTargetingOptionDetails.fromJson(
+                  _json['omidDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           onScreenPositionDetails: _json.containsKey('onScreenPositionDetails')
               ? OnScreenPositionTargetingOptionDetails.fromJson(
                   _json['onScreenPositionDetails']
@@ -24377,6 +25181,10 @@ class TargetingOption {
               ? ParentalStatusTargetingOptionDetails.fromJson(
                   _json['parentalStatusDetails']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          poiDetails: _json.containsKey('poiDetails')
+              ? PoiTargetingOptionDetails.fromJson(
+                  _json['poiDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           sensitiveCategoryDetails:
               _json.containsKey('sensitiveCategoryDetails')
@@ -24422,6 +25230,8 @@ class TargetingOption {
           'authorizedSellerStatusDetails':
               authorizedSellerStatusDetails!.toJson(),
         if (browserDetails != null) 'browserDetails': browserDetails!.toJson(),
+        if (businessChainDetails != null)
+          'businessChainDetails': businessChainDetails!.toJson(),
         if (carrierAndIspDetails != null)
           'carrierAndIspDetails': carrierAndIspDetails!.toJson(),
         if (categoryDetails != null)
@@ -24453,12 +25263,14 @@ class TargetingOption {
         if (nativeContentPositionDetails != null)
           'nativeContentPositionDetails':
               nativeContentPositionDetails!.toJson(),
+        if (omidDetails != null) 'omidDetails': omidDetails!.toJson(),
         if (onScreenPositionDetails != null)
           'onScreenPositionDetails': onScreenPositionDetails!.toJson(),
         if (operatingSystemDetails != null)
           'operatingSystemDetails': operatingSystemDetails!.toJson(),
         if (parentalStatusDetails != null)
           'parentalStatusDetails': parentalStatusDetails!.toJson(),
+        if (poiDetails != null) 'poiDetails': poiDetails!.toJson(),
         if (sensitiveCategoryDetails != null)
           'sensitiveCategoryDetails': sensitiveCategoryDetails!.toJson(),
         if (subExchangeDetails != null)

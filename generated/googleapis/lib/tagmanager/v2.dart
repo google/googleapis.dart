@@ -28,6 +28,7 @@
 ///     - [AccountsContainersVersionsResource]
 ///     - [AccountsContainersWorkspacesResource]
 ///       - [AccountsContainersWorkspacesBuiltInVariablesResource]
+///       - [AccountsContainersWorkspacesClientsResource]
 ///       - [AccountsContainersWorkspacesFoldersResource]
 ///       - [AccountsContainersWorkspacesTagsResource]
 ///       - [AccountsContainersWorkspacesTemplatesResource]
@@ -1081,6 +1082,8 @@ class AccountsContainersWorkspacesResource {
 
   AccountsContainersWorkspacesBuiltInVariablesResource get builtInVariables =>
       AccountsContainersWorkspacesBuiltInVariablesResource(_requester);
+  AccountsContainersWorkspacesClientsResource get clients =>
+      AccountsContainersWorkspacesClientsResource(_requester);
   AccountsContainersWorkspacesFoldersResource get folders =>
       AccountsContainersWorkspacesFoldersResource(_requester);
   AccountsContainersWorkspacesTagsResource get tags =>
@@ -1767,6 +1770,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// - "requestMethod"
   /// - "clientName"
   /// - "queryString"
+  /// - "serverPageLocationUrl"
+  /// - "serverPageLocationPath"
+  /// - "serverPageLocationHostname"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1799,6 +1805,259 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     );
     return RevertBuiltInVariableResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsContainersWorkspacesClientsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersWorkspacesClientsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a GTM Client.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Client].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Client> create(
+    Client request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/clients';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a GTM Client.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Client's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/clients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Gets a GTM Client.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Client's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/clients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Client].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Client> get(
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all GTM Clients of a GTM container workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListClientsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListClientsResponse> list(
+    core.String parent, {
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/clients';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListClientsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reverts changes to a GTM Client in a GTM Workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Client's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/clients/\[^/\]+$`.
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the client in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RevertClientResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RevertClientResponse> revert(
+    core.String path, {
+    core.String? fingerprint,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':revert';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      queryParams: _queryParams,
+    );
+    return RevertClientResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a GTM Client.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Client's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/clients/\[^/\]+$`.
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the client in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Client].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Client> update(
+    Client request,
+    core.String path, {
+    core.String? fingerprint,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    final _response = await _requester.request(
+      _url,
+      'PUT',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3863,6 +4122,9 @@ class BuiltInVariable {
   /// - "requestMethod"
   /// - "clientName"
   /// - "queryString"
+  /// - "serverPageLocationUrl"
+  /// - "serverPageLocationPath"
+  /// - "serverPageLocationHostname"
   core.String? type;
 
   /// GTM Workspace ID.
@@ -5259,6 +5521,38 @@ class ListAccountsResponse {
       };
 }
 
+class ListClientsResponse {
+  /// All GTM Clients of a GTM Container.
+  core.List<Client>? client;
+
+  /// Continuation token for fetching the next page of results.
+  core.String? nextPageToken;
+
+  ListClientsResponse({
+    this.client,
+    this.nextPageToken,
+  });
+
+  ListClientsResponse.fromJson(core.Map _json)
+      : this(
+          client: _json.containsKey('client')
+              ? (_json['client'] as core.List)
+                  .map<Client>((value) => Client.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (client != null)
+          'client': client!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// List container versions response.
 class ListContainerVersionsResponse {
   /// All container version headers of a GTM Container.
@@ -5898,6 +6192,32 @@ class RevertBuiltInVariableResponse {
       };
 }
 
+/// The result of reverting a client in a workspace.
+class RevertClientResponse {
+  /// Client as it appears in the latest container version since the last
+  /// workspace synchronization operation.
+  ///
+  /// If no client is present, that means the client was deleted in the latest
+  /// container version.
+  Client? client;
+
+  RevertClientResponse({
+    this.client,
+  });
+
+  RevertClientResponse.fromJson(core.Map _json)
+      : this(
+          client: _json.containsKey('client')
+              ? Client.fromJson(
+                  _json['client'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (client != null) 'client': client!.toJson(),
+      };
+}
+
 /// The result of reverting folder changes in a workspace.
 class RevertFolderResponse {
   /// Folder as it appears in the latest container version since the last
@@ -6175,6 +6495,12 @@ class Tag {
   /// tagmanager.accounts.containers.workspaces.tags.update
   core.List<core.String>? blockingTriggerId;
 
+  /// Consent settings of a tag.
+  ///
+  /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
+  TagConsentSetting? consentSettings;
+
   /// GTM Container ID.
   core.String? containerId;
 
@@ -6312,6 +6638,7 @@ class Tag {
     this.accountId,
     this.blockingRuleId,
     this.blockingTriggerId,
+    this.consentSettings,
     this.containerId,
     this.fingerprint,
     this.firingRuleId,
@@ -6351,6 +6678,10 @@ class Tag {
               ? (_json['blockingTriggerId'] as core.List)
                   .map<core.String>((value) => value as core.String)
                   .toList()
+              : null,
+          consentSettings: _json.containsKey('consentSettings')
+              ? TagConsentSetting.fromJson(_json['consentSettings']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           containerId: _json.containsKey('containerId')
               ? _json['containerId'] as core.String
@@ -6434,6 +6765,8 @@ class Tag {
         if (accountId != null) 'accountId': accountId!,
         if (blockingRuleId != null) 'blockingRuleId': blockingRuleId!,
         if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId!,
+        if (consentSettings != null)
+          'consentSettings': consentSettings!.toJson(),
         if (containerId != null) 'containerId': containerId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (firingRuleId != null) 'firingRuleId': firingRuleId!,
@@ -6462,6 +6795,46 @@ class Tag {
           'teardownTag': teardownTag!.map((value) => value.toJson()).toList(),
         if (type != null) 'type': type!,
         if (workspaceId != null) 'workspaceId': workspaceId!,
+      };
+}
+
+class TagConsentSetting {
+  /// The tag's consent status.
+  ///
+  /// If set to NEEDED, the runtime will check that the consent types specified
+  /// by the consent_type field have been granted.
+  /// Possible string values are:
+  /// - "notSet" : Default value where user has not specified any setting on it.
+  /// - "notNeeded" : Tag doesn't require any additional consent settings.
+  /// - "needed" : Tag requires additional consent settings.
+  core.String? consentStatus;
+
+  /// The type of consents to check for during tag firing if in the consent
+  /// NEEDED state.
+  ///
+  /// This parameter must be of type LIST where each list item is of type
+  /// STRING.
+  Parameter? consentType;
+
+  TagConsentSetting({
+    this.consentStatus,
+    this.consentType,
+  });
+
+  TagConsentSetting.fromJson(core.Map _json)
+      : this(
+          consentStatus: _json.containsKey('consentStatus')
+              ? _json['consentStatus'] as core.String
+              : null,
+          consentType: _json.containsKey('consentType')
+              ? Parameter.fromJson(
+                  _json['consentType'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consentStatus != null) 'consentStatus': consentStatus!,
+        if (consentType != null) 'consentType': consentType!.toJson(),
       };
 }
 

@@ -26,6 +26,166 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.List<api.GoogleChromeManagementV1AndroidAppPermission>
+    buildUnnamed1492() => [
+          buildGoogleChromeManagementV1AndroidAppPermission(),
+          buildGoogleChromeManagementV1AndroidAppPermission(),
+        ];
+
+void checkUnnamed1492(
+    core.List<api.GoogleChromeManagementV1AndroidAppPermission> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleChromeManagementV1AndroidAppPermission(o[0]);
+  checkGoogleChromeManagementV1AndroidAppPermission(o[1]);
+}
+
+core.int buildCounterGoogleChromeManagementV1AndroidAppInfo = 0;
+api.GoogleChromeManagementV1AndroidAppInfo
+    buildGoogleChromeManagementV1AndroidAppInfo() {
+  final o = api.GoogleChromeManagementV1AndroidAppInfo();
+  buildCounterGoogleChromeManagementV1AndroidAppInfo++;
+  if (buildCounterGoogleChromeManagementV1AndroidAppInfo < 3) {
+    o.permissions = buildUnnamed1492();
+  }
+  buildCounterGoogleChromeManagementV1AndroidAppInfo--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1AndroidAppInfo(
+    api.GoogleChromeManagementV1AndroidAppInfo o) {
+  buildCounterGoogleChromeManagementV1AndroidAppInfo++;
+  if (buildCounterGoogleChromeManagementV1AndroidAppInfo < 3) {
+    checkUnnamed1492(o.permissions!);
+  }
+  buildCounterGoogleChromeManagementV1AndroidAppInfo--;
+}
+
+core.int buildCounterGoogleChromeManagementV1AndroidAppPermission = 0;
+api.GoogleChromeManagementV1AndroidAppPermission
+    buildGoogleChromeManagementV1AndroidAppPermission() {
+  final o = api.GoogleChromeManagementV1AndroidAppPermission();
+  buildCounterGoogleChromeManagementV1AndroidAppPermission++;
+  if (buildCounterGoogleChromeManagementV1AndroidAppPermission < 3) {
+    o.type = 'foo';
+  }
+  buildCounterGoogleChromeManagementV1AndroidAppPermission--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1AndroidAppPermission(
+    api.GoogleChromeManagementV1AndroidAppPermission o) {
+  buildCounterGoogleChromeManagementV1AndroidAppPermission++;
+  if (buildCounterGoogleChromeManagementV1AndroidAppPermission < 3) {
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromeManagementV1AndroidAppPermission--;
+}
+
+core.int buildCounterGoogleChromeManagementV1AppDetails = 0;
+api.GoogleChromeManagementV1AppDetails
+    buildGoogleChromeManagementV1AppDetails() {
+  final o = api.GoogleChromeManagementV1AppDetails();
+  buildCounterGoogleChromeManagementV1AppDetails++;
+  if (buildCounterGoogleChromeManagementV1AppDetails < 3) {
+    o.androidAppInfo = buildGoogleChromeManagementV1AndroidAppInfo();
+    o.appId = 'foo';
+    o.chromeAppInfo = buildGoogleChromeManagementV1ChromeAppInfo();
+    o.description = 'foo';
+    o.detailUri = 'foo';
+    o.displayName = 'foo';
+    o.firstPublishTime = 'foo';
+    o.homepageUri = 'foo';
+    o.iconUri = 'foo';
+    o.isPaidApp = true;
+    o.latestPublishTime = 'foo';
+    o.name = 'foo';
+    o.privacyPolicyUri = 'foo';
+    o.publisher = 'foo';
+    o.reviewNumber = 'foo';
+    o.reviewRating = 42.0;
+    o.revisionId = 'foo';
+    o.serviceError = buildGoogleRpcStatus();
+    o.type = 'foo';
+  }
+  buildCounterGoogleChromeManagementV1AppDetails--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1AppDetails(
+    api.GoogleChromeManagementV1AppDetails o) {
+  buildCounterGoogleChromeManagementV1AppDetails++;
+  if (buildCounterGoogleChromeManagementV1AppDetails < 3) {
+    checkGoogleChromeManagementV1AndroidAppInfo(o.androidAppInfo!);
+    unittest.expect(
+      o.appId!,
+      unittest.equals('foo'),
+    );
+    checkGoogleChromeManagementV1ChromeAppInfo(o.chromeAppInfo!);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.detailUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.firstPublishTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.homepageUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iconUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.isPaidApp!, unittest.isTrue);
+    unittest.expect(
+      o.latestPublishTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.privacyPolicyUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.publisher!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reviewNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reviewRating!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.revisionId!,
+      unittest.equals('foo'),
+    );
+    checkGoogleRpcStatus(o.serviceError!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromeManagementV1AppDetails--;
+}
+
 core.int buildCounterGoogleChromeManagementV1BrowserVersion = 0;
 api.GoogleChromeManagementV1BrowserVersion
     buildGoogleChromeManagementV1BrowserVersion() {
@@ -70,12 +230,129 @@ void checkGoogleChromeManagementV1BrowserVersion(
   buildCounterGoogleChromeManagementV1BrowserVersion--;
 }
 
-core.List<api.GoogleChromeManagementV1BrowserVersion> buildUnnamed1467() => [
+core.List<api.GoogleChromeManagementV1ChromeAppPermission> buildUnnamed1493() =>
+    [
+      buildGoogleChromeManagementV1ChromeAppPermission(),
+      buildGoogleChromeManagementV1ChromeAppPermission(),
+    ];
+
+void checkUnnamed1493(
+    core.List<api.GoogleChromeManagementV1ChromeAppPermission> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleChromeManagementV1ChromeAppPermission(o[0]);
+  checkGoogleChromeManagementV1ChromeAppPermission(o[1]);
+}
+
+core.List<api.GoogleChromeManagementV1ChromeAppSiteAccess> buildUnnamed1494() =>
+    [
+      buildGoogleChromeManagementV1ChromeAppSiteAccess(),
+      buildGoogleChromeManagementV1ChromeAppSiteAccess(),
+    ];
+
+void checkUnnamed1494(
+    core.List<api.GoogleChromeManagementV1ChromeAppSiteAccess> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleChromeManagementV1ChromeAppSiteAccess(o[0]);
+  checkGoogleChromeManagementV1ChromeAppSiteAccess(o[1]);
+}
+
+core.int buildCounterGoogleChromeManagementV1ChromeAppInfo = 0;
+api.GoogleChromeManagementV1ChromeAppInfo
+    buildGoogleChromeManagementV1ChromeAppInfo() {
+  final o = api.GoogleChromeManagementV1ChromeAppInfo();
+  buildCounterGoogleChromeManagementV1ChromeAppInfo++;
+  if (buildCounterGoogleChromeManagementV1ChromeAppInfo < 3) {
+    o.googleOwned = true;
+    o.isCwsHosted = true;
+    o.isTheme = true;
+    o.minUserCount = 42;
+    o.permissions = buildUnnamed1493();
+    o.siteAccess = buildUnnamed1494();
+    o.supportEnabled = true;
+  }
+  buildCounterGoogleChromeManagementV1ChromeAppInfo--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1ChromeAppInfo(
+    api.GoogleChromeManagementV1ChromeAppInfo o) {
+  buildCounterGoogleChromeManagementV1ChromeAppInfo++;
+  if (buildCounterGoogleChromeManagementV1ChromeAppInfo < 3) {
+    unittest.expect(o.googleOwned!, unittest.isTrue);
+    unittest.expect(o.isCwsHosted!, unittest.isTrue);
+    unittest.expect(o.isTheme!, unittest.isTrue);
+    unittest.expect(
+      o.minUserCount!,
+      unittest.equals(42),
+    );
+    checkUnnamed1493(o.permissions!);
+    checkUnnamed1494(o.siteAccess!);
+    unittest.expect(o.supportEnabled!, unittest.isTrue);
+  }
+  buildCounterGoogleChromeManagementV1ChromeAppInfo--;
+}
+
+core.int buildCounterGoogleChromeManagementV1ChromeAppPermission = 0;
+api.GoogleChromeManagementV1ChromeAppPermission
+    buildGoogleChromeManagementV1ChromeAppPermission() {
+  final o = api.GoogleChromeManagementV1ChromeAppPermission();
+  buildCounterGoogleChromeManagementV1ChromeAppPermission++;
+  if (buildCounterGoogleChromeManagementV1ChromeAppPermission < 3) {
+    o.accessUserData = true;
+    o.documentationUri = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterGoogleChromeManagementV1ChromeAppPermission--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1ChromeAppPermission(
+    api.GoogleChromeManagementV1ChromeAppPermission o) {
+  buildCounterGoogleChromeManagementV1ChromeAppPermission++;
+  if (buildCounterGoogleChromeManagementV1ChromeAppPermission < 3) {
+    unittest.expect(o.accessUserData!, unittest.isTrue);
+    unittest.expect(
+      o.documentationUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromeManagementV1ChromeAppPermission--;
+}
+
+core.int buildCounterGoogleChromeManagementV1ChromeAppSiteAccess = 0;
+api.GoogleChromeManagementV1ChromeAppSiteAccess
+    buildGoogleChromeManagementV1ChromeAppSiteAccess() {
+  final o = api.GoogleChromeManagementV1ChromeAppSiteAccess();
+  buildCounterGoogleChromeManagementV1ChromeAppSiteAccess++;
+  if (buildCounterGoogleChromeManagementV1ChromeAppSiteAccess < 3) {
+    o.hostMatch = 'foo';
+  }
+  buildCounterGoogleChromeManagementV1ChromeAppSiteAccess--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1ChromeAppSiteAccess(
+    api.GoogleChromeManagementV1ChromeAppSiteAccess o) {
+  buildCounterGoogleChromeManagementV1ChromeAppSiteAccess++;
+  if (buildCounterGoogleChromeManagementV1ChromeAppSiteAccess < 3) {
+    unittest.expect(
+      o.hostMatch!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromeManagementV1ChromeAppSiteAccess--;
+}
+
+core.List<api.GoogleChromeManagementV1BrowserVersion> buildUnnamed1495() => [
       buildGoogleChromeManagementV1BrowserVersion(),
       buildGoogleChromeManagementV1BrowserVersion(),
     ];
 
-void checkUnnamed1467(core.List<api.GoogleChromeManagementV1BrowserVersion> o) {
+void checkUnnamed1495(core.List<api.GoogleChromeManagementV1BrowserVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1BrowserVersion(o[0]);
   checkGoogleChromeManagementV1BrowserVersion(o[1]);
@@ -87,7 +364,7 @@ api.GoogleChromeManagementV1CountChromeVersionsResponse
   final o = api.GoogleChromeManagementV1CountChromeVersionsResponse();
   buildCounterGoogleChromeManagementV1CountChromeVersionsResponse++;
   if (buildCounterGoogleChromeManagementV1CountChromeVersionsResponse < 3) {
-    o.browserVersions = buildUnnamed1467();
+    o.browserVersions = buildUnnamed1495();
     o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
@@ -99,7 +376,7 @@ void checkGoogleChromeManagementV1CountChromeVersionsResponse(
     api.GoogleChromeManagementV1CountChromeVersionsResponse o) {
   buildCounterGoogleChromeManagementV1CountChromeVersionsResponse++;
   if (buildCounterGoogleChromeManagementV1CountChromeVersionsResponse < 3) {
-    checkUnnamed1467(o.browserVersions!);
+    checkUnnamed1495(o.browserVersions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -112,12 +389,12 @@ void checkGoogleChromeManagementV1CountChromeVersionsResponse(
   buildCounterGoogleChromeManagementV1CountChromeVersionsResponse--;
 }
 
-core.List<api.GoogleChromeManagementV1InstalledApp> buildUnnamed1468() => [
+core.List<api.GoogleChromeManagementV1InstalledApp> buildUnnamed1496() => [
       buildGoogleChromeManagementV1InstalledApp(),
       buildGoogleChromeManagementV1InstalledApp(),
     ];
 
-void checkUnnamed1468(core.List<api.GoogleChromeManagementV1InstalledApp> o) {
+void checkUnnamed1496(core.List<api.GoogleChromeManagementV1InstalledApp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1InstalledApp(o[0]);
   checkGoogleChromeManagementV1InstalledApp(o[1]);
@@ -129,7 +406,7 @@ api.GoogleChromeManagementV1CountInstalledAppsResponse
   final o = api.GoogleChromeManagementV1CountInstalledAppsResponse();
   buildCounterGoogleChromeManagementV1CountInstalledAppsResponse++;
   if (buildCounterGoogleChromeManagementV1CountInstalledAppsResponse < 3) {
-    o.installedApps = buildUnnamed1468();
+    o.installedApps = buildUnnamed1496();
     o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
@@ -141,7 +418,7 @@ void checkGoogleChromeManagementV1CountInstalledAppsResponse(
     api.GoogleChromeManagementV1CountInstalledAppsResponse o) {
   buildCounterGoogleChromeManagementV1CountInstalledAppsResponse++;
   if (buildCounterGoogleChromeManagementV1CountInstalledAppsResponse < 3) {
-    checkUnnamed1468(o.installedApps!);
+    checkUnnamed1496(o.installedApps!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -181,12 +458,12 @@ void checkGoogleChromeManagementV1Device(api.GoogleChromeManagementV1Device o) {
   buildCounterGoogleChromeManagementV1Device--;
 }
 
-core.List<api.GoogleChromeManagementV1Device> buildUnnamed1469() => [
+core.List<api.GoogleChromeManagementV1Device> buildUnnamed1497() => [
       buildGoogleChromeManagementV1Device(),
       buildGoogleChromeManagementV1Device(),
     ];
 
-void checkUnnamed1469(core.List<api.GoogleChromeManagementV1Device> o) {
+void checkUnnamed1497(core.List<api.GoogleChromeManagementV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1Device(o[0]);
   checkGoogleChromeManagementV1Device(o[1]);
@@ -199,7 +476,7 @@ api.GoogleChromeManagementV1FindInstalledAppDevicesResponse
   final o = api.GoogleChromeManagementV1FindInstalledAppDevicesResponse();
   buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse++;
   if (buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse < 3) {
-    o.devices = buildUnnamed1469();
+    o.devices = buildUnnamed1497();
     o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
@@ -211,7 +488,7 @@ void checkGoogleChromeManagementV1FindInstalledAppDevicesResponse(
     api.GoogleChromeManagementV1FindInstalledAppDevicesResponse o) {
   buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse++;
   if (buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse < 3) {
-    checkUnnamed1469(o.devices!);
+    checkUnnamed1497(o.devices!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -224,12 +501,12 @@ void checkGoogleChromeManagementV1FindInstalledAppDevicesResponse(
   buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse--;
 }
 
-core.List<core.String> buildUnnamed1470() => [
+core.List<core.String> buildUnnamed1498() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1470(core.List<core.String> o) {
+void checkUnnamed1498(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -257,7 +534,7 @@ api.GoogleChromeManagementV1InstalledApp
     o.displayName = 'foo';
     o.homepageUri = 'foo';
     o.osUserCount = 'foo';
-    o.permissions = buildUnnamed1470();
+    o.permissions = buildUnnamed1498();
   }
   buildCounterGoogleChromeManagementV1InstalledApp--;
   return o;
@@ -304,12 +581,127 @@ void checkGoogleChromeManagementV1InstalledApp(
       o.osUserCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed1470(o.permissions!);
+    checkUnnamed1498(o.permissions!);
   }
   buildCounterGoogleChromeManagementV1InstalledApp--;
 }
 
+core.Map<core.String, core.Object> buildUnnamed1499() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed1499(core.Map<core.String, core.Object> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.Map<core.String, core.Object>> buildUnnamed1500() => [
+      buildUnnamed1499(),
+      buildUnnamed1499(),
+    ];
+
+void checkUnnamed1500(core.List<core.Map<core.String, core.Object>> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed1499(o[0]);
+  checkUnnamed1499(o[1]);
+}
+
+core.int buildCounterGoogleRpcStatus = 0;
+api.GoogleRpcStatus buildGoogleRpcStatus() {
+  final o = api.GoogleRpcStatus();
+  buildCounterGoogleRpcStatus++;
+  if (buildCounterGoogleRpcStatus < 3) {
+    o.code = 42;
+    o.details = buildUnnamed1500();
+    o.message = 'foo';
+  }
+  buildCounterGoogleRpcStatus--;
+  return o;
+}
+
+void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
+  buildCounterGoogleRpcStatus++;
+  if (buildCounterGoogleRpcStatus < 3) {
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
+    checkUnnamed1500(o.details!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleRpcStatus--;
+}
+
 void main() {
+  unittest.group('obj-schema-GoogleChromeManagementV1AndroidAppInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1AndroidAppInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1AndroidAppInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1AndroidAppInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1AndroidAppPermission', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1AndroidAppPermission();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1AndroidAppPermission.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1AndroidAppPermission(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1AppDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1AppDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1AppDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1AppDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleChromeManagementV1BrowserVersion', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleChromeManagementV1BrowserVersion();
@@ -317,6 +709,36 @@ void main() {
       final od = api.GoogleChromeManagementV1BrowserVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1BrowserVersion(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1ChromeAppInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1ChromeAppInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1ChromeAppInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1ChromeAppInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1ChromeAppPermission', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1ChromeAppPermission();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1ChromeAppPermission.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1ChromeAppPermission(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1ChromeAppSiteAccess', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1ChromeAppSiteAccess();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1ChromeAppSiteAccess.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1ChromeAppSiteAccess(od);
     });
   });
 
@@ -373,6 +795,184 @@ void main() {
       final od = api.GoogleChromeManagementV1InstalledApp.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1InstalledApp(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleRpcStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleRpcStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleRpcStatus(od);
+    });
+  });
+
+  unittest.group('resource-CustomersAppsAndroidResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ChromeManagementApi(mock).customers.apps.android;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleChromeManagementV1AppDetails());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleChromeManagementV1AppDetails(
+          response as api.GoogleChromeManagementV1AppDetails);
+    });
+  });
+
+  unittest.group('resource-CustomersAppsChromeResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ChromeManagementApi(mock).customers.apps.chrome;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleChromeManagementV1AppDetails());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleChromeManagementV1AppDetails(
+          response as api.GoogleChromeManagementV1AppDetails);
+    });
+  });
+
+  unittest.group('resource-CustomersAppsWebResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ChromeManagementApi(mock).customers.apps.web;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleChromeManagementV1AppDetails());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleChromeManagementV1AppDetails(
+          response as api.GoogleChromeManagementV1AppDetails);
     });
   });
 

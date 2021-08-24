@@ -52,11 +52,13 @@ class AppengineApi {
   static const appengineAdminScope =
       'https://www.googleapis.com/auth/appengine.admin';
 
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -2259,6 +2261,12 @@ class Application {
   /// Example: apps/myapp.@OutputOnly
   core.String? name;
 
+  /// The service account associated with the application.
+  ///
+  /// This is the app-level default identity. If no identity provided during
+  /// create version, Admin API will fallback to this one.
+  core.String? serviceAccount;
+
   /// Serving status of this application.
   /// Possible string values are:
   /// - "UNSPECIFIED" : Serving status is unspecified.
@@ -2281,6 +2289,7 @@ class Application {
     this.id,
     this.locationId,
     this.name,
+    this.serviceAccount,
     this.servingStatus,
   });
 
@@ -2326,6 +2335,9 @@ class Application {
               ? _json['locationId'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
           servingStatus: _json.containsKey('servingStatus')
               ? _json['servingStatus'] as core.String
               : null,
@@ -2349,6 +2361,7 @@ class Application {
         if (id != null) 'id': id!,
         if (locationId != null) 'locationId': locationId!,
         if (name != null) 'name': name!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (servingStatus != null) 'servingStatus': servingStatus!,
       };
 }
@@ -3501,6 +3514,220 @@ class GoogleAppengineV1betaLocationMetadata {
           'searchApiAvailable': searchApiAvailable!,
         if (standardEnvironmentAvailable != null)
           'standardEnvironmentAvailable': standardEnvironmentAvailable!,
+      };
+}
+
+/// Represents the metadata of the long-running operation.
+class GoogleAppengineV2OperationMetadata {
+  /// API version used to start the operation.
+  ///
+  /// Output only.
+  core.String? apiVersion;
+
+  /// The time the operation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time the operation finished running.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Ephemeral message that may change every time the operation is polled.
+  ///
+  /// Output only.
+  core.String? ephemeralMessage;
+
+  /// Identifies whether the user has requested cancellation of the operation.
+  ///
+  /// Operations that have been cancelled successfully have Operation.error
+  /// value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.
+  ///
+  /// Output only.
+  core.bool? requestedCancellation;
+
+  /// Human-readable status of the operation, if any.
+  ///
+  /// Output only.
+  core.String? statusMessage;
+
+  /// Server-defined resource path for the target of the operation.
+  ///
+  /// Output only.
+  core.String? target;
+
+  /// Name of the verb executed by the operation.
+  ///
+  /// Output only.
+  core.String? verb;
+
+  /// Durable messages that persist on every operation poll.
+  ///
+  /// Output only.
+  core.List<core.String>? warning;
+
+  GoogleAppengineV2OperationMetadata({
+    this.apiVersion,
+    this.createTime,
+    this.endTime,
+    this.ephemeralMessage,
+    this.requestedCancellation,
+    this.statusMessage,
+    this.target,
+    this.verb,
+    this.warning,
+  });
+
+  GoogleAppengineV2OperationMetadata.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          ephemeralMessage: _json.containsKey('ephemeralMessage')
+              ? _json['ephemeralMessage'] as core.String
+              : null,
+          requestedCancellation: _json.containsKey('requestedCancellation')
+              ? _json['requestedCancellation'] as core.bool
+              : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
+          warning: _json.containsKey('warning')
+              ? (_json['warning'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
+        if (warning != null) 'warning': warning!,
+      };
+}
+
+/// Represents the metadata of the long-running operation.
+class GoogleAppengineV2mainOperationMetadata {
+  /// API version used to start the operation.
+  ///
+  /// Output only.
+  core.String? apiVersion;
+
+  /// The time the operation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time the operation finished running.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Ephemeral message that may change every time the operation is polled.
+  ///
+  /// Output only.
+  core.String? ephemeralMessage;
+
+  /// Identifies whether the user has requested cancellation of the operation.
+  ///
+  /// Operations that have been cancelled successfully have Operation.error
+  /// value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.
+  ///
+  /// Output only.
+  core.bool? requestedCancellation;
+
+  /// Human-readable status of the operation, if any.
+  ///
+  /// Output only.
+  core.String? statusMessage;
+
+  /// Server-defined resource path for the target of the operation.
+  ///
+  /// Output only.
+  core.String? target;
+
+  /// Name of the verb executed by the operation.
+  ///
+  /// Output only.
+  core.String? verb;
+
+  /// Durable messages that persist on every operation poll.
+  ///
+  /// Output only.
+  core.List<core.String>? warning;
+
+  GoogleAppengineV2mainOperationMetadata({
+    this.apiVersion,
+    this.createTime,
+    this.endTime,
+    this.ephemeralMessage,
+    this.requestedCancellation,
+    this.statusMessage,
+    this.target,
+    this.verb,
+    this.warning,
+  });
+
+  GoogleAppengineV2mainOperationMetadata.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          ephemeralMessage: _json.containsKey('ephemeralMessage')
+              ? _json['ephemeralMessage'] as core.String
+              : null,
+          requestedCancellation: _json.containsKey('requestedCancellation')
+              ? _json['requestedCancellation'] as core.bool
+              : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
+          warning: _json.containsKey('warning')
+              ? (_json['warning'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
+        if (warning != null) 'warning': warning!,
       };
 }
 

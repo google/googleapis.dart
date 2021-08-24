@@ -33,6 +33,7 @@
 /// - [CssesResource]
 /// - [DatafeedsResource]
 /// - [DatafeedstatusesResource]
+/// - [FreelistingsprogramResource]
 /// - [LiasettingsResource]
 /// - [LocalinventoryResource]
 /// - [OrderinvoicesResource]
@@ -45,6 +46,7 @@
 /// - [ProductsResource]
 /// - [ProductstatusesResource]
 ///   - [ProductstatusesRepricingreportsResource]
+/// - [PromotionsResource]
 /// - [PubsubnotificationsettingsResource]
 /// - [RegionalinventoryResource]
 /// - [RegionsResource]
@@ -57,6 +59,7 @@
 /// - [SettlementreportsResource]
 /// - [SettlementtransactionsResource]
 /// - [ShippingsettingsResource]
+/// - [ShoppingadsprogramResource]
 library content.v2_1;
 
 import 'dart:async' as async;
@@ -91,6 +94,8 @@ class ShoppingContentApi {
   DatafeedsResource get datafeeds => DatafeedsResource(_requester);
   DatafeedstatusesResource get datafeedstatuses =>
       DatafeedstatusesResource(_requester);
+  FreelistingsprogramResource get freelistingsprogram =>
+      FreelistingsprogramResource(_requester);
   LiasettingsResource get liasettings => LiasettingsResource(_requester);
   LocalinventoryResource get localinventory =>
       LocalinventoryResource(_requester);
@@ -104,6 +109,7 @@ class ShoppingContentApi {
   ProductsResource get products => ProductsResource(_requester);
   ProductstatusesResource get productstatuses =>
       ProductstatusesResource(_requester);
+  PromotionsResource get promotions => PromotionsResource(_requester);
   PubsubnotificationsettingsResource get pubsubnotificationsettings =>
       PubsubnotificationsettingsResource(_requester);
   RegionalinventoryResource get regionalinventory =>
@@ -122,6 +128,8 @@ class ShoppingContentApi {
       SettlementtransactionsResource(_requester);
   ShippingsettingsResource get shippingsettings =>
       ShippingsettingsResource(_requester);
+  ShoppingadsprogramResource get shoppingadsprogram =>
+      ShoppingadsprogramResource(_requester);
 
   ShoppingContentApi(http.Client client,
       {core.String rootUrl = 'https://shoppingcontent.googleapis.com/',
@@ -557,6 +565,54 @@ class AccountsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Request verification code to start phone verification.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the managing account. If this parameter
+  /// is not the same as accountId, then this account must be a multi-client
+  /// account and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RequestPhoneVerificationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RequestPhoneVerificationResponse> requestphoneverification(
+    RequestPhoneVerificationRequest request,
+    core.String merchantId,
+    core.String accountId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/accounts/' +
+        commons.escapeVariable('$accountId') +
+        '/requestphoneverification';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return RequestPhoneVerificationResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates a Merchant Center account.
   ///
   /// Any fields that are not provided are deleted from the resource.
@@ -649,6 +705,54 @@ class AccountsResource {
       queryParams: _queryParams,
     );
     return AccountsUpdateLabelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Validates verification code to verify phone number for the account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the managing account. If this parameter
+  /// is not the same as accountId, then this account must be a multi-client
+  /// account and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VerifyPhoneNumberResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VerifyPhoneNumberResponse> verifyphonenumber(
+    VerifyPhoneNumberRequest request,
+    core.String merchantId,
+    core.String accountId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/accounts/' +
+        commons.escapeVariable('$accountId') +
+        '/verifyphonenumber';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return VerifyPhoneNumberResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2495,6 +2599,88 @@ class DatafeedstatusesResource {
   }
 }
 
+class FreelistingsprogramResource {
+  final commons.ApiRequester _requester;
+
+  FreelistingsprogramResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves the status and review eligibility for the free listing program.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FreeListingsProgramStatus].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FreeListingsProgramStatus> get(
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') + '/freelistingsprogram';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return FreeListingsProgramStatus.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Requests a review for Free Listings program in the provided region.
+  ///
+  /// Important: This method is only whitelisted for selected merchants.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> requestreview(
+    RequestReviewFreeListingsRequest request,
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/freelistingsprogram/requestreview';
+
+    await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+}
+
 class LiasettingsResource {
   final commons.ApiRequester _requester;
 
@@ -3892,6 +4078,60 @@ class OrdersResource {
       queryParams: _queryParams,
     );
     return OrdersCancelTestOrderByCustomerResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Capture funds from the customer for the current order total.
+  ///
+  /// This method should be called after the merchant verifies that they are
+  /// able and ready to start shipping the order. This method blocks until a
+  /// response is received from the payment processsor. If this method succeeds,
+  /// the merchant is guaranteed to receive funds for the order after shipment.
+  /// If the request fails, it can be retried or the order may be cancelled.
+  /// This method cannot be called after the entire order is already shipped.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that manages the order.
+  /// This cannot be a multi-client account.
+  ///
+  /// [orderId] - Required. The ID of the Order.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CaptureOrderResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CaptureOrderResponse> captureOrder(
+    CaptureOrderRequest request,
+    core.String merchantId,
+    core.String orderId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/orders/' +
+        commons.escapeVariable('$orderId') +
+        '/captureOrder';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CaptureOrderResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -5550,6 +5790,55 @@ class ProductstatusesRepricingreportsResource {
     );
     return ListRepricingProductReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PromotionsResource {
+  final commons.ApiRequester _requester;
+
+  PromotionsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Inserts a promotion for your Merchant Center account.
+  ///
+  /// If the promotion already exists, then it will update the promotion
+  /// instead.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that contains the
+  /// collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Promotion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Promotion> create(
+    Promotion request,
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') + '/promotions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Promotion.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7404,6 +7693,85 @@ class ShippingsettingsResource {
   }
 }
 
+class ShoppingadsprogramResource {
+  final commons.ApiRequester _requester;
+
+  ShoppingadsprogramResource(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves the status and review eligibility for the Shopping Ads program.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ShoppingAdsProgramStatus].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShoppingAdsProgramStatus> get(
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') + '/shoppingadsprogram';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ShoppingAdsProgramStatus.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Requests a review for Shopping Ads program in the provided country.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> requestreview(
+    RequestReviewShoppingAdsRequest request,
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/shoppingadsprogram/requestreview';
+
+    await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+}
+
 /// Account data.
 ///
 /// After the creation of a new account it may take a few minutes before it is
@@ -7584,8 +7952,8 @@ class Account {
 class AccountAddress {
   /// CLDR country code (e.g. "US").
   ///
-  /// This value cannot be set for a sub-account of an MCA. All MCA sub-accounts
-  /// inherit the country of their parent MCA.
+  /// All MCA sub-accounts inherit the country of their parent MCA by default,
+  /// however the country can be updated for individual sub-accounts.
   core.String? country;
 
   /// City, town or commune.
@@ -9489,7 +9857,7 @@ class Amount {
 }
 
 class BusinessDayConfig {
-  /// Regular business days.
+  /// Regular business days, such as '"monday"'.
   ///
   /// May not be empty.
   core.List<core.String>? businessDays;
@@ -9515,12 +9883,18 @@ class BusinessDayConfig {
 /// Response message for the GetProgramStatus method.
 class BuyOnGoogleProgramStatus {
   /// The customer service pending email.
+  ///
+  /// After verification this field becomes empty.
   core.String? customerServicePendingEmail;
 
   /// The customer service verified email.
+  ///
+  /// Output only.
   core.String? customerServiceVerifiedEmail;
 
   /// The current participation stage for the program.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "PROGRAM_PARTICIPATION_STAGE_UNSPECIFIED" : Default value when
   /// participation stage is not set.
@@ -9569,6 +9943,46 @@ class BuyOnGoogleProgramStatus {
           'customerServiceVerifiedEmail': customerServiceVerifiedEmail!,
         if (participationStage != null)
           'participationStage': participationStage!,
+      };
+}
+
+/// Request message for the CaptureOrder method.
+class CaptureOrderRequest {
+  CaptureOrderRequest();
+
+  CaptureOrderRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Response message for the CaptureOrder method.
+class CaptureOrderResponse {
+  /// The status of the execution.
+  ///
+  /// Only defined if the request was successful. Acceptable values are: *
+  /// "duplicate" * "executed"
+  /// Possible string values are:
+  /// - "EXECUTION_STATUS_UNSPECIFIED" : Default value. This value is unused.
+  /// - "EXECUTED" : The request was completed successfully.
+  /// - "DUPLICATE" : The request was not performed because it already executed
+  /// once successfully.
+  core.String? executionStatus;
+
+  CaptureOrderResponse({
+    this.executionStatus,
+  });
+
+  CaptureOrderResponse.fromJson(core.Map _json)
+      : this(
+          executionStatus: _json.containsKey('executionStatus')
+              ? _json['executionStatus'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
       };
 }
 
@@ -11583,6 +11997,168 @@ class Errors {
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
         if (message != null) 'message': message!,
+      };
+}
+
+/// Response message for GetFreeListingsProgramStatus.
+class FreeListingsProgramStatus {
+  /// Status of the program in each region.
+  ///
+  /// Regions with the same status and review eligibility are grouped together
+  /// in `regionCodes`.
+  core.List<FreeListingsProgramStatusRegionStatus>? regionStatuses;
+
+  /// If program is successfully onboarded for at least one region.
+  /// Possible string values are:
+  /// - "PROGRAM_STATE_UNSPECIFIED" : State is not known.
+  /// - "ONBOARDED" : Program is onboarded for at least one country.
+  /// - "NOT_ONBOARDED" : Program is not onboarded for any country.
+  core.String? state;
+
+  FreeListingsProgramStatus({
+    this.regionStatuses,
+    this.state,
+  });
+
+  FreeListingsProgramStatus.fromJson(core.Map _json)
+      : this(
+          regionStatuses: _json.containsKey('regionStatuses')
+              ? (_json['regionStatuses'] as core.List)
+                  .map<FreeListingsProgramStatusRegionStatus>((value) =>
+                      FreeListingsProgramStatusRegionStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionStatuses != null)
+          'regionStatuses':
+              regionStatuses!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Status of program and region.
+class FreeListingsProgramStatusRegionStatus {
+  /// Date by which `eligibility_status` will go from `WARNING` to
+  /// `DISAPPROVED`.
+  ///
+  /// It will be present when `eligibility_status` is `WARNING`. Date will be
+  /// provided in ISO 8601 format i.e. YYYY-MM-DD
+  core.String? disapprovalDate;
+
+  /// Eligibility status of the standard free listing program.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is not known.
+  /// - "APPROVED" : If the account has no issues and review is completed
+  /// successfully.
+  /// - "DISAPPROVED" : There are one or more issues that needs to be resolved
+  /// for account to be active for the program. Detailed list of account issues
+  /// are available in
+  /// [accountstatuses](https://developers.google.com/shopping-content/reference/rest/v2.1/accountstatuses)
+  /// API.
+  /// - "WARNING" : If account has issues but offers are servable. Some of the
+  /// issue can make account DISAPPROVED after a certain deadline.
+  /// - "UNDER_REVIEW" : Account is under review.
+  /// - "PENDING_REVIEW" : Account is waiting for review to start.
+  /// - "ONBOARDING" : Program is currently onboarding.
+  core.String? eligibilityStatus;
+
+  /// Eligibility status of the enhanced free listing program.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is not known.
+  /// - "APPROVED" : If the account has no issues and review is completed
+  /// successfully.
+  /// - "DISAPPROVED" : There are one or more issues that needs to be resolved
+  /// for account to be active for the program. Detailed list of account issues
+  /// are available in
+  /// [accountstatuses](https://developers.google.com/shopping-content/reference/rest/v2.1/accountstatuses)
+  /// API.
+  /// - "WARNING" : If account has issues but offers are servable. Some of the
+  /// issue can make account DISAPPROVED after a certain deadline.
+  /// - "UNDER_REVIEW" : Account is under review.
+  /// - "PENDING_REVIEW" : Account is waiting for review to start.
+  /// - "ONBOARDING" : Program is currently onboarding.
+  core.String? enhancedEligibilityStatus;
+
+  /// Reason if a program in a given country is not eligible for review.
+  ///
+  /// Populated only if `review_eligibility_status` is `INELIGIBLE`.
+  core.String? ineligibilityReason;
+
+  /// The two-letter \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all
+  /// the regions with the same `eligibilityStatus` and `reviewEligibility`.
+  core.List<core.String>? regionCodes;
+
+  /// If a program in a given country is eligible for review.
+  ///
+  /// It will be present only if eligibility status is `DISAPPROVED`.
+  /// Possible string values are:
+  /// - "REVIEW_ELIGIBILITY_UNSPECIFIED" : Review eligibility state is unknown.
+  /// - "ELIGIBLE" : Account for a region code is eligible for review.
+  /// - "INELIGIBLE" : Account for a region code is not eligible for review.
+  core.String? reviewEligibilityStatus;
+
+  /// These issues will be evaluated in review process.
+  ///
+  /// Fix all the issues before requesting the review.
+  core.List<core.String>? reviewIssues;
+
+  FreeListingsProgramStatusRegionStatus({
+    this.disapprovalDate,
+    this.eligibilityStatus,
+    this.enhancedEligibilityStatus,
+    this.ineligibilityReason,
+    this.regionCodes,
+    this.reviewEligibilityStatus,
+    this.reviewIssues,
+  });
+
+  FreeListingsProgramStatusRegionStatus.fromJson(core.Map _json)
+      : this(
+          disapprovalDate: _json.containsKey('disapprovalDate')
+              ? _json['disapprovalDate'] as core.String
+              : null,
+          eligibilityStatus: _json.containsKey('eligibilityStatus')
+              ? _json['eligibilityStatus'] as core.String
+              : null,
+          enhancedEligibilityStatus:
+              _json.containsKey('enhancedEligibilityStatus')
+                  ? _json['enhancedEligibilityStatus'] as core.String
+                  : null,
+          ineligibilityReason: _json.containsKey('ineligibilityReason')
+              ? _json['ineligibilityReason'] as core.String
+              : null,
+          regionCodes: _json.containsKey('regionCodes')
+              ? (_json['regionCodes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          reviewEligibilityStatus: _json.containsKey('reviewEligibilityStatus')
+              ? _json['reviewEligibilityStatus'] as core.String
+              : null,
+          reviewIssues: _json.containsKey('reviewIssues')
+              ? (_json['reviewIssues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disapprovalDate != null) 'disapprovalDate': disapprovalDate!,
+        if (eligibilityStatus != null) 'eligibilityStatus': eligibilityStatus!,
+        if (enhancedEligibilityStatus != null)
+          'enhancedEligibilityStatus': enhancedEligibilityStatus!,
+        if (ineligibilityReason != null)
+          'ineligibilityReason': ineligibilityReason!,
+        if (regionCodes != null) 'regionCodes': regionCodes!,
+        if (reviewEligibilityStatus != null)
+          'reviewEligibilityStatus': reviewEligibilityStatus!,
+        if (reviewIssues != null) 'reviewIssues': reviewIssues!,
       };
 }
 
@@ -20595,11 +21171,31 @@ class Product {
   /// Technical specification or additional product details.
   core.List<ProductProductDetail>? productDetails;
 
+  /// The height of the product in the units provided.
+  ///
+  /// The value must be between 0 (exclusive) and 3000 (inclusive).
+  ProductDimension? productHeight;
+
   /// Bullet points describing the most relevant highlights of a product.
   core.List<core.String>? productHighlights;
 
+  /// The length of the product in the units provided.
+  ///
+  /// The value must be between 0 (exclusive) and 3000 (inclusive).
+  ProductDimension? productLength;
+
   /// Categories of the item (formatted as in products data specification).
   core.List<core.String>? productTypes;
+
+  /// The weight of the product in the units provided.
+  ///
+  /// The value must be between 0 (exclusive) and 2000 (inclusive).
+  ProductWeight? productWeight;
+
+  /// The width of the product in the units provided.
+  ///
+  /// The value must be between 0 (exclusive) and 3000 (inclusive).
+  ProductDimension? productWidth;
 
   /// The unique ID of a promotion.
   core.List<core.String>? promotionIds;
@@ -20754,8 +21350,12 @@ class Product {
     this.pickupSla,
     this.price,
     this.productDetails,
+    this.productHeight,
     this.productHighlights,
+    this.productLength,
     this.productTypes,
+    this.productWeight,
+    this.productWidth,
     this.promotionIds,
     this.salePrice,
     this.salePriceEffectiveDate,
@@ -20973,15 +21573,31 @@ class Product {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          productHeight: _json.containsKey('productHeight')
+              ? ProductDimension.fromJson(
+                  _json['productHeight'] as core.Map<core.String, core.dynamic>)
+              : null,
           productHighlights: _json.containsKey('productHighlights')
               ? (_json['productHighlights'] as core.List)
                   .map<core.String>((value) => value as core.String)
                   .toList()
               : null,
+          productLength: _json.containsKey('productLength')
+              ? ProductDimension.fromJson(
+                  _json['productLength'] as core.Map<core.String, core.dynamic>)
+              : null,
           productTypes: _json.containsKey('productTypes')
               ? (_json['productTypes'] as core.List)
                   .map<core.String>((value) => value as core.String)
                   .toList()
+              : null,
+          productWeight: _json.containsKey('productWeight')
+              ? ProductWeight.fromJson(
+                  _json['productWeight'] as core.Map<core.String, core.dynamic>)
+              : null,
+          productWidth: _json.containsKey('productWidth')
+              ? ProductDimension.fromJson(
+                  _json['productWidth'] as core.Map<core.String, core.dynamic>)
               : null,
           promotionIds: _json.containsKey('promotionIds')
               ? (_json['promotionIds'] as core.List)
@@ -21151,8 +21767,12 @@ class Product {
         if (productDetails != null)
           'productDetails':
               productDetails!.map((value) => value.toJson()).toList(),
+        if (productHeight != null) 'productHeight': productHeight!.toJson(),
         if (productHighlights != null) 'productHighlights': productHighlights!,
+        if (productLength != null) 'productLength': productLength!.toJson(),
         if (productTypes != null) 'productTypes': productTypes!,
+        if (productWeight != null) 'productWeight': productWeight!.toJson(),
+        if (productWidth != null) 'productWidth': productWidth!.toJson(),
         if (promotionIds != null) 'promotionIds': promotionIds!,
         if (salePrice != null) 'salePrice': salePrice!.toJson(),
         if (salePriceEffectiveDate != null)
@@ -21224,6 +21844,40 @@ class ProductAmount {
         if (remittedTaxAmount != null)
           'remittedTaxAmount': remittedTaxAmount!.toJson(),
         if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+      };
+}
+
+class ProductDimension {
+  /// The length units.
+  ///
+  /// Acceptable values are: - "`in`" - "`cm`"
+  ///
+  /// Required.
+  core.String? unit;
+
+  /// The length value represented as a number.
+  ///
+  /// The value can have a maximum precision of four decimal places.
+  ///
+  /// Required.
+  core.double? value;
+
+  ProductDimension({
+    this.unit,
+    this.value,
+  });
+
+  ProductDimension.fromJson(core.Map _json)
+      : this(
+          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          value: _json.containsKey('value')
+              ? (_json['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -21838,6 +22492,40 @@ class ProductUnitPricingMeasure {
       };
 }
 
+class ProductWeight {
+  /// The weight unit.
+  ///
+  /// Acceptable values are: - "`g`" - "`kg`" - "`oz`" - "`lb`"
+  ///
+  /// Required.
+  core.String? unit;
+
+  /// The weight represented as a number.
+  ///
+  /// The weight can have a maximum precision of four decimal places.
+  ///
+  /// Required.
+  core.double? value;
+
+  ProductWeight({
+    this.unit,
+    this.value,
+  });
+
+  ProductWeight.fromJson(core.Map _json)
+      : this(
+          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          value: _json.containsKey('value')
+              ? (_json['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
+      };
+}
+
 class ProductsCustomBatchRequest {
   /// The request entries to be processed in the batch.
   core.List<ProductsCustomBatchRequestEntry>? entries;
@@ -21882,14 +22570,18 @@ class ProductsCustomBatchRequestEntry {
   /// Acceptable values are: - "`delete`" - "`get`" - "`insert`" - "`update`"
   core.String? method;
 
-  /// The product to insert.
+  /// The product to insert or update.
   ///
-  /// Only required if the method is `insert`.
+  /// Only required if the method is `insert` or `update`. If the `update`
+  /// method is used with `updateMask` only to delete a field, then this isn't
+  /// required. For example, setting `salePrice` on the `updateMask` and not
+  /// providing a `product` will result in an existing sale price on the product
+  /// specified by `productId` being deleted.
   Product? product;
 
-  /// The ID of the product to get or delete.
+  /// The ID of the product to get or mutate.
   ///
-  /// Only defined if the method is `get` or `delete`.
+  /// Only defined if the method is `get`, `delete`, or `update`.
   core.String? productId;
 
   /// The comma-separated list of product attributes to be updated.
@@ -22275,6 +22967,369 @@ class ProductstatusesListResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
           'resources': resources!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Represents a promotion.
+///
+/// (1) https://support.google.com/merchants/answer/2906014 (2)
+/// https://support.google.com/merchants/answer/10146130 (3)
+/// https://support.google.com/merchants/answer/9173673
+class Promotion {
+  /// Product filter by brand for the promotion.
+  core.List<core.String>? brand;
+
+  /// Product filter by brand exclusion for the promotion.
+  core.List<core.String>? brandExclusion;
+
+  /// The content language used as part of the unique identifier.
+  ///
+  /// Required.
+  core.String? contentLanguage;
+
+  /// Coupon value type for the promotion.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "COUPON_VALUE_TYPE_UNSPECIFIED" : Indicates that the coupon value type
+  /// is unspecified.
+  /// - "MONEY_OFF" : Money off coupon value type.
+  /// - "PERCENT_OFF" : Percent off coupon value type.
+  /// - "BUY_M_GET_N_MONEY_OFF" : Buy M quantity, get N money off coupon value
+  /// type. buy_this_quantity and get_this_quantity must be present.
+  /// money_off_amount must also be present.
+  /// - "BUY_M_GET_N_PERCENT_OFF" : Buy M quantity, get N percent off coupon
+  /// value type. buy_this_quantity and get_this_quantity must be present.
+  /// percent_off_percentage must also be present.
+  /// - "BUY_M_GET_MONEY_OFF" : Buy M quantity, get money off. buy_this_quantity
+  /// and money_off_amount must be present.
+  /// - "BUY_M_GET_PERCENT_OFF" : Buy M quantity, get money off.
+  /// buy_this_quantity and percent_off_percentage must be present.
+  /// - "FREE_GIFT" : Free gift with description only
+  /// - "FREE_GIFT_WITH_VALUE" : Free gift with value (description is optional).
+  /// - "FREE_GIFT_WITH_ITEM_ID" : Free gift with item id (description is
+  /// optional).
+  /// - "FREE_SHIPPING_STANDARD" : Standard free shipping coupon value type.
+  /// - "FREE_SHIPPING_OVERNIGHT" : Overnight free shipping coupon value type.
+  /// - "FREE_SHIPPING_TWO_DAY" : Two day free shipping coupon value type.
+  core.String? couponValueType;
+
+  /// Free gift description for the promotion.
+  core.String? freeGiftDescription;
+
+  /// Free gift item id for the promotion.
+  core.String? freeGiftItemId;
+
+  /// Free gift value for the promotion.
+  PriceAmount? freeGiftValue;
+
+  /// Generic redemption code for the promotion.
+  ///
+  /// To be used with the above field.
+  core.String? genericRedemptionCode;
+
+  /// The number of items discounted in the promotion.
+  core.int? getThisQuantityDiscounted;
+
+  /// The REST promotion id to uniquely identify the promotion.
+  ///
+  /// Content API methods that operate on promotions take this as their
+  /// promotionId parameter.
+  ///
+  /// Required. Output only.
+  core.String? id;
+
+  /// Product filter by item group id for the promotion.
+  core.List<core.String>? itemGroupId;
+
+  /// Product filter by item group id exclusion for the promotion.
+  core.List<core.String>? itemGroupIdExclusion;
+
+  /// Product filter by item id for the promotion.
+  core.List<core.String>? itemId;
+
+  /// Product filter by item id exclusion for the promotion.
+  core.List<core.String>? itemIdExclusion;
+
+  /// Maximum purchase quantity for the promotion.
+  core.int? limitQuantity;
+
+  /// Maximum purchase value for the promotion.
+  PriceAmount? limitValue;
+
+  /// Long title for the promotion.
+  core.String? longTitle;
+
+  /// Minimum purchase amount for the promotion.
+  PriceAmount? minimumPurchaseAmount;
+
+  /// Minimum purchase quantity for the promotion.
+  core.int? minimumPurchaseQuantity;
+
+  /// Promotion cost cap of the promotion.
+  PriceAmount? moneyBudget;
+
+  /// The money off amount offered in the promotion.
+  PriceAmount? moneyOffAmount;
+
+  /// Type of the promotion.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OFFER_TYPE_UNSPECIFIED" : Unknown offer type.
+  /// - "NO_CODE" : Offer type without a code.
+  /// - "GENERIC_CODE" : Offer type with a code.
+  core.String? offerType;
+
+  /// Order limit for the promotion.
+  core.int? orderLimit;
+
+  /// The percentage discount offered in the promotion.
+  core.int? percentOff;
+
+  /// Applicability of the promotion to either all products or only specific
+  /// products.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PRODUCT_APPLICABILITY_UNSPECIFIED" : Unknown product applicability.
+  /// - "ALL_PRODUCTS" : Applicable to all products.
+  /// - "PRODUCT_SPECIFIC" : Applicable to only a single product or list of
+  /// products.
+  core.String? productApplicability;
+
+  /// Destination ID for the promotion.
+  core.List<core.String>? promotionDestinationIds;
+
+  /// String representation of the promotion display dates.
+  core.String? promotionDisplayDates;
+
+  /// String representation of the promotion effective dates.
+  ///
+  /// Required.
+  core.String? promotionEffectiveDates;
+
+  /// The user provided promotion id to uniquely identify the promotion.
+  ///
+  /// Required.
+  core.String? promotionId;
+
+  /// Redemption channel for the promotion.
+  ///
+  /// At least one channel is required.
+  ///
+  /// Required.
+  core.List<core.String>? redemptionChannel;
+
+  /// Shipping service names for thse promotion.
+  core.List<core.String>? shippingServiceNames;
+
+  /// The target country used as part of the unique identifier.
+  ///
+  /// Required.
+  core.String? targetCountry;
+
+  Promotion({
+    this.brand,
+    this.brandExclusion,
+    this.contentLanguage,
+    this.couponValueType,
+    this.freeGiftDescription,
+    this.freeGiftItemId,
+    this.freeGiftValue,
+    this.genericRedemptionCode,
+    this.getThisQuantityDiscounted,
+    this.id,
+    this.itemGroupId,
+    this.itemGroupIdExclusion,
+    this.itemId,
+    this.itemIdExclusion,
+    this.limitQuantity,
+    this.limitValue,
+    this.longTitle,
+    this.minimumPurchaseAmount,
+    this.minimumPurchaseQuantity,
+    this.moneyBudget,
+    this.moneyOffAmount,
+    this.offerType,
+    this.orderLimit,
+    this.percentOff,
+    this.productApplicability,
+    this.promotionDestinationIds,
+    this.promotionDisplayDates,
+    this.promotionEffectiveDates,
+    this.promotionId,
+    this.redemptionChannel,
+    this.shippingServiceNames,
+    this.targetCountry,
+  });
+
+  Promotion.fromJson(core.Map _json)
+      : this(
+          brand: _json.containsKey('brand')
+              ? (_json['brand'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          brandExclusion: _json.containsKey('brandExclusion')
+              ? (_json['brandExclusion'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          contentLanguage: _json.containsKey('contentLanguage')
+              ? _json['contentLanguage'] as core.String
+              : null,
+          couponValueType: _json.containsKey('couponValueType')
+              ? _json['couponValueType'] as core.String
+              : null,
+          freeGiftDescription: _json.containsKey('freeGiftDescription')
+              ? _json['freeGiftDescription'] as core.String
+              : null,
+          freeGiftItemId: _json.containsKey('freeGiftItemId')
+              ? _json['freeGiftItemId'] as core.String
+              : null,
+          freeGiftValue: _json.containsKey('freeGiftValue')
+              ? PriceAmount.fromJson(
+                  _json['freeGiftValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          genericRedemptionCode: _json.containsKey('genericRedemptionCode')
+              ? _json['genericRedemptionCode'] as core.String
+              : null,
+          getThisQuantityDiscounted:
+              _json.containsKey('getThisQuantityDiscounted')
+                  ? _json['getThisQuantityDiscounted'] as core.int
+                  : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          itemGroupId: _json.containsKey('itemGroupId')
+              ? (_json['itemGroupId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          itemGroupIdExclusion: _json.containsKey('itemGroupIdExclusion')
+              ? (_json['itemGroupIdExclusion'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          itemId: _json.containsKey('itemId')
+              ? (_json['itemId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          itemIdExclusion: _json.containsKey('itemIdExclusion')
+              ? (_json['itemIdExclusion'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          limitQuantity: _json.containsKey('limitQuantity')
+              ? _json['limitQuantity'] as core.int
+              : null,
+          limitValue: _json.containsKey('limitValue')
+              ? PriceAmount.fromJson(
+                  _json['limitValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          longTitle: _json.containsKey('longTitle')
+              ? _json['longTitle'] as core.String
+              : null,
+          minimumPurchaseAmount: _json.containsKey('minimumPurchaseAmount')
+              ? PriceAmount.fromJson(_json['minimumPurchaseAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          minimumPurchaseQuantity: _json.containsKey('minimumPurchaseQuantity')
+              ? _json['minimumPurchaseQuantity'] as core.int
+              : null,
+          moneyBudget: _json.containsKey('moneyBudget')
+              ? PriceAmount.fromJson(
+                  _json['moneyBudget'] as core.Map<core.String, core.dynamic>)
+              : null,
+          moneyOffAmount: _json.containsKey('moneyOffAmount')
+              ? PriceAmount.fromJson(_json['moneyOffAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          offerType: _json.containsKey('offerType')
+              ? _json['offerType'] as core.String
+              : null,
+          orderLimit: _json.containsKey('orderLimit')
+              ? _json['orderLimit'] as core.int
+              : null,
+          percentOff: _json.containsKey('percentOff')
+              ? _json['percentOff'] as core.int
+              : null,
+          productApplicability: _json.containsKey('productApplicability')
+              ? _json['productApplicability'] as core.String
+              : null,
+          promotionDestinationIds: _json.containsKey('promotionDestinationIds')
+              ? (_json['promotionDestinationIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          promotionDisplayDates: _json.containsKey('promotionDisplayDates')
+              ? _json['promotionDisplayDates'] as core.String
+              : null,
+          promotionEffectiveDates: _json.containsKey('promotionEffectiveDates')
+              ? _json['promotionEffectiveDates'] as core.String
+              : null,
+          promotionId: _json.containsKey('promotionId')
+              ? _json['promotionId'] as core.String
+              : null,
+          redemptionChannel: _json.containsKey('redemptionChannel')
+              ? (_json['redemptionChannel'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          shippingServiceNames: _json.containsKey('shippingServiceNames')
+              ? (_json['shippingServiceNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          targetCountry: _json.containsKey('targetCountry')
+              ? _json['targetCountry'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (brand != null) 'brand': brand!,
+        if (brandExclusion != null) 'brandExclusion': brandExclusion!,
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (couponValueType != null) 'couponValueType': couponValueType!,
+        if (freeGiftDescription != null)
+          'freeGiftDescription': freeGiftDescription!,
+        if (freeGiftItemId != null) 'freeGiftItemId': freeGiftItemId!,
+        if (freeGiftValue != null) 'freeGiftValue': freeGiftValue!.toJson(),
+        if (genericRedemptionCode != null)
+          'genericRedemptionCode': genericRedemptionCode!,
+        if (getThisQuantityDiscounted != null)
+          'getThisQuantityDiscounted': getThisQuantityDiscounted!,
+        if (id != null) 'id': id!,
+        if (itemGroupId != null) 'itemGroupId': itemGroupId!,
+        if (itemGroupIdExclusion != null)
+          'itemGroupIdExclusion': itemGroupIdExclusion!,
+        if (itemId != null) 'itemId': itemId!,
+        if (itemIdExclusion != null) 'itemIdExclusion': itemIdExclusion!,
+        if (limitQuantity != null) 'limitQuantity': limitQuantity!,
+        if (limitValue != null) 'limitValue': limitValue!.toJson(),
+        if (longTitle != null) 'longTitle': longTitle!,
+        if (minimumPurchaseAmount != null)
+          'minimumPurchaseAmount': minimumPurchaseAmount!.toJson(),
+        if (minimumPurchaseQuantity != null)
+          'minimumPurchaseQuantity': minimumPurchaseQuantity!,
+        if (moneyBudget != null) 'moneyBudget': moneyBudget!.toJson(),
+        if (moneyOffAmount != null) 'moneyOffAmount': moneyOffAmount!.toJson(),
+        if (offerType != null) 'offerType': offerType!,
+        if (orderLimit != null) 'orderLimit': orderLimit!,
+        if (percentOff != null) 'percentOff': percentOff!,
+        if (productApplicability != null)
+          'productApplicability': productApplicability!,
+        if (promotionDestinationIds != null)
+          'promotionDestinationIds': promotionDestinationIds!,
+        if (promotionDisplayDates != null)
+          'promotionDisplayDates': promotionDisplayDates!,
+        if (promotionEffectiveDates != null)
+          'promotionEffectiveDates': promotionEffectiveDates!,
+        if (promotionId != null) 'promotionId': promotionId!,
+        if (redemptionChannel != null) 'redemptionChannel': redemptionChannel!,
+        if (shippingServiceNames != null)
+          'shippingServiceNames': shippingServiceNames!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
       };
 }
 
@@ -23003,6 +24058,12 @@ class RepricingProductReport {
   /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
   /// the offer price based on the offer's sale cost which is provided by the
   /// merchant.
+  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
+  /// adjust the offer price based on the offer's sales volume in the past
+  /// period of time defined within the rule.
+  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
+  /// the offer price based on the min price from a list of unnamed big
+  /// competitors.
   core.String? type;
 
   RepricingProductReport({
@@ -23176,6 +24237,12 @@ class RepricingRule {
   /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
   /// the offer price based on the offer's sale cost which is provided by the
   /// merchant.
+  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
+  /// adjust the offer price based on the offer's sales volume in the past
+  /// period of time defined within the rule.
+  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
+  /// the offer price based on the min price from a list of unnamed big
+  /// competitors.
   core.String? type;
 
   RepricingRule({
@@ -23511,6 +24578,12 @@ class RepricingRuleReport {
   /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
   /// the offer price based on the offer's sale cost which is provided by the
   /// merchant.
+  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
+  /// adjust the offer price based on the offer's sales volume in the past
+  /// period of time defined within the rule.
+  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
+  /// the offer price based on the min price from a list of unnamed big
+  /// competitors.
   core.String? type;
 
   RepricingRuleReport({
@@ -23727,6 +24800,88 @@ class RepricingRuleStatsBasedRule {
       };
 }
 
+/// Request message for the RequestPhoneVerification method.
+class RequestPhoneVerificationRequest {
+  /// Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) (for
+  /// example, en-US).
+  ///
+  /// Language code is used to provide localized `SMS` and `PHONE_CALL`. Default
+  /// language used is en-US if not provided.
+  core.String? languageCode;
+
+  /// Phone number to be verified.
+  core.String? phoneNumber;
+
+  /// Two letter country code for the phone number, for example `CA` for
+  /// Canadian numbers.
+  ///
+  /// See the \[ISO 3166-1
+  /// alpha-2\](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+  /// officially assigned codes.
+  ///
+  /// Required.
+  core.String? phoneRegionCode;
+
+  /// Verification method to receive verification code.
+  /// Possible string values are:
+  /// - "PHONE_VERIFICATION_METHOD_UNSPECIFIED" : Unknown method.
+  /// - "SMS" : Receive verification code by SMS.
+  /// - "PHONE_CALL" : Receive verification code by phone call.
+  core.String? phoneVerificationMethod;
+
+  RequestPhoneVerificationRequest({
+    this.languageCode,
+    this.phoneNumber,
+    this.phoneRegionCode,
+    this.phoneVerificationMethod,
+  });
+
+  RequestPhoneVerificationRequest.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          phoneRegionCode: _json.containsKey('phoneRegionCode')
+              ? _json['phoneRegionCode'] as core.String
+              : null,
+          phoneVerificationMethod: _json.containsKey('phoneVerificationMethod')
+              ? _json['phoneVerificationMethod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (phoneRegionCode != null) 'phoneRegionCode': phoneRegionCode!,
+        if (phoneVerificationMethod != null)
+          'phoneVerificationMethod': phoneVerificationMethod!,
+      };
+}
+
+/// Response message for the RequestPhoneVerification method.
+class RequestPhoneVerificationResponse {
+  /// The verification ID to use in subsequent calls to `verifyphonenumber`.
+  core.String? verificationId;
+
+  RequestPhoneVerificationResponse({
+    this.verificationId,
+  });
+
+  RequestPhoneVerificationResponse.fromJson(core.Map _json)
+      : this(
+          verificationId: _json.containsKey('verificationId')
+              ? _json['verificationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (verificationId != null) 'verificationId': verificationId!,
+      };
+}
+
 /// Request message for the RequestReviewProgram method.
 class RequestReviewBuyOnGoogleProgramRequest {
   RequestReviewBuyOnGoogleProgramRequest();
@@ -23736,6 +24891,52 @@ class RequestReviewBuyOnGoogleProgramRequest {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Request message for the RequestReviewFreeListings Program method.
+class RequestReviewFreeListingsRequest {
+  /// The code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
+  /// for which review is to be requested.
+  core.String? regionCode;
+
+  RequestReviewFreeListingsRequest({
+    this.regionCode,
+  });
+
+  RequestReviewFreeListingsRequest.fromJson(core.Map _json)
+      : this(
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Request message for the RequestReviewShoppingAds program method.
+class RequestReviewShoppingAdsRequest {
+  /// The code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
+  /// for which review is to be requested.
+  core.String? regionCode;
+
+  RequestReviewShoppingAdsRequest({
+    this.regionCode,
+  });
+
+  RequestReviewShoppingAdsRequest.fromJson(core.Map _json)
+      : this(
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
 }
 
 /// Return address resource.
@@ -25013,6 +26214,9 @@ class SearchRequest {
   /// Query that defines performance metrics to retrieve and dimensions
   /// according to which the metrics are to be segmented.
   ///
+  /// For details on how to construct your query, see the
+  /// [Query Language guide](https://developers.google.com/shopping-content/guides/reports/query-language/overview).
+  ///
   /// Required.
   core.String? query;
 
@@ -25087,19 +26291,29 @@ class Segments {
   /// Brand of the product.
   core.String? brand;
 
-  /// Product category (1st level) in Google's product taxonomy.
+  /// \[Product category (1st
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in Google's product taxonomy.
   core.String? categoryL1;
 
-  /// Product category (2nd level) in Google's product taxonomy.
+  /// \[Product category (2nd
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in Google's product taxonomy.
   core.String? categoryL2;
 
-  /// Product category (3rd level) in Google's product taxonomy.
+  /// \[Product category (3rd
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in Google's product taxonomy.
   core.String? categoryL3;
 
-  /// Product category (4th level) in Google's product taxonomy.
+  /// \[Product category (4th
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in Google's product taxonomy.
   core.String? categoryL4;
 
-  /// Product category (5th level) in Google's product taxonomy.
+  /// \[Product category (5th
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in Google's product taxonomy.
   core.String? categoryL5;
 
   /// Currency in which price metrics are represented, e.g., if you select
@@ -25128,19 +26342,29 @@ class Segments {
   /// Merchant-provided id of the product.
   core.String? offerId;
 
-  /// Product category (1st level) in merchant's own product taxonomy.
+  /// \[Product type (1st
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in merchant's own product taxonomy.
   core.String? productTypeL1;
 
-  /// Product category (2nd level) in merchant's own product taxonomy.
+  /// \[Product type (2nd
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in merchant's own product taxonomy.
   core.String? productTypeL2;
 
-  /// Product category (3rd level) in merchant's own product taxonomy.
+  /// \[Product type (3rd
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in merchant's own product taxonomy.
   core.String? productTypeL3;
 
-  /// Product category (4th level) in merchant's own product taxonomy.
+  /// \[Product type (4th
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in merchant's own product taxonomy.
   core.String? productTypeL4;
 
-  /// Product category (5th level) in merchant's own product taxonomy.
+  /// \[Product type (5th
+  /// level)\](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+  /// in merchant's own product taxonomy.
   core.String? productTypeL5;
 
   /// Program to which metrics apply, e.g., Free Product Listing.
@@ -26360,6 +27584,145 @@ class ShippingsettingsListResponse {
       };
 }
 
+/// Response message for GetShoppingAdsProgramStatus.
+class ShoppingAdsProgramStatus {
+  /// Status of the program in each region.
+  ///
+  /// Regions with the same status and review eligibility are grouped together
+  /// in `regionCodes`.
+  core.List<ShoppingAdsProgramStatusRegionStatus>? regionStatuses;
+
+  /// If program is successfully onboarded for at least one region.
+  /// Possible string values are:
+  /// - "PROGRAM_STATE_UNSPECIFIED" : State is not known.
+  /// - "ONBOARDED" : Program is onboarded for at least one country.
+  /// - "NOT_ONBOARDED" : Program is not onboarded for any country.
+  core.String? state;
+
+  ShoppingAdsProgramStatus({
+    this.regionStatuses,
+    this.state,
+  });
+
+  ShoppingAdsProgramStatus.fromJson(core.Map _json)
+      : this(
+          regionStatuses: _json.containsKey('regionStatuses')
+              ? (_json['regionStatuses'] as core.List)
+                  .map<ShoppingAdsProgramStatusRegionStatus>((value) =>
+                      ShoppingAdsProgramStatusRegionStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionStatuses != null)
+          'regionStatuses':
+              regionStatuses!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Status of program and region.
+class ShoppingAdsProgramStatusRegionStatus {
+  /// Date by which `eligibility_status` will go from `WARNING` to
+  /// `DISAPPROVED`.
+  ///
+  /// It will be present when `eligibility_status` is `WARNING`. Date will be
+  /// provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format i.e.
+  /// YYYY-MM-DD
+  core.String? disapprovalDate;
+
+  /// Eligibility status of the Shopping Ads program.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is not known.
+  /// - "APPROVED" : If the account has no issues and review is completed
+  /// successfully.
+  /// - "DISAPPROVED" : There are one or more issues that needs to be resolved
+  /// for account to be active for the program. Detailed list of account issues
+  /// are available in
+  /// [accountstatuses](https://developers.google.com/shopping-content/reference/rest/v2.1/accountstatuses)
+  /// API.
+  /// - "WARNING" : If account has issues but offers are servable. Some of the
+  /// issue can make account DISAPPROVED after a certain deadline.
+  /// - "UNDER_REVIEW" : Account is under review.
+  /// - "PENDING_REVIEW" : Account is waiting for review to start.
+  /// - "ONBOARDING" : Program is currently onboarding.
+  core.String? eligibilityStatus;
+
+  /// Reason if a program in a given country is not eligible for review.
+  ///
+  /// Populated only if `review_eligibility_status` is `INELIGIBLE`.
+  core.String? ineligibilityReason;
+
+  /// The two-letter \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all
+  /// the regions with the same `eligibilityStatus` and `reviewEligibility`.
+  core.List<core.String>? regionCodes;
+
+  /// If a program in a given country is eligible for review.
+  ///
+  /// It will be present only if eligibility status is `DISAPPROVED`.
+  /// Possible string values are:
+  /// - "REVIEW_ELIGIBILITY_UNSPECIFIED" : Review eligibility state is unknown.
+  /// - "ELIGIBLE" : Account for a region code is eligible for review.
+  /// - "INELIGIBLE" : Account for a region code is not eligible for review.
+  core.String? reviewEligibilityStatus;
+
+  /// These issues will be evaluated in review process.
+  ///
+  /// Fix all the issues before requesting the review.
+  core.List<core.String>? reviewIssues;
+
+  ShoppingAdsProgramStatusRegionStatus({
+    this.disapprovalDate,
+    this.eligibilityStatus,
+    this.ineligibilityReason,
+    this.regionCodes,
+    this.reviewEligibilityStatus,
+    this.reviewIssues,
+  });
+
+  ShoppingAdsProgramStatusRegionStatus.fromJson(core.Map _json)
+      : this(
+          disapprovalDate: _json.containsKey('disapprovalDate')
+              ? _json['disapprovalDate'] as core.String
+              : null,
+          eligibilityStatus: _json.containsKey('eligibilityStatus')
+              ? _json['eligibilityStatus'] as core.String
+              : null,
+          ineligibilityReason: _json.containsKey('ineligibilityReason')
+              ? _json['ineligibilityReason'] as core.String
+              : null,
+          regionCodes: _json.containsKey('regionCodes')
+              ? (_json['regionCodes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          reviewEligibilityStatus: _json.containsKey('reviewEligibilityStatus')
+              ? _json['reviewEligibilityStatus'] as core.String
+              : null,
+          reviewIssues: _json.containsKey('reviewIssues')
+              ? (_json['reviewIssues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disapprovalDate != null) 'disapprovalDate': disapprovalDate!,
+        if (eligibilityStatus != null) 'eligibilityStatus': eligibilityStatus!,
+        if (ineligibilityReason != null)
+          'ineligibilityReason': ineligibilityReason!,
+        if (regionCodes != null) 'regionCodes': regionCodes!,
+        if (reviewEligibilityStatus != null)
+          'reviewEligibilityStatus': reviewEligibilityStatus!,
+        if (reviewIssues != null) 'reviewIssues': reviewIssues!,
+      };
+}
+
 class Table {
   /// Headers of the table's columns.
   ///
@@ -27352,6 +28715,70 @@ class Value {
         if (noShipping != null) 'noShipping': noShipping!,
         if (pricePercentage != null) 'pricePercentage': pricePercentage!,
         if (subtableName != null) 'subtableName': subtableName!,
+      };
+}
+
+/// Request message for the VerifyPhoneNumber method.
+class VerifyPhoneNumberRequest {
+  /// Verification method used to receive verification code.
+  /// Possible string values are:
+  /// - "PHONE_VERIFICATION_METHOD_UNSPECIFIED" : Unknown method.
+  /// - "SMS" : Receive verification code by SMS.
+  /// - "PHONE_CALL" : Receive verification code by phone call.
+  core.String? phoneVerificationMethod;
+
+  /// The verification code that was sent to the phone number for validation.
+  core.String? verificationCode;
+
+  /// The verification ID returned by `requestphoneverification`.
+  core.String? verificationId;
+
+  VerifyPhoneNumberRequest({
+    this.phoneVerificationMethod,
+    this.verificationCode,
+    this.verificationId,
+  });
+
+  VerifyPhoneNumberRequest.fromJson(core.Map _json)
+      : this(
+          phoneVerificationMethod: _json.containsKey('phoneVerificationMethod')
+              ? _json['phoneVerificationMethod'] as core.String
+              : null,
+          verificationCode: _json.containsKey('verificationCode')
+              ? _json['verificationCode'] as core.String
+              : null,
+          verificationId: _json.containsKey('verificationId')
+              ? _json['verificationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phoneVerificationMethod != null)
+          'phoneVerificationMethod': phoneVerificationMethod!,
+        if (verificationCode != null) 'verificationCode': verificationCode!,
+        if (verificationId != null) 'verificationId': verificationId!,
+      };
+}
+
+/// Response message for the VerifyPhoneNumber method.
+class VerifyPhoneNumberResponse {
+  /// Verified phone number if verification is successful.
+  core.String? verifiedPhoneNumber;
+
+  VerifyPhoneNumberResponse({
+    this.verifiedPhoneNumber,
+  });
+
+  VerifyPhoneNumberResponse.fromJson(core.Map _json)
+      : this(
+          verifiedPhoneNumber: _json.containsKey('verifiedPhoneNumber')
+              ? _json['verifiedPhoneNumber'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (verifiedPhoneNumber != null)
+          'verifiedPhoneNumber': verifiedPhoneNumber!,
       };
 }
 

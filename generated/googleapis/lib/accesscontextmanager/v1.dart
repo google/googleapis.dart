@@ -45,7 +45,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// An API for setting attribute based access control to requests to GCP
 /// services.
 class AccessContextManagerApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -249,7 +250,7 @@ class AccessPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. Resource name of the `AccessPolicy`. Format:
-  /// `accessPolicies/{policy_id}`
+  /// `accessPolicies/{access_policy}`
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
@@ -503,8 +504,8 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// [name] - Required. Resource name for the Access Level. The `short_name`
   /// component must begin with a letter and only include alphanumeric and '_'.
-  /// Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The
-  /// maximum length of the `short_name` component is 50 characters.
+  /// Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+  /// maximum length of the `access_level` component is 50 characters.
   /// Value must have pattern `^accessPolicies/\[^/\]+/accessLevels/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
@@ -841,7 +842,7 @@ class AccessPoliciesServicePerimetersResource {
   /// [name] - Required. Resource name for the ServicePerimeter. The
   /// `short_name` component must begin with a letter and only include
   /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
@@ -1368,6 +1369,17 @@ class OrganizationsGcpUserAccessBindingsResource {
   }
 }
 
+/// Metadata of Access Context Manager's Long Running Operations.
+class AccessContextManagerOperationMetadata {
+  AccessContextManagerOperationMetadata();
+
+  AccessContextManagerOperationMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// An `AccessLevel` is a label that can be applied to requests to Google Cloud
 /// services, along with a list of requirements necessary for the label to be
 /// applied.
@@ -1387,8 +1399,8 @@ class AccessLevel {
   ///
   /// The `short_name` component must begin with a letter and only include
   /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length
-  /// of the `short_name` component is 50 characters.
+  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum
+  /// length of the `access_level` component is 50 characters.
   ///
   /// Required.
   core.String? name;
@@ -1451,7 +1463,7 @@ class AccessPolicy {
 
   /// Resource name of the `AccessPolicy`.
   ///
-  /// Format: `accessPolicies/{policy_id}`
+  /// Format: `accessPolicies/{access_policy}`
   ///
   /// Output only.
   core.String? name;
@@ -2168,6 +2180,20 @@ class GcpUserAccessBinding {
         if (groupKey != null) 'groupKey': groupKey!,
         if (name != null) 'name': name!,
       };
+}
+
+/// Currently, a completed operation means nothing.
+///
+/// In the future, this metadata and a completed operation may indicate that the
+/// binding has taken effect and is affecting access decisions for all users.
+class GcpUserAccessBindingOperationMetadata {
+  GcpUserAccessBindingOperationMetadata();
+
+  GcpUserAccessBindingOperationMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Defines the conditions under which an IngressPolicy matches a request.
@@ -2887,7 +2913,7 @@ class ServicePerimeter {
   ///
   /// The `short_name` component must begin with a letter and only include
   /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
   ///
   /// Required.
   core.String? name;

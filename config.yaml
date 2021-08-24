@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 5.0.0-dev
+    version: 5.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -16,8 +16,6 @@ packages:
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
     - accessapproval:v1
     - accesscontextmanager:v1
-    - adexchangebuyer:v1.3 # https://developers.google.com/ad-exchange/buyer-rest/
-    - adexchangebuyer:v1.4 # https://developers.google.com/ad-exchange/buyer-rest/
     - adexperiencereport:v1 # https://developers.google.com/ad-experience-report/
     - admin:datatransfer_v1 # https://developers.google.com/admin-sdk/data-transfer/
     - admin:directory_v1 # https://developers.google.com/admin-sdk/directory/
@@ -74,6 +72,7 @@ packages:
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - composer:v1 # https://cloud.google.com/composer/
     - compute:v1 # https://developers.google.com/compute/
+    - contactcenterinsights:v1
     - container:v1 # https://cloud.google.com/container-engine/
     - content:v2.1 # https://developers.google.com/shopping-content/
     - customsearch:v1 # https://developers.google.com/custom-search/
@@ -141,9 +140,14 @@ packages:
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
     - mybusinessaccountmanagement:v1
+    - mybusinessbusinessinformation:v1
     - mybusinesslodging:v1
+    - mybusinessnotifications:v1
     - mybusinessplaceactions:v1
+    - mybusinessverifications:v1
     - networkmanagement:v1
+    - networksecurity:v1
+    - networkservices:v1
     - notebooks:v1
     - oauth2:v2 # Note: this is used many places and sometimes the document is missing
     - ondemandscanning:v1
@@ -155,6 +159,7 @@ packages:
     - people:v1 # https://developers.google.com/people/
     - playablelocations:v3
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
+    - policyanalyzer:v1
     - policysimulator:v1
     - policytroubleshooter:v1
     - privateca:v1
@@ -216,7 +221,7 @@ packages:
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
 
 - googleapis_beta:
-    version: 5.0.0-dev
+    version: 5.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE
@@ -237,10 +242,12 @@ packages:
     - documentai:v1beta3
     - domains:v1beta1
     - factchecktools:v1alpha1
+    - fcmdata:v1beta1
     - firebase:v1beta1
     - firebaseappcheck:v1beta
     - firebasedatabase:v1beta
     - firebasestorage:v1beta
+    - ideahub:v1beta
     - lifesciences:v2beta
     - metastore:v1beta
     - networkconnectivity:v1alpha1
@@ -259,7 +266,6 @@ packages:
 # APIs that we do not wish to include in this package
 skipped_apis:
 - accesscontextmanager:v1beta
-- adexchangebuyer:v1.2 # v1.3 included
 - admob:v1beta #v1 included
 - apigateway:v1beta # v1 included
 - appengine:v1alpha # v1 included
@@ -332,9 +338,11 @@ skipped_apis:
 - metastore:v1alpha # v1beta included
 - monitoring:v1 # v3 included
 - networkmanagement:v1beta1 # v1 included
+- networkservices:v1beta1
 - osconfig:v1beta # v1 included
 - oslogin:v1alpha # v1 available
 - oslogin:v1beta # v1 available
+- policyanalyzer:v1beta1
 - policytroubleshooter:v1beta # v1 included
 - poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
@@ -342,9 +350,6 @@ skipped_apis:
 - realtimebidding:v1alpha
 - recommender:v1beta1 # v1 included
 - redis:v1beta1 # v1 included
-- remotebuildexecution:v1 # v2 included
-- remotebuildexecution:v1alpha # v2 included
-- remotebuildexecution:v2 # skipping - docs not public - http://b/188925742
 - retail:v2alpha # v2 included
 - retail:v2beta # v2 included
 - run:v1alpha1 #v1 included

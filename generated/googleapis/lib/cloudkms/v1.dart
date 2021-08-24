@@ -44,7 +44,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Manages keys and performs cryptographic operations in a central cloud
 /// service, for direct use by other cloud resources and applications.
 class CloudKMSApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -79,6 +80,50 @@ class ProjectsLocationsResource {
       ProjectsLocationsKeyRingsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Generate random bytes using the Cloud KMS randomness source in the
+  /// provided location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - The project-specific location in which to generate random
+  /// bytes. For example, "projects/my-project/locations/us-central1".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateRandomBytesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateRandomBytesResponse> generateRandomBytes(
+    GenerateRandomBytesRequest request,
+    core.String location, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$location') + ':generateRandomBytes';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GenerateRandomBytesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets information about a location.
   ///
@@ -1125,10 +1170,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// Schedule a CryptoKeyVersion for destruction.
   ///
   /// Upon calling this method, CryptoKeyVersion.state will be set to
-  /// DESTROY_SCHEDULED and destroy_time will be set to a time 24 hours in the
-  /// future, at which point the state will be changed to DESTROYED, and the key
-  /// material will be irrevocably destroyed. Before the destroy_time is
-  /// reached, RestoreCryptoKeyVersion may be called to reverse the process.
+  /// DESTROY_SCHEDULED, and destroy_time will be set to the time
+  /// destroy_scheduled_duration in the future. At that time, the state will
+  /// automatically change to DESTROYED, and the key material will be
+  /// irrevocably destroyed. Before the destroy_time is reached,
+  /// RestoreCryptoKeyVersion may be called to reverse the process.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1245,17 +1291,20 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     return PublicKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Imports a new CryptoKeyVersion into an existing CryptoKey using the
-  /// wrapped key material provided in the request.
+  /// Import wrapped key material into a CryptoKeyVersion.
   ///
-  /// The version ID will be assigned the next sequential id within the
-  /// CryptoKey.
+  /// All requests must specify a CryptoKey. If a CryptoKeyVersion is
+  /// additionally specified in the request, key material will be reimported
+  /// into that version. Otherwise, a new version will be created, and will be
+  /// assigned the next sequential id within the CryptoKey.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the CryptoKey to be imported into.
+  /// [parent] - Required. The name of the CryptoKey to be imported into. The
+  /// create permission is only required on this key when creating a new
+  /// CryptoKeyVersion.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
@@ -1362,6 +1411,95 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
     );
     return ListCryptoKeyVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing
+  /// a tag that can be verified by another source with the same key.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// signing.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MacSignResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MacSignResponse> macSign(
+    MacSignRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':macSign';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return MacSignResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and
+  /// returns a response that indicates whether or not the verification was
+  /// successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// verification.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MacVerifyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MacVerifyResponse> macVerify(
+    MacVerifyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':macVerify';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return MacVerifyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -2261,6 +2399,19 @@ class CryptoKey {
   /// Output only.
   core.String? createTime;
 
+  /// The period of time that versions of this key spend in the
+  /// DESTROY_SCHEDULED state before transitioning to DESTROYED.
+  ///
+  /// If not specified at creation time, the default duration is 24 hours.
+  ///
+  /// Immutable.
+  core.String? destroyScheduledDuration;
+
+  /// Whether this key may contain imported versions only.
+  ///
+  /// Immutable.
+  core.bool? importOnly;
+
   /// Labels with user-defined metadata.
   ///
   /// For more information, see
@@ -2303,6 +2454,7 @@ class CryptoKey {
   /// AsymmetricSign and GetPublicKey.
   /// - "ASYMMETRIC_DECRYPT" : CryptoKeys with this purpose may be used with
   /// AsymmetricDecrypt and GetPublicKey.
+  /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
   core.String? purpose;
 
   /// next_rotation_time will be advanced by this period when the service
@@ -2322,6 +2474,8 @@ class CryptoKey {
 
   CryptoKey({
     this.createTime,
+    this.destroyScheduledDuration,
+    this.importOnly,
     this.labels,
     this.name,
     this.nextRotationTime,
@@ -2335,6 +2489,13 @@ class CryptoKey {
       : this(
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          destroyScheduledDuration:
+              _json.containsKey('destroyScheduledDuration')
+                  ? _json['destroyScheduledDuration'] as core.String
+                  : null,
+          importOnly: _json.containsKey('importOnly')
+              ? _json['importOnly'] as core.bool
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -2366,6 +2527,9 @@ class CryptoKey {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (destroyScheduledDuration != null)
+          'destroyScheduledDuration': destroyScheduledDuration!,
+        if (importOnly != null) 'importOnly': importOnly!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
@@ -2422,6 +2586,7 @@ class CryptoKeyVersion {
   /// digest.
   /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
   /// curve is only supported for HSM protection level.
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
@@ -2465,21 +2630,23 @@ class CryptoKeyVersion {
   /// Output only.
   core.String? generateTime;
 
-  /// The root cause of an import failure.
+  /// The root cause of the most recent import failure.
   ///
   /// Only present if state is IMPORT_FAILED.
   ///
   /// Output only.
   core.String? importFailureReason;
 
-  /// The name of the ImportJob used to import this CryptoKeyVersion.
+  /// The name of the ImportJob used in the most recent import of this
+  /// CryptoKeyVersion.
   ///
   /// Only present if the underlying key material was imported.
   ///
   /// Output only.
   core.String? importJob;
 
-  /// The time at which this CryptoKeyVersion's key material was imported.
+  /// The time at which this CryptoKeyVersion's key material was most recently
+  /// imported.
   ///
   /// Output only.
   core.String? importTime;
@@ -2501,6 +2668,12 @@ class CryptoKeyVersion {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   core.String? protectionLevel;
 
+  /// Whether or not this key version is eligible for reimport, by being
+  /// specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+  ///
+  /// Output only.
+  core.bool? reimportEligible;
+
   /// The current state of the CryptoKeyVersion.
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_STATE_UNSPECIFIED" : Not specified.
@@ -2511,7 +2684,9 @@ class CryptoKeyVersion {
   /// - "DISABLED" : This version may not be used, but the key material is still
   /// available, and the version can be placed back into the ENABLED state.
   /// - "DESTROYED" : This version is destroyed, and the key material is no
-  /// longer stored.
+  /// longer stored. This version may only become ENABLED again if this version
+  /// is reimport_eligible and the original key material is reimported with a
+  /// call to KeyManagementService.ImportCryptoKeyVersion.
   /// - "DESTROY_SCHEDULED" : This version is scheduled for destruction, and
   /// will be destroyed soon. Call RestoreCryptoKeyVersion to put it back into
   /// the DISABLED state.
@@ -2537,6 +2712,7 @@ class CryptoKeyVersion {
     this.importTime,
     this.name,
     this.protectionLevel,
+    this.reimportEligible,
     this.state,
   });
 
@@ -2580,6 +2756,9 @@ class CryptoKeyVersion {
           protectionLevel: _json.containsKey('protectionLevel')
               ? _json['protectionLevel'] as core.String
               : null,
+          reimportEligible: _json.containsKey('reimportEligible')
+              ? _json['reimportEligible'] as core.bool
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
         );
@@ -2600,6 +2779,7 @@ class CryptoKeyVersion {
         if (importTime != null) 'importTime': importTime!,
         if (name != null) 'name': name!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (reimportEligible != null) 'reimportEligible': reimportEligible!,
         if (state != null) 'state': state!,
       };
 }
@@ -2647,6 +2827,7 @@ class CryptoKeyVersionTemplate {
   /// digest.
   /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
   /// curve is only supported for HSM protection level.
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
@@ -3225,6 +3406,88 @@ class ExternalProtectionLevelOptions {
       };
 }
 
+/// Request message for KeyManagementService.GenerateRandomBytes.
+class GenerateRandomBytesRequest {
+  /// The length in bytes of the amount of randomness to retrieve.
+  ///
+  /// Minimum 8 bytes, maximum 1024 bytes.
+  core.int? lengthBytes;
+
+  /// The ProtectionLevel to use when generating the random data.
+  ///
+  /// Defaults to SOFTWARE.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  core.String? protectionLevel;
+
+  GenerateRandomBytesRequest({
+    this.lengthBytes,
+    this.protectionLevel,
+  });
+
+  GenerateRandomBytesRequest.fromJson(core.Map _json)
+      : this(
+          lengthBytes: _json.containsKey('lengthBytes')
+              ? _json['lengthBytes'] as core.int
+              : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lengthBytes != null) 'lengthBytes': lengthBytes!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+      };
+}
+
+/// Response message for KeyManagementService.GenerateRandomBytes.
+class GenerateRandomBytesResponse {
+  /// The generated data.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> _bytes) {
+    data =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned GenerateRandomBytesResponse.data. An
+  /// integrity check of GenerateRandomBytesResponse.data can be performed by
+  /// computing the CRC32C checksum of GenerateRandomBytesResponse.data and
+  /// comparing your results to this field. Discard the response in case of
+  /// non-matching checksum values, and perform a limited number of retries. A
+  /// persistent mismatch may indicate an issue in your computation of the
+  /// CRC32C checksum. Note: This field is defined as int64 for reasons of
+  /// compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type.
+  core.String? dataCrc32c;
+
+  GenerateRandomBytesResponse({
+    this.data,
+    this.dataCrc32c,
+  });
+
+  GenerateRandomBytesResponse.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          dataCrc32c: _json.containsKey('dataCrc32c')
+              ? _json['dataCrc32c'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
+      };
+}
+
 /// Request message for KeyManagementService.ImportCryptoKeyVersion.
 class ImportCryptoKeyVersionRequest {
   /// The algorithm of the key being imported.
@@ -3266,9 +3529,25 @@ class ImportCryptoKeyVersionRequest {
   /// digest.
   /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
   /// curve is only supported for HSM protection level.
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
+
+  /// The optional name of an existing CryptoKeyVersion to target for an import
+  /// operation.
+  ///
+  /// If this field is not present, a new CryptoKeyVersion containing the
+  /// supplied key material is created. If this field is present, the supplied
+  /// key material is imported into the existing CryptoKeyVersion. To import
+  /// into an existing CryptoKeyVersion, the CryptoKeyVersion must be a child of
+  /// ImportCryptoKeyVersionRequest.parent, have been previously created via
+  /// ImportCryptoKeyVersion, and be in DESTROYED or IMPORT_FAILED state. The
+  /// key material and algorithm must match the previous CryptoKeyVersion
+  /// exactly if the CryptoKeyVersion has ever contained key material.
+  ///
+  /// Optional.
+  core.String? cryptoKeyVersion;
 
   /// The name of the ImportJob that was used to wrap this key material.
   ///
@@ -3298,6 +3577,7 @@ class ImportCryptoKeyVersionRequest {
 
   ImportCryptoKeyVersionRequest({
     this.algorithm,
+    this.cryptoKeyVersion,
     this.importJob,
     this.rsaAesWrappedKey,
   });
@@ -3306,6 +3586,9 @@ class ImportCryptoKeyVersionRequest {
       : this(
           algorithm: _json.containsKey('algorithm')
               ? _json['algorithm'] as core.String
+              : null,
+          cryptoKeyVersion: _json.containsKey('cryptoKeyVersion')
+              ? _json['cryptoKeyVersion'] as core.String
               : null,
           importJob: _json.containsKey('importJob')
               ? _json['importJob'] as core.String
@@ -3317,6 +3600,7 @@ class ImportCryptoKeyVersionRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
+        if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
         if (importJob != null) 'importJob': importJob!,
         if (rsaAesWrappedKey != null) 'rsaAesWrappedKey': rsaAesWrappedKey!,
       };
@@ -3902,6 +4186,316 @@ class LocationMetadata {
       };
 }
 
+/// Request message for KeyManagementService.MacSign.
+class MacSignRequest {
+  /// The data to sign.
+  ///
+  /// The MAC tag is computed over this data field based on the specific
+  /// algorithm.
+  ///
+  /// Required.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> _bytes) {
+    data =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the MacSignRequest.data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received MacSignRequest.data using this checksum. KeyManagementService
+  /// will report an error if the checksum verification fails. If you receive a
+  /// checksum error, your client should verify that CRC32C(MacSignRequest.data)
+  /// is equal to MacSignRequest.data_crc32c, and if so, perform a limited
+  /// number of retries. A persistent mismatch may indicate an issue in your
+  /// computation of the CRC32C checksum. Note: This field is defined as int64
+  /// for reasons of compatibility across different languages. However, it is a
+  /// non-negative integer, which will never exceed 2^32-1, and can be safely
+  /// downconverted to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? dataCrc32c;
+
+  MacSignRequest({
+    this.data,
+    this.dataCrc32c,
+  });
+
+  MacSignRequest.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          dataCrc32c: _json.containsKey('dataCrc32c')
+              ? _json['dataCrc32c'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
+      };
+}
+
+/// Response message for KeyManagementService.MacSign.
+class MacSignResponse {
+  /// The created signature.
+  core.String? mac;
+  core.List<core.int> get macAsBytes => convert.base64.decode(mac!);
+
+  set macAsBytes(core.List<core.int> _bytes) {
+    mac =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned MacSignResponse.mac. An integrity check
+  /// of MacSignResponse.mac can be performed by computing the CRC32C checksum
+  /// of MacSignResponse.mac and comparing your results to this field. Discard
+  /// the response in case of non-matching checksum values, and perform a
+  /// limited number of retries. A persistent mismatch may indicate an issue in
+  /// your computation of the CRC32C checksum. Note: This field is defined as
+  /// int64 for reasons of compatibility across different languages. However, it
+  /// is a non-negative integer, which will never exceed 2^32-1, and can be
+  /// safely downconverted to uint32 in languages that support this type.
+  core.String? macCrc32c;
+
+  /// The resource name of the CryptoKeyVersion used for signing.
+  ///
+  /// Check this field to verify that the intended resource was used for
+  /// signing.
+  core.String? name;
+
+  /// The ProtectionLevel of the CryptoKeyVersion used for signing.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  core.String? protectionLevel;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether MacSignRequest.data_crc32c was received by
+  /// KeyManagementService and used for the integrity verification of the data.
+  /// A false value of this field indicates either that
+  /// MacSignRequest.data_crc32c was left unset or that it was not delivered to
+  /// KeyManagementService. If you've set MacSignRequest.data_crc32c but this
+  /// field is still false, discard the response and perform a limited number of
+  /// retries.
+  core.bool? verifiedDataCrc32c;
+
+  MacSignResponse({
+    this.mac,
+    this.macCrc32c,
+    this.name,
+    this.protectionLevel,
+    this.verifiedDataCrc32c,
+  });
+
+  MacSignResponse.fromJson(core.Map _json)
+      : this(
+          mac: _json.containsKey('mac') ? _json['mac'] as core.String : null,
+          macCrc32c: _json.containsKey('macCrc32c')
+              ? _json['macCrc32c'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+          verifiedDataCrc32c: _json.containsKey('verifiedDataCrc32c')
+              ? _json['verifiedDataCrc32c'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mac != null) 'mac': mac!,
+        if (macCrc32c != null) 'macCrc32c': macCrc32c!,
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (verifiedDataCrc32c != null)
+          'verifiedDataCrc32c': verifiedDataCrc32c!,
+      };
+}
+
+/// Request message for KeyManagementService.MacVerify.
+class MacVerifyRequest {
+  /// The data used previously as a MacSignRequest.data to generate the MAC tag.
+  ///
+  /// Required.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> _bytes) {
+    data =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the MacVerifyRequest.data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received MacVerifyRequest.data using this checksum. KeyManagementService
+  /// will report an error if the checksum verification fails. If you receive a
+  /// checksum error, your client should verify that
+  /// CRC32C(MacVerifyRequest.data) is equal to MacVerifyRequest.data_crc32c,
+  /// and if so, perform a limited number of retries. A persistent mismatch may
+  /// indicate an issue in your computation of the CRC32C checksum. Note: This
+  /// field is defined as int64 for reasons of compatibility across different
+  /// languages. However, it is a non-negative integer, which will never exceed
+  /// 2^32-1, and can be safely downconverted to uint32 in languages that
+  /// support this type.
+  ///
+  /// Optional.
+  core.String? dataCrc32c;
+
+  /// The signature to verify.
+  ///
+  /// Required.
+  core.String? mac;
+  core.List<core.int> get macAsBytes => convert.base64.decode(mac!);
+
+  set macAsBytes(core.List<core.int> _bytes) {
+    mac =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the MacVerifyRequest.mac.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received MacVerifyRequest.mac using this checksum. KeyManagementService
+  /// will report an error if the checksum verification fails. If you receive a
+  /// checksum error, your client should verify that
+  /// CRC32C(MacVerifyRequest.tag) is equal to MacVerifyRequest.mac_crc32c, and
+  /// if so, perform a limited number of retries. A persistent mismatch may
+  /// indicate an issue in your computation of the CRC32C checksum. Note: This
+  /// field is defined as int64 for reasons of compatibility across different
+  /// languages. However, it is a non-negative integer, which will never exceed
+  /// 2^32-1, and can be safely downconverted to uint32 in languages that
+  /// support this type.
+  ///
+  /// Optional.
+  core.String? macCrc32c;
+
+  MacVerifyRequest({
+    this.data,
+    this.dataCrc32c,
+    this.mac,
+    this.macCrc32c,
+  });
+
+  MacVerifyRequest.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          dataCrc32c: _json.containsKey('dataCrc32c')
+              ? _json['dataCrc32c'] as core.String
+              : null,
+          mac: _json.containsKey('mac') ? _json['mac'] as core.String : null,
+          macCrc32c: _json.containsKey('macCrc32c')
+              ? _json['macCrc32c'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
+        if (mac != null) 'mac': mac!,
+        if (macCrc32c != null) 'macCrc32c': macCrc32c!,
+      };
+}
+
+/// Response message for KeyManagementService.MacVerify.
+class MacVerifyResponse {
+  /// The resource name of the CryptoKeyVersion used for verification.
+  ///
+  /// Check this field to verify that the intended resource was used for
+  /// verification.
+  core.String? name;
+
+  /// The ProtectionLevel of the CryptoKeyVersion used for verification.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  core.String? protectionLevel;
+
+  /// This field indicates whether or not the verification operation for
+  /// MacVerifyRequest.mac over MacVerifyRequest.data was successful.
+  core.bool? success;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether MacVerifyRequest.data_crc32c was received by
+  /// KeyManagementService and used for the integrity verification of the data.
+  /// A false value of this field indicates either that
+  /// MacVerifyRequest.data_crc32c was left unset or that it was not delivered
+  /// to KeyManagementService. If you've set MacVerifyRequest.data_crc32c but
+  /// this field is still false, discard the response and perform a limited
+  /// number of retries.
+  core.bool? verifiedDataCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether MacVerifyRequest.mac_crc32c was received by
+  /// KeyManagementService and used for the integrity verification of the data.
+  /// A false value of this field indicates either that
+  /// MacVerifyRequest.mac_crc32c was left unset or that it was not delivered to
+  /// KeyManagementService. If you've set MacVerifyRequest.mac_crc32c but this
+  /// field is still false, discard the response and perform a limited number of
+  /// retries.
+  core.bool? verifiedMacCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// This value is used for the integrity verification of
+  /// \[MacVerifyResponse.success\]. If the value of this field contradicts the
+  /// value of \[MacVerifyResponse.success\], discard the response and perform a
+  /// limited number of retries.
+  core.bool? verifiedSuccessIntegrity;
+
+  MacVerifyResponse({
+    this.name,
+    this.protectionLevel,
+    this.success,
+    this.verifiedDataCrc32c,
+    this.verifiedMacCrc32c,
+    this.verifiedSuccessIntegrity,
+  });
+
+  MacVerifyResponse.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+          success: _json.containsKey('success')
+              ? _json['success'] as core.bool
+              : null,
+          verifiedDataCrc32c: _json.containsKey('verifiedDataCrc32c')
+              ? _json['verifiedDataCrc32c'] as core.bool
+              : null,
+          verifiedMacCrc32c: _json.containsKey('verifiedMacCrc32c')
+              ? _json['verifiedMacCrc32c'] as core.bool
+              : null,
+          verifiedSuccessIntegrity:
+              _json.containsKey('verifiedSuccessIntegrity')
+                  ? _json['verifiedSuccessIntegrity'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (success != null) 'success': success!,
+        if (verifiedDataCrc32c != null)
+          'verifiedDataCrc32c': verifiedDataCrc32c!,
+        if (verifiedMacCrc32c != null) 'verifiedMacCrc32c': verifiedMacCrc32c!,
+        if (verifiedSuccessIntegrity != null)
+          'verifiedSuccessIntegrity': verifiedSuccessIntegrity!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -3930,7 +4524,7 @@ class LocationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -4058,6 +4652,7 @@ class PublicKey {
   /// digest.
   /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
   /// curve is only supported for HSM protection level.
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;

@@ -45,7 +45,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Cloud Talent Solution provides the capability to create, read, update, and
 /// delete job postings, as well as search jobs based on keywords and filters.
 class CloudTalentSolutionApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -990,12 +991,15 @@ class ProjectsTenantsJobsResource {
   ///
   /// [filter] - Required. The filter string specifies the jobs to be
   /// enumerated. Supported operator: =, AND The fields eligible for filtering
-  /// are: * `companyName` (Required) * `requisitionId` * `status` Available
-  /// values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified.
-  /// Sample Query: * companyName = "projects/foo/tenants/bar/companies/baz" *
-  /// companyName = "projects/foo/tenants/bar/companies/baz" AND requisitionId =
-  /// "req-1" * companyName = "projects/foo/tenants/bar/companies/baz" AND
-  /// status = "EXPIRED"
+  /// are: * `companyName` * `requisitionId` * `status` Available values: OPEN,
+  /// EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of
+  /// `companyName` and `requisitionId` must present or an INVALID_ARGUMENT
+  /// error is thrown. Sample Query: * companyName =
+  /// "projects/foo/tenants/bar/companies/baz" * companyName =
+  /// "projects/foo/tenants/bar/companies/baz" AND requisitionId = "req-1" *
+  /// companyName = "projects/foo/tenants/bar/companies/baz" AND status =
+  /// "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status =
+  /// "EXPIRED"
   ///
   /// [jobView] - The desired job attributes returned for jobs in the search
   /// response. Defaults to JobView.JOB_VIEW_FULL if no value is specified.
@@ -1633,6 +1637,10 @@ class CommuteFilter {
   /// - "DRIVING" : Commute time is calculated based on driving time.
   /// - "TRANSIT" : Commute time is calculated based on public transit including
   /// bus, metro, subway, and so on.
+  /// - "WALKING" : Commute time is calculated based on walking time.
+  /// - "CYCLING" : Commute time is calculated based on biking time.
+  /// - "TRANSIT_ACCESSIBLE" : Commute time is calculated based on public
+  /// transit that is wheelchair accessible.
   core.String? commuteMethod;
 
   /// The departure time used to calculate traffic impact, represented as
@@ -2407,7 +2415,7 @@ class CustomRankingInfo {
   /// the left and right side of the operator is either a numeric
   /// Job.custom_attributes key, integer/double value or an expression that can
   /// be evaluated to a number. Parenthesis are supported to adjust calculation
-  /// precedence. The expression must be < 100 characters in length. The
+  /// precedence. The expression must be < 200 characters in length. The
   /// expression is considered invalid for a job if the expression references
   /// custom attributes that are not populated on the job or if the expression
   /// results in a divide by zero. If an expression is invalid for a job, that
@@ -4575,18 +4583,23 @@ class SearchJobsRequest {
   /// score (determined by API algorithm).
   CustomRankingInfo? customRankingInfo;
 
+  /// This field is deprecated.
+  ///
+  /// Please use SearchJobsRequest.keyword_match_mode going forward. To migrate,
+  /// disable_keyword_match set to false maps to
+  /// KeywordMatchMode.KEYWORD_MATCH_ALL, and disable_keyword_match set to true
+  /// maps to KeywordMatchMode.KEYWORD_MATCH_DISABLED. If
+  /// SearchJobsRequest.keyword_match_mode is set, this field is ignored.
   /// Controls whether to disable exact keyword match on Job.title,
   /// Job.description, Job.company_display_name, Job.addresses,
-  /// Job.qualifications.
-  ///
-  /// When disable keyword match is turned off, a keyword match returns jobs
-  /// that do not match given category filters when there are matching keywords.
-  /// For example, for the query "program manager," a result is returned even if
-  /// the job posting has the title "software developer," which doesn't fall
-  /// into "program manager" ontology, but does have "program manager" appearing
-  /// in its description. For queries like "cloud" that don't contain title or
-  /// location specific ontology, jobs with "cloud" keyword matches are returned
-  /// regardless of this flag's value. Use
+  /// Job.qualifications. When disable keyword match is turned off, a keyword
+  /// match returns jobs that do not match given category filters when there are
+  /// matching keywords. For example, for the query "program manager," a result
+  /// is returned even if the job posting has the title "software developer,"
+  /// which doesn't fall into "program manager" ontology, but does have "program
+  /// manager" appearing in its description. For queries like "cloud" that don't
+  /// contain title or location specific ontology, jobs with "cloud" keyword
+  /// matches are returned regardless of this flag's value. Use
   /// Company.keyword_searchable_job_custom_attributes if company-specific
   /// globally matched custom field/attribute string values are needed. Enabling
   /// keyword match improves recall of subsequent search requests. Defaults to
@@ -4610,10 +4623,17 @@ class SearchJobsRequest {
   /// result in highly similar jobs appearing in sequence in the search results.
   /// - "SIMPLE" : Default diversifying behavior. The result list is ordered so
   /// that highly similar results are pushed to the end of the last page of
-  /// search results. If you are using pageToken to page through the result set,
-  /// latency might be lower but we can't guarantee that all results are
-  /// returned. If you are using page offset, latency might be higher but all
-  /// results are returned.
+  /// search results.
+  /// - "ONE_PER_COMPANY" : Only one job from the same company will be shown at
+  /// once, other jobs under same company are pushed to the end of the last page
+  /// of search result.
+  /// - "TWO_PER_COMPANY" : Similar to ONE_PER_COMPANY, but it allows at most
+  /// two jobs in the same company to be shown at once, the other jobs under
+  /// same company are pushed to the end of the last page of search result.
+  /// - "DIVERSIFY_BY_LOOSER_SIMILARITY" : The result list is ordered such that
+  /// somewhat similar results are pushed to the end of the last page of the
+  /// search results. This option is recommended if SIMPLE diversification does
+  /// not diversify enough.
   core.String? diversificationLevel;
 
   /// Controls whether to broaden the search when it produces sparse results.
@@ -4705,6 +4725,22 @@ class SearchJobsRequest {
   /// - "JOB_VIEW_FULL" : All available attributes are included in the search
   /// results.
   core.String? jobView;
+
+  /// Controls what keyword match options to use.
+  ///
+  /// If both keyword_match_mode and disable_keyword_match are set,
+  /// keyword_match_mode will take precedence. Defaults to
+  /// KeywordMatchMode.KEYWORD_MATCH_ALL if no value is specified.
+  /// Possible string values are:
+  /// - "KEYWORD_MATCH_MODE_UNSPECIFIED" : The keyword match option isn't
+  /// specified. Defaults to KeywordMatchMode.KEYWORD_MATCH_ALL behavior.
+  /// - "KEYWORD_MATCH_DISABLED" : Disables keyword matching.
+  /// - "KEYWORD_MATCH_ALL" : Enable keyword matching over Job.title,
+  /// Job.description, Job.company_display_name, Job.addresses,
+  /// Job.qualifications, and keyword searchable Job.custom_attributes fields.
+  /// - "KEYWORD_MATCH_TITLE_ONLY" : Only enable keyword matching over
+  /// Job.title.
+  core.String? keywordMatchMode;
 
   /// A limit on the number of jobs returned in the search results.
   ///
@@ -4800,6 +4836,7 @@ class SearchJobsRequest {
     this.histogramQueries,
     this.jobQuery,
     this.jobView,
+    this.keywordMatchMode,
     this.maxPageSize,
     this.offset,
     this.orderBy,
@@ -4836,6 +4873,9 @@ class SearchJobsRequest {
           jobView: _json.containsKey('jobView')
               ? _json['jobView'] as core.String
               : null,
+          keywordMatchMode: _json.containsKey('keywordMatchMode')
+              ? _json['keywordMatchMode'] as core.String
+              : null,
           maxPageSize: _json.containsKey('maxPageSize')
               ? _json['maxPageSize'] as core.int
               : null,
@@ -4869,6 +4909,7 @@ class SearchJobsRequest {
               histogramQueries!.map((value) => value.toJson()).toList(),
         if (jobQuery != null) 'jobQuery': jobQuery!.toJson(),
         if (jobView != null) 'jobView': jobView!,
+        if (keywordMatchMode != null) 'keywordMatchMode': keywordMatchMode!,
         if (maxPageSize != null) 'maxPageSize': maxPageSize!,
         if (offset != null) 'offset': offset!,
         if (orderBy != null) 'orderBy': orderBy!,

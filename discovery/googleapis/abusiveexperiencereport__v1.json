@@ -137,7 +137,7 @@
             }
         }
     },
-    "revision": "20210712",
+    "revision": "20210822",
     "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
     "schemas": {
         "SiteSummaryResponse": {

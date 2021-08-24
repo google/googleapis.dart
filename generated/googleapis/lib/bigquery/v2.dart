@@ -53,22 +53,26 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// A data platform for customers to create, manage, share and query data.
 class BigqueryApi {
-  /// View and manage your data in Google BigQuery
+  /// View and manage your data in Google BigQuery and see the email address for
+  /// your Google Account
   static const bigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
   /// Insert data into Google BigQuery
   static const bigqueryInsertdataScope =
       'https://www.googleapis.com/auth/bigquery.insertdata';
 
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
-  /// Manage your data and permissions in Google Cloud Storage
+  /// Manage your data and permissions in Cloud Storage and see the email
+  /// address for your Google Account
   static const devstorageFullControlScope =
       'https://www.googleapis.com/auth/devstorage.full_control';
 
@@ -76,7 +80,8 @@ class BigqueryApi {
   static const devstorageReadOnlyScope =
       'https://www.googleapis.com/auth/devstorage.read_only';
 
-  /// Manage your data in Google Cloud Storage
+  /// Manage your data in Cloud Storage and see the email address of your Google
+  /// Account
   static const devstorageReadWriteScope =
       'https://www.googleapis.com/auth/devstorage.read_write';
 
@@ -2886,6 +2891,32 @@ class AuditLogConfig {
       };
 }
 
+class AvroOptions {
+  /// If set to true will enable interpreting logical types into their
+  /// corresponding types (ie.
+  ///
+  /// TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+  ///
+  /// Optional.
+  core.bool? useAvroLogicalTypes;
+
+  AvroOptions({
+    this.useAvroLogicalTypes,
+  });
+
+  AvroOptions.fromJson(core.Map _json)
+      : this(
+          useAvroLogicalTypes: _json.containsKey('useAvroLogicalTypes')
+              ? _json['useAvroLogicalTypes'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (useAvroLogicalTypes != null)
+          'useAvroLogicalTypes': useAvroLogicalTypes!,
+      };
+}
+
 class BiEngineReason {
   /// \[Output-only\] High-level BI Engine reason for partial or disabled
   /// acceleration.
@@ -3966,6 +3997,11 @@ class CsvOptions {
   /// Optional.
   core.String? fieldDelimiter;
 
+  /// An custom string that will represent a NULL value in CSV import data.
+  ///
+  /// Optional.
+  core.String? nullMarker;
+
   /// The value that is used to quote data sections in a CSV file.
   ///
   /// BigQuery converts the string to ISO-8859-1 encoding, and then uses the
@@ -4000,6 +4036,7 @@ class CsvOptions {
     this.allowQuotedNewlines,
     this.encoding,
     this.fieldDelimiter,
+    this.nullMarker,
     this.quote,
     this.skipLeadingRows,
   });
@@ -4018,6 +4055,9 @@ class CsvOptions {
           fieldDelimiter: _json.containsKey('fieldDelimiter')
               ? _json['fieldDelimiter'] as core.String
               : null,
+          nullMarker: _json.containsKey('null_marker')
+              ? _json['null_marker'] as core.String
+              : null,
           quote:
               _json.containsKey('quote') ? _json['quote'] as core.String : null,
           skipLeadingRows: _json.containsKey('skipLeadingRows')
@@ -4031,6 +4071,7 @@ class CsvOptions {
           'allowQuotedNewlines': allowQuotedNewlines!,
         if (encoding != null) 'encoding': encoding!,
         if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
+        if (nullMarker != null) 'null_marker': nullMarker!,
         if (quote != null) 'quote': quote!,
         if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows!,
       };
@@ -4274,6 +4315,11 @@ class Dataset {
   /// the datasetId field.
   core.String? id;
 
+  /// Indicates if table names are case insensitive in the dataset.
+  ///
+  /// Optional.
+  core.bool? isCaseInsensitive;
+
   /// \[Output-only\] The resource type.
   core.String? kind;
 
@@ -4313,6 +4359,7 @@ class Dataset {
     this.etag,
     this.friendlyName,
     this.id,
+    this.isCaseInsensitive,
     this.kind,
     this.labels,
     this.lastModifiedTime,
@@ -4358,6 +4405,9 @@ class Dataset {
               ? _json['friendlyName'] as core.String
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          isCaseInsensitive: _json.containsKey('isCaseInsensitive')
+              ? _json['isCaseInsensitive'] as core.bool
+              : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -4398,6 +4448,7 @@ class Dataset {
         if (etag != null) 'etag': etag!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
         if (id != null) 'id': id!,
+        if (isCaseInsensitive != null) 'isCaseInsensitive': isCaseInsensitive!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
@@ -5283,6 +5334,9 @@ class ExternalDataConfiguration {
   /// Any option specified explicitly will be honored.
   core.bool? autodetect;
 
+  /// Additional properties to set if sourceFormat is set to Avro.
+  AvroOptions? avroOptions;
+
   /// Additional options if sourceFormat is set to BIGTABLE.
   ///
   /// Optional.
@@ -5400,6 +5454,7 @@ class ExternalDataConfiguration {
 
   ExternalDataConfiguration({
     this.autodetect,
+    this.avroOptions,
     this.bigtableOptions,
     this.compression,
     this.connectionId,
@@ -5419,6 +5474,10 @@ class ExternalDataConfiguration {
       : this(
           autodetect: _json.containsKey('autodetect')
               ? _json['autodetect'] as core.bool
+              : null,
+          avroOptions: _json.containsKey('avroOptions')
+              ? AvroOptions.fromJson(
+                  _json['avroOptions'] as core.Map<core.String, core.dynamic>)
               : null,
           bigtableOptions: _json.containsKey('bigtableOptions')
               ? BigtableOptions.fromJson(_json['bigtableOptions']
@@ -5474,6 +5533,7 @@ class ExternalDataConfiguration {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autodetect != null) 'autodetect': autodetect!,
+        if (avroOptions != null) 'avroOptions': avroOptions!.toJson(),
         if (bigtableOptions != null)
           'bigtableOptions': bigtableOptions!.toJson(),
         if (compression != null) 'compression': compression!,
@@ -8479,8 +8539,8 @@ class Model {
   /// - "BOOSTED_TREE_REGRESSOR" : Boosted tree regressor model.
   /// - "BOOSTED_TREE_CLASSIFIER" : Boosted tree classifier model.
   /// - "ARIMA" : ARIMA model.
-  /// - "AUTOML_REGRESSOR" : \[Beta\] AutoML Tables regression model.
-  /// - "AUTOML_CLASSIFIER" : \[Beta\] AutoML Tables classification model.
+  /// - "AUTOML_REGRESSOR" : AutoML Tables regression model.
+  /// - "AUTOML_CLASSIFIER" : AutoML Tables classification model.
   /// - "ARIMA_PLUS" : New name for the ARIMA model.
   core.String? modelType;
 
@@ -8818,7 +8878,7 @@ class ParquetOptions {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -9526,7 +9586,7 @@ class QueryResponse {
 
   /// \[Output-only\] \[Preview\] Information of the session if this job is part
   /// of one.
-  SessionInfo? sessionInfoTemplate;
+  SessionInfo? sessionInfo;
 
   /// The total number of bytes processed for this query.
   ///
@@ -9549,7 +9609,7 @@ class QueryResponse {
     this.pageToken,
     this.rows,
     this.schema,
-    this.sessionInfoTemplate,
+    this.sessionInfo,
     this.totalBytesProcessed,
     this.totalRows,
   });
@@ -9593,9 +9653,9 @@ class QueryResponse {
               ? TableSchema.fromJson(
                   _json['schema'] as core.Map<core.String, core.dynamic>)
               : null,
-          sessionInfoTemplate: _json.containsKey('sessionInfoTemplate')
-              ? SessionInfo.fromJson(_json['sessionInfoTemplate']
-                  as core.Map<core.String, core.dynamic>)
+          sessionInfo: _json.containsKey('sessionInfo')
+              ? SessionInfo.fromJson(
+                  _json['sessionInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           totalBytesProcessed: _json.containsKey('totalBytesProcessed')
               ? _json['totalBytesProcessed'] as core.String
@@ -9618,8 +9678,7 @@ class QueryResponse {
         if (pageToken != null) 'pageToken': pageToken!,
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
         if (schema != null) 'schema': schema!.toJson(),
-        if (sessionInfoTemplate != null)
-          'sessionInfoTemplate': sessionInfoTemplate!.toJson(),
+        if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
         if (totalRows != null) 'totalRows': totalRows!,
@@ -9888,12 +9947,12 @@ class Routine {
   /// Required.
   core.String? definitionBody;
 
-  /// \[Experimental\] The description of the routine if defined.
+  /// The description of the routine, if defined.
   ///
   /// Optional.
   core.String? description;
 
-  /// \[Experimental\] The determinism level of the JavaScript UDF if defined.
+  /// The determinism level of the JavaScript UDF, if defined.
   ///
   /// Optional.
   /// Possible string values are:
@@ -9931,26 +9990,31 @@ class Routine {
   /// Output only.
   core.String? lastModifiedTime;
 
-  /// Set only if Routine is a "TABLE_VALUED_FUNCTION".
+  /// Can be set only if routine_type = "TABLE_VALUED_FUNCTION".
+  ///
+  /// If absent, the return table type is inferred from definition_body at query
+  /// time in each query that references this routine. If present, then the
+  /// columns in the evaluated table result will be cast to match the column
+  /// types specificed in return table type, at query time.
   ///
   /// Optional.
   StandardSqlTableType? returnTableType;
 
   /// Optional if language = "SQL"; required otherwise.
   ///
-  /// If absent, the return type is inferred from definition_body at query time
-  /// in each query that references this routine. If present, then the evaluated
-  /// result will be cast to the specified returned type at query time. For
-  /// example, for the functions created with the following statements: *
-  /// `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` *
-  /// `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION
-  /// Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is
-  /// `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for
-  /// `Increment` (inferred as FLOAT64 at query time). Suppose the function
-  /// `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS
-  /// (x + y);` Then the inferred return type of `Increment` is automatically
-  /// changed to INT64 at query time, while the return type of `Decrement`
-  /// remains FLOAT64.
+  /// Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the
+  /// return type is inferred from definition_body at query time in each query
+  /// that references this routine. If present, then the evaluated result will
+  /// be cast to the specified returned type at query time. For example, for the
+  /// functions created with the following statements: * `CREATE FUNCTION Add(x
+  /// FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION
+  /// Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x
+  /// FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind:
+  /// "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment`
+  /// (inferred as FLOAT64 at query time). Suppose the function `Add` is
+  /// replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);`
+  /// Then the inferred return type of `Increment` is automatically changed to
+  /// INT64 at query time, while the return type of `Decrement` remains FLOAT64.
   StandardSqlDataType? returnType;
 
   /// Reference describing the ID of this routine.
@@ -9968,6 +10032,16 @@ class Routine {
   /// - "TABLE_VALUED_FUNCTION" : Non-builtin permanent TVF.
   core.String? routineType;
 
+  /// Can be set for procedures only.
+  ///
+  /// If true (default), the definition body will be validated in the creation
+  /// and the updates of the procedure. For procedures with an argument of ANY
+  /// TYPE, the definition body validtion is not supported at creation/update
+  /// time, and thus this field must be set to false explicitly.
+  ///
+  /// Optional.
+  core.bool? strictMode;
+
   Routine({
     this.arguments,
     this.creationTime,
@@ -9982,6 +10056,7 @@ class Routine {
     this.returnType,
     this.routineReference,
     this.routineType,
+    this.strictMode,
   });
 
   Routine.fromJson(core.Map _json)
@@ -10031,6 +10106,9 @@ class Routine {
           routineType: _json.containsKey('routineType')
               ? _json['routineType'] as core.String
               : null,
+          strictMode: _json.containsKey('strictMode')
+              ? _json['strictMode'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10050,6 +10128,7 @@ class Routine {
         if (routineReference != null)
           'routineReference': routineReference!.toJson(),
         if (routineType != null) 'routineType': routineType!,
+        if (strictMode != null) 'strictMode': strictMode!,
       };
 }
 
@@ -11308,6 +11387,13 @@ class TableFieldSchema {
   /// Optional.
   TableFieldSchemaCategories? categories;
 
+  /// Collation specification of the field.
+  ///
+  /// It only can be set on string type field.
+  ///
+  /// Optional.
+  core.String? collationSpec;
+
   /// The field description.
   ///
   /// The maximum length is 1,024 characters.
@@ -11389,6 +11475,7 @@ class TableFieldSchema {
 
   TableFieldSchema({
     this.categories,
+    this.collationSpec,
     this.description,
     this.fields,
     this.maxLength,
@@ -11405,6 +11492,9 @@ class TableFieldSchema {
           categories: _json.containsKey('categories')
               ? TableFieldSchemaCategories.fromJson(
                   _json['categories'] as core.Map<core.String, core.dynamic>)
+              : null,
+          collationSpec: _json.containsKey('collationSpec')
+              ? _json['collationSpec'] as core.String
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
@@ -11434,6 +11524,7 @@ class TableFieldSchema {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null) 'categories': categories!.toJson(),
+        if (collationSpec != null) 'collationSpec': collationSpec!,
         if (description != null) 'description': description!,
         if (fields != null)
           'fields': fields!.map((value) => value.toJson()).toList(),

@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// GKE Hub - v1
+/// GKE Hub API - v1
 ///
 /// For more information, see
 /// <https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster>
@@ -39,7 +39,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class GKEHubApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -3622,9 +3623,7 @@ class Membership {
 /// MembershipEndpoint contains information needed to contact a Kubernetes API,
 /// endpoint and any additional Kubernetes metadata.
 class MembershipEndpoint {
-  /// GKE-specific information.
-  ///
-  /// Only present if this Membership is a GKE cluster.
+  /// Specific information for a GKE-on-GCP cluster.
   ///
   /// Optional.
   GkeCluster? gkeCluster;
@@ -3634,9 +3633,21 @@ class MembershipEndpoint {
   /// Output only.
   KubernetesMetadata? kubernetesMetadata;
 
+  /// Specific information for a GKE Multi-Cloud cluster.
+  ///
+  /// Optional.
+  MultiCloudCluster? multiCloudCluster;
+
+  /// Specific information for a GKE On-Prem cluster.
+  ///
+  /// Optional.
+  OnPremCluster? onPremCluster;
+
   MembershipEndpoint({
     this.gkeCluster,
     this.kubernetesMetadata,
+    this.multiCloudCluster,
+    this.onPremCluster,
   });
 
   MembershipEndpoint.fromJson(core.Map _json)
@@ -3649,12 +3660,23 @@ class MembershipEndpoint {
               ? KubernetesMetadata.fromJson(_json['kubernetesMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          multiCloudCluster: _json.containsKey('multiCloudCluster')
+              ? MultiCloudCluster.fromJson(_json['multiCloudCluster']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          onPremCluster: _json.containsKey('onPremCluster')
+              ? OnPremCluster.fromJson(
+                  _json['onPremCluster'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gkeCluster != null) 'gkeCluster': gkeCluster!.toJson(),
         if (kubernetesMetadata != null)
           'kubernetesMetadata': kubernetesMetadata!.toJson(),
+        if (multiCloudCluster != null)
+          'multiCloudCluster': multiCloudCluster!.toJson(),
+        if (onPremCluster != null) 'onPremCluster': onPremCluster!.toJson(),
       };
 }
 
@@ -3745,6 +3767,45 @@ class MembershipState {
       };
 }
 
+/// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+class MultiCloudCluster {
+  /// If cluster_missing is set then it denotes that
+  /// API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud
+  /// cluster no longer exists.
+  ///
+  /// Output only.
+  core.bool? clusterMissing;
+
+  /// Self-link of the GCP resource for the GKE Multi-Cloud cluster.
+  ///
+  /// For example:
+  /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
+  /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+  ///
+  /// Immutable.
+  core.String? resourceLink;
+
+  MultiCloudCluster({
+    this.clusterMissing,
+    this.resourceLink,
+  });
+
+  MultiCloudCluster.fromJson(core.Map _json)
+      : this(
+          clusterMissing: _json.containsKey('clusterMissing')
+              ? _json['clusterMissing'] as core.bool
+              : null,
+          resourceLink: _json.containsKey('resourceLink')
+              ? _json['resourceLink'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterMissing != null) 'clusterMissing': clusterMissing!,
+        if (resourceLink != null) 'resourceLink': resourceLink!,
+      };
+}
+
 /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
 /// feature.
 class MultiClusterIngressFeatureSpec {
@@ -3766,6 +3827,55 @@ class MultiClusterIngressFeatureSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configMembership != null) 'configMembership': configMembership!,
+      };
+}
+
+/// OnPremCluster contains information specific to GKE On-Prem clusters.
+class OnPremCluster {
+  /// Whether the cluster is an admin cluster.
+  ///
+  /// Immutable.
+  core.bool? adminCluster;
+
+  /// If cluster_missing is set then it denotes that
+  /// API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no
+  /// longer exists.
+  ///
+  /// Output only.
+  core.bool? clusterMissing;
+
+  /// Self-link of the GCP resource for the GKE On-Prem cluster.
+  ///
+  /// For example:
+  /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
+  /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+  ///
+  /// Immutable.
+  core.String? resourceLink;
+
+  OnPremCluster({
+    this.adminCluster,
+    this.clusterMissing,
+    this.resourceLink,
+  });
+
+  OnPremCluster.fromJson(core.Map _json)
+      : this(
+          adminCluster: _json.containsKey('adminCluster')
+              ? _json['adminCluster'] as core.bool
+              : null,
+          clusterMissing: _json.containsKey('clusterMissing')
+              ? _json['clusterMissing'] as core.bool
+              : null,
+          resourceLink: _json.containsKey('resourceLink')
+              ? _json['resourceLink'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adminCluster != null) 'adminCluster': adminCluster!,
+        if (clusterMissing != null) 'clusterMissing': clusterMissing!,
+        if (resourceLink != null) 'resourceLink': resourceLink!,
       };
 }
 
@@ -3968,7 +4078,7 @@ class OperationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

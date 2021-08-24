@@ -42,7 +42,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// This API converts video files into formats suitable for consumer
 /// distribution.
 class TranscoderApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1954,91 +1955,6 @@ class NormalizedCoordinate {
       };
 }
 
-/// Represents the metadata of the long-running operation.
-class OperationMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have successfully been cancelled have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? cancelRequested;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusDetail;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  OperationMetadata({
-    this.apiVersion,
-    this.cancelRequested,
-    this.createTime,
-    this.endTime,
-    this.statusDetail,
-    this.target,
-    this.verb,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          cancelRequested: _json.containsKey('cancelRequested')
-              ? _json['cancelRequested'] as core.bool
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          statusDetail: _json.containsKey('statusDetail')
-              ? _json['statusDetail'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (statusDetail != null) 'statusDetail': statusDetail!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
-
 /// The origin URI.
 class OriginUri {
   /// Dash manifest URI.
@@ -2664,7 +2580,8 @@ class VideoStream {
 
   /// The video bitrate in bits per second.
   ///
-  /// Must be between 1 and 1,000,000,000.
+  /// The minimum value is 1,000. The maximum value for H264/H265 is
+  /// 800,000,000. The maximum value for VP9 is 480,000,000.
   ///
   /// Required.
   core.int? bitrateBps;

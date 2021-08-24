@@ -719,7 +719,7 @@
             }
         }
     },
-    "revision": "20210629",
+    "revision": "20210717",
     "rootUrl": "https://domains.googleapis.com/",
     "schemas": {
         "AuditConfig": {

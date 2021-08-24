@@ -3,10 +3,10 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
+                    "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
-                    "description": "View your data across Google Cloud Platform services"
+                    "description": "View your data across Google Cloud services and see the email address of your Google Account"
                 }
             }
         }
@@ -192,7 +192,9 @@
                     "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "artifactregistry.operations.list",
-                    "parameterOrder": [],
+                    "parameterOrder": [
+                        "name"
+                    ],
                     "parameters": {
                         "filter": {
                             "description": "The standard list filter.",
@@ -201,7 +203,9 @@
                         },
                         "name": {
                             "description": "The name of the operation's parent resource.",
-                            "location": "query",
+                            "location": "path",
+                            "pattern": "^operations$",
+                            "required": true,
                             "type": "string"
                         },
                         "pageSize": {
@@ -216,7 +220,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "v1/operations",
+                    "path": "v1/{+name}",
                     "response": {
                         "$ref": "ListOperationsResponse"
                     },
@@ -346,7 +350,7 @@
             }
         }
     },
-    "revision": "20210713",
+    "revision": "20210902",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "schemas": {
         "AptArtifact": {
@@ -668,6 +672,8 @@
                         "MAVEN",
                         "NPM",
                         "PYPI",
+                        "APT",
+                        "YUM",
                         "PYTHON"
                     ],
                     "enumDescriptions": [
@@ -676,6 +682,8 @@
                         "Maven package format.",
                         "NPM package format.",
                         "PyPI package format.",
+                        "APT package format.",
+                        "YUM package format.",
                         "Python package format."
                     ],
                     "type": "string"

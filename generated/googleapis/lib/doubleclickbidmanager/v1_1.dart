@@ -681,6 +681,7 @@ class FilterPair {
   /// - "FILTER_INSERTION_ORDER_GOAL_VALUE"
   /// - "FILTER_OMID_CAPABLE"
   /// - "FILTER_VENDOR_MEASUREMENT_MODE"
+  /// - "FILTER_IMPRESSION_LOSS_REJECTION_REASON"
   core.String? type;
 
   /// Filter value.
@@ -1291,6 +1292,7 @@ class PathQueryOptionsFilter {
   /// - "FILTER_INSERTION_ORDER_GOAL_VALUE"
   /// - "FILTER_OMID_CAPABLE"
   /// - "FILTER_VENDOR_MEASUREMENT_MODE"
+  /// - "FILTER_IMPRESSION_LOSS_REJECTION_REASON"
   core.String? filter;
 
   /// Indicates how the filter should be matched to the value.

@@ -534,8 +534,15 @@ class OtherContactsResource {
   ///
   /// [readMask] - Required. A field mask to restrict which fields on each
   /// person are returned. Multiple fields can be specified by separating them
-  /// with commas. Valid values are: * emailAddresses * metadata * names *
-  /// phoneNumbers * photos
+  /// with commas. What values are valid depend on what ReadSourceType is used.
+  /// If READ_SOURCE_TYPE_CONTACT is used, valid values are: * emailAddresses *
+  /// metadata * names * phoneNumbers * photos If READ_SOURCE_TYPE_PROFILE is
+  /// used, valid values are: * addresses * ageRanges * biographies * birthdays
+  /// * calendarUrls * clientData * coverPhotos * emailAddresses * events *
+  /// externalIds * genders * imClients * interests * locales * locations *
+  /// memberships * metadata * miscKeywords * names * nicknames * occupations *
+  /// organizations * phoneNumbers * photos * relations * sipAddresses * skills
+  /// * urls * userDefined
   ///
   /// [requestSyncToken] - Optional. Whether the response should return
   /// `next_sync_token` on the last page of results. It can be used to get
@@ -1160,7 +1167,7 @@ class PeopleResource {
   /// that matches the search query.
   ///
   /// The query matches on a contact's `names`, `nickNames`, `emailAddresses`,
-  /// `phoneNumbers`, and `organizations` fields that are from the CONTACT"
+  /// `phoneNumbers`, and `organizations` fields that are from the CONTACT
   /// source. **IMPORTANT**: Before searching, clients should send a warmup
   /// request with an empty query to update the cache. See
   /// https://developers.google.com/people/v1/contacts#search_the_users_contacts
@@ -1762,6 +1769,9 @@ class BatchCreateContactsRequest {
       };
 }
 
+/// If not successful, returns BatchCreateContactsErrorDetails which contains a
+/// list of errors for each invalid contact.
+///
 /// The response to a request to create a batch of contacts.
 class BatchCreateContactsResponse {
   /// The contacts that were created, unless the request `read_mask` is empty.
@@ -1926,7 +1936,10 @@ class BatchUpdateContactsRequest {
       };
 }
 
-/// The response to a request to create a batch of contacts.
+/// If not successful, returns BatchUpdateContactsErrorDetails, a list of errors
+/// corresponding to each contact.
+///
+/// The response to a request to update a batch of contacts.
 class BatchUpdateContactsResponse {
   /// A map of resource names to the contacts that were updated, unless the
   /// request `read_mask` is empty.
@@ -2816,13 +2829,19 @@ class ExternalId {
 
 /// Metadata about a field.
 class FieldMetadata {
-  /// True if the field is the primary field for the person.
+  /// True if the field is the primary field for all sources in the person.
+  ///
+  /// Each person will have at most one field with `primary` set to true.
+  ///
+  /// Output only.
   core.bool? primary;
 
   /// The source of the field.
   Source? source;
 
   /// True if the field is the primary field for the source.
+  ///
+  /// Each source must have at most one field with `source_primary` set to true.
   core.bool? sourcePrimary;
 
   /// True if the field is verified; false if the field is unverified.
@@ -2896,10 +2915,10 @@ class FileAs {
 
 /// A person's gender.
 class Gender {
-  /// The type of pronouns that should be used to address the person.
+  /// Free form text field for pronouns that should be used to address the
+  /// person.
   ///
-  /// The value can be custom or one of these predefined values: * `male` *
-  /// `female` * `other`
+  /// Common values are: * `he`/`him` * `she`/`her` * `they`/`them`
   core.String? addressMeAs;
 
   /// The value of the gender translated and formatted in the viewer's account
@@ -3852,6 +3871,9 @@ class Occupation {
 ///
 /// Overlapping date ranges are permitted.
 class Organization {
+  /// The person's cost center at the organization.
+  core.String? costCenter;
+
   /// True if the organization is the person's current organization; false if
   /// the organization is a past organization.
   core.bool? current;
@@ -3871,6 +3893,10 @@ class Organization {
   ///
   /// Output only.
   core.String? formattedType;
+
+  /// The person's full-time equivalent millipercent within the organization
+  /// (100000 = 100%).
+  core.int? fullTimeEquivalentMillipercent;
 
   /// The person's job description at the organization.
   core.String? jobDescription;
@@ -3904,11 +3930,13 @@ class Organization {
   core.String? type;
 
   Organization({
+    this.costCenter,
     this.current,
     this.department,
     this.domain,
     this.endDate,
     this.formattedType,
+    this.fullTimeEquivalentMillipercent,
     this.jobDescription,
     this.location,
     this.metadata,
@@ -3922,6 +3950,9 @@ class Organization {
 
   Organization.fromJson(core.Map _json)
       : this(
+          costCenter: _json.containsKey('costCenter')
+              ? _json['costCenter'] as core.String
+              : null,
           current: _json.containsKey('current')
               ? _json['current'] as core.bool
               : null,
@@ -3938,6 +3969,10 @@ class Organization {
           formattedType: _json.containsKey('formattedType')
               ? _json['formattedType'] as core.String
               : null,
+          fullTimeEquivalentMillipercent:
+              _json.containsKey('fullTimeEquivalentMillipercent')
+                  ? _json['fullTimeEquivalentMillipercent'] as core.int
+                  : null,
           jobDescription: _json.containsKey('jobDescription')
               ? _json['jobDescription'] as core.String
               : null,
@@ -3965,11 +4000,14 @@ class Organization {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (costCenter != null) 'costCenter': costCenter!,
         if (current != null) 'current': current!,
         if (department != null) 'department': department!,
         if (domain != null) 'domain': domain!,
         if (endDate != null) 'endDate': endDate!.toJson(),
         if (formattedType != null) 'formattedType': formattedType!,
+        if (fullTimeEquivalentMillipercent != null)
+          'fullTimeEquivalentMillipercent': fullTimeEquivalentMillipercent!,
         if (jobDescription != null) 'jobDescription': jobDescription!,
         if (location != null) 'location': location!,
         if (metadata != null) 'metadata': metadata!.toJson(),

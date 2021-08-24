@@ -40,7 +40,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Execute workflows created with Workflows API.
 class WorkflowExecutionsApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -353,6 +354,15 @@ class Execution {
   /// `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
   core.String? argument;
 
+  /// The call logging level associated to this execution.
+  /// Possible string values are:
+  /// - "CALL_LOG_LEVEL_UNSPECIFIED" : No call logging specified.
+  /// - "LOG_ALL_CALLS" : Log all call steps within workflows, all call returns,
+  /// and all exceptions raised.
+  /// - "LOG_ERRORS_ONLY" : Log only exceptions that are raised from call steps
+  /// within workflows.
+  core.String? callLogLevel;
+
   /// Marks the end of execution, successful or not.
   ///
   /// Output only.
@@ -404,6 +414,7 @@ class Execution {
 
   Execution({
     this.argument,
+    this.callLogLevel,
     this.endTime,
     this.error,
     this.name,
@@ -417,6 +428,9 @@ class Execution {
       : this(
           argument: _json.containsKey('argument')
               ? _json['argument'] as core.String
+              : null,
+          callLogLevel: _json.containsKey('callLogLevel')
+              ? _json['callLogLevel'] as core.String
               : null,
           endTime: _json.containsKey('endTime')
               ? _json['endTime'] as core.String
@@ -441,6 +455,7 @@ class Execution {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (argument != null) 'argument': argument!,
+        if (callLogLevel != null) 'callLogLevel': callLogLevel!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!.toJson(),
         if (name != null) 'name': name!,

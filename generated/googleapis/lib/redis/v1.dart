@@ -40,7 +40,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Creates and manages Redis instances on the Google Cloud Platform.
 class CloudRedisApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1171,7 +1172,7 @@ class InputConfig {
 
 /// A Google Cloud Redis instance.
 ///
-/// next id = 30
+/// next id = 36
 class Instance {
   /// Only applicable to STANDARD_HA tier which protects the instance against
   /// zonal failures by provisioning it across two zones.
@@ -1242,10 +1243,11 @@ class Instance {
 
   /// The zone where the instance will be provisioned.
   ///
-  /// If not provided, the service will choose a zone for the instance. For
-  /// STANDARD_HA tier, instances will be created across two zones for
-  /// protection against zonal failures. If alternative_location_id is also
-  /// provided, it must be different from location_id.
+  /// If not provided, the service will choose a zone from the specified region
+  /// for the instance. For standard tier, instances will be created across two
+  /// zones for protection against zonal failures. If
+  /// \[alternative_location_id\] is also provided, it must be different from
+  /// \[location_id\].
   ///
   /// Optional.
   core.String? locationId;

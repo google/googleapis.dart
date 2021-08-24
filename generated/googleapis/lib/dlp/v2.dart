@@ -69,7 +69,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// privacy-sensitive fragments in text, images, and Google Cloud Platform
 /// storage repositories.
 class DLPApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -7612,13 +7613,12 @@ class GooglePrivacyDlpV2CryptoHashConfig {
 }
 
 /// This is a data encryption key (DEK) (as opposed to a key encryption key
-/// (KEK) stored by KMS).
+/// (KEK) stored by Cloud Key Management Service (Cloud KMS).
 ///
-/// When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy
-/// on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data
-/// crypto key.
+/// When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate
+/// IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
 class GooglePrivacyDlpV2CryptoKey {
-  /// Kms wrapped key
+  /// Key wrapped using Cloud KMS
   GooglePrivacyDlpV2KmsWrappedCryptoKey? kmsWrapped;
 
   /// Transient crypto key
@@ -11087,6 +11087,8 @@ class GooglePrivacyDlpV2KindExpression {
 /// transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more
 /// information, see
 /// [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+/// Note: When you use Cloud KMS for cryptographic operations,
+/// [charges apply](https://cloud.google.com/kms/pricing).
 class GooglePrivacyDlpV2KmsWrappedCryptoKey {
   /// The resource name of the KMS CryptoKey to use for unwrapping.
   ///
@@ -12002,7 +12004,7 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
   /// Redact
   GooglePrivacyDlpV2RedactConfig? redactConfig;
 
-  /// Replace
+  /// Replace with a specified value.
   GooglePrivacyDlpV2ReplaceValueConfig? replaceConfig;
 
   /// Replace with infotype

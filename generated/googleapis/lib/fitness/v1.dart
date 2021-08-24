@@ -71,11 +71,11 @@ class FitnessApi {
   static const fitnessBloodPressureWriteScope =
       'https://www.googleapis.com/auth/fitness.blood_pressure.write';
 
-  /// See info about your body measurements and heart rate in Google Fit
+  /// See info about your body measurements in Google Fit
   static const fitnessBodyReadScope =
       'https://www.googleapis.com/auth/fitness.body.read';
 
-  /// Add info about your body measurements and heart rate to Google Fit
+  /// Add info about your body measurements to Google Fit
   static const fitnessBodyWriteScope =
       'https://www.googleapis.com/auth/fitness.body.write';
 

@@ -42,11 +42,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Allows developers to run automated tests for their mobile applications on
 /// Google infrastructure.
 class TestingApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -866,8 +868,6 @@ class AndroidModel {
 
 /// A test of an android application that explores the application on a virtual
 /// or physical Android Device, finding culprits and crashes as it goes.
-///
-/// Next tag: 30
 class AndroidRoboTest {
   /// The APK for the application under test.
   FileReference? appApk;
@@ -904,8 +904,8 @@ class AndroidRoboTest {
   ///
   /// Most clients should allow the server to populate this field automatically.
   /// Possible string values are:
-  /// - "ROBO_MODE_UNSPECIFIED" : LINT.IfChange This means that the server
-  /// should choose the mode. Recommended.
+  /// - "ROBO_MODE_UNSPECIFIED" : This means that the server should choose the
+  /// mode. Recommended.
   /// - "ROBO_VERSION_1" : Runs Robo in UIAutomator-only mode without app
   /// resigning
   /// - "ROBO_VERSION_2" : Runs Robo in standard Espresso with UIAutomator
@@ -2268,9 +2268,9 @@ class IosTestSetup {
   /// List of directories on the device to upload to Cloud Storage at the end of
   /// the test.
   ///
-  /// Directories should either be in a shared directory (e.g.
+  /// Directories should either be in a shared directory (such as
   /// /private/var/mobile/Media) or within an accessible directory inside the
-  /// app's filesystem (e.g. /Documents) by specifying the bundle id.
+  /// app's filesystem (such as /Documents) by specifying the bundle ID.
   core.List<IosDeviceFile>? pullDirectories;
 
   /// List of files to push to the device before starting the test.
@@ -2714,10 +2714,10 @@ class ProvidedSoftwareCatalog {
   /// https://maven.google.com/web/index.html#androidx.test:orchestrator.
   core.String? androidxOrchestratorVersion;
 
-  /// A string representing the current version of Android Test Orchestrator
-  /// that is used in the environment.
+  /// Deprecated: Use AndroidX Test Orchestrator going forward.
   ///
-  /// The package is available at
+  /// A string representing the current version of Android Test Orchestrator
+  /// that is used in the environment. The package is available at
   /// https://maven.google.com/web/index.html#com.android.support.test:orchestrator.
   core.String? orchestratorVersion;
 

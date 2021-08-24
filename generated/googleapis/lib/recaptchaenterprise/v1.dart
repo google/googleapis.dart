@@ -36,7 +36,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class RecaptchaEnterpriseApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -880,6 +881,12 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
   /// data.
   core.List<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>? challengeMetrics;
 
+  /// The name of the metrics, in the format
+  /// "projects/{project}/keys/{key}/metrics".
+  ///
+  /// Output only.
+  core.String? name;
+
   /// Metrics will be continuous and in order by dates, and in the granularity
   /// of day.
   ///
@@ -891,6 +898,7 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
 
   GoogleCloudRecaptchaenterpriseV1Metrics({
     this.challengeMetrics,
+    this.name,
     this.scoreMetrics,
     this.startTime,
   });
@@ -906,6 +914,7 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
                                   value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
           scoreMetrics: _json.containsKey('scoreMetrics')
               ? (_json['scoreMetrics'] as core.List)
                   .map<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>((value) =>
@@ -922,6 +931,7 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
         if (challengeMetrics != null)
           'challengeMetrics':
               challengeMetrics!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (scoreMetrics != null)
           'scoreMetrics': scoreMetrics!.map((value) => value.toJson()).toList(),
         if (startTime != null) 'startTime': startTime!,

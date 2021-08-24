@@ -60,12 +60,12 @@ void checkGoogleMapsPlayablelocationsV3Impression(
   buildCounterGoogleMapsPlayablelocationsV3Impression--;
 }
 
-core.List<api.GoogleMapsPlayablelocationsV3Impression> buildUnnamed4853() => [
+core.List<api.GoogleMapsPlayablelocationsV3Impression> buildUnnamed4897() => [
       buildGoogleMapsPlayablelocationsV3Impression(),
       buildGoogleMapsPlayablelocationsV3Impression(),
     ];
 
-void checkUnnamed4853(
+void checkUnnamed4897(
     core.List<api.GoogleMapsPlayablelocationsV3Impression> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleMapsPlayablelocationsV3Impression(o[0]);
@@ -79,7 +79,7 @@ api.GoogleMapsPlayablelocationsV3LogImpressionsRequest
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest < 3) {
     o.clientInfo = buildGoogleMapsUnityClientInfo();
-    o.impressions = buildUnnamed4853();
+    o.impressions = buildUnnamed4897();
     o.requestId = 'foo';
   }
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest--;
@@ -91,7 +91,7 @@ void checkGoogleMapsPlayablelocationsV3LogImpressionsRequest(
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest < 3) {
     checkGoogleMapsUnityClientInfo(o.clientInfo!);
-    checkUnnamed4853(o.impressions!);
+    checkUnnamed4897(o.impressions!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -117,12 +117,12 @@ void checkGoogleMapsPlayablelocationsV3LogImpressionsResponse(
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsResponse--;
 }
 
-core.List<api.GoogleMapsPlayablelocationsV3PlayerReport> buildUnnamed4854() => [
+core.List<api.GoogleMapsPlayablelocationsV3PlayerReport> buildUnnamed4898() => [
       buildGoogleMapsPlayablelocationsV3PlayerReport(),
       buildGoogleMapsPlayablelocationsV3PlayerReport(),
     ];
 
-void checkUnnamed4854(
+void checkUnnamed4898(
     core.List<api.GoogleMapsPlayablelocationsV3PlayerReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleMapsPlayablelocationsV3PlayerReport(o[0]);
@@ -136,7 +136,7 @@ api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest < 3) {
     o.clientInfo = buildGoogleMapsUnityClientInfo();
-    o.playerReports = buildUnnamed4854();
+    o.playerReports = buildUnnamed4898();
     o.requestId = 'foo';
   }
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest--;
@@ -148,7 +148,7 @@ void checkGoogleMapsPlayablelocationsV3LogPlayerReportsRequest(
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest < 3) {
     checkGoogleMapsUnityClientInfo(o.clientInfo!);
-    checkUnnamed4854(o.playerReports!);
+    checkUnnamed4898(o.playerReports!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -174,12 +174,12 @@ void checkGoogleMapsPlayablelocationsV3LogPlayerReportsResponse(
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsResponse--;
 }
 
-core.List<core.String> buildUnnamed4855() => [
+core.List<core.String> buildUnnamed4899() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4855(core.List<core.String> o) {
+void checkUnnamed4899(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -200,7 +200,7 @@ api.GoogleMapsPlayablelocationsV3PlayerReport
     o.languageCode = 'foo';
     o.locationName = 'foo';
     o.reasonDetails = 'foo';
-    o.reasons = buildUnnamed4855();
+    o.reasons = buildUnnamed4899();
   }
   buildCounterGoogleMapsPlayablelocationsV3PlayerReport--;
   return o;
@@ -222,7 +222,7 @@ void checkGoogleMapsPlayablelocationsV3PlayerReport(
       o.reasonDetails!,
       unittest.equals('foo'),
     );
-    checkUnnamed4855(o.reasons!);
+    checkUnnamed4899(o.reasons!);
   }
   buildCounterGoogleMapsPlayablelocationsV3PlayerReport--;
 }
@@ -282,12 +282,12 @@ void checkGoogleMapsPlayablelocationsV3SampleCriterion(
   buildCounterGoogleMapsPlayablelocationsV3SampleCriterion--;
 }
 
-core.List<core.String> buildUnnamed4856() => [
+core.List<core.String> buildUnnamed4900() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4856(core.List<core.String> o) {
+void checkUnnamed4900(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -305,7 +305,7 @@ api.GoogleMapsPlayablelocationsV3SampleFilter
   final o = api.GoogleMapsPlayablelocationsV3SampleFilter();
   buildCounterGoogleMapsPlayablelocationsV3SampleFilter++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleFilter < 3) {
-    o.includedTypes = buildUnnamed4856();
+    o.includedTypes = buildUnnamed4900();
     o.maxLocationCount = 42;
     o.spacing = buildGoogleMapsPlayablelocationsV3SampleSpacingOptions();
   }
@@ -317,7 +317,7 @@ void checkGoogleMapsPlayablelocationsV3SampleFilter(
     api.GoogleMapsPlayablelocationsV3SampleFilter o) {
   buildCounterGoogleMapsPlayablelocationsV3SampleFilter++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleFilter < 3) {
-    checkUnnamed4856(o.includedTypes!);
+    checkUnnamed4900(o.includedTypes!);
     unittest.expect(
       o.maxLocationCount!,
       unittest.equals(42),
@@ -327,12 +327,12 @@ void checkGoogleMapsPlayablelocationsV3SampleFilter(
   buildCounterGoogleMapsPlayablelocationsV3SampleFilter--;
 }
 
-core.List<core.String> buildUnnamed4857() => [
+core.List<core.String> buildUnnamed4901() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4857(core.List<core.String> o) {
+void checkUnnamed4901(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -355,7 +355,7 @@ api.GoogleMapsPlayablelocationsV3SamplePlayableLocation
     o.placeId = 'foo';
     o.plusCode = 'foo';
     o.snappedPoint = buildGoogleTypeLatLng();
-    o.types = buildUnnamed4857();
+    o.types = buildUnnamed4901();
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation--;
   return o;
@@ -379,18 +379,18 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(
       unittest.equals('foo'),
     );
     checkGoogleTypeLatLng(o.snappedPoint!);
-    checkUnnamed4857(o.types!);
+    checkUnnamed4901(o.types!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation--;
 }
 
 core.List<api.GoogleMapsPlayablelocationsV3SamplePlayableLocation>
-    buildUnnamed4858() => [
+    buildUnnamed4902() => [
           buildGoogleMapsPlayablelocationsV3SamplePlayableLocation(),
           buildGoogleMapsPlayablelocationsV3SamplePlayableLocation(),
         ];
 
-void checkUnnamed4858(
+void checkUnnamed4902(
     core.List<api.GoogleMapsPlayablelocationsV3SamplePlayableLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(o[0]);
@@ -404,7 +404,7 @@ api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList
   final o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList();
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList < 3) {
-    o.locations = buildUnnamed4858();
+    o.locations = buildUnnamed4902();
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList--;
   return o;
@@ -414,18 +414,18 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(
     api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList o) {
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList < 3) {
-    checkUnnamed4858(o.locations!);
+    checkUnnamed4902(o.locations!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList--;
 }
 
 core.List<api.GoogleMapsPlayablelocationsV3SampleCriterion>
-    buildUnnamed4859() => [
+    buildUnnamed4903() => [
           buildGoogleMapsPlayablelocationsV3SampleCriterion(),
           buildGoogleMapsPlayablelocationsV3SampleCriterion(),
         ];
 
-void checkUnnamed4859(
+void checkUnnamed4903(
     core.List<api.GoogleMapsPlayablelocationsV3SampleCriterion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleMapsPlayablelocationsV3SampleCriterion(o[0]);
@@ -441,7 +441,7 @@ api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest <
       3) {
     o.areaFilter = buildGoogleMapsPlayablelocationsV3SampleAreaFilter();
-    o.criteria = buildUnnamed4859();
+    o.criteria = buildUnnamed4903();
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest--;
   return o;
@@ -453,19 +453,19 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest(
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest <
       3) {
     checkGoogleMapsPlayablelocationsV3SampleAreaFilter(o.areaFilter!);
-    checkUnnamed4859(o.criteria!);
+    checkUnnamed4903(o.criteria!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest--;
 }
 
 core.Map<core.String,
         api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList>
-    buildUnnamed4860() => {
+    buildUnnamed4904() => {
           'x': buildGoogleMapsPlayablelocationsV3SamplePlayableLocationList(),
           'y': buildGoogleMapsPlayablelocationsV3SamplePlayableLocationList(),
         };
 
-void checkUnnamed4860(
+void checkUnnamed4904(
     core.Map<core.String,
             api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList>
         o) {
@@ -483,7 +483,7 @@ api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse <
       3) {
-    o.locationsPerGameObjectType = buildUnnamed4860();
+    o.locationsPerGameObjectType = buildUnnamed4904();
     o.ttl = 'foo';
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse--;
@@ -495,7 +495,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse(
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse <
       3) {
-    checkUnnamed4860(o.locationsPerGameObjectType!);
+    checkUnnamed4904(o.locationsPerGameObjectType!);
     unittest.expect(
       o.ttl!,
       unittest.equals('foo'),

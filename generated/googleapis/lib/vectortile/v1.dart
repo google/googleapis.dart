@@ -287,14 +287,16 @@ class TerraintilesResource {
   /// For example: Original resolution: 100px (width) * 30px (height)
   /// max_elevation_resolution: 30 New resolution: 30px (width) * 30px (height)
   ///
-  /// [minElevationResolutionCells] - The minimum allowed resolution for the
-  /// returned elevation heightmap. Possible values: between 0 and 1024 (and not
-  /// more than max_elevation_resolution_cells). Zero is supported for backward
-  /// compatibility. Under-sized heightmaps will be non-uniformly up-sampled
-  /// such that each edge is no shorter than this value. Non-uniformity is
-  /// chosen to maximise the amount of preserved data. For example: Original
-  /// resolution: 30px (width) * 10px (height) min_elevation_resolution: 30 New
-  /// resolution: 30px (width) * 30px (height)
+  /// [minElevationResolutionCells] - api-linter:
+  /// core::0131::request-unknown-fields=disabled aip.dev/not-precedent:
+  /// Maintaining existing request parameter pattern. The minimum allowed
+  /// resolution for the returned elevation heightmap. Possible values: between
+  /// 0 and 1024 (and not more than max_elevation_resolution_cells). Zero is
+  /// supported for backward compatibility. Under-sized heightmaps will be
+  /// non-uniformly up-sampled such that each edge is no shorter than this
+  /// value. Non-uniformity is chosen to maximise the amount of preserved data.
+  /// For example: Original resolution: 30px (width) * 10px (height)
+  /// min_elevation_resolution: 30 New resolution: 30px (width) * 30px (height)
   ///
   /// [terrainFormats] - Terrain formats that the client understands.
   ///
@@ -806,7 +808,9 @@ class FeatureTile {
 /// Rather than storing the altitudes directly, we store the diffs between them
 /// as integers at some requested level of precision to take advantage of
 /// integer packing. The actual altitude values a\[\] can be reconstructed using
-/// the scale and each row's first_altitude and altitude_diff fields.
+/// the scale and each row's first_altitude and altitude_diff fields. More
+/// details in go/elevation-encoding-options-for-enduro under "Recommended
+/// implementation".
 class FirstDerivativeElevationGrid {
   /// A multiplier applied to the altitude fields below to extract the actual
   /// altitudes in meters from the elevation grid.
@@ -1252,6 +1256,8 @@ class TerrainTile {
   TileCoordinates? coordinates;
 
   /// Terrain elevation data encoded as a FirstDerivativeElevationGrid.
+  ///
+  /// cs/symbol:FirstDerivativeElevationGrid.
   FirstDerivativeElevationGrid? firstDerivative;
 
   /// Resource name of the tile.
@@ -1263,7 +1269,8 @@ class TerrainTile {
 
   /// Terrain elevation data encoded as a SecondDerivativeElevationGrid.
   ///
-  /// .
+  /// cs/symbol:SecondDerivativeElevationGrid. See go/byte-encoded-terrain for
+  /// more details.
   SecondDerivativeElevationGrid? secondDerivative;
 
   TerrainTile({

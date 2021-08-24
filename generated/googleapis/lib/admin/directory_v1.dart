@@ -186,7 +186,8 @@ class DirectoryApi {
   static const adminDirectoryUserschemaReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.userschema.readonly';
 
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

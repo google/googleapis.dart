@@ -50,7 +50,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Builds and manages container-based applications, powered by the open source
 /// Kubernetes technology.
 class ContainerApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -3510,9 +3511,16 @@ class AcceleratorConfig {
   /// [here](https://cloud.google.com/compute/docs/gpus)
   core.String? acceleratorType;
 
+  /// Size of partitions to create on the GPU.
+  ///
+  /// Valid values are described in the NVIDIA
+  /// [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+  core.String? gpuPartitionSize;
+
   AcceleratorConfig({
     this.acceleratorCount,
     this.acceleratorType,
+    this.gpuPartitionSize,
   });
 
   AcceleratorConfig.fromJson(core.Map _json)
@@ -3523,11 +3531,15 @@ class AcceleratorConfig {
           acceleratorType: _json.containsKey('acceleratorType')
               ? _json['acceleratorType'] as core.String
               : null,
+          gpuPartitionSize: _json.containsKey('gpuPartitionSize')
+              ? _json['gpuPartitionSize'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (gpuPartitionSize != null) 'gpuPartitionSize': gpuPartitionSize!,
       };
 }
 
@@ -3547,6 +3559,9 @@ class AddonsConfig {
 
   /// Configuration for the Compute Engine Persistent Disk CSI driver.
   GcePersistentDiskCsiDriverConfig? gcePersistentDiskCsiDriverConfig;
+
+  /// Configuration for the GCP Filestore CSI driver.
+  GcpFilestoreCsiDriverConfig? gcpFilestoreCsiDriverConfig;
 
   /// Configuration for the horizontal pod autoscaling feature, which increases
   /// or decreases the number of replica pods a replication controller has based
@@ -3576,6 +3591,7 @@ class AddonsConfig {
     this.configConnectorConfig,
     this.dnsCacheConfig,
     this.gcePersistentDiskCsiDriverConfig,
+    this.gcpFilestoreCsiDriverConfig,
     this.horizontalPodAutoscaling,
     this.httpLoadBalancing,
     this.kubernetesDashboard,
@@ -3600,6 +3616,12 @@ class AddonsConfig {
               _json.containsKey('gcePersistentDiskCsiDriverConfig')
                   ? GcePersistentDiskCsiDriverConfig.fromJson(
                       _json['gcePersistentDiskCsiDriverConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          gcpFilestoreCsiDriverConfig:
+              _json.containsKey('gcpFilestoreCsiDriverConfig')
+                  ? GcpFilestoreCsiDriverConfig.fromJson(
+                      _json['gcpFilestoreCsiDriverConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           horizontalPodAutoscaling:
@@ -3630,6 +3652,8 @@ class AddonsConfig {
         if (gcePersistentDiskCsiDriverConfig != null)
           'gcePersistentDiskCsiDriverConfig':
               gcePersistentDiskCsiDriverConfig!.toJson(),
+        if (gcpFilestoreCsiDriverConfig != null)
+          'gcpFilestoreCsiDriverConfig': gcpFilestoreCsiDriverConfig!.toJson(),
         if (horizontalPodAutoscaling != null)
           'horizontalPodAutoscaling': horizontalPodAutoscaling!.toJson(),
         if (httpLoadBalancing != null)
@@ -4204,6 +4228,9 @@ class Cluster {
   /// of all node pools and will result in nodes being added and/or removed.
   core.List<core.String>? locations;
 
+  /// Logging configuration for the cluster.
+  LoggingConfig? loggingConfig;
+
   /// The logging service the cluster should use to write logs.
   ///
   /// Currently available options: * `logging.googleapis.com/kubernetes` - The
@@ -4227,6 +4254,9 @@ class Cluster {
 
   /// The configuration options for master authorized networks feature.
   MasterAuthorizedNetworksConfig? masterAuthorizedNetworksConfig;
+
+  /// Monitoring configuration for the cluster.
+  MonitoringConfig? monitoringConfig;
 
   /// The monitoring service the cluster should use to write metrics.
   ///
@@ -4407,10 +4437,12 @@ class Cluster {
     this.legacyAbac,
     this.location,
     this.locations,
+    this.loggingConfig,
     this.loggingService,
     this.maintenancePolicy,
     this.masterAuth,
     this.masterAuthorizedNetworksConfig,
+    this.monitoringConfig,
     this.monitoringService,
     this.name,
     this.network,
@@ -4540,6 +4572,10 @@ class Cluster {
                   .map<core.String>((value) => value as core.String)
                   .toList()
               : null,
+          loggingConfig: _json.containsKey('loggingConfig')
+              ? LoggingConfig.fromJson(
+                  _json['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           loggingService: _json.containsKey('loggingService')
               ? _json['loggingService'] as core.String
               : null,
@@ -4557,6 +4593,10 @@ class Cluster {
                       _json['masterAuthorizedNetworksConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          monitoringConfig: _json.containsKey('monitoringConfig')
+              ? MonitoringConfig.fromJson(_json['monitoringConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           monitoringService: _json.containsKey('monitoringService')
               ? _json['monitoringService'] as core.String
               : null,
@@ -4685,6 +4725,7 @@ class Cluster {
         if (legacyAbac != null) 'legacyAbac': legacyAbac!.toJson(),
         if (location != null) 'location': location!,
         if (locations != null) 'locations': locations!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
         if (loggingService != null) 'loggingService': loggingService!,
         if (maintenancePolicy != null)
           'maintenancePolicy': maintenancePolicy!.toJson(),
@@ -4692,6 +4733,8 @@ class Cluster {
         if (masterAuthorizedNetworksConfig != null)
           'masterAuthorizedNetworksConfig':
               masterAuthorizedNetworksConfig!.toJson(),
+        if (monitoringConfig != null)
+          'monitoringConfig': monitoringConfig!.toJson(),
         if (monitoringService != null) 'monitoringService': monitoringService!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
@@ -4737,6 +4780,13 @@ class ClusterAutoscaling {
   /// by NAP.
   AutoprovisioningNodePoolDefaults? autoprovisioningNodePoolDefaults;
 
+  /// Defines autoscaling behaviour.
+  /// Possible string values are:
+  /// - "PROFILE_UNSPECIFIED" : No change to autoscaling configuration.
+  /// - "OPTIMIZE_UTILIZATION" : Prioritize optimizing utilization of resources.
+  /// - "BALANCED" : Use default (balanced) autoscaling configuration.
+  core.String? autoscalingProfile;
+
   /// Enables automatic node pool creation and deletion.
   core.bool? enableNodeAutoprovisioning;
 
@@ -4747,6 +4797,7 @@ class ClusterAutoscaling {
   ClusterAutoscaling({
     this.autoprovisioningLocations,
     this.autoprovisioningNodePoolDefaults,
+    this.autoscalingProfile,
     this.enableNodeAutoprovisioning,
     this.resourceLimits,
   });
@@ -4765,6 +4816,9 @@ class ClusterAutoscaling {
                       _json['autoprovisioningNodePoolDefaults']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          autoscalingProfile: _json.containsKey('autoscalingProfile')
+              ? _json['autoscalingProfile'] as core.String
+              : null,
           enableNodeAutoprovisioning:
               _json.containsKey('enableNodeAutoprovisioning')
                   ? _json['enableNodeAutoprovisioning'] as core.bool
@@ -4783,6 +4837,8 @@ class ClusterAutoscaling {
         if (autoprovisioningNodePoolDefaults != null)
           'autoprovisioningNodePoolDefaults':
               autoprovisioningNodePoolDefaults!.toJson(),
+        if (autoscalingProfile != null)
+          'autoscalingProfile': autoscalingProfile!,
         if (enableNodeAutoprovisioning != null)
           'enableNodeAutoprovisioning': enableNodeAutoprovisioning!,
         if (resourceLimits != null)
@@ -4847,6 +4903,9 @@ class ClusterUpdate {
   /// will result in nodes being added and/or removed.
   core.List<core.String>? desiredLocations;
 
+  /// The desired logging configuration.
+  LoggingConfig? desiredLoggingConfig;
+
   /// The logging service the cluster should use to write logs.
   ///
   /// Currently available options: * `logging.googleapis.com/kubernetes` - The
@@ -4870,6 +4929,9 @@ class ClusterUpdate {
   /// gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit
   /// Kubernetes version - "-": picks the default Kubernetes version
   core.String? desiredMasterVersion;
+
+  /// The desired monitoring configuration.
+  MonitoringConfig? desiredMonitoringConfig;
 
   /// The monitoring service the cluster should use to write metrics.
   ///
@@ -4952,9 +5014,11 @@ class ClusterUpdate {
     this.desiredIntraNodeVisibilityConfig,
     this.desiredL4ilbSubsettingConfig,
     this.desiredLocations,
+    this.desiredLoggingConfig,
     this.desiredLoggingService,
     this.desiredMasterAuthorizedNetworksConfig,
     this.desiredMasterVersion,
+    this.desiredMonitoringConfig,
     this.desiredMonitoringService,
     this.desiredNodePoolAutoscaling,
     this.desiredNodePoolId,
@@ -5028,6 +5092,10 @@ class ClusterUpdate {
                   .map<core.String>((value) => value as core.String)
                   .toList()
               : null,
+          desiredLoggingConfig: _json.containsKey('desiredLoggingConfig')
+              ? LoggingConfig.fromJson(_json['desiredLoggingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           desiredLoggingService: _json.containsKey('desiredLoggingService')
               ? _json['desiredLoggingService'] as core.String
               : null,
@@ -5039,6 +5107,10 @@ class ClusterUpdate {
                   : null,
           desiredMasterVersion: _json.containsKey('desiredMasterVersion')
               ? _json['desiredMasterVersion'] as core.String
+              : null,
+          desiredMonitoringConfig: _json.containsKey('desiredMonitoringConfig')
+              ? MonitoringConfig.fromJson(_json['desiredMonitoringConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           desiredMonitoringService:
               _json.containsKey('desiredMonitoringService')
@@ -5124,6 +5196,8 @@ class ClusterUpdate {
           'desiredL4ilbSubsettingConfig':
               desiredL4ilbSubsettingConfig!.toJson(),
         if (desiredLocations != null) 'desiredLocations': desiredLocations!,
+        if (desiredLoggingConfig != null)
+          'desiredLoggingConfig': desiredLoggingConfig!.toJson(),
         if (desiredLoggingService != null)
           'desiredLoggingService': desiredLoggingService!,
         if (desiredMasterAuthorizedNetworksConfig != null)
@@ -5131,6 +5205,8 @@ class ClusterUpdate {
               desiredMasterAuthorizedNetworksConfig!.toJson(),
         if (desiredMasterVersion != null)
           'desiredMasterVersion': desiredMasterVersion!,
+        if (desiredMonitoringConfig != null)
+          'desiredMonitoringConfig': desiredMonitoringConfig!.toJson(),
         if (desiredMonitoringService != null)
           'desiredMonitoringService': desiredMonitoringService!,
         if (desiredNodePoolAutoscaling != null)
@@ -5563,6 +5639,27 @@ class GcePersistentDiskCsiDriverConfig {
   });
 
   GcePersistentDiskCsiDriverConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Configuration for the GCP Filestore CSI driver.
+class GcpFilestoreCsiDriverConfig {
+  /// Whether the GCP Filestore CSI driver is enabled for this cluster.
+  core.bool? enabled;
+
+  GcpFilestoreCsiDriverConfig({
+    this.enabled,
+  });
+
+  GcpFilestoreCsiDriverConfig.fromJson(core.Map _json)
       : this(
           enabled: _json.containsKey('enabled')
               ? _json['enabled'] as core.bool
@@ -6298,6 +6395,54 @@ class ListUsableSubnetworksResponse {
       };
 }
 
+/// LoggingComponentConfig is cluster logging component configuration.
+class LoggingComponentConfig {
+  /// Select components to collect logs.
+  ///
+  /// An empty set would disable all logging.
+  core.List<core.String>? enableComponents;
+
+  LoggingComponentConfig({
+    this.enableComponents,
+  });
+
+  LoggingComponentConfig.fromJson(core.Map _json)
+      : this(
+          enableComponents: _json.containsKey('enableComponents')
+              ? (_json['enableComponents'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableComponents != null) 'enableComponents': enableComponents!,
+      };
+}
+
+/// LoggingConfig is cluster logging configuration.
+class LoggingConfig {
+  /// Logging components configuration
+  LoggingComponentConfig? componentConfig;
+
+  LoggingConfig({
+    this.componentConfig,
+  });
+
+  LoggingConfig.fromJson(core.Map _json)
+      : this(
+          componentConfig: _json.containsKey('componentConfig')
+              ? LoggingComponentConfig.fromJson(_json['componentConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (componentConfig != null)
+          'componentConfig': componentConfig!.toJson(),
+      };
+}
+
 /// MaintenancePolicy defines the maintenance policy to be used for the cluster.
 class MaintenancePolicy {
   /// A hash identifying the version of this policy, so that updates to fields
@@ -6589,6 +6734,54 @@ class Metric {
       };
 }
 
+/// MonitoringComponentConfig is cluster monitoring component configuration.
+class MonitoringComponentConfig {
+  /// Select components to collect metrics.
+  ///
+  /// An empty set would disable all monitoring.
+  core.List<core.String>? enableComponents;
+
+  MonitoringComponentConfig({
+    this.enableComponents,
+  });
+
+  MonitoringComponentConfig.fromJson(core.Map _json)
+      : this(
+          enableComponents: _json.containsKey('enableComponents')
+              ? (_json['enableComponents'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableComponents != null) 'enableComponents': enableComponents!,
+      };
+}
+
+/// MonitoringConfig is cluster monitoring configuration.
+class MonitoringConfig {
+  /// Monitoring components configuration
+  MonitoringComponentConfig? componentConfig;
+
+  MonitoringConfig({
+    this.componentConfig,
+  });
+
+  MonitoringConfig.fromJson(core.Map _json)
+      : this(
+          componentConfig: _json.containsKey('componentConfig')
+              ? MonitoringComponentConfig.fromJson(_json['componentConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (componentConfig != null)
+          'componentConfig': componentConfig!.toJson(),
+      };
+}
+
 /// NetworkConfig reports the relative names of network & subnetwork.
 class NetworkConfig {
   /// The desired datapath provider for this cluster.
@@ -6789,6 +6982,9 @@ class NodeConfig {
   /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String? diskType;
 
+  /// Enable or disable gvnic in the node pool.
+  VirtualNIC? gvnic;
+
   /// The image type to use for this node.
   ///
   /// Note that for a given image type, the latest version of it will be used.
@@ -6834,12 +7030,11 @@ class NodeConfig {
   /// "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" -
   /// "kube-env" - "startup-script" - "user-data" - "disable-address-manager" -
   /// "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" -
-  /// "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved
-  /// for Windows nodes: - "serial-port-logging-enable" Values are free-form
-  /// strings, and only have meaning as interpreted by the image running in the
-  /// instance. The only restriction placed on them is that each value's size
-  /// must be less than or equal to 32 KB. The total size of all keys and values
-  /// must be less than 512 KB.
+  /// "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and
+  /// only have meaning as interpreted by the image running in the instance. The
+  /// only restriction placed on them is that each value's size must be less
+  /// than or equal to 32 KB. The total size of all keys and values must be less
+  /// than 512 KB.
   core.Map<core.String, core.String>? metadata;
 
   /// Minimum CPU platform to be used by this instance.
@@ -6917,6 +7112,7 @@ class NodeConfig {
     this.bootDiskKmsKey,
     this.diskSizeGb,
     this.diskType,
+    this.gvnic,
     this.imageType,
     this.kubeletConfig,
     this.labels,
@@ -6953,6 +7149,10 @@ class NodeConfig {
               : null,
           diskType: _json.containsKey('diskType')
               ? _json['diskType'] as core.String
+              : null,
+          gvnic: _json.containsKey('gvnic')
+              ? VirtualNIC.fromJson(
+                  _json['gvnic'] as core.Map<core.String, core.dynamic>)
               : null,
           imageType: _json.containsKey('imageType')
               ? _json['imageType'] as core.String
@@ -7039,6 +7239,7 @@ class NodeConfig {
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
+        if (gvnic != null) 'gvnic': gvnic!.toJson(),
         if (imageType != null) 'imageType': imageType!,
         if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!.toJson(),
         if (labels != null) 'labels': labels!,
@@ -7169,6 +7370,63 @@ class NodeManagement {
       };
 }
 
+/// Parameters for node pool-level network config.
+class NodeNetworkConfig {
+  /// Input only.
+  ///
+  /// Whether to create a new range for pod IPs in this node pool. Defaults are
+  /// provided for `pod_range` and `pod_ipv4_cidr_block` if they are not
+  /// specified. If neither `create_pod_range` or `pod_range` are specified, the
+  /// cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is
+  /// used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+  /// This field cannot be changed after the node pool has been created.
+  core.bool? createPodRange;
+
+  /// The IP address range for pod IPs in this node pool.
+  ///
+  /// Only applicable if `create_pod_range` is true. Set to blank to have a
+  /// range chosen with the default size. Set to /netmask (e.g. `/14`) to have a
+  /// range chosen with a specific netmask. Set to a
+  /// [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+  /// notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only
+  /// applicable if `ip_allocation_policy.use_ip_aliases` is true. This field
+  /// cannot be changed after the node pool has been created.
+  core.String? podIpv4CidrBlock;
+
+  /// The ID of the secondary range for pod IPs.
+  ///
+  /// If `create_pod_range` is true, this ID is used for the new range. If
+  /// `create_pod_range` is false, uses an existing secondary range with this
+  /// ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This
+  /// field cannot be changed after the node pool has been created.
+  core.String? podRange;
+
+  NodeNetworkConfig({
+    this.createPodRange,
+    this.podIpv4CidrBlock,
+    this.podRange,
+  });
+
+  NodeNetworkConfig.fromJson(core.Map _json)
+      : this(
+          createPodRange: _json.containsKey('createPodRange')
+              ? _json['createPodRange'] as core.bool
+              : null,
+          podIpv4CidrBlock: _json.containsKey('podIpv4CidrBlock')
+              ? _json['podIpv4CidrBlock'] as core.String
+              : null,
+          podRange: _json.containsKey('podRange')
+              ? _json['podRange'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createPodRange != null) 'createPodRange': createPodRange!,
+        if (podIpv4CidrBlock != null) 'podIpv4CidrBlock': podIpv4CidrBlock!,
+        if (podRange != null) 'podRange': podRange!,
+      };
+}
+
 /// NodePool contains the name and configuration for a cluster's node pool.
 ///
 /// Node pools are a set of nodes (i.e. VM's), with a common configuration and
@@ -7222,6 +7480,11 @@ class NodePool {
 
   /// The name of the node pool.
   core.String? name;
+
+  /// Networking configuration for this NodePool.
+  ///
+  /// If specified, it overrides the cluster-level defaults.
+  NodeNetworkConfig? networkConfig;
 
   /// The pod CIDR block size per node in this node pool.
   ///
@@ -7279,6 +7542,7 @@ class NodePool {
     this.management,
     this.maxPodsConstraint,
     this.name,
+    this.networkConfig,
     this.podIpv4CidrSize,
     this.selfLink,
     this.status,
@@ -7325,6 +7589,10 @@ class NodePool {
                   as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          networkConfig: _json.containsKey('networkConfig')
+              ? NodeNetworkConfig.fromJson(
+                  _json['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           podIpv4CidrSize: _json.containsKey('podIpv4CidrSize')
               ? _json['podIpv4CidrSize'] as core.int
               : null,
@@ -7358,6 +7626,7 @@ class NodePool {
         if (maxPodsConstraint != null)
           'maxPodsConstraint': maxPodsConstraint!.toJson(),
         if (name != null) 'name': name!,
+        if (networkConfig != null) 'networkConfig': networkConfig!.toJson(),
         if (podIpv4CidrSize != null) 'podIpv4CidrSize': podIpv4CidrSize!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
@@ -9758,6 +10027,9 @@ class UpdateNodePoolRequest {
   /// Deprecated.
   core.String? clusterId;
 
+  /// Enable or disable gvnic on the node pool.
+  VirtualNIC? gvnic;
+
   /// The desired image type for the node pool.
   ///
   /// Required.
@@ -9829,6 +10101,7 @@ class UpdateNodePoolRequest {
 
   UpdateNodePoolRequest({
     this.clusterId,
+    this.gvnic,
     this.imageType,
     this.kubeletConfig,
     this.linuxNodeConfig,
@@ -9846,6 +10119,10 @@ class UpdateNodePoolRequest {
       : this(
           clusterId: _json.containsKey('clusterId')
               ? _json['clusterId'] as core.String
+              : null,
+          gvnic: _json.containsKey('gvnic')
+              ? VirtualNIC.fromJson(
+                  _json['gvnic'] as core.Map<core.String, core.dynamic>)
               : null,
           imageType: _json.containsKey('imageType')
               ? _json['imageType'] as core.String
@@ -9886,6 +10163,7 @@ class UpdateNodePoolRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
+        if (gvnic != null) 'gvnic': gvnic!.toJson(),
         if (imageType != null) 'imageType': imageType!,
         if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!.toJson(),
         if (linuxNodeConfig != null)
@@ -10206,6 +10484,27 @@ class VerticalPodAutoscaling {
   });
 
   VerticalPodAutoscaling.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Configuration of gVNIC feature.
+class VirtualNIC {
+  /// Whether gVNIC features are enabled in the node pool.
+  core.bool? enabled;
+
+  VirtualNIC({
+    this.enabled,
+  });
+
+  VirtualNIC.fromJson(core.Map _json)
       : this(
           enabled: _json.containsKey('enabled')
               ? _json['enabled'] as core.bool

@@ -41,7 +41,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Provides ways to manage Bare Metal Solution hardware installed in a regional
 /// extension located near a Google Cloud data center.
 class BaremetalsolutionApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

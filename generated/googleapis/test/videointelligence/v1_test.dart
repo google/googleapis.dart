@@ -27,12 +27,12 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.GoogleCloudVideointelligenceV1VideoAnnotationProgress>
-    buildUnnamed358() => [
+    buildUnnamed360() => [
           buildGoogleCloudVideointelligenceV1VideoAnnotationProgress(),
           buildGoogleCloudVideointelligenceV1VideoAnnotationProgress(),
         ];
 
-void checkUnnamed358(
+void checkUnnamed360(
     core.List<api.GoogleCloudVideointelligenceV1VideoAnnotationProgress> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1VideoAnnotationProgress(o[0]);
@@ -45,7 +45,7 @@ api.GoogleCloudVideointelligenceV1AnnotateVideoProgress
   final o = api.GoogleCloudVideointelligenceV1AnnotateVideoProgress();
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1AnnotateVideoProgress < 3) {
-    o.annotationProgress = buildUnnamed358();
+    o.annotationProgress = buildUnnamed360();
   }
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoProgress--;
   return o;
@@ -55,17 +55,17 @@ void checkGoogleCloudVideointelligenceV1AnnotateVideoProgress(
     api.GoogleCloudVideointelligenceV1AnnotateVideoProgress o) {
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1AnnotateVideoProgress < 3) {
-    checkUnnamed358(o.annotationProgress!);
+    checkUnnamed360(o.annotationProgress!);
   }
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoProgress--;
 }
 
-core.List<core.String> buildUnnamed359() => [
+core.List<core.String> buildUnnamed361() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed359(core.List<core.String> o) {
+void checkUnnamed361(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -83,7 +83,7 @@ api.GoogleCloudVideointelligenceV1AnnotateVideoRequest
   final o = api.GoogleCloudVideointelligenceV1AnnotateVideoRequest();
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoRequest++;
   if (buildCounterGoogleCloudVideointelligenceV1AnnotateVideoRequest < 3) {
-    o.features = buildUnnamed359();
+    o.features = buildUnnamed361();
     o.inputContent = 'foo';
     o.inputUri = 'foo';
     o.locationId = 'foo';
@@ -98,7 +98,7 @@ void checkGoogleCloudVideointelligenceV1AnnotateVideoRequest(
     api.GoogleCloudVideointelligenceV1AnnotateVideoRequest o) {
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoRequest++;
   if (buildCounterGoogleCloudVideointelligenceV1AnnotateVideoRequest < 3) {
-    checkUnnamed359(o.features!);
+    checkUnnamed361(o.features!);
     unittest.expect(
       o.inputContent!,
       unittest.equals('foo'),
@@ -121,12 +121,12 @@ void checkGoogleCloudVideointelligenceV1AnnotateVideoRequest(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1VideoAnnotationResults>
-    buildUnnamed360() => [
+    buildUnnamed362() => [
           buildGoogleCloudVideointelligenceV1VideoAnnotationResults(),
           buildGoogleCloudVideointelligenceV1VideoAnnotationResults(),
         ];
 
-void checkUnnamed360(
+void checkUnnamed362(
     core.List<api.GoogleCloudVideointelligenceV1VideoAnnotationResults> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1VideoAnnotationResults(o[0]);
@@ -139,7 +139,7 @@ api.GoogleCloudVideointelligenceV1AnnotateVideoResponse
   final o = api.GoogleCloudVideointelligenceV1AnnotateVideoResponse();
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1AnnotateVideoResponse < 3) {
-    o.annotationResults = buildUnnamed360();
+    o.annotationResults = buildUnnamed362();
   }
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoResponse--;
   return o;
@@ -149,7 +149,7 @@ void checkGoogleCloudVideointelligenceV1AnnotateVideoResponse(
     api.GoogleCloudVideointelligenceV1AnnotateVideoResponse o) {
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1AnnotateVideoResponse < 3) {
-    checkUnnamed360(o.annotationResults!);
+    checkUnnamed362(o.annotationResults!);
   }
   buildCounterGoogleCloudVideointelligenceV1AnnotateVideoResponse--;
 }
@@ -254,12 +254,12 @@ void checkGoogleCloudVideointelligenceV1Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1ExplicitContentFrame>
-    buildUnnamed361() => [
+    buildUnnamed363() => [
           buildGoogleCloudVideointelligenceV1ExplicitContentFrame(),
           buildGoogleCloudVideointelligenceV1ExplicitContentFrame(),
         ];
 
-void checkUnnamed361(
+void checkUnnamed363(
     core.List<api.GoogleCloudVideointelligenceV1ExplicitContentFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1ExplicitContentFrame(o[0]);
@@ -273,7 +273,7 @@ api.GoogleCloudVideointelligenceV1ExplicitContentAnnotation
   final o = api.GoogleCloudVideointelligenceV1ExplicitContentAnnotation();
   buildCounterGoogleCloudVideointelligenceV1ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1ExplicitContentAnnotation < 3) {
-    o.frames = buildUnnamed361();
+    o.frames = buildUnnamed363();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1ExplicitContentAnnotation--;
@@ -284,7 +284,7 @@ void checkGoogleCloudVideointelligenceV1ExplicitContentAnnotation(
     api.GoogleCloudVideointelligenceV1ExplicitContentAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1ExplicitContentAnnotation < 3) {
-    checkUnnamed361(o.frames!);
+    checkUnnamed363(o.frames!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -350,23 +350,23 @@ void checkGoogleCloudVideointelligenceV1ExplicitContentFrame(
   buildCounterGoogleCloudVideointelligenceV1ExplicitContentFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1FaceFrame> buildUnnamed362() => [
+core.List<api.GoogleCloudVideointelligenceV1FaceFrame> buildUnnamed364() => [
       buildGoogleCloudVideointelligenceV1FaceFrame(),
       buildGoogleCloudVideointelligenceV1FaceFrame(),
     ];
 
-void checkUnnamed362(core.List<api.GoogleCloudVideointelligenceV1FaceFrame> o) {
+void checkUnnamed364(core.List<api.GoogleCloudVideointelligenceV1FaceFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1FaceFrame(o[0]);
   checkGoogleCloudVideointelligenceV1FaceFrame(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1FaceSegment> buildUnnamed363() => [
+core.List<api.GoogleCloudVideointelligenceV1FaceSegment> buildUnnamed365() => [
       buildGoogleCloudVideointelligenceV1FaceSegment(),
       buildGoogleCloudVideointelligenceV1FaceSegment(),
     ];
 
-void checkUnnamed363(
+void checkUnnamed365(
     core.List<api.GoogleCloudVideointelligenceV1FaceSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1FaceSegment(o[0]);
@@ -379,8 +379,8 @@ api.GoogleCloudVideointelligenceV1FaceAnnotation
   final o = api.GoogleCloudVideointelligenceV1FaceAnnotation();
   buildCounterGoogleCloudVideointelligenceV1FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1FaceAnnotation < 3) {
-    o.frames = buildUnnamed362();
-    o.segments = buildUnnamed363();
+    o.frames = buildUnnamed364();
+    o.segments = buildUnnamed365();
     o.thumbnail = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1FaceAnnotation--;
@@ -391,8 +391,8 @@ void checkGoogleCloudVideointelligenceV1FaceAnnotation(
     api.GoogleCloudVideointelligenceV1FaceAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1FaceAnnotation < 3) {
-    checkUnnamed362(o.frames!);
-    checkUnnamed363(o.segments!);
+    checkUnnamed364(o.frames!);
+    checkUnnamed365(o.segments!);
     unittest.expect(
       o.thumbnail!,
       unittest.equals('foo'),
@@ -401,12 +401,12 @@ void checkGoogleCloudVideointelligenceV1FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed364() => [
+core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed366() => [
       buildGoogleCloudVideointelligenceV1Track(),
       buildGoogleCloudVideointelligenceV1Track(),
     ];
 
-void checkUnnamed364(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
+void checkUnnamed366(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1Track(o[0]);
   checkGoogleCloudVideointelligenceV1Track(o[1]);
@@ -419,7 +419,7 @@ api.GoogleCloudVideointelligenceV1FaceDetectionAnnotation
   buildCounterGoogleCloudVideointelligenceV1FaceDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1FaceDetectionAnnotation < 3) {
     o.thumbnail = 'foo';
-    o.tracks = buildUnnamed364();
+    o.tracks = buildUnnamed366();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1FaceDetectionAnnotation--;
@@ -434,7 +434,7 @@ void checkGoogleCloudVideointelligenceV1FaceDetectionAnnotation(
       o.thumbnail!,
       unittest.equals('foo'),
     );
-    checkUnnamed364(o.tracks!);
+    checkUnnamed366(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -472,12 +472,12 @@ void checkGoogleCloudVideointelligenceV1FaceDetectionConfig(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1NormalizedBoundingBox>
-    buildUnnamed365() => [
+    buildUnnamed367() => [
           buildGoogleCloudVideointelligenceV1NormalizedBoundingBox(),
           buildGoogleCloudVideointelligenceV1NormalizedBoundingBox(),
         ];
 
-void checkUnnamed365(
+void checkUnnamed367(
     core.List<api.GoogleCloudVideointelligenceV1NormalizedBoundingBox> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1NormalizedBoundingBox(o[0]);
@@ -490,7 +490,7 @@ api.GoogleCloudVideointelligenceV1FaceFrame
   final o = api.GoogleCloudVideointelligenceV1FaceFrame();
   buildCounterGoogleCloudVideointelligenceV1FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1FaceFrame < 3) {
-    o.normalizedBoundingBoxes = buildUnnamed365();
+    o.normalizedBoundingBoxes = buildUnnamed367();
     o.timeOffset = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1FaceFrame--;
@@ -501,7 +501,7 @@ void checkGoogleCloudVideointelligenceV1FaceFrame(
     api.GoogleCloudVideointelligenceV1FaceFrame o) {
   buildCounterGoogleCloudVideointelligenceV1FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1FaceFrame < 3) {
-    checkUnnamed365(o.normalizedBoundingBoxes!);
+    checkUnnamed367(o.normalizedBoundingBoxes!);
     unittest.expect(
       o.timeOffset!,
       unittest.equals('foo'),
@@ -531,35 +531,35 @@ void checkGoogleCloudVideointelligenceV1FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1Entity> buildUnnamed366() => [
+core.List<api.GoogleCloudVideointelligenceV1Entity> buildUnnamed368() => [
       buildGoogleCloudVideointelligenceV1Entity(),
       buildGoogleCloudVideointelligenceV1Entity(),
     ];
 
-void checkUnnamed366(core.List<api.GoogleCloudVideointelligenceV1Entity> o) {
+void checkUnnamed368(core.List<api.GoogleCloudVideointelligenceV1Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1Entity(o[0]);
   checkGoogleCloudVideointelligenceV1Entity(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelFrame> buildUnnamed367() => [
+core.List<api.GoogleCloudVideointelligenceV1LabelFrame> buildUnnamed369() => [
       buildGoogleCloudVideointelligenceV1LabelFrame(),
       buildGoogleCloudVideointelligenceV1LabelFrame(),
     ];
 
-void checkUnnamed367(
+void checkUnnamed369(
     core.List<api.GoogleCloudVideointelligenceV1LabelFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1LabelFrame(o[0]);
   checkGoogleCloudVideointelligenceV1LabelFrame(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1LabelSegment> buildUnnamed368() => [
+core.List<api.GoogleCloudVideointelligenceV1LabelSegment> buildUnnamed370() => [
       buildGoogleCloudVideointelligenceV1LabelSegment(),
       buildGoogleCloudVideointelligenceV1LabelSegment(),
     ];
 
-void checkUnnamed368(
+void checkUnnamed370(
     core.List<api.GoogleCloudVideointelligenceV1LabelSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1LabelSegment(o[0]);
@@ -572,10 +572,10 @@ api.GoogleCloudVideointelligenceV1LabelAnnotation
   final o = api.GoogleCloudVideointelligenceV1LabelAnnotation();
   buildCounterGoogleCloudVideointelligenceV1LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1LabelAnnotation < 3) {
-    o.categoryEntities = buildUnnamed366();
+    o.categoryEntities = buildUnnamed368();
     o.entity = buildGoogleCloudVideointelligenceV1Entity();
-    o.frames = buildUnnamed367();
-    o.segments = buildUnnamed368();
+    o.frames = buildUnnamed369();
+    o.segments = buildUnnamed370();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1LabelAnnotation--;
@@ -586,10 +586,10 @@ void checkGoogleCloudVideointelligenceV1LabelAnnotation(
     api.GoogleCloudVideointelligenceV1LabelAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1LabelAnnotation < 3) {
-    checkUnnamed366(o.categoryEntities!);
+    checkUnnamed368(o.categoryEntities!);
     checkGoogleCloudVideointelligenceV1Entity(o.entity!);
-    checkUnnamed367(o.frames!);
-    checkUnnamed368(o.segments!);
+    checkUnnamed369(o.frames!);
+    checkUnnamed370(o.segments!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -694,24 +694,24 @@ void checkGoogleCloudVideointelligenceV1LabelSegment(
   buildCounterGoogleCloudVideointelligenceV1LabelSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed369() => [
+core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed371() => [
       buildGoogleCloudVideointelligenceV1VideoSegment(),
       buildGoogleCloudVideointelligenceV1VideoSegment(),
     ];
 
-void checkUnnamed369(
+void checkUnnamed371(
     core.List<api.GoogleCloudVideointelligenceV1VideoSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1VideoSegment(o[0]);
   checkGoogleCloudVideointelligenceV1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed370() => [
+core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed372() => [
       buildGoogleCloudVideointelligenceV1Track(),
       buildGoogleCloudVideointelligenceV1Track(),
     ];
 
-void checkUnnamed370(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
+void checkUnnamed372(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1Track(o[0]);
   checkGoogleCloudVideointelligenceV1Track(o[1]);
@@ -725,8 +725,8 @@ api.GoogleCloudVideointelligenceV1LogoRecognitionAnnotation
   buildCounterGoogleCloudVideointelligenceV1LogoRecognitionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1LogoRecognitionAnnotation < 3) {
     o.entity = buildGoogleCloudVideointelligenceV1Entity();
-    o.segments = buildUnnamed369();
-    o.tracks = buildUnnamed370();
+    o.segments = buildUnnamed371();
+    o.tracks = buildUnnamed372();
   }
   buildCounterGoogleCloudVideointelligenceV1LogoRecognitionAnnotation--;
   return o;
@@ -737,8 +737,8 @@ void checkGoogleCloudVideointelligenceV1LogoRecognitionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1LogoRecognitionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1LogoRecognitionAnnotation < 3) {
     checkGoogleCloudVideointelligenceV1Entity(o.entity!);
-    checkUnnamed369(o.segments!);
-    checkUnnamed370(o.tracks!);
+    checkUnnamed371(o.segments!);
+    checkUnnamed372(o.tracks!);
   }
   buildCounterGoogleCloudVideointelligenceV1LogoRecognitionAnnotation--;
 }
@@ -783,12 +783,12 @@ void checkGoogleCloudVideointelligenceV1NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1NormalizedVertex>
-    buildUnnamed371() => [
+    buildUnnamed373() => [
           buildGoogleCloudVideointelligenceV1NormalizedVertex(),
           buildGoogleCloudVideointelligenceV1NormalizedVertex(),
         ];
 
-void checkUnnamed371(
+void checkUnnamed373(
     core.List<api.GoogleCloudVideointelligenceV1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1NormalizedVertex(o[0]);
@@ -801,7 +801,7 @@ api.GoogleCloudVideointelligenceV1NormalizedBoundingPoly
   final o = api.GoogleCloudVideointelligenceV1NormalizedBoundingPoly();
   buildCounterGoogleCloudVideointelligenceV1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1NormalizedBoundingPoly < 3) {
-    o.vertices = buildUnnamed371();
+    o.vertices = buildUnnamed373();
   }
   buildCounterGoogleCloudVideointelligenceV1NormalizedBoundingPoly--;
   return o;
@@ -811,7 +811,7 @@ void checkGoogleCloudVideointelligenceV1NormalizedBoundingPoly(
     api.GoogleCloudVideointelligenceV1NormalizedBoundingPoly o) {
   buildCounterGoogleCloudVideointelligenceV1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1NormalizedBoundingPoly < 3) {
-    checkUnnamed371(o.vertices!);
+    checkUnnamed373(o.vertices!);
   }
   buildCounterGoogleCloudVideointelligenceV1NormalizedBoundingPoly--;
 }
@@ -846,12 +846,12 @@ void checkGoogleCloudVideointelligenceV1NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1ObjectTrackingFrame>
-    buildUnnamed372() => [
+    buildUnnamed374() => [
           buildGoogleCloudVideointelligenceV1ObjectTrackingFrame(),
           buildGoogleCloudVideointelligenceV1ObjectTrackingFrame(),
         ];
 
-void checkUnnamed372(
+void checkUnnamed374(
     core.List<api.GoogleCloudVideointelligenceV1ObjectTrackingFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1ObjectTrackingFrame(o[0]);
@@ -866,7 +866,7 @@ api.GoogleCloudVideointelligenceV1ObjectTrackingAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1ObjectTrackingAnnotation < 3) {
     o.confidence = 42.0;
     o.entity = buildGoogleCloudVideointelligenceV1Entity();
-    o.frames = buildUnnamed372();
+    o.frames = buildUnnamed374();
     o.segment = buildGoogleCloudVideointelligenceV1VideoSegment();
     o.trackId = 'foo';
     o.version = 'foo';
@@ -884,7 +884,7 @@ void checkGoogleCloudVideointelligenceV1ObjectTrackingAnnotation(
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1Entity(o.entity!);
-    checkUnnamed372(o.frames!);
+    checkUnnamed374(o.frames!);
     checkGoogleCloudVideointelligenceV1VideoSegment(o.segment!);
     unittest.expect(
       o.trackId!,
@@ -950,12 +950,12 @@ void checkGoogleCloudVideointelligenceV1ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed373() => [
+core.List<api.GoogleCloudVideointelligenceV1Track> buildUnnamed375() => [
       buildGoogleCloudVideointelligenceV1Track(),
       buildGoogleCloudVideointelligenceV1Track(),
     ];
 
-void checkUnnamed373(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
+void checkUnnamed375(core.List<api.GoogleCloudVideointelligenceV1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1Track(o[0]);
   checkGoogleCloudVideointelligenceV1Track(o[1]);
@@ -968,7 +968,7 @@ api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation
   final o = api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation();
   buildCounterGoogleCloudVideointelligenceV1PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1PersonDetectionAnnotation < 3) {
-    o.tracks = buildUnnamed373();
+    o.tracks = buildUnnamed375();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1PersonDetectionAnnotation--;
@@ -979,7 +979,7 @@ void checkGoogleCloudVideointelligenceV1PersonDetectionAnnotation(
     api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1PersonDetectionAnnotation < 3) {
-    checkUnnamed373(o.tracks!);
+    checkUnnamed375(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -1038,12 +1038,12 @@ void checkGoogleCloudVideointelligenceV1ShotChangeDetectionConfig(
   buildCounterGoogleCloudVideointelligenceV1ShotChangeDetectionConfig--;
 }
 
-core.List<core.String> buildUnnamed374() => [
+core.List<core.String> buildUnnamed376() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed374(core.List<core.String> o) {
+void checkUnnamed376(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1061,7 +1061,7 @@ api.GoogleCloudVideointelligenceV1SpeechContext
   final o = api.GoogleCloudVideointelligenceV1SpeechContext();
   buildCounterGoogleCloudVideointelligenceV1SpeechContext++;
   if (buildCounterGoogleCloudVideointelligenceV1SpeechContext < 3) {
-    o.phrases = buildUnnamed374();
+    o.phrases = buildUnnamed376();
   }
   buildCounterGoogleCloudVideointelligenceV1SpeechContext--;
   return o;
@@ -1071,17 +1071,17 @@ void checkGoogleCloudVideointelligenceV1SpeechContext(
     api.GoogleCloudVideointelligenceV1SpeechContext o) {
   buildCounterGoogleCloudVideointelligenceV1SpeechContext++;
   if (buildCounterGoogleCloudVideointelligenceV1SpeechContext < 3) {
-    checkUnnamed374(o.phrases!);
+    checkUnnamed376(o.phrases!);
   }
   buildCounterGoogleCloudVideointelligenceV1SpeechContext--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1WordInfo> buildUnnamed375() => [
+core.List<api.GoogleCloudVideointelligenceV1WordInfo> buildUnnamed377() => [
       buildGoogleCloudVideointelligenceV1WordInfo(),
       buildGoogleCloudVideointelligenceV1WordInfo(),
     ];
 
-void checkUnnamed375(core.List<api.GoogleCloudVideointelligenceV1WordInfo> o) {
+void checkUnnamed377(core.List<api.GoogleCloudVideointelligenceV1WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1WordInfo(o[0]);
   checkGoogleCloudVideointelligenceV1WordInfo(o[1]);
@@ -1097,7 +1097,7 @@ api.GoogleCloudVideointelligenceV1SpeechRecognitionAlternative
       3) {
     o.confidence = 42.0;
     o.transcript = 'foo';
-    o.words = buildUnnamed375();
+    o.words = buildUnnamed377();
   }
   buildCounterGoogleCloudVideointelligenceV1SpeechRecognitionAlternative--;
   return o;
@@ -1116,18 +1116,18 @@ void checkGoogleCloudVideointelligenceV1SpeechRecognitionAlternative(
       o.transcript!,
       unittest.equals('foo'),
     );
-    checkUnnamed375(o.words!);
+    checkUnnamed377(o.words!);
   }
   buildCounterGoogleCloudVideointelligenceV1SpeechRecognitionAlternative--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>
-    buildUnnamed376() => [
+    buildUnnamed378() => [
           buildGoogleCloudVideointelligenceV1SpeechRecognitionAlternative(),
           buildGoogleCloudVideointelligenceV1SpeechRecognitionAlternative(),
         ];
 
-void checkUnnamed376(
+void checkUnnamed378(
     core.List<api.GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1141,7 +1141,7 @@ api.GoogleCloudVideointelligenceV1SpeechTranscription
   final o = api.GoogleCloudVideointelligenceV1SpeechTranscription();
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1SpeechTranscription < 3) {
-    o.alternatives = buildUnnamed376();
+    o.alternatives = buildUnnamed378();
     o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscription--;
@@ -1152,7 +1152,7 @@ void checkGoogleCloudVideointelligenceV1SpeechTranscription(
     api.GoogleCloudVideointelligenceV1SpeechTranscription o) {
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1SpeechTranscription < 3) {
-    checkUnnamed376(o.alternatives!);
+    checkUnnamed378(o.alternatives!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -1161,12 +1161,12 @@ void checkGoogleCloudVideointelligenceV1SpeechTranscription(
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscription--;
 }
 
-core.List<core.int> buildUnnamed377() => [
+core.List<core.int> buildUnnamed379() => [
       42,
       42,
     ];
 
-void checkUnnamed377(core.List<core.int> o) {
+void checkUnnamed379(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1178,13 +1178,13 @@ void checkUnnamed377(core.List<core.int> o) {
   );
 }
 
-core.List<api.GoogleCloudVideointelligenceV1SpeechContext> buildUnnamed378() =>
+core.List<api.GoogleCloudVideointelligenceV1SpeechContext> buildUnnamed380() =>
     [
       buildGoogleCloudVideointelligenceV1SpeechContext(),
       buildGoogleCloudVideointelligenceV1SpeechContext(),
     ];
 
-void checkUnnamed378(
+void checkUnnamed380(
     core.List<api.GoogleCloudVideointelligenceV1SpeechContext> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1SpeechContext(o[0]);
@@ -1198,7 +1198,7 @@ api.GoogleCloudVideointelligenceV1SpeechTranscriptionConfig
   final o = api.GoogleCloudVideointelligenceV1SpeechTranscriptionConfig();
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig++;
   if (buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig < 3) {
-    o.audioTracks = buildUnnamed377();
+    o.audioTracks = buildUnnamed379();
     o.diarizationSpeakerCount = 42;
     o.enableAutomaticPunctuation = true;
     o.enableSpeakerDiarization = true;
@@ -1206,7 +1206,7 @@ api.GoogleCloudVideointelligenceV1SpeechTranscriptionConfig
     o.filterProfanity = true;
     o.languageCode = 'foo';
     o.maxAlternatives = 42;
-    o.speechContexts = buildUnnamed378();
+    o.speechContexts = buildUnnamed380();
   }
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig--;
   return o;
@@ -1216,7 +1216,7 @@ void checkGoogleCloudVideointelligenceV1SpeechTranscriptionConfig(
     api.GoogleCloudVideointelligenceV1SpeechTranscriptionConfig o) {
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig++;
   if (buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig < 3) {
-    checkUnnamed377(o.audioTracks!);
+    checkUnnamed379(o.audioTracks!);
     unittest.expect(
       o.diarizationSpeakerCount!,
       unittest.equals(42),
@@ -1233,17 +1233,17 @@ void checkGoogleCloudVideointelligenceV1SpeechTranscriptionConfig(
       o.maxAlternatives!,
       unittest.equals(42),
     );
-    checkUnnamed378(o.speechContexts!);
+    checkUnnamed380(o.speechContexts!);
   }
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1TextSegment> buildUnnamed379() => [
+core.List<api.GoogleCloudVideointelligenceV1TextSegment> buildUnnamed381() => [
       buildGoogleCloudVideointelligenceV1TextSegment(),
       buildGoogleCloudVideointelligenceV1TextSegment(),
     ];
 
-void checkUnnamed379(
+void checkUnnamed381(
     core.List<api.GoogleCloudVideointelligenceV1TextSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1TextSegment(o[0]);
@@ -1256,7 +1256,7 @@ api.GoogleCloudVideointelligenceV1TextAnnotation
   final o = api.GoogleCloudVideointelligenceV1TextAnnotation();
   buildCounterGoogleCloudVideointelligenceV1TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1TextAnnotation < 3) {
-    o.segments = buildUnnamed379();
+    o.segments = buildUnnamed381();
     o.text = 'foo';
     o.version = 'foo';
   }
@@ -1268,7 +1268,7 @@ void checkGoogleCloudVideointelligenceV1TextAnnotation(
     api.GoogleCloudVideointelligenceV1TextAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1TextAnnotation < 3) {
-    checkUnnamed379(o.segments!);
+    checkUnnamed381(o.segments!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -1281,12 +1281,12 @@ void checkGoogleCloudVideointelligenceV1TextAnnotation(
   buildCounterGoogleCloudVideointelligenceV1TextAnnotation--;
 }
 
-core.List<core.String> buildUnnamed380() => [
+core.List<core.String> buildUnnamed382() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed380(core.List<core.String> o) {
+void checkUnnamed382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1304,7 +1304,7 @@ api.GoogleCloudVideointelligenceV1TextDetectionConfig
   final o = api.GoogleCloudVideointelligenceV1TextDetectionConfig();
   buildCounterGoogleCloudVideointelligenceV1TextDetectionConfig++;
   if (buildCounterGoogleCloudVideointelligenceV1TextDetectionConfig < 3) {
-    o.languageHints = buildUnnamed380();
+    o.languageHints = buildUnnamed382();
     o.model = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1TextDetectionConfig--;
@@ -1315,7 +1315,7 @@ void checkGoogleCloudVideointelligenceV1TextDetectionConfig(
     api.GoogleCloudVideointelligenceV1TextDetectionConfig o) {
   buildCounterGoogleCloudVideointelligenceV1TextDetectionConfig++;
   if (buildCounterGoogleCloudVideointelligenceV1TextDetectionConfig < 3) {
-    checkUnnamed380(o.languageHints!);
+    checkUnnamed382(o.languageHints!);
     unittest.expect(
       o.model!,
       unittest.equals('foo'),
@@ -1352,12 +1352,12 @@ void checkGoogleCloudVideointelligenceV1TextFrame(
   buildCounterGoogleCloudVideointelligenceV1TextFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1TextFrame> buildUnnamed381() => [
+core.List<api.GoogleCloudVideointelligenceV1TextFrame> buildUnnamed383() => [
       buildGoogleCloudVideointelligenceV1TextFrame(),
       buildGoogleCloudVideointelligenceV1TextFrame(),
     ];
 
-void checkUnnamed381(core.List<api.GoogleCloudVideointelligenceV1TextFrame> o) {
+void checkUnnamed383(core.List<api.GoogleCloudVideointelligenceV1TextFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1TextFrame(o[0]);
   checkGoogleCloudVideointelligenceV1TextFrame(o[1]);
@@ -1370,7 +1370,7 @@ api.GoogleCloudVideointelligenceV1TextSegment
   buildCounterGoogleCloudVideointelligenceV1TextSegment++;
   if (buildCounterGoogleCloudVideointelligenceV1TextSegment < 3) {
     o.confidence = 42.0;
-    o.frames = buildUnnamed381();
+    o.frames = buildUnnamed383();
     o.segment = buildGoogleCloudVideointelligenceV1VideoSegment();
   }
   buildCounterGoogleCloudVideointelligenceV1TextSegment--;
@@ -1385,68 +1385,10 @@ void checkGoogleCloudVideointelligenceV1TextSegment(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed381(o.frames!);
+    checkUnnamed383(o.frames!);
     checkGoogleCloudVideointelligenceV1VideoSegment(o.segment!);
   }
   buildCounterGoogleCloudVideointelligenceV1TextSegment--;
-}
-
-core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute>
-    buildUnnamed382() => [
-          buildGoogleCloudVideointelligenceV1DetectedAttribute(),
-          buildGoogleCloudVideointelligenceV1DetectedAttribute(),
-        ];
-
-void checkUnnamed382(
-    core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1DetectedAttribute(o[0]);
-  checkGoogleCloudVideointelligenceV1DetectedAttribute(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1DetectedLandmark>
-    buildUnnamed383() => [
-          buildGoogleCloudVideointelligenceV1DetectedLandmark(),
-          buildGoogleCloudVideointelligenceV1DetectedLandmark(),
-        ];
-
-void checkUnnamed383(
-    core.List<api.GoogleCloudVideointelligenceV1DetectedLandmark> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1DetectedLandmark(o[0]);
-  checkGoogleCloudVideointelligenceV1DetectedLandmark(o[1]);
-}
-
-core.int buildCounterGoogleCloudVideointelligenceV1TimestampedObject = 0;
-api.GoogleCloudVideointelligenceV1TimestampedObject
-    buildGoogleCloudVideointelligenceV1TimestampedObject() {
-  final o = api.GoogleCloudVideointelligenceV1TimestampedObject();
-  buildCounterGoogleCloudVideointelligenceV1TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1TimestampedObject < 3) {
-    o.attributes = buildUnnamed382();
-    o.landmarks = buildUnnamed383();
-    o.normalizedBoundingBox =
-        buildGoogleCloudVideointelligenceV1NormalizedBoundingBox();
-    o.timeOffset = 'foo';
-  }
-  buildCounterGoogleCloudVideointelligenceV1TimestampedObject--;
-  return o;
-}
-
-void checkGoogleCloudVideointelligenceV1TimestampedObject(
-    api.GoogleCloudVideointelligenceV1TimestampedObject o) {
-  buildCounterGoogleCloudVideointelligenceV1TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1TimestampedObject < 3) {
-    checkUnnamed382(o.attributes!);
-    checkUnnamed383(o.landmarks!);
-    checkGoogleCloudVideointelligenceV1NormalizedBoundingBox(
-        o.normalizedBoundingBox!);
-    unittest.expect(
-      o.timeOffset!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudVideointelligenceV1TimestampedObject--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute>
@@ -1462,13 +1404,71 @@ void checkUnnamed384(
   checkGoogleCloudVideointelligenceV1DetectedAttribute(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1TimestampedObject>
+core.List<api.GoogleCloudVideointelligenceV1DetectedLandmark>
     buildUnnamed385() => [
+          buildGoogleCloudVideointelligenceV1DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1DetectedLandmark(),
+        ];
+
+void checkUnnamed385(
+    core.List<api.GoogleCloudVideointelligenceV1DetectedLandmark> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1DetectedLandmark(o[0]);
+  checkGoogleCloudVideointelligenceV1DetectedLandmark(o[1]);
+}
+
+core.int buildCounterGoogleCloudVideointelligenceV1TimestampedObject = 0;
+api.GoogleCloudVideointelligenceV1TimestampedObject
+    buildGoogleCloudVideointelligenceV1TimestampedObject() {
+  final o = api.GoogleCloudVideointelligenceV1TimestampedObject();
+  buildCounterGoogleCloudVideointelligenceV1TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1TimestampedObject < 3) {
+    o.attributes = buildUnnamed384();
+    o.landmarks = buildUnnamed385();
+    o.normalizedBoundingBox =
+        buildGoogleCloudVideointelligenceV1NormalizedBoundingBox();
+    o.timeOffset = 'foo';
+  }
+  buildCounterGoogleCloudVideointelligenceV1TimestampedObject--;
+  return o;
+}
+
+void checkGoogleCloudVideointelligenceV1TimestampedObject(
+    api.GoogleCloudVideointelligenceV1TimestampedObject o) {
+  buildCounterGoogleCloudVideointelligenceV1TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1TimestampedObject < 3) {
+    checkUnnamed384(o.attributes!);
+    checkUnnamed385(o.landmarks!);
+    checkGoogleCloudVideointelligenceV1NormalizedBoundingBox(
+        o.normalizedBoundingBox!);
+    unittest.expect(
+      o.timeOffset!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudVideointelligenceV1TimestampedObject--;
+}
+
+core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute>
+    buildUnnamed386() => [
+          buildGoogleCloudVideointelligenceV1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1DetectedAttribute(),
+        ];
+
+void checkUnnamed386(
+    core.List<api.GoogleCloudVideointelligenceV1DetectedAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1DetectedAttribute(o[0]);
+  checkGoogleCloudVideointelligenceV1DetectedAttribute(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1TimestampedObject>
+    buildUnnamed387() => [
           buildGoogleCloudVideointelligenceV1TimestampedObject(),
           buildGoogleCloudVideointelligenceV1TimestampedObject(),
         ];
 
-void checkUnnamed385(
+void checkUnnamed387(
     core.List<api.GoogleCloudVideointelligenceV1TimestampedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1TimestampedObject(o[0]);
@@ -1481,10 +1481,10 @@ api.GoogleCloudVideointelligenceV1Track
   final o = api.GoogleCloudVideointelligenceV1Track();
   buildCounterGoogleCloudVideointelligenceV1Track++;
   if (buildCounterGoogleCloudVideointelligenceV1Track < 3) {
-    o.attributes = buildUnnamed384();
+    o.attributes = buildUnnamed386();
     o.confidence = 42.0;
     o.segment = buildGoogleCloudVideointelligenceV1VideoSegment();
-    o.timestampedObjects = buildUnnamed385();
+    o.timestampedObjects = buildUnnamed387();
   }
   buildCounterGoogleCloudVideointelligenceV1Track--;
   return o;
@@ -1494,13 +1494,13 @@ void checkGoogleCloudVideointelligenceV1Track(
     api.GoogleCloudVideointelligenceV1Track o) {
   buildCounterGoogleCloudVideointelligenceV1Track++;
   if (buildCounterGoogleCloudVideointelligenceV1Track < 3) {
-    checkUnnamed384(o.attributes!);
+    checkUnnamed386(o.attributes!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1VideoSegment(o.segment!);
-    checkUnnamed385(o.timestampedObjects!);
+    checkUnnamed387(o.timestampedObjects!);
   }
   buildCounterGoogleCloudVideointelligenceV1Track--;
 }
@@ -1551,13 +1551,13 @@ void checkGoogleCloudVideointelligenceV1VideoAnnotationProgress(
   buildCounterGoogleCloudVideointelligenceV1VideoAnnotationProgress--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1FaceAnnotation> buildUnnamed386() =>
+core.List<api.GoogleCloudVideointelligenceV1FaceAnnotation> buildUnnamed388() =>
     [
       buildGoogleCloudVideointelligenceV1FaceAnnotation(),
       buildGoogleCloudVideointelligenceV1FaceAnnotation(),
     ];
 
-void checkUnnamed386(
+void checkUnnamed388(
     core.List<api.GoogleCloudVideointelligenceV1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1FaceAnnotation(o[0]);
@@ -1565,12 +1565,12 @@ void checkUnnamed386(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1FaceDetectionAnnotation>
-    buildUnnamed387() => [
+    buildUnnamed389() => [
           buildGoogleCloudVideointelligenceV1FaceDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1FaceDetectionAnnotation(),
         ];
 
-void checkUnnamed387(
+void checkUnnamed389(
     core.List<api.GoogleCloudVideointelligenceV1FaceDetectionAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1FaceDetectionAnnotation(o[0]);
@@ -1578,12 +1578,12 @@ void checkUnnamed387(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
-    buildUnnamed388() => [
+    buildUnnamed390() => [
           buildGoogleCloudVideointelligenceV1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1LabelAnnotation(),
         ];
 
-void checkUnnamed388(
+void checkUnnamed390(
     core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1LabelAnnotation(o[0]);
@@ -1591,12 +1591,12 @@ void checkUnnamed388(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1LogoRecognitionAnnotation>
-    buildUnnamed389() => [
+    buildUnnamed391() => [
           buildGoogleCloudVideointelligenceV1LogoRecognitionAnnotation(),
           buildGoogleCloudVideointelligenceV1LogoRecognitionAnnotation(),
         ];
 
-void checkUnnamed389(
+void checkUnnamed391(
     core.List<api.GoogleCloudVideointelligenceV1LogoRecognitionAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1LogoRecognitionAnnotation(o[0]);
@@ -1604,12 +1604,12 @@ void checkUnnamed389(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>
-    buildUnnamed390() => [
+    buildUnnamed392() => [
           buildGoogleCloudVideointelligenceV1ObjectTrackingAnnotation(),
           buildGoogleCloudVideointelligenceV1ObjectTrackingAnnotation(),
         ];
 
-void checkUnnamed390(
+void checkUnnamed392(
     core.List<api.GoogleCloudVideointelligenceV1ObjectTrackingAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1ObjectTrackingAnnotation(o[0]);
@@ -1617,12 +1617,12 @@ void checkUnnamed390(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation>
-    buildUnnamed391() => [
+    buildUnnamed393() => [
           buildGoogleCloudVideointelligenceV1PersonDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1PersonDetectionAnnotation(),
         ];
 
-void checkUnnamed391(
+void checkUnnamed393(
     core.List<api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1PersonDetectionAnnotation(o[0]);
@@ -1630,41 +1630,16 @@ void checkUnnamed391(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
-    buildUnnamed392() => [
+    buildUnnamed394() => [
           buildGoogleCloudVideointelligenceV1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1LabelAnnotation(),
         ];
-
-void checkUnnamed392(
-    core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
-    buildUnnamed393() => [
-          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
-        ];
-
-void checkUnnamed393(
-    core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed394() => [
-      buildGoogleCloudVideointelligenceV1VideoSegment(),
-      buildGoogleCloudVideointelligenceV1VideoSegment(),
-    ];
 
 void checkUnnamed394(
-    core.List<api.GoogleCloudVideointelligenceV1VideoSegment> o) {
+    core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1VideoSegment(o[0]);
-  checkGoogleCloudVideointelligenceV1VideoSegment(o[1]);
+  checkGoogleCloudVideointelligenceV1LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1LabelAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
@@ -1680,13 +1655,38 @@ void checkUnnamed395(
   checkGoogleCloudVideointelligenceV1LabelAnnotation(o[1]);
 }
 
+core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed396() => [
+      buildGoogleCloudVideointelligenceV1VideoSegment(),
+      buildGoogleCloudVideointelligenceV1VideoSegment(),
+    ];
+
+void checkUnnamed396(
+    core.List<api.GoogleCloudVideointelligenceV1VideoSegment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1VideoSegment(o[0]);
+  checkGoogleCloudVideointelligenceV1VideoSegment(o[1]);
+}
+
 core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
-    buildUnnamed396() => [
+    buildUnnamed397() => [
           buildGoogleCloudVideointelligenceV1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1LabelAnnotation(),
         ];
 
-void checkUnnamed396(
+void checkUnnamed397(
+    core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1LabelAnnotation(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation>
+    buildUnnamed398() => [
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1LabelAnnotation(),
+        ];
+
+void checkUnnamed398(
     core.List<api.GoogleCloudVideointelligenceV1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1LabelAnnotation(o[0]);
@@ -1694,25 +1694,25 @@ void checkUnnamed396(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1SpeechTranscription>
-    buildUnnamed397() => [
+    buildUnnamed399() => [
           buildGoogleCloudVideointelligenceV1SpeechTranscription(),
           buildGoogleCloudVideointelligenceV1SpeechTranscription(),
         ];
 
-void checkUnnamed397(
+void checkUnnamed399(
     core.List<api.GoogleCloudVideointelligenceV1SpeechTranscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1SpeechTranscription(o[0]);
   checkGoogleCloudVideointelligenceV1SpeechTranscription(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1TextAnnotation> buildUnnamed398() =>
+core.List<api.GoogleCloudVideointelligenceV1TextAnnotation> buildUnnamed400() =>
     [
       buildGoogleCloudVideointelligenceV1TextAnnotation(),
       buildGoogleCloudVideointelligenceV1TextAnnotation(),
     ];
 
-void checkUnnamed398(
+void checkUnnamed400(
     core.List<api.GoogleCloudVideointelligenceV1TextAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1TextAnnotation(o[0]);
@@ -1728,21 +1728,21 @@ api.GoogleCloudVideointelligenceV1VideoAnnotationResults
     o.error = buildGoogleRpcStatus();
     o.explicitAnnotation =
         buildGoogleCloudVideointelligenceV1ExplicitContentAnnotation();
-    o.faceAnnotations = buildUnnamed386();
-    o.faceDetectionAnnotations = buildUnnamed387();
-    o.frameLabelAnnotations = buildUnnamed388();
+    o.faceAnnotations = buildUnnamed388();
+    o.faceDetectionAnnotations = buildUnnamed389();
+    o.frameLabelAnnotations = buildUnnamed390();
     o.inputUri = 'foo';
-    o.logoRecognitionAnnotations = buildUnnamed389();
-    o.objectAnnotations = buildUnnamed390();
-    o.personDetectionAnnotations = buildUnnamed391();
+    o.logoRecognitionAnnotations = buildUnnamed391();
+    o.objectAnnotations = buildUnnamed392();
+    o.personDetectionAnnotations = buildUnnamed393();
     o.segment = buildGoogleCloudVideointelligenceV1VideoSegment();
-    o.segmentLabelAnnotations = buildUnnamed392();
-    o.segmentPresenceLabelAnnotations = buildUnnamed393();
-    o.shotAnnotations = buildUnnamed394();
-    o.shotLabelAnnotations = buildUnnamed395();
-    o.shotPresenceLabelAnnotations = buildUnnamed396();
-    o.speechTranscriptions = buildUnnamed397();
-    o.textAnnotations = buildUnnamed398();
+    o.segmentLabelAnnotations = buildUnnamed394();
+    o.segmentPresenceLabelAnnotations = buildUnnamed395();
+    o.shotAnnotations = buildUnnamed396();
+    o.shotLabelAnnotations = buildUnnamed397();
+    o.shotPresenceLabelAnnotations = buildUnnamed398();
+    o.speechTranscriptions = buildUnnamed399();
+    o.textAnnotations = buildUnnamed400();
   }
   buildCounterGoogleCloudVideointelligenceV1VideoAnnotationResults--;
   return o;
@@ -1755,34 +1755,34 @@ void checkGoogleCloudVideointelligenceV1VideoAnnotationResults(
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudVideointelligenceV1ExplicitContentAnnotation(
         o.explicitAnnotation!);
-    checkUnnamed386(o.faceAnnotations!);
-    checkUnnamed387(o.faceDetectionAnnotations!);
-    checkUnnamed388(o.frameLabelAnnotations!);
+    checkUnnamed388(o.faceAnnotations!);
+    checkUnnamed389(o.faceDetectionAnnotations!);
+    checkUnnamed390(o.frameLabelAnnotations!);
     unittest.expect(
       o.inputUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed389(o.logoRecognitionAnnotations!);
-    checkUnnamed390(o.objectAnnotations!);
-    checkUnnamed391(o.personDetectionAnnotations!);
+    checkUnnamed391(o.logoRecognitionAnnotations!);
+    checkUnnamed392(o.objectAnnotations!);
+    checkUnnamed393(o.personDetectionAnnotations!);
     checkGoogleCloudVideointelligenceV1VideoSegment(o.segment!);
-    checkUnnamed392(o.segmentLabelAnnotations!);
-    checkUnnamed393(o.segmentPresenceLabelAnnotations!);
-    checkUnnamed394(o.shotAnnotations!);
-    checkUnnamed395(o.shotLabelAnnotations!);
-    checkUnnamed396(o.shotPresenceLabelAnnotations!);
-    checkUnnamed397(o.speechTranscriptions!);
-    checkUnnamed398(o.textAnnotations!);
+    checkUnnamed394(o.segmentLabelAnnotations!);
+    checkUnnamed395(o.segmentPresenceLabelAnnotations!);
+    checkUnnamed396(o.shotAnnotations!);
+    checkUnnamed397(o.shotLabelAnnotations!);
+    checkUnnamed398(o.shotPresenceLabelAnnotations!);
+    checkUnnamed399(o.speechTranscriptions!);
+    checkUnnamed400(o.textAnnotations!);
   }
   buildCounterGoogleCloudVideointelligenceV1VideoAnnotationResults--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed399() => [
+core.List<api.GoogleCloudVideointelligenceV1VideoSegment> buildUnnamed401() => [
       buildGoogleCloudVideointelligenceV1VideoSegment(),
       buildGoogleCloudVideointelligenceV1VideoSegment(),
     ];
 
-void checkUnnamed399(
+void checkUnnamed401(
     core.List<api.GoogleCloudVideointelligenceV1VideoSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1VideoSegment(o[0]);
@@ -1805,7 +1805,7 @@ api.GoogleCloudVideointelligenceV1VideoContext
         buildGoogleCloudVideointelligenceV1ObjectTrackingConfig();
     o.personDetectionConfig =
         buildGoogleCloudVideointelligenceV1PersonDetectionConfig();
-    o.segments = buildUnnamed399();
+    o.segments = buildUnnamed401();
     o.shotChangeDetectionConfig =
         buildGoogleCloudVideointelligenceV1ShotChangeDetectionConfig();
     o.speechTranscriptionConfig =
@@ -1831,7 +1831,7 @@ void checkGoogleCloudVideointelligenceV1VideoContext(
         o.objectTrackingConfig!);
     checkGoogleCloudVideointelligenceV1PersonDetectionConfig(
         o.personDetectionConfig!);
-    checkUnnamed399(o.segments!);
+    checkUnnamed401(o.segments!);
     checkGoogleCloudVideointelligenceV1ShotChangeDetectionConfig(
         o.shotChangeDetectionConfig!);
     checkGoogleCloudVideointelligenceV1SpeechTranscriptionConfig(
@@ -1916,12 +1916,12 @@ void checkGoogleCloudVideointelligenceV1WordInfo(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress>
-    buildUnnamed400() => [
+    buildUnnamed402() => [
           buildGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress(),
           buildGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress(),
         ];
 
-void checkUnnamed400(
+void checkUnnamed402(
     core.List<api.GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1937,7 +1937,7 @@ api.GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress
   buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress <
       3) {
-    o.annotationProgress = buildUnnamed400();
+    o.annotationProgress = buildUnnamed402();
   }
   buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress--;
   return o;
@@ -1948,18 +1948,18 @@ void checkGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress(
   buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress <
       3) {
-    checkUnnamed400(o.annotationProgress!);
+    checkUnnamed402(o.annotationProgress!);
   }
   buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2VideoAnnotationResults>
-    buildUnnamed401() => [
+    buildUnnamed403() => [
           buildGoogleCloudVideointelligenceV1beta2VideoAnnotationResults(),
           buildGoogleCloudVideointelligenceV1beta2VideoAnnotationResults(),
         ];
 
-void checkUnnamed401(
+void checkUnnamed403(
     core.List<api.GoogleCloudVideointelligenceV1beta2VideoAnnotationResults>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1975,7 +1975,7 @@ api.GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse
   buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoResponse <
       3) {
-    o.annotationResults = buildUnnamed401();
+    o.annotationResults = buildUnnamed403();
   }
   buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoResponse--;
   return o;
@@ -1986,7 +1986,7 @@ void checkGoogleCloudVideointelligenceV1beta2AnnotateVideoResponse(
   buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoResponse <
       3) {
-    checkUnnamed401(o.annotationResults!);
+    checkUnnamed403(o.annotationResults!);
   }
   buildCounterGoogleCloudVideointelligenceV1beta2AnnotateVideoResponse--;
 }
@@ -2091,12 +2091,12 @@ void checkGoogleCloudVideointelligenceV1beta2Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2ExplicitContentFrame>
-    buildUnnamed402() => [
+    buildUnnamed404() => [
           buildGoogleCloudVideointelligenceV1beta2ExplicitContentFrame(),
           buildGoogleCloudVideointelligenceV1beta2ExplicitContentFrame(),
         ];
 
-void checkUnnamed402(
+void checkUnnamed404(
     core.List<api.GoogleCloudVideointelligenceV1beta2ExplicitContentFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2ExplicitContentFrame(o[0]);
@@ -2112,7 +2112,7 @@ api.GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation
   buildCounterGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation <
       3) {
-    o.frames = buildUnnamed402();
+    o.frames = buildUnnamed404();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation--;
@@ -2124,7 +2124,7 @@ void checkGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation(
   buildCounterGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation <
       3) {
-    checkUnnamed402(o.frames!);
+    checkUnnamed404(o.frames!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -2163,13 +2163,13 @@ void checkGoogleCloudVideointelligenceV1beta2ExplicitContentFrame(
   buildCounterGoogleCloudVideointelligenceV1beta2ExplicitContentFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2FaceFrame> buildUnnamed403() =>
+core.List<api.GoogleCloudVideointelligenceV1beta2FaceFrame> buildUnnamed405() =>
     [
       buildGoogleCloudVideointelligenceV1beta2FaceFrame(),
       buildGoogleCloudVideointelligenceV1beta2FaceFrame(),
     ];
 
-void checkUnnamed403(
+void checkUnnamed405(
     core.List<api.GoogleCloudVideointelligenceV1beta2FaceFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2FaceFrame(o[0]);
@@ -2177,12 +2177,12 @@ void checkUnnamed403(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2FaceSegment>
-    buildUnnamed404() => [
+    buildUnnamed406() => [
           buildGoogleCloudVideointelligenceV1beta2FaceSegment(),
           buildGoogleCloudVideointelligenceV1beta2FaceSegment(),
         ];
 
-void checkUnnamed404(
+void checkUnnamed406(
     core.List<api.GoogleCloudVideointelligenceV1beta2FaceSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2FaceSegment(o[0]);
@@ -2195,8 +2195,8 @@ api.GoogleCloudVideointelligenceV1beta2FaceAnnotation
   final o = api.GoogleCloudVideointelligenceV1beta2FaceAnnotation();
   buildCounterGoogleCloudVideointelligenceV1beta2FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2FaceAnnotation < 3) {
-    o.frames = buildUnnamed403();
-    o.segments = buildUnnamed404();
+    o.frames = buildUnnamed405();
+    o.segments = buildUnnamed406();
     o.thumbnail = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1beta2FaceAnnotation--;
@@ -2207,8 +2207,8 @@ void checkGoogleCloudVideointelligenceV1beta2FaceAnnotation(
     api.GoogleCloudVideointelligenceV1beta2FaceAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1beta2FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2FaceAnnotation < 3) {
-    checkUnnamed403(o.frames!);
-    checkUnnamed404(o.segments!);
+    checkUnnamed405(o.frames!);
+    checkUnnamed406(o.segments!);
     unittest.expect(
       o.thumbnail!,
       unittest.equals('foo'),
@@ -2217,12 +2217,12 @@ void checkGoogleCloudVideointelligenceV1beta2FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1beta2FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed405() => [
+core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed407() => [
       buildGoogleCloudVideointelligenceV1beta2Track(),
       buildGoogleCloudVideointelligenceV1beta2Track(),
     ];
 
-void checkUnnamed405(
+void checkUnnamed407(
     core.List<api.GoogleCloudVideointelligenceV1beta2Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2Track(o[0]);
@@ -2238,7 +2238,7 @@ api.GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation <
       3) {
     o.thumbnail = 'foo';
-    o.tracks = buildUnnamed405();
+    o.tracks = buildUnnamed407();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation--;
@@ -2254,7 +2254,7 @@ void checkGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation(
       o.thumbnail!,
       unittest.equals('foo'),
     );
-    checkUnnamed405(o.tracks!);
+    checkUnnamed407(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -2264,12 +2264,12 @@ void checkGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox>
-    buildUnnamed406() => [
+    buildUnnamed408() => [
           buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(),
           buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(),
         ];
 
-void checkUnnamed406(
+void checkUnnamed408(
     core.List<api.GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(o[0]);
@@ -2282,7 +2282,7 @@ api.GoogleCloudVideointelligenceV1beta2FaceFrame
   final o = api.GoogleCloudVideointelligenceV1beta2FaceFrame();
   buildCounterGoogleCloudVideointelligenceV1beta2FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2FaceFrame < 3) {
-    o.normalizedBoundingBoxes = buildUnnamed406();
+    o.normalizedBoundingBoxes = buildUnnamed408();
     o.timeOffset = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1beta2FaceFrame--;
@@ -2293,7 +2293,7 @@ void checkGoogleCloudVideointelligenceV1beta2FaceFrame(
     api.GoogleCloudVideointelligenceV1beta2FaceFrame o) {
   buildCounterGoogleCloudVideointelligenceV1beta2FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2FaceFrame < 3) {
-    checkUnnamed406(o.normalizedBoundingBoxes!);
+    checkUnnamed408(o.normalizedBoundingBoxes!);
     unittest.expect(
       o.timeOffset!,
       unittest.equals('foo'),
@@ -2323,12 +2323,12 @@ void checkGoogleCloudVideointelligenceV1beta2FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1beta2FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2Entity> buildUnnamed407() => [
+core.List<api.GoogleCloudVideointelligenceV1beta2Entity> buildUnnamed409() => [
       buildGoogleCloudVideointelligenceV1beta2Entity(),
       buildGoogleCloudVideointelligenceV1beta2Entity(),
     ];
 
-void checkUnnamed407(
+void checkUnnamed409(
     core.List<api.GoogleCloudVideointelligenceV1beta2Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2Entity(o[0]);
@@ -2336,12 +2336,12 @@ void checkUnnamed407(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelFrame>
-    buildUnnamed408() => [
+    buildUnnamed410() => [
           buildGoogleCloudVideointelligenceV1beta2LabelFrame(),
           buildGoogleCloudVideointelligenceV1beta2LabelFrame(),
         ];
 
-void checkUnnamed408(
+void checkUnnamed410(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2LabelFrame(o[0]);
@@ -2349,12 +2349,12 @@ void checkUnnamed408(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelSegment>
-    buildUnnamed409() => [
+    buildUnnamed411() => [
           buildGoogleCloudVideointelligenceV1beta2LabelSegment(),
           buildGoogleCloudVideointelligenceV1beta2LabelSegment(),
         ];
 
-void checkUnnamed409(
+void checkUnnamed411(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2LabelSegment(o[0]);
@@ -2367,10 +2367,10 @@ api.GoogleCloudVideointelligenceV1beta2LabelAnnotation
   final o = api.GoogleCloudVideointelligenceV1beta2LabelAnnotation();
   buildCounterGoogleCloudVideointelligenceV1beta2LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2LabelAnnotation < 3) {
-    o.categoryEntities = buildUnnamed407();
+    o.categoryEntities = buildUnnamed409();
     o.entity = buildGoogleCloudVideointelligenceV1beta2Entity();
-    o.frames = buildUnnamed408();
-    o.segments = buildUnnamed409();
+    o.frames = buildUnnamed410();
+    o.segments = buildUnnamed411();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1beta2LabelAnnotation--;
@@ -2381,10 +2381,10 @@ void checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(
     api.GoogleCloudVideointelligenceV1beta2LabelAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1beta2LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2LabelAnnotation < 3) {
-    checkUnnamed407(o.categoryEntities!);
+    checkUnnamed409(o.categoryEntities!);
     checkGoogleCloudVideointelligenceV1beta2Entity(o.entity!);
-    checkUnnamed408(o.frames!);
-    checkUnnamed409(o.segments!);
+    checkUnnamed410(o.frames!);
+    checkUnnamed411(o.segments!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -2449,24 +2449,24 @@ void checkGoogleCloudVideointelligenceV1beta2LabelSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment>
-    buildUnnamed410() => [
+    buildUnnamed412() => [
           buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
           buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
         ];
 
-void checkUnnamed410(
+void checkUnnamed412(
     core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2VideoSegment(o[0]);
   checkGoogleCloudVideointelligenceV1beta2VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed411() => [
+core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed413() => [
       buildGoogleCloudVideointelligenceV1beta2Track(),
       buildGoogleCloudVideointelligenceV1beta2Track(),
     ];
 
-void checkUnnamed411(
+void checkUnnamed413(
     core.List<api.GoogleCloudVideointelligenceV1beta2Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2Track(o[0]);
@@ -2483,8 +2483,8 @@ api.GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation <
       3) {
     o.entity = buildGoogleCloudVideointelligenceV1beta2Entity();
-    o.segments = buildUnnamed410();
-    o.tracks = buildUnnamed411();
+    o.segments = buildUnnamed412();
+    o.tracks = buildUnnamed413();
   }
   buildCounterGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation--;
   return o;
@@ -2496,8 +2496,8 @@ void checkGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation(
   if (buildCounterGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation <
       3) {
     checkGoogleCloudVideointelligenceV1beta2Entity(o.entity!);
-    checkUnnamed410(o.segments!);
-    checkUnnamed411(o.tracks!);
+    checkUnnamed412(o.segments!);
+    checkUnnamed413(o.tracks!);
   }
   buildCounterGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation--;
 }
@@ -2545,12 +2545,12 @@ void checkGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2NormalizedVertex>
-    buildUnnamed412() => [
+    buildUnnamed414() => [
           buildGoogleCloudVideointelligenceV1beta2NormalizedVertex(),
           buildGoogleCloudVideointelligenceV1beta2NormalizedVertex(),
         ];
 
-void checkUnnamed412(
+void checkUnnamed414(
     core.List<api.GoogleCloudVideointelligenceV1beta2NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2NormalizedVertex(o[0]);
@@ -2565,7 +2565,7 @@ api.GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly
   buildCounterGoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly <
       3) {
-    o.vertices = buildUnnamed412();
+    o.vertices = buildUnnamed414();
   }
   buildCounterGoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly--;
   return o;
@@ -2576,7 +2576,7 @@ void checkGoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly(
   buildCounterGoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly <
       3) {
-    checkUnnamed412(o.vertices!);
+    checkUnnamed414(o.vertices!);
   }
   buildCounterGoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly--;
 }
@@ -2611,12 +2611,12 @@ void checkGoogleCloudVideointelligenceV1beta2NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame>
-    buildUnnamed413() => [
+    buildUnnamed415() => [
           buildGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame(),
           buildGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame(),
         ];
 
-void checkUnnamed413(
+void checkUnnamed415(
     core.List<api.GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame(o[0]);
@@ -2633,7 +2633,7 @@ api.GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation
       3) {
     o.confidence = 42.0;
     o.entity = buildGoogleCloudVideointelligenceV1beta2Entity();
-    o.frames = buildUnnamed413();
+    o.frames = buildUnnamed415();
     o.segment = buildGoogleCloudVideointelligenceV1beta2VideoSegment();
     o.trackId = 'foo';
     o.version = 'foo';
@@ -2652,7 +2652,7 @@ void checkGoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation(
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1beta2Entity(o.entity!);
-    checkUnnamed413(o.frames!);
+    checkUnnamed415(o.frames!);
     checkGoogleCloudVideointelligenceV1beta2VideoSegment(o.segment!);
     unittest.expect(
       o.trackId!,
@@ -2694,12 +2694,12 @@ void checkGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed414() => [
+core.List<api.GoogleCloudVideointelligenceV1beta2Track> buildUnnamed416() => [
       buildGoogleCloudVideointelligenceV1beta2Track(),
       buildGoogleCloudVideointelligenceV1beta2Track(),
     ];
 
-void checkUnnamed414(
+void checkUnnamed416(
     core.List<api.GoogleCloudVideointelligenceV1beta2Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2Track(o[0]);
@@ -2715,7 +2715,7 @@ api.GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation
   buildCounterGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation <
       3) {
-    o.tracks = buildUnnamed414();
+    o.tracks = buildUnnamed416();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation--;
@@ -2727,7 +2727,7 @@ void checkGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation <
       3) {
-    checkUnnamed414(o.tracks!);
+    checkUnnamed416(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -2736,13 +2736,13 @@ void checkGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2WordInfo> buildUnnamed415() =>
+core.List<api.GoogleCloudVideointelligenceV1beta2WordInfo> buildUnnamed417() =>
     [
       buildGoogleCloudVideointelligenceV1beta2WordInfo(),
       buildGoogleCloudVideointelligenceV1beta2WordInfo(),
     ];
 
-void checkUnnamed415(
+void checkUnnamed417(
     core.List<api.GoogleCloudVideointelligenceV1beta2WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2WordInfo(o[0]);
@@ -2761,7 +2761,7 @@ api.GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative
       3) {
     o.confidence = 42.0;
     o.transcript = 'foo';
-    o.words = buildUnnamed415();
+    o.words = buildUnnamed417();
   }
   buildCounterGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative--;
   return o;
@@ -2780,18 +2780,18 @@ void checkGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative(
       o.transcript!,
       unittest.equals('foo'),
     );
-    checkUnnamed415(o.words!);
+    checkUnnamed417(o.words!);
   }
   buildCounterGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>
-    buildUnnamed416() => [
+    buildUnnamed418() => [
           buildGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative(),
           buildGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative(),
         ];
 
-void checkUnnamed416(
+void checkUnnamed418(
     core.List<
             api.GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>
         o) {
@@ -2806,7 +2806,7 @@ api.GoogleCloudVideointelligenceV1beta2SpeechTranscription
   final o = api.GoogleCloudVideointelligenceV1beta2SpeechTranscription();
   buildCounterGoogleCloudVideointelligenceV1beta2SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2SpeechTranscription < 3) {
-    o.alternatives = buildUnnamed416();
+    o.alternatives = buildUnnamed418();
     o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1beta2SpeechTranscription--;
@@ -2817,7 +2817,7 @@ void checkGoogleCloudVideointelligenceV1beta2SpeechTranscription(
     api.GoogleCloudVideointelligenceV1beta2SpeechTranscription o) {
   buildCounterGoogleCloudVideointelligenceV1beta2SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2SpeechTranscription < 3) {
-    checkUnnamed416(o.alternatives!);
+    checkUnnamed418(o.alternatives!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -2827,12 +2827,12 @@ void checkGoogleCloudVideointelligenceV1beta2SpeechTranscription(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2TextSegment>
-    buildUnnamed417() => [
+    buildUnnamed419() => [
           buildGoogleCloudVideointelligenceV1beta2TextSegment(),
           buildGoogleCloudVideointelligenceV1beta2TextSegment(),
         ];
 
-void checkUnnamed417(
+void checkUnnamed419(
     core.List<api.GoogleCloudVideointelligenceV1beta2TextSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2TextSegment(o[0]);
@@ -2845,7 +2845,7 @@ api.GoogleCloudVideointelligenceV1beta2TextAnnotation
   final o = api.GoogleCloudVideointelligenceV1beta2TextAnnotation();
   buildCounterGoogleCloudVideointelligenceV1beta2TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2TextAnnotation < 3) {
-    o.segments = buildUnnamed417();
+    o.segments = buildUnnamed419();
     o.text = 'foo';
     o.version = 'foo';
   }
@@ -2857,7 +2857,7 @@ void checkGoogleCloudVideointelligenceV1beta2TextAnnotation(
     api.GoogleCloudVideointelligenceV1beta2TextAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1beta2TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2TextAnnotation < 3) {
-    checkUnnamed417(o.segments!);
+    checkUnnamed419(o.segments!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -2898,13 +2898,13 @@ void checkGoogleCloudVideointelligenceV1beta2TextFrame(
   buildCounterGoogleCloudVideointelligenceV1beta2TextFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2TextFrame> buildUnnamed418() =>
+core.List<api.GoogleCloudVideointelligenceV1beta2TextFrame> buildUnnamed420() =>
     [
       buildGoogleCloudVideointelligenceV1beta2TextFrame(),
       buildGoogleCloudVideointelligenceV1beta2TextFrame(),
     ];
 
-void checkUnnamed418(
+void checkUnnamed420(
     core.List<api.GoogleCloudVideointelligenceV1beta2TextFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2TextFrame(o[0]);
@@ -2918,7 +2918,7 @@ api.GoogleCloudVideointelligenceV1beta2TextSegment
   buildCounterGoogleCloudVideointelligenceV1beta2TextSegment++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2TextSegment < 3) {
     o.confidence = 42.0;
-    o.frames = buildUnnamed418();
+    o.frames = buildUnnamed420();
     o.segment = buildGoogleCloudVideointelligenceV1beta2VideoSegment();
   }
   buildCounterGoogleCloudVideointelligenceV1beta2TextSegment--;
@@ -2933,68 +2933,10 @@ void checkGoogleCloudVideointelligenceV1beta2TextSegment(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed418(o.frames!);
+    checkUnnamed420(o.frames!);
     checkGoogleCloudVideointelligenceV1beta2VideoSegment(o.segment!);
   }
   buildCounterGoogleCloudVideointelligenceV1beta2TextSegment--;
-}
-
-core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute>
-    buildUnnamed419() => [
-          buildGoogleCloudVideointelligenceV1beta2DetectedAttribute(),
-          buildGoogleCloudVideointelligenceV1beta2DetectedAttribute(),
-        ];
-
-void checkUnnamed419(
-    core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1beta2DetectedAttribute(o[0]);
-  checkGoogleCloudVideointelligenceV1beta2DetectedAttribute(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1beta2DetectedLandmark>
-    buildUnnamed420() => [
-          buildGoogleCloudVideointelligenceV1beta2DetectedLandmark(),
-          buildGoogleCloudVideointelligenceV1beta2DetectedLandmark(),
-        ];
-
-void checkUnnamed420(
-    core.List<api.GoogleCloudVideointelligenceV1beta2DetectedLandmark> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1beta2DetectedLandmark(o[0]);
-  checkGoogleCloudVideointelligenceV1beta2DetectedLandmark(o[1]);
-}
-
-core.int buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject = 0;
-api.GoogleCloudVideointelligenceV1beta2TimestampedObject
-    buildGoogleCloudVideointelligenceV1beta2TimestampedObject() {
-  final o = api.GoogleCloudVideointelligenceV1beta2TimestampedObject();
-  buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject < 3) {
-    o.attributes = buildUnnamed419();
-    o.landmarks = buildUnnamed420();
-    o.normalizedBoundingBox =
-        buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox();
-    o.timeOffset = 'foo';
-  }
-  buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject--;
-  return o;
-}
-
-void checkGoogleCloudVideointelligenceV1beta2TimestampedObject(
-    api.GoogleCloudVideointelligenceV1beta2TimestampedObject o) {
-  buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject < 3) {
-    checkUnnamed419(o.attributes!);
-    checkUnnamed420(o.landmarks!);
-    checkGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(
-        o.normalizedBoundingBox!);
-    unittest.expect(
-      o.timeOffset!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute>
@@ -3010,13 +2952,71 @@ void checkUnnamed421(
   checkGoogleCloudVideointelligenceV1beta2DetectedAttribute(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2TimestampedObject>
+core.List<api.GoogleCloudVideointelligenceV1beta2DetectedLandmark>
     buildUnnamed422() => [
+          buildGoogleCloudVideointelligenceV1beta2DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1beta2DetectedLandmark(),
+        ];
+
+void checkUnnamed422(
+    core.List<api.GoogleCloudVideointelligenceV1beta2DetectedLandmark> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1beta2DetectedLandmark(o[0]);
+  checkGoogleCloudVideointelligenceV1beta2DetectedLandmark(o[1]);
+}
+
+core.int buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject = 0;
+api.GoogleCloudVideointelligenceV1beta2TimestampedObject
+    buildGoogleCloudVideointelligenceV1beta2TimestampedObject() {
+  final o = api.GoogleCloudVideointelligenceV1beta2TimestampedObject();
+  buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject < 3) {
+    o.attributes = buildUnnamed421();
+    o.landmarks = buildUnnamed422();
+    o.normalizedBoundingBox =
+        buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox();
+    o.timeOffset = 'foo';
+  }
+  buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject--;
+  return o;
+}
+
+void checkGoogleCloudVideointelligenceV1beta2TimestampedObject(
+    api.GoogleCloudVideointelligenceV1beta2TimestampedObject o) {
+  buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject < 3) {
+    checkUnnamed421(o.attributes!);
+    checkUnnamed422(o.landmarks!);
+    checkGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox(
+        o.normalizedBoundingBox!);
+    unittest.expect(
+      o.timeOffset!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudVideointelligenceV1beta2TimestampedObject--;
+}
+
+core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute>
+    buildUnnamed423() => [
+          buildGoogleCloudVideointelligenceV1beta2DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1beta2DetectedAttribute(),
+        ];
+
+void checkUnnamed423(
+    core.List<api.GoogleCloudVideointelligenceV1beta2DetectedAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1beta2DetectedAttribute(o[0]);
+  checkGoogleCloudVideointelligenceV1beta2DetectedAttribute(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1beta2TimestampedObject>
+    buildUnnamed424() => [
           buildGoogleCloudVideointelligenceV1beta2TimestampedObject(),
           buildGoogleCloudVideointelligenceV1beta2TimestampedObject(),
         ];
 
-void checkUnnamed422(
+void checkUnnamed424(
     core.List<api.GoogleCloudVideointelligenceV1beta2TimestampedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2TimestampedObject(o[0]);
@@ -3029,10 +3029,10 @@ api.GoogleCloudVideointelligenceV1beta2Track
   final o = api.GoogleCloudVideointelligenceV1beta2Track();
   buildCounterGoogleCloudVideointelligenceV1beta2Track++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2Track < 3) {
-    o.attributes = buildUnnamed421();
+    o.attributes = buildUnnamed423();
     o.confidence = 42.0;
     o.segment = buildGoogleCloudVideointelligenceV1beta2VideoSegment();
-    o.timestampedObjects = buildUnnamed422();
+    o.timestampedObjects = buildUnnamed424();
   }
   buildCounterGoogleCloudVideointelligenceV1beta2Track--;
   return o;
@@ -3042,13 +3042,13 @@ void checkGoogleCloudVideointelligenceV1beta2Track(
     api.GoogleCloudVideointelligenceV1beta2Track o) {
   buildCounterGoogleCloudVideointelligenceV1beta2Track++;
   if (buildCounterGoogleCloudVideointelligenceV1beta2Track < 3) {
-    checkUnnamed421(o.attributes!);
+    checkUnnamed423(o.attributes!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1beta2VideoSegment(o.segment!);
-    checkUnnamed422(o.timestampedObjects!);
+    checkUnnamed424(o.timestampedObjects!);
   }
   buildCounterGoogleCloudVideointelligenceV1beta2Track--;
 }
@@ -3103,12 +3103,12 @@ void checkGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2FaceAnnotation>
-    buildUnnamed423() => [
+    buildUnnamed425() => [
           buildGoogleCloudVideointelligenceV1beta2FaceAnnotation(),
           buildGoogleCloudVideointelligenceV1beta2FaceAnnotation(),
         ];
 
-void checkUnnamed423(
+void checkUnnamed425(
     core.List<api.GoogleCloudVideointelligenceV1beta2FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2FaceAnnotation(o[0]);
@@ -3116,12 +3116,12 @@ void checkUnnamed423(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>
-    buildUnnamed424() => [
+    buildUnnamed426() => [
           buildGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation(),
         ];
 
-void checkUnnamed424(
+void checkUnnamed426(
     core.List<api.GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3130,12 +3130,12 @@ void checkUnnamed424(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
-    buildUnnamed425() => [
+    buildUnnamed427() => [
           buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
         ];
 
-void checkUnnamed425(
+void checkUnnamed427(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[0]);
@@ -3143,12 +3143,12 @@ void checkUnnamed425(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation>
-    buildUnnamed426() => [
+    buildUnnamed428() => [
           buildGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation(),
           buildGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation(),
         ];
 
-void checkUnnamed426(
+void checkUnnamed428(
     core.List<api.GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3157,12 +3157,12 @@ void checkUnnamed426(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>
-    buildUnnamed427() => [
+    buildUnnamed429() => [
           buildGoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation(),
           buildGoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation(),
         ];
 
-void checkUnnamed427(
+void checkUnnamed429(
     core.List<api.GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3171,12 +3171,12 @@ void checkUnnamed427(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation>
-    buildUnnamed428() => [
+    buildUnnamed430() => [
           buildGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation(),
         ];
 
-void checkUnnamed428(
+void checkUnnamed430(
     core.List<api.GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3185,42 +3185,16 @@ void checkUnnamed428(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
-    buildUnnamed429() => [
-          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
-        ];
-
-void checkUnnamed429(
-    core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
-    buildUnnamed430() => [
-          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
-        ];
-
-void checkUnnamed430(
-    core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment>
     buildUnnamed431() => [
-          buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
-          buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
         ];
 
 void checkUnnamed431(
-    core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment> o) {
+    core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1beta2VideoSegment(o[0]);
-  checkGoogleCloudVideointelligenceV1beta2VideoSegment(o[1]);
+  checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
@@ -3236,13 +3210,39 @@ void checkUnnamed432(
   checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
+core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment>
     buildUnnamed433() => [
+          buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
+          buildGoogleCloudVideointelligenceV1beta2VideoSegment(),
+        ];
+
+void checkUnnamed433(
+    core.List<api.GoogleCloudVideointelligenceV1beta2VideoSegment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1beta2VideoSegment(o[0]);
+  checkGoogleCloudVideointelligenceV1beta2VideoSegment(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
+    buildUnnamed434() => [
           buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
         ];
 
-void checkUnnamed433(
+void checkUnnamed434(
+    core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation>
+    buildUnnamed435() => [
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1beta2LabelAnnotation(),
+        ];
+
+void checkUnnamed435(
     core.List<api.GoogleCloudVideointelligenceV1beta2LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2LabelAnnotation(o[0]);
@@ -3250,12 +3250,12 @@ void checkUnnamed433(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2SpeechTranscription>
-    buildUnnamed434() => [
+    buildUnnamed436() => [
           buildGoogleCloudVideointelligenceV1beta2SpeechTranscription(),
           buildGoogleCloudVideointelligenceV1beta2SpeechTranscription(),
         ];
 
-void checkUnnamed434(
+void checkUnnamed436(
     core.List<api.GoogleCloudVideointelligenceV1beta2SpeechTranscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2SpeechTranscription(o[0]);
@@ -3263,12 +3263,12 @@ void checkUnnamed434(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1beta2TextAnnotation>
-    buildUnnamed435() => [
+    buildUnnamed437() => [
           buildGoogleCloudVideointelligenceV1beta2TextAnnotation(),
           buildGoogleCloudVideointelligenceV1beta2TextAnnotation(),
         ];
 
-void checkUnnamed435(
+void checkUnnamed437(
     core.List<api.GoogleCloudVideointelligenceV1beta2TextAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1beta2TextAnnotation(o[0]);
@@ -3286,21 +3286,21 @@ api.GoogleCloudVideointelligenceV1beta2VideoAnnotationResults
     o.error = buildGoogleRpcStatus();
     o.explicitAnnotation =
         buildGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation();
-    o.faceAnnotations = buildUnnamed423();
-    o.faceDetectionAnnotations = buildUnnamed424();
-    o.frameLabelAnnotations = buildUnnamed425();
+    o.faceAnnotations = buildUnnamed425();
+    o.faceDetectionAnnotations = buildUnnamed426();
+    o.frameLabelAnnotations = buildUnnamed427();
     o.inputUri = 'foo';
-    o.logoRecognitionAnnotations = buildUnnamed426();
-    o.objectAnnotations = buildUnnamed427();
-    o.personDetectionAnnotations = buildUnnamed428();
+    o.logoRecognitionAnnotations = buildUnnamed428();
+    o.objectAnnotations = buildUnnamed429();
+    o.personDetectionAnnotations = buildUnnamed430();
     o.segment = buildGoogleCloudVideointelligenceV1beta2VideoSegment();
-    o.segmentLabelAnnotations = buildUnnamed429();
-    o.segmentPresenceLabelAnnotations = buildUnnamed430();
-    o.shotAnnotations = buildUnnamed431();
-    o.shotLabelAnnotations = buildUnnamed432();
-    o.shotPresenceLabelAnnotations = buildUnnamed433();
-    o.speechTranscriptions = buildUnnamed434();
-    o.textAnnotations = buildUnnamed435();
+    o.segmentLabelAnnotations = buildUnnamed431();
+    o.segmentPresenceLabelAnnotations = buildUnnamed432();
+    o.shotAnnotations = buildUnnamed433();
+    o.shotLabelAnnotations = buildUnnamed434();
+    o.shotPresenceLabelAnnotations = buildUnnamed435();
+    o.speechTranscriptions = buildUnnamed436();
+    o.textAnnotations = buildUnnamed437();
   }
   buildCounterGoogleCloudVideointelligenceV1beta2VideoAnnotationResults--;
   return o;
@@ -3314,24 +3314,24 @@ void checkGoogleCloudVideointelligenceV1beta2VideoAnnotationResults(
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation(
         o.explicitAnnotation!);
-    checkUnnamed423(o.faceAnnotations!);
-    checkUnnamed424(o.faceDetectionAnnotations!);
-    checkUnnamed425(o.frameLabelAnnotations!);
+    checkUnnamed425(o.faceAnnotations!);
+    checkUnnamed426(o.faceDetectionAnnotations!);
+    checkUnnamed427(o.frameLabelAnnotations!);
     unittest.expect(
       o.inputUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed426(o.logoRecognitionAnnotations!);
-    checkUnnamed427(o.objectAnnotations!);
-    checkUnnamed428(o.personDetectionAnnotations!);
+    checkUnnamed428(o.logoRecognitionAnnotations!);
+    checkUnnamed429(o.objectAnnotations!);
+    checkUnnamed430(o.personDetectionAnnotations!);
     checkGoogleCloudVideointelligenceV1beta2VideoSegment(o.segment!);
-    checkUnnamed429(o.segmentLabelAnnotations!);
-    checkUnnamed430(o.segmentPresenceLabelAnnotations!);
-    checkUnnamed431(o.shotAnnotations!);
-    checkUnnamed432(o.shotLabelAnnotations!);
-    checkUnnamed433(o.shotPresenceLabelAnnotations!);
-    checkUnnamed434(o.speechTranscriptions!);
-    checkUnnamed435(o.textAnnotations!);
+    checkUnnamed431(o.segmentLabelAnnotations!);
+    checkUnnamed432(o.segmentPresenceLabelAnnotations!);
+    checkUnnamed433(o.shotAnnotations!);
+    checkUnnamed434(o.shotLabelAnnotations!);
+    checkUnnamed435(o.shotPresenceLabelAnnotations!);
+    checkUnnamed436(o.speechTranscriptions!);
+    checkUnnamed437(o.textAnnotations!);
   }
   buildCounterGoogleCloudVideointelligenceV1beta2VideoAnnotationResults--;
 }
@@ -3410,12 +3410,12 @@ void checkGoogleCloudVideointelligenceV1beta2WordInfo(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress>
-    buildUnnamed436() => [
+    buildUnnamed438() => [
           buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress(),
           buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress(),
         ];
 
-void checkUnnamed436(
+void checkUnnamed438(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3431,7 +3431,7 @@ api.GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress
   buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress <
       3) {
-    o.annotationProgress = buildUnnamed436();
+    o.annotationProgress = buildUnnamed438();
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress--;
   return o;
@@ -3442,18 +3442,18 @@ void checkGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress(
   buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress <
       3) {
-    checkUnnamed436(o.annotationProgress!);
+    checkUnnamed438(o.annotationProgress!);
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults>
-    buildUnnamed437() => [
+    buildUnnamed439() => [
           buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults(),
           buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults(),
         ];
 
-void checkUnnamed437(
+void checkUnnamed439(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3469,7 +3469,7 @@ api.GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse
   buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse <
       3) {
-    o.annotationResults = buildUnnamed437();
+    o.annotationResults = buildUnnamed439();
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse--;
   return o;
@@ -3480,7 +3480,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse(
   buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse <
       3) {
-    checkUnnamed437(o.annotationResults!);
+    checkUnnamed439(o.annotationResults!);
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse--;
 }
@@ -3585,12 +3585,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame>
-    buildUnnamed438() => [
+    buildUnnamed440() => [
           buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame(),
           buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame(),
         ];
 
-void checkUnnamed438(
+void checkUnnamed440(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3608,7 +3608,7 @@ api.GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation
   buildCounterGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation <
       3) {
-    o.frames = buildUnnamed438();
+    o.frames = buildUnnamed440();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation--;
@@ -3620,7 +3620,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation <
       3) {
-    checkUnnamed438(o.frames!);
+    checkUnnamed440(o.frames!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -3662,12 +3662,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceFrame>
-    buildUnnamed439() => [
+    buildUnnamed441() => [
           buildGoogleCloudVideointelligenceV1p1beta1FaceFrame(),
           buildGoogleCloudVideointelligenceV1p1beta1FaceFrame(),
         ];
 
-void checkUnnamed439(
+void checkUnnamed441(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1FaceFrame(o[0]);
@@ -3675,12 +3675,12 @@ void checkUnnamed439(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceSegment>
-    buildUnnamed440() => [
+    buildUnnamed442() => [
           buildGoogleCloudVideointelligenceV1p1beta1FaceSegment(),
           buildGoogleCloudVideointelligenceV1p1beta1FaceSegment(),
         ];
 
-void checkUnnamed440(
+void checkUnnamed442(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1FaceSegment(o[0]);
@@ -3693,8 +3693,8 @@ api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation
   final o = api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1FaceAnnotation < 3) {
-    o.frames = buildUnnamed439();
-    o.segments = buildUnnamed440();
+    o.frames = buildUnnamed441();
+    o.segments = buildUnnamed442();
     o.thumbnail = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceAnnotation--;
@@ -3705,8 +3705,8 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceAnnotation(
     api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1FaceAnnotation < 3) {
-    checkUnnamed439(o.frames!);
-    checkUnnamed440(o.segments!);
+    checkUnnamed441(o.frames!);
+    checkUnnamed442(o.segments!);
     unittest.expect(
       o.thumbnail!,
       unittest.equals('foo'),
@@ -3715,12 +3715,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed441() => [
+core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed443() => [
       buildGoogleCloudVideointelligenceV1p1beta1Track(),
       buildGoogleCloudVideointelligenceV1p1beta1Track(),
     ];
 
-void checkUnnamed441(
+void checkUnnamed443(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1Track(o[0]);
@@ -3737,7 +3737,7 @@ api.GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation <
       3) {
     o.thumbnail = 'foo';
-    o.tracks = buildUnnamed441();
+    o.tracks = buildUnnamed443();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation--;
@@ -3753,7 +3753,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation(
       o.thumbnail!,
       unittest.equals('foo'),
     );
-    checkUnnamed441(o.tracks!);
+    checkUnnamed443(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -3763,12 +3763,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox>
-    buildUnnamed442() => [
+    buildUnnamed444() => [
           buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox(),
           buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox(),
         ];
 
-void checkUnnamed442(
+void checkUnnamed444(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3782,7 +3782,7 @@ api.GoogleCloudVideointelligenceV1p1beta1FaceFrame
   final o = api.GoogleCloudVideointelligenceV1p1beta1FaceFrame();
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1FaceFrame < 3) {
-    o.normalizedBoundingBoxes = buildUnnamed442();
+    o.normalizedBoundingBoxes = buildUnnamed444();
     o.timeOffset = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceFrame--;
@@ -3793,7 +3793,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceFrame(
     api.GoogleCloudVideointelligenceV1p1beta1FaceFrame o) {
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1FaceFrame < 3) {
-    checkUnnamed442(o.normalizedBoundingBoxes!);
+    checkUnnamed444(o.normalizedBoundingBoxes!);
     unittest.expect(
       o.timeOffset!,
       unittest.equals('foo'),
@@ -3823,13 +3823,13 @@ void checkGoogleCloudVideointelligenceV1p1beta1FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1p1beta1FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1Entity> buildUnnamed443() =>
+core.List<api.GoogleCloudVideointelligenceV1p1beta1Entity> buildUnnamed445() =>
     [
       buildGoogleCloudVideointelligenceV1p1beta1Entity(),
       buildGoogleCloudVideointelligenceV1p1beta1Entity(),
     ];
 
-void checkUnnamed443(
+void checkUnnamed445(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1Entity(o[0]);
@@ -3837,12 +3837,12 @@ void checkUnnamed443(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelFrame>
-    buildUnnamed444() => [
+    buildUnnamed446() => [
           buildGoogleCloudVideointelligenceV1p1beta1LabelFrame(),
           buildGoogleCloudVideointelligenceV1p1beta1LabelFrame(),
         ];
 
-void checkUnnamed444(
+void checkUnnamed446(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1LabelFrame(o[0]);
@@ -3850,12 +3850,12 @@ void checkUnnamed444(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelSegment>
-    buildUnnamed445() => [
+    buildUnnamed447() => [
           buildGoogleCloudVideointelligenceV1p1beta1LabelSegment(),
           buildGoogleCloudVideointelligenceV1p1beta1LabelSegment(),
         ];
 
-void checkUnnamed445(
+void checkUnnamed447(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1LabelSegment(o[0]);
@@ -3868,10 +3868,10 @@ api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation
   final o = api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p1beta1LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1LabelAnnotation < 3) {
-    o.categoryEntities = buildUnnamed443();
+    o.categoryEntities = buildUnnamed445();
     o.entity = buildGoogleCloudVideointelligenceV1p1beta1Entity();
-    o.frames = buildUnnamed444();
-    o.segments = buildUnnamed445();
+    o.frames = buildUnnamed446();
+    o.segments = buildUnnamed447();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1LabelAnnotation--;
@@ -3882,10 +3882,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(
     api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p1beta1LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1LabelAnnotation < 3) {
-    checkUnnamed443(o.categoryEntities!);
+    checkUnnamed445(o.categoryEntities!);
     checkGoogleCloudVideointelligenceV1p1beta1Entity(o.entity!);
-    checkUnnamed444(o.frames!);
-    checkUnnamed445(o.segments!);
+    checkUnnamed446(o.frames!);
+    checkUnnamed447(o.segments!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -3950,24 +3950,24 @@ void checkGoogleCloudVideointelligenceV1p1beta1LabelSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment>
-    buildUnnamed446() => [
+    buildUnnamed448() => [
           buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
           buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
         ];
 
-void checkUnnamed446(
+void checkUnnamed448(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o[0]);
   checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed447() => [
+core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed449() => [
       buildGoogleCloudVideointelligenceV1p1beta1Track(),
       buildGoogleCloudVideointelligenceV1p1beta1Track(),
     ];
 
-void checkUnnamed447(
+void checkUnnamed449(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1Track(o[0]);
@@ -3985,8 +3985,8 @@ api.GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation <
       3) {
     o.entity = buildGoogleCloudVideointelligenceV1p1beta1Entity();
-    o.segments = buildUnnamed446();
-    o.tracks = buildUnnamed447();
+    o.segments = buildUnnamed448();
+    o.tracks = buildUnnamed449();
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation--;
   return o;
@@ -3998,8 +3998,8 @@ void checkGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation(
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation <
       3) {
     checkGoogleCloudVideointelligenceV1p1beta1Entity(o.entity!);
-    checkUnnamed446(o.segments!);
-    checkUnnamed447(o.tracks!);
+    checkUnnamed448(o.segments!);
+    checkUnnamed449(o.tracks!);
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation--;
 }
@@ -4047,12 +4047,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1NormalizedVertex>
-    buildUnnamed448() => [
+    buildUnnamed450() => [
           buildGoogleCloudVideointelligenceV1p1beta1NormalizedVertex(),
           buildGoogleCloudVideointelligenceV1p1beta1NormalizedVertex(),
         ];
 
-void checkUnnamed448(
+void checkUnnamed450(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1NormalizedVertex(o[0]);
@@ -4067,7 +4067,7 @@ api.GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly
   buildCounterGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly <
       3) {
-    o.vertices = buildUnnamed448();
+    o.vertices = buildUnnamed450();
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly--;
   return o;
@@ -4078,7 +4078,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly(
   buildCounterGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly <
       3) {
-    checkUnnamed448(o.vertices!);
+    checkUnnamed450(o.vertices!);
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly--;
 }
@@ -4113,12 +4113,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame>
-    buildUnnamed449() => [
+    buildUnnamed451() => [
           buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame(),
           buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame(),
         ];
 
-void checkUnnamed449(
+void checkUnnamed451(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame(o[0]);
@@ -4136,7 +4136,7 @@ api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation
       3) {
     o.confidence = 42.0;
     o.entity = buildGoogleCloudVideointelligenceV1p1beta1Entity();
-    o.frames = buildUnnamed449();
+    o.frames = buildUnnamed451();
     o.segment = buildGoogleCloudVideointelligenceV1p1beta1VideoSegment();
     o.trackId = 'foo';
     o.version = 'foo';
@@ -4155,7 +4155,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation(
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1p1beta1Entity(o.entity!);
-    checkUnnamed449(o.frames!);
+    checkUnnamed451(o.frames!);
     checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o.segment!);
     unittest.expect(
       o.trackId!,
@@ -4200,12 +4200,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed450() => [
+core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> buildUnnamed452() => [
       buildGoogleCloudVideointelligenceV1p1beta1Track(),
       buildGoogleCloudVideointelligenceV1p1beta1Track(),
     ];
 
-void checkUnnamed450(
+void checkUnnamed452(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1Track(o[0]);
@@ -4222,7 +4222,7 @@ api.GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation
   buildCounterGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation <
       3) {
-    o.tracks = buildUnnamed450();
+    o.tracks = buildUnnamed452();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation--;
@@ -4234,7 +4234,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation <
       3) {
-    checkUnnamed450(o.tracks!);
+    checkUnnamed452(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -4244,12 +4244,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1WordInfo>
-    buildUnnamed451() => [
+    buildUnnamed453() => [
           buildGoogleCloudVideointelligenceV1p1beta1WordInfo(),
           buildGoogleCloudVideointelligenceV1p1beta1WordInfo(),
         ];
 
-void checkUnnamed451(
+void checkUnnamed453(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1WordInfo(o[0]);
@@ -4268,7 +4268,7 @@ api.GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative
       3) {
     o.confidence = 42.0;
     o.transcript = 'foo';
-    o.words = buildUnnamed451();
+    o.words = buildUnnamed453();
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative--;
   return o;
@@ -4287,18 +4287,18 @@ void checkGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative(
       o.transcript!,
       unittest.equals('foo'),
     );
-    checkUnnamed451(o.words!);
+    checkUnnamed453(o.words!);
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>
-    buildUnnamed452() => [
+    buildUnnamed454() => [
           buildGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative(),
           buildGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative(),
         ];
 
-void checkUnnamed452(
+void checkUnnamed454(
     core.List<
             api.GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>
         o) {
@@ -4315,7 +4315,7 @@ api.GoogleCloudVideointelligenceV1p1beta1SpeechTranscription
   buildCounterGoogleCloudVideointelligenceV1p1beta1SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1SpeechTranscription <
       3) {
-    o.alternatives = buildUnnamed452();
+    o.alternatives = buildUnnamed454();
     o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1SpeechTranscription--;
@@ -4327,7 +4327,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1SpeechTranscription(
   buildCounterGoogleCloudVideointelligenceV1p1beta1SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1SpeechTranscription <
       3) {
-    checkUnnamed452(o.alternatives!);
+    checkUnnamed454(o.alternatives!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -4337,12 +4337,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1SpeechTranscription(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1TextSegment>
-    buildUnnamed453() => [
+    buildUnnamed455() => [
           buildGoogleCloudVideointelligenceV1p1beta1TextSegment(),
           buildGoogleCloudVideointelligenceV1p1beta1TextSegment(),
         ];
 
-void checkUnnamed453(
+void checkUnnamed455(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1TextSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1TextSegment(o[0]);
@@ -4355,7 +4355,7 @@ api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation
   final o = api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p1beta1TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1TextAnnotation < 3) {
-    o.segments = buildUnnamed453();
+    o.segments = buildUnnamed455();
     o.text = 'foo';
     o.version = 'foo';
   }
@@ -4367,7 +4367,7 @@ void checkGoogleCloudVideointelligenceV1p1beta1TextAnnotation(
     api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p1beta1TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1TextAnnotation < 3) {
-    checkUnnamed453(o.segments!);
+    checkUnnamed455(o.segments!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -4409,12 +4409,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1TextFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1TextFrame>
-    buildUnnamed454() => [
+    buildUnnamed456() => [
           buildGoogleCloudVideointelligenceV1p1beta1TextFrame(),
           buildGoogleCloudVideointelligenceV1p1beta1TextFrame(),
         ];
 
-void checkUnnamed454(
+void checkUnnamed456(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1TextFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1TextFrame(o[0]);
@@ -4428,7 +4428,7 @@ api.GoogleCloudVideointelligenceV1p1beta1TextSegment
   buildCounterGoogleCloudVideointelligenceV1p1beta1TextSegment++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1TextSegment < 3) {
     o.confidence = 42.0;
-    o.frames = buildUnnamed454();
+    o.frames = buildUnnamed456();
     o.segment = buildGoogleCloudVideointelligenceV1p1beta1VideoSegment();
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1TextSegment--;
@@ -4443,68 +4443,10 @@ void checkGoogleCloudVideointelligenceV1p1beta1TextSegment(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed454(o.frames!);
+    checkUnnamed456(o.frames!);
     checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o.segment!);
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1TextSegment--;
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>
-    buildUnnamed455() => [
-          buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(),
-          buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(),
-        ];
-
-void checkUnnamed455(
-    core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(o[0]);
-  checkGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedLandmark>
-    buildUnnamed456() => [
-          buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(),
-          buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(),
-        ];
-
-void checkUnnamed456(
-    core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedLandmark> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(o[0]);
-  checkGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(o[1]);
-}
-
-core.int buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject = 0;
-api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject
-    buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject() {
-  final o = api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject();
-  buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject < 3) {
-    o.attributes = buildUnnamed455();
-    o.landmarks = buildUnnamed456();
-    o.normalizedBoundingBox =
-        buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox();
-    o.timeOffset = 'foo';
-  }
-  buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject--;
-  return o;
-}
-
-void checkGoogleCloudVideointelligenceV1p1beta1TimestampedObject(
-    api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject o) {
-  buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject < 3) {
-    checkUnnamed455(o.attributes!);
-    checkUnnamed456(o.landmarks!);
-    checkGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox(
-        o.normalizedBoundingBox!);
-    unittest.expect(
-      o.timeOffset!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>
@@ -4520,13 +4462,71 @@ void checkUnnamed457(
   checkGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject>
+core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedLandmark>
     buildUnnamed458() => [
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(),
+        ];
+
+void checkUnnamed458(
+    core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedLandmark> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(o[0]);
+  checkGoogleCloudVideointelligenceV1p1beta1DetectedLandmark(o[1]);
+}
+
+core.int buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject = 0;
+api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject
+    buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject() {
+  final o = api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject();
+  buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject < 3) {
+    o.attributes = buildUnnamed457();
+    o.landmarks = buildUnnamed458();
+    o.normalizedBoundingBox =
+        buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox();
+    o.timeOffset = 'foo';
+  }
+  buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject--;
+  return o;
+}
+
+void checkGoogleCloudVideointelligenceV1p1beta1TimestampedObject(
+    api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject o) {
+  buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject < 3) {
+    checkUnnamed457(o.attributes!);
+    checkUnnamed458(o.landmarks!);
+    checkGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox(
+        o.normalizedBoundingBox!);
+    unittest.expect(
+      o.timeOffset!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudVideointelligenceV1p1beta1TimestampedObject--;
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute>
+    buildUnnamed459() => [
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(),
+        ];
+
+void checkUnnamed459(
+    core.List<api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(o[0]);
+  checkGoogleCloudVideointelligenceV1p1beta1DetectedAttribute(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject>
+    buildUnnamed460() => [
           buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject(),
           buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject(),
         ];
 
-void checkUnnamed458(
+void checkUnnamed460(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1TimestampedObject(o[0]);
@@ -4539,10 +4539,10 @@ api.GoogleCloudVideointelligenceV1p1beta1Track
   final o = api.GoogleCloudVideointelligenceV1p1beta1Track();
   buildCounterGoogleCloudVideointelligenceV1p1beta1Track++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1Track < 3) {
-    o.attributes = buildUnnamed457();
+    o.attributes = buildUnnamed459();
     o.confidence = 42.0;
     o.segment = buildGoogleCloudVideointelligenceV1p1beta1VideoSegment();
-    o.timestampedObjects = buildUnnamed458();
+    o.timestampedObjects = buildUnnamed460();
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1Track--;
   return o;
@@ -4552,13 +4552,13 @@ void checkGoogleCloudVideointelligenceV1p1beta1Track(
     api.GoogleCloudVideointelligenceV1p1beta1Track o) {
   buildCounterGoogleCloudVideointelligenceV1p1beta1Track++;
   if (buildCounterGoogleCloudVideointelligenceV1p1beta1Track < 3) {
-    checkUnnamed457(o.attributes!);
+    checkUnnamed459(o.attributes!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o.segment!);
-    checkUnnamed458(o.timestampedObjects!);
+    checkUnnamed460(o.timestampedObjects!);
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1Track--;
 }
@@ -4614,12 +4614,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation>
-    buildUnnamed459() => [
+    buildUnnamed461() => [
           buildGoogleCloudVideointelligenceV1p1beta1FaceAnnotation(),
           buildGoogleCloudVideointelligenceV1p1beta1FaceAnnotation(),
         ];
 
-void checkUnnamed459(
+void checkUnnamed461(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1FaceAnnotation(o[0]);
@@ -4627,12 +4627,12 @@ void checkUnnamed459(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>
-    buildUnnamed460() => [
+    buildUnnamed462() => [
           buildGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation(),
         ];
 
-void checkUnnamed460(
+void checkUnnamed462(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4641,12 +4641,12 @@ void checkUnnamed460(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
-    buildUnnamed461() => [
+    buildUnnamed463() => [
           buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
         ];
 
-void checkUnnamed461(
+void checkUnnamed463(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[0]);
@@ -4654,12 +4654,12 @@ void checkUnnamed461(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation>
-    buildUnnamed462() => [
+    buildUnnamed464() => [
           buildGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation(),
           buildGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation(),
         ];
 
-void checkUnnamed462(
+void checkUnnamed464(
     core.List<
             api.GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation>
         o) {
@@ -4669,12 +4669,12 @@ void checkUnnamed462(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>
-    buildUnnamed463() => [
+    buildUnnamed465() => [
           buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation(),
           buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation(),
         ];
 
-void checkUnnamed463(
+void checkUnnamed465(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4683,12 +4683,12 @@ void checkUnnamed463(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation>
-    buildUnnamed464() => [
+    buildUnnamed466() => [
           buildGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation(),
         ];
 
-void checkUnnamed464(
+void checkUnnamed466(
     core.List<
             api.GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation>
         o) {
@@ -4698,42 +4698,16 @@ void checkUnnamed464(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
-    buildUnnamed465() => [
-          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
-        ];
-
-void checkUnnamed465(
-    core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
-    buildUnnamed466() => [
-          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
-        ];
-
-void checkUnnamed466(
-    core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment>
     buildUnnamed467() => [
-          buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
-          buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
         ];
 
 void checkUnnamed467(
-    core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment> o) {
+    core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o[0]);
-  checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o[1]);
+  checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
@@ -4749,13 +4723,39 @@ void checkUnnamed468(
   checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
+core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment>
     buildUnnamed469() => [
+          buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p1beta1VideoSegment(),
+        ];
+
+void checkUnnamed469(
+    core.List<api.GoogleCloudVideointelligenceV1p1beta1VideoSegment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o[0]);
+  checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
+    buildUnnamed470() => [
           buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
         ];
 
-void checkUnnamed469(
+void checkUnnamed470(
+    core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
+    buildUnnamed471() => [
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(),
+        ];
+
+void checkUnnamed471(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1LabelAnnotation(o[0]);
@@ -4763,12 +4763,12 @@ void checkUnnamed469(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1SpeechTranscription>
-    buildUnnamed470() => [
+    buildUnnamed472() => [
           buildGoogleCloudVideointelligenceV1p1beta1SpeechTranscription(),
           buildGoogleCloudVideointelligenceV1p1beta1SpeechTranscription(),
         ];
 
-void checkUnnamed470(
+void checkUnnamed472(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1SpeechTranscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1SpeechTranscription(o[0]);
@@ -4776,12 +4776,12 @@ void checkUnnamed470(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation>
-    buildUnnamed471() => [
+    buildUnnamed473() => [
           buildGoogleCloudVideointelligenceV1p1beta1TextAnnotation(),
           buildGoogleCloudVideointelligenceV1p1beta1TextAnnotation(),
         ];
 
-void checkUnnamed471(
+void checkUnnamed473(
     core.List<api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p1beta1TextAnnotation(o[0]);
@@ -4799,21 +4799,21 @@ api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults
     o.error = buildGoogleRpcStatus();
     o.explicitAnnotation =
         buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation();
-    o.faceAnnotations = buildUnnamed459();
-    o.faceDetectionAnnotations = buildUnnamed460();
-    o.frameLabelAnnotations = buildUnnamed461();
+    o.faceAnnotations = buildUnnamed461();
+    o.faceDetectionAnnotations = buildUnnamed462();
+    o.frameLabelAnnotations = buildUnnamed463();
     o.inputUri = 'foo';
-    o.logoRecognitionAnnotations = buildUnnamed462();
-    o.objectAnnotations = buildUnnamed463();
-    o.personDetectionAnnotations = buildUnnamed464();
+    o.logoRecognitionAnnotations = buildUnnamed464();
+    o.objectAnnotations = buildUnnamed465();
+    o.personDetectionAnnotations = buildUnnamed466();
     o.segment = buildGoogleCloudVideointelligenceV1p1beta1VideoSegment();
-    o.segmentLabelAnnotations = buildUnnamed465();
-    o.segmentPresenceLabelAnnotations = buildUnnamed466();
-    o.shotAnnotations = buildUnnamed467();
-    o.shotLabelAnnotations = buildUnnamed468();
-    o.shotPresenceLabelAnnotations = buildUnnamed469();
-    o.speechTranscriptions = buildUnnamed470();
-    o.textAnnotations = buildUnnamed471();
+    o.segmentLabelAnnotations = buildUnnamed467();
+    o.segmentPresenceLabelAnnotations = buildUnnamed468();
+    o.shotAnnotations = buildUnnamed469();
+    o.shotLabelAnnotations = buildUnnamed470();
+    o.shotPresenceLabelAnnotations = buildUnnamed471();
+    o.speechTranscriptions = buildUnnamed472();
+    o.textAnnotations = buildUnnamed473();
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults--;
   return o;
@@ -4827,24 +4827,24 @@ void checkGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults(
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation(
         o.explicitAnnotation!);
-    checkUnnamed459(o.faceAnnotations!);
-    checkUnnamed460(o.faceDetectionAnnotations!);
-    checkUnnamed461(o.frameLabelAnnotations!);
+    checkUnnamed461(o.faceAnnotations!);
+    checkUnnamed462(o.faceDetectionAnnotations!);
+    checkUnnamed463(o.frameLabelAnnotations!);
     unittest.expect(
       o.inputUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed462(o.logoRecognitionAnnotations!);
-    checkUnnamed463(o.objectAnnotations!);
-    checkUnnamed464(o.personDetectionAnnotations!);
+    checkUnnamed464(o.logoRecognitionAnnotations!);
+    checkUnnamed465(o.objectAnnotations!);
+    checkUnnamed466(o.personDetectionAnnotations!);
     checkGoogleCloudVideointelligenceV1p1beta1VideoSegment(o.segment!);
-    checkUnnamed465(o.segmentLabelAnnotations!);
-    checkUnnamed466(o.segmentPresenceLabelAnnotations!);
-    checkUnnamed467(o.shotAnnotations!);
-    checkUnnamed468(o.shotLabelAnnotations!);
-    checkUnnamed469(o.shotPresenceLabelAnnotations!);
-    checkUnnamed470(o.speechTranscriptions!);
-    checkUnnamed471(o.textAnnotations!);
+    checkUnnamed467(o.segmentLabelAnnotations!);
+    checkUnnamed468(o.segmentPresenceLabelAnnotations!);
+    checkUnnamed469(o.shotAnnotations!);
+    checkUnnamed470(o.shotLabelAnnotations!);
+    checkUnnamed471(o.shotPresenceLabelAnnotations!);
+    checkUnnamed472(o.speechTranscriptions!);
+    checkUnnamed473(o.textAnnotations!);
   }
   buildCounterGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults--;
 }
@@ -4923,12 +4923,12 @@ void checkGoogleCloudVideointelligenceV1p1beta1WordInfo(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress>
-    buildUnnamed472() => [
+    buildUnnamed474() => [
           buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress(),
           buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress(),
         ];
 
-void checkUnnamed472(
+void checkUnnamed474(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4944,7 +4944,7 @@ api.GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress
   buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress <
       3) {
-    o.annotationProgress = buildUnnamed472();
+    o.annotationProgress = buildUnnamed474();
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress--;
   return o;
@@ -4955,18 +4955,18 @@ void checkGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress(
   buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress <
       3) {
-    checkUnnamed472(o.annotationProgress!);
+    checkUnnamed474(o.annotationProgress!);
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults>
-    buildUnnamed473() => [
+    buildUnnamed475() => [
           buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults(),
           buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults(),
         ];
 
-void checkUnnamed473(
+void checkUnnamed475(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4982,7 +4982,7 @@ api.GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse
   buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse <
       3) {
-    o.annotationResults = buildUnnamed473();
+    o.annotationResults = buildUnnamed475();
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse--;
   return o;
@@ -4993,7 +4993,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse(
   buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse <
       3) {
-    checkUnnamed473(o.annotationResults!);
+    checkUnnamed475(o.annotationResults!);
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse--;
 }
@@ -5098,12 +5098,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame>
-    buildUnnamed474() => [
+    buildUnnamed476() => [
           buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame(),
           buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame(),
         ];
 
-void checkUnnamed474(
+void checkUnnamed476(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5121,7 +5121,7 @@ api.GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation
   buildCounterGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation <
       3) {
-    o.frames = buildUnnamed474();
+    o.frames = buildUnnamed476();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation--;
@@ -5133,7 +5133,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation <
       3) {
-    checkUnnamed474(o.frames!);
+    checkUnnamed476(o.frames!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -5175,12 +5175,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceFrame>
-    buildUnnamed475() => [
+    buildUnnamed477() => [
           buildGoogleCloudVideointelligenceV1p2beta1FaceFrame(),
           buildGoogleCloudVideointelligenceV1p2beta1FaceFrame(),
         ];
 
-void checkUnnamed475(
+void checkUnnamed477(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1FaceFrame(o[0]);
@@ -5188,12 +5188,12 @@ void checkUnnamed475(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceSegment>
-    buildUnnamed476() => [
+    buildUnnamed478() => [
           buildGoogleCloudVideointelligenceV1p2beta1FaceSegment(),
           buildGoogleCloudVideointelligenceV1p2beta1FaceSegment(),
         ];
 
-void checkUnnamed476(
+void checkUnnamed478(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1FaceSegment(o[0]);
@@ -5206,8 +5206,8 @@ api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation
   final o = api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1FaceAnnotation < 3) {
-    o.frames = buildUnnamed475();
-    o.segments = buildUnnamed476();
+    o.frames = buildUnnamed477();
+    o.segments = buildUnnamed478();
     o.thumbnail = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceAnnotation--;
@@ -5218,8 +5218,8 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceAnnotation(
     api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1FaceAnnotation < 3) {
-    checkUnnamed475(o.frames!);
-    checkUnnamed476(o.segments!);
+    checkUnnamed477(o.frames!);
+    checkUnnamed478(o.segments!);
     unittest.expect(
       o.thumbnail!,
       unittest.equals('foo'),
@@ -5228,12 +5228,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed477() => [
+core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed479() => [
       buildGoogleCloudVideointelligenceV1p2beta1Track(),
       buildGoogleCloudVideointelligenceV1p2beta1Track(),
     ];
 
-void checkUnnamed477(
+void checkUnnamed479(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1Track(o[0]);
@@ -5250,7 +5250,7 @@ api.GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation <
       3) {
     o.thumbnail = 'foo';
-    o.tracks = buildUnnamed477();
+    o.tracks = buildUnnamed479();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation--;
@@ -5266,7 +5266,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation(
       o.thumbnail!,
       unittest.equals('foo'),
     );
-    checkUnnamed477(o.tracks!);
+    checkUnnamed479(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -5276,12 +5276,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox>
-    buildUnnamed478() => [
+    buildUnnamed480() => [
           buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox(),
           buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox(),
         ];
 
-void checkUnnamed478(
+void checkUnnamed480(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5295,7 +5295,7 @@ api.GoogleCloudVideointelligenceV1p2beta1FaceFrame
   final o = api.GoogleCloudVideointelligenceV1p2beta1FaceFrame();
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1FaceFrame < 3) {
-    o.normalizedBoundingBoxes = buildUnnamed478();
+    o.normalizedBoundingBoxes = buildUnnamed480();
     o.timeOffset = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceFrame--;
@@ -5306,7 +5306,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceFrame(
     api.GoogleCloudVideointelligenceV1p2beta1FaceFrame o) {
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1FaceFrame < 3) {
-    checkUnnamed478(o.normalizedBoundingBoxes!);
+    checkUnnamed480(o.normalizedBoundingBoxes!);
     unittest.expect(
       o.timeOffset!,
       unittest.equals('foo'),
@@ -5336,13 +5336,13 @@ void checkGoogleCloudVideointelligenceV1p2beta1FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1p2beta1FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1Entity> buildUnnamed479() =>
+core.List<api.GoogleCloudVideointelligenceV1p2beta1Entity> buildUnnamed481() =>
     [
       buildGoogleCloudVideointelligenceV1p2beta1Entity(),
       buildGoogleCloudVideointelligenceV1p2beta1Entity(),
     ];
 
-void checkUnnamed479(
+void checkUnnamed481(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1Entity(o[0]);
@@ -5350,12 +5350,12 @@ void checkUnnamed479(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelFrame>
-    buildUnnamed480() => [
+    buildUnnamed482() => [
           buildGoogleCloudVideointelligenceV1p2beta1LabelFrame(),
           buildGoogleCloudVideointelligenceV1p2beta1LabelFrame(),
         ];
 
-void checkUnnamed480(
+void checkUnnamed482(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1LabelFrame(o[0]);
@@ -5363,12 +5363,12 @@ void checkUnnamed480(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelSegment>
-    buildUnnamed481() => [
+    buildUnnamed483() => [
           buildGoogleCloudVideointelligenceV1p2beta1LabelSegment(),
           buildGoogleCloudVideointelligenceV1p2beta1LabelSegment(),
         ];
 
-void checkUnnamed481(
+void checkUnnamed483(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1LabelSegment(o[0]);
@@ -5381,10 +5381,10 @@ api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation
   final o = api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p2beta1LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1LabelAnnotation < 3) {
-    o.categoryEntities = buildUnnamed479();
+    o.categoryEntities = buildUnnamed481();
     o.entity = buildGoogleCloudVideointelligenceV1p2beta1Entity();
-    o.frames = buildUnnamed480();
-    o.segments = buildUnnamed481();
+    o.frames = buildUnnamed482();
+    o.segments = buildUnnamed483();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1LabelAnnotation--;
@@ -5395,10 +5395,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(
     api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p2beta1LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1LabelAnnotation < 3) {
-    checkUnnamed479(o.categoryEntities!);
+    checkUnnamed481(o.categoryEntities!);
     checkGoogleCloudVideointelligenceV1p2beta1Entity(o.entity!);
-    checkUnnamed480(o.frames!);
-    checkUnnamed481(o.segments!);
+    checkUnnamed482(o.frames!);
+    checkUnnamed483(o.segments!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -5463,24 +5463,24 @@ void checkGoogleCloudVideointelligenceV1p2beta1LabelSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment>
-    buildUnnamed482() => [
+    buildUnnamed484() => [
           buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
           buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
         ];
 
-void checkUnnamed482(
+void checkUnnamed484(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o[0]);
   checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed483() => [
+core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed485() => [
       buildGoogleCloudVideointelligenceV1p2beta1Track(),
       buildGoogleCloudVideointelligenceV1p2beta1Track(),
     ];
 
-void checkUnnamed483(
+void checkUnnamed485(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1Track(o[0]);
@@ -5498,8 +5498,8 @@ api.GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation <
       3) {
     o.entity = buildGoogleCloudVideointelligenceV1p2beta1Entity();
-    o.segments = buildUnnamed482();
-    o.tracks = buildUnnamed483();
+    o.segments = buildUnnamed484();
+    o.tracks = buildUnnamed485();
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation--;
   return o;
@@ -5511,8 +5511,8 @@ void checkGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation(
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation <
       3) {
     checkGoogleCloudVideointelligenceV1p2beta1Entity(o.entity!);
-    checkUnnamed482(o.segments!);
-    checkUnnamed483(o.tracks!);
+    checkUnnamed484(o.segments!);
+    checkUnnamed485(o.tracks!);
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation--;
 }
@@ -5560,12 +5560,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1NormalizedVertex>
-    buildUnnamed484() => [
+    buildUnnamed486() => [
           buildGoogleCloudVideointelligenceV1p2beta1NormalizedVertex(),
           buildGoogleCloudVideointelligenceV1p2beta1NormalizedVertex(),
         ];
 
-void checkUnnamed484(
+void checkUnnamed486(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1NormalizedVertex(o[0]);
@@ -5580,7 +5580,7 @@ api.GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly
   buildCounterGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly <
       3) {
-    o.vertices = buildUnnamed484();
+    o.vertices = buildUnnamed486();
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly--;
   return o;
@@ -5591,7 +5591,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly(
   buildCounterGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly <
       3) {
-    checkUnnamed484(o.vertices!);
+    checkUnnamed486(o.vertices!);
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly--;
 }
@@ -5626,12 +5626,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame>
-    buildUnnamed485() => [
+    buildUnnamed487() => [
           buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame(),
           buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame(),
         ];
 
-void checkUnnamed485(
+void checkUnnamed487(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame(o[0]);
@@ -5649,7 +5649,7 @@ api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation
       3) {
     o.confidence = 42.0;
     o.entity = buildGoogleCloudVideointelligenceV1p2beta1Entity();
-    o.frames = buildUnnamed485();
+    o.frames = buildUnnamed487();
     o.segment = buildGoogleCloudVideointelligenceV1p2beta1VideoSegment();
     o.trackId = 'foo';
     o.version = 'foo';
@@ -5668,7 +5668,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation(
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1p2beta1Entity(o.entity!);
-    checkUnnamed485(o.frames!);
+    checkUnnamed487(o.frames!);
     checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o.segment!);
     unittest.expect(
       o.trackId!,
@@ -5713,12 +5713,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed486() => [
+core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> buildUnnamed488() => [
       buildGoogleCloudVideointelligenceV1p2beta1Track(),
       buildGoogleCloudVideointelligenceV1p2beta1Track(),
     ];
 
-void checkUnnamed486(
+void checkUnnamed488(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1Track(o[0]);
@@ -5735,7 +5735,7 @@ api.GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation
   buildCounterGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation <
       3) {
-    o.tracks = buildUnnamed486();
+    o.tracks = buildUnnamed488();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation--;
@@ -5747,7 +5747,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation <
       3) {
-    checkUnnamed486(o.tracks!);
+    checkUnnamed488(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -5757,12 +5757,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1WordInfo>
-    buildUnnamed487() => [
+    buildUnnamed489() => [
           buildGoogleCloudVideointelligenceV1p2beta1WordInfo(),
           buildGoogleCloudVideointelligenceV1p2beta1WordInfo(),
         ];
 
-void checkUnnamed487(
+void checkUnnamed489(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1WordInfo(o[0]);
@@ -5781,7 +5781,7 @@ api.GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative
       3) {
     o.confidence = 42.0;
     o.transcript = 'foo';
-    o.words = buildUnnamed487();
+    o.words = buildUnnamed489();
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative--;
   return o;
@@ -5800,18 +5800,18 @@ void checkGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative(
       o.transcript!,
       unittest.equals('foo'),
     );
-    checkUnnamed487(o.words!);
+    checkUnnamed489(o.words!);
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>
-    buildUnnamed488() => [
+    buildUnnamed490() => [
           buildGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative(),
           buildGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative(),
         ];
 
-void checkUnnamed488(
+void checkUnnamed490(
     core.List<
             api.GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>
         o) {
@@ -5828,7 +5828,7 @@ api.GoogleCloudVideointelligenceV1p2beta1SpeechTranscription
   buildCounterGoogleCloudVideointelligenceV1p2beta1SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1SpeechTranscription <
       3) {
-    o.alternatives = buildUnnamed488();
+    o.alternatives = buildUnnamed490();
     o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1SpeechTranscription--;
@@ -5840,7 +5840,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1SpeechTranscription(
   buildCounterGoogleCloudVideointelligenceV1p2beta1SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1SpeechTranscription <
       3) {
-    checkUnnamed488(o.alternatives!);
+    checkUnnamed490(o.alternatives!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -5850,12 +5850,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1SpeechTranscription(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1TextSegment>
-    buildUnnamed489() => [
+    buildUnnamed491() => [
           buildGoogleCloudVideointelligenceV1p2beta1TextSegment(),
           buildGoogleCloudVideointelligenceV1p2beta1TextSegment(),
         ];
 
-void checkUnnamed489(
+void checkUnnamed491(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1TextSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1TextSegment(o[0]);
@@ -5868,7 +5868,7 @@ api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation
   final o = api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p2beta1TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1TextAnnotation < 3) {
-    o.segments = buildUnnamed489();
+    o.segments = buildUnnamed491();
     o.text = 'foo';
     o.version = 'foo';
   }
@@ -5880,7 +5880,7 @@ void checkGoogleCloudVideointelligenceV1p2beta1TextAnnotation(
     api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p2beta1TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1TextAnnotation < 3) {
-    checkUnnamed489(o.segments!);
+    checkUnnamed491(o.segments!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -5922,12 +5922,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1TextFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1TextFrame>
-    buildUnnamed490() => [
+    buildUnnamed492() => [
           buildGoogleCloudVideointelligenceV1p2beta1TextFrame(),
           buildGoogleCloudVideointelligenceV1p2beta1TextFrame(),
         ];
 
-void checkUnnamed490(
+void checkUnnamed492(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1TextFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1TextFrame(o[0]);
@@ -5941,7 +5941,7 @@ api.GoogleCloudVideointelligenceV1p2beta1TextSegment
   buildCounterGoogleCloudVideointelligenceV1p2beta1TextSegment++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1TextSegment < 3) {
     o.confidence = 42.0;
-    o.frames = buildUnnamed490();
+    o.frames = buildUnnamed492();
     o.segment = buildGoogleCloudVideointelligenceV1p2beta1VideoSegment();
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1TextSegment--;
@@ -5956,68 +5956,10 @@ void checkGoogleCloudVideointelligenceV1p2beta1TextSegment(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed490(o.frames!);
+    checkUnnamed492(o.frames!);
     checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o.segment!);
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1TextSegment--;
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>
-    buildUnnamed491() => [
-          buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(),
-          buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(),
-        ];
-
-void checkUnnamed491(
-    core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(o[0]);
-  checkGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedLandmark>
-    buildUnnamed492() => [
-          buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(),
-          buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(),
-        ];
-
-void checkUnnamed492(
-    core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedLandmark> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(o[0]);
-  checkGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(o[1]);
-}
-
-core.int buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject = 0;
-api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject
-    buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject() {
-  final o = api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject();
-  buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject < 3) {
-    o.attributes = buildUnnamed491();
-    o.landmarks = buildUnnamed492();
-    o.normalizedBoundingBox =
-        buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox();
-    o.timeOffset = 'foo';
-  }
-  buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject--;
-  return o;
-}
-
-void checkGoogleCloudVideointelligenceV1p2beta1TimestampedObject(
-    api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject o) {
-  buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject < 3) {
-    checkUnnamed491(o.attributes!);
-    checkUnnamed492(o.landmarks!);
-    checkGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox(
-        o.normalizedBoundingBox!);
-    unittest.expect(
-      o.timeOffset!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>
@@ -6033,13 +5975,71 @@ void checkUnnamed493(
   checkGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject>
+core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedLandmark>
     buildUnnamed494() => [
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(),
+        ];
+
+void checkUnnamed494(
+    core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedLandmark> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(o[0]);
+  checkGoogleCloudVideointelligenceV1p2beta1DetectedLandmark(o[1]);
+}
+
+core.int buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject = 0;
+api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject
+    buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject() {
+  final o = api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject();
+  buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject < 3) {
+    o.attributes = buildUnnamed493();
+    o.landmarks = buildUnnamed494();
+    o.normalizedBoundingBox =
+        buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox();
+    o.timeOffset = 'foo';
+  }
+  buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject--;
+  return o;
+}
+
+void checkGoogleCloudVideointelligenceV1p2beta1TimestampedObject(
+    api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject o) {
+  buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject < 3) {
+    checkUnnamed493(o.attributes!);
+    checkUnnamed494(o.landmarks!);
+    checkGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox(
+        o.normalizedBoundingBox!);
+    unittest.expect(
+      o.timeOffset!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudVideointelligenceV1p2beta1TimestampedObject--;
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute>
+    buildUnnamed495() => [
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(),
+        ];
+
+void checkUnnamed495(
+    core.List<api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(o[0]);
+  checkGoogleCloudVideointelligenceV1p2beta1DetectedAttribute(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject>
+    buildUnnamed496() => [
           buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject(),
           buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject(),
         ];
 
-void checkUnnamed494(
+void checkUnnamed496(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1TimestampedObject(o[0]);
@@ -6052,10 +6052,10 @@ api.GoogleCloudVideointelligenceV1p2beta1Track
   final o = api.GoogleCloudVideointelligenceV1p2beta1Track();
   buildCounterGoogleCloudVideointelligenceV1p2beta1Track++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1Track < 3) {
-    o.attributes = buildUnnamed493();
+    o.attributes = buildUnnamed495();
     o.confidence = 42.0;
     o.segment = buildGoogleCloudVideointelligenceV1p2beta1VideoSegment();
-    o.timestampedObjects = buildUnnamed494();
+    o.timestampedObjects = buildUnnamed496();
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1Track--;
   return o;
@@ -6065,13 +6065,13 @@ void checkGoogleCloudVideointelligenceV1p2beta1Track(
     api.GoogleCloudVideointelligenceV1p2beta1Track o) {
   buildCounterGoogleCloudVideointelligenceV1p2beta1Track++;
   if (buildCounterGoogleCloudVideointelligenceV1p2beta1Track < 3) {
-    checkUnnamed493(o.attributes!);
+    checkUnnamed495(o.attributes!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o.segment!);
-    checkUnnamed494(o.timestampedObjects!);
+    checkUnnamed496(o.timestampedObjects!);
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1Track--;
 }
@@ -6127,12 +6127,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation>
-    buildUnnamed495() => [
+    buildUnnamed497() => [
           buildGoogleCloudVideointelligenceV1p2beta1FaceAnnotation(),
           buildGoogleCloudVideointelligenceV1p2beta1FaceAnnotation(),
         ];
 
-void checkUnnamed495(
+void checkUnnamed497(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1FaceAnnotation(o[0]);
@@ -6140,12 +6140,12 @@ void checkUnnamed495(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>
-    buildUnnamed496() => [
+    buildUnnamed498() => [
           buildGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation(),
         ];
 
-void checkUnnamed496(
+void checkUnnamed498(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6154,12 +6154,12 @@ void checkUnnamed496(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
-    buildUnnamed497() => [
+    buildUnnamed499() => [
           buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
         ];
 
-void checkUnnamed497(
+void checkUnnamed499(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[0]);
@@ -6167,12 +6167,12 @@ void checkUnnamed497(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation>
-    buildUnnamed498() => [
+    buildUnnamed500() => [
           buildGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation(),
           buildGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation(),
         ];
 
-void checkUnnamed498(
+void checkUnnamed500(
     core.List<
             api.GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation>
         o) {
@@ -6182,12 +6182,12 @@ void checkUnnamed498(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>
-    buildUnnamed499() => [
+    buildUnnamed501() => [
           buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation(),
           buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation(),
         ];
 
-void checkUnnamed499(
+void checkUnnamed501(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6196,12 +6196,12 @@ void checkUnnamed499(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation>
-    buildUnnamed500() => [
+    buildUnnamed502() => [
           buildGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation(),
         ];
 
-void checkUnnamed500(
+void checkUnnamed502(
     core.List<
             api.GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation>
         o) {
@@ -6211,42 +6211,16 @@ void checkUnnamed500(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
-    buildUnnamed501() => [
-          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
-        ];
-
-void checkUnnamed501(
-    core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
-    buildUnnamed502() => [
-          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
-        ];
-
-void checkUnnamed502(
-    core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment>
     buildUnnamed503() => [
-          buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
-          buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
         ];
 
 void checkUnnamed503(
-    core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment> o) {
+    core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o[0]);
-  checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o[1]);
+  checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
@@ -6262,13 +6236,39 @@ void checkUnnamed504(
   checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
+core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment>
     buildUnnamed505() => [
+          buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p2beta1VideoSegment(),
+        ];
+
+void checkUnnamed505(
+    core.List<api.GoogleCloudVideointelligenceV1p2beta1VideoSegment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o[0]);
+  checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
+    buildUnnamed506() => [
           buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
         ];
 
-void checkUnnamed505(
+void checkUnnamed506(
+    core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
+    buildUnnamed507() => [
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(),
+        ];
+
+void checkUnnamed507(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1LabelAnnotation(o[0]);
@@ -6276,12 +6276,12 @@ void checkUnnamed505(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1SpeechTranscription>
-    buildUnnamed506() => [
+    buildUnnamed508() => [
           buildGoogleCloudVideointelligenceV1p2beta1SpeechTranscription(),
           buildGoogleCloudVideointelligenceV1p2beta1SpeechTranscription(),
         ];
 
-void checkUnnamed506(
+void checkUnnamed508(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1SpeechTranscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1SpeechTranscription(o[0]);
@@ -6289,12 +6289,12 @@ void checkUnnamed506(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation>
-    buildUnnamed507() => [
+    buildUnnamed509() => [
           buildGoogleCloudVideointelligenceV1p2beta1TextAnnotation(),
           buildGoogleCloudVideointelligenceV1p2beta1TextAnnotation(),
         ];
 
-void checkUnnamed507(
+void checkUnnamed509(
     core.List<api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p2beta1TextAnnotation(o[0]);
@@ -6312,21 +6312,21 @@ api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults
     o.error = buildGoogleRpcStatus();
     o.explicitAnnotation =
         buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation();
-    o.faceAnnotations = buildUnnamed495();
-    o.faceDetectionAnnotations = buildUnnamed496();
-    o.frameLabelAnnotations = buildUnnamed497();
+    o.faceAnnotations = buildUnnamed497();
+    o.faceDetectionAnnotations = buildUnnamed498();
+    o.frameLabelAnnotations = buildUnnamed499();
     o.inputUri = 'foo';
-    o.logoRecognitionAnnotations = buildUnnamed498();
-    o.objectAnnotations = buildUnnamed499();
-    o.personDetectionAnnotations = buildUnnamed500();
+    o.logoRecognitionAnnotations = buildUnnamed500();
+    o.objectAnnotations = buildUnnamed501();
+    o.personDetectionAnnotations = buildUnnamed502();
     o.segment = buildGoogleCloudVideointelligenceV1p2beta1VideoSegment();
-    o.segmentLabelAnnotations = buildUnnamed501();
-    o.segmentPresenceLabelAnnotations = buildUnnamed502();
-    o.shotAnnotations = buildUnnamed503();
-    o.shotLabelAnnotations = buildUnnamed504();
-    o.shotPresenceLabelAnnotations = buildUnnamed505();
-    o.speechTranscriptions = buildUnnamed506();
-    o.textAnnotations = buildUnnamed507();
+    o.segmentLabelAnnotations = buildUnnamed503();
+    o.segmentPresenceLabelAnnotations = buildUnnamed504();
+    o.shotAnnotations = buildUnnamed505();
+    o.shotLabelAnnotations = buildUnnamed506();
+    o.shotPresenceLabelAnnotations = buildUnnamed507();
+    o.speechTranscriptions = buildUnnamed508();
+    o.textAnnotations = buildUnnamed509();
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults--;
   return o;
@@ -6340,24 +6340,24 @@ void checkGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults(
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation(
         o.explicitAnnotation!);
-    checkUnnamed495(o.faceAnnotations!);
-    checkUnnamed496(o.faceDetectionAnnotations!);
-    checkUnnamed497(o.frameLabelAnnotations!);
+    checkUnnamed497(o.faceAnnotations!);
+    checkUnnamed498(o.faceDetectionAnnotations!);
+    checkUnnamed499(o.frameLabelAnnotations!);
     unittest.expect(
       o.inputUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed498(o.logoRecognitionAnnotations!);
-    checkUnnamed499(o.objectAnnotations!);
-    checkUnnamed500(o.personDetectionAnnotations!);
+    checkUnnamed500(o.logoRecognitionAnnotations!);
+    checkUnnamed501(o.objectAnnotations!);
+    checkUnnamed502(o.personDetectionAnnotations!);
     checkGoogleCloudVideointelligenceV1p2beta1VideoSegment(o.segment!);
-    checkUnnamed501(o.segmentLabelAnnotations!);
-    checkUnnamed502(o.segmentPresenceLabelAnnotations!);
-    checkUnnamed503(o.shotAnnotations!);
-    checkUnnamed504(o.shotLabelAnnotations!);
-    checkUnnamed505(o.shotPresenceLabelAnnotations!);
-    checkUnnamed506(o.speechTranscriptions!);
-    checkUnnamed507(o.textAnnotations!);
+    checkUnnamed503(o.segmentLabelAnnotations!);
+    checkUnnamed504(o.segmentPresenceLabelAnnotations!);
+    checkUnnamed505(o.shotAnnotations!);
+    checkUnnamed506(o.shotLabelAnnotations!);
+    checkUnnamed507(o.shotPresenceLabelAnnotations!);
+    checkUnnamed508(o.speechTranscriptions!);
+    checkUnnamed509(o.textAnnotations!);
   }
   buildCounterGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults--;
 }
@@ -6436,12 +6436,12 @@ void checkGoogleCloudVideointelligenceV1p2beta1WordInfo(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>
-    buildUnnamed508() => [
+    buildUnnamed510() => [
           buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress(),
           buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress(),
         ];
 
-void checkUnnamed508(
+void checkUnnamed510(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6457,7 +6457,7 @@ api.GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress
   buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress <
       3) {
-    o.annotationProgress = buildUnnamed508();
+    o.annotationProgress = buildUnnamed510();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress--;
   return o;
@@ -6468,18 +6468,18 @@ void checkGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress(
   buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress <
       3) {
-    checkUnnamed508(o.annotationProgress!);
+    checkUnnamed510(o.annotationProgress!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>
-    buildUnnamed509() => [
+    buildUnnamed511() => [
           buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults(),
           buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults(),
         ];
 
-void checkUnnamed509(
+void checkUnnamed511(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6495,7 +6495,7 @@ api.GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse
   buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse <
       3) {
-    o.annotationResults = buildUnnamed509();
+    o.annotationResults = buildUnnamed511();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse--;
   return o;
@@ -6506,7 +6506,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse(
   buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse <
       3) {
-    checkUnnamed509(o.annotationResults!);
+    checkUnnamed511(o.annotationResults!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse--;
 }
@@ -6546,12 +6546,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1Celebrity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack>
-    buildUnnamed510() => [
+    buildUnnamed512() => [
           buildGoogleCloudVideointelligenceV1p3beta1CelebrityTrack(),
           buildGoogleCloudVideointelligenceV1p3beta1CelebrityTrack(),
         ];
 
-void checkUnnamed510(
+void checkUnnamed512(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1CelebrityTrack(o[0]);
@@ -6568,7 +6568,7 @@ api.GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation
   buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation <
       3) {
-    o.celebrityTracks = buildUnnamed510();
+    o.celebrityTracks = buildUnnamed512();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation--;
@@ -6580,7 +6580,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation <
       3) {
-    checkUnnamed510(o.celebrityTracks!);
+    checkUnnamed512(o.celebrityTracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -6590,12 +6590,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity>
-    buildUnnamed511() => [
+    buildUnnamed513() => [
           buildGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity(),
           buildGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity(),
         ];
 
-void checkUnnamed511(
+void checkUnnamed513(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity(o[0]);
@@ -6608,7 +6608,7 @@ api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack
   final o = api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack();
   buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityTrack++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityTrack < 3) {
-    o.celebrities = buildUnnamed511();
+    o.celebrities = buildUnnamed513();
     o.faceTrack = buildGoogleCloudVideointelligenceV1p3beta1Track();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityTrack--;
@@ -6619,7 +6619,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1CelebrityTrack(
     api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack o) {
   buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityTrack++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityTrack < 3) {
-    checkUnnamed511(o.celebrities!);
+    checkUnnamed513(o.celebrities!);
     checkGoogleCloudVideointelligenceV1p3beta1Track(o.faceTrack!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1CelebrityTrack--;
@@ -6725,12 +6725,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1Entity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>
-    buildUnnamed512() => [
+    buildUnnamed514() => [
           buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame(),
           buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame(),
         ];
 
-void checkUnnamed512(
+void checkUnnamed514(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6748,7 +6748,7 @@ api.GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
   buildCounterGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation <
       3) {
-    o.frames = buildUnnamed512();
+    o.frames = buildUnnamed514();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation--;
@@ -6760,7 +6760,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation <
       3) {
-    checkUnnamed512(o.frames!);
+    checkUnnamed514(o.frames!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -6802,12 +6802,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceFrame>
-    buildUnnamed513() => [
+    buildUnnamed515() => [
           buildGoogleCloudVideointelligenceV1p3beta1FaceFrame(),
           buildGoogleCloudVideointelligenceV1p3beta1FaceFrame(),
         ];
 
-void checkUnnamed513(
+void checkUnnamed515(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1FaceFrame(o[0]);
@@ -6815,12 +6815,12 @@ void checkUnnamed513(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceSegment>
-    buildUnnamed514() => [
+    buildUnnamed516() => [
           buildGoogleCloudVideointelligenceV1p3beta1FaceSegment(),
           buildGoogleCloudVideointelligenceV1p3beta1FaceSegment(),
         ];
 
-void checkUnnamed514(
+void checkUnnamed516(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1FaceSegment(o[0]);
@@ -6833,8 +6833,8 @@ api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation
   final o = api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1FaceAnnotation < 3) {
-    o.frames = buildUnnamed513();
-    o.segments = buildUnnamed514();
+    o.frames = buildUnnamed515();
+    o.segments = buildUnnamed516();
     o.thumbnail = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceAnnotation--;
@@ -6845,8 +6845,8 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceAnnotation(
     api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1FaceAnnotation < 3) {
-    checkUnnamed513(o.frames!);
-    checkUnnamed514(o.segments!);
+    checkUnnamed515(o.frames!);
+    checkUnnamed516(o.segments!);
     unittest.expect(
       o.thumbnail!,
       unittest.equals('foo'),
@@ -6855,12 +6855,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceAnnotation--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed515() => [
+core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed517() => [
       buildGoogleCloudVideointelligenceV1p3beta1Track(),
       buildGoogleCloudVideointelligenceV1p3beta1Track(),
     ];
 
-void checkUnnamed515(
+void checkUnnamed517(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1Track(o[0]);
@@ -6877,7 +6877,7 @@ api.GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation <
       3) {
     o.thumbnail = 'foo';
-    o.tracks = buildUnnamed515();
+    o.tracks = buildUnnamed517();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation--;
@@ -6893,7 +6893,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation(
       o.thumbnail!,
       unittest.equals('foo'),
     );
-    checkUnnamed515(o.tracks!);
+    checkUnnamed517(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -6903,12 +6903,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox>
-    buildUnnamed516() => [
+    buildUnnamed518() => [
           buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox(),
           buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox(),
         ];
 
-void checkUnnamed516(
+void checkUnnamed518(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6922,7 +6922,7 @@ api.GoogleCloudVideointelligenceV1p3beta1FaceFrame
   final o = api.GoogleCloudVideointelligenceV1p3beta1FaceFrame();
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1FaceFrame < 3) {
-    o.normalizedBoundingBoxes = buildUnnamed516();
+    o.normalizedBoundingBoxes = buildUnnamed518();
     o.timeOffset = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceFrame--;
@@ -6933,7 +6933,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceFrame(
     api.GoogleCloudVideointelligenceV1p3beta1FaceFrame o) {
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceFrame++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1FaceFrame < 3) {
-    checkUnnamed516(o.normalizedBoundingBoxes!);
+    checkUnnamed518(o.normalizedBoundingBoxes!);
     unittest.expect(
       o.timeOffset!,
       unittest.equals('foo'),
@@ -6963,13 +6963,13 @@ void checkGoogleCloudVideointelligenceV1p3beta1FaceSegment(
   buildCounterGoogleCloudVideointelligenceV1p3beta1FaceSegment--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1Entity> buildUnnamed517() =>
+core.List<api.GoogleCloudVideointelligenceV1p3beta1Entity> buildUnnamed519() =>
     [
       buildGoogleCloudVideointelligenceV1p3beta1Entity(),
       buildGoogleCloudVideointelligenceV1p3beta1Entity(),
     ];
 
-void checkUnnamed517(
+void checkUnnamed519(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1Entity(o[0]);
@@ -6977,12 +6977,12 @@ void checkUnnamed517(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelFrame>
-    buildUnnamed518() => [
+    buildUnnamed520() => [
           buildGoogleCloudVideointelligenceV1p3beta1LabelFrame(),
           buildGoogleCloudVideointelligenceV1p3beta1LabelFrame(),
         ];
 
-void checkUnnamed518(
+void checkUnnamed520(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1LabelFrame(o[0]);
@@ -6990,12 +6990,12 @@ void checkUnnamed518(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelSegment>
-    buildUnnamed519() => [
+    buildUnnamed521() => [
           buildGoogleCloudVideointelligenceV1p3beta1LabelSegment(),
           buildGoogleCloudVideointelligenceV1p3beta1LabelSegment(),
         ];
 
-void checkUnnamed519(
+void checkUnnamed521(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1LabelSegment(o[0]);
@@ -7008,10 +7008,10 @@ api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
   final o = api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p3beta1LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1LabelAnnotation < 3) {
-    o.categoryEntities = buildUnnamed517();
+    o.categoryEntities = buildUnnamed519();
     o.entity = buildGoogleCloudVideointelligenceV1p3beta1Entity();
-    o.frames = buildUnnamed518();
-    o.segments = buildUnnamed519();
+    o.frames = buildUnnamed520();
+    o.segments = buildUnnamed521();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1LabelAnnotation--;
@@ -7022,10 +7022,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(
     api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p3beta1LabelAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1LabelAnnotation < 3) {
-    checkUnnamed517(o.categoryEntities!);
+    checkUnnamed519(o.categoryEntities!);
     checkGoogleCloudVideointelligenceV1p3beta1Entity(o.entity!);
-    checkUnnamed518(o.frames!);
-    checkUnnamed519(o.segments!);
+    checkUnnamed520(o.frames!);
+    checkUnnamed521(o.segments!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -7090,24 +7090,24 @@ void checkGoogleCloudVideointelligenceV1p3beta1LabelSegment(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>
-    buildUnnamed520() => [
+    buildUnnamed522() => [
           buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
           buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
         ];
 
-void checkUnnamed520(
+void checkUnnamed522(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o[0]);
   checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed521() => [
+core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed523() => [
       buildGoogleCloudVideointelligenceV1p3beta1Track(),
       buildGoogleCloudVideointelligenceV1p3beta1Track(),
     ];
 
-void checkUnnamed521(
+void checkUnnamed523(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1Track(o[0]);
@@ -7125,8 +7125,8 @@ api.GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation <
       3) {
     o.entity = buildGoogleCloudVideointelligenceV1p3beta1Entity();
-    o.segments = buildUnnamed520();
-    o.tracks = buildUnnamed521();
+    o.segments = buildUnnamed522();
+    o.tracks = buildUnnamed523();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation--;
   return o;
@@ -7138,8 +7138,8 @@ void checkGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation(
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation <
       3) {
     checkGoogleCloudVideointelligenceV1p3beta1Entity(o.entity!);
-    checkUnnamed520(o.segments!);
-    checkUnnamed521(o.tracks!);
+    checkUnnamed522(o.segments!);
+    checkUnnamed523(o.tracks!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation--;
 }
@@ -7187,12 +7187,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1NormalizedVertex>
-    buildUnnamed522() => [
+    buildUnnamed524() => [
           buildGoogleCloudVideointelligenceV1p3beta1NormalizedVertex(),
           buildGoogleCloudVideointelligenceV1p3beta1NormalizedVertex(),
         ];
 
-void checkUnnamed522(
+void checkUnnamed524(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1NormalizedVertex(o[0]);
@@ -7207,7 +7207,7 @@ api.GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly
   buildCounterGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly <
       3) {
-    o.vertices = buildUnnamed522();
+    o.vertices = buildUnnamed524();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly--;
   return o;
@@ -7218,7 +7218,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly(
   buildCounterGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly <
       3) {
-    checkUnnamed522(o.vertices!);
+    checkUnnamed524(o.vertices!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly--;
 }
@@ -7253,12 +7253,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1NormalizedVertex(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame>
-    buildUnnamed523() => [
+    buildUnnamed525() => [
           buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame(),
           buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame(),
         ];
 
-void checkUnnamed523(
+void checkUnnamed525(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame(o[0]);
@@ -7276,7 +7276,7 @@ api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation
       3) {
     o.confidence = 42.0;
     o.entity = buildGoogleCloudVideointelligenceV1p3beta1Entity();
-    o.frames = buildUnnamed523();
+    o.frames = buildUnnamed525();
     o.segment = buildGoogleCloudVideointelligenceV1p3beta1VideoSegment();
     o.trackId = 'foo';
     o.version = 'foo';
@@ -7295,7 +7295,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1p3beta1Entity(o.entity!);
-    checkUnnamed523(o.frames!);
+    checkUnnamed525(o.frames!);
     checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o.segment!);
     unittest.expect(
       o.trackId!,
@@ -7340,12 +7340,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame(
   buildCounterGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame--;
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed524() => [
+core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> buildUnnamed526() => [
       buildGoogleCloudVideointelligenceV1p3beta1Track(),
       buildGoogleCloudVideointelligenceV1p3beta1Track(),
     ];
 
-void checkUnnamed524(
+void checkUnnamed526(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1Track(o[0]);
@@ -7362,7 +7362,7 @@ api.GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation
   buildCounterGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation <
       3) {
-    o.tracks = buildUnnamed524();
+    o.tracks = buildUnnamed526();
     o.version = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation--;
@@ -7374,7 +7374,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation(
   buildCounterGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation <
       3) {
-    checkUnnamed524(o.tracks!);
+    checkUnnamed526(o.tracks!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -7413,12 +7413,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1WordInfo>
-    buildUnnamed525() => [
+    buildUnnamed527() => [
           buildGoogleCloudVideointelligenceV1p3beta1WordInfo(),
           buildGoogleCloudVideointelligenceV1p3beta1WordInfo(),
         ];
 
-void checkUnnamed525(
+void checkUnnamed527(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1WordInfo(o[0]);
@@ -7437,7 +7437,7 @@ api.GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative
       3) {
     o.confidence = 42.0;
     o.transcript = 'foo';
-    o.words = buildUnnamed525();
+    o.words = buildUnnamed527();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative--;
   return o;
@@ -7456,18 +7456,18 @@ void checkGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative(
       o.transcript!,
       unittest.equals('foo'),
     );
-    checkUnnamed525(o.words!);
+    checkUnnamed527(o.words!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>
-    buildUnnamed526() => [
+    buildUnnamed528() => [
           buildGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative(),
           buildGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative(),
         ];
 
-void checkUnnamed526(
+void checkUnnamed528(
     core.List<
             api.GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>
         o) {
@@ -7484,7 +7484,7 @@ api.GoogleCloudVideointelligenceV1p3beta1SpeechTranscription
   buildCounterGoogleCloudVideointelligenceV1p3beta1SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1SpeechTranscription <
       3) {
-    o.alternatives = buildUnnamed526();
+    o.alternatives = buildUnnamed528();
     o.languageCode = 'foo';
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1SpeechTranscription--;
@@ -7496,7 +7496,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1SpeechTranscription(
   buildCounterGoogleCloudVideointelligenceV1p3beta1SpeechTranscription++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1SpeechTranscription <
       3) {
-    checkUnnamed526(o.alternatives!);
+    checkUnnamed528(o.alternatives!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -7541,12 +7541,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed527() => [
+    buildUnnamed529() => [
           buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
         ];
 
-void checkUnnamed527(
+void checkUnnamed529(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[0]);
@@ -7554,12 +7554,12 @@ void checkUnnamed527(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
-    buildUnnamed528() => [
+    buildUnnamed530() => [
           buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(),
         ];
 
-void checkUnnamed528(
+void checkUnnamed530(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7568,12 +7568,12 @@ void checkUnnamed528(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>
-    buildUnnamed529() => [
+    buildUnnamed531() => [
           buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
           buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
         ];
 
-void checkUnnamed529(
+void checkUnnamed531(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o[0]);
@@ -7593,9 +7593,9 @@ api.GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults
     o.explicitAnnotation =
         buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation();
     o.frameTimestamp = 'foo';
-    o.labelAnnotations = buildUnnamed527();
-    o.objectAnnotations = buildUnnamed528();
-    o.shotAnnotations = buildUnnamed529();
+    o.labelAnnotations = buildUnnamed529();
+    o.objectAnnotations = buildUnnamed530();
+    o.shotAnnotations = buildUnnamed531();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults--;
   return o;
@@ -7613,20 +7613,20 @@ void checkGoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults(
       o.frameTimestamp!,
       unittest.equals('foo'),
     );
-    checkUnnamed527(o.labelAnnotations!);
-    checkUnnamed528(o.objectAnnotations!);
-    checkUnnamed529(o.shotAnnotations!);
+    checkUnnamed529(o.labelAnnotations!);
+    checkUnnamed530(o.objectAnnotations!);
+    checkUnnamed531(o.shotAnnotations!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1TextSegment>
-    buildUnnamed530() => [
+    buildUnnamed532() => [
           buildGoogleCloudVideointelligenceV1p3beta1TextSegment(),
           buildGoogleCloudVideointelligenceV1p3beta1TextSegment(),
         ];
 
-void checkUnnamed530(
+void checkUnnamed532(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1TextSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1TextSegment(o[0]);
@@ -7639,7 +7639,7 @@ api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation
   final o = api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation();
   buildCounterGoogleCloudVideointelligenceV1p3beta1TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1TextAnnotation < 3) {
-    o.segments = buildUnnamed530();
+    o.segments = buildUnnamed532();
     o.text = 'foo';
     o.version = 'foo';
   }
@@ -7651,7 +7651,7 @@ void checkGoogleCloudVideointelligenceV1p3beta1TextAnnotation(
     api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation o) {
   buildCounterGoogleCloudVideointelligenceV1p3beta1TextAnnotation++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1TextAnnotation < 3) {
-    checkUnnamed530(o.segments!);
+    checkUnnamed532(o.segments!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -7693,12 +7693,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1TextFrame(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1TextFrame>
-    buildUnnamed531() => [
+    buildUnnamed533() => [
           buildGoogleCloudVideointelligenceV1p3beta1TextFrame(),
           buildGoogleCloudVideointelligenceV1p3beta1TextFrame(),
         ];
 
-void checkUnnamed531(
+void checkUnnamed533(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1TextFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1TextFrame(o[0]);
@@ -7712,7 +7712,7 @@ api.GoogleCloudVideointelligenceV1p3beta1TextSegment
   buildCounterGoogleCloudVideointelligenceV1p3beta1TextSegment++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1TextSegment < 3) {
     o.confidence = 42.0;
-    o.frames = buildUnnamed531();
+    o.frames = buildUnnamed533();
     o.segment = buildGoogleCloudVideointelligenceV1p3beta1VideoSegment();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1TextSegment--;
@@ -7727,68 +7727,10 @@ void checkGoogleCloudVideointelligenceV1p3beta1TextSegment(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkUnnamed531(o.frames!);
+    checkUnnamed533(o.frames!);
     checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o.segment!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1TextSegment--;
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>
-    buildUnnamed532() => [
-          buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(),
-          buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(),
-        ];
-
-void checkUnnamed532(
-    core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(o[0]);
-  checkGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedLandmark>
-    buildUnnamed533() => [
-          buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(),
-          buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(),
-        ];
-
-void checkUnnamed533(
-    core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedLandmark> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(o[0]);
-  checkGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(o[1]);
-}
-
-core.int buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject = 0;
-api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject
-    buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject() {
-  final o = api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject();
-  buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject < 3) {
-    o.attributes = buildUnnamed532();
-    o.landmarks = buildUnnamed533();
-    o.normalizedBoundingBox =
-        buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox();
-    o.timeOffset = 'foo';
-  }
-  buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject--;
-  return o;
-}
-
-void checkGoogleCloudVideointelligenceV1p3beta1TimestampedObject(
-    api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject o) {
-  buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject++;
-  if (buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject < 3) {
-    checkUnnamed532(o.attributes!);
-    checkUnnamed533(o.landmarks!);
-    checkGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox(
-        o.normalizedBoundingBox!);
-    unittest.expect(
-      o.timeOffset!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject--;
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>
@@ -7804,13 +7746,71 @@ void checkUnnamed534(
   checkGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject>
+core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedLandmark>
     buildUnnamed535() => [
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(),
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(),
+        ];
+
+void checkUnnamed535(
+    core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedLandmark> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(o[0]);
+  checkGoogleCloudVideointelligenceV1p3beta1DetectedLandmark(o[1]);
+}
+
+core.int buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject = 0;
+api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject
+    buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject() {
+  final o = api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject();
+  buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject < 3) {
+    o.attributes = buildUnnamed534();
+    o.landmarks = buildUnnamed535();
+    o.normalizedBoundingBox =
+        buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox();
+    o.timeOffset = 'foo';
+  }
+  buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject--;
+  return o;
+}
+
+void checkGoogleCloudVideointelligenceV1p3beta1TimestampedObject(
+    api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject o) {
+  buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject++;
+  if (buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject < 3) {
+    checkUnnamed534(o.attributes!);
+    checkUnnamed535(o.landmarks!);
+    checkGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox(
+        o.normalizedBoundingBox!);
+    unittest.expect(
+      o.timeOffset!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudVideointelligenceV1p3beta1TimestampedObject--;
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>
+    buildUnnamed536() => [
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(),
+          buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(),
+        ];
+
+void checkUnnamed536(
+    core.List<api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(o[0]);
+  checkGoogleCloudVideointelligenceV1p3beta1DetectedAttribute(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject>
+    buildUnnamed537() => [
           buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject(),
           buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject(),
         ];
 
-void checkUnnamed535(
+void checkUnnamed537(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1TimestampedObject(o[0]);
@@ -7823,10 +7823,10 @@ api.GoogleCloudVideointelligenceV1p3beta1Track
   final o = api.GoogleCloudVideointelligenceV1p3beta1Track();
   buildCounterGoogleCloudVideointelligenceV1p3beta1Track++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1Track < 3) {
-    o.attributes = buildUnnamed534();
+    o.attributes = buildUnnamed536();
     o.confidence = 42.0;
     o.segment = buildGoogleCloudVideointelligenceV1p3beta1VideoSegment();
-    o.timestampedObjects = buildUnnamed535();
+    o.timestampedObjects = buildUnnamed537();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1Track--;
   return o;
@@ -7836,13 +7836,13 @@ void checkGoogleCloudVideointelligenceV1p3beta1Track(
     api.GoogleCloudVideointelligenceV1p3beta1Track o) {
   buildCounterGoogleCloudVideointelligenceV1p3beta1Track++;
   if (buildCounterGoogleCloudVideointelligenceV1p3beta1Track < 3) {
-    checkUnnamed534(o.attributes!);
+    checkUnnamed536(o.attributes!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o.segment!);
-    checkUnnamed535(o.timestampedObjects!);
+    checkUnnamed537(o.timestampedObjects!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1Track--;
 }
@@ -7898,12 +7898,12 @@ void checkGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation>
-    buildUnnamed536() => [
+    buildUnnamed538() => [
           buildGoogleCloudVideointelligenceV1p3beta1FaceAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1FaceAnnotation(),
         ];
 
-void checkUnnamed536(
+void checkUnnamed538(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1FaceAnnotation(o[0]);
@@ -7911,12 +7911,12 @@ void checkUnnamed536(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>
-    buildUnnamed537() => [
+    buildUnnamed539() => [
           buildGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation(),
         ];
 
-void checkUnnamed537(
+void checkUnnamed539(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7925,12 +7925,12 @@ void checkUnnamed537(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed538() => [
+    buildUnnamed540() => [
           buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
         ];
 
-void checkUnnamed538(
+void checkUnnamed540(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[0]);
@@ -7938,12 +7938,12 @@ void checkUnnamed538(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation>
-    buildUnnamed539() => [
+    buildUnnamed541() => [
           buildGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation(),
         ];
 
-void checkUnnamed539(
+void checkUnnamed541(
     core.List<
             api.GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation>
         o) {
@@ -7953,12 +7953,12 @@ void checkUnnamed539(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
-    buildUnnamed540() => [
+    buildUnnamed542() => [
           buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation(),
         ];
 
-void checkUnnamed540(
+void checkUnnamed542(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7967,12 +7967,12 @@ void checkUnnamed540(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation>
-    buildUnnamed541() => [
+    buildUnnamed543() => [
           buildGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation(),
         ];
 
-void checkUnnamed541(
+void checkUnnamed543(
     core.List<
             api.GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation>
         o) {
@@ -7982,42 +7982,16 @@ void checkUnnamed541(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed542() => [
-          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
-        ];
-
-void checkUnnamed542(
-    core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
-    buildUnnamed543() => [
-          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
-          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
-        ];
-
-void checkUnnamed543(
-    core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[0]);
-  checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[1]);
-}
-
-core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>
     buildUnnamed544() => [
-          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
-          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
         ];
 
 void checkUnnamed544(
-    core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment> o) {
+    core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o[0]);
-  checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o[1]);
+  checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
@@ -8033,13 +8007,39 @@ void checkUnnamed545(
   checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[1]);
 }
 
-core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment>
     buildUnnamed546() => [
+          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+          buildGoogleCloudVideointelligenceV1p3beta1VideoSegment(),
+        ];
+
+void checkUnnamed546(
+    core.List<api.GoogleCloudVideointelligenceV1p3beta1VideoSegment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o[0]);
+  checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+    buildUnnamed547() => [
           buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
         ];
 
-void checkUnnamed546(
+void checkUnnamed547(
+    core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[0]);
+  checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[1]);
+}
+
+core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+    buildUnnamed548() => [
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+          buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(),
+        ];
+
+void checkUnnamed548(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1LabelAnnotation(o[0]);
@@ -8047,12 +8047,12 @@ void checkUnnamed546(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>
-    buildUnnamed547() => [
+    buildUnnamed549() => [
           buildGoogleCloudVideointelligenceV1p3beta1SpeechTranscription(),
           buildGoogleCloudVideointelligenceV1p3beta1SpeechTranscription(),
         ];
 
-void checkUnnamed547(
+void checkUnnamed549(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1SpeechTranscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1SpeechTranscription(o[0]);
@@ -8060,12 +8060,12 @@ void checkUnnamed547(
 }
 
 core.List<api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation>
-    buildUnnamed548() => [
+    buildUnnamed550() => [
           buildGoogleCloudVideointelligenceV1p3beta1TextAnnotation(),
           buildGoogleCloudVideointelligenceV1p3beta1TextAnnotation(),
         ];
 
-void checkUnnamed548(
+void checkUnnamed550(
     core.List<api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudVideointelligenceV1p3beta1TextAnnotation(o[0]);
@@ -8085,21 +8085,21 @@ api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults
     o.error = buildGoogleRpcStatus();
     o.explicitAnnotation =
         buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation();
-    o.faceAnnotations = buildUnnamed536();
-    o.faceDetectionAnnotations = buildUnnamed537();
-    o.frameLabelAnnotations = buildUnnamed538();
+    o.faceAnnotations = buildUnnamed538();
+    o.faceDetectionAnnotations = buildUnnamed539();
+    o.frameLabelAnnotations = buildUnnamed540();
     o.inputUri = 'foo';
-    o.logoRecognitionAnnotations = buildUnnamed539();
-    o.objectAnnotations = buildUnnamed540();
-    o.personDetectionAnnotations = buildUnnamed541();
+    o.logoRecognitionAnnotations = buildUnnamed541();
+    o.objectAnnotations = buildUnnamed542();
+    o.personDetectionAnnotations = buildUnnamed543();
     o.segment = buildGoogleCloudVideointelligenceV1p3beta1VideoSegment();
-    o.segmentLabelAnnotations = buildUnnamed542();
-    o.segmentPresenceLabelAnnotations = buildUnnamed543();
-    o.shotAnnotations = buildUnnamed544();
-    o.shotLabelAnnotations = buildUnnamed545();
-    o.shotPresenceLabelAnnotations = buildUnnamed546();
-    o.speechTranscriptions = buildUnnamed547();
-    o.textAnnotations = buildUnnamed548();
+    o.segmentLabelAnnotations = buildUnnamed544();
+    o.segmentPresenceLabelAnnotations = buildUnnamed545();
+    o.shotAnnotations = buildUnnamed546();
+    o.shotLabelAnnotations = buildUnnamed547();
+    o.shotPresenceLabelAnnotations = buildUnnamed548();
+    o.speechTranscriptions = buildUnnamed549();
+    o.textAnnotations = buildUnnamed550();
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults--;
   return o;
@@ -8115,24 +8115,24 @@ void checkGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults(
     checkGoogleRpcStatus(o.error!);
     checkGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation(
         o.explicitAnnotation!);
-    checkUnnamed536(o.faceAnnotations!);
-    checkUnnamed537(o.faceDetectionAnnotations!);
-    checkUnnamed538(o.frameLabelAnnotations!);
+    checkUnnamed538(o.faceAnnotations!);
+    checkUnnamed539(o.faceDetectionAnnotations!);
+    checkUnnamed540(o.frameLabelAnnotations!);
     unittest.expect(
       o.inputUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed539(o.logoRecognitionAnnotations!);
-    checkUnnamed540(o.objectAnnotations!);
-    checkUnnamed541(o.personDetectionAnnotations!);
+    checkUnnamed541(o.logoRecognitionAnnotations!);
+    checkUnnamed542(o.objectAnnotations!);
+    checkUnnamed543(o.personDetectionAnnotations!);
     checkGoogleCloudVideointelligenceV1p3beta1VideoSegment(o.segment!);
-    checkUnnamed542(o.segmentLabelAnnotations!);
-    checkUnnamed543(o.segmentPresenceLabelAnnotations!);
-    checkUnnamed544(o.shotAnnotations!);
-    checkUnnamed545(o.shotLabelAnnotations!);
-    checkUnnamed546(o.shotPresenceLabelAnnotations!);
-    checkUnnamed547(o.speechTranscriptions!);
-    checkUnnamed548(o.textAnnotations!);
+    checkUnnamed544(o.segmentLabelAnnotations!);
+    checkUnnamed545(o.segmentPresenceLabelAnnotations!);
+    checkUnnamed546(o.shotAnnotations!);
+    checkUnnamed547(o.shotLabelAnnotations!);
+    checkUnnamed548(o.shotPresenceLabelAnnotations!);
+    checkUnnamed549(o.speechTranscriptions!);
+    checkUnnamed550(o.textAnnotations!);
   }
   buildCounterGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults--;
 }
@@ -8227,12 +8227,12 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed549() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed551() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed549(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed551(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -8245,7 +8245,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed549();
+    o.operations = buildUnnamed551();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -8259,12 +8259,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed549(o.operations!);
+    checkUnnamed551(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed550() => {
+core.Map<core.String, core.Object> buildUnnamed552() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8277,7 +8277,7 @@ core.Map<core.String, core.Object> buildUnnamed550() => {
       },
     };
 
-void checkUnnamed550(core.Map<core.String, core.Object> o) {
+void checkUnnamed552(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -8309,7 +8309,7 @@ void checkUnnamed550(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed551() => {
+core.Map<core.String, core.Object> buildUnnamed553() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8322,7 +8322,7 @@ core.Map<core.String, core.Object> buildUnnamed551() => {
       },
     };
 
-void checkUnnamed551(core.Map<core.String, core.Object> o) {
+void checkUnnamed553(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -8361,9 +8361,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed550();
+    o.metadata = buildUnnamed552();
     o.name = 'foo';
-    o.response = buildUnnamed551();
+    o.response = buildUnnamed553();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -8374,12 +8374,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed550(o.metadata!);
+    checkUnnamed552(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed551(o.response!);
+    checkUnnamed553(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -8399,7 +8399,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed552() => {
+core.Map<core.String, core.Object> buildUnnamed554() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8412,7 +8412,7 @@ core.Map<core.String, core.Object> buildUnnamed552() => {
       },
     };
 
-void checkUnnamed552(core.Map<core.String, core.Object> o) {
+void checkUnnamed554(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -8444,15 +8444,15 @@ void checkUnnamed552(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed553() => [
-      buildUnnamed552(),
-      buildUnnamed552(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed555() => [
+      buildUnnamed554(),
+      buildUnnamed554(),
     ];
 
-void checkUnnamed553(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed555(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed552(o[0]);
-  checkUnnamed552(o[1]);
+  checkUnnamed554(o[0]);
+  checkUnnamed554(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -8461,7 +8461,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed553();
+    o.details = buildUnnamed555();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -8475,7 +8475,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed553(o.details!);
+    checkUnnamed555(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

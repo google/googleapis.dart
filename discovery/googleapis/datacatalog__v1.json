@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
+                    "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
                 }
             }
         }
@@ -145,7 +145,7 @@
                             "type": "string"
                         },
                         "sqlResource": {
-                            "description": "The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.{PROJECT_ID}.{TOPIC_ID}` * `pubsub.{PROJECT_ID}.{TOPIC.ID.SEPARATED.WITH.DOTS}` * `bigquery.table.{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}` * `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` * `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}` Identifiers (`*_ID`) should comply with the [Lexical structure in Standard SQL] (https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical).",
+                            "description": "The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.topic.{PROJECT_ID}.{TOPIC_ID}` * `pubsub.topic.{PROJECT_ID}.`\\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\\` * `bigquery.table.{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}` * `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` * `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}` Identifiers (`*_ID`) should comply with the [Lexical structure in Standard SQL] (https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical).",
                             "location": "query",
                             "type": "string"
                         }
@@ -181,7 +181,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The names of the project and location that the new entry group belongs to. Note: The entry group itself and its child resources might not be stored in the location specified in its name. ",
+                                            "description": "Required. The names of the project and location that the new entry group belongs to. Note: The entry group itself and its child resources might not be stored in the location specified in its name.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -214,7 +214,7 @@
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "Required. The name of the entry group to delete. ",
+                                            "description": "Required. The name of the entry group to delete.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
                                             "required": true,
@@ -239,7 +239,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The name of the entry group to get. ",
+                                            "description": "Required. The name of the entry group to get.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
                                             "required": true,
@@ -334,7 +334,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. ",
+                                            "description": "The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
                                             "required": true,
@@ -433,7 +433,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "Required. The name of the entry group this entry belongs to. Note: The entry itself and its child resources might not be stored in the location specified in its name. ",
+                                                    "description": "Required. The name of the entry group this entry belongs to. Note: The entry itself and its child resources might not be stored in the location specified in its name.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
                                                     "required": true,
@@ -461,7 +461,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. The name of the entry to delete. ",
+                                                    "description": "Required. The name of the entry to delete.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
                                                     "required": true,
@@ -486,7 +486,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. The name of the entry to get. ",
+                                                    "description": "Required. The name of the entry to get.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
                                                     "required": true,
@@ -581,7 +581,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. ",
+                                                    "description": "Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
                                                     "required": true,
@@ -647,7 +647,7 @@
                                                     ],
                                                     "parameters": {
                                                         "parent": {
-                                                            "description": "Required. The name of the resource to attach this tag to. Tags can be attached to entries or entry groups. An entry can have up to 1000 attached tags. Note: The tag and its child resources might not be stored in the location specified in its name. ",
+                                                            "description": "Required. The name of the resource to attach this tag to. Tags can be attached to entries or entry groups. An entry can have up to 1000 attached tags. Note: The tag and its child resources might not be stored in the location specified in its name.",
                                                             "location": "path",
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
                                                             "required": true,
@@ -675,7 +675,7 @@
                                                     ],
                                                     "parameters": {
                                                         "name": {
-                                                            "description": "Required. The name of the tag to delete. ",
+                                                            "description": "Required. The name of the tag to delete.",
                                                             "location": "path",
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+/tags/[^/]+$",
                                                             "required": true,
@@ -711,7 +711,7 @@
                                                             "type": "string"
                                                         },
                                                         "parent": {
-                                                            "description": "Required. The name of the Data Catalog resource to list the tags of. The resource can be an Entry or an EntryGroup (without `/entries/{entries}` at the end). ",
+                                                            "description": "Required. The name of the Data Catalog resource to list the tags of. The resource can be an Entry or an EntryGroup (without `/entries/{entries}` at the end).",
                                                             "location": "path",
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
                                                             "required": true,
@@ -736,7 +736,7 @@
                                                     ],
                                                     "parameters": {
                                                         "name": {
-                                                            "description": "The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name. ",
+                                                            "description": "The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name.",
                                                             "location": "path",
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+/tags/[^/]+$",
                                                             "required": true,
@@ -776,7 +776,7 @@
                                             ],
                                             "parameters": {
                                                 "parent": {
-                                                    "description": "Required. The name of the resource to attach this tag to. Tags can be attached to entries or entry groups. An entry can have up to 1000 attached tags. Note: The tag and its child resources might not be stored in the location specified in its name. ",
+                                                    "description": "Required. The name of the resource to attach this tag to. Tags can be attached to entries or entry groups. An entry can have up to 1000 attached tags. Note: The tag and its child resources might not be stored in the location specified in its name.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
                                                     "required": true,
@@ -804,7 +804,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. The name of the tag to delete. ",
+                                                    "description": "Required. The name of the tag to delete.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/tags/[^/]+$",
                                                     "required": true,
@@ -840,7 +840,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "Required. The name of the Data Catalog resource to list the tags of. The resource can be an Entry or an EntryGroup (without `/entries/{entries}` at the end). ",
+                                                    "description": "Required. The name of the Data Catalog resource to list the tags of. The resource can be an Entry or an EntryGroup (without `/entries/{entries}` at the end).",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
                                                     "required": true,
@@ -865,7 +865,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name. ",
+                                                    "description": "The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/tags/[^/]+$",
                                                     "required": true,
@@ -905,7 +905,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions). ",
+                                            "description": "Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions).",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -943,7 +943,7 @@
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "Required. The name of the tag template to delete. ",
+                                            "description": "Required. The name of the tag template to delete.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$",
                                             "required": true,
@@ -968,7 +968,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The name of the tag template to get. ",
+                                            "description": "Required. The name of the tag template to get.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$",
                                             "required": true,
@@ -1021,7 +1021,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. ",
+                                            "description": "The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$",
                                             "required": true,
@@ -1115,7 +1115,7 @@
                                             ],
                                             "parameters": {
                                                 "parent": {
-                                                    "description": "Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions). ",
+                                                    "description": "Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions).",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$",
                                                     "required": true,
@@ -1153,7 +1153,7 @@
                                                     "type": "boolean"
                                                 },
                                                 "name": {
-                                                    "description": "Required. The name of the tag template field to delete. ",
+                                                    "description": "Required. The name of the tag template field to delete.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+$",
                                                     "required": true,
@@ -1178,7 +1178,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. The name of the tag template field. ",
+                                                    "description": "Required. The name of the tag template field.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+$",
                                                     "required": true,
@@ -1212,7 +1212,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. The name of the tag template. ",
+                                                    "description": "Required. The name of the tag template.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+$",
                                                     "required": true,
@@ -1244,7 +1244,7 @@
                                                     ],
                                                     "parameters": {
                                                         "name": {
-                                                            "description": "Required. The name of the enum field value. ",
+                                                            "description": "Required. The name of the enum field value.",
                                                             "location": "path",
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+/enumValues/[^/]+$",
                                                             "required": true,
@@ -1280,7 +1280,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. Resource name of the project that the taxonomy will belong to. ",
+                                            "description": "Required. Resource name of the project that the taxonomy will belong to.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1308,7 +1308,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Resource name of the taxonomy to delete. Note: All policy tags in this taxonomy are also deleted. ",
+                                            "description": "Required. Resource name of the taxonomy to delete. Note: All policy tags in this taxonomy are also deleted.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$",
                                             "required": true,
@@ -1333,7 +1333,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. Resource name of the project that the exported taxonomies belong to. ",
+                                            "description": "Required. Resource name of the project that the exported taxonomies belong to.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1369,7 +1369,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. Resource name of the taxonomy to get. ",
+                                            "description": "Required. Resource name of the taxonomy to get.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$",
                                             "required": true,
@@ -1422,7 +1422,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. Resource name of project that the imported taxonomies will belong to. ",
+                                            "description": "Required. Resource name of project that the imported taxonomies will belong to.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1461,7 +1461,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. Resource name of the project to list the taxonomies of. ",
+                                            "description": "Required. Resource name of the project to list the taxonomies of.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1486,7 +1486,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Output only. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. ",
+                                            "description": "Output only. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$",
                                             "required": true,
@@ -1608,7 +1608,7 @@
                                             ],
                                             "parameters": {
                                                 "parent": {
-                                                    "description": "Required. Resource name of the taxonomy that the policy tag will belong to. ",
+                                                    "description": "Required. Resource name of the taxonomy that the policy tag will belong to.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$",
                                                     "required": true,
@@ -1636,7 +1636,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. Resource name of the policy tag to delete. Note: All of its descendant policy tags are also deleted. ",
+                                                    "description": "Required. Resource name of the policy tag to delete. Note: All of its descendant policy tags are also deleted.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$",
                                                     "required": true,
@@ -1661,7 +1661,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. Resource name of the policy tag. ",
+                                                    "description": "Required. Resource name of the policy tag.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$",
                                                     "required": true,
@@ -1725,7 +1725,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "Required. Resource name of the taxonomy to list the policy tags of. ",
+                                                    "description": "Required. Resource name of the taxonomy to list the policy tags of.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$",
                                                     "required": true,
@@ -1750,7 +1750,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Output only. Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs. ",
+                                                    "description": "Output only. Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$",
                                                     "required": true,
@@ -1839,7 +1839,7 @@
             }
         }
     },
-    "revision": "20210712",
+    "revision": "20210827",
     "rootUrl": "https://datacatalog.googleapis.com/",
     "schemas": {
         "Binding": {
@@ -2209,7 +2209,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. ",
+                    "description": "Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -2287,7 +2287,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. ",
+                    "description": "The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.",
                     "type": "string"
                 }
             },
@@ -2558,7 +2558,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs. ",
+                    "description": "Output only. Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -2959,7 +2959,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name. ",
+                    "description": "The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name.",
                     "type": "string"
                 },
                 "template": {
@@ -3045,11 +3045,11 @@
                     "type": "object"
                 },
                 "isPubliclyReadable": {
-                    "description": "Indicates whether this is a public tag template. Every user has view access to a *public* tag template by default. This means that: * Every user can use this tag template to tag an entry. * If an entry is tagged using the tag template, the tag is always shown in the response to ``ListTags`` called on the entry. * To get the template using the GetTagTemplate method, you need view access either on the project or the organization the tag template resides in but no other permission is needed. * Operations on the tag template other than viewing (for example, editing IAM policies) follow standard IAM structures. Tags created with a public tag template are referred to as public tags. You can search for a public tag by value with a simple search query instead of using a ``tag:`` predicate. Public tag templates may not appear in search results depending on scope, see: include_public_tag_templates",
+                    "description": "Indicates whether this is a public tag template. Every user has view access to a *public* tag template by default. This means that: * Every user can use this tag template to tag an entry. * If an entry is tagged using the tag template, the tag is always shown in the response to ``ListTags`` called on the entry. * To get the template using the GetTagTemplate method, you need view access either on the project or the organization the tag template resides in but no other permission is needed. * Operations on the tag template other than viewing (for example, editing IAM policies) follow standard IAM structures. Tags created with a public tag template are referred to as public tags. You can search for a public tag by value with a simple search query instead of using a ``tag:`` predicate. Public tag templates may not appear in search results depending on scope, see: include_public_tag_templates Note: If an [IAM domain restriction](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains) is configured in the tag template's location, the public access will not be enabled but the simple search for tag values will still work.",
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. ",
+                    "description": "The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.",
                     "type": "string"
                 }
             },
@@ -3116,7 +3116,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. ",
+                    "description": "Output only. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -3193,7 +3193,7 @@
             "type": "object"
         },
         "Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "Policy",
             "properties": {
                 "bindings": {

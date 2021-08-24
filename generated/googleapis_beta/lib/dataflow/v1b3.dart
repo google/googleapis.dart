@@ -54,7 +54,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages Google Cloud Dataflow projects on Google Cloud Platform.
 class DataflowApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -3045,7 +3046,7 @@ class BigQueryIODetails {
       };
 }
 
-/// Metadata for a Cloud BigTable connector used by the job.
+/// Metadata for a Cloud Bigtable connector used by the job.
 class BigTableIODetails {
   /// InstanceId accessed in the connection.
   core.String? instanceId;
@@ -4776,8 +4777,24 @@ class FlexTemplateRuntimeEnvironment {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
   core.Map<core.String, core.String>? additionalUserLabels;
 
+  /// The algorithm to use for autoscaling
+  /// Possible string values are:
+  /// - "AUTOSCALING_ALGORITHM_UNKNOWN" : The algorithm is unknown, or
+  /// unspecified.
+  /// - "AUTOSCALING_ALGORITHM_NONE" : Disable autoscaling.
+  /// - "AUTOSCALING_ALGORITHM_BASIC" : Increase worker count over time to
+  /// reduce job execution time.
+  core.String? autoscalingAlgorithm;
+
   /// Worker disk size, in gigabytes.
   core.int? diskSizeGb;
+
+  /// If true, save a heap dump before killing a thread or process which is GC
+  /// thrashing or out of memory.
+  ///
+  /// The location of the heap file will either be echoed back to the user, or
+  /// the user will be given the opportunity to download the heap file.
+  core.bool? dumpHeapOnOom;
 
   /// Whether to enable Streaming Engine for the job.
   core.bool? enableStreamingEngine;
@@ -4803,13 +4820,15 @@ class FlexTemplateRuntimeEnvironment {
   /// Key format is: projects//locations//keyRings//cryptoKeys/
   core.String? kmsKeyName;
 
+  /// The machine type to use for launching the job.
+  ///
+  /// The default is n1-standard-1.
+  core.String? launcherMachineType;
+
   /// The machine type to use for the job.
   ///
   /// Defaults to the value from the template if not specified.
   core.String? machineType;
-
-  /// The maximum number of workers to cap scaling at.
-  core.int? maxNumWorkers;
 
   /// The maximum number of Google Compute Engine instances to be made available
   /// to your pipeline during execution, from 1 to 1000.
@@ -4822,6 +4841,13 @@ class FlexTemplateRuntimeEnvironment {
 
   /// The initial number of Google Compute Engine instances for the job.
   core.int? numWorkers;
+
+  /// Cloud Storage bucket (directory) to upload heap dumps to the given
+  /// location.
+  ///
+  /// Enabling this implies that heap dumps should be generated on OOM
+  /// (dump_heap_on_oom is set to true).
+  core.String? saveHeapDumpsToGcsPath;
 
   /// Docker registry location of container image to use for the 'worker
   /// harness.
@@ -4880,16 +4906,19 @@ class FlexTemplateRuntimeEnvironment {
   FlexTemplateRuntimeEnvironment({
     this.additionalExperiments,
     this.additionalUserLabels,
+    this.autoscalingAlgorithm,
     this.diskSizeGb,
+    this.dumpHeapOnOom,
     this.enableStreamingEngine,
     this.flexrsGoal,
     this.ipConfiguration,
     this.kmsKeyName,
+    this.launcherMachineType,
     this.machineType,
-    this.maxNumWorkers,
     this.maxWorkers,
     this.network,
     this.numWorkers,
+    this.saveHeapDumpsToGcsPath,
     this.sdkContainerImage,
     this.serviceAccountEmail,
     this.stagingLocation,
@@ -4917,8 +4946,14 @@ class FlexTemplateRuntimeEnvironment {
                   ),
                 )
               : null,
+          autoscalingAlgorithm: _json.containsKey('autoscalingAlgorithm')
+              ? _json['autoscalingAlgorithm'] as core.String
+              : null,
           diskSizeGb: _json.containsKey('diskSizeGb')
               ? _json['diskSizeGb'] as core.int
+              : null,
+          dumpHeapOnOom: _json.containsKey('dumpHeapOnOom')
+              ? _json['dumpHeapOnOom'] as core.bool
               : null,
           enableStreamingEngine: _json.containsKey('enableStreamingEngine')
               ? _json['enableStreamingEngine'] as core.bool
@@ -4932,11 +4967,11 @@ class FlexTemplateRuntimeEnvironment {
           kmsKeyName: _json.containsKey('kmsKeyName')
               ? _json['kmsKeyName'] as core.String
               : null,
+          launcherMachineType: _json.containsKey('launcherMachineType')
+              ? _json['launcherMachineType'] as core.String
+              : null,
           machineType: _json.containsKey('machineType')
               ? _json['machineType'] as core.String
-              : null,
-          maxNumWorkers: _json.containsKey('maxNumWorkers')
-              ? _json['maxNumWorkers'] as core.int
               : null,
           maxWorkers: _json.containsKey('maxWorkers')
               ? _json['maxWorkers'] as core.int
@@ -4946,6 +4981,9 @@ class FlexTemplateRuntimeEnvironment {
               : null,
           numWorkers: _json.containsKey('numWorkers')
               ? _json['numWorkers'] as core.int
+              : null,
+          saveHeapDumpsToGcsPath: _json.containsKey('saveHeapDumpsToGcsPath')
+              ? _json['saveHeapDumpsToGcsPath'] as core.String
               : null,
           sdkContainerImage: _json.containsKey('sdkContainerImage')
               ? _json['sdkContainerImage'] as core.String
@@ -4976,17 +5014,23 @@ class FlexTemplateRuntimeEnvironment {
           'additionalExperiments': additionalExperiments!,
         if (additionalUserLabels != null)
           'additionalUserLabels': additionalUserLabels!,
+        if (autoscalingAlgorithm != null)
+          'autoscalingAlgorithm': autoscalingAlgorithm!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+        if (dumpHeapOnOom != null) 'dumpHeapOnOom': dumpHeapOnOom!,
         if (enableStreamingEngine != null)
           'enableStreamingEngine': enableStreamingEngine!,
         if (flexrsGoal != null) 'flexrsGoal': flexrsGoal!,
         if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (launcherMachineType != null)
+          'launcherMachineType': launcherMachineType!,
         if (machineType != null) 'machineType': machineType!,
-        if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers!,
         if (maxWorkers != null) 'maxWorkers': maxWorkers!,
         if (network != null) 'network': network!,
         if (numWorkers != null) 'numWorkers': numWorkers!,
+        if (saveHeapDumpsToGcsPath != null)
+          'saveHeapDumpsToGcsPath': saveHeapDumpsToGcsPath!,
         if (sdkContainerImage != null) 'sdkContainerImage': sdkContainerImage!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
@@ -6025,7 +6069,7 @@ class JobMessage {
 ///
 /// Will be included in the ListJob response and Job SUMMARY view.
 class JobMetadata {
-  /// Identification of a Cloud BigTable source used in the Dataflow job.
+  /// Identification of a Cloud Bigtable source used in the Dataflow job.
   core.List<BigTableIODetails>? bigTableDetails;
 
   /// Identification of a BigQuery source used in the Dataflow job.
@@ -6037,7 +6081,7 @@ class JobMetadata {
   /// Identification of a File source used in the Dataflow job.
   core.List<FileIODetails>? fileDetails;
 
-  /// Identification of a PubSub source used in the Dataflow job.
+  /// Identification of a Pub/Sub source used in the Dataflow job.
   core.List<PubSubIODetails>? pubsubDetails;
 
   /// The SDK version used to run the job.
@@ -8258,7 +8302,8 @@ class ResourceUtilizationReportResponse {
 
 /// The environment values to set at runtime.
 class RuntimeEnvironment {
-  /// Additional experiment flags for the job.
+  /// Additional experiment flags for the job, specified with the
+  /// `--experiments` option.
   core.List<core.String>? additionalExperiments;
 
   /// Additional user labels to be specified for the job.
@@ -8989,7 +9034,7 @@ class Snapshot {
   /// The project this snapshot belongs to.
   core.String? projectId;
 
-  /// PubSub snapshot metadata.
+  /// Pub/Sub snapshot metadata.
   core.List<PubsubSnapshotMetadata>? pubsubMetadata;
 
   /// Cloud region where this snapshot lives in, e.g., "us-central1".

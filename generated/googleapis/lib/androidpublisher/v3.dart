@@ -2181,13 +2181,20 @@ class InappproductsResource {
 
   /// Lists all in-app products - both managed products and subscriptions.
   ///
+  /// If an app has a large number of in-app products, the response may be
+  /// paginated. In this case the response field `tokenPagination.nextPageToken`
+  /// will be set and the caller should provide its value as a `token` request
+  /// parameter to retrieve the next page.
+  ///
   /// Request parameters:
   ///
   /// [packageName] - Package name of the app.
   ///
-  /// [maxResults] - How many results the list operation should return.
+  /// [maxResults] - Deprecated and ignored. The page size is determined by the
+  /// server.
   ///
-  /// [startIndex] - The index of the first element to return.
+  /// [startIndex] - Deprecated and ignored. Set the `token` parameter to
+  /// rertieve the next page.
   ///
   /// [token] - Pagination token. If empty, list starts at the first product.
   ///
@@ -2292,6 +2299,9 @@ class InappproductsResource {
   ///
   /// [sku] - Unique identifier for the in-app product.
   ///
+  /// [allowMissing] - If set to true, and the in-app product with the given
+  /// package_name and sku doesn't exist, the in-app product will be created.
+  ///
   /// [autoConvertMissingPrices] - If true the prices for all regions targeted
   /// by the parent app that don't have a price specified for this in-app
   /// product will be auto converted to the target currency based on the default
@@ -2311,11 +2321,13 @@ class InappproductsResource {
     InAppProduct request,
     core.String packageName,
     core.String sku, {
+    core.bool? allowMissing,
     core.bool? autoConvertMissingPrices,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (autoConvertMissingPrices != null)
         'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
       if ($fields != null) 'fields': [$fields],
@@ -2479,7 +2491,9 @@ class OrdersResource {
 
   OrdersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Refund a user's subscription or in-app purchase order.
+  /// Refunds a user's subscription or in-app purchase order.
+  ///
+  /// Orders older than 1 year cannot be refunded.
   ///
   /// Request parameters:
   ///
@@ -4503,7 +4517,7 @@ class InappproductsListResponse {
   /// The kind of this response ("androidpublisher#inappproductsListResponse").
   core.String? kind;
 
-  /// Information about the current page.
+  /// Deprecated and unset.
   PageInfo? pageInfo;
 
   /// Pagination token, to handle a number of products that is over one page.

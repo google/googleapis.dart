@@ -41,7 +41,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Transfers data from external data sources to a Google Cloud Storage bucket
 /// or between Google Cloud Storage buckets.
 class StoragetransferApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -158,7 +159,7 @@ class TransferJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [jobName] - Required. " The job to get.
+  /// [jobName] - Required. The job to get.
   /// Value must have pattern `^transferJobs/.*$`.
   ///
   /// [projectId] - Required. The ID of the Google Cloud Platform Console
@@ -645,11 +646,10 @@ class AwsS3Data {
   /// with a '/'.
   core.String? path;
 
-  /// Input only.
-  ///
   /// The Amazon Resource Name (ARN) of the role to support temporary
-  /// credentials via `AssumeRoleWithWebIdentity`. For more information about
-  /// ARNs, see
+  /// credentials via `AssumeRoleWithWebIdentity`.
+  ///
+  /// For more information about ARNs, see
   /// [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
   /// When a role ARN is provided, Transfer Service fetches temporary
   /// credentials for the session using a `AssumeRoleWithWebIdentity` call for
@@ -1201,6 +1201,32 @@ class ListTransferJobsResponse {
       };
 }
 
+/// Logging configure.
+class LoggingConfig {
+  /// Enables the Cloud Storage transfer logs for this transfer.
+  ///
+  /// This is only supported for transfer jobs with PosixFilesystem sources. The
+  /// default is that logs are not generated for this transfer.
+  core.bool? enableOnpremGcsTransferLogs;
+
+  LoggingConfig({
+    this.enableOnpremGcsTransferLogs,
+  });
+
+  LoggingConfig.fromJson(core.Map _json)
+      : this(
+          enableOnpremGcsTransferLogs:
+              _json.containsKey('enableOnpremGcsTransferLogs')
+                  ? _json['enableOnpremGcsTransferLogs'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableOnpremGcsTransferLogs != null)
+          'enableOnpremGcsTransferLogs': enableOnpremGcsTransferLogs!,
+      };
+}
+
 /// Specification to configure notifications published to Pub/Sub.
 ///
 /// Notifications are published to the customer-provided topic using the
@@ -1494,6 +1520,27 @@ class PauseTransferOperationRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// A POSIX filesystem data source or sink.
+class PosixFilesystem {
+  /// Root directory path to the filesystem.
+  core.String? rootDirectory;
+
+  PosixFilesystem({
+    this.rootDirectory,
+  });
+
+  PosixFilesystem.fromJson(core.Map _json)
+      : this(
+          rootDirectory: _json.containsKey('rootDirectory')
+              ? _json['rootDirectory'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rootDirectory != null) 'rootDirectory': rootDirectory!,
+      };
+}
+
 /// Request passed to ResumeTransferOperation.
 class ResumeTransferOperationRequest {
   ResumeTransferOperationRequest();
@@ -1770,6 +1817,27 @@ class TransferCounters {
   /// exist in the data sink.
   core.String? bytesFromSourceSkippedBySync;
 
+  /// For transfers involving PosixFilesystem only.
+  ///
+  /// Number of listing failures for each directory found at the source.
+  /// Potential failures when listing a directory include permission failure or
+  /// block failure. If listing a directory fails, no files in the directory are
+  /// transferred.
+  core.String? directoriesFailedToListFromSource;
+
+  /// For transfers involving PosixFilesystem only.
+  ///
+  /// Number of directories found while listing. For example, if the root
+  /// directory of the transfer is `base/` and there are two other directories,
+  /// `a/` and `b/` under this directory, the count after listing `base/`,
+  /// `base/a/` and `base/b/` is 3.
+  core.String? directoriesFoundFromSource;
+
+  /// For transfers involving PosixFilesystem only.
+  ///
+  /// Number of successful listings for each directory found at the source.
+  core.String? directoriesSuccessfullyListedFromSource;
+
   /// Objects that are copied to the data sink.
   core.String? objectsCopiedToSink;
 
@@ -1807,6 +1875,9 @@ class TransferCounters {
     this.bytesFoundOnlyFromSink,
     this.bytesFromSourceFailed,
     this.bytesFromSourceSkippedBySync,
+    this.directoriesFailedToListFromSource,
+    this.directoriesFoundFromSource,
+    this.directoriesSuccessfullyListedFromSource,
     this.objectsCopiedToSink,
     this.objectsDeletedFromSink,
     this.objectsDeletedFromSource,
@@ -1845,6 +1916,18 @@ class TransferCounters {
               _json.containsKey('bytesFromSourceSkippedBySync')
                   ? _json['bytesFromSourceSkippedBySync'] as core.String
                   : null,
+          directoriesFailedToListFromSource:
+              _json.containsKey('directoriesFailedToListFromSource')
+                  ? _json['directoriesFailedToListFromSource'] as core.String
+                  : null,
+          directoriesFoundFromSource:
+              _json.containsKey('directoriesFoundFromSource')
+                  ? _json['directoriesFoundFromSource'] as core.String
+                  : null,
+          directoriesSuccessfullyListedFromSource: _json
+                  .containsKey('directoriesSuccessfullyListedFromSource')
+              ? _json['directoriesSuccessfullyListedFromSource'] as core.String
+              : null,
           objectsCopiedToSink: _json.containsKey('objectsCopiedToSink')
               ? _json['objectsCopiedToSink'] as core.String
               : null,
@@ -1891,6 +1974,14 @@ class TransferCounters {
           'bytesFromSourceFailed': bytesFromSourceFailed!,
         if (bytesFromSourceSkippedBySync != null)
           'bytesFromSourceSkippedBySync': bytesFromSourceSkippedBySync!,
+        if (directoriesFailedToListFromSource != null)
+          'directoriesFailedToListFromSource':
+              directoriesFailedToListFromSource!,
+        if (directoriesFoundFromSource != null)
+          'directoriesFoundFromSource': directoriesFoundFromSource!,
+        if (directoriesSuccessfullyListedFromSource != null)
+          'directoriesSuccessfullyListedFromSource':
+              directoriesSuccessfullyListedFromSource!,
         if (objectsCopiedToSink != null)
           'objectsCopiedToSink': objectsCopiedToSink!,
         if (objectsDeletedFromSink != null)
@@ -1937,6 +2028,9 @@ class TransferJob {
   ///
   /// Present if a TransferOperation has been created for this JobConfig.
   core.String? latestOperationName;
+
+  /// Logging configuration.
+  LoggingConfig? loggingConfig;
 
   /// A unique name (within the transfer project) assigned when the job is
   /// created.
@@ -1998,6 +2092,7 @@ class TransferJob {
     this.description,
     this.lastModificationTime,
     this.latestOperationName,
+    this.loggingConfig,
     this.name,
     this.notificationConfig,
     this.projectId,
@@ -2022,6 +2117,10 @@ class TransferJob {
               : null,
           latestOperationName: _json.containsKey('latestOperationName')
               ? _json['latestOperationName'] as core.String
+              : null,
+          loggingConfig: _json.containsKey('loggingConfig')
+              ? LoggingConfig.fromJson(
+                  _json['loggingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           notificationConfig: _json.containsKey('notificationConfig')
@@ -2052,6 +2151,7 @@ class TransferJob {
           'lastModificationTime': lastModificationTime!,
         if (latestOperationName != null)
           'latestOperationName': latestOperationName!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
         if (name != null) 'name': name!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!.toJson(),
@@ -2251,6 +2351,9 @@ class TransferSpec {
   /// exclude objects in a data sink.
   ObjectConditions? objectConditions;
 
+  /// A POSIX Filesystem data source.
+  PosixFilesystem? posixDataSource;
+
   /// If the option delete_objects_unique_in_sink is `true` and time-based
   /// object conditions such as 'last modification time' are specified, the
   /// request fails with an INVALID_ARGUMENT error.
@@ -2263,6 +2366,7 @@ class TransferSpec {
     this.gcsDataSource,
     this.httpDataSource,
     this.objectConditions,
+    this.posixDataSource,
     this.transferOptions,
   });
 
@@ -2294,6 +2398,10 @@ class TransferSpec {
               ? ObjectConditions.fromJson(_json['objectConditions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          posixDataSource: _json.containsKey('posixDataSource')
+              ? PosixFilesystem.fromJson(_json['posixDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           transferOptions: _json.containsKey('transferOptions')
               ? TransferOptions.fromJson(_json['transferOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -2310,6 +2418,8 @@ class TransferSpec {
         if (httpDataSource != null) 'httpDataSource': httpDataSource!.toJson(),
         if (objectConditions != null)
           'objectConditions': objectConditions!.toJson(),
+        if (posixDataSource != null)
+          'posixDataSource': posixDataSource!.toJson(),
         if (transferOptions != null)
           'transferOptions': transferOptions!.toJson(),
       };

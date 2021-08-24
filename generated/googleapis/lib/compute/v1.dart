@@ -40,6 +40,7 @@
 /// - [HealthChecksResource]
 /// - [HttpHealthChecksResource]
 /// - [HttpsHealthChecksResource]
+/// - [ImageFamilyViewsResource]
 /// - [ImagesResource]
 /// - [InstanceGroupManagersResource]
 /// - [InstanceGroupsResource]
@@ -117,7 +118,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Creates and runs virtual machines on Google Cloud Platform.
 class ComputeApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -128,7 +130,8 @@ class ComputeApi {
   static const computeReadonlyScope =
       'https://www.googleapis.com/auth/compute.readonly';
 
-  /// Manage your data and permissions in Google Cloud Storage
+  /// Manage your data and permissions in Cloud Storage and see the email
+  /// address for your Google Account
   static const devstorageFullControlScope =
       'https://www.googleapis.com/auth/devstorage.full_control';
 
@@ -136,7 +139,8 @@ class ComputeApi {
   static const devstorageReadOnlyScope =
       'https://www.googleapis.com/auth/devstorage.read_only';
 
-  /// Manage your data in Google Cloud Storage
+  /// Manage your data in Cloud Storage and see the email address of your Google
+  /// Account
   static const devstorageReadWriteScope =
       'https://www.googleapis.com/auth/devstorage.read_write';
 
@@ -176,6 +180,8 @@ class ComputeApi {
       HttpHealthChecksResource(_requester);
   HttpsHealthChecksResource get httpsHealthChecks =>
       HttpsHealthChecksResource(_requester);
+  ImageFamilyViewsResource get imageFamilyViews =>
+      ImageFamilyViewsResource(_requester);
   ImagesResource get images => ImagesResource(_requester);
   InstanceGroupManagersResource get instanceGroupManagers =>
       InstanceGroupManagersResource(_requester);
@@ -9418,6 +9424,64 @@ class HttpsHealthChecksResource {
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ImageFamilyViewsResource {
+  final commons.ApiRequester _requester;
+
+  ImageFamilyViewsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the latest image that is part of an image family, is not
+  /// deprecated and is rolled out in the specified zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [family] - Name of the image family to search for.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ImageFamilyView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImageFamilyView> get(
+    core.String project,
+    core.String zone,
+    core.String family, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/imageFamilyViews/' +
+        commons.escapeVariable('$family');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ImageFamilyView.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -18894,9 +18958,10 @@ class NetworksResource {
   }
 
   /// Updates the specified network peering with the data included in the
-  /// request Only the following fields can be modified:
-  /// NetworkPeering.export_custom_routes, and
-  /// NetworkPeering.import_custom_routes
+  /// request.
+  ///
+  /// You can only modify the NetworkPeering.export_custom_routes field and the
+  /// NetworkPeering.import_custom_routes field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -42315,20 +42380,13 @@ class AccessConfig {
       };
 }
 
-/// Use global external addresses for GFE-based external HTTP(S) load balancers
-/// in Premium Tier.
+/// Represents an IP Address resource.
 ///
-/// Use global internal addresses for reserved peering network range. Use
-/// regional external addresses for the following resources: - External IP
-/// addresses for VM instances - Regional external forwarding rules - Cloud NAT
-/// external IP addresses - GFE based LBs in Standard Tier - Network LBs in
-/// Premium or Standard Tier - Cloud VPN gateways (both Classic and HA) Use
-/// regional internal IP addresses for subnet IP ranges (primary and secondary).
-/// This includes: - Internal IP addresses for VM instances - Alias IP ranges of
-/// VM instances (/32 only) - Regional internal forwarding rules - Internal
-/// TCP/UDP load balancer addresses - Internal HTTP(S) load balancer addresses -
-/// Cloud DNS inbound forwarding IP addresses For more information, see
-/// Reserving a static external IP address.
+/// Google Compute Engine has two IP Address resources: * \[Global (external and
+/// internal)\](https://cloud.google.com/compute/docs/reference/rest/v1/globalAddresses)
+/// * \[Regional (external and
+/// internal)\](https://cloud.google.com/compute/docs/reference/rest/v1/addresses)
+/// For more information, see Reserving a static external IP address.
 class Address {
   /// The static IP address represented by this resource.
   core.String? address;
@@ -42397,12 +42455,10 @@ class Address {
   /// This signifies the networking tier used for configuring this address and
   /// can only take the following values: PREMIUM or STANDARD.
   ///
-  /// Global forwarding rules can only be Premium Tier. Regional forwarding
-  /// rules can be either Premium or Standard Tier. Standard Tier addresses
-  /// applied to regional forwarding rules can be used with any external load
-  /// balancer. Regional forwarding rules in Premium Tier can only be used with
-  /// a network load balancer. If this field is not specified, it is assumed to
-  /// be PREMIUM.
+  /// Internal IP addresses are always Premium Tier; global external IP
+  /// addresses are always Premium Tier; regional external IP addresses can be
+  /// either Standard or Premium Tier. If this field is not specified, it is
+  /// assumed to be PREMIUM.
   /// Possible string values are:
   /// - "PREMIUM" : High quality, Google-grade network tier, support for all
   /// networking products.
@@ -42414,20 +42470,22 @@ class Address {
   core.int? prefixLength;
 
   /// The purpose of this resource, which can be one of the following values: -
-  /// `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP
-  /// ranges, internal load balancers, and similar resources.
+  /// GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges,
+  /// load balancers, and similar resources.
   ///
-  /// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork -
-  /// `VPC_PEERING` for addresses that are reserved for VPC peer networks. -
-  /// `NAT_AUTO` for addresses that are external IP addresses automatically
-  /// reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from
-  /// a private IP range that are reserved for a VLAN attachment in an
-  /// *IPsec-encrypted Cloud Interconnect* configuration. These addresses are
-  /// regional resources. Not currently available publicly. -
-  /// `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to
-  /// multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a
-  /// private network address that is used to configure Private Service Connect.
-  /// Only global internal addresses can use this purpose.
+  /// - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS
+  /// inbound forwarder IP addresses (regional internal IP address in a subnet
+  /// of a VPC network) - VPC_PEERING for global internal IP addresses used for
+  /// private services access allocated ranges. - NAT_AUTO for the regional
+  /// external IP addresses used by Cloud NAT when allocating addresses using .
+  /// - IPSEC_INTERCONNECT for addresses created from a private IP range that
+  /// are reserved for a VLAN attachment in an *IPsec-encrypted Cloud
+  /// Interconnect* configuration. These addresses are regional resources. Not
+  /// currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal
+  /// IP address that is assigned to multiple internal forwarding rules. -
+  /// `PRIVATE_SERVICE_CONNECT` for a private network address that is used to
+  /// configure Private Service Connect. Only global internal addresses can use
+  /// this purpose.
   /// Possible string values are:
   /// - "DNS_RESOLVER" : DNS resolver address in the subnetwork.
   /// - "GCE_ENDPOINT" : VM internal/alias IP, Internal LB service IP, etc.
@@ -43394,6 +43452,8 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
 
 /// This reservation type allows to pre allocate specific instance
 /// configuration.
+///
+/// Next ID: 5
 class AllocationSpecificSKUReservation {
   /// Specifies the number of resources that are allocated.
   core.String? count;
@@ -45382,7 +45442,14 @@ class Backend {
   /// Specifies how to determine whether the backend of a load balancer can
   /// handle additional traffic or is fully loaded.
   ///
-  /// For usage guidelines, see Connection balancing mode.
+  /// For usage guidelines, see Connection balancing mode. Backends must use
+  /// compatible balancing modes. For more information, see Supported balancing
+  /// modes and target capacity settings and Restrictions and guidance for
+  /// instance groups. Note: Currently, if you use the API to configure
+  /// incompatible balancing modes, the configuration might be accepted even
+  /// though it has no impact and is ignored. Specifically,
+  /// Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In
+  /// the future, this incompatible combination will be rejected.
   /// Possible string values are:
   /// - "CONNECTION" : Balance based on the number of simultaneous connections.
   /// - "RATE" : Balance based on requests per second (RPS).
@@ -45456,6 +45523,12 @@ class Backend {
   /// For usage guidelines, see Rate balancing mode and Utilization balancing
   /// mode. Not available if the backend's balancingMode is CONNECTION.
   core.double? maxRatePerInstance;
+
+  /// Optional parameter to define a target capacity for the
+  /// UTILIZATIONbalancing mode.
+  ///
+  /// The valid range is \[0.0, 1.0\]. For usage guidelines, see Utilization
+  /// balancing mode.
   core.double? maxUtilization;
 
   Backend({
@@ -48317,6 +48390,23 @@ class Commitment {
   /// Output only.
   core.String? statusMessage;
 
+  /// The type of commitment, which affects the discount rate and the eligible
+  /// resources.
+  ///
+  /// Type MEMORY_OPTIMIZED specifies a commitment that will only apply to
+  /// memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a
+  /// commitment that will only apply to accelerator optimized machines.
+  /// Possible string values are:
+  /// - "ACCELERATOR_OPTIMIZED"
+  /// - "COMPUTE_OPTIMIZED"
+  /// - "GENERAL_PURPOSE"
+  /// - "GENERAL_PURPOSE_E2"
+  /// - "GENERAL_PURPOSE_N2"
+  /// - "GENERAL_PURPOSE_N2D"
+  /// - "MEMORY_OPTIMIZED"
+  /// - "TYPE_UNSPECIFIED"
+  core.String? type;
+
   Commitment({
     this.category,
     this.creationTimestamp,
@@ -48334,6 +48424,7 @@ class Commitment {
     this.startTimestamp,
     this.status,
     this.statusMessage,
+    this.type,
   });
 
   Commitment.fromJson(core.Map _json)
@@ -48386,6 +48477,7 @@ class Commitment {
           statusMessage: _json.containsKey('statusMessage')
               ? _json['statusMessage'] as core.String
               : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -48408,6 +48500,7 @@ class Commitment {
         if (startTimestamp != null) 'startTimestamp': startTimestamp!,
         if (status != null) 'status': status!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -49365,6 +49458,18 @@ class CustomerEncryptionKey {
   /// base64 to either encrypt or decrypt this resource.
   core.String? rawKey;
 
+  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+  /// customer-supplied encryption key to either encrypt or decrypt this
+  /// resource.
+  ///
+  /// The key must meet the following requirements before you can provide it to
+  /// Compute Engine: 1. The key is wrapped using a RSA public key certificate
+  /// provided by Google. 2. After being wrapped, the key must be encoded in RFC
+  /// 4648 base64 encoding. Gets the RSA public key certificate provided by
+  /// Google at:
+  /// https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+  core.String? rsaEncryptedKey;
+
   /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
   /// encryption key that protects this resource.
   ///
@@ -49375,6 +49480,7 @@ class CustomerEncryptionKey {
     this.kmsKeyName,
     this.kmsKeyServiceAccount,
     this.rawKey,
+    this.rsaEncryptedKey,
     this.sha256,
   });
 
@@ -49389,6 +49495,9 @@ class CustomerEncryptionKey {
           rawKey: _json.containsKey('rawKey')
               ? _json['rawKey'] as core.String
               : null,
+          rsaEncryptedKey: _json.containsKey('rsaEncryptedKey')
+              ? _json['rsaEncryptedKey'] as core.String
+              : null,
           sha256: _json.containsKey('sha256')
               ? _json['sha256'] as core.String
               : null,
@@ -49399,6 +49508,7 @@ class CustomerEncryptionKey {
         if (kmsKeyServiceAccount != null)
           'kmsKeyServiceAccount': kmsKeyServiceAccount!,
         if (rawKey != null) 'rawKey': rawKey!,
+        if (rsaEncryptedKey != null) 'rsaEncryptedKey': rsaEncryptedKey!,
         if (sha256 != null) 'sha256': sha256!,
       };
 }
@@ -49538,15 +49648,23 @@ class Disk {
   /// Provide this property when you create the resource.
   core.String? description;
 
-  /// Encrypts the disk using a customer-supplied encryption key.
+  /// Encrypts the disk using a customer-supplied encryption key or a
+  /// customer-managed encryption key.
   ///
-  /// After you encrypt a disk with a customer-supplied key, you must provide
-  /// the same key if you use the disk later (e.g. to create a disk snapshot, to
+  /// Encryption keys do not protect access to metadata of the disk. After you
+  /// encrypt a disk with a customer-supplied key, you must provide the same key
+  /// if you use the disk later. For example, to create a disk snapshot, to
   /// create a disk image, to create a machine image, or to attach the disk to a
-  /// virtual machine). Customer-supplied encryption keys do not protect access
-  /// to metadata of the disk. If you do not provide an encryption key when
-  /// creating the disk, then the disk will be encrypted using an automatically
-  /// generated key and you do not need to provide a key to use the disk later.
+  /// virtual machine. After you encrypt a disk with a customer-managed key, the
+  /// diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk
+  /// is created. The disk is encrypted with this version of the key. In the
+  /// response, diskEncryptionKey.kmsKeyName appears in the following format:
+  /// "diskEncryptionKey.kmsKeyName":
+  /// "projects/kms_project_id/locations/region/keyRings/
+  /// key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not
+  /// provide an encryption key when creating the disk, then the disk is
+  /// encrypted using an automatically generated key and you don't need to
+  /// provide a key to use the disk later.
   CustomerEncryptionKey? diskEncryptionKey;
 
   /// A list of features to enable on the guest operating system.
@@ -52632,7 +52750,8 @@ class Firewall {
   /// If destination ranges are specified, the firewall rule applies only to
   /// traffic that has destination IP address in these ranges.
   ///
-  /// These ranges must be expressed in CIDR format. Only IPv4 is supported.
+  /// These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are
+  /// supported.
   core.List<core.String>? destinationRanges;
 
   /// Direction of traffic to which this firewall applies, either `INGRESS` or
@@ -52716,8 +52835,8 @@ class Firewall {
   /// and sourceTags may be set. If both fields are set, the rule applies to
   /// traffic that has a source IP address within sourceRanges OR a source IP
   /// from a resource with a matching tag listed in the sourceTags field. The
-  /// connection does not need to match both fields for the rule to apply. Only
-  /// IPv4 is supported.
+  /// connection does not need to match both fields for the rule to apply. Both
+  /// IPv4 and IPv6 are supported.
   core.List<core.String>? sourceRanges;
 
   /// If source service accounts are specified, the firewall rules apply only to
@@ -53770,7 +53889,7 @@ class FirewallPolicyRule {
 class FirewallPolicyRuleMatcher {
   /// CIDR IP address range.
   ///
-  /// Maximum number of destination CIDR IP ranges allowed is 256.
+  /// Maximum number of destination CIDR IP ranges allowed is 5000.
   core.List<core.String>? destIpRanges;
 
   /// Pairs of IP protocols and ports that the rule should match.
@@ -53778,7 +53897,7 @@ class FirewallPolicyRuleMatcher {
 
   /// CIDR IP address range.
   ///
-  /// Maximum number of source CIDR IP ranges allowed is 256.
+  /// Maximum number of source CIDR IP ranges allowed is 5000.
   core.List<core.String>? srcIpRanges;
 
   FirewallPolicyRuleMatcher({
@@ -55817,9 +55936,11 @@ class HTTPSHealthCheck {
 /// either regional or global health checks (`compute.v1.regionHealthChecks` or
 /// `compute.v1.HealthChecks`). External HTTP(S), TCP proxy, and SSL proxy load
 /// balancers as well as managed instance group auto-healing must use global
-/// health checks (`compute.v1.HealthChecks`). Network load balancers must use
-/// legacy HTTP health checks (httpHealthChecks). For more information, see
-/// Health checks overview.
+/// health checks (`compute.v1.HealthChecks`). Backend service-based network
+/// load balancers must use regional health checks
+/// (`compute.v1.regionHealthChecks`). Target pool-based network load balancers
+/// must use legacy HTTP health checks (`compute.v1.httpHealthChecks`). For more
+/// information, see Health checks overview.
 class HealthCheck {
   /// How often (in seconds) to send a health check.
   ///
@@ -57676,8 +57797,11 @@ class HttpHeaderOption {
 
 /// Represents a legacy HTTP Health Check resource.
 ///
-/// Legacy health checks are required by network load balancers. For more
-/// information, read Health Check Concepts.
+/// Legacy HTTP health checks are now only required by target pool-based network
+/// load balancers. For all other load balancers, including backend
+/// service-based network load balancers, and for managed instance group
+/// auto-healing, you must use modern (non-legacy) health checks. For more
+/// information, see Health checks overview .
 class HttpHealthCheck {
   /// How often (in seconds) to send a health check.
   ///
@@ -58664,8 +58788,12 @@ class HttpRouteRuleMatch {
 
 /// Represents a legacy HTTPS Health Check resource.
 ///
-/// Legacy health checks are required by network load balancers. For more
-/// information, read Health Check Concepts.
+/// Legacy HTTPS health checks have been deprecated. If you are using a target
+/// pool-based network load balancer, you must use a legacy HTTP (not HTTPS)
+/// health check. For all other load balancers, including backend service-based
+/// network load balancers, and for managed instance group auto-healing, you
+/// must use modern (non-legacy) health checks. For more information, see Health
+/// checks overview .
 class HttpsHealthCheck {
   /// How often (in seconds) to send a health check.
   ///
@@ -59038,8 +59166,12 @@ class ImageRawDisk {
   /// Deprecated.
   core.String? sha1Checksum;
 
-  /// The full Google Cloud Storage URL where the disk image is stored.
+  /// The full Google Cloud Storage URL where the raw disk image archive is
+  /// stored.
   ///
+  /// The following are valid formats for the URL: -
+  /// https://storage.googleapis.com/bucket_name/image_archive_name -
+  /// https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name
   /// In order to create an image, you must provide the full or partial URL of
   /// one of the following: - The rawDisk.source URL - The sourceDisk URL - The
   /// sourceImage URL - The sourceSnapshot URL
@@ -59214,9 +59346,12 @@ class Image {
 
   /// URL of the source image used to create this image.
   ///
-  /// In order to create an image, you must provide the full or partial URL of
-  /// one of the following: - The rawDisk.source URL - The sourceDisk URL - The
-  /// sourceImage URL - The sourceSnapshot URL
+  /// The following are valid formats for the URL: -
+  /// https://www.googleapis.com/compute/v1/projects/project_id/global/
+  /// images/image_name - projects/project_id/global/images/image_name In order
+  /// to create an image, you must provide the full or partial URL of one of the
+  /// following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage
+  /// URL - The sourceSnapshot URL
   core.String? sourceImage;
 
   /// The customer-supplied encryption key of the source image.
@@ -59235,9 +59370,13 @@ class Image {
 
   /// URL of the source snapshot used to create this image.
   ///
-  /// In order to create an image, you must provide the full or partial URL of
-  /// one of the following: - The rawDisk.source URL - The sourceDisk URL - The
-  /// sourceImage URL - The sourceSnapshot URL
+  /// The following are valid formats for the URL: -
+  /// https://www.googleapis.com/compute/v1/projects/project_id/global/
+  /// snapshots/snapshot_name -
+  /// projects/project_id/global/snapshots/snapshot_name In order to create an
+  /// image, you must provide the full or partial URL of one of the following: -
+  /// The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The
+  /// sourceSnapshot URL
   core.String? sourceSnapshot;
 
   /// The customer-supplied encryption key of the source snapshot.
@@ -59470,6 +59609,28 @@ class Image {
         if (sourceType != null) 'sourceType': sourceType!,
         if (status != null) 'status': status!,
         if (storageLocations != null) 'storageLocations': storageLocations!,
+      };
+}
+
+class ImageFamilyView {
+  /// The latest image that is part of the specified image family in the
+  /// requested location, and that is not deprecated.
+  Image? image;
+
+  ImageFamilyView({
+    this.image,
+  });
+
+  ImageFamilyView.fromJson(core.Map _json)
+      : this(
+          image: _json.containsKey('image')
+              ? Image.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (image != null) 'image': image!.toJson(),
       };
 }
 
@@ -61123,8 +61284,6 @@ class InstanceGroupManager {
   InstanceGroupManagerActionsSummary? currentActions;
 
   /// An optional description of this resource.
-  ///
-  /// Provide this property when you create the resource.
   core.String? description;
 
   /// Policy specifying the intended distribution of managed instances across
@@ -62457,8 +62616,19 @@ class InstanceGroupManagersDeleteInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
+  /// Specifies whether the request should proceed despite the inclusion of
+  /// instances that are not members of the group or that are already in the
+  /// process of being deleted or abandoned.
+  ///
+  /// If this field is set to `false` and such an instance is specified in the
+  /// request, the operation fails. The operation always fails if the request
+  /// contains a malformed instance URL or a reference to an instance that
+  /// exists in a zone or region other than the group's zone or region.
+  core.bool? skipInstancesOnValidationError;
+
   InstanceGroupManagersDeleteInstancesRequest({
     this.instances,
+    this.skipInstancesOnValidationError,
   });
 
   InstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json)
@@ -62468,10 +62638,16 @@ class InstanceGroupManagersDeleteInstancesRequest {
                   .map<core.String>((value) => value as core.String)
                   .toList()
               : null,
+          skipInstancesOnValidationError:
+              _json.containsKey('skipInstancesOnValidationError')
+                  ? _json['skipInstancesOnValidationError'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null) 'instances': instances!,
+        if (skipInstancesOnValidationError != null)
+          'skipInstancesOnValidationError': skipInstancesOnValidationError!,
       };
 }
 
@@ -70327,7 +70503,7 @@ class Network {
   /// Maximum Transmission Unit in bytes.
   ///
   /// The minimum value for this field is 1460 and the maximum value is 1500
-  /// bytes.
+  /// bytes. If unspecified, defaults to 1460.
   core.int? mtu;
 
   /// Name of the resource.
@@ -72276,9 +72452,9 @@ class NetworkPeering {
 
   /// Whether subnet routes with public IP range are exported.
   ///
-  /// The default value is true, all subnet routes are exported. The IPv4
-  /// special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses)
-  /// are always exported to peers and are not controlled by this field.
+  /// The default value is true, all subnet routes are exported. IPv4
+  /// special-use ranges are always exported to peers and are not controlled by
+  /// this field.
   core.bool? exportSubnetRoutesWithPublicIp;
 
   /// Whether to import the custom routes from peer network.
@@ -72286,8 +72462,7 @@ class NetworkPeering {
 
   /// Whether subnet routes with public IP range are imported.
   ///
-  /// The default value is false. The IPv4 special-use ranges
-  /// (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported
+  /// The default value is false. IPv4 special-use ranges are always imported
   /// from peers and are not controlled by this field.
   core.bool? importSubnetRoutesWithPublicIp;
 
@@ -72637,7 +72812,7 @@ class NetworksUpdatePeeringRequest {
       };
 }
 
-/// Represent a sole-tenant Node Group resource.
+/// Represents a sole-tenant Node Group resource.
 ///
 /// A sole-tenant node is a physical server that is dedicated to hosting VM
 /// instances only for your specific project. Use sole-tenant nodes to keep your
@@ -78544,7 +78719,7 @@ class PerInstanceConfig {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -79615,6 +79790,7 @@ class PublicDelegatedPrefix {
   /// - "ANNOUNCED"
   /// - "DELETING"
   /// - "INITIALIZING"
+  /// - "READY_TO_ANNOUNCE"
   core.String? status;
 
   PublicDelegatedPrefix({
@@ -80416,10 +80592,12 @@ class Quota {
   /// - "BACKEND_SERVICES"
   /// - "C2D_CPUS"
   /// - "C2_CPUS"
+  /// - "C3_CPUS"
   /// - "COMMITMENTS"
   /// - "COMMITTED_A2_CPUS"
   /// - "COMMITTED_C2D_CPUS"
   /// - "COMMITTED_C2_CPUS"
+  /// - "COMMITTED_C3_CPUS"
   /// - "COMMITTED_CPUS"
   /// - "COMMITTED_E2_CPUS"
   /// - "COMMITTED_LICENSES"
@@ -80434,7 +80612,7 @@ class Quota {
   /// - "COMMITTED_NVIDIA_P4_GPUS"
   /// - "COMMITTED_NVIDIA_T4_GPUS"
   /// - "COMMITTED_NVIDIA_V100_GPUS"
-  /// - "COMMITTED_P2D_CPUS"
+  /// - "COMMITTED_T2D_CPUS"
   /// - "CPUS" : Guest CPUs
   /// - "CPUS_ALL_REGIONS"
   /// - "DISKS_TOTAL_GB"
@@ -80483,7 +80661,6 @@ class Quota {
   /// - "NVIDIA_T4_GPUS"
   /// - "NVIDIA_T4_VWS_GPUS"
   /// - "NVIDIA_V100_GPUS"
-  /// - "P2D_CPUS"
   /// - "PACKET_MIRRORINGS"
   /// - "PD_EXTREME_TOTAL_PROVISIONED_IOPS"
   /// - "PREEMPTIBLE_CPUS"
@@ -80520,6 +80697,7 @@ class Quota {
   /// - "STATIC_ADDRESSES"
   /// - "STATIC_BYOIP_ADDRESSES"
   /// - "SUBNETWORKS"
+  /// - "T2D_CPUS"
   /// - "TARGET_HTTPS_PROXIES"
   /// - "TARGET_HTTP_PROXIES"
   /// - "TARGET_INSTANCES"
@@ -81892,8 +82070,19 @@ class RegionInstanceGroupManagersDeleteInstancesRequest {
   /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
+  /// Specifies whether the request should proceed despite the inclusion of
+  /// instances that are not members of the group or that are already in the
+  /// process of being deleted or abandoned.
+  ///
+  /// If this field is set to `false` and such an instance is specified in the
+  /// request, the operation fails. The operation always fails if the request
+  /// contains a malformed instance URL or a reference to an instance that
+  /// exists in a zone or region other than the group's zone or region.
+  core.bool? skipInstancesOnValidationError;
+
   RegionInstanceGroupManagersDeleteInstancesRequest({
     this.instances,
+    this.skipInstancesOnValidationError,
   });
 
   RegionInstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json)
@@ -81903,10 +82092,16 @@ class RegionInstanceGroupManagersDeleteInstancesRequest {
                   .map<core.String>((value) => value as core.String)
                   .toList()
               : null,
+          skipInstancesOnValidationError:
+              _json.containsKey('skipInstancesOnValidationError')
+                  ? _json['skipInstancesOnValidationError'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null) 'instances': instances!,
+        if (skipInstancesOnValidationError != null)
+          'skipInstancesOnValidationError': skipInstancesOnValidationError!,
       };
 }
 
@@ -88749,7 +88944,7 @@ class ServiceAccount {
 /// A service attachment represents a service that a producer has exposed. It
 /// encapsulates the load balancer which fronts the service runs and a list of
 /// NAT IP ranges that the producers uses to represent the consumers connecting
-/// to the service. next tag = 19
+/// to the service. next tag = 20
 class ServiceAttachment {
   /// An array of connections for all the consumers connected to this service
   /// attachment.
@@ -92032,7 +92227,8 @@ class Subnetwork {
   /// the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is
   /// EXTERNAL then this subnet cannot enable direct path.
   /// Possible string values are:
-  /// - "EXTERNAL" : VMs in this subnet can have external IPv6.
+  /// - "EXTERNAL" : VMs on this subnet will be assigned IPv6 addresses that are
+  /// accesible via the Internet, as well as the VPC network.
   /// - "UNSPECIFIED_IPV6_ACCESS_TYPE" : IPv6 access type not set. Means this
   /// subnet hasn't been turned on IPv6 yet.
   core.String? ipv6AccessType;
@@ -99939,7 +100135,7 @@ class UsageExportLocation {
   /// An optional prefix for the name of the usage report object stored in
   /// bucketName.
   ///
-  /// If not supplied, defaults to usage. The report is stored as a CSV file
+  /// If not supplied, defaults to usage_gce. The report is stored as a CSV file
   /// named report_name_prefix_gce_YYYYMMDD.csv where YYYYMMDD is the day of the
   /// usage according to Pacific Time. If you supply a prefix, it should conform
   /// to Cloud Storage object naming conventions.

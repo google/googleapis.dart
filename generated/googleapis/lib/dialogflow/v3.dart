@@ -60,7 +60,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Builds conversational interfaces (for example, chatbots, and voice-powered
 /// apps and devices).
 class DialogflowApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -100,6 +101,94 @@ class ProjectsLocationsResource {
       ProjectsLocationsSecuritySettingsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudLocationLocation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudLocationLocation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudLocationLocation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudLocationListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudLocationListLocationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudLocationListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsAgentsResource {
@@ -207,6 +296,13 @@ class ProjectsLocationsAgentsResource {
   }
 
   /// Exports the specified agent to a binary file.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: ExportAgentResponse
   ///
   /// [request] - The metadata request object.
   ///
@@ -435,6 +531,13 @@ class ProjectsLocationsAgentsResource {
   ///
   /// Replaces the current agent with a new one. Note that all existing
   /// resources in agent (e.g. intents, entity types, flows) will be removed.
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train flows prior to sending them queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
@@ -824,6 +927,13 @@ class ProjectsLocationsAgentsEnvironmentsResource {
 
   /// Creates an Environment in the specified Agent.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: Environment
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1042,6 +1152,13 @@ class ProjectsLocationsAgentsEnvironmentsResource {
 
   /// Updates the specified Environment.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: Environment
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1088,6 +1205,12 @@ class ProjectsLocationsAgentsEnvironmentsResource {
   }
 
   /// Kicks off a continuous test under the specified Environment.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: RunContinuousTestMetadata - `response`:
+  /// RunContinuousTestResponse
   ///
   /// [request] - The metadata request object.
   ///
@@ -2031,8 +2154,13 @@ class ProjectsLocationsAgentsFlowsResource {
 
   /// Exports the specified flow to a binary file.
   ///
-  /// Note that resources (e.g. intents, entities, webhooks) that the flow
-  /// references will also be exported.
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: ExportFlowResponse Note that resources (e.g. intents,
+  /// entities, webhooks) that the flow references will also be exported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2173,7 +2301,13 @@ class ProjectsLocationsAgentsFlowsResource {
 
   /// Imports the specified flow to the specified agent from a binary file.
   ///
-  /// Note: You should always train a flow prior to sending it queries. See the
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: ImportFlowResponse Note: You should always train a flow
+  /// prior to sending it queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// [request] - The metadata request object.
@@ -2301,8 +2435,8 @@ class ProjectsLocationsAgentsFlowsResource {
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated. If
-  /// `update_mask` is not specified, an error will be returned.
+  /// [updateMask] - The mask to control which fields get updated. If the mask
+  /// is not present, all fields will be updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2342,8 +2476,15 @@ class ProjectsLocationsAgentsFlowsResource {
 
   /// Trains the specified flow.
   ///
-  /// Note that only the flow in 'draft' environment is trained. Note: You
-  /// should always train a flow prior to sending it queries. See the
+  /// Note that only the flow in 'draft' environment is trained. This method is
+  /// a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+  /// Note: You should always train a flow prior to sending it queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// [request] - The metadata request object.
@@ -3044,6 +3185,11 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
 
   /// Creates a Version in the specified Flow.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: CreateVersionOperationMetadata - `response`: Version
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3210,6 +3356,14 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   }
 
   /// Loads resources in the specified version to the draft flow.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   ///
   /// [request] - The metadata request object.
   ///
@@ -4038,6 +4192,12 @@ class ProjectsLocationsAgentsTestCasesResource {
 
   /// Kicks off a batch run of test cases.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: BatchRunTestCasesMetadata - `response`:
+  /// BatchRunTestCasesResponse
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -4173,7 +4333,11 @@ class ProjectsLocationsAgentsTestCasesResource {
   /// Exports the test cases under the agent to a Cloud Storage bucket or a
   /// local file.
   ///
-  /// Filter can be applied to export a subset of test cases.
+  /// Filter can be applied to export a subset of test cases. This method is a
+  /// \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: ExportTestCasesMetadata - `response`: ExportTestCasesResponse
   ///
   /// [request] - The metadata request object.
   ///
@@ -4257,7 +4421,11 @@ class ProjectsLocationsAgentsTestCasesResource {
   /// Imports the test cases from a Cloud Storage bucket or a local file.
   ///
   /// It always creates new test cases and won't overwite any existing ones. The
-  /// provided ID in the imported test case is neglected.
+  /// provided ID in the imported test case is neglected. This method is a
+  /// \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: ImportTestCasesMetadata - `response`: ImportTestCasesResponse
   ///
   /// [request] - The metadata request object.
   ///
@@ -4411,6 +4579,11 @@ class ProjectsLocationsAgentsTestCasesResource {
   }
 
   /// Kicks off a test case run.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: RunTestCaseMetadata - `response`: RunTestCaseResponse
   ///
   /// [request] - The metadata request object.
   ///
@@ -5314,6 +5487,70 @@ class ProjectsOperationsResource {
   }
 }
 
+/// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+///
+/// Settings exposed at lower level overrides the settings exposed at higher
+/// level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+class GoogleCloudDialogflowCxV3AdvancedSettings {
+  /// Settings for logging.
+  ///
+  /// Settings for Dialogflow History, Contact Center messages, StackDriver
+  /// logs, and speech logging. Exposed at the following levels: - Agent level.
+  GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings? loggingSettings;
+
+  GoogleCloudDialogflowCxV3AdvancedSettings({
+    this.loggingSettings,
+  });
+
+  GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(core.Map _json)
+      : this(
+          loggingSettings: _json.containsKey('loggingSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
+                  .fromJson(_json['loggingSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (loggingSettings != null)
+          'loggingSettings': loggingSettings!.toJson(),
+      };
+}
+
+/// Define behaviors on logging.
+class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
+  /// If true, DF Interaction logging is currently enabled.
+  core.bool? enableInteractionLogging;
+
+  /// If true, StackDriver logging is currently enabled.
+  core.bool? enableStackdriverLogging;
+
+  GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings({
+    this.enableInteractionLogging,
+    this.enableStackdriverLogging,
+  });
+
+  GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromJson(
+      core.Map _json)
+      : this(
+          enableInteractionLogging:
+              _json.containsKey('enableInteractionLogging')
+                  ? _json['enableInteractionLogging'] as core.bool
+                  : null,
+          enableStackdriverLogging:
+              _json.containsKey('enableStackdriverLogging')
+                  ? _json['enableStackdriverLogging'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableInteractionLogging != null)
+          'enableInteractionLogging': enableInteractionLogging!,
+        if (enableStackdriverLogging != null)
+          'enableStackdriverLogging': enableStackdriverLogging!,
+      };
+}
+
 /// Agents are best described as Natural Language Understanding (NLU) modules
 /// that transform user requests into actionable data.
 ///
@@ -5322,6 +5559,12 @@ class ProjectsOperationsResource {
 /// you can add Intents, Entity Types, Flows, Fulfillments, Webhooks, and so on
 /// to manage the conversation flows..
 class GoogleCloudDialogflowCxV3Agent {
+  /// Hierarchical advanced settings for this agent.
+  ///
+  /// The settings exposed at the lower level overrides the settings exposed at
+  /// the higher level.
+  GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+
   /// The URI of the agent's avatar.
   ///
   /// Avatars are used throughout the Dialogflow console and in the self-hosted
@@ -5355,6 +5598,8 @@ class GoogleCloudDialogflowCxV3Agent {
   core.bool? enableSpellCorrection;
 
   /// Indicates if stackdriver logging is enabled for the agent.
+  ///
+  /// Please use agent.advanced_settings instead.
   core.bool? enableStackdriverLogging;
 
   /// The unique identifier of the agent.
@@ -5392,6 +5637,7 @@ class GoogleCloudDialogflowCxV3Agent {
   core.String? timeZone;
 
   GoogleCloudDialogflowCxV3Agent({
+    this.advancedSettings,
     this.avatarUri,
     this.defaultLanguageCode,
     this.description,
@@ -5408,6 +5654,11 @@ class GoogleCloudDialogflowCxV3Agent {
 
   GoogleCloudDialogflowCxV3Agent.fromJson(core.Map _json)
       : this(
+          advancedSettings: _json.containsKey('advancedSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(
+                  _json['advancedSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           avatarUri: _json.containsKey('avatarUri')
               ? _json['avatarUri'] as core.String
               : null,
@@ -5450,6 +5701,8 @@ class GoogleCloudDialogflowCxV3Agent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedSettings != null)
+          'advancedSettings': advancedSettings!.toJson(),
         if (avatarUri != null) 'avatarUri': avatarUri!,
         if (defaultLanguageCode != null)
           'defaultLanguageCode': defaultLanguageCode!,
@@ -5881,7 +6134,8 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
 
   /// Input only.
   ///
-  /// The diagnostic info output for the turn.
+  /// The diagnostic info output for the turn. Required to calculate the testing
+  /// coverage.
   ///
   /// Required.
   ///
@@ -6652,12 +6906,10 @@ class GoogleCloudDialogflowCxV3Experiment {
   /// End time of this experiment.
   core.String? endTime;
 
-  /// LINT.IfChange(default_experiment_length) Maximum number of days to run the
-  /// experiment/rollout.
+  /// Maximum number of days to run the experiment/rollout.
   ///
   /// If auto-rollout is not enabled, default value and maximum will be 30 days.
   /// If auto-rollout is enabled, default value and maximum will be 6 days.
-  /// LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
   core.String? experimentLength;
 
   /// Last update time of this experiment.
@@ -6670,6 +6922,23 @@ class GoogleCloudDialogflowCxV3Experiment {
 
   /// Inference result of the experiment.
   GoogleCloudDialogflowCxV3ExperimentResult? result;
+
+  /// The configuration for auto rollout.
+  ///
+  /// If set, there should be exactly two variants in the experiment (control
+  /// variant being the default version of the flow), the traffic allocation for
+  /// the non-control variant will gradually increase to 100% when conditions
+  /// are met, and eventually replace the control variant to become the default
+  /// version of the flow.
+  GoogleCloudDialogflowCxV3RolloutConfig? rolloutConfig;
+
+  /// The reason why rollout has failed.
+  ///
+  /// Should only be set when state is ROLLOUT_FAILED.
+  core.String? rolloutFailureReason;
+
+  /// State of the auto rollout process.
+  GoogleCloudDialogflowCxV3RolloutState? rolloutState;
 
   /// Start time of this experiment.
   core.String? startTime;
@@ -6700,6 +6969,9 @@ class GoogleCloudDialogflowCxV3Experiment {
     this.lastUpdateTime,
     this.name,
     this.result,
+    this.rolloutConfig,
+    this.rolloutFailureReason,
+    this.rolloutState,
     this.startTime,
     this.state,
     this.variantsHistory,
@@ -6734,6 +7006,17 @@ class GoogleCloudDialogflowCxV3Experiment {
               ? GoogleCloudDialogflowCxV3ExperimentResult.fromJson(
                   _json['result'] as core.Map<core.String, core.dynamic>)
               : null,
+          rolloutConfig: _json.containsKey('rolloutConfig')
+              ? GoogleCloudDialogflowCxV3RolloutConfig.fromJson(
+                  _json['rolloutConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rolloutFailureReason: _json.containsKey('rolloutFailureReason')
+              ? _json['rolloutFailureReason'] as core.String
+              : null,
+          rolloutState: _json.containsKey('rolloutState')
+              ? GoogleCloudDialogflowCxV3RolloutState.fromJson(
+                  _json['rolloutState'] as core.Map<core.String, core.dynamic>)
+              : null,
           startTime: _json.containsKey('startTime')
               ? _json['startTime'] as core.String
               : null,
@@ -6758,6 +7041,10 @@ class GoogleCloudDialogflowCxV3Experiment {
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (name != null) 'name': name!,
         if (result != null) 'result': result!.toJson(),
+        if (rolloutConfig != null) 'rolloutConfig': rolloutConfig!.toJson(),
+        if (rolloutFailureReason != null)
+          'rolloutFailureReason': rolloutFailureReason!,
+        if (rolloutState != null) 'rolloutState': rolloutState!.toJson(),
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
         if (variantsHistory != null)
@@ -7174,6 +7461,8 @@ class GoogleCloudDialogflowCxV3ExportFlowResponse {
 }
 
 /// Metadata returned for the TestCases.ExportTestCases long running operation.
+///
+/// This message currently has no fields.
 class GoogleCloudDialogflowCxV3ExportTestCasesMetadata {
   GoogleCloudDialogflowCxV3ExportTestCasesMetadata();
 
@@ -10104,6 +10393,14 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// Whether to disable webhook calls for this request.
   core.bool? disableWebhook;
 
+  /// A list of flow versions to override for the request.
+  ///
+  /// Format: `projects//locations//agents//flows//versions/`. If version 1 of
+  /// flow X is included in this list, the traffic of flow X will go through
+  /// version 1 regardless of the version configuration in the environment. Each
+  /// flow can have at most one version specified in this list.
+  core.List<core.String>? flowVersions;
+
   /// The geo location of this conversational query.
   GoogleTypeLatLng? geoLocation;
 
@@ -10166,6 +10463,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     this.analyzeQueryTextSentiment,
     this.currentPage,
     this.disableWebhook,
+    this.flowVersions,
     this.geoLocation,
     this.parameters,
     this.payload,
@@ -10185,6 +10483,11 @@ class GoogleCloudDialogflowCxV3QueryParameters {
               : null,
           disableWebhook: _json.containsKey('disableWebhook')
               ? _json['disableWebhook'] as core.bool
+              : null,
+          flowVersions: _json.containsKey('flowVersions')
+              ? (_json['flowVersions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
               : null,
           geoLocation: _json.containsKey('geoLocation')
               ? GoogleTypeLatLng.fromJson(
@@ -10233,6 +10536,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
           'analyzeQueryTextSentiment': analyzeQueryTextSentiment!,
         if (currentPage != null) 'currentPage': currentPage!,
         if (disableWebhook != null) 'disableWebhook': disableWebhook!,
+        if (flowVersions != null) 'flowVersions': flowVersions!,
         if (geoLocation != null) 'geoLocation': geoLocation!.toJson(),
         if (parameters != null) 'parameters': parameters!,
         if (payload != null) 'payload': payload!,
@@ -11003,6 +11307,139 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
       };
 }
 
+/// The configuration for auto rollout.
+class GoogleCloudDialogflowCxV3RolloutConfig {
+  /// The conditions that are used to evaluate the failure of a rollout step.
+  ///
+  /// If not specified, no rollout steps will fail. E.g. "containment_rate < 10%
+  /// OR average_turn_count < 3". See the
+  /// [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+  core.String? failureCondition;
+
+  /// The conditions that are used to evaluate the success of a rollout step.
+  ///
+  /// If not specified, all rollout steps will proceed to the next one unless
+  /// failure conditions are met. E.g. "containment_rate > 60% AND callback_rate
+  /// < 20%". See the
+  /// [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+  core.String? rolloutCondition;
+
+  /// Steps to roll out a flow version.
+  ///
+  /// Steps should be sorted by percentage in ascending order.
+  core.List<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>? rolloutSteps;
+
+  GoogleCloudDialogflowCxV3RolloutConfig({
+    this.failureCondition,
+    this.rolloutCondition,
+    this.rolloutSteps,
+  });
+
+  GoogleCloudDialogflowCxV3RolloutConfig.fromJson(core.Map _json)
+      : this(
+          failureCondition: _json.containsKey('failureCondition')
+              ? _json['failureCondition'] as core.String
+              : null,
+          rolloutCondition: _json.containsKey('rolloutCondition')
+              ? _json['rolloutCondition'] as core.String
+              : null,
+          rolloutSteps: _json.containsKey('rolloutSteps')
+              ? (_json['rolloutSteps'] as core.List)
+                  .map<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>(
+                      (value) =>
+                          GoogleCloudDialogflowCxV3RolloutConfigRolloutStep
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failureCondition != null) 'failureCondition': failureCondition!,
+        if (rolloutCondition != null) 'rolloutCondition': rolloutCondition!,
+        if (rolloutSteps != null)
+          'rolloutSteps': rolloutSteps!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A single rollout step with specified traffic allocation.
+class GoogleCloudDialogflowCxV3RolloutConfigRolloutStep {
+  /// The name of the rollout step;
+  core.String? displayName;
+
+  /// The minimum time that this step should last.
+  ///
+  /// Should be longer than 1 hour. If not set, the default minimum duration for
+  /// each step will be 1 hour.
+  core.String? minDuration;
+
+  /// The percentage of traffic allocated to the flow version of this rollout
+  /// step.
+  ///
+  /// (0%, 100%\].
+  core.int? trafficPercent;
+
+  GoogleCloudDialogflowCxV3RolloutConfigRolloutStep({
+    this.displayName,
+    this.minDuration,
+    this.trafficPercent,
+  });
+
+  GoogleCloudDialogflowCxV3RolloutConfigRolloutStep.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          minDuration: _json.containsKey('minDuration')
+              ? _json['minDuration'] as core.String
+              : null,
+          trafficPercent: _json.containsKey('trafficPercent')
+              ? _json['trafficPercent'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (minDuration != null) 'minDuration': minDuration!,
+        if (trafficPercent != null) 'trafficPercent': trafficPercent!,
+      };
+}
+
+/// State of the auto-rollout process.
+class GoogleCloudDialogflowCxV3RolloutState {
+  /// Start time of the current step.
+  core.String? startTime;
+
+  /// Display name of the current auto rollout step.
+  core.String? step;
+
+  /// Index of the current step in the auto rollout steps list.
+  core.int? stepIndex;
+
+  GoogleCloudDialogflowCxV3RolloutState({
+    this.startTime,
+    this.step,
+    this.stepIndex,
+  });
+
+  GoogleCloudDialogflowCxV3RolloutState.fromJson(core.Map _json)
+      : this(
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          step: _json.containsKey('step') ? _json['step'] as core.String : null,
+          stepIndex: _json.containsKey('stepIndex')
+              ? _json['stepIndex'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
+        if (step != null) 'step': step!,
+        if (stepIndex != null) 'stepIndex': stepIndex!,
+      };
+}
+
 /// Metadata returned for the Environments.RunContinuousTest long running
 /// operation.
 class GoogleCloudDialogflowCxV3RunContinuousTestMetadata {
@@ -11066,6 +11503,8 @@ class GoogleCloudDialogflowCxV3RunContinuousTestResponse {
 }
 
 /// Metadata returned for the TestCases.RunTestCase long running operation.
+///
+/// This message currently has no fields.
 class GoogleCloudDialogflowCxV3RunTestCaseMetadata {
   GoogleCloudDialogflowCxV3RunTestCaseMetadata();
 
@@ -11130,19 +11569,38 @@ class GoogleCloudDialogflowCxV3RunTestCaseResponse {
 /// It may take hours for updates on the settings to propagate to all the
 /// related components and take effect.
 class GoogleCloudDialogflowCxV3SecuritySettings {
+  /// [DLP](https://cloud.google.com/dlp/docs) deidentify template name.
+  ///
+  /// Use this template to define de-identification configuration for the
+  /// content. If empty, Dialogflow replaces sensitive info with `[redacted]`
+  /// text. The template name will have one of the following formats:
+  /// `projects//locations//deidentifyTemplates/` OR
+  /// `organizations//locations//deidentifyTemplates/` Note:
+  /// `deidentify_template` must be located in the same region as the
+  /// `SecuritySettings`.
+  core.String? deidentifyTemplate;
+
   /// The human-readable name of the security settings, unique within the
   /// location.
   ///
   /// Required.
   core.String? displayName;
 
+  /// Controls conversation exporting settings to Insights after conversation is
+  /// completed.
+  ///
+  /// If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export
+  /// is disabled no matter what you configure here.
+  GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings?
+      insightsExportSettings;
+
   /// [DLP](https://cloud.google.com/dlp/docs) inspect template name.
   ///
   /// Use this template to define inspect base settings. If empty, we use the
   /// default DLP inspect config. The template name will have one of the
-  /// following formats: `projects//inspectTemplates/` OR
-  /// `projects//locations//inspectTemplates/` OR
-  /// `organizations//inspectTemplates/`
+  /// following formats: `projects//locations//inspectTemplates/` OR
+  /// `organizations//locations//inspectTemplates/` Note: `inspect_template`
+  /// must be located in the same region as the `SecuritySettings`.
   core.String? inspectTemplate;
 
   /// Resource name of the settings.
@@ -11184,7 +11642,9 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   core.int? retentionWindowDays;
 
   GoogleCloudDialogflowCxV3SecuritySettings({
+    this.deidentifyTemplate,
     this.displayName,
+    this.insightsExportSettings,
     this.inspectTemplate,
     this.name,
     this.purgeDataTypes,
@@ -11195,8 +11655,16 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
 
   GoogleCloudDialogflowCxV3SecuritySettings.fromJson(core.Map _json)
       : this(
+          deidentifyTemplate: _json.containsKey('deidentifyTemplate')
+              ? _json['deidentifyTemplate'] as core.String
+              : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
+              : null,
+          insightsExportSettings: _json.containsKey('insightsExportSettings')
+              ? GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings
+                  .fromJson(_json['insightsExportSettings']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           inspectTemplate: _json.containsKey('inspectTemplate')
               ? _json['inspectTemplate'] as core.String
@@ -11219,7 +11687,11 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deidentifyTemplate != null)
+          'deidentifyTemplate': deidentifyTemplate!,
         if (displayName != null) 'displayName': displayName!,
+        if (insightsExportSettings != null)
+          'insightsExportSettings': insightsExportSettings!.toJson(),
         if (inspectTemplate != null) 'inspectTemplate': inspectTemplate!,
         if (name != null) 'name': name!,
         if (purgeDataTypes != null) 'purgeDataTypes': purgeDataTypes!,
@@ -11227,6 +11699,31 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
         if (redactionStrategy != null) 'redactionStrategy': redactionStrategy!,
         if (retentionWindowDays != null)
           'retentionWindowDays': retentionWindowDays!,
+      };
+}
+
+/// Settings for exporting conversations to
+/// [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
+  /// If enabled, we will automatically exports conversations to Insights and
+  /// Insights runs its analyzers.
+  core.bool? enableInsightsExport;
+
+  GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings({
+    this.enableInsightsExport,
+  });
+
+  GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings.fromJson(
+      core.Map _json)
+      : this(
+          enableInsightsExport: _json.containsKey('enableInsightsExport')
+              ? _json['enableInsightsExport'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableInsightsExport != null)
+          'enableInsightsExport': enableInsightsExport!,
       };
 }
 
@@ -13533,7 +14030,8 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
 
   /// Input only.
   ///
-  /// The diagnostic info output for the turn.
+  /// The diagnostic info output for the turn. Required to calculate the testing
+  /// coverage.
   ///
   /// Required.
   ///
@@ -13922,6 +14420,8 @@ class GoogleCloudDialogflowCxV3beta1ExportFlowResponse {
 }
 
 /// Metadata returned for the TestCases.ExportTestCases long running operation.
+///
+/// This message currently has no fields.
 class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata {
   GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata();
 
@@ -15887,6 +16387,8 @@ class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse {
 }
 
 /// Metadata returned for the TestCases.RunTestCase long running operation.
+///
+/// This message currently has no fields.
 class GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata {
   GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata();
 
@@ -17617,6 +18119,8 @@ class GoogleCloudDialogflowV2Intent {
   ///
   /// Information about all followup intents that have this intent as a direct
   /// or indirect parent. We populate this field only in the output.
+  ///
+  /// Output only.
   core.List<GoogleCloudDialogflowV2IntentFollowupIntentInfo>?
       followupIntentInfo;
 
@@ -17710,6 +18214,8 @@ class GoogleCloudDialogflowV2Intent {
   /// It identifies the correct followup intents chain for this intent. We
   /// populate this field only in the output. Format:
   /// `projects//agent/intents/`.
+  ///
+  /// Output only.
   core.String? rootFollowupIntentName;
 
   /// The collection of examples that the agent is trained on.
@@ -25323,6 +25829,114 @@ class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
+      };
+}
+
+/// The response message for Locations.ListLocations.
+class GoogleCloudLocationListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<GoogleCloudLocationLocation>? locations;
+
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  GoogleCloudLocationListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
+
+  GoogleCloudLocationListLocationsResponse.fromJson(core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<GoogleCloudLocationLocation>((value) =>
+                      GoogleCloudLocationLocation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locations != null)
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A resource that represents Google Cloud Platform location.
+class GoogleCloudLocationLocation {
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
+  core.String? displayName;
+
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
+  core.Map<core.String, core.String>? labels;
+
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
+  core.String? locationId;
+
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? metadata;
+
+  /// Resource name for the location, which may vary between implementations.
+  ///
+  /// For example: `"projects/example-project/locations/us-east1"`
+  core.String? name;
+
+  GoogleCloudLocationLocation({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
+
+  GoogleCloudLocationLocation.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 

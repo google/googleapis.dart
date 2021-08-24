@@ -278,7 +278,7 @@
             }
         }
     },
-    "revision": "20210629",
+    "revision": "20210824",
     "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "schemas": {
         "ChannelGrouping": {
@@ -615,9 +615,11 @@
                         "FILTER_LINE_ITEM_PACING_PERCENTAGE",
                         "FILTER_INSERTION_ORDER_GOAL_VALUE",
                         "FILTER_OMID_CAPABLE",
-                        "FILTER_VENDOR_MEASUREMENT_MODE"
+                        "FILTER_VENDOR_MEASUREMENT_MODE",
+                        "FILTER_IMPRESSION_LOSS_REJECTION_REASON"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -1263,9 +1265,11 @@
                             "FILTER_LINE_ITEM_PACING_PERCENTAGE",
                             "FILTER_INSERTION_ORDER_GOAL_VALUE",
                             "FILTER_OMID_CAPABLE",
-                            "FILTER_VENDOR_MEASUREMENT_MODE"
+                            "FILTER_VENDOR_MEASUREMENT_MODE",
+                            "FILTER_IMPRESSION_LOSS_REJECTION_REASON"
                         ],
                         "enumDescriptions": [
+                            "",
                             "",
                             "",
                             "",
@@ -2018,9 +2022,25 @@
                             "METRIC_PERCENTAGE_FROM_CURRENT_IO_GOAL",
                             "METRIC_DUPLICATE_FLOODLIGHT_IMPRESSIONS",
                             "METRIC_COOKIE_CONSENTED_FLOODLIGHT_IMPRESSIONS",
-                            "METRIC_COOKIE_UNCONSENTED_FLOODLIGHT_IMPRESSIONS"
+                            "METRIC_COOKIE_UNCONSENTED_FLOODLIGHT_IMPRESSIONS",
+                            "METRIC_TRACKING_UNCONSENTED_CLICKS",
+                            "METRIC_IMPRESSION_LOSS_TARGETED_IMPRESSIONS",
+                            "METRIC_LINEITEM_BID_RESPONSE_COUNT",
+                            "METRIC_WIN_LOSS_RATE",
+                            "METRIC_WIN_LOSS_DEAL_AVAILABLE_REQUESTS",
+                            "METRIC_WIN_LOSS_LINEITEM_AVAILABLE_REQUESTS",
+                            "METRIC_WIN_LOSS_DEAL_TARGETED_IMPRESSIONS",
+                            "METRIC_WIN_LOSS_LINEITEM_TARGETED_IMPRESSIONS"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
                             "",
                             "",
                             "",
@@ -2901,9 +2921,11 @@
                         "FILTER_LINE_ITEM_PACING_PERCENTAGE",
                         "FILTER_INSERTION_ORDER_GOAL_VALUE",
                         "FILTER_OMID_CAPABLE",
-                        "FILTER_VENDOR_MEASUREMENT_MODE"
+                        "FILTER_VENDOR_MEASUREMENT_MODE",
+                        "FILTER_IMPRESSION_LOSS_REJECTION_REASON"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

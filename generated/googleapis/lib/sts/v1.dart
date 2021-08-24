@@ -56,45 +56,6 @@ class V1Resource {
 
   V1Resource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets information about a Google OAuth 2.0 access token issued by the
-  /// Google Cloud
-  /// [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIdentityStsV1IntrospectTokenResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIdentityStsV1IntrospectTokenResponse> introspect(
-    GoogleIdentityStsV1IntrospectTokenRequest request, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const _url = 'v1/introspect';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleIdentityStsV1IntrospectTokenResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Exchanges a credential for a Google OAuth 2.0 access token.
   ///
   /// The token asserts an external identity within a workload identity pool, or
@@ -139,10 +100,189 @@ class V1Resource {
   }
 }
 
+/// Associates `members` with a `role`.
+class GoogleIamV1Binding {
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  GoogleTypeExpr? condition;
+
+  /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
+  core.List<core.String>? members;
+
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  core.String? role;
+
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
+
+  GoogleIamV1Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? GoogleTypeExpr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
+      };
+}
+
+/// An access boundary defines the upper bound of what a principal may access.
+///
+/// It includes a list of access boundary rules that each defines the resource
+/// that may be allowed as well as permissions that may be used on those
+/// resources.
+class GoogleIdentityStsV1AccessBoundary {
+  /// A list of access boundary rules which defines the upper bound of the
+  /// permission a principal may carry.
+  ///
+  /// If multiple rules are specified, the effective access boundary is the
+  /// union of all the access boundary rules attached. One access boundary can
+  /// contain at most 10 rules.
+  core.List<GoogleIdentityStsV1AccessBoundaryRule>? accessBoundaryRules;
+
+  GoogleIdentityStsV1AccessBoundary({
+    this.accessBoundaryRules,
+  });
+
+  GoogleIdentityStsV1AccessBoundary.fromJson(core.Map _json)
+      : this(
+          accessBoundaryRules: _json.containsKey('accessBoundaryRules')
+              ? (_json['accessBoundaryRules'] as core.List)
+                  .map<GoogleIdentityStsV1AccessBoundaryRule>((value) =>
+                      GoogleIdentityStsV1AccessBoundaryRule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessBoundaryRules != null)
+          'accessBoundaryRules':
+              accessBoundaryRules!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// An access boundary rule defines an upper bound of IAM permissions on a
+/// single resource.
+class GoogleIdentityStsV1AccessBoundaryRule {
+  /// The availability condition further constrains the access allowed by the
+  /// access boundary rule.
+  ///
+  /// If the condition evaluates to `true`, then this access boundary rule will
+  /// provide access to the specified resource, assuming the principal has the
+  /// required permissions for the resource. If the condition does not evaluate
+  /// to `true`, then access to the specified resource will not be available.
+  /// Note that all access boundary rules in an access boundary are evaluated
+  /// together as a union. As such, another access boundary rule may allow
+  /// access to the resource, even if this access boundary rule does not allow
+  /// access. To learn which resources support conditions in their IAM policies,
+  /// see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// The maximum length of the `expression` field is 2048 characters.
+  GoogleTypeExpr? availabilityCondition;
+
+  /// A list of permissions that may be allowed for use on the specified
+  /// resource.
+  ///
+  /// The only supported values in the list are IAM roles, following the format
+  /// of google.iam.v1.Binding.role. Example value:
+  /// `inRole:roles/logging.viewer` for predefined roles and
+  /// `inRole:organizations/{ORGANIZATION_ID}/roles/logging.viewer` for custom
+  /// roles.
+  core.List<core.String>? availablePermissions;
+
+  /// The full resource name of a Google Cloud resource entity.
+  ///
+  /// The format definition is at
+  /// https://cloud.google.com/apis/design/resource_names. Example value:
+  /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
+  core.String? availableResource;
+
+  GoogleIdentityStsV1AccessBoundaryRule({
+    this.availabilityCondition,
+    this.availablePermissions,
+    this.availableResource,
+  });
+
+  GoogleIdentityStsV1AccessBoundaryRule.fromJson(core.Map _json)
+      : this(
+          availabilityCondition: _json.containsKey('availabilityCondition')
+              ? GoogleTypeExpr.fromJson(_json['availabilityCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          availablePermissions: _json.containsKey('availablePermissions')
+              ? (_json['availablePermissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          availableResource: _json.containsKey('availableResource')
+              ? _json['availableResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availabilityCondition != null)
+          'availabilityCondition': availabilityCondition!.toJson(),
+        if (availablePermissions != null)
+          'availablePermissions': availablePermissions!,
+        if (availableResource != null) 'availableResource': availableResource!,
+      };
+}
+
 /// Request message for ExchangeToken.
 class GoogleIdentityStsV1ExchangeTokenRequest {
   /// The full resource name of the identity provider; for example:
-  /// `//iam.googleapis.com/projects//workloadIdentityPools//providers/`.
+  /// `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/`.
   ///
   /// Required when exchanging an external credential for a Google access token.
   core.String? audience;
@@ -228,8 +368,8 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// or without an `https:` prefix. To help ensure data integrity, we recommend
   /// including this header in the `SignedHeaders` field of the signed request.
   /// For example:
-  /// //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
-  /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
+  /// //iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/
+  /// https://iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/
   /// If you are using temporary security credentials provided by AWS, you must
   /// also include the header `x-amz-security-token`, with the value set to the
   /// session token. The following example shows a `GetCallerIdentity` token:
@@ -237,7 +377,7 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// {"key": "Authorization", "value":
   /// "AWS4-HMAC-SHA256+Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-resource,+Signature=$signature"},
   /// {"key": "x-goog-cloud-target-resource", "value":
-  /// "//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/"},
+  /// "//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/"},
   /// {"key": "host", "value": "sts.amazonaws.com"} . ], "method": "POST",
   /// "url":
   /// "https://sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15" }
@@ -367,116 +507,297 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
       };
 }
 
-/// Request message for IntrospectToken.
-class GoogleIdentityStsV1IntrospectTokenRequest {
-  /// The OAuth 2.0 security token issued by the Security Token Service API.
+/// An `Options` object configures features that the Security Token Service
+/// supports, but that are not supported by standard OAuth 2.0 token exchange
+/// endpoints, as defined in https://tools.ietf.org/html/rfc8693.
+class GoogleIdentityStsV1Options {
+  /// An access boundary that defines the upper bound of permissions the
+  /// credential may have.
   ///
-  /// Required.
-  core.String? token;
+  /// The value should be a JSON object of AccessBoundary. The access boundary
+  /// can include up to 10 rules. The size of the parameter value should not
+  /// exceed 2048 characters.
+  GoogleIdentityStsV1AccessBoundary? accessBoundary;
 
-  /// The type of the given token.
+  /// The intended audience(s) of the credential.
   ///
-  /// Supported values are `urn:ietf:params:oauth:token-type:access_token` and
-  /// `access_token`.
-  ///
-  /// Optional.
-  core.String? tokenTypeHint;
+  /// The audience value(s) should be the name(s) of services intended to
+  /// receive the credential. Example: `["https://pubsub.googleapis.com/",
+  /// "https://storage.googleapis.com/"]`. A maximum of 5 audiences can be
+  /// included. For each provided audience, the maximum length is 262
+  /// characters.
+  core.List<core.String>? audiences;
 
-  GoogleIdentityStsV1IntrospectTokenRequest({
-    this.token,
-    this.tokenTypeHint,
+  /// A Google project used for quota and billing purposes when the credential
+  /// is used to access Google APIs.
+  ///
+  /// The provided project overrides the project bound to the credential. The
+  /// value must be a project number or a project ID. Example:
+  /// `my-sample-project-191923`. The maximum length is 32 characters.
+  core.String? userProject;
+
+  GoogleIdentityStsV1Options({
+    this.accessBoundary,
+    this.audiences,
+    this.userProject,
   });
 
-  GoogleIdentityStsV1IntrospectTokenRequest.fromJson(core.Map _json)
+  GoogleIdentityStsV1Options.fromJson(core.Map _json)
       : this(
-          token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
-          tokenTypeHint: _json.containsKey('tokenTypeHint')
-              ? _json['tokenTypeHint'] as core.String
+          accessBoundary: _json.containsKey('accessBoundary')
+              ? GoogleIdentityStsV1AccessBoundary.fromJson(
+                  _json['accessBoundary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          audiences: _json.containsKey('audiences')
+              ? (_json['audiences'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          userProject: _json.containsKey('userProject')
+              ? _json['userProject'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (token != null) 'token': token!,
-        if (tokenTypeHint != null) 'tokenTypeHint': tokenTypeHint!,
+        if (accessBoundary != null) 'accessBoundary': accessBoundary!.toJson(),
+        if (audiences != null) 'audiences': audiences!,
+        if (userProject != null) 'userProject': userProject!,
       };
 }
 
-/// Response message for IntrospectToken.
-class GoogleIdentityStsV1IntrospectTokenResponse {
-  /// A boolean value that indicates whether the provided access token is
-  /// currently active.
-  core.bool? active;
-
-  /// The client identifier for the OAuth 2.0 client that requested the provided
-  /// token.
-  core.String? clientId;
-
-  /// The expiration timestamp, measured in the number of seconds since January
-  /// 1 1970 UTC, indicating when this token will expire.
-  core.String? exp;
-
-  /// The issued timestamp, measured in the number of seconds since January 1
-  /// 1970 UTC, indicating when this token was originally issued.
-  core.String? iat;
-
-  /// The issuer of the provided token.
-  core.String? iss;
-
-  /// A list of scopes associated with the provided token.
-  core.String? scope;
-
-  /// The unique user ID associated with the provided token.
+/// An access boundary defines the upper bound of what a principal may access.
+///
+/// It includes a list of access boundary rules that each defines the resource
+/// that may be allowed as well as permissions that may be used on those
+/// resources.
+class GoogleIdentityStsV1betaAccessBoundary {
+  /// A list of access boundary rules which defines the upper bound of the
+  /// permission a principal may carry.
   ///
-  /// For Google Accounts, this value is based on the Google Account's user ID.
-  /// For federated identities, this value is based on the identity pool ID and
-  /// the value of the mapped `google.subject` attribute.
-  core.String? sub;
+  /// If multiple rules are specified, the effective access boundary is the
+  /// union of all the access boundary rules attached. One access boundary can
+  /// contain at most 10 rules.
+  core.List<GoogleIdentityStsV1betaAccessBoundaryRule>? accessBoundaryRules;
 
-  /// The human-readable identifier for the token principal subject.
-  ///
-  /// For example, if the provided token is associated with a workload identity
-  /// pool, this field contains a value in the following format:
-  /// `principal://iam.googleapis.com/projects//locations//workloadIdentityPools//subject/`
-  core.String? username;
-
-  GoogleIdentityStsV1IntrospectTokenResponse({
-    this.active,
-    this.clientId,
-    this.exp,
-    this.iat,
-    this.iss,
-    this.scope,
-    this.sub,
-    this.username,
+  GoogleIdentityStsV1betaAccessBoundary({
+    this.accessBoundaryRules,
   });
 
-  GoogleIdentityStsV1IntrospectTokenResponse.fromJson(core.Map _json)
+  GoogleIdentityStsV1betaAccessBoundary.fromJson(core.Map _json)
       : this(
-          active:
-              _json.containsKey('active') ? _json['active'] as core.bool : null,
-          clientId: _json.containsKey('client_id')
-              ? _json['client_id'] as core.String
-              : null,
-          exp: _json.containsKey('exp') ? _json['exp'] as core.String : null,
-          iat: _json.containsKey('iat') ? _json['iat'] as core.String : null,
-          iss: _json.containsKey('iss') ? _json['iss'] as core.String : null,
-          scope:
-              _json.containsKey('scope') ? _json['scope'] as core.String : null,
-          sub: _json.containsKey('sub') ? _json['sub'] as core.String : null,
-          username: _json.containsKey('username')
-              ? _json['username'] as core.String
+          accessBoundaryRules: _json.containsKey('accessBoundaryRules')
+              ? (_json['accessBoundaryRules'] as core.List)
+                  .map<GoogleIdentityStsV1betaAccessBoundaryRule>((value) =>
+                      GoogleIdentityStsV1betaAccessBoundaryRule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (active != null) 'active': active!,
-        if (clientId != null) 'client_id': clientId!,
-        if (exp != null) 'exp': exp!,
-        if (iat != null) 'iat': iat!,
-        if (iss != null) 'iss': iss!,
-        if (scope != null) 'scope': scope!,
-        if (sub != null) 'sub': sub!,
-        if (username != null) 'username': username!,
+        if (accessBoundaryRules != null)
+          'accessBoundaryRules':
+              accessBoundaryRules!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// An access boundary rule defines an upper bound of IAM permissions on a
+/// single resource.
+class GoogleIdentityStsV1betaAccessBoundaryRule {
+  /// The availability condition further constrains the access allowed by the
+  /// access boundary rule.
+  ///
+  /// If the condition evaluates to `true`, then this access boundary rule will
+  /// provide access to the specified resource, assuming the principal has the
+  /// required permissions for the resource. If the condition does not evaluate
+  /// to `true`, then access to the specified resource will not be available.
+  /// Note that all access boundary rules in an access boundary are evaluated
+  /// together as a union. As such, another access boundary rule may allow
+  /// access to the resource, even if this access boundary rule does not allow
+  /// access. To learn which resources support conditions in their IAM policies,
+  /// see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// The maximum length of the `expression` field is 2048 characters.
+  GoogleTypeExpr? availabilityCondition;
+
+  /// A list of permissions that may be allowed for use on the specified
+  /// resource.
+  ///
+  /// The only supported values in the list are IAM roles, following the format
+  /// of google.iam.v1.Binding.role. Example value:
+  /// `inRole:roles/logging.viewer` for predefined roles and
+  /// `inRole:organizations/{ORGANIZATION_ID}/roles/logging.viewer` for custom
+  /// roles.
+  core.List<core.String>? availablePermissions;
+
+  /// The full resource name of a Google Cloud resource entity.
+  ///
+  /// The format definition is at
+  /// https://cloud.google.com/apis/design/resource_names. Example value:
+  /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
+  core.String? availableResource;
+
+  GoogleIdentityStsV1betaAccessBoundaryRule({
+    this.availabilityCondition,
+    this.availablePermissions,
+    this.availableResource,
+  });
+
+  GoogleIdentityStsV1betaAccessBoundaryRule.fromJson(core.Map _json)
+      : this(
+          availabilityCondition: _json.containsKey('availabilityCondition')
+              ? GoogleTypeExpr.fromJson(_json['availabilityCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          availablePermissions: _json.containsKey('availablePermissions')
+              ? (_json['availablePermissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          availableResource: _json.containsKey('availableResource')
+              ? _json['availableResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availabilityCondition != null)
+          'availabilityCondition': availabilityCondition!.toJson(),
+        if (availablePermissions != null)
+          'availablePermissions': availablePermissions!,
+        if (availableResource != null) 'availableResource': availableResource!,
+      };
+}
+
+/// An `Options` object configures features that the Security Token Service
+/// supports, but that are not supported by standard OAuth 2.0 token exchange
+/// endpoints, as defined in https://tools.ietf.org/html/rfc8693.
+class GoogleIdentityStsV1betaOptions {
+  /// An access boundary that defines the upper bound of permissions the
+  /// credential may have.
+  ///
+  /// The value should be a JSON object of AccessBoundary. The access boundary
+  /// can include up to 10 rules. The size of the parameter value should not
+  /// exceed 2048 characters.
+  GoogleIdentityStsV1betaAccessBoundary? accessBoundary;
+
+  /// The intended audience(s) of the credential.
+  ///
+  /// The audience value(s) should be the name(s) of services intended to
+  /// receive the credential. Example: `["https://pubsub.googleapis.com/",
+  /// "https://storage.googleapis.com/"]`. A maximum of 5 audiences can be
+  /// included. For each provided audience, the maximum length is 262
+  /// characters.
+  core.List<core.String>? audiences;
+
+  /// A Google project used for quota and billing purposes when the credential
+  /// is used to access Google APIs.
+  ///
+  /// The provided project overrides the project bound to the credential. The
+  /// value must be a project number or a project ID. Example:
+  /// `my-sample-project-191923`. The maximum length is 32 characters.
+  core.String? userProject;
+
+  GoogleIdentityStsV1betaOptions({
+    this.accessBoundary,
+    this.audiences,
+    this.userProject,
+  });
+
+  GoogleIdentityStsV1betaOptions.fromJson(core.Map _json)
+      : this(
+          accessBoundary: _json.containsKey('accessBoundary')
+              ? GoogleIdentityStsV1betaAccessBoundary.fromJson(
+                  _json['accessBoundary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          audiences: _json.containsKey('audiences')
+              ? (_json['audiences'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          userProject: _json.containsKey('userProject')
+              ? _json['userProject'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessBoundary != null) 'accessBoundary': accessBoundary!.toJson(),
+        if (audiences != null) 'audiences': audiences!,
+        if (userProject != null) 'userProject': userProject!,
+      };
+}
+
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
+class GoogleTypeExpr {
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
+  core.String? expression;
+
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
+  core.String? location;
+
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
+  core.String? title;
+
+  GoogleTypeExpr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
+
+  GoogleTypeExpr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }

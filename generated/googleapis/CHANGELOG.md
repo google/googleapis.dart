@@ -1,6 +1,14 @@
 ## 5.0.0-dev
 
-- `poly` has been removed.
+- `adexchangebuyer` - **removed**  
+- `contactcenterinsights` - new!
+- `mybusinessbusinessinformation` - new!
+- `mybusinessnotifications` - new!
+- `mybusinessverifications` - new!
+- `networksecurity` - new!
+- `networkservices` - new!
+- `policyanalyzer` - new!
+- `poly` - **removed!**
 
 ## 4.0.0
 

@@ -74,11 +74,13 @@ class BigtableAdminApi {
   static const cloudBigtableAdminTableScope =
       'https://www.googleapis.com/auth/cloud-bigtable.admin.table';
 
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -3712,6 +3714,11 @@ class GetPolicyOptions {
 ///
 /// All tables in an instance are served from all Clusters in the instance.
 class Instance {
+  /// A server-assigned timestamp representing when this Instance was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
   /// The descriptive name for this instance as it appears in UIs.
   ///
   /// Can be changed at any time, but should be kept globally unique to avoid
@@ -3766,6 +3773,7 @@ class Instance {
   core.String? type;
 
   Instance({
+    this.createTime,
     this.displayName,
     this.labels,
     this.name,
@@ -3775,6 +3783,9 @@ class Instance {
 
   Instance.fromJson(core.Map _json)
       : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
@@ -3793,6 +3804,7 @@ class Instance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -4501,7 +4513,7 @@ class PartialUpdateInstanceRequest {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

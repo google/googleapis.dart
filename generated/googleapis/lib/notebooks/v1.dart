@@ -44,7 +44,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Notebooks API is used to manage notebook resources in Google Cloud.
 class AIPlatformNotebooksApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -441,7 +442,7 @@ class ProjectsLocationsExecutionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Format:
-  /// `projects/{project_id}/locations/{location}/schedules/{execution_id}`
+  /// `projects/{project_id}/locations/{location}/executions/{execution_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/executions/\[^/\]+$`.
   ///
@@ -2458,6 +2459,29 @@ class ContainerImage {
       };
 }
 
+/// Parameters used in Dataproc JobType executions.
+class DataprocParameters {
+  /// URI for cluster used to run Dataproc execution.
+  ///
+  /// Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+  core.String? cluster;
+
+  DataprocParameters({
+    this.cluster,
+  });
+
+  DataprocParameters.fromJson(core.Map _json)
+      : this(
+          cluster: _json.containsKey('cluster')
+              ? _json['cluster'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
+      };
+}
+
 /// An instance-attached disk resource.
 class Disk {
   /// Indicates whether the disk will be auto-deleted when the instance is
@@ -2887,12 +2911,24 @@ class ExecutionTemplate {
   /// https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
   core.String? containerImageUri;
 
+  /// Parameters used in Dataproc JobType executions.
+  DataprocParameters? dataprocParameters;
+
   /// Path to the notebook file to execute.
   ///
   /// Must be in a Google Cloud Storage bucket. Format:
   /// gs://{project_id}/{folder}/{notebook_file_name} Ex:
   /// gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
   core.String? inputNotebookFile;
+
+  /// The type of Job to be used on this execution.
+  /// Possible string values are:
+  /// - "JOB_TYPE_UNSPECIFIED" : No type specified.
+  /// - "VERTEX_AI" : Custom Job in `aiplatform.googleapis.com`. Default value
+  /// for an execution.
+  /// - "DATAPROC" : Run execution on a cluster with Dataproc as a job.
+  /// https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs
+  core.String? jobType;
 
   /// Labels for execution.
   ///
@@ -2979,7 +3015,9 @@ class ExecutionTemplate {
   ExecutionTemplate({
     this.acceleratorConfig,
     this.containerImageUri,
+    this.dataprocParameters,
     this.inputNotebookFile,
+    this.jobType,
     this.labels,
     this.masterType,
     this.outputNotebookFolder,
@@ -2998,8 +3036,15 @@ class ExecutionTemplate {
           containerImageUri: _json.containsKey('containerImageUri')
               ? _json['containerImageUri'] as core.String
               : null,
+          dataprocParameters: _json.containsKey('dataprocParameters')
+              ? DataprocParameters.fromJson(_json['dataprocParameters']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           inputNotebookFile: _json.containsKey('inputNotebookFile')
               ? _json['inputNotebookFile'] as core.String
+              : null,
+          jobType: _json.containsKey('jobType')
+              ? _json['jobType'] as core.String
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -3033,7 +3078,10 @@ class ExecutionTemplate {
         if (acceleratorConfig != null)
           'acceleratorConfig': acceleratorConfig!.toJson(),
         if (containerImageUri != null) 'containerImageUri': containerImageUri!,
+        if (dataprocParameters != null)
+          'dataprocParameters': dataprocParameters!.toJson(),
         if (inputNotebookFile != null) 'inputNotebookFile': inputNotebookFile!,
+        if (jobType != null) 'jobType': jobType!,
         if (labels != null) 'labels': labels!,
         if (masterType != null) 'masterType': masterType!,
         if (outputNotebookFolder != null)
@@ -4550,7 +4598,7 @@ class OperationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

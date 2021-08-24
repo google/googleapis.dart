@@ -47,7 +47,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// their GCP resources (e.g., VM, firewall, Project, etc.) across the Cloud
 /// Resource Hierarchy.
 class ResourceSettingsApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
