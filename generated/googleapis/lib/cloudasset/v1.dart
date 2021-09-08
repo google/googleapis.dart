@@ -41,7 +41,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The cloud asset API manages the history and inventory of cloud resources.
 class CloudAssetApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -100,6 +101,7 @@ class AssetsResource {
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
+  /// - "RELATIONSHIP" : The related resources.
   ///
   /// [pageSize] - The maximum number of assets to be returned in a single
   /// response. Default is 100, minimum is 1, and maximum is 1000.
@@ -114,6 +116,19 @@ class AssetsResource {
   /// (inclusive). If not specified, the current time will be used. Due to
   /// delays in resource data collection and indexing, there is a volatile
   /// window during which running the same query may get different results.
+  ///
+  /// [relationshipTypes] - A list of relationship types to output, for example:
+  /// `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if
+  /// content_type=RELATIONSHIP. * If specified: it snapshots specified
+  /// relationships. It returns an error if any of the \[relationship_types\]
+  /// doesn't belong to the supported relationship types of the \[asset_types\]
+  /// or if any of the \[asset_types\] doesn't belong to the source types of the
+  /// \[relationship_types\]. * Otherwise: it snapshots the supported
+  /// relationships for all \[asset_types\] or returns an error if any of the
+  /// \[asset_types\] has no relationship support. An unspecified asset types
+  /// field means all supported asset_types. See
+  /// [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview)
+  /// for all supported asset types and relationship types.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -132,6 +147,7 @@ class AssetsResource {
     core.int? pageSize,
     core.String? pageToken,
     core.String? readTime,
+    core.List<core.String>? relationshipTypes,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -140,6 +156,7 @@ class AssetsResource {
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (readTime != null) 'readTime': [readTime],
+      if (relationshipTypes != null) 'relationshipTypes': relationshipTypes,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -614,7 +631,7 @@ class V1Resource {
   /// google.longrunning.Operation, which allows you to track the operation
   /// status. We recommend intervals of at least 2 seconds with exponential
   /// backoff retry to poll the operation result. The metadata contains the
-  /// request to help callers to map responses to requests.
+  /// metadata for the long-running operation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -760,11 +777,25 @@ class V1Resource {
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
+  /// - "RELATIONSHIP" : The related resources.
   ///
   /// [readTimeWindow_endTime] - End time of the time window (inclusive). If not
   /// specified, the current timestamp is used instead.
   ///
   /// [readTimeWindow_startTime] - Start time of the time window (exclusive).
+  ///
+  /// [relationshipTypes] - Optional. A list of relationship types to output,
+  /// for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be
+  /// specified if content_type=RELATIONSHIP. * If specified: it outputs
+  /// specified relationships' history on the \[asset_names\]. It returns an
+  /// error if any of the \[relationship_types\] doesn't belong to the supported
+  /// relationship types of the \[asset_names\] or if any of the
+  /// \[asset_names\]'s types doesn't belong to the source types of the
+  /// \[relationship_types\]. * Otherwise: it outputs the supported
+  /// relationships' history on the \[asset_names\] or returns an error if any
+  /// of the \[asset_names\]'s types has no relationship support. See
+  /// [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview)
+  /// for all supported asset types and relationship types.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -782,6 +813,7 @@ class V1Resource {
     core.String? contentType,
     core.String? readTimeWindow_endTime,
     core.String? readTimeWindow_startTime,
+    core.List<core.String>? relationshipTypes,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -791,6 +823,7 @@ class V1Resource {
         'readTimeWindow.endTime': [readTimeWindow_endTime],
       if (readTimeWindow_startTime != null)
         'readTimeWindow.startTime': [readTimeWindow_startTime],
+      if (relationshipTypes != null) 'relationshipTypes': relationshipTypes,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1164,6 +1197,30 @@ class AccessSelector {
       };
 }
 
+/// Represents the metadata of the longrunning operation for the
+/// AnalyzeIamPolicyLongrunning rpc.
+class AnalyzeIamPolicyLongrunningMetadata {
+  /// The time the operation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  AnalyzeIamPolicyLongrunningMetadata({
+    this.createTime,
+  });
+
+  AnalyzeIamPolicyLongrunningMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+      };
+}
+
 /// A request message for AssetService.AnalyzeIamPolicyLongrunning.
 class AnalyzeIamPolicyLongrunningRequest {
   /// The request query.
@@ -1358,6 +1415,11 @@ class Asset {
   /// for more information.
   Inventory? osInventory;
 
+  /// The related assets of the asset of one relationship type.
+  ///
+  /// One asset only represents one type of relationship.
+  RelatedAssets? relatedAssets;
+
   /// A representation of the resource.
   Resource? resource;
 
@@ -1379,6 +1441,7 @@ class Asset {
     this.name,
     this.orgPolicy,
     this.osInventory,
+    this.relatedAssets,
     this.resource,
     this.servicePerimeter,
     this.updateTime,
@@ -1418,6 +1481,10 @@ class Asset {
               ? Inventory.fromJson(
                   _json['osInventory'] as core.Map<core.String, core.dynamic>)
               : null,
+          relatedAssets: _json.containsKey('relatedAssets')
+              ? RelatedAssets.fromJson(
+                  _json['relatedAssets'] as core.Map<core.String, core.dynamic>)
+              : null,
           resource: _json.containsKey('resource')
               ? Resource.fromJson(
                   _json['resource'] as core.Map<core.String, core.dynamic>)
@@ -1442,6 +1509,7 @@ class Asset {
         if (orgPolicy != null)
           'orgPolicy': orgPolicy!.map((value) => value.toJson()).toList(),
         if (osInventory != null) 'osInventory': osInventory!.toJson(),
+        if (relatedAssets != null) 'relatedAssets': relatedAssets!.toJson(),
         if (resource != null) 'resource': resource!.toJson(),
         if (servicePerimeter != null)
           'servicePerimeter': servicePerimeter!.toJson(),
@@ -1889,6 +1957,52 @@ class CreateFeedRequest {
       };
 }
 
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+class Date {
+  /// Day of a month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
+  core.int? day;
+
+  /// Month of a year.
+  ///
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
+  core.int? month;
+
+  /// Year of the date.
+  ///
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
+  core.int? year;
+
+  Date({
+    this.day,
+    this.month,
+    this.year,
+  });
+
+  Date.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          month: _json.containsKey('month') ? _json['month'] as core.int : null,
+          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1973,6 +2087,7 @@ class ExportAssetsRequest {
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
+  /// - "RELATIONSHIP" : The related resources.
   core.String? contentType;
 
   /// Output configuration indicating where the results will be output to.
@@ -1989,11 +2104,28 @@ class ExportAssetsRequest {
   /// different results.
   core.String? readTime;
 
+  /// A list of relationship types to export, for example:
+  /// `INSTANCE_TO_INSTANCEGROUP`.
+  ///
+  /// This field should only be specified if content_type=RELATIONSHIP. * If
+  /// specified: it snapshots specified relationships. It returns an error if
+  /// any of the \[relationship_types\] doesn't belong to the supported
+  /// relationship types of the \[asset_types\] or if any of the \[asset_types\]
+  /// doesn't belong to the source types of the \[relationship_types\]. *
+  /// Otherwise: it snapshots the supported relationships for all
+  /// \[asset_types\] or returns an error if any of the \[asset_types\] has no
+  /// relationship support. An unspecified asset types field means all supported
+  /// asset_types. See
+  /// [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview)
+  /// for all supported asset types and relationship types.
+  core.List<core.String>? relationshipTypes;
+
   ExportAssetsRequest({
     this.assetTypes,
     this.contentType,
     this.outputConfig,
     this.readTime,
+    this.relationshipTypes,
   });
 
   ExportAssetsRequest.fromJson(core.Map _json)
@@ -2013,6 +2145,11 @@ class ExportAssetsRequest {
           readTime: _json.containsKey('readTime')
               ? _json['readTime'] as core.String
               : null,
+          relationshipTypes: _json.containsKey('relationshipTypes')
+              ? (_json['relationshipTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2020,6 +2157,7 @@ class ExportAssetsRequest {
         if (contentType != null) 'contentType': contentType!,
         if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
         if (readTime != null) 'readTime': readTime!,
+        if (relationshipTypes != null) 'relationshipTypes': relationshipTypes!,
       };
 }
 
@@ -2146,6 +2284,7 @@ class Feed {
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
+  /// - "RELATIONSHIP" : The related resources.
   core.String? contentType;
 
   /// Feed output configuration defining where the asset updates are published
@@ -2164,6 +2303,23 @@ class Feed {
   /// Required.
   core.String? name;
 
+  /// A list of relationship types to output, for example:
+  /// `INSTANCE_TO_INSTANCEGROUP`.
+  ///
+  /// This field should only be specified if content_type=RELATIONSHIP. * If
+  /// specified: it outputs specified relationship updates on the
+  /// \[asset_names\] or the \[asset_types\]. It returns an error if any of the
+  /// \[relationship_types\] doesn't belong to the supported relationship types
+  /// of the \[asset_names\] or \[asset_types\], or any of the \[asset_names\]
+  /// or the \[asset_types\] doesn't belong to the source types of the
+  /// \[relationship_types\]. * Otherwise: it outputs the supported
+  /// relationships of the types of \[asset_names\] and \[asset_types\] or
+  /// returns an error if any of the \[asset_names\] or the \[asset_types\] has
+  /// no replationship support. See
+  /// [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview)
+  /// for all supported asset types and relationship types.
+  core.List<core.String>? relationshipTypes;
+
   Feed({
     this.assetNames,
     this.assetTypes,
@@ -2171,6 +2327,7 @@ class Feed {
     this.contentType,
     this.feedOutputConfig,
     this.name,
+    this.relationshipTypes,
   });
 
   Feed.fromJson(core.Map _json)
@@ -2197,6 +2354,11 @@ class Feed {
                   as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          relationshipTypes: _json.containsKey('relationshipTypes')
+              ? (_json['relationshipTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2207,6 +2369,7 @@ class Feed {
         if (feedOutputConfig != null)
           'feedOutputConfig': feedOutputConfig!.toJson(),
         if (name != null) 'name': name!,
+        if (relationshipTypes != null) 'relationshipTypes': relationshipTypes!,
       };
 }
 
@@ -3401,8 +3564,8 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
   ///
   /// The `short_name` component must begin with a letter and only include
   /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length
-  /// of the `short_name` component is 50 characters.
+  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum
+  /// length of the `access_level` component is 50 characters.
   ///
   /// Required.
   core.String? name;
@@ -3465,7 +3628,7 @@ class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
 
   /// Resource name of the `AccessPolicy`.
   ///
-  /// Format: `accessPolicies/{policy_id}`
+  /// Format: `accessPolicies/{access_policy}`
   ///
   /// Output only.
   core.String? name;
@@ -4288,7 +4451,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   ///
   /// The `short_name` component must begin with a letter and only include
   /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
   ///
   /// Required.
   core.String? name;
@@ -5050,7 +5213,12 @@ class IdentitySelector {
       };
 }
 
-/// The inventory details of a VM.
+/// This API resource represents the available inventory data for a Compute
+/// Engine virtual machine (VM) instance at a given point in time.
+///
+/// You can use this API resource to determine the inventory data of your VM.
+/// For more information, see
+/// [Information provided by OS inventory management](https://cloud.google.com/compute/docs/instances/os-inventory-management#data-collected).
 class Inventory {
   /// Inventory items related to the VM keyed by an opaque unique identifier for
   /// each inventory item.
@@ -5059,12 +5227,27 @@ class Inventory {
   /// and will change, when there is a new package version.
   core.Map<core.String, Item>? items;
 
+  /// The `Inventory` API resource name.
+  ///
+  /// Format:
+  /// `projects/{project_number}/locations/{location}/instances/{instance_id}/inventory`
+  ///
+  /// Output only.
+  core.String? name;
+
   /// Base level operating system information for the VM.
   OsInfo? osInfo;
 
+  /// Timestamp of the last reported inventory for the VM.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   Inventory({
     this.items,
+    this.name,
     this.osInfo,
+    this.updateTime,
   });
 
   Inventory.fromJson(core.Map _json)
@@ -5077,16 +5260,22 @@ class Inventory {
                   ),
                 )
               : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
           osInfo: _json.containsKey('osInfo')
               ? OsInfo.fromJson(
                   _json['osInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name!,
         if (osInfo != null) 'osInfo': osInfo!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5757,7 +5946,7 @@ class Permissions {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -5866,6 +6055,216 @@ class PubsubDestination {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topic != null) 'topic': topic!,
+      };
+}
+
+/// An asset identify in Google Cloud which contains its name, type and
+/// ancestors.
+///
+/// An asset can be any resource in the Google Cloud
+/// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+/// a resource outside the Google Cloud resource hierarchy (such as Google
+/// Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM
+/// policy). See
+/// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+/// for more information.
+class RelatedAsset {
+  /// The ancestors of an asset in Google Cloud
+  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+  /// represented as a list of relative resource names.
+  ///
+  /// An ancestry path starts with the closest ancestor in the hierarchy and
+  /// ends at root. Example: `["projects/123456789", "folders/5432",
+  /// "organizations/1234"]`
+  core.List<core.String>? ancestors;
+
+  /// The full name of the asset.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
+  /// See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information.
+  core.String? asset;
+
+  /// The type of the asset.
+  ///
+  /// Example: `compute.googleapis.com/Disk` See
+  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// for more information.
+  core.String? assetType;
+
+  RelatedAsset({
+    this.ancestors,
+    this.asset,
+    this.assetType,
+  });
+
+  RelatedAsset.fromJson(core.Map _json)
+      : this(
+          ancestors: _json.containsKey('ancestors')
+              ? (_json['ancestors'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          asset:
+              _json.containsKey('asset') ? _json['asset'] as core.String : null,
+          assetType: _json.containsKey('assetType')
+              ? _json['assetType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ancestors != null) 'ancestors': ancestors!,
+        if (asset != null) 'asset': asset!,
+        if (assetType != null) 'assetType': assetType!,
+      };
+}
+
+/// The detailed related assets with the `relationship_type`.
+class RelatedAssets {
+  /// The peer resources of the relationship.
+  core.List<RelatedAsset>? assets;
+
+  /// The detailed relationship attributes.
+  RelationshipAttributes? relationshipAttributes;
+
+  RelatedAssets({
+    this.assets,
+    this.relationshipAttributes,
+  });
+
+  RelatedAssets.fromJson(core.Map _json)
+      : this(
+          assets: _json.containsKey('assets')
+              ? (_json['assets'] as core.List)
+                  .map<RelatedAsset>((value) => RelatedAsset.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          relationshipAttributes: _json.containsKey('relationshipAttributes')
+              ? RelationshipAttributes.fromJson(_json['relationshipAttributes']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assets != null)
+          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (relationshipAttributes != null)
+          'relationshipAttributes': relationshipAttributes!.toJson(),
+      };
+}
+
+/// The detailed related resource.
+class RelatedResource {
+  /// The type of the asset.
+  ///
+  /// Example: `compute.googleapis.com/Instance`
+  core.String? assetType;
+
+  /// The full resource name of the related resource.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_proj_123/zones/instance/instance123`
+  core.String? fullResourceName;
+
+  RelatedResource({
+    this.assetType,
+    this.fullResourceName,
+  });
+
+  RelatedResource.fromJson(core.Map _json)
+      : this(
+          assetType: _json.containsKey('assetType')
+              ? _json['assetType'] as core.String
+              : null,
+          fullResourceName: _json.containsKey('fullResourceName')
+              ? _json['fullResourceName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetType != null) 'assetType': assetType!,
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+      };
+}
+
+/// The related resources of the primary resource.
+class RelatedResources {
+  /// The detailed related resources of the primary resource.
+  core.List<RelatedResource>? relatedResources;
+
+  RelatedResources({
+    this.relatedResources,
+  });
+
+  RelatedResources.fromJson(core.Map _json)
+      : this(
+          relatedResources: _json.containsKey('relatedResources')
+              ? (_json['relatedResources'] as core.List)
+                  .map<RelatedResource>((value) => RelatedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (relatedResources != null)
+          'relatedResources':
+              relatedResources!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The relationship attributes which include `type`, `source_resource_type`,
+/// `target_resource_type` and `action`.
+class RelationshipAttributes {
+  /// The detail of the relationship, e.g. `contains`, `attaches`
+  core.String? action;
+
+  /// The source asset type.
+  ///
+  /// Example: `compute.googleapis.com/Instance`
+  core.String? sourceResourceType;
+
+  /// The target asset type.
+  ///
+  /// Example: `compute.googleapis.com/Disk`
+  core.String? targetResourceType;
+
+  /// The unique identifier of the relationship type.
+  ///
+  /// Example: `INSTANCE_TO_INSTANCEGROUP`
+  core.String? type;
+
+  RelationshipAttributes({
+    this.action,
+    this.sourceResourceType,
+    this.targetResourceType,
+    this.type,
+  });
+
+  RelationshipAttributes.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          sourceResourceType: _json.containsKey('sourceResourceType')
+              ? _json['sourceResourceType'] as core.String
+              : null,
+          targetResourceType: _json.containsKey('targetResourceType')
+              ? _json['targetResourceType'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (sourceResourceType != null)
+          'sourceResourceType': sourceResourceType!,
+        if (targetResourceType != null)
+          'targetResourceType': targetResourceType!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6127,6 +6526,15 @@ class ResourceSearchResult {
   /// project in your search request.
   core.String? project;
 
+  /// A map of related resources of this resource, keyed by the relationship
+  /// type.
+  ///
+  /// A relationship type is in the format of {SourceType}_{ACTION}_{DestType}.
+  /// Example: `DISK_TO_INSTANCE`, `DISK_TO_NETWORK`,
+  /// `INSTANCE_TO_INSTANCEGROUP`. See
+  /// [supported relationship types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#supported_relationship_types).
+  core.Map<core.String, RelatedResources>? relationships;
+
   /// The state of this resource.
   ///
   /// Different resources types have different state definitions that are mapped
@@ -6181,6 +6589,7 @@ class ResourceSearchResult {
     this.parentAssetType,
     this.parentFullResourceName,
     this.project,
+    this.relationships,
     this.state,
     this.updateTime,
     this.versionedResources,
@@ -6253,6 +6662,16 @@ class ResourceSearchResult {
           project: _json.containsKey('project')
               ? _json['project'] as core.String
               : null,
+          relationships: _json.containsKey('relationships')
+              ? (_json['relationships'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    RelatedResources.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
           updateTime: _json.containsKey('updateTime')
@@ -6287,6 +6706,9 @@ class ResourceSearchResult {
         if (parentFullResourceName != null)
           'parentFullResourceName': parentFullResourceName!,
         if (project != null) 'project': project!,
+        if (relationships != null)
+          'relationships': relationships!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (versionedResources != null)
@@ -6426,6 +6848,9 @@ class SoftwarePackage {
   /// for info in Windows Quick Fix Engineering.
   WindowsQuickFixEngineeringPackage? qfePackage;
 
+  /// Details of Windows Application.
+  WindowsApplication? windowsApplication;
+
   /// Details of a Windows Update package.
   ///
   /// See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
@@ -6455,6 +6880,7 @@ class SoftwarePackage {
     this.cosPackage,
     this.googetPackage,
     this.qfePackage,
+    this.windowsApplication,
     this.wuaPackage,
     this.yumPackage,
     this.zypperPackage,
@@ -6479,6 +6905,10 @@ class SoftwarePackage {
               ? WindowsQuickFixEngineeringPackage.fromJson(
                   _json['qfePackage'] as core.Map<core.String, core.dynamic>)
               : null,
+          windowsApplication: _json.containsKey('windowsApplication')
+              ? WindowsApplication.fromJson(_json['windowsApplication']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           wuaPackage: _json.containsKey('wuaPackage')
               ? WindowsUpdatePackage.fromJson(
                   _json['wuaPackage'] as core.Map<core.String, core.dynamic>)
@@ -6502,6 +6932,8 @@ class SoftwarePackage {
         if (cosPackage != null) 'cosPackage': cosPackage!.toJson(),
         if (googetPackage != null) 'googetPackage': googetPackage!.toJson(),
         if (qfePackage != null) 'qfePackage': qfePackage!.toJson(),
+        if (windowsApplication != null)
+          'windowsApplication': windowsApplication!.toJson(),
         if (wuaPackage != null) 'wuaPackage': wuaPackage!.toJson(),
         if (yumPackage != null) 'yumPackage': yumPackage!.toJson(),
         if (zypperPackage != null) 'zypperPackage': zypperPackage!.toJson(),
@@ -6795,6 +7227,69 @@ class VersionedResource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Contains information about a Windows application as retrieved from the
+/// Windows Registry.
+///
+/// For more information about these fields, see
+/// [Windows Installer Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key){:
+/// class="external" }
+class WindowsApplication {
+  /// The name of the application or product.
+  core.String? displayName;
+
+  /// The version of the product or application in string format.
+  core.String? displayVersion;
+
+  /// The internet address for technical support.
+  core.String? helpLink;
+
+  /// The last time this product received service.
+  ///
+  /// The value of this property is replaced each time a patch is applied or
+  /// removed from the product or the command-line option is used to repair the
+  /// product.
+  Date? installDate;
+
+  /// The name of the manufacturer for the product or application.
+  core.String? publisher;
+
+  WindowsApplication({
+    this.displayName,
+    this.displayVersion,
+    this.helpLink,
+    this.installDate,
+    this.publisher,
+  });
+
+  WindowsApplication.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          displayVersion: _json.containsKey('displayVersion')
+              ? _json['displayVersion'] as core.String
+              : null,
+          helpLink: _json.containsKey('helpLink')
+              ? _json['helpLink'] as core.String
+              : null,
+          installDate: _json.containsKey('installDate')
+              ? Date.fromJson(
+                  _json['installDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          publisher: _json.containsKey('publisher')
+              ? _json['publisher'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (displayVersion != null) 'displayVersion': displayVersion!,
+        if (helpLink != null) 'helpLink': helpLink!,
+        if (installDate != null) 'installDate': installDate!.toJson(),
+        if (publisher != null) 'publisher': publisher!,
       };
 }
 

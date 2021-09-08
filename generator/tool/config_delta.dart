@@ -8,7 +8,12 @@ import 'package:yaml/yaml.dart';
 Future<void> main(List<String> args) async {
   if (args.length != 2) {
     stderr.writeln(
-        'run with two args: <old_config_file_path> <new_config_file_path>');
+      r'''
+run with two args: <old_config_file_path> <new_config_file_path>',
+
+You migt also want to do
+  git show LAST_PUBLISHED_VERSION:config.yaml > old_config.yaml''',
+    );
     exitCode = 1;
     return;
   }

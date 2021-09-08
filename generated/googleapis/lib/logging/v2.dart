@@ -89,11 +89,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// common use. For explanations of the concepts found in the table entries,
 /// read the documentation at https://cloud.google.com/logging/docs.
 class LoggingApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -160,7 +162,7 @@ class BillingAccountsBucketsResource {
   BillingAccountsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets a bucket.
+  /// Gets a log bucket.
   ///
   /// Request parameters:
   ///
@@ -169,8 +171,7 @@ class BillingAccountsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern `^billingAccounts/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -208,14 +209,14 @@ class BillingAccountsBucketsViewsResource {
   BillingAccountsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets a view.
+  /// Gets a view on a log bucket..
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the policy:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -265,8 +266,8 @@ class BillingAccountsExclusionsResource {
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-logging-project" "organizations/123456789"
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -309,8 +310,8 @@ class BillingAccountsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^billingAccounts/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -349,8 +350,8 @@ class BillingAccountsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^billingAccounts/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -443,8 +444,8 @@ class BillingAccountsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^billingAccounts/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
@@ -597,17 +598,17 @@ class BillingAccountsLocationsBucketsResource {
   BillingAccountsLocationsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a bucket that can be used to store log entries.
+  /// Creates a log bucket that can be used to store log entries.
   ///
-  /// Once a bucket has been created, the region cannot be changed.
+  /// After a bucket has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
-  /// "projects/my-logging-project/locations/global"
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
   /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
@@ -647,10 +648,11 @@ class BillingAccountsLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a bucket.
+  /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
+  /// DELETE_REQUESTED state.
   ///
-  /// Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
-  /// will be purged and all logs in the bucket will be permanently deleted.
+  /// After 7 days, the bucket will be purged and all log entries in the bucket
+  /// will be permanently deleted.
   ///
   /// Request parameters:
   ///
@@ -659,8 +661,7 @@ class BillingAccountsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -692,7 +693,7 @@ class BillingAccountsLocationsBucketsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists buckets.
+  /// Lists log buckets.
   ///
   /// Request parameters:
   ///
@@ -747,14 +748,14 @@ class BillingAccountsLocationsBucketsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a bucket.
+  /// Updates a log bucket.
   ///
   /// This method replaces the following fields in the existing bucket with
   /// values from the new bucket: retention_periodIf the retention period is
   /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-  /// FAILED_PRECONDITION will be returned.A buckets region may not be modified
-  /// after it is created.
+  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
+  /// bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -765,19 +766,16 @@ class BillingAccountsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
-  /// requires permission "resourcemanager.projects.updateLiens" to set the
-  /// locked property
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
   /// it is in the update mask. name and output only fields cannot be
-  /// updated.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=retention_days.
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -812,9 +810,9 @@ class BillingAccountsLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Undeletes a bucket.
+  /// Undeletes a log bucket.
   ///
-  /// A bucket that has been deleted may be undeleted within the grace period of
+  /// A bucket that has been deleted can be undeleted within the grace period of
   /// 7 days.
   ///
   /// [request] - The metadata request object.
@@ -826,8 +824,7 @@ class BillingAccountsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -869,18 +866,17 @@ class BillingAccountsLocationsBucketsViewsResource {
   BillingAccountsLocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a view over logs in a bucket.
+  /// Creates a view over log entries in a log bucket.
   ///
-  /// A bucket may contain a maximum of 50 views.
+  /// A bucket may contain a maximum of 30 views.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The bucket in which to create the view
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -919,14 +915,14 @@ class BillingAccountsLocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a view from a bucket.
+  /// Deletes a view on a log bucket.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -958,7 +954,7 @@ class BillingAccountsLocationsBucketsViewsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists views on a bucket.
+  /// Lists views on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -968,7 +964,7 @@ class BillingAccountsLocationsBucketsViewsResource {
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
@@ -1009,7 +1005,7 @@ class BillingAccountsLocationsBucketsViewsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a view.
+  /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
   /// from the new view: filter.
@@ -1020,8 +1016,8 @@ class BillingAccountsLocationsBucketsViewsResource {
   ///
   /// [name] - Required. The full resource name of the view to update
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -1029,8 +1025,8 @@ class BillingAccountsLocationsBucketsViewsResource {
   /// need an update. A field will be overwritten if, and only if, it is in the
   /// update mask. name and output only fields cannot be updated.For a detailed
   /// FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1361,19 +1357,19 @@ class BillingAccountsSinksResource {
   ///
   /// [parent] - Required. The resource in which to create the sink:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Logging before the addition of writer identities to this API. The sink's
-  /// destination must be in the same project as the sink itself.If this field
-  /// is set to true, or if the sink is owned by a non-project resource such as
-  /// an organization, then the value of writer_identity will be a unique
-  /// service account used only for exports from the new sink. For more
+  /// Cloud Logging before the addition of writer identities to this API. The
+  /// sink's destination must be in the same project as the sink itself.If this
+  /// field is set to true, or if the sink is owned by a non-project resource
+  /// such as an organization, then the value of writer_identity will be a
+  /// unique service account used only for exports from the new sink. For more
   /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1422,8 +1418,8 @@ class BillingAccountsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1462,8 +1458,8 @@ class BillingAccountsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1560,8 +1556,8 @@ class BillingAccountsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -1577,11 +1573,11 @@ class BillingAccountsSinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1634,8 +1630,8 @@ class BillingAccountsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -1651,11 +1647,11 @@ class BillingAccountsSinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1699,8 +1695,7 @@ class EntriesResource {
 
   EntriesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Copies a set of log entries from a logging bucket to a Cloud Storage
-  /// bucket.
+  /// Copies a set of log entries from a log bucket to a Cloud Storage bucket.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1877,8 +1872,8 @@ class ExclusionsResource {
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-logging-project" "organizations/123456789"
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1921,8 +1916,8 @@ class ExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1961,8 +1956,8 @@ class ExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2055,8 +2050,8 @@ class ExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
@@ -2130,8 +2125,8 @@ class FoldersExclusionsResource {
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-logging-project" "organizations/123456789"
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2174,8 +2169,8 @@ class FoldersExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^folders/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2214,8 +2209,8 @@ class FoldersExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^folders/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2308,8 +2303,8 @@ class FoldersExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^folders/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
@@ -2461,17 +2456,17 @@ class FoldersLocationsBucketsResource {
   FoldersLocationsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a bucket that can be used to store log entries.
+  /// Creates a log bucket that can be used to store log entries.
   ///
-  /// Once a bucket has been created, the region cannot be changed.
+  /// After a bucket has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
-  /// "projects/my-logging-project/locations/global"
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
   /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
@@ -2511,10 +2506,11 @@ class FoldersLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a bucket.
+  /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
+  /// DELETE_REQUESTED state.
   ///
-  /// Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
-  /// will be purged and all logs in the bucket will be permanently deleted.
+  /// After 7 days, the bucket will be purged and all log entries in the bucket
+  /// will be permanently deleted.
   ///
   /// Request parameters:
   ///
@@ -2523,8 +2519,7 @@ class FoldersLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -2556,7 +2551,7 @@ class FoldersLocationsBucketsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a bucket.
+  /// Gets a log bucket.
   ///
   /// Request parameters:
   ///
@@ -2565,8 +2560,7 @@ class FoldersLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -2598,7 +2592,7 @@ class FoldersLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists buckets.
+  /// Lists log buckets.
   ///
   /// Request parameters:
   ///
@@ -2653,14 +2647,14 @@ class FoldersLocationsBucketsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a bucket.
+  /// Updates a log bucket.
   ///
   /// This method replaces the following fields in the existing bucket with
   /// values from the new bucket: retention_periodIf the retention period is
   /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-  /// FAILED_PRECONDITION will be returned.A buckets region may not be modified
-  /// after it is created.
+  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
+  /// bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2671,19 +2665,16 @@ class FoldersLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
-  /// requires permission "resourcemanager.projects.updateLiens" to set the
-  /// locked property
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
   /// it is in the update mask. name and output only fields cannot be
-  /// updated.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=retention_days.
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2718,9 +2709,9 @@ class FoldersLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Undeletes a bucket.
+  /// Undeletes a log bucket.
   ///
-  /// A bucket that has been deleted may be undeleted within the grace period of
+  /// A bucket that has been deleted can be undeleted within the grace period of
   /// 7 days.
   ///
   /// [request] - The metadata request object.
@@ -2732,8 +2723,7 @@ class FoldersLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -2775,18 +2765,17 @@ class FoldersLocationsBucketsViewsResource {
   FoldersLocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a view over logs in a bucket.
+  /// Creates a view over log entries in a log bucket.
   ///
-  /// A bucket may contain a maximum of 50 views.
+  /// A bucket may contain a maximum of 30 views.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The bucket in which to create the view
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -2825,14 +2814,14 @@ class FoldersLocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a view from a bucket.
+  /// Deletes a view on a log bucket.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -2864,14 +2853,14 @@ class FoldersLocationsBucketsViewsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view.
+  /// Gets a view on a log bucket..
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the policy:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -2903,7 +2892,7 @@ class FoldersLocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists views on a bucket.
+  /// Lists views on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -2913,7 +2902,7 @@ class FoldersLocationsBucketsViewsResource {
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
@@ -2954,7 +2943,7 @@ class FoldersLocationsBucketsViewsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a view.
+  /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
   /// from the new view: filter.
@@ -2965,8 +2954,8 @@ class FoldersLocationsBucketsViewsResource {
   ///
   /// [name] - Required. The full resource name of the view to update
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -2974,8 +2963,8 @@ class FoldersLocationsBucketsViewsResource {
   /// need an update. A field will be overwritten if, and only if, it is in the
   /// update mask. name and output only fields cannot be updated.For a detailed
   /// FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3298,19 +3287,19 @@ class FoldersSinksResource {
   ///
   /// [parent] - Required. The resource in which to create the sink:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Logging before the addition of writer identities to this API. The sink's
-  /// destination must be in the same project as the sink itself.If this field
-  /// is set to true, or if the sink is owned by a non-project resource such as
-  /// an organization, then the value of writer_identity will be a unique
-  /// service account used only for exports from the new sink. For more
+  /// Cloud Logging before the addition of writer identities to this API. The
+  /// sink's destination must be in the same project as the sink itself.If this
+  /// field is set to true, or if the sink is owned by a non-project resource
+  /// such as an organization, then the value of writer_identity will be a
+  /// unique service account used only for exports from the new sink. For more
   /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3359,8 +3348,8 @@ class FoldersSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3399,8 +3388,8 @@ class FoldersSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3497,8 +3486,8 @@ class FoldersSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -3514,11 +3503,11 @@ class FoldersSinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3571,8 +3560,8 @@ class FoldersSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -3588,11 +3577,11 @@ class FoldersSinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3736,17 +3725,17 @@ class LocationsBucketsResource {
 
   LocationsBucketsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a bucket that can be used to store log entries.
+  /// Creates a log bucket that can be used to store log entries.
   ///
-  /// Once a bucket has been created, the region cannot be changed.
+  /// After a bucket has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
-  /// "projects/my-logging-project/locations/global"
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
@@ -3786,10 +3775,11 @@ class LocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a bucket.
+  /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
+  /// DELETE_REQUESTED state.
   ///
-  /// Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
-  /// will be purged and all logs in the bucket will be permanently deleted.
+  /// After 7 days, the bucket will be purged and all log entries in the bucket
+  /// will be permanently deleted.
   ///
   /// Request parameters:
   ///
@@ -3798,8 +3788,7 @@ class LocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -3831,7 +3820,7 @@ class LocationsBucketsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a bucket.
+  /// Gets a log bucket.
   ///
   /// Request parameters:
   ///
@@ -3840,8 +3829,7 @@ class LocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -3873,7 +3861,7 @@ class LocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists buckets.
+  /// Lists log buckets.
   ///
   /// Request parameters:
   ///
@@ -3928,14 +3916,14 @@ class LocationsBucketsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a bucket.
+  /// Updates a log bucket.
   ///
   /// This method replaces the following fields in the existing bucket with
   /// values from the new bucket: retention_periodIf the retention period is
   /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-  /// FAILED_PRECONDITION will be returned.A buckets region may not be modified
-  /// after it is created.
+  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
+  /// bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3946,19 +3934,16 @@ class LocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
-  /// requires permission "resourcemanager.projects.updateLiens" to set the
-  /// locked property
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
   /// it is in the update mask. name and output only fields cannot be
-  /// updated.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=retention_days.
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3993,9 +3978,9 @@ class LocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Undeletes a bucket.
+  /// Undeletes a log bucket.
   ///
-  /// A bucket that has been deleted may be undeleted within the grace period of
+  /// A bucket that has been deleted can be undeleted within the grace period of
   /// 7 days.
   ///
   /// [request] - The metadata request object.
@@ -4007,8 +3992,7 @@ class LocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -4050,18 +4034,17 @@ class LocationsBucketsViewsResource {
   LocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a view over logs in a bucket.
+  /// Creates a view over log entries in a log bucket.
   ///
-  /// A bucket may contain a maximum of 50 views.
+  /// A bucket may contain a maximum of 30 views.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The bucket in which to create the view
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -4100,14 +4083,14 @@ class LocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a view from a bucket.
+  /// Deletes a view on a log bucket.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -4139,14 +4122,14 @@ class LocationsBucketsViewsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view.
+  /// Gets a view on a log bucket..
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the policy:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -4178,7 +4161,7 @@ class LocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists views on a bucket.
+  /// Lists views on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -4188,7 +4171,7 @@ class LocationsBucketsViewsResource {
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
@@ -4229,7 +4212,7 @@ class LocationsBucketsViewsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a view.
+  /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
   /// from the new view: filter.
@@ -4240,8 +4223,8 @@ class LocationsBucketsViewsResource {
   ///
   /// [name] - Required. The full resource name of the view to update
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -4249,8 +4232,8 @@ class LocationsBucketsViewsResource {
   /// need an update. A field will be overwritten if, and only if, it is in the
   /// update mask. name and output only fields cannot be updated.For a detailed
   /// FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4635,10 +4618,10 @@ class OrganizationsResource {
   /// "projects/\[PROJECT_ID\]/cmekSettings"
   /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
-  /// "folders/\[FOLDER_ID\]/cmekSettings" Example:
-  /// "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
-  /// currently only be configured for GCP organizations. Once configured, it
-  /// applies to all projects and folders in the GCP organization.
+  /// "folders/\[FOLDER_ID\]/cmekSettings" For
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
+  /// can currently only be configured for GCP organizations. Once configured,
+  /// it applies to all projects and folders in the GCP organization.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4690,16 +4673,16 @@ class OrganizationsResource {
   /// "projects/\[PROJECT_ID\]/cmekSettings"
   /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
-  /// "folders/\[FOLDER_ID\]/cmekSettings" Example:
-  /// "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
-  /// currently only be configured for GCP organizations. Once configured, it
-  /// applies to all projects and folders in the GCP organization.
+  /// "folders/\[FOLDER_ID\]/cmekSettings" For
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
+  /// can currently only be configured for GCP organizations. Once configured,
+  /// it applies to all projects and folders in the GCP organization.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from
   /// cmek_settings should be updated. A field will be overwritten if and only
   /// if it is in the update mask. Output only fields cannot be updated.See
-  /// FieldMask for more information.Example: "updateMask=kmsKeyName"
+  /// FieldMask for more information.For example: "updateMask=kmsKeyName"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4753,8 +4736,8 @@ class OrganizationsExclusionsResource {
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-logging-project" "organizations/123456789"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4797,8 +4780,8 @@ class OrganizationsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^organizations/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4837,8 +4820,8 @@ class OrganizationsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^organizations/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4931,8 +4914,8 @@ class OrganizationsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^organizations/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
@@ -5085,17 +5068,17 @@ class OrganizationsLocationsBucketsResource {
   OrganizationsLocationsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a bucket that can be used to store log entries.
+  /// Creates a log bucket that can be used to store log entries.
   ///
-  /// Once a bucket has been created, the region cannot be changed.
+  /// After a bucket has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
-  /// "projects/my-logging-project/locations/global"
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
@@ -5135,10 +5118,11 @@ class OrganizationsLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a bucket.
+  /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
+  /// DELETE_REQUESTED state.
   ///
-  /// Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
-  /// will be purged and all logs in the bucket will be permanently deleted.
+  /// After 7 days, the bucket will be purged and all log entries in the bucket
+  /// will be permanently deleted.
   ///
   /// Request parameters:
   ///
@@ -5147,8 +5131,7 @@ class OrganizationsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -5180,7 +5163,7 @@ class OrganizationsLocationsBucketsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a bucket.
+  /// Gets a log bucket.
   ///
   /// Request parameters:
   ///
@@ -5189,8 +5172,7 @@ class OrganizationsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -5222,7 +5204,7 @@ class OrganizationsLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists buckets.
+  /// Lists log buckets.
   ///
   /// Request parameters:
   ///
@@ -5277,14 +5259,14 @@ class OrganizationsLocationsBucketsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a bucket.
+  /// Updates a log bucket.
   ///
   /// This method replaces the following fields in the existing bucket with
   /// values from the new bucket: retention_periodIf the retention period is
   /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-  /// FAILED_PRECONDITION will be returned.A buckets region may not be modified
-  /// after it is created.
+  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
+  /// bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5295,19 +5277,16 @@ class OrganizationsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
-  /// requires permission "resourcemanager.projects.updateLiens" to set the
-  /// locked property
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
   /// it is in the update mask. name and output only fields cannot be
-  /// updated.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=retention_days.
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5342,9 +5321,9 @@ class OrganizationsLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Undeletes a bucket.
+  /// Undeletes a log bucket.
   ///
-  /// A bucket that has been deleted may be undeleted within the grace period of
+  /// A bucket that has been deleted can be undeleted within the grace period of
   /// 7 days.
   ///
   /// [request] - The metadata request object.
@@ -5356,8 +5335,7 @@ class OrganizationsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -5399,18 +5377,17 @@ class OrganizationsLocationsBucketsViewsResource {
   OrganizationsLocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a view over logs in a bucket.
+  /// Creates a view over log entries in a log bucket.
   ///
-  /// A bucket may contain a maximum of 50 views.
+  /// A bucket may contain a maximum of 30 views.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The bucket in which to create the view
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -5449,14 +5426,14 @@ class OrganizationsLocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a view from a bucket.
+  /// Deletes a view on a log bucket.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -5488,14 +5465,14 @@ class OrganizationsLocationsBucketsViewsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view.
+  /// Gets a view on a log bucket..
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the policy:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -5527,7 +5504,7 @@ class OrganizationsLocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists views on a bucket.
+  /// Lists views on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -5537,7 +5514,7 @@ class OrganizationsLocationsBucketsViewsResource {
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
@@ -5578,7 +5555,7 @@ class OrganizationsLocationsBucketsViewsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a view.
+  /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
   /// from the new view: filter.
@@ -5589,8 +5566,8 @@ class OrganizationsLocationsBucketsViewsResource {
   ///
   /// [name] - Required. The full resource name of the view to update
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -5598,8 +5575,8 @@ class OrganizationsLocationsBucketsViewsResource {
   /// need an update. A field will be overwritten if, and only if, it is in the
   /// update mask. name and output only fields cannot be updated.For a detailed
   /// FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5922,19 +5899,19 @@ class OrganizationsSinksResource {
   ///
   /// [parent] - Required. The resource in which to create the sink:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Logging before the addition of writer identities to this API. The sink's
-  /// destination must be in the same project as the sink itself.If this field
-  /// is set to true, or if the sink is owned by a non-project resource such as
-  /// an organization, then the value of writer_identity will be a unique
-  /// service account used only for exports from the new sink. For more
+  /// Cloud Logging before the addition of writer identities to this API. The
+  /// sink's destination must be in the same project as the sink itself.If this
+  /// field is set to true, or if the sink is owned by a non-project resource
+  /// such as an organization, then the value of writer_identity will be a
+  /// unique service account used only for exports from the new sink. For more
   /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5983,8 +5960,8 @@ class OrganizationsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6023,8 +6000,8 @@ class OrganizationsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6121,8 +6098,8 @@ class OrganizationsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -6138,11 +6115,11 @@ class OrganizationsSinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6195,8 +6172,8 @@ class OrganizationsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -6212,11 +6189,11 @@ class OrganizationsSinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6285,8 +6262,8 @@ class ProjectsExclusionsResource {
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-logging-project" "organizations/123456789"
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6329,8 +6306,8 @@ class ProjectsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^projects/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6369,8 +6346,8 @@ class ProjectsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^projects/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6463,8 +6440,8 @@ class ProjectsExclusionsResource {
   /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
-  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
-  /// "projects/my-project-id/exclusions/my-exclusion-id".
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" For
+  /// example:"projects/my-project/exclusions/my-exclusion"
   /// Value must have pattern `^projects/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
@@ -6616,17 +6593,17 @@ class ProjectsLocationsBucketsResource {
   ProjectsLocationsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a bucket that can be used to store log entries.
+  /// Creates a log bucket that can be used to store log entries.
   ///
-  /// Once a bucket has been created, the region cannot be changed.
+  /// After a bucket has been created, the bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
-  /// "projects/my-logging-project/locations/global"
+  /// [parent] - Required. The resource in which to create the log bucket:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
@@ -6666,10 +6643,11 @@ class ProjectsLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a bucket.
+  /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
+  /// DELETE_REQUESTED state.
   ///
-  /// Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket
-  /// will be purged and all logs in the bucket will be permanently deleted.
+  /// After 7 days, the bucket will be purged and all log entries in the bucket
+  /// will be permanently deleted.
   ///
   /// Request parameters:
   ///
@@ -6678,8 +6656,7 @@ class ProjectsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -6711,7 +6688,7 @@ class ProjectsLocationsBucketsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a bucket.
+  /// Gets a log bucket.
   ///
   /// Request parameters:
   ///
@@ -6720,8 +6697,7 @@ class ProjectsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -6753,7 +6729,7 @@ class ProjectsLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists buckets.
+  /// Lists log buckets.
   ///
   /// Request parameters:
   ///
@@ -6808,14 +6784,14 @@ class ProjectsLocationsBucketsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a bucket.
+  /// Updates a log bucket.
   ///
   /// This method replaces the following fields in the existing bucket with
   /// values from the new bucket: retention_periodIf the retention period is
   /// decreased and the bucket is locked, FAILED_PRECONDITION will be
-  /// returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-  /// FAILED_PRECONDITION will be returned.A buckets region may not be modified
-  /// after it is created.
+  /// returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+  /// FAILED_PRECONDITION will be returned.After a bucket has been created, the
+  /// bucket's location cannot be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6826,19 +6802,16 @@ class ProjectsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
-  /// requires permission "resourcemanager.projects.updateLiens" to set the
-  /// locked property
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
   /// it is in the update mask. name and output only fields cannot be
-  /// updated.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=retention_days.
+  /// updated.For a detailed FieldMask definition, see:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=retention_days
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6873,9 +6846,9 @@ class ProjectsLocationsBucketsResource {
     return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Undeletes a bucket.
+  /// Undeletes a log bucket.
   ///
-  /// A bucket that has been deleted may be undeleted within the grace period of
+  /// A bucket that has been deleted can be undeleted within the grace period of
   /// 7 days.
   ///
   /// [request] - The metadata request object.
@@ -6887,8 +6860,7 @@ class ProjectsLocationsBucketsResource {
   /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// For example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -6930,18 +6902,17 @@ class ProjectsLocationsBucketsViewsResource {
   ProjectsLocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a view over logs in a bucket.
+  /// Creates a view over log entries in a log bucket.
   ///
-  /// A bucket may contain a maximum of 50 views.
+  /// A bucket may contain a maximum of 30 views.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The bucket in which to create the view
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// Example:
-  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -6980,14 +6951,14 @@ class ProjectsLocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a view from a bucket.
+  /// Deletes a view on a log bucket.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -7019,14 +6990,14 @@ class ProjectsLocationsBucketsViewsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view.
+  /// Gets a view on a log bucket..
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the policy:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -7058,7 +7029,7 @@ class ProjectsLocationsBucketsViewsResource {
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists views on a bucket.
+  /// Lists views on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -7068,7 +7039,7 @@ class ProjectsLocationsBucketsViewsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
@@ -7109,7 +7080,7 @@ class ProjectsLocationsBucketsViewsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a view.
+  /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
   /// from the new view: filter.
@@ -7120,8 +7091,8 @@ class ProjectsLocationsBucketsViewsResource {
   ///
   /// [name] - Required. The full resource name of the view to update
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]"
-  /// Example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// For
+  /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
   ///
@@ -7129,8 +7100,8 @@ class ProjectsLocationsBucketsViewsResource {
   /// need an update. A field will be overwritten if, and only if, it is in the
   /// update mask. name and output only fields cannot be updated.For a detailed
   /// FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7667,19 +7638,19 @@ class ProjectsSinksResource {
   ///
   /// [parent] - Required. The resource in which to create the sink:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Logging before the addition of writer identities to this API. The sink's
-  /// destination must be in the same project as the sink itself.If this field
-  /// is set to true, or if the sink is owned by a non-project resource such as
-  /// an organization, then the value of writer_identity will be a unique
-  /// service account used only for exports from the new sink. For more
+  /// Cloud Logging before the addition of writer identities to this API. The
+  /// sink's destination must be in the same project as the sink itself.If this
+  /// field is set to true, or if the sink is owned by a non-project resource
+  /// such as an organization, then the value of writer_identity will be a
+  /// unique service account used only for exports from the new sink. For more
   /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7728,8 +7699,8 @@ class ProjectsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7768,8 +7739,8 @@ class ProjectsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7866,8 +7837,8 @@ class ProjectsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -7883,11 +7854,11 @@ class ProjectsSinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7940,8 +7911,8 @@ class ProjectsSinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -7957,11 +7928,11 @@ class ProjectsSinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8017,19 +7988,19 @@ class SinksResource {
   ///
   /// [parent] - Required. The resource in which to create the sink:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
-  /// "projects/my-logging-project", "organizations/123456789".
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" For
+  /// examples:"projects/my-project" "organizations/123456789"
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Logging before the addition of writer identities to this API. The sink's
-  /// destination must be in the same project as the sink itself.If this field
-  /// is set to true, or if the sink is owned by a non-project resource such as
-  /// an organization, then the value of writer_identity will be a unique
-  /// service account used only for exports from the new sink. For more
+  /// Cloud Logging before the addition of writer identities to this API. The
+  /// sink's destination must be in the same project as the sink itself.If this
+  /// field is set to true, or if the sink is owned by a non-project resource
+  /// such as an organization, then the value of writer_identity will be a
+  /// unique service account used only for exports from the new sink. For more
   /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8078,8 +8049,8 @@ class SinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8118,8 +8089,8 @@ class SinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8216,8 +8187,8 @@ class SinksResource {
   /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
   /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
-  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
-  /// "projects/my-project-id/sinks/my-sink-id".
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" For
+  /// example:"projects/my-project/sinks/my-sink"
   /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
@@ -8233,11 +8204,11 @@ class SinksResource {
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
   /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes: destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
+  /// backwards compatibility purposes:destination,filter,includeChildrenAt some
+  /// point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-  /// updateMask=filter.
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+  /// example: updateMask=filter
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8295,10 +8266,10 @@ class V2Resource {
   /// "projects/\[PROJECT_ID\]/cmekSettings"
   /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
-  /// "folders/\[FOLDER_ID\]/cmekSettings" Example:
-  /// "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
-  /// currently only be configured for GCP organizations. Once configured, it
-  /// applies to all projects and folders in the GCP organization.
+  /// "folders/\[FOLDER_ID\]/cmekSettings" For
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
+  /// can currently only be configured for GCP organizations. Once configured,
+  /// it applies to all projects and folders in the GCP organization.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8350,16 +8321,16 @@ class V2Resource {
   /// "projects/\[PROJECT_ID\]/cmekSettings"
   /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
-  /// "folders/\[FOLDER_ID\]/cmekSettings" Example:
-  /// "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
-  /// currently only be configured for GCP organizations. Once configured, it
-  /// applies to all projects and folders in the GCP organization.
+  /// "folders/\[FOLDER_ID\]/cmekSettings" For
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
+  /// can currently only be configured for GCP organizations. Once configured,
+  /// it applies to all projects and folders in the GCP organization.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from
   /// cmek_settings should be updated. A field will be overwritten if and only
   /// if it is in the update mask. Output only fields cannot be updated.See
-  /// FieldMask for more information.Example: "updateMask=kmsKeyName"
+  /// FieldMask for more information.For example: "updateMask=kmsKeyName"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8401,7 +8372,7 @@ class BigQueryOptions {
   /// Whether to use BigQuery's partition tables
   /// (https://cloud.google.com/bigquery/docs/partitioned-tables).
   ///
-  /// By default, Logging creates dated tables based on the log entries'
+  /// By default, Cloud Logging creates dated tables based on the log entries'
   /// timestamps, e.g. syslog_20170523. With partitioned tables the date suffix
   /// is no longer present and special query syntax
   /// (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has
@@ -8412,12 +8383,12 @@ class BigQueryOptions {
   core.bool? usePartitionedTables;
 
   /// True if new timestamp column based partitioning is in use, false if legacy
-  /// ingestion-time partitioning is in use.
+  /// ingestion-time partitioning is in use.All new sinks will have this field
+  /// set true and will use timestamp column based partitioning.
   ///
-  /// All new sinks will have this field set true and will use timestamp column
-  /// based partitioning. If use_partitioned_tables is false, this value has no
-  /// meaning and will be false. Legacy sinks using partitioned tables will have
-  /// this field set to false.
+  /// If use_partitioned_tables is false, this value has no meaning and will be
+  /// false. Legacy sinks using partitioned tables will have this field set to
+  /// false.
   ///
   /// Output only.
   core.bool? usesTimestampColumnPartitioning;
@@ -8524,9 +8495,9 @@ class CancelOperationRequest {
 /// information.
 class CmekSettings {
   /// The resource name for the configured Cloud KMS key.KMS key name format:
-  /// "projects/PROJECT_ID/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY"For
-  /// example:
-  /// "projects/my-project-id/locations/my-region/keyRings/key-ring-name/cryptoKeys/key-name"To
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]"
+  /// For
+  /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To
   /// enable CMEK for the Logs Router, set this field to a valid kms_key_name
   /// for which the associated service account has the required
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The
@@ -8614,10 +8585,8 @@ class CopyLogEntriesMetadata {
   core.String? state;
 
   /// The IAM identity of a service account that must be granted access to the
-  /// destination.
-  ///
-  /// If the service account is not granted permission to the destination within
-  /// an hour, the operation will be cancelled. Example:
+  /// destination.If the service account is not granted permission to the
+  /// destination within an hour, the operation will be cancelled.For example:
   /// "serviceAccount:foo@bar.com"
   core.String? writerIdentity;
 
@@ -8670,7 +8639,7 @@ class CopyLogEntriesMetadata {
 
 /// The parameters to CopyLogEntries.
 class CopyLogEntriesRequest {
-  /// Destination to which to copy logs.
+  /// Destination to which to copy log entries.
   ///
   /// Required.
   core.String? destination;
@@ -8683,9 +8652,8 @@ class CopyLogEntriesRequest {
   /// Optional.
   core.String? filter;
 
-  /// Bucket from which to copy logs.
-  ///
-  /// e.g. "projects/my-project/locations/my-location/buckets/my-source-bucket
+  /// Log bucket from which to copy log entries.For
+  /// example:"projects/my-project/locations/global/buckets/my-source-bucket"
   ///
   /// Required.
   core.String? name;
@@ -9633,7 +9601,7 @@ class Location {
       };
 }
 
-/// Describes a repository of logs.
+/// Describes a repository in which log entries are stored.
 class LogBucket {
   /// The creation timestamp of the bucket.
   ///
@@ -9656,30 +9624,29 @@ class LogBucket {
   /// user.
   core.String? lifecycleState;
 
-  /// Whether the bucket has been locked.
+  /// Whether the bucket is locked.The retention period on a locked bucket
+  /// cannot be changed.
   ///
-  /// The retention period on a locked bucket may not be changed. Locked buckets
-  /// may only be deleted if they are empty.
+  /// Locked buckets may only be deleted if they are empty.
   core.bool? locked;
 
-  /// The resource name of the bucket.
-  ///
-  /// For example:
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The
-  /// supported locations are: global, us-central1, us-east1, us-west1,
-  /// asia-east1, europe-west1.For the location of global it is unspecified
-  /// where logs are actually stored. Once a bucket has been created, the
-  /// location can not be changed.
+  /// The resource name of the bucket.For
+  /// example:projects/my-project/locations/global/buckets/my-bucketFor a list
+  /// of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support)For the location of
+  /// global it is unspecified where log entries are actually stored.After a
+  /// bucket has been created, the location cannot be changed.
   ///
   /// Output only.
   core.String? name;
 
-  /// Log entry field paths that are denied access in this bucket.
+  /// Log entry field paths that are denied access in this bucket.The following
+  /// fields and their children are eligible: textPayload, jsonPayload,
+  /// protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated
+  /// field will restrict all values.
   ///
-  /// The following fields and their children are eligible: textPayload,
-  /// jsonPayload, protoPayload, httpRequest, labels, sourceLocation.
-  /// Restricting a repeated field will restrict all values. Adding a parent
-  /// will block all child fields e.g. foo.bar will block foo.bar.baz.
+  /// Adding a parent will block all child fields. (e.g. foo.bar will block
+  /// foo.bar.baz)
   core.List<core.String>? restrictedFields;
 
   /// Logs will be retained by default for this amount of time, after which they
@@ -10140,11 +10107,11 @@ class LogEntrySourceLocation {
       };
 }
 
-/// Specifies a set of log entries that are not to be stored in Logging.
+/// Specifies a set of log entries that are not to be stored in Cloud Logging.
 ///
-/// If your GCP resource receives a large volume of logs, you can use exclusions
-/// to reduce your chargeable logs. Exclusions are processed after log sinks, so
-/// you can export log entries before they are excluded. Note that
+/// If your GCP resource receives a large volume of log entries, you can use
+/// exclusions to reduce your chargeable logs. Exclusions are processed after
+/// log sinks, so you can export log entries before they are excluded. Note that
 /// organization-level and folder-level exclusions don't apply to child
 /// resources, and that you can't exclude audit log entries.
 class LogExclusion {
@@ -10173,10 +10140,10 @@ class LogExclusion {
   ///
   /// By using the sample function
   /// (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you
-  /// can exclude less than 100% of the matching log entries. For example, the
+  /// can exclude less than 100% of the matching log entries.For example, the
   /// following query matches 99% of low-severity log entries from Google Cloud
-  /// Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId,
-  /// 0.99)"
+  /// Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId,
+  /// 0.99)
   ///
   /// Required.
   core.String? filter;
@@ -10498,7 +10465,7 @@ class LogMetric {
 
 /// Describes a sink used to export log entries to one of the following
 /// destinations in any project: a Cloud Storage bucket, a BigQuery dataset, a
-/// Cloud Pub/Sub topic or a Cloud Logging Bucket.
+/// Pub/Sub topic or a Cloud Logging log bucket.
 ///
 /// A logs filter controls which log entries are exported. The sink must be
 /// created within a project, organization, billing account, or folder.
@@ -10514,9 +10481,8 @@ class LogSink {
   /// Output only.
   core.String? createTime;
 
-  /// A description of this sink.
-  ///
-  /// The maximum length of the description is 8000 characters.
+  /// A description of this sink.The maximum length of the description is 8000
+  /// characters.
   ///
   /// Optional.
   core.String? description;
@@ -10533,16 +10499,15 @@ class LogSink {
   /// Required.
   core.String? destination;
 
-  /// If set to True, then this sink is disabled and it does not export any log
+  /// If set to true, then this sink is disabled and it does not export any log
   /// entries.
   ///
   /// Optional.
   core.bool? disabled;
 
-  /// Log entries that match any of the exclusion filters will not be exported.
-  ///
-  /// If a log entry is matched by both filter and one of exclusion_filters it
-  /// will not be exported.
+  /// Log entries that match any of these exclusion filters will not be
+  /// exported.If a log entry is matched by both filter and one of
+  /// exclusion_filters it will not be exported.
   ///
   /// Optional.
   core.List<LogExclusion>? exclusions;
@@ -10551,8 +10516,9 @@ class LogSink {
   /// (https://cloud.google.com/logging/docs/view/advanced-queries).
   ///
   /// The only exported log entries are those that are in the resource owning
-  /// the sink and that match the filter. For example:
-  /// logName="projects/\[PROJECT_ID\]/logs/\[LOG_ID\]" AND severity>=ERROR
+  /// the sink and that match the filter.For
+  /// example:logName="projects/\[PROJECT_ID\]/logs/\[LOG_ID\]" AND
+  /// severity>=ERROR
   ///
   /// Optional.
   core.String? filter;
@@ -10560,26 +10526,26 @@ class LogSink {
   /// This field applies only to sinks owned by organizations and folders.
   ///
   /// If the field is false, the default, only the logs owned by the sink's
-  /// parent resource are available for export. If the field is true, then logs
-  /// from all the projects, folders, and billing accounts contained in the
-  /// sink's parent resource are also available for export. Whether a particular
-  /// log entry from the children is exported depends on the sink's filter
-  /// expression. For example, if this field is true, then the filter
+  /// parent resource are available for export. If the field is true, then log
+  /// entries from all the projects, folders, and billing accounts contained in
+  /// the sink's parent resource are also available for export. Whether a
+  /// particular log entry from the children is exported depends on the sink's
+  /// filter expression.For example, if this field is true, then the filter
   /// resource.type=gce_instance would export all Compute Engine VM instance log
-  /// entries from all projects in the sink's parent. To only export entries
-  /// from certain child projects, filter on the project part of the log name:
-  /// logName:("projects/test-project1/" OR "projects/test-project2/") AND
+  /// entries from all projects in the sink's parent.To only export entries from
+  /// certain child projects, filter on the project part of the log
+  /// name:logName:("projects/test-project1/" OR "projects/test-project2/") AND
   /// resource.type=gce_instance
   ///
   /// Optional.
   core.bool? includeChildren;
 
-  /// The client-assigned sink identifier, unique within the project.
+  /// The client-assigned sink identifier, unique within the project.For
+  /// example: "my-syslog-errors-to-pubsub".
   ///
-  /// Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100
-  /// characters and can include only the following characters: upper and
-  /// lower-case alphanumeric characters, underscores, hyphens, and periods.
-  /// First character has to be alphanumeric.
+  /// Sink identifiers are limited to 100 characters and can include only the
+  /// following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, and periods. First character has to be alphanumeric.
   ///
   /// Required.
   core.String? name;
@@ -10600,8 +10566,8 @@ class LogSink {
   /// Output only.
   core.String? updateTime;
 
-  /// An IAM identity—a service account or group—under which Logging writes the
-  /// exported log entries to the sink's destination.
+  /// An IAM identity—a service account or group—under which Cloud Logging
+  /// writes the exported log entries to the sink's destination.
   ///
   /// This field is set by sinks.create and sinks.update based on the value of
   /// unique_writer_identity in those methods.Until you grant this identity
@@ -10690,7 +10656,7 @@ class LogSink {
       };
 }
 
-/// Describes a view over logs in a bucket.
+/// Describes a view over log entries in a bucket.
 class LogView {
   /// The creation timestamp of the view.
   ///
@@ -10701,19 +10667,21 @@ class LogView {
   core.String? description;
 
   /// Filter that restricts which log entries in a bucket are visible in this
-  /// view.
-  ///
-  /// Filters are restricted to be a logical AND of ==/!= of any of the
+  /// view.Filters are restricted to be a logical AND of ==/!= of any of the
   /// following: originating project/folder/organization/billing account.
-  /// resource type log id Example: SOURCE("projects/myproject") AND
+  ///
+  /// resource type log idFor example:SOURCE("projects/myproject") AND
   /// resource.type = "gce_instance" AND LOG_ID("stdout")
   core.String? filter;
 
-  /// The resource name of the view.
-  ///
-  /// For example
-  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
+  /// The resource name of the view.For
+  /// example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   core.String? name;
+
+  /// Describes the schema of the logs stored in the bucket that are accessible
+  /// via this view.This field is only populated for views in analytics-enabled
+  /// buckets.
+  TableSchema? schema;
 
   /// The last update timestamp of the view.
   ///
@@ -10725,6 +10693,7 @@ class LogView {
     this.description,
     this.filter,
     this.name,
+    this.schema,
     this.updateTime,
   });
 
@@ -10740,6 +10709,10 @@ class LogView {
               ? _json['filter'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          schema: _json.containsKey('schema')
+              ? TableSchema.fromJson(
+                  _json['schema'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -10750,6 +10723,7 @@ class LogView {
         if (description != null) 'description': description!,
         if (filter != null) 'filter': filter!,
         if (name != null) 'name': name!,
+        if (schema != null) 'schema': schema!.toJson(),
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -11204,7 +11178,9 @@ class MonitoredResourceDescriptor {
   /// The monitored resource type.
   ///
   /// For example, the type "cloudsql_database" represents databases in Google
-  /// Cloud SQL.
+  /// Cloud SQL. For a list of types, see Monitoring resource types
+  /// (https://cloud.google.com/monitoring/api/resources) and Logging resource
+  /// types (https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///
   /// Required.
   core.String? type;
@@ -11874,6 +11850,103 @@ class SuppressionInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (reason != null) 'reason': reason!,
         if (suppressedCount != null) 'suppressedCount': suppressedCount!,
+      };
+}
+
+/// A field in TableSchema.
+///
+/// The fields describe the static fields in the LogEntry. Any dynamic fields
+/// generated by the customer in fields like labels and jsonPayload are not
+/// listed in the schema as they use a native JSON type field.
+class TableFieldSchema {
+  /// The field description.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Describes the nested schema fields if the type property is set to RECORD.
+  ///
+  /// Optional.
+  core.List<TableFieldSchema>? fields;
+
+  /// The field mode.
+  ///
+  /// Possible values include NULLABLE, REQUIRED and REPEATED. The default value
+  /// is NULLABLE.
+  ///
+  /// Optional.
+  core.String? mode;
+
+  /// The field name corresponding to fields in the LogEntry.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The field data type.
+  ///
+  /// Possible values include: STRING INTEGER (or INT64) FLOAT (or FLOAT64)
+  /// BOOLEAN (or BOOL) TIMESTAMP RECORD (or STRUCT)Use of RECORD/STRUT
+  /// indicates that the field contains a nested schema.
+  ///
+  /// Required.
+  core.String? type;
+
+  TableFieldSchema({
+    this.description,
+    this.fields,
+    this.mode,
+    this.name,
+    this.type,
+  });
+
+  TableFieldSchema.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          fields: _json.containsKey('fields')
+              ? (_json['fields'] as core.List)
+                  .map<TableFieldSchema>((value) => TableFieldSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (fields != null)
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (mode != null) 'mode': mode!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Schema of a table containing logs.
+class TableSchema {
+  /// Describes the fields in a table.
+  core.List<TableFieldSchema>? fields;
+
+  TableSchema({
+    this.fields,
+  });
+
+  TableSchema.fromJson(core.Map _json)
+      : this(
+          fields: _json.containsKey('fields')
+              ? (_json['fields'] as core.List)
+                  .map<TableFieldSchema>((value) => TableFieldSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null)
+          'fields': fields!.map((value) => value.toJson()).toList(),
       };
 }
 

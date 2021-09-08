@@ -150,12 +150,12 @@ void checkAsymmetricSignResponse(api.AsymmetricSignResponse o) {
   buildCounterAsymmetricSignResponse--;
 }
 
-core.List<api.AuditLogConfig> buildUnnamed6119() => [
+core.List<api.AuditLogConfig> buildUnnamed6186() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
     ];
 
-void checkUnnamed6119(core.List<api.AuditLogConfig> o) {
+void checkUnnamed6186(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
@@ -166,7 +166,7 @@ api.AuditConfig buildAuditConfig() {
   final o = api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed6119();
+    o.auditLogConfigs = buildUnnamed6186();
     o.service = 'foo';
   }
   buildCounterAuditConfig--;
@@ -176,7 +176,7 @@ api.AuditConfig buildAuditConfig() {
 void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed6119(o.auditLogConfigs!);
+    checkUnnamed6186(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -185,12 +185,12 @@ void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig--;
 }
 
-core.List<core.String> buildUnnamed6120() => [
+core.List<core.String> buildUnnamed6187() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6120(core.List<core.String> o) {
+void checkUnnamed6187(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -207,7 +207,7 @@ api.AuditLogConfig buildAuditLogConfig() {
   final o = api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed6120();
+    o.exemptedMembers = buildUnnamed6187();
     o.logType = 'foo';
   }
   buildCounterAuditLogConfig--;
@@ -217,7 +217,7 @@ api.AuditLogConfig buildAuditLogConfig() {
 void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed6120(o.exemptedMembers!);
+    checkUnnamed6187(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -226,12 +226,12 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed6121() => [
+core.List<core.String> buildUnnamed6188() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6121(core.List<core.String> o) {
+void checkUnnamed6188(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -249,7 +249,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed6121();
+    o.members = buildUnnamed6188();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -260,7 +260,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition!);
-    checkUnnamed6121(o.members!);
+    checkUnnamed6188(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -269,12 +269,12 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
-core.List<core.String> buildUnnamed6122() => [
+core.List<core.String> buildUnnamed6189() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6122(core.List<core.String> o) {
+void checkUnnamed6189(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -286,12 +286,12 @@ void checkUnnamed6122(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6123() => [
+core.List<core.String> buildUnnamed6190() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6123(core.List<core.String> o) {
+void checkUnnamed6190(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -303,12 +303,12 @@ void checkUnnamed6123(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6124() => [
+core.List<core.String> buildUnnamed6191() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6124(core.List<core.String> o) {
+void checkUnnamed6191(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -325,9 +325,9 @@ api.CertificateChains buildCertificateChains() {
   final o = api.CertificateChains();
   buildCounterCertificateChains++;
   if (buildCounterCertificateChains < 3) {
-    o.caviumCerts = buildUnnamed6122();
-    o.googleCardCerts = buildUnnamed6123();
-    o.googlePartitionCerts = buildUnnamed6124();
+    o.caviumCerts = buildUnnamed6189();
+    o.googleCardCerts = buildUnnamed6190();
+    o.googlePartitionCerts = buildUnnamed6191();
   }
   buildCounterCertificateChains--;
   return o;
@@ -336,19 +336,19 @@ api.CertificateChains buildCertificateChains() {
 void checkCertificateChains(api.CertificateChains o) {
   buildCounterCertificateChains++;
   if (buildCounterCertificateChains < 3) {
-    checkUnnamed6122(o.caviumCerts!);
-    checkUnnamed6123(o.googleCardCerts!);
-    checkUnnamed6124(o.googlePartitionCerts!);
+    checkUnnamed6189(o.caviumCerts!);
+    checkUnnamed6190(o.googleCardCerts!);
+    checkUnnamed6191(o.googlePartitionCerts!);
   }
   buildCounterCertificateChains--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6125() => {
+core.Map<core.String, core.String> buildUnnamed6192() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6125(core.Map<core.String, core.String> o) {
+void checkUnnamed6192(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -366,7 +366,9 @@ api.CryptoKey buildCryptoKey() {
   buildCounterCryptoKey++;
   if (buildCounterCryptoKey < 3) {
     o.createTime = 'foo';
-    o.labels = buildUnnamed6125();
+    o.destroyScheduledDuration = 'foo';
+    o.importOnly = true;
+    o.labels = buildUnnamed6192();
     o.name = 'foo';
     o.nextRotationTime = 'foo';
     o.primary = buildCryptoKeyVersion();
@@ -385,7 +387,12 @@ void checkCryptoKey(api.CryptoKey o) {
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed6125(o.labels!);
+    unittest.expect(
+      o.destroyScheduledDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.importOnly!, unittest.isTrue);
+    checkUnnamed6192(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -425,6 +432,7 @@ api.CryptoKeyVersion buildCryptoKeyVersion() {
     o.importTime = 'foo';
     o.name = 'foo';
     o.protectionLevel = 'foo';
+    o.reimportEligible = true;
     o.state = 'foo';
   }
   buildCounterCryptoKeyVersion--;
@@ -476,6 +484,7 @@ void checkCryptoKeyVersion(api.CryptoKeyVersion o) {
       o.protectionLevel!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.reimportEligible!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -767,12 +776,67 @@ void checkExternalProtectionLevelOptions(api.ExternalProtectionLevelOptions o) {
   buildCounterExternalProtectionLevelOptions--;
 }
 
+core.int buildCounterGenerateRandomBytesRequest = 0;
+api.GenerateRandomBytesRequest buildGenerateRandomBytesRequest() {
+  final o = api.GenerateRandomBytesRequest();
+  buildCounterGenerateRandomBytesRequest++;
+  if (buildCounterGenerateRandomBytesRequest < 3) {
+    o.lengthBytes = 42;
+    o.protectionLevel = 'foo';
+  }
+  buildCounterGenerateRandomBytesRequest--;
+  return o;
+}
+
+void checkGenerateRandomBytesRequest(api.GenerateRandomBytesRequest o) {
+  buildCounterGenerateRandomBytesRequest++;
+  if (buildCounterGenerateRandomBytesRequest < 3) {
+    unittest.expect(
+      o.lengthBytes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.protectionLevel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGenerateRandomBytesRequest--;
+}
+
+core.int buildCounterGenerateRandomBytesResponse = 0;
+api.GenerateRandomBytesResponse buildGenerateRandomBytesResponse() {
+  final o = api.GenerateRandomBytesResponse();
+  buildCounterGenerateRandomBytesResponse++;
+  if (buildCounterGenerateRandomBytesResponse < 3) {
+    o.data = 'foo';
+    o.dataCrc32c = 'foo';
+  }
+  buildCounterGenerateRandomBytesResponse--;
+  return o;
+}
+
+void checkGenerateRandomBytesResponse(api.GenerateRandomBytesResponse o) {
+  buildCounterGenerateRandomBytesResponse++;
+  if (buildCounterGenerateRandomBytesResponse < 3) {
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataCrc32c!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGenerateRandomBytesResponse--;
+}
+
 core.int buildCounterImportCryptoKeyVersionRequest = 0;
 api.ImportCryptoKeyVersionRequest buildImportCryptoKeyVersionRequest() {
   final o = api.ImportCryptoKeyVersionRequest();
   buildCounterImportCryptoKeyVersionRequest++;
   if (buildCounterImportCryptoKeyVersionRequest < 3) {
     o.algorithm = 'foo';
+    o.cryptoKeyVersion = 'foo';
     o.importJob = 'foo';
     o.rsaAesWrappedKey = 'foo';
   }
@@ -785,6 +849,10 @@ void checkImportCryptoKeyVersionRequest(api.ImportCryptoKeyVersionRequest o) {
   if (buildCounterImportCryptoKeyVersionRequest < 3) {
     unittest.expect(
       o.algorithm!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cryptoKeyVersion!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -916,12 +984,12 @@ void checkKeyRing(api.KeyRing o) {
   buildCounterKeyRing--;
 }
 
-core.List<api.CryptoKeyVersion> buildUnnamed6126() => [
+core.List<api.CryptoKeyVersion> buildUnnamed6193() => [
       buildCryptoKeyVersion(),
       buildCryptoKeyVersion(),
     ];
 
-void checkUnnamed6126(core.List<api.CryptoKeyVersion> o) {
+void checkUnnamed6193(core.List<api.CryptoKeyVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCryptoKeyVersion(o[0]);
   checkCryptoKeyVersion(o[1]);
@@ -932,7 +1000,7 @@ api.ListCryptoKeyVersionsResponse buildListCryptoKeyVersionsResponse() {
   final o = api.ListCryptoKeyVersionsResponse();
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
-    o.cryptoKeyVersions = buildUnnamed6126();
+    o.cryptoKeyVersions = buildUnnamed6193();
     o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
@@ -943,7 +1011,7 @@ api.ListCryptoKeyVersionsResponse buildListCryptoKeyVersionsResponse() {
 void checkListCryptoKeyVersionsResponse(api.ListCryptoKeyVersionsResponse o) {
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
-    checkUnnamed6126(o.cryptoKeyVersions!);
+    checkUnnamed6193(o.cryptoKeyVersions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -956,12 +1024,12 @@ void checkListCryptoKeyVersionsResponse(api.ListCryptoKeyVersionsResponse o) {
   buildCounterListCryptoKeyVersionsResponse--;
 }
 
-core.List<api.CryptoKey> buildUnnamed6127() => [
+core.List<api.CryptoKey> buildUnnamed6194() => [
       buildCryptoKey(),
       buildCryptoKey(),
     ];
 
-void checkUnnamed6127(core.List<api.CryptoKey> o) {
+void checkUnnamed6194(core.List<api.CryptoKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCryptoKey(o[0]);
   checkCryptoKey(o[1]);
@@ -972,7 +1040,7 @@ api.ListCryptoKeysResponse buildListCryptoKeysResponse() {
   final o = api.ListCryptoKeysResponse();
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
-    o.cryptoKeys = buildUnnamed6127();
+    o.cryptoKeys = buildUnnamed6194();
     o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
@@ -983,7 +1051,7 @@ api.ListCryptoKeysResponse buildListCryptoKeysResponse() {
 void checkListCryptoKeysResponse(api.ListCryptoKeysResponse o) {
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
-    checkUnnamed6127(o.cryptoKeys!);
+    checkUnnamed6194(o.cryptoKeys!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -996,12 +1064,12 @@ void checkListCryptoKeysResponse(api.ListCryptoKeysResponse o) {
   buildCounterListCryptoKeysResponse--;
 }
 
-core.List<api.ImportJob> buildUnnamed6128() => [
+core.List<api.ImportJob> buildUnnamed6195() => [
       buildImportJob(),
       buildImportJob(),
     ];
 
-void checkUnnamed6128(core.List<api.ImportJob> o) {
+void checkUnnamed6195(core.List<api.ImportJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImportJob(o[0]);
   checkImportJob(o[1]);
@@ -1012,7 +1080,7 @@ api.ListImportJobsResponse buildListImportJobsResponse() {
   final o = api.ListImportJobsResponse();
   buildCounterListImportJobsResponse++;
   if (buildCounterListImportJobsResponse < 3) {
-    o.importJobs = buildUnnamed6128();
+    o.importJobs = buildUnnamed6195();
     o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
@@ -1023,7 +1091,7 @@ api.ListImportJobsResponse buildListImportJobsResponse() {
 void checkListImportJobsResponse(api.ListImportJobsResponse o) {
   buildCounterListImportJobsResponse++;
   if (buildCounterListImportJobsResponse < 3) {
-    checkUnnamed6128(o.importJobs!);
+    checkUnnamed6195(o.importJobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1036,12 +1104,12 @@ void checkListImportJobsResponse(api.ListImportJobsResponse o) {
   buildCounterListImportJobsResponse--;
 }
 
-core.List<api.KeyRing> buildUnnamed6129() => [
+core.List<api.KeyRing> buildUnnamed6196() => [
       buildKeyRing(),
       buildKeyRing(),
     ];
 
-void checkUnnamed6129(core.List<api.KeyRing> o) {
+void checkUnnamed6196(core.List<api.KeyRing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKeyRing(o[0]);
   checkKeyRing(o[1]);
@@ -1052,7 +1120,7 @@ api.ListKeyRingsResponse buildListKeyRingsResponse() {
   final o = api.ListKeyRingsResponse();
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
-    o.keyRings = buildUnnamed6129();
+    o.keyRings = buildUnnamed6196();
     o.nextPageToken = 'foo';
     o.totalSize = 42;
   }
@@ -1063,7 +1131,7 @@ api.ListKeyRingsResponse buildListKeyRingsResponse() {
 void checkListKeyRingsResponse(api.ListKeyRingsResponse o) {
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
-    checkUnnamed6129(o.keyRings!);
+    checkUnnamed6196(o.keyRings!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1076,12 +1144,12 @@ void checkListKeyRingsResponse(api.ListKeyRingsResponse o) {
   buildCounterListKeyRingsResponse--;
 }
 
-core.List<api.Location> buildUnnamed6130() => [
+core.List<api.Location> buildUnnamed6197() => [
       buildLocation(),
       buildLocation(),
     ];
 
-void checkUnnamed6130(core.List<api.Location> o) {
+void checkUnnamed6197(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -1092,7 +1160,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   final o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed6130();
+    o.locations = buildUnnamed6197();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -1102,7 +1170,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed6130(o.locations!);
+    checkUnnamed6197(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1111,12 +1179,12 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6131() => {
+core.Map<core.String, core.String> buildUnnamed6198() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6131(core.Map<core.String, core.String> o) {
+void checkUnnamed6198(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1128,7 +1196,7 @@ void checkUnnamed6131(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed6132() => {
+core.Map<core.String, core.Object> buildUnnamed6199() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1141,7 +1209,7 @@ core.Map<core.String, core.Object> buildUnnamed6132() => {
       },
     };
 
-void checkUnnamed6132(core.Map<core.String, core.Object> o) {
+void checkUnnamed6199(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1179,9 +1247,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed6131();
+    o.labels = buildUnnamed6198();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed6132();
+    o.metadata = buildUnnamed6199();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -1195,12 +1263,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed6131(o.labels!);
+    checkUnnamed6198(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed6132(o.metadata!);
+    checkUnnamed6199(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1230,23 +1298,161 @@ void checkLocationMetadata(api.LocationMetadata o) {
   buildCounterLocationMetadata--;
 }
 
-core.List<api.AuditConfig> buildUnnamed6133() => [
+core.int buildCounterMacSignRequest = 0;
+api.MacSignRequest buildMacSignRequest() {
+  final o = api.MacSignRequest();
+  buildCounterMacSignRequest++;
+  if (buildCounterMacSignRequest < 3) {
+    o.data = 'foo';
+    o.dataCrc32c = 'foo';
+  }
+  buildCounterMacSignRequest--;
+  return o;
+}
+
+void checkMacSignRequest(api.MacSignRequest o) {
+  buildCounterMacSignRequest++;
+  if (buildCounterMacSignRequest < 3) {
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataCrc32c!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMacSignRequest--;
+}
+
+core.int buildCounterMacSignResponse = 0;
+api.MacSignResponse buildMacSignResponse() {
+  final o = api.MacSignResponse();
+  buildCounterMacSignResponse++;
+  if (buildCounterMacSignResponse < 3) {
+    o.mac = 'foo';
+    o.macCrc32c = 'foo';
+    o.name = 'foo';
+    o.protectionLevel = 'foo';
+    o.verifiedDataCrc32c = true;
+  }
+  buildCounterMacSignResponse--;
+  return o;
+}
+
+void checkMacSignResponse(api.MacSignResponse o) {
+  buildCounterMacSignResponse++;
+  if (buildCounterMacSignResponse < 3) {
+    unittest.expect(
+      o.mac!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.macCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.protectionLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.verifiedDataCrc32c!, unittest.isTrue);
+  }
+  buildCounterMacSignResponse--;
+}
+
+core.int buildCounterMacVerifyRequest = 0;
+api.MacVerifyRequest buildMacVerifyRequest() {
+  final o = api.MacVerifyRequest();
+  buildCounterMacVerifyRequest++;
+  if (buildCounterMacVerifyRequest < 3) {
+    o.data = 'foo';
+    o.dataCrc32c = 'foo';
+    o.mac = 'foo';
+    o.macCrc32c = 'foo';
+  }
+  buildCounterMacVerifyRequest--;
+  return o;
+}
+
+void checkMacVerifyRequest(api.MacVerifyRequest o) {
+  buildCounterMacVerifyRequest++;
+  if (buildCounterMacVerifyRequest < 3) {
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mac!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.macCrc32c!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMacVerifyRequest--;
+}
+
+core.int buildCounterMacVerifyResponse = 0;
+api.MacVerifyResponse buildMacVerifyResponse() {
+  final o = api.MacVerifyResponse();
+  buildCounterMacVerifyResponse++;
+  if (buildCounterMacVerifyResponse < 3) {
+    o.name = 'foo';
+    o.protectionLevel = 'foo';
+    o.success = true;
+    o.verifiedDataCrc32c = true;
+    o.verifiedMacCrc32c = true;
+    o.verifiedSuccessIntegrity = true;
+  }
+  buildCounterMacVerifyResponse--;
+  return o;
+}
+
+void checkMacVerifyResponse(api.MacVerifyResponse o) {
+  buildCounterMacVerifyResponse++;
+  if (buildCounterMacVerifyResponse < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.protectionLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.success!, unittest.isTrue);
+    unittest.expect(o.verifiedDataCrc32c!, unittest.isTrue);
+    unittest.expect(o.verifiedMacCrc32c!, unittest.isTrue);
+    unittest.expect(o.verifiedSuccessIntegrity!, unittest.isTrue);
+  }
+  buildCounterMacVerifyResponse--;
+}
+
+core.List<api.AuditConfig> buildUnnamed6200() => [
       buildAuditConfig(),
       buildAuditConfig(),
     ];
 
-void checkUnnamed6133(core.List<api.AuditConfig> o) {
+void checkUnnamed6200(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed6134() => [
+core.List<api.Binding> buildUnnamed6201() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed6134(core.List<api.Binding> o) {
+void checkUnnamed6201(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -1257,8 +1463,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed6133();
-    o.bindings = buildUnnamed6134();
+    o.auditConfigs = buildUnnamed6200();
+    o.bindings = buildUnnamed6201();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1269,8 +1475,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed6133(o.auditConfigs!);
-    checkUnnamed6134(o.bindings!);
+    checkUnnamed6200(o.auditConfigs!);
+    checkUnnamed6201(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1364,12 +1570,12 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed6135() => [
+core.List<core.String> buildUnnamed6202() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6135(core.List<core.String> o) {
+void checkUnnamed6202(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1386,7 +1592,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed6135();
+    o.permissions = buildUnnamed6202();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1395,17 +1601,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed6135(o.permissions!);
+    checkUnnamed6202(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed6136() => [
+core.List<core.String> buildUnnamed6203() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6136(core.List<core.String> o) {
+void checkUnnamed6203(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1422,7 +1628,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed6136();
+    o.permissions = buildUnnamed6203();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1431,7 +1637,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed6136(o.permissions!);
+    checkUnnamed6203(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1673,6 +1879,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GenerateRandomBytesRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateRandomBytesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateRandomBytesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGenerateRandomBytesRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GenerateRandomBytesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateRandomBytesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateRandomBytesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGenerateRandomBytesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ImportCryptoKeyVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildImportCryptoKeyVersionRequest();
@@ -1783,6 +2009,46 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MacSignRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMacSignRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MacSignRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMacSignRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-MacSignResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMacSignResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MacSignResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMacSignResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-MacVerifyRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMacVerifyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MacVerifyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMacVerifyRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-MacVerifyResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMacVerifyResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MacVerifyResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMacVerifyResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPolicy();
@@ -1864,6 +2130,65 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--generateRandomBytes', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations;
+      final arg_request = buildGenerateRandomBytesRequest();
+      final arg_location = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GenerateRandomBytesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateRandomBytesRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGenerateRandomBytesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.generateRandomBytes(arg_request, arg_location,
+          $fields: arg_$fields);
+      checkGenerateRandomBytesResponse(
+          response as api.GenerateRandomBytesResponse);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock).projects.locations;
@@ -3497,6 +3822,132 @@ void main() {
           $fields: arg_$fields);
       checkListCryptoKeyVersionsResponse(
           response as api.ListCryptoKeyVersionsResponse);
+    });
+
+    unittest.test('method--macSign', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock)
+          .projects
+          .locations
+          .keyRings
+          .cryptoKeys
+          .cryptoKeyVersions;
+      final arg_request = buildMacSignRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.MacSignRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMacSignRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildMacSignResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.macSign(arg_request, arg_name, $fields: arg_$fields);
+      checkMacSignResponse(response as api.MacSignResponse);
+    });
+
+    unittest.test('method--macVerify', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock)
+          .projects
+          .locations
+          .keyRings
+          .cryptoKeys
+          .cryptoKeyVersions;
+      final arg_request = buildMacVerifyRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.MacVerifyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMacVerifyRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildMacVerifyResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.macVerify(arg_request, arg_name, $fields: arg_$fields);
+      checkMacVerifyResponse(response as api.MacVerifyResponse);
     });
 
     unittest.test('method--patch', () async {

@@ -141,8 +141,8 @@ class ActivitiesResource {
   /// - "context_aware_access" : The Context-aware access activity reports
   /// return information about users' access denied events due to Context-aware
   /// access rules.
-  /// - "chrome" : The Chrome activity reports return information about unsafe
-  /// events reported in the context of the WebProtect features of BeyondCorp.
+  /// - "chrome" : The Chrome activity reports return information about Chrome
+  /// browser and Chrome OS events.
   /// - "data_studio" : The Data Studio activity reports return information
   /// about various types of Data Studio activity events.
   /// - "keep" : The Keep application's activity reports return information
@@ -369,8 +369,8 @@ class ActivitiesResource {
   /// - "context_aware_access" : The Context-aware access activity reports
   /// return information about users' access denied events due to Context-aware
   /// access rules.
-  /// - "chrome" : The Chrome activity reports return information about unsafe
-  /// events reported in the context of the WebProtect features of BeyondCorp.
+  /// - "chrome" : The Chrome activity reports return information about Chrome
+  /// browser and Chrome OS events.
   /// - "data_studio" : The Data Studio activity reports return information
   /// about various types of Data Studio activity events.
   /// - "keep" : The Keep application's activity reports return information

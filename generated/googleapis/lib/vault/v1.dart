@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// G Suite Vault API - v1
+/// Google Vault API - v1
 ///
 /// Retention and eDiscovery for Google Workspace. To work with Vault resources,
 /// the account must have the

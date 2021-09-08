@@ -52,7 +52,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Security Command Center API provides access to temporal views of assets and
 /// findings within an organization.
 class SecurityCommandCenterApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -3261,6 +3262,217 @@ class Binding {
       };
 }
 
+/// CVE stands for Common Vulnerabilities and Exposures.
+///
+/// More information: https://cve.mitre.org
+class Cve {
+  /// Describe Common Vulnerability Scoring System specified at
+  /// https://www.first.org/cvss/v3.1/specification-document
+  Cvssv3? cvssv3;
+
+  /// The unique identifier for the vulnerability.
+  ///
+  /// e.g. CVE-2021-34527
+  core.String? id;
+
+  /// Additional information about the CVE.
+  ///
+  /// e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527
+  core.List<Reference>? references;
+
+  Cve({
+    this.cvssv3,
+    this.id,
+    this.references,
+  });
+
+  Cve.fromJson(core.Map _json)
+      : this(
+          cvssv3: _json.containsKey('cvssv3')
+              ? Cvssv3.fromJson(
+                  _json['cvssv3'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          references: _json.containsKey('references')
+              ? (_json['references'] as core.List)
+                  .map<Reference>((value) => Reference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cvssv3 != null) 'cvssv3': cvssv3!.toJson(),
+        if (id != null) 'id': id!,
+        if (references != null)
+          'references': references!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Common Vulnerability Scoring System version 3.
+class Cvssv3 {
+  /// This metric describes the conditions beyond the attacker's control that
+  /// must exist in order to exploit the vulnerability.
+  /// Possible string values are:
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED" : Invalid value.
+  /// - "ATTACK_COMPLEXITY_LOW" : Specialized access conditions or extenuating
+  /// circumstances do not exist. An attacker can expect repeatable success when
+  /// attacking the vulnerable component.
+  /// - "ATTACK_COMPLEXITY_HIGH" : A successful attack depends on conditions
+  /// beyond the attacker's control. That is, a successful attack cannot be
+  /// accomplished at will, but requires the attacker to invest in some
+  /// measurable amount of effort in preparation or execution against the
+  /// vulnerable component before a successful attack can be expected.
+  core.String? attackComplexity;
+
+  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
+  /// that are constant over time and across user environments.
+  ///
+  /// This metric reflects the context by which vulnerability exploitation is
+  /// possible.
+  /// Possible string values are:
+  /// - "ATTACK_VECTOR_UNSPECIFIED" : Invalid value.
+  /// - "ATTACK_VECTOR_NETWORK" : The vulnerable component is bound to the
+  /// network stack and the set of possible attackers extends beyond the other
+  /// options listed below, up to and including the entire Internet.
+  /// - "ATTACK_VECTOR_ADJACENT" : The vulnerable component is bound to the
+  /// network stack, but the attack is limited at the protocol level to a
+  /// logically adjacent topology.
+  /// - "ATTACK_VECTOR_LOCAL" : The vulnerable component is not bound to the
+  /// network stack and the attacker's path is via read/write/execute
+  /// capabilities.
+  /// - "ATTACK_VECTOR_PHYSICAL" : The attack requires the attacker to
+  /// physically touch or manipulate the vulnerable component.
+  core.String? attackVector;
+
+  /// This metric measures the impact to the availability of the impacted
+  /// component resulting from a successfully exploited vulnerability.
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Invalid value.
+  /// - "IMPACT_HIGH" : High impact.
+  /// - "IMPACT_LOW" : Low impact.
+  /// - "IMPACT_NONE" : No impact.
+  core.String? availabilityImpact;
+
+  /// The base score is a function of the base metric scores.
+  core.double? baseScore;
+
+  /// This metric measures the impact to the confidentiality of the information
+  /// resources managed by a software component due to a successfully exploited
+  /// vulnerability.
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Invalid value.
+  /// - "IMPACT_HIGH" : High impact.
+  /// - "IMPACT_LOW" : Low impact.
+  /// - "IMPACT_NONE" : No impact.
+  core.String? confidentialityImpact;
+
+  /// This metric measures the impact to integrity of a successfully exploited
+  /// vulnerability.
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Invalid value.
+  /// - "IMPACT_HIGH" : High impact.
+  /// - "IMPACT_LOW" : Low impact.
+  /// - "IMPACT_NONE" : No impact.
+  core.String? integrityImpact;
+
+  /// This metric describes the level of privileges an attacker must possess
+  /// before successfully exploiting the vulnerability.
+  /// Possible string values are:
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED" : Invalid value.
+  /// - "PRIVILEGES_REQUIRED_NONE" : The attacker is unauthorized prior to
+  /// attack, and therefore does not require any access to settings or files of
+  /// the vulnerable system to carry out an attack.
+  /// - "PRIVILEGES_REQUIRED_LOW" : The attacker requires privileges that
+  /// provide basic user capabilities that could normally affect only settings
+  /// and files owned by a user. Alternatively, an attacker with Low privileges
+  /// has the ability to access only non-sensitive resources.
+  /// - "PRIVILEGES_REQUIRED_HIGH" : The attacker requires privileges that
+  /// provide significant (e.g., administrative) control over the vulnerable
+  /// component allowing access to component-wide settings and files.
+  core.String? privilegesRequired;
+
+  /// The Scope metric captures whether a vulnerability in one vulnerable
+  /// component impacts resources in components beyond its security scope.
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : Invalid value.
+  /// - "SCOPE_UNCHANGED" : An exploited vulnerability can only affect resources
+  /// managed by the same security authority.
+  /// - "SCOPE_CHANGED" : An exploited vulnerability can affect resources beyond
+  /// the security scope managed by the security authority of the vulnerable
+  /// component.
+  core.String? scope;
+
+  /// This metric captures the requirement for a human user, other than the
+  /// attacker, to participate in the successful compromise of the vulnerable
+  /// component.
+  /// Possible string values are:
+  /// - "USER_INTERACTION_UNSPECIFIED" : Invalid value.
+  /// - "USER_INTERACTION_NONE" : The vulnerable system can be exploited without
+  /// interaction from any user.
+  /// - "USER_INTERACTION_REQUIRED" : Successful exploitation of this
+  /// vulnerability requires a user to take some action before the vulnerability
+  /// can be exploited.
+  core.String? userInteraction;
+
+  Cvssv3({
+    this.attackComplexity,
+    this.attackVector,
+    this.availabilityImpact,
+    this.baseScore,
+    this.confidentialityImpact,
+    this.integrityImpact,
+    this.privilegesRequired,
+    this.scope,
+    this.userInteraction,
+  });
+
+  Cvssv3.fromJson(core.Map _json)
+      : this(
+          attackComplexity: _json.containsKey('attackComplexity')
+              ? _json['attackComplexity'] as core.String
+              : null,
+          attackVector: _json.containsKey('attackVector')
+              ? _json['attackVector'] as core.String
+              : null,
+          availabilityImpact: _json.containsKey('availabilityImpact')
+              ? _json['availabilityImpact'] as core.String
+              : null,
+          baseScore: _json.containsKey('baseScore')
+              ? (_json['baseScore'] as core.num).toDouble()
+              : null,
+          confidentialityImpact: _json.containsKey('confidentialityImpact')
+              ? _json['confidentialityImpact'] as core.String
+              : null,
+          integrityImpact: _json.containsKey('integrityImpact')
+              ? _json['integrityImpact'] as core.String
+              : null,
+          privilegesRequired: _json.containsKey('privilegesRequired')
+              ? _json['privilegesRequired'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+          userInteraction: _json.containsKey('userInteraction')
+              ? _json['userInteraction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
+        if (attackVector != null) 'attackVector': attackVector!,
+        if (availabilityImpact != null)
+          'availabilityImpact': availabilityImpact!,
+        if (baseScore != null) 'baseScore': baseScore!,
+        if (confidentialityImpact != null)
+          'confidentialityImpact': confidentialityImpact!,
+        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
+        if (privilegesRequired != null)
+          'privilegesRequired': privilegesRequired!,
+        if (scope != null) 'scope': scope!,
+        if (userInteraction != null) 'userInteraction': userInteraction!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3512,6 +3724,12 @@ class Finding {
   /// otherwise addressed and is no longer active.
   core.String? state;
 
+  /// Represents vulnerability specific fields like cve, cvss scores etc.
+  ///
+  /// CVE stands for Common Vulnerabilities and Exposures
+  /// (https://cve.mitre.org/about/)
+  Vulnerability? vulnerability;
+
   Finding({
     this.canonicalName,
     this.category,
@@ -3527,6 +3745,7 @@ class Finding {
     this.severity,
     this.sourceProperties,
     this.state,
+    this.vulnerability,
   });
 
   Finding.fromJson(core.Map _json)
@@ -3579,6 +3798,10 @@ class Finding {
               : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
+          vulnerability: _json.containsKey('vulnerability')
+              ? Vulnerability.fromJson(
+                  _json['vulnerability'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3596,6 +3819,7 @@ class Finding {
         if (severity != null) 'severity': severity!,
         if (sourceProperties != null) 'sourceProperties': sourceProperties!,
         if (state != null) 'state': state!,
+        if (vulnerability != null) 'vulnerability': vulnerability!.toJson(),
       };
 }
 
@@ -3756,6 +3980,9 @@ class GoogleCloudSecuritycenterV1Resource {
   /// The human readable name of project that the resource belongs to.
   core.String? projectDisplayName;
 
+  /// The full resource type of the resource.
+  core.String? type;
+
   GoogleCloudSecuritycenterV1Resource({
     this.folders,
     this.name,
@@ -3763,6 +3990,7 @@ class GoogleCloudSecuritycenterV1Resource {
     this.parentDisplayName,
     this.project,
     this.projectDisplayName,
+    this.type,
   });
 
   GoogleCloudSecuritycenterV1Resource.fromJson(core.Map _json)
@@ -3786,6 +4014,7 @@ class GoogleCloudSecuritycenterV1Resource {
           projectDisplayName: _json.containsKey('projectDisplayName')
               ? _json['projectDisplayName'] as core.String
               : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3797,6 +4026,7 @@ class GoogleCloudSecuritycenterV1Resource {
         if (project != null) 'project': project!,
         if (projectDisplayName != null)
           'projectDisplayName': projectDisplayName!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -5298,7 +5528,7 @@ class OrganizationSettings {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -5385,6 +5615,34 @@ class Policy {
           'bindings': bindings!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Additional Links
+class Reference {
+  /// Source of the reference e.g. NVD
+  core.String? source;
+
+  /// Uri for the mentioned source e.g.
+  /// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527.
+  core.String? uri;
+
+  Reference({
+    this.source,
+    this.uri,
+  });
+
+  Reference.fromJson(core.Map _json)
+      : this(
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (source != null) 'source': source!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -5929,5 +6187,28 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
+class Vulnerability {
+  /// CVE stands for Common Vulnerabilities and Exposures
+  /// (https://cve.mitre.org/about/)
+  Cve? cve;
+
+  Vulnerability({
+    this.cve,
+  });
+
+  Vulnerability.fromJson(core.Map _json)
+      : this(
+          cve: _json.containsKey('cve')
+              ? Cve.fromJson(
+                  _json['cve'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cve != null) 'cve': cve!.toJson(),
       };
 }

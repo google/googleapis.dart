@@ -43,7 +43,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Network Management API provides a collection of network performance
 /// monitoring and diagnostic capabilities.
 class NetworkManagementApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2590,7 +2591,7 @@ class OperationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -2800,6 +2801,8 @@ class RouteInfo {
   /// either does not exist or is not running.
   /// - "NEXT_HOP_ILB" : Next hop is the forwarding rule of an Internal Load
   /// Balancer.
+  /// - "NEXT_HOP_ROUTER_APPLIANCE" : Next hop is a
+  /// [router appliance instance](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ra-overview).
   core.String? nextHopType;
 
   /// Priority of the route.

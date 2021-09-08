@@ -2001,7 +2001,7 @@ class DeviceClaim {
   /// The Additional service registered for the device.
   /// Possible string values are:
   /// - "ADDITIONAL_SERVICE_UNSPECIFIED" : No additional service.
-  /// - "DEVICE_PROTECTION" : Device protection service, as known as Android
+  /// - "DEVICE_PROTECTION" : Device protection service, also known as Android
   /// Enterprise Essentials. To claim a device with the device protection
   /// service you must enroll with the partnership team.
   core.String? additionalService;

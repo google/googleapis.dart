@@ -1833,8 +1833,8 @@ class ContentAdsSettings {
   /// - "FEED" : In-feed ad unit.
   /// - "ARTICLE" : In-article ad unit.
   /// - "MATCHED_CONTENT" : Matched content unit.
-  /// - "LINK" : Link ad unit. Note that link ad units are being retired, see
-  /// https://support.google.com/adsense/answer/9987221.
+  /// - "LINK" : Link ad unit. Note that link ad units have now been retired,
+  /// see https://support.google.com/adsense/answer/9987221.
   core.String? type;
 
   ContentAdsSettings({

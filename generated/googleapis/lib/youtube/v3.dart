@@ -4260,6 +4260,8 @@ class TestsResource {
   ///
   /// [part] - null
   ///
+  /// [externalChannelId] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4273,6 +4275,7 @@ class TestsResource {
   async.Future<TestItem> insert(
     TestItem request,
     core.List<core.String> part, {
+    core.String? externalChannelId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
@@ -4281,6 +4284,7 @@ class TestsResource {
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
+      if (externalChannelId != null) 'externalChannelId': [externalChannelId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -11408,6 +11412,50 @@ class LiveChatFanFundingEventDetails {
       };
 }
 
+class LiveChatMemberMilestoneChatDetails {
+  /// The name of the Level at which the viever is a member.
+  ///
+  /// The Level names are defined by the YouTube channel offering the
+  /// Membership. In some situations this field isn't filled.
+  core.String? memberLevelName;
+
+  /// The total amount of months (rounded up) the viewer has been a member that
+  /// granted them this Member Milestone Chat.
+  ///
+  /// This is the same number of months as is being displayed to YouTube users.
+  core.int? memberMonth;
+
+  /// The comment added by the member to this Member Milestone Chat.
+  ///
+  /// This field is empty for messages without a comment from the member.
+  core.String? userComment;
+
+  LiveChatMemberMilestoneChatDetails({
+    this.memberLevelName,
+    this.memberMonth,
+    this.userComment,
+  });
+
+  LiveChatMemberMilestoneChatDetails.fromJson(core.Map _json)
+      : this(
+          memberLevelName: _json.containsKey('memberLevelName')
+              ? _json['memberLevelName'] as core.String
+              : null,
+          memberMonth: _json.containsKey('memberMonth')
+              ? _json['memberMonth'] as core.int
+              : null,
+          userComment: _json.containsKey('userComment')
+              ? _json['userComment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memberLevelName != null) 'memberLevelName': memberLevelName!,
+        if (memberMonth != null) 'memberMonth': memberMonth!,
+        if (userComment != null) 'userComment': userComment!,
+      };
+}
+
 /// A *liveChatMessage* resource represents a chat message in a YouTube Live
 /// Chat.
 class LiveChatMessage {
@@ -11668,16 +11716,19 @@ class LiveChatMessageRetractedDetails {
       };
 }
 
+/// Next ID: 31
 class LiveChatMessageSnippet {
   /// The ID of the user that authored this message, this field is not always
   /// filled.
   ///
   /// textMessageEvent - the user that wrote the message fanFundingEvent - the
   /// user that funded the broadcast newSponsorEvent - the user that just became
-  /// a sponsor messageDeletedEvent - the moderator that took the action
+  /// a sponsor memberMilestoneChatEvent - the member that sent the message
+  /// messageDeletedEvent - the moderator that took the action
   /// messageRetractedEvent - the author that retracted their message
   /// userBannedEvent - the moderator that took the action superChatEvent - the
-  /// user that made the purchase
+  /// user that made the purchase superStickerEvent - the user that made the
+  /// purchase
   core.String? authorChannelId;
 
   /// Contains a string that can be displayed to the user.
@@ -11693,8 +11744,18 @@ class LiveChatMessageSnippet {
   /// Whether the message has display content that should be displayed to users.
   core.bool? hasDisplayContent;
   core.String? liveChatId;
+
+  /// Details about the Member Milestone Chat event, this is only set if the
+  /// type is 'memberMilestoneChatEvent'.
+  LiveChatMemberMilestoneChatDetails? memberMilestoneChatDetails;
   LiveChatMessageDeletedDetails? messageDeletedDetails;
   LiveChatMessageRetractedDetails? messageRetractedDetails;
+
+  /// Details about the New Member Announcement event, this is only set if the
+  /// type is 'newSponsorEvent'.
+  ///
+  /// Please note that "member" is the new term for "sponsor".
+  LiveChatNewSponsorDetails? newSponsorDetails;
 
   /// The date and time when the message was orignally published.
   core.DateTime? publishedAt;
@@ -11722,6 +11783,7 @@ class LiveChatMessageSnippet {
   /// - "sponsorOnlyModeStartedEvent"
   /// - "sponsorOnlyModeEndedEvent"
   /// - "newSponsorEvent"
+  /// - "memberMilestoneChatEvent"
   /// - "messageDeletedEvent"
   /// - "messageRetractedEvent"
   /// - "userBannedEvent"
@@ -11736,8 +11798,10 @@ class LiveChatMessageSnippet {
     this.fanFundingEventDetails,
     this.hasDisplayContent,
     this.liveChatId,
+    this.memberMilestoneChatDetails,
     this.messageDeletedDetails,
     this.messageRetractedDetails,
+    this.newSponsorDetails,
     this.publishedAt,
     this.superChatDetails,
     this.superStickerDetails,
@@ -11765,6 +11829,12 @@ class LiveChatMessageSnippet {
           liveChatId: _json.containsKey('liveChatId')
               ? _json['liveChatId'] as core.String
               : null,
+          memberMilestoneChatDetails:
+              _json.containsKey('memberMilestoneChatDetails')
+                  ? LiveChatMemberMilestoneChatDetails.fromJson(
+                      _json['memberMilestoneChatDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           messageDeletedDetails: _json.containsKey('messageDeletedDetails')
               ? LiveChatMessageDeletedDetails.fromJson(
                   _json['messageDeletedDetails']
@@ -11774,6 +11844,10 @@ class LiveChatMessageSnippet {
               ? LiveChatMessageRetractedDetails.fromJson(
                   _json['messageRetractedDetails']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          newSponsorDetails: _json.containsKey('newSponsorDetails')
+              ? LiveChatNewSponsorDetails.fromJson(_json['newSponsorDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           publishedAt: _json.containsKey('publishedAt')
               ? core.DateTime.parse(_json['publishedAt'] as core.String)
@@ -11806,10 +11880,14 @@ class LiveChatMessageSnippet {
           'fanFundingEventDetails': fanFundingEventDetails!.toJson(),
         if (hasDisplayContent != null) 'hasDisplayContent': hasDisplayContent!,
         if (liveChatId != null) 'liveChatId': liveChatId!,
+        if (memberMilestoneChatDetails != null)
+          'memberMilestoneChatDetails': memberMilestoneChatDetails!.toJson(),
         if (messageDeletedDetails != null)
           'messageDeletedDetails': messageDeletedDetails!.toJson(),
         if (messageRetractedDetails != null)
           'messageRetractedDetails': messageRetractedDetails!.toJson(),
+        if (newSponsorDetails != null)
+          'newSponsorDetails': newSponsorDetails!.toJson(),
         if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
         if (superChatDetails != null)
           'superChatDetails': superChatDetails!.toJson(),
@@ -11985,6 +12063,40 @@ class LiveChatModeratorSnippet {
         if (liveChatId != null) 'liveChatId': liveChatId!,
         if (moderatorDetails != null)
           'moderatorDetails': moderatorDetails!.toJson(),
+      };
+}
+
+class LiveChatNewSponsorDetails {
+  /// If the viewer just had upgraded from a lower level.
+  ///
+  /// For viewers that were not members at the time of purchase, this field is
+  /// false.
+  core.bool? isUpgrade;
+
+  /// The name of the Level that the viewer just had joined.
+  ///
+  /// The Level names are defined by the YouTube channel offering the
+  /// Membership. In some situations this field isn't filled.
+  core.String? memberLevelName;
+
+  LiveChatNewSponsorDetails({
+    this.isUpgrade,
+    this.memberLevelName,
+  });
+
+  LiveChatNewSponsorDetails.fromJson(core.Map _json)
+      : this(
+          isUpgrade: _json.containsKey('isUpgrade')
+              ? _json['isUpgrade'] as core.bool
+              : null,
+          memberLevelName: _json.containsKey('memberLevelName')
+              ? _json['memberLevelName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isUpgrade != null) 'isUpgrade': isUpgrade!,
+        if (memberLevelName != null) 'memberLevelName': memberLevelName!,
       };
 }
 

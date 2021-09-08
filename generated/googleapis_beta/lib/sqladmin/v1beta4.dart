@@ -47,7 +47,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// API for Cloud SQL database instance management
 class SQLAdminApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -88,7 +89,7 @@ class BackupRunsResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
-  /// [id] - The ID of the Backup Run to delete. To find a Backup Run ID, use
+  /// [id] - The ID of the backup run to delete. To find a backup run ID, use
   /// the list method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -134,7 +135,7 @@ class BackupRunsResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
-  /// [id] - The ID of this Backup Run.
+  /// [id] - The ID of this backup run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -172,8 +173,6 @@ class BackupRunsResource {
   }
 
   /// Creates a new backup run on demand.
-  ///
-  /// This method is applicable only to Second Generation instances.
   ///
   /// [request] - The metadata request object.
   ///
@@ -673,7 +672,7 @@ class FlagsResource {
 
   FlagsResource(commons.ApiRequester client) : _requester = client;
 
-  /// List all available database flags for Cloud SQL instances.
+  /// Lists all available database flags for Cloud SQL instances.
   ///
   /// Request parameters:
   ///
@@ -950,9 +949,13 @@ class InstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Failover the instance to its failover replica instance.
+  /// Initiates a manual failover of a high availability (HA) primary instance
+  /// to a standby instance, which becomes the primary instance.
   ///
-  /// Using this operation might cause your instance to restart.
+  /// Users are then rerouted to the new primary. For more information, see the
+  /// Overview of high availability page in the Cloud SQL documentation. If
+  /// using Legacy HA (MySQL only), this causes the instance to failover to its
+  /// failover replica instance.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1837,22 +1840,13 @@ class ProjectsInstancesResource {
 
   /// Start External primary instance migration.
   ///
+  /// [request] - The metadata request object.
+  ///
   /// Request parameters:
   ///
   /// [project] - ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
-  ///
-  /// [skipVerification] - Whether to skip the verification step (VESS).
-  ///
-  /// [syncMode] - External sync mode.
-  /// Possible string values are:
-  /// - "EXTERNAL_SYNC_MODE_UNSPECIFIED" : Unknown external sync mode, will be
-  /// defaulted to ONLINE mode
-  /// - "ONLINE" : Online external sync will set up replication after initial
-  /// data external sync
-  /// - "OFFLINE" : Offline external sync only dumps and loads a one-time
-  /// snapshot of the primary instance's data
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1865,15 +1859,13 @@ class ProjectsInstancesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> startExternalSync(
+    SqlInstancesStartExternalSyncRequest request,
     core.String project,
     core.String instance, {
-    core.bool? skipVerification,
-    core.String? syncMode,
     core.String? $fields,
   }) async {
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
-      if (skipVerification != null) 'skipVerification': ['${skipVerification}'],
-      if (syncMode != null) 'syncMode': [syncMode],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1886,6 +1878,7 @@ class ProjectsInstancesResource {
     final _response = await _requester.request(
       _url,
       'POST',
+      body: _body,
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -1893,22 +1886,13 @@ class ProjectsInstancesResource {
 
   /// Verify External primary instance external sync settings.
   ///
+  /// [request] - The metadata request object.
+  ///
   /// Request parameters:
   ///
   /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
-  ///
-  /// [syncMode] - External sync mode
-  /// Possible string values are:
-  /// - "EXTERNAL_SYNC_MODE_UNSPECIFIED" : Unknown external sync mode, will be
-  /// defaulted to ONLINE mode
-  /// - "ONLINE" : Online external sync will set up replication after initial
-  /// data external sync
-  /// - "OFFLINE" : Offline external sync only dumps and loads a one-time
-  /// snapshot of the primary instance's data
-  ///
-  /// [verifyConnectionOnly] - Flag to enable verifying connection only
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1922,16 +1906,13 @@ class ProjectsInstancesResource {
   /// this method will complete with the same error.
   async.Future<SqlInstancesVerifyExternalSyncSettingsResponse>
       verifyExternalSyncSettings(
+    SqlInstancesVerifyExternalSyncSettingsRequest request,
     core.String project,
     core.String instance, {
-    core.String? syncMode,
-    core.bool? verifyConnectionOnly,
     core.String? $fields,
   }) async {
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
-      if (syncMode != null) 'syncMode': [syncMode],
-      if (verifyConnectionOnly != null)
-        'verifyConnectionOnly': ['${verifyConnectionOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1944,6 +1925,7 @@ class ProjectsInstancesResource {
     final _response = await _requester.request(
       _url,
       'POST',
+      body: _body,
       queryParams: _queryParams,
     );
     return SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(
@@ -2694,13 +2676,9 @@ class BackupRun {
   core.String? description;
 
   /// Encryption configuration specific to a backup.
-  ///
-  /// Applies only to Second Generation instances.
   DiskEncryptionConfiguration? diskEncryptionConfiguration;
 
   /// Encryption status specific to a backup.
-  ///
-  /// Applies only to Second Generation instances.
   DiskEncryptionStatus? diskEncryptionStatus;
 
   /// The time the backup operation completed in UTC timezone in RFC 3339
@@ -3189,9 +3167,9 @@ class DatabaseFlags {
   /// The name of the flag.
   ///
   /// These flags are passed at instance startup, so include both server options
-  /// and system variables for MySQL. Flags are specified with underscores, not
-  /// hyphens. For more information, see Configuring Database Flags in the Cloud
-  /// SQL documentation.
+  /// and system variables. Flags are specified with underscores, not hyphens.
+  /// For more information, see Configuring Database Flags in the Cloud SQL
+  /// documentation.
   core.String? name;
 
   /// The value of the flag.
@@ -3219,8 +3197,6 @@ class DatabaseFlags {
 }
 
 /// The name and status of the failover replica.
-///
-/// This property is applicable only to Second Generation instances.
 class DatabaseInstanceFailoverReplica {
   /// The availability status of the failover replica.
   ///
@@ -3232,8 +3208,7 @@ class DatabaseInstanceFailoverReplica {
   /// The name of the failover replica.
   ///
   /// If specified at instance creation, a failover replica is created for the
-  /// instance. The name doesn't include the project ID. This property is
-  /// applicable only to Second Generation instances.
+  /// instance. The name doesn't include the project ID.
   core.String? name;
 
   DatabaseInstanceFailoverReplica({
@@ -3273,6 +3248,13 @@ class DatabaseInstance {
   /// Connection name of the Cloud SQL instance used in connection strings.
   core.String? connectionName;
 
+  /// The time when the instance was created in RFC 3339 format
+  /// (https://tools.ietf.org/html/rfc3339), for example
+  /// 2012-11-15T16:19:00.094Z
+  ///
+  /// Output only.
+  core.String? createTime;
+
   /// The current disk usage of the instance in bytes.
   ///
   /// This property has been deprecated. Use the
@@ -3285,7 +3267,9 @@ class DatabaseInstance {
   /// The *databaseVersion* field cannot be changed after instance creation.
   /// MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*.
   /// PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*,
-  /// *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances:
+  /// *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances:
+  /// *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*,
+  /// *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*,
   /// *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*,
   /// *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
   /// Possible string values are:
@@ -3318,13 +3302,9 @@ class DatabaseInstance {
   core.String? databaseVersion;
 
   /// Disk encryption configuration specific to an instance.
-  ///
-  /// Applies only to Second Generation instances.
   DiskEncryptionConfiguration? diskEncryptionConfiguration;
 
   /// Disk encryption status specific to an instance.
-  ///
-  /// Applies only to Second Generation instances.
   DiskEncryptionStatus? diskEncryptionStatus;
 
   /// This field is deprecated and will be removed from a future version of the
@@ -3334,8 +3314,6 @@ class DatabaseInstance {
   core.String? etag;
 
   /// The name and status of the failover replica.
-  ///
-  /// This property is applicable only to Second Generation instances.
   DatabaseInstanceFailoverReplica? failoverReplica;
 
   /// The Compute Engine zone that the instance is currently serving from.
@@ -3468,6 +3446,8 @@ class DatabaseInstance {
   /// - "MAINTENANCE" : The instance is down for maintenance.
   /// - "FAILED" : The creation of the instance failed or a fatal error occurred
   /// during maintenance.
+  /// - "ONLINE_MAINTENANCE" : The instance is under maintenance operations and
+  /// the database is available.
   core.String? state;
 
   /// If the instance state is SUSPENDED, the reason for the suspension.
@@ -3476,6 +3456,7 @@ class DatabaseInstance {
   DatabaseInstance({
     this.backendType,
     this.connectionName,
+    this.createTime,
     this.currentDiskSize,
     this.databaseVersion,
     this.diskEncryptionConfiguration,
@@ -3515,6 +3496,9 @@ class DatabaseInstance {
               : null,
           connectionName: _json.containsKey('connectionName')
               ? _json['connectionName'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
               : null,
           currentDiskSize: _json.containsKey('currentDiskSize')
               ? _json['currentDiskSize'] as core.String
@@ -3625,6 +3609,7 @@ class DatabaseInstance {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backendType != null) 'backendType': backendType!,
         if (connectionName != null) 'connectionName': connectionName!,
+        if (createTime != null) 'createTime': createTime!,
         if (currentDiskSize != null) 'currentDiskSize': currentDiskSize!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (diskEncryptionConfiguration != null)
@@ -3751,20 +3736,24 @@ class DemoteMasterContext {
   /// primary instance.
   DemoteMasterConfiguration? replicaConfiguration;
 
+  /// Flag to skip replication setup on the instance.
+  core.bool? skipReplicationSetup;
+
   /// Verify GTID consistency for demote operation.
   ///
-  /// Default value: *True*. Second Generation instances only. Setting this flag
-  /// to false enables you to bypass GTID consistency check between on-premises
-  /// primary instance and Cloud SQL instance during the demotion operation but
-  /// also exposes you to the risk of future replication failures. Change the
-  /// value only if you know the reason for the GTID divergence and are
-  /// confident that doing so will not cause any replication issues.
+  /// Default value: *True*. Setting this flag to false enables you to bypass
+  /// GTID consistency check between on-premises primary instance and Cloud SQL
+  /// instance during the demotion operation but also exposes you to the risk of
+  /// future replication failures. Change the value only if you know the reason
+  /// for the GTID divergence and are confident that doing so will not cause any
+  /// replication issues.
   core.bool? verifyGtidConsistency;
 
   DemoteMasterContext({
     this.kind,
     this.masterInstanceName,
     this.replicaConfiguration,
+    this.skipReplicationSetup,
     this.verifyGtidConsistency,
   });
 
@@ -3778,6 +3767,9 @@ class DemoteMasterContext {
               ? DemoteMasterConfiguration.fromJson(_json['replicaConfiguration']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          skipReplicationSetup: _json.containsKey('skipReplicationSetup')
+              ? _json['skipReplicationSetup'] as core.bool
+              : null,
           verifyGtidConsistency: _json.containsKey('verifyGtidConsistency')
               ? _json['verifyGtidConsistency'] as core.bool
               : null,
@@ -3789,6 +3781,8 @@ class DemoteMasterContext {
           'masterInstanceName': masterInstanceName!,
         if (replicaConfiguration != null)
           'replicaConfiguration': replicaConfiguration!.toJson(),
+        if (skipReplicationSetup != null)
+          'skipReplicationSetup': skipReplicationSetup!,
         if (verifyGtidConsistency != null)
           'verifyGtidConsistency': verifyGtidConsistency!,
       };
@@ -4215,8 +4209,6 @@ class Flag {
   core.String? name;
 
   /// Indicates whether changing this flag will trigger a database restart.
-  ///
-  /// Only applicable to Second Generation instances.
   core.bool? requiresRestart;
 
   /// The type of the flag.
@@ -4588,9 +4580,10 @@ class InsightsConfig {
   /// Whether Query Insights feature is enabled.
   core.bool? queryInsightsEnabled;
 
-  /// Number of query plans generated by Insights per minute.
+  /// Number of query execution plans captured by Insights per minute for all
+  /// queries combined.
   ///
-  /// Default is 5. Changing this will restart the database.
+  /// Default is 5.
   core.int? queryPlansPerMinute;
 
   /// Maximum query length stored in bytes.
@@ -4645,6 +4638,45 @@ class InsightsConfig {
           'recordApplicationTags': recordApplicationTags!,
         if (recordClientAddress != null)
           'recordClientAddress': recordClientAddress!,
+      };
+}
+
+/// Reference to another Cloud SQL instance.
+class InstanceReference {
+  /// The name of the Cloud SQL instance being referenced.
+  ///
+  /// This does not include the project ID.
+  core.String? name;
+
+  /// The project ID of the Cloud SQL instance being referenced.
+  ///
+  /// The default is the same project ID as the instance references it.
+  core.String? project;
+
+  /// The region of the Cloud SQL instance being referenced.
+  core.String? region;
+
+  InstanceReference({
+    this.name,
+    this.project,
+    this.region,
+  });
+
+  InstanceReference.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (project != null) 'project': project!,
+        if (region != null) 'region': region!,
       };
 }
 
@@ -4923,6 +4955,15 @@ class InstancesTruncateLogRequest {
 
 /// IP Management configuration.
 class IpConfiguration {
+  /// The name of the allocated ip range for the private ip CloudSQL instance.
+  ///
+  /// For example: "google-managed-services-default". If set, the instance ip
+  /// will be created in the allocated range. The range name must comply with
+  /// [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name
+  /// must be 1-63 characters long and match the regular expression
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+  core.String? allocatedIpRange;
+
   /// The list of external networks that are allowed to connect to the instance
   /// using the IP.
   ///
@@ -4944,6 +4985,7 @@ class IpConfiguration {
   core.bool? requireSsl;
 
   IpConfiguration({
+    this.allocatedIpRange,
     this.authorizedNetworks,
     this.ipv4Enabled,
     this.privateNetwork,
@@ -4952,6 +4994,9 @@ class IpConfiguration {
 
   IpConfiguration.fromJson(core.Map _json)
       : this(
+          allocatedIpRange: _json.containsKey('allocatedIpRange')
+              ? _json['allocatedIpRange'] as core.String
+              : null,
           authorizedNetworks: _json.containsKey('authorizedNetworks')
               ? (_json['authorizedNetworks'] as core.List)
                   .map<AclEntry>((value) => AclEntry.fromJson(
@@ -4970,6 +5015,7 @@ class IpConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
         if (authorizedNetworks != null)
           'authorizedNetworks':
               authorizedNetworks!.map((value) => value.toJson()).toList(),
@@ -5252,6 +5298,32 @@ class MySqlReplicaConfiguration {
       };
 }
 
+/// MySQL-specific external server sync settings.
+class MySqlSyncConfig {
+  /// Flags to use for the initial dump.
+  core.List<SyncFlags>? initialSyncFlags;
+
+  MySqlSyncConfig({
+    this.initialSyncFlags,
+  });
+
+  MySqlSyncConfig.fromJson(core.Map _json)
+      : this(
+          initialSyncFlags: _json.containsKey('initialSyncFlags')
+              ? (_json['initialSyncFlags'] as core.List)
+                  .map<SyncFlags>((value) => SyncFlags.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (initialSyncFlags != null)
+          'initialSyncFlags':
+              initialSyncFlags!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// On-premises instance configuration.
 class OnPremisesConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
@@ -5277,6 +5349,9 @@ class OnPremisesConfiguration {
   /// The password for connecting to on-premises instance.
   core.String? password;
 
+  /// The reference to Cloud SQL instance if the source is Cloud SQL.
+  InstanceReference? sourceInstance;
+
   /// The username for connecting to on-premises instance.
   core.String? username;
 
@@ -5288,6 +5363,7 @@ class OnPremisesConfiguration {
     this.hostPort,
     this.kind,
     this.password,
+    this.sourceInstance,
     this.username,
   });
 
@@ -5312,6 +5388,10 @@ class OnPremisesConfiguration {
           password: _json.containsKey('password')
               ? _json['password'] as core.String
               : null,
+          sourceInstance: _json.containsKey('sourceInstance')
+              ? InstanceReference.fromJson(_json['sourceInstance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           username: _json.containsKey('username')
               ? _json['username'] as core.String
               : null,
@@ -5325,6 +5405,7 @@ class OnPremisesConfiguration {
         if (hostPort != null) 'hostPort': hostPort!,
         if (kind != null) 'kind': kind!,
         if (password != null) 'password': password!,
+        if (sourceInstance != null) 'sourceInstance': sourceInstance!.toJson(),
         if (username != null) 'username': username!,
       };
 }
@@ -5889,8 +5970,7 @@ class Settings {
   /// The settings for IP Management.
   ///
   /// This allows to enable or disable the instance IP and manage which external
-  /// networks can connect to the instance. The IPv4 address cannot be disabled
-  /// for Second Generation instances.
+  /// networks can connect to the instance. The IPv4 address cannot be disabled.
   IpConfiguration? ipConfiguration;
 
   /// This is always *sql#settings*.
@@ -6246,6 +6326,99 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reschedule != null) 'reschedule': reschedule!.toJson(),
+      };
+}
+
+class SqlInstancesStartExternalSyncRequest {
+  /// MySQL-specific settings for start external sync.
+  MySqlSyncConfig? mysqlSyncConfig;
+
+  /// Whether to skip the verification step (VESS).
+  core.bool? skipVerification;
+
+  /// External sync mode.
+  /// Possible string values are:
+  /// - "EXTERNAL_SYNC_MODE_UNSPECIFIED" : Unknown external sync mode, will be
+  /// defaulted to ONLINE mode
+  /// - "ONLINE" : Online external sync will set up replication after initial
+  /// data external sync
+  /// - "OFFLINE" : Offline external sync only dumps and loads a one-time
+  /// snapshot of the primary instance's data
+  core.String? syncMode;
+
+  SqlInstancesStartExternalSyncRequest({
+    this.mysqlSyncConfig,
+    this.skipVerification,
+    this.syncMode,
+  });
+
+  SqlInstancesStartExternalSyncRequest.fromJson(core.Map _json)
+      : this(
+          mysqlSyncConfig: _json.containsKey('mysqlSyncConfig')
+              ? MySqlSyncConfig.fromJson(_json['mysqlSyncConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          skipVerification: _json.containsKey('skipVerification')
+              ? _json['skipVerification'] as core.bool
+              : null,
+          syncMode: _json.containsKey('syncMode')
+              ? _json['syncMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mysqlSyncConfig != null)
+          'mysqlSyncConfig': mysqlSyncConfig!.toJson(),
+        if (skipVerification != null) 'skipVerification': skipVerification!,
+        if (syncMode != null) 'syncMode': syncMode!,
+      };
+}
+
+class SqlInstancesVerifyExternalSyncSettingsRequest {
+  /// MySQL-specific settings for start external sync.
+  ///
+  /// Optional.
+  MySqlSyncConfig? mysqlSyncConfig;
+
+  /// External sync mode
+  /// Possible string values are:
+  /// - "EXTERNAL_SYNC_MODE_UNSPECIFIED" : Unknown external sync mode, will be
+  /// defaulted to ONLINE mode
+  /// - "ONLINE" : Online external sync will set up replication after initial
+  /// data external sync
+  /// - "OFFLINE" : Offline external sync only dumps and loads a one-time
+  /// snapshot of the primary instance's data
+  core.String? syncMode;
+
+  /// Flag to enable verifying connection only
+  core.bool? verifyConnectionOnly;
+
+  SqlInstancesVerifyExternalSyncSettingsRequest({
+    this.mysqlSyncConfig,
+    this.syncMode,
+    this.verifyConnectionOnly,
+  });
+
+  SqlInstancesVerifyExternalSyncSettingsRequest.fromJson(core.Map _json)
+      : this(
+          mysqlSyncConfig: _json.containsKey('mysqlSyncConfig')
+              ? MySqlSyncConfig.fromJson(_json['mysqlSyncConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          syncMode: _json.containsKey('syncMode')
+              ? _json['syncMode'] as core.String
+              : null,
+          verifyConnectionOnly: _json.containsKey('verifyConnectionOnly')
+              ? _json['verifyConnectionOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mysqlSyncConfig != null)
+          'mysqlSyncConfig': mysqlSyncConfig!.toJson(),
+        if (syncMode != null) 'syncMode': syncMode!,
+        if (verifyConnectionOnly != null)
+          'verifyConnectionOnly': verifyConnectionOnly!,
       };
 }
 
@@ -6687,6 +6860,36 @@ class SslCertsListResponse {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Initial sync flags for certain Cloud SQL APIs.
+///
+/// Currently used for the MySQL external server initial dump.
+class SyncFlags {
+  /// The name of the flag.
+  core.String? name;
+
+  /// The value of the flag.
+  ///
+  /// This field must be omitted if the flag doesn't take a value.
+  core.String? value;
+
+  SyncFlags({
+    this.name,
+    this.value,
+  });
+
+  SyncFlags.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 

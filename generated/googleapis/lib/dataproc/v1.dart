@@ -46,7 +46,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 class DataprocApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1430,6 +1431,15 @@ class ProjectsRegionsClustersResource {
   ///
   /// [region] - Required. The Dataproc region in which to handle the request.
   ///
+  /// [actionOnFailedPrimaryWorkers] - Optional. Failure action when primary
+  /// worker creation fails.
+  /// Possible string values are:
+  /// - "FAILURE_ACTION_UNSPECIFIED" : When FailureAction is unspecified,
+  /// failure action defaults to NO_ACTION.
+  /// - "NO_ACTION" : Take no action on failure to create a cluster resource.
+  /// NO_ACTION is the default.
+  /// - "DELETE" : Delete the failed cluster resource.
+  ///
   /// [requestId] - Optional. A unique ID used to identify the request. If the
   /// server receives two CreateClusterRequest
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s
@@ -1454,11 +1464,14 @@ class ProjectsRegionsClustersResource {
     Cluster request,
     core.String projectId,
     core.String region, {
+    core.String? actionOnFailedPrimaryWorkers,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
+      if (actionOnFailedPrimaryWorkers != null)
+        'actionOnFailedPrimaryWorkers': [actionOnFailedPrimaryWorkers],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -4020,8 +4033,8 @@ class CancelJobRequest {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// Describes the identifying information, config, and status of a cluster of
-/// Compute Engine instances.
+/// Describes the identifying information, config, and status of a Dataproc
+/// cluster
 class Cluster {
   /// The cluster name.
   ///
@@ -4038,12 +4051,12 @@ class Cluster {
   /// Output only.
   core.String? clusterUuid;
 
-  /// The cluster config.
+  /// The cluster config for a cluster of Compute Engine Instances.
   ///
   /// Note that Dataproc may set default values, and values may change when
   /// clusters are updated.
   ///
-  /// Required.
+  /// Optional.
   ClusterConfig? config;
 
   /// The labels to associate with this cluster.
@@ -4160,10 +4173,10 @@ class ClusterConfig {
   /// Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket
   /// according to the Compute Engine zone where your cluster is deployed, and
   /// then create and manage this project-level, per-location bucket (see
-  /// Dataproc staging bucket
+  /// Dataproc staging and temp buckets
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
-  /// This field requires a Cloud Storage bucket name, not a URI to a Cloud
-  /// Storage bucket.
+  /// This field requires a Cloud Storage bucket name, not a gs://... URI to a
+  /// Cloud Storage bucket.
   ///
   /// Optional.
   core.String? configBucket;
@@ -4211,7 +4224,7 @@ class ClusterConfig {
   /// Optional.
   LifecycleConfig? lifecycleConfig;
 
-  /// The Compute Engine config settings for the master instance in a cluster.
+  /// The Compute Engine config settings for the cluster's master instance.
   ///
   /// Optional.
   InstanceGroupConfig? masterConfig;
@@ -4221,8 +4234,8 @@ class ClusterConfig {
   /// Optional.
   MetastoreConfig? metastoreConfig;
 
-  /// The Compute Engine config settings for additional worker instances in a
-  /// cluster.
+  /// The Compute Engine config settings for a cluster's secondary worker
+  /// instances
   ///
   /// Optional.
   InstanceGroupConfig? secondaryWorkerConfig;
@@ -4232,7 +4245,7 @@ class ClusterConfig {
   /// Optional.
   SecurityConfig? securityConfig;
 
-  /// The config settings for software inside the cluster.
+  /// The config settings for cluster software.
   ///
   /// Optional.
   SoftwareConfig? softwareConfig;
@@ -4245,13 +4258,15 @@ class ClusterConfig {
   /// according to the Compute Engine zone where your cluster is deployed, and
   /// then create and manage this project-level, per-location bucket. The
   /// default bucket has a TTL of 90 days, but you can use any TTL (or none) if
-  /// you specify a bucket. This field requires a Cloud Storage bucket name, not
-  /// a URI to a Cloud Storage bucket.
+  /// you specify a bucket (see Dataproc staging and temp buckets
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+  /// This field requires a Cloud Storage bucket name, not a gs://... URI to a
+  /// Cloud Storage bucket.
   ///
   /// Optional.
   core.String? tempBucket;
 
-  /// The Compute Engine config settings for worker instances in a cluster.
+  /// The Compute Engine config settings for the cluster's worker instances.
   ///
   /// Optional.
   InstanceGroupConfig? workerConfig;
@@ -5284,7 +5299,7 @@ class GetPolicyOptions {
       };
 }
 
-/// The GKE config for this cluster.
+/// The cluster's GKE config.
 class GkeClusterConfig {
   /// A target for the deployment.
   ///
@@ -7611,7 +7626,7 @@ class PigJob {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the IAM
 /// documentation (https://cloud.google.com/iam/docs/).
 class Policy {

@@ -43,7 +43,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Cloud Filestore API is used for creating and managing cloud file
 /// servers.
 class CloudFilestoreApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -186,8 +187,8 @@ class ProjectsLocationsBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The backup's project and location, in the format
-  /// projects/{project_number}/locations/{location}. In Cloud Filestore, backup
-  /// locations map to GCP regions, for example **us-west1**.
+  /// `projects/{project_number}/locations/{location}`. In Cloud Filestore,
+  /// backup locations map to GCP regions, for example **us-west1**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [backupId] - Required. The ID to use for the backup. The ID must be unique
@@ -234,7 +235,7 @@ class ProjectsLocationsBackupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The backup resource name, in the format
-  /// projects/{project_number}/locations/{location}/backups/{backup_id}
+  /// `projects/{project_number}/locations/{location}/backups/{backup_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -271,7 +272,7 @@ class ProjectsLocationsBackupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The backup resource name, in the format
-  /// projects/{project_number}/locations/{location}/backups/{backup_id}.
+  /// `projects/{project_number}/locations/{location}/backups/{backup_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -309,10 +310,10 @@ class ProjectsLocationsBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location for which to retrieve backup
-  /// information, in the format projects/{project_number}/locations/{location}.
-  /// In Cloud Filestore, backup locations map to GCP regions, for example
-  /// **us-west1**. To retrieve backup information for all locations, use "-"
-  /// for the {location} value.
+  /// information, in the format
+  /// `projects/{project_number}/locations/{location}`. In Cloud Filestore,
+  /// backup locations map to GCP regions, for example **us-west1**. To retrieve
+  /// backup information for all locations, use "-" for the `{location}` value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -369,7 +370,7 @@ class ProjectsLocationsBackupsResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the backup, in the format
-  /// projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+  /// `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -427,8 +428,8 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The instance's project and location, in the format
-  /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations
-  /// map to GCP zones, for example **us-west1-b**.
+  /// `projects/{project_id}/locations/{location}`. In Cloud Filestore,
+  /// locations map to GCP zones, for example **us-west1-b**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - Required. The name of the instance to create. The name must
@@ -472,7 +473,7 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The instance resource name, in the format
-  /// projects/{project_id}/locations/{location}/instances/{instance_id}
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -509,7 +510,7 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The instance resource name, in the format
-  /// projects/{project_id}/locations/{location}/instances/{instance_id}.
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -548,9 +549,10 @@ class ProjectsLocationsInstancesResource {
   ///
   /// [parent] - Required. The project and location for which to retrieve
   /// instance information, in the format
-  /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations
-  /// map to GCP zones, for example **us-west1-b**. To retrieve instance
-  /// information for all locations, use "-" for the {location} value.
+  /// `projects/{project_id}/locations/{location}`. In Cloud Filestore,
+  /// locations map to GCP zones, for example **us-west1-b**. To retrieve
+  /// instance information for all locations, use "-" for the `{location}`
+  /// value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -607,7 +609,7 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the instance, in the format
-  /// projects/{project}/locations/{location}/instances/{instance}.
+  /// `projects/{project}/locations/{location}/instances/{instance}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -659,7 +661,7 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the instance, in the format
-  /// projects/{project_number}/locations/{location_id}/instances/{instance_id}.
+  /// `projects/{project_number}/locations/{location_id}/instances/{instance_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -917,7 +919,7 @@ class Backup {
   core.Map<core.String, core.String>? labels;
 
   /// The resource name of the backup, in the format
-  /// projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+  /// `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
   ///
   /// Output only.
   core.String? name;
@@ -932,7 +934,7 @@ class Backup {
   core.String? sourceFileShare;
 
   /// The resource name of the source Cloud Filestore instance, in the format
-  /// projects/{project_number}/locations/{location_id}/instances/{instance_id},
+  /// `projects/{project_number}/locations/{location_id}/instances/{instance_id}`,
   /// used to create this backup.
   core.String? sourceInstance;
 
@@ -1226,7 +1228,7 @@ class FileShareConfig {
   core.List<NfsExportOptions>? nfsExportOptions;
 
   /// The resource name of the backup, in the format
-  /// projects/{project_number}/locations/{location_id}/backups/{backup_id},
+  /// `projects/{project_number}/locations/{location_id}/backups/{backup_id}`,
   /// that this file share has been restored from.
   core.String? sourceBackup;
 
@@ -1660,15 +1662,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
 /// information in SloMetadata for custom precomputations. SSA Eligibility
 /// Exporter will emit per-node metric based on this information.
 class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
-  /// By default node is eligible if instance is eligible.
-  ///
-  /// But individual node might be excluded from SLO by adding entry here. For
-  /// semantic see SloMetadata.exclusions. If both instance and node level
-  /// exclusions are present for time period, the node level's reason will be
-  /// reported by Eligibility Exporter.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>?
-      exclusions;
-
   /// The location of the node, if different from instance location.
   core.String? location;
 
@@ -1683,7 +1676,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
       perSliEligibility;
 
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata({
-    this.exclusions,
     this.location,
     this.nodeId,
     this.perSliEligibility,
@@ -1692,15 +1684,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata.fromJson(
       core.Map _json)
       : this(
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
-                  .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
-                      (value) =>
-                          GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           location: _json.containsKey('location')
               ? _json['location'] as core.String
               : null,
@@ -1715,8 +1698,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null)
-          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (location != null) 'location': location!,
         if (nodeId != null) 'nodeId': nodeId!,
         if (perSliEligibility != null)
@@ -1843,87 +1824,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
       };
 }
 
-/// SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
-class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
-  /// Exclusion duration.
-  ///
-  /// No restrictions on the possible values. When an ongoing operation is
-  /// taking longer than initially expected, an existing entry in the exclusion
-  /// list can be updated by extending the duration. This is supported by the
-  /// subsystem exporting eligibility data as long as such extension is
-  /// committed at least 10 minutes before the original exclusion expiration -
-  /// otherwise it is possible that there will be "gaps" in the exclusion
-  /// application in the exported timeseries.
-  core.String? duration;
-
-  /// Human-readable reason for the exclusion.
-  ///
-  /// This should be a static string (e.g. "Disruptive update in progress") and
-  /// should not contain dynamically generated data (e.g. instance name). Can be
-  /// left empty.
-  core.String? reason;
-
-  /// Name of an SLI that this exclusion applies to.
-  ///
-  /// Can be left empty, signaling that the instance should be excluded from all
-  /// SLIs.
-  core.String? sliName;
-
-  /// Start time of the exclusion.
-  ///
-  /// No alignment (e.g. to a full minute) needed.
-  core.String? startTime;
-
-  GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion({
-    this.duration,
-    this.reason,
-    this.sliName,
-    this.startTime,
-  });
-
-  GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion.fromJson(
-      core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
-              : null,
-          sliName: _json.containsKey('sliName')
-              ? _json['sliName'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (reason != null) 'reason': reason!,
-        if (sliName != null) 'sliName': sliName!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
-
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-  /// List of SLO exclusion windows.
-  ///
-  /// When multiple entries in the list match (matching the exclusion
-  /// time-window against current time point) the exclusion reason used in the
-  /// first matching entry will be published. It is not needed to include
-  /// expired exclusion in this list, as only the currently applicable
-  /// exclusions are taken into account by the eligibility exporting subsystem
-  /// (the historical state of exclusions will be reflected in the historically
-  /// produced timeseries regardless of the current state). This field can be
-  /// used to mark the instance as temporary ineligible for the purpose of SLO
-  /// calculation. For permanent instance SLO exclusion, use of custom instance
-  /// eligibility is recommended. See 'eligibility' field below.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>?
-      exclusions;
-
   /// List of nodes.
   ///
   /// Some producers need to use per-node metadata to calculate SLO. This field
@@ -1948,7 +1851,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   core.String? tier;
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata({
-    this.exclusions,
     this.nodes,
     this.perSliEligibility,
     this.tier,
@@ -1957,15 +1859,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata.fromJson(
       core.Map _json)
       : this(
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
-                  .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
-                      (value) =>
-                          GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           nodes: _json.containsKey('nodes')
               ? (_json['nodes'] as core.List)
                   .map<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>(
@@ -1984,8 +1877,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null)
-          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (nodes != null)
           'nodes': nodes!.map((value) => value.toJson()).toList(),
         if (perSliEligibility != null)
@@ -2017,7 +1908,7 @@ class Instance {
   core.Map<core.String, core.String>? labels;
 
   /// The resource name of the instance, in the format
-  /// projects/{project}/locations/{location}/instances/{instance}.
+  /// `projects/{project}/locations/{location}/instances/{instance}`.
   ///
   /// Output only.
   core.String? name;
@@ -2145,7 +2036,7 @@ class Instance {
 class ListBackupsResponse {
   /// A list of backups in the project for the specified location.
   ///
-  /// If the {location} value in the request is "-", the response contains a
+  /// If the `{location}` value in the request is "-", the response contains a
   /// list of backups from all locations. If any location is unreachable, the
   /// response will only return backups in reachable locations and the
   /// "unreachable" field will be populated with a list of unreachable
@@ -2196,7 +2087,7 @@ class ListBackupsResponse {
 class ListInstancesResponse {
   /// A list of instances in the project for the specified location.
   ///
-  /// If the {location} value in the request is "-", the response contains a
+  /// If the `{location}` value in the request is "-", the response contains a
   /// list of instances from all locations. If any location is unreachable, the
   /// response will only return instances in reachable locations and the
   /// "unreachable" field will be populated with a list of unreachable
@@ -2516,9 +2407,9 @@ class MaintenanceWindow {
 
 /// Network configuration for the instance.
 class NetworkConfig {
-  /// IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or
-  /// IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block
-  /// 4}:{block 5}:{block 6}:{block 7}:{block 8}.
+  /// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6
+  /// addresses in the format
+  /// `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
   ///
   /// Output only.
   core.List<core.String>? ipAddresses;
@@ -2529,13 +2420,13 @@ class NetworkConfig {
   /// For this version, only MODE_IPV4 is supported.
   core.List<core.String>? modes;
 
-  /// The name of the Google Compute Engine \[VPC
-  /// network\](/compute/docs/networks-and-firewalls#networks) to which the
-  /// instance is connected.
+  /// The name of the Google Compute Engine
+  /// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance
+  /// is connected.
   core.String? network;
 
   /// A /29 CIDR block in one of the
-  /// [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html)
+  /// [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/)
   /// that identifies the range of IP addresses reserved for this instance.
   ///
   /// For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't
@@ -2604,9 +2495,10 @@ class NfsExportOptions {
   /// returned if this field is specified for other squash_mode settings.
   core.String? anonUid;
 
-  /// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet
-  /// 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet
-  /// 3}.{octet 4}/{mask size} which may mount the file share.
+  /// List of either an IPv4 addresses in the format
+  /// `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format
+  /// `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file
+  /// share.
   ///
   /// Overlapping IP ranges are not allowed, both within and across
   /// NfsExportOptions. An error will be returned. The limit is 64 IP
@@ -2758,7 +2650,7 @@ class OperationMetadata {
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
-  /// Operations that have successfully been cancelled have Operation.error
+  /// Operations that have been cancelled successfully have Operation.error
   /// value with a google.rpc.Status.code of 1, corresponding to
   /// `Code.CANCELLED`.
   ///
@@ -2844,7 +2736,7 @@ class RestoreInstanceRequest {
   core.String? fileShare;
 
   /// The resource name of the backup, in the format
-  /// projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+  /// `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
   core.String? sourceBackup;
 
   RestoreInstanceRequest({
@@ -3041,8 +2933,8 @@ class UpdatePolicy {
   /// Deny Maintenance Period that is applied to resource to indicate when
   /// maintenance is forbidden.
   ///
-  /// User can specify zero or more non-overlapping deny periods. For V1,
-  /// Maximum number of deny_maintenance_periods is expected to be one.
+  /// User can specify zero or more non-overlapping deny periods. Maximum number
+  /// of deny_maintenance_periods expected is one.
   core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
 
   /// Maintenance window that is applied to resources covered by this policy.

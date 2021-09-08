@@ -54,7 +54,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// including the creation of service accounts, which you can use to
 /// authenticate to Google and make API calls.
 class IamApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2471,6 +2472,103 @@ class ProjectsServiceAccountsKeysResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Disable a ServiceAccountKey.
+  ///
+  /// A disabled service account key can be enabled through
+  /// EnableServiceAccountKey. The API is currently in preview phase.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the service account key in the
+  /// following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as
+  /// a wildcard for the `PROJECT_ID` will infer the project from the account.
+  /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
+  /// service account.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> disable(
+    DisableServiceAccountKeyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enable a ServiceAccountKey.
+  ///
+  /// The API is currently in preview phase.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the service account key in the
+  /// following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as
+  /// a wildcard for the `PROJECT_ID` will infer the project from the account.
+  /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
+  /// service account.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> enable(
+    EnableServiceAccountKeyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a ServiceAccountKey.
   ///
   /// Request parameters:
@@ -3241,6 +3339,17 @@ class CreateServiceAccountRequest {
       };
 }
 
+/// The service account key disable request.
+class DisableServiceAccountKeyRequest {
+  DisableServiceAccountKeyRequest();
+
+  DisableServiceAccountKeyRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// The service account disable request.
 class DisableServiceAccountRequest {
   DisableServiceAccountRequest();
@@ -3263,6 +3372,17 @@ class Empty {
   Empty();
 
   Empty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// The service account key enable request.
+class EnableServiceAccountKeyRequest {
+  EnableServiceAccountKeyRequest();
+
+  EnableServiceAccountKeyRequest.fromJson(
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
@@ -3998,7 +4118,7 @@ class PermissionDelta {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -4585,6 +4705,9 @@ class ServiceAccount {
 /// used for signing. Public keys for all service accounts are also published at
 /// the OAuth2 Service Account API.
 class ServiceAccountKey {
+  /// The key status.
+  core.bool? disabled;
+
   /// Specifies the algorithm (and possibly key size) for the key.
   /// Possible string values are:
   /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
@@ -4665,6 +4788,7 @@ class ServiceAccountKey {
   core.String? validBeforeTime;
 
   ServiceAccountKey({
+    this.disabled,
     this.keyAlgorithm,
     this.keyOrigin,
     this.keyType,
@@ -4678,6 +4802,9 @@ class ServiceAccountKey {
 
   ServiceAccountKey.fromJson(core.Map _json)
       : this(
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
           keyAlgorithm: _json.containsKey('keyAlgorithm')
               ? _json['keyAlgorithm'] as core.String
               : null,
@@ -4706,6 +4833,7 @@ class ServiceAccountKey {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (disabled != null) 'disabled': disabled!,
         if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
         if (keyOrigin != null) 'keyOrigin': keyOrigin!,
         if (keyType != null) 'keyType': keyType!,
@@ -4848,8 +4976,8 @@ class SignJwtRequest {
   /// The JWT payload to sign. Must be a serialized JSON object that contains a
   /// JWT Claims Set. For example: `{"sub": "user@example.com", "iat": 313435}`
   /// If the JWT Claims Set contains an expiration time (`exp`) claim, it must
-  /// be an integer timestamp that is not in the past and no more than 1 hour in
-  /// the future. If the JWT Claims Set does not contain an expiration time
+  /// be an integer timestamp that is not in the past and no more than 12 hours
+  /// in the future. If the JWT Claims Set does not contain an expiration time
   /// (`exp`) claim, this claim is added automatically, with a timestamp that is
   /// 1 hour in the future.
   ///

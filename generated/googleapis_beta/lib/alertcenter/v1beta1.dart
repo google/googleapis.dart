@@ -579,6 +579,105 @@ class V1beta1Resource {
   }
 }
 
+/// Details about why an account is receiving an account suspension warning.
+class AccountSuspensionDetails {
+  /// The reason why this account is receiving an account suspension warning.
+  /// Possible string values are:
+  /// - "ACCOUNT_SUSPENSION_ABUSE_REASON_UNSPECIFIED" : Abuse reason is
+  /// unspecified.
+  /// - "TOS_VIOLATION" : This account is being suspended for a Terms of Service
+  /// violation.
+  /// - "SPAM" : This account is being suspended for spam.
+  /// - "PHISHING" : This account is being suspended for phishing.
+  /// - "TRAFFIC_PUMPING" : This account is being suspended for artificially
+  /// boosting traffic to a website.
+  /// - "FRAUD" : This account is being suspended for fraud.
+  /// - "NUMBER_HARVESTING" : This account is being suspended for number
+  /// harvesting.
+  /// - "PAYMENTS_FRAUD" : This account is being suspended for payments fraud.
+  core.String? abuseReason;
+
+  /// The name of the product being abused.
+  ///
+  /// This is restricted to only the following values: "Gmail" "Payments"
+  /// "Voice" "Workspace" "Other"
+  core.String? productName;
+
+  AccountSuspensionDetails({
+    this.abuseReason,
+    this.productName,
+  });
+
+  AccountSuspensionDetails.fromJson(core.Map _json)
+      : this(
+          abuseReason: _json.containsKey('abuseReason')
+              ? _json['abuseReason'] as core.String
+              : null,
+          productName: _json.containsKey('productName')
+              ? _json['productName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abuseReason != null) 'abuseReason': abuseReason!,
+        if (productName != null) 'productName': productName!,
+      };
+}
+
+/// A warning that the customer's account is about to be suspended.
+class AccountSuspensionWarning {
+  /// The amount of time remaining to appeal an imminent suspension.
+  ///
+  /// After this window has elapsed, the account will be suspended. Only
+  /// populated if the account suspension is in WARNING state.
+  core.String? appealWindow;
+
+  /// Account suspension warning state.
+  /// Possible string values are:
+  /// - "ACCOUNT_SUSPENSION_WARNING_STATE_UNSPECIFIED" : State is unspecified.
+  /// - "WARNING" : Customer is receiving a warning about imminent suspension.
+  /// - "SUSPENDED" : Customer is being notified that their account has been
+  /// suspended.
+  /// - "APPEAL_APPROVED" : Customer is being notified that their suspension
+  /// appeal was approved.
+  /// - "APPEAL_SUBMITTED" : Customer has submitted their appeal, which is
+  /// pending review.
+  core.String? state;
+
+  /// Details about why an account is being suspended.
+  core.List<AccountSuspensionDetails>? suspensionDetails;
+
+  AccountSuspensionWarning({
+    this.appealWindow,
+    this.state,
+    this.suspensionDetails,
+  });
+
+  AccountSuspensionWarning.fromJson(core.Map _json)
+      : this(
+          appealWindow: _json.containsKey('appealWindow')
+              ? _json['appealWindow'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          suspensionDetails: _json.containsKey('suspensionDetails')
+              ? (_json['suspensionDetails'] as core.List)
+                  .map<AccountSuspensionDetails>((value) =>
+                      AccountSuspensionDetails.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appealWindow != null) 'appealWindow': appealWindow!,
+        if (state != null) 'state': state!,
+        if (suspensionDetails != null)
+          'suspensionDetails':
+              suspensionDetails!.map((value) => value.toJson()).toList(),
+      };
+}
+
 /// Alerts for user account warning events.
 class AccountWarning {
   /// The email of the user that this event belongs to.
@@ -819,7 +918,7 @@ class Alert {
   /// This is output only after alert is created. Supported sources are any of
   /// the following: * Google Operations * Mobile device management * Gmail
   /// phishing * Data Loss Prevention * Domain wide takeout * State sponsored
-  /// attack * Google identity
+  /// attack * Google identity * Apps outage
   ///
   /// Required.
   core.String? source;
@@ -1150,6 +1249,69 @@ class AppSettingsChanged {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertDetails != null) 'alertDetails': alertDetails!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// An outage incident reported for a Google Workspace service.
+class AppsOutage {
+  /// Link to the outage event in Google Workspace Status Dashboard
+  core.String? dashboardUri;
+
+  /// Timestamp by which the next update is expected to arrive.
+  core.String? nextUpdateTime;
+
+  /// List of products impacted by the outage.
+  core.List<core.String>? products;
+
+  /// Timestamp when the outage is expected to be resolved, or has confirmed
+  /// resolution.
+  ///
+  /// Provided only when known.
+  core.String? resolutionTime;
+
+  /// Current outage status.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Status is unspecified.
+  /// - "NEW" : The incident has just been reported.
+  /// - "ONGOING" : The incident is ongoing.
+  /// - "RESOLVED" : The incident has been resolved.
+  core.String? status;
+
+  AppsOutage({
+    this.dashboardUri,
+    this.nextUpdateTime,
+    this.products,
+    this.resolutionTime,
+    this.status,
+  });
+
+  AppsOutage.fromJson(core.Map _json)
+      : this(
+          dashboardUri: _json.containsKey('dashboardUri')
+              ? _json['dashboardUri'] as core.String
+              : null,
+          nextUpdateTime: _json.containsKey('nextUpdateTime')
+              ? _json['nextUpdateTime'] as core.String
+              : null,
+          products: _json.containsKey('products')
+              ? (_json['products'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          resolutionTime: _json.containsKey('resolutionTime')
+              ? _json['resolutionTime'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dashboardUri != null) 'dashboardUri': dashboardUri!,
+        if (nextUpdateTime != null) 'nextUpdateTime': nextUpdateTime!,
+        if (products != null) 'products': products!,
+        if (resolutionTime != null) 'resolutionTime': resolutionTime!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -2101,52 +2263,6 @@ class Notification {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudPubsubTopic != null)
           'cloudPubsubTopic': cloudPubsubTopic!.toJson(),
-      };
-}
-
-/// An alert that gets triggered when a user enables autoforwarding to an email
-/// which is outside of its domain
-class OutOfDomainForwarding {
-  /// Email of the actor who triggered the alert.
-  core.String? actorEmail;
-
-  /// The time the email forwarding was enabled
-  core.String? enableTime;
-
-  /// Email to which emails are being forwarded
-  core.String? forwardeeEmail;
-
-  /// IP address of the user while enabling forwarding
-  core.String? ipAddress;
-
-  OutOfDomainForwarding({
-    this.actorEmail,
-    this.enableTime,
-    this.forwardeeEmail,
-    this.ipAddress,
-  });
-
-  OutOfDomainForwarding.fromJson(core.Map _json)
-      : this(
-          actorEmail: _json.containsKey('actorEmail')
-              ? _json['actorEmail'] as core.String
-              : null,
-          enableTime: _json.containsKey('enableTime')
-              ? _json['enableTime'] as core.String
-              : null,
-          forwardeeEmail: _json.containsKey('forwardeeEmail')
-              ? _json['forwardeeEmail'] as core.String
-              : null,
-          ipAddress: _json.containsKey('ipAddress')
-              ? _json['ipAddress'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (actorEmail != null) 'actorEmail': actorEmail!,
-        if (enableTime != null) 'enableTime': enableTime!,
-        if (forwardeeEmail != null) 'forwardeeEmail': forwardeeEmail!,
-        if (ipAddress != null) 'ipAddress': ipAddress!,
       };
 }
 

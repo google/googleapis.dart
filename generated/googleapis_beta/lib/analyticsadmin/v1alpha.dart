@@ -1059,6 +1059,45 @@ class PropertiesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the singleton data retention settings for this property.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the settings to lookup. Format:
+  /// properties/{property}/dataRetentionSettings Example:
+  /// "properties/1000/dataRetentionSettings"
+  /// Value must have pattern `^properties/\[^/\]+/dataRetentionSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaDataRetentionSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDataRetentionSettings>
+      getDataRetentionSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lookup for Google Signals settings for a property.
   ///
   /// Request parameters:
@@ -1211,6 +1250,56 @@ class PropertiesResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the singleton data retention settings for this property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name for this DataRetentionSetting
+  /// resource. Format: properties/{property}/dataRetentionSettings
+  /// Value must have pattern `^properties/\[^/\]+/dataRetentionSettings$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaDataRetentionSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDataRetentionSettings>
+      updateDataRetentionSettings(
+    GoogleAnalyticsAdminV1alphaDataRetentionSettings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -5390,6 +5479,9 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of a CustomMetric resource in change history.
   GoogleAnalyticsAdminV1alphaCustomMetric? customMetric;
 
+  /// A snapshot of a data retention settings resource in change history.
+  GoogleAnalyticsAdminV1alphaDataRetentionSettings? dataRetentionSettings;
+
   /// A snapshot of a DisplayVideo360AdvertiserLink resource in change history.
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink?
       displayVideo360AdvertiserLink;
@@ -5427,6 +5519,7 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
     this.conversionEvent,
     this.customDimension,
     this.customMetric,
+    this.dataRetentionSettings,
     this.displayVideo360AdvertiserLink,
     this.displayVideo360AdvertiserLinkProposal,
     this.firebaseLink,
@@ -5463,6 +5556,11 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
           customMetric: _json.containsKey('customMetric')
               ? GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
                   _json['customMetric'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dataRetentionSettings: _json.containsKey('dataRetentionSettings')
+              ? GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(
+                  _json['dataRetentionSettings']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           displayVideo360AdvertiserLink:
               _json.containsKey('displayVideo360AdvertiserLink')
@@ -5519,6 +5617,8 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
         if (customDimension != null)
           'customDimension': customDimension!.toJson(),
         if (customMetric != null) 'customMetric': customMetric!.toJson(),
+        if (dataRetentionSettings != null)
+          'dataRetentionSettings': dataRetentionSettings!.toJson(),
         if (displayVideo360AdvertiserLink != null)
           'displayVideo360AdvertiserLink':
               displayVideo360AdvertiserLink!.toJson(),
@@ -5931,6 +6031,62 @@ class GoogleAnalyticsAdminV1alphaCustomMetric {
         if (name != null) 'name': name!,
         if (parameterName != null) 'parameterName': parameterName!,
         if (scope != null) 'scope': scope!,
+      };
+}
+
+/// Settings values for data retention.
+///
+/// This is a singleton resource.
+class GoogleAnalyticsAdminV1alphaDataRetentionSettings {
+  /// The length of time that event-level data is retained.
+  /// Possible string values are:
+  /// - "RETENTION_DURATION_UNSPECIFIED" : Data retention time duration is not
+  /// specified.
+  /// - "TWO_MONTHS" : The data retention time duration is 2 months.
+  /// - "FOURTEEN_MONTHS" : The data retention time duration is 14 months.
+  /// - "TWENTY_SIX_MONTHS" : The data retention time duration is 26 months.
+  /// Available to 360 properties only.
+  /// - "THIRTY_EIGHT_MONTHS" : The data retention time duration is 38 months.
+  /// Available to 360 properties only.
+  /// - "FIFTY_MONTHS" : The data retention time duration is 50 months.
+  /// Available to 360 properties only.
+  core.String? eventDataRetention;
+
+  /// Resource name for this DataRetentionSetting resource.
+  ///
+  /// Format: properties/{property}/dataRetentionSettings
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// If true, reset the retention period for the user identifier with every
+  /// event from that user.
+  core.bool? resetUserDataOnNewActivity;
+
+  GoogleAnalyticsAdminV1alphaDataRetentionSettings({
+    this.eventDataRetention,
+    this.name,
+    this.resetUserDataOnNewActivity,
+  });
+
+  GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(core.Map _json)
+      : this(
+          eventDataRetention: _json.containsKey('eventDataRetention')
+              ? _json['eventDataRetention'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          resetUserDataOnNewActivity:
+              _json.containsKey('resetUserDataOnNewActivity')
+                  ? _json['resetUserDataOnNewActivity'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventDataRetention != null)
+          'eventDataRetention': eventDataRetention!,
+        if (name != null) 'name': name!,
+        if (resetUserDataOnNewActivity != null)
+          'resetUserDataOnNewActivity': resetUserDataOnNewActivity!,
       };
 }
 

@@ -44,7 +44,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Dataproc Metastore API is used to manage the lifecycle and configuration
 /// of metastore services.
 class DataprocMetastoreApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1563,6 +1564,11 @@ class Backup {
   /// Immutable.
   core.String? name;
 
+  /// Services that are restoring from the backup.
+  ///
+  /// Output only.
+  core.List<core.String>? restoringServices;
+
   /// The revision of the service at the time of backup.
   ///
   /// Output only.
@@ -1585,6 +1591,7 @@ class Backup {
     this.description,
     this.endTime,
     this.name,
+    this.restoringServices,
     this.serviceRevision,
     this.state,
   });
@@ -1601,6 +1608,11 @@ class Backup {
               ? _json['endTime'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          restoringServices: _json.containsKey('restoringServices')
+              ? (_json['restoringServices'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
           serviceRevision: _json.containsKey('serviceRevision')
               ? Service.fromJson(_json['serviceRevision']
                   as core.Map<core.String, core.dynamic>)
@@ -1614,6 +1626,7 @@ class Backup {
         if (description != null) 'description': description!,
         if (endTime != null) 'endTime': endTime!,
         if (name != null) 'name': name!,
+        if (restoringServices != null) 'restoringServices': restoringServices!,
         if (serviceRevision != null)
           'serviceRevision': serviceRevision!.toJson(),
         if (state != null) 'state': state!,
@@ -1778,6 +1791,40 @@ class DatabaseDump {
         if (gcsUri != null) 'gcsUri': gcsUri!,
         if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Specifies how metastore metadata should be integrated with the Dataplex
+/// service.
+class DataplexConfig {
+  /// A reference to the Lake resources that this metastore service is attached
+  /// to.
+  ///
+  /// The key is the lake resource name. Example:
+  /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+  core.Map<core.String, Lake>? lakeResources;
+
+  DataplexConfig({
+    this.lakeResources,
+  });
+
+  DataplexConfig.fromJson(core.Map _json)
+      : this(
+          lakeResources: _json.containsKey('lakeResources')
+              ? (_json['lakeResources'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    Lake.fromJson(item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lakeResources != null)
+          'lakeResources': lakeResources!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
@@ -1963,6 +2010,17 @@ class HiveMetastoreConfig {
   /// The mappings override system defaults (some keys cannot be overridden).
   core.Map<core.String, core.String>? configOverrides;
 
+  /// The protocol to use for the metastore service endpoint.
+  ///
+  /// If unspecified, defaults to THRIFT.
+  /// Possible string values are:
+  /// - "ENDPOINT_PROTOCOL_UNSPECIFIED" : The protocol is not set.
+  /// - "THRIFT" : Use the legacy Apache Thrift protocol for the metastore
+  /// service endpoint.
+  /// - "GRPC" : Use the modernized gRPC protocol for the metastore service
+  /// endpoint.
+  core.String? endpointProtocol;
+
   /// Information used to configure the Hive metastore service as a service
   /// principal in a Kerberos realm.
   ///
@@ -1978,6 +2036,7 @@ class HiveMetastoreConfig {
 
   HiveMetastoreConfig({
     this.configOverrides,
+    this.endpointProtocol,
     this.kerberosConfig,
     this.version,
   });
@@ -1994,6 +2053,9 @@ class HiveMetastoreConfig {
                   ),
                 )
               : null,
+          endpointProtocol: _json.containsKey('endpointProtocol')
+              ? _json['endpointProtocol'] as core.String
+              : null,
           kerberosConfig: _json.containsKey('kerberosConfig')
               ? KerberosConfig.fromJson(_json['kerberosConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2005,6 +2067,7 @@ class HiveMetastoreConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configOverrides != null) 'configOverrides': configOverrides!,
+        if (endpointProtocol != null) 'endpointProtocol': endpointProtocol!,
         if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!.toJson(),
         if (version != null) 'version': version!,
       };
@@ -2083,6 +2146,27 @@ class KerberosConfig {
         if (keytab != null) 'keytab': keytab!.toJson(),
         if (krb5ConfigGcsUri != null) 'krb5ConfigGcsUri': krb5ConfigGcsUri!,
         if (principal != null) 'principal': principal!,
+      };
+}
+
+/// Represents a Lake resource
+class Lake {
+  /// The Lake resource name.
+  ///
+  /// Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+  core.String? name;
+
+  Lake({
+    this.name,
+  });
+
+  Lake.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2602,8 +2686,12 @@ class MetadataIntegration {
   /// The integration config for the Data Catalog service.
   DataCatalogConfig? dataCatalogConfig;
 
+  /// The integration config for the Dataplex service.
+  DataplexConfig? dataplexConfig;
+
   MetadataIntegration({
     this.dataCatalogConfig,
+    this.dataplexConfig,
   });
 
   MetadataIntegration.fromJson(core.Map _json)
@@ -2612,11 +2700,16 @@ class MetadataIntegration {
               ? DataCatalogConfig.fromJson(_json['dataCatalogConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          dataplexConfig: _json.containsKey('dataplexConfig')
+              ? DataplexConfig.fromJson(_json['dataplexConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataCatalogConfig != null)
           'dataCatalogConfig': dataCatalogConfig!.toJson(),
+        if (dataplexConfig != null) 'dataplexConfig': dataplexConfig!.toJson(),
       };
 }
 
@@ -2860,7 +2953,7 @@ class OperationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the IAM
 /// documentation (https://cloud.google.com/iam/docs/).
 class Policy {

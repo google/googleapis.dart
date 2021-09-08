@@ -26,7 +26,7 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.Object> buildUnnamed6272() => {
+core.Map<core.String, core.Object> buildUnnamed6339() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -39,7 +39,7 @@ core.Map<core.String, core.Object> buildUnnamed6272() => {
       },
     };
 
-void checkUnnamed6272(core.Map<core.String, core.Object> o) {
+void checkUnnamed6339(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -71,7 +71,7 @@ void checkUnnamed6272(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed6273() => {
+core.Map<core.String, core.Object> buildUnnamed6340() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -84,7 +84,7 @@ core.Map<core.String, core.Object> buildUnnamed6273() => {
       },
     };
 
-void checkUnnamed6273(core.Map<core.String, core.Object> o) {
+void checkUnnamed6340(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -123,9 +123,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed6272();
+    o.metadata = buildUnnamed6339();
     o.name = 'foo';
-    o.response = buildUnnamed6273();
+    o.response = buildUnnamed6340();
   }
   buildCounterOperation--;
   return o;
@@ -136,17 +136,17 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed6272(o.metadata!);
+    checkUnnamed6339(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed6273(o.response!);
+    checkUnnamed6340(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6274() => {
+core.Map<core.String, core.Object> buildUnnamed6341() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -159,7 +159,7 @@ core.Map<core.String, core.Object> buildUnnamed6274() => {
       },
     };
 
-void checkUnnamed6274(core.Map<core.String, core.Object> o) {
+void checkUnnamed6341(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -191,15 +191,15 @@ void checkUnnamed6274(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed6275() => [
-      buildUnnamed6274(),
-      buildUnnamed6274(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed6342() => [
+      buildUnnamed6341(),
+      buildUnnamed6341(),
     ];
 
-void checkUnnamed6275(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed6342(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6274(o[0]);
-  checkUnnamed6274(o[1]);
+  checkUnnamed6341(o[0]);
+  checkUnnamed6341(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -208,7 +208,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed6275();
+    o.details = buildUnnamed6342();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -222,7 +222,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed6275(o.details!);
+    checkUnnamed6342(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -258,12 +258,12 @@ void checkV2AndroidApplication(api.V2AndroidApplication o) {
   buildCounterV2AndroidApplication--;
 }
 
-core.List<api.V2AndroidApplication> buildUnnamed6276() => [
+core.List<api.V2AndroidApplication> buildUnnamed6343() => [
       buildV2AndroidApplication(),
       buildV2AndroidApplication(),
     ];
 
-void checkUnnamed6276(core.List<api.V2AndroidApplication> o) {
+void checkUnnamed6343(core.List<api.V2AndroidApplication> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkV2AndroidApplication(o[0]);
   checkV2AndroidApplication(o[1]);
@@ -274,7 +274,7 @@ api.V2AndroidKeyRestrictions buildV2AndroidKeyRestrictions() {
   final o = api.V2AndroidKeyRestrictions();
   buildCounterV2AndroidKeyRestrictions++;
   if (buildCounterV2AndroidKeyRestrictions < 3) {
-    o.allowedApplications = buildUnnamed6276();
+    o.allowedApplications = buildUnnamed6343();
   }
   buildCounterV2AndroidKeyRestrictions--;
   return o;
@@ -283,17 +283,17 @@ api.V2AndroidKeyRestrictions buildV2AndroidKeyRestrictions() {
 void checkV2AndroidKeyRestrictions(api.V2AndroidKeyRestrictions o) {
   buildCounterV2AndroidKeyRestrictions++;
   if (buildCounterV2AndroidKeyRestrictions < 3) {
-    checkUnnamed6276(o.allowedApplications!);
+    checkUnnamed6343(o.allowedApplications!);
   }
   buildCounterV2AndroidKeyRestrictions--;
 }
 
-core.List<core.String> buildUnnamed6277() => [
+core.List<core.String> buildUnnamed6344() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6277(core.List<core.String> o) {
+void checkUnnamed6344(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -310,7 +310,7 @@ api.V2ApiTarget buildV2ApiTarget() {
   final o = api.V2ApiTarget();
   buildCounterV2ApiTarget++;
   if (buildCounterV2ApiTarget < 3) {
-    o.methods = buildUnnamed6277();
+    o.methods = buildUnnamed6344();
     o.service = 'foo';
   }
   buildCounterV2ApiTarget--;
@@ -320,7 +320,7 @@ api.V2ApiTarget buildV2ApiTarget() {
 void checkV2ApiTarget(api.V2ApiTarget o) {
   buildCounterV2ApiTarget++;
   if (buildCounterV2ApiTarget < 3) {
-    checkUnnamed6277(o.methods!);
+    checkUnnamed6344(o.methods!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -329,12 +329,12 @@ void checkV2ApiTarget(api.V2ApiTarget o) {
   buildCounterV2ApiTarget--;
 }
 
-core.List<core.String> buildUnnamed6278() => [
+core.List<core.String> buildUnnamed6345() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6278(core.List<core.String> o) {
+void checkUnnamed6345(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -351,7 +351,7 @@ api.V2BrowserKeyRestrictions buildV2BrowserKeyRestrictions() {
   final o = api.V2BrowserKeyRestrictions();
   buildCounterV2BrowserKeyRestrictions++;
   if (buildCounterV2BrowserKeyRestrictions < 3) {
-    o.allowedReferrers = buildUnnamed6278();
+    o.allowedReferrers = buildUnnamed6345();
   }
   buildCounterV2BrowserKeyRestrictions--;
   return o;
@@ -360,7 +360,7 @@ api.V2BrowserKeyRestrictions buildV2BrowserKeyRestrictions() {
 void checkV2BrowserKeyRestrictions(api.V2BrowserKeyRestrictions o) {
   buildCounterV2BrowserKeyRestrictions++;
   if (buildCounterV2BrowserKeyRestrictions < 3) {
-    checkUnnamed6278(o.allowedReferrers!);
+    checkUnnamed6345(o.allowedReferrers!);
   }
   buildCounterV2BrowserKeyRestrictions--;
 }
@@ -409,12 +409,12 @@ void checkV2GetKeyStringResponse(api.V2GetKeyStringResponse o) {
   buildCounterV2GetKeyStringResponse--;
 }
 
-core.List<core.String> buildUnnamed6279() => [
+core.List<core.String> buildUnnamed6346() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6279(core.List<core.String> o) {
+void checkUnnamed6346(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -431,7 +431,7 @@ api.V2IosKeyRestrictions buildV2IosKeyRestrictions() {
   final o = api.V2IosKeyRestrictions();
   buildCounterV2IosKeyRestrictions++;
   if (buildCounterV2IosKeyRestrictions < 3) {
-    o.allowedBundleIds = buildUnnamed6279();
+    o.allowedBundleIds = buildUnnamed6346();
   }
   buildCounterV2IosKeyRestrictions--;
   return o;
@@ -440,7 +440,7 @@ api.V2IosKeyRestrictions buildV2IosKeyRestrictions() {
 void checkV2IosKeyRestrictions(api.V2IosKeyRestrictions o) {
   buildCounterV2IosKeyRestrictions++;
   if (buildCounterV2IosKeyRestrictions < 3) {
-    checkUnnamed6279(o.allowedBundleIds!);
+    checkUnnamed6346(o.allowedBundleIds!);
   }
   buildCounterV2IosKeyRestrictions--;
 }
@@ -504,12 +504,12 @@ void checkV2Key(api.V2Key o) {
   buildCounterV2Key--;
 }
 
-core.List<api.V2Key> buildUnnamed6280() => [
+core.List<api.V2Key> buildUnnamed6347() => [
       buildV2Key(),
       buildV2Key(),
     ];
 
-void checkUnnamed6280(core.List<api.V2Key> o) {
+void checkUnnamed6347(core.List<api.V2Key> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkV2Key(o[0]);
   checkV2Key(o[1]);
@@ -520,7 +520,7 @@ api.V2ListKeysResponse buildV2ListKeysResponse() {
   final o = api.V2ListKeysResponse();
   buildCounterV2ListKeysResponse++;
   if (buildCounterV2ListKeysResponse < 3) {
-    o.keys = buildUnnamed6280();
+    o.keys = buildUnnamed6347();
     o.nextPageToken = 'foo';
   }
   buildCounterV2ListKeysResponse--;
@@ -530,7 +530,7 @@ api.V2ListKeysResponse buildV2ListKeysResponse() {
 void checkV2ListKeysResponse(api.V2ListKeysResponse o) {
   buildCounterV2ListKeysResponse++;
   if (buildCounterV2ListKeysResponse < 3) {
-    checkUnnamed6280(o.keys!);
+    checkUnnamed6347(o.keys!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -566,12 +566,12 @@ void checkV2LookupKeyResponse(api.V2LookupKeyResponse o) {
   buildCounterV2LookupKeyResponse--;
 }
 
-core.List<api.V2ApiTarget> buildUnnamed6281() => [
+core.List<api.V2ApiTarget> buildUnnamed6348() => [
       buildV2ApiTarget(),
       buildV2ApiTarget(),
     ];
 
-void checkUnnamed6281(core.List<api.V2ApiTarget> o) {
+void checkUnnamed6348(core.List<api.V2ApiTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkV2ApiTarget(o[0]);
   checkV2ApiTarget(o[1]);
@@ -583,7 +583,7 @@ api.V2Restrictions buildV2Restrictions() {
   buildCounterV2Restrictions++;
   if (buildCounterV2Restrictions < 3) {
     o.androidKeyRestrictions = buildV2AndroidKeyRestrictions();
-    o.apiTargets = buildUnnamed6281();
+    o.apiTargets = buildUnnamed6348();
     o.browserKeyRestrictions = buildV2BrowserKeyRestrictions();
     o.iosKeyRestrictions = buildV2IosKeyRestrictions();
     o.serverKeyRestrictions = buildV2ServerKeyRestrictions();
@@ -596,7 +596,7 @@ void checkV2Restrictions(api.V2Restrictions o) {
   buildCounterV2Restrictions++;
   if (buildCounterV2Restrictions < 3) {
     checkV2AndroidKeyRestrictions(o.androidKeyRestrictions!);
-    checkUnnamed6281(o.apiTargets!);
+    checkUnnamed6348(o.apiTargets!);
     checkV2BrowserKeyRestrictions(o.browserKeyRestrictions!);
     checkV2IosKeyRestrictions(o.iosKeyRestrictions!);
     checkV2ServerKeyRestrictions(o.serverKeyRestrictions!);
@@ -604,12 +604,12 @@ void checkV2Restrictions(api.V2Restrictions o) {
   buildCounterV2Restrictions--;
 }
 
-core.List<core.String> buildUnnamed6282() => [
+core.List<core.String> buildUnnamed6349() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6282(core.List<core.String> o) {
+void checkUnnamed6349(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -626,7 +626,7 @@ api.V2ServerKeyRestrictions buildV2ServerKeyRestrictions() {
   final o = api.V2ServerKeyRestrictions();
   buildCounterV2ServerKeyRestrictions++;
   if (buildCounterV2ServerKeyRestrictions < 3) {
-    o.allowedIps = buildUnnamed6282();
+    o.allowedIps = buildUnnamed6349();
   }
   buildCounterV2ServerKeyRestrictions--;
   return o;
@@ -635,7 +635,7 @@ api.V2ServerKeyRestrictions buildV2ServerKeyRestrictions() {
 void checkV2ServerKeyRestrictions(api.V2ServerKeyRestrictions o) {
   buildCounterV2ServerKeyRestrictions++;
   if (buildCounterV2ServerKeyRestrictions < 3) {
-    checkUnnamed6282(o.allowedIps!);
+    checkUnnamed6349(o.allowedIps!);
   }
   buildCounterV2ServerKeyRestrictions--;
 }

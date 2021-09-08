@@ -43,7 +43,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Service Directory is a platform for discovering, publishing, and connecting
 /// services.
 class ServiceDirectoryApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1353,13 +1354,9 @@ class Endpoint {
   /// alphanumerics between. The prefix is optional. If specified, the prefix
   /// must be a DNS subdomain: a series of DNS labels separated by dots (.), not
   /// longer than 253 characters in total, followed by a slash (/) Annotations
-  /// that fails to meet these requirements are rejected. * The
-  /// `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for
-  /// system annotations managed by Service Directory. If the user tries to
-  /// write to these keyspaces, those entries are silently ignored by the system
-  /// Note: This field is equivalent to the `metadata` field in the v1beta1 API.
-  /// They have the same syntax and read/write to the same location in Service
-  /// Directory.
+  /// that fails to meet these requirements are rejected. Note: This field is
+  /// equivalent to the `metadata` field in the v1beta1 API. They have the same
+  /// syntax and read/write to the same location in Service Directory.
   ///
   /// Optional.
   core.Map<core.String, core.String>? annotations;
@@ -1816,7 +1813,7 @@ class Namespace {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -1991,12 +1988,9 @@ class Service {
   /// alphanumerics between. The prefix is optional. If specified, the prefix
   /// must be a DNS subdomain: a series of DNS labels separated by dots (.), not
   /// longer than 253 characters in total, followed by a slash (/). Annotations
-  /// that fails to meet these requirements are rejected * The `(*.)google.com/`
-  /// and `(*.)googleapis.com/` prefixes are reserved for system annotations
-  /// managed by Service Directory. If the user tries to write to these
-  /// keyspaces, those entries are silently ignored by the system Note: This
-  /// field is equivalent to the `metadata` field in the v1beta1 API. They have
-  /// the same syntax and read/write to the same location in Service Directory.
+  /// that fails to meet these requirements are rejected Note: This field is
+  /// equivalent to the `metadata` field in the v1beta1 API. They have the same
+  /// syntax and read/write to the same location in Service Directory.
   ///
   /// Optional.
   core.Map<core.String, core.String>? annotations;

@@ -46,7 +46,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Accesses the NoSQL document database built for automatic scaling, high
 /// performance, and ease of application development.
 class FirestoreApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

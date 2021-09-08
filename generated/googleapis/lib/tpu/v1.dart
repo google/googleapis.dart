@@ -42,7 +42,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// TPU API provides customers with access to Google TPU technology.
 class TPUApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -514,7 +515,7 @@ class ProjectsLocationsNodesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Stops a node.
+  /// Stops a node, this operation is only available with single TPU nodes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1293,7 +1294,7 @@ class Node {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : TPU node state is not known/set.
   /// - "CREATING" : TPU node is being created.
-  /// - "READY" : TPU node has been created and is fully usable.
+  /// - "READY" : TPU node has been created.
   /// - "RESTARTING" : TPU node is restarting.
   /// - "REIMAGING" : TPU node is undergoing reimaging.
   /// - "DELETING" : TPU node is being deleted.
@@ -1543,7 +1544,7 @@ class OperationMetadata {
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
-  /// Operations that have successfully been cancelled have Operation.error
+  /// Operations that have been cancelled successfully have Operation.error
   /// value with a google.rpc.Status.code of 1, corresponding to
   /// `Code.CANCELLED`.
   ///

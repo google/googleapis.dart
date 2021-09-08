@@ -37,7 +37,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// A simple Google Example Library API.
 class LibraryagentApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

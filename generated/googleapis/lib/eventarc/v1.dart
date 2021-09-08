@@ -20,6 +20,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsChannelsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTriggersResource]
 library eventarc.v1;
@@ -37,7 +38,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class EventarcApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -64,6 +66,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsChannelsResource get channels =>
+      ProjectsLocationsChannelsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsTriggersResource get triggers =>
@@ -155,6 +159,161 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
     );
     return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsChannelsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsChannelsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1589,7 +1748,7 @@ class OperationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

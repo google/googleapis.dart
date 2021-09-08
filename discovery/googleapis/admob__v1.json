@@ -313,7 +313,7 @@
             }
         }
     },
-    "revision": "20210722",
+    "revision": "20210902",
     "rootUrl": "https://admob.googleapis.com/",
     "schemas": {
         "AdUnit": {
@@ -622,7 +622,7 @@
                             "Mobile operating system version, e.g. \"iOS 13.5.1\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
                             "GMA SDK version, e.g. \"iOS 7.62.0\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
                             "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString. **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-                            "Restriction mode for ads serving (e.g. \"Non-personalized ads\")."
+                            "Restriction mode for ads serving (e.g. \"Non-personalized ads\"). **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric."
                         ],
                         "type": "string"
                     },
@@ -720,7 +720,7 @@
                         "Mobile operating system version, e.g. \"iOS 13.5.1\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
                         "GMA SDK version, e.g. \"iOS 7.62.0\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
                         "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString. **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-                        "Restriction mode for ads serving (e.g. \"Non-personalized ads\")."
+                        "Restriction mode for ads serving (e.g. \"Non-personalized ads\"). **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric."
                     ],
                     "type": "string"
                 },
@@ -771,7 +771,7 @@
                         "Mobile operating system version, e.g. \"iOS 13.5.1\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
                         "GMA SDK version, e.g. \"iOS 7.62.0\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
                         "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString. **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-                        "Restriction mode for ads serving (e.g. \"Non-personalized ads\")."
+                        "Restriction mode for ads serving (e.g. \"Non-personalized ads\"). **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric."
                     ],
                     "type": "string"
                 },

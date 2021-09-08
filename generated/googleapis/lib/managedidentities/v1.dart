@@ -29,6 +29,7 @@
 ///       - [ProjectsLocationsGlobalDomainsResource]
 ///         - [ProjectsLocationsGlobalDomainsSqlIntegrationsResource]
 ///       - [ProjectsLocationsGlobalOperationsResource]
+///       - [ProjectsLocationsGlobalPeeringsResource]
 library managedidentities.v1;
 
 import 'dart:async' as async;
@@ -47,7 +48,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// a highly available, hardened service running Microsoft Active Directory
 /// (AD).
 class ManagedServiceForMicrosoftActiveDirectoryConsumerApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -174,6 +176,8 @@ class ProjectsLocationsGlobalResource {
       ProjectsLocationsGlobalDomainsResource(_requester);
   ProjectsLocationsGlobalOperationsResource get operations =>
       ProjectsLocationsGlobalOperationsResource(_requester);
+  ProjectsLocationsGlobalPeeringsResource get peerings =>
+      ProjectsLocationsGlobalPeeringsResource(_requester);
 
   ProjectsLocationsGlobalResource(commons.ApiRequester client)
       : _requester = client;
@@ -245,10 +249,9 @@ class ProjectsLocationsGlobalDomainsResource {
   /// mydomain.myorganization.com, with the following restrictions: * Must
   /// contain only lowercase letters, numbers, periods and hyphens. * Must start
   /// with a letter. * Must contain between 2-64 characters. * Must end with a
-  /// number or a letter. * Must not start with period. * First segement length
-  /// (mydomain form example above) shouldn't exceed 15 chars. * The last
-  /// segment cannot be fully numeric. * Must be unique within the customer
-  /// project.
+  /// number or a letter. * Must not start with period. * First segment length
+  /// (mydomain for example above) shouldn't exceed 15 chars. * The last segment
+  /// cannot be fully numeric. * Must be unique within the customer project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1171,6 +1174,390 @@ class ProjectsLocationsGlobalOperationsResource {
       queryParams: _queryParams,
     );
     return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalPeeringsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalPeeringsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Peering for Managed AD instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource project name and location using the form:
+  /// `projects/{project_id}/locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [peeringId] - Required. Peering Id, unique name to identify peering.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Peering request,
+    core.String parent, {
+    core.String? peeringId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (peeringId != null) 'peeringId': [peeringId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/peerings';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes identified Peering.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Peering resource name using the form:
+  /// `projects/{project_id}/locations/global/peerings/{peering_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/peerings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Peering.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Peering resource name using the form:
+  /// `projects/{project_id}/locations/global/peerings/{peering_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/peerings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Peering].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Peering> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Peering.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/peerings/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Peerings in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the peering location using the
+  /// form: `projects/{project_id}/locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [filter] - Optional. Filter specifying constraints of a list operation.
+  /// For example,
+  /// `peering.authorized_network="projects/myprojectid/global/networks/mynetwork"`.
+  ///
+  /// [orderBy] - Optional. Specifies the ordering of results following syntax
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If not
+  /// specified, a default value of 1000 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response's next_page_token to determine if
+  /// there are more instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPeeringsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPeeringsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/peerings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListPeeringsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the labels for specified Peering.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Unique name of the peering in this scope including
+  /// projects and location using the form:
+  /// `projects/{project_id}/locations/global/peerings/{peering_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/peerings/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update. At least one path must
+  /// be supplied in this field. The elements of the repeated paths field may
+  /// only include these fields from Peering: * `labels`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Peering request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/peerings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/peerings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2406,15 +2793,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
 /// information in SloMetadata for custom precomputations. SSA Eligibility
 /// Exporter will emit per-node metric based on this information.
 class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
-  /// By default node is eligible if instance is eligible.
-  ///
-  /// But individual node might be excluded from SLO by adding entry here. For
-  /// semantic see SloMetadata.exclusions. If both instance and node level
-  /// exclusions are present for time period, the node level's reason will be
-  /// reported by Eligibility Exporter.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>?
-      exclusions;
-
   /// The location of the node, if different from instance location.
   core.String? location;
 
@@ -2429,7 +2807,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
       perSliEligibility;
 
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata({
-    this.exclusions,
     this.location,
     this.nodeId,
     this.perSliEligibility,
@@ -2438,15 +2815,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata.fromJson(
       core.Map _json)
       : this(
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
-                  .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
-                      (value) =>
-                          GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           location: _json.containsKey('location')
               ? _json['location'] as core.String
               : null,
@@ -2461,8 +2829,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null)
-          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (location != null) 'location': location!,
         if (nodeId != null) 'nodeId': nodeId!,
         if (perSliEligibility != null)
@@ -2589,87 +2955,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
       };
 }
 
-/// SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
-class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
-  /// Exclusion duration.
-  ///
-  /// No restrictions on the possible values. When an ongoing operation is
-  /// taking longer than initially expected, an existing entry in the exclusion
-  /// list can be updated by extending the duration. This is supported by the
-  /// subsystem exporting eligibility data as long as such extension is
-  /// committed at least 10 minutes before the original exclusion expiration -
-  /// otherwise it is possible that there will be "gaps" in the exclusion
-  /// application in the exported timeseries.
-  core.String? duration;
-
-  /// Human-readable reason for the exclusion.
-  ///
-  /// This should be a static string (e.g. "Disruptive update in progress") and
-  /// should not contain dynamically generated data (e.g. instance name). Can be
-  /// left empty.
-  core.String? reason;
-
-  /// Name of an SLI that this exclusion applies to.
-  ///
-  /// Can be left empty, signaling that the instance should be excluded from all
-  /// SLIs.
-  core.String? sliName;
-
-  /// Start time of the exclusion.
-  ///
-  /// No alignment (e.g. to a full minute) needed.
-  core.String? startTime;
-
-  GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion({
-    this.duration,
-    this.reason,
-    this.sliName,
-    this.startTime,
-  });
-
-  GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion.fromJson(
-      core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
-              : null,
-          sliName: _json.containsKey('sliName')
-              ? _json['sliName'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (reason != null) 'reason': reason!,
-        if (sliName != null) 'sliName': sliName!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
-
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-  /// List of SLO exclusion windows.
-  ///
-  /// When multiple entries in the list match (matching the exclusion
-  /// time-window against current time point) the exclusion reason used in the
-  /// first matching entry will be published. It is not needed to include
-  /// expired exclusion in this list, as only the currently applicable
-  /// exclusions are taken into account by the eligibility exporting subsystem
-  /// (the historical state of exclusions will be reflected in the historically
-  /// produced timeseries regardless of the current state). This field can be
-  /// used to mark the instance as temporary ineligible for the purpose of SLO
-  /// calculation. For permanent instance SLO exclusion, use of custom instance
-  /// eligibility is recommended. See 'eligibility' field below.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>?
-      exclusions;
-
   /// List of nodes.
   ///
   /// Some producers need to use per-node metadata to calculate SLO. This field
@@ -2694,7 +2982,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   core.String? tier;
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata({
-    this.exclusions,
     this.nodes,
     this.perSliEligibility,
     this.tier,
@@ -2703,15 +2990,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata.fromJson(
       core.Map _json)
       : this(
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
-                  .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
-                      (value) =>
-                          GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           nodes: _json.containsKey('nodes')
               ? (_json['nodes'] as core.List)
                   .map<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>(
@@ -2730,8 +3008,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null)
-          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (nodes != null)
           'nodes': nodes!.map((value) => value.toJson()).toList(),
         if (perSliEligibility != null)
@@ -2955,6 +3231,50 @@ class ListOperationsResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// ListPeeringsResponse is the response message for ListPeerings method.
+class ListPeeringsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// A list of Managed Identities Service Peerings in the project.
+  core.List<Peering>? peerings;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListPeeringsResponse({
+    this.nextPageToken,
+    this.peerings,
+    this.unreachable,
+  });
+
+  ListPeeringsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          peerings: _json.containsKey('peerings')
+              ? (_json['peerings'] as core.List)
+                  .map<Peering>((value) => Peering.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (peerings != null)
+          'peerings': peerings!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -3304,7 +3624,7 @@ class OperationMetadata {
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
-  /// Operations that have successfully been cancelled have Operation.error
+  /// Operations that have been cancelled successfully have Operation.error
   /// value with a google.rpc.Status.code of 1, corresponding to
   /// `Code.CANCELLED`.
   ///
@@ -3380,6 +3700,118 @@ class OperationMetadata {
       };
 }
 
+/// Represents a Managed Service for Microsoft Active Directory Peering.
+class Peering {
+  /// The full names of the Google Compute Engine
+  /// \[networks\](/compute/docs/networks-and-firewalls#networks) to which the
+  /// instance is connected.
+  ///
+  /// Caller needs to make sure that CIDR subnets do not overlap between
+  /// networks, else peering creation will fail.
+  ///
+  /// Required.
+  core.String? authorizedNetwork;
+
+  /// The time the instance was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Full domain resource path for the Managed AD Domain involved in peering.
+  ///
+  /// The resource path should be in the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  ///
+  /// Required.
+  core.String? domainResource;
+
+  /// Resource labels to represent user-provided metadata.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Unique name of the peering in this scope including projects and location
+  /// using the form:
+  /// `projects/{project_id}/locations/global/peerings/{peering_id}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The current state of this Peering.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "CREATING" : Peering is being created.
+  /// - "CONNECTED" : Peering is connected.
+  /// - "DISCONNECTED" : Peering is disconnected.
+  /// - "DELETING" : Peering is being deleted.
+  core.String? state;
+
+  /// Additional information about the current status of this peering, if
+  /// available.
+  ///
+  /// Output only.
+  core.String? statusMessage;
+
+  /// Last update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Peering({
+    this.authorizedNetwork,
+    this.createTime,
+    this.domainResource,
+    this.labels,
+    this.name,
+    this.state,
+    this.statusMessage,
+    this.updateTime,
+  });
+
+  Peering.fromJson(core.Map _json)
+      : this(
+          authorizedNetwork: _json.containsKey('authorizedNetwork')
+              ? _json['authorizedNetwork'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          domainResource: _json.containsKey('domainResource')
+              ? _json['domainResource'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
+        if (createTime != null) 'createTime': createTime!,
+        if (domainResource != null) 'domainResource': domainResource!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -3408,7 +3840,7 @@ class OperationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -4027,8 +4459,8 @@ class UpdatePolicy {
   /// Deny Maintenance Period that is applied to resource to indicate when
   /// maintenance is forbidden.
   ///
-  /// User can specify zero or more non-overlapping deny periods. For V1,
-  /// Maximum number of deny_maintenance_periods is expected to be one.
+  /// User can specify zero or more non-overlapping deny periods. Maximum number
+  /// of deny_maintenance_periods expected is one.
   core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
 
   /// Maintenance window that is applied to resources covered by this policy.

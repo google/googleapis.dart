@@ -44,7 +44,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// To execute workflows and manage executions, see the Workflows Executions
 /// API.
 class WorkflowsApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1000,16 +1001,16 @@ class Workflow {
   /// Output only.
   core.String? revisionId;
 
-  /// Name of the service account associated with the latest workflow version.
+  /// The service account associated with the latest workflow version.
   ///
   /// This service account represents the identity of the workflow and
   /// determines what permissions the workflow has. Format:
-  /// projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for
-  /// the `{project}` will infer the project from the account. The `{account}`
-  /// value can be the `email` address or the `unique_id` of the service
-  /// account. If not provided, workflow will use the project's default service
-  /// account. Modifying this field for an existing workflow results in a new
-  /// workflow revision.
+  /// projects/{project}/serviceAccounts/{account} or {account} Using `-` as a
+  /// wildcard for the `{project}` or not providing one at all will infer the
+  /// project from the account. The `{account}` value can be the `email` address
+  /// or the `unique_id` of the service account. If not provided, workflow will
+  /// use the project's default service account. Modifying this field for an
+  /// existing workflow results in a new workflow revision.
   core.String? serviceAccount;
 
   /// Workflow code to be executed.

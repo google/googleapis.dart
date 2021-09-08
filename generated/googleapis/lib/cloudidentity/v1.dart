@@ -55,7 +55,8 @@ class CloudIdentityApi {
   static const cloudIdentityGroupsReadonlyScope =
       'https://www.googleapis.com/auth/cloud-identity.groups.readonly';
 
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -94,8 +95,8 @@ class DevicesResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}`, where device_id is the unique
-  /// ID assigned to the Device.
+  /// the Device in format: `devices/{device}`, where device is the unique ID
+  /// assigned to the Device.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -144,8 +145,8 @@ class DevicesResource {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -185,16 +186,16 @@ class DevicesResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}`, where device_id is the unique
-  /// ID assigned to the Device.
+  /// the Device in format: `devices/{device}`, where device is the unique ID
+  /// assigned to the Device.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [customer] - Optional.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -232,17 +233,17 @@ class DevicesResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in the format: `devices/{device_id}`, where device_id is the
-  /// unique ID assigned to the Device.
+  /// the Device in the format: `devices/{device}`, where device is the unique
+  /// ID assigned to the Device.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [customer] - Optional.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Customer in the format: `customers/{customer_id}`, where customer_id
-  /// is the customer to whom the device belongs. If you're using this API for
-  /// your own organization, use `customers/my_customer`. If you're using this
-  /// API to manage another organization, use `customers/{customer_id}`, where
-  /// customer_id is the customer to whom the device belongs.
+  /// the Customer in the format: `customers/{customer}`, where customer is the
+  /// customer to whom the device belongs. If you're using this API for your own
+  /// organization, use `customers/my_customer`. If you're using this API to
+  /// manage another organization, use `customers/{customer}`, where customer is
+  /// the customer to whom the device belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -281,11 +282,11 @@ class DevicesResource {
   ///
   /// [customer] - Optional.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer in the format: `customers/{customer_id}`, where customer_id
-  /// is the customer to whom the device belongs. If you're using this API for
-  /// your own organization, use `customers/my_customer`. If you're using this
-  /// API to manage another organization, use `customers/{customer_id}`, where
-  /// customer_id is the customer to whom the device belongs.
+  /// the customer in the format: `customers/{customer}`, where customer is the
+  /// customer to whom the device belongs. If you're using this API for your own
+  /// organization, use `customers/my_customer`. If you're using this API to
+  /// manage another organization, use `customers/{customer}`, where customer is
+  /// the customer to whom the device belongs.
   ///
   /// [filter] - Optional. Additional restrictions when fetching list of
   /// devices. For a list of search fields, refer to
@@ -366,9 +367,9 @@ class DevicesResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
-  /// where device_id is the unique ID assigned to the Device, and
-  /// device_user_id is the unique ID assigned to the User.
+  /// the Device in format: `devices/{device}/deviceUsers/{device_user}`, where
+  /// device is the unique ID assigned to the Device, and device_user is the
+  /// unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -419,9 +420,9 @@ class DevicesDeviceUsersResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
-  /// where device_id is the unique ID assigned to the Device, and
-  /// device_user_id is the unique ID assigned to the User.
+  /// the Device in format: `devices/{device}/deviceUsers/{device_user}`, where
+  /// device is the unique ID assigned to the Device, and device_user is the
+  /// unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -463,9 +464,9 @@ class DevicesDeviceUsersResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
-  /// where device_id is the unique ID assigned to the Device, and
-  /// device_user_id is the unique ID assigned to the User.
+  /// the Device in format: `devices/{device}/deviceUsers/{device_user}`, where
+  /// device is the unique ID assigned to the Device, and device_user is the
+  /// unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -510,9 +511,9 @@ class DevicesDeviceUsersResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
-  /// where device_id is the unique ID assigned to the Device, and
-  /// device_user_id is the unique ID assigned to the User.
+  /// the Device in format: `devices/{device}/deviceUsers/{device_user}`, where
+  /// device is the unique ID assigned to the Device, and device_user is the
+  /// unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -554,17 +555,17 @@ class DevicesDeviceUsersResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
-  /// where device_id is the unique ID assigned to the Device, and
-  /// device_user_id is the unique ID assigned to the User.
+  /// the Device in format: `devices/{device}/deviceUsers/{device_user}`, where
+  /// device is the unique ID assigned to the Device, and device_user is the
+  /// unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [customer] - Optional.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -602,17 +603,17 @@ class DevicesDeviceUsersResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
-  /// where device_id is the unique ID assigned to the Device, and
-  /// device_user_id is the unique ID assigned to the User.
+  /// the Device in format: `devices/{device}/deviceUsers/{device_user}`, where
+  /// device is the unique ID assigned to the Device, and device_user is the
+  /// unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [customer] - Optional.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -658,8 +659,8 @@ class DevicesDeviceUsersResource {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// [filter] - Optional. Additional restrictions when fetching list of
   /// devices. For a list of search fields, refer to
@@ -815,9 +816,9 @@ class DevicesDeviceUsersResource {
   ///
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
-  /// where device_id is the unique ID assigned to the Device, and
-  /// device_user_id is the unique ID assigned to the User.
+  /// the Device in format: `devices/{device}/deviceUsers/{device_user}`, where
+  /// device is the unique ID assigned to the Device, and device_user is the
+  /// unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -865,18 +866,18 @@ class DevicesDeviceUsersClientStatesResource {
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the ClientState in format:
-  /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`,
-  /// where `device_id` is the unique ID assigned to the Device,
-  /// `device_user_id` is the unique ID assigned to the User and `partner_id`
-  /// identifies the partner storing the data. To get the client state for
-  /// devices belonging to your own organization, the `partnerId` is in the
-  /// format: `customerId-*anystring*`. Where the `customerId` is your
-  /// organization's customer ID and `anystring` is any suffix. This suffix is
-  /// used in setting up Custom Access Levels in Context-Aware Access. You may
-  /// use `my_customer` instead of the customer ID for devices managed by your
-  /// own organization. You may specify `-` in place of the `{device_id}`, so
-  /// the ClientState resource name can be:
-  /// `devices/-/deviceUsers/{device_user_resource_id}/clientStates/{partner_id}`.
+  /// `devices/{device}/deviceUsers/{device_user}/clientStates/{partner}`, where
+  /// `device` is the unique ID assigned to the Device, `device_user` is the
+  /// unique ID assigned to the User and `partner` identifies the partner
+  /// storing the data. To get the client state for devices belonging to your
+  /// own organization, the `partnerId` is in the format:
+  /// `customerId-*anystring*`. Where the `customerId` is your organization's
+  /// customer ID and `anystring` is any suffix. This suffix is used in setting
+  /// up Custom Access Levels in Context-Aware Access. You may use `my_customer`
+  /// instead of the customer ID for devices managed by your own organization.
+  /// You may specify `-` in place of the `{device}`, so the ClientState
+  /// resource name can be:
+  /// `devices/-/deviceUsers/{device_user_resource}/clientStates/{partner}`.
   /// Value must have pattern
   /// `^devices/\[^/\]+/deviceUsers/\[^/\]+/clientStates/\[^/\]+$`.
   ///
@@ -884,8 +885,8 @@ class DevicesDeviceUsersClientStatesResource {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -932,8 +933,8 @@ class DevicesDeviceUsersClientStatesResource {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// [filter] - Optional. Additional restrictions when fetching list of client
   /// states.
@@ -996,15 +997,15 @@ class DevicesDeviceUsersClientStatesResource {
   /// [name] - Output only.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the ClientState in format:
-  /// `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`,
-  /// where partner_id corresponds to the partner storing the data. For partners
+  /// `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where
+  /// partner corresponds to the partner storing the data. For partners
   /// belonging to the "BeyondCorp Alliance", this is the partner ID specified
   /// to you by Google. For all other callers, this is a string of the form:
-  /// `{customer_id}-suffix`, where `customer_id` is your customer ID. The
-  /// *suffix* is any string the caller specifies. This string will be displayed
-  /// verbatim in the administration console. This suffix is used in setting up
-  /// Custom Access Levels in Context-Aware Access. Your organization's customer
-  /// ID can be obtained from the URL: `GET
+  /// `{customer}-suffix`, where `customer` is your customer ID. The *suffix* is
+  /// any string the caller specifies. This string will be displayed verbatim in
+  /// the administration console. This suffix is used in setting up Custom
+  /// Access Levels in Context-Aware Access. Your organization's customer ID can
+  /// be obtained from the URL: `GET
   /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The
   /// `id` field in the response contains the customer ID starting with the
   /// letter 'C'. The customer ID to be used in this API is the string after the
@@ -1016,8 +1017,8 @@ class DevicesDeviceUsersClientStatesResource {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// [updateMask] - Optional. Comma-separated list of fully qualified names of
   /// fields to be updated. If not specified, all updatable fields in
@@ -1121,7 +1122,7 @@ class GroupsResource {
   ///
   /// [name] - Required. The
   /// [resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the `Group` to retrieve. Must be of the form `groups/{group_id}`.
+  /// the `Group` to retrieve. Must be of the form `groups/{group}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1158,7 +1159,7 @@ class GroupsResource {
   ///
   /// [name] - Required. The
   /// [resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the `Group` to retrieve. Must be of the form `groups/{group_id}`.
+  /// the `Group` to retrieve. Must be of the form `groups/{group}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1205,9 +1206,9 @@ class GroupsResource {
   /// request, if any.
   ///
   /// [parent] - Required. The parent resource under which to list all `Group`
-  /// resources. Must be of the form `identitysources/{identity_source_id}` for
-  /// external- identity-mapped groups or `customers/{customer_id}` for Google
-  /// Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+  /// resources. Must be of the form `identitysources/{identity_source}` for
+  /// external- identity-mapped groups or `customers/{customer}` for Google
+  /// Groups. The `customer` must begin with "C" (for example, 'C046psxkn').
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
   /// `View.BASIC`.
@@ -1268,7 +1269,7 @@ class GroupsResource {
   /// Google user or a Google Group. If specified, the `EntityKey` represents an
   /// external-identity-mapped group. The namespace must correspond to an
   /// identity source created in Admin Console and must be in the form of
-  /// `identitysources/{identity_source_id}`.
+  /// `identitysources/{identity_source}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1311,11 +1312,11 @@ class GroupsResource {
   ///
   /// [name] - Output only. The
   /// [resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the `Group`. Shall be of the form `groups/{group_id}`.
+  /// the `Group`. Shall be of the form `groups/{group}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The names of fields to update. May only contain
-  /// the following fields: `display_name`, `description`, `labels`.
+  /// the following field names: `display_name`, `description`, `labels`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1368,9 +1369,9 @@ class GroupsResource {
   /// [query] - Required. The search query. Must be specified in
   /// [Common Expression Language](https://opensource.google/projects/cel). May
   /// only contain equality operators on the parent and inclusion operators on
-  /// labels (e.g., `parent == 'customers/{customer_id}' &&
+  /// labels (e.g., `parent == 'customers/{customer}' &&
   /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The
-  /// `customer_id` must begin with "C" (for example, 'C046psxkn').
+  /// `customer` must begin with "C" (for example, 'C046psxkn').
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
   /// `View.BASIC`.
@@ -1436,9 +1437,9 @@ class GroupsMembershipsResource {
   ///
   /// [parent] -
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the group to check the transitive membership in. Format:
-  /// `groups/{group_id}`, where `group_id` is the unique id assigned to the
-  /// Group to which the Membership belongs to.
+  /// the group to check the transitive membership in. Format: `groups/{group}`,
+  /// where `group` is the unique id assigned to the Group to which the
+  /// Membership belongs to.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [query] - Required. A CEL expression that MUST include member
@@ -1487,7 +1488,7 @@ class GroupsMembershipsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent `Group` resource under which to create the
-  /// `Membership`. Must be of the form `groups/{group_id}`.
+  /// `Membership`. Must be of the form `groups/{group}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1528,7 +1529,7 @@ class GroupsMembershipsResource {
   /// [name] - Required. The
   /// [resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the `Membership` to delete. Must be of the form
-  /// `groups/{group_id}/memberships/{membership_id}`
+  /// `groups/{group}/memberships/{membership}`
   /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1566,7 +1567,7 @@ class GroupsMembershipsResource {
   /// [name] - Required. The
   /// [resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the `Membership` to retrieve. Must be of the form
-  /// `groups/{group_id}/memberships/{membership_id}`.
+  /// `groups/{group}/memberships/{membership}`.
   /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1612,13 +1613,13 @@ class GroupsMembershipsResource {
   ///
   /// [parent] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the group to search transitive memberships in. Format:
-  /// `groups/{group_id}`, where `group_id` is the unique ID assigned to the
-  /// Group to which the Membership belongs to. group_id can be a wildcard
-  /// collection id "-". When a group_id is specified, the membership graph will
-  /// be constrained to paths between the member (defined in the query) and the
-  /// parent. If a wildcard collection is provided, all membership paths
-  /// connected to the member will be returned.
+  /// the group to search transitive memberships in. Format: `groups/{group}`,
+  /// where `group` is the unique ID assigned to the Group to which the
+  /// Membership belongs to. group can be a wildcard collection id "-". When a
+  /// group is specified, the membership graph will be constrained to paths
+  /// between the member (defined in the query) and the parent. If a wildcard
+  /// collection is provided, all membership paths connected to the member will
+  /// be returned.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [query] - Required. A CEL expression that MUST include member
@@ -1664,7 +1665,7 @@ class GroupsMembershipsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent `Group` resource under which to lookup the
-  /// `Membership` name. Must be of the form `groups/{group_id}`.
+  /// `Membership` name. Must be of the form `groups/{group}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return. Note that the number
@@ -1727,7 +1728,7 @@ class GroupsMembershipsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent `Group` resource under which to lookup the
-  /// `Membership` name. Must be of the form `groups/{group_id}`.
+  /// `Membership` name. Must be of the form `groups/{group}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [memberKey_id] - The ID of the entity. For Google-managed entities, the
@@ -1740,7 +1741,7 @@ class GroupsMembershipsResource {
   /// Google user or a Google Group. If specified, the `EntityKey` represents an
   /// external-identity-mapped group. The namespace must correspond to an
   /// identity source created in Admin Console and must be in the form of
-  /// `identitysources/{identity_source_id}`.
+  /// `identitysources/{identity_source}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1785,7 +1786,7 @@ class GroupsMembershipsResource {
   /// [name] - Required. The
   /// [resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the `Membership` whose roles are to be modified. Must be of the form
-  /// `groups/{group_id}/memberships/{membership_id}`.
+  /// `groups/{group}/memberships/{membership}`.
   /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1834,9 +1835,9 @@ class GroupsMembershipsResource {
   ///
   /// [parent] -
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the group to search transitive memberships in. Format:
-  /// `groups/{group_id}`, where `group_id` is always '-' as this API will
-  /// search across all groups for a given member.
+  /// the group to search transitive memberships in. Format: `groups/{group}`,
+  /// where `group` is always '-' as this API will search across all groups for
+  /// a given member.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [pageSize] - The default page size is 200 (max 1000).
@@ -1902,9 +1903,8 @@ class GroupsMembershipsResource {
   ///
   /// [parent] -
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the group to search transitive memberships in. Format:
-  /// `groups/{group_id}`, where `group_id` is the unique ID assigned to the
-  /// Group.
+  /// the group to search transitive memberships in. Format: `groups/{group}`,
+  /// where `group` is the unique ID assigned to the Group.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [pageSize] - The default page size is 200 (max 1000).
@@ -1971,6 +1971,50 @@ class CheckTransitiveMembershipResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (hasMembership != null) 'hasMembership': hasMembership!,
       };
+}
+
+/// Metadata for CreateGroup LRO.
+class CreateGroupMetadata {
+  CreateGroupMetadata();
+
+  CreateGroupMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for CreateMembership LRO.
+class CreateMembershipMetadata {
+  CreateMembershipMetadata();
+
+  CreateMembershipMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for DeleteGroup LRO.
+class DeleteGroupMetadata {
+  DeleteGroupMetadata();
+
+  DeleteGroupMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for DeleteMembership LRO.
+class DeleteMembershipMetadata {
+  DeleteMembershipMetadata();
+
+  DeleteMembershipMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Dynamic group metadata like queries and status.
@@ -2108,7 +2152,7 @@ class EntityKey {
   /// as a Google user or a Google Group. If specified, the `EntityKey`
   /// represents an external-identity-mapped group. The namespace must
   /// correspond to an identity source created in Admin Console and must be in
-  /// the form of `identitysources/{identity_source_id}`.
+  /// the form of `identitysources/{identity_source}`.
   core.String? namespace;
 
   EntityKey({
@@ -2149,6 +2193,19 @@ class ExpiryDetail {
   core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
       };
+}
+
+/// Metadata of GetMembershipGraphResponse LRO.
+///
+/// This is currently empty to permit future extensibility.
+class GetMembershipGraphMetadata {
+  GetMembershipGraphMetadata();
+
+  GetMembershipGraphMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The response message for MembershipsService.GetMembershipGraph.
@@ -2255,6 +2312,17 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
       };
 }
 
+/// Metadata for ApproveDeviceUser LRO.
+class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata {
+  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata();
+
+  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Request message for approving the device to access user data.
 class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
@@ -2262,8 +2330,8 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
   ///
   /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// Optional.
   core.String? customer;
@@ -2308,6 +2376,17 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
       };
 }
 
+/// Metadata for BlockDeviceUser LRO.
+class GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata {
+  GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata();
+
+  GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Request message for blocking account on device.
 class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
@@ -2315,8 +2394,8 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
   ///
   /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// Optional.
   core.String? customer;
@@ -2361,6 +2440,17 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
       };
 }
 
+/// Metadata for CancelWipeDevice LRO.
+class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata {
+  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata();
+
+  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Request message for cancelling an unfinished device wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
@@ -2368,8 +2458,8 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
   ///
   /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// Optional.
   core.String? customer;
@@ -2416,6 +2506,17 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
       };
 }
 
+/// Metadata for CancelWipeDeviceUser LRO.
+class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata {
+  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata();
+
+  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Request message for cancelling an unfinished user account wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
@@ -2423,8 +2524,8 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
   ///
   /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// Optional.
   core.String? customer;
@@ -2538,16 +2639,16 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
 
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the ClientState in format:
-  /// `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`,
-  /// where partner_id corresponds to the partner storing the data.
+  /// `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where
+  /// partner corresponds to the partner storing the data.
   ///
   /// For partners belonging to the "BeyondCorp Alliance", this is the partner
   /// ID specified to you by Google. For all other callers, this is a string of
-  /// the form: `{customer_id}-suffix`, where `customer_id` is your customer ID.
-  /// The *suffix* is any string the caller specifies. This string will be
-  /// displayed verbatim in the administration console. This suffix is used in
-  /// setting up Custom Access Levels in Context-Aware Access. Your
-  /// organization's customer ID can be obtained from the URL: `GET
+  /// the form: `{customer}-suffix`, where `customer` is your customer ID. The
+  /// *suffix* is any string the caller specifies. This string will be displayed
+  /// verbatim in the administration console. This suffix is used in setting up
+  /// Custom Access Levels in Context-Aware Access. Your organization's customer
+  /// ID can be obtained from the URL: `GET
   /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The
   /// `id` field in the response contains the customer ID starting with the
   /// letter 'C'. The customer ID to be used in this API is the string after the
@@ -2646,6 +2747,17 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
       };
 }
 
+/// Metadata for CreateDevice LRO.
+class GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata {
+  GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata();
+
+  GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Additional custom attribute values may be one of these types
 class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   /// Represents a boolean value.
@@ -2681,6 +2793,28 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
         if (numberValue != null) 'numberValue': numberValue!,
         if (stringValue != null) 'stringValue': stringValue!,
       };
+}
+
+/// Metadata for DeleteDevice LRO.
+class GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata {
+  GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata();
+
+  GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for DeleteDeviceUser LRO.
+class GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata {
+  GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata();
+
+  GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 ///  A Device within the Cloud Identity Devices API.
@@ -2820,8 +2954,8 @@ class GoogleAppsCloudidentityDevicesV1Device {
   core.String? model;
 
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Device in format: `devices/{device_id}`, where device_id is the unique
-  /// id assigned to the Device.
+  /// the Device in format: `devices/{device}`, where device is the unique id
+  /// assigned to the Device.
   ///
   /// Output only.
   core.String? name;
@@ -3076,9 +3210,8 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   core.String? managementState;
 
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the DeviceUser in format:
-  /// `devices/{device_id}/deviceUsers/{device_user_id}`, where `device_user_id`
-  /// uniquely identifies a user's use of a device.
+  /// the DeviceUser in format: `devices/{device}/deviceUsers/{device_user}`,
+  /// where `device_user` uniquely identifies a user's use of a device.
   ///
   /// Output only.
   core.String? name;
@@ -3267,6 +3400,17 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
       };
 }
 
+/// Metadata for ListEndpointApps LRO.
+class GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata {
+  GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata();
+
+  GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Response containing resource names of the DeviceUsers associated with the
 /// caller's credentials.
 class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
@@ -3276,9 +3420,8 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
 
   /// [Resource names](https://cloud.google.com/apis/design/resource_names) of
   /// the DeviceUsers in the format:
-  /// `devices/{device_id}/deviceUsers/{user_resource_id}`, where device_id is
-  /// the unique ID assigned to a Device and user_resource_id is the unique user
-  /// ID
+  /// `devices/{device}/deviceUsers/{user_resource}`, where device is the unique
+  /// ID assigned to a Device and user_resource is the unique user ID
   core.List<core.String>? names;
 
   /// Token to retrieve the next page of results.
@@ -3315,6 +3458,50 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
       };
 }
 
+/// Metadata for SignoutDeviceUser LRO.
+class GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata {
+  GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata();
+
+  GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for UpdateClientState LRO.
+class GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata {
+  GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata();
+
+  GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for UpdateDevice LRO.
+class GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata {
+  GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata();
+
+  GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for WipeDevice LRO.
+class GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata {
+  GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata();
+
+  GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Request message for wiping all data on the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
@@ -3322,8 +3509,8 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
   ///
   /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// Optional.
   core.String? customer;
@@ -3368,6 +3555,17 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
       };
 }
 
+/// Metadata for WipeDeviceUser LRO.
+class GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata {
+  GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata();
+
+  GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Request message for starting an account wipe on device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
@@ -3375,8 +3573,8 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
   ///
   /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
   ///
   /// Optional.
   core.String? customer;
@@ -3467,7 +3665,7 @@ class Group {
   /// The [resource name](https://cloud.google.com/apis/design/resource_names)
   /// of the `Group`.
   ///
-  /// Shall be of the form `groups/{group_id}`.
+  /// Shall be of the form `groups/{group}`.
   ///
   /// Output only.
   core.String? name;
@@ -3475,9 +3673,9 @@ class Group {
   /// The resource name of the entity under which this `Group` resides in the
   /// Cloud Identity resource hierarchy.
   ///
-  /// Must be of the form `identitysources/{identity_source_id}` for external-
-  /// identity-mapped groups or `customers/{customer_id}` for Google Groups. The
-  /// `customer_id` must begin with "C" (for example, 'C046psxkn').
+  /// Must be of the form `identitysources/{identity_source}` for external-
+  /// identity-mapped groups or `customers/{customer}` for Google Groups. The
+  /// `customer` must begin with "C" (for example, 'C046psxkn').
   ///
   /// Required. Immutable.
   core.String? parent;
@@ -3727,7 +3925,7 @@ class LookupMembershipNameResponse {
   /// The [resource name](https://cloud.google.com/apis/design/resource_names)
   /// of the looked-up `Membership`.
   ///
-  /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.
+  /// Must be of the form `groups/{group}/memberships/{membership}`.
   core.String? name;
 
   LookupMembershipNameResponse({
@@ -3824,7 +4022,7 @@ class Membership {
   /// The [resource name](https://cloud.google.com/apis/design/resource_names)
   /// of the `Membership`.
   ///
-  /// Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+  /// Shall be of the form `groups/{group}/memberships/{membership}`.
   ///
   /// Output only.
   core.String? name;
@@ -4321,6 +4519,28 @@ class TransitiveMembershipRole {
   core.Map<core.String, core.dynamic> toJson() => {
         if (role != null) 'role': role!,
       };
+}
+
+/// Metadata for UpdateGroup LRO.
+class UpdateGroupMetadata {
+  UpdateGroupMetadata();
+
+  UpdateGroupMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Metadata for UpdateMembership LRO.
+class UpdateMembershipMetadata {
+  UpdateMembershipMetadata();
+
+  UpdateMembershipMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The details of an update to a `MembershipRole`.

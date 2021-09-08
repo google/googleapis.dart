@@ -42,7 +42,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Creates and manages rules that determine when a Firebase Rules-enabled
 /// service should permit a request.
 class FirebaseRulesApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

@@ -57,7 +57,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// The Cloud Run Admin API follows the Knative Serving API specification.
 class CloudRunApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2676,7 +2677,7 @@ class ConfigMapVolumeSource {
 /// Users create new Revisions by updating the Configuration's spec. The "latest
 /// created" revision's name is available under status, as is the "latest ready"
 /// revision's name. See also:
-/// https://github.com/knative/serving/blob/master/docs/spec/overview.md#configuration
+/// https://github.com/knative/serving/blob/main/docs/spec/overview.md#configuration
 class Configuration {
   /// The API version for this call such as "serving.knative.dev/v1".
   core.String? apiVersion;
@@ -3540,7 +3541,7 @@ class GoogleCloudRunV1Condition {
   /// type is used to communicate the status of the reconciliation process.
   ///
   /// See also:
-  /// https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting
+  /// https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting
   /// Types common to all resources include: * "Ready": True when the Resource
   /// is ready.
   core.String? type;
@@ -4569,7 +4570,7 @@ class OwnerReference {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -4865,7 +4866,7 @@ class ResourceRequirements {
 ///
 /// A revision references a container image. Revisions are created by updates to
 /// a Configuration. See also:
-/// https://github.com/knative/serving/blob/master/docs/spec/overview.md#revision
+/// https://github.com/knative/serving/blob/main/docs/spec/overview.md#revision
 class Revision {
   /// The API version for this call such as "serving.knative.dev/v1".
   core.String? apiVersion;
@@ -4940,7 +4941,7 @@ class RevisionSpec {
   /// In the context of a Revision, we disallow a number of fields on this
   /// Container, including: name and lifecycle. In Cloud Run, only a single
   /// container may be provided. The runtime contract is documented here:
-  /// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+  /// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
   core.List<Container>? containers;
 
   /// Email address of the IAM service account associated with the revision of
@@ -4955,8 +4956,8 @@ class RevisionSpec {
   /// responding to a request.
   ///
   /// Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum
-  /// allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults
-  /// to 300 seconds (5 minutes). Maximum allowed value is configurable by the
+  /// allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to
+  /// 300 seconds (5 minutes). Maximum allowed value is configurable by the
   /// cluster operator.
   core.int? timeoutSeconds;
   core.List<Volume>? volumes;
@@ -5143,7 +5144,7 @@ class RevisionTemplate {
 /// the Route is additionally responsible for monitoring the Configuration for
 /// "latest ready" revision changes, and smoothly rolling out latest revisions.
 /// See also:
-/// https://github.com/knative/serving/blob/master/docs/spec/overview.md#route
+/// https://github.com/knative/serving/blob/main/docs/spec/overview.md#route
 /// Cloud Run currently supports referencing a single Configuration to
 /// automatically deploy the "latest ready" Revision from that Configuration.
 class Route {
@@ -5530,7 +5531,7 @@ class SecurityContext {
 /// a kubernetes Deployment orchestrates ReplicaSets). The Service's controller
 /// will track the statuses of its owned Configuration and Route, reflecting
 /// their statuses and conditions as its own. See also:
-/// https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
+/// https://github.com/knative/serving/blob/main/docs/spec/overview.md#service
 class Service {
   /// The API version for this call such as "serving.knative.dev/v1".
   core.String? apiVersion;
@@ -6169,11 +6170,13 @@ class TrafficTarget {
       };
 }
 
-/// Not supported by Cloud Run Volume represents a named volume in a container.
+/// Volume represents a named volume in a container.
 class Volume {
   ConfigMapVolumeSource? configMap;
 
   /// Volume's name.
+  ///
+  /// In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
   core.String? name;
   SecretVolumeSource? secret;
 
@@ -6203,15 +6206,16 @@ class Volume {
       };
 }
 
-/// Not supported by Cloud Run VolumeMount describes a mounting of a Volume
-/// within a container.
+/// VolumeMount describes a mounting of a Volume within a container.
 class VolumeMount {
   /// Path within the container at which the volume should be mounted.
   ///
   /// Must not contain ':'.
   core.String? mountPath;
 
-  /// This must match the Name of a Volume.
+  /// The name of the volume.
+  ///
+  /// There must be a corresponding Volume with the same name.
   core.String? name;
 
   /// (Optional) Only true is accepted.

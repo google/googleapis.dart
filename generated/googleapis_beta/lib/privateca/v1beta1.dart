@@ -51,7 +51,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// certificate authorities (CAs) while staying in control of your private
 /// keys."
 class CertificateAuthorityServiceApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -4257,7 +4258,7 @@ class OperationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -5247,8 +5248,8 @@ class SubjectDescription {
 /// This is either a resource path to a known issuing CertificateAuthority, or a
 /// PEM issuer certificate chain.
 class SubordinateConfig {
-  /// This can refer to a CertificateAuthority in the same project that was used
-  /// to create a subordinate CertificateAuthority.
+  /// This can refer to a CertificateAuthority that was used to create a
+  /// subordinate CertificateAuthority.
   ///
   /// This field is used for information and usability purposes only. The
   /// resource name is in the format `projects / * /locations / *

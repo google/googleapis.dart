@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
+                    "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
                 }
             }
         }
@@ -1176,7 +1176,7 @@
             }
         }
     },
-    "revision": "20210717",
+    "revision": "20210827",
     "rootUrl": "https://recommender.googleapis.com/",
     "schemas": {
         "GoogleCloudRecommenderV1CostProjection": {
@@ -1621,6 +1621,14 @@
                         "$ref": "GoogleCloudRecommenderV1OperationGroup"
                     },
                     "type": "array"
+                },
+                "overview": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Condensed overview information about the recommendation.",
+                    "type": "object"
                 }
             },
             "type": "object"

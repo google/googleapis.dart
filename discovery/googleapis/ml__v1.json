@@ -3,10 +3,10 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
+                    "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
-                    "description": "View your data across Google Cloud Platform services"
+                    "description": "View your data across Google Cloud services and see the email address of your Google Account"
                 }
             }
         }
@@ -1484,7 +1484,7 @@
             }
         }
     },
-    "revision": "20210709",
+    "revision": "20210826",
     "rootUrl": "https://ml.googleapis.com/",
     "schemas": {
         "GoogleApi__HttpBody": {
@@ -1818,7 +1818,9 @@
                         "NVIDIA_TESLA_T4",
                         "NVIDIA_TESLA_A100",
                         "TPU_V2",
-                        "TPU_V3"
+                        "TPU_V3",
+                        "TPU_V2_POD",
+                        "TPU_V3_POD"
                     ],
                     "enumDescriptions": [
                         "Unspecified accelerator type. Default to no GPU.",
@@ -1829,7 +1831,9 @@
                         "Nvidia T4 GPU.",
                         "Nvidia A100 GPU.",
                         "TPU v2.",
-                        "TPU v3."
+                        "TPU v3.",
+                        "TPU v2 POD.",
+                        "TPU v3 POD."
                     ],
                     "type": "string"
                 }
@@ -1928,7 +1932,9 @@
                             "NVIDIA_TESLA_T4",
                             "NVIDIA_TESLA_A100",
                             "TPU_V2",
-                            "TPU_V3"
+                            "TPU_V3",
+                            "TPU_V2_POD",
+                            "TPU_V3_POD"
                         ],
                         "enumDescriptions": [
                             "Unspecified accelerator type. Default to no GPU.",
@@ -1939,7 +1945,9 @@
                             "Nvidia T4 GPU.",
                             "Nvidia A100 GPU.",
                             "TPU v2.",
-                            "TPU v3."
+                            "TPU v3.",
+                            "TPU v2 POD.",
+                            "TPU v3 POD."
                         ],
                         "type": "string"
                     },
@@ -2253,7 +2261,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.",
+                    "description": "URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.",
                     "type": "object"
                 }
             },
@@ -3222,7 +3230,7 @@
                     "type": "array"
                 },
                 "enableWebAccess": {
-                    "description": "Optional. Whether to enable web access for the training job.",
+                    "description": "Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).",
                     "type": "boolean"
                 },
                 "encryptionConfig": {
@@ -3387,7 +3395,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Output only. The web URIs for the training job. Currently for debug terminal access to the job.",
+                    "description": "Output only. URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.",
                     "readOnly": true,
                     "type": "object"
                 }
@@ -3703,7 +3711,7 @@
             "type": "object"
         },
         "GoogleIamV1__Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "GoogleIamV1__Policy",
             "properties": {
                 "auditConfigs": {

@@ -2877,8 +2877,8 @@ class UpdatePolicy {
   /// Deny Maintenance Period that is applied to resource to indicate when
   /// maintenance is forbidden.
   ///
-  /// User can specify zero or more non-overlapping deny periods. For V1,
-  /// Maximum number of deny_maintenance_periods is expected to be one.
+  /// User can specify zero or more non-overlapping deny periods. Maximum number
+  /// of deny_maintenance_periods expected is one.
   core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
 
   /// Maintenance window that is applied to resources covered by this policy.

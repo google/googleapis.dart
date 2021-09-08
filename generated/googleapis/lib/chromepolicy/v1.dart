@@ -764,6 +764,37 @@ class GoogleChromePolicyV1PolicySchema {
       };
 }
 
+/// The field and the value it must have for another field to be allowed to be
+/// set.
+class GoogleChromePolicyV1PolicySchemaFieldDependencies {
+  /// The source field which this field depends on.
+  core.String? sourceField;
+
+  /// The value which the source field must have for this field to be allowed to
+  /// be set.
+  core.String? sourceFieldValue;
+
+  GoogleChromePolicyV1PolicySchemaFieldDependencies({
+    this.sourceField,
+    this.sourceFieldValue,
+  });
+
+  GoogleChromePolicyV1PolicySchemaFieldDependencies.fromJson(core.Map _json)
+      : this(
+          sourceField: _json.containsKey('sourceField')
+              ? _json['sourceField'] as core.String
+              : null,
+          sourceFieldValue: _json.containsKey('sourceFieldValue')
+              ? _json['sourceFieldValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceField != null) 'sourceField': sourceField!,
+        if (sourceFieldValue != null) 'sourceFieldValue': sourceFieldValue!,
+      };
+}
+
 /// Provides detailed information for a particular field that is part of a
 /// PolicySchema.
 class GoogleChromePolicyV1PolicySchemaFieldDescription {
@@ -777,12 +808,19 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   /// Output only.
   core.String? field;
 
+  /// Provides a list of fields and the values they must have for this field to
+  /// be allowed to be set.
+  ///
+  /// Output only.
+  core.List<GoogleChromePolicyV1PolicySchemaFieldDependencies>?
+      fieldDependencies;
+
   /// Any input constraints associated on the values for the field.
   ///
   /// Output only.
   core.String? inputConstraint;
 
-  /// If the field has a set of know values, this field will provide a
+  /// If the field has a set of known values, this field will provide a
   /// description for these values.
   ///
   /// Output only.
@@ -799,6 +837,7 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   GoogleChromePolicyV1PolicySchemaFieldDescription({
     this.description,
     this.field,
+    this.fieldDependencies,
     this.inputConstraint,
     this.knownValueDescriptions,
     this.nestedFieldDescriptions,
@@ -811,6 +850,15 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
               : null,
           field:
               _json.containsKey('field') ? _json['field'] as core.String : null,
+          fieldDependencies: _json.containsKey('fieldDependencies')
+              ? (_json['fieldDependencies'] as core.List)
+                  .map<GoogleChromePolicyV1PolicySchemaFieldDependencies>(
+                      (value) =>
+                          GoogleChromePolicyV1PolicySchemaFieldDependencies
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           inputConstraint: _json.containsKey('inputConstraint')
               ? _json['inputConstraint'] as core.String
               : null,
@@ -837,6 +885,9 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (field != null) 'field': field!,
+        if (fieldDependencies != null)
+          'fieldDependencies':
+              fieldDependencies!.map((value) => value.toJson()).toList(),
         if (inputConstraint != null) 'inputConstraint': inputConstraint!,
         if (knownValueDescriptions != null)
           'knownValueDescriptions':

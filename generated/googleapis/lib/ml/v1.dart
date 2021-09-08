@@ -46,11 +46,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// An API to enable creating and using machine learning models.
 class CloudMachineLearningEngineApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -2870,6 +2872,8 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "NVIDIA_TESLA_A100" : Nvidia A100 GPU.
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
+  /// - "TPU_V2_POD" : TPU v2 POD.
+  /// - "TPU_V3_POD" : TPU v3 POD.
   core.String? type;
 
   GoogleCloudMlV1AcceleratorConfig({
@@ -3766,10 +3770,16 @@ class GoogleCloudMlV1HyperparameterOutput {
   /// The trial id for these results.
   core.String? trialId;
 
-  /// The web URIs for the training job.
+  /// URIs for accessing
+  /// [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell)
+  /// (one URI for each training node).
   ///
-  /// Currently for debug terminal access to the job. Only set for in-progress
-  /// hyperparameter tuning trials with web access enabled.
+  /// Only available if this trial is part of a hyperparameter tuning job and
+  /// the job's training_input.enable_web_access is `true`. The keys are names
+  /// of each node in the training job; for example, `master-replica-0` for the
+  /// master node, `worker-replica-0` for the first worker, and `ps-replica-0`
+  /// for the first parameter server. The values are the URIs for each node's
+  /// interactive shell.
   core.Map<core.String, core.String>? webAccessUris;
 
   GoogleCloudMlV1HyperparameterOutput({
@@ -5827,7 +5837,13 @@ class GoogleCloudMlV1TrainingInput {
   /// Optional.
   core.List<core.String>? args;
 
-  /// Whether to enable web access for the training job.
+  /// Whether you want AI Platform Training to enable
+  /// [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell)
+  /// to training containers.
+  ///
+  /// If set to `true`, you can access interactive shells at the URIs given by
+  /// TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris
+  /// (within TrainingOutput.trials).
   ///
   /// Optional.
   core.bool? enableWebAccess;
@@ -6323,9 +6339,15 @@ class GoogleCloudMlV1TrainingOutput {
   /// Only set for hyperparameter tuning jobs.
   core.List<GoogleCloudMlV1HyperparameterOutput>? trials;
 
-  /// The web URIs for the training job.
+  /// URIs for accessing
+  /// [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell)
+  /// (one URI for each training node).
   ///
-  /// Currently for debug terminal access to the job.
+  /// Only available if training_input.enable_web_access is `true`. The keys are
+  /// names of each node in the training job; for example, `master-replica-0`
+  /// for the master node, `worker-replica-0` for the first worker, and
+  /// `ps-replica-0` for the first parameter server. The values are the URIs for
+  /// each node's interactive shell.
   ///
   /// Output only.
   core.Map<core.String, core.String>? webAccessUris;
@@ -7209,7 +7231,7 @@ class GoogleIamV1Binding {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {

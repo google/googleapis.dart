@@ -40,7 +40,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Synthesizes natural-sounding speech by applying powerful neural network
 /// models.
 class TexttospeechApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -165,6 +166,10 @@ class AudioConfig {
   /// will be a file which can be played natively on Android, and in browsers
   /// (at least Chrome and Firefox). The quality of the encoding is considerably
   /// higher than MP3 while using approximately the same bitrate.
+  /// - "MULAW" : 8-bit samples that compand 14-bit audio samples using G.711
+  /// PCMU/mu-law. Audio content returned as MULAW also contains a WAV header.
+  /// - "ALAW" : 8-bit samples that compand 14-bit audio samples using G.711
+  /// PCMU/A-law. Audio content returned as ALAW also contains a WAV header.
   core.String? audioEncoding;
 
   /// Input only.

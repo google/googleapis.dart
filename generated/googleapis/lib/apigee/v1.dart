@@ -60,6 +60,7 @@
 ///         - [OrganizationsEnvironmentsApisRevisionsDebugsessionsResource]
 /// - [OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource]
 ///         - [OrganizationsEnvironmentsApisRevisionsDeploymentsResource]
+///     - [OrganizationsEnvironmentsArchiveDeploymentsResource]
 ///     - [OrganizationsEnvironmentsCachesResource]
 ///     - [OrganizationsEnvironmentsDeploymentsResource]
 ///     - [OrganizationsEnvironmentsFlowhooksResource]
@@ -115,7 +116,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// monitor APIs, configure environments, manage users, and more. Note: This
 /// product is available as a free trial for a time period of 60 days.
 class ApigeeApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1913,6 +1915,52 @@ class OrganizationsApisResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing API proxy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. API proxy to update in the following format:
+  /// `organizations/{org}/apis/{api}`
+  /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiProxy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiProxy> patch(
+    GoogleCloudApigeeV1ApiProxy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1ApiProxy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4801,6 +4849,8 @@ class OrganizationsEnvironmentsResource {
       OrganizationsEnvironmentsAnalyticsResource(_requester);
   OrganizationsEnvironmentsApisResource get apis =>
       OrganizationsEnvironmentsApisResource(_requester);
+  OrganizationsEnvironmentsArchiveDeploymentsResource get archiveDeployments =>
+      OrganizationsEnvironmentsArchiveDeploymentsResource(_requester);
   OrganizationsEnvironmentsCachesResource get caches =>
       OrganizationsEnvironmentsCachesResource(_requester);
   OrganizationsEnvironmentsDeploymentsResource get deployments =>
@@ -5820,6 +5870,11 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// before issuing the deployment request, and its response will indicate if a
   /// sequenced rollout is recommended for the deployment.
   ///
+  /// [serviceAccount] - Google Cloud IAM service account. The service account
+  /// represents the identity of the deployed proxy, and determines what
+  /// permissions it has. The format must be
+  /// `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5834,11 +5889,13 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     core.String name, {
     core.bool? override,
     core.bool? sequencedRollout,
+    core.String? serviceAccount,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (override != null) 'override': ['${override}'],
       if (sequencedRollout != null) 'sequencedRollout': ['${sequencedRollout}'],
+      if (serviceAccount != null) 'serviceAccount': [serviceAccount],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -6313,6 +6370,337 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsEnvironmentsArchiveDeploymentsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEnvironmentsArchiveDeploymentsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new ArchiveDeployment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Environment this Archive Deployment will be
+  /// created in.
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudApigeeV1ArchiveDeployment request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/archiveDeployments';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an archive deployment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Archive Deployment in the following format:
+  /// `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/archiveDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates a signed URL for downloading the original zip file used to
+  /// create an Archive Deployment.
+  ///
+  /// The URL is only valid for a limited period and should be used within
+  /// minutes after generation. Each call returns a new upload URL.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Archive Deployment you want to
+  /// download.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/archiveDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1GenerateDownloadUrlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1GenerateDownloadUrlResponse>
+      generateDownloadUrl(
+    GoogleCloudApigeeV1GenerateDownloadUrlRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':generateDownloadUrl';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1GenerateDownloadUrlResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates a signed URL for uploading an Archive zip file to Google Cloud
+  /// Storage.
+  ///
+  /// Once the upload is complete, the signed URL should be passed to
+  /// CreateArchiveDeployment. When uploading to the generated signed URL,
+  /// please follow these restrictions: * Source file type should be a zip file.
+  /// * Source file size should not exceed 1GB limit. * No credentials should be
+  /// attached - the signed URLs provide access to the target bucket using
+  /// internal service identity; if credentials were attached, the identity from
+  /// the credentials would be used, but that identity does not have permissions
+  /// to upload files to the URL. When making a HTTP PUT request, these two
+  /// headers need to be specified: * `content-type: application/zip` *
+  /// `x-goog-content-length-range: 0,1073741824` And this header SHOULD NOT be
+  /// specified: * `Authorization: Bearer YOUR_TOKEN`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The organization and environment to upload to.
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1GenerateUploadUrlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1GenerateUploadUrlResponse> generateUploadUrl(
+    GoogleCloudApigeeV1GenerateUploadUrlRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/archiveDeployments:generateUploadUrl';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1GenerateUploadUrlResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the specified ArchiveDeployment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Archive Deployment in the following format:
+  /// `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/archiveDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ArchiveDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ArchiveDeployment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1ArchiveDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the ArchiveDeployments in the specified Environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the Environment for which to list Archive
+  /// Deployments in the format: `organizations/{org}/environments/{env}`.
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An optional query used to return a subset of Archive
+  /// Deployments using the semantics defined in https://google.aip.dev/160.
+  ///
+  /// [pageSize] - Optional. Maximum number of Archive Deployments to return. If
+  /// unspecified, at most 25 deployments will be returned.
+  ///
+  /// [pageToken] - Optional. Page token, returned from a previous
+  /// ListArchiveDeployments call, that you can use to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListArchiveDeploymentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListArchiveDeploymentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/archiveDeployments';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1ListArchiveDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing ArchiveDeployment.
+  ///
+  /// Labels can modified but most of the other fields are not modifiable.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the Archive Deployment in the following format:
+  /// `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/archiveDeployments/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ArchiveDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ArchiveDeployment> patch(
+    GoogleCloudApigeeV1ArchiveDeployment request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1ArchiveDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7998,6 +8386,11 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// `false` and the deployment is rejected if other revisions of the shared
   /// flow are deployed in the environment.
   ///
+  /// [serviceAccount] - Google Cloud IAM service account. The service account
+  /// represents the identity of the deployed proxy, and determines what
+  /// permissions it has. The format must be
+  /// `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -8011,10 +8404,12 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   async.Future<GoogleCloudApigeeV1Deployment> deploy(
     core.String name, {
     core.bool? override,
+    core.String? serviceAccount,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (override != null) 'override': ['${override}'],
+      if (serviceAccount != null) 'serviceAccount': [serviceAccount],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -9223,6 +9618,55 @@ class OrganizationsInstancesResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1ListInstancesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an Apigee runtime instance.
+  ///
+  /// You can update the fields described in NodeConfig. No other fields will be
+  /// updated. **Note:** Not supported for Apigee hybrid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the instance. Use the following structure in
+  /// your request: `organizations/{org}/instances/{instance}`.
+  /// Value must have pattern `^organizations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [updateMask] - List of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudApigeeV1Instance request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -11003,6 +11447,64 @@ class ProjectsResource {
   }
 }
 
+/// Describes why a bundle is invalid.
+///
+/// Intended for use in error details.
+class EdgeConfigstoreBundleBadBundle {
+  /// Describes all precondition violations.
+  core.List<EdgeConfigstoreBundleBadBundleViolation>? violations;
+
+  EdgeConfigstoreBundleBadBundle({
+    this.violations,
+  });
+
+  EdgeConfigstoreBundleBadBundle.fromJson(core.Map _json)
+      : this(
+          violations: _json.containsKey('violations')
+              ? (_json['violations'] as core.List)
+                  .map<EdgeConfigstoreBundleBadBundleViolation>((value) =>
+                      EdgeConfigstoreBundleBadBundleViolation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (violations != null)
+          'violations': violations!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A message type used to describe a single bundle validation error.
+class EdgeConfigstoreBundleBadBundleViolation {
+  /// A description of why the bundle is invalid and how to fix it.
+  core.String? description;
+
+  /// The filename (including relative path from the bundle root) in which the
+  /// error occurred.
+  core.String? filename;
+
+  EdgeConfigstoreBundleBadBundleViolation({
+    this.description,
+    this.filename,
+  });
+
+  EdgeConfigstoreBundleBadBundleViolation.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          filename: _json.containsKey('filename')
+              ? _json['filename'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (filename != null) 'filename': filename!,
+      };
+}
+
 /// Message that represents an arbitrary HTTP body.
 ///
 /// It should only be used for payload formats that can't be represented as
@@ -11210,15 +11712,11 @@ class GoogleCloudApigeeV1AddonsConfig {
   /// Configuration for the Advanced API Ops add-on.
   GoogleCloudApigeeV1AdvancedApiOpsConfig? advancedApiOpsConfig;
 
-  /// Configuration for the Integration add-on.
-  GoogleCloudApigeeV1IntegrationConfig? integrationConfig;
-
   /// Configuration for the Monetization add-on.
   GoogleCloudApigeeV1MonetizationConfig? monetizationConfig;
 
   GoogleCloudApigeeV1AddonsConfig({
     this.advancedApiOpsConfig,
-    this.integrationConfig,
     this.monetizationConfig,
   });
 
@@ -11227,11 +11725,6 @@ class GoogleCloudApigeeV1AddonsConfig {
           advancedApiOpsConfig: _json.containsKey('advancedApiOpsConfig')
               ? GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(
                   _json['advancedApiOpsConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          integrationConfig: _json.containsKey('integrationConfig')
-              ? GoogleCloudApigeeV1IntegrationConfig.fromJson(
-                  _json['integrationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           monetizationConfig: _json.containsKey('monetizationConfig')
@@ -11244,8 +11737,6 @@ class GoogleCloudApigeeV1AddonsConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (advancedApiOpsConfig != null)
           'advancedApiOpsConfig': advancedApiOpsConfig!.toJson(),
-        if (integrationConfig != null)
-          'integrationConfig': integrationConfig!.toJson(),
         if (monetizationConfig != null)
           'monetizationConfig': monetizationConfig!.toJson(),
       };
@@ -11716,19 +12207,31 @@ class GoogleCloudApigeeV1ApiProductRef {
 
 /// Metadata describing the API proxy
 class GoogleCloudApigeeV1ApiProxy {
+  /// User labels applied to this API Proxy.
+  core.Map<core.String, core.String>? labels;
+
   /// The id of the most recently created revision for this api proxy.
+  ///
+  /// Output only.
   core.String? latestRevisionId;
 
   /// Metadata describing the API proxy.
+  ///
+  /// Output only.
   GoogleCloudApigeeV1EntityMetadata? metaData;
 
   /// Name of the API proxy.
+  ///
+  /// Output only.
   core.String? name;
 
   /// List of revisons defined for the API proxy.
+  ///
+  /// Output only.
   core.List<core.String>? revision;
 
   GoogleCloudApigeeV1ApiProxy({
+    this.labels,
     this.latestRevisionId,
     this.metaData,
     this.name,
@@ -11737,6 +12240,14 @@ class GoogleCloudApigeeV1ApiProxy {
 
   GoogleCloudApigeeV1ApiProxy.fromJson(core.Map _json)
       : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           latestRevisionId: _json.containsKey('latestRevisionId')
               ? _json['latestRevisionId'] as core.String
               : null,
@@ -11753,6 +12264,7 @@ class GoogleCloudApigeeV1ApiProxy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
         if (latestRevisionId != null) 'latestRevisionId': latestRevisionId!,
         if (metaData != null) 'metaData': metaData!.toJson(),
         if (name != null) 'name': name!,
@@ -12187,6 +12699,91 @@ class GoogleCloudApigeeV1App {
         if (name != null) 'name': name!,
         if (scopes != null) 'scopes': scopes!,
         if (status != null) 'status': status!,
+      };
+}
+
+/// Archive Deployment information.
+class GoogleCloudApigeeV1ArchiveDeployment {
+  /// The time at which the Archive Deployment was created in milliseconds since
+  /// the epoch.
+  ///
+  /// Output only.
+  core.String? createdAt;
+
+  /// Input only.
+  ///
+  /// The Google Cloud Storage signed URL returned from GenerateUploadUrl and
+  /// used to upload the Archive zip file.
+  core.String? gcsUri;
+
+  /// User-supplied key-value pairs used to organize ArchiveDeployments.
+  ///
+  /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
+  /// of maximum 128 bytes, and must conform to the following PCRE regular
+  /// expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63
+  /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+  /// conform to the following PCRE regular expression:
+  /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
+  /// with a given store.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the Archive Deployment in the following format:
+  /// `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
+  core.String? name;
+
+  /// A reference to the LRO that created this Archive Deployment in the
+  /// following format: `organizations/{org}/operations/{id}`
+  ///
+  /// Output only.
+  core.String? operation;
+
+  /// The time at which the Archive Deployment was updated in milliseconds since
+  /// the epoch.
+  ///
+  /// Output only.
+  core.String? updatedAt;
+
+  GoogleCloudApigeeV1ArchiveDeployment({
+    this.createdAt,
+    this.gcsUri,
+    this.labels,
+    this.name,
+    this.operation,
+    this.updatedAt,
+  });
+
+  GoogleCloudApigeeV1ArchiveDeployment.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          gcsUri: _json.containsKey('gcsUri')
+              ? _json['gcsUri'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          operation: _json.containsKey('operation')
+              ? _json['operation'] as core.String
+              : null,
+          updatedAt: _json.containsKey('updatedAt')
+              ? _json['updatedAt'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (gcsUri != null) 'gcsUri': gcsUri!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (operation != null) 'operation': operation!,
+        if (updatedAt != null) 'updatedAt': updatedAt!,
       };
 }
 
@@ -13702,6 +14299,10 @@ class GoogleCloudApigeeV1Deployment {
   core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>?
       routeConflicts;
 
+  /// The full resource name of Cloud IAM Service Account that this deployment
+  /// is using, eg, `projects/-/serviceAccounts/{email}`.
+  core.String? serviceAccount;
+
   /// Current state of the deployment.
   ///
   /// This field is not populated in List APIs.
@@ -13722,6 +14323,7 @@ class GoogleCloudApigeeV1Deployment {
     this.pods,
     this.revision,
     this.routeConflicts,
+    this.serviceAccount,
     this.state,
   });
 
@@ -13768,6 +14370,9 @@ class GoogleCloudApigeeV1Deployment {
                                   value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
         );
@@ -13785,6 +14390,7 @@ class GoogleCloudApigeeV1Deployment {
         if (routeConflicts != null)
           'routeConflicts':
               routeConflicts!.map((value) => value.toJson()).toList(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (state != null) 'state': state!,
       };
 }
@@ -14648,10 +15254,51 @@ class GoogleCloudApigeeV1EntityMetadata {
 }
 
 class GoogleCloudApigeeV1Environment {
+  /// API Proxy type supported by the environment.
+  ///
+  /// The type can be set when creating the Environment and cannot be changed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "API_PROXY_TYPE_UNSPECIFIED" : API proxy type not specified.
+  /// - "PROGRAMMABLE" : Programmable API Proxies enable you to develop APIs
+  /// with highly flexible behavior using bundled policy configuration and one
+  /// or more programming languages to describe complex sequential and/or
+  /// conditional flows of logic.
+  /// - "CONFIGURABLE" : Configurable API Proxies enable you to develop
+  /// efficient APIs using simple configuration while complex execution control
+  /// flow logic is handled by Apigee. This type only works with the ARCHIVE
+  /// deployment type and cannot be combined with the PROXY deployment type.
+  core.String? apiProxyType;
+
   /// Creation time of this environment as milliseconds since epoch.
   ///
   /// Output only.
   core.String? createdAt;
+
+  /// Deployment type supported by the environment.
+  ///
+  /// The deployment type can be set when creating the environment and cannot be
+  /// changed. When you enable archive deployment, you will be **prevented from
+  /// performing** a \[subset of
+  /// actions\](/apigee/docs/api-platform/local-development/overview#prevented-actions)
+  /// within the environment, including: * Managing the deployment of API proxy
+  /// or shared flow revisions * Creating, updating, or deleting resource files
+  /// * Creating, updating, or deleting target servers
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_TYPE_UNSPECIFIED" : Deployment type not specified.
+  /// - "PROXY" : Proxy deployment enables you to develop and deploy API proxies
+  /// using Apigee on Google Cloud. This cannot currently be combined with the
+  /// CONFIGURABLE API proxy type.
+  /// - "ARCHIVE" : Archive deployment enables you to develop API proxies
+  /// locally then deploy an archive of your API proxy configuration to an
+  /// environment in Apigee on Google Cloud. You will be prevented from
+  /// performing a \[subset of
+  /// actions\](/apigee/docs/api-platform/local-development/overview#prevented-actions)
+  /// within the environment.
+  core.String? deploymentType;
 
   /// Description of the environment.
   ///
@@ -14694,7 +15341,9 @@ class GoogleCloudApigeeV1Environment {
   core.String? state;
 
   GoogleCloudApigeeV1Environment({
+    this.apiProxyType,
     this.createdAt,
+    this.deploymentType,
     this.description,
     this.displayName,
     this.lastModifiedAt,
@@ -14705,8 +15354,14 @@ class GoogleCloudApigeeV1Environment {
 
   GoogleCloudApigeeV1Environment.fromJson(core.Map _json)
       : this(
+          apiProxyType: _json.containsKey('apiProxyType')
+              ? _json['apiProxyType'] as core.String
+              : null,
           createdAt: _json.containsKey('createdAt')
               ? _json['createdAt'] as core.String
+              : null,
+          deploymentType: _json.containsKey('deploymentType')
+              ? _json['deploymentType'] as core.String
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
@@ -14727,7 +15382,9 @@ class GoogleCloudApigeeV1Environment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apiProxyType != null) 'apiProxyType': apiProxyType!,
         if (createdAt != null) 'createdAt': createdAt!,
+        if (deploymentType != null) 'deploymentType': deploymentType!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
@@ -14738,6 +15395,12 @@ class GoogleCloudApigeeV1Environment {
 }
 
 class GoogleCloudApigeeV1EnvironmentConfig {
+  /// The location for the config blob of API Runtime Control, aka Envoy
+  /// Adapter, for op-based authentication as a URI, e.g. a Cloud Storage URI.
+  ///
+  /// This is only used by Envoy-based gateways.
+  core.String? arcConfigLocation;
+
   /// Time that the environment configuration was created.
   core.String? createTime;
 
@@ -14755,6 +15418,12 @@ class GoogleCloudApigeeV1EnvironmentConfig {
 
   /// List of flow hooks in the environment.
   core.List<GoogleCloudApigeeV1FlowHookConfig>? flowhooks;
+
+  /// The location for the gateway config blob as a URI, e.g. a Cloud Storage
+  /// URI.
+  ///
+  /// This is only used by Envoy-based gateways.
+  core.String? gatewayConfigLocation;
 
   /// List of keystores in the environment.
   core.List<GoogleCloudApigeeV1KeystoreConfig>? keystores;
@@ -14801,12 +15470,14 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   core.String? uid;
 
   GoogleCloudApigeeV1EnvironmentConfig({
+    this.arcConfigLocation,
     this.createTime,
     this.dataCollectors,
     this.debugMask,
     this.deployments,
     this.featureFlags,
     this.flowhooks,
+    this.gatewayConfigLocation,
     this.keystores,
     this.name,
     this.provider,
@@ -14822,6 +15493,9 @@ class GoogleCloudApigeeV1EnvironmentConfig {
 
   GoogleCloudApigeeV1EnvironmentConfig.fromJson(core.Map _json)
       : this(
+          arcConfigLocation: _json.containsKey('arcConfigLocation')
+              ? _json['arcConfigLocation'] as core.String
+              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -14858,6 +15532,9 @@ class GoogleCloudApigeeV1EnvironmentConfig {
                       GoogleCloudApigeeV1FlowHookConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          gatewayConfigLocation: _json.containsKey('gatewayConfigLocation')
+              ? _json['gatewayConfigLocation'] as core.String
               : null,
           keystores: _json.containsKey('keystores')
               ? (_json['keystores'] as core.List)
@@ -14908,6 +15585,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (arcConfigLocation != null) 'arcConfigLocation': arcConfigLocation!,
         if (createTime != null) 'createTime': createTime!,
         if (dataCollectors != null)
           'dataCollectors':
@@ -14918,6 +15596,8 @@ class GoogleCloudApigeeV1EnvironmentConfig {
         if (featureFlags != null) 'featureFlags': featureFlags!,
         if (flowhooks != null)
           'flowhooks': flowhooks!.map((value) => value.toJson()).toList(),
+        if (gatewayConfigLocation != null)
+          'gatewayConfigLocation': gatewayConfigLocation!,
         if (keystores != null)
           'keystores': keystores!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,
@@ -15402,6 +16082,72 @@ class GoogleCloudApigeeV1FlowHookConfig {
       };
 }
 
+/// Request for GenerateDownloadUrl method.
+class GoogleCloudApigeeV1GenerateDownloadUrlRequest {
+  GoogleCloudApigeeV1GenerateDownloadUrlRequest();
+
+  GoogleCloudApigeeV1GenerateDownloadUrlRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Response for GenerateDownloadUrl method.
+class GoogleCloudApigeeV1GenerateDownloadUrlResponse {
+  /// The Google Cloud Storage signed URL that can be used to download the
+  /// Archive zip file.
+  core.String? downloadUri;
+
+  GoogleCloudApigeeV1GenerateDownloadUrlResponse({
+    this.downloadUri,
+  });
+
+  GoogleCloudApigeeV1GenerateDownloadUrlResponse.fromJson(core.Map _json)
+      : this(
+          downloadUri: _json.containsKey('downloadUri')
+              ? _json['downloadUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downloadUri != null) 'downloadUri': downloadUri!,
+      };
+}
+
+/// Request for GenerateUploadUrl method.
+class GoogleCloudApigeeV1GenerateUploadUrlRequest {
+  GoogleCloudApigeeV1GenerateUploadUrlRequest();
+
+  GoogleCloudApigeeV1GenerateUploadUrlRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Response for GenerateUploadUrl method.
+class GoogleCloudApigeeV1GenerateUploadUrlResponse {
+  /// The Google Cloud Storage signed URL that can be used to upload a new
+  /// Archive zip file.
+  core.String? uploadUri;
+
+  GoogleCloudApigeeV1GenerateUploadUrlResponse({
+    this.uploadUri,
+  });
+
+  GoogleCloudApigeeV1GenerateUploadUrlResponse.fromJson(core.Map _json)
+      : this(
+          uploadUri: _json.containsKey('uploadUri')
+              ? _json['uploadUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uploadUri != null) 'uploadUri': uploadUri!,
+      };
+}
+
 /// Request for GetSyncAuthorization.
 class GoogleCloudApigeeV1GetSyncAuthorizationRequest {
   GoogleCloudApigeeV1GetSyncAuthorizationRequest();
@@ -15701,6 +16447,14 @@ class GoogleCloudApigeeV1Instance {
   /// Output only.
   core.String? port;
 
+  /// Version of the runtime system running in the instance.
+  ///
+  /// The runtime system is the set of components that serve the API Proxy
+  /// traffic in your Environments.
+  ///
+  /// Output only.
+  core.String? runtimeVersion;
+
   /// State of the instance.
   ///
   /// Values other than `ACTIVE` means the resource is not ready to use.
@@ -15725,6 +16479,7 @@ class GoogleCloudApigeeV1Instance {
     this.name,
     this.peeringCidrRange,
     this.port,
+    this.runtimeVersion,
     this.state,
   });
 
@@ -15754,6 +16509,9 @@ class GoogleCloudApigeeV1Instance {
               ? _json['peeringCidrRange'] as core.String
               : null,
           port: _json.containsKey('port') ? _json['port'] as core.String : null,
+          runtimeVersion: _json.containsKey('runtimeVersion')
+              ? _json['runtimeVersion'] as core.String
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
         );
@@ -15770,6 +16528,7 @@ class GoogleCloudApigeeV1Instance {
         if (name != null) 'name': name!,
         if (peeringCidrRange != null) 'peeringCidrRange': peeringCidrRange!,
         if (port != null) 'port': port!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
         if (state != null) 'state': state!,
       };
 }
@@ -15946,27 +16705,6 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
         if (envgroup != null) 'envgroup': envgroup!,
         if (environment != null) 'environment': environment!,
         if (percentage != null) 'percentage': percentage!,
-      };
-}
-
-/// Configuration for the Integration add-on.
-class GoogleCloudApigeeV1IntegrationConfig {
-  /// Flag that specifies whether the Integration add-on is enabled.
-  core.bool? enabled;
-
-  GoogleCloudApigeeV1IntegrationConfig({
-    this.enabled,
-  });
-
-  GoogleCloudApigeeV1IntegrationConfig.fromJson(core.Map _json)
-      : this(
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -16225,6 +16963,44 @@ class GoogleCloudApigeeV1ListAppsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (app != null) 'app': app!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Response for ListArchiveDeployments method.
+class GoogleCloudApigeeV1ListArchiveDeploymentsResponse {
+  /// Archive Deployments in the specified environment.
+  core.List<GoogleCloudApigeeV1ArchiveDeployment>? archiveDeployments;
+
+  /// Page token that you can include in a ListArchiveDeployments request to
+  /// retrieve the next page.
+  ///
+  /// If omitted, no subsequent pages exist.
+  core.String? nextPageToken;
+
+  GoogleCloudApigeeV1ListArchiveDeploymentsResponse({
+    this.archiveDeployments,
+    this.nextPageToken,
+  });
+
+  GoogleCloudApigeeV1ListArchiveDeploymentsResponse.fromJson(core.Map _json)
+      : this(
+          archiveDeployments: _json.containsKey('archiveDeployments')
+              ? (_json['archiveDeployments'] as core.List)
+                  .map<GoogleCloudApigeeV1ArchiveDeployment>((value) =>
+                      GoogleCloudApigeeV1ArchiveDeployment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archiveDeployments != null)
+          'archiveDeployments':
+              archiveDeployments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -20156,6 +20932,11 @@ class GoogleCloudApigeeV1TargetServer {
 }
 
 class GoogleCloudApigeeV1TargetServerConfig {
+  /// Whether the target server is enabled.
+  ///
+  /// An empty/omitted value for this field should be interpreted as true.
+  core.bool? enabled;
+
   /// Host name of the target server.
   core.String? host;
 
@@ -20178,6 +20959,7 @@ class GoogleCloudApigeeV1TargetServerConfig {
   GoogleCloudApigeeV1TlsInfoConfig? tlsInfo;
 
   GoogleCloudApigeeV1TargetServerConfig({
+    this.enabled,
     this.host,
     this.name,
     this.port,
@@ -20187,6 +20969,9 @@ class GoogleCloudApigeeV1TargetServerConfig {
 
   GoogleCloudApigeeV1TargetServerConfig.fromJson(core.Map _json)
       : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
           host: _json.containsKey('host') ? _json['host'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           port: _json.containsKey('port') ? _json['port'] as core.int : null,
@@ -20200,6 +20985,7 @@ class GoogleCloudApigeeV1TargetServerConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
         if (host != null) 'host': host!,
         if (name != null) 'name': name!,
         if (port != null) 'port': port!,
@@ -20949,7 +21735,7 @@ class GoogleIamV1Binding {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {

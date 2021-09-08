@@ -44,7 +44,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// An implementation of the Grafeas API, which stores, and enables querying and
 /// retrieval of critical metadata about all of your software artifacts.
 class ContainerAnalysisApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2523,6 +2524,9 @@ class Discovery {
   /// - "ATTESTATION" : This represents a logical "role" that can attest to
   /// artifacts.
   /// - "INTOTO" : This represents an in-toto link.
+  /// - "SBOM" : This represents a software bill of materials.
+  /// - "SPDX_PACKAGE" : This represents an SPDX Package.
+  /// - "SPDX_FILE" : This represents an SPDX File.
   core.String? analysisKind;
 
   Discovery({
@@ -2608,6 +2612,139 @@ class Distribution {
         if (latestVersion != null) 'latestVersion': latestVersion!.toJson(),
         if (maintainer != null) 'maintainer': maintainer!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// DocumentNote represents an SPDX Document Creation Infromation section:
+/// https://spdx.github.io/spdx-spec/2-document-creation-information/
+class DocumentNote {
+  /// Compliance with the SPDX specification includes populating the SPDX fields
+  /// therein with data related to such fields ("SPDX-Metadata")
+  core.String? dataLicence;
+
+  /// Provide a reference number that can be used to understand how to parse and
+  /// interpret the rest of the file
+  core.String? spdxVersion;
+
+  DocumentNote({
+    this.dataLicence,
+    this.spdxVersion,
+  });
+
+  DocumentNote.fromJson(core.Map _json)
+      : this(
+          dataLicence: _json.containsKey('dataLicence')
+              ? _json['dataLicence'] as core.String
+              : null,
+          spdxVersion: _json.containsKey('spdxVersion')
+              ? _json['spdxVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataLicence != null) 'dataLicence': dataLicence!,
+        if (spdxVersion != null) 'spdxVersion': spdxVersion!,
+      };
+}
+
+/// DocumentOccurrence represents an SPDX Document Creation Information section:
+/// https://spdx.github.io/spdx-spec/2-document-creation-information/
+class DocumentOccurrence {
+  /// Identify when the SPDX file was originally created.
+  ///
+  /// The date is to be specified according to combined date and time in UTC
+  /// format as specified in ISO 8601 standard
+  core.String? createTime;
+
+  /// A field for creators of the SPDX file to provide general comments about
+  /// the creation of the SPDX file or any other relevant comment not included
+  /// in the other fields
+  core.String? creatorComment;
+
+  /// Identify who (or what, in the case of a tool) created the SPDX file.
+  ///
+  /// If the SPDX file was created by an individual, indicate the person's name
+  core.List<core.String>? creators;
+
+  /// A field for creators of the SPDX file content to provide comments to the
+  /// consumers of the SPDX document
+  core.String? documentComment;
+
+  /// Identify any external SPDX documents referenced within this SPDX document
+  core.List<core.String>? externalDocumentRefs;
+
+  /// Identify the current SPDX document which may be referenced in
+  /// relationships by other files, packages internally and documents externally
+  core.String? id;
+
+  /// A field for creators of the SPDX file to provide the version of the SPDX
+  /// License List used when the SPDX file was created
+  core.String? licenseListVersion;
+
+  /// Provide an SPDX document specific namespace as a unique absolute Uniform
+  /// Resource Identifier (URI) as specified in RFC-3986, with the exception of
+  /// the ‘#’ delimiter
+  core.String? namespace;
+
+  /// Identify name of this document as designated by creator
+  core.String? title;
+
+  DocumentOccurrence({
+    this.createTime,
+    this.creatorComment,
+    this.creators,
+    this.documentComment,
+    this.externalDocumentRefs,
+    this.id,
+    this.licenseListVersion,
+    this.namespace,
+    this.title,
+  });
+
+  DocumentOccurrence.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          creatorComment: _json.containsKey('creatorComment')
+              ? _json['creatorComment'] as core.String
+              : null,
+          creators: _json.containsKey('creators')
+              ? (_json['creators'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          documentComment: _json.containsKey('documentComment')
+              ? _json['documentComment'] as core.String
+              : null,
+          externalDocumentRefs: _json.containsKey('externalDocumentRefs')
+              ? (_json['externalDocumentRefs'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          licenseListVersion: _json.containsKey('licenseListVersion')
+              ? _json['licenseListVersion'] as core.String
+              : null,
+          namespace: _json.containsKey('namespace')
+              ? _json['namespace'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (creatorComment != null) 'creatorComment': creatorComment!,
+        if (creators != null) 'creators': creators!,
+        if (documentComment != null) 'documentComment': documentComment!,
+        if (externalDocumentRefs != null)
+          'externalDocumentRefs': externalDocumentRefs!,
+        if (id != null) 'id': id!,
+        if (licenseListVersion != null)
+          'licenseListVersion': licenseListVersion!,
+        if (namespace != null) 'namespace': namespace!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2730,6 +2867,61 @@ class Expr {
       };
 }
 
+/// An External Reference allows a Package to reference an external source of
+/// additional information, metadata, enumerations, asset identifiers, or
+/// downloadable content believed to be relevant to the Package
+class ExternalRef {
+  /// An External Reference allows a Package to reference an external source of
+  /// additional information, metadata, enumerations, asset identifiers, or
+  /// downloadable content believed to be relevant to the Package
+  /// Possible string values are:
+  /// - "CATEGORY_UNSPECIFIED" : Unspecified
+  /// - "SECURITY" : Security (e.g. cpe22Type, cpe23Type)
+  /// - "PACKAGE_MANAGER" : Package Manager (e.g. maven-central, npm, nuget,
+  /// bower, purl)
+  /// - "PERSISTENT_ID" : Persistent-Id (e.g. swh)
+  /// - "OTHER" : Other
+  core.String? category;
+
+  /// Human-readable information about the purpose and target of the reference
+  core.String? comment;
+
+  /// The unique string with no spaces necessary to access the package-specific
+  /// information, metadata, or content within the target location
+  core.String? locator;
+
+  /// Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
+  core.String? type;
+
+  ExternalRef({
+    this.category,
+    this.comment,
+    this.locator,
+    this.type,
+  });
+
+  ExternalRef.fromJson(core.Map _json)
+      : this(
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          locator: _json.containsKey('locator')
+              ? _json['locator'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (category != null) 'category': category!,
+        if (comment != null) 'comment': comment!,
+        if (locator != null) 'locator': locator!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Container message for hashes of byte content of files, used in source
 /// messages to verify integrity of source input to the build.
 class FileHashes {
@@ -2755,6 +2947,167 @@ class FileHashes {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileHash != null)
           'fileHash': fileHash!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// FileNote represents an SPDX File Information section:
+/// https://spdx.github.io/spdx-spec/4-file-information/
+class FileNote {
+  /// Provide a unique identifier to match analysis information on each specific
+  /// file in a package
+  core.List<core.String>? checksum;
+
+  /// This field provides information about the type of file identified
+  /// Possible string values are:
+  /// - "FILE_TYPE_UNSPECIFIED" : Unspecified
+  /// - "SOURCE" : The file is human readable source code (.c, .html, etc.)
+  /// - "BINARY" : The file is a compiled object, target image or binary
+  /// executable (.o, .a, etc.)
+  /// - "ARCHIVE" : The file represents an archive (.tar, .jar, etc.)
+  /// - "APPLICATION" : The file is associated with a specific application type
+  /// (MIME type of application / * )
+  /// - "AUDIO" : The file is associated with an audio file (MIME type of audio
+  /// / * , e.g. .mp3)
+  /// - "IMAGE" : The file is associated with an picture image file (MIME type
+  /// of image / * , e.g., .jpg, .gif)
+  /// - "TEXT" : The file is human readable text file (MIME type of text / * )
+  /// - "VIDEO" : The file is associated with a video file type (MIME type of
+  /// video / * )
+  /// - "DOCUMENTATION" : The file serves as documentation
+  /// - "SPDX" : The file is an SPDX document
+  /// - "OTHER" : The file doesn't fit into the above categories (generated
+  /// artifacts, data files, etc.)
+  core.String? fileType;
+
+  /// Identify the full path and filename that corresponds to the file
+  /// information in this section
+  core.String? title;
+
+  FileNote({
+    this.checksum,
+    this.fileType,
+    this.title,
+  });
+
+  FileNote.fromJson(core.Map _json)
+      : this(
+          checksum: _json.containsKey('checksum')
+              ? (_json['checksum'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          fileType: _json.containsKey('fileType')
+              ? _json['fileType'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (checksum != null) 'checksum': checksum!,
+        if (fileType != null) 'fileType': fileType!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// FileOccurrence represents an SPDX File Information section:
+/// https://spdx.github.io/spdx-spec/4-file-information/
+class FileOccurrence {
+  /// This field provides a place for the SPDX data creator to record, at the
+  /// file level, acknowledgements that may be needed to be communicated in some
+  /// contexts
+  core.List<core.String>? attributions;
+
+  /// This field provides a place for the SPDX file creator to record any
+  /// general comments about the file
+  core.String? comment;
+
+  /// This field provides a place for the SPDX file creator to record file
+  /// contributors
+  core.List<core.String>? contributors;
+
+  /// Identify the copyright holder of the file, as well as any dates present
+  core.String? copyright;
+
+  /// This field contains the license information actually found in the file, if
+  /// any
+  core.List<core.String>? filesLicenseInfo;
+
+  /// Uniquely identify any element in an SPDX document which may be referenced
+  /// by other elements
+  core.String? id;
+
+  /// This field provides a place for the SPDX file creator to record any
+  /// relevant background references or analysis that went in to arriving at the
+  /// Concluded License for a file
+  core.String? licenseComments;
+
+  /// This field contains the license the SPDX file creator has concluded as
+  /// governing the file or alternative values if the governing license cannot
+  /// be determined
+  core.String? licenseConcluded;
+
+  /// This field provides a place for the SPDX file creator to record license
+  /// notices or other such related notices found in the file
+  core.String? notice;
+
+  FileOccurrence({
+    this.attributions,
+    this.comment,
+    this.contributors,
+    this.copyright,
+    this.filesLicenseInfo,
+    this.id,
+    this.licenseComments,
+    this.licenseConcluded,
+    this.notice,
+  });
+
+  FileOccurrence.fromJson(core.Map _json)
+      : this(
+          attributions: _json.containsKey('attributions')
+              ? (_json['attributions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          contributors: _json.containsKey('contributors')
+              ? (_json['contributors'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          copyright: _json.containsKey('copyright')
+              ? _json['copyright'] as core.String
+              : null,
+          filesLicenseInfo: _json.containsKey('filesLicenseInfo')
+              ? (_json['filesLicenseInfo'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          licenseComments: _json.containsKey('licenseComments')
+              ? _json['licenseComments'] as core.String
+              : null,
+          licenseConcluded: _json.containsKey('licenseConcluded')
+              ? _json['licenseConcluded'] as core.String
+              : null,
+          notice: _json.containsKey('notice')
+              ? _json['notice'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributions != null) 'attributions': attributions!,
+        if (comment != null) 'comment': comment!,
+        if (contributors != null) 'contributors': contributors!,
+        if (copyright != null) 'copyright': copyright!,
+        if (filesLicenseInfo != null) 'filesLicenseInfo': filesLicenseInfo!,
+        if (id != null) 'id': id!,
+        if (licenseComments != null) 'licenseComments': licenseComments!,
+        if (licenseConcluded != null) 'licenseConcluded': licenseConcluded!,
+        if (notice != null) 'notice': notice!,
       };
 }
 
@@ -3329,6 +3682,14 @@ class GrafeasV1beta1VulnerabilityDetails {
   /// The distro assigned severity for this vulnerability when it is available,
   /// and note provider assigned severity when distro has not yet assigned a
   /// severity for this vulnerability.
+  ///
+  /// When there are multiple PackageIssues for this vulnerability, they can
+  /// have different effective severities because some might be provided by the
+  /// distro while others are provided by the language ecosystem for a language
+  /// pack. For this reason, it is advised to use the effective severity on the
+  /// PackageIssue level. In the case where multiple PackageIssues have
+  /// differing effective severities, this field should be the highest severity
+  /// for any of the PackageIssues.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : Unknown.
   /// - "MINIMAL" : Minimal severity.
@@ -4017,6 +4378,9 @@ class Note {
   /// - "ATTESTATION" : This represents a logical "role" that can attest to
   /// artifacts.
   /// - "INTOTO" : This represents an in-toto link.
+  /// - "SBOM" : This represents a software bill of materials.
+  /// - "SPDX_PACKAGE" : This represents an SPDX Package.
+  /// - "SPDX_FILE" : This represents an SPDX File.
   core.String? kind;
 
   /// A detailed description of this note.
@@ -4037,8 +4401,20 @@ class Note {
   /// URLs associated with this note.
   core.List<RelatedUrl>? relatedUrl;
 
+  /// A note describing SPDX Document which represents SBOM.
+  DocumentNote? sbom;
+
   /// A one sentence description of this note.
   core.String? shortDescription;
+
+  /// A note describing SPDX File.
+  FileNote? spdxFile;
+
+  /// A note describing SPDX Package.
+  PackageNote? spdxPackage;
+
+  /// A note describing SPDX Relationship.
+  RelationshipNote? spdxRelationship;
 
   /// The time this note was last updated.
   ///
@@ -4065,7 +4441,11 @@ class Note {
     this.package,
     this.relatedNoteNames,
     this.relatedUrl,
+    this.sbom,
     this.shortDescription,
+    this.spdxFile,
+    this.spdxPackage,
+    this.spdxRelationship,
     this.updateTime,
     this.vulnerability,
   });
@@ -4122,8 +4502,24 @@ class Note {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sbom: _json.containsKey('sbom')
+              ? DocumentNote.fromJson(
+                  _json['sbom'] as core.Map<core.String, core.dynamic>)
+              : null,
           shortDescription: _json.containsKey('shortDescription')
               ? _json['shortDescription'] as core.String
+              : null,
+          spdxFile: _json.containsKey('spdxFile')
+              ? FileNote.fromJson(
+                  _json['spdxFile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spdxPackage: _json.containsKey('spdxPackage')
+              ? PackageNote.fromJson(
+                  _json['spdxPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spdxRelationship: _json.containsKey('spdxRelationship')
+              ? RelationshipNote.fromJson(_json['spdxRelationship']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
@@ -4151,7 +4547,12 @@ class Note {
         if (relatedNoteNames != null) 'relatedNoteNames': relatedNoteNames!,
         if (relatedUrl != null)
           'relatedUrl': relatedUrl!.map((value) => value.toJson()).toList(),
+        if (sbom != null) 'sbom': sbom!.toJson(),
         if (shortDescription != null) 'shortDescription': shortDescription!,
+        if (spdxFile != null) 'spdxFile': spdxFile!.toJson(),
+        if (spdxPackage != null) 'spdxPackage': spdxPackage!.toJson(),
+        if (spdxRelationship != null)
+          'spdxRelationship': spdxRelationship!.toJson(),
         if (updateTime != null) 'updateTime': updateTime!,
         if (vulnerability != null) 'vulnerability': vulnerability!.toJson(),
       };
@@ -4203,6 +4604,9 @@ class Occurrence {
   /// - "ATTESTATION" : This represents a logical "role" that can attest to
   /// artifacts.
   /// - "INTOTO" : This represents an in-toto link.
+  /// - "SBOM" : This represents a software bill of materials.
+  /// - "SPDX_PACKAGE" : This represents an SPDX Package.
+  /// - "SPDX_FILE" : This represents an SPDX File.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -4227,6 +4631,18 @@ class Occurrence {
   /// Required. Immutable.
   Resource? resource;
 
+  /// Describes a specific SPDX Document.
+  DocumentOccurrence? sbom;
+
+  /// Describes a specific SPDX File.
+  FileOccurrence? spdxFile;
+
+  /// Describes a specific SPDX Package.
+  PackageOccurrence? spdxPackage;
+
+  /// Describes a specific SPDX Relationship.
+  RelationshipOccurrence? spdxRelationship;
+
   /// The time this occurrence was last updated.
   ///
   /// Output only.
@@ -4249,6 +4665,10 @@ class Occurrence {
     this.noteName,
     this.remediation,
     this.resource,
+    this.sbom,
+    this.spdxFile,
+    this.spdxPackage,
+    this.spdxRelationship,
     this.updateTime,
     this.vulnerability,
   });
@@ -4298,6 +4718,22 @@ class Occurrence {
               ? Resource.fromJson(
                   _json['resource'] as core.Map<core.String, core.dynamic>)
               : null,
+          sbom: _json.containsKey('sbom')
+              ? DocumentOccurrence.fromJson(
+                  _json['sbom'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spdxFile: _json.containsKey('spdxFile')
+              ? FileOccurrence.fromJson(
+                  _json['spdxFile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spdxPackage: _json.containsKey('spdxPackage')
+              ? PackageOccurrence.fromJson(
+                  _json['spdxPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spdxRelationship: _json.containsKey('spdxRelationship')
+              ? RelationshipOccurrence.fromJson(_json['spdxRelationship']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -4321,6 +4757,11 @@ class Occurrence {
         if (noteName != null) 'noteName': noteName!,
         if (remediation != null) 'remediation': remediation!,
         if (resource != null) 'resource': resource!.toJson(),
+        if (sbom != null) 'sbom': sbom!.toJson(),
+        if (spdxFile != null) 'spdxFile': spdxFile!.toJson(),
+        if (spdxPackage != null) 'spdxPackage': spdxPackage!.toJson(),
+        if (spdxRelationship != null)
+          'spdxRelationship': spdxRelationship!.toJson(),
         if (updateTime != null) 'updateTime': updateTime!,
         if (vulnerability != null) 'vulnerability': vulnerability!.toJson(),
       };
@@ -4370,8 +4811,25 @@ class PackageIssue {
   /// Required.
   VulnerabilityLocation? affectedLocation;
 
+  /// The distro or language system assigned severity for this vulnerability
+  /// when that is available and note provider assigned severity when it is not
+  /// available.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unknown.
+  /// - "MINIMAL" : Minimal severity.
+  /// - "LOW" : Low severity.
+  /// - "MEDIUM" : Medium severity.
+  /// - "HIGH" : High severity.
+  /// - "CRITICAL" : Critical severity.
+  core.String? effectiveSeverity;
+
   /// The location of the available fix for vulnerability.
   VulnerabilityLocation? fixedLocation;
+
+  /// The type of package (e.g. OS, MAVEN, GO).
+  core.String? packageType;
 
   /// Deprecated, use Details.effective_severity instead The severity (e.g.,
   /// distro assigned severity) for this vulnerability.
@@ -4379,7 +4837,9 @@ class PackageIssue {
 
   PackageIssue({
     this.affectedLocation,
+    this.effectiveSeverity,
     this.fixedLocation,
+    this.packageType,
     this.severityName,
   });
 
@@ -4389,9 +4849,15 @@ class PackageIssue {
               ? VulnerabilityLocation.fromJson(_json['affectedLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          effectiveSeverity: _json.containsKey('effectiveSeverity')
+              ? _json['effectiveSeverity'] as core.String
+              : null,
           fixedLocation: _json.containsKey('fixedLocation')
               ? VulnerabilityLocation.fromJson(
                   _json['fixedLocation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
               : null,
           severityName: _json.containsKey('severityName')
               ? _json['severityName'] as core.String
@@ -4401,8 +4867,245 @@ class PackageIssue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (affectedLocation != null)
           'affectedLocation': affectedLocation!.toJson(),
+        if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
         if (fixedLocation != null) 'fixedLocation': fixedLocation!.toJson(),
+        if (packageType != null) 'packageType': packageType!,
         if (severityName != null) 'severityName': severityName!,
+      };
+}
+
+/// PackageNote represents an SPDX Package Information section:
+/// https://spdx.github.io/spdx-spec/3-package-information/
+class PackageNote {
+  /// Indicates whether the file content of this package has been available for
+  /// or subjected to analysis when creating the SPDX document
+  core.bool? analyzed;
+
+  /// A place for the SPDX data creator to record, at the package level,
+  /// acknowledgements that may be needed to be communicated in some contexts
+  core.String? attribution;
+
+  /// Provide an independently reproducible mechanism that permits unique
+  /// identification of a specific package that correlates to the data in this
+  /// SPDX file
+  core.String? checksum;
+
+  /// Identify the copyright holders of the package, as well as any dates
+  /// present
+  core.String? copyright;
+
+  /// A more detailed description of the package
+  core.String? detailedDescription;
+
+  /// This section identifies the download Universal Resource Locator (URL), or
+  /// a specific location within a version control system (VCS) for the package
+  /// at the time that the SPDX file was created
+  core.String? downloadLocation;
+
+  /// ExternalRef
+  core.List<ExternalRef>? externalRefs;
+
+  /// Contain the license the SPDX file creator has concluded as governing the
+  /// This field is to contain a list of all licenses found in the package.
+  ///
+  /// The relationship between licenses (i.e., conjunctive, disjunctive) is not
+  /// specified in this field – it is simply a listing of all licenses found
+  core.List<core.String>? filesLicenseInfo;
+
+  /// Provide a place for the SPDX file creator to record a web site that serves
+  /// as the package's home page
+  core.String? homePage;
+
+  /// List the licenses that have been declared by the authors of the package
+  core.String? licenseDeclared;
+
+  /// If the package identified in the SPDX file originated from a different
+  /// person or organization than identified as Package Supplier, this field
+  /// identifies from where or whom the package originally came
+  core.String? originator;
+
+  /// A short description of the package
+  core.String? summaryDescription;
+
+  /// Identify the actual distribution source for the package/directory
+  /// identified in the SPDX file
+  core.String? supplier;
+
+  /// Identify the full name of the package as given by the Package Originator
+  core.String? title;
+
+  /// This field provides an independently reproducible mechanism identifying
+  /// specific contents of a package based on the actual files (except the SPDX
+  /// file itself, if it is included in the package) that make up each package
+  /// and that correlates to the data in this SPDX file
+  core.String? verificationCode;
+
+  /// Identify the version of the package
+  core.String? version;
+
+  PackageNote({
+    this.analyzed,
+    this.attribution,
+    this.checksum,
+    this.copyright,
+    this.detailedDescription,
+    this.downloadLocation,
+    this.externalRefs,
+    this.filesLicenseInfo,
+    this.homePage,
+    this.licenseDeclared,
+    this.originator,
+    this.summaryDescription,
+    this.supplier,
+    this.title,
+    this.verificationCode,
+    this.version,
+  });
+
+  PackageNote.fromJson(core.Map _json)
+      : this(
+          analyzed: _json.containsKey('analyzed')
+              ? _json['analyzed'] as core.bool
+              : null,
+          attribution: _json.containsKey('attribution')
+              ? _json['attribution'] as core.String
+              : null,
+          checksum: _json.containsKey('checksum')
+              ? _json['checksum'] as core.String
+              : null,
+          copyright: _json.containsKey('copyright')
+              ? _json['copyright'] as core.String
+              : null,
+          detailedDescription: _json.containsKey('detailedDescription')
+              ? _json['detailedDescription'] as core.String
+              : null,
+          downloadLocation: _json.containsKey('downloadLocation')
+              ? _json['downloadLocation'] as core.String
+              : null,
+          externalRefs: _json.containsKey('externalRefs')
+              ? (_json['externalRefs'] as core.List)
+                  .map<ExternalRef>((value) => ExternalRef.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          filesLicenseInfo: _json.containsKey('filesLicenseInfo')
+              ? (_json['filesLicenseInfo'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          homePage: _json.containsKey('homePage')
+              ? _json['homePage'] as core.String
+              : null,
+          licenseDeclared: _json.containsKey('licenseDeclared')
+              ? _json['licenseDeclared'] as core.String
+              : null,
+          originator: _json.containsKey('originator')
+              ? _json['originator'] as core.String
+              : null,
+          summaryDescription: _json.containsKey('summaryDescription')
+              ? _json['summaryDescription'] as core.String
+              : null,
+          supplier: _json.containsKey('supplier')
+              ? _json['supplier'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          verificationCode: _json.containsKey('verificationCode')
+              ? _json['verificationCode'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analyzed != null) 'analyzed': analyzed!,
+        if (attribution != null) 'attribution': attribution!,
+        if (checksum != null) 'checksum': checksum!,
+        if (copyright != null) 'copyright': copyright!,
+        if (detailedDescription != null)
+          'detailedDescription': detailedDescription!,
+        if (downloadLocation != null) 'downloadLocation': downloadLocation!,
+        if (externalRefs != null)
+          'externalRefs': externalRefs!.map((value) => value.toJson()).toList(),
+        if (filesLicenseInfo != null) 'filesLicenseInfo': filesLicenseInfo!,
+        if (homePage != null) 'homePage': homePage!,
+        if (licenseDeclared != null) 'licenseDeclared': licenseDeclared!,
+        if (originator != null) 'originator': originator!,
+        if (summaryDescription != null)
+          'summaryDescription': summaryDescription!,
+        if (supplier != null) 'supplier': supplier!,
+        if (title != null) 'title': title!,
+        if (verificationCode != null) 'verificationCode': verificationCode!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// PackageOccurrence represents an SPDX Package Information section:
+/// https://spdx.github.io/spdx-spec/3-package-information/
+class PackageOccurrence {
+  /// A place for the SPDX file creator to record any general comments about the
+  /// package being described
+  core.String? comment;
+
+  /// Provide the actual file name of the package, or path of the directory
+  /// being treated as a package
+  core.String? filename;
+
+  /// Uniquely identify any element in an SPDX document which may be referenced
+  /// by other elements
+  core.String? id;
+
+  /// This field provides a place for the SPDX file creator to record any
+  /// relevant background information or analysis that went in to arriving at
+  /// the Concluded License for a package
+  core.String? licenseComments;
+
+  /// package or alternative values, if the governing license cannot be
+  /// determined
+  core.String? licenseConcluded;
+
+  /// Provide a place for the SPDX file creator to record any relevant
+  /// background information or additional comments about the origin of the
+  /// package
+  core.String? sourceInfo;
+
+  PackageOccurrence({
+    this.comment,
+    this.filename,
+    this.id,
+    this.licenseComments,
+    this.licenseConcluded,
+    this.sourceInfo,
+  });
+
+  PackageOccurrence.fromJson(core.Map _json)
+      : this(
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          filename: _json.containsKey('filename')
+              ? _json['filename'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          licenseComments: _json.containsKey('licenseComments')
+              ? _json['licenseComments'] as core.String
+              : null,
+          licenseConcluded: _json.containsKey('licenseConcluded')
+              ? _json['licenseConcluded'] as core.String
+              : null,
+          sourceInfo: _json.containsKey('sourceInfo')
+              ? _json['sourceInfo'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comment != null) 'comment': comment!,
+        if (filename != null) 'filename': filename!,
+        if (id != null) 'id': id!,
+        if (licenseComments != null) 'licenseComments': licenseComments!,
+        if (licenseConcluded != null) 'licenseConcluded': licenseConcluded!,
+        if (sourceInfo != null) 'sourceInfo': sourceInfo!,
       };
 }
 
@@ -4508,7 +5211,7 @@ class PgpSignedAttestation {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -4641,6 +5344,147 @@ class RelatedUrl {
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// RelationshipNote represents an SPDX Relationship section:
+/// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+class RelationshipNote {
+  RelationshipNote();
+
+  RelationshipNote.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// RelationshipOccurrence represents an SPDX Relationship section:
+/// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+class RelationshipOccurrence {
+  /// A place for the SPDX file creator to record any general comments about the
+  /// relationship
+  core.String? comment;
+
+  /// Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
+  core.String? source;
+
+  /// Also referred to as SPDXRef-B The target SPDC element (file, package, etc)
+  /// In cases where there are "known unknowns", the use of the keyword
+  /// NOASSERTION can be used The keywords NONE can be used to indicate that an
+  /// SPDX element (package/file/snippet) has no other elements connected by
+  /// some relationship to it
+  core.String? target;
+
+  /// The type of relationship between the source and target SPDX elements
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified
+  /// - "DESCRIBES" : Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A
+  /// - "DESCRIBED_BY" : Is to be used when SPDXRef-A is described by
+  /// SPDXREF-Document
+  /// - "CONTAINS" : Is to be used when SPDXRef-A contains SPDXRef-B
+  /// - "CONTAINED_BY" : Is to be used when SPDXRef-A is contained by SPDXRef-B
+  /// - "DEPENDS_ON" : Is to be used when SPDXRef-A depends on SPDXRef-B
+  /// - "DEPENDENCY_OF" : Is to be used when SPDXRef-A is dependency of
+  /// SPDXRef-B
+  /// - "DEPENDENCY_MANIFEST_OF" : Is to be used when SPDXRef-A is a manifest
+  /// file that lists a set of dependencies for SPDXRef-B
+  /// - "BUILD_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a build
+  /// dependency of SPDXRef-B
+  /// - "DEV_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a development
+  /// dependency of SPDXRef-B
+  /// - "OPTIONAL_DEPENDENCY_OF" : Is to be used when SPDXRef-A is an optional
+  /// dependency of SPDXRef-B
+  /// - "PROVIDED_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a to be
+  /// provided dependency of SPDXRef-B
+  /// - "TEST_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a test dependency
+  /// of SPDXRef-B
+  /// - "RUNTIME_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a dependency
+  /// required for the execution of SPDXRef-B
+  /// - "EXAMPLE_OF" : Is to be used when SPDXRef-A is an example of SPDXRef-B
+  /// - "GENERATES" : Is to be used when SPDXRef-A generates SPDXRef-B
+  /// - "GENERATED_FROM" : Is to be used when SPDXRef-A was generated from
+  /// SPDXRef-B
+  /// - "ANCESTOR_OF" : Is to be used when SPDXRef-A is an ancestor (same
+  /// lineage but pre-dates) SPDXRef-B
+  /// - "DESCENDANT_OF" : Is to be used when SPDXRef-A is a descendant of (same
+  /// lineage but postdates) SPDXRef-B
+  /// - "VARIANT_OF" : Is to be used when SPDXRef-A is a variant of (same
+  /// lineage but not clear which came first) SPDXRef-B
+  /// - "DISTRIBUTION_ARTIFACT" : Is to be used when distributing SPDXRef-A
+  /// requires that SPDXRef-B also be distributed
+  /// - "PATCH_FOR" : Is to be used when SPDXRef-A is a patch file for (to be
+  /// applied to) SPDXRef-B
+  /// - "PATCH_APPLIED" : Is to be used when SPDXRef-A is a patch file that has
+  /// been applied to SPDXRef-B
+  /// - "COPY_OF" : Is to be used when SPDXRef-A is an exact copy of SPDXRef-B
+  /// - "FILE_ADDED" : Is to be used when SPDXRef-A is a file that was added to
+  /// SPDXRef-B
+  /// - "FILE_DELETED" : Is to be used when SPDXRef-A is a file that was deleted
+  /// from SPDXRef-B
+  /// - "FILE_MODIFIED" : Is to be used when SPDXRef-A is a file that was
+  /// modified from SPDXRef-B
+  /// - "EXPANDED_FROM_ARCHIVE" : Is to be used when SPDXRef-A is expanded from
+  /// the archive SPDXRef-B
+  /// - "DYNAMIC_LINK" : Is to be used when SPDXRef-A dynamically links to
+  /// SPDXRef-B
+  /// - "STATIC_LINK" : Is to be used when SPDXRef-A statically links to
+  /// SPDXRef-B
+  /// - "DATA_FILE_OF" : Is to be used when SPDXRef-A is a data file used in
+  /// SPDXRef-B
+  /// - "TEST_CASE_OF" : Is to be used when SPDXRef-A is a test case used in
+  /// testing SPDXRef-B
+  /// - "BUILD_TOOL_OF" : Is to be used when SPDXRef-A is used to build
+  /// SPDXRef-B
+  /// - "DEV_TOOL_OF" : Is to be used when SPDXRef-A is used as a development
+  /// tool for SPDXRef-B
+  /// - "TEST_OF" : Is to be used when SPDXRef-A is used for testing SPDXRef-B
+  /// - "TEST_TOOL_OF" : Is to be used when SPDXRef-A is used as a test tool for
+  /// SPDXRef-B
+  /// - "DOCUMENTATION_OF" : Is to be used when SPDXRef-A provides documentation
+  /// of SPDXRef-B
+  /// - "OPTIONAL_COMPONENT_OF" : Is to be used when SPDXRef-A is an optional
+  /// component of SPDXRef-B
+  /// - "METAFILE_OF" : Is to be used when SPDXRef-A is a metafile of SPDXRef-B
+  /// - "PACKAGE_OF" : Is to be used when SPDXRef-A is used as a package as part
+  /// of SPDXRef-B
+  /// - "AMENDS" : Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX
+  /// information in SPDXRef-B
+  /// - "PREREQUISITE_FOR" : Is to be used when SPDXRef-A is a prerequisite for
+  /// SPDXRef-B
+  /// - "HAS_PREREQUISITE" : Is to be used when SPDXRef-A has as a prerequisite
+  /// SPDXRef-B
+  /// - "OTHER" : Is to be used for a relationship which has not been defined in
+  /// the formal SPDX specification. A description of the relationship should be
+  /// included in the Relationship comments field
+  core.String? type;
+
+  RelationshipOccurrence({
+    this.comment,
+    this.source,
+    this.target,
+    this.type,
+  });
+
+  RelationshipOccurrence.fromJson(core.Map _json)
+      : this(
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comment != null) 'comment': comment!,
+        if (source != null) 'source': source!,
+        if (target != null) 'target': target!,
+        if (type != null) 'type': type!,
       };
 }
 

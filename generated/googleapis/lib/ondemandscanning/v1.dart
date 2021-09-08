@@ -42,7 +42,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// A service to scan container images for vulnerabilities.
 class OnDemandScanningApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -711,6 +712,9 @@ class AttestationOccurrence {
 
 /// Details of a build occurrence.
 class BuildOccurrence {
+  /// In-toto Provenance representation as defined in spec.
+  InTotoProvenance? intotoProvenance;
+
   /// The actual provenance for the build.
   ///
   /// Required.
@@ -729,12 +733,17 @@ class BuildOccurrence {
   core.String? provenanceBytes;
 
   BuildOccurrence({
+    this.intotoProvenance,
     this.provenance,
     this.provenanceBytes,
   });
 
   BuildOccurrence.fromJson(core.Map _json)
       : this(
+          intotoProvenance: _json.containsKey('intotoProvenance')
+              ? InTotoProvenance.fromJson(_json['intotoProvenance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           provenance: _json.containsKey('provenance')
               ? BuildProvenance.fromJson(
                   _json['provenance'] as core.Map<core.String, core.dynamic>)
@@ -745,6 +754,8 @@ class BuildOccurrence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (intotoProvenance != null)
+          'intotoProvenance': intotoProvenance!.toJson(),
         if (provenance != null) 'provenance': provenance!.toJson(),
         if (provenanceBytes != null) 'provenanceBytes': provenanceBytes!,
       };
@@ -893,6 +904,23 @@ class BuildProvenance {
       };
 }
 
+class BuilderConfig {
+  core.String? id;
+
+  BuilderConfig({
+    this.id,
+  });
+
+  BuilderConfig.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
 /// The category to which the update belongs.
 class Category {
   /// The identifier of the category.
@@ -1026,6 +1054,49 @@ class Command {
       };
 }
 
+/// Indicates that the builder claims certain fields in this message to be
+/// complete.
+class Completeness {
+  /// If true, the builder claims that recipe.arguments is complete, meaning
+  /// that all external inputs are properly captured in the recipe.
+  core.bool? arguments;
+
+  /// If true, the builder claims that recipe.environment is claimed to be
+  /// complete.
+  core.bool? environment;
+
+  /// If true, the builder claims that materials are complete, usually through
+  /// some controls to prevent network access.
+  ///
+  /// Sometimes called "hermetic".
+  core.bool? materials;
+
+  Completeness({
+    this.arguments,
+    this.environment,
+    this.materials,
+  });
+
+  Completeness.fromJson(core.Map _json)
+      : this(
+          arguments: _json.containsKey('arguments')
+              ? _json['arguments'] as core.bool
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.bool
+              : null,
+          materials: _json.containsKey('materials')
+              ? _json['materials'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
+        if (environment != null) 'environment': environment!,
+        if (materials != null) 'materials': materials!,
+      };
+}
+
 /// An indication that the compliance checks in the associated ComplianceNote
 /// were not satisfied for particular resources or a specified reason.
 class ComplianceOccurrence {
@@ -1056,6 +1127,35 @@ class ComplianceOccurrence {
         if (nonCompliantFiles != null)
           'nonCompliantFiles':
               nonCompliantFiles!.map((value) => value.toJson()).toList(),
+      };
+}
+
+class DSSEAttestationOccurrence {
+  /// If doing something security critical, make sure to verify the signatures
+  /// in this metadata.
+  Envelope? envelope;
+  InTotoStatement? statement;
+
+  DSSEAttestationOccurrence({
+    this.envelope,
+    this.statement,
+  });
+
+  DSSEAttestationOccurrence.fromJson(core.Map _json)
+      : this(
+          envelope: _json.containsKey('envelope')
+              ? Envelope.fromJson(
+                  _json['envelope'] as core.Map<core.String, core.dynamic>)
+              : null,
+          statement: _json.containsKey('statement')
+              ? InTotoStatement.fromJson(
+                  _json['statement'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (envelope != null) 'envelope': envelope!.toJson(),
+        if (statement != null) 'statement': statement!.toJson(),
       };
 }
 
@@ -1224,6 +1324,80 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// MUST match
+/// https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto.
+///
+/// An authenticated message of arbitrary type.
+class Envelope {
+  core.String? payload;
+  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
+
+  set payloadAsBytes(core.List<core.int> _bytes) {
+    payload =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  core.String? payloadType;
+  core.List<EnvelopeSignature>? signatures;
+
+  Envelope({
+    this.payload,
+    this.payloadType,
+    this.signatures,
+  });
+
+  Envelope.fromJson(core.Map _json)
+      : this(
+          payload: _json.containsKey('payload')
+              ? _json['payload'] as core.String
+              : null,
+          payloadType: _json.containsKey('payloadType')
+              ? _json['payloadType'] as core.String
+              : null,
+          signatures: _json.containsKey('signatures')
+              ? (_json['signatures'] as core.List)
+                  .map<EnvelopeSignature>((value) => EnvelopeSignature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+        if (payloadType != null) 'payloadType': payloadType!,
+        if (signatures != null)
+          'signatures': signatures!.map((value) => value.toJson()).toList(),
+      };
+}
+
+class EnvelopeSignature {
+  core.String? keyid;
+  core.String? sig;
+  core.List<core.int> get sigAsBytes => convert.base64.decode(sig!);
+
+  set sigAsBytes(core.List<core.int> _bytes) {
+    sig =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  EnvelopeSignature({
+    this.keyid,
+    this.sig,
+  });
+
+  EnvelopeSignature.fromJson(core.Map _json)
+      : this(
+          keyid:
+              _json.containsKey('keyid') ? _json['keyid'] as core.String : null,
+          sig: _json.containsKey('sig') ? _json['sig'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyid != null) 'keyid': keyid!,
+        if (sig != null) 'sig': sig!,
+      };
 }
 
 /// Container message for hashes of byte content of files, used in source
@@ -1504,6 +1678,109 @@ class ImageOccurrence {
       };
 }
 
+class InTotoProvenance {
+  /// required
+  BuilderConfig? builderConfig;
+
+  /// The collection of artifacts that influenced the build including sources,
+  /// dependencies, build tools, base images, and so on.
+  ///
+  /// This is considered to be incomplete unless metadata.completeness.materials
+  /// is true. Unset or null is equivalent to empty.
+  core.List<core.String>? materials;
+  Metadata? metadata;
+
+  /// Identifies the configuration used for the build.
+  ///
+  /// When combined with materials, this SHOULD fully describe the build, such
+  /// that re-running this recipe results in bit-for-bit identical output (if
+  /// the build is reproducible). required
+  Recipe? recipe;
+
+  InTotoProvenance({
+    this.builderConfig,
+    this.materials,
+    this.metadata,
+    this.recipe,
+  });
+
+  InTotoProvenance.fromJson(core.Map _json)
+      : this(
+          builderConfig: _json.containsKey('builderConfig')
+              ? BuilderConfig.fromJson(
+                  _json['builderConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? Metadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          recipe: _json.containsKey('recipe')
+              ? Recipe.fromJson(
+                  _json['recipe'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builderConfig != null) 'builderConfig': builderConfig!.toJson(),
+        if (materials != null) 'materials': materials!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (recipe != null) 'recipe': recipe!.toJson(),
+      };
+}
+
+/// Spec defined at
+/// https://github.com/in-toto/attestation/tree/main/spec#statement The
+/// serialized InTotoStatement will be stored as Envelope.payload.
+///
+/// Envelope.payloadType is always "application/vnd.in-toto+json".
+class InTotoStatement {
+  /// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+  core.String? predicateType;
+  InTotoProvenance? provenance;
+  core.List<Subject>? subject;
+
+  /// Always "https://in-toto.io/Statement/v0.1".
+  core.String? type;
+
+  InTotoStatement({
+    this.predicateType,
+    this.provenance,
+    this.subject,
+    this.type,
+  });
+
+  InTotoStatement.fromJson(core.Map _json)
+      : this(
+          predicateType: _json.containsKey('predicateType')
+              ? _json['predicateType'] as core.String
+              : null,
+          provenance: _json.containsKey('provenance')
+              ? InTotoProvenance.fromJson(
+                  _json['provenance'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subject: _json.containsKey('subject')
+              ? (_json['subject'] as core.List)
+                  .map<Subject>((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (predicateType != null) 'predicateType': predicateType!,
+        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (subject != null)
+          'subject': subject!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
+      };
+}
+
 class Jwt {
   /// The compact encoding of a JWS, which is always three base64 encoded
   /// strings joined by periods.
@@ -1671,6 +1948,65 @@ class Location {
       };
 }
 
+/// Other properties of the build.
+class Metadata {
+  /// The timestamp of when the build completed.
+  core.String? buildFinishedOn;
+
+  /// Identifies the particular build invocation, which can be useful for
+  /// finding associated logs or other ad-hoc analysis.
+  ///
+  /// The value SHOULD be globally unique, per in-toto Provenance spec.
+  core.String? buildInvocationId;
+
+  /// The timestamp of when the build started.
+  core.String? buildStartedOn;
+
+  /// Indicates that the builder claims certain fields in this message to be
+  /// complete.
+  Completeness? completeness;
+
+  /// If true, the builder claims that running the recipe on materials will
+  /// produce bit-for-bit identical output.
+  core.bool? reproducible;
+
+  Metadata({
+    this.buildFinishedOn,
+    this.buildInvocationId,
+    this.buildStartedOn,
+    this.completeness,
+    this.reproducible,
+  });
+
+  Metadata.fromJson(core.Map _json)
+      : this(
+          buildFinishedOn: _json.containsKey('buildFinishedOn')
+              ? _json['buildFinishedOn'] as core.String
+              : null,
+          buildInvocationId: _json.containsKey('buildInvocationId')
+              ? _json['buildInvocationId'] as core.String
+              : null,
+          buildStartedOn: _json.containsKey('buildStartedOn')
+              ? _json['buildStartedOn'] as core.String
+              : null,
+          completeness: _json.containsKey('completeness')
+              ? Completeness.fromJson(
+                  _json['completeness'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reproducible: _json.containsKey('reproducible')
+              ? _json['reproducible'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildFinishedOn != null) 'buildFinishedOn': buildFinishedOn!,
+        if (buildInvocationId != null) 'buildInvocationId': buildInvocationId!,
+        if (buildStartedOn != null) 'buildStartedOn': buildStartedOn!,
+        if (completeness != null) 'completeness': completeness!.toJson(),
+        if (reproducible != null) 'reproducible': reproducible!,
+      };
+}
+
 /// Details about files that caused a compliance check to fail.
 class NonCompliantFile {
   /// Command to display the non-compliant files.
@@ -1732,6 +2068,12 @@ class Occurrence {
   /// Describes when a resource was discovered.
   DiscoveryOccurrence? discovery;
 
+  /// Describes an attestation of an artifact using dsse.
+  DSSEAttestationOccurrence? dsseAttestation;
+
+  /// https://github.com/secure-systems-lab/dsse
+  Envelope? envelope;
+
   /// Describes how this resource derives from the basis in the associated note.
   ImageOccurrence? image;
 
@@ -1754,6 +2096,7 @@ class Occurrence {
   /// artifacts.
   /// - "UPGRADE" : This represents an available package upgrade.
   /// - "COMPLIANCE" : This represents a Compliance Note
+  /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -1802,6 +2145,8 @@ class Occurrence {
     this.createTime,
     this.deployment,
     this.discovery,
+    this.dsseAttestation,
+    this.envelope,
     this.image,
     this.kind,
     this.name,
@@ -1838,6 +2183,14 @@ class Occurrence {
           discovery: _json.containsKey('discovery')
               ? DiscoveryOccurrence.fromJson(
                   _json['discovery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dsseAttestation: _json.containsKey('dsseAttestation')
+              ? DSSEAttestationOccurrence.fromJson(_json['dsseAttestation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          envelope: _json.containsKey('envelope')
+              ? Envelope.fromJson(
+                  _json['envelope'] as core.Map<core.String, core.dynamic>)
               : null,
           image: _json.containsKey('image')
               ? ImageOccurrence.fromJson(
@@ -1878,6 +2231,9 @@ class Occurrence {
         if (createTime != null) 'createTime': createTime!,
         if (deployment != null) 'deployment': deployment!.toJson(),
         if (discovery != null) 'discovery': discovery!.toJson(),
+        if (dsseAttestation != null)
+          'dsseAttestation': dsseAttestation!.toJson(),
+        if (envelope != null) 'envelope': envelope!.toJson(),
         if (image != null) 'image': image!.toJson(),
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -2072,6 +2428,20 @@ class PackageIssue {
   /// Required.
   Version? affectedVersion;
 
+  /// The distro or language system assigned severity for this vulnerability
+  /// when that is available and note provider assigned severity when it is not
+  /// available.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unknown.
+  /// - "MINIMAL" : Minimal severity.
+  /// - "LOW" : Low severity.
+  /// - "MEDIUM" : Medium severity.
+  /// - "HIGH" : High severity.
+  /// - "CRITICAL" : Critical severity.
+  core.String? effectiveSeverity;
+
   /// Whether a fix is available for this package.
   ///
   /// Output only.
@@ -2095,14 +2465,19 @@ class PackageIssue {
   /// Required.
   Version? fixedVersion;
 
+  /// The type of package (e.g. OS, MAVEN, GO).
+  core.String? packageType;
+
   PackageIssue({
     this.affectedCpeUri,
     this.affectedPackage,
     this.affectedVersion,
+    this.effectiveSeverity,
     this.fixAvailable,
     this.fixedCpeUri,
     this.fixedPackage,
     this.fixedVersion,
+    this.packageType,
   });
 
   PackageIssue.fromJson(core.Map _json)
@@ -2117,6 +2492,9 @@ class PackageIssue {
               ? Version.fromJson(_json['affectedVersion']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          effectiveSeverity: _json.containsKey('effectiveSeverity')
+              ? _json['effectiveSeverity'] as core.String
+              : null,
           fixAvailable: _json.containsKey('fixAvailable')
               ? _json['fixAvailable'] as core.bool
               : null,
@@ -2130,6 +2508,9 @@ class PackageIssue {
               ? Version.fromJson(
                   _json['fixedVersion'] as core.Map<core.String, core.dynamic>)
               : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2137,10 +2518,12 @@ class PackageIssue {
         if (affectedPackage != null) 'affectedPackage': affectedPackage!,
         if (affectedVersion != null)
           'affectedVersion': affectedVersion!.toJson(),
+        if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
         if (fixedCpeUri != null) 'fixedCpeUri': fixedCpeUri!,
         if (fixedPackage != null) 'fixedPackage': fixedPackage!,
         if (fixedVersion != null) 'fixedVersion': fixedVersion!.toJson(),
+        if (packageType != null) 'packageType': packageType!,
       };
 }
 
@@ -2209,6 +2592,108 @@ class ProjectRepoId {
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
         if (repoName != null) 'repoName': repoName!,
+      };
+}
+
+/// Steps taken to build the artifact.
+///
+/// For a TaskRun, typically each container corresponds to one step in the
+/// recipe.
+class Recipe {
+  /// Collection of all external inputs that influenced the build on top of
+  /// recipe.definedInMaterial and recipe.entryPoint.
+  ///
+  /// For example, if the recipe type were "make", then this might be the flags
+  /// passed to make aside from the target, which is captured in
+  /// recipe.entryPoint. Since the arguments field can greatly vary in
+  /// structure, depending on the builder and recipe type, this is of form
+  /// "Any".
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>>? arguments;
+
+  /// Index in materials containing the recipe steps that are not implied by
+  /// recipe.type.
+  ///
+  /// For example, if the recipe type were "make", then this would point to the
+  /// source containing the Makefile, not the make program itself. Set to -1 if
+  /// the recipe doesn't come from a material, as zero is default unset value
+  /// for int64.
+  core.String? definedInMaterial;
+
+  /// String identifying the entry point into the build.
+  ///
+  /// This is often a path to a configuration file and/or a target label within
+  /// that file. The syntax and meaning are defined by recipe.type. For example,
+  /// if the recipe type were "make", then this would reference the directory in
+  /// which to run make as well as which target to use.
+  core.String? entryPoint;
+
+  /// Any other builder-controlled inputs necessary for correctly evaluating the
+  /// recipe.
+  ///
+  /// Usually only needed for reproducing the build but not evaluated as part of
+  /// policy. Since the environment field can greatly vary in structure,
+  /// depending on the builder and recipe type, this is of form "Any".
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>>? environment;
+
+  /// URI indicating what type of recipe was performed.
+  ///
+  /// It determines the meaning of recipe.entryPoint, recipe.arguments,
+  /// recipe.environment, and materials.
+  core.String? type;
+
+  Recipe({
+    this.arguments,
+    this.definedInMaterial,
+    this.entryPoint,
+    this.environment,
+    this.type,
+  });
+
+  Recipe.fromJson(core.Map _json)
+      : this(
+          arguments: _json.containsKey('arguments')
+              ? (_json['arguments'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          definedInMaterial: _json.containsKey('definedInMaterial')
+              ? _json['definedInMaterial'] as core.String
+              : null,
+          entryPoint: _json.containsKey('entryPoint')
+              ? _json['entryPoint'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? (_json['environment'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
+        if (definedInMaterial != null) 'definedInMaterial': definedInMaterial!,
+        if (entryPoint != null) 'entryPoint': entryPoint!,
+        if (environment != null) 'environment': environment!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2522,6 +3007,35 @@ class Status {
       };
 }
 
+class Subject {
+  /// "": ""
+  core.Map<core.String, core.String>? digest;
+  core.String? name;
+
+  Subject({
+    this.digest,
+    this.name,
+  });
+
+  Subject.fromJson(core.Map _json)
+      : this(
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// The Upgrade Distribution represents metadata about the Upgrade for each
 /// operating system (CPE).
 ///
@@ -2727,6 +3241,14 @@ class VulnerabilityOccurrence {
 
   /// The distro assigned severity for this vulnerability when it is available,
   /// otherwise this is the note provider assigned severity.
+  ///
+  /// When there are multiple PackageIssues for this vulnerability, they can
+  /// have different effective severities because some might be provided by the
+  /// distro while others are provided by the language ecosystem for a language
+  /// pack. For this reason, it is advised to use the effective severity on the
+  /// PackageIssue level. In the case where multiple PackageIssues have
+  /// differing effective severities, this field should be the highest severity
+  /// for any of the PackageIssues.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : Unknown.
   /// - "MINIMAL" : Minimal severity.

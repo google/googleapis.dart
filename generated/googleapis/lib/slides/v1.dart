@@ -2162,6 +2162,14 @@ class Image {
   /// The properties of the image.
   ImageProperties? imageProperties;
 
+  /// Placeholders are page elements that inherit from corresponding
+  /// placeholders on layouts and masters.
+  ///
+  /// If set, the image is a placeholder image and any inherited properties can
+  /// be resolved by looking at the parent placeholder identified by the
+  /// Placeholder.parent_object_id field.
+  Placeholder? placeholder;
+
   /// The source URL is the URL used to insert the image.
   ///
   /// The source URL can be empty.
@@ -2170,6 +2178,7 @@ class Image {
   Image({
     this.contentUrl,
     this.imageProperties,
+    this.placeholder,
     this.sourceUrl,
   });
 
@@ -2182,6 +2191,10 @@ class Image {
               ? ImageProperties.fromJson(_json['imageProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          placeholder: _json.containsKey('placeholder')
+              ? Placeholder.fromJson(
+                  _json['placeholder'] as core.Map<core.String, core.dynamic>)
+              : null,
           sourceUrl: _json.containsKey('sourceUrl')
               ? _json['sourceUrl'] as core.String
               : null,
@@ -2191,6 +2204,7 @@ class Image {
         if (contentUrl != null) 'contentUrl': contentUrl!,
         if (imageProperties != null)
           'imageProperties': imageProperties!.toJson(),
+        if (placeholder != null) 'placeholder': placeholder!.toJson(),
         if (sourceUrl != null) 'sourceUrl': sourceUrl!,
       };
 }

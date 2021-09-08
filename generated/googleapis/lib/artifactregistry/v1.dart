@@ -43,11 +43,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Store and manage build artifacts in a scalable and integrated service built
 /// on Google infrastructure.
 class ArtifactRegistryApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -207,9 +209,10 @@ class OperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^operations$`.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
@@ -225,22 +228,21 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list({
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
     core.String? filter,
-    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/operations';
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1032,6 +1034,8 @@ class Repository {
   /// - "MAVEN" : Maven package format.
   /// - "NPM" : NPM package format.
   /// - "PYPI" : PyPI package format.
+  /// - "APT" : APT package format.
+  /// - "YUM" : YUM package format.
   /// - "PYTHON" : Python package format.
   core.String? format;
 

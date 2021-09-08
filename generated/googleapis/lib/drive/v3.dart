@@ -1492,7 +1492,7 @@ class FilesResource {
   /// guide for supported syntax.
   ///
   /// [spaces] - A comma-separated list of spaces to query within the corpus.
-  /// Supported values are 'drive', 'appDataFolder' and 'photos'.
+  /// Supported values are 'drive' and 'appDataFolder'.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -4925,7 +4925,7 @@ class File {
   /// This is only available for files with binary content in Google Drive.
   core.String? fileExtension;
 
-  /// The color for a folder as an RGB hex string.
+  /// The color for a folder or shortcut to a folder as an RGB hex string.
   ///
   /// The supported colors are published in the folderColorPalette field of the
   /// About resource.

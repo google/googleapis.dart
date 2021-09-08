@@ -1416,6 +1416,14 @@ class AdvancedSecurityOverrides {
   /// app verification.
   core.String? googlePlayProtectVerifyApps;
 
+  /// Personal apps that can read work profile notifications using a
+  /// NotificationListenerService
+  /// (https://developer.android.com/reference/android/service/notification/NotificationListenerService).
+  ///
+  /// By default, no personal apps (aside from system apps) can read work
+  /// notifications. Each value in the list must be a package name.
+  core.List<core.String>? personalAppsThatCanReadWorkNotifications;
+
   /// The policy for untrusted apps (apps from unknown sources) enforced on the
   /// device.
   ///
@@ -1436,6 +1444,7 @@ class AdvancedSecurityOverrides {
     this.commonCriteriaMode,
     this.developerSettings,
     this.googlePlayProtectVerifyApps,
+    this.personalAppsThatCanReadWorkNotifications,
     this.untrustedAppsPolicy,
   });
 
@@ -1451,6 +1460,12 @@ class AdvancedSecurityOverrides {
               _json.containsKey('googlePlayProtectVerifyApps')
                   ? _json['googlePlayProtectVerifyApps'] as core.String
                   : null,
+          personalAppsThatCanReadWorkNotifications: _json
+                  .containsKey('personalAppsThatCanReadWorkNotifications')
+              ? (_json['personalAppsThatCanReadWorkNotifications'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
           untrustedAppsPolicy: _json.containsKey('untrustedAppsPolicy')
               ? _json['untrustedAppsPolicy'] as core.String
               : null,
@@ -1462,6 +1477,9 @@ class AdvancedSecurityOverrides {
         if (developerSettings != null) 'developerSettings': developerSettings!,
         if (googlePlayProtectVerifyApps != null)
           'googlePlayProtectVerifyApps': googlePlayProtectVerifyApps!,
+        if (personalAppsThatCanReadWorkNotifications != null)
+          'personalAppsThatCanReadWorkNotifications':
+              personalAppsThatCanReadWorkNotifications!,
         if (untrustedAppsPolicy != null)
           'untrustedAppsPolicy': untrustedAppsPolicy!,
       };
@@ -2419,7 +2437,7 @@ class ComplianceRule {
       };
 }
 
-/// Contact details for LaForge enterprises.
+/// Contact details for managed Google Play enterprises.
 class ContactInfo {
   /// Email address for a point of contact, which will be used to send important
   /// announcements related to managed Google Play.
@@ -2542,6 +2560,84 @@ class ContentProviderEndpoint {
         if (signingCertsSha256 != null)
           'signingCertsSha256': signingCertsSha256!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Cross-profile policies applied on the device.
+class CrossProfilePolicies {
+  /// Whether text copied from one profile (personal or work) can be pasted in
+  /// the other profile.
+  /// Possible string values are:
+  /// - "CROSS_PROFILE_COPY_PASTE_UNSPECIFIED" : Unspecified. Defaults to
+  /// COPY_FROM_WORK_TO_PERSONAL_DISALLOWED
+  /// - "COPY_FROM_WORK_TO_PERSONAL_DISALLOWED" : Default. Prevents users from
+  /// pasting into the personal profile text copied from the work profile. Text
+  /// copied from the personal profile can be pasted into the work profile, and
+  /// text copied from the work profile can be pasted into the work profile.
+  /// - "CROSS_PROFILE_COPY_PASTE_ALLOWED" : Text copied in either profile can
+  /// be pasted in the other profile.
+  core.String? crossProfileCopyPaste;
+
+  /// Whether data from one profile (personal or work) can be shared with apps
+  /// in the other profile.
+  ///
+  /// Specifically controls simple data sharing via intents. Management of other
+  /// cross-profile communication channels, such as contact search, copy/paste,
+  /// or connected work & personal apps, are configured separately.
+  /// Possible string values are:
+  /// - "CROSS_PROFILE_DATA_SHARING_UNSPECIFIED" : Unspecified. Defaults to
+  /// DATA_SHARING_FROM_WORK_TO_PERSONAL_DISALLOWED.
+  /// - "CROSS_PROFILE_DATA_SHARING_DISALLOWED" : Prevents data from being
+  /// shared from both the personal profile to the work profile and the work
+  /// profile to the personal profile.
+  /// - "DATA_SHARING_FROM_WORK_TO_PERSONAL_DISALLOWED" : Default. Prevents
+  /// users from sharing data from the work profile to apps in the personal
+  /// profile. Personal data can be shared with work apps.
+  /// - "CROSS_PROFILE_DATA_SHARING_ALLOWED" : Data from either profile can be
+  /// shared with the other profile.
+  core.String? crossProfileDataSharing;
+
+  /// Whether contacts stored in the work profile can be shown in personal
+  /// profile contact searches and incoming calls.
+  /// Possible string values are:
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_UNSPECIFIED" : Unspecified.
+  /// Defaults to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED.
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED" : Prevents work
+  /// profile contacts from appearing in personal profile contact searches and
+  /// incoming calls
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED" : Default. Allows work
+  /// profile contacts to appear in personal profile contact searches and
+  /// incoming calls
+  core.String? showWorkContactsInPersonalProfile;
+
+  CrossProfilePolicies({
+    this.crossProfileCopyPaste,
+    this.crossProfileDataSharing,
+    this.showWorkContactsInPersonalProfile,
+  });
+
+  CrossProfilePolicies.fromJson(core.Map _json)
+      : this(
+          crossProfileCopyPaste: _json.containsKey('crossProfileCopyPaste')
+              ? _json['crossProfileCopyPaste'] as core.String
+              : null,
+          crossProfileDataSharing: _json.containsKey('crossProfileDataSharing')
+              ? _json['crossProfileDataSharing'] as core.String
+              : null,
+          showWorkContactsInPersonalProfile:
+              _json.containsKey('showWorkContactsInPersonalProfile')
+                  ? _json['showWorkContactsInPersonalProfile'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (crossProfileCopyPaste != null)
+          'crossProfileCopyPaste': crossProfileCopyPaste!,
+        if (crossProfileDataSharing != null)
+          'crossProfileDataSharing': crossProfileDataSharing!,
+        if (showWorkContactsInPersonalProfile != null)
+          'showWorkContactsInPersonalProfile':
+              showWorkContactsInPersonalProfile!,
       };
 }
 
@@ -2701,10 +2797,7 @@ class Device {
   /// device's policy.
   core.List<MemoryEvent>? memoryEvents;
 
-  /// Memory information.
-  ///
-  /// This information is only available if memoryInfoEnabled is true in the
-  /// device's policy.
+  /// Memory information: contains information about device memory and storage.
   MemoryInfo? memoryInfo;
 
   /// The name of the device in the form
@@ -4953,20 +5046,24 @@ class PasswordRequirements {
   /// COMPLEXITY_HIGH for application. In this case, the requirements in
   /// passwordMinimumLength, passwordMinimumLetters, passwordMinimumSymbols, etc
   /// are not applied. See PasswordQuality for details.
-  /// - "COMPLEXITY_LOW" : Password satisfies one of the following: pattern PIN
-  /// with repeating (4444) or ordered (1234, 4321, 2468) sequencesEnforcement
+  /// - "COMPLEXITY_LOW" : Define the low password complexity band as: pattern
+  /// PIN with repeating (4444) or ordered (1234, 4321, 2468) sequencesThis sets
+  /// the minimum complexity band which the password must meet.Enforcement
   /// varies among different Android versions, management modes and password
   /// scopes. See PasswordQuality for details.
-  /// - "COMPLEXITY_MEDIUM" : Password satisfies one of the following: PIN with
-  /// no repeating (4444) or ordered (1234, 4321, 2468) sequences, length at
-  /// least 4 alphabetic, length at least 4 alphanumeric, length at least
-  /// 4Enforcement varies among different Android versions, management modes and
-  /// password scopes. See PasswordQuality for details.
-  /// - "COMPLEXITY_HIGH" : Password satisfies one of the following:On Android
-  /// 12 and above: PIN with no repeating (4444) or ordered (1234, 4321, 2468)
-  /// sequences, length at least 8 alphabetic, length at least 6 alphanumeric,
-  /// length at least 6Enforcement varies among different Android versions,
-  /// management modes and password scopes. See PasswordQuality for details.
+  /// - "COMPLEXITY_MEDIUM" : Define the medium password complexity band as: PIN
+  /// with no repeating (4444) or ordered (1234, 4321, 2468) sequences, length
+  /// at least 4 alphabetic, length at least 4 alphanumeric, length at least
+  /// 4This sets the minimum complexity band which the password must
+  /// meet.Enforcement varies among different Android versions, management modes
+  /// and password scopes. See PasswordQuality for details.
+  /// - "COMPLEXITY_HIGH" : Define the high password complexity band as:On
+  /// Android 12 and above: PIN with no repeating (4444) or ordered (1234, 4321,
+  /// 2468) sequences, length at least 8 alphabetic, length at least 6
+  /// alphanumeric, length at least 6This sets the minimum complexity band which
+  /// the password must meet.Enforcement varies among different Android
+  /// versions, management modes and password scopes. See PasswordQuality for
+  /// details.
   core.String? passwordQuality;
 
   /// The scope that the password requirement applies to.
@@ -5420,6 +5517,9 @@ class Policy {
   /// Whether configuring user credentials is disabled.
   core.bool? credentialsConfigDisabled;
 
+  /// Cross-profile policies applied on the device.
+  CrossProfilePolicies? crossProfilePolicies;
+
   /// Whether roaming data services are disabled.
   core.bool? dataRoamingDisabled;
 
@@ -5759,6 +5859,7 @@ class Policy {
     this.complianceRules,
     this.createWindowsDisabled,
     this.credentialsConfigDisabled,
+    this.crossProfilePolicies,
     this.dataRoamingDisabled,
     this.debuggingFeaturesAllowed,
     this.defaultPermissionPolicy,
@@ -5910,6 +6011,10 @@ class Policy {
               _json.containsKey('credentialsConfigDisabled')
                   ? _json['credentialsConfigDisabled'] as core.bool
                   : null,
+          crossProfilePolicies: _json.containsKey('crossProfilePolicies')
+              ? CrossProfilePolicies.fromJson(_json['crossProfilePolicies']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           dataRoamingDisabled: _json.containsKey('dataRoamingDisabled')
               ? _json['dataRoamingDisabled'] as core.bool
               : null,
@@ -6201,6 +6306,8 @@ class Policy {
           'createWindowsDisabled': createWindowsDisabled!,
         if (credentialsConfigDisabled != null)
           'credentialsConfigDisabled': credentialsConfigDisabled!,
+        if (crossProfilePolicies != null)
+          'crossProfilePolicies': crossProfilePolicies!.toJson(),
         if (dataRoamingDisabled != null)
           'dataRoamingDisabled': dataRoamingDisabled!,
         if (debuggingFeaturesAllowed != null)
@@ -6897,7 +7004,7 @@ class StatusReportingSettings {
   /// profiles.
   core.bool? hardwareStatusEnabled;
 
-  /// Whether memory reporting is enabled.
+  /// Whether memory event reporting is enabled.
   core.bool? memoryInfoEnabled;
 
   /// Whether network info reporting is enabled.

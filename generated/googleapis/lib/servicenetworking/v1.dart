@@ -49,7 +49,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Provides automatic management of network configurations necessary for
 /// certain services.
 class ServiceNetworkingApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1551,6 +1552,16 @@ class AddSubnetworkRequest {
   /// Required.
   core.int? ipPrefixLength;
 
+  /// The private IPv6 google access type for the VMs in this subnet.
+  ///
+  /// For information about the access types that can be set using this field,
+  /// see
+  /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
+  /// in the Compute API documentation.
+  ///
+  /// Optional.
+  core.String? privateIpv6GoogleAccess;
+
   /// The name of a \[region\](/compute/docs/regions-zones) for the subnet, such
   /// `europe-west1`.
   ///
@@ -1600,6 +1611,7 @@ class AddSubnetworkRequest {
     this.consumerNetwork,
     this.description,
     this.ipPrefixLength,
+    this.privateIpv6GoogleAccess,
     this.region,
     this.requestedAddress,
     this.requestedRanges,
@@ -1621,6 +1633,9 @@ class AddSubnetworkRequest {
               : null,
           ipPrefixLength: _json.containsKey('ipPrefixLength')
               ? _json['ipPrefixLength'] as core.int
+              : null,
+          privateIpv6GoogleAccess: _json.containsKey('privateIpv6GoogleAccess')
+              ? _json['privateIpv6GoogleAccess'] as core.String
               : null,
           region: _json.containsKey('region')
               ? _json['region'] as core.String
@@ -1655,6 +1670,8 @@ class AddSubnetworkRequest {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
         if (description != null) 'description': description!,
         if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
+        if (privateIpv6GoogleAccess != null)
+          'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (region != null) 'region': region!,
         if (requestedAddress != null) 'requestedAddress': requestedAddress!,
         if (requestedRanges != null) 'requestedRanges': requestedRanges!,
@@ -3068,8 +3085,11 @@ class DocumentationRule {
   /// It can be provided if an element is marked as `deprecated`.
   core.String? deprecationDescription;
 
-  /// The description is the comment in front of the selected proto element,
-  /// such as a message, a method, a 'service' definition, or a field.
+  /// Description of the selected proto element (e.g. a message, a method, a
+  /// 'service' definition, or a field).
+  ///
+  /// Defaults to leading & trailing comments taken from the proto source
+  /// definition of the proto element.
   core.String? description;
 
   /// The selector is a comma-separated list of patterns for any element such as
@@ -4805,7 +4825,10 @@ class MonitoredResourceDescriptor {
   /// The monitored resource type.
   ///
   /// For example, the type `"cloudsql_database"` represents databases in Google
-  /// Cloud SQL.
+  /// Cloud SQL. For a list of types, see
+  /// [Monitoring resource types](https://cloud.google.com/monitoring/api/resources)
+  /// and
+  /// [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///
   /// Required.
   core.String? type;
@@ -5206,6 +5229,8 @@ class PartialDeleteConnectionMetadata {
 /// are resolved in the associated consumer VPC network.
 class PeeredDnsDomain {
   /// The DNS domain name suffix e.g. `example.com.`.
+  ///
+  /// Cloud DNS requires that a DNS suffix ends with a trailing dot.
   core.String? dnsSuffix;
 
   /// User assigned name for this resource.

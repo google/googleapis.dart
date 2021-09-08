@@ -39,7 +39,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Converts audio to text by applying powerful neural network models.
 class SpeechApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -377,8 +378,12 @@ class LongRunningRecognizeResponse {
   /// portions of audio.
   core.List<SpeechRecognitionResult>? results;
 
+  /// When available, billed audio seconds for the corresponding request.
+  core.String? totalBilledTime;
+
   LongRunningRecognizeResponse({
     this.results,
+    this.totalBilledTime,
   });
 
   LongRunningRecognizeResponse.fromJson(core.Map _json)
@@ -390,11 +395,15 @@ class LongRunningRecognizeResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          totalBilledTime: _json.containsKey('totalBilledTime')
+              ? _json['totalBilledTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
+        if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };
 }
 
@@ -959,8 +968,12 @@ class RecognizeResponse {
   /// portions of audio.
   core.List<SpeechRecognitionResult>? results;
 
+  /// When available, billed audio seconds for the corresponding request.
+  core.String? totalBilledTime;
+
   RecognizeResponse({
     this.results,
+    this.totalBilledTime,
   });
 
   RecognizeResponse.fromJson(core.Map _json)
@@ -972,11 +985,15 @@ class RecognizeResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          totalBilledTime: _json.containsKey('totalBilledTime')
+              ? _json['totalBilledTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
+        if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };
 }
 

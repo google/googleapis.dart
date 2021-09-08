@@ -45,7 +45,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Provides reliable, many-to-many, asynchronous messaging between
 /// applications.
 class PubsubApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -174,8 +175,8 @@ class ProjectsSchemasResource {
   /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
   ///
   /// [view] - The set of fields to return in the response. If not set, returns
-  /// a Schema with `name` and `type`, but not `definition`. Set to `FULL` to
-  /// retrieve all fields.
+  /// a Schema with all fields filled out. Set to `BASIC` to omit the
+  /// `definition`.
   /// Possible string values are:
   /// - "SCHEMA_VIEW_UNSPECIFIED" : The default / unset value. The API will
   /// default to the BASIC view.
@@ -2798,7 +2799,7 @@ class OidcToken {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -3520,7 +3521,8 @@ class Subscription {
   /// successfully consuming messages from the subscription or is issuing
   /// operations on the subscription. If `expiration_policy` is not set, a
   /// *default policy* with `ttl` of 31 days will be used. The minimum allowed
-  /// value for `expiration_policy.ttl` is 1 day.
+  /// value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set,
+  /// but `expiration_policy.ttl` is not set, the subscription never expires.
   ExpirationPolicy? expirationPolicy;
 
   /// An expression written in the Pub/Sub
@@ -3589,6 +3591,18 @@ class Subscription {
   /// Required.
   core.String? topic;
 
+  /// Indicates the minimum duration for which a message is retained after it is
+  /// published to the subscription's topic.
+  ///
+  /// If this field is set, messages published to the subscription's topic in
+  /// the last `topic_message_retention_duration` are always available to
+  /// subscribers. See the `message_retention_duration` field in `Topic`. This
+  /// field is set only in responses from the server; it is ignored if it is set
+  /// in any requests.
+  ///
+  /// Output only.
+  core.String? topicMessageRetentionDuration;
+
   Subscription({
     this.ackDeadlineSeconds,
     this.deadLetterPolicy,
@@ -3603,6 +3617,7 @@ class Subscription {
     this.retainAckedMessages,
     this.retryPolicy,
     this.topic,
+    this.topicMessageRetentionDuration,
   });
 
   Subscription.fromJson(core.Map _json)
@@ -3653,6 +3668,10 @@ class Subscription {
               : null,
           topic:
               _json.containsKey('topic') ? _json['topic'] as core.String : null,
+          topicMessageRetentionDuration:
+              _json.containsKey('topicMessageRetentionDuration')
+                  ? _json['topicMessageRetentionDuration'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3675,6 +3694,8 @@ class Subscription {
           'retainAckedMessages': retainAckedMessages!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!.toJson(),
         if (topic != null) 'topic': topic!,
+        if (topicMessageRetentionDuration != null)
+          'topicMessageRetentionDuration': topicMessageRetentionDuration!,
       };
 }
 
@@ -3742,6 +3763,18 @@ class Topic {
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String>? labels;
 
+  /// Indicates the minimum duration to retain a message after it is published
+  /// to the topic.
+  ///
+  /// If this field is set, messages published to the topic in the last
+  /// `message_retention_duration` are always available to subscribers. For
+  /// instance, it allows any attached subscription to
+  /// [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time)
+  /// that is up to `message_retention_duration` in the past. If this field is
+  /// not set, message retention is controlled by settings on individual
+  /// subscriptions. Cannot be more than 7 days or less than 10 minutes.
+  core.String? messageRetentionDuration;
+
   /// Policy constraining the set of Google Cloud Platform regions where
   /// messages published to the topic may be stored.
   ///
@@ -3771,6 +3804,7 @@ class Topic {
   Topic({
     this.kmsKeyName,
     this.labels,
+    this.messageRetentionDuration,
     this.messageStoragePolicy,
     this.name,
     this.satisfiesPzs,
@@ -3790,6 +3824,10 @@ class Topic {
                   ),
                 )
               : null,
+          messageRetentionDuration:
+              _json.containsKey('messageRetentionDuration')
+                  ? _json['messageRetentionDuration'] as core.String
+                  : null,
           messageStoragePolicy: _json.containsKey('messageStoragePolicy')
               ? MessageStoragePolicy.fromJson(_json['messageStoragePolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -3807,6 +3845,8 @@ class Topic {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
+        if (messageRetentionDuration != null)
+          'messageRetentionDuration': messageRetentionDuration!,
         if (messageStoragePolicy != null)
           'messageStoragePolicy': messageStoragePolicy!.toJson(),
         if (name != null) 'name': name!,

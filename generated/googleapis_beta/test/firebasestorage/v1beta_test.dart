@@ -165,12 +165,12 @@ void checkGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMet
   buildCounterGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata--;
 }
 
-core.List<api.Bucket> buildUnnamed8928() => [
+core.List<api.Bucket> buildUnnamed9045() => [
       buildBucket(),
       buildBucket(),
     ];
 
-void checkUnnamed8928(core.List<api.Bucket> o) {
+void checkUnnamed9045(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -181,7 +181,7 @@ api.ListBucketsResponse buildListBucketsResponse() {
   final o = api.ListBucketsResponse();
   buildCounterListBucketsResponse++;
   if (buildCounterListBucketsResponse < 3) {
-    o.buckets = buildUnnamed8928();
+    o.buckets = buildUnnamed9045();
     o.nextPageToken = 'foo';
   }
   buildCounterListBucketsResponse--;
@@ -191,7 +191,7 @@ api.ListBucketsResponse buildListBucketsResponse() {
 void checkListBucketsResponse(api.ListBucketsResponse o) {
   buildCounterListBucketsResponse++;
   if (buildCounterListBucketsResponse < 3) {
-    checkUnnamed8928(o.buckets!);
+    checkUnnamed9045(o.buckets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

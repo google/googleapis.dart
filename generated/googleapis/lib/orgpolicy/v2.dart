@@ -48,7 +48,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Org Policy API allows users to configure governance ruleson their GCP
 /// resources across the Cloud Resource Hierarchy.
 class OrgPolicyApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 

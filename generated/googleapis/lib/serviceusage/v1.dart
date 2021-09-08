@@ -42,11 +42,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Platform, lists the available or enabled services, or disables services that
 /// service consumers no longer use.
 class ServiceUsageApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -1858,8 +1860,11 @@ class DocumentationRule {
   /// It can be provided if an element is marked as `deprecated`.
   core.String? deprecationDescription;
 
-  /// The description is the comment in front of the selected proto element,
-  /// such as a message, a method, a 'service' definition, or a field.
+  /// Description of the selected proto element (e.g. a message, a method, a
+  /// 'service' definition, or a field).
+  ///
+  /// Defaults to leading & trailing comments taken from the proto source
+  /// definition of the proto element.
   core.String? description;
 
   /// The selector is a comma-separated list of patterns for any element such as
@@ -4226,7 +4231,10 @@ class MonitoredResourceDescriptor {
   /// The monitored resource type.
   ///
   /// For example, the type `"cloudsql_database"` represents databases in Google
-  /// Cloud SQL.
+  /// Cloud SQL. For a list of types, see
+  /// [Monitoring resource types](https://cloud.google.com/monitoring/api/resources)
+  /// and
+  /// [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///
   /// Required.
   core.String? type;

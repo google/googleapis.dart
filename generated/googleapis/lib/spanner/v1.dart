@@ -50,7 +50,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Cloud Spanner is a managed, mission-critical, globally consistent and
 /// scalable relational database service.
 class SpannerApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -4995,17 +4996,20 @@ class Instance {
 
   /// The number of nodes allocated to this instance.
   ///
-  /// This may be zero in API responses for instances that are not yet in state
-  /// `READY`. See
-  /// [the documentation](https://cloud.google.com/spanner/docs/instances#node_count)
-  /// for more information about nodes.
+  /// At most one of either node_count or processing_units should be present in
+  /// the message. This may be zero in API responses for instances that are not
+  /// yet in state `READY`. See
+  /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
+  /// for more information about nodes and processing units.
   core.int? nodeCount;
 
   /// The number of processing units allocated to this instance.
   ///
   /// At most one of processing_units or node_count should be present in the
   /// message. This may be zero in API responses for instances that are not yet
-  /// in state `READY`.
+  /// in state `READY`. See
+  /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
+  /// for more information about nodes and processing units.
   core.int? processingUnits;
 
   /// The current instance state.
@@ -6800,7 +6804,7 @@ class PlanNode {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

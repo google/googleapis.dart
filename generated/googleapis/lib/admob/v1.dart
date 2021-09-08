@@ -1141,7 +1141,8 @@ class MediationReportSpecDimensionFilter {
   /// with \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
   /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
   /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
-  /// "Non-personalized ads").
+  /// "Non-personalized ads"). **Warning:** The dimension is incompatible with
+  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric.
   core.String? dimension;
 
   /// Matches a row if its value for the specified dimension is in one of the
@@ -1213,7 +1214,8 @@ class MediationReportSpecSortCondition {
   /// with \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
   /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
   /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
-  /// "Non-personalized ads").
+  /// "Non-personalized ads"). **Warning:** The dimension is incompatible with
+  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric.
   core.String? dimension;
 
   /// Sort by the specified metric.

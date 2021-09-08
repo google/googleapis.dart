@@ -88,7 +88,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Builds conversational interfaces (for example, chatbots, and voice-powered
 /// apps and devices).
 class DialogflowApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -5399,6 +5400,42 @@ class ProjectsLocationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudLocationLocation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudLocationLocation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudLocationLocation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves the specified agent.
   ///
   /// Request parameters:
@@ -5433,6 +5470,58 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudDialogflowV2Agent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudLocationListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudLocationListLocationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudLocationListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -10679,7 +10768,8 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
 
   /// Input only.
   ///
-  /// The diagnostic info output for the turn.
+  /// The diagnostic info output for the turn. Required to calculate the testing
+  /// coverage.
   ///
   /// Required.
   ///
@@ -11063,6 +11153,8 @@ class GoogleCloudDialogflowCxV3ExportFlowResponse {
 }
 
 /// Metadata returned for the TestCases.ExportTestCases long running operation.
+///
+/// This message currently has no fields.
 class GoogleCloudDialogflowCxV3ExportTestCasesMetadata {
   GoogleCloudDialogflowCxV3ExportTestCasesMetadata();
 
@@ -13012,6 +13104,8 @@ class GoogleCloudDialogflowCxV3RunContinuousTestResponse {
 }
 
 /// Metadata returned for the TestCases.RunTestCase long running operation.
+///
+/// This message currently has no fields.
 class GoogleCloudDialogflowCxV3RunTestCaseMetadata {
   GoogleCloudDialogflowCxV3RunTestCaseMetadata();
 
@@ -14250,7 +14344,8 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
 
   /// Input only.
   ///
-  /// The diagnostic info output for the turn.
+  /// The diagnostic info output for the turn. Required to calculate the testing
+  /// coverage.
   ///
   /// Required.
   ///
@@ -14639,6 +14734,8 @@ class GoogleCloudDialogflowCxV3beta1ExportFlowResponse {
 }
 
 /// Metadata returned for the TestCases.ExportTestCases long running operation.
+///
+/// This message currently has no fields.
 class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata {
   GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata();
 
@@ -16604,6 +16701,8 @@ class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse {
 }
 
 /// Metadata returned for the TestCases.RunTestCase long running operation.
+///
+/// This message currently has no fields.
 class GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata {
   GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata();
 
@@ -21367,6 +21466,8 @@ class GoogleCloudDialogflowV2Intent {
   ///
   /// Information about all followup intents that have this intent as a direct
   /// or indirect parent. We populate this field only in the output.
+  ///
+  /// Output only.
   core.List<GoogleCloudDialogflowV2IntentFollowupIntentInfo>?
       followupIntentInfo;
 
@@ -21460,6 +21561,8 @@ class GoogleCloudDialogflowV2Intent {
   /// It identifies the correct followup intents chain for this intent. We
   /// populate this field only in the output. Format:
   /// `projects//agent/intents/`.
+  ///
+  /// Output only.
   core.String? rootFollowupIntentName;
 
   /// The collection of examples that the agent is trained on.
@@ -25550,7 +25653,7 @@ class GoogleCloudDialogflowV2ValidationError {
   /// associated with certain entities.
   core.List<core.String>? entries;
 
-  /// The detailed error messsage.
+  /// The detailed error message.
   core.String? errorMessage;
 
   /// The severity of the error.
@@ -30803,6 +30906,114 @@ class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
+      };
+}
+
+/// The response message for Locations.ListLocations.
+class GoogleCloudLocationListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<GoogleCloudLocationLocation>? locations;
+
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  GoogleCloudLocationListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
+
+  GoogleCloudLocationListLocationsResponse.fromJson(core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<GoogleCloudLocationLocation>((value) =>
+                      GoogleCloudLocationLocation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locations != null)
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A resource that represents Google Cloud Platform location.
+class GoogleCloudLocationLocation {
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
+  core.String? displayName;
+
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
+  core.Map<core.String, core.String>? labels;
+
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
+  core.String? locationId;
+
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? metadata;
+
+  /// Resource name for the location, which may vary between implementations.
+  ///
+  /// For example: `"projects/example-project/locations/us-east1"`
+  core.String? name;
+
+  GoogleCloudLocationLocation({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
+
+  GoogleCloudLocationLocation.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 

@@ -23,6 +23,10 @@
 /// Create an instance of [ChromeManagementApi] to access these resources:
 ///
 /// - [CustomersResource]
+///   - [CustomersAppsResource]
+///     - [CustomersAppsAndroidResource]
+///     - [CustomersAppsChromeResource]
+///     - [CustomersAppsWebResource]
 ///   - [CustomersReportsResource]
 library chromemanagement.v1;
 
@@ -41,6 +45,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// administrators to view, manage and gain insights on their Chrome OS and
 /// Chrome Browser devices.
 class ChromeManagementApi {
+  /// See detailed information about apps installed on Chrome browsers and
+  /// devices managed by your organization
+  static const chromeManagementAppdetailsReadonlyScope =
+      'https://www.googleapis.com/auth/chrome.management.appdetails.readonly';
+
   /// See reports about devices and Chrome browsers managed within your
   /// organization
   static const chromeManagementReportsReadonlyScope =
@@ -60,9 +69,162 @@ class ChromeManagementApi {
 class CustomersResource {
   final commons.ApiRequester _requester;
 
+  CustomersAppsResource get apps => CustomersAppsResource(_requester);
   CustomersReportsResource get reports => CustomersReportsResource(_requester);
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class CustomersAppsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersAppsAndroidResource get android =>
+      CustomersAppsAndroidResource(_requester);
+  CustomersAppsChromeResource get chrome =>
+      CustomersAppsChromeResource(_requester);
+  CustomersAppsWebResource get web => CustomersAppsWebResource(_requester);
+
+  CustomersAppsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class CustomersAppsAndroidResource {
+  final commons.ApiRequester _requester;
+
+  CustomersAppsAndroidResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a specific app for a customer by its resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The app for which details are being queried. Examples:
+  /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2"
+  /// for the Save to Google Drive Chrome extension version 2.1.2,
+  /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the
+  /// Google Drive Android app's latest version.
+  /// Value must have pattern `^customers/\[^/\]+/apps/android/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1AppDetails].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1AppDetails> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChromeManagementV1AppDetails.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersAppsChromeResource {
+  final commons.ApiRequester _requester;
+
+  CustomersAppsChromeResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a specific app for a customer by its resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The app for which details are being queried. Examples:
+  /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2"
+  /// for the Save to Google Drive Chrome extension version 2.1.2,
+  /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the
+  /// Google Drive Android app's latest version.
+  /// Value must have pattern `^customers/\[^/\]+/apps/chrome/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1AppDetails].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1AppDetails> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChromeManagementV1AppDetails.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersAppsWebResource {
+  final commons.ApiRequester _requester;
+
+  CustomersAppsWebResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get a specific app for a customer by its resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The app for which details are being queried. Examples:
+  /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2"
+  /// for the Save to Google Drive Chrome extension version 2.1.2,
+  /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the
+  /// Google Drive Android app's latest version.
+  /// Value must have pattern `^customers/\[^/\]+/apps/web/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1AppDetails].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1AppDetails> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChromeManagementV1AppDetails.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class CustomersReportsResource {
@@ -279,6 +441,280 @@ class CustomersReportsResource {
   }
 }
 
+/// Android app information.
+class GoogleChromeManagementV1AndroidAppInfo {
+  /// Permissions requested by an Android app.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1AndroidAppPermission>? permissions;
+
+  GoogleChromeManagementV1AndroidAppInfo({
+    this.permissions,
+  });
+
+  GoogleChromeManagementV1AndroidAppInfo.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<GoogleChromeManagementV1AndroidAppPermission>((value) =>
+                      GoogleChromeManagementV1AndroidAppPermission.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null)
+          'permissions': permissions!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Permission requested by an Android app.
+class GoogleChromeManagementV1AndroidAppPermission {
+  /// The type of the permission.
+  ///
+  /// Output only.
+  core.String? type;
+
+  GoogleChromeManagementV1AndroidAppPermission({
+    this.type,
+  });
+
+  GoogleChromeManagementV1AndroidAppPermission.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Resource representing app details.
+class GoogleChromeManagementV1AppDetails {
+  /// Android app information.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1AndroidAppInfo? androidAppInfo;
+
+  /// Unique store identifier for the item.
+  ///
+  /// Examples: "gmbmikajjgmnabiglmofipeabaddhgne" for the Save to Google Drive
+  /// Chrome extension, "com.google.android.apps.docs" for the Google Drive
+  /// Android app.
+  ///
+  /// Output only.
+  core.String? appId;
+
+  /// Chrome Web Store app information.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1ChromeAppInfo? chromeAppInfo;
+
+  /// App's description.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The uri for the detail page of the item.
+  ///
+  /// Output only.
+  core.String? detailUri;
+
+  /// App's display name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// First published time.
+  ///
+  /// Output only.
+  core.String? firstPublishTime;
+
+  /// Home page or Website uri.
+  ///
+  /// Output only.
+  core.String? homepageUri;
+
+  /// A link to an image that can be used as an icon for the product.
+  ///
+  /// Output only.
+  core.String? iconUri;
+
+  /// Indicates if the app has to be paid for OR has paid content.
+  ///
+  /// Output only.
+  core.bool? isPaidApp;
+
+  /// Latest published time.
+  ///
+  /// Output only.
+  core.String? latestPublishTime;
+
+  /// Format:
+  /// name=customers/{customer_id}/apps/{chrome|android|web}/{app_id}@{version}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The URI pointing to the privacy policy of the app, if it was provided by
+  /// the developer.
+  ///
+  /// Version-specific field that will only be set when the requested app
+  /// version is found.
+  ///
+  /// Output only.
+  core.String? privacyPolicyUri;
+
+  /// The publisher of the item.
+  ///
+  /// Output only.
+  core.String? publisher;
+
+  /// Number of reviews received.
+  ///
+  /// Chrome Web Store review information will always be for the latest version
+  /// of an app.
+  ///
+  /// Output only.
+  core.String? reviewNumber;
+
+  /// The rating of the app (on 5 stars).
+  ///
+  /// Chrome Web Store review information will always be for the latest version
+  /// of an app.
+  ///
+  /// Output only.
+  core.double? reviewRating;
+
+  /// App version.
+  ///
+  /// A new revision is committed whenever a new version of the app is
+  /// published.
+  ///
+  /// Output only.
+  core.String? revisionId;
+
+  /// Information about a partial service error if applicable.
+  ///
+  /// Output only.
+  GoogleRpcStatus? serviceError;
+
+  /// App type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "APP_ITEM_TYPE_UNSPECIFIED" : App type unspecified.
+  /// - "CHROME" : Chrome app.
+  /// - "ANDROID" : ARC++ app.
+  /// - "WEB" : Web app.
+  core.String? type;
+
+  GoogleChromeManagementV1AppDetails({
+    this.androidAppInfo,
+    this.appId,
+    this.chromeAppInfo,
+    this.description,
+    this.detailUri,
+    this.displayName,
+    this.firstPublishTime,
+    this.homepageUri,
+    this.iconUri,
+    this.isPaidApp,
+    this.latestPublishTime,
+    this.name,
+    this.privacyPolicyUri,
+    this.publisher,
+    this.reviewNumber,
+    this.reviewRating,
+    this.revisionId,
+    this.serviceError,
+    this.type,
+  });
+
+  GoogleChromeManagementV1AppDetails.fromJson(core.Map _json)
+      : this(
+          androidAppInfo: _json.containsKey('androidAppInfo')
+              ? GoogleChromeManagementV1AndroidAppInfo.fromJson(
+                  _json['androidAppInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          chromeAppInfo: _json.containsKey('chromeAppInfo')
+              ? GoogleChromeManagementV1ChromeAppInfo.fromJson(
+                  _json['chromeAppInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          detailUri: _json.containsKey('detailUri')
+              ? _json['detailUri'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          firstPublishTime: _json.containsKey('firstPublishTime')
+              ? _json['firstPublishTime'] as core.String
+              : null,
+          homepageUri: _json.containsKey('homepageUri')
+              ? _json['homepageUri'] as core.String
+              : null,
+          iconUri: _json.containsKey('iconUri')
+              ? _json['iconUri'] as core.String
+              : null,
+          isPaidApp: _json.containsKey('isPaidApp')
+              ? _json['isPaidApp'] as core.bool
+              : null,
+          latestPublishTime: _json.containsKey('latestPublishTime')
+              ? _json['latestPublishTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          privacyPolicyUri: _json.containsKey('privacyPolicyUri')
+              ? _json['privacyPolicyUri'] as core.String
+              : null,
+          publisher: _json.containsKey('publisher')
+              ? _json['publisher'] as core.String
+              : null,
+          reviewNumber: _json.containsKey('reviewNumber')
+              ? _json['reviewNumber'] as core.String
+              : null,
+          reviewRating: _json.containsKey('reviewRating')
+              ? (_json['reviewRating'] as core.num).toDouble()
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          serviceError: _json.containsKey('serviceError')
+              ? GoogleRpcStatus.fromJson(
+                  _json['serviceError'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (androidAppInfo != null) 'androidAppInfo': androidAppInfo!.toJson(),
+        if (appId != null) 'appId': appId!,
+        if (chromeAppInfo != null) 'chromeAppInfo': chromeAppInfo!.toJson(),
+        if (description != null) 'description': description!,
+        if (detailUri != null) 'detailUri': detailUri!,
+        if (displayName != null) 'displayName': displayName!,
+        if (firstPublishTime != null) 'firstPublishTime': firstPublishTime!,
+        if (homepageUri != null) 'homepageUri': homepageUri!,
+        if (iconUri != null) 'iconUri': iconUri!,
+        if (isPaidApp != null) 'isPaidApp': isPaidApp!,
+        if (latestPublishTime != null) 'latestPublishTime': latestPublishTime!,
+        if (name != null) 'name': name!,
+        if (privacyPolicyUri != null) 'privacyPolicyUri': privacyPolicyUri!,
+        if (publisher != null) 'publisher': publisher!,
+        if (reviewNumber != null) 'reviewNumber': reviewNumber!,
+        if (reviewRating != null) 'reviewRating': reviewRating!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (serviceError != null) 'serviceError': serviceError!.toJson(),
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Describes a browser version and its install count.
 class GoogleChromeManagementV1BrowserVersion {
   /// The release channel of the installed browser.
@@ -353,6 +789,180 @@ class GoogleChromeManagementV1BrowserVersion {
         if (deviceOsVersion != null) 'deviceOsVersion': deviceOsVersion!,
         if (system != null) 'system': system!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Chrome Web Store app information.
+class GoogleChromeManagementV1ChromeAppInfo {
+  /// Whether the app or extension is built and maintained by Google.
+  ///
+  /// Version-specific field that will only be set when the requested app
+  /// version is found.
+  ///
+  /// Output only.
+  core.bool? googleOwned;
+
+  /// Whether the app or extension is in a published state in the Chrome Web
+  /// Store.
+  ///
+  /// Output only.
+  core.bool? isCwsHosted;
+
+  /// Whether the app or extension is a theme.
+  ///
+  /// Output only.
+  core.bool? isTheme;
+
+  /// The minimum number of users using this app.
+  ///
+  /// Output only.
+  core.int? minUserCount;
+
+  /// Every custom permission requested by the app.
+  ///
+  /// Version-specific field that will only be set when the requested app
+  /// version is found.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1ChromeAppPermission>? permissions;
+
+  /// Every permission giving access to domains or broad host patterns.
+  ///
+  /// ( e.g. www.google.com). This includes the matches from content scripts as
+  /// well as hosts in the permissions node of the manifest. Version-specific
+  /// field that will only be set when the requested app version is found.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1ChromeAppSiteAccess>? siteAccess;
+
+  /// The app developer has enabled support for their app.
+  ///
+  /// Version-specific field that will only be set when the requested app
+  /// version is found.
+  ///
+  /// Output only.
+  core.bool? supportEnabled;
+
+  GoogleChromeManagementV1ChromeAppInfo({
+    this.googleOwned,
+    this.isCwsHosted,
+    this.isTheme,
+    this.minUserCount,
+    this.permissions,
+    this.siteAccess,
+    this.supportEnabled,
+  });
+
+  GoogleChromeManagementV1ChromeAppInfo.fromJson(core.Map _json)
+      : this(
+          googleOwned: _json.containsKey('googleOwned')
+              ? _json['googleOwned'] as core.bool
+              : null,
+          isCwsHosted: _json.containsKey('isCwsHosted')
+              ? _json['isCwsHosted'] as core.bool
+              : null,
+          isTheme: _json.containsKey('isTheme')
+              ? _json['isTheme'] as core.bool
+              : null,
+          minUserCount: _json.containsKey('minUserCount')
+              ? _json['minUserCount'] as core.int
+              : null,
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<GoogleChromeManagementV1ChromeAppPermission>((value) =>
+                      GoogleChromeManagementV1ChromeAppPermission.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          siteAccess: _json.containsKey('siteAccess')
+              ? (_json['siteAccess'] as core.List)
+                  .map<GoogleChromeManagementV1ChromeAppSiteAccess>((value) =>
+                      GoogleChromeManagementV1ChromeAppSiteAccess.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          supportEnabled: _json.containsKey('supportEnabled')
+              ? _json['supportEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (googleOwned != null) 'googleOwned': googleOwned!,
+        if (isCwsHosted != null) 'isCwsHosted': isCwsHosted!,
+        if (isTheme != null) 'isTheme': isTheme!,
+        if (minUserCount != null) 'minUserCount': minUserCount!,
+        if (permissions != null)
+          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (siteAccess != null)
+          'siteAccess': siteAccess!.map((value) => value.toJson()).toList(),
+        if (supportEnabled != null) 'supportEnabled': supportEnabled!,
+      };
+}
+
+/// Permission requested by a Chrome app or extension.
+class GoogleChromeManagementV1ChromeAppPermission {
+  /// If available, whether this permissions grants the app/extension access to
+  /// user data.
+  ///
+  /// Output only.
+  core.bool? accessUserData;
+
+  /// If available, a URI to a page that has documentation for the current
+  /// permission.
+  ///
+  /// Output only.
+  core.String? documentationUri;
+
+  /// The type of the permission.
+  ///
+  /// Output only.
+  core.String? type;
+
+  GoogleChromeManagementV1ChromeAppPermission({
+    this.accessUserData,
+    this.documentationUri,
+    this.type,
+  });
+
+  GoogleChromeManagementV1ChromeAppPermission.fromJson(core.Map _json)
+      : this(
+          accessUserData: _json.containsKey('accessUserData')
+              ? _json['accessUserData'] as core.bool
+              : null,
+          documentationUri: _json.containsKey('documentationUri')
+              ? _json['documentationUri'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessUserData != null) 'accessUserData': accessUserData!,
+        if (documentationUri != null) 'documentationUri': documentationUri!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Represent one host permission.
+class GoogleChromeManagementV1ChromeAppSiteAccess {
+  /// This can contain very specific hosts, or patterns like "*.com" for
+  /// instance.
+  ///
+  /// Output only.
+  core.String? hostMatch;
+
+  GoogleChromeManagementV1ChromeAppSiteAccess({
+    this.hostMatch,
+  });
+
+  GoogleChromeManagementV1ChromeAppSiteAccess.fromJson(core.Map _json)
+      : this(
+          hostMatch: _json.containsKey('hostMatch')
+              ? _json['hostMatch'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hostMatch != null) 'hostMatch': hostMatch!,
       };
 }
 
@@ -665,5 +1275,62 @@ class GoogleChromeManagementV1InstalledApp {
         if (homepageUri != null) 'homepageUri': homepageUri!,
         if (osUserCount != null) 'osUserCount': osUserCount!,
         if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+class GoogleRpcStatus {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int? code;
+
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>>? details;
+
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String? message;
+
+  GoogleRpcStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
+
+  GoogleRpcStatus.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }

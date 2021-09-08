@@ -22,8 +22,11 @@
 ///
 /// Create an instance of [OSConfigApi] to access these resources:
 ///
-/// - [OperationsResource]
 /// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsInstancesResource]
+///       - [ProjectsLocationsInstancesInventoriesResource]
+///       - [ProjectsLocationsInstancesVulnerabilityReportsResource]
 ///   - [ProjectsPatchDeploymentsResource]
 ///   - [ProjectsPatchJobsResource]
 ///     - [ProjectsPatchJobsInstanceDetailsResource]
@@ -44,13 +47,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// OS management tools that can be used for patch management, patch compliance,
 /// and configuration management on VM instances.
 class OSConfigApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
 
-  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   OSConfigApi(http.Client client,
@@ -60,33 +63,199 @@ class OSConfigApi {
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
-class OperationsResource {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResource(commons.ApiRequester client) : _requester = client;
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsPatchDeploymentsResource get patchDeployments =>
+      ProjectsPatchDeploymentsResource(_requester);
+  ProjectsPatchJobsResource get patchJobs =>
+      ProjectsPatchJobsResource(_requester);
 
-  /// Deletes a long-running operation.
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesResource get instances =>
+      ProjectsLocationsInstancesResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsInstancesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesInventoriesResource get inventories =>
+      ProjectsLocationsInstancesInventoriesResource(_requester);
+  ProjectsLocationsInstancesVulnerabilityReportsResource
+      get vulnerabilityReports =>
+          ProjectsLocationsInstancesVulnerabilityReportsResource(_requester);
+
+  ProjectsLocationsInstancesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsInstancesInventoriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesInventoriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get inventory data for the specified VM instance.
   ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  /// If the VM has no associated inventory, the message `NOT_FOUND` is
+  /// returned.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern `^operations/.*$`.
+  /// [name] - Required. API resource name for inventory resource. Format:
+  /// `projects/{project}/locations/{location}/instances/{instance}/inventory`
+  /// For `{project}`, either `project-number` or `project-id` can be provided.
+  /// For `{instance}`, either Compute Engine `instance-id` or `instance-name`
+  /// can be provided.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/inventory$`.
+  ///
+  /// [view] - Inventory view indicating what information should be included in
+  /// the inventory resource. If unspecified, the default view is BASIC.
+  /// Possible string values are:
+  /// - "INVENTORY_VIEW_UNSPECIFIED" : The default value. The API defaults to
+  /// the BASIC view.
+  /// - "BASIC" : Returns the basic inventory information that includes
+  /// `os_info`.
+  /// - "FULL" : Returns all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Empty].
+  /// Completes with a [Inventory].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
+  async.Future<Inventory> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Inventory.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List inventory data for all VM instances in the specified zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Format:
+  /// `projects/{project}/locations/{location}/instances/-` For `{project}`,
+  /// either `project-number` or `project-id` can be provided.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by a `Inventory` API resource to be included in the response.
+  ///
+  /// [pageSize] - The maximum number of results to return.
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListInventories` that indicates where this listing should continue from.
+  ///
+  /// [view] - Inventory view indicating what information should be included in
+  /// the inventory resource. If unspecified, the default view is BASIC.
+  /// Possible string values are:
+  /// - "INVENTORY_VIEW_UNSPECIFIED" : The default value. The API defaults to
+  /// the BASIC view.
+  /// - "BASIC" : Returns the basic inventory information that includes
+  /// `os_info`.
+  /// - "FULL" : Returns all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInventoriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInventoriesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/inventories';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListInventoriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInstancesVulnerabilityReportsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesVulnerabilityReportsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the vulnerability report for the specified VM instance.
+  ///
+  /// Only VMs with inventory data have vulnerability reports associated with
+  /// them.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. API resource name for vulnerability resource. Format:
+  /// `projects/{project}/locations/{location}/instances/{instance}/vulnerabilityReport`
+  /// For `{project}`, either `project-number` or `project-id` can be provided.
+  /// For `{instance}`, either Compute Engine `instance-id` or `instance-name`
+  /// can be provided.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/vulnerabilityReport$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VulnerabilityReport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VulnerabilityReport> get(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -98,46 +267,44 @@ class OperationsResource {
 
     final _response = await _requester.request(
       _url,
-      'DELETE',
+      'GET',
       queryParams: _queryParams,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return VulnerabilityReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
+  /// List vulnerability reports for all VM instances in the specified zone.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^operations$`.
+  /// [parent] - Required. The parent resource name. Format:
+  /// `projects/{project}/locations/{location}/instances/-` For `{project}`,
+  /// either `project-number` or `project-id` can be provided.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by a `vulnerabilityReport` API resource to be included in the response.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of results to return.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListVulnerabilityReports` that indicates where this listing should
+  /// continue from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [ListOperationsResponse].
+  /// Completes with a [ListVulnerabilityReportsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-    core.String name, {
+  async.Future<ListVulnerabilityReportsResponse> list(
+    core.String parent, {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
@@ -150,27 +317,17 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/vulnerabilityReports';
 
     final _response = await _requester.request(
       _url,
       'GET',
       queryParams: _queryParams,
     );
-    return ListOperationsResponse.fromJson(
+    return ListVulnerabilityReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-}
-
-class ProjectsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsPatchDeploymentsResource get patchDeployments =>
-      ProjectsPatchDeploymentsResource(_requester);
-  ProjectsPatchJobsResource get patchJobs =>
-      ProjectsPatchJobsResource(_requester);
-
-  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
 class ProjectsPatchDeploymentsResource {
@@ -646,6 +803,191 @@ class AptSettings {
       };
 }
 
+/// Common Vulnerability Scoring System version 3.
+///
+/// For details, see https://www.first.org/cvss/specification-document
+class CVSSv3 {
+  /// This metric describes the conditions beyond the attacker's control that
+  /// must exist in order to exploit the vulnerability.
+  /// Possible string values are:
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED" : Invalid value.
+  /// - "ATTACK_COMPLEXITY_LOW" : Specialized access conditions or extenuating
+  /// circumstances do not exist. An attacker can expect repeatable success when
+  /// attacking the vulnerable component.
+  /// - "ATTACK_COMPLEXITY_HIGH" : A successful attack depends on conditions
+  /// beyond the attacker's control. That is, a successful attack cannot be
+  /// accomplished at will, but requires the attacker to invest in some
+  /// measurable amount of effort in preparation or execution against the
+  /// vulnerable component before a successful attack can be expected.
+  core.String? attackComplexity;
+
+  /// This metric reflects the context by which vulnerability exploitation is
+  /// possible.
+  /// Possible string values are:
+  /// - "ATTACK_VECTOR_UNSPECIFIED" : Invalid value.
+  /// - "ATTACK_VECTOR_NETWORK" : The vulnerable component is bound to the
+  /// network stack and the set of possible attackers extends beyond the other
+  /// options listed below, up to and including the entire Internet.
+  /// - "ATTACK_VECTOR_ADJACENT" : The vulnerable component is bound to the
+  /// network stack, but the attack is limited at the protocol level to a
+  /// logically adjacent topology.
+  /// - "ATTACK_VECTOR_LOCAL" : The vulnerable component is not bound to the
+  /// network stack and the attacker's path is via read/write/execute
+  /// capabilities.
+  /// - "ATTACK_VECTOR_PHYSICAL" : The attack requires the attacker to
+  /// physically touch or manipulate the vulnerable component.
+  core.String? attackVector;
+
+  /// This metric measures the impact to the availability of the impacted
+  /// component resulting from a successfully exploited vulnerability.
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Invalid value.
+  /// - "IMPACT_HIGH" : High impact.
+  /// - "IMPACT_LOW" : Low impact.
+  /// - "IMPACT_NONE" : No impact.
+  core.String? availabilityImpact;
+
+  /// The base score is a function of the base metric scores.
+  ///
+  /// https://www.first.org/cvss/specification-document#Base-Metrics
+  core.double? baseScore;
+
+  /// This metric measures the impact to the confidentiality of the information
+  /// resources managed by a software component due to a successfully exploited
+  /// vulnerability.
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Invalid value.
+  /// - "IMPACT_HIGH" : High impact.
+  /// - "IMPACT_LOW" : Low impact.
+  /// - "IMPACT_NONE" : No impact.
+  core.String? confidentialityImpact;
+
+  /// The Exploitability sub-score equation is derived from the Base
+  /// Exploitability metrics.
+  ///
+  /// https://www.first.org/cvss/specification-document#2-1-Exploitability-Metrics
+  core.double? exploitabilityScore;
+
+  /// The Impact sub-score equation is derived from the Base Impact metrics.
+  core.double? impactScore;
+
+  /// This metric measures the impact to integrity of a successfully exploited
+  /// vulnerability.
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Invalid value.
+  /// - "IMPACT_HIGH" : High impact.
+  /// - "IMPACT_LOW" : Low impact.
+  /// - "IMPACT_NONE" : No impact.
+  core.String? integrityImpact;
+
+  /// This metric describes the level of privileges an attacker must possess
+  /// before successfully exploiting the vulnerability.
+  /// Possible string values are:
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED" : Invalid value.
+  /// - "PRIVILEGES_REQUIRED_NONE" : The attacker is unauthorized prior to
+  /// attack, and therefore does not require any access to settings or files of
+  /// the vulnerable system to carry out an attack.
+  /// - "PRIVILEGES_REQUIRED_LOW" : The attacker requires privileges that
+  /// provide basic user capabilities that could normally affect only settings
+  /// and files owned by a user. Alternatively, an attacker with Low privileges
+  /// has the ability to access only non-sensitive resources.
+  /// - "PRIVILEGES_REQUIRED_HIGH" : The attacker requires privileges that
+  /// provide significant (e.g., administrative) control over the vulnerable
+  /// component allowing access to component-wide settings and files.
+  core.String? privilegesRequired;
+
+  /// The Scope metric captures whether a vulnerability in one vulnerable
+  /// component impacts resources in components beyond its security scope.
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : Invalid value.
+  /// - "SCOPE_UNCHANGED" : An exploited vulnerability can only affect resources
+  /// managed by the same security authority.
+  /// - "SCOPE_CHANGED" : An exploited vulnerability can affect resources beyond
+  /// the security scope managed by the security authority of the vulnerable
+  /// component.
+  core.String? scope;
+
+  /// This metric captures the requirement for a human user, other than the
+  /// attacker, to participate in the successful compromise of the vulnerable
+  /// component.
+  /// Possible string values are:
+  /// - "USER_INTERACTION_UNSPECIFIED" : Invalid value.
+  /// - "USER_INTERACTION_NONE" : The vulnerable system can be exploited without
+  /// interaction from any user.
+  /// - "USER_INTERACTION_REQUIRED" : Successful exploitation of this
+  /// vulnerability requires a user to take some action before the vulnerability
+  /// can be exploited.
+  core.String? userInteraction;
+
+  CVSSv3({
+    this.attackComplexity,
+    this.attackVector,
+    this.availabilityImpact,
+    this.baseScore,
+    this.confidentialityImpact,
+    this.exploitabilityScore,
+    this.impactScore,
+    this.integrityImpact,
+    this.privilegesRequired,
+    this.scope,
+    this.userInteraction,
+  });
+
+  CVSSv3.fromJson(core.Map _json)
+      : this(
+          attackComplexity: _json.containsKey('attackComplexity')
+              ? _json['attackComplexity'] as core.String
+              : null,
+          attackVector: _json.containsKey('attackVector')
+              ? _json['attackVector'] as core.String
+              : null,
+          availabilityImpact: _json.containsKey('availabilityImpact')
+              ? _json['availabilityImpact'] as core.String
+              : null,
+          baseScore: _json.containsKey('baseScore')
+              ? (_json['baseScore'] as core.num).toDouble()
+              : null,
+          confidentialityImpact: _json.containsKey('confidentialityImpact')
+              ? _json['confidentialityImpact'] as core.String
+              : null,
+          exploitabilityScore: _json.containsKey('exploitabilityScore')
+              ? (_json['exploitabilityScore'] as core.num).toDouble()
+              : null,
+          impactScore: _json.containsKey('impactScore')
+              ? (_json['impactScore'] as core.num).toDouble()
+              : null,
+          integrityImpact: _json.containsKey('integrityImpact')
+              ? _json['integrityImpact'] as core.String
+              : null,
+          privilegesRequired: _json.containsKey('privilegesRequired')
+              ? _json['privilegesRequired'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+          userInteraction: _json.containsKey('userInteraction')
+              ? _json['userInteraction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
+        if (attackVector != null) 'attackVector': attackVector!,
+        if (availabilityImpact != null)
+          'availabilityImpact': availabilityImpact!,
+        if (baseScore != null) 'baseScore': baseScore!,
+        if (confidentialityImpact != null)
+          'confidentialityImpact': confidentialityImpact!,
+        if (exploitabilityScore != null)
+          'exploitabilityScore': exploitabilityScore!,
+        if (impactScore != null) 'impactScore': impactScore!,
+        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
+        if (privilegesRequired != null)
+          'privilegesRequired': privilegesRequired!,
+        if (scope != null) 'scope': scope!,
+        if (userInteraction != null) 'userInteraction': userInteraction!,
+      };
+}
+
 /// Message for canceling a patch job.
 class CancelPatchJobRequest {
   CancelPatchJobRequest();
@@ -940,7 +1282,12 @@ class GooSettings {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// The inventory details of a VM.
+/// This API resource represents the available inventory data for a Compute
+/// Engine virtual machine (VM) instance at a given point in time.
+///
+/// You can use this API resource to determine the inventory data of your VM.
+/// For more information, see
+/// [Information provided by OS inventory management](https://cloud.google.com/compute/docs/instances/os-inventory-management#data-collected).
 class Inventory {
   /// Inventory items related to the VM keyed by an opaque unique identifier for
   /// each inventory item.
@@ -949,12 +1296,27 @@ class Inventory {
   /// and will change, when there is a new package version.
   core.Map<core.String, InventoryItem>? items;
 
+  /// The `Inventory` API resource name.
+  ///
+  /// Format:
+  /// `projects/{project_number}/locations/{location}/instances/{instance_id}/inventory`
+  ///
+  /// Output only.
+  core.String? name;
+
   /// Base level operating system information for the VM.
   InventoryOsInfo? osInfo;
 
+  /// Timestamp of the last reported inventory for the VM.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   Inventory({
     this.items,
+    this.name,
     this.osInfo,
+    this.updateTime,
   });
 
   Inventory.fromJson(core.Map _json)
@@ -968,16 +1330,22 @@ class Inventory {
                   ),
                 )
               : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
           osInfo: _json.containsKey('osInfo')
               ? InventoryOsInfo.fromJson(
                   _json['osInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name!,
         if (osInfo != null) 'osInfo': osInfo!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1517,36 +1885,37 @@ class InventoryZypperPatch {
       };
 }
 
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
+/// A response message for listing inventory data for all VMs in a specified
+/// location.
+class ListInventoriesResponse {
+  /// List of inventory objects.
+  core.List<Inventory>? inventories;
+
+  /// The pagination token to retrieve the next page of inventory objects.
   core.String? nextPageToken;
 
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation>? operations;
-
-  ListOperationsResponse({
+  ListInventoriesResponse({
+    this.inventories,
     this.nextPageToken,
-    this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListInventoriesResponse.fromJson(core.Map _json)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
-              : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+          inventories: _json.containsKey('inventories')
+              ? (_json['inventories'] as core.List)
+                  .map<Inventory>((value) => Inventory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (inventories != null)
+          'inventories': inventories!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1650,6 +2019,43 @@ class ListPatchJobsResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (patchJobs != null)
           'patchJobs': patchJobs!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A response message for listing vulnerability reports for all VM instances in
+/// the specified location.
+class ListVulnerabilityReportsResponse {
+  /// The pagination token to retrieve the next page of vulnerabilityReports
+  /// object.
+  core.String? nextPageToken;
+
+  /// List of vulnerabilityReport objects.
+  core.List<VulnerabilityReport>? vulnerabilityReports;
+
+  ListVulnerabilityReportsResponse({
+    this.nextPageToken,
+    this.vulnerabilityReports,
+  });
+
+  ListVulnerabilityReportsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          vulnerabilityReports: _json.containsKey('vulnerabilityReports')
+              ? (_json['vulnerabilityReports'] as core.List)
+                  .map<VulnerabilityReport>((value) =>
+                      VulnerabilityReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (vulnerabilityReports != null)
+          'vulnerabilityReports':
+              vulnerabilityReports!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1786,92 +2192,6 @@ class OneTimeSchedule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executeTime != null) 'executeTime': executeTime!,
-      };
-}
-
-/// This resource represents a long-running operation that is the result of a
-/// network API call.
-class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  ///
-  /// If `true`, the operation is completed, and either `error` or `response` is
-  /// available.
-  core.bool? done;
-
-  /// The error result of the operation in case of failure or cancellation.
-  Status? error;
-
-  /// Service-specific metadata associated with the operation.
-  ///
-  /// It typically contains progress information and common metadata such as
-  /// create time. Some services might not provide such metadata. Any method
-  /// that returns a long-running operation should document the metadata type,
-  /// if any.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
-
-  /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it.
-  ///
-  /// If you use the default HTTP mapping, the `name` should be a resource name
-  /// ending with `operations/{unique_id}`.
-  core.String? name;
-
-  /// The normal response of the operation in case of success.
-  ///
-  /// If the original method returns no data on success, such as `Delete`, the
-  /// response is `google.protobuf.Empty`. If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource. For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
-  /// the original method name. For example, if the original method name is
-  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
-
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
-
-  Operation.fromJson(core.Map _json)
-      : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
-              ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
       };
 }
 
@@ -2824,63 +3144,6 @@ class RecurringSchedule {
       };
 }
 
-/// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs.
-///
-/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
-/// contains three pieces of data: error code, error message, and error details.
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
-
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
@@ -2963,6 +3226,237 @@ class TimeZone {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// This API resource represents the vulnerability report for a specified
+/// Compute Engine virtual machine (VM) instance at a given point in time.
+///
+/// For more information, see
+/// [Vulnerability reports](https://cloud.google.com/compute/docs/instances/os-inventory-management#vulnerability-reports).
+class VulnerabilityReport {
+  /// The `vulnerabilityReport` API resource name.
+  ///
+  /// Format:
+  /// `projects/{project_number}/locations/{location}/instances/{instance_id}/vulnerabilityReport`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The timestamp for when the last vulnerability report was generated for the
+  /// VM.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// List of vulnerabilities affecting the VM.
+  ///
+  /// Output only.
+  core.List<VulnerabilityReportVulnerability>? vulnerabilities;
+
+  VulnerabilityReport({
+    this.name,
+    this.updateTime,
+    this.vulnerabilities,
+  });
+
+  VulnerabilityReport.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          vulnerabilities: _json.containsKey('vulnerabilities')
+              ? (_json['vulnerabilities'] as core.List)
+                  .map<VulnerabilityReportVulnerability>((value) =>
+                      VulnerabilityReportVulnerability.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (vulnerabilities != null)
+          'vulnerabilities':
+              vulnerabilities!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A vulnerability affecting the VM instance.
+class VulnerabilityReportVulnerability {
+  /// Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM.
+  ///
+  /// If the vulnerability report was not updated after the VM inventory update,
+  /// these values might not display in VM inventory. If there is no available
+  /// fix, the field is empty. The `inventory_item` value specifies the latest
+  /// `SoftwarePackage` available to the VM that fixes the vulnerability.
+  core.List<core.String>? availableInventoryItemIds;
+
+  /// The timestamp for when the vulnerability was first detected.
+  core.String? createTime;
+
+  /// Contains metadata as per the upstream feed of the operating system and
+  /// NVD.
+  VulnerabilityReportVulnerabilityDetails? details;
+
+  /// Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM.
+  ///
+  /// This field displays the inventory items affected by this vulnerability. If
+  /// the vulnerability report was not updated after the VM inventory update,
+  /// these values might not display in VM inventory. For some distros, this
+  /// field may be empty.
+  core.List<core.String>? installedInventoryItemIds;
+
+  /// The timestamp for when the vulnerability was last modified.
+  core.String? updateTime;
+
+  VulnerabilityReportVulnerability({
+    this.availableInventoryItemIds,
+    this.createTime,
+    this.details,
+    this.installedInventoryItemIds,
+    this.updateTime,
+  });
+
+  VulnerabilityReportVulnerability.fromJson(core.Map _json)
+      : this(
+          availableInventoryItemIds:
+              _json.containsKey('availableInventoryItemIds')
+                  ? (_json['availableInventoryItemIds'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          details: _json.containsKey('details')
+              ? VulnerabilityReportVulnerabilityDetails.fromJson(
+                  _json['details'] as core.Map<core.String, core.dynamic>)
+              : null,
+          installedInventoryItemIds:
+              _json.containsKey('installedInventoryItemIds')
+                  ? (_json['installedInventoryItemIds'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availableInventoryItemIds != null)
+          'availableInventoryItemIds': availableInventoryItemIds!,
+        if (createTime != null) 'createTime': createTime!,
+        if (details != null) 'details': details!.toJson(),
+        if (installedInventoryItemIds != null)
+          'installedInventoryItemIds': installedInventoryItemIds!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Contains metadata information for the vulnerability.
+///
+/// This information is collected from the upstream feed of the operating
+/// system.
+class VulnerabilityReportVulnerabilityDetails {
+  /// The CVE of the vulnerability.
+  ///
+  /// CVE cannot be empty and the combination of should be unique across
+  /// vulnerabilities for a VM.
+  core.String? cve;
+
+  /// The CVSS V2 score of this vulnerability.
+  ///
+  /// CVSS V2 score is on a scale of 0 - 10 where 0 indicates low severity and
+  /// 10 indicates high severity.
+  core.double? cvssV2Score;
+
+  /// The full description of the CVSSv3 for this vulnerability from NVD.
+  CVSSv3? cvssV3;
+
+  /// The note or description describing the vulnerability from the distro.
+  core.String? description;
+
+  /// Corresponds to the references attached to the `VulnerabilityDetails`.
+  core.List<VulnerabilityReportVulnerabilityDetailsReference>? references;
+
+  /// Assigned severity/impact ranking from the distro.
+  core.String? severity;
+
+  VulnerabilityReportVulnerabilityDetails({
+    this.cve,
+    this.cvssV2Score,
+    this.cvssV3,
+    this.description,
+    this.references,
+    this.severity,
+  });
+
+  VulnerabilityReportVulnerabilityDetails.fromJson(core.Map _json)
+      : this(
+          cve: _json.containsKey('cve') ? _json['cve'] as core.String : null,
+          cvssV2Score: _json.containsKey('cvssV2Score')
+              ? (_json['cvssV2Score'] as core.num).toDouble()
+              : null,
+          cvssV3: _json.containsKey('cvssV3')
+              ? CVSSv3.fromJson(
+                  _json['cvssV3'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          references: _json.containsKey('references')
+              ? (_json['references'] as core.List)
+                  .map<VulnerabilityReportVulnerabilityDetailsReference>(
+                      (value) =>
+                          VulnerabilityReportVulnerabilityDetailsReference
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cve != null) 'cve': cve!,
+        if (cvssV2Score != null) 'cvssV2Score': cvssV2Score!,
+        if (cvssV3 != null) 'cvssV3': cvssV3!.toJson(),
+        if (description != null) 'description': description!,
+        if (references != null)
+          'references': references!.map((value) => value.toJson()).toList(),
+        if (severity != null) 'severity': severity!,
+      };
+}
+
+/// A reference for this vulnerability.
+class VulnerabilityReportVulnerabilityDetailsReference {
+  /// The source of the reference e.g. NVD.
+  core.String? source;
+
+  /// The url of the reference.
+  core.String? url;
+
+  VulnerabilityReportVulnerabilityDetailsReference({
+    this.source,
+    this.url,
+  });
+
+  VulnerabilityReportVulnerabilityDetailsReference.fromJson(core.Map _json)
+      : this(
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (source != null) 'source': source!,
+        if (url != null) 'url': url!,
       };
 }
 

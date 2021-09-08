@@ -41,7 +41,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages the service consumers of a Service Infrastructure service.
 class ServiceConsumerManagementApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1952,8 +1953,11 @@ class DocumentationRule {
   /// It can be provided if an element is marked as `deprecated`.
   core.String? deprecationDescription;
 
-  /// The description is the comment in front of the selected proto element,
-  /// such as a message, a method, a 'service' definition, or a field.
+  /// Description of the selected proto element (e.g. a message, a method, a
+  /// 'service' definition, or a field).
+  ///
+  /// Defaults to leading & trailing comments taken from the proto source
+  /// definition of the proto element.
   core.String? description;
 
   /// The selector is a comma-separated list of patterns for any element such as
@@ -3485,7 +3489,10 @@ class MonitoredResourceDescriptor {
   /// The monitored resource type.
   ///
   /// For example, the type `"cloudsql_database"` represents databases in Google
-  /// Cloud SQL.
+  /// Cloud SQL. For a list of types, see
+  /// [Monitoring resource types](https://cloud.google.com/monitoring/api/resources)
+  /// and
+  /// [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///
   /// Required.
   core.String? type;

@@ -43,11 +43,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Creates, reads, and updates metadata for Google Cloud Platform resource
 /// containers.
 class CloudResourceManagerApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// View your data across Google Cloud Platform services
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
   static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
@@ -466,7 +468,8 @@ class LiensResource {
   /// Request parameters:
   ///
   /// [pageSize] - The maximum number of items to return. This is a suggestion
-  /// for the server.
+  /// for the server. The server can return fewer liens than requested. If
+  /// unspecified, server picks an appropriate default.
   ///
   /// [pageToken] - The `next_page_token` value returned from a previous List
   /// request, if any.
@@ -3682,7 +3685,7 @@ class OrganizationOwner {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -3999,7 +4002,8 @@ class SearchOrganizationsRequest {
 
   /// The maximum number of Organizations to return in the response.
   ///
-  /// This field is optional.
+  /// The server can return fewer organizations than requested. If unspecified,
+  /// server picks an appropriate default.
   core.int? pageSize;
 
   /// A pagination token returned from a previous call to `SearchOrganizations`

@@ -41,10 +41,12 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// A service to modify your BigQuery flat-rate reservations.
 class BigQueryReservationApi {
-  /// View and manage your data in Google BigQuery
+  /// View and manage your data in Google BigQuery and see the email address for
+  /// your Google Account
   static const bigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -378,6 +380,10 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/capacityCommitments/\[^/\]+$`.
   ///
+  /// [force] - Can be used to force delete commitments even if assignments
+  /// exist. Deleting commitments with assignments may cause queries to fail if
+  /// they no longer have access to slots.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -390,9 +396,11 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 

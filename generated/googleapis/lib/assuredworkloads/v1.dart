@@ -37,7 +37,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class AssuredworkloadsApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -441,6 +442,10 @@ class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata {
   /// controls
   /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
   /// - "HITRUST" : Health Information Trust Alliance controls
+  /// - "EU_REGIONS_AND_SUPPORT" : Assured Workloads For EU Regions and Support
+  /// controls
+  /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
+  /// Support controls
   core.String? complianceRegime;
 
   /// Time when the operation was created.
@@ -554,6 +559,10 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// controls
   /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
   /// - "HITRUST" : Health Information Trust Alliance controls
+  /// - "EU_REGIONS_AND_SUPPORT" : Assured Workloads For EU Regions and Support
+  /// controls
+  /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
+  /// Support controls
   core.String? complianceRegime;
 
   /// The Workload creation timestamp.
@@ -602,10 +611,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Input only.
   ///
   /// The parent resource for the resources managed by this Assured Workload.
-  /// May be either an organization or a folder. Must be the same or a child of
-  /// the Workload parent. If not specified all resources are created under the
-  /// Workload parent. Formats: folders/{folder_id}
-  /// organizations/{organization_id}
+  /// May be either empty or a folder resource which is a child of the Workload
+  /// parent. If not specified all resources are created under the parent
+  /// organization. Format: folders/{folder_id}
   core.String? provisionedResourcesParent;
 
   /// Input only.
@@ -851,6 +859,10 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
   /// controls
   /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
   /// - "HITRUST" : Health Information Trust Alliance controls
+  /// - "EU_REGIONS_AND_SUPPORT" : Assured Workloads For EU Regions and Support
+  /// controls
+  /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
+  /// Support controls
   core.String? complianceRegime;
 
   /// Time when the operation was created.
@@ -953,6 +965,10 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
   /// controls
   /// - "HIPAA" : Health Insurance Portability and Accountability Act controls
   /// - "HITRUST" : Health Information Trust Alliance controls
+  /// - "EU_REGIONS_AND_SUPPORT" : Assured Workloads For EU Regions and Support
+  /// controls
+  /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
+  /// Support controls
   core.String? complianceRegime;
 
   /// The Workload creation timestamp.
@@ -1024,10 +1040,9 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
   /// Input only.
   ///
   /// The parent resource for the resources managed by this Assured Workload.
-  /// May be either an organization or a folder. Must be the same or a child of
-  /// the Workload parent. If not specified all resources are created under the
-  /// Workload parent. Formats: folders/{folder_id}
-  /// organizations/{organization_id}
+  /// May be either empty or a folder resource which is a child of the Workload
+  /// parent. If not specified all resources are created under the parent
+  /// organization. Format: folders/{folder_id}
   core.String? provisionedResourcesParent;
 
   /// Input only.
