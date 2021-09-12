@@ -1,4 +1,4 @@
-## 5.0.0-dev
+## 5.0.0
 
 - `fcmdata` - new!
 - `ideahub` - new!

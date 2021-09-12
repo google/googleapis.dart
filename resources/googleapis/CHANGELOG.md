@@ -1,6 +1,8 @@
-## 5.0.0-dev+1
+## 5.0.1
 
 - Fixed bug in `datastore`, `drive`, `firestore` where `Value.nullValue` always contained `'NULL_VALUE'`
+
+## 5.0.0
 
 ### API changes
 
