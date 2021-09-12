@@ -704,8 +704,24 @@ class DateTimeSchemaTest extends PrimitiveSchemaTest<DateTimeType> {
 }
 
 class EnumSchemaTest extends StringSchemaTest {
-  EnumSchemaTest(DartApiTestLibrary apiTestLibrary, StringType schema)
+  EnumSchemaTest(DartApiTestLibrary apiTestLibrary, EnumType schema)
       : super(apiTestLibrary, schema);
+
+  @override
+  String get newSchemaExpr {
+    if ((schema as EnumType).isNullValue) {
+      return "'NULL_VALUE'";
+    }
+    return super.newSchemaExpr;
+  }
+
+  @override
+  String checkSchemaStatement(String o) {
+    if ((schema as EnumType).isNullValue) {
+      return super.expectEqual(o, "'NULL_VALUE'");
+    }
+    return super.expectEqual(o, "'foo'");
+  }
 }
 
 abstract class UnnamedSchemaTest<T extends DartSchemaType>

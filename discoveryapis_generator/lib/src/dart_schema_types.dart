@@ -505,16 +505,16 @@ class EnumType extends StringType {
       : super(imports);
 
   /// Here to support https://github.com/google/googleapis.dart/issues/211
-  bool get _nullValue =>
+  bool get isNullValue =>
       enumValues.length == 1 &&
       enumValues.single == 'NULL_VALUE' &&
       enumDescriptions.single == 'Null value.';
 
   @override
   String decodeFromMap(String jsonName) {
-    if (_nullValue) {
-      return "_json['${escapeString(jsonName)}'] as $declaration? "
-          "?? 'NULL_VALUE'";
+    if (isNullValue) {
+      return "_json.containsKey('${escapeString(jsonName)}') ? "
+          "'NULL_VALUE' : null";
     }
 
     return super.decodeFromMap(jsonName);

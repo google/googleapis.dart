@@ -2481,7 +2481,7 @@ class Value {
               ? ListValue.fromJson(
                   _json['listValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          nullValue: _json['nullValue'] as core.String? ?? 'NULL_VALUE',
+          nullValue: _json.containsKey('nullValue') ? 'NULL_VALUE' : null,
           numberValue: _json.containsKey('numberValue')
               ? (_json['numberValue'] as core.num).toDouble()
               : null,

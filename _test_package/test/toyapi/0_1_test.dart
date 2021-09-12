@@ -464,7 +464,7 @@ api.ToyMapResponse buildToyMapResponse() {
   buildCounterToyMapResponse++;
   if (buildCounterToyMapResponse < 3) {
     o.mapResult = buildUnnamed13();
-    o.nullValue = 'foo';
+    o.nullValue = 'NULL_VALUE';
     o.properties = buildUnnamed14();
     o.result = 'foo';
   }
@@ -478,7 +478,7 @@ void checkToyMapResponse(api.ToyMapResponse o) {
     checkUnnamed13(o.mapResult!);
     unittest.expect(
       o.nullValue!,
-      unittest.equals('foo'),
+      unittest.equals('NULL_VALUE'),
     );
     checkUnnamed14(o.properties!);
     unittest.expect(

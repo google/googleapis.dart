@@ -1467,7 +1467,7 @@ class ToyMapResponse {
                   ),
                 )
               : null,
-          nullValue: _json['nullValue'] as core.String? ?? 'NULL_VALUE',
+          nullValue: _json.containsKey('nullValue') ? 'NULL_VALUE' : null,
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.Map<core.String, core.dynamic>)
                   .map(

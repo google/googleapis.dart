@@ -2140,7 +2140,7 @@ api.Value buildValue() {
     o.integerValue = 'foo';
     o.keyValue = buildKey();
     o.meaning = 42;
-    o.nullValue = 'foo';
+    o.nullValue = 'NULL_VALUE';
     o.stringValue = 'foo';
     o.timestampValue = 'foo';
   }
@@ -2175,7 +2175,7 @@ void checkValue(api.Value o) {
     );
     unittest.expect(
       o.nullValue!,
-      unittest.equals('foo'),
+      unittest.equals('NULL_VALUE'),
     );
     unittest.expect(
       o.stringValue!,
