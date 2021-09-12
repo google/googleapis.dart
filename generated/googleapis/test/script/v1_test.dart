@@ -1323,7 +1323,7 @@ api.Value buildValue() {
     o.bytesValue = 'foo';
     o.dateValue = 'foo';
     o.listValue = buildListValue();
-    o.nullValue = 'foo';
+    o.nullValue = 'NULL_VALUE';
     o.numberValue = 42.0;
     o.protoValue = buildUnnamed1910();
     o.stringValue = 'foo';
@@ -1348,7 +1348,7 @@ void checkValue(api.Value o) {
     checkListValue(o.listValue!);
     unittest.expect(
       o.nullValue!,
-      unittest.equals('foo'),
+      unittest.equals('NULL_VALUE'),
     );
     unittest.expect(
       o.numberValue!,

@@ -1,4 +1,8 @@
-## 5.0.0-dev
+## 5.0.0-dev+1
+
+- Fixed bug in `datastore`, `drive`, `firestore` where `Value.nullValue` always contained `'NULL_VALUE'`
+
+### API changes
 
 - `adexchangebuyer` - **removed**  
 - `contactcenterinsights` - new!

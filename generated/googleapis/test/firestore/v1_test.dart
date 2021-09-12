@@ -2637,7 +2637,7 @@ api.Value buildValue() {
     o.geoPointValue = buildLatLng();
     o.integerValue = 'foo';
     o.mapValue = buildMapValue();
-    o.nullValue = 'foo';
+    o.nullValue = 'NULL_VALUE';
     o.referenceValue = 'foo';
     o.stringValue = 'foo';
     o.timestampValue = 'foo';
@@ -2667,7 +2667,7 @@ void checkValue(api.Value o) {
     checkMapValue(o.mapValue!);
     unittest.expect(
       o.nullValue!,
-      unittest.equals('foo'),
+      unittest.equals('NULL_VALUE'),
     );
     unittest.expect(
       o.referenceValue!,
