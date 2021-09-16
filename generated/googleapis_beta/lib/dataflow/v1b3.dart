@@ -47,6 +47,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3913,15 +3914,7 @@ class DebugOptions {
 }
 
 /// Response from deleting a snapshot.
-class DeleteSnapshotResponse {
-  DeleteSnapshotResponse();
-
-  DeleteSnapshotResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteSnapshotResponse = $Empty;
 
 /// Specification of one of the bundles produced as a result of splitting a
 /// Source (e.g. when executing a SourceSplitRequest, or when splitting an
@@ -8290,15 +8283,7 @@ class ResourceUtilizationReport {
 }
 
 /// Service-side response to WorkerMessage reporting resource utilization.
-class ResourceUtilizationReportResponse {
-  ResourceUtilizationReportResponse();
-
-  ResourceUtilizationReportResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResourceUtilizationReportResponse = $Empty;
 
 /// The environment values to set at runtime.
 class RuntimeEnvironment {
@@ -8707,15 +8692,7 @@ class SendDebugCaptureRequest {
 /// Response to a send capture request.
 ///
 /// nothing
-class SendDebugCaptureResponse {
-  SendDebugCaptureResponse();
-
-  SendDebugCaptureResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SendDebugCaptureResponse = $Empty;
 
 /// A request for sending worker messages to the service.
 class SendWorkerMessagesRequest {
@@ -12372,15 +12349,7 @@ class WorkerShutdownNotice {
 }
 
 /// Service-side response to WorkerMessage issuing shutdown notice.
-class WorkerShutdownNoticeResponse {
-  WorkerShutdownNoticeResponse();
-
-  WorkerShutdownNoticeResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef WorkerShutdownNoticeResponse = $Empty;
 
 /// An instruction that writes records.
 ///

@@ -35,6 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -728,15 +729,7 @@ class ApplyParametersRequest {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// Time window specified for daily operations.
 class DailyCycle {
@@ -878,15 +871,7 @@ class DenyMaintenancePeriod {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Metadata for the given google.cloud.location.Location.
 class GoogleCloudMemcacheV1LocationMetadata {
@@ -1009,15 +994,7 @@ class GoogleCloudMemcacheV1OperationMetadata {
       };
 }
 
-class GoogleCloudMemcacheV1ZoneMetadata {
-  GoogleCloudMemcacheV1ZoneMetadata();
-
-  GoogleCloudMemcacheV1ZoneMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudMemcacheV1ZoneMetadata = $Empty;
 
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// consumer_defined_name is the name that is set by the consumer.
@@ -2946,12 +2923,4 @@ class WeeklyCycle {
       };
 }
 
-class ZoneMetadata {
-  ZoneMetadata();
-
-  ZoneMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ZoneMetadata = $Empty;

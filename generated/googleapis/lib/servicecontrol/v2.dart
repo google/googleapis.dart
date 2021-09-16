@@ -31,6 +31,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1087,15 +1088,7 @@ class ReportRequest {
 /// Response message for the Report method.
 ///
 /// If the request contains any invalid data, the server returns an RPC error.
-class ReportResponse {
-  ReportResponse();
-
-  ReportResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReportResponse = $Empty;
 
 /// This message defines attributes for an HTTP request.
 ///

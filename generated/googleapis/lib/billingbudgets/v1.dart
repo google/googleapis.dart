@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -674,15 +675,7 @@ class GoogleCloudBillingBudgetsV1Filter {
 /// At this time, the amount is automatically 100% of the last calendar period's
 /// spend; that is, there are no other options yet. LastPeriodAmount cannot be
 /// set for a budget configured with a Filter.custom_period.
-class GoogleCloudBillingBudgetsV1LastPeriodAmount {
-  GoogleCloudBillingBudgetsV1LastPeriodAmount();
-
-  GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudBillingBudgetsV1LastPeriodAmount = $Empty;
 
 /// Response for ListBudgets
 class GoogleCloudBillingBudgetsV1ListBudgetsResponse {
@@ -888,15 +881,7 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///

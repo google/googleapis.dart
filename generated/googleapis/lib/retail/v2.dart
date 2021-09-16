@@ -42,6 +42,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1957,15 +1958,7 @@ class GoogleCloudRetailLoggingSourceLocation {
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// AddFulfillmentPlaces method.
-class GoogleCloudRetailV2AddFulfillmentPlacesMetadata {
-  GoogleCloudRetailV2AddFulfillmentPlacesMetadata();
-
-  GoogleCloudRetailV2AddFulfillmentPlacesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2AddFulfillmentPlacesMetadata = $Empty;
 
 /// Request message for AddFulfillmentPlaces method.
 class GoogleCloudRetailV2AddFulfillmentPlacesRequest {
@@ -2044,15 +2037,7 @@ class GoogleCloudRetailV2AddFulfillmentPlacesRequest {
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// AddFulfillmentPlaces method.
-class GoogleCloudRetailV2AddFulfillmentPlacesResponse {
-  GoogleCloudRetailV2AddFulfillmentPlacesResponse();
-
-  GoogleCloudRetailV2AddFulfillmentPlacesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2AddFulfillmentPlacesResponse = $Empty;
 
 /// An intended audience of the Product for whom it's sold.
 class GoogleCloudRetailV2Audience {
@@ -4449,15 +4434,7 @@ class GoogleCloudRetailV2PurchaseTransaction {
 /// Metadata related to the progress of the Purge operation.
 ///
 /// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2PurgeMetadata {
-  GoogleCloudRetailV2PurgeMetadata();
-
-  GoogleCloudRetailV2PurgeMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2PurgeMetadata = $Empty;
 
 /// Request message for PurgeUserEvents method.
 class GoogleCloudRetailV2PurgeUserEventsRequest {
@@ -4580,15 +4557,7 @@ class GoogleCloudRetailV2Rating {
 }
 
 /// Metadata for RejoinUserEvents method.
-class GoogleCloudRetailV2RejoinUserEventsMetadata {
-  GoogleCloudRetailV2RejoinUserEventsMetadata();
-
-  GoogleCloudRetailV2RejoinUserEventsMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2RejoinUserEventsMetadata = $Empty;
 
 /// Request message for RejoinUserEvents method.
 class GoogleCloudRetailV2RejoinUserEventsRequest {
@@ -4649,15 +4618,7 @@ class GoogleCloudRetailV2RejoinUserEventsResponse {
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// RemoveFulfillmentPlaces method.
-class GoogleCloudRetailV2RemoveFulfillmentPlacesMetadata {
-  GoogleCloudRetailV2RemoveFulfillmentPlacesMetadata();
-
-  GoogleCloudRetailV2RemoveFulfillmentPlacesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2RemoveFulfillmentPlacesMetadata = $Empty;
 
 /// Request message for RemoveFulfillmentPlaces method.
 class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest {
@@ -4734,15 +4695,7 @@ class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest {
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// RemoveFulfillmentPlaces method.
-class GoogleCloudRetailV2RemoveFulfillmentPlacesResponse {
-  GoogleCloudRetailV2RemoveFulfillmentPlacesResponse();
-
-  GoogleCloudRetailV2RemoveFulfillmentPlacesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2RemoveFulfillmentPlacesResponse = $Empty;
 
 /// Request message for SearchService.Search method.
 class GoogleCloudRetailV2SearchRequest {
@@ -5712,15 +5665,7 @@ class GoogleCloudRetailV2SetDefaultBranchRequest {
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// SetInventory method.
-class GoogleCloudRetailV2SetInventoryMetadata {
-  GoogleCloudRetailV2SetInventoryMetadata();
-
-  GoogleCloudRetailV2SetInventoryMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2SetInventoryMetadata = $Empty;
 
 /// Request message for SetInventory method.
 class GoogleCloudRetailV2SetInventoryRequest {
@@ -5804,15 +5749,7 @@ class GoogleCloudRetailV2SetInventoryRequest {
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// SetInventory method.
-class GoogleCloudRetailV2SetInventoryResponse {
-  GoogleCloudRetailV2SetInventoryResponse();
-
-  GoogleCloudRetailV2SetInventoryResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2SetInventoryResponse = $Empty;
 
 /// UserEvent captures all metadata information Retail API needs to know about
 /// how end users interact with customers' website.
@@ -6314,29 +6251,13 @@ class GoogleCloudRetailV2UserInfo {
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// AddFulfillmentPlaces method.
-class GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata {
-  GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata();
-
-  GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata = $Empty;
 
 /// Response of the RemoveFulfillmentPlacesRequest.
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// AddFulfillmentPlaces method.
-class GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse {
-  GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse();
-
-  GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse = $Empty;
 
 /// Configuration of destination for Export related errors.
 class GoogleCloudRetailV2alphaExportErrorsConfig {
@@ -6688,15 +6609,7 @@ class GoogleCloudRetailV2alphaImportUserEventsResponse {
 /// Metadata related to the progress of the Purge operation.
 ///
 /// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2alphaPurgeMetadata {
-  GoogleCloudRetailV2alphaPurgeMetadata();
-
-  GoogleCloudRetailV2alphaPurgeMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2alphaPurgeMetadata = $Empty;
 
 /// Response of the PurgeUserEventsRequest.
 ///
@@ -6723,15 +6636,7 @@ class GoogleCloudRetailV2alphaPurgeUserEventsResponse {
 }
 
 /// Metadata for RejoinUserEvents method.
-class GoogleCloudRetailV2alphaRejoinUserEventsMetadata {
-  GoogleCloudRetailV2alphaRejoinUserEventsMetadata();
-
-  GoogleCloudRetailV2alphaRejoinUserEventsMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2alphaRejoinUserEventsMetadata = $Empty;
 
 /// Response message for RejoinUserEvents method.
 class GoogleCloudRetailV2alphaRejoinUserEventsResponse {
@@ -6759,57 +6664,25 @@ class GoogleCloudRetailV2alphaRejoinUserEventsResponse {
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// RemoveFulfillmentPlaces method.
-class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata {
-  GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata();
-
-  GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata = $Empty;
 
 /// Response of the RemoveFulfillmentPlacesRequest.
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// RemoveFulfillmentPlaces method.
-class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse {
-  GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse();
-
-  GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse = $Empty;
 
 /// Metadata related to the progress of the SetInventory operation.
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// SetInventory method.
-class GoogleCloudRetailV2alphaSetInventoryMetadata {
-  GoogleCloudRetailV2alphaSetInventoryMetadata();
-
-  GoogleCloudRetailV2alphaSetInventoryMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2alphaSetInventoryMetadata = $Empty;
 
 /// Response of the SetInventoryRequest.
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// SetInventory method.
-class GoogleCloudRetailV2alphaSetInventoryResponse {
-  GoogleCloudRetailV2alphaSetInventoryResponse();
-
-  GoogleCloudRetailV2alphaSetInventoryResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2alphaSetInventoryResponse = $Empty;
 
 /// A summary of import result.
 ///
@@ -6848,29 +6721,13 @@ class GoogleCloudRetailV2alphaUserEventImportSummary {
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// AddFulfillmentPlaces method.
-class GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata {
-  GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata();
-
-  GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata = $Empty;
 
 /// Response of the RemoveFulfillmentPlacesRequest.
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// AddFulfillmentPlaces method.
-class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse {
-  GoogleCloudRetailV2betaAddFulfillmentPlacesResponse();
-
-  GoogleCloudRetailV2betaAddFulfillmentPlacesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2betaAddFulfillmentPlacesResponse = $Empty;
 
 /// Configuration of destination for Export related errors.
 class GoogleCloudRetailV2betaExportErrorsConfig {
@@ -7222,15 +7079,7 @@ class GoogleCloudRetailV2betaImportUserEventsResponse {
 /// Metadata related to the progress of the Purge operation.
 ///
 /// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2betaPurgeMetadata {
-  GoogleCloudRetailV2betaPurgeMetadata();
-
-  GoogleCloudRetailV2betaPurgeMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2betaPurgeMetadata = $Empty;
 
 /// Response of the PurgeUserEventsRequest.
 ///
@@ -7257,15 +7106,7 @@ class GoogleCloudRetailV2betaPurgeUserEventsResponse {
 }
 
 /// Metadata for RejoinUserEvents method.
-class GoogleCloudRetailV2betaRejoinUserEventsMetadata {
-  GoogleCloudRetailV2betaRejoinUserEventsMetadata();
-
-  GoogleCloudRetailV2betaRejoinUserEventsMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2betaRejoinUserEventsMetadata = $Empty;
 
 /// Response message for RejoinUserEvents method.
 class GoogleCloudRetailV2betaRejoinUserEventsResponse {
@@ -7293,57 +7134,25 @@ class GoogleCloudRetailV2betaRejoinUserEventsResponse {
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// RemoveFulfillmentPlaces method.
-class GoogleCloudRetailV2betaRemoveFulfillmentPlacesMetadata {
-  GoogleCloudRetailV2betaRemoveFulfillmentPlacesMetadata();
-
-  GoogleCloudRetailV2betaRemoveFulfillmentPlacesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2betaRemoveFulfillmentPlacesMetadata = $Empty;
 
 /// Response of the RemoveFulfillmentPlacesRequest.
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// RemoveFulfillmentPlaces method.
-class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse {
-  GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse();
-
-  GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse = $Empty;
 
 /// Metadata related to the progress of the SetInventory operation.
 ///
 /// Currently empty because there is no meaningful metadata populated from the
 /// SetInventory method.
-class GoogleCloudRetailV2betaSetInventoryMetadata {
-  GoogleCloudRetailV2betaSetInventoryMetadata();
-
-  GoogleCloudRetailV2betaSetInventoryMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2betaSetInventoryMetadata = $Empty;
 
 /// Response of the SetInventoryRequest.
 ///
 /// Currently empty because there is no meaningful response populated from the
 /// SetInventory method.
-class GoogleCloudRetailV2betaSetInventoryResponse {
-  GoogleCloudRetailV2betaSetInventoryResponse();
-
-  GoogleCloudRetailV2betaSetInventoryResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRetailV2betaSetInventoryResponse = $Empty;
 
 /// A summary of import result.
 ///
@@ -7505,15 +7314,7 @@ class GoogleLongrunningOperation {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

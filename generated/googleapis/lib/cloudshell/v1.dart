@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -489,15 +490,7 @@ class UsersEnvironmentsResource {
 
 /// Message included in the metadata field of operations returned from
 /// AddPublicKey.
-class AddPublicKeyMetadata {
-  AddPublicKeyMetadata();
-
-  AddPublicKeyMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AddPublicKeyMetadata = $Empty;
 
 /// Request message for AddPublicKey.
 class AddPublicKeyRequest {
@@ -544,15 +537,7 @@ class AddPublicKeyResponse {
 
 /// Message included in the metadata field of operations returned from
 /// AuthorizeEnvironment.
-class AuthorizeEnvironmentMetadata {
-  AuthorizeEnvironmentMetadata();
-
-  AuthorizeEnvironmentMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AuthorizeEnvironmentMetadata = $Empty;
 
 /// Request message for AuthorizeEnvironment.
 class AuthorizeEnvironmentRequest {
@@ -595,50 +580,18 @@ class AuthorizeEnvironmentRequest {
 }
 
 /// Response message for AuthorizeEnvironment.
-class AuthorizeEnvironmentResponse {
-  AuthorizeEnvironmentResponse();
-
-  AuthorizeEnvironmentResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AuthorizeEnvironmentResponse = $Empty;
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// Message included in the metadata field of operations returned from
 /// CreateEnvironment.
-class CreateEnvironmentMetadata {
-  CreateEnvironmentMetadata();
-
-  CreateEnvironmentMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CreateEnvironmentMetadata = $Empty;
 
 /// Message included in the metadata field of operations returned from
 /// DeleteEnvironment.
-class DeleteEnvironmentMetadata {
-  DeleteEnvironmentMetadata();
-
-  DeleteEnvironmentMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteEnvironmentMetadata = $Empty;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -647,15 +600,7 @@ class DeleteEnvironmentMetadata {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// A Cloud Shell environment, which is defined as the combination of a Docker
 /// image specifying what is installed on the environment and a home directory
@@ -907,15 +852,7 @@ class Operation {
 
 /// Message included in the metadata field of operations returned from
 /// RemovePublicKey.
-class RemovePublicKeyMetadata {
-  RemovePublicKeyMetadata();
-
-  RemovePublicKeyMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RemovePublicKeyMetadata = $Empty;
 
 /// Request message for RemovePublicKey.
 class RemovePublicKeyRequest {
@@ -937,15 +874,7 @@ class RemovePublicKeyRequest {
 }
 
 /// Response message for RemovePublicKey.
-class RemovePublicKeyResponse {
-  RemovePublicKeyResponse();
-
-  RemovePublicKeyResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RemovePublicKeyResponse = $Empty;
 
 /// Message included in the metadata field of operations returned from
 /// StartEnvironment.

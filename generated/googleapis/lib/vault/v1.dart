@@ -41,6 +41,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1826,26 +1827,10 @@ class AddMatterPermissionsRequest {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// Close a matter by ID.
-class CloseMatterRequest {
-  CloseMatterRequest();
-
-  CloseMatterRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CloseMatterRequest = $Empty;
 
 /// Response to a CloseMatterRequest.
 class CloseMatterResponse {
@@ -2212,15 +2197,7 @@ class DriveOptions {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// An export.
 ///
@@ -3819,15 +3796,7 @@ class RemoveMatterPermissionsRequest {
 }
 
 /// Reopen a matter by ID.
-class ReopenMatterRequest {
-  ReopenMatterRequest();
-
-  ReopenMatterRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReopenMatterRequest = $Empty;
 
 /// Response to a ReopenMatterRequest.
 class ReopenMatterResponse {
@@ -4024,15 +3993,7 @@ class TeamDriveInfo {
 }
 
 /// Undelete a matter by ID.
-class UndeleteMatterRequest {
-  UndeleteMatterRequest();
-
-  UndeleteMatterRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UndeleteMatterRequest = $Empty;
 
 /// User's information.
 class UserInfo {

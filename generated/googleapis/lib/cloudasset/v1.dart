@@ -34,6 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1257,15 +1258,7 @@ class AnalyzeIamPolicyLongrunningRequest {
 }
 
 /// A response message for AssetService.AnalyzeIamPolicyLongrunning.
-class AnalyzeIamPolicyLongrunningResponse {
-  AnalyzeIamPolicyLongrunningResponse();
-
-  AnalyzeIamPolicyLongrunningResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AnalyzeIamPolicyLongrunningResponse = $Empty;
 
 /// A response message for AssetService.AnalyzeIamPolicy.
 class AnalyzeIamPolicyResponse {
@@ -2010,15 +2003,7 @@ class Date {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Explanation about the IAM policy search result.
 class Explanation {
@@ -3535,15 +3520,7 @@ class GoogleCloudOrgpolicyV1Policy {
 /// projects, restoring the `constraint_default` enforcement of the `Constraint`
 /// for only those projects, allowing those projects to have all services
 /// activated.
-class GoogleCloudOrgpolicyV1RestoreDefault {
-  GoogleCloudOrgpolicyV1RestoreDefault();
-
-  GoogleCloudOrgpolicyV1RestoreDefault.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudOrgpolicyV1RestoreDefault = $Empty;
 
 /// An `AccessLevel` is a label that can be applied to requests to Google Cloud
 /// services, along with a list of requirements necessary for the label to be

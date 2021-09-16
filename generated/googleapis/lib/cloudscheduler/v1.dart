@@ -32,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -743,15 +744,7 @@ class AppEngineRouting {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Http target.
 ///
@@ -1295,15 +1288,7 @@ class OidcToken {
 }
 
 /// Request message for PauseJob.
-class PauseJobRequest {
-  PauseJobRequest();
-
-  PauseJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef PauseJobRequest = $Empty;
 
 /// A message that is published by publishers and consumed by subscribers.
 ///
@@ -1460,15 +1445,7 @@ class PubsubTarget {
 }
 
 /// Request message for ResumeJob.
-class ResumeJobRequest {
-  ResumeJobRequest();
-
-  ResumeJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResumeJobRequest = $Empty;
 
 /// Settings that determine the retry behavior.
 ///
@@ -1559,15 +1536,7 @@ class RetryConfig {
 }
 
 /// Request message for forcing a job to run now using RunJob.
-class RunJobRequest {
-  RunJobRequest();
-
-  RunJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RunJobRequest = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

@@ -34,6 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1793,15 +1794,7 @@ class GetApkDetailsResponse {
 /// be reused. Many applications show their full set of functionalities when an
 /// account is present on the device. Logging into the device with these
 /// generated accounts allows testing more functionalities.
-class GoogleAuto {
-  GoogleAuto();
-
-  GoogleAuto.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAuto = $Empty;
 
 /// A storage location within Google cloud storage (GCS).
 class GoogleCloudStorage {
@@ -2469,15 +2462,7 @@ class IosXcTest {
 }
 
 /// Specifies an intent that starts the main launcher activity.
-class LauncherActivityIntent {
-  LauncherActivityIntent();
-
-  LauncherActivityIntent.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef LauncherActivityIntent = $Empty;
 
 /// A location/region designation for language.
 class Locale {

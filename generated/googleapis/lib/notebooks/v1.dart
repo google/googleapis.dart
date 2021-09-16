@@ -37,6 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2415,15 +2416,7 @@ class Binding {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// Definition of a container image for starting a notebook instance with the
 /// environment installed in a container.
@@ -2632,15 +2625,7 @@ class Disk {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Represents a custom encryption key configuration that can be applied to a
 /// resource.
@@ -4826,26 +4811,10 @@ class ReservationAffinity {
 }
 
 /// Request for reseting a notebook instance
-class ResetInstanceRequest {
-  ResetInstanceRequest();
-
-  ResetInstanceRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResetInstanceRequest = $Empty;
 
 /// Request for reseting a Managed Notebook Runtime.
-class ResetRuntimeRequest {
-  ResetRuntimeRequest();
-
-  ResetRuntimeRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResetRuntimeRequest = $Empty;
 
 /// Request for rollbacking a notebook instance
 class RollbackInstanceRequest {
@@ -5648,26 +5617,10 @@ class ShieldedInstanceConfig {
 }
 
 /// Request for starting a notebook instance
-class StartInstanceRequest {
-  StartInstanceRequest();
-
-  StartInstanceRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StartInstanceRequest = $Empty;
 
 /// Request for starting a Managed Notebook Runtime.
-class StartRuntimeRequest {
-  StartRuntimeRequest();
-
-  StartRuntimeRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StartRuntimeRequest = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -5727,26 +5680,10 @@ class Status {
 }
 
 /// Request for stopping a notebook instance
-class StopInstanceRequest {
-  StopInstanceRequest();
-
-  StopInstanceRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StopInstanceRequest = $Empty;
 
 /// Request for stopping a Managed Notebook Runtime.
-class StopRuntimeRequest {
-  StopRuntimeRequest();
-
-  StopRuntimeRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StopRuntimeRequest = $Empty;
 
 /// Request for switching a Managed Notebook Runtime.
 class SwitchRuntimeRequest {
@@ -5831,15 +5768,7 @@ class TestIamPermissionsResponse {
 }
 
 /// Request for created scheduled notebooks
-class TriggerScheduleRequest {
-  TriggerScheduleRequest();
-
-  TriggerScheduleRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef TriggerScheduleRequest = $Empty;
 
 /// Request for updating instance configurations.
 class UpdateInstanceConfigRequest {
@@ -6017,15 +5946,7 @@ class UpgradeInstanceInternalRequest {
 }
 
 /// Request for upgrading a notebook instance
-class UpgradeInstanceRequest {
-  UpgradeInstanceRequest();
-
-  UpgradeInstanceRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpgradeInstanceRequest = $Empty;
 
 /// Runtime using Virtual Machine for computing.
 class VirtualMachine {

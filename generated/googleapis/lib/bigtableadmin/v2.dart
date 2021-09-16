@@ -39,6 +39,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3338,15 +3339,7 @@ class DropRowRangeRequest {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected
 /// cluster.
@@ -3624,15 +3617,7 @@ class GcRule {
 
 /// Request message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.GenerateConsistencyToken
-class GenerateConsistencyTokenRequest {
-  GenerateConsistencyTokenRequest();
-
-  GenerateConsistencyTokenRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GenerateConsistencyTokenRequest = $Empty;
 
 /// Response message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.GenerateConsistencyToken
@@ -4280,15 +4265,7 @@ class ModifyColumnFamiliesRequest {
 ///
 /// Clusters in a region are considered equidistant. Choosing this option
 /// sacrifices read-your-writes consistency to improve availability.
-class MultiClusterRoutingUseAny {
-  MultiClusterRoutingUseAny();
-
-  MultiClusterRoutingUseAny.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef MultiClusterRoutingUseAny = $Empty;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -5123,15 +5100,7 @@ class Union {
 }
 
 /// The metadata for the Operation returned by UpdateAppProfile.
-class UpdateAppProfileMetadata {
-  UpdateAppProfileMetadata();
-
-  UpdateAppProfileMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpdateAppProfileMetadata = $Empty;
 
 /// The metadata for the Operation returned by UpdateCluster.
 class UpdateClusterMetadata {

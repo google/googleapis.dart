@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1683,15 +1684,7 @@ class DsRecord {
 }
 
 /// Request for the `ExportRegistration` method.
-class ExportRegistrationRequest {
-  ExportRegistrationRequest();
-
-  ExportRegistrationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ExportRegistrationRequest = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2948,15 +2941,7 @@ class Registration {
 }
 
 /// Request for the `ResetAuthorizationCode` method.
-class ResetAuthorizationCodeRequest {
-  ResetAuthorizationCodeRequest();
-
-  ResetAuthorizationCodeRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResetAuthorizationCodeRequest = $Empty;
 
 /// Response for the `RetrieveRegisterParameters` method.
 class RetrieveRegisterParametersResponse {

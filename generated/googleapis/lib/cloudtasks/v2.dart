@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1466,15 +1467,7 @@ class CreateTaskRequest {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2007,15 +2000,7 @@ class OidcToken {
 }
 
 /// Request message for PauseQueue.
-class PauseQueueRequest {
-  PauseQueueRequest();
-
-  PauseQueueRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef PauseQueueRequest = $Empty;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -2124,15 +2109,7 @@ class Policy {
 }
 
 /// Request message for PurgeQueue.
-class PurgeQueueRequest {
-  PurgeQueueRequest();
-
-  PurgeQueueRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef PurgeQueueRequest = $Empty;
 
 /// A queue is a container of related tasks.
 ///
@@ -2365,15 +2342,7 @@ class RateLimits {
 }
 
 /// Request message for ResumeQueue.
-class ResumeQueueRequest {
-  ResumeQueueRequest();
-
-  ResumeQueueRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResumeQueueRequest = $Empty;
 
 /// Retry config.
 ///

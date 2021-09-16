@@ -36,6 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2755,15 +2756,7 @@ class DocumentOccurrence {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Defines an object for the environment field in in-toto links.
 ///
@@ -5349,15 +5342,7 @@ class RelatedUrl {
 
 /// RelationshipNote represents an SPDX Relationship section:
 /// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
-class RelationshipNote {
-  RelationshipNote();
-
-  RelationshipNote.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RelationshipNote = $Empty;
 
 /// RelationshipOccurrence represents an SPDX Relationship section:
 /// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/

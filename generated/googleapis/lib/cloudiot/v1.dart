@@ -38,6 +38,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1351,15 +1352,7 @@ class BindDeviceToGatewayRequest {
 }
 
 /// Response for `BindDeviceToGateway`.
-class BindDeviceToGatewayResponse {
-  BindDeviceToGatewayResponse();
-
-  BindDeviceToGatewayResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef BindDeviceToGatewayResponse = $Empty;
 
 /// Associates `members` with a `role`.
 class Binding {
@@ -1979,15 +1972,7 @@ class DeviceState {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// The configuration for forwarding telemetry events.
 class EventNotificationConfig {
@@ -2719,15 +2704,7 @@ class SendCommandToDeviceRequest {
 }
 
 /// Response for `SendCommandToDevice`.
-class SendCommandToDeviceResponse {
-  SendCommandToDeviceResponse();
-
-  SendCommandToDeviceResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SendCommandToDeviceResponse = $Empty;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -2924,15 +2901,7 @@ class UnbindDeviceFromGatewayRequest {
 }
 
 /// Response for `UnbindDeviceFromGateway`.
-class UnbindDeviceFromGatewayResponse {
-  UnbindDeviceFromGatewayResponse();
-
-  UnbindDeviceFromGatewayResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UnbindDeviceFromGatewayResponse = $Empty;
 
 /// Details of an X.509 certificate.
 ///

@@ -30,6 +30,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -332,38 +333,14 @@ class Actor {
 }
 
 /// Empty message representing an administrator.
-class Administrator {
-  Administrator();
-
-  Administrator.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Administrator = $Empty;
 
 /// Empty message representing an anonymous user or indicating the authenticated
 /// user should be anonymized.
-class AnonymousUser {
-  AnonymousUser();
-
-  AnonymousUser.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AnonymousUser = $Empty;
 
 /// Represents any user (including a logged out user).
-class Anyone {
-  Anyone();
-
-  Anyone.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Anyone = $Empty;
 
 /// Activity in applications other than Drive.
 class ApplicationReference {
@@ -630,15 +607,7 @@ class Delete {
 }
 
 /// A user whose account has since been deleted.
-class DeletedUser {
-  DeletedUser();
-
-  DeletedUser.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeletedUser = $Empty;
 
 /// Information about a domain.
 class Domain {
@@ -796,15 +765,7 @@ class DriveActivity {
 }
 
 /// A Drive item which is a file.
-class DriveFile {
-  DriveFile();
-
-  DriveFile.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DriveFile = $Empty;
 
 /// A Drive item which is a folder.
 class DriveFolder {
@@ -1011,26 +972,10 @@ class DriveReference {
 }
 
 /// An empty message indicating an object was edited.
-class Edit {
-  Edit();
-
-  Edit.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Edit = $Empty;
 
 /// This item is deprecated; please see `DriveFile` instead.
-class File {
-  File();
-
-  File.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef File = $Empty;
 
 /// A comment on a file.
 class FileComment {
@@ -1208,15 +1153,7 @@ class KnownUser {
 /// multiple targets (such as moving a set of files at once) or multiple actors
 /// (such as several users editing the same item). Grouping rules for this
 /// strategy are specific to each type of action.
-class Legacy {
-  Legacy();
-
-  Legacy.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Legacy = $Empty;
 
 /// An object was moved.
 class Move {
@@ -1257,26 +1194,10 @@ class Move {
 }
 
 /// An object was created from scratch.
-class New {
-  New();
-
-  New.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef New = $Empty;
 
 /// A strategy which does no consolidation of individual activities.
-class NoConsolidation {
-  NoConsolidation();
-
-  NoConsolidation.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef NoConsolidation = $Empty;
 
 /// Information about the owner of a Drive item.
 class Owner {
@@ -1957,26 +1878,10 @@ class TimeRange {
 }
 
 /// A user about whom nothing is currently known.
-class UnknownUser {
-  UnknownUser();
-
-  UnknownUser.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UnknownUser = $Empty;
 
 /// An object was uploaded into Drive.
-class Upload {
-  Upload();
-
-  Upload.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Upload = $Empty;
 
 /// Information about an end user.
 class User {

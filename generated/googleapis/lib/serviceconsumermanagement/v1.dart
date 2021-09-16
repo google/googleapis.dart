@@ -34,6 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http_1;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1532,15 +1533,7 @@ class BillingDestination {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// `Context` defines which contexts an API requests.
 ///
@@ -2005,15 +1998,7 @@ class DocumentationRule {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// `Endpoint` describes a network address of a service that serves a set of
 /// APIs.
@@ -5291,29 +5276,13 @@ class V1Beta1BatchCreateProducerOverridesResponse {
 ///
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
-class V1Beta1DisableConsumerResponse {
-  V1Beta1DisableConsumerResponse();
-
-  V1Beta1DisableConsumerResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef V1Beta1DisableConsumerResponse = $Empty;
 
 /// Response message for the `EnableConsumer` method.
 ///
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
-class V1Beta1EnableConsumerResponse {
-  V1Beta1EnableConsumerResponse();
-
-  V1Beta1EnableConsumerResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef V1Beta1EnableConsumerResponse = $Empty;
 
 /// Response message for the `GenerateServiceIdentity` method.
 ///
@@ -5580,15 +5549,7 @@ class V1Beta1QuotaOverride {
 ///
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
-class V1Beta1RefreshConsumerResponse {
-  V1Beta1RefreshConsumerResponse();
-
-  V1Beta1RefreshConsumerResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef V1Beta1RefreshConsumerResponse = $Empty;
 
 /// A service identity in the Identity and Access Management API.
 class V1Beta1ServiceIdentity {
@@ -5687,29 +5648,13 @@ class V1DefaultIdentity {
 ///
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
-class V1DisableConsumerResponse {
-  V1DisableConsumerResponse();
-
-  V1DisableConsumerResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef V1DisableConsumerResponse = $Empty;
 
 /// Response message for the `EnableConsumer` method.
 ///
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
-class V1EnableConsumerResponse {
-  V1EnableConsumerResponse();
-
-  V1EnableConsumerResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef V1EnableConsumerResponse = $Empty;
 
 /// Response message for the `GenerateDefaultIdentity` method.
 ///
@@ -5799,15 +5744,7 @@ class V1GenerateServiceAccountResponse {
 ///
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
-class V1RefreshConsumerResponse {
-  V1RefreshConsumerResponse();
-
-  V1RefreshConsumerResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef V1RefreshConsumerResponse = $Empty;
 
 /// Response message for the `RemoveVisibilityLabels` method.
 ///

@@ -34,6 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1974,48 +1975,16 @@ class CheckTransitiveMembershipResponse {
 }
 
 /// Metadata for CreateGroup LRO.
-class CreateGroupMetadata {
-  CreateGroupMetadata();
-
-  CreateGroupMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CreateGroupMetadata = $Empty;
 
 /// Metadata for CreateMembership LRO.
-class CreateMembershipMetadata {
-  CreateMembershipMetadata();
-
-  CreateMembershipMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CreateMembershipMetadata = $Empty;
 
 /// Metadata for DeleteGroup LRO.
-class DeleteGroupMetadata {
-  DeleteGroupMetadata();
-
-  DeleteGroupMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteGroupMetadata = $Empty;
 
 /// Metadata for DeleteMembership LRO.
-class DeleteMembershipMetadata {
-  DeleteMembershipMetadata();
-
-  DeleteMembershipMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteMembershipMetadata = $Empty;
 
 /// Dynamic group metadata like queries and status.
 class DynamicGroupMetadata {
@@ -2198,15 +2167,7 @@ class ExpiryDetail {
 /// Metadata of GetMembershipGraphResponse LRO.
 ///
 /// This is currently empty to permit future extensibility.
-class GetMembershipGraphMetadata {
-  GetMembershipGraphMetadata();
-
-  GetMembershipGraphMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GetMembershipGraphMetadata = $Empty;
 
 /// The response message for MembershipsService.GetMembershipGraph.
 class GetMembershipGraphResponse {
@@ -2313,15 +2274,7 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
 }
 
 /// Metadata for ApproveDeviceUser LRO.
-class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata {
-  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata();
-
-  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata = $Empty;
 
 /// Request message for approving the device to access user data.
 class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
@@ -2377,15 +2330,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
 }
 
 /// Metadata for BlockDeviceUser LRO.
-class GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata {
-  GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata();
-
-  GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata = $Empty;
 
 /// Request message for blocking account on device.
 class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
@@ -2441,15 +2386,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
 }
 
 /// Metadata for CancelWipeDevice LRO.
-class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata {
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata();
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata = $Empty;
 
 /// Request message for cancelling an unfinished device wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
@@ -2507,15 +2444,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
 }
 
 /// Metadata for CancelWipeDeviceUser LRO.
-class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata {
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata();
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata = $Empty;
 
 /// Request message for cancelling an unfinished user account wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
@@ -2748,15 +2677,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
 }
 
 /// Metadata for CreateDevice LRO.
-class GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata {
-  GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata();
-
-  GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata = $Empty;
 
 /// Additional custom attribute values may be one of these types
 class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
@@ -2796,26 +2717,10 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
 }
 
 /// Metadata for DeleteDevice LRO.
-class GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata {
-  GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata();
-
-  GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata = $Empty;
 
 /// Metadata for DeleteDeviceUser LRO.
-class GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata {
-  GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata();
-
-  GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata = $Empty;
 
 ///  A Device within the Cloud Identity Devices API.
 ///
@@ -3401,15 +3306,7 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
 }
 
 /// Metadata for ListEndpointApps LRO.
-class GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata {
-  GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata();
-
-  GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata = $Empty;
 
 /// Response containing resource names of the DeviceUsers associated with the
 /// caller's credentials.
@@ -3459,48 +3356,16 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
 }
 
 /// Metadata for SignoutDeviceUser LRO.
-class GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata {
-  GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata();
-
-  GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata = $Empty;
 
 /// Metadata for UpdateClientState LRO.
-class GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata {
-  GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata();
-
-  GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata = $Empty;
 
 /// Metadata for UpdateDevice LRO.
-class GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata {
-  GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata();
-
-  GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata = $Empty;
 
 /// Metadata for WipeDevice LRO.
-class GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata {
-  GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata();
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata = $Empty;
 
 /// Request message for wiping all data on the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
@@ -3556,15 +3421,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
 }
 
 /// Metadata for WipeDeviceUser LRO.
-class GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata {
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata();
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata = $Empty;
 
 /// Request message for starting an account wipe on device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
@@ -4522,26 +4379,10 @@ class TransitiveMembershipRole {
 }
 
 /// Metadata for UpdateGroup LRO.
-class UpdateGroupMetadata {
-  UpdateGroupMetadata();
-
-  UpdateGroupMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpdateGroupMetadata = $Empty;
 
 /// Metadata for UpdateMembership LRO.
-class UpdateMembershipMetadata {
-  UpdateMembershipMetadata();
-
-  UpdateMembershipMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpdateMembershipMetadata = $Empty;
 
 /// The details of an update to a `MembershipRole`.
 class UpdateMembershipRolesParams {

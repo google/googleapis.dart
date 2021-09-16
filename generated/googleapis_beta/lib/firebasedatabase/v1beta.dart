@@ -35,6 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -473,15 +474,7 @@ class DatabaseInstance {
 }
 
 /// The request sent to the DisableDatabaseInstance method.
-class DisableDatabaseInstanceRequest {
-  DisableDatabaseInstanceRequest();
-
-  DisableDatabaseInstanceRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DisableDatabaseInstanceRequest = $Empty;
 
 /// The response from the ListDatabaseInstances method.
 class ListDatabaseInstancesResponse {
@@ -523,12 +516,4 @@ class ListDatabaseInstancesResponse {
 }
 
 /// The request sent to the ReenableDatabaseInstance method.
-class ReenableDatabaseInstanceRequest {
-  ReenableDatabaseInstanceRequest();
-
-  ReenableDatabaseInstanceRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReenableDatabaseInstanceRequest = $Empty;

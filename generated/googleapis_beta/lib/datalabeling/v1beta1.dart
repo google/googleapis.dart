@@ -47,6 +47,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -8231,15 +8232,7 @@ class GoogleCloudDatalabelingV1beta1ObjectTrackingFrame {
 }
 
 /// Metadata describing the feedback from the operator.
-class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata {
-  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata();
-
-  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata = $Empty;
 
 /// General information useful for labels coming from contributors.
 class GoogleCloudDatalabelingV1beta1OperatorMetadata {
@@ -8331,15 +8324,7 @@ class GoogleCloudDatalabelingV1beta1OutputConfig {
 }
 
 /// Request message for PauseEvaluationJob.
-class GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest {
-  GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest();
-
-  GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest = $Empty;
 
 /// Instruction from a PDF file.
 class GoogleCloudDatalabelingV1beta1PdfInstruction {
@@ -8492,26 +8477,10 @@ class GoogleCloudDatalabelingV1beta1PrCurve {
 }
 
 /// Metadata describing the feedback from the labeling task requester.
-class GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata {
-  GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata();
-
-  GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata = $Empty;
 
 /// Request message ResumeEvaluationJob.
-class GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest {
-  GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest();
-
-  GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest = $Empty;
 
 /// A row in the confusion matrix.
 ///
@@ -11530,15 +11499,7 @@ class GoogleLongrunningOperation {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

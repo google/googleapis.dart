@@ -72,6 +72,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -9788,15 +9789,7 @@ class UsersResource {
 }
 
 /// Request message for ManualTriggerService.ActivateManualTrigger.
-class ActivateManualTriggerRequest {
-  ActivateManualTriggerRequest();
-
-  ActivateManualTriggerRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ActivateManualTriggerRequest = $Empty;
 
 /// Configuration for custom Active View video viewability metrics.
 class ActiveViewVideoViewabilityMetricConfig {
@@ -16002,15 +15995,7 @@ class DayAndTimeAssignedTargetingOptionDetails {
 }
 
 /// Request message for ManualTriggerService.DeactivateManualTrigger.
-class DeactivateManualTriggerRequest {
-  DeactivateManualTriggerRequest();
-
-  DeactivateManualTriggerRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeactivateManualTriggerRequest = $Empty;
 
 /// A request listing which assigned targeting options of a given targeting type
 /// should be deleted.
@@ -16769,15 +16754,7 @@ class DoubleVerifyVideoViewability {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Assigned environment targeting option details.
 ///

@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5102,15 +5103,7 @@ class ClearBasicFilterRequest {
 }
 
 /// The request for clearing a range of values in a spreadsheet.
-class ClearValuesRequest {
-  ClearValuesRequest();
-
-  ClearValuesRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ClearValuesRequest = $Empty;
 
 /// The response when clearing a range of values in a spreadsheet.
 class ClearValuesResponse {

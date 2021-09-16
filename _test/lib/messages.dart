@@ -38,3 +38,5 @@ class ToyRequest {
 class ToyAgeRequest {
   int? age;
 }
+
+class Empty {}

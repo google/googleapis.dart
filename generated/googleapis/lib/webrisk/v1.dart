@@ -34,6 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1155,15 +1156,7 @@ class GoogleCloudWebriskV1ThreatEntryRemovals {
 }
 
 /// The request message for Operations.CancelOperation.
-class GoogleLongrunningCancelOperationRequest {
-  GoogleLongrunningCancelOperationRequest();
-
-  GoogleLongrunningCancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
@@ -1292,15 +1285,7 @@ class GoogleLongrunningOperation {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

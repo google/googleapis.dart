@@ -35,6 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -490,15 +491,7 @@ class ProjectsGroupsResource {
 }
 
 /// Response message for deleting error events.
-class DeleteEventsResponse {
-  DeleteEventsResponse();
-
-  DeleteEventsResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteEventsResponse = $Empty;
 
 /// A description of the context in which an error occurred.
 ///
@@ -974,15 +967,7 @@ class ListGroupStatsResponse {
 /// Response for reporting an individual error event.
 ///
 /// Data may be added to this message in the future.
-class ReportErrorEventResponse {
-  ReportErrorEventResponse();
-
-  ReportErrorEventResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReportErrorEventResponse = $Empty;
 
 /// An error event which is reported to the Error Reporting system.
 class ReportedErrorEvent {

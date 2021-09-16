@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -784,15 +785,7 @@ class AzureCredentials {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -847,15 +840,7 @@ class Date {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// An entry describing an error that has occurred.
 class ErrorLogEntry {
@@ -1510,15 +1495,7 @@ class Operation {
 }
 
 /// Request passed to PauseTransferOperation.
-class PauseTransferOperationRequest {
-  PauseTransferOperationRequest();
-
-  PauseTransferOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef PauseTransferOperationRequest = $Empty;
 
 /// A POSIX filesystem data source or sink.
 class PosixFilesystem {
@@ -1542,15 +1519,7 @@ class PosixFilesystem {
 }
 
 /// Request passed to ResumeTransferOperation.
-class ResumeTransferOperationRequest {
-  ResumeTransferOperationRequest();
-
-  ResumeTransferOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResumeTransferOperationRequest = $Empty;
 
 /// Request passed to RunTransferJob.
 class RunTransferJobRequest {

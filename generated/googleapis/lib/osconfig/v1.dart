@@ -39,6 +39,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -989,15 +990,7 @@ class CVSSv3 {
 }
 
 /// Message for canceling a patch job.
-class CancelPatchJobRequest {
-  CancelPatchJobRequest();
-
-  CancelPatchJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelPatchJobRequest = $Empty;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1006,15 +999,7 @@ class CancelPatchJobRequest {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// A step that runs an executable for a PatchJob.
 class ExecStep {
@@ -1272,15 +1257,7 @@ class GcsObject {
 }
 
 /// Googet patching is performed by running `googet update`.
-class GooSettings {
-  GooSettings();
-
-  GooSettings.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooSettings = $Empty;
 
 /// This API resource represents the available inventory data for a Compute
 /// Engine virtual machine (VM) instance at a given point in time.

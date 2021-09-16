@@ -32,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -245,15 +246,7 @@ class ProjectsBucketsResource {
 
 /// The request used to link a Google Cloud Storage bucket to a Firebase
 /// project.
-class AddFirebaseRequest {
-  AddFirebaseRequest();
-
-  AddFirebaseRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AddFirebaseRequest = $Empty;
 
 /// A storage bucket and its relation to a parent Firebase project.
 class Bucket {
@@ -302,15 +295,7 @@ class Bucket {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Metadata for MigrateLocationDestructively LRO.
 class GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata {
@@ -469,12 +454,4 @@ class ListBucketsResponse {
 
 /// The request used to unlink a Google Cloud Storage bucket from a Firebase
 /// project.
-class RemoveFirebaseRequest {
-  RemoveFirebaseRequest();
-
-  RemoveFirebaseRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RemoveFirebaseRequest = $Empty;

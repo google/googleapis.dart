@@ -61,7 +61,8 @@ void main() {
         'NestedResponse': importUri.toString(),
         'ToyMapResponse': importUri.toString(),
         'ToyRequest': importUri.toString(),
-        'ToyAgeRequest': importUri.toString()
+        'ToyAgeRequest': importUri.toString(),
+        'Empty': importUri.toString(),
       };
       final description =
           File(p.join(dataPath, 'rest', 'toyapi.json')).readAsStringSync();

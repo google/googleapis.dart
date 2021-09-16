@@ -59,6 +59,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -7247,15 +7248,7 @@ class QuerySource {
 
 /// This field does not contain anything as of now and is just used as an
 /// indicator that the suggest result was a phrase completion.
-class QuerySuggestion {
-  QuerySuggestion();
-
-  QuerySuggestion.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef QuerySuggestion = $Empty;
 
 /// Errors when the connector is communicating to the source repository.
 class RepositoryError {

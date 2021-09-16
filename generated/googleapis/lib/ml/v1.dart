@@ -39,6 +39,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3078,15 +3079,7 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
 }
 
 /// Request message for the CancelJob method.
-class GoogleCloudMlV1CancelJobRequest {
-  GoogleCloudMlV1CancelJobRequest();
-
-  GoogleCloudMlV1CancelJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudMlV1CancelJobRequest = $Empty;
 
 class GoogleCloudMlV1Capability {
   /// Available accelerators for the capability.
@@ -3160,15 +3153,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata {
 }
 
 /// The request message for the CheckTrialEarlyStoppingState service method.
-class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest {
-  GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest();
-
-  GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest = $Empty;
 
 /// The message will be placed in the response field of a completed
 /// google.longrunning.Operation associated with a CheckTrialEarlyStoppingState
@@ -4316,15 +4301,7 @@ class GoogleCloudMlV1ListModelsResponse {
 }
 
 /// The request message for the ListTrials service method.
-class GoogleCloudMlV1ListOptimalTrialsRequest {
-  GoogleCloudMlV1ListOptimalTrialsRequest();
-
-  GoogleCloudMlV1ListOptimalTrialsRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudMlV1ListOptimalTrialsRequest = $Empty;
 
 /// The response message for the ListOptimalTrials method.
 class GoogleCloudMlV1ListOptimalTrialsResponse {
@@ -5525,25 +5502,8 @@ class GoogleCloudMlV1Scheduling {
 }
 
 /// Request message for the SetDefaultVersion request.
-class GoogleCloudMlV1SetDefaultVersionRequest {
-  GoogleCloudMlV1SetDefaultVersionRequest();
-
-  GoogleCloudMlV1SetDefaultVersionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
-
-class GoogleCloudMlV1StopTrialRequest {
-  GoogleCloudMlV1StopTrialRequest();
-
-  GoogleCloudMlV1StopTrialRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudMlV1SetDefaultVersionRequest = $Empty;
+typedef GoogleCloudMlV1StopTrialRequest = $Empty;
 
 /// A message representing a Study.
 class GoogleCloudMlV1Study {
@@ -7538,15 +7498,7 @@ class GoogleLongrunningOperation {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

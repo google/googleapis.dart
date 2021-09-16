@@ -37,6 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2292,15 +2293,7 @@ class DeadLetterPolicy {
 /// Response for the DetachSubscription method.
 ///
 /// Reserved for future use.
-class DetachSubscriptionResponse {
-  DetachSubscriptionResponse();
-
-  DetachSubscriptionResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DetachSubscriptionResponse = $Empty;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -2309,15 +2302,7 @@ class DetachSubscriptionResponse {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// A policy that specifies the conditions for resource expiration (i.e.,
 /// automatic resource deletion).
@@ -3370,15 +3355,7 @@ class SeekRequest {
 }
 
 /// Response for the `Seek` method (this response is empty).
-class SeekResponse {
-  SeekResponse();
-
-  SeekResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SeekResponse = $Empty;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -4026,15 +4003,7 @@ class ValidateMessageRequest {
 /// Response for the `ValidateMessage` method.
 ///
 /// Empty for now.
-class ValidateMessageResponse {
-  ValidateMessageResponse();
-
-  ValidateMessageResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ValidateMessageResponse = $Empty;
 
 /// Request for the `ValidateSchema` method.
 class ValidateSchemaRequest {
@@ -4063,12 +4032,4 @@ class ValidateSchemaRequest {
 /// Response for the `ValidateSchema` method.
 ///
 /// Empty for now.
-class ValidateSchemaResponse {
-  ValidateSchemaResponse();
-
-  ValidateSchemaResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ValidateSchemaResponse = $Empty;

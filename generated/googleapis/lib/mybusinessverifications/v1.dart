@@ -34,6 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -417,15 +418,7 @@ class CompleteVerificationResponse {
 ///
 /// To fix this issue, consult the
 /// [Help Center Article](https://support.google.com/business/answer/4569145).
-class ComplyWithGuidelines {
-  ComplyWithGuidelines();
-
-  ComplyWithGuidelines.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ComplyWithGuidelines = $Empty;
 
 /// Display data for verifications through email.
 class EmailVerificationData {
@@ -906,15 +899,7 @@ class PostalAddress {
 
 /// Indicates that the location duplicates another location that is in good
 /// standing.
-class ResolveOwnershipConflict {
-  ResolveOwnershipConflict();
-
-  ResolveOwnershipConflict.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResolveOwnershipConflict = $Empty;
 
 /// Additional data for service business verification.
 class ServiceBusinessContext {
@@ -1359,12 +1344,4 @@ class VoiceOfMerchantState {
 
 /// Indicates that the location will gain voice of merchant after passing
 /// review.
-class WaitForVoiceOfMerchant {
-  WaitForVoiceOfMerchant();
-
-  WaitForVoiceOfMerchant.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef WaitForVoiceOfMerchant = $Empty;

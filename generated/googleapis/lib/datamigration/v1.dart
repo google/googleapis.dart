@@ -35,6 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1669,15 +1670,7 @@ class Binding {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// Specifies required connection parameters, and, optionally, the parameters
 /// required to create a Cloud SQL destination database instance.
@@ -2115,15 +2108,7 @@ class DatabaseType {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3260,37 +3245,13 @@ class PostgreSqlConnectionProfile {
 }
 
 /// Request message for 'PromoteMigrationJob' request.
-class PromoteMigrationJobRequest {
-  PromoteMigrationJobRequest();
-
-  PromoteMigrationJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef PromoteMigrationJobRequest = $Empty;
 
 /// Request message for 'RestartMigrationJob' request.
-class RestartMigrationJobRequest {
-  RestartMigrationJobRequest();
-
-  RestartMigrationJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RestartMigrationJobRequest = $Empty;
 
 /// Request message for 'ResumeMigrationJob' request.
-class ResumeMigrationJobRequest {
-  ResumeMigrationJobRequest();
-
-  ResumeMigrationJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResumeMigrationJobRequest = $Empty;
 
 /// The details needed to configure a reverse SSH tunnel between the source and
 /// destination databases.
@@ -3570,30 +3531,14 @@ class SslConfig {
 }
 
 /// Request message for 'StartMigrationJob' request.
-class StartMigrationJobRequest {
-  StartMigrationJobRequest();
-
-  StartMigrationJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StartMigrationJobRequest = $Empty;
 
 /// The source database will allow incoming connections from the destination
 /// database's public IP.
 ///
 /// You can retrieve the Cloud SQL instance's public IP from the Cloud SQL
 /// console or using Cloud SQL APIs. No additional configuration is required.
-class StaticIpConnectivity {
-  StaticIpConnectivity();
-
-  StaticIpConnectivity.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StaticIpConnectivity = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -3653,15 +3598,7 @@ class Status {
 }
 
 /// Request message for 'StopMigrationJob' request.
-class StopMigrationJobRequest {
-  StopMigrationJobRequest();
-
-  StopMigrationJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StopMigrationJobRequest = $Empty;
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
@@ -3715,15 +3652,7 @@ class TestIamPermissionsResponse {
 }
 
 /// Request message for 'VerifyMigrationJob' request.
-class VerifyMigrationJobRequest {
-  VerifyMigrationJobRequest();
-
-  VerifyMigrationJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef VerifyMigrationJobRequest = $Empty;
 
 /// VM creation configuration message
 class VmCreationConfig {

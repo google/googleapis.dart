@@ -32,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1175,15 +1176,7 @@ class Destination {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Filters events based on exact matches on the CloudEvents attributes.
 class EventFilter {
@@ -1295,15 +1288,7 @@ class Expr {
 }
 
 /// The request message for Operations.CancelOperation.
-class GoogleLongrunningCancelOperationRequest {
-  GoogleLongrunningCancelOperationRequest();
-
-  GoogleLongrunningCancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

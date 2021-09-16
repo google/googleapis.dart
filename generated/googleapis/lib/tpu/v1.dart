@@ -35,6 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -874,15 +875,7 @@ class AcceleratorType {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Response for ListAcceleratorTypes.
 class ListAcceleratorTypesResponse {
@@ -1671,15 +1664,7 @@ class SchedulingConfig {
 }
 
 /// Request for StartNode.
-class StartNodeRequest {
-  StartNodeRequest();
-
-  StartNodeRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StartNodeRequest = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -1739,15 +1724,7 @@ class Status {
 }
 
 /// Request for StopNode.
-class StopNodeRequest {
-  StopNodeRequest();
-
-  StopNodeRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StopNodeRequest = $Empty;
 
 /// A Symptom instance.
 class Symptom {

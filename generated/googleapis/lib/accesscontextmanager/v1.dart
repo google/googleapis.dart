@@ -37,6 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1370,15 +1371,7 @@ class OrganizationsGcpUserAccessBindingsResource {
 }
 
 /// Metadata of Access Context Manager's Long Running Operations.
-class AccessContextManagerOperationMetadata {
-  AccessContextManagerOperationMetadata();
-
-  AccessContextManagerOperationMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AccessContextManagerOperationMetadata = $Empty;
 
 /// An `AccessLevel` is a label that can be applied to requests to Google Cloud
 /// services, along with a list of requirements necessary for the label to be
@@ -1598,15 +1591,7 @@ class BasicLevel {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// A request to commit dry-run specs in all Service Perimeters belonging to an
 /// Access Policy.
@@ -2038,15 +2023,7 @@ class EgressTo {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2186,15 +2163,7 @@ class GcpUserAccessBinding {
 ///
 /// In the future, this metadata and a completed operation may indicate that the
 /// binding has taken effect and is affecting access decisions for all users.
-class GcpUserAccessBindingOperationMetadata {
-  GcpUserAccessBindingOperationMetadata();
-
-  GcpUserAccessBindingOperationMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GcpUserAccessBindingOperationMetadata = $Empty;
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///

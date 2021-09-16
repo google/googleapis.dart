@@ -26,6 +26,21 @@ import 'package:test_package/toyapi/0_1.dart' as api;
 
 import '../test_shared.dart';
 
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
 core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
@@ -561,6 +576,16 @@ void checkToyResponse(api.ToyResponse o) {
 }
 
 void main() {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
+    });
+  });
+
   unittest.group('obj-schema-ListOfListOfString', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfListOfString();

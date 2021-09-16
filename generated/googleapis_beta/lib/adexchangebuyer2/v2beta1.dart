@@ -66,6 +66,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4278,15 +4279,7 @@ class CalloutStatusRow {
 }
 
 /// Request to cancel an ongoing negotiation.
-class CancelNegotiationRequest {
-  CancelNegotiationRequest();
-
-  CancelNegotiationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelNegotiationRequest = $Empty;
 
 /// A client resource represents a client buyer—an agency, a brand, or an
 /// advertiser customer of the sponsor buyer.
@@ -4549,15 +4542,7 @@ class ClientUserInvitation {
 }
 
 /// Request message for indicating that the proposal's setup step is complete.
-class CompleteSetupRequest {
-  CompleteSetupRequest();
-
-  CompleteSetupRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CompleteSetupRequest = $Empty;
 
 /// Contains information on how a buyer or seller can be reached.
 class ContactInformation {
@@ -6254,15 +6239,7 @@ class Disapproval {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// A set of filters that is applied to a request for data.
 ///
@@ -9283,15 +9260,7 @@ class ResumeProposalDealsRequest {
 
 /// Request message to resume (unpause) serving for an already-finalized
 /// proposal.
-class ResumeProposalRequest {
-  ResumeProposalRequest();
-
-  ResumeProposalRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ResumeProposalRequest = $Empty;
 
 /// A response may include multiple rows, breaking down along various
 /// dimensions.
@@ -9557,15 +9526,7 @@ class Size {
 }
 
 /// A request for stopping notifications for changes to creative Status.
-class StopWatchingCreativeRequest {
-  StopWatchingCreativeRequest();
-
-  StopWatchingCreativeRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StopWatchingCreativeRequest = $Empty;
 
 /// Advertisers can target different attributes of an ad slot.
 ///

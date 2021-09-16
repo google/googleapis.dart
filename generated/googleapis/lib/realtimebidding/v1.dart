@@ -40,6 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1649,15 +1650,7 @@ class BuyersUserListsResource {
 /// A request to activate a pretargeting configuration.
 ///
 /// Sets the configuration's state to ACTIVE.
-class ActivatePretargetingConfigRequest {
-  ActivatePretargetingConfigRequest();
-
-  ActivatePretargetingConfigRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ActivatePretargetingConfigRequest = $Empty;
 
 /// The list of detected Ad Technology Providers for this creative.
 ///
@@ -2169,15 +2162,7 @@ class Buyer {
 }
 
 /// A request to close a specified user list.
-class CloseUserListRequest {
-  CloseUserListRequest();
-
-  CloseUserListRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CloseUserListRequest = $Empty;
 
 /// A creative and its classification data.
 class Creative {
@@ -3018,15 +3003,7 @@ class DownloadSizeEvidence {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Bidder endpoint that receives bid requests.
 class Endpoint {
@@ -3697,15 +3674,7 @@ class NumericTargetingDimension {
 }
 
 /// A request to open a specified user list.
-class OpenUserListRequest {
-  OpenUserListRequest();
-
-  OpenUserListRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef OpenUserListRequest = $Empty;
 
 /// Policy compliance of the creative for a transaction type or a region.
 class PolicyCompliance {
@@ -4365,15 +4334,7 @@ class StringTargetingDimension {
 /// A request to suspend a pretargeting configuration.
 ///
 /// Sets the configuration's state to SUSPENDED.
-class SuspendPretargetingConfigRequest {
-  SuspendPretargetingConfigRequest();
-
-  SuspendPretargetingConfigRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SuspendPretargetingConfigRequest = $Empty;
 
 /// The URL-level breakdown for the download size.
 class UrlDownloadSize {
@@ -4696,15 +4657,7 @@ class VideoMetadata {
 
 /// A request to receive push notifications when any of the creatives belonging
 /// to the bidder changes status.
-class WatchCreativesRequest {
-  WatchCreativesRequest();
-
-  WatchCreativesRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef WatchCreativesRequest = $Empty;
 
 /// A response for the request to receive push notification when a bidder's
 /// creatives change status.

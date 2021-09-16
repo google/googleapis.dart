@@ -104,6 +104,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -11697,15 +11698,7 @@ class GoogleCloudApigeeV1AccessSet {
 /// Request for ActivateNatAddressRequest.
 ///
 /// Activate the nat address request.
-class GoogleCloudApigeeV1ActivateNatAddressRequest {
-  GoogleCloudApigeeV1ActivateNatAddressRequest();
-
-  GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudApigeeV1ActivateNatAddressRequest = $Empty;
 
 /// Add-on configurations for the Apigee organization.
 class GoogleCloudApigeeV1AddonsConfig {
@@ -15795,15 +15788,7 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
 }
 
 /// Request for ExpireDeveloperSubscription.
-class GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest {
-  GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest();
-
-  GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest = $Empty;
 
 /// Details of an export job.
 class GoogleCloudApigeeV1Export {
@@ -16083,15 +16068,7 @@ class GoogleCloudApigeeV1FlowHookConfig {
 }
 
 /// Request for GenerateDownloadUrl method.
-class GoogleCloudApigeeV1GenerateDownloadUrlRequest {
-  GoogleCloudApigeeV1GenerateDownloadUrlRequest();
-
-  GoogleCloudApigeeV1GenerateDownloadUrlRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudApigeeV1GenerateDownloadUrlRequest = $Empty;
 
 /// Response for GenerateDownloadUrl method.
 class GoogleCloudApigeeV1GenerateDownloadUrlResponse {
@@ -16116,15 +16093,7 @@ class GoogleCloudApigeeV1GenerateDownloadUrlResponse {
 }
 
 /// Request for GenerateUploadUrl method.
-class GoogleCloudApigeeV1GenerateUploadUrlRequest {
-  GoogleCloudApigeeV1GenerateUploadUrlRequest();
-
-  GoogleCloudApigeeV1GenerateUploadUrlRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudApigeeV1GenerateUploadUrlRequest = $Empty;
 
 /// Response for GenerateUploadUrl method.
 class GoogleCloudApigeeV1GenerateUploadUrlResponse {
@@ -16149,15 +16118,7 @@ class GoogleCloudApigeeV1GenerateUploadUrlResponse {
 }
 
 /// Request for GetSyncAuthorization.
-class GoogleCloudApigeeV1GetSyncAuthorizationRequest {
-  GoogleCloudApigeeV1GetSyncAuthorizationRequest();
-
-  GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudApigeeV1GetSyncAuthorizationRequest = $Empty;
 
 /// Represents the pairing of GraphQL operation types and the GraphQL operation
 /// name.
@@ -19466,15 +19427,7 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
 }
 
 /// Placeholder for future enhancements to status reporting protocol
-class GoogleCloudApigeeV1ReportInstanceStatusResponse {
-  GoogleCloudApigeeV1ReportInstanceStatusResponse();
-
-  GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudApigeeV1ReportInstanceStatusResponse = $Empty;
 
 class GoogleCloudApigeeV1ReportProperty {
   /// name of the property
@@ -22042,15 +21995,7 @@ class GoogleLongrunningOperation {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// Describes what preconditions have failed.
 ///

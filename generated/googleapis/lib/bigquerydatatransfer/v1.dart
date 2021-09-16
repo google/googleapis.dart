@@ -40,6 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1824,15 +1825,7 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
 /// source has the Google+ authorization type, this method returns false, as it
 /// cannot be determined whether the credentials are already valid merely based
 /// on the user id.
-class CheckValidCredsRequest {
-  CheckValidCredsRequest();
-
-  CheckValidCredsRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CheckValidCredsRequest = $Empty;
 
 /// A response indicating whether the credentials exist and are valid.
 class CheckValidCredsResponse {
@@ -2272,15 +2265,7 @@ class EmailPreferences {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// A request to enroll a set of data sources so they are visible in the
 /// BigQuery UI's `Transfer` tab.

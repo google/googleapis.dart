@@ -30,6 +30,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -586,15 +587,7 @@ class DeviceNames {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Request type for the
 /// \[`Query`\](#google.home.graph.v1.HomeGraphApiService.Query) call.
@@ -953,15 +946,7 @@ class RequestSyncDevicesRequest {
 ///
 /// Intentionally empty upon success. An HTTP response code is returned with
 /// more details upon failure.
-class RequestSyncDevicesResponse {
-  RequestSyncDevicesResponse();
-
-  RequestSyncDevicesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RequestSyncDevicesResponse = $Empty;
 
 /// Payload containing the state and notification information for devices.
 class StateAndNotificationPayload {

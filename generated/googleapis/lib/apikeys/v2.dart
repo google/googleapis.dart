@@ -34,6 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1170,12 +1171,4 @@ class V2ServerKeyRestrictions {
 }
 
 /// Request message for `UndeleteKey` method.
-class V2UndeleteKeyRequest {
-  V2UndeleteKeyRequest();
-
-  V2UndeleteKeyRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef V2UndeleteKeyRequest = $Empty;

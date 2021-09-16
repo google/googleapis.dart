@@ -43,6 +43,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1218,15 +1219,7 @@ class TopicStatsProjectsLocationsTopicsResource {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// The throughput capacity configuration for each partition.
 class Capacity {
@@ -1296,15 +1289,7 @@ class CommitCursorRequest {
 }
 
 /// Response for CommitCursor.
-class CommitCursorResponse {
-  CommitCursorResponse();
-
-  CommitCursorResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CommitCursorResponse = $Empty;
 
 /// Compute the current head cursor for a partition.
 class ComputeHeadCursorRequest {
@@ -1573,15 +1558,7 @@ class DeliveryConfig {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
@@ -2051,15 +2028,7 @@ class SeekSubscriptionRequest {
 }
 
 /// Response for SeekSubscription long running operation.
-class SeekSubscriptionResponse {
-  SeekSubscriptionResponse();
-
-  SeekSubscriptionResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SeekSubscriptionResponse = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

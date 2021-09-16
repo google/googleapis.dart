@@ -30,6 +30,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2053,29 +2054,13 @@ class DocumentStyleSuggestionState {
 }
 
 /// The properties of an embedded drawing.
-class EmbeddedDrawingProperties {
-  EmbeddedDrawingProperties();
-
-  EmbeddedDrawingProperties.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef EmbeddedDrawingProperties = $Empty;
 
 /// A mask that indicates which of the fields on the base
 /// EmbeddedDrawingProperties have been changed in this suggestion.
 ///
 /// For any field set to true, there is a new suggested value.
-class EmbeddedDrawingPropertiesSuggestionState {
-  EmbeddedDrawingPropertiesSuggestionState();
-
-  EmbeddedDrawingPropertiesSuggestionState.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef EmbeddedDrawingPropertiesSuggestionState = $Empty;
 
 /// An embedded object in the document.
 class EmbeddedObject {
