@@ -1,3 +1,8 @@
+## 5.0.2-dev
+
+- Reuse empty types using `typedef`.
+- Require Dart 2.13 or greater.
+
 ## 5.0.1
 
 - Fixed bug in `datastore`, `drive`, `firestore` where `Value.nullValue` always contained `'NULL_VALUE'`

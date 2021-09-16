@@ -52,6 +52,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4653,15 +4654,7 @@ class AppEngine {
 }
 
 /// Future parameters for the availability SLI.
-class AvailabilityCriteria {
-  AvailabilityCriteria();
-
-  AvailabilityCriteria.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AvailabilityCriteria = $Empty;
 
 /// The authentication parameters to provide to the specified resource or URL
 /// that requires a username and password.
@@ -5470,15 +5463,7 @@ class CreateTimeSeriesSummary {
 /// Custom view of service telemetry.
 ///
 /// Currently a place-holder pending final design.
-class Custom {
-  Custom();
-
-  Custom.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Custom = $Empty;
 
 /// Distribution contains summary statistics for a population of values.
 ///
@@ -5716,15 +5701,7 @@ class DroppedLabels {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
 /// object {}.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Detailed information about an error category.
 class Error {
@@ -8957,15 +8934,7 @@ class ResourceGroup {
 }
 
 /// The SendNotificationChannelVerificationCode request.
-class SendNotificationChannelVerificationCodeRequest {
-  SendNotificationChannelVerificationCodeRequest();
-
-  SendNotificationChannelVerificationCodeRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SendNotificationChannelVerificationCodeRequest = $Empty;
 
 /// A Service is a discrete, autonomous, and network-accessible unit, designed
 /// to solve an individual concern (Wikipedia

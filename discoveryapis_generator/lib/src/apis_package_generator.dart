@@ -10,7 +10,7 @@ import 'dart_api_library.dart';
 import 'dart_api_test_library.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'pubspec.dart';
-import 'request_headers.dart';
+import 'shared_output.dart';
 import 'utils.dart';
 
 /// Generates a dart package with all APIs given in the constructor.
@@ -81,6 +81,11 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 
 ${requestHeadersField(pubspec.version)}
 """,
+    );
+
+    writeDartSource(
+      '$libFolderPath/$emptyObjectDartFile',
+      emptyClass,
     );
 
     // Test utility

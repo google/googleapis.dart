@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http_1;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1396,15 +1397,7 @@ class BillingDestination {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// `Context` defines which contexts an API requests.
 ///
@@ -1547,15 +1540,7 @@ class Control {
 /// Metadata message that provides information such as progress, partial
 /// failures, and similar information on each GetOperation call of LRO returned
 /// by CreateAdminQuotaPolicy.
-class CreateAdminQuotaPolicyMetadata {
-  CreateAdminQuotaPolicyMetadata();
-
-  CreateAdminQuotaPolicyMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CreateAdminQuotaPolicyMetadata = $Empty;
 
 /// Customize service error responses.
 ///
@@ -1660,15 +1645,7 @@ class CustomHttpPattern {
 /// Metadata message that provides information such as progress, partial
 /// failures, and similar information on each GetOperation call of LRO returned
 /// by DeleteAdminQuotaPolicy.
-class DeleteAdminQuotaPolicyMetadata {
-  DeleteAdminQuotaPolicyMetadata();
-
-  DeleteAdminQuotaPolicyMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteAdminQuotaPolicyMetadata = $Empty;
 
 /// Request message for the `DisableService` method.
 class DisableServiceRequest {
@@ -1912,15 +1889,7 @@ class DocumentationRule {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Provides error messages for the failing services.
 class EnableFailure {
@@ -1952,15 +1921,7 @@ class EnableFailure {
 }
 
 /// Request message for the `EnableService` method.
-class EnableServiceRequest {
-  EnableServiceRequest();
-
-  EnableServiceRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef EnableServiceRequest = $Empty;
 
 /// Response message for the `EnableService` method.
 ///
@@ -2271,15 +2232,7 @@ class Field {
 }
 
 /// Metadata for the `GetServiceIdentity` method.
-class GetServiceIdentityMetadata {
-  GetServiceIdentityMetadata();
-
-  GetServiceIdentityMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GetServiceIdentityMetadata = $Empty;
 
 /// Response message for getting service identity.
 class GetServiceIdentityResponse {
@@ -3232,15 +3185,7 @@ class HttpRule {
 /// Metadata message that provides information such as progress, partial
 /// failures, and similar information on each GetOperation call of LRO returned
 /// by ImportAdminOverrides.
-class ImportAdminOverridesMetadata {
-  ImportAdminOverridesMetadata();
-
-  ImportAdminOverridesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ImportAdminOverridesMetadata = $Empty;
 
 /// Response message for ImportAdminOverrides
 class ImportAdminOverridesResponse {
@@ -3270,15 +3215,7 @@ class ImportAdminOverridesResponse {
 /// Metadata message that provides information such as progress, partial
 /// failures, and similar information on each GetOperation call of LRO returned
 /// by ImportAdminQuotaPolicies.
-class ImportAdminQuotaPoliciesMetadata {
-  ImportAdminQuotaPoliciesMetadata();
-
-  ImportAdminQuotaPoliciesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ImportAdminQuotaPoliciesMetadata = $Empty;
 
 /// Response message for ImportAdminQuotaPolicies
 class ImportAdminQuotaPoliciesResponse {
@@ -3308,15 +3245,7 @@ class ImportAdminQuotaPoliciesResponse {
 /// Metadata message that provides information such as progress, partial
 /// failures, and similar information on each GetOperation call of LRO returned
 /// by ImportConsumerOverrides.
-class ImportConsumerOverridesMetadata {
-  ImportConsumerOverridesMetadata();
-
-  ImportConsumerOverridesMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ImportConsumerOverridesMetadata = $Empty;
 
 /// Response message for ImportConsumerOverrides
 class ImportConsumerOverridesResponse {
@@ -5301,15 +5230,7 @@ class Type {
 /// Metadata message that provides information such as progress, partial
 /// failures, and similar information on each GetOperation call of LRO returned
 /// by UpdateAdminQuotaPolicy.
-class UpdateAdminQuotaPolicyMetadata {
-  UpdateAdminQuotaPolicyMetadata();
-
-  UpdateAdminQuotaPolicyMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpdateAdminQuotaPolicyMetadata = $Empty;
 
 /// Configuration controlling usage of a service.
 class Usage {

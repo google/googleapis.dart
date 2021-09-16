@@ -28,6 +28,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1125,15 +1126,7 @@ class NodeMatcher {
 }
 
 /// NullMatch is an empty message to specify a null value.
-class NullMatch {
-  NullMatch();
-
-  NullMatch.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef NullMatch = $Empty;
 
 /// Specifies the segment in a path to retrieve value from Struct.
 class PathSegment {

@@ -61,6 +61,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -14998,15 +14999,7 @@ class TestItem {
       };
 }
 
-class TestItemTestItemSnippet {
-  TestItemTestItemSnippet();
-
-  TestItemTestItemSnippet.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef TestItemTestItemSnippet = $Empty;
 
 /// A *third party account link* resource represents a link between a YouTube
 /// account or a channel and an account on a third-party service.
@@ -15272,15 +15265,7 @@ class ThumbnailSetResponse {
 }
 
 /// Stub token pagination template to suppress results.
-class TokenPagination {
-  TokenPagination();
-
-  TokenPagination.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef TokenPagination = $Empty;
 
 /// A *video* resource represents a YouTube video.
 class Video {
@@ -16875,15 +16860,7 @@ class VideoProcessingDetailsProcessingProgress {
 /// http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677
 ///
 /// Deprecated.
-class VideoProjectDetails {
-  VideoProjectDetails();
-
-  VideoProjectDetails.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef VideoProjectDetails = $Empty;
 
 /// Basic details about rating of a video.
 class VideoRating {

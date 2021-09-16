@@ -45,6 +45,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3340,26 +3341,10 @@ class CreateServiceAccountRequest {
 }
 
 /// The service account key disable request.
-class DisableServiceAccountKeyRequest {
-  DisableServiceAccountKeyRequest();
-
-  DisableServiceAccountKeyRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DisableServiceAccountKeyRequest = $Empty;
 
 /// The service account disable request.
-class DisableServiceAccountRequest {
-  DisableServiceAccountRequest();
-
-  DisableServiceAccountRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DisableServiceAccountRequest = $Empty;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -3368,37 +3353,13 @@ class DisableServiceAccountRequest {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// The service account key enable request.
-class EnableServiceAccountKeyRequest {
-  EnableServiceAccountKeyRequest();
-
-  EnableServiceAccountKeyRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef EnableServiceAccountKeyRequest = $Empty;
 
 /// The service account enable request.
-class EnableServiceAccountRequest {
-  EnableServiceAccountRequest();
-
-  EnableServiceAccountRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef EnableServiceAccountRequest = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -5174,15 +5135,7 @@ class UndeleteRoleRequest {
 }
 
 /// The service account undelete request.
-class UndeleteServiceAccountRequest {
-  UndeleteServiceAccountRequest();
-
-  UndeleteServiceAccountRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UndeleteServiceAccountRequest = $Empty;
 
 class UndeleteServiceAccountResponse {
   /// Metadata for the restored service account.
@@ -5207,26 +5160,10 @@ class UndeleteServiceAccountResponse {
 }
 
 /// Request message for UndeleteWorkloadIdentityPoolProvider.
-class UndeleteWorkloadIdentityPoolProviderRequest {
-  UndeleteWorkloadIdentityPoolProviderRequest();
-
-  UndeleteWorkloadIdentityPoolProviderRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UndeleteWorkloadIdentityPoolProviderRequest = $Empty;
 
 /// Request message for UndeleteWorkloadIdentityPool.
-class UndeleteWorkloadIdentityPoolRequest {
-  UndeleteWorkloadIdentityPoolRequest();
-
-  UndeleteWorkloadIdentityPoolRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UndeleteWorkloadIdentityPoolRequest = $Empty;
 
 /// The service account key upload request.
 class UploadServiceAccountKeyRequest {

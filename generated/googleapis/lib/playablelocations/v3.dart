@@ -29,6 +29,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -292,15 +293,7 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
 /// A response for the LogImpressions method.
 ///
 /// This method returns no data upon success.
-class GoogleMapsPlayablelocationsV3LogImpressionsResponse {
-  GoogleMapsPlayablelocationsV3LogImpressionsResponse();
-
-  GoogleMapsPlayablelocationsV3LogImpressionsResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleMapsPlayablelocationsV3LogImpressionsResponse = $Empty;
 
 /// A request for logging your player's bad location reports.
 class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
@@ -364,15 +357,7 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
 /// A response for the LogPlayerReports method.
 ///
 /// This method returns no data upon success.
-class GoogleMapsPlayablelocationsV3LogPlayerReportsResponse {
-  GoogleMapsPlayablelocationsV3LogPlayerReportsResponse();
-
-  GoogleMapsPlayablelocationsV3LogPlayerReportsResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleMapsPlayablelocationsV3LogPlayerReportsResponse = $Empty;
 
 /// A report submitted by a player about a playable location that is considered
 /// inappropriate for use in the game.

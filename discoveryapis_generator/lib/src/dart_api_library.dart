@@ -6,10 +6,11 @@ library discoveryapis_generator.dart_api_library;
 
 import 'dart_comments.dart';
 import 'dart_resources.dart';
+import 'dart_schema_types.dart';
 import 'dart_schemas.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
-import 'request_headers.dart';
+import 'shared_output.dart';
 import 'utils.dart';
 
 const ignoreForFileSet = {
@@ -73,6 +74,7 @@ abstract class BaseApiLibrary {
 /// Generates a API library based on a [RestDescription].
 class DartApiLibrary extends BaseApiLibrary {
   final bool isPackage;
+  late final bool hasEmptyClass = _hasEmptyClass();
   late final DartSchemaTypeDB schemaDB;
   late final DartApiClass apiClass;
   late final bool exposeMedia;
@@ -95,7 +97,7 @@ class DartApiLibrary extends BaseApiLibrary {
   @override
   String get librarySource {
     final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB);
+    final schemas = generateSchemas(schemaDB, isPackage);
     final resources = generateResources(apiClass);
     sink.write(_libraryHeader());
     if (resources.isNotEmpty) {
@@ -136,16 +138,32 @@ class DartApiLibrary extends BaseApiLibrary {
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports.commons};""",
       "import 'package:http/http.dart' as ${imports.http};",
-      if (isPackage) "\nimport '../$userAgentDartFilePath';",
-      "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show ApiRequestError, DetailedApiRequestError$exportedMediaClasses;",
-      if (!isPackage) requestHeadersField(description.version),
+      ..._sharedBits(exportedMediaClasses),
     ];
 
     return result.join('\n');
   }
+
+  bool _hasEmptyClass() =>
+      schemaDB.namedSchemaTypes.values.any((element) => element.isEmpty);
+
+  Iterable<String> _sharedBits(String exportedMediaClasses) sync* {
+    if (isPackage) {
+      yield '';
+      if (hasEmptyClass) {
+        yield "import '../$emptyObjectDartFile';";
+      }
+      yield "import '../$userAgentDartFilePath';";
+    }
+    yield "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show ApiRequestError, DetailedApiRequestError$exportedMediaClasses;";
+    if (!isPackage) {
+      yield requestHeadersField(description.version);
+    }
+  }
 }
 
 const userAgentDartFilePath = 'src/user_agent.dart';
+const emptyObjectDartFile = 'src/empty.dart';
 
 Comment _commentFromRestDescription(
   RestDescription description,

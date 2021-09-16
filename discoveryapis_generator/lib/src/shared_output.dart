@@ -8,3 +8,17 @@ final requestHeaders = {
   'user-agent': 'google-api-dart-client/$packageVersion',
   'x-goog-api-client': 'gl-dart/\${commons.dartVersion} gdcl/$packageVersion',
 };''';
+
+const sharedEmptyClassName = r'$Empty';
+
+const emptyClass = '''
+/// A reusable empty messages.
+class $sharedEmptyClassName {
+  $sharedEmptyClassName();
+
+  $sharedEmptyClassName.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      Map json);
+
+  Map<String, dynamic> toJson() => {};
+}''';

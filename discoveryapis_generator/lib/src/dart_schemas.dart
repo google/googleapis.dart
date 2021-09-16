@@ -305,10 +305,10 @@ DartSchemaType parsePrimitive(
 }
 
 /// Generates the codegen'ed dart string for all schema classes.
-String generateSchemas(DartSchemaTypeDB db) {
+String generateSchemas(DartSchemaTypeDB db, bool isPackage) {
   final sb = StringBuffer();
   for (var value in db.dartClassTypes) {
-    final classDefinition = value.classDefinition;
+    final classDefinition = value.classDefinition(isPackage);
     if (classDefinition != null) {
       sb.writeln(classDefinition);
     }

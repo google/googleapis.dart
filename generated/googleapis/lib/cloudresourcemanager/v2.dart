@@ -32,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1011,106 +1012,34 @@ class CreateProjectMetadata {
 }
 
 /// Runtime operation information for creating a TagValue.
-class CreateTagBindingMetadata {
-  CreateTagBindingMetadata();
-
-  CreateTagBindingMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CreateTagBindingMetadata = $Empty;
 
 /// Runtime operation information for creating a TagKey.
-class CreateTagKeyMetadata {
-  CreateTagKeyMetadata();
-
-  CreateTagKeyMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CreateTagKeyMetadata = $Empty;
 
 /// Runtime operation information for creating a TagValue.
-class CreateTagValueMetadata {
-  CreateTagValueMetadata();
-
-  CreateTagValueMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CreateTagValueMetadata = $Empty;
 
 /// A status object which is used as the `metadata` field for the `Operation`
 /// returned by `DeleteFolder`.
-class DeleteFolderMetadata {
-  DeleteFolderMetadata();
-
-  DeleteFolderMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteFolderMetadata = $Empty;
 
 /// A status object which is used as the `metadata` field for the operation
 /// returned by DeleteOrganization.
-class DeleteOrganizationMetadata {
-  DeleteOrganizationMetadata();
-
-  DeleteOrganizationMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteOrganizationMetadata = $Empty;
 
 /// A status object which is used as the `metadata` field for the Operation
 /// returned by `DeleteProject`.
-class DeleteProjectMetadata {
-  DeleteProjectMetadata();
-
-  DeleteProjectMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteProjectMetadata = $Empty;
 
 /// Runtime operation information for deleting a TagBinding.
-class DeleteTagBindingMetadata {
-  DeleteTagBindingMetadata();
-
-  DeleteTagBindingMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteTagBindingMetadata = $Empty;
 
 /// Runtime operation information for deleting a TagKey.
-class DeleteTagKeyMetadata {
-  DeleteTagKeyMetadata();
-
-  DeleteTagKeyMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteTagKeyMetadata = $Empty;
 
 /// Runtime operation information for deleting a TagValue.
-class DeleteTagValueMetadata {
-  DeleteTagValueMetadata();
-
-  DeleteTagValueMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteTagValueMetadata = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -1515,15 +1444,7 @@ class MoveFolderRequest {
 
 /// A status object which is used as the `metadata` field for the Operation
 /// returned by MoveProject.
-class MoveProjectMetadata {
-  MoveProjectMetadata();
-
-  MoveProjectMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef MoveProjectMetadata = $Empty;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -2014,93 +1935,29 @@ class TestIamPermissionsResponse {
 
 /// A status object which is used as the `metadata` field for the `Operation`
 /// returned by `UndeleteFolder`.
-class UndeleteFolderMetadata {
-  UndeleteFolderMetadata();
-
-  UndeleteFolderMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UndeleteFolderMetadata = $Empty;
 
 /// The UndeleteFolder request message.
-class UndeleteFolderRequest {
-  UndeleteFolderRequest();
-
-  UndeleteFolderRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UndeleteFolderRequest = $Empty;
 
 /// A status object which is used as the `metadata` field for the Operation
 /// returned by UndeleteOrganization.
-class UndeleteOrganizationMetadata {
-  UndeleteOrganizationMetadata();
-
-  UndeleteOrganizationMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UndeleteOrganizationMetadata = $Empty;
 
 /// A status object which is used as the `metadata` field for the Operation
 /// returned by `UndeleteProject`.
-class UndeleteProjectMetadata {
-  UndeleteProjectMetadata();
-
-  UndeleteProjectMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UndeleteProjectMetadata = $Empty;
 
 /// A status object which is used as the `metadata` field for the Operation
 /// returned by UpdateFolder.
-class UpdateFolderMetadata {
-  UpdateFolderMetadata();
-
-  UpdateFolderMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpdateFolderMetadata = $Empty;
 
 /// A status object which is used as the `metadata` field for the Operation
 /// returned by UpdateProject.
-class UpdateProjectMetadata {
-  UpdateProjectMetadata();
-
-  UpdateProjectMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpdateProjectMetadata = $Empty;
 
 /// Runtime operation information for updating a TagKey.
-class UpdateTagKeyMetadata {
-  UpdateTagKeyMetadata();
-
-  UpdateTagKeyMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpdateTagKeyMetadata = $Empty;
 
 /// Runtime operation information for updating a TagValue.
-class UpdateTagValueMetadata {
-  UpdateTagValueMetadata();
-
-  UpdateTagValueMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UpdateTagValueMetadata = $Empty;

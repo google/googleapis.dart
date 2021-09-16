@@ -60,6 +60,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5876,15 +5877,7 @@ class GooglePrivacyDlpV2Action {
 }
 
 /// Request message for ActivateJobTrigger.
-class GooglePrivacyDlpV2ActivateJobTriggerRequest {
-  GooglePrivacyDlpV2ActivateJobTriggerRequest();
-
-  GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2ActivateJobTriggerRequest = $Empty;
 
 /// Result of a risk analysis operation request.
 class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
@@ -6439,15 +6432,7 @@ class GooglePrivacyDlpV2ByteContentItem {
 }
 
 /// The request message for canceling a DLP job.
-class GooglePrivacyDlpV2CancelDlpJobRequest {
-  GooglePrivacyDlpV2CancelDlpJobRequest();
-
-  GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2CancelDlpJobRequest = $Empty;
 
 /// Compute numerical stats over an individual column, including number of
 /// distinct values and value count distribution.
@@ -9291,15 +9276,7 @@ class GooglePrivacyDlpV2FindingLimits {
 }
 
 /// The request message for finishing a DLP hybrid job.
-class GooglePrivacyDlpV2FinishDlpJobRequest {
-  GooglePrivacyDlpV2FinishDlpJobRequest();
-
-  GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2FinishDlpJobRequest = $Empty;
 
 /// Buckets values based on fixed size ranges.
 ///
@@ -9582,15 +9559,7 @@ class GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
 }
 
 /// Quota exceeded errors will be thrown once quota has been met.
-class GooglePrivacyDlpV2HybridInspectResponse {
-  GooglePrivacyDlpV2HybridInspectResponse();
-
-  GooglePrivacyDlpV2HybridInspectResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2HybridInspectResponse = $Empty;
 
 /// Statistics related to processing hybrid inspect requests.
 class GooglePrivacyDlpV2HybridInspectStatistics {
@@ -10484,15 +10453,7 @@ class GooglePrivacyDlpV2InspectionRuleSet {
 
 /// Enable email notification to project owners and editors on jobs's
 /// completion/failure.
-class GooglePrivacyDlpV2JobNotificationEmails {
-  GooglePrivacyDlpV2JobNotificationEmails();
-
-  GooglePrivacyDlpV2JobNotificationEmails.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2JobNotificationEmails = $Empty;
 
 /// Contains a configuration to make dlp api calls on a repeating basis.
 ///
@@ -11407,15 +11368,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStats {
 ///
 /// For example, if a `DateShift` transformation were applied an an IP address,
 /// this mode would leave the IP address unchanged in the response.
-class GooglePrivacyDlpV2LeaveUntransformed {
-  GooglePrivacyDlpV2LeaveUntransformed();
-
-  GooglePrivacyDlpV2LeaveUntransformed.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2LeaveUntransformed = $Empty;
 
 /// Message for specifying an adjustment to the likelihood of a finding as part
 /// of a detection rule.
@@ -11730,15 +11683,7 @@ class GooglePrivacyDlpV2Location {
 /// Job trigger option for hybrid jobs.
 ///
 /// Jobs must be manually created and finished.
-class GooglePrivacyDlpV2Manual {
-  GooglePrivacyDlpV2Manual();
-
-  GooglePrivacyDlpV2Manual.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2Manual = $Empty;
 
 /// Metadata Location
 class GooglePrivacyDlpV2MetadataLocation {
@@ -12232,15 +12177,7 @@ class GooglePrivacyDlpV2Proximity {
 /// service-specific policy, see https://cloud.google.com/terms/service-terms
 /// Only a single instance of this action can be specified and only allowed if
 /// all resources being scanned are BigQuery tables. Compatible with: Inspect
-class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
-  GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog();
-
-  GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog = $Empty;
 
 /// Publish the result summary of a DlpJob to the Cloud Security Command Center
 /// (CSCC Alpha).
@@ -12252,15 +12189,7 @@ class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
 /// service-specific policy, see https://cloud.google.com/terms/service-terms
 /// Only a single instance of this action can be specified. Compatible with:
 /// Inspect
-class GooglePrivacyDlpV2PublishSummaryToCscc {
-  GooglePrivacyDlpV2PublishSummaryToCscc();
-
-  GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2PublishSummaryToCscc = $Empty;
 
 /// Publish a message into given Pub/Sub topic when DlpJob has completed.
 ///
@@ -12296,15 +12225,7 @@ class GooglePrivacyDlpV2PublishToPubSub {
 /// This will publish a metric to stack driver on each infotype requested and
 /// how many findings were found for it. CustomDetectors will be bucketed as
 /// 'Custom' under the Stackdriver label 'info_type'.
-class GooglePrivacyDlpV2PublishToStackdriver {
-  GooglePrivacyDlpV2PublishToStackdriver();
-
-  GooglePrivacyDlpV2PublishToStackdriver.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2PublishToStackdriver = $Empty;
 
 /// A column with a semantic tag attached.
 class GooglePrivacyDlpV2QuasiId {
@@ -12655,15 +12576,7 @@ class GooglePrivacyDlpV2RecordTransformations {
 /// For example, if used with an `InfoTypeTransformation` transforming
 /// PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would
 /// be 'My phone number is '.
-class GooglePrivacyDlpV2RedactConfig {
-  GooglePrivacyDlpV2RedactConfig();
-
-  GooglePrivacyDlpV2RedactConfig.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2RedactConfig = $Empty;
 
 /// Request to search for potentially sensitive info in an image and redact it
 /// by covering it with a colored rectangle.
@@ -12964,15 +12877,7 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
 }
 
 /// Replace each matching finding with the name of the info_type.
-class GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
-  GooglePrivacyDlpV2ReplaceWithInfoTypeConfig();
-
-  GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2ReplaceWithInfoTypeConfig = $Empty;
 
 /// Snapshot of the inspection configuration.
 class GooglePrivacyDlpV2RequestedOptions {
@@ -13649,15 +13554,7 @@ class GooglePrivacyDlpV2SummaryResult {
 /// conjunction with a field on the transformation such as
 /// `surrogate_info_type`. This CustomInfoType does not support the use of
 /// `detection_rules`.
-class GooglePrivacyDlpV2SurrogateType {
-  GooglePrivacyDlpV2SurrogateType();
-
-  GooglePrivacyDlpV2SurrogateType.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2SurrogateType = $Empty;
 
 /// Structured content to inspect.
 ///
@@ -13820,15 +13717,7 @@ class GooglePrivacyDlpV2TaggedField {
 }
 
 /// Throw an error and fail the request when a transformation error occurs.
-class GooglePrivacyDlpV2ThrowError {
-  GooglePrivacyDlpV2ThrowError();
-
-  GooglePrivacyDlpV2ThrowError.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GooglePrivacyDlpV2ThrowError = $Empty;
 
 /// For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
 /// portion of the value.
@@ -14497,15 +14386,7 @@ class GooglePrivacyDlpV2WordList {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

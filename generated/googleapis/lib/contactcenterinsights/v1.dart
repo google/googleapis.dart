@@ -37,6 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2974,15 +2975,7 @@ class GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
 }
 
 /// The response to deploy an issue model.
-class GoogleCloudContactcenterinsightsV1DeployIssueModelResponse {
-  GoogleCloudContactcenterinsightsV1DeployIssueModelResponse();
-
-  GoogleCloudContactcenterinsightsV1DeployIssueModelResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1DeployIssueModelResponse = $Empty;
 
 /// The data for a Dialogflow intent.
 ///
@@ -3406,15 +3399,7 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestina
 }
 
 /// Response for an export insights operation.
-class GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse {
-  GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse();
-
-  GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse = $Empty;
 
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
@@ -3525,15 +3510,7 @@ class GoogleCloudContactcenterinsightsV1GcsSource {
 }
 
 /// The data for a hold annotation.
-class GoogleCloudContactcenterinsightsV1HoldData {
-  GoogleCloudContactcenterinsightsV1HoldData();
-
-  GoogleCloudContactcenterinsightsV1HoldData.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1HoldData = $Empty;
 
 /// The data for an intent.
 ///
@@ -3592,15 +3569,7 @@ class GoogleCloudContactcenterinsightsV1IntentMatchData {
 }
 
 /// The data for an interruption annotation.
-class GoogleCloudContactcenterinsightsV1InterruptionData {
-  GoogleCloudContactcenterinsightsV1InterruptionData();
-
-  GoogleCloudContactcenterinsightsV1InterruptionData.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1InterruptionData = $Empty;
 
 /// The issue resource.
 class GoogleCloudContactcenterinsightsV1Issue {
@@ -4675,15 +4644,7 @@ class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
 }
 
 /// The data for a silence annotation.
-class GoogleCloudContactcenterinsightsV1SilenceData {
-  GoogleCloudContactcenterinsightsV1SilenceData();
-
-  GoogleCloudContactcenterinsightsV1SilenceData.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1SilenceData = $Empty;
 
 /// Agent Assist Smart Compose suggestion data.
 class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
@@ -4864,15 +4825,7 @@ class GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
 }
 
 /// The response to undeploy an issue model.
-class GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse {
-  GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse();
-
-  GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse = $Empty;
 
 /// Metadata for a create analysis operation.
 class GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata {
@@ -5130,15 +5083,8 @@ class GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest {
 }
 
 /// The response to deploy an issue model.
-class GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse {
-  GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse();
-
-  GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse
+    = $Empty;
 
 /// Metadata for an export insights operation.
 class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata {
@@ -5306,15 +5252,8 @@ class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryD
 }
 
 /// Response for an export insights operation.
-class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse {
-  GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse();
-
-  GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse
+    = $Empty;
 
 /// The issue model resource.
 class GoogleCloudContactcenterinsightsV1alpha1IssueModel {
@@ -5609,15 +5548,8 @@ class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest {
 }
 
 /// The response to undeploy an issue model.
-class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse {
-  GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse();
-
-  GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse
+    = $Empty;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
@@ -5746,15 +5678,7 @@ class GoogleLongrunningOperation {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

@@ -69,6 +69,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -9812,15 +9813,7 @@ class AccounttaxListResponse {
 }
 
 /// Request message for the ActivateProgram method.
-class ActivateBuyOnGoogleProgramRequest {
-  ActivateBuyOnGoogleProgramRequest();
-
-  ActivateBuyOnGoogleProgramRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ActivateBuyOnGoogleProgramRequest = $Empty;
 
 class Amount {
   /// The pre-tax or post-tax price depending on the location of the order.
@@ -9947,15 +9940,7 @@ class BuyOnGoogleProgramStatus {
 }
 
 /// Request message for the CaptureOrder method.
-class CaptureOrderRequest {
-  CaptureOrderRequest();
-
-  CaptureOrderRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CaptureOrderRequest = $Empty;
 
 /// Response message for the CaptureOrder method.
 class CaptureOrderResponse {
@@ -19691,15 +19676,7 @@ class OrdersUpdateShipmentResponse {
 }
 
 /// Request message for the PauseProgram method.
-class PauseBuyOnGoogleProgramRequest {
-  PauseBuyOnGoogleProgramRequest();
-
-  PauseBuyOnGoogleProgramRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef PauseBuyOnGoogleProgramRequest = $Empty;
 
 /// Additional information required for PAYMENT_SERVICE_PROVIDER link type.
 class PaymentServiceProviderLinkInfo {
@@ -24883,15 +24860,7 @@ class RequestPhoneVerificationResponse {
 }
 
 /// Request message for the RequestReviewProgram method.
-class RequestReviewBuyOnGoogleProgramRequest {
-  RequestReviewBuyOnGoogleProgramRequest();
-
-  RequestReviewBuyOnGoogleProgramRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RequestReviewBuyOnGoogleProgramRequest = $Empty;
 
 /// Request message for the RequestReviewFreeListings Program method.
 class RequestReviewFreeListingsRequest {

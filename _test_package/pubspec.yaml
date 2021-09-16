@@ -2,10 +2,10 @@ name: test_package
 version: 0.1.0-dev
 description: Auto-generated client libraries.
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.13.0 <3.0.0'
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: ^1.0.0
-  http: ">=0.12.2 <0.14.0"
+  http: ">=0.13.0 <0.14.0"
 dev_dependencies:
-  test: ^1.15.7
+  test: ^1.16.0

@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1126,15 +1127,7 @@ class CompositeFilter {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// A Datastore data object.
 ///
@@ -3230,15 +3223,7 @@ class QueryResultBatch {
 }
 
 /// Options specific to read-only transactions.
-class ReadOnly {
-  ReadOnly();
-
-  ReadOnly.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReadOnly = $Empty;
 
 /// The options shared by read requests.
 class ReadOptions {
@@ -3351,15 +3336,7 @@ class ReserveIdsRequest {
 }
 
 /// The response for Datastore.ReserveIds.
-class ReserveIdsResponse {
-  ReserveIdsResponse();
-
-  ReserveIdsResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReserveIdsResponse = $Empty;
 
 /// The request for Datastore.Rollback.
 class RollbackRequest {
@@ -3395,15 +3372,7 @@ class RollbackRequest {
 /// The response for Datastore.Rollback.
 ///
 /// (an empty message).
-class RollbackResponse {
-  RollbackResponse();
-
-  RollbackResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RollbackResponse = $Empty;
 
 /// The request for Datastore.RunQuery.
 class RunQueryRequest {

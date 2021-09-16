@@ -47,6 +47,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -6615,26 +6616,10 @@ class ActivateConsentRequest {
 }
 
 /// Archives the specified User data mapping.
-class ArchiveUserDataMappingRequest {
-  ArchiveUserDataMappingRequest();
-
-  ArchiveUserDataMappingRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ArchiveUserDataMappingRequest = $Empty;
 
 /// Archives the specified User data mapping.
-class ArchiveUserDataMappingResponse {
-  ArchiveUserDataMappingResponse();
-
-  ArchiveUserDataMappingResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ArchiveUserDataMappingResponse = $Empty;
 
 /// An attribute value for a Consent or User data mapping.
 ///
@@ -6947,15 +6932,7 @@ class Binding {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// Mask a string by replacing its characters with a fixed character.
 class CharacterMaskConfig {
@@ -7807,15 +7784,7 @@ class DeidentifyFhirStoreRequest {
 }
 
 /// Contains a summary of the Deidentify operation.
-class DeidentifySummary {
-  DeidentifySummary();
-
-  DeidentifySummary.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeidentifySummary = $Empty;
 
 /// Specifies the parameters needed for de-identification of DICOM stores.
 class DicomConfig {
@@ -7981,15 +7950,7 @@ class DicomStore {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Evaluate a user's Consents for all matching User data mappings.
 ///
@@ -8200,15 +8161,7 @@ class ExportDicomDataRequest {
 }
 
 /// Returns additional information in regards to a completed DICOM store export.
-class ExportDicomDataResponse {
-  ExportDicomDataResponse();
-
-  ExportDicomDataResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ExportDicomDataResponse = $Empty;
 
 /// Request to export resources.
 class ExportResourcesRequest {
@@ -8260,15 +8213,7 @@ class ExportResourcesRequest {
 ///
 /// This structure is included in the response to describe the detailed outcome
 /// after the operation finishes successfully.
-class ExportResourcesResponse {
-  ExportResourcesResponse();
-
-  ExportResourcesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ExportResourcesResponse = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -8754,26 +8699,10 @@ class GoogleCloudHealthcareV1ConsentPolicy {
 }
 
 /// Contains a summary of the DeidentifyDicomStore operation.
-class GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary {
-  GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary();
-
-  GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary = $Empty;
 
 /// Contains a summary of the DeidentifyFhirStore operation.
-class GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary {
-  GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary();
-
-  GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary = $Empty;
 
 /// The BigQuery table where the server writes the output.
 class GoogleCloudHealthcareV1DicomBigQueryDestination {
@@ -9483,15 +9412,7 @@ class ImportDicomDataRequest {
 }
 
 /// Returns additional information in regards to a completed DICOM store import.
-class ImportDicomDataResponse {
-  ImportDicomDataResponse();
-
-  ImportDicomDataResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ImportDicomDataResponse = $Empty;
 
 /// Request to import resources.
 class ImportResourcesRequest {
@@ -9546,15 +9467,7 @@ class ImportResourcesRequest {
 ///
 /// This structure is included in the response to describe the detailed outcome
 /// after the operation finishes successfully.
-class ImportResourcesResponse {
-  ImportResourcesResponse();
-
-  ImportResourcesResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ImportResourcesResponse = $Empty;
 
 /// A transformation to apply to text that is identified as a specific
 /// info_type.
@@ -10917,15 +10830,7 @@ class QueryAccessibleDataResponse {
 ///
 /// Default behaviour is erase. For example, "My name is Jane." becomes "My name
 /// is ."
-class RedactConfig {
-  RedactConfig();
-
-  RedactConfig.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef RedactConfig = $Empty;
 
 /// Rejects the latest revision of the specified Consent by committing a new
 /// revision with `state` updated to `REJECTED`.
@@ -10964,15 +10869,7 @@ class RejectConsentRequest {
 ///
 /// For example, "My name is Jane" becomes "My name is \[PERSON_NAME\]." The
 /// TRANSFORM action is equivalent to redacting.
-class ReplaceWithInfoTypeConfig {
-  ReplaceWithInfoTypeConfig();
-
-  ReplaceWithInfoTypeConfig.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReplaceWithInfoTypeConfig = $Empty;
 
 /// A list of FHIR resources.
 class Resources {

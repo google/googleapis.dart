@@ -10,6 +10,7 @@ import 'dart_schema_type.dart';
 import 'dart_schemas.dart';
 import 'json_type.dart';
 import 'namer.dart';
+import 'shared_output.dart';
 import 'utils.dart';
 
 /// Class representing non-primitive types.
@@ -20,7 +21,7 @@ abstract class ComplexDartSchemaType extends DartSchemaType {
       {Comment? comment})
       : super(imports, name, comment: comment);
 
-  String? get classDefinition;
+  String? classDefinition(bool isPackage);
 
   @override
   String? get declaration;
@@ -65,7 +66,12 @@ class ObjectType extends ComplexDartSchemaType {
   }
 
   @override
-  String get classDefinition {
+  String? classDefinition(bool isPackage) {
+    if (isPackage && isEmpty) {
+      return '${comment.asDartDoc(0)}'
+          'typedef $className = $sharedEmptyClassName;';
+    }
+
     var superClassString = '';
     if (superVariantType != null) {
       superClassString = ' extends ${superVariantType!.declaration} ';
@@ -219,7 +225,7 @@ class AbstractVariantType extends ComplexDartSchemaType {
   }
 
   @override
-  String get classDefinition {
+  String? classDefinition(bool isPackage) {
     final fromJsonString = StringBuffer();
     fromJsonString.writeln(
         '  factory $className.fromJson(${imports.core.ref()}Map json) {');
@@ -520,7 +526,7 @@ class UnnamedArrayType extends ComplexDartSchemaType implements HasInnertype {
   JsonType get jsonType => ArrayJsonType(imports, innerType!.jsonType);
 
   @override
-  String? get classDefinition => null;
+  String? classDefinition(bool isPackage) => null;
 
   @override
   String get declaration =>
@@ -573,7 +579,7 @@ class NamedArrayType extends ComplexDartSchemaType implements HasInnertype {
   JsonType get jsonType => ArrayJsonType(imports, innerType!.jsonType);
 
   @override
-  String get classDefinition {
+  String? classDefinition(bool isPackage) {
     final decode = StringBuffer();
     decode.writeln('  $className.fromJson(${imports.core.ref()}List json)');
     decode.writeln('      : _inner = json.map((value) => '
@@ -667,7 +673,7 @@ class UnnamedMapType extends ComplexDartSchemaType {
       MapJsonType(imports, fromType!.jsonType, toType!.jsonType);
 
   @override
-  String? get classDefinition => null;
+  String? classDefinition(bool isPackage) => null;
 
   @override
   String get declaration {
@@ -735,7 +741,7 @@ class NamedMapType extends ComplexDartSchemaType {
       MapJsonType(imports, fromType!.jsonType, toType!.jsonType);
 
   @override
-  String get classDefinition {
+  String? classDefinition(bool isPackage) {
     final core = imports.core.ref();
     final decode = StringBuffer();
     decode.writeln('  $className.fromJson(');
@@ -803,4 +809,11 @@ $encode
   @override
   String jsonDecode(String json) =>
       '$className.fromJson($json as $coreMapJsonType)';
+}
+
+extension DartSchemaTypeExtension on DartSchemaType {
+  bool get isEmpty =>
+      this is ObjectType &&
+      (this as ObjectType).superVariantType == null &&
+      (this as ObjectType).properties.isEmpty;
 }

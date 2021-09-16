@@ -43,6 +43,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4961,15 +4962,7 @@ class DriveFolder {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// A class of notifications that an application can register to receive.
 ///
@@ -6133,15 +6126,7 @@ class Name {
 }
 
 /// Request to reclaim a student submission.
-class ReclaimStudentSubmissionRequest {
-  ReclaimStudentSubmissionRequest();
-
-  ReclaimStudentSubmissionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReclaimStudentSubmissionRequest = $Empty;
 
 /// An instruction to Classroom to send notifications from the `feed` to the
 /// provided destination.
@@ -6198,15 +6183,7 @@ class Registration {
 }
 
 /// Request to return a student submission.
-class ReturnStudentSubmissionRequest {
-  ReturnStudentSubmissionRequest();
-
-  ReturnStudentSubmissionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReturnStudentSubmissionRequest = $Empty;
 
 /// Drive file that is used as material for course work.
 class SharedDriveFile {
@@ -6773,15 +6750,7 @@ class Topic {
 }
 
 /// Request to turn in a student submission.
-class TurnInStudentSubmissionRequest {
-  TurnInStudentSubmissionRequest();
-
-  TurnInStudentSubmissionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef TurnInStudentSubmissionRequest = $Empty;
 
 /// Global information for a user.
 class UserProfile {

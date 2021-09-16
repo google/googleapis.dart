@@ -11,7 +11,7 @@ import '../dart_resources.dart';
 import '../dart_schemas.dart';
 import '../generated_googleapis/discovery/v1.dart';
 import '../namer.dart';
-import '../request_headers.dart';
+import '../shared_output.dart';
 import '../utils.dart';
 import 'client_schemas.dart' as client;
 
@@ -82,7 +82,7 @@ class ClientApiLibrary extends BaseApiLibrary {
   @override
   String get librarySource {
     final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB);
+    final schemas = generateSchemas(schemaDB, false);
     final resources = generateResources(apiClass);
     sink.write(libraryHeader());
     if (resources.isNotEmpty) {

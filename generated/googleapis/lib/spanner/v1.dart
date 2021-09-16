@@ -42,6 +42,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4294,15 +4295,7 @@ class DiagnosticMessage {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Encryption configuration for a Cloud Spanner database.
 class EncryptionConfig {
@@ -6655,15 +6648,7 @@ class PartitionResponse {
 }
 
 /// Message type to initiate a Partitioned DML transaction.
-class PartitionedDml {
-  PartitionedDml();
-
-  PartitionedDml.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef PartitionedDml = $Empty;
 
 /// Node information for nodes appearing in a QueryPlan.plan_nodes.
 class PlanNode {
@@ -7254,15 +7239,7 @@ class ReadRequest {
 /// Message type to initiate a read-write transaction.
 ///
 /// Currently this transaction type has no options.
-class ReadWrite {
-  ReadWrite();
-
-  ReadWrite.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReadWrite = $Empty;
 
 class ReplicaInfo {
   /// If true, this location is designated as the default leader location where

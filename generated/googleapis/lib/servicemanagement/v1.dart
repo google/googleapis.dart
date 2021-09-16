@@ -36,6 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http_1;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2445,15 +2446,7 @@ class CustomHttpPattern {
 ///
 /// This strategy is a placeholder only used by the system generated rollout to
 /// delete a service.
-class DeleteServiceStrategy {
-  DeleteServiceStrategy();
-
-  DeleteServiceStrategy.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeleteServiceStrategy = $Empty;
 
 /// Represents a diagnostic message (error or warning)
 class Diagnostic {
@@ -2660,15 +2653,7 @@ class DocumentationRule {
 }
 
 /// Operation payload for EnableService method.
-class EnableServiceResponse {
-  EnableServiceResponse();
-
-  EnableServiceResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef EnableServiceResponse = $Empty;
 
 /// `Endpoint` describes a network address of a service that serves a set of
 /// APIs.

@@ -46,6 +46,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5006,15 +5007,8 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
 }
 
 /// Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.
-class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest {
-  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest();
-
-  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
+    = $Empty;
 
 /// Response message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.
 class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse {
@@ -5046,26 +5040,10 @@ class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRes
 }
 
 /// Request message for ArchiveCustomDimension RPC.
-class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest {
-  GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest();
-
-  GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest = $Empty;
 
 /// Request message for ArchiveCustomMetric RPC.
-class GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest {
-  GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest();
-
-  GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest = $Empty;
 
 /// Read-only resource used to summarize a principal's effective roles.
 class GoogleAnalyticsAdminV1alphaAuditUserLink {
@@ -5389,15 +5367,8 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
 }
 
 /// Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.
-class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest {
-  GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest();
-
-  GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
+    = $Empty;
 
 /// A description of a change to a single Google Analytics resource.
 class GoogleAnalyticsAdminV1alphaChangeHistoryChange {
@@ -8138,12 +8109,4 @@ class GoogleAnalyticsAdminV1alphaWebDataStream {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;

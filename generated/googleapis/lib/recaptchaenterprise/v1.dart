@@ -30,6 +30,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -537,15 +538,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
 }
 
 /// Empty response for AnnotateAssessment.
-class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse {
-  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse();
-
-  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse = $Empty;
 
 /// A recaptcha assessment resource.
 class GoogleCloudRecaptchaenterpriseV1Assessment {
@@ -939,15 +932,7 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
 }
 
 /// The migrate key request message.
-class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
-  GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest();
-
-  GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest = $Empty;
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
@@ -1258,12 +1243,4 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;

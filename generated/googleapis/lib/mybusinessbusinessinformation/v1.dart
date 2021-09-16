@@ -39,6 +39,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1539,15 +1540,7 @@ class ChainUri {
 }
 
 /// Request message for Locations.ClearLocationAssociationRequest.
-class ClearLocationAssociationRequest {
-  ClearLocationAssociationRequest();
-
-  ClearLocationAssociationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ClearLocationAssociationRequest = $Empty;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -1602,15 +1595,7 @@ class Date {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Represents a free-form service offered by the merchant.
 ///

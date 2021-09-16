@@ -48,6 +48,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4225,15 +4226,7 @@ class SasPortalDpaMoveList {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class SasPortalEmpty {
-  SasPortalEmpty();
-
-  SasPortalEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SasPortalEmpty = $Empty;
 
 /// Frequency range from `low_frequency` to `high_frequency`.
 class SasPortalFrequencyRange {
@@ -4265,15 +4258,7 @@ class SasPortalFrequencyRange {
 }
 
 /// Request for GenerateSecret.
-class SasPortalGenerateSecretRequest {
-  SasPortalGenerateSecretRequest();
-
-  SasPortalGenerateSecretRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SasPortalGenerateSecretRequest = $Empty;
 
 /// Response for GenerateSecret.
 class SasPortalGenerateSecretResponse {
@@ -5168,12 +5153,4 @@ class SasPortalValidateInstallerRequest {
 }
 
 /// Response for ValidateInstaller.
-class SasPortalValidateInstallerResponse {
-  SasPortalValidateInstallerResponse();
-
-  SasPortalValidateInstallerResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef SasPortalValidateInstallerResponse = $Empty;

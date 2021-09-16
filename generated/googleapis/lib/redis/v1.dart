@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -888,15 +889,7 @@ class ProjectsLocationsOperationsResource {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Request for Export.
 class ExportInstanceRequest {
@@ -1114,15 +1107,7 @@ class GoogleCloudRedisV1OperationMetadata {
 /// Defines specific information for a particular zone.
 ///
 /// Currently empty and reserved for future use only.
-class GoogleCloudRedisV1ZoneMetadata {
-  GoogleCloudRedisV1ZoneMetadata();
-
-  GoogleCloudRedisV1ZoneMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRedisV1ZoneMetadata = $Empty;
 
 /// Request for Import.
 class ImportInstanceRequest {

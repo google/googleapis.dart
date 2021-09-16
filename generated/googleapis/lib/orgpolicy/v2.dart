@@ -40,6 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1234,15 +1235,7 @@ class GoogleCloudOrgpolicyV2Constraint {
 /// For example a constraint `constraints/compute.disableSerialPortAccess`. If
 /// it is enforced on a VM instance, serial port connections will not be opened
 /// to that instance.
-class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint {
-  GoogleCloudOrgpolicyV2ConstraintBooleanConstraint();
-
-  GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = $Empty;
 
 /// A `Constraint` that allows or disallows a list of string values, which are
 /// configured by an Organization's policy administrator with a `Policy`.
@@ -1614,15 +1607,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

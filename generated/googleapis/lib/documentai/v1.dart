@@ -43,6 +43,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -969,15 +970,7 @@ class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata {
 }
 
 /// Response of the delete documents operation.
-class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse {
-  GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse();
-
-  GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse = $Empty;
 
 class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata {
   /// The basic metadata of the long running operation.
@@ -1003,15 +996,7 @@ class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata {
 }
 
 /// Response of the batch move documents operation.
-class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse {
-  GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse();
-
-  GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse = $Empty;
 
 /// The common metadata for long running operations.
 class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
@@ -1184,15 +1169,7 @@ class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata {
 }
 
 /// Response message for the deploy processor version method.
-class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse {
-  GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse();
-
-  GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse = $Empty;
 
 /// The long running operation metadata for disable processor method.
 class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
@@ -1221,15 +1198,7 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
 /// Response message for the disable processor method.
 ///
 /// Intentionally empty proto for adding fields in future.
-class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse {
-  GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse();
-
-  GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse = $Empty;
 
 /// The long running operation metadata for enable processor method.
 class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
@@ -1257,15 +1226,7 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
 /// Response message for the enable processor method.
 ///
 /// Intentionally empty proto for adding fields in future.
-class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse {
-  GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse();
-
-  GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse = $Empty;
 
 /// Metadata of the EvaluateProcessorVersion method.
 class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata {
@@ -1383,15 +1344,7 @@ class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata {
 }
 
 /// Response of the import document operation.
-class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse {
-  GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse();
-
-  GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse = $Empty;
 
 /// The long running operation metadata for set default processor version
 /// method.
@@ -1419,15 +1372,8 @@ class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata {
 }
 
 /// Response message for set default processor version method.
-class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse {
-  GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse();
-
-  GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse
+    = $Empty;
 
 /// The metadata that represents a processor version being created.
 class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
@@ -1591,15 +1537,7 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata {
 }
 
 /// Response message for the undeploy processor version method.
-class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse {
-  GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse();
-
-  GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse = $Empty;
 
 class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata {
   /// The basic metadata of the long running operation.
@@ -1880,15 +1818,7 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
 }
 
 /// Response message for batch process document method.
-class GoogleCloudDocumentaiV1BatchProcessResponse {
-  GoogleCloudDocumentaiV1BatchProcessResponse();
-
-  GoogleCloudDocumentaiV1BatchProcessResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiV1BatchProcessResponse = $Empty;
 
 /// A bounding polygon for the detected image annotation.
 class GoogleCloudDocumentaiV1BoundingPoly {
@@ -9347,15 +9277,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
 }
 
 /// Response message for batch process document method.
-class GoogleCloudDocumentaiV1beta3BatchProcessResponse {
-  GoogleCloudDocumentaiV1beta3BatchProcessResponse();
-
-  GoogleCloudDocumentaiV1beta3BatchProcessResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiV1beta3BatchProcessResponse = $Empty;
 
 /// The common metadata for long running operations.
 class GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
@@ -9457,15 +9379,7 @@ class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata {
 /// Response message for the disable processor method.
 ///
 /// Intentionally empty proto for adding fields in future.
-class GoogleCloudDocumentaiV1beta3DisableProcessorResponse {
-  GoogleCloudDocumentaiV1beta3DisableProcessorResponse();
-
-  GoogleCloudDocumentaiV1beta3DisableProcessorResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiV1beta3DisableProcessorResponse = $Empty;
 
 /// The long running operation metadata for enable processor method.
 class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata {
@@ -9493,15 +9407,7 @@ class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata {
 /// Response message for the enable processor method.
 ///
 /// Intentionally empty proto for adding fields in future.
-class GoogleCloudDocumentaiV1beta3EnableProcessorResponse {
-  GoogleCloudDocumentaiV1beta3EnableProcessorResponse();
-
-  GoogleCloudDocumentaiV1beta3EnableProcessorResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudDocumentaiV1beta3EnableProcessorResponse = $Empty;
 
 /// The status of human review on a processed document.
 class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
@@ -9876,15 +9782,7 @@ class GoogleLongrunningOperation {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

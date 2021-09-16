@@ -40,6 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2145,15 +2146,7 @@ class AndroidTest {
 
 /// Test Loops are tests that can be launched by the app itself, determining
 /// when to run by listening for an intent.
-class AndroidTestLoop {
-  AndroidTestLoop();
-
-  AndroidTestLoop.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AndroidTestLoop = $Empty;
 
 /// `Any` contains an arbitrary serialized protocol buffer message along with a
 /// URL that describes the type of the serialized message.
@@ -2277,15 +2270,7 @@ class AppStartTime {
 }
 
 /// A suggestion to use deep links for a Robo run.
-class AvailableDeepLinks {
-  AvailableDeepLinks();
-
-  AvailableDeepLinks.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef AvailableDeepLinks = $Empty;
 
 /// Encapsulates the metadata for basic sample series represented by a line
 /// chart
@@ -2481,15 +2466,7 @@ class CrashDialogError {
 }
 
 /// A warning that device ran out of memory
-class DeviceOutOfMemory {
-  DeviceOutOfMemory();
-
-  DeviceOutOfMemory.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DeviceOutOfMemory = $Empty;
 
 /// A Duration represents a signed, fixed-length span of time represented as a
 /// count of seconds and fractions of seconds at nanosecond resolution.
@@ -2903,15 +2880,7 @@ class Execution {
 }
 
 /// Failed to install the APK.
-class FailedToInstall {
-  FailedToInstall();
-
-  FailedToInstall.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef FailedToInstall = $Empty;
 
 /// Details for an outcome with a FAILURE outcome summary.
 class FailureDetail {
@@ -3454,15 +3423,7 @@ class IndividualOutcome {
 }
 
 /// A warning that Robo did not crawl potentially important parts of the app.
-class InsufficientCoverage {
-  InsufficientCoverage();
-
-  InsufficientCoverage.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef InsufficientCoverage = $Empty;
 
 /// Additional details for an iOS app crash.
 class IosAppCrashed {
@@ -3510,15 +3471,7 @@ class IosAppInfo {
 }
 
 /// A Robo test for an iOS application.
-class IosRoboTest {
-  IosRoboTest();
-
-  IosRoboTest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef IosRoboTest = $Empty;
 
 /// A iOS mobile test specification
 class IosTest {
@@ -3629,15 +3582,7 @@ class IosXcTest {
 }
 
 /// Failed to find the launcher activity of an app.
-class LauncherActivityNotFound {
-  LauncherActivityNotFound();
-
-  LauncherActivityNotFound.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef LauncherActivityNotFound = $Empty;
 
 /// Response message for EnvironmentService.ListEnvironments.
 class ListEnvironmentsResponse {
@@ -4014,26 +3959,10 @@ class ListTestCasesResponse {
 }
 
 /// A warning that there were issues in logcat collection.
-class LogcatCollectionError {
-  LogcatCollectionError();
-
-  LogcatCollectionError.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef LogcatCollectionError = $Empty;
 
 /// One dimension of the matrix of different runs of a step.
-class MatrixDimensionDefinition {
-  MatrixDimensionDefinition();
-
-  MatrixDimensionDefinition.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef MatrixDimensionDefinition = $Empty;
 
 class MemoryInfo {
   /// Maximum memory that can be allocated to the process in KiB
@@ -4767,15 +4696,7 @@ class PerfSampleSeries {
 }
 
 /// A notification that Robo signed in with Google.
-class PerformedGoogleLogin {
-  PerformedGoogleLogin();
-
-  PerformedGoogleLogin.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef PerformedGoogleLogin = $Empty;
 
 /// A notification that Robo performed some monkey actions.
 class PerformedMonkeyActions {
@@ -5675,15 +5596,7 @@ class StepLabelsEntry {
 }
 
 /// Lightweight summary of a step within this execution.
-class StepSummary {
-  StepSummary();
-
-  StepSummary.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef StepSummary = $Empty;
 
 /// Details for an outcome with a SUCCESS outcome summary.
 ///
@@ -6704,15 +6617,7 @@ class UIElementTooDeep {
 }
 
 /// Default unspecified warning.
-class UnspecifiedWarning {
-  UnspecifiedWarning();
-
-  UnspecifiedWarning.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef UnspecifiedWarning = $Empty;
 
 /// Additional details of an unused robodirective.
 class UnusedRoboDirective {

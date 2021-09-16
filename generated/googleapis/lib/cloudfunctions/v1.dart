@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1616,15 +1617,7 @@ class GenerateDownloadUrlResponse {
 }
 
 /// Request of `GenerateSourceUploadUrl` method.
-class GenerateUploadUrlRequest {
-  GenerateUploadUrlRequest();
-
-  GenerateUploadUrlRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GenerateUploadUrlRequest = $Empty;
 
 /// Response of `GenerateSourceUploadUrl` method.
 class GenerateUploadUrlResponse {
@@ -2182,15 +2175,7 @@ class Policy {
 /// A function execution will be retried on any failure. A failed execution will
 /// be retried up to 7 days with an exponential backoff (capped at 10 seconds).
 /// Retried execution is charged as any other execution.
-class Retry {
-  Retry();
-
-  Retry.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Retry = $Empty;
 
 /// Configuration for a secret environment variable.
 ///

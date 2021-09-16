@@ -41,6 +41,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3873,15 +3874,7 @@ class CancelBuildRequest {
 }
 
 /// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef CancelOperationRequest = $Empty;
 
 /// Metadata for `CreateGithubEnterpriseConfig` operation.
 class CreateGitHubEnterpriseConfigOperationMetadata {
@@ -4052,15 +4045,7 @@ class DeleteWorkerPoolOperationMetadata {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// A fatal problem encountered during the execution of the build.
 class FailureInfo {
@@ -5578,15 +5563,7 @@ class PushFilter {
 
 /// ReceiveTriggerWebhookResponse \[Experimental\] is the response object for
 /// the ReceiveTriggerWebhook method.
-class ReceiveTriggerWebhookResponse {
-  ReceiveTriggerWebhookResponse();
-
-  ReceiveTriggerWebhookResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef ReceiveTriggerWebhookResponse = $Empty;
 
 /// Location of the source in a Google Cloud Source Repository.
 class RepoSource {

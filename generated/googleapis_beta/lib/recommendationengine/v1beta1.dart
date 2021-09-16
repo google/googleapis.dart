@@ -46,6 +46,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1357,15 +1358,7 @@ class GoogleApiHttpBody {
 }
 
 /// Metadata for TriggerCatalogRejoin method.
-class GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata {
-  GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata();
-
-  GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata = $Empty;
 
 /// Response message for TriggerCatalogRejoin method.
 class GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse {
@@ -1416,15 +1409,7 @@ class GoogleCloudRecommendationengineV1alphaTuningMetadata {
 }
 
 /// Response associated with a tune operation.
-class GoogleCloudRecommendationengineV1alphaTuningResponse {
-  GoogleCloudRecommendationengineV1alphaTuningResponse();
-
-  GoogleCloudRecommendationengineV1alphaTuningResponse.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRecommendationengineV1alphaTuningResponse = $Empty;
 
 /// BigQuery source import data from.
 class GoogleCloudRecommendationengineV1beta1BigQuerySource {
@@ -3644,15 +3629,7 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
 }
 
 /// Metadata for RejoinUserEvents method.
-class GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata {
-  GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata();
-
-  GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata = $Empty;
 
 /// Request message for CatalogRejoin method.
 class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
@@ -4101,15 +4078,7 @@ class GoogleLongrunningOperation {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class GoogleProtobufEmpty {
-  GoogleProtobufEmpty();
-
-  GoogleProtobufEmpty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

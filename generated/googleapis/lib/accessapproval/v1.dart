@@ -36,6 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/empty.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1403,15 +1404,7 @@ class ApproveDecision {
 }
 
 /// Request to dismiss an approval request.
-class DismissApprovalRequestMessage {
-  DismissApprovalRequestMessage();
-
-  DismissApprovalRequestMessage.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef DismissApprovalRequestMessage = $Empty;
 
 /// A decision that has been made to dismiss an approval request.
 class DismissDecision {
@@ -1451,15 +1444,7 @@ class DismissDecision {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef Empty = $Empty;
 
 /// Represents the enrollment of a cloud resource into a specific service.
 class EnrolledService {
