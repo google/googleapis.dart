@@ -6,6 +6,7 @@
 
 import 'dart_api_library.dart';
 import 'dart_comments.dart';
+import 'dart_schema_type.dart';
 import 'dart_schema_types.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
