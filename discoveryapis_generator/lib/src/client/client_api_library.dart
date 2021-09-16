@@ -48,7 +48,10 @@ class ClientApiLibrary extends BaseApiLibrary {
     // Remove duplicate imports.
     final imports = <String>{};
     for (var schema in schemaDB.dartClassTypes) {
-      assert(importsMap!.containsKey(schema.className!.preferredName));
+      assert(
+        importsMap!.containsKey(schema.className!.preferredName),
+        'import map does not contain `${schema.className!.preferredName}`',
+      );
       final path = importsMap![schema.className!.preferredName!]!;
       if (path.startsWith('dart:')) {
         continue;
