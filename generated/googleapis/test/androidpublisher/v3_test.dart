@@ -3030,81 +3030,6 @@ void main() {
     });
   });
 
-  unittest.group('resource-ApplicationsPricingResource', () {
-    unittest.test('method--convertRegionPrices', () async {
-      final mock = HttpServerMock();
-      final res = api.AndroidPublisherApi(mock).applications.pricing;
-      final arg_request = buildConvertRegionPricesRequest();
-      final arg_packageName = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ConvertRegionPricesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkConvertRegionPricesRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 33),
-          unittest.equals('androidpublisher/v3/applications/'),
-        );
-        pathOffset += 33;
-        index = path.indexOf('/pricing:convertRegionPrices', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_packageName'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('/pricing:convertRegionPrices'),
-        );
-        pathOffset += 28;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildConvertRegionPricesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.convertRegionPrices(
-          arg_request, arg_packageName,
-          $fields: arg_$fields);
-      checkConvertRegionPricesResponse(
-          response as api.ConvertRegionPricesResponse);
-    });
-  });
-
   unittest.group('resource-EditsResource', () {
     unittest.test('method--commit', () async {
       final mock = HttpServerMock();
@@ -6937,6 +6862,81 @@ void main() {
           await res.uploadbundle(arg_packageName, $fields: arg_$fields);
       checkInternalAppSharingArtifact(
           response as api.InternalAppSharingArtifact);
+    });
+  });
+
+  unittest.group('resource-MonetizationResource', () {
+    unittest.test('method--convertRegionPrices', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidPublisherApi(mock).monetization;
+      final arg_request = buildConvertRegionPricesRequest();
+      final arg_packageName = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ConvertRegionPricesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkConvertRegionPricesRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 33),
+          unittest.equals('androidpublisher/v3/applications/'),
+        );
+        pathOffset += 33;
+        index = path.indexOf('/pricing:convertRegionPrices', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_packageName'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 28),
+          unittest.equals('/pricing:convertRegionPrices'),
+        );
+        pathOffset += 28;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildConvertRegionPricesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.convertRegionPrices(
+          arg_request, arg_packageName,
+          $fields: arg_$fields);
+      checkConvertRegionPricesResponse(
+          response as api.ConvertRegionPricesResponse);
     });
   });
 

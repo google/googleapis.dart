@@ -496,6 +496,7 @@ api.Cluster buildCluster() {
     o.maintenancePolicy = buildMaintenancePolicy();
     o.masterAuth = buildMasterAuth();
     o.masterAuthorizedNetworksConfig = buildMasterAuthorizedNetworksConfig();
+    o.meshCertificates = buildMeshCertificates();
     o.monitoringConfig = buildMonitoringConfig();
     o.monitoringService = 'foo';
     o.name = 'foo';
@@ -603,6 +604,7 @@ void checkCluster(api.Cluster o) {
     checkMaintenancePolicy(o.maintenancePolicy!);
     checkMasterAuth(o.masterAuth!);
     checkMasterAuthorizedNetworksConfig(o.masterAuthorizedNetworksConfig!);
+    checkMeshCertificates(o.meshCertificates!);
     checkMonitoringConfig(o.monitoringConfig!);
     unittest.expect(
       o.monitoringService!,
@@ -762,6 +764,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredMasterAuthorizedNetworksConfig =
         buildMasterAuthorizedNetworksConfig();
     o.desiredMasterVersion = 'foo';
+    o.desiredMeshCertificates = buildMeshCertificates();
     o.desiredMonitoringConfig = buildMonitoringConfig();
     o.desiredMonitoringService = 'foo';
     o.desiredNodePoolAutoscaling = buildNodePoolAutoscaling();
@@ -812,6 +815,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
       o.desiredMasterVersion!,
       unittest.equals('foo'),
     );
+    checkMeshCertificates(o.desiredMeshCertificates!);
     checkMonitoringConfig(o.desiredMonitoringConfig!);
     unittest.expect(
       o.desiredMonitoringService!,
@@ -1999,6 +2003,21 @@ void checkMaxPodsConstraint(api.MaxPodsConstraint o) {
     );
   }
   buildCounterMaxPodsConstraint--;
+}
+
+core.int buildCounterMeshCertificates = 0;
+api.MeshCertificates buildMeshCertificates() {
+  final o = api.MeshCertificates();
+  buildCounterMeshCertificates++;
+  if (buildCounterMeshCertificates < 3) {}
+  buildCounterMeshCertificates--;
+  return o;
+}
+
+void checkMeshCertificates(api.MeshCertificates o) {
+  buildCounterMeshCertificates++;
+  if (buildCounterMeshCertificates < 3) {}
+  buildCounterMeshCertificates--;
 }
 
 core.int buildCounterMetric = 0;
@@ -4934,6 +4953,16 @@ void main() {
       final od = api.MaxPodsConstraint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMaxPodsConstraint(od);
+    });
+  });
+
+  unittest.group('obj-schema-MeshCertificates', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMeshCertificates();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MeshCertificates.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMeshCertificates(od);
     });
   });
 

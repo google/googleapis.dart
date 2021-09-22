@@ -40,7 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1138,11 +1138,11 @@ class ProjectsPoliciesResource {
 /// For example, you could enforce a constraint that controls which cloud
 /// services can be activated across an organization, or whether a Compute
 /// Engine instance can have serial port connections established. `Constraints`
-/// can be configured by the organization's policy adminstrator to fit the needs
-/// of the organzation by setting a `policy` that includes `constraints` at
-/// different locations in the organization's resource hierarchy. Policies are
-/// inherited down the resource hierarchy from higher levels, but can also be
-/// overridden. For details about the inheritance rules please read about
+/// can be configured by the organization's policy administrator to fit the
+/// needs of the organization by setting a `policy` that includes `constraints`
+/// at different locations in the organization's resource hierarchy. Policies
+/// are inherited down the resource hierarchy from higher levels, but can also
+/// be overridden. For details about the inheritance rules please read about
 /// `policies`. `Constraints` have a default behavior determined by the
 /// `constraint_default` field, which is the enforcement behavior that is used
 /// in the absence of a `policy` being defined or inherited for the resource in
@@ -1621,58 +1621,4 @@ typedef GoogleProtobufEmpty = $Empty;
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class GoogleTypeExpr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  GoogleTypeExpr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  GoogleTypeExpr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef GoogleTypeExpr = $Expr;

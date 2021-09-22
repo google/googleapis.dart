@@ -34,12 +34,12 @@
 library adsense.v2;
 
 import 'dart:async' as async;
-import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1906,42 +1906,7 @@ class CustomChannel {
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class Date {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  Date({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  Date.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef Date = $Date;
 
 /// The header information of the columns requested in the report.
 class Header {
@@ -2009,53 +1974,7 @@ class Header {
 /// (stream google.api.HttpBody); } Use of this type only changes how the
 /// request and response bodies are handled, all other features will continue to
 /// work unchanged.
-class HttpBody {
-  /// The HTTP Content-Type header value specifying the content type of the
-  /// body.
-  core.String? contentType;
-
-  /// The HTTP request/response body as raw binary.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Application specific response metadata.
-  ///
-  /// Must be set in the first response for streaming APIs.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? extensions;
-
-  HttpBody({
-    this.contentType,
-    this.data,
-    this.extensions,
-  });
-
-  HttpBody.fromJson(core.Map _json)
-      : this(
-          contentType: _json.containsKey('contentType')
-              ? _json['contentType'] as core.String
-              : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          extensions: _json.containsKey('extensions')
-              ? (_json['extensions'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentType != null) 'contentType': contentType!,
-        if (data != null) 'data': data!,
-        if (extensions != null) 'extensions': extensions!,
-      };
-}
+typedef HttpBody = $HttpBody;
 
 /// Response definition for the account list rpc.
 class ListAccountsResponse {
@@ -2735,33 +2654,7 @@ class Site {
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
-class TimeZone {
-  /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  core.String? id;
-
-  /// IANA Time Zone Database version number, e.g. "2019a".
-  ///
-  /// Optional.
-  core.String? version;
-
-  TimeZone({
-    this.id,
-    this.version,
-  });
-
-  TimeZone.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef TimeZone = $TimeZone;
 
 /// Representation of a URL channel.
 ///

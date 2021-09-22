@@ -59,6 +59,7 @@ api.AccessSettings buildAccessSettings() {
     o.gcipSettings = buildGcipSettings();
     o.oauthSettings = buildOAuthSettings();
     o.policyDelegationSettings = buildPolicyDelegationSettings();
+    o.reauthSettings = buildReauthSettings();
   }
   buildCounterAccessSettings--;
   return o;
@@ -71,6 +72,7 @@ void checkAccessSettings(api.AccessSettings o) {
     checkGcipSettings(o.gcipSettings!);
     checkOAuthSettings(o.oauthSettings!);
     checkPolicyDelegationSettings(o.policyDelegationSettings!);
+    checkReauthSettings(o.reauthSettings!);
   }
   buildCounterAccessSettings--;
 }
@@ -603,6 +605,38 @@ void checkPolicyName(api.PolicyName o) {
   buildCounterPolicyName--;
 }
 
+core.int buildCounterReauthSettings = 0;
+api.ReauthSettings buildReauthSettings() {
+  final o = api.ReauthSettings();
+  buildCounterReauthSettings++;
+  if (buildCounterReauthSettings < 3) {
+    o.maxAge = 'foo';
+    o.method = 'foo';
+    o.policyType = 'foo';
+  }
+  buildCounterReauthSettings--;
+  return o;
+}
+
+void checkReauthSettings(api.ReauthSettings o) {
+  buildCounterReauthSettings++;
+  if (buildCounterReauthSettings < 3) {
+    unittest.expect(
+      o.maxAge!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.method!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.policyType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterReauthSettings--;
+}
+
 core.int buildCounterResetIdentityAwareProxyClientSecretRequest = 0;
 api.ResetIdentityAwareProxyClientSecretRequest
     buildResetIdentityAwareProxyClientSecretRequest() {
@@ -960,6 +994,16 @@ void main() {
       final od =
           api.PolicyName.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicyName(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReauthSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReauthSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReauthSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReauthSettings(od);
     });
   });
 

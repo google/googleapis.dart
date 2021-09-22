@@ -53,7 +53,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -17610,123 +17610,12 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
 ///
 /// The part can be an entity or purely a part of the message between two
 /// entities or message start/end.
-class GoogleCloudDialogflowV2AnnotatedMessagePart {
-  /// The
-  /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
-  /// of this message part.
-  ///
-  /// If this is empty, Dialogflow could not annotate the phrase part with a
-  /// system entity.
-  core.String? entityType;
-
-  /// The
-  /// [Dialogflow system entity formatted value ](https://cloud.google.com/dialogflow/docs/reference/system-entities)
-  /// of this message part.
-  ///
-  /// For example for a system entity of type `@sys.unit-currency`, this may
-  /// contain: { "amount": 5, "currency": "USD" }
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? formattedValue;
-
-  /// A part of a message possibly annotated with an entity.
-  core.String? text;
-
-  GoogleCloudDialogflowV2AnnotatedMessagePart({
-    this.entityType,
-    this.formattedValue,
-    this.text,
-  });
-
-  GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(core.Map _json)
-      : this(
-          entityType: _json.containsKey('entityType')
-              ? _json['entityType'] as core.String
-              : null,
-          formattedValue: _json.containsKey('formattedValue')
-              ? _json['formattedValue']
-              : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (entityType != null) 'entityType': entityType!,
-        if (formattedValue != null) 'formattedValue': formattedValue!,
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleCloudDialogflowV2AnnotatedMessagePart
+    = $GoogleCloudDialogflowV2AnnotatedMessagePart;
 
 /// Represents article answer.
-class GoogleCloudDialogflowV2ArticleAnswer {
-  /// The name of answer record, in the format of
-  /// "projects//locations//answerRecords/"
-  core.String? answerRecord;
-
-  /// Article match confidence.
-  ///
-  /// The system's confidence score that this article is a good match for this
-  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
-  /// (completely certain).
-  core.double? confidence;
-
-  /// A map that contains metadata about the answer and the document from which
-  /// it originates.
-  core.Map<core.String, core.String>? metadata;
-
-  /// Article snippets.
-  core.List<core.String>? snippets;
-
-  /// The article title.
-  core.String? title;
-
-  /// The article URI.
-  core.String? uri;
-
-  GoogleCloudDialogflowV2ArticleAnswer({
-    this.answerRecord,
-    this.confidence,
-    this.metadata,
-    this.snippets,
-    this.title,
-    this.uri,
-  });
-
-  GoogleCloudDialogflowV2ArticleAnswer.fromJson(core.Map _json)
-      : this(
-          answerRecord: _json.containsKey('answerRecord')
-              ? _json['answerRecord'] as core.String
-              : null,
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          snippets: _json.containsKey('snippets')
-              ? (_json['snippets'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (answerRecord != null) 'answerRecord': answerRecord!,
-        if (confidence != null) 'confidence': confidence!,
-        if (metadata != null) 'metadata': metadata!,
-        if (snippets != null) 'snippets': snippets!,
-        if (title != null) 'title': title!,
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef GoogleCloudDialogflowV2ArticleAnswer
+    = $GoogleCloudDialogflowV2ArticleAnswer;
 
 /// The response message for EntityTypes.BatchUpdateEntityTypes.
 class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
@@ -17789,72 +17678,7 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
 /// configured with input contexts that correspond to the currently active
 /// contexts. For more information about context, see the
 /// [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
-class GoogleCloudDialogflowV2Context {
-  /// The number of conversational query requests after which the context
-  /// expires.
-  ///
-  /// The default is `0`. If set to `0`, the context expires immediately.
-  /// Contexts expire automatically after 20 minutes if there are no matching
-  /// queries.
-  ///
-  /// Optional.
-  core.int? lifespanCount;
-
-  /// The unique identifier of the context.
-  ///
-  /// Format: `projects//agent/sessions//contexts/`, or
-  /// `projects//agent/environments//users//sessions//contexts/`. The `Context
-  /// ID` is always converted to lowercase, may only contain characters in
-  /// a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not
-  /// specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user. The following context names are
-  /// reserved for internal use by Dialogflow. You should not use these contexts
-  /// or create contexts with these names: * `__system_counters__` *
-  /// `*_id_dialog_context` * `*_dialog_params_size`
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The collection of parameters associated with this context.
-  ///
-  /// Depending on your protocol or client library language, this is a map,
-  /// associative array, symbol table, dictionary, or JSON object composed of a
-  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
-  /// value: parameter name - MapValue type: - If parameter's entity type is a
-  /// composite entity: map - Else: depending on parameter value type, could be
-  /// one of string, number, boolean, null, list or map - MapValue value: - If
-  /// parameter's entity type is a composite entity: map from composite entity
-  /// property names to property values - Else: parameter value
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? parameters;
-
-  GoogleCloudDialogflowV2Context({
-    this.lifespanCount,
-    this.name,
-    this.parameters,
-  });
-
-  GoogleCloudDialogflowV2Context.fromJson(core.Map _json)
-      : this(
-          lifespanCount: _json.containsKey('lifespanCount')
-              ? _json['lifespanCount'] as core.int
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parameters: _json.containsKey('parameters')
-              ? _json['parameters'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lifespanCount != null) 'lifespanCount': lifespanCount!,
-        if (name != null) 'name': name!,
-        if (parameters != null) 'parameters': parameters!,
-      };
-}
+typedef GoogleCloudDialogflowV2Context = $GoogleCloudDialogflowV2Context;
 
 /// Represents a notification sent to Pub/Sub subscribers for conversation
 /// lifecycle events.
@@ -19160,35 +18984,8 @@ class GoogleCloudDialogflowV2IntentMessageCard {
 }
 
 /// Contains information about a button.
-class GoogleCloudDialogflowV2IntentMessageCardButton {
-  /// The text to send back to the Dialogflow API or a URI to open.
-  ///
-  /// Optional.
-  core.String? postback;
-
-  /// The text to show on the button.
-  ///
-  /// Optional.
-  core.String? text;
-
-  GoogleCloudDialogflowV2IntentMessageCardButton({
-    this.postback,
-    this.text,
-  });
-
-  GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(core.Map _json)
-      : this(
-          postback: _json.containsKey('postback')
-              ? _json['postback'] as core.String
-              : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (postback != null) 'postback': postback!,
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleCloudDialogflowV2IntentMessageCardButton
+    = $GoogleCloudDialogflowV2IntentMessageCardButton;
 
 /// The card for presenting a carousel of options to select from.
 class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
@@ -19314,38 +19111,8 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
 }
 
 /// The image response message.
-class GoogleCloudDialogflowV2IntentMessageImage {
-  /// A text description of the image to be used for accessibility, e.g., screen
-  /// readers.
-  ///
-  /// Optional.
-  core.String? accessibilityText;
-
-  /// The public URI to an image file.
-  ///
-  /// Optional.
-  core.String? imageUri;
-
-  GoogleCloudDialogflowV2IntentMessageImage({
-    this.accessibilityText,
-    this.imageUri,
-  });
-
-  GoogleCloudDialogflowV2IntentMessageImage.fromJson(core.Map _json)
-      : this(
-          accessibilityText: _json.containsKey('accessibilityText')
-              ? _json['accessibilityText'] as core.String
-              : null,
-          imageUri: _json.containsKey('imageUri')
-              ? _json['imageUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accessibilityText != null) 'accessibilityText': accessibilityText!,
-        if (imageUri != null) 'imageUri': imageUri!,
-      };
-}
+typedef GoogleCloudDialogflowV2IntentMessageImage
+    = $GoogleCloudDialogflowV2IntentMessageImage;
 
 /// The suggestion chip message that allows the user to jump out to the app or
 /// website associated with this agent.
@@ -20194,31 +19961,8 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
 }
 
 /// Metadata in google::longrunning::Operation for Knowledge operations.
-class GoogleCloudDialogflowV2KnowledgeOperationMetadata {
-  /// The current state of this operation.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State unspecified.
-  /// - "PENDING" : The operation has been created.
-  /// - "RUNNING" : The operation is currently running.
-  /// - "DONE" : The operation is done, either cancelled or completed.
-  core.String? state;
-
-  GoogleCloudDialogflowV2KnowledgeOperationMetadata({
-    this.state,
-  });
-
-  GoogleCloudDialogflowV2KnowledgeOperationMetadata.fromJson(core.Map _json)
-      : this(
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-      };
-}
+typedef GoogleCloudDialogflowV2KnowledgeOperationMetadata
+    = $GoogleCloudDialogflowV2KnowledgeOperationMetadata;
 
 /// Represents a message posted into a conversation.
 class GoogleCloudDialogflowV2Message {
@@ -21120,119 +20864,12 @@ class GoogleCloudDialogflowV2WebhookResponse {
 ///
 /// The part can be an entity or purely a part of the message between two
 /// entities or message start/end.
-class GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
-  /// The
-  /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
-  /// of this message part.
-  ///
-  /// If this is empty, Dialogflow could not annotate the phrase part with a
-  /// system entity.
-  ///
-  /// Optional.
-  core.String? entityType;
-
-  /// The
-  /// [Dialogflow system entity formatted value ](https://cloud.google.com/dialogflow/docs/reference/system-entities)
-  /// of this message part.
-  ///
-  /// For example for a system entity of type `@sys.unit-currency`, this may
-  /// contain: { "amount": 5, "currency": "USD" }
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? formattedValue;
-
-  /// A part of a message possibly annotated with an entity.
-  ///
-  /// Required.
-  core.String? text;
-
-  GoogleCloudDialogflowV2beta1AnnotatedMessagePart({
-    this.entityType,
-    this.formattedValue,
-    this.text,
-  });
-
-  GoogleCloudDialogflowV2beta1AnnotatedMessagePart.fromJson(core.Map _json)
-      : this(
-          entityType: _json.containsKey('entityType')
-              ? _json['entityType'] as core.String
-              : null,
-          formattedValue: _json.containsKey('formattedValue')
-              ? _json['formattedValue']
-              : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (entityType != null) 'entityType': entityType!,
-        if (formattedValue != null) 'formattedValue': formattedValue!,
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1AnnotatedMessagePart
+    = $GoogleCloudDialogflowV2beta1AnnotatedMessagePart;
 
 /// Represents article answer.
-class GoogleCloudDialogflowV2beta1ArticleAnswer {
-  /// The name of answer record, in the format of
-  /// "projects//locations//answerRecords/"
-  core.String? answerRecord;
-
-  /// A map that contains metadata about the answer and the document from which
-  /// it originates.
-  core.Map<core.String, core.String>? metadata;
-
-  /// Article snippets.
-  ///
-  /// Output only.
-  core.List<core.String>? snippets;
-
-  /// The article title.
-  core.String? title;
-
-  /// The article URI.
-  core.String? uri;
-
-  GoogleCloudDialogflowV2beta1ArticleAnswer({
-    this.answerRecord,
-    this.metadata,
-    this.snippets,
-    this.title,
-    this.uri,
-  });
-
-  GoogleCloudDialogflowV2beta1ArticleAnswer.fromJson(core.Map _json)
-      : this(
-          answerRecord: _json.containsKey('answerRecord')
-              ? _json['answerRecord'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          snippets: _json.containsKey('snippets')
-              ? (_json['snippets'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (answerRecord != null) 'answerRecord': answerRecord!,
-        if (metadata != null) 'metadata': metadata!,
-        if (snippets != null) 'snippets': snippets!,
-        if (title != null) 'title': title!,
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1ArticleAnswer
+    = $GoogleCloudDialogflowV2beta1ArticleAnswer;
 
 /// The response message for EntityTypes.BatchUpdateEntityTypes.
 class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
@@ -21298,74 +20935,8 @@ class GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
 /// configured with input contexts that correspond to the currently active
 /// contexts. For more information about context, see the
 /// [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
-class GoogleCloudDialogflowV2beta1Context {
-  /// The number of conversational query requests after which the context
-  /// expires.
-  ///
-  /// The default is `0`. If set to `0`, the context expires immediately.
-  /// Contexts expire automatically after 20 minutes if there are no matching
-  /// queries.
-  ///
-  /// Optional.
-  core.int? lifespanCount;
-
-  /// The unique identifier of the context.
-  ///
-  /// Supported formats: - `projects//agent/sessions//contexts/`, -
-  /// `projects//locations//agent/sessions//contexts/`, -
-  /// `projects//agent/environments//users//sessions//contexts/`, -
-  /// `projects//locations//agent/environments//users//sessions//contexts/`, The
-  /// `Context ID` is always converted to lowercase, may only contain characters
-  /// in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user. The following context names are
-  /// reserved for internal use by Dialogflow. You should not use these contexts
-  /// or create contexts with these names: * `__system_counters__` *
-  /// `*_id_dialog_context` * `*_dialog_params_size`
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The collection of parameters associated with this context.
-  ///
-  /// Depending on your protocol or client library language, this is a map,
-  /// associative array, symbol table, dictionary, or JSON object composed of a
-  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
-  /// value: parameter name - MapValue type: - If parameter's entity type is a
-  /// composite entity: map - Else: depending on parameter value type, could be
-  /// one of string, number, boolean, null, list or map - MapValue value: - If
-  /// parameter's entity type is a composite entity: map from composite entity
-  /// property names to property values - Else: parameter value
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? parameters;
-
-  GoogleCloudDialogflowV2beta1Context({
-    this.lifespanCount,
-    this.name,
-    this.parameters,
-  });
-
-  GoogleCloudDialogflowV2beta1Context.fromJson(core.Map _json)
-      : this(
-          lifespanCount: _json.containsKey('lifespanCount')
-              ? _json['lifespanCount'] as core.int
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parameters: _json.containsKey('parameters')
-              ? _json['parameters'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lifespanCount != null) 'lifespanCount': lifespanCount!,
-        if (name != null) 'name': name!,
-        if (parameters != null) 'parameters': parameters!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1Context
+    = $GoogleCloudDialogflowV2beta1Context;
 
 /// Represents a notification sent to Pub/Sub subscribers for conversation
 /// lifecycle events.
@@ -22803,35 +22374,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
 /// Contains information about a button.
 ///
 /// Optional.
-class GoogleCloudDialogflowV2beta1IntentMessageCardButton {
-  /// The text to send back to the Dialogflow API or a URI to open.
-  ///
-  /// Optional.
-  core.String? postback;
-
-  /// The text to show on the button.
-  ///
-  /// Optional.
-  core.String? text;
-
-  GoogleCloudDialogflowV2beta1IntentMessageCardButton({
-    this.postback,
-    this.text,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageCardButton.fromJson(core.Map _json)
-      : this(
-          postback: _json.containsKey('postback')
-              ? _json['postback'] as core.String
-              : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (postback != null) 'postback': postback!,
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageCardButton
+    = $GoogleCloudDialogflowV2beta1IntentMessageCardButton;
 
 /// The card for presenting a carousel of options to select from.
 class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
@@ -22960,38 +22504,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
 }
 
 /// The image response message.
-class GoogleCloudDialogflowV2beta1IntentMessageImage {
-  /// A text description of the image to be used for accessibility, e.g., screen
-  /// readers.
-  ///
-  /// Required if image_uri is set for CarouselSelect.
-  core.String? accessibilityText;
-
-  /// The public URI to an image file.
-  ///
-  /// Optional.
-  core.String? imageUri;
-
-  GoogleCloudDialogflowV2beta1IntentMessageImage({
-    this.accessibilityText,
-    this.imageUri,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(core.Map _json)
-      : this(
-          accessibilityText: _json.containsKey('accessibilityText')
-              ? _json['accessibilityText'] as core.String
-              : null,
-          imageUri: _json.containsKey('imageUri')
-              ? _json['imageUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accessibilityText != null) 'accessibilityText': accessibilityText!,
-        if (imageUri != null) 'imageUri': imageUri!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageImage
+    = $GoogleCloudDialogflowV2beta1IntentMessageImage;
 
 /// The suggestion chip message that allows the user to jump out to the app or
 /// website associated with this agent.
@@ -23341,66 +22855,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
 /// media-types are currently supported: Image Types * image/jpeg * image/jpg' *
 /// image/gif * image/png Video Types * video/h263 * video/m4v * video/mp4 *
 /// video/mpeg * video/mpeg4 * video/webm
-class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
-  /// Publicly reachable URI of the file.
-  ///
-  /// The RBM platform determines the MIME type of the file from the
-  /// content-type field in the HTTP headers when the platform fetches the file.
-  /// The content-type field must be present and accurate in the HTTP response
-  /// from the URL.
-  ///
-  /// Required.
-  core.String? fileUri;
-
-  /// Required for cards with vertical orientation.
-  ///
-  /// The height of the media within a rich card with a vertical layout. For a
-  /// standalone card with horizontal layout, height is not customizable, and
-  /// this field is ignored.
-  /// Possible string values are:
-  /// - "HEIGHT_UNSPECIFIED" : Not specified.
-  /// - "SHORT" : 112 DP.
-  /// - "MEDIUM" : 168 DP.
-  /// - "TALL" : 264 DP. Not available for rich card carousels when the card
-  /// width is set to small.
-  core.String? height;
-
-  /// Publicly reachable URI of the thumbnail.If you don't provide a thumbnail
-  /// URI, the RBM platform displays a blank placeholder thumbnail until the
-  /// user's device downloads the file.
-  ///
-  /// Depending on the user's setting, the file may not download automatically
-  /// and may require the user to tap a download button.
-  ///
-  /// Optional.
-  core.String? thumbnailUri;
-
-  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia({
-    this.fileUri,
-    this.height,
-    this.thumbnailUri,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia.fromJson(
-      core.Map _json)
-      : this(
-          fileUri: _json.containsKey('fileUri')
-              ? _json['fileUri'] as core.String
-              : null,
-          height: _json.containsKey('height')
-              ? _json['height'] as core.String
-              : null,
-          thumbnailUri: _json.containsKey('thumbnailUri')
-              ? _json['thumbnailUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fileUri != null) 'fileUri': fileUri!,
-        if (height != null) 'height': height!,
-        if (thumbnailUri != null) 'thumbnailUri': thumbnailUri!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
+    = $GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia;
 
 /// Carousel Rich Business Messaging (RBM) rich card.
 ///
@@ -23580,56 +23036,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
 
 /// Opens the user's default dialer app with the specified phone number but does
 /// not dial automatically.
-class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial {
-  /// The phone number to fill in the default dialer app.
-  ///
-  /// This field should be in [E.164](https://en.wikipedia.org/wiki/E.164)
-  /// format. An example of a correctly formatted phone number: +15556767888.
-  ///
-  /// Required.
-  core.String? phoneNumber;
-
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial({
-    this.phoneNumber,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial.fromJson(
-      core.Map _json)
-      : this(
-          phoneNumber: _json.containsKey('phoneNumber')
-              ? _json['phoneNumber'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
+    = $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial;
 
 /// Opens the user's default web browser app to the specified uri If the user
 /// has an app installed that is registered as the default handler for the URL,
 /// then this app will be opened instead, and its icon will be used in the
 /// suggested action UI.
-class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri {
-  /// The uri to open on the user device
-  ///
-  /// Required.
-  core.String? uri;
-
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri({
-    this.uri,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri.fromJson(
-      core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
+    = $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri;
 
 /// Opens the device's location chooser so the user can pick a location to send
 /// back to the agent.
@@ -23638,36 +23053,8 @@ typedef GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedA
 
 /// Rich Business Messaging (RBM) suggested reply that the user can click
 /// instead of typing in their own response.
-class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
-  /// Opaque payload that the Dialogflow receives in a user event when the user
-  /// taps the suggested reply.
-  ///
-  /// This data will be also forwarded to webhook to allow performing custom
-  /// business logic.
-  core.String? postbackData;
-
-  /// Suggested reply text.
-  core.String? text;
-
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply({
-    this.postbackData,
-    this.text,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromJson(
-      core.Map _json)
-      : this(
-          postbackData: _json.containsKey('postbackData')
-              ? _json['postbackData'] as core.String
-              : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (postbackData != null) 'postbackData': postbackData!,
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
+    = $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply;
 
 /// Rich Business Messaging (RBM) suggestion.
 ///
@@ -24056,38 +23443,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
 }
 
 /// Plays audio from a file in Telephony Gateway.
-class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
-  /// URI to a Google Cloud Storage object containing the audio to play, e.g.,
-  /// "gs://bucket/object".
-  ///
-  /// The object must contain a single channel (mono) of linear PCM audio (2
-  /// bytes / sample) at 8kHz. This object must be readable by the
-  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account where
-  /// is the number of the Telephony Gateway project (usually the same as the
-  /// Dialogflow agent project). If the Google Cloud Storage bucket is in the
-  /// Telephony Gateway project, this permission is added by default when
-  /// enabling the Dialogflow V2 API. For audio from other sources, consider
-  /// using the `TelephonySynthesizeSpeech` message with SSML.
-  ///
-  /// Required.
-  core.String? audioUri;
-
-  GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio({
-    this.audioUri,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio.fromJson(
-      core.Map _json)
-      : this(
-          audioUri: _json.containsKey('audioUri')
-              ? _json['audioUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (audioUri != null) 'audioUri': audioUri!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
+    = $GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio;
 
 /// Synthesizes speech and plays back the synthesized audio to the caller in
 /// Telephony Gateway.
@@ -24095,60 +23452,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
 /// Telephony Gateway takes the synthesizer settings from
 /// `DetectIntentResponse.output_audio_config` which can either be set at
 /// request-level or can come from the agent-level synthesizer config.
-class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
-  /// The SSML to be synthesized.
-  ///
-  /// For more information, see
-  /// [SSML](https://developers.google.com/actions/reference/ssml).
-  core.String? ssml;
-
-  /// The raw text to be synthesized.
-  core.String? text;
-
-  GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech({
-    this.ssml,
-    this.text,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech.fromJson(
-      core.Map _json)
-      : this(
-          ssml: _json.containsKey('ssml') ? _json['ssml'] as core.String : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ssml != null) 'ssml': ssml!,
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
+    = $GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech;
 
 /// Transfers the call in Telephony Gateway.
-class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
-  /// The phone number to transfer the call to in
-  /// [E.164 format](https://en.wikipedia.org/wiki/E.164).
-  ///
-  /// We currently only allow transferring to US numbers (+1xxxyyyzzzz).
-  ///
-  /// Required.
-  core.String? phoneNumber;
-
-  GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall({
-    this.phoneNumber,
-  });
-
-  GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall.fromJson(
-      core.Map _json)
-      : this(
-          phoneNumber: _json.containsKey('phoneNumber')
-              ? _json['phoneNumber'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
+    = $GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall;
 
 /// The text response message.
 class GoogleCloudDialogflowV2beta1IntentMessageText {
@@ -24444,80 +23753,8 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswers {
 }
 
 /// An answer from Knowledge Connector.
-class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
-  /// The piece of text from the `source` knowledge base document that answers
-  /// this conversational query.
-  core.String? answer;
-
-  /// The corresponding FAQ question if the answer was extracted from a FAQ
-  /// Document, empty otherwise.
-  core.String? faqQuestion;
-
-  /// The system's confidence score that this Knowledge answer is a good match
-  /// for this conversational query.
-  ///
-  /// The range is from 0.0 (completely uncertain) to 1.0 (completely certain).
-  /// Note: The confidence score is likely to vary somewhat (possibly even for
-  /// identical requests), as the underlying model is under constant
-  /// improvement. It may be deprecated in the future. We recommend using
-  /// `match_confidence_level` which should be generally more stable.
-  core.double? matchConfidence;
-
-  /// The system's confidence level that this knowledge answer is a good match
-  /// for this conversational query.
-  ///
-  /// NOTE: The confidence level for a given `` pair may change without notice,
-  /// as it depends on models that are constantly being improved. However, it
-  /// will change less frequently than the confidence score below, and should be
-  /// preferred for referencing the quality of an answer.
-  /// Possible string values are:
-  /// - "MATCH_CONFIDENCE_LEVEL_UNSPECIFIED" : Not specified.
-  /// - "LOW" : Indicates that the confidence is low.
-  /// - "MEDIUM" : Indicates our confidence is medium.
-  /// - "HIGH" : Indicates our confidence is high.
-  core.String? matchConfidenceLevel;
-
-  /// Indicates which Knowledge Document this answer was extracted from.
-  ///
-  /// Format: `projects//knowledgeBases//documents/`.
-  core.String? source;
-
-  GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer({
-    this.answer,
-    this.faqQuestion,
-    this.matchConfidence,
-    this.matchConfidenceLevel,
-    this.source,
-  });
-
-  GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer.fromJson(core.Map _json)
-      : this(
-          answer: _json.containsKey('answer')
-              ? _json['answer'] as core.String
-              : null,
-          faqQuestion: _json.containsKey('faqQuestion')
-              ? _json['faqQuestion'] as core.String
-              : null,
-          matchConfidence: _json.containsKey('matchConfidence')
-              ? (_json['matchConfidence'] as core.num).toDouble()
-              : null,
-          matchConfidenceLevel: _json.containsKey('matchConfidenceLevel')
-              ? _json['matchConfidenceLevel'] as core.String
-              : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (answer != null) 'answer': answer!,
-        if (faqQuestion != null) 'faqQuestion': faqQuestion!,
-        if (matchConfidence != null) 'matchConfidence': matchConfidence!,
-        if (matchConfidenceLevel != null)
-          'matchConfidenceLevel': matchConfidenceLevel!,
-        if (source != null) 'source': source!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
+    = $GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer;
 
 /// Metadata in google::longrunning::Operation for Knowledge operations.
 class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
@@ -25144,45 +24381,8 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
 }
 
 /// Represents a smart reply answer.
-class GoogleCloudDialogflowV2beta1SmartReplyAnswer {
-  /// The name of answer record, in the format of
-  /// "projects//locations//answerRecords/"
-  core.String? answerRecord;
-
-  /// Smart reply confidence.
-  ///
-  /// The system's confidence score that this reply is a good match for this
-  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
-  /// (completely certain).
-  core.double? confidence;
-
-  /// The content of the reply.
-  core.String? reply;
-
-  GoogleCloudDialogflowV2beta1SmartReplyAnswer({
-    this.answerRecord,
-    this.confidence,
-    this.reply,
-  });
-
-  GoogleCloudDialogflowV2beta1SmartReplyAnswer.fromJson(core.Map _json)
-      : this(
-          answerRecord: _json.containsKey('answerRecord')
-              ? _json['answerRecord'] as core.String
-              : null,
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          reply:
-              _json.containsKey('reply') ? _json['reply'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (answerRecord != null) 'answerRecord': answerRecord!,
-        if (confidence != null) 'confidence': confidence!,
-        if (reply != null) 'reply': reply!,
-      };
-}
+typedef GoogleCloudDialogflowV2beta1SmartReplyAnswer
+    = $GoogleCloudDialogflowV2beta1SmartReplyAnswer;
 
 /// The response message for Participants.SuggestArticles.
 class GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
@@ -25854,73 +25054,7 @@ class GoogleCloudLocationListLocationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-class GoogleCloudLocationLocation {
-  /// The friendly name for this location, typically a nearby city name.
-  ///
-  /// For example, "Tokyo".
-  core.String? displayName;
-
-  /// Cross-service attributes for the location.
-  ///
-  /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
-
-  /// The canonical id for this location.
-  ///
-  /// For example: `"us-east1"`.
-  core.String? locationId;
-
-  /// Service-specific metadata.
-  ///
-  /// For example the available capacity at the given location.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Resource name for the location, which may vary between implementations.
-  ///
-  /// For example: `"projects/example-project/locations/us-east1"`
-  core.String? name;
-
-  GoogleCloudLocationLocation({
-    this.displayName,
-    this.labels,
-    this.locationId,
-    this.metadata,
-    this.name,
-  });
-
-  GoogleCloudLocationLocation.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef GoogleCloudLocationLocation = $Location01;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
@@ -26046,83 +25180,11 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;
 
 /// An object that represents a latitude/longitude pair.
 ///
 /// This is expressed as a pair of doubles to represent degrees latitude and
 /// degrees longitude. Unless specified otherwise, this object must conform to
 /// the WGS84 standard. Values must be within normalized ranges.
-class GoogleTypeLatLng {
-  /// The latitude in degrees.
-  ///
-  /// It must be in the range \[-90.0, +90.0\].
-  core.double? latitude;
-
-  /// The longitude in degrees.
-  ///
-  /// It must be in the range \[-180.0, +180.0\].
-  core.double? longitude;
-
-  GoogleTypeLatLng({
-    this.latitude,
-    this.longitude,
-  });
-
-  GoogleTypeLatLng.fromJson(core.Map _json)
-      : this(
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
-              : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
-}
+typedef GoogleTypeLatLng = $LatLng;

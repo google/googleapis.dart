@@ -111,6 +111,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -7468,8 +7469,6 @@ class GlobalOperationsResource {
 
   /// Retrieves the specified Operations resource.
   ///
-  /// Gets a list of operations by making a `list()` request.
-  ///
   /// Request parameters:
   ///
   /// [project] - Project ID for this request.
@@ -11188,7 +11187,11 @@ class InstanceGroupManagersResource {
   /// instances in the group are still in the process of being patched. You must
   /// separately verify the status of the individual instances with the
   /// listManagedInstances method. This method supports PATCH semantics and uses
-  /// the JSON merge patch format and processing rules.
+  /// the JSON merge patch format and processing rules. If you update your group
+  /// to specify a new template or instance configuration, it's possible that
+  /// your intended specification for each VM in the group is different from the
+  /// current state of that VM. To learn how to apply an updated configuration
+  /// to the VMs in a MIG, see Updating instances in a MIG.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12973,8 +12976,11 @@ class InstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves aggregated list of all of the instances in your project across
-  /// all regions and zones.
+  /// Retrieves an aggregated list of all of the instances in your project
+  /// across all regions and zones.
+  ///
+  /// The performance of this method degrades when a filter is specified on a
+  /// project that has a very large number of instances.
   ///
   /// Request parameters:
   ///
@@ -26740,7 +26746,11 @@ class RegionInstanceGroupManagersResource {
   /// instances in the group are still in the process of being patched. You must
   /// separately verify the status of the individual instances with the
   /// listmanagedinstances method. This method supports PATCH semantics and uses
-  /// the JSON merge patch format and processing rules.
+  /// the JSON merge patch format and processing rules. If you update your group
+  /// to specify a new template or instance configuration, it's possible that
+  /// your intended specification for each VM in the group is different from the
+  /// current state of that VM. To learn how to apply an updated configuration
+  /// to the VMs in a MIG, see Updating instances in a MIG.
   ///
   /// [request] - The metadata request object.
   ///
@@ -46504,6 +46514,7 @@ class BackendService {
   /// - "NONE" : No session affinity. Connections from the same client IP may go
   /// to any instance in the pool.
   core.String? sessionAffinity;
+  Subsetting? subsetting;
 
   /// Not supported when the backend service is referenced by a URL map that is
   /// bound to target gRPC proxy that has validateForProxyless field set to
@@ -46545,6 +46556,7 @@ class BackendService {
     this.securitySettings,
     this.selfLink,
     this.sessionAffinity,
+    this.subsetting,
     this.timeoutSec,
   });
 
@@ -46658,6 +46670,10 @@ class BackendService {
           sessionAffinity: _json.containsKey('sessionAffinity')
               ? _json['sessionAffinity'] as core.String
               : null,
+          subsetting: _json.containsKey('subsetting')
+              ? Subsetting.fromJson(
+                  _json['subsetting'] as core.Map<core.String, core.dynamic>)
+              : null,
           timeoutSec: _json.containsKey('timeoutSec')
               ? _json['timeoutSec'] as core.int
               : null,
@@ -46701,6 +46717,7 @@ class BackendService {
         if (securitySettings != null) 'securitySettings': securitySettings!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
+        if (subsetting != null) 'subsetting': subsetting!,
         if (timeoutSec != null) 'timeoutSec': timeoutSec!,
       };
 }
@@ -49375,22 +49392,35 @@ class CorsPolicy {
 
 class CustomerEncryptionKey {
   /// The name of the encryption key that is stored in Google Cloud KMS.
+  ///
+  /// For example: "kmsKeyName":
+  /// "projects/kms_project_id/locations/region/keyRings/
+  /// key_region/cryptoKeys/key
   core.String? kmsKeyName;
 
   /// The service account being used for the encryption request for the given
   /// KMS key.
   ///
-  /// If absent, the Compute Engine default service account is used.
+  /// If absent, the Compute Engine default service account is used. For
+  /// example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
   core.String? kmsKeyServiceAccount;
 
   /// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
   /// base64 to either encrypt or decrypt this resource.
+  ///
+  /// You can provide either the rawKey or the rsaEncryptedKey. For example:
+  /// "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
   core.String? rawKey;
 
   /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
   /// customer-supplied encryption key to either encrypt or decrypt this
   /// resource.
   ///
+  /// You can provide either the rawKey or the rsaEncryptedKey. For example:
+  /// "rsaEncryptedKey":
+  /// "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH
+  /// z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD
+  /// D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe=="
   /// The key must meet the following requirements before you can provide it to
   /// Compute Engine: 1. The key is wrapped using a RSA public key certificate
   /// provided by Google. 2. After being wrapped, the key must be encoded in RFC
@@ -49450,7 +49480,8 @@ class CustomerEncryptionKeyProtectedDisk {
   /// Specifies a valid partial or full URL to an existing Persistent Disk
   /// resource.
   ///
-  /// This field is only applicable for persistent disks.
+  /// This field is only applicable for persistent disks. For example: "source":
+  /// "/compute/v1/projects/project_id/zones/zone/disks/ disk_name
   core.String? source;
 
   CustomerEncryptionKeyProtectedDisk({
@@ -51395,27 +51426,8 @@ class DisksAddResourcePoliciesRequest {
       };
 }
 
-class DisksRemoveResourcePoliciesRequest {
-  /// Resource policies to be removed from this disk.
-  core.List<core.String>? resourcePolicies;
-
-  DisksRemoveResourcePoliciesRequest({
-    this.resourcePolicies,
-  });
-
-  DisksRemoveResourcePoliciesRequest.fromJson(core.Map _json)
-      : this(
-          resourcePolicies: _json.containsKey('resourcePolicies')
-              ? (_json['resourcePolicies'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
-      };
-}
+typedef DisksRemoveResourcePoliciesRequest
+    = $DisksRemoveResourcePoliciesRequest;
 
 class DisksResizeRequest {
   /// The new size of the persistent disk, which is specified in GB.
@@ -52029,61 +52041,7 @@ class ExchangedPeeringRoutesList {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// Represents an external VPN gateway.
 ///
@@ -52699,8 +52657,8 @@ class Firewall {
   ///
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression \`\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. The first character must be
-  /// a lowercase letter, and all following characters (except for the last
+  /// expression \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. The first character must be a
+  /// lowercase letter, and all following characters (except for the last
   /// character) must be a dash, lowercase letter, or digit. The last character
   /// must be a lowercase letter or digit.
   core.String? name;
@@ -62291,30 +62249,8 @@ class InstanceGroupManagerVersion {
       };
 }
 
-class InstanceGroupManagersAbandonInstancesRequest {
-  /// The URLs of one or more instances to abandon.
-  ///
-  /// This can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  InstanceGroupManagersAbandonInstancesRequest({
-    this.instances,
-  });
-
-  InstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map _json)
-      : this(
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-      };
-}
+typedef InstanceGroupManagersAbandonInstancesRequest
+    = $InstanceGroupManagersAbandonInstancesRequest;
 
 /// InstanceGroupManagers.applyUpdatesToInstances
 class InstanceGroupManagersApplyUpdatesRequest {
@@ -62424,47 +62360,8 @@ class InstanceGroupManagersCreateInstancesRequest {
       };
 }
 
-class InstanceGroupManagersDeleteInstancesRequest {
-  /// The URLs of one or more instances to delete.
-  ///
-  /// This can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  /// Specifies whether the request should proceed despite the inclusion of
-  /// instances that are not members of the group or that are already in the
-  /// process of being deleted or abandoned.
-  ///
-  /// If this field is set to `false` and such an instance is specified in the
-  /// request, the operation fails. The operation always fails if the request
-  /// contains a malformed instance URL or a reference to an instance that
-  /// exists in a zone or region other than the group's zone or region.
-  core.bool? skipInstancesOnValidationError;
-
-  InstanceGroupManagersDeleteInstancesRequest({
-    this.instances,
-    this.skipInstancesOnValidationError,
-  });
-
-  InstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json)
-      : this(
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          skipInstancesOnValidationError:
-              _json.containsKey('skipInstancesOnValidationError')
-                  ? _json['skipInstancesOnValidationError'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-        if (skipInstancesOnValidationError != null)
-          'skipInstancesOnValidationError': skipInstancesOnValidationError!,
-      };
-}
+typedef InstanceGroupManagersDeleteInstancesRequest
+    = $InstanceGroupManagersDeleteInstancesRequest;
 
 /// InstanceGroupManagers.deletePerInstanceConfigs
 class InstanceGroupManagersDeletePerInstanceConfigsReq {
@@ -65526,6 +65423,14 @@ class Interconnect {
   /// customer.
   core.int? requestedLinkCount;
 
+  /// Set to true if the resource satisfies the zone separation organization
+  /// policy constraints and false otherwise.
+  ///
+  /// Defaults to false if the field is not present.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Server-defined URL for the resource.
   ///
   /// Output only.
@@ -65570,6 +65475,7 @@ class Interconnect {
     this.peerIpAddress,
     this.provisionedLinkCount,
     this.requestedLinkCount,
+    this.satisfiesPzs,
     this.selfLink,
     this.state,
   });
@@ -65638,6 +65544,9 @@ class Interconnect {
           requestedLinkCount: _json.containsKey('requestedLinkCount')
               ? _json['requestedLinkCount'] as core.int
               : null,
+          satisfiesPzs: _json.containsKey('satisfiesPzs')
+              ? _json['satisfiesPzs'] as core.bool
+              : null,
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
@@ -65669,6 +65578,7 @@ class Interconnect {
           'provisionedLinkCount': provisionedLinkCount!,
         if (requestedLinkCount != null)
           'requestedLinkCount': requestedLinkCount!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (state != null) 'state': state!,
       };
@@ -65903,6 +65813,14 @@ class InterconnectAttachment {
   /// network & region within which the Cloud Router is configured.
   core.String? router;
 
+  /// Set to true if the resource satisfies the zone separation organization
+  /// policy constraints and false otherwise.
+  ///
+  /// Defaults to false if the field is not present.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Server-defined URL for the resource.
   ///
   /// Output only.
@@ -65989,6 +65907,7 @@ class InterconnectAttachment {
     this.privateInterconnectInfo,
     this.region,
     this.router,
+    this.satisfiesPzs,
     this.selfLink,
     this.state,
     this.type,
@@ -66069,6 +65988,9 @@ class InterconnectAttachment {
           router: _json.containsKey('router')
               ? _json['router'] as core.String
               : null,
+          satisfiesPzs: _json.containsKey('satisfiesPzs')
+              ? _json['satisfiesPzs'] as core.bool
+              : null,
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
@@ -66110,6 +66032,7 @@ class InterconnectAttachment {
           'privateInterconnectInfo': privateInterconnectInfo!,
         if (region != null) 'region': region!,
         if (router != null) 'router': router!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
@@ -67425,6 +67348,13 @@ class InterconnectLocation {
   /// Interconnects.
   core.String? status;
 
+  /// Set to true for locations that support physical zone separation.
+  ///
+  /// Defaults to false if the field is not present.
+  ///
+  /// Output only.
+  core.bool? supportsPzs;
+
   InterconnectLocation({
     this.address,
     this.availabilityZone,
@@ -67441,6 +67371,7 @@ class InterconnectLocation {
     this.regionInfos,
     this.selfLink,
     this.status,
+    this.supportsPzs,
   });
 
   InterconnectLocation.fromJson(core.Map _json)
@@ -67486,6 +67417,9 @@ class InterconnectLocation {
           status: _json.containsKey('status')
               ? _json['status'] as core.String
               : null,
+          supportsPzs: _json.containsKey('supportsPzs')
+              ? _json['supportsPzs'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -67506,6 +67440,7 @@ class InterconnectLocation {
         if (regionInfos != null) 'regionInfos': regionInfos!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
+        if (supportsPzs != null) 'supportsPzs': supportsPzs!,
       };
 }
 
@@ -85098,6 +85033,11 @@ class RouteWarnings {
 /// destination. This destination can be inside or outside the VPC network. For
 /// more information, read the Routes overview.
 class Route {
+  /// AS path.
+  ///
+  /// Output only.
+  core.List<RouteAsPath>? asPaths;
+
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
@@ -85188,6 +85128,20 @@ class Route {
   /// `65535`, inclusive.
   core.int? priority;
 
+  /// The type of this route, which can be one of the following values: -
+  /// 'TRANSIT' for a transit route that this router learned from another Cloud
+  /// Router and will readvertise to one of its BGP peers - 'SUBNET' for a route
+  /// from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of
+  /// this router - 'STATIC' for a static route
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BGP"
+  /// - "STATIC"
+  /// - "SUBNET"
+  /// - "TRANSIT"
+  core.String? routeType;
+
   /// Server-defined fully-qualified URL for this resource.
   ///
   /// Output only.
@@ -85203,6 +85157,7 @@ class Route {
   core.List<RouteWarnings>? warnings;
 
   Route({
+    this.asPaths,
     this.creationTimestamp,
     this.description,
     this.destRange,
@@ -85218,6 +85173,7 @@ class Route {
     this.nextHopPeering,
     this.nextHopVpnTunnel,
     this.priority,
+    this.routeType,
     this.selfLink,
     this.tags,
     this.warnings,
@@ -85225,6 +85181,12 @@ class Route {
 
   Route.fromJson(core.Map _json)
       : this(
+          asPaths: _json.containsKey('asPaths')
+              ? (_json['asPaths'] as core.List)
+                  .map((value) => RouteAsPath.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           creationTimestamp: _json.containsKey('creationTimestamp')
               ? _json['creationTimestamp'] as core.String
               : null,
@@ -85264,6 +85226,9 @@ class Route {
           priority: _json.containsKey('priority')
               ? _json['priority'] as core.int
               : null,
+          routeType: _json.containsKey('routeType')
+              ? _json['routeType'] as core.String
+              : null,
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
@@ -85281,6 +85246,7 @@ class Route {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (asPaths != null) 'asPaths': asPaths!,
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (description != null) 'description': description!,
         if (destRange != null) 'destRange': destRange!,
@@ -85296,9 +85262,55 @@ class Route {
         if (nextHopPeering != null) 'nextHopPeering': nextHopPeering!,
         if (nextHopVpnTunnel != null) 'nextHopVpnTunnel': nextHopVpnTunnel!,
         if (priority != null) 'priority': priority!,
+        if (routeType != null) 'routeType': routeType!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (tags != null) 'tags': tags!,
         if (warnings != null) 'warnings': warnings!,
+      };
+}
+
+class RouteAsPath {
+  /// The AS numbers of the AS Path.
+  ///
+  /// Output only.
+  core.List<core.int>? asLists;
+
+  /// The type of the AS Path, which can be one of the following values: -
+  /// 'AS_SET': unordered set of autonomous systems that the route in has
+  /// traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the
+  /// route has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member
+  /// Autonomous Systems in the local confederation that the route has traversed
+  /// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local
+  /// confederation that the route has traversed
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AS_CONFED_SEQUENCE"
+  /// - "AS_CONFED_SET"
+  /// - "AS_SEQUENCE"
+  /// - "AS_SET"
+  core.String? pathSegmentType;
+
+  RouteAsPath({
+    this.asLists,
+    this.pathSegmentType,
+  });
+
+  RouteAsPath.fromJson(core.Map _json)
+      : this(
+          asLists: _json.containsKey('asLists')
+              ? (_json['asLists'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+          pathSegmentType: _json.containsKey('pathSegmentType')
+              ? _json['pathSegmentType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (asLists != null) 'asLists': asLists!,
+        if (pathSegmentType != null) 'pathSegmentType': pathSegmentType!,
       };
 }
 
@@ -86667,6 +86679,9 @@ class RouterNat {
   /// the project.
   core.List<core.String>? natIps;
 
+  /// A list of rules associated with this NAT.
+  core.List<RouterNatRule>? rules;
+
   /// Specify the Nat option, which can take one of the following values: -
   /// ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork
   /// are allowed to Nat.
@@ -86699,6 +86714,11 @@ class RouterNat {
   /// Defaults to 1200s if not set.
   core.int? tcpEstablishedIdleTimeoutSec;
 
+  /// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+  ///
+  /// Defaults to 120s if not set.
+  core.int? tcpTimeWaitTimeoutSec;
+
   /// Timeout (in seconds) for TCP transitory connections.
   ///
   /// Defaults to 30s if not set.
@@ -86718,9 +86738,11 @@ class RouterNat {
     this.name,
     this.natIpAllocateOption,
     this.natIps,
+    this.rules,
     this.sourceSubnetworkIpRangesToNat,
     this.subnetworks,
     this.tcpEstablishedIdleTimeoutSec,
+    this.tcpTimeWaitTimeoutSec,
     this.tcpTransitoryIdleTimeoutSec,
     this.udpIdleTimeoutSec,
   });
@@ -86755,6 +86777,12 @@ class RouterNat {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          rules: _json.containsKey('rules')
+              ? (_json['rules'] as core.List)
+                  .map((value) => RouterNatRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           sourceSubnetworkIpRangesToNat:
               _json.containsKey('sourceSubnetworkIpRangesToNat')
                   ? _json['sourceSubnetworkIpRangesToNat'] as core.String
@@ -86769,6 +86797,9 @@ class RouterNat {
               _json.containsKey('tcpEstablishedIdleTimeoutSec')
                   ? _json['tcpEstablishedIdleTimeoutSec'] as core.int
                   : null,
+          tcpTimeWaitTimeoutSec: _json.containsKey('tcpTimeWaitTimeoutSec')
+              ? _json['tcpTimeWaitTimeoutSec'] as core.int
+              : null,
           tcpTransitoryIdleTimeoutSec:
               _json.containsKey('tcpTransitoryIdleTimeoutSec')
                   ? _json['tcpTransitoryIdleTimeoutSec'] as core.int
@@ -86790,11 +86821,14 @@ class RouterNat {
         if (natIpAllocateOption != null)
           'natIpAllocateOption': natIpAllocateOption!,
         if (natIps != null) 'natIps': natIps!,
+        if (rules != null) 'rules': rules!,
         if (sourceSubnetworkIpRangesToNat != null)
           'sourceSubnetworkIpRangesToNat': sourceSubnetworkIpRangesToNat!,
         if (subnetworks != null) 'subnetworks': subnetworks!,
         if (tcpEstablishedIdleTimeoutSec != null)
           'tcpEstablishedIdleTimeoutSec': tcpEstablishedIdleTimeoutSec!,
+        if (tcpTimeWaitTimeoutSec != null)
+          'tcpTimeWaitTimeoutSec': tcpTimeWaitTimeoutSec!,
         if (tcpTransitoryIdleTimeoutSec != null)
           'tcpTransitoryIdleTimeoutSec': tcpTransitoryIdleTimeoutSec!,
         if (udpIdleTimeoutSec != null) 'udpIdleTimeoutSec': udpIdleTimeoutSec!,
@@ -86838,6 +86872,101 @@ class RouterNatLogConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enable != null) 'enable': enable!,
         if (filter != null) 'filter': filter!,
+      };
+}
+
+class RouterNatRule {
+  /// The action to be enforced for traffic that matches this rule.
+  RouterNatRuleAction? action;
+
+  /// An optional description of this rule.
+  core.String? description;
+
+  /// CEL expression that specifies the match condition that egress traffic from
+  /// a VM is evaluated against.
+  ///
+  /// If it evaluates to true, the corresponding `action` is enforced. The
+  /// following examples are valid match expressions for public NAT:
+  /// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip,
+  /// '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip ==
+  /// '8.8.8.8'" The following example is a valid match expression for private
+  /// NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+  core.String? match;
+
+  /// An integer uniquely identifying a rule in the list.
+  ///
+  /// The rule number must be a positive value between 0 and 65000, and must be
+  /// unique among rules within a NAT.
+  core.int? ruleNumber;
+
+  RouterNatRule({
+    this.action,
+    this.description,
+    this.match,
+    this.ruleNumber,
+  });
+
+  RouterNatRule.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? RouterNatRuleAction.fromJson(
+                  _json['action'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          match:
+              _json.containsKey('match') ? _json['match'] as core.String : null,
+          ruleNumber: _json.containsKey('ruleNumber')
+              ? _json['ruleNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (description != null) 'description': description!,
+        if (match != null) 'match': match!,
+        if (ruleNumber != null) 'ruleNumber': ruleNumber!,
+      };
+}
+
+class RouterNatRuleAction {
+  /// A list of URLs of the IP resources used for this NAT rule.
+  ///
+  /// These IP addresses must be valid static external IP addresses assigned to
+  /// the project. This field is used for public NAT.
+  core.List<core.String>? sourceNatActiveIps;
+
+  /// A list of URLs of the IP resources to be drained.
+  ///
+  /// These IPs must be valid static external IPs that have been assigned to the
+  /// NAT. These IPs should be used for updating/patching a NAT rule only. This
+  /// field is used for public NAT.
+  core.List<core.String>? sourceNatDrainIps;
+
+  RouterNatRuleAction({
+    this.sourceNatActiveIps,
+    this.sourceNatDrainIps,
+  });
+
+  RouterNatRuleAction.fromJson(core.Map _json)
+      : this(
+          sourceNatActiveIps: _json.containsKey('sourceNatActiveIps')
+              ? (_json['sourceNatActiveIps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          sourceNatDrainIps: _json.containsKey('sourceNatDrainIps')
+              ? (_json['sourceNatDrainIps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceNatActiveIps != null)
+          'sourceNatActiveIps': sourceNatActiveIps!,
+        if (sourceNatDrainIps != null) 'sourceNatDrainIps': sourceNatDrainIps!,
       };
 }
 
@@ -87098,6 +87227,9 @@ class RouterStatusNatStatus {
   /// Number of VM endpoints (i.e., Nics) that can use NAT.
   core.int? numVmEndpointsWithNatMappings;
 
+  /// Status of rules in this NAT.
+  core.List<RouterStatusNatStatusNatRuleStatus>? ruleStatus;
+
   /// A list of fully qualified URLs of reserved IP address resources.
   core.List<core.String>? userAllocatedNatIpResources;
 
@@ -87113,6 +87245,7 @@ class RouterStatusNatStatus {
     this.minExtraNatIpsNeeded,
     this.name,
     this.numVmEndpointsWithNatMappings,
+    this.ruleStatus,
     this.userAllocatedNatIpResources,
     this.userAllocatedNatIps,
   });
@@ -87144,6 +87277,12 @@ class RouterStatusNatStatus {
               _json.containsKey('numVmEndpointsWithNatMappings')
                   ? _json['numVmEndpointsWithNatMappings'] as core.int
                   : null,
+          ruleStatus: _json.containsKey('ruleStatus')
+              ? (_json['ruleStatus'] as core.List)
+                  .map((value) => RouterStatusNatStatusNatRuleStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           userAllocatedNatIpResources:
               _json.containsKey('userAllocatedNatIpResources')
                   ? (_json['userAllocatedNatIpResources'] as core.List)
@@ -87169,10 +87308,78 @@ class RouterStatusNatStatus {
         if (name != null) 'name': name!,
         if (numVmEndpointsWithNatMappings != null)
           'numVmEndpointsWithNatMappings': numVmEndpointsWithNatMappings!,
+        if (ruleStatus != null) 'ruleStatus': ruleStatus!,
         if (userAllocatedNatIpResources != null)
           'userAllocatedNatIpResources': userAllocatedNatIpResources!,
         if (userAllocatedNatIps != null)
           'userAllocatedNatIps': userAllocatedNatIps!,
+      };
+}
+
+/// Status of a NAT Rule contained in this NAT.
+class RouterStatusNatStatusNatRuleStatus {
+  /// A list of active IPs for NAT.
+  ///
+  /// Example: \["1.1.1.1", "179.12.26.133"\].
+  core.List<core.String>? activeNatIps;
+
+  /// A list of IPs for NAT that are in drain mode.
+  ///
+  /// Example: \["1.1.1.1", "179.12.26.133"\].
+  core.List<core.String>? drainNatIps;
+
+  /// The number of extra IPs to allocate.
+  ///
+  /// This will be greater than 0 only if the existing IPs in this NAT Rule are
+  /// NOT enough to allow all configured VMs to use NAT.
+  core.int? minExtraIpsNeeded;
+
+  /// Number of VM endpoints (i.e., NICs) that have NAT Mappings from this NAT
+  /// Rule.
+  core.int? numVmEndpointsWithNatMappings;
+
+  /// Rule number of the rule.
+  core.int? ruleNumber;
+
+  RouterStatusNatStatusNatRuleStatus({
+    this.activeNatIps,
+    this.drainNatIps,
+    this.minExtraIpsNeeded,
+    this.numVmEndpointsWithNatMappings,
+    this.ruleNumber,
+  });
+
+  RouterStatusNatStatusNatRuleStatus.fromJson(core.Map _json)
+      : this(
+          activeNatIps: _json.containsKey('activeNatIps')
+              ? (_json['activeNatIps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          drainNatIps: _json.containsKey('drainNatIps')
+              ? (_json['drainNatIps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          minExtraIpsNeeded: _json.containsKey('minExtraIpsNeeded')
+              ? _json['minExtraIpsNeeded'] as core.int
+              : null,
+          numVmEndpointsWithNatMappings:
+              _json.containsKey('numVmEndpointsWithNatMappings')
+                  ? _json['numVmEndpointsWithNatMappings'] as core.int
+                  : null,
+          ruleNumber: _json.containsKey('ruleNumber')
+              ? _json['ruleNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeNatIps != null) 'activeNatIps': activeNatIps!,
+        if (drainNatIps != null) 'drainNatIps': drainNatIps!,
+        if (minExtraIpsNeeded != null) 'minExtraIpsNeeded': minExtraIpsNeeded!,
+        if (numVmEndpointsWithNatMappings != null)
+          'numVmEndpointsWithNatMappings': numVmEndpointsWithNatMappings!,
+        if (ruleNumber != null) 'ruleNumber': ruleNumber!,
       };
 }
 
@@ -92943,6 +93150,43 @@ class SubnetworksSetPrivateIpGoogleAccessRequest {
       };
 }
 
+/// Subsetting configuration for this BackendService.
+///
+/// Currently this is applicable only for Internal TCP/UDP load balancing,
+/// Internal HTTP(S) load balancing and Traffic Director.
+class Subsetting {
+  ///
+  /// Possible string values are:
+  /// - "CONSISTENT_HASH_SUBSETTING" : Subsetting based on consistent hashing.
+  /// For Traffic Director, the number of backends per backend group (the subset
+  /// size) is based on the `subset_size` parameter. For Internal HTTP(S) load
+  /// balancing, the number of backends per backend group (the subset size) is
+  /// dynamically adjusted in two cases: - As the number of proxy instances
+  /// participating in Internal HTTP(S) load balancing increases, the subset
+  /// size decreases. - When the total number of backends in a network exceeds
+  /// the capacity of a single proxy instance, subset sizes are reduced
+  /// automatically for each service that has backend subsetting enabled.
+  /// - "NONE" : No Subsetting. Clients may open connections and send traffic to
+  /// all backends of this backend service. This can lead to performance issues
+  /// if there is substantial imbalance in the count of clients and backends.
+  core.String? policy;
+
+  Subsetting({
+    this.policy,
+  });
+
+  Subsetting.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? _json['policy'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+      };
+}
+
 class TCPHealthCheck {
   /// The TCP port number for the health check request.
   ///
@@ -98266,52 +98510,8 @@ class TestFailure {
       };
 }
 
-class TestPermissionsRequest {
-  /// The set of permissions to check for the 'resource'.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  core.List<core.String>? permissions;
-
-  TestPermissionsRequest({
-    this.permissions,
-  });
-
-  TestPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-class TestPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestPermissionsResponse({
-    this.permissions,
-  });
-
-  TestPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestPermissionsRequest = $TestPermissionsRequest;
+typedef TestPermissionsResponse = $TestPermissionsResponse;
 
 class Uint128 {
   core.String? high;

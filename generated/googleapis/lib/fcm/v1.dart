@@ -32,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -750,58 +751,7 @@ class ApnsFcmOptions {
 /// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
 /// missingZeros; i++) { resultBuilder.push('0'); }
 /// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
-class Color {
-  /// The fraction of this color that should be applied to the pixel.
-  ///
-  /// That is, the final pixel color is defined by the equation: `pixel color =
-  /// alpha * (this color) + (1.0 - alpha) * (background color)` This means that
-  /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0
-  /// corresponds to a completely transparent color. This uses a wrapper message
-  /// rather than a simple float scalar so that it is possible to distinguish
-  /// between a default value and the value being unset. If omitted, this color
-  /// object is rendered as a solid color (as if the alpha value had been
-  /// explicitly given a value of 1.0).
-  core.double? alpha;
-
-  /// The amount of blue in the color as a value in the interval \[0, 1\].
-  core.double? blue;
-
-  /// The amount of green in the color as a value in the interval \[0, 1\].
-  core.double? green;
-
-  /// The amount of red in the color as a value in the interval \[0, 1\].
-  core.double? red;
-
-  Color({
-    this.alpha,
-    this.blue,
-    this.green,
-    this.red,
-  });
-
-  Color.fromJson(core.Map _json)
-      : this(
-          alpha: _json.containsKey('alpha')
-              ? (_json['alpha'] as core.num).toDouble()
-              : null,
-          blue: _json.containsKey('blue')
-              ? (_json['blue'] as core.num).toDouble()
-              : null,
-          green: _json.containsKey('green')
-              ? (_json['green'] as core.num).toDouble()
-              : null,
-          red: _json.containsKey('red')
-              ? (_json['red'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
-      };
-}
+typedef Color = $Color;
 
 /// Platform independent options for features provided by the FCM SDKs.
 class FcmOptions {

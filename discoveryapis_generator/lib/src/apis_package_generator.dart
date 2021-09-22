@@ -11,6 +11,7 @@ import 'dart_api_test_library.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'pubspec.dart';
 import 'shared_output.dart';
+import 'type_deduplicate.dart';
 import 'utils.dart';
 
 /// Generates a dart package with all APIs given in the constructor.
@@ -24,7 +25,8 @@ import 'utils.dart';
 ///   |- VERSION
 ///   |- lib/$API/... (for all APIs to generate)
 ///   |- test/$API/... (for all APIs to generate)
-class ApisPackageGenerator {
+class ApisPackageGenerator with DedupeMixin {
+  @override
   final List<RestDescription> descriptions;
   final String packageFolderPath;
   final Pubspec pubspec;
@@ -83,11 +85,6 @@ ${requestHeadersField(pubspec.version)}
 """,
     );
 
-    writeDartSource(
-      '$libFolderPath/$emptyObjectDartFile',
-      emptyClass,
-    );
-
     // Test utility
     writeDartSource(
       '$testFolderPath/$testSharedDartFileName',
@@ -95,55 +92,79 @@ ${requestHeadersField(pubspec.version)}
     );
 
     final results = <GenerateResult>[];
-    for (var description in descriptions) {
-      final name = description.name!.toLowerCase();
-      final version = description.version!
-          .toLowerCase()
-          .replaceAll('.', '_')
-          .replaceAll('-', '_');
 
-      final apiFolderPath = '$libFolderPath/$name';
-      final apiTestFolderPath = '$testFolderPath/$name';
+    final duplicateItems = wrapPackageDeduplicateLogic(() {
+      for (var description in descriptions) {
+        final name = description.name!.toLowerCase();
+        final version = description.version!
+            .toLowerCase()
+            .replaceAll('.', '_')
+            .replaceAll('-', '_');
 
-      final apiVersionFile = '$libFolderPath/$name/$version.dart';
-      final apiTestVersionFile = '$testFolderPath/$name/${version}_test.dart';
+        final apiFolderPath = '$libFolderPath/$name';
+        final apiTestFolderPath = '$testFolderPath/$name';
 
-      final packagePath = 'package:${pubspec.name}/$name/$version.dart';
+        final apiVersionFile = '$libFolderPath/$name/$version.dart';
+        final apiTestVersionFile = '$testFolderPath/$name/${version}_test.dart';
 
-      try {
-        // Create API itself.
-        Directory(apiFolderPath).createSync();
-        final apiLibrary = _generateApiLibrary(apiVersionFile, description);
+        final packagePath = 'package:${pubspec.name}/$name/$version.dart';
 
-        // Create Test for API.
-        Directory(apiTestFolderPath).createSync();
-        _generateApiTestLibrary(apiTestVersionFile, packagePath, apiLibrary);
+        try {
+          // Create API itself.
+          Directory(apiFolderPath).createSync();
+          final apiLibrary = _generateApiLibrary(apiVersionFile, description);
 
-        final result = GenerateResult(name, version, packagePath);
-        results.add(result);
-      } catch (error, stack) {
-        var errorMessage = '';
-        if (error is GeneratorError) {
-          errorMessage = '$error';
-        } else {
-          errorMessage = '$error\nstack: $stack';
+          // Create Test for API.
+          Directory(apiTestFolderPath).createSync();
+          _generateApiTestLibrary(apiTestVersionFile, packagePath, apiLibrary);
+
+          results.add(GenerateResult(name, version, packagePath));
+        } catch (error, stack) {
+          var errorMessage = '';
+          if (error is GeneratorError) {
+            errorMessage = '$error';
+          } else {
+            errorMessage = '$error\nstack: $stack';
+          }
+          results.add(
+              GenerateResult.error(name, version, packagePath, errorMessage));
         }
-        results.add(
-          GenerateResult.error(name, version, packagePath, errorMessage),
-        );
       }
+    });
+
+    if (duplicateItems.isNotEmpty) {
+      final importDirectives = [
+        if (duplicateItems.any((element) => element.usedDartConvert == true))
+          "import 'dart:convert' as convert;",
+        "import 'dart:core' as core;",
+      ];
+
+      writeDartSource(
+        '$libFolderPath/shared.dart',
+        '''
+library \$shared;
+
+${ignoreForFileComments(ignoreForFileSet)}
+
+${importDirectives.join('\n')}
+
+${duplicateItems.map((e) => e.definition).join('\n\n')}
+''',
+      );
     }
+
     return results;
   }
 
   DartApiLibrary _generateApiLibrary(
     String outputFile,
     RestDescription description,
-  ) {
-    final lib = DartApiLibrary.build(description, isPackage: true);
-    writeDartSource(outputFile, lib.librarySource);
-    return lib;
-  }
+  ) =>
+      libraryDeduplicateLogic(() {
+        final lib = DartApiLibrary.build(description, isPackage: true);
+        writeDartSource(outputFile, lib.librarySource);
+        return lib;
+      });
 
   void _generateApiTestLibrary(
       String outputFile, String packageImportPath, DartApiLibrary apiLibrary) {

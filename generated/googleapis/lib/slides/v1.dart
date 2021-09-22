@@ -31,6 +31,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4470,26 +4471,7 @@ class ReplaceAllTextRequest {
 }
 
 /// The result of replacing text.
-class ReplaceAllTextResponse {
-  /// The number of occurrences changed by replacing all text.
-  core.int? occurrencesChanged;
-
-  ReplaceAllTextResponse({
-    this.occurrencesChanged,
-  });
-
-  ReplaceAllTextResponse.fromJson(core.Map _json)
-      : this(
-          occurrencesChanged: _json.containsKey('occurrencesChanged')
-              ? _json['occurrencesChanged'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (occurrencesChanged != null)
-          'occurrencesChanged': occurrencesChanged!,
-      };
-}
+typedef ReplaceAllTextResponse = $ReplaceAllTextResponse;
 
 /// Replaces an existing image with a new image.
 ///
@@ -5160,41 +5142,7 @@ class Response {
 }
 
 /// An RGB color.
-class RgbColor {
-  /// The blue component of the color, from 0.0 to 1.0.
-  core.double? blue;
-
-  /// The green component of the color, from 0.0 to 1.0.
-  core.double? green;
-
-  /// The red component of the color, from 0.0 to 1.0.
-  core.double? red;
-
-  RgbColor({
-    this.blue,
-    this.green,
-    this.red,
-  });
-
-  RgbColor.fromJson(core.Map _json)
-      : this(
-          blue: _json.containsKey('blue')
-              ? (_json['blue'] as core.num).toDouble()
-              : null,
-          green: _json.containsKey('green')
-              ? (_json['green'] as core.num).toDouble()
-              : null,
-          red: _json.containsKey('red')
-              ? (_json['red'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
-      };
-}
+typedef RgbColor = $RgbColor;
 
 /// The shadow properties of a page element.
 ///

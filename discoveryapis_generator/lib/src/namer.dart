@@ -8,7 +8,7 @@ library discoveryapis_generator.namer;
 class Identifier {
   String? _name;
   bool _sealed = false;
-  int _callCount = 0;
+  int callCount = 0;
 
   /// The preferred name for this [Identifier].
   final String? preferredName;
@@ -41,11 +41,11 @@ class Identifier {
   /// Return the reference name with a `.` appended (e.g., `core.`). Calling
   /// this method will increment the call count; it is not idempotent.
   String ref() {
-    _callCount++;
+    callCount++;
     return name == null ? '' : '$name.';
   }
 
-  bool get wasCalled => _callCount > 0;
+  bool get wasCalled => callCount > 0;
 
   /// Gets a string representation of this [Identifier]. This can only be called
   /// after the identifier has been given a name.

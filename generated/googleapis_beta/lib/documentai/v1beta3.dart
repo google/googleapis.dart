@@ -37,7 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -10024,7 +10024,7 @@ class GoogleCloudDocumentaiV1beta3Processor {
 /// feach processor types. In the return, we will have an 'invoice parsing'
 /// processor with 'available_locations' field only containing 'US'. So the user
 /// can try to create an 'invoice parsing' processor under the location 'US'.
-/// Such attempt of creating under the location 'EU' will fail. Next ID: 8.
+/// Such attempt of creating under the location 'EU' will fail. Next ID: 9.
 class GoogleCloudDocumentaiV1beta3ProcessorType {
   /// Whether the processor type allows creation.
   ///
@@ -10039,18 +10039,54 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
   /// The processor category, used by UI to group processor types.
   core.String? category;
 
+  /// Launch stage of the processor type
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
+  core.String? launchStage;
+
   /// The resource name of the processor type.
   ///
   /// Format: projects/{project}/processorTypes/{processor_type}
   core.String? name;
 
-  /// The type of the processor, e.g, "invoice_parsing".
+  /// The type of the processor, e.g., "invoice_parsing".
   core.String? type;
 
   GoogleCloudDocumentaiV1beta3ProcessorType({
     this.allowCreation,
     this.availableLocations,
     this.category,
+    this.launchStage,
     this.name,
     this.type,
   });
@@ -10071,6 +10107,9 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
           category: _json.containsKey('category')
               ? _json['category'] as core.String
               : null,
+          launchStage: _json.containsKey('launchStage')
+              ? _json['launchStage'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
@@ -10080,6 +10119,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
         if (availableLocations != null)
           'availableLocations': availableLocations!,
         if (category != null) 'category': category!,
+        if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
       };
@@ -10658,73 +10698,7 @@ class GoogleCloudLocationListLocationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-class GoogleCloudLocationLocation {
-  /// The friendly name for this location, typically a nearby city name.
-  ///
-  /// For example, "Tokyo".
-  core.String? displayName;
-
-  /// Cross-service attributes for the location.
-  ///
-  /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
-
-  /// The canonical id for this location.
-  ///
-  /// For example: `"us-east1"`.
-  core.String? locationId;
-
-  /// Service-specific metadata.
-  ///
-  /// For example the available capacity at the given location.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Resource name for the location, which may vary between implementations.
-  ///
-  /// For example: `"projects/example-project/locations/us-east1"`
-  core.String? name;
-
-  GoogleCloudLocationLocation({
-    this.displayName,
-    this.labels,
-    this.locationId,
-    this.metadata,
-    this.name,
-  });
-
-  GoogleCloudLocationLocation.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef GoogleCloudLocationLocation = $Location;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
@@ -10850,49 +10824,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;
 
 /// Represents a color in the RGBA color space.
 ///
@@ -11005,42 +10937,7 @@ class GoogleTypeColor {
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class GoogleTypeDate {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  GoogleTypeDate({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  GoogleTypeDate.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef GoogleTypeDate = $Date;
 
 /// Represents civil time (or occasionally physical time).
 ///
@@ -11167,46 +11064,7 @@ class GoogleTypeDateTime {
 }
 
 /// Represents an amount of money with its currency type.
-class GoogleTypeMoney {
-  /// The three-letter currency code defined in ISO 4217.
-  core.String? currencyCode;
-
-  /// Number of nano (10^-9) units of the amount.
-  ///
-  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
-  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
-  /// `nanos` can be positive, zero, or negative. If `units` is negative,
-  /// `nanos` must be negative or zero. For example $-1.75 is represented as
-  /// `units`=-1 and `nanos`=-750,000,000.
-  core.int? nanos;
-
-  /// The whole units of the amount.
-  ///
-  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String? units;
-
-  GoogleTypeMoney({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
-
-  GoogleTypeMoney.fromJson(core.Map _json)
-      : this(
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          units:
-              _json.containsKey('units') ? _json['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (nanos != null) 'nanos': nanos!,
-        if (units != null) 'units': units!,
-      };
-}
+typedef GoogleTypeMoney = $Money;
 
 /// Represents a postal address, e.g. for postal delivery or payments addresses.
 ///
@@ -11219,186 +11077,7 @@ class GoogleTypeMoney {
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-class GoogleTypePostalAddress {
-  /// Unstructured address lines describing the lower levels of an address.
-  ///
-  /// Because values in address_lines do not have type information and may
-  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
-  /// it is important that the line order is clear. The order of address lines
-  /// should be "envelope order" for the country/region of the address. In
-  /// places where this can vary (e.g. Japan), address_language is used to make
-  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
-  /// for small-to-large). This way, the most specific line of an address can be
-  /// selected based on the language. The minimum permitted structural
-  /// representation of an address consists of a region_code with all remaining
-  /// information placed in the address_lines. It would be possible to format
-  /// such an address very approximately without geocoding, but no semantic
-  /// reasoning could be made about any of the address components until it was
-  /// at least partially resolved. Creating an address only containing a
-  /// region_code and address_lines, and then geocoding is the recommended way
-  /// to handle completely unstructured addresses (as opposed to guessing which
-  /// parts of the address should be localities or administrative areas).
-  core.List<core.String>? addressLines;
-
-  /// Highest administrative subdivision which is used for postal addresses of a
-  /// country or region.
-  ///
-  /// For example, this can be a state, a province, an oblast, or a prefecture.
-  /// Specifically, for Spain this is the province and not the autonomous
-  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
-  /// an administrative area in postal addresses. E.g. in Switzerland this
-  /// should be left unpopulated.
-  ///
-  /// Optional.
-  core.String? administrativeArea;
-
-  /// BCP-47 language code of the contents of this address (if known).
-  ///
-  /// This is often the UI language of the input form or is expected to match
-  /// one of the languages used in the address' country/region, or their
-  /// transliterated equivalents. This can affect formatting in certain
-  /// countries, but is not critical to the correctness of the data and will
-  /// never affect any validation or other non-formatting related operations. If
-  /// this value is not known, it should be omitted (rather than specifying a
-  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Generally refers to the city/town portion of the address.
-  ///
-  /// Examples: US city, IT comune, UK post town. In regions of the world where
-  /// localities are not well defined or do not fit into this structure well,
-  /// leave locality empty and use address_lines.
-  ///
-  /// Optional.
-  core.String? locality;
-
-  /// The name of the organization at the address.
-  ///
-  /// Optional.
-  core.String? organization;
-
-  /// Postal code of the address.
-  ///
-  /// Not all countries use or require postal codes to be present, but where
-  /// they are used, they may trigger additional validation with other parts of
-  /// the address (e.g. state/zip validation in the U.S.A.).
-  ///
-  /// Optional.
-  core.String? postalCode;
-
-  /// The recipient at the address.
-  ///
-  /// This field may, under certain circumstances, contain multiline
-  /// information. For example, it might contain "care of" information.
-  ///
-  /// Optional.
-  core.List<core.String>? recipients;
-
-  /// CLDR region code of the country/region of the address.
-  ///
-  /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See http://cldr.unicode.org/ and
-  /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
-  /// for details. Example: "CH" for Switzerland.
-  ///
-  /// Required.
-  core.String? regionCode;
-
-  /// The schema revision of the `PostalAddress`.
-  ///
-  /// This must be set to 0, which is the latest revision. All new revisions
-  /// **must** be backward compatible with old revisions.
-  core.int? revision;
-
-  /// Additional, country-specific, sorting code.
-  ///
-  /// This is not used in most regions. Where it is used, the value is either a
-  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
-  /// just a number alone, representing the "sector code" (Jamaica), "delivery
-  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-  ///
-  /// Optional.
-  core.String? sortingCode;
-
-  /// Sublocality of the address.
-  ///
-  /// For example, this can be neighborhoods, boroughs, districts.
-  ///
-  /// Optional.
-  core.String? sublocality;
-
-  GoogleTypePostalAddress({
-    this.addressLines,
-    this.administrativeArea,
-    this.languageCode,
-    this.locality,
-    this.organization,
-    this.postalCode,
-    this.recipients,
-    this.regionCode,
-    this.revision,
-    this.sortingCode,
-    this.sublocality,
-  });
-
-  GoogleTypePostalAddress.fromJson(core.Map _json)
-      : this(
-          addressLines: _json.containsKey('addressLines')
-              ? (_json['addressLines'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          administrativeArea: _json.containsKey('administrativeArea')
-              ? _json['administrativeArea'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          locality: _json.containsKey('locality')
-              ? _json['locality'] as core.String
-              : null,
-          organization: _json.containsKey('organization')
-              ? _json['organization'] as core.String
-              : null,
-          postalCode: _json.containsKey('postalCode')
-              ? _json['postalCode'] as core.String
-              : null,
-          recipients: _json.containsKey('recipients')
-              ? (_json['recipients'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.int
-              : null,
-          sortingCode: _json.containsKey('sortingCode')
-              ? _json['sortingCode'] as core.String
-              : null,
-          sublocality: _json.containsKey('sublocality')
-              ? _json['sublocality'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
-}
+typedef GoogleTypePostalAddress = $PostalAddress;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

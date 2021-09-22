@@ -21,7 +21,7 @@ class ClientObjectType extends ObjectType {
       : super(imports, name, properties, comment: comment);
 
   @override
-  String classDefinition(bool isPackage) {
+  String classDefinition() {
     var superClassString = '';
     if (superVariantType != null) {
       superClassString = ' extends ${superVariantType!.declaration} ';

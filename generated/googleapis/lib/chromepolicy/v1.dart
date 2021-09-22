@@ -36,7 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -623,7 +623,7 @@ class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest {
 
 /// Resource representing a policy schema.
 ///
-/// Next ID: 10
+/// Next ID: 11
 class GoogleChromePolicyV1PolicySchema {
   /// Specific access restrictions related to this policy.
   ///
@@ -676,6 +676,11 @@ class GoogleChromePolicyV1PolicySchema {
   /// Output only.
   core.String? supportUri;
 
+  /// Information about applicable target resources for the policy.
+  ///
+  /// Output only.
+  core.List<core.String>? validTargetResources;
+
   GoogleChromePolicyV1PolicySchema({
     this.accessRestrictions,
     this.additionalTargetKeyNames,
@@ -686,6 +691,7 @@ class GoogleChromePolicyV1PolicySchema {
     this.policyDescription,
     this.schemaName,
     this.supportUri,
+    this.validTargetResources,
   });
 
   GoogleChromePolicyV1PolicySchema.fromJson(core.Map _json)
@@ -732,6 +738,11 @@ class GoogleChromePolicyV1PolicySchema {
           supportUri: _json.containsKey('supportUri')
               ? _json['supportUri'] as core.String
               : null,
+          validTargetResources: _json.containsKey('validTargetResources')
+              ? (_json['validTargetResources'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -746,6 +757,8 @@ class GoogleChromePolicyV1PolicySchema {
         if (policyDescription != null) 'policyDescription': policyDescription!,
         if (schemaName != null) 'schemaName': schemaName!,
         if (supportUri != null) 'supportUri': supportUri!,
+        if (validTargetResources != null)
+          'validTargetResources': validTargetResources!,
       };
 }
 

@@ -37,7 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1444,63 +1444,7 @@ class AccessLevel {
 ///
 /// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
-class AccessPolicy {
-  /// An opaque identifier for the current version of the `AccessPolicy`.
-  ///
-  /// This will always be a strongly validated etag, meaning that two Access
-  /// Polices will be identical if and only if their etags are identical.
-  /// Clients should not expect this to be in any specific format.
-  ///
-  /// Output only.
-  core.String? etag;
-
-  /// Resource name of the `AccessPolicy`.
-  ///
-  /// Format: `accessPolicies/{access_policy}`
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
-  ///
-  /// Currently immutable once created. Format:
-  /// `organizations/{organization_id}`
-  ///
-  /// Required.
-  core.String? parent;
-
-  /// Human readable title.
-  ///
-  /// Does not affect behavior.
-  ///
-  /// Required.
-  core.String? title;
-
-  AccessPolicy({
-    this.etag,
-    this.name,
-    this.parent,
-    this.title,
-  });
-
-  AccessPolicy.fromJson(core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef AccessPolicy = $AccessPolicy;
 
 /// Identification for an API Operation.
 class ApiOperation {
@@ -1866,51 +1810,7 @@ class DevicePolicy {
 /// if the destination of the request is also protected by a ServicePerimeter,
 /// then that ServicePerimeter must have an IngressPolicy which allows access in
 /// order for this request to succeed.
-class EgressFrom {
-  /// A list of identities that are allowed access through this
-  /// \[EgressPolicy\].
-  ///
-  /// Should be in the format of email address. The email address should
-  /// represent individual user or service account only.
-  core.List<core.String>? identities;
-
-  /// Specifies the type of identities that are allowed access to outside the
-  /// perimeter.
-  ///
-  /// If left unspecified, then members of `identities` field will be allowed
-  /// access.
-  /// Possible string values are:
-  /// - "IDENTITY_TYPE_UNSPECIFIED" : No blanket identity group specified.
-  /// - "ANY_IDENTITY" : Authorize access from all identities outside the
-  /// perimeter.
-  /// - "ANY_USER_ACCOUNT" : Authorize access from all human users outside the
-  /// perimeter.
-  /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
-  /// outside the perimeter.
-  core.String? identityType;
-
-  EgressFrom({
-    this.identities,
-    this.identityType,
-  });
-
-  EgressFrom.fromJson(core.Map _json)
-      : this(
-          identities: _json.containsKey('identities')
-              ? (_json['identities'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          identityType: _json.containsKey('identityType')
-              ? _json['identityType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (identities != null) 'identities': identities!,
-        if (identityType != null) 'identityType': identityType!,
-      };
-}
+typedef EgressFrom = $EgressFrom;
 
 /// Policy for egress from perimeter.
 ///
@@ -2035,61 +1935,7 @@ typedef Empty = $Empty;
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// Restricts access to Cloud Console and Google Cloud APIs for a set of users
 /// using Context-Aware Access.
@@ -2263,47 +2109,7 @@ class IngressPolicy {
 }
 
 /// The source that IngressPolicy authorizes access from.
-class IngressSource {
-  /// An AccessLevel resource name that allow resources within the
-  /// ServicePerimeters to be accessed from the internet.
-  ///
-  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
-  /// Referencing a nonexistent AccessLevel will cause an error. If no
-  /// AccessLevel names are listed, resources within the perimeter can only be
-  /// accessed via Google Cloud calls with request origins within the perimeter.
-  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
-  /// is specified for `access_level`, then all IngressSources will be allowed.
-  core.String? accessLevel;
-
-  /// A Google Cloud resource that is allowed to ingress the perimeter.
-  ///
-  /// Requests from these resources will be allowed to access perimeter data.
-  /// Currently only projects are allowed. Format: `projects/{project_number}`
-  /// The project may be in any Google Cloud organization, not just the
-  /// organization that the perimeter is defined in. `*` is not allowed, the
-  /// case of allowing all Google Cloud resources only is not supported.
-  core.String? resource;
-
-  IngressSource({
-    this.accessLevel,
-    this.resource,
-  });
-
-  IngressSource.fromJson(core.Map _json)
-      : this(
-          accessLevel: _json.containsKey('accessLevel')
-              ? _json['accessLevel'] as core.String
-              : null,
-          resource: _json.containsKey('resource')
-              ? _json['resource'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!,
-        if (resource != null) 'resource': resource!,
-      };
-}
+typedef IngressSource = $IngressSource;
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
@@ -2519,38 +2325,7 @@ class ListServicePerimetersResponse {
 }
 
 /// An allowed method or permission of a service specified in ApiOperation.
-class MethodSelector {
-  /// Value for `method` should be a valid method name for the corresponding
-  /// `service_name` in ApiOperation.
-  ///
-  /// If `*` used as value for `method`, then ALL methods and permissions are
-  /// allowed.
-  core.String? method;
-
-  /// Value for `permission` should be a valid Cloud IAM permission for the
-  /// corresponding `service_name` in ApiOperation.
-  core.String? permission;
-
-  MethodSelector({
-    this.method,
-    this.permission,
-  });
-
-  MethodSelector.fromJson(core.Map _json)
-      : this(
-          method: _json.containsKey('method')
-              ? _json['method'] as core.String
-              : null,
-          permission: _json.containsKey('permission')
-              ? _json['permission'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (method != null) 'method': method!,
-        if (permission != null) 'permission': permission!,
-      };
-}
+typedef MethodSelector = $MethodSelector;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -2629,60 +2404,7 @@ class Operation {
 }
 
 /// A restriction on the OS type and version of devices making requests.
-class OsConstraint {
-  /// The minimum allowed OS version.
-  ///
-  /// If not set, any version of this OS satisfies the constraint. Format:
-  /// `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-  core.String? minimumVersion;
-
-  /// The allowed OS type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "OS_UNSPECIFIED" : The operating system of the device is not specified
-  /// or not known.
-  /// - "DESKTOP_MAC" : A desktop Mac operating system.
-  /// - "DESKTOP_WINDOWS" : A desktop Windows operating system.
-  /// - "DESKTOP_LINUX" : A desktop Linux operating system.
-  /// - "DESKTOP_CHROME_OS" : A desktop ChromeOS operating system.
-  /// - "ANDROID" : An Android operating system.
-  /// - "IOS" : An iOS operating system.
-  core.String? osType;
-
-  /// Only allows requests from devices with a verified Chrome OS.
-  ///
-  /// Verifications includes requirements that the device is enterprise-managed,
-  /// conformant to domain policies, and the caller has permission to call the
-  /// API targeted by the request.
-  core.bool? requireVerifiedChromeOs;
-
-  OsConstraint({
-    this.minimumVersion,
-    this.osType,
-    this.requireVerifiedChromeOs,
-  });
-
-  OsConstraint.fromJson(core.Map _json)
-      : this(
-          minimumVersion: _json.containsKey('minimumVersion')
-              ? _json['minimumVersion'] as core.String
-              : null,
-          osType: _json.containsKey('osType')
-              ? _json['osType'] as core.String
-              : null,
-          requireVerifiedChromeOs: _json.containsKey('requireVerifiedChromeOs')
-              ? _json['requireVerifiedChromeOs'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (minimumVersion != null) 'minimumVersion': minimumVersion!,
-        if (osType != null) 'osType': osType!,
-        if (requireVerifiedChromeOs != null)
-          'requireVerifiedChromeOs': requireVerifiedChromeOs!,
-      };
-}
+typedef OsConstraint = $OsConstraint;
 
 /// A request to replace all existing Access Levels in an Access Policy with the
 /// Access Levels provided.
@@ -3051,83 +2773,7 @@ class ServicePerimeterConfig {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
-class VpcAccessibleServices {
-  /// The list of APIs usable within the Service Perimeter.
-  ///
-  /// Must be empty unless 'enable_restriction' is True. You can specify a list
-  /// of individual services, as well as include the 'RESTRICTED-SERVICES'
-  /// value, which automatically includes all of the services protected by the
-  /// perimeter.
-  core.List<core.String>? allowedServices;
-
-  /// Whether to restrict API calls within the Service Perimeter to the list of
-  /// APIs specified in 'allowed_services'.
-  core.bool? enableRestriction;
-
-  VpcAccessibleServices({
-    this.allowedServices,
-    this.enableRestriction,
-  });
-
-  VpcAccessibleServices.fromJson(core.Map _json)
-      : this(
-          allowedServices: _json.containsKey('allowedServices')
-              ? (_json['allowedServices'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          enableRestriction: _json.containsKey('enableRestriction')
-              ? _json['enableRestriction'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedServices != null) 'allowedServices': allowedServices!,
-        if (enableRestriction != null) 'enableRestriction': enableRestriction!,
-      };
-}
+typedef VpcAccessibleServices = $VpcAccessibleServices;

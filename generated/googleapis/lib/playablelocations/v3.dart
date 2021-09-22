@@ -29,7 +29,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -924,34 +924,4 @@ class GoogleMapsUnityClientInfo {
 /// This is expressed as a pair of doubles to represent degrees latitude and
 /// degrees longitude. Unless specified otherwise, this object must conform to
 /// the WGS84 standard. Values must be within normalized ranges.
-class GoogleTypeLatLng {
-  /// The latitude in degrees.
-  ///
-  /// It must be in the range \[-90.0, +90.0\].
-  core.double? latitude;
-
-  /// The longitude in degrees.
-  ///
-  /// It must be in the range \[-180.0, +180.0\].
-  core.double? longitude;
-
-  GoogleTypeLatLng({
-    this.latitude,
-    this.longitude,
-  });
-
-  GoogleTypeLatLng.fromJson(core.Map _json)
-      : this(
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
-              : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
-}
+typedef GoogleTypeLatLng = $LatLng;

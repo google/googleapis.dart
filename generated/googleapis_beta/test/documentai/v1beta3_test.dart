@@ -7684,6 +7684,7 @@ api.GoogleCloudDocumentaiV1beta3ProcessorType
     o.allowCreation = true;
     o.availableLocations = buildUnnamed117();
     o.category = 'foo';
+    o.launchStage = 'foo';
     o.name = 'foo';
     o.type = 'foo';
   }
@@ -7699,6 +7700,10 @@ void checkGoogleCloudDocumentaiV1beta3ProcessorType(
     checkUnnamed117(o.availableLocations!);
     unittest.expect(
       o.category!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.launchStage!,
       unittest.equals('foo'),
     );
     unittest.expect(

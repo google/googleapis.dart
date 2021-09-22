@@ -2,14 +2,13 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// ignore_for_file: missing_whitespace_between_adjacent_strings
-
 import 'dart_api_library.dart';
 import 'dart_comments.dart';
 import 'dart_schema_type.dart';
 import 'dart_schema_types.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
+import 'type_deduplicate.dart';
 import 'utils.dart';
 
 /// Class for keeping all named schemas. This is used for
@@ -212,7 +211,9 @@ DartSchemaTypeDB parseSchemas(
           });
         }
         return db.register(
-            ObjectType(imports, classId, properties, comment: comment));
+          ObjectType(imports, classId, properties, comment: comment)
+            ..tagForDeduplicating(schema),
+        );
       }
     } else if (schema.type == 'array') {
       final comment = Comment.header(schema.description, true);
@@ -305,10 +306,10 @@ DartSchemaType parsePrimitive(
 }
 
 /// Generates the codegen'ed dart string for all schema classes.
-String generateSchemas(DartSchemaTypeDB db, bool isPackage) {
+String generateSchemas(DartSchemaTypeDB db) {
   final sb = StringBuffer();
   for (var value in db.dartClassTypes) {
-    final classDefinition = value.classDefinition(isPackage);
+    final classDefinition = value.classDefinition();
     if (classDefinition != null) {
       sb.writeln(classDefinition);
     }

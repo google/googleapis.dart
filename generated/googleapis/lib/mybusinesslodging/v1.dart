@@ -32,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -7653,55 +7654,7 @@ class SustainableSourcing {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-class TimeOfDay {
-  /// Hours of day in 24 hour format.
-  ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
-  core.int? hours;
-
-  /// Minutes of hour of day.
-  ///
-  /// Must be from 0 to 59.
-  core.int? minutes;
-
-  /// Fractions of seconds in nanoseconds.
-  ///
-  /// Must be from 0 to 999,999,999.
-  core.int? nanos;
-
-  /// Seconds of minutes of the time.
-  ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
-  core.int? seconds;
-
-  TimeOfDay({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
-
-  TimeOfDay.fromJson(core.Map _json)
-      : this(
-          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
-          minutes: _json.containsKey('minutes')
-              ? _json['minutes'] as core.int
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          seconds: _json.containsKey('seconds')
-              ? _json['seconds'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-      };
-}
+typedef TimeOfDay = $TimeOfDay;
 
 /// Vehicles or vehicular services facilitated or owned by the property.
 class Transportation {

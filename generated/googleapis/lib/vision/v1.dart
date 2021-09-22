@@ -48,7 +48,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2731,52 +2731,7 @@ class BatchAnnotateImagesResponse {
 ///
 /// This is included in the `metadata` field of the `Operation` returned by the
 /// `GetOperation` call of the `google::longrunning::Operations` service.
-class BatchOperationMetadata {
-  /// The time when the batch request is finished and
-  /// google.longrunning.Operation.done is set to true.
-  core.String? endTime;
-
-  /// The current state of the batch operation.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Invalid.
-  /// - "PROCESSING" : Request is actively being processed.
-  /// - "SUCCESSFUL" : The request is done and at least one item has been
-  /// successfully processed.
-  /// - "FAILED" : The request is done and no item has been successfully
-  /// processed.
-  /// - "CANCELLED" : The request is done after the
-  /// longrunning.Operations.CancelOperation has been called by the user. Any
-  /// records that were processed before the cancel command are output as
-  /// specified in the request.
-  core.String? state;
-
-  /// The time when the batch request was submitted to the server.
-  core.String? submitTime;
-
-  BatchOperationMetadata({
-    this.endTime,
-    this.state,
-    this.submitTime,
-  });
-
-  BatchOperationMetadata.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          submitTime: _json.containsKey('submitTime')
-              ? _json['submitTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (state != null) 'state': state!,
-        if (submitTime != null) 'submitTime': submitTime!,
-      };
-}
+typedef BatchOperationMetadata = $BatchOperationMetadata;
 
 /// Logical element on the page.
 class Block {
@@ -2941,58 +2896,7 @@ typedef CancelOperationRequest = $Empty;
 /// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
 /// missingZeros; i++) { resultBuilder.push('0'); }
 /// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
-class Color {
-  /// The fraction of this color that should be applied to the pixel.
-  ///
-  /// That is, the final pixel color is defined by the equation: `pixel color =
-  /// alpha * (this color) + (1.0 - alpha) * (background color)` This means that
-  /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0
-  /// corresponds to a completely transparent color. This uses a wrapper message
-  /// rather than a simple float scalar so that it is possible to distinguish
-  /// between a default value and the value being unset. If omitted, this color
-  /// object is rendered as a solid color (as if the alpha value had been
-  /// explicitly given a value of 1.0).
-  core.double? alpha;
-
-  /// The amount of blue in the color as a value in the interval \[0, 1\].
-  core.double? blue;
-
-  /// The amount of green in the color as a value in the interval \[0, 1\].
-  core.double? green;
-
-  /// The amount of red in the color as a value in the interval \[0, 1\].
-  core.double? red;
-
-  Color({
-    this.alpha,
-    this.blue,
-    this.green,
-    this.red,
-  });
-
-  Color.fromJson(core.Map _json)
-      : this(
-          alpha: _json.containsKey('alpha')
-              ? (_json['alpha'] as core.num).toDouble()
-              : null,
-          blue: _json.containsKey('blue')
-              ? (_json['blue'] as core.num).toDouble()
-              : null,
-          green: _json.containsKey('green')
-              ? (_json['green'] as core.num).toDouble()
-              : null,
-          red: _json.containsKey('red')
-              ? (_json['red'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
-      };
-}
+typedef Color = $Color;
 
 /// Color information consists of RGB channels, score, and the fraction of the
 /// image that the color occupies in the image.
@@ -3135,73 +3039,10 @@ class CropHintsParams {
 }
 
 /// Detected start or end of a structural component.
-class DetectedBreak {
-  /// True if break prepends the element.
-  core.bool? isPrefix;
-
-  /// Detected break type.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown break label type.
-  /// - "SPACE" : Regular space.
-  /// - "SURE_SPACE" : Sure space (very wide).
-  /// - "EOL_SURE_SPACE" : Line-wrapping break.
-  /// - "HYPHEN" : End-line hyphen that is not present in text; does not
-  /// co-occur with `SPACE`, `LEADER_SPACE`, or `LINE_BREAK`.
-  /// - "LINE_BREAK" : Line break that ends a paragraph.
-  core.String? type;
-
-  DetectedBreak({
-    this.isPrefix,
-    this.type,
-  });
-
-  DetectedBreak.fromJson(core.Map _json)
-      : this(
-          isPrefix: _json.containsKey('isPrefix')
-              ? _json['isPrefix'] as core.bool
-              : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (isPrefix != null) 'isPrefix': isPrefix!,
-        if (type != null) 'type': type!,
-      };
-}
+typedef DetectedBreak = $DetectedBreak;
 
 /// Detected language for a structural component.
-class DetectedLanguage {
-  /// Confidence of detected language.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  DetectedLanguage({
-    this.confidence,
-    this.languageCode,
-  });
-
-  DetectedLanguage.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef DetectedLanguage = $DetectedLanguage;
 
 /// Set of dominant colors and their corresponding scores.
 class DominantColorsAnnotation {
@@ -3633,60 +3474,10 @@ class Feature {
 }
 
 /// The Google Cloud Storage location where the output will be written to.
-class GcsDestination {
-  /// Google Cloud Storage URI prefix where the results will be stored.
-  ///
-  /// Results will be in JSON format and preceded by its corresponding input URI
-  /// prefix. This field can either represent a gcs file prefix or gcs
-  /// directory. In either case, the uri should be unique because in order to
-  /// get all of the output files, you will need to do a wildcard gcs search on
-  /// the uri prefix you provide. Examples: * File Prefix:
-  /// gs://bucket-name/here/filenameprefix The output files will be created in
-  /// gs://bucket-name/here/ and the names of the output files will begin with
-  /// "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
-  /// output files will be created in gs://bucket-name/some/location/ and the
-  /// names of the output files could be anything because there was no filename
-  /// prefix specified. If multiple outputs, each response is still
-  /// AnnotateFileResponse, each of which contains some subset of the full list
-  /// of AnnotateImageResponse. Multiple outputs can happen if, for example, the
-  /// output JSON is too large and overflows into multiple sharded files.
-  core.String? uri;
-
-  GcsDestination({
-    this.uri,
-  });
-
-  GcsDestination.fromJson(core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef GcsDestination = $GcsDestination;
 
 /// The Google Cloud Storage location where the input will be read from.
-class GcsSource {
-  /// Google Cloud Storage URI for the input file.
-  ///
-  /// This must only be a Google Cloud Storage object. Wildcards are not
-  /// currently supported.
-  core.String? uri;
-
-  GcsSource({
-    this.uri,
-  });
-
-  GcsSource.fromJson(core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef GcsSource = $GcsSource01;
 
 /// Response to a single file annotation request.
 ///
@@ -4687,32 +4478,8 @@ class GoogleCloudVisionV1p1beta1GcsSource {
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
 /// information about the source of that image.
-class GoogleCloudVisionV1p1beta1ImageAnnotationContext {
-  /// If the file was a PDF or TIFF, this field gives the page number within the
-  /// file used to produce the image.
-  core.int? pageNumber;
-
-  /// The URI of the file used to produce the image.
-  core.String? uri;
-
-  GoogleCloudVisionV1p1beta1ImageAnnotationContext({
-    this.pageNumber,
-    this.uri,
-  });
-
-  GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(core.Map _json)
-      : this(
-          pageNumber: _json.containsKey('pageNumber')
-              ? _json['pageNumber'] as core.int
-              : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pageNumber != null) 'pageNumber': pageNumber!,
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1ImageAnnotationContext
+    = $ImageAnnotationContext;
 
 /// Stores image properties, such as dominant colors.
 class GoogleCloudVisionV1p1beta1ImageProperties {
@@ -4872,75 +4639,10 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVisionV1p1beta1NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVisionV1p1beta1NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1NormalizedVertex = $NormalizedVertex;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-class GoogleCloudVisionV1p1beta1OperationMetadata {
-  /// The time when the batch request was received.
-  core.String? createTime;
-
-  /// Current state of the batch operation.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Invalid.
-  /// - "CREATED" : Request is received.
-  /// - "RUNNING" : Request is actively being processed.
-  /// - "DONE" : The batch processing is done.
-  /// - "CANCELLED" : The batch processing was cancelled.
-  core.String? state;
-
-  /// The time when the operation result was last updated.
-  core.String? updateTime;
-
-  GoogleCloudVisionV1p1beta1OperationMetadata({
-    this.createTime,
-    this.state,
-    this.updateTime,
-  });
-
-  GoogleCloudVisionV1p1beta1OperationMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1OperationMetadata = $OperationMetadata03;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p1beta1OutputConfig {
@@ -5107,41 +4809,7 @@ class GoogleCloudVisionV1p1beta1Paragraph {
 ///
 /// A valid Position must have both x and y coordinates. The position
 /// coordinates are in the same scale as the original image.
-class GoogleCloudVisionV1p1beta1Position {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  /// Z coordinate (or depth).
-  core.double? z;
-
-  GoogleCloudVisionV1p1beta1Position({
-    this.x,
-    this.y,
-    this.z,
-  });
-
-  GoogleCloudVisionV1p1beta1Position.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-          z: _json.containsKey('z')
-              ? (_json['z'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-        if (z != null) 'z': z!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1Position = $Position;
 
 /// A Product contains ReferenceImages.
 class GoogleCloudVisionV1p1beta1Product {
@@ -5222,34 +4890,7 @@ class GoogleCloudVisionV1p1beta1Product {
 }
 
 /// A product label represented as a key-value pair.
-class GoogleCloudVisionV1p1beta1ProductKeyValue {
-  /// The key of the label attached to the product.
-  ///
-  /// Cannot be empty and cannot exceed 128 bytes.
-  core.String? key;
-
-  /// The value of the label attached to the product.
-  ///
-  /// Cannot be empty and cannot exceed 128 bytes.
-  core.String? value;
-
-  GoogleCloudVisionV1p1beta1ProductKeyValue({
-    this.key,
-    this.value,
-  });
-
-  GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1ProductKeyValue = $KeyValue;
 
 /// Results for a product search request.
 class GoogleCloudVisionV1p1beta1ProductSearchResults {
@@ -5358,51 +4999,8 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
 }
 
 /// Prediction for what the object in the bounding box is.
-class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation {
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  /// Object ID that should align with EntityAnnotation mid.
-  core.String? mid;
-
-  /// Object name, expressed in its `language_code` language.
-  core.String? name;
-
-  /// Score of the result.
-  ///
-  /// Range \[0, 1\].
-  core.double? score;
-
-  GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation({
-    this.languageCode,
-    this.mid,
-    this.name,
-    this.score,
-  });
-
-  GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation.fromJson(
-      core.Map _json)
-      : this(
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          mid: _json.containsKey('mid') ? _json['mid'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          score: _json.containsKey('score')
-              ? (_json['score'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (mid != null) 'mid': mid!,
-        if (name != null) 'name': name!,
-        if (score != null) 'score': score!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
+    = $ObjectAnnotation;
 
 /// Information about a product.
 class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
@@ -5444,133 +5042,11 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
 }
 
 /// A `Property` consists of a user-supplied name/value pair.
-class GoogleCloudVisionV1p1beta1Property {
-  /// Name of the property.
-  core.String? name;
-
-  /// Value of numeric properties.
-  core.String? uint64Value;
-
-  /// Value of the property.
-  core.String? value;
-
-  GoogleCloudVisionV1p1beta1Property({
-    this.name,
-    this.uint64Value,
-    this.value,
-  });
-
-  GoogleCloudVisionV1p1beta1Property.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          uint64Value: _json.containsKey('uint64Value')
-              ? _json['uint64Value'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (uint64Value != null) 'uint64Value': uint64Value!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1Property = $Property;
 
 /// Set of features pertaining to the image, computed by computer vision methods
 /// over safe-search verticals (for example, adult, spoof, medical, violence).
-class GoogleCloudVisionV1p1beta1SafeSearchAnnotation {
-  /// Represents the adult content likelihood for the image.
-  ///
-  /// Adult content may contain elements such as nudity, pornographic images or
-  /// cartoons, or sexual activities.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? adult;
-
-  /// Likelihood that this is a medical image.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? medical;
-
-  /// Likelihood that the request image contains racy content.
-  ///
-  /// Racy content may include (but is not limited to) skimpy or sheer clothing,
-  /// strategically covered nudity, lewd or provocative poses, or close-ups of
-  /// sensitive body areas.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? racy;
-
-  /// Spoof likelihood.
-  ///
-  /// The likelihood that an modification was made to the image's canonical
-  /// version to make it appear funny or offensive.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? spoof;
-
-  /// Likelihood that this image contains violent content.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? violence;
-
-  GoogleCloudVisionV1p1beta1SafeSearchAnnotation({
-    this.adult,
-    this.medical,
-    this.racy,
-    this.spoof,
-    this.violence,
-  });
-
-  GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(core.Map _json)
-      : this(
-          adult:
-              _json.containsKey('adult') ? _json['adult'] as core.String : null,
-          medical: _json.containsKey('medical')
-              ? _json['medical'] as core.String
-              : null,
-          racy: _json.containsKey('racy') ? _json['racy'] as core.String : null,
-          spoof:
-              _json.containsKey('spoof') ? _json['spoof'] as core.String : null,
-          violence: _json.containsKey('violence')
-              ? _json['violence'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adult != null) 'adult': adult!,
-        if (medical != null) 'medical': medical!,
-        if (racy != null) 'racy': racy!,
-        if (spoof != null) 'spoof': spoof!,
-        if (violence != null) 'violence': violence!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1SafeSearchAnnotation = $SafeSearchAnnotation;
 
 /// A single symbol representation.
 class GoogleCloudVisionV1p1beta1Symbol {
@@ -5773,29 +5249,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-class GoogleCloudVisionV1p1beta1Vertex {
-  /// X coordinate.
-  core.int? x;
-
-  /// Y coordinate.
-  core.int? y;
-
-  GoogleCloudVisionV1p1beta1Vertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVisionV1p1beta1Vertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x') ? _json['x'] as core.int : null,
-          y: _json.containsKey('y') ? _json['y'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1Vertex = $Vertex;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p1beta1WebDetection {
@@ -5897,101 +5351,13 @@ class GoogleCloudVisionV1p1beta1WebDetection {
 }
 
 /// Entity deduced from similar images on the Internet.
-class GoogleCloudVisionV1p1beta1WebDetectionWebEntity {
-  /// Canonical description of the entity, in English.
-  core.String? description;
-
-  /// Opaque entity ID.
-  core.String? entityId;
-
-  /// Overall relevancy score for the entity.
-  ///
-  /// Not normalized and not comparable across different image queries.
-  core.double? score;
-
-  GoogleCloudVisionV1p1beta1WebDetectionWebEntity({
-    this.description,
-    this.entityId,
-    this.score,
-  });
-
-  GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          entityId: _json.containsKey('entityId')
-              ? _json['entityId'] as core.String
-              : null,
-          score: _json.containsKey('score')
-              ? (_json['score'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (entityId != null) 'entityId': entityId!,
-        if (score != null) 'score': score!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1WebDetectionWebEntity = $WebEntity;
 
 /// Metadata for online images.
-class GoogleCloudVisionV1p1beta1WebDetectionWebImage {
-  /// (Deprecated) Overall relevancy score for the image.
-  core.double? score;
-
-  /// The result image URL.
-  core.String? url;
-
-  GoogleCloudVisionV1p1beta1WebDetectionWebImage({
-    this.score,
-    this.url,
-  });
-
-  GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(core.Map _json)
-      : this(
-          score: _json.containsKey('score')
-              ? (_json['score'] as core.num).toDouble()
-              : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (score != null) 'score': score!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1WebDetectionWebImage = $WebImage;
 
 /// Label to provide extra metadata for the web detection.
-class GoogleCloudVisionV1p1beta1WebDetectionWebLabel {
-  /// Label for extra metadata.
-  core.String? label;
-
-  /// The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  GoogleCloudVisionV1p1beta1WebDetectionWebLabel({
-    this.label,
-    this.languageCode,
-  });
-
-  GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(core.Map _json)
-      : this(
-          label:
-              _json.containsKey('label') ? _json['label'] as core.String : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef GoogleCloudVisionV1p1beta1WebDetectionWebLabel = $WebLabel;
 
 /// Metadata for web pages.
 class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
@@ -14420,37 +13786,7 @@ class Landmark {
 /// This is expressed as a pair of doubles to represent degrees latitude and
 /// degrees longitude. Unless specified otherwise, this object must conform to
 /// the WGS84 standard. Values must be within normalized ranges.
-class LatLng {
-  /// The latitude in degrees.
-  ///
-  /// It must be in the range \[-90.0, +90.0\].
-  core.double? latitude;
-
-  /// The longitude in degrees.
-  ///
-  /// It must be in the range \[-180.0, +180.0\].
-  core.double? longitude;
-
-  LatLng({
-    this.latitude,
-    this.longitude,
-  });
-
-  LatLng.fromJson(core.Map _json)
-      : this(
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
-              : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
-}
+typedef LatLng = $LatLng;
 
 /// Rectangle determined by min and max `LatLng` pairs.
 class LatLongRect {
@@ -15711,49 +15047,7 @@ class SafeSearchAnnotation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// A single symbol representation.
 class Symbol {

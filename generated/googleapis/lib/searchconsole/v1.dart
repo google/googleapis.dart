@@ -36,6 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -487,50 +488,7 @@ class UrlTestingToolsMobileFriendlyTestResource {
   }
 }
 
-class ApiDataRow {
-  core.double? clicks;
-  core.double? ctr;
-  core.double? impressions;
-  core.List<core.String>? keys;
-  core.double? position;
-
-  ApiDataRow({
-    this.clicks,
-    this.ctr,
-    this.impressions,
-    this.keys,
-    this.position,
-  });
-
-  ApiDataRow.fromJson(core.Map _json)
-      : this(
-          clicks: _json.containsKey('clicks')
-              ? (_json['clicks'] as core.num).toDouble()
-              : null,
-          ctr: _json.containsKey('ctr')
-              ? (_json['ctr'] as core.num).toDouble()
-              : null,
-          impressions: _json.containsKey('impressions')
-              ? (_json['impressions'] as core.num).toDouble()
-              : null,
-          keys: _json.containsKey('keys')
-              ? (_json['keys'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          position: _json.containsKey('position')
-              ? (_json['position'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clicks != null) 'clicks': clicks!,
-        if (ctr != null) 'ctr': ctr!,
-        if (impressions != null) 'impressions': impressions!,
-        if (keys != null) 'keys': keys!,
-        if (position != null) 'position': position!,
-      };
-}
+typedef ApiDataRow = $ApiDataRow;
 
 /// A filter test to be applied to each row in the data set, where a match can
 /// return the row.

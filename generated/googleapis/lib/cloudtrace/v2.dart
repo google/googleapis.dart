@@ -36,7 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -887,49 +887,7 @@ class StackTrace {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// A time-stamped annotation or message event in the Span.
 class TimeEvent {
@@ -1020,38 +978,4 @@ class TimeEvents {
 }
 
 /// Represents a string that might be shortened to a specified length.
-class TruncatableString {
-  /// The number of bytes removed from the original string.
-  ///
-  /// If this value is 0, then the string was not shortened.
-  core.int? truncatedByteCount;
-
-  /// The shortened string.
-  ///
-  /// For example, if the original string is 500 bytes long and the limit of the
-  /// string is 128 bytes, then `value` contains the first 128 bytes of the
-  /// 500-byte string. Truncation always happens on a UTF8 character boundary.
-  /// If there are multi-byte characters in the string, then the length of the
-  /// shortened string might be less than the size limit.
-  core.String? value;
-
-  TruncatableString({
-    this.truncatedByteCount,
-    this.value,
-  });
-
-  TruncatableString.fromJson(core.Map _json)
-      : this(
-          truncatedByteCount: _json.containsKey('truncatedByteCount')
-              ? _json['truncatedByteCount'] as core.int
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (truncatedByteCount != null)
-          'truncatedByteCount': truncatedByteCount!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef TruncatableString = $TruncatableString;

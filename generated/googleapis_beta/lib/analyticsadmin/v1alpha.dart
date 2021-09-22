@@ -46,7 +46,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -941,6 +941,56 @@ class PropertiesResource {
       PropertiesWebDataStreamsResource(_requester);
 
   PropertiesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Acknowledges the terms of user data collection for the specified property.
+  ///
+  /// This acknowledgement must be completed (either in the Google Analytics UI
+  /// or via this API) before MeasurementProtocolSecret resources may be
+  /// created.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [property] - Required. The property for which to acknowledge user data
+  /// collection.
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse>
+      acknowledgeUserDataCollection(
+    GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest request,
+    core.String property, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$property') +
+        ':acknowledgeUserDataCollection';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates an "GA4" property with the specified location and attributes.
   ///
@@ -4925,6 +4975,41 @@ class GoogleAnalyticsAdminV1alphaAccountSummary {
         if (propertySummaries != null) 'propertySummaries': propertySummaries!,
       };
 }
+
+/// Request message for AcknowledgeUserDataCollection RPC.
+class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest {
+  /// An acknowledgement that the caller of this method understands the terms of
+  /// user data collection.
+  ///
+  /// This field must contain the exact value: "I acknowledge that I have the
+  /// necessary privacy disclosures and rights from my end users for the
+  /// collection and processing of their data, including the association of such
+  /// data with the visitation information Google Analytics collects from my
+  /// site and/or app property."
+  ///
+  /// Required.
+  core.String? acknowledgement;
+
+  GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest({
+    this.acknowledgement,
+  });
+
+  GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest.fromJson(
+      core.Map _json)
+      : this(
+          acknowledgement: _json.containsKey('acknowledgement')
+              ? _json['acknowledgement'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledgement != null) 'acknowledgement': acknowledgement!,
+      };
+}
+
+/// Response message for AcknowledgeUserDataCollection RPC.
+typedef GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
+    = $Empty;
 
 /// A resource message representing a Google Analytics Android app stream.
 class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
