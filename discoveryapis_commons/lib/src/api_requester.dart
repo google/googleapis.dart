@@ -11,7 +11,6 @@ import 'multipart_media_uploader.dart';
 import 'request_impl.dart';
 import 'requests.dart' as client_requests;
 import 'resumable_media_uploader.dart';
-
 import 'utils.dart';
 
 /// Base class for all API clients, offering generic methods for
@@ -276,7 +275,11 @@ Future<http.StreamedResponse> _validateResponse(
     // Some error happened, try to decode the response and fetch the error.
     final stringStream = _decodeStreamAsText(response);
     if (stringStream != null) {
-      final jsonResponse = await stringStream.transform(json.decoder).first;
+      var jsonResponse = await stringStream.transform(json.decoder).first;
+      if (jsonResponse is List && jsonResponse.length == 1) {
+        jsonResponse = jsonResponse.first;
+      }
+
       if (jsonResponse is Map && jsonResponse['error'] is Map) {
         final error = jsonResponse['error'] as Map;
         final codeValue = error['code'];
