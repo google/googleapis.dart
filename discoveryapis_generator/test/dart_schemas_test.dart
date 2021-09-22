@@ -100,7 +100,6 @@ void main() {
         expect(db.namedSchemaTypes['Task'], equals(task));
 
         // Do tests on `task`.
-        expect(task is ObjectType, isTrue);
         expect(task.className!.name, equals('Task'));
         expect(task.superVariantType, isNull);
 
