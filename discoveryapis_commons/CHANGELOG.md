@@ -1,3 +1,8 @@
+## 1.0.2
+
+- Handle the case where the content of error JSON is a `List` of `Map`
+  instances.
+
 ## 1.0.1
 
 - Support Unicode file names in `MultipartMediaUploader`.
