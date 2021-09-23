@@ -26,7 +26,7 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.Object> buildUnnamed5383() => {
+core.Map<core.String, core.Object> buildUnnamed0() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -39,7 +39,7 @@ core.Map<core.String, core.Object> buildUnnamed5383() => {
       },
     };
 
-void checkUnnamed5383(core.Map<core.String, core.Object> o) {
+void checkUnnamed0(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -77,7 +77,7 @@ api.GoogleCloudPolicyanalyzerV1Activity
   final o = api.GoogleCloudPolicyanalyzerV1Activity();
   buildCounterGoogleCloudPolicyanalyzerV1Activity++;
   if (buildCounterGoogleCloudPolicyanalyzerV1Activity < 3) {
-    o.activity = buildUnnamed5383();
+    o.activity = buildUnnamed0();
     o.activityType = 'foo';
     o.fullResourceName = 'foo';
     o.observationPeriod = buildGoogleCloudPolicyanalyzerV1ObservationPeriod();
@@ -90,7 +90,7 @@ void checkGoogleCloudPolicyanalyzerV1Activity(
     api.GoogleCloudPolicyanalyzerV1Activity o) {
   buildCounterGoogleCloudPolicyanalyzerV1Activity++;
   if (buildCounterGoogleCloudPolicyanalyzerV1Activity < 3) {
-    checkUnnamed5383(o.activity!);
+    checkUnnamed0(o.activity!);
     unittest.expect(
       o.activityType!,
       unittest.equals('foo'),
@@ -133,12 +133,12 @@ void checkGoogleCloudPolicyanalyzerV1ObservationPeriod(
   buildCounterGoogleCloudPolicyanalyzerV1ObservationPeriod--;
 }
 
-core.List<api.GoogleCloudPolicyanalyzerV1Activity> buildUnnamed5384() => [
+core.List<api.GoogleCloudPolicyanalyzerV1Activity> buildUnnamed1() => [
       buildGoogleCloudPolicyanalyzerV1Activity(),
       buildGoogleCloudPolicyanalyzerV1Activity(),
     ];
 
-void checkUnnamed5384(core.List<api.GoogleCloudPolicyanalyzerV1Activity> o) {
+void checkUnnamed1(core.List<api.GoogleCloudPolicyanalyzerV1Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPolicyanalyzerV1Activity(o[0]);
   checkGoogleCloudPolicyanalyzerV1Activity(o[1]);
@@ -150,7 +150,7 @@ api.GoogleCloudPolicyanalyzerV1QueryActivityResponse
   final o = api.GoogleCloudPolicyanalyzerV1QueryActivityResponse();
   buildCounterGoogleCloudPolicyanalyzerV1QueryActivityResponse++;
   if (buildCounterGoogleCloudPolicyanalyzerV1QueryActivityResponse < 3) {
-    o.activities = buildUnnamed5384();
+    o.activities = buildUnnamed1();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudPolicyanalyzerV1QueryActivityResponse--;
@@ -161,7 +161,7 @@ void checkGoogleCloudPolicyanalyzerV1QueryActivityResponse(
     api.GoogleCloudPolicyanalyzerV1QueryActivityResponse o) {
   buildCounterGoogleCloudPolicyanalyzerV1QueryActivityResponse++;
   if (buildCounterGoogleCloudPolicyanalyzerV1QueryActivityResponse < 3) {
-    checkUnnamed5384(o.activities!);
+    checkUnnamed1(o.activities!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

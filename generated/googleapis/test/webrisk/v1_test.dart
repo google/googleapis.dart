@@ -121,12 +121,12 @@ void checkGoogleCloudWebriskV1RawHashes(api.GoogleCloudWebriskV1RawHashes o) {
   buildCounterGoogleCloudWebriskV1RawHashes--;
 }
 
-core.List<core.int> buildUnnamed1673() => [
+core.List<core.int> buildUnnamed0() => [
       42,
       42,
     ];
 
-void checkUnnamed1673(core.List<core.int> o) {
+void checkUnnamed0(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -143,7 +143,7 @@ api.GoogleCloudWebriskV1RawIndices buildGoogleCloudWebriskV1RawIndices() {
   final o = api.GoogleCloudWebriskV1RawIndices();
   buildCounterGoogleCloudWebriskV1RawIndices++;
   if (buildCounterGoogleCloudWebriskV1RawIndices < 3) {
-    o.indices = buildUnnamed1673();
+    o.indices = buildUnnamed0();
   }
   buildCounterGoogleCloudWebriskV1RawIndices--;
   return o;
@@ -152,7 +152,7 @@ api.GoogleCloudWebriskV1RawIndices buildGoogleCloudWebriskV1RawIndices() {
 void checkGoogleCloudWebriskV1RawIndices(api.GoogleCloudWebriskV1RawIndices o) {
   buildCounterGoogleCloudWebriskV1RawIndices++;
   if (buildCounterGoogleCloudWebriskV1RawIndices < 3) {
-    checkUnnamed1673(o.indices!);
+    checkUnnamed0(o.indices!);
   }
   buildCounterGoogleCloudWebriskV1RawIndices--;
 }
@@ -197,12 +197,12 @@ void checkGoogleCloudWebriskV1RiceDeltaEncoding(
 }
 
 core.List<api.GoogleCloudWebriskV1SearchHashesResponseThreatHash>
-    buildUnnamed1674() => [
+    buildUnnamed1() => [
           buildGoogleCloudWebriskV1SearchHashesResponseThreatHash(),
           buildGoogleCloudWebriskV1SearchHashesResponseThreatHash(),
         ];
 
-void checkUnnamed1674(
+void checkUnnamed1(
     core.List<api.GoogleCloudWebriskV1SearchHashesResponseThreatHash> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudWebriskV1SearchHashesResponseThreatHash(o[0]);
@@ -216,7 +216,7 @@ api.GoogleCloudWebriskV1SearchHashesResponse
   buildCounterGoogleCloudWebriskV1SearchHashesResponse++;
   if (buildCounterGoogleCloudWebriskV1SearchHashesResponse < 3) {
     o.negativeExpireTime = 'foo';
-    o.threats = buildUnnamed1674();
+    o.threats = buildUnnamed1();
   }
   buildCounterGoogleCloudWebriskV1SearchHashesResponse--;
   return o;
@@ -230,17 +230,17 @@ void checkGoogleCloudWebriskV1SearchHashesResponse(
       o.negativeExpireTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed1674(o.threats!);
+    checkUnnamed1(o.threats!);
   }
   buildCounterGoogleCloudWebriskV1SearchHashesResponse--;
 }
 
-core.List<core.String> buildUnnamed1675() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1675(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -260,7 +260,7 @@ api.GoogleCloudWebriskV1SearchHashesResponseThreatHash
   if (buildCounterGoogleCloudWebriskV1SearchHashesResponseThreatHash < 3) {
     o.expireTime = 'foo';
     o.hash = 'foo';
-    o.threatTypes = buildUnnamed1675();
+    o.threatTypes = buildUnnamed2();
   }
   buildCounterGoogleCloudWebriskV1SearchHashesResponseThreatHash--;
   return o;
@@ -278,7 +278,7 @@ void checkGoogleCloudWebriskV1SearchHashesResponseThreatHash(
       o.hash!,
       unittest.equals('foo'),
     );
-    checkUnnamed1675(o.threatTypes!);
+    checkUnnamed2(o.threatTypes!);
   }
   buildCounterGoogleCloudWebriskV1SearchHashesResponseThreatHash--;
 }
@@ -304,12 +304,12 @@ void checkGoogleCloudWebriskV1SearchUrisResponse(
   buildCounterGoogleCloudWebriskV1SearchUrisResponse--;
 }
 
-core.List<core.String> buildUnnamed1676() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1676(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -328,7 +328,7 @@ api.GoogleCloudWebriskV1SearchUrisResponseThreatUri
   buildCounterGoogleCloudWebriskV1SearchUrisResponseThreatUri++;
   if (buildCounterGoogleCloudWebriskV1SearchUrisResponseThreatUri < 3) {
     o.expireTime = 'foo';
-    o.threatTypes = buildUnnamed1676();
+    o.threatTypes = buildUnnamed3();
   }
   buildCounterGoogleCloudWebriskV1SearchUrisResponseThreatUri--;
   return o;
@@ -342,17 +342,17 @@ void checkGoogleCloudWebriskV1SearchUrisResponseThreatUri(
       o.expireTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed1676(o.threatTypes!);
+    checkUnnamed3(o.threatTypes!);
   }
   buildCounterGoogleCloudWebriskV1SearchUrisResponseThreatUri--;
 }
 
-core.List<core.String> buildUnnamed1677() => [
+core.List<core.String> buildUnnamed4() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1677(core.List<core.String> o) {
+void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -369,7 +369,7 @@ api.GoogleCloudWebriskV1Submission buildGoogleCloudWebriskV1Submission() {
   final o = api.GoogleCloudWebriskV1Submission();
   buildCounterGoogleCloudWebriskV1Submission++;
   if (buildCounterGoogleCloudWebriskV1Submission < 3) {
-    o.threatTypes = buildUnnamed1677();
+    o.threatTypes = buildUnnamed4();
     o.uri = 'foo';
   }
   buildCounterGoogleCloudWebriskV1Submission--;
@@ -379,7 +379,7 @@ api.GoogleCloudWebriskV1Submission buildGoogleCloudWebriskV1Submission() {
 void checkGoogleCloudWebriskV1Submission(api.GoogleCloudWebriskV1Submission o) {
   buildCounterGoogleCloudWebriskV1Submission++;
   if (buildCounterGoogleCloudWebriskV1Submission < 3) {
-    checkUnnamed1677(o.threatTypes!);
+    checkUnnamed4(o.threatTypes!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
@@ -443,12 +443,12 @@ void checkGoogleCloudWebriskV1SubmitUriRequest(
   buildCounterGoogleCloudWebriskV1SubmitUriRequest--;
 }
 
-core.List<api.GoogleCloudWebriskV1RawHashes> buildUnnamed1678() => [
+core.List<api.GoogleCloudWebriskV1RawHashes> buildUnnamed5() => [
       buildGoogleCloudWebriskV1RawHashes(),
       buildGoogleCloudWebriskV1RawHashes(),
     ];
 
-void checkUnnamed1678(core.List<api.GoogleCloudWebriskV1RawHashes> o) {
+void checkUnnamed5(core.List<api.GoogleCloudWebriskV1RawHashes> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudWebriskV1RawHashes(o[0]);
   checkGoogleCloudWebriskV1RawHashes(o[1]);
@@ -460,7 +460,7 @@ api.GoogleCloudWebriskV1ThreatEntryAdditions
   final o = api.GoogleCloudWebriskV1ThreatEntryAdditions();
   buildCounterGoogleCloudWebriskV1ThreatEntryAdditions++;
   if (buildCounterGoogleCloudWebriskV1ThreatEntryAdditions < 3) {
-    o.rawHashes = buildUnnamed1678();
+    o.rawHashes = buildUnnamed5();
     o.riceHashes = buildGoogleCloudWebriskV1RiceDeltaEncoding();
   }
   buildCounterGoogleCloudWebriskV1ThreatEntryAdditions--;
@@ -471,7 +471,7 @@ void checkGoogleCloudWebriskV1ThreatEntryAdditions(
     api.GoogleCloudWebriskV1ThreatEntryAdditions o) {
   buildCounterGoogleCloudWebriskV1ThreatEntryAdditions++;
   if (buildCounterGoogleCloudWebriskV1ThreatEntryAdditions < 3) {
-    checkUnnamed1678(o.rawHashes!);
+    checkUnnamed5(o.rawHashes!);
     checkGoogleCloudWebriskV1RiceDeltaEncoding(o.riceHashes!);
   }
   buildCounterGoogleCloudWebriskV1ThreatEntryAdditions--;
@@ -517,12 +517,12 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed1679() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed6() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed1679(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed6(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -535,7 +535,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed1679();
+    o.operations = buildUnnamed6();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -549,12 +549,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed1679(o.operations!);
+    checkUnnamed6(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1680() => {
+core.Map<core.String, core.Object> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -567,7 +567,7 @@ core.Map<core.String, core.Object> buildUnnamed1680() => {
       },
     };
 
-void checkUnnamed1680(core.Map<core.String, core.Object> o) {
+void checkUnnamed7(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -599,7 +599,7 @@ void checkUnnamed1680(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed1681() => {
+core.Map<core.String, core.Object> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -612,7 +612,7 @@ core.Map<core.String, core.Object> buildUnnamed1681() => {
       },
     };
 
-void checkUnnamed1681(core.Map<core.String, core.Object> o) {
+void checkUnnamed8(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -651,9 +651,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed1680();
+    o.metadata = buildUnnamed7();
     o.name = 'foo';
-    o.response = buildUnnamed1681();
+    o.response = buildUnnamed8();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -664,12 +664,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed1680(o.metadata!);
+    checkUnnamed7(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed1681(o.response!);
+    checkUnnamed8(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -689,7 +689,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1682() => {
+core.Map<core.String, core.Object> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -702,7 +702,7 @@ core.Map<core.String, core.Object> buildUnnamed1682() => {
       },
     };
 
-void checkUnnamed1682(core.Map<core.String, core.Object> o) {
+void checkUnnamed9(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -734,15 +734,15 @@ void checkUnnamed1682(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed1683() => [
-      buildUnnamed1682(),
-      buildUnnamed1682(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed10() => [
+      buildUnnamed9(),
+      buildUnnamed9(),
     ];
 
-void checkUnnamed1683(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed10(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1682(o[0]);
-  checkUnnamed1682(o[1]);
+  checkUnnamed9(o[0]);
+  checkUnnamed9(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -751,7 +751,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed1683();
+    o.details = buildUnnamed10();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -765,7 +765,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed1683(o.details!);
+    checkUnnamed10(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -774,12 +774,12 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus--;
 }
 
-core.List<core.String> buildUnnamed1684() => [
+core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1684(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -791,12 +791,12 @@ void checkUnnamed1684(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1685() => [
+core.List<core.String> buildUnnamed12() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1685(core.List<core.String> o) {
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -808,12 +808,12 @@ void checkUnnamed1685(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1686() => [
+core.List<core.String> buildUnnamed13() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1686(core.List<core.String> o) {
+void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1028,7 +1028,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.WebRiskApi(mock).hashes;
       final arg_hashPrefix = 'foo';
-      final arg_threatTypes = buildUnnamed1684();
+      final arg_threatTypes = buildUnnamed11();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -1456,7 +1456,7 @@ void main() {
       final res = api.WebRiskApi(mock).threatLists;
       final arg_constraints_maxDatabaseEntries = 42;
       final arg_constraints_maxDiffEntries = 42;
-      final arg_constraints_supportedCompressions = buildUnnamed1685();
+      final arg_constraints_supportedCompressions = buildUnnamed12();
       final arg_threatType = 'foo';
       final arg_versionToken = 'foo';
       final arg_$fields = 'foo';
@@ -1540,7 +1540,7 @@ void main() {
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
       final res = api.WebRiskApi(mock).uris;
-      final arg_threatTypes = buildUnnamed1686();
+      final arg_threatTypes = buildUnnamed13();
       final arg_uri = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

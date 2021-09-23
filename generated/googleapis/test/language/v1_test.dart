@@ -50,12 +50,12 @@ void checkAnalyzeEntitiesRequest(api.AnalyzeEntitiesRequest o) {
   buildCounterAnalyzeEntitiesRequest--;
 }
 
-core.List<api.Entity> buildUnnamed2917() => [
+core.List<api.Entity> buildUnnamed0() => [
       buildEntity(),
       buildEntity(),
     ];
 
-void checkUnnamed2917(core.List<api.Entity> o) {
+void checkUnnamed0(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntity(o[0]);
   checkEntity(o[1]);
@@ -66,7 +66,7 @@ api.AnalyzeEntitiesResponse buildAnalyzeEntitiesResponse() {
   final o = api.AnalyzeEntitiesResponse();
   buildCounterAnalyzeEntitiesResponse++;
   if (buildCounterAnalyzeEntitiesResponse < 3) {
-    o.entities = buildUnnamed2917();
+    o.entities = buildUnnamed0();
     o.language = 'foo';
   }
   buildCounterAnalyzeEntitiesResponse--;
@@ -76,7 +76,7 @@ api.AnalyzeEntitiesResponse buildAnalyzeEntitiesResponse() {
 void checkAnalyzeEntitiesResponse(api.AnalyzeEntitiesResponse o) {
   buildCounterAnalyzeEntitiesResponse++;
   if (buildCounterAnalyzeEntitiesResponse < 3) {
-    checkUnnamed2917(o.entities!);
+    checkUnnamed0(o.entities!);
     unittest.expect(
       o.language!,
       unittest.equals('foo'),
@@ -109,12 +109,12 @@ void checkAnalyzeEntitySentimentRequest(api.AnalyzeEntitySentimentRequest o) {
   buildCounterAnalyzeEntitySentimentRequest--;
 }
 
-core.List<api.Entity> buildUnnamed2918() => [
+core.List<api.Entity> buildUnnamed1() => [
       buildEntity(),
       buildEntity(),
     ];
 
-void checkUnnamed2918(core.List<api.Entity> o) {
+void checkUnnamed1(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntity(o[0]);
   checkEntity(o[1]);
@@ -125,7 +125,7 @@ api.AnalyzeEntitySentimentResponse buildAnalyzeEntitySentimentResponse() {
   final o = api.AnalyzeEntitySentimentResponse();
   buildCounterAnalyzeEntitySentimentResponse++;
   if (buildCounterAnalyzeEntitySentimentResponse < 3) {
-    o.entities = buildUnnamed2918();
+    o.entities = buildUnnamed1();
     o.language = 'foo';
   }
   buildCounterAnalyzeEntitySentimentResponse--;
@@ -135,7 +135,7 @@ api.AnalyzeEntitySentimentResponse buildAnalyzeEntitySentimentResponse() {
 void checkAnalyzeEntitySentimentResponse(api.AnalyzeEntitySentimentResponse o) {
   buildCounterAnalyzeEntitySentimentResponse++;
   if (buildCounterAnalyzeEntitySentimentResponse < 3) {
-    checkUnnamed2918(o.entities!);
+    checkUnnamed1(o.entities!);
     unittest.expect(
       o.language!,
       unittest.equals('foo'),
@@ -168,12 +168,12 @@ void checkAnalyzeSentimentRequest(api.AnalyzeSentimentRequest o) {
   buildCounterAnalyzeSentimentRequest--;
 }
 
-core.List<api.Sentence> buildUnnamed2919() => [
+core.List<api.Sentence> buildUnnamed2() => [
       buildSentence(),
       buildSentence(),
     ];
 
-void checkUnnamed2919(core.List<api.Sentence> o) {
+void checkUnnamed2(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
@@ -186,7 +186,7 @@ api.AnalyzeSentimentResponse buildAnalyzeSentimentResponse() {
   if (buildCounterAnalyzeSentimentResponse < 3) {
     o.documentSentiment = buildSentiment();
     o.language = 'foo';
-    o.sentences = buildUnnamed2919();
+    o.sentences = buildUnnamed2();
   }
   buildCounterAnalyzeSentimentResponse--;
   return o;
@@ -200,7 +200,7 @@ void checkAnalyzeSentimentResponse(api.AnalyzeSentimentResponse o) {
       o.language!,
       unittest.equals('foo'),
     );
-    checkUnnamed2919(o.sentences!);
+    checkUnnamed2(o.sentences!);
   }
   buildCounterAnalyzeSentimentResponse--;
 }
@@ -229,23 +229,23 @@ void checkAnalyzeSyntaxRequest(api.AnalyzeSyntaxRequest o) {
   buildCounterAnalyzeSyntaxRequest--;
 }
 
-core.List<api.Sentence> buildUnnamed2920() => [
+core.List<api.Sentence> buildUnnamed3() => [
       buildSentence(),
       buildSentence(),
     ];
 
-void checkUnnamed2920(core.List<api.Sentence> o) {
+void checkUnnamed3(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
 }
 
-core.List<api.Token> buildUnnamed2921() => [
+core.List<api.Token> buildUnnamed4() => [
       buildToken(),
       buildToken(),
     ];
 
-void checkUnnamed2921(core.List<api.Token> o) {
+void checkUnnamed4(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToken(o[0]);
   checkToken(o[1]);
@@ -257,8 +257,8 @@ api.AnalyzeSyntaxResponse buildAnalyzeSyntaxResponse() {
   buildCounterAnalyzeSyntaxResponse++;
   if (buildCounterAnalyzeSyntaxResponse < 3) {
     o.language = 'foo';
-    o.sentences = buildUnnamed2920();
-    o.tokens = buildUnnamed2921();
+    o.sentences = buildUnnamed3();
+    o.tokens = buildUnnamed4();
   }
   buildCounterAnalyzeSyntaxResponse--;
   return o;
@@ -271,8 +271,8 @@ void checkAnalyzeSyntaxResponse(api.AnalyzeSyntaxResponse o) {
       o.language!,
       unittest.equals('foo'),
     );
-    checkUnnamed2920(o.sentences!);
-    checkUnnamed2921(o.tokens!);
+    checkUnnamed3(o.sentences!);
+    checkUnnamed4(o.tokens!);
   }
   buildCounterAnalyzeSyntaxResponse--;
 }
@@ -303,45 +303,45 @@ void checkAnnotateTextRequest(api.AnnotateTextRequest o) {
   buildCounterAnnotateTextRequest--;
 }
 
-core.List<api.ClassificationCategory> buildUnnamed2922() => [
+core.List<api.ClassificationCategory> buildUnnamed5() => [
       buildClassificationCategory(),
       buildClassificationCategory(),
     ];
 
-void checkUnnamed2922(core.List<api.ClassificationCategory> o) {
+void checkUnnamed5(core.List<api.ClassificationCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClassificationCategory(o[0]);
   checkClassificationCategory(o[1]);
 }
 
-core.List<api.Entity> buildUnnamed2923() => [
+core.List<api.Entity> buildUnnamed6() => [
       buildEntity(),
       buildEntity(),
     ];
 
-void checkUnnamed2923(core.List<api.Entity> o) {
+void checkUnnamed6(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntity(o[0]);
   checkEntity(o[1]);
 }
 
-core.List<api.Sentence> buildUnnamed2924() => [
+core.List<api.Sentence> buildUnnamed7() => [
       buildSentence(),
       buildSentence(),
     ];
 
-void checkUnnamed2924(core.List<api.Sentence> o) {
+void checkUnnamed7(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
 }
 
-core.List<api.Token> buildUnnamed2925() => [
+core.List<api.Token> buildUnnamed8() => [
       buildToken(),
       buildToken(),
     ];
 
-void checkUnnamed2925(core.List<api.Token> o) {
+void checkUnnamed8(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToken(o[0]);
   checkToken(o[1]);
@@ -352,12 +352,12 @@ api.AnnotateTextResponse buildAnnotateTextResponse() {
   final o = api.AnnotateTextResponse();
   buildCounterAnnotateTextResponse++;
   if (buildCounterAnnotateTextResponse < 3) {
-    o.categories = buildUnnamed2922();
+    o.categories = buildUnnamed5();
     o.documentSentiment = buildSentiment();
-    o.entities = buildUnnamed2923();
+    o.entities = buildUnnamed6();
     o.language = 'foo';
-    o.sentences = buildUnnamed2924();
-    o.tokens = buildUnnamed2925();
+    o.sentences = buildUnnamed7();
+    o.tokens = buildUnnamed8();
   }
   buildCounterAnnotateTextResponse--;
   return o;
@@ -366,15 +366,15 @@ api.AnnotateTextResponse buildAnnotateTextResponse() {
 void checkAnnotateTextResponse(api.AnnotateTextResponse o) {
   buildCounterAnnotateTextResponse++;
   if (buildCounterAnnotateTextResponse < 3) {
-    checkUnnamed2922(o.categories!);
+    checkUnnamed5(o.categories!);
     checkSentiment(o.documentSentiment!);
-    checkUnnamed2923(o.entities!);
+    checkUnnamed6(o.entities!);
     unittest.expect(
       o.language!,
       unittest.equals('foo'),
     );
-    checkUnnamed2924(o.sentences!);
-    checkUnnamed2925(o.tokens!);
+    checkUnnamed7(o.sentences!);
+    checkUnnamed8(o.tokens!);
   }
   buildCounterAnnotateTextResponse--;
 }
@@ -425,12 +425,12 @@ void checkClassifyTextRequest(api.ClassifyTextRequest o) {
   buildCounterClassifyTextRequest--;
 }
 
-core.List<api.ClassificationCategory> buildUnnamed2926() => [
+core.List<api.ClassificationCategory> buildUnnamed9() => [
       buildClassificationCategory(),
       buildClassificationCategory(),
     ];
 
-void checkUnnamed2926(core.List<api.ClassificationCategory> o) {
+void checkUnnamed9(core.List<api.ClassificationCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClassificationCategory(o[0]);
   checkClassificationCategory(o[1]);
@@ -441,7 +441,7 @@ api.ClassifyTextResponse buildClassifyTextResponse() {
   final o = api.ClassifyTextResponse();
   buildCounterClassifyTextResponse++;
   if (buildCounterClassifyTextResponse < 3) {
-    o.categories = buildUnnamed2926();
+    o.categories = buildUnnamed9();
   }
   buildCounterClassifyTextResponse--;
   return o;
@@ -450,7 +450,7 @@ api.ClassifyTextResponse buildClassifyTextResponse() {
 void checkClassifyTextResponse(api.ClassifyTextResponse o) {
   buildCounterClassifyTextResponse++;
   if (buildCounterClassifyTextResponse < 3) {
-    checkUnnamed2926(o.categories!);
+    checkUnnamed9(o.categories!);
   }
   buildCounterClassifyTextResponse--;
 }
@@ -519,23 +519,23 @@ void checkDocument(api.Document o) {
   buildCounterDocument--;
 }
 
-core.List<api.EntityMention> buildUnnamed2927() => [
+core.List<api.EntityMention> buildUnnamed10() => [
       buildEntityMention(),
       buildEntityMention(),
     ];
 
-void checkUnnamed2927(core.List<api.EntityMention> o) {
+void checkUnnamed10(core.List<api.EntityMention> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityMention(o[0]);
   checkEntityMention(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed2928() => {
+core.Map<core.String, core.String> buildUnnamed11() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed2928(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -552,8 +552,8 @@ api.Entity buildEntity() {
   final o = api.Entity();
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
-    o.mentions = buildUnnamed2927();
-    o.metadata = buildUnnamed2928();
+    o.mentions = buildUnnamed10();
+    o.metadata = buildUnnamed11();
     o.name = 'foo';
     o.salience = 42.0;
     o.sentiment = buildSentiment();
@@ -566,8 +566,8 @@ api.Entity buildEntity() {
 void checkEntity(api.Entity o) {
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
-    checkUnnamed2927(o.mentions!);
-    checkUnnamed2928(o.metadata!);
+    checkUnnamed10(o.mentions!);
+    checkUnnamed11(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -763,7 +763,7 @@ void checkSentiment(api.Sentiment o) {
   buildCounterSentiment--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2929() => {
+core.Map<core.String, core.Object> buildUnnamed12() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -776,7 +776,7 @@ core.Map<core.String, core.Object> buildUnnamed2929() => {
       },
     };
 
-void checkUnnamed2929(core.Map<core.String, core.Object> o) {
+void checkUnnamed12(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -808,15 +808,15 @@ void checkUnnamed2929(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2930() => [
-      buildUnnamed2929(),
-      buildUnnamed2929(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed13() => [
+      buildUnnamed12(),
+      buildUnnamed12(),
     ];
 
-void checkUnnamed2930(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed13(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2929(o[0]);
-  checkUnnamed2929(o[1]);
+  checkUnnamed12(o[0]);
+  checkUnnamed12(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -825,7 +825,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2930();
+    o.details = buildUnnamed13();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -839,7 +839,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed2930(o.details!);
+    checkUnnamed13(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

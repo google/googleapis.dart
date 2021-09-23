@@ -26,23 +26,23 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.EnrolledService> buildUnnamed5798() => [
+core.List<api.EnrolledService> buildUnnamed0() => [
       buildEnrolledService(),
       buildEnrolledService(),
     ];
 
-void checkUnnamed5798(core.List<api.EnrolledService> o) {
+void checkUnnamed0(core.List<api.EnrolledService> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnrolledService(o[0]);
   checkEnrolledService(o[1]);
 }
 
-core.List<core.String> buildUnnamed5799() => [
+core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5799(core.List<core.String> o) {
+void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -60,9 +60,9 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
   buildCounterAccessApprovalSettings++;
   if (buildCounterAccessApprovalSettings < 3) {
     o.enrolledAncestor = true;
-    o.enrolledServices = buildUnnamed5798();
+    o.enrolledServices = buildUnnamed0();
     o.name = 'foo';
-    o.notificationEmails = buildUnnamed5799();
+    o.notificationEmails = buildUnnamed1();
   }
   buildCounterAccessApprovalSettings--;
   return o;
@@ -72,12 +72,12 @@ void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
   buildCounterAccessApprovalSettings++;
   if (buildCounterAccessApprovalSettings < 3) {
     unittest.expect(o.enrolledAncestor!, unittest.isTrue);
-    checkUnnamed5798(o.enrolledServices!);
+    checkUnnamed0(o.enrolledServices!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed5799(o.notificationEmails!);
+    checkUnnamed1(o.notificationEmails!);
   }
   buildCounterAccessApprovalSettings--;
 }
@@ -313,12 +313,12 @@ void checkEnrolledService(api.EnrolledService o) {
   buildCounterEnrolledService--;
 }
 
-core.List<api.ApprovalRequest> buildUnnamed5800() => [
+core.List<api.ApprovalRequest> buildUnnamed2() => [
       buildApprovalRequest(),
       buildApprovalRequest(),
     ];
 
-void checkUnnamed5800(core.List<api.ApprovalRequest> o) {
+void checkUnnamed2(core.List<api.ApprovalRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApprovalRequest(o[0]);
   checkApprovalRequest(o[1]);
@@ -329,7 +329,7 @@ api.ListApprovalRequestsResponse buildListApprovalRequestsResponse() {
   final o = api.ListApprovalRequestsResponse();
   buildCounterListApprovalRequestsResponse++;
   if (buildCounterListApprovalRequestsResponse < 3) {
-    o.approvalRequests = buildUnnamed5800();
+    o.approvalRequests = buildUnnamed2();
     o.nextPageToken = 'foo';
   }
   buildCounterListApprovalRequestsResponse--;
@@ -339,7 +339,7 @@ api.ListApprovalRequestsResponse buildListApprovalRequestsResponse() {
 void checkListApprovalRequestsResponse(api.ListApprovalRequestsResponse o) {
   buildCounterListApprovalRequestsResponse++;
   if (buildCounterListApprovalRequestsResponse < 3) {
-    checkUnnamed5800(o.approvalRequests!);
+    checkUnnamed2(o.approvalRequests!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

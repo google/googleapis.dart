@@ -165,12 +165,12 @@ void checkFetchVerificationOptionsRequest(
   buildCounterFetchVerificationOptionsRequest--;
 }
 
-core.List<api.VerificationOption> buildUnnamed5419() => [
+core.List<api.VerificationOption> buildUnnamed0() => [
       buildVerificationOption(),
       buildVerificationOption(),
     ];
 
-void checkUnnamed5419(core.List<api.VerificationOption> o) {
+void checkUnnamed0(core.List<api.VerificationOption> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVerificationOption(o[0]);
   checkVerificationOption(o[1]);
@@ -181,7 +181,7 @@ api.FetchVerificationOptionsResponse buildFetchVerificationOptionsResponse() {
   final o = api.FetchVerificationOptionsResponse();
   buildCounterFetchVerificationOptionsResponse++;
   if (buildCounterFetchVerificationOptionsResponse < 3) {
-    o.options = buildUnnamed5419();
+    o.options = buildUnnamed0();
   }
   buildCounterFetchVerificationOptionsResponse--;
   return o;
@@ -191,7 +191,7 @@ void checkFetchVerificationOptionsResponse(
     api.FetchVerificationOptionsResponse o) {
   buildCounterFetchVerificationOptionsResponse++;
   if (buildCounterFetchVerificationOptionsResponse < 3) {
-    checkUnnamed5419(o.options!);
+    checkUnnamed0(o.options!);
   }
   buildCounterFetchVerificationOptionsResponse--;
 }
@@ -236,12 +236,12 @@ void checkGenerateVerificationTokenResponse(
   buildCounterGenerateVerificationTokenResponse--;
 }
 
-core.List<api.Verification> buildUnnamed5420() => [
+core.List<api.Verification> buildUnnamed1() => [
       buildVerification(),
       buildVerification(),
     ];
 
-void checkUnnamed5420(core.List<api.Verification> o) {
+void checkUnnamed1(core.List<api.Verification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVerification(o[0]);
   checkVerification(o[1]);
@@ -253,7 +253,7 @@ api.ListVerificationsResponse buildListVerificationsResponse() {
   buildCounterListVerificationsResponse++;
   if (buildCounterListVerificationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.verifications = buildUnnamed5420();
+    o.verifications = buildUnnamed1();
   }
   buildCounterListVerificationsResponse--;
   return o;
@@ -266,7 +266,7 @@ void checkListVerificationsResponse(api.ListVerificationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5420(o.verifications!);
+    checkUnnamed1(o.verifications!);
   }
   buildCounterListVerificationsResponse--;
 }
@@ -310,12 +310,12 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.List<core.String> buildUnnamed5421() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5421(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -327,12 +327,12 @@ void checkUnnamed5421(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5422() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5422(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -349,13 +349,13 @@ api.PostalAddress buildPostalAddress() {
   final o = api.PostalAddress();
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
-    o.addressLines = buildUnnamed5421();
+    o.addressLines = buildUnnamed2();
     o.administrativeArea = 'foo';
     o.languageCode = 'foo';
     o.locality = 'foo';
     o.organization = 'foo';
     o.postalCode = 'foo';
-    o.recipients = buildUnnamed5422();
+    o.recipients = buildUnnamed3();
     o.regionCode = 'foo';
     o.revision = 42;
     o.sortingCode = 'foo';
@@ -368,7 +368,7 @@ api.PostalAddress buildPostalAddress() {
 void checkPostalAddress(api.PostalAddress o) {
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
-    checkUnnamed5421(o.addressLines!);
+    checkUnnamed2(o.addressLines!);
     unittest.expect(
       o.administrativeArea!,
       unittest.equals('foo'),
@@ -389,7 +389,7 @@ void checkPostalAddress(api.PostalAddress o) {
       o.postalCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed5422(o.recipients!);
+    checkUnnamed3(o.recipients!);
     unittest.expect(
       o.regionCode!,
       unittest.equals('foo'),

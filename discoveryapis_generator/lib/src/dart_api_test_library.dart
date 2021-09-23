@@ -73,6 +73,8 @@ class DartApiTestLibrary extends TestHelper {
     apiLibrary.schemaDB.dartTypes.forEach(handleType);
 
     traverseResource(apiLibrary.apiClass, null, null);
+
+    UnnamedSchemaTest.resetCounter();
   }
 
   String get librarySource {
@@ -727,11 +729,15 @@ class EnumSchemaTest extends StringSchemaTest {
 
 abstract class UnnamedSchemaTest<T extends DartSchemaType>
     extends SchemaTest<T> {
-  static int unnamedCounter = 0;
-  final int _id = unnamedCounter++;
+  static int _unnamedCounter = 0;
+  final int _id = _unnamedCounter++;
 
   UnnamedSchemaTest(DartApiTestLibrary apiTestLibrary, T schema)
       : super(apiTestLibrary, schema);
+
+  static void resetCounter() {
+    _unnamedCounter = 0;
+  }
 
   @override
   String get schemaTest => '';

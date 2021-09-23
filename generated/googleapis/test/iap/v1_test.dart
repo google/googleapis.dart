@@ -101,12 +101,12 @@ void checkApplicationSettings(api.ApplicationSettings o) {
   buildCounterApplicationSettings--;
 }
 
-core.List<core.String> buildUnnamed3617() => [
+core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3617(core.List<core.String> o) {
+void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -124,7 +124,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed3617();
+    o.members = buildUnnamed0();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -135,7 +135,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition!);
-    checkUnnamed3617(o.members!);
+    checkUnnamed0(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -271,12 +271,12 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<core.String> buildUnnamed3618() => [
+core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3618(core.List<core.String> o) {
+void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -294,7 +294,7 @@ api.GcipSettings buildGcipSettings() {
   buildCounterGcipSettings++;
   if (buildCounterGcipSettings < 3) {
     o.loginPageUri = 'foo';
-    o.tenantIds = buildUnnamed3618();
+    o.tenantIds = buildUnnamed1();
   }
   buildCounterGcipSettings--;
   return o;
@@ -307,7 +307,7 @@ void checkGcipSettings(api.GcipSettings o) {
       o.loginPageUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed3618(o.tenantIds!);
+    checkUnnamed1(o.tenantIds!);
   }
   buildCounterGcipSettings--;
 }
@@ -411,12 +411,12 @@ void checkIdentityAwareProxyClient(api.IdentityAwareProxyClient o) {
   buildCounterIdentityAwareProxyClient--;
 }
 
-core.List<api.Brand> buildUnnamed3619() => [
+core.List<api.Brand> buildUnnamed2() => [
       buildBrand(),
       buildBrand(),
     ];
 
-void checkUnnamed3619(core.List<api.Brand> o) {
+void checkUnnamed2(core.List<api.Brand> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBrand(o[0]);
   checkBrand(o[1]);
@@ -427,7 +427,7 @@ api.ListBrandsResponse buildListBrandsResponse() {
   final o = api.ListBrandsResponse();
   buildCounterListBrandsResponse++;
   if (buildCounterListBrandsResponse < 3) {
-    o.brands = buildUnnamed3619();
+    o.brands = buildUnnamed2();
   }
   buildCounterListBrandsResponse--;
   return o;
@@ -436,17 +436,17 @@ api.ListBrandsResponse buildListBrandsResponse() {
 void checkListBrandsResponse(api.ListBrandsResponse o) {
   buildCounterListBrandsResponse++;
   if (buildCounterListBrandsResponse < 3) {
-    checkUnnamed3619(o.brands!);
+    checkUnnamed2(o.brands!);
   }
   buildCounterListBrandsResponse--;
 }
 
-core.List<api.IdentityAwareProxyClient> buildUnnamed3620() => [
+core.List<api.IdentityAwareProxyClient> buildUnnamed3() => [
       buildIdentityAwareProxyClient(),
       buildIdentityAwareProxyClient(),
     ];
 
-void checkUnnamed3620(core.List<api.IdentityAwareProxyClient> o) {
+void checkUnnamed3(core.List<api.IdentityAwareProxyClient> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIdentityAwareProxyClient(o[0]);
   checkIdentityAwareProxyClient(o[1]);
@@ -458,7 +458,7 @@ api.ListIdentityAwareProxyClientsResponse
   final o = api.ListIdentityAwareProxyClientsResponse();
   buildCounterListIdentityAwareProxyClientsResponse++;
   if (buildCounterListIdentityAwareProxyClientsResponse < 3) {
-    o.identityAwareProxyClients = buildUnnamed3620();
+    o.identityAwareProxyClients = buildUnnamed3();
     o.nextPageToken = 'foo';
   }
   buildCounterListIdentityAwareProxyClientsResponse--;
@@ -469,7 +469,7 @@ void checkListIdentityAwareProxyClientsResponse(
     api.ListIdentityAwareProxyClientsResponse o) {
   buildCounterListIdentityAwareProxyClientsResponse++;
   if (buildCounterListIdentityAwareProxyClientsResponse < 3) {
-    checkUnnamed3620(o.identityAwareProxyClients!);
+    checkUnnamed3(o.identityAwareProxyClients!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -500,12 +500,12 @@ void checkOAuthSettings(api.OAuthSettings o) {
   buildCounterOAuthSettings--;
 }
 
-core.List<api.Binding> buildUnnamed3621() => [
+core.List<api.Binding> buildUnnamed4() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed3621(core.List<api.Binding> o) {
+void checkUnnamed4(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -516,7 +516,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed3621();
+    o.bindings = buildUnnamed4();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -527,7 +527,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3621(o.bindings!);
+    checkUnnamed4(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -620,12 +620,12 @@ void checkResetIdentityAwareProxyClientSecretRequest(
   buildCounterResetIdentityAwareProxyClientSecretRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3622() => {
+core.Map<core.String, core.String> buildUnnamed5() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed3622(core.Map<core.String, core.String> o) {
+void checkUnnamed5(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -642,7 +642,7 @@ api.Resource buildResource() {
   final o = api.Resource();
   buildCounterResource++;
   if (buildCounterResource < 3) {
-    o.labels = buildUnnamed3622();
+    o.labels = buildUnnamed5();
     o.name = 'foo';
     o.service = 'foo';
     o.type = 'foo';
@@ -654,7 +654,7 @@ api.Resource buildResource() {
 void checkResource(api.Resource o) {
   buildCounterResource++;
   if (buildCounterResource < 3) {
-    checkUnnamed3622(o.labels!);
+    checkUnnamed5(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -690,12 +690,12 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed3623() => [
+core.List<core.String> buildUnnamed6() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3623(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -712,7 +712,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3623();
+    o.permissions = buildUnnamed6();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -721,17 +721,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3623(o.permissions!);
+    checkUnnamed6(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed3624() => [
+core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3624(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -748,7 +748,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3624();
+    o.permissions = buildUnnamed7();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -757,7 +757,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3624(o.permissions!);
+    checkUnnamed7(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }

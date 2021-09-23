@@ -120,12 +120,12 @@ void checkCreateManagedShortLinkRequest(api.CreateManagedShortLinkRequest o) {
   buildCounterCreateManagedShortLinkRequest--;
 }
 
-core.List<api.DynamicLinkWarning> buildUnnamed3576() => [
+core.List<api.DynamicLinkWarning> buildUnnamed0() => [
       buildDynamicLinkWarning(),
       buildDynamicLinkWarning(),
     ];
 
-void checkUnnamed3576(core.List<api.DynamicLinkWarning> o) {
+void checkUnnamed0(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -138,7 +138,7 @@ api.CreateManagedShortLinkResponse buildCreateManagedShortLinkResponse() {
   if (buildCounterCreateManagedShortLinkResponse < 3) {
     o.managedShortLink = buildManagedShortLink();
     o.previewLink = 'foo';
-    o.warning = buildUnnamed3576();
+    o.warning = buildUnnamed0();
   }
   buildCounterCreateManagedShortLinkResponse--;
   return o;
@@ -152,7 +152,7 @@ void checkCreateManagedShortLinkResponse(api.CreateManagedShortLinkResponse o) {
       o.previewLink!,
       unittest.equals('foo'),
     );
-    checkUnnamed3576(o.warning!);
+    checkUnnamed0(o.warning!);
   }
   buildCounterCreateManagedShortLinkResponse--;
 }
@@ -188,12 +188,12 @@ void checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-core.List<api.DynamicLinkWarning> buildUnnamed3577() => [
+core.List<api.DynamicLinkWarning> buildUnnamed1() => [
       buildDynamicLinkWarning(),
       buildDynamicLinkWarning(),
     ];
 
-void checkUnnamed3577(core.List<api.DynamicLinkWarning> o) {
+void checkUnnamed1(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -206,7 +206,7 @@ api.CreateShortDynamicLinkResponse buildCreateShortDynamicLinkResponse() {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     o.previewLink = 'foo';
     o.shortLink = 'foo';
-    o.warning = buildUnnamed3577();
+    o.warning = buildUnnamed1();
   }
   buildCounterCreateShortDynamicLinkResponse--;
   return o;
@@ -223,7 +223,7 @@ void checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
       o.shortLink!,
       unittest.equals('foo'),
     );
-    checkUnnamed3577(o.warning!);
+    checkUnnamed1(o.warning!);
   }
   buildCounterCreateShortDynamicLinkResponse--;
 }
@@ -378,12 +378,12 @@ void checkDynamicLinkInfo(api.DynamicLinkInfo o) {
   buildCounterDynamicLinkInfo--;
 }
 
-core.List<api.DynamicLinkEventStat> buildUnnamed3578() => [
+core.List<api.DynamicLinkEventStat> buildUnnamed2() => [
       buildDynamicLinkEventStat(),
       buildDynamicLinkEventStat(),
     ];
 
-void checkUnnamed3578(core.List<api.DynamicLinkEventStat> o) {
+void checkUnnamed2(core.List<api.DynamicLinkEventStat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkEventStat(o[0]);
   checkDynamicLinkEventStat(o[1]);
@@ -394,7 +394,7 @@ api.DynamicLinkStats buildDynamicLinkStats() {
   final o = api.DynamicLinkStats();
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    o.linkEventStats = buildUnnamed3578();
+    o.linkEventStats = buildUnnamed2();
   }
   buildCounterDynamicLinkStats--;
   return o;
@@ -403,7 +403,7 @@ api.DynamicLinkStats buildDynamicLinkStats() {
 void checkDynamicLinkStats(api.DynamicLinkStats o) {
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    checkUnnamed3578(o.linkEventStats!);
+    checkUnnamed2(o.linkEventStats!);
   }
   buildCounterDynamicLinkStats--;
 }
@@ -823,12 +823,12 @@ void checkIosInfo(api.IosInfo o) {
   buildCounterIosInfo--;
 }
 
-core.List<core.String> buildUnnamed3579() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3579(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -846,7 +846,7 @@ api.ManagedShortLink buildManagedShortLink() {
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
     o.creationTime = 'foo';
-    o.flaggedAttribute = buildUnnamed3579();
+    o.flaggedAttribute = buildUnnamed3();
     o.info = buildDynamicLinkInfo();
     o.link = 'foo';
     o.linkName = 'foo';
@@ -863,7 +863,7 @@ void checkManagedShortLink(api.ManagedShortLink o) {
       o.creationTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3579(o.flaggedAttribute!);
+    checkUnnamed3(o.flaggedAttribute!);
     checkDynamicLinkInfo(o.info!);
     unittest.expect(
       o.link!,

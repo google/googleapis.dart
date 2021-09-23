@@ -41,12 +41,12 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.PlaceActionLink> buildUnnamed6721() => [
+core.List<api.PlaceActionLink> buildUnnamed0() => [
       buildPlaceActionLink(),
       buildPlaceActionLink(),
     ];
 
-void checkUnnamed6721(core.List<api.PlaceActionLink> o) {
+void checkUnnamed0(core.List<api.PlaceActionLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlaceActionLink(o[0]);
   checkPlaceActionLink(o[1]);
@@ -58,7 +58,7 @@ api.ListPlaceActionLinksResponse buildListPlaceActionLinksResponse() {
   buildCounterListPlaceActionLinksResponse++;
   if (buildCounterListPlaceActionLinksResponse < 3) {
     o.nextPageToken = 'foo';
-    o.placeActionLinks = buildUnnamed6721();
+    o.placeActionLinks = buildUnnamed0();
   }
   buildCounterListPlaceActionLinksResponse--;
   return o;
@@ -71,17 +71,17 @@ void checkListPlaceActionLinksResponse(api.ListPlaceActionLinksResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6721(o.placeActionLinks!);
+    checkUnnamed0(o.placeActionLinks!);
   }
   buildCounterListPlaceActionLinksResponse--;
 }
 
-core.List<api.PlaceActionTypeMetadata> buildUnnamed6722() => [
+core.List<api.PlaceActionTypeMetadata> buildUnnamed1() => [
       buildPlaceActionTypeMetadata(),
       buildPlaceActionTypeMetadata(),
     ];
 
-void checkUnnamed6722(core.List<api.PlaceActionTypeMetadata> o) {
+void checkUnnamed1(core.List<api.PlaceActionTypeMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlaceActionTypeMetadata(o[0]);
   checkPlaceActionTypeMetadata(o[1]);
@@ -94,7 +94,7 @@ api.ListPlaceActionTypeMetadataResponse
   buildCounterListPlaceActionTypeMetadataResponse++;
   if (buildCounterListPlaceActionTypeMetadataResponse < 3) {
     o.nextPageToken = 'foo';
-    o.placeActionTypeMetadata = buildUnnamed6722();
+    o.placeActionTypeMetadata = buildUnnamed1();
   }
   buildCounterListPlaceActionTypeMetadataResponse--;
   return o;
@@ -108,7 +108,7 @@ void checkListPlaceActionTypeMetadataResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6722(o.placeActionTypeMetadata!);
+    checkUnnamed1(o.placeActionTypeMetadata!);
   }
   buildCounterListPlaceActionTypeMetadataResponse--;
 }
