@@ -129,12 +129,12 @@ void checkExecution(api.Execution o) {
   buildCounterExecution--;
 }
 
-core.List<api.Execution> buildUnnamed6210() => [
+core.List<api.Execution> buildUnnamed0() => [
       buildExecution(),
       buildExecution(),
     ];
 
-void checkUnnamed6210(core.List<api.Execution> o) {
+void checkUnnamed0(core.List<api.Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExecution(o[0]);
   checkExecution(o[1]);
@@ -145,7 +145,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
   final o = api.ListExecutionsResponse();
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    o.executions = buildUnnamed6210();
+    o.executions = buildUnnamed0();
     o.nextPageToken = 'foo';
   }
   buildCounterListExecutionsResponse--;
@@ -155,7 +155,7 @@ api.ListExecutionsResponse buildListExecutionsResponse() {
 void checkListExecutionsResponse(api.ListExecutionsResponse o) {
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    checkUnnamed6210(o.executions!);
+    checkUnnamed0(o.executions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -196,12 +196,12 @@ void checkPosition(api.Position o) {
   buildCounterPosition--;
 }
 
-core.List<api.StackTraceElement> buildUnnamed6211() => [
+core.List<api.StackTraceElement> buildUnnamed1() => [
       buildStackTraceElement(),
       buildStackTraceElement(),
     ];
 
-void checkUnnamed6211(core.List<api.StackTraceElement> o) {
+void checkUnnamed1(core.List<api.StackTraceElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackTraceElement(o[0]);
   checkStackTraceElement(o[1]);
@@ -212,7 +212,7 @@ api.StackTrace buildStackTrace() {
   final o = api.StackTrace();
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    o.elements = buildUnnamed6211();
+    o.elements = buildUnnamed1();
   }
   buildCounterStackTrace--;
   return o;
@@ -221,7 +221,7 @@ api.StackTrace buildStackTrace() {
 void checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    checkUnnamed6211(o.elements!);
+    checkUnnamed1(o.elements!);
   }
   buildCounterStackTrace--;
 }

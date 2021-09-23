@@ -120,12 +120,12 @@ void checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-core.List<api.LicenseAssignment> buildUnnamed4055() => [
+core.List<api.LicenseAssignment> buildUnnamed0() => [
       buildLicenseAssignment(),
       buildLicenseAssignment(),
     ];
 
-void checkUnnamed4055(core.List<api.LicenseAssignment> o) {
+void checkUnnamed0(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -137,7 +137,7 @@ api.LicenseAssignmentList buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed4055();
+    o.items = buildUnnamed0();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -152,7 +152,7 @@ void checkLicenseAssignmentList(api.LicenseAssignmentList o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed4055(o.items!);
+    checkUnnamed0(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),

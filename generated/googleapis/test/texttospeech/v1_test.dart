@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed5949() => [
+core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5949(core.List<core.String> o) {
+void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -49,7 +49,7 @@ api.AudioConfig buildAudioConfig() {
   buildCounterAudioConfig++;
   if (buildCounterAudioConfig < 3) {
     o.audioEncoding = 'foo';
-    o.effectsProfileId = buildUnnamed5949();
+    o.effectsProfileId = buildUnnamed0();
     o.pitch = 42.0;
     o.sampleRateHertz = 42;
     o.speakingRate = 42.0;
@@ -66,7 +66,7 @@ void checkAudioConfig(api.AudioConfig o) {
       o.audioEncoding!,
       unittest.equals('foo'),
     );
-    checkUnnamed5949(o.effectsProfileId!);
+    checkUnnamed0(o.effectsProfileId!);
     unittest.expect(
       o.pitch!,
       unittest.equals(42.0),
@@ -87,12 +87,12 @@ void checkAudioConfig(api.AudioConfig o) {
   buildCounterAudioConfig--;
 }
 
-core.List<api.Voice> buildUnnamed5950() => [
+core.List<api.Voice> buildUnnamed1() => [
       buildVoice(),
       buildVoice(),
     ];
 
-void checkUnnamed5950(core.List<api.Voice> o) {
+void checkUnnamed1(core.List<api.Voice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoice(o[0]);
   checkVoice(o[1]);
@@ -103,7 +103,7 @@ api.ListVoicesResponse buildListVoicesResponse() {
   final o = api.ListVoicesResponse();
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    o.voices = buildUnnamed5950();
+    o.voices = buildUnnamed1();
   }
   buildCounterListVoicesResponse--;
   return o;
@@ -112,7 +112,7 @@ api.ListVoicesResponse buildListVoicesResponse() {
 void checkListVoicesResponse(api.ListVoicesResponse o) {
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    checkUnnamed5950(o.voices!);
+    checkUnnamed1(o.voices!);
   }
   buildCounterListVoicesResponse--;
 }
@@ -189,12 +189,12 @@ void checkSynthesizeSpeechResponse(api.SynthesizeSpeechResponse o) {
   buildCounterSynthesizeSpeechResponse--;
 }
 
-core.List<core.String> buildUnnamed5951() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5951(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -211,7 +211,7 @@ api.Voice buildVoice() {
   final o = api.Voice();
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    o.languageCodes = buildUnnamed5951();
+    o.languageCodes = buildUnnamed2();
     o.name = 'foo';
     o.naturalSampleRateHertz = 42;
     o.ssmlGender = 'foo';
@@ -223,7 +223,7 @@ api.Voice buildVoice() {
 void checkVoice(api.Voice o) {
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    checkUnnamed5951(o.languageCodes!);
+    checkUnnamed2(o.languageCodes!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

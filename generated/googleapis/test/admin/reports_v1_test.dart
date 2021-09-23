@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Activity> buildUnnamed6350() => [
+core.List<api.Activity> buildUnnamed0() => [
       buildActivity(),
       buildActivity(),
     ];
 
-void checkUnnamed6350(core.List<api.Activity> o) {
+void checkUnnamed0(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -43,7 +43,7 @@ api.Activities buildActivities() {
   buildCounterActivities++;
   if (buildCounterActivities < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed6350();
+    o.items = buildUnnamed0();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -58,7 +58,7 @@ void checkActivities(api.Activities o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed6350(o.items!);
+    checkUnnamed0(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -108,12 +108,12 @@ void checkActivityActor(api.ActivityActor o) {
   buildCounterActivityActor--;
 }
 
-core.List<api.NestedParameter> buildUnnamed6351() => [
+core.List<api.NestedParameter> buildUnnamed1() => [
       buildNestedParameter(),
       buildNestedParameter(),
     ];
 
-void checkUnnamed6351(core.List<api.NestedParameter> o) {
+void checkUnnamed1(core.List<api.NestedParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNestedParameter(o[0]);
   checkNestedParameter(o[1]);
@@ -125,7 +125,7 @@ api.ActivityEventsParametersMessageValue
   final o = api.ActivityEventsParametersMessageValue();
   buildCounterActivityEventsParametersMessageValue++;
   if (buildCounterActivityEventsParametersMessageValue < 3) {
-    o.parameter = buildUnnamed6351();
+    o.parameter = buildUnnamed1();
   }
   buildCounterActivityEventsParametersMessageValue--;
   return o;
@@ -135,17 +135,17 @@ void checkActivityEventsParametersMessageValue(
     api.ActivityEventsParametersMessageValue o) {
   buildCounterActivityEventsParametersMessageValue++;
   if (buildCounterActivityEventsParametersMessageValue < 3) {
-    checkUnnamed6351(o.parameter!);
+    checkUnnamed1(o.parameter!);
   }
   buildCounterActivityEventsParametersMessageValue--;
 }
 
-core.List<core.String> buildUnnamed6352() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6352(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -157,12 +157,12 @@ void checkUnnamed6352(core.List<core.String> o) {
   );
 }
 
-core.List<api.NestedParameter> buildUnnamed6353() => [
+core.List<api.NestedParameter> buildUnnamed3() => [
       buildNestedParameter(),
       buildNestedParameter(),
     ];
 
-void checkUnnamed6353(core.List<api.NestedParameter> o) {
+void checkUnnamed3(core.List<api.NestedParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNestedParameter(o[0]);
   checkNestedParameter(o[1]);
@@ -174,7 +174,7 @@ api.ActivityEventsParametersMultiMessageValue
   final o = api.ActivityEventsParametersMultiMessageValue();
   buildCounterActivityEventsParametersMultiMessageValue++;
   if (buildCounterActivityEventsParametersMultiMessageValue < 3) {
-    o.parameter = buildUnnamed6353();
+    o.parameter = buildUnnamed3();
   }
   buildCounterActivityEventsParametersMultiMessageValue--;
   return o;
@@ -184,29 +184,28 @@ void checkActivityEventsParametersMultiMessageValue(
     api.ActivityEventsParametersMultiMessageValue o) {
   buildCounterActivityEventsParametersMultiMessageValue++;
   if (buildCounterActivityEventsParametersMultiMessageValue < 3) {
-    checkUnnamed6353(o.parameter!);
+    checkUnnamed3(o.parameter!);
   }
   buildCounterActivityEventsParametersMultiMessageValue--;
 }
 
-core.List<api.ActivityEventsParametersMultiMessageValue> buildUnnamed6354() => [
+core.List<api.ActivityEventsParametersMultiMessageValue> buildUnnamed4() => [
       buildActivityEventsParametersMultiMessageValue(),
       buildActivityEventsParametersMultiMessageValue(),
     ];
 
-void checkUnnamed6354(
-    core.List<api.ActivityEventsParametersMultiMessageValue> o) {
+void checkUnnamed4(core.List<api.ActivityEventsParametersMultiMessageValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityEventsParametersMultiMessageValue(o[0]);
   checkActivityEventsParametersMultiMessageValue(o[1]);
 }
 
-core.List<core.String> buildUnnamed6355() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6355(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -226,9 +225,9 @@ api.ActivityEventsParameters buildActivityEventsParameters() {
     o.boolValue = true;
     o.intValue = 'foo';
     o.messageValue = buildActivityEventsParametersMessageValue();
-    o.multiIntValue = buildUnnamed6352();
-    o.multiMessageValue = buildUnnamed6354();
-    o.multiValue = buildUnnamed6355();
+    o.multiIntValue = buildUnnamed2();
+    o.multiMessageValue = buildUnnamed4();
+    o.multiValue = buildUnnamed5();
     o.name = 'foo';
     o.value = 'foo';
   }
@@ -245,9 +244,9 @@ void checkActivityEventsParameters(api.ActivityEventsParameters o) {
       unittest.equals('foo'),
     );
     checkActivityEventsParametersMessageValue(o.messageValue!);
-    checkUnnamed6352(o.multiIntValue!);
-    checkUnnamed6354(o.multiMessageValue!);
-    checkUnnamed6355(o.multiValue!);
+    checkUnnamed2(o.multiIntValue!);
+    checkUnnamed4(o.multiMessageValue!);
+    checkUnnamed5(o.multiValue!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -260,12 +259,12 @@ void checkActivityEventsParameters(api.ActivityEventsParameters o) {
   buildCounterActivityEventsParameters--;
 }
 
-core.List<api.ActivityEventsParameters> buildUnnamed6356() => [
+core.List<api.ActivityEventsParameters> buildUnnamed6() => [
       buildActivityEventsParameters(),
       buildActivityEventsParameters(),
     ];
 
-void checkUnnamed6356(core.List<api.ActivityEventsParameters> o) {
+void checkUnnamed6(core.List<api.ActivityEventsParameters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityEventsParameters(o[0]);
   checkActivityEventsParameters(o[1]);
@@ -277,7 +276,7 @@ api.ActivityEvents buildActivityEvents() {
   buildCounterActivityEvents++;
   if (buildCounterActivityEvents < 3) {
     o.name = 'foo';
-    o.parameters = buildUnnamed6356();
+    o.parameters = buildUnnamed6();
     o.type = 'foo';
   }
   buildCounterActivityEvents--;
@@ -291,7 +290,7 @@ void checkActivityEvents(api.ActivityEvents o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed6356(o.parameters!);
+    checkUnnamed6(o.parameters!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -300,12 +299,12 @@ void checkActivityEvents(api.ActivityEvents o) {
   buildCounterActivityEvents--;
 }
 
-core.List<api.ActivityEvents> buildUnnamed6357() => [
+core.List<api.ActivityEvents> buildUnnamed7() => [
       buildActivityEvents(),
       buildActivityEvents(),
     ];
 
-void checkUnnamed6357(core.List<api.ActivityEvents> o) {
+void checkUnnamed7(core.List<api.ActivityEvents> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityEvents(o[0]);
   checkActivityEvents(o[1]);
@@ -355,7 +354,7 @@ api.Activity buildActivity() {
   if (buildCounterActivity < 3) {
     o.actor = buildActivityActor();
     o.etag = 'foo';
-    o.events = buildUnnamed6357();
+    o.events = buildUnnamed7();
     o.id = buildActivityId();
     o.ipAddress = 'foo';
     o.kind = 'foo';
@@ -373,7 +372,7 @@ void checkActivity(api.Activity o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed6357(o.events!);
+    checkUnnamed7(o.events!);
     checkActivityId(o.id!);
     unittest.expect(
       o.ipAddress!,
@@ -391,12 +390,12 @@ void checkActivity(api.Activity o) {
   buildCounterActivity--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6358() => {
+core.Map<core.String, core.String> buildUnnamed8() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6358(core.Map<core.String, core.String> o) {
+void checkUnnamed8(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -417,7 +416,7 @@ api.Channel buildChannel() {
     o.expiration = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.params = buildUnnamed6358();
+    o.params = buildUnnamed8();
     o.payload = true;
     o.resourceId = 'foo';
     o.resourceUri = 'foo';
@@ -447,7 +446,7 @@ void checkChannel(api.Channel o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed6358(o.params!);
+    checkUnnamed8(o.params!);
     unittest.expect(o.payload!, unittest.isTrue);
     unittest.expect(
       o.resourceId!,
@@ -469,23 +468,23 @@ void checkChannel(api.Channel o) {
   buildCounterChannel--;
 }
 
-core.List<core.bool> buildUnnamed6359() => [
+core.List<core.bool> buildUnnamed9() => [
       true,
       true,
     ];
 
-void checkUnnamed6359(core.List<core.bool> o) {
+void checkUnnamed9(core.List<core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.isTrue);
   unittest.expect(o[1], unittest.isTrue);
 }
 
-core.List<core.String> buildUnnamed6360() => [
+core.List<core.String> buildUnnamed10() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6360(core.List<core.String> o) {
+void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -497,12 +496,12 @@ void checkUnnamed6360(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6361() => [
+core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6361(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -521,9 +520,9 @@ api.NestedParameter buildNestedParameter() {
   if (buildCounterNestedParameter < 3) {
     o.boolValue = true;
     o.intValue = 'foo';
-    o.multiBoolValue = buildUnnamed6359();
-    o.multiIntValue = buildUnnamed6360();
-    o.multiValue = buildUnnamed6361();
+    o.multiBoolValue = buildUnnamed9();
+    o.multiIntValue = buildUnnamed10();
+    o.multiValue = buildUnnamed11();
     o.name = 'foo';
     o.value = 'foo';
   }
@@ -539,9 +538,9 @@ void checkNestedParameter(api.NestedParameter o) {
       o.intValue!,
       unittest.equals('foo'),
     );
-    checkUnnamed6359(o.multiBoolValue!);
-    checkUnnamed6360(o.multiIntValue!);
-    checkUnnamed6361(o.multiValue!);
+    checkUnnamed9(o.multiBoolValue!);
+    checkUnnamed10(o.multiIntValue!);
+    checkUnnamed11(o.multiValue!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -596,7 +595,7 @@ void checkUsageReportEntity(api.UsageReportEntity o) {
   buildCounterUsageReportEntity--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6362() => {
+core.Map<core.String, core.Object> buildUnnamed12() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -609,7 +608,7 @@ core.Map<core.String, core.Object> buildUnnamed6362() => {
       },
     };
 
-void checkUnnamed6362(core.Map<core.String, core.Object> o) {
+void checkUnnamed12(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -641,15 +640,15 @@ void checkUnnamed6362(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed6363() => [
-      buildUnnamed6362(),
-      buildUnnamed6362(),
+core.List<core.Map<core.String, core.Object>> buildUnnamed13() => [
+      buildUnnamed12(),
+      buildUnnamed12(),
     ];
 
-void checkUnnamed6363(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed13(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6362(o[0]);
-  checkUnnamed6362(o[1]);
+  checkUnnamed12(o[0]);
+  checkUnnamed12(o[1]);
 }
 
 core.int buildCounterUsageReportParameters = 0;
@@ -660,7 +659,7 @@ api.UsageReportParameters buildUsageReportParameters() {
     o.boolValue = true;
     o.datetimeValue = core.DateTime.parse('2002-02-27T14:01:02');
     o.intValue = 'foo';
-    o.msgValue = buildUnnamed6363();
+    o.msgValue = buildUnnamed13();
     o.name = 'foo';
     o.stringValue = 'foo';
   }
@@ -680,7 +679,7 @@ void checkUsageReportParameters(api.UsageReportParameters o) {
       o.intValue!,
       unittest.equals('foo'),
     );
-    checkUnnamed6363(o.msgValue!);
+    checkUnnamed13(o.msgValue!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -693,12 +692,12 @@ void checkUsageReportParameters(api.UsageReportParameters o) {
   buildCounterUsageReportParameters--;
 }
 
-core.List<api.UsageReportParameters> buildUnnamed6364() => [
+core.List<api.UsageReportParameters> buildUnnamed14() => [
       buildUsageReportParameters(),
       buildUsageReportParameters(),
     ];
 
-void checkUnnamed6364(core.List<api.UsageReportParameters> o) {
+void checkUnnamed14(core.List<api.UsageReportParameters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageReportParameters(o[0]);
   checkUsageReportParameters(o[1]);
@@ -713,7 +712,7 @@ api.UsageReport buildUsageReport() {
     o.entity = buildUsageReportEntity();
     o.etag = 'foo';
     o.kind = 'foo';
-    o.parameters = buildUnnamed6364();
+    o.parameters = buildUnnamed14();
   }
   buildCounterUsageReport--;
   return o;
@@ -735,17 +734,17 @@ void checkUsageReport(api.UsageReport o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed6364(o.parameters!);
+    checkUnnamed14(o.parameters!);
   }
   buildCounterUsageReport--;
 }
 
-core.List<api.UsageReport> buildUnnamed6365() => [
+core.List<api.UsageReport> buildUnnamed15() => [
       buildUsageReport(),
       buildUsageReport(),
     ];
 
-void checkUnnamed6365(core.List<api.UsageReport> o) {
+void checkUnnamed15(core.List<api.UsageReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageReport(o[0]);
   checkUsageReport(o[1]);
@@ -778,12 +777,12 @@ void checkUsageReportsWarningsData(api.UsageReportsWarningsData o) {
   buildCounterUsageReportsWarningsData--;
 }
 
-core.List<api.UsageReportsWarningsData> buildUnnamed6366() => [
+core.List<api.UsageReportsWarningsData> buildUnnamed16() => [
       buildUsageReportsWarningsData(),
       buildUsageReportsWarningsData(),
     ];
 
-void checkUnnamed6366(core.List<api.UsageReportsWarningsData> o) {
+void checkUnnamed16(core.List<api.UsageReportsWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageReportsWarningsData(o[0]);
   checkUsageReportsWarningsData(o[1]);
@@ -795,7 +794,7 @@ api.UsageReportsWarnings buildUsageReportsWarnings() {
   buildCounterUsageReportsWarnings++;
   if (buildCounterUsageReportsWarnings < 3) {
     o.code = 'foo';
-    o.data = buildUnnamed6366();
+    o.data = buildUnnamed16();
     o.message = 'foo';
   }
   buildCounterUsageReportsWarnings--;
@@ -809,7 +808,7 @@ void checkUsageReportsWarnings(api.UsageReportsWarnings o) {
       o.code!,
       unittest.equals('foo'),
     );
-    checkUnnamed6366(o.data!);
+    checkUnnamed16(o.data!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -818,12 +817,12 @@ void checkUsageReportsWarnings(api.UsageReportsWarnings o) {
   buildCounterUsageReportsWarnings--;
 }
 
-core.List<api.UsageReportsWarnings> buildUnnamed6367() => [
+core.List<api.UsageReportsWarnings> buildUnnamed17() => [
       buildUsageReportsWarnings(),
       buildUsageReportsWarnings(),
     ];
 
-void checkUnnamed6367(core.List<api.UsageReportsWarnings> o) {
+void checkUnnamed17(core.List<api.UsageReportsWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageReportsWarnings(o[0]);
   checkUsageReportsWarnings(o[1]);
@@ -837,8 +836,8 @@ api.UsageReports buildUsageReports() {
     o.etag = 'foo';
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.usageReports = buildUnnamed6365();
-    o.warnings = buildUnnamed6367();
+    o.usageReports = buildUnnamed15();
+    o.warnings = buildUnnamed17();
   }
   buildCounterUsageReports--;
   return o;
@@ -859,8 +858,8 @@ void checkUsageReports(api.UsageReports o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6365(o.usageReports!);
-    checkUnnamed6367(o.warnings!);
+    checkUnnamed15(o.usageReports!);
+    checkUnnamed17(o.warnings!);
   }
   buildCounterUsageReports--;
 }

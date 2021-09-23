@@ -309,12 +309,12 @@ void checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(
 }
 
 core.List<api.GoogleAdsHomeservicesLocalservicesV1AccountReport>
-    buildUnnamed3168() => [
+    buildUnnamed0() => [
           buildGoogleAdsHomeservicesLocalservicesV1AccountReport(),
           buildGoogleAdsHomeservicesLocalservicesV1AccountReport(),
         ];
 
-void checkUnnamed3168(
+void checkUnnamed0(
     core.List<api.GoogleAdsHomeservicesLocalservicesV1AccountReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAdsHomeservicesLocalservicesV1AccountReport(o[0]);
@@ -331,7 +331,7 @@ api.GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse <
       3) {
-    o.accountReports = buildUnnamed3168();
+    o.accountReports = buildUnnamed0();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse--;
@@ -343,7 +343,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse <
       3) {
-    checkUnnamed3168(o.accountReports!);
+    checkUnnamed0(o.accountReports!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -353,12 +353,12 @@ void checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(
 }
 
 core.List<api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>
-    buildUnnamed3169() => [
+    buildUnnamed1() => [
           buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(),
           buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(),
         ];
 
-void checkUnnamed3169(
+void checkUnnamed1(
     core.List<api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(o[0]);
@@ -375,7 +375,7 @@ api.GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse <
       3) {
-    o.detailedLeadReports = buildUnnamed3169();
+    o.detailedLeadReports = buildUnnamed1();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse--;
@@ -388,7 +388,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse(
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse <
       3) {
-    checkUnnamed3169(o.detailedLeadReports!);
+    checkUnnamed1(o.detailedLeadReports!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

@@ -118,12 +118,12 @@ void checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail--;
 }
 
-core.List<api.AchievementConfiguration> buildUnnamed3614() => [
+core.List<api.AchievementConfiguration> buildUnnamed0() => [
       buildAchievementConfiguration(),
       buildAchievementConfiguration(),
     ];
 
-void checkUnnamed3614(core.List<api.AchievementConfiguration> o) {
+void checkUnnamed0(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementConfiguration(o[0]);
   checkAchievementConfiguration(o[1]);
@@ -135,7 +135,7 @@ api.AchievementConfigurationListResponse
   final o = api.AchievementConfigurationListResponse();
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    o.items = buildUnnamed3614();
+    o.items = buildUnnamed0();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -147,7 +147,7 @@ void checkAchievementConfigurationListResponse(
     api.AchievementConfigurationListResponse o) {
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    checkUnnamed3614(o.items!);
+    checkUnnamed0(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -347,12 +347,12 @@ void checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
   buildCounterLeaderboardConfigurationDetail--;
 }
 
-core.List<api.LeaderboardConfiguration> buildUnnamed3615() => [
+core.List<api.LeaderboardConfiguration> buildUnnamed1() => [
       buildLeaderboardConfiguration(),
       buildLeaderboardConfiguration(),
     ];
 
-void checkUnnamed3615(core.List<api.LeaderboardConfiguration> o) {
+void checkUnnamed1(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardConfiguration(o[0]);
   checkLeaderboardConfiguration(o[1]);
@@ -364,7 +364,7 @@ api.LeaderboardConfigurationListResponse
   final o = api.LeaderboardConfigurationListResponse();
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    o.items = buildUnnamed3615();
+    o.items = buildUnnamed1();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -376,7 +376,7 @@ void checkLeaderboardConfigurationListResponse(
     api.LeaderboardConfigurationListResponse o) {
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    checkUnnamed3615(o.items!);
+    checkUnnamed1(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -421,12 +421,12 @@ void checkLocalizedString(api.LocalizedString o) {
   buildCounterLocalizedString--;
 }
 
-core.List<api.LocalizedString> buildUnnamed3616() => [
+core.List<api.LocalizedString> buildUnnamed2() => [
       buildLocalizedString(),
       buildLocalizedString(),
     ];
 
-void checkUnnamed3616(core.List<api.LocalizedString> o) {
+void checkUnnamed2(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedString(o[0]);
   checkLocalizedString(o[1]);
@@ -438,7 +438,7 @@ api.LocalizedStringBundle buildLocalizedStringBundle() {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     o.kind = 'foo';
-    o.translations = buildUnnamed3616();
+    o.translations = buildUnnamed2();
   }
   buildCounterLocalizedStringBundle--;
   return o;
@@ -451,7 +451,7 @@ void checkLocalizedStringBundle(api.LocalizedStringBundle o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed3616(o.translations!);
+    checkUnnamed2(o.translations!);
   }
   buildCounterLocalizedStringBundle--;
 }

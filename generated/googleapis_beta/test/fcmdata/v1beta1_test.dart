@@ -140,12 +140,12 @@ void checkGoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents(
 }
 
 core.List<api.GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>
-    buildUnnamed8408() => [
+    buildUnnamed0() => [
           buildGoogleFirebaseFcmDataV1beta1AndroidDeliveryData(),
           buildGoogleFirebaseFcmDataV1beta1AndroidDeliveryData(),
         ];
 
-void checkUnnamed8408(
+void checkUnnamed0(
     core.List<api.GoogleFirebaseFcmDataV1beta1AndroidDeliveryData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseFcmDataV1beta1AndroidDeliveryData(o[0]);
@@ -160,7 +160,7 @@ api.GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse
   buildCounterGoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse++;
   if (buildCounterGoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse <
       3) {
-    o.androidDeliveryData = buildUnnamed8408();
+    o.androidDeliveryData = buildUnnamed0();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse--;
@@ -172,7 +172,7 @@ void checkGoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse(
   buildCounterGoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse++;
   if (buildCounterGoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse <
       3) {
-    checkUnnamed8408(o.androidDeliveryData!);
+    checkUnnamed0(o.androidDeliveryData!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

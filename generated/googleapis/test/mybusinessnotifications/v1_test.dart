@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed2422() => [
+core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2422(core.List<core.String> o) {
+void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -49,7 +49,7 @@ api.NotificationSetting buildNotificationSetting() {
   buildCounterNotificationSetting++;
   if (buildCounterNotificationSetting < 3) {
     o.name = 'foo';
-    o.notificationTypes = buildUnnamed2422();
+    o.notificationTypes = buildUnnamed0();
     o.pubsubTopic = 'foo';
   }
   buildCounterNotificationSetting--;
@@ -63,7 +63,7 @@ void checkNotificationSetting(api.NotificationSetting o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed2422(o.notificationTypes!);
+    checkUnnamed0(o.notificationTypes!);
     unittest.expect(
       o.pubsubTopic!,
       unittest.equals('foo'),

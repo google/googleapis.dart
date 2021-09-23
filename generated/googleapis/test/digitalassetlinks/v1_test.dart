@@ -93,12 +93,12 @@ void checkCertificateInfo(api.CertificateInfo o) {
   buildCounterCertificateInfo--;
 }
 
-core.List<core.String> buildUnnamed3611() => [
+core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3611(core.List<core.String> o) {
+void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -116,7 +116,7 @@ api.CheckResponse buildCheckResponse() {
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
     o.debugString = 'foo';
-    o.errorCode = buildUnnamed3611();
+    o.errorCode = buildUnnamed0();
     o.linked = true;
     o.maxAge = 'foo';
   }
@@ -131,7 +131,7 @@ void checkCheckResponse(api.CheckResponse o) {
       o.debugString!,
       unittest.equals('foo'),
     );
-    checkUnnamed3611(o.errorCode!);
+    checkUnnamed0(o.errorCode!);
     unittest.expect(o.linked!, unittest.isTrue);
     unittest.expect(
       o.maxAge!,
@@ -141,12 +141,12 @@ void checkCheckResponse(api.CheckResponse o) {
   buildCounterCheckResponse--;
 }
 
-core.List<core.String> buildUnnamed3612() => [
+core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3612(core.List<core.String> o) {
+void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -158,12 +158,12 @@ void checkUnnamed3612(core.List<core.String> o) {
   );
 }
 
-core.List<api.Statement> buildUnnamed3613() => [
+core.List<api.Statement> buildUnnamed2() => [
       buildStatement(),
       buildStatement(),
     ];
 
-void checkUnnamed3613(core.List<api.Statement> o) {
+void checkUnnamed2(core.List<api.Statement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatement(o[0]);
   checkStatement(o[1]);
@@ -175,9 +175,9 @@ api.ListResponse buildListResponse() {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
     o.debugString = 'foo';
-    o.errorCode = buildUnnamed3612();
+    o.errorCode = buildUnnamed1();
     o.maxAge = 'foo';
-    o.statements = buildUnnamed3613();
+    o.statements = buildUnnamed2();
   }
   buildCounterListResponse--;
   return o;
@@ -190,12 +190,12 @@ void checkListResponse(api.ListResponse o) {
       o.debugString!,
       unittest.equals('foo'),
     );
-    checkUnnamed3612(o.errorCode!);
+    checkUnnamed1(o.errorCode!);
     unittest.expect(
       o.maxAge!,
       unittest.equals('foo'),
     );
-    checkUnnamed3613(o.statements!);
+    checkUnnamed2(o.statements!);
   }
   buildCounterListResponse--;
 }

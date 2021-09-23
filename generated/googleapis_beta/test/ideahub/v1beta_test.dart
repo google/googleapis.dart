@@ -55,12 +55,12 @@ void checkGoogleSearchIdeahubV1betaAvailableLocale(
   buildCounterGoogleSearchIdeahubV1betaAvailableLocale--;
 }
 
-core.List<api.GoogleSearchIdeahubV1betaTopic> buildUnnamed8559() => [
+core.List<api.GoogleSearchIdeahubV1betaTopic> buildUnnamed0() => [
       buildGoogleSearchIdeahubV1betaTopic(),
       buildGoogleSearchIdeahubV1betaTopic(),
     ];
 
-void checkUnnamed8559(core.List<api.GoogleSearchIdeahubV1betaTopic> o) {
+void checkUnnamed0(core.List<api.GoogleSearchIdeahubV1betaTopic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSearchIdeahubV1betaTopic(o[0]);
   checkGoogleSearchIdeahubV1betaTopic(o[1]);
@@ -73,7 +73,7 @@ api.GoogleSearchIdeahubV1betaIdea buildGoogleSearchIdeahubV1betaIdea() {
   if (buildCounterGoogleSearchIdeahubV1betaIdea < 3) {
     o.name = 'foo';
     o.text = 'foo';
-    o.topics = buildUnnamed8559();
+    o.topics = buildUnnamed0();
   }
   buildCounterGoogleSearchIdeahubV1betaIdea--;
   return o;
@@ -90,7 +90,7 @@ void checkGoogleSearchIdeahubV1betaIdea(api.GoogleSearchIdeahubV1betaIdea o) {
       o.text!,
       unittest.equals('foo'),
     );
-    checkUnnamed8559(o.topics!);
+    checkUnnamed0(o.topics!);
   }
   buildCounterGoogleSearchIdeahubV1betaIdea--;
 }
@@ -123,13 +123,12 @@ void checkGoogleSearchIdeahubV1betaIdeaState(
   buildCounterGoogleSearchIdeahubV1betaIdeaState--;
 }
 
-core.List<api.GoogleSearchIdeahubV1betaAvailableLocale> buildUnnamed8560() => [
+core.List<api.GoogleSearchIdeahubV1betaAvailableLocale> buildUnnamed1() => [
       buildGoogleSearchIdeahubV1betaAvailableLocale(),
       buildGoogleSearchIdeahubV1betaAvailableLocale(),
     ];
 
-void checkUnnamed8560(
-    core.List<api.GoogleSearchIdeahubV1betaAvailableLocale> o) {
+void checkUnnamed1(core.List<api.GoogleSearchIdeahubV1betaAvailableLocale> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSearchIdeahubV1betaAvailableLocale(o[0]);
   checkGoogleSearchIdeahubV1betaAvailableLocale(o[1]);
@@ -141,7 +140,7 @@ api.GoogleSearchIdeahubV1betaListAvailableLocalesResponse
   final o = api.GoogleSearchIdeahubV1betaListAvailableLocalesResponse();
   buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse++;
   if (buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse < 3) {
-    o.availableLocales = buildUnnamed8560();
+    o.availableLocales = buildUnnamed1();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse--;
@@ -152,7 +151,7 @@ void checkGoogleSearchIdeahubV1betaListAvailableLocalesResponse(
     api.GoogleSearchIdeahubV1betaListAvailableLocalesResponse o) {
   buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse++;
   if (buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse < 3) {
-    checkUnnamed8560(o.availableLocales!);
+    checkUnnamed1(o.availableLocales!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -161,12 +160,12 @@ void checkGoogleSearchIdeahubV1betaListAvailableLocalesResponse(
   buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse--;
 }
 
-core.List<api.GoogleSearchIdeahubV1betaIdea> buildUnnamed8561() => [
+core.List<api.GoogleSearchIdeahubV1betaIdea> buildUnnamed2() => [
       buildGoogleSearchIdeahubV1betaIdea(),
       buildGoogleSearchIdeahubV1betaIdea(),
     ];
 
-void checkUnnamed8561(core.List<api.GoogleSearchIdeahubV1betaIdea> o) {
+void checkUnnamed2(core.List<api.GoogleSearchIdeahubV1betaIdea> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSearchIdeahubV1betaIdea(o[0]);
   checkGoogleSearchIdeahubV1betaIdea(o[1]);
@@ -178,7 +177,7 @@ api.GoogleSearchIdeahubV1betaListIdeasResponse
   final o = api.GoogleSearchIdeahubV1betaListIdeasResponse();
   buildCounterGoogleSearchIdeahubV1betaListIdeasResponse++;
   if (buildCounterGoogleSearchIdeahubV1betaListIdeasResponse < 3) {
-    o.ideas = buildUnnamed8561();
+    o.ideas = buildUnnamed2();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleSearchIdeahubV1betaListIdeasResponse--;
@@ -189,7 +188,7 @@ void checkGoogleSearchIdeahubV1betaListIdeasResponse(
     api.GoogleSearchIdeahubV1betaListIdeasResponse o) {
   buildCounterGoogleSearchIdeahubV1betaListIdeasResponse++;
   if (buildCounterGoogleSearchIdeahubV1betaListIdeasResponse < 3) {
-    checkUnnamed8561(o.ideas!);
+    checkUnnamed2(o.ideas!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

@@ -56,12 +56,12 @@ void checkGoogleChromePolicyV1AdditionalTargetKeyName(
 }
 
 core.List<api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest>
-    buildUnnamed7651() => [
+    buildUnnamed0() => [
           buildGoogleChromePolicyV1InheritOrgUnitPolicyRequest(),
           buildGoogleChromePolicyV1InheritOrgUnitPolicyRequest(),
         ];
 
-void checkUnnamed7651(
+void checkUnnamed0(
     core.List<api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(o[0]);
@@ -74,7 +74,7 @@ api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest
   final o = api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest();
   buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest < 3) {
-    o.requests = buildUnnamed7651();
+    o.requests = buildUnnamed0();
   }
   buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest--;
   return o;
@@ -84,18 +84,18 @@ void checkGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest(
     api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest o) {
   buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest < 3) {
-    checkUnnamed7651(o.requests!);
+    checkUnnamed0(o.requests!);
   }
   buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest--;
 }
 
-core.List<api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest>
-    buildUnnamed7652() => [
-          buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(),
-          buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(),
-        ];
+core.List<api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest> buildUnnamed1() =>
+    [
+      buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(),
+      buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(),
+    ];
 
-void checkUnnamed7652(
+void checkUnnamed1(
     core.List<api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(o[0]);
@@ -108,7 +108,7 @@ api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest
   final o = api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest();
   buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest < 3) {
-    o.requests = buildUnnamed7652();
+    o.requests = buildUnnamed1();
   }
   buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest--;
   return o;
@@ -118,7 +118,7 @@ void checkGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest(
     api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest o) {
   buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest < 3) {
-    checkUnnamed7652(o.requests!);
+    checkUnnamed1(o.requests!);
   }
   buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest--;
 }
@@ -149,12 +149,12 @@ void checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(
   buildCounterGoogleChromePolicyV1InheritOrgUnitPolicyRequest--;
 }
 
-core.List<api.GoogleChromePolicyV1PolicySchema> buildUnnamed7653() => [
+core.List<api.GoogleChromePolicyV1PolicySchema> buildUnnamed2() => [
       buildGoogleChromePolicyV1PolicySchema(),
       buildGoogleChromePolicyV1PolicySchema(),
     ];
 
-void checkUnnamed7653(core.List<api.GoogleChromePolicyV1PolicySchema> o) {
+void checkUnnamed2(core.List<api.GoogleChromePolicyV1PolicySchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1PolicySchema(o[0]);
   checkGoogleChromePolicyV1PolicySchema(o[1]);
@@ -167,7 +167,7 @@ api.GoogleChromePolicyV1ListPolicySchemasResponse
   buildCounterGoogleChromePolicyV1ListPolicySchemasResponse++;
   if (buildCounterGoogleChromePolicyV1ListPolicySchemasResponse < 3) {
     o.nextPageToken = 'foo';
-    o.policySchemas = buildUnnamed7653();
+    o.policySchemas = buildUnnamed2();
   }
   buildCounterGoogleChromePolicyV1ListPolicySchemasResponse--;
   return o;
@@ -181,7 +181,7 @@ void checkGoogleChromePolicyV1ListPolicySchemasResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7653(o.policySchemas!);
+    checkUnnamed2(o.policySchemas!);
   }
   buildCounterGoogleChromePolicyV1ListPolicySchemasResponse--;
 }
@@ -214,12 +214,12 @@ void checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(
   buildCounterGoogleChromePolicyV1ModifyOrgUnitPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed7654() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7654(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -231,13 +231,12 @@ void checkUnnamed7654(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleChromePolicyV1AdditionalTargetKeyName> buildUnnamed7655() =>
-    [
+core.List<api.GoogleChromePolicyV1AdditionalTargetKeyName> buildUnnamed4() => [
       buildGoogleChromePolicyV1AdditionalTargetKeyName(),
       buildGoogleChromePolicyV1AdditionalTargetKeyName(),
     ];
 
-void checkUnnamed7655(
+void checkUnnamed4(
     core.List<api.GoogleChromePolicyV1AdditionalTargetKeyName> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1AdditionalTargetKeyName(o[0]);
@@ -245,12 +244,12 @@ void checkUnnamed7655(
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription>
-    buildUnnamed7656() => [
+    buildUnnamed5() => [
           buildGoogleChromePolicyV1PolicySchemaFieldDescription(),
           buildGoogleChromePolicyV1PolicySchemaFieldDescription(),
         ];
 
-void checkUnnamed7656(
+void checkUnnamed5(
     core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1PolicySchemaFieldDescription(o[0]);
@@ -258,12 +257,12 @@ void checkUnnamed7656(
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchemaNoticeDescription>
-    buildUnnamed7657() => [
+    buildUnnamed6() => [
           buildGoogleChromePolicyV1PolicySchemaNoticeDescription(),
           buildGoogleChromePolicyV1PolicySchemaNoticeDescription(),
         ];
 
-void checkUnnamed7657(
+void checkUnnamed6(
     core.List<api.GoogleChromePolicyV1PolicySchemaNoticeDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1PolicySchemaNoticeDescription(o[0]);
@@ -275,12 +274,12 @@ api.GoogleChromePolicyV1PolicySchema buildGoogleChromePolicyV1PolicySchema() {
   final o = api.GoogleChromePolicyV1PolicySchema();
   buildCounterGoogleChromePolicyV1PolicySchema++;
   if (buildCounterGoogleChromePolicyV1PolicySchema < 3) {
-    o.accessRestrictions = buildUnnamed7654();
-    o.additionalTargetKeyNames = buildUnnamed7655();
+    o.accessRestrictions = buildUnnamed3();
+    o.additionalTargetKeyNames = buildUnnamed4();
     o.definition = buildProto2FileDescriptorProto();
-    o.fieldDescriptions = buildUnnamed7656();
+    o.fieldDescriptions = buildUnnamed5();
     o.name = 'foo';
-    o.notices = buildUnnamed7657();
+    o.notices = buildUnnamed6();
     o.policyDescription = 'foo';
     o.schemaName = 'foo';
     o.supportUri = 'foo';
@@ -293,15 +292,15 @@ void checkGoogleChromePolicyV1PolicySchema(
     api.GoogleChromePolicyV1PolicySchema o) {
   buildCounterGoogleChromePolicyV1PolicySchema++;
   if (buildCounterGoogleChromePolicyV1PolicySchema < 3) {
-    checkUnnamed7654(o.accessRestrictions!);
-    checkUnnamed7655(o.additionalTargetKeyNames!);
+    checkUnnamed3(o.accessRestrictions!);
+    checkUnnamed4(o.additionalTargetKeyNames!);
     checkProto2FileDescriptorProto(o.definition!);
-    checkUnnamed7656(o.fieldDescriptions!);
+    checkUnnamed5(o.fieldDescriptions!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7657(o.notices!);
+    checkUnnamed6(o.notices!);
     unittest.expect(
       o.policyDescription!,
       unittest.equals('foo'),
@@ -348,12 +347,12 @@ void checkGoogleChromePolicyV1PolicySchemaFieldDependencies(
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchemaFieldDependencies>
-    buildUnnamed7658() => [
+    buildUnnamed7() => [
           buildGoogleChromePolicyV1PolicySchemaFieldDependencies(),
           buildGoogleChromePolicyV1PolicySchemaFieldDependencies(),
         ];
 
-void checkUnnamed7658(
+void checkUnnamed7(
     core.List<api.GoogleChromePolicyV1PolicySchemaFieldDependencies> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1PolicySchemaFieldDependencies(o[0]);
@@ -361,12 +360,12 @@ void checkUnnamed7658(
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>
-    buildUnnamed7659() => [
+    buildUnnamed8() => [
           buildGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(),
           buildGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(),
         ];
 
-void checkUnnamed7659(
+void checkUnnamed8(
     core.List<api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -375,12 +374,12 @@ void checkUnnamed7659(
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription>
-    buildUnnamed7660() => [
+    buildUnnamed9() => [
           buildGoogleChromePolicyV1PolicySchemaFieldDescription(),
           buildGoogleChromePolicyV1PolicySchemaFieldDescription(),
         ];
 
-void checkUnnamed7660(
+void checkUnnamed9(
     core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1PolicySchemaFieldDescription(o[0]);
@@ -395,10 +394,10 @@ api.GoogleChromePolicyV1PolicySchemaFieldDescription
   if (buildCounterGoogleChromePolicyV1PolicySchemaFieldDescription < 3) {
     o.description = 'foo';
     o.field = 'foo';
-    o.fieldDependencies = buildUnnamed7658();
+    o.fieldDependencies = buildUnnamed7();
     o.inputConstraint = 'foo';
-    o.knownValueDescriptions = buildUnnamed7659();
-    o.nestedFieldDescriptions = buildUnnamed7660();
+    o.knownValueDescriptions = buildUnnamed8();
+    o.nestedFieldDescriptions = buildUnnamed9();
   }
   buildCounterGoogleChromePolicyV1PolicySchemaFieldDescription--;
   return o;
@@ -416,13 +415,13 @@ void checkGoogleChromePolicyV1PolicySchemaFieldDescription(
       o.field!,
       unittest.equals('foo'),
     );
-    checkUnnamed7658(o.fieldDependencies!);
+    checkUnnamed7(o.fieldDependencies!);
     unittest.expect(
       o.inputConstraint!,
       unittest.equals('foo'),
     );
-    checkUnnamed7659(o.knownValueDescriptions!);
-    checkUnnamed7660(o.nestedFieldDescriptions!);
+    checkUnnamed8(o.knownValueDescriptions!);
+    checkUnnamed9(o.nestedFieldDescriptions!);
   }
   buildCounterGoogleChromePolicyV1PolicySchemaFieldDescription--;
 }
@@ -495,12 +494,12 @@ void checkGoogleChromePolicyV1PolicySchemaNoticeDescription(
   buildCounterGoogleChromePolicyV1PolicySchemaNoticeDescription--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7661() => {
+core.Map<core.String, core.String> buildUnnamed10() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed7661(core.Map<core.String, core.String> o) {
+void checkUnnamed10(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -518,7 +517,7 @@ api.GoogleChromePolicyV1PolicyTargetKey
   final o = api.GoogleChromePolicyV1PolicyTargetKey();
   buildCounterGoogleChromePolicyV1PolicyTargetKey++;
   if (buildCounterGoogleChromePolicyV1PolicyTargetKey < 3) {
-    o.additionalTargetKeys = buildUnnamed7661();
+    o.additionalTargetKeys = buildUnnamed10();
     o.targetResource = 'foo';
   }
   buildCounterGoogleChromePolicyV1PolicyTargetKey--;
@@ -529,7 +528,7 @@ void checkGoogleChromePolicyV1PolicyTargetKey(
     api.GoogleChromePolicyV1PolicyTargetKey o) {
   buildCounterGoogleChromePolicyV1PolicyTargetKey++;
   if (buildCounterGoogleChromePolicyV1PolicyTargetKey < 3) {
-    checkUnnamed7661(o.additionalTargetKeys!);
+    checkUnnamed10(o.additionalTargetKeys!);
     unittest.expect(
       o.targetResource!,
       unittest.equals('foo'),
@@ -538,7 +537,7 @@ void checkGoogleChromePolicyV1PolicyTargetKey(
   buildCounterGoogleChromePolicyV1PolicyTargetKey--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7662() => {
+core.Map<core.String, core.Object> buildUnnamed11() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -551,7 +550,7 @@ core.Map<core.String, core.Object> buildUnnamed7662() => {
       },
     };
 
-void checkUnnamed7662(core.Map<core.String, core.Object> o) {
+void checkUnnamed11(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -589,7 +588,7 @@ api.GoogleChromePolicyV1PolicyValue buildGoogleChromePolicyV1PolicyValue() {
   buildCounterGoogleChromePolicyV1PolicyValue++;
   if (buildCounterGoogleChromePolicyV1PolicyValue < 3) {
     o.policySchema = 'foo';
-    o.value = buildUnnamed7662();
+    o.value = buildUnnamed11();
   }
   buildCounterGoogleChromePolicyV1PolicyValue--;
   return o;
@@ -603,7 +602,7 @@ void checkGoogleChromePolicyV1PolicyValue(
       o.policySchema!,
       unittest.equals('foo'),
     );
-    checkUnnamed7662(o.value!);
+    checkUnnamed11(o.value!);
   }
   buildCounterGoogleChromePolicyV1PolicyValue--;
 }
@@ -644,12 +643,12 @@ void checkGoogleChromePolicyV1ResolveRequest(
   buildCounterGoogleChromePolicyV1ResolveRequest--;
 }
 
-core.List<api.GoogleChromePolicyV1ResolvedPolicy> buildUnnamed7663() => [
+core.List<api.GoogleChromePolicyV1ResolvedPolicy> buildUnnamed12() => [
       buildGoogleChromePolicyV1ResolvedPolicy(),
       buildGoogleChromePolicyV1ResolvedPolicy(),
     ];
 
-void checkUnnamed7663(core.List<api.GoogleChromePolicyV1ResolvedPolicy> o) {
+void checkUnnamed12(core.List<api.GoogleChromePolicyV1ResolvedPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromePolicyV1ResolvedPolicy(o[0]);
   checkGoogleChromePolicyV1ResolvedPolicy(o[1]);
@@ -662,7 +661,7 @@ api.GoogleChromePolicyV1ResolveResponse
   buildCounterGoogleChromePolicyV1ResolveResponse++;
   if (buildCounterGoogleChromePolicyV1ResolveResponse < 3) {
     o.nextPageToken = 'foo';
-    o.resolvedPolicies = buildUnnamed7663();
+    o.resolvedPolicies = buildUnnamed12();
   }
   buildCounterGoogleChromePolicyV1ResolveResponse--;
   return o;
@@ -676,7 +675,7 @@ void checkGoogleChromePolicyV1ResolveResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7663(o.resolvedPolicies!);
+    checkUnnamed12(o.resolvedPolicies!);
   }
   buildCounterGoogleChromePolicyV1ResolveResponse--;
 }
@@ -769,45 +768,45 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<api.Proto2EnumDescriptorProto> buildUnnamed7664() => [
+core.List<api.Proto2EnumDescriptorProto> buildUnnamed13() => [
       buildProto2EnumDescriptorProto(),
       buildProto2EnumDescriptorProto(),
     ];
 
-void checkUnnamed7664(core.List<api.Proto2EnumDescriptorProto> o) {
+void checkUnnamed13(core.List<api.Proto2EnumDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2EnumDescriptorProto(o[0]);
   checkProto2EnumDescriptorProto(o[1]);
 }
 
-core.List<api.Proto2FieldDescriptorProto> buildUnnamed7665() => [
+core.List<api.Proto2FieldDescriptorProto> buildUnnamed14() => [
       buildProto2FieldDescriptorProto(),
       buildProto2FieldDescriptorProto(),
     ];
 
-void checkUnnamed7665(core.List<api.Proto2FieldDescriptorProto> o) {
+void checkUnnamed14(core.List<api.Proto2FieldDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2FieldDescriptorProto(o[0]);
   checkProto2FieldDescriptorProto(o[1]);
 }
 
-core.List<api.Proto2DescriptorProto> buildUnnamed7666() => [
+core.List<api.Proto2DescriptorProto> buildUnnamed15() => [
       buildProto2DescriptorProto(),
       buildProto2DescriptorProto(),
     ];
 
-void checkUnnamed7666(core.List<api.Proto2DescriptorProto> o) {
+void checkUnnamed15(core.List<api.Proto2DescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2DescriptorProto(o[0]);
   checkProto2DescriptorProto(o[1]);
 }
 
-core.List<api.Proto2OneofDescriptorProto> buildUnnamed7667() => [
+core.List<api.Proto2OneofDescriptorProto> buildUnnamed16() => [
       buildProto2OneofDescriptorProto(),
       buildProto2OneofDescriptorProto(),
     ];
 
-void checkUnnamed7667(core.List<api.Proto2OneofDescriptorProto> o) {
+void checkUnnamed16(core.List<api.Proto2OneofDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2OneofDescriptorProto(o[0]);
   checkProto2OneofDescriptorProto(o[1]);
@@ -818,11 +817,11 @@ api.Proto2DescriptorProto buildProto2DescriptorProto() {
   final o = api.Proto2DescriptorProto();
   buildCounterProto2DescriptorProto++;
   if (buildCounterProto2DescriptorProto < 3) {
-    o.enumType = buildUnnamed7664();
-    o.field = buildUnnamed7665();
+    o.enumType = buildUnnamed13();
+    o.field = buildUnnamed14();
     o.name = 'foo';
-    o.nestedType = buildUnnamed7666();
-    o.oneofDecl = buildUnnamed7667();
+    o.nestedType = buildUnnamed15();
+    o.oneofDecl = buildUnnamed16();
   }
   buildCounterProto2DescriptorProto--;
   return o;
@@ -831,24 +830,24 @@ api.Proto2DescriptorProto buildProto2DescriptorProto() {
 void checkProto2DescriptorProto(api.Proto2DescriptorProto o) {
   buildCounterProto2DescriptorProto++;
   if (buildCounterProto2DescriptorProto < 3) {
-    checkUnnamed7664(o.enumType!);
-    checkUnnamed7665(o.field!);
+    checkUnnamed13(o.enumType!);
+    checkUnnamed14(o.field!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7666(o.nestedType!);
-    checkUnnamed7667(o.oneofDecl!);
+    checkUnnamed15(o.nestedType!);
+    checkUnnamed16(o.oneofDecl!);
   }
   buildCounterProto2DescriptorProto--;
 }
 
-core.List<api.Proto2EnumValueDescriptorProto> buildUnnamed7668() => [
+core.List<api.Proto2EnumValueDescriptorProto> buildUnnamed17() => [
       buildProto2EnumValueDescriptorProto(),
       buildProto2EnumValueDescriptorProto(),
     ];
 
-void checkUnnamed7668(core.List<api.Proto2EnumValueDescriptorProto> o) {
+void checkUnnamed17(core.List<api.Proto2EnumValueDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2EnumValueDescriptorProto(o[0]);
   checkProto2EnumValueDescriptorProto(o[1]);
@@ -860,7 +859,7 @@ api.Proto2EnumDescriptorProto buildProto2EnumDescriptorProto() {
   buildCounterProto2EnumDescriptorProto++;
   if (buildCounterProto2EnumDescriptorProto < 3) {
     o.name = 'foo';
-    o.value = buildUnnamed7668();
+    o.value = buildUnnamed17();
   }
   buildCounterProto2EnumDescriptorProto--;
   return o;
@@ -873,7 +872,7 @@ void checkProto2EnumDescriptorProto(api.Proto2EnumDescriptorProto o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed7668(o.value!);
+    checkUnnamed17(o.value!);
   }
   buildCounterProto2EnumDescriptorProto--;
 }
@@ -964,23 +963,23 @@ void checkProto2FieldDescriptorProto(api.Proto2FieldDescriptorProto o) {
   buildCounterProto2FieldDescriptorProto--;
 }
 
-core.List<api.Proto2EnumDescriptorProto> buildUnnamed7669() => [
+core.List<api.Proto2EnumDescriptorProto> buildUnnamed18() => [
       buildProto2EnumDescriptorProto(),
       buildProto2EnumDescriptorProto(),
     ];
 
-void checkUnnamed7669(core.List<api.Proto2EnumDescriptorProto> o) {
+void checkUnnamed18(core.List<api.Proto2EnumDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2EnumDescriptorProto(o[0]);
   checkProto2EnumDescriptorProto(o[1]);
 }
 
-core.List<api.Proto2DescriptorProto> buildUnnamed7670() => [
+core.List<api.Proto2DescriptorProto> buildUnnamed19() => [
       buildProto2DescriptorProto(),
       buildProto2DescriptorProto(),
     ];
 
-void checkUnnamed7670(core.List<api.Proto2DescriptorProto> o) {
+void checkUnnamed19(core.List<api.Proto2DescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProto2DescriptorProto(o[0]);
   checkProto2DescriptorProto(o[1]);
@@ -991,8 +990,8 @@ api.Proto2FileDescriptorProto buildProto2FileDescriptorProto() {
   final o = api.Proto2FileDescriptorProto();
   buildCounterProto2FileDescriptorProto++;
   if (buildCounterProto2FileDescriptorProto < 3) {
-    o.enumType = buildUnnamed7669();
-    o.messageType = buildUnnamed7670();
+    o.enumType = buildUnnamed18();
+    o.messageType = buildUnnamed19();
     o.name = 'foo';
     o.package = 'foo';
     o.syntax = 'foo';
@@ -1004,8 +1003,8 @@ api.Proto2FileDescriptorProto buildProto2FileDescriptorProto() {
 void checkProto2FileDescriptorProto(api.Proto2FileDescriptorProto o) {
   buildCounterProto2FileDescriptorProto++;
   if (buildCounterProto2FileDescriptorProto < 3) {
-    checkUnnamed7669(o.enumType!);
-    checkUnnamed7670(o.messageType!);
+    checkUnnamed18(o.enumType!);
+    checkUnnamed19(o.messageType!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

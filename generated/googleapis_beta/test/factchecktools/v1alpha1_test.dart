@@ -27,12 +27,12 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>
-    buildUnnamed8158() => [
+    buildUnnamed0() => [
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(),
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(),
         ];
 
-void checkUnnamed8158(
+void checkUnnamed0(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(o[0]);
@@ -46,7 +46,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1Claim
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim < 3) {
     o.claimDate = 'foo';
-    o.claimReview = buildUnnamed8158();
+    o.claimReview = buildUnnamed0();
     o.claimant = 'foo';
     o.text = 'foo';
   }
@@ -62,7 +62,7 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1Claim(
       o.claimDate!,
       unittest.equals('foo'),
     );
-    checkUnnamed8158(o.claimReview!);
+    checkUnnamed0(o.claimReview!);
     unittest.expect(
       o.claimant!,
       unittest.equals('foo'),
@@ -241,12 +241,12 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor--;
 }
 
-core.List<core.String> buildUnnamed8159() => [
+core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8159(core.List<core.String> o) {
+void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -266,7 +266,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup <
       3) {
-    o.claimAppearances = buildUnnamed8159();
+    o.claimAppearances = buildUnnamed1();
     o.claimAuthor = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
     o.claimDate = 'foo';
     o.claimFirstAppearance = 'foo';
@@ -284,7 +284,7 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup <
       3) {
-    checkUnnamed8159(o.claimAppearances!);
+    checkUnnamed1(o.claimAppearances!);
     checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor(o.claimAuthor!);
     unittest.expect(
       o.claimDate!,
@@ -312,12 +312,12 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(
 }
 
 core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>
-    buildUnnamed8160() => [
+    buildUnnamed2() => [
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(),
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(),
         ];
 
-void checkUnnamed8160(
+void checkUnnamed2(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -336,7 +336,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
       3) {
     o.claimReviewAuthor =
         buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
-    o.claimReviewMarkups = buildUnnamed8160();
+    o.claimReviewMarkups = buildUnnamed2();
     o.name = 'foo';
     o.pageUrl = 'foo';
     o.publishDate = 'foo';
@@ -353,7 +353,7 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
       3) {
     checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
         o.claimReviewAuthor!);
-    checkUnnamed8160(o.claimReviewMarkups!);
+    checkUnnamed2(o.claimReviewMarkups!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -374,13 +374,13 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage--;
 }
 
-core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim>
-    buildUnnamed8161() => [
-          buildGoogleFactcheckingFactchecktoolsV1alpha1Claim(),
-          buildGoogleFactcheckingFactchecktoolsV1alpha1Claim(),
-        ];
+core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim> buildUnnamed3() =>
+    [
+      buildGoogleFactcheckingFactchecktoolsV1alpha1Claim(),
+      buildGoogleFactcheckingFactchecktoolsV1alpha1Claim(),
+    ];
 
-void checkUnnamed8161(
+void checkUnnamed3(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFactcheckingFactchecktoolsV1alpha1Claim(o[0]);
@@ -397,7 +397,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse <
       3) {
-    o.claims = buildUnnamed8161();
+    o.claims = buildUnnamed3();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse--;
@@ -410,7 +410,7 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse <
       3) {
-    checkUnnamed8161(o.claims!);
+    checkUnnamed3(o.claims!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -420,12 +420,12 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
 }
 
 core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
-    buildUnnamed8162() => [
+    buildUnnamed4() => [
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(),
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(),
         ];
 
-void checkUnnamed8162(
+void checkUnnamed4(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -443,7 +443,7 @@ api.GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse <
       3) {
-    o.claimReviewMarkupPages = buildUnnamed8162();
+    o.claimReviewMarkupPages = buildUnnamed4();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse--;
@@ -456,7 +456,7 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResp
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse <
       3) {
-    checkUnnamed8162(o.claimReviewMarkupPages!);
+    checkUnnamed4(o.claimReviewMarkupPages!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),

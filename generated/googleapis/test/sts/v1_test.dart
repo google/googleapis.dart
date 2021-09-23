@@ -26,12 +26,12 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed2931() => [
+core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2931(core.List<core.String> o) {
+void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -49,7 +49,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed2931();
+    o.members = buildUnnamed0();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -60,7 +60,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed2931(o.members!);
+    checkUnnamed0(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -69,12 +69,12 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIdentityStsV1AccessBoundaryRule> buildUnnamed2932() => [
+core.List<api.GoogleIdentityStsV1AccessBoundaryRule> buildUnnamed1() => [
       buildGoogleIdentityStsV1AccessBoundaryRule(),
       buildGoogleIdentityStsV1AccessBoundaryRule(),
     ];
 
-void checkUnnamed2932(core.List<api.GoogleIdentityStsV1AccessBoundaryRule> o) {
+void checkUnnamed1(core.List<api.GoogleIdentityStsV1AccessBoundaryRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIdentityStsV1AccessBoundaryRule(o[0]);
   checkGoogleIdentityStsV1AccessBoundaryRule(o[1]);
@@ -85,7 +85,7 @@ api.GoogleIdentityStsV1AccessBoundary buildGoogleIdentityStsV1AccessBoundary() {
   final o = api.GoogleIdentityStsV1AccessBoundary();
   buildCounterGoogleIdentityStsV1AccessBoundary++;
   if (buildCounterGoogleIdentityStsV1AccessBoundary < 3) {
-    o.accessBoundaryRules = buildUnnamed2932();
+    o.accessBoundaryRules = buildUnnamed1();
   }
   buildCounterGoogleIdentityStsV1AccessBoundary--;
   return o;
@@ -95,17 +95,17 @@ void checkGoogleIdentityStsV1AccessBoundary(
     api.GoogleIdentityStsV1AccessBoundary o) {
   buildCounterGoogleIdentityStsV1AccessBoundary++;
   if (buildCounterGoogleIdentityStsV1AccessBoundary < 3) {
-    checkUnnamed2932(o.accessBoundaryRules!);
+    checkUnnamed1(o.accessBoundaryRules!);
   }
   buildCounterGoogleIdentityStsV1AccessBoundary--;
 }
 
-core.List<core.String> buildUnnamed2933() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2933(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -124,7 +124,7 @@ api.GoogleIdentityStsV1AccessBoundaryRule
   buildCounterGoogleIdentityStsV1AccessBoundaryRule++;
   if (buildCounterGoogleIdentityStsV1AccessBoundaryRule < 3) {
     o.availabilityCondition = buildGoogleTypeExpr();
-    o.availablePermissions = buildUnnamed2933();
+    o.availablePermissions = buildUnnamed2();
     o.availableResource = 'foo';
   }
   buildCounterGoogleIdentityStsV1AccessBoundaryRule--;
@@ -136,7 +136,7 @@ void checkGoogleIdentityStsV1AccessBoundaryRule(
   buildCounterGoogleIdentityStsV1AccessBoundaryRule++;
   if (buildCounterGoogleIdentityStsV1AccessBoundaryRule < 3) {
     checkGoogleTypeExpr(o.availabilityCondition!);
-    checkUnnamed2933(o.availablePermissions!);
+    checkUnnamed2(o.availablePermissions!);
     unittest.expect(
       o.availableResource!,
       unittest.equals('foo'),
@@ -238,12 +238,12 @@ void checkGoogleIdentityStsV1ExchangeTokenResponse(
   buildCounterGoogleIdentityStsV1ExchangeTokenResponse--;
 }
 
-core.List<core.String> buildUnnamed2934() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2934(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -261,7 +261,7 @@ api.GoogleIdentityStsV1Options buildGoogleIdentityStsV1Options() {
   buildCounterGoogleIdentityStsV1Options++;
   if (buildCounterGoogleIdentityStsV1Options < 3) {
     o.accessBoundary = buildGoogleIdentityStsV1AccessBoundary();
-    o.audiences = buildUnnamed2934();
+    o.audiences = buildUnnamed3();
     o.userProject = 'foo';
   }
   buildCounterGoogleIdentityStsV1Options--;
@@ -272,7 +272,7 @@ void checkGoogleIdentityStsV1Options(api.GoogleIdentityStsV1Options o) {
   buildCounterGoogleIdentityStsV1Options++;
   if (buildCounterGoogleIdentityStsV1Options < 3) {
     checkGoogleIdentityStsV1AccessBoundary(o.accessBoundary!);
-    checkUnnamed2934(o.audiences!);
+    checkUnnamed3(o.audiences!);
     unittest.expect(
       o.userProject!,
       unittest.equals('foo'),
@@ -281,13 +281,12 @@ void checkGoogleIdentityStsV1Options(api.GoogleIdentityStsV1Options o) {
   buildCounterGoogleIdentityStsV1Options--;
 }
 
-core.List<api.GoogleIdentityStsV1betaAccessBoundaryRule> buildUnnamed2935() => [
+core.List<api.GoogleIdentityStsV1betaAccessBoundaryRule> buildUnnamed4() => [
       buildGoogleIdentityStsV1betaAccessBoundaryRule(),
       buildGoogleIdentityStsV1betaAccessBoundaryRule(),
     ];
 
-void checkUnnamed2935(
-    core.List<api.GoogleIdentityStsV1betaAccessBoundaryRule> o) {
+void checkUnnamed4(core.List<api.GoogleIdentityStsV1betaAccessBoundaryRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIdentityStsV1betaAccessBoundaryRule(o[0]);
   checkGoogleIdentityStsV1betaAccessBoundaryRule(o[1]);
@@ -299,7 +298,7 @@ api.GoogleIdentityStsV1betaAccessBoundary
   final o = api.GoogleIdentityStsV1betaAccessBoundary();
   buildCounterGoogleIdentityStsV1betaAccessBoundary++;
   if (buildCounterGoogleIdentityStsV1betaAccessBoundary < 3) {
-    o.accessBoundaryRules = buildUnnamed2935();
+    o.accessBoundaryRules = buildUnnamed4();
   }
   buildCounterGoogleIdentityStsV1betaAccessBoundary--;
   return o;
@@ -309,17 +308,17 @@ void checkGoogleIdentityStsV1betaAccessBoundary(
     api.GoogleIdentityStsV1betaAccessBoundary o) {
   buildCounterGoogleIdentityStsV1betaAccessBoundary++;
   if (buildCounterGoogleIdentityStsV1betaAccessBoundary < 3) {
-    checkUnnamed2935(o.accessBoundaryRules!);
+    checkUnnamed4(o.accessBoundaryRules!);
   }
   buildCounterGoogleIdentityStsV1betaAccessBoundary--;
 }
 
-core.List<core.String> buildUnnamed2936() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2936(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -338,7 +337,7 @@ api.GoogleIdentityStsV1betaAccessBoundaryRule
   buildCounterGoogleIdentityStsV1betaAccessBoundaryRule++;
   if (buildCounterGoogleIdentityStsV1betaAccessBoundaryRule < 3) {
     o.availabilityCondition = buildGoogleTypeExpr();
-    o.availablePermissions = buildUnnamed2936();
+    o.availablePermissions = buildUnnamed5();
     o.availableResource = 'foo';
   }
   buildCounterGoogleIdentityStsV1betaAccessBoundaryRule--;
@@ -350,7 +349,7 @@ void checkGoogleIdentityStsV1betaAccessBoundaryRule(
   buildCounterGoogleIdentityStsV1betaAccessBoundaryRule++;
   if (buildCounterGoogleIdentityStsV1betaAccessBoundaryRule < 3) {
     checkGoogleTypeExpr(o.availabilityCondition!);
-    checkUnnamed2936(o.availablePermissions!);
+    checkUnnamed5(o.availablePermissions!);
     unittest.expect(
       o.availableResource!,
       unittest.equals('foo'),
@@ -359,12 +358,12 @@ void checkGoogleIdentityStsV1betaAccessBoundaryRule(
   buildCounterGoogleIdentityStsV1betaAccessBoundaryRule--;
 }
 
-core.List<core.String> buildUnnamed2937() => [
+core.List<core.String> buildUnnamed6() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2937(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -382,7 +381,7 @@ api.GoogleIdentityStsV1betaOptions buildGoogleIdentityStsV1betaOptions() {
   buildCounterGoogleIdentityStsV1betaOptions++;
   if (buildCounterGoogleIdentityStsV1betaOptions < 3) {
     o.accessBoundary = buildGoogleIdentityStsV1betaAccessBoundary();
-    o.audiences = buildUnnamed2937();
+    o.audiences = buildUnnamed6();
     o.userProject = 'foo';
   }
   buildCounterGoogleIdentityStsV1betaOptions--;
@@ -393,7 +392,7 @@ void checkGoogleIdentityStsV1betaOptions(api.GoogleIdentityStsV1betaOptions o) {
   buildCounterGoogleIdentityStsV1betaOptions++;
   if (buildCounterGoogleIdentityStsV1betaOptions < 3) {
     checkGoogleIdentityStsV1betaAccessBoundary(o.accessBoundary!);
-    checkUnnamed2937(o.audiences!);
+    checkUnnamed6(o.audiences!);
     unittest.expect(
       o.userProject!,
       unittest.equals('foo'),
