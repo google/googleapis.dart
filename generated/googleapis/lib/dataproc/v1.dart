@@ -8063,6 +8063,96 @@ class SecurityConfig {
       };
 }
 
+/// Metadata describing the Session operation.
+class SessionOperationMetadata {
+  /// The time when the operation was created.
+  core.String? createTime;
+
+  /// Short description of the operation.
+  core.String? description;
+
+  /// The time when the operation was finished.
+  core.String? doneTime;
+
+  /// Labels associated with the operation.
+  core.Map<core.String, core.String>? labels;
+
+  /// The operation type.
+  /// Possible string values are:
+  /// - "SESSION_OPERATION_TYPE_UNSPECIFIED" : Session operation type is
+  /// unknown.
+  /// - "CREATE" : Create Session operation type.
+  /// - "TERMINATE" : Terminate Session operation type.
+  /// - "DELETE" : Delete Session operation type.
+  core.String? operationType;
+
+  /// Name of the session for the operation.
+  core.String? session;
+
+  /// Session UUID for the operation.
+  core.String? sessionUuid;
+
+  /// Warnings encountered during operation execution.
+  core.List<core.String>? warnings;
+
+  SessionOperationMetadata({
+    this.createTime,
+    this.description,
+    this.doneTime,
+    this.labels,
+    this.operationType,
+    this.session,
+    this.sessionUuid,
+    this.warnings,
+  });
+
+  SessionOperationMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          doneTime: _json.containsKey('doneTime')
+              ? _json['doneTime'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+          session: _json.containsKey('session')
+              ? _json['session'] as core.String
+              : null,
+          sessionUuid: _json.containsKey('sessionUuid')
+              ? _json['sessionUuid'] as core.String
+              : null,
+          warnings: _json.containsKey('warnings')
+              ? (_json['warnings'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (doneTime != null) 'doneTime': doneTime!,
+        if (labels != null) 'labels': labels!,
+        if (operationType != null) 'operationType': operationType!,
+        if (session != null) 'session': session!,
+        if (sessionUuid != null) 'sessionUuid': sessionUuid!,
+        if (warnings != null) 'warnings': warnings!,
+      };
+}
+
 /// Request message for SetIamPolicy method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the resource.

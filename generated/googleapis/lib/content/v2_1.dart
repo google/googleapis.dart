@@ -711,6 +711,10 @@ class AccountsResource {
 
   /// Validates verification code to verify phone number for the account.
   ///
+  /// If successful this will overwrite the value of
+  /// `accounts.businessinformation.phoneNumber`. Only verified phone number
+  /// will replace an existing verified phone number.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1510,7 +1514,7 @@ class BuyongoogleprogramsResource {
   ///
   /// [merchantId] - Required. The ID of the account.
   ///
-  /// [regionCode] - The program region code \[ISO 3166-1
+  /// [regionCode] - Required. The program region code \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
   /// only US is available.
   ///
@@ -1553,7 +1557,7 @@ class BuyongoogleprogramsResource {
   ///
   /// [merchantId] - Required. The ID of the account.
   ///
-  /// [regionCode] - The Program region code \[ISO 3166-1
+  /// [regionCode] - Required. The Program region code \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
   /// only US is available.
   ///
@@ -1604,7 +1608,7 @@ class BuyongoogleprogramsResource {
   ///
   /// [merchantId] - Required. The ID of the account.
   ///
-  /// [regionCode] - The program region code \[ISO 3166-1
+  /// [regionCode] - Required. The program region code \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
   /// only US is available.
   ///
@@ -1641,6 +1645,59 @@ class BuyongoogleprogramsResource {
     );
   }
 
+  /// Updates the status of the BoG program for your Merchant Center account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [regionCode] - Required. The program region code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+  /// only US is available.
+  ///
+  /// [updateMask] - The list of fields to update. If the update mask is not
+  /// provided, then all the fields set in buyOnGoogleProgramStatus will be
+  /// updated. Clearing fields is only possible if update mask is provided.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BuyOnGoogleProgramStatus].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BuyOnGoogleProgramStatus> patch(
+    BuyOnGoogleProgramStatus request,
+    core.String merchantId,
+    core.String regionCode, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/buyongoogleprograms/' +
+        commons.escapeVariable('$regionCode');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BuyOnGoogleProgramStatus.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Pauses the BoG program in your Merchant Center account.
   ///
   /// Important: This method is only whitelisted for selected merchants.
@@ -1651,7 +1708,7 @@ class BuyongoogleprogramsResource {
   ///
   /// [merchantId] - Required. The ID of the account.
   ///
-  /// [regionCode] - The program region code \[ISO 3166-1
+  /// [regionCode] - Required. The program region code \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
   /// only US is available.
   ///
@@ -1700,7 +1757,7 @@ class BuyongoogleprogramsResource {
   ///
   /// [merchantId] - Required. The ID of the account.
   ///
-  /// [regionCode] - The program region code \[ISO 3166-1
+  /// [regionCode] - Required. The program region code \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
   /// only US is available.
   ///
@@ -4089,7 +4146,13 @@ class OrdersResource {
   /// response is received from the payment processsor. If this method succeeds,
   /// the merchant is guaranteed to receive funds for the order after shipment.
   /// If the request fails, it can be retried or the order may be cancelled.
-  /// This method cannot be called after the entire order is already shipped.
+  /// This method cannot be called after the entire order is already shipped. A
+  /// rejected error code is returned when the payment service provider has
+  /// declined the charge. This indicates a problem between the PSP and either
+  /// the merchant's or customer's account. Sometimes this error will be
+  /// resolved by the customer. We recommend retrying these errors once per day
+  /// or cancelling the order with reason `failedToCaptureFunds` if the items
+  /// cannot be held.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8052,12 +8115,24 @@ class AccountBusinessInformation {
   /// The customer service information of the business.
   AccountCustomerService? customerService;
 
-  /// The phone number of the business.
+  /// The 10-digit
+  /// [Korean business registration number](https://support.google.com/merchants/answer/9037766)
+  /// separated with dashes in the format: XXX-XX-XXXXX.
+  ///
+  /// This field will only be updated if explicitly set.
+  core.String? koreanBusinessRegistrationNumber;
+
+  /// ! The phone number of the business.
+  ///
+  /// This can only be updated if a verified ! phone number is not already set.
+  /// To replace a verified phone number use ! the
+  /// `Accounts.requestphoneverification` and ! `Accounts.verifyphonenumber`.
   core.String? phoneNumber;
 
   AccountBusinessInformation({
     this.address,
     this.customerService,
+    this.koreanBusinessRegistrationNumber,
     this.phoneNumber,
   });
 
@@ -8071,6 +8146,10 @@ class AccountBusinessInformation {
               ? AccountCustomerService.fromJson(_json['customerService']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          koreanBusinessRegistrationNumber:
+              _json.containsKey('koreanBusinessRegistrationNumber')
+                  ? _json['koreanBusinessRegistrationNumber'] as core.String
+                  : null,
           phoneNumber: _json.containsKey('phoneNumber')
               ? _json['phoneNumber'] as core.String
               : null,
@@ -8079,6 +8158,8 @@ class AccountBusinessInformation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (customerService != null) 'customerService': customerService!,
+        if (koreanBusinessRegistrationNumber != null)
+          'koreanBusinessRegistrationNumber': koreanBusinessRegistrationNumber!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
@@ -8096,7 +8177,9 @@ class AccountCredentials {
   /// Possible string values are:
   /// - "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED" : Unknown purpose.
   /// - "SHOPIFY_ORDER_MANAGEMENT" : The credentials allow Google to manage
-  /// Shopify orders on behalf of the merchant.
+  /// Shopify orders on behalf of the merchant (deprecated).
+  /// - "SHOPIFY_INTEGRATION" : The credentials allow Google to manage Shopify
+  /// integration on behalf of the merchant.
   core.String? purpose;
 
   AccountCredentials({
@@ -9198,6 +9281,9 @@ class AccountsLinkRequest {
   /// values are: - "`approve`" - "`remove`" - "`request`"
   core.String? action;
 
+  /// Additional information required for `eCommercePlatform` link type.
+  ECommercePlatformLinkInfo? eCommercePlatformLinkInfo;
+
   /// Type of the link between the two accounts.
   ///
   /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" -
@@ -9217,6 +9303,7 @@ class AccountsLinkRequest {
 
   AccountsLinkRequest({
     this.action,
+    this.eCommercePlatformLinkInfo,
     this.linkType,
     this.linkedAccountId,
     this.paymentServiceProviderLinkInfo,
@@ -9228,6 +9315,12 @@ class AccountsLinkRequest {
           action: _json.containsKey('action')
               ? _json['action'] as core.String
               : null,
+          eCommercePlatformLinkInfo:
+              _json.containsKey('eCommercePlatformLinkInfo')
+                  ? ECommercePlatformLinkInfo.fromJson(
+                      _json['eCommercePlatformLinkInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           linkType: _json.containsKey('linkType')
               ? _json['linkType'] as core.String
               : null,
@@ -9249,6 +9342,8 @@ class AccountsLinkRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
+        if (eCommercePlatformLinkInfo != null)
+          'eCommercePlatformLinkInfo': eCommercePlatformLinkInfo!,
         if (linkType != null) 'linkType': linkType!,
         if (linkedAccountId != null) 'linkedAccountId': linkedAccountId!,
         if (paymentServiceProviderLinkInfo != null)
@@ -9846,15 +9941,61 @@ class BusinessDayConfig {
 
 /// Response message for the GetProgramStatus method.
 class BuyOnGoogleProgramStatus {
+  /// The business models in which merchant participates.
+  core.List<core.String>? businessModel;
+
   /// The customer service pending email.
   ///
   /// After verification this field becomes empty.
   core.String? customerServicePendingEmail;
 
+  /// The pending phone number specified for BuyOnGoogle program.
+  ///
+  /// It might be different than account level phone number. In order to update
+  /// this field the customer_service_pending_phone_region_code must also be
+  /// set. After verification this field becomes empty.
+  core.String? customerServicePendingPhoneNumber;
+
+  /// Two letter country code for the pending phone number, for example `CA` for
+  /// Canadian numbers.
+  ///
+  /// See the \[ISO 3166-1
+  /// alpha-2\](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+  /// officially assigned codes. In order to update this field the
+  /// customer_service_pending_phone_number must also be set. After verification
+  /// this field becomes empty.
+  core.String? customerServicePendingPhoneRegionCode;
+
   /// The customer service verified email.
   ///
   /// Output only.
   core.String? customerServiceVerifiedEmail;
+
+  /// The verified phone number specified for BuyOnGoogle program.
+  ///
+  /// It might be different than account level phone number.
+  ///
+  /// Output only.
+  core.String? customerServiceVerifiedPhoneNumber;
+
+  /// Two letter country code for the verified phone number, for example `CA`
+  /// for Canadian numbers.
+  ///
+  /// See the \[ISO 3166-1
+  /// alpha-2\](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+  /// officially assigned codes.
+  ///
+  /// Output only.
+  core.String? customerServiceVerifiedPhoneRegionCode;
+
+  /// The channels through which the merchant is selling.
+  /// Possible string values are:
+  /// - "ONLINE_SALES_CHANNEL_UNSPECIFIED" : Default value when online sales
+  /// channel is not set.
+  /// - "GOOGLE_EXCLUSIVE" : Merchant is selling exclusively on Google.
+  /// - "GOOGLE_AND_OTHER_WEBSITES" : Merchant is selling on Google and other
+  /// websites.
+  core.String? onlineSalesChannel;
 
   /// The current participation stage for the program.
   ///
@@ -9880,31 +10021,76 @@ class BuyOnGoogleProgramStatus {
   core.String? participationStage;
 
   BuyOnGoogleProgramStatus({
+    this.businessModel,
     this.customerServicePendingEmail,
+    this.customerServicePendingPhoneNumber,
+    this.customerServicePendingPhoneRegionCode,
     this.customerServiceVerifiedEmail,
+    this.customerServiceVerifiedPhoneNumber,
+    this.customerServiceVerifiedPhoneRegionCode,
+    this.onlineSalesChannel,
     this.participationStage,
   });
 
   BuyOnGoogleProgramStatus.fromJson(core.Map _json)
       : this(
+          businessModel: _json.containsKey('businessModel')
+              ? (_json['businessModel'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           customerServicePendingEmail:
               _json.containsKey('customerServicePendingEmail')
                   ? _json['customerServicePendingEmail'] as core.String
                   : null,
+          customerServicePendingPhoneNumber:
+              _json.containsKey('customerServicePendingPhoneNumber')
+                  ? _json['customerServicePendingPhoneNumber'] as core.String
+                  : null,
+          customerServicePendingPhoneRegionCode: _json
+                  .containsKey('customerServicePendingPhoneRegionCode')
+              ? _json['customerServicePendingPhoneRegionCode'] as core.String
+              : null,
           customerServiceVerifiedEmail:
               _json.containsKey('customerServiceVerifiedEmail')
                   ? _json['customerServiceVerifiedEmail'] as core.String
                   : null,
+          customerServiceVerifiedPhoneNumber:
+              _json.containsKey('customerServiceVerifiedPhoneNumber')
+                  ? _json['customerServiceVerifiedPhoneNumber'] as core.String
+                  : null,
+          customerServiceVerifiedPhoneRegionCode: _json
+                  .containsKey('customerServiceVerifiedPhoneRegionCode')
+              ? _json['customerServiceVerifiedPhoneRegionCode'] as core.String
+              : null,
+          onlineSalesChannel: _json.containsKey('onlineSalesChannel')
+              ? _json['onlineSalesChannel'] as core.String
+              : null,
           participationStage: _json.containsKey('participationStage')
               ? _json['participationStage'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (businessModel != null) 'businessModel': businessModel!,
         if (customerServicePendingEmail != null)
           'customerServicePendingEmail': customerServicePendingEmail!,
+        if (customerServicePendingPhoneNumber != null)
+          'customerServicePendingPhoneNumber':
+              customerServicePendingPhoneNumber!,
+        if (customerServicePendingPhoneRegionCode != null)
+          'customerServicePendingPhoneRegionCode':
+              customerServicePendingPhoneRegionCode!,
         if (customerServiceVerifiedEmail != null)
           'customerServiceVerifiedEmail': customerServiceVerifiedEmail!,
+        if (customerServiceVerifiedPhoneNumber != null)
+          'customerServiceVerifiedPhoneNumber':
+              customerServiceVerifiedPhoneNumber!,
+        if (customerServiceVerifiedPhoneRegionCode != null)
+          'customerServiceVerifiedPhoneRegionCode':
+              customerServiceVerifiedPhoneRegionCode!,
+        if (onlineSalesChannel != null)
+          'onlineSalesChannel': onlineSalesChannel!,
         if (participationStage != null)
           'participationStage': participationStage!,
       };
@@ -11851,6 +12037,27 @@ class DeliveryTime {
       };
 }
 
+/// Additional information required for E_COMMERCE_PLATFORM link type.
+class ECommercePlatformLinkInfo {
+  /// The id used by the third party service provider to identify the merchant.
+  core.String? externalAccountId;
+
+  ECommercePlatformLinkInfo({
+    this.externalAccountId,
+  });
+
+  ECommercePlatformLinkInfo.fromJson(core.Map _json)
+      : this(
+          externalAccountId: _json.containsKey('externalAccountId')
+              ? _json['externalAccountId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalAccountId != null) 'externalAccountId': externalAccountId!,
+      };
+}
+
 /// An error returned by the API.
 class Error {
   /// The domain of the error.
@@ -13664,7 +13871,7 @@ class LocalInventory {
   ///
   /// Unless the value is "not supported", this field must be submitted together
   /// with `pickupSla`. For accepted attribute values, see the local product
-  /// inventory feed // specification.
+  /// inventory feed specification.
   core.String? pickupMethod;
 
   /// Expected date that an order will be ready for pickup relative to the order
@@ -14930,7 +15137,8 @@ class OrderCancellation {
   /// "`merchantDidNotShipOnTime`" - "`noInventory`" - "`orderTimeout`" -
   /// "`other`" - "`paymentAbuse`" - "`paymentDeclined`" - "`priceError`" -
   /// "`returnRefundAbuse`" - "`shippingPriceError`" - "`taxError`" -
-  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" -
+  /// "`failedToCaptureFunds`"
   core.String? reason;
 
   /// The explanation of the reason.
@@ -17851,7 +18059,8 @@ class OrdersCancelLineItemRequest {
   /// Acceptable values are: - "`customerInitiatedCancel`" - "`invalidCoupon`" -
   /// "`malformedShippingAddress`" - "`noInventory`" - "`other`" -
   /// "`priceError`" - "`shippingPriceError`" - "`taxError`" -
-  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" -
+  /// "`failedToCaptureFunds`"
   core.String? reason;
 
   /// The explanation of the reason.
@@ -17939,7 +18148,8 @@ class OrdersCancelRequest {
   /// Acceptable values are: - "`customerInitiatedCancel`" - "`invalidCoupon`" -
   /// "`malformedShippingAddress`" - "`noInventory`" - "`other`" -
   /// "`priceError`" - "`shippingPriceError`" - "`taxError`" -
-  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" -
+  /// "`failedToCaptureFunds`"
   core.String? reason;
 
   /// The explanation of the reason.
@@ -22866,6 +23076,12 @@ class Promotion {
   /// products.
   core.String? productApplicability;
 
+  /// Product filter by product type for the promotion.
+  core.List<core.String>? productType;
+
+  /// Product filter by product type exclusion for the promotion.
+  core.List<core.String>? productTypeExclusion;
+
   /// Destination ID for the promotion.
   core.List<core.String>? promotionDestinationIds;
 
@@ -22923,6 +23139,8 @@ class Promotion {
     this.orderLimit,
     this.percentOff,
     this.productApplicability,
+    this.productType,
+    this.productTypeExclusion,
     this.promotionDestinationIds,
     this.promotionDisplayDates,
     this.promotionEffectiveDates,
@@ -23025,6 +23243,16 @@ class Promotion {
           productApplicability: _json.containsKey('productApplicability')
               ? _json['productApplicability'] as core.String
               : null,
+          productType: _json.containsKey('productType')
+              ? (_json['productType'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          productTypeExclusion: _json.containsKey('productTypeExclusion')
+              ? (_json['productTypeExclusion'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           promotionDestinationIds: _json.containsKey('promotionDestinationIds')
               ? (_json['promotionDestinationIds'] as core.List)
                   .map((value) => value as core.String)
@@ -23087,6 +23315,9 @@ class Promotion {
         if (percentOff != null) 'percentOff': percentOff!,
         if (productApplicability != null)
           'productApplicability': productApplicability!,
+        if (productType != null) 'productType': productType!,
+        if (productTypeExclusion != null)
+          'productTypeExclusion': productTypeExclusion!,
         if (promotionDestinationIds != null)
           'promotionDestinationIds': promotionDestinationIds!,
         if (promotionDisplayDates != null)
@@ -28443,6 +28674,8 @@ class VerifyPhoneNumberRequest {
 /// Response message for the VerifyPhoneNumber method.
 class VerifyPhoneNumberResponse {
   /// Verified phone number if verification is successful.
+  ///
+  /// This phone number can only be replaced by another verified phone number.
   core.String? verifiedPhoneNumber;
 
   VerifyPhoneNumberResponse({

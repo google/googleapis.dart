@@ -518,9 +518,7 @@ class DockerImage {
   ///
   /// This field is returned as the 'metadata.buildTime' field in the Version
   /// resource. The build time is returned to the client as an RFC 3339 string,
-  /// which can be easily used with the JavaScript Date constructor and keeps
-  /// the Version timestamps returned via OnePlatform consistent, as JSON
-  /// marshals google.protobuf.Timestamp into an RFC 3339 string.
+  /// which can be easily used with the JavaScript Date constructor.
   core.String? buildTime;
 
   /// Calculated size of the image.
@@ -999,7 +997,6 @@ class Repository {
   /// - "DOCKER" : Docker package format.
   /// - "MAVEN" : Maven package format.
   /// - "NPM" : NPM package format.
-  /// - "PYPI" : PyPI package format.
   /// - "APT" : APT package format.
   /// - "YUM" : YUM package format.
   /// - "PYTHON" : Python package format.

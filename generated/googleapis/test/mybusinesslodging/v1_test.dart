@@ -293,6 +293,102 @@ void checkConnectivity(api.Connectivity o) {
   buildCounterConnectivity--;
 }
 
+core.int buildCounterEcoCertification = 0;
+api.EcoCertification buildEcoCertification() {
+  final o = api.EcoCertification();
+  buildCounterEcoCertification++;
+  if (buildCounterEcoCertification < 3) {
+    o.awarded = true;
+    o.awardedException = 'foo';
+    o.ecoCertificate = 'foo';
+  }
+  buildCounterEcoCertification--;
+  return o;
+}
+
+void checkEcoCertification(api.EcoCertification o) {
+  buildCounterEcoCertification++;
+  if (buildCounterEcoCertification < 3) {
+    unittest.expect(o.awarded!, unittest.isTrue);
+    unittest.expect(
+      o.awardedException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ecoCertificate!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEcoCertification--;
+}
+
+core.int buildCounterEnergyEfficiency = 0;
+api.EnergyEfficiency buildEnergyEfficiency() {
+  final o = api.EnergyEfficiency();
+  buildCounterEnergyEfficiency++;
+  if (buildCounterEnergyEfficiency < 3) {
+    o.carbonFreeEnergySources = true;
+    o.carbonFreeEnergySourcesException = 'foo';
+    o.energyConservationProgram = true;
+    o.energyConservationProgramException = 'foo';
+    o.energyEfficientHeatingAndCoolingSystems = true;
+    o.energyEfficientHeatingAndCoolingSystemsException = 'foo';
+    o.energyEfficientLighting = true;
+    o.energyEfficientLightingException = 'foo';
+    o.energySavingThermostats = true;
+    o.energySavingThermostatsException = 'foo';
+    o.greenBuildingDesign = true;
+    o.greenBuildingDesignException = 'foo';
+    o.independentOrganizationAuditsEnergyUse = true;
+    o.independentOrganizationAuditsEnergyUseException = 'foo';
+  }
+  buildCounterEnergyEfficiency--;
+  return o;
+}
+
+void checkEnergyEfficiency(api.EnergyEfficiency o) {
+  buildCounterEnergyEfficiency++;
+  if (buildCounterEnergyEfficiency < 3) {
+    unittest.expect(o.carbonFreeEnergySources!, unittest.isTrue);
+    unittest.expect(
+      o.carbonFreeEnergySourcesException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.energyConservationProgram!, unittest.isTrue);
+    unittest.expect(
+      o.energyConservationProgramException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+        o.energyEfficientHeatingAndCoolingSystems!, unittest.isTrue);
+    unittest.expect(
+      o.energyEfficientHeatingAndCoolingSystemsException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.energyEfficientLighting!, unittest.isTrue);
+    unittest.expect(
+      o.energyEfficientLightingException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.energySavingThermostats!, unittest.isTrue);
+    unittest.expect(
+      o.energySavingThermostatsException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.greenBuildingDesign!, unittest.isTrue);
+    unittest.expect(
+      o.greenBuildingDesignException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.independentOrganizationAuditsEnergyUse!, unittest.isTrue);
+    unittest.expect(
+      o.independentOrganizationAuditsEnergyUseException!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEnergyEfficiency--;
+}
+
 core.int buildCounterEnhancedCleaning = 0;
 api.EnhancedCleaning buildEnhancedCleaning() {
   final o = api.EnhancedCleaning();
@@ -1434,6 +1530,7 @@ api.Lodging buildLodging() {
     o.property = buildProperty();
     o.services = buildServices();
     o.someUnits = buildGuestUnitFeatures();
+    o.sustainability = buildSustainability();
     o.transportation = buildTransportation();
     o.wellness = buildWellness();
   }
@@ -1467,6 +1564,7 @@ void checkLodging(api.Lodging o) {
     checkProperty(o.property!);
     checkServices(o.services!);
     checkGuestUnitFeatures(o.someUnits!);
+    checkSustainability(o.sustainability!);
     checkTransportation(o.transportation!);
     checkWellness(o.wellness!);
   }
@@ -2197,6 +2295,156 @@ void checkServices(api.Services o) {
   buildCounterServices--;
 }
 
+core.int buildCounterSustainability = 0;
+api.Sustainability buildSustainability() {
+  final o = api.Sustainability();
+  buildCounterSustainability++;
+  if (buildCounterSustainability < 3) {
+    o.energyEfficiency = buildEnergyEfficiency();
+    o.sustainabilityCertifications = buildSustainabilityCertifications();
+    o.sustainableSourcing = buildSustainableSourcing();
+    o.wasteReduction = buildWasteReduction();
+    o.waterConservation = buildWaterConservation();
+  }
+  buildCounterSustainability--;
+  return o;
+}
+
+void checkSustainability(api.Sustainability o) {
+  buildCounterSustainability++;
+  if (buildCounterSustainability < 3) {
+    checkEnergyEfficiency(o.energyEfficiency!);
+    checkSustainabilityCertifications(o.sustainabilityCertifications!);
+    checkSustainableSourcing(o.sustainableSourcing!);
+    checkWasteReduction(o.wasteReduction!);
+    checkWaterConservation(o.waterConservation!);
+  }
+  buildCounterSustainability--;
+}
+
+core.List<api.EcoCertification> buildUnnamed3() => [
+      buildEcoCertification(),
+      buildEcoCertification(),
+    ];
+
+void checkUnnamed3(core.List<api.EcoCertification> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEcoCertification(o[0]);
+  checkEcoCertification(o[1]);
+}
+
+core.int buildCounterSustainabilityCertifications = 0;
+api.SustainabilityCertifications buildSustainabilityCertifications() {
+  final o = api.SustainabilityCertifications();
+  buildCounterSustainabilityCertifications++;
+  if (buildCounterSustainabilityCertifications < 3) {
+    o.breeamCertification = 'foo';
+    o.breeamCertificationException = 'foo';
+    o.ecoCertifications = buildUnnamed3();
+    o.leedCertification = 'foo';
+    o.leedCertificationException = 'foo';
+  }
+  buildCounterSustainabilityCertifications--;
+  return o;
+}
+
+void checkSustainabilityCertifications(api.SustainabilityCertifications o) {
+  buildCounterSustainabilityCertifications++;
+  if (buildCounterSustainabilityCertifications < 3) {
+    unittest.expect(
+      o.breeamCertification!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.breeamCertificationException!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3(o.ecoCertifications!);
+    unittest.expect(
+      o.leedCertification!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.leedCertificationException!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSustainabilityCertifications--;
+}
+
+core.int buildCounterSustainableSourcing = 0;
+api.SustainableSourcing buildSustainableSourcing() {
+  final o = api.SustainableSourcing();
+  buildCounterSustainableSourcing++;
+  if (buildCounterSustainableSourcing < 3) {
+    o.ecoFriendlyToiletries = true;
+    o.ecoFriendlyToiletriesException = 'foo';
+    o.locallySourcedFoodAndBeverages = true;
+    o.locallySourcedFoodAndBeveragesException = 'foo';
+    o.organicCageFreeEggs = true;
+    o.organicCageFreeEggsException = 'foo';
+    o.organicFoodAndBeverages = true;
+    o.organicFoodAndBeveragesException = 'foo';
+    o.responsiblePurchasingPolicy = true;
+    o.responsiblePurchasingPolicyException = 'foo';
+    o.responsiblySourcesSeafood = true;
+    o.responsiblySourcesSeafoodException = 'foo';
+    o.veganMeals = true;
+    o.veganMealsException = 'foo';
+    o.vegetarianMeals = true;
+    o.vegetarianMealsException = 'foo';
+  }
+  buildCounterSustainableSourcing--;
+  return o;
+}
+
+void checkSustainableSourcing(api.SustainableSourcing o) {
+  buildCounterSustainableSourcing++;
+  if (buildCounterSustainableSourcing < 3) {
+    unittest.expect(o.ecoFriendlyToiletries!, unittest.isTrue);
+    unittest.expect(
+      o.ecoFriendlyToiletriesException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.locallySourcedFoodAndBeverages!, unittest.isTrue);
+    unittest.expect(
+      o.locallySourcedFoodAndBeveragesException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.organicCageFreeEggs!, unittest.isTrue);
+    unittest.expect(
+      o.organicCageFreeEggsException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.organicFoodAndBeverages!, unittest.isTrue);
+    unittest.expect(
+      o.organicFoodAndBeveragesException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.responsiblePurchasingPolicy!, unittest.isTrue);
+    unittest.expect(
+      o.responsiblePurchasingPolicyException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.responsiblySourcesSeafood!, unittest.isTrue);
+    unittest.expect(
+      o.responsiblySourcesSeafoodException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.veganMeals!, unittest.isTrue);
+    unittest.expect(
+      o.veganMealsException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.vegetarianMeals!, unittest.isTrue);
+    unittest.expect(
+      o.vegetarianMealsException!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSustainableSourcing--;
+}
+
 core.int buildCounterTimeOfDay = 0;
 api.TimeOfDay buildTimeOfDay() {
   final o = api.TimeOfDay();
@@ -2373,6 +2621,194 @@ void checkViewsFromUnit(api.ViewsFromUnit o) {
   buildCounterViewsFromUnit--;
 }
 
+core.int buildCounterWasteReduction = 0;
+api.WasteReduction buildWasteReduction() {
+  final o = api.WasteReduction();
+  buildCounterWasteReduction++;
+  if (buildCounterWasteReduction < 3) {
+    o.compostableFoodContainersAndCutlery = true;
+    o.compostableFoodContainersAndCutleryException = 'foo';
+    o.compostsExcessFood = true;
+    o.compostsExcessFoodException = 'foo';
+    o.donatesExcessFood = true;
+    o.donatesExcessFoodException = 'foo';
+    o.foodWasteReductionProgram = true;
+    o.foodWasteReductionProgramException = 'foo';
+    o.noSingleUsePlasticStraws = true;
+    o.noSingleUsePlasticStrawsException = 'foo';
+    o.noSingleUsePlasticWaterBottles = true;
+    o.noSingleUsePlasticWaterBottlesException = 'foo';
+    o.noStyrofoamFoodContainers = true;
+    o.noStyrofoamFoodContainersException = 'foo';
+    o.recyclingProgram = true;
+    o.recyclingProgramException = 'foo';
+    o.refillableToiletryContainers = true;
+    o.refillableToiletryContainersException = 'foo';
+    o.safelyDisposesBatteries = true;
+    o.safelyDisposesBatteriesException = 'foo';
+    o.safelyDisposesElectronics = true;
+    o.safelyDisposesElectronicsException = 'foo';
+    o.safelyDisposesLightbulbs = true;
+    o.safelyDisposesLightbulbsException = 'foo';
+    o.safelyHandlesHazardousSubstances = true;
+    o.safelyHandlesHazardousSubstancesException = 'foo';
+    o.soapDonationProgram = true;
+    o.soapDonationProgramException = 'foo';
+    o.toiletryDonationProgram = true;
+    o.toiletryDonationProgramException = 'foo';
+    o.waterBottleFillingStations = true;
+    o.waterBottleFillingStationsException = 'foo';
+  }
+  buildCounterWasteReduction--;
+  return o;
+}
+
+void checkWasteReduction(api.WasteReduction o) {
+  buildCounterWasteReduction++;
+  if (buildCounterWasteReduction < 3) {
+    unittest.expect(o.compostableFoodContainersAndCutlery!, unittest.isTrue);
+    unittest.expect(
+      o.compostableFoodContainersAndCutleryException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.compostsExcessFood!, unittest.isTrue);
+    unittest.expect(
+      o.compostsExcessFoodException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.donatesExcessFood!, unittest.isTrue);
+    unittest.expect(
+      o.donatesExcessFoodException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.foodWasteReductionProgram!, unittest.isTrue);
+    unittest.expect(
+      o.foodWasteReductionProgramException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.noSingleUsePlasticStraws!, unittest.isTrue);
+    unittest.expect(
+      o.noSingleUsePlasticStrawsException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.noSingleUsePlasticWaterBottles!, unittest.isTrue);
+    unittest.expect(
+      o.noSingleUsePlasticWaterBottlesException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.noStyrofoamFoodContainers!, unittest.isTrue);
+    unittest.expect(
+      o.noStyrofoamFoodContainersException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.recyclingProgram!, unittest.isTrue);
+    unittest.expect(
+      o.recyclingProgramException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.refillableToiletryContainers!, unittest.isTrue);
+    unittest.expect(
+      o.refillableToiletryContainersException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.safelyDisposesBatteries!, unittest.isTrue);
+    unittest.expect(
+      o.safelyDisposesBatteriesException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.safelyDisposesElectronics!, unittest.isTrue);
+    unittest.expect(
+      o.safelyDisposesElectronicsException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.safelyDisposesLightbulbs!, unittest.isTrue);
+    unittest.expect(
+      o.safelyDisposesLightbulbsException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.safelyHandlesHazardousSubstances!, unittest.isTrue);
+    unittest.expect(
+      o.safelyHandlesHazardousSubstancesException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.soapDonationProgram!, unittest.isTrue);
+    unittest.expect(
+      o.soapDonationProgramException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.toiletryDonationProgram!, unittest.isTrue);
+    unittest.expect(
+      o.toiletryDonationProgramException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.waterBottleFillingStations!, unittest.isTrue);
+    unittest.expect(
+      o.waterBottleFillingStationsException!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWasteReduction--;
+}
+
+core.int buildCounterWaterConservation = 0;
+api.WaterConservation buildWaterConservation() {
+  final o = api.WaterConservation();
+  buildCounterWaterConservation++;
+  if (buildCounterWaterConservation < 3) {
+    o.independentOrganizationAuditsWaterUse = true;
+    o.independentOrganizationAuditsWaterUseException = 'foo';
+    o.linenReuseProgram = true;
+    o.linenReuseProgramException = 'foo';
+    o.towelReuseProgram = true;
+    o.towelReuseProgramException = 'foo';
+    o.waterSavingShowers = true;
+    o.waterSavingShowersException = 'foo';
+    o.waterSavingSinks = true;
+    o.waterSavingSinksException = 'foo';
+    o.waterSavingToilets = true;
+    o.waterSavingToiletsException = 'foo';
+  }
+  buildCounterWaterConservation--;
+  return o;
+}
+
+void checkWaterConservation(api.WaterConservation o) {
+  buildCounterWaterConservation++;
+  if (buildCounterWaterConservation < 3) {
+    unittest.expect(o.independentOrganizationAuditsWaterUse!, unittest.isTrue);
+    unittest.expect(
+      o.independentOrganizationAuditsWaterUseException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.linenReuseProgram!, unittest.isTrue);
+    unittest.expect(
+      o.linenReuseProgramException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.towelReuseProgram!, unittest.isTrue);
+    unittest.expect(
+      o.towelReuseProgramException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.waterSavingShowers!, unittest.isTrue);
+    unittest.expect(
+      o.waterSavingShowersException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.waterSavingSinks!, unittest.isTrue);
+    unittest.expect(
+      o.waterSavingSinksException!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.waterSavingToilets!, unittest.isTrue);
+    unittest.expect(
+      o.waterSavingToiletsException!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWaterConservation--;
+}
+
 core.int buildCounterWellness = 0;
 api.Wellness buildWellness() {
   final o = api.Wellness();
@@ -2505,6 +2941,26 @@ void main() {
       final od = api.Connectivity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConnectivity(od);
+    });
+  });
+
+  unittest.group('obj-schema-EcoCertification', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEcoCertification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EcoCertification.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEcoCertification(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnergyEfficiency', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnergyEfficiency();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnergyEfficiency.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEnergyEfficiency(od);
     });
   });
 
@@ -2788,6 +3244,36 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Sustainability', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSustainability();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Sustainability.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSustainability(od);
+    });
+  });
+
+  unittest.group('obj-schema-SustainabilityCertifications', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSustainabilityCertifications();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SustainabilityCertifications.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSustainabilityCertifications(od);
+    });
+  });
+
+  unittest.group('obj-schema-SustainableSourcing', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSustainableSourcing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SustainableSourcing.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSustainableSourcing(od);
+    });
+  });
+
   unittest.group('obj-schema-TimeOfDay', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTimeOfDay();
@@ -2815,6 +3301,26 @@ void main() {
       final od = api.ViewsFromUnit.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkViewsFromUnit(od);
+    });
+  });
+
+  unittest.group('obj-schema-WasteReduction', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWasteReduction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WasteReduction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWasteReduction(od);
+    });
+  });
+
+  unittest.group('obj-schema-WaterConservation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWaterConservation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WaterConservation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWaterConservation(od);
     });
   });
 

@@ -1673,9 +1673,10 @@ class AdUnit {
   /// State of the ad unit.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State unspecified.
-  /// - "ACTIVE" : Ad unit has been activated by the user and can serve ads.
-  /// - "ARCHIVED" : Ad unit has been archived by the user and can no longer
-  /// serve ads.
+  /// - "ACTIVE" : Ad unit has been activated by the user.
+  /// - "ARCHIVED" : Ad unit has been archived by the user. Note that archived
+  /// ad units are only removed from the default view in the UI. Archived ad
+  /// units can still serve ads.
   core.String? state;
 
   AdUnit({

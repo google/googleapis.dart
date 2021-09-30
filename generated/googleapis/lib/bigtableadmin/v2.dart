@@ -4235,7 +4235,30 @@ class ModifyColumnFamiliesRequest {
 ///
 /// Clusters in a region are considered equidistant. Choosing this option
 /// sacrifices read-your-writes consistency to improve availability.
-typedef MultiClusterRoutingUseAny = $Empty;
+class MultiClusterRoutingUseAny {
+  /// The set of clusters to route to.
+  ///
+  /// The order is ignored; clusters will be tried in order of distance. If left
+  /// empty, all clusters are eligible.
+  core.List<core.String>? clusterIds;
+
+  MultiClusterRoutingUseAny({
+    this.clusterIds,
+  });
+
+  MultiClusterRoutingUseAny.fromJson(core.Map _json)
+      : this(
+          clusterIds: _json.containsKey('clusterIds')
+              ? (_json['clusterIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterIds != null) 'clusterIds': clusterIds!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.

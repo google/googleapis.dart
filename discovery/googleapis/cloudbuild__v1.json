@@ -378,7 +378,7 @@
                 "githubEnterpriseConfigs": {
                     "methods": {
                         "create": {
-                            "description": "Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.",
+                            "description": "Create an association between a GCP project and a GitHub Enterprise server.",
                             "flatPath": "v1/projects/{projectsId}/githubEnterpriseConfigs",
                             "httpMethod": "POST",
                             "id": "cloudbuild.projects.githubEnterpriseConfigs.create",
@@ -386,6 +386,11 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "gheConfigId": {
+                                    "description": "Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "parent": {
                                     "description": "Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}",
                                     "location": "path",
@@ -411,7 +416,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Delete an association between a GCP project and a GitHub Enterprise server. This API is experimental.",
+                            "description": "Delete an association between a GCP project and a GitHub Enterprise server.",
                             "flatPath": "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
                             "httpMethod": "DELETE",
                             "id": "cloudbuild.projects.githubEnterpriseConfigs.delete",
@@ -446,7 +451,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Retrieve a GitHubEnterpriseConfig. This API is experimental.",
+                            "description": "Retrieve a GitHubEnterpriseConfig.",
                             "flatPath": "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
                             "httpMethod": "GET",
                             "id": "cloudbuild.projects.githubEnterpriseConfigs.get",
@@ -481,7 +486,7 @@
                             ]
                         },
                         "list": {
-                            "description": "List all GitHubEnterpriseConfigs for a given project. This API is experimental.",
+                            "description": "List all GitHubEnterpriseConfigs for a given project.",
                             "flatPath": "v1/projects/{projectsId}/githubEnterpriseConfigs",
                             "httpMethod": "GET",
                             "id": "cloudbuild.projects.githubEnterpriseConfigs.list",
@@ -511,7 +516,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Update an association between a GCP project and a GitHub Enterprise server. This API is experimental.",
+                            "description": "Update an association between a GCP project and a GitHub Enterprise server.",
                             "flatPath": "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
                             "httpMethod": "PATCH",
                             "id": "cloudbuild.projects.githubEnterpriseConfigs.patch",
@@ -753,7 +758,7 @@
                         "githubEnterpriseConfigs": {
                             "methods": {
                                 "create": {
-                                    "description": "Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.",
+                                    "description": "Create an association between a GCP project and a GitHub Enterprise server.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs",
                                     "httpMethod": "POST",
                                     "id": "cloudbuild.projects.locations.githubEnterpriseConfigs.create",
@@ -761,6 +766,11 @@
                                         "parent"
                                     ],
                                     "parameters": {
+                                        "gheConfigId": {
+                                            "description": "Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "parent": {
                                             "description": "Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}",
                                             "location": "path",
@@ -786,7 +796,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Delete an association between a GCP project and a GitHub Enterprise server. This API is experimental.",
+                                    "description": "Delete an association between a GCP project and a GitHub Enterprise server.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
                                     "httpMethod": "DELETE",
                                     "id": "cloudbuild.projects.locations.githubEnterpriseConfigs.delete",
@@ -821,7 +831,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Retrieve a GitHubEnterpriseConfig. This API is experimental.",
+                                    "description": "Retrieve a GitHubEnterpriseConfig.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
                                     "httpMethod": "GET",
                                     "id": "cloudbuild.projects.locations.githubEnterpriseConfigs.get",
@@ -856,7 +866,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "List all GitHubEnterpriseConfigs for a given project. This API is experimental.",
+                                    "description": "List all GitHubEnterpriseConfigs for a given project.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs",
                                     "httpMethod": "GET",
                                     "id": "cloudbuild.projects.locations.githubEnterpriseConfigs.list",
@@ -886,7 +896,7 @@
                                     ]
                                 },
                                 "patch": {
-                                    "description": "Update an association between a GCP project and a GitHub Enterprise server. This API is experimental.",
+                                    "description": "Update an association between a GCP project and a GitHub Enterprise server.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
                                     "httpMethod": "PATCH",
                                     "id": "cloudbuild.projects.locations.githubEnterpriseConfigs.patch",
@@ -1706,7 +1716,7 @@
             }
         }
     },
-    "revision": "20210819",
+    "revision": "20210923",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "schemas": {
         "ApprovalConfig": {

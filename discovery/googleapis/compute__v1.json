@@ -4918,7 +4918,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieves the specified Operations resource. Gets a list of operations by making a `list()` request.",
+                    "description": "Retrieves the specified Operations resource.",
                     "flatPath": "projects/{project}/global/operations/{operation}",
                     "httpMethod": "GET",
                     "id": "compute.globalOperations.get",
@@ -7363,7 +7363,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a managed instance group using the information that you specify in the request. This operation is marked as DONE when the group is patched even if the instances in the group are still in the process of being patched. You must separately verify the status of the individual instances with the listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
+                    "description": "Updates a managed instance group using the information that you specify in the request. This operation is marked as DONE when the group is patched even if the instances in the group are still in the process of being patched. You must separately verify the status of the individual instances with the listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and processing rules. If you update your group to specify a new template or instance configuration, it's possible that your intended specification for each VM in the group is different from the current state of that VM. To learn how to apply an updated configuration to the VMs in a MIG, see Updating instances in a MIG.",
                     "flatPath": "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}",
                     "httpMethod": "PATCH",
                     "id": "compute.instanceGroupManagers.patch",
@@ -8567,7 +8567,7 @@
                     ]
                 },
                 "aggregatedList": {
-                    "description": "Retrieves aggregated list of all of the instances in your project across all regions and zones.",
+                    "description": "Retrieves an aggregated list of all of the instances in your project across all regions and zones. The performance of this method degrades when a filter is specified on a project that has a very large number of instances.",
                     "flatPath": "projects/{project}/aggregated/instances",
                     "httpMethod": "GET",
                     "id": "compute.instances.aggregatedList",
@@ -18149,7 +18149,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a managed instance group using the information that you specify in the request. This operation is marked as DONE when the group is patched even if the instances in the group are still in the process of being patched. You must separately verify the status of the individual instances with the listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
+                    "description": "Updates a managed instance group using the information that you specify in the request. This operation is marked as DONE when the group is patched even if the instances in the group are still in the process of being patched. You must separately verify the status of the individual instances with the listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and processing rules. If you update your group to specify a new template or instance configuration, it's possible that your intended specification for each VM in the group is different from the current state of that VM. To learn how to apply an updated configuration to the VMs in a MIG, see Updating instances in a MIG.",
                     "flatPath": "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}",
                     "httpMethod": "PATCH",
                     "id": "compute.regionInstanceGroupManagers.patch",
@@ -28138,7 +28138,7 @@
                     ]
                 },
                 "wait": {
-                    "description": "Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2 minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the operation, which might be `DONE` or still in progress. This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is overloaded, the request might return before the default deadline is reached, or might return after zero seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done when the method returns. Be prepared to retry if the operation is not `DONE`. ",
+                    "description": "Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2 minute deadline, and retrieves the specified Operation resource. This method waits for no more than the 2 minutes and then returns the current state of the operation, which might be `DONE` or still in progress. This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is overloaded, the request might return before the default deadline is reached, or might return after zero seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done when the method returns. Be prepared to retry if the operation is not `DONE`. ",
                     "flatPath": "projects/{project}/zones/{zone}/operations/{operation}/wait",
                     "httpMethod": "POST",
                     "id": "compute.zoneOperations.wait",
@@ -28277,7 +28277,7 @@
             }
         }
     },
-    "revision": "20210820",
+    "revision": "20210918",
     "rootUrl": "https://compute.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -30824,6 +30824,9 @@
                     ],
                     "type": "string"
                 },
+                "subsetting": {
+                    "$ref": "Subsetting"
+                },
                 "timeoutSec": {
                     "description": "Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.",
                     "format": "int32",
@@ -32201,19 +32204,19 @@
             "id": "CustomerEncryptionKey",
             "properties": {
                 "kmsKeyName": {
-                    "description": "The name of the encryption key that is stored in Google Cloud KMS.",
+                    "description": "The name of the encryption key that is stored in Google Cloud KMS. For example: \"kmsKeyName\": \"projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key ",
                     "type": "string"
                 },
                 "kmsKeyServiceAccount": {
-                    "description": "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.",
+                    "description": "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: \"kmsKeyServiceAccount\": \"name@project_id.iam.gserviceaccount.com/ ",
                     "type": "string"
                 },
                 "rawKey": {
-                    "description": "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.",
+                    "description": "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: \"rawKey\": \"SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=\" ",
                     "type": "string"
                 },
                 "rsaEncryptedKey": {
-                    "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem ",
+                    "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: \"rsaEncryptedKey\": \"ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==\" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem ",
                     "type": "string"
                 },
                 "sha256": {
@@ -32231,7 +32234,7 @@
                     "description": "Decrypts data associated with the disk with a customer-supplied encryption key."
                 },
                 "source": {
-                    "description": "Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.",
+                    "description": "Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks. For example: \"source\": \"/compute/v1/projects/project_id/zones/zone/disks/ disk_name ",
                     "type": "string"
                 }
             },
@@ -33869,7 +33872,7 @@
                             "compute.firewalls.patch"
                         ]
                     },
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.",
+                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
@@ -34101,7 +34104,7 @@
                     "type": "string"
                 },
                 "displayName": {
-                    "description": "Deprecated, please use short name instead. User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "description": "Deprecated, please use short name instead. User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
@@ -40212,6 +40215,10 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "satisfiesPzs": {
+                    "description": "[Output Only] Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.",
+                    "type": "boolean"
+                },
                 "selfLink": {
                     "description": "[Output Only] Server-defined URL for the resource.",
                     "type": "string"
@@ -40396,6 +40403,10 @@
                 "router": {
                     "description": "URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.",
                     "type": "string"
+                },
+                "satisfiesPzs": {
+                    "description": "[Output Only] Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.",
+                    "type": "boolean"
                 },
                 "selfLink": {
                     "description": "[Output Only] Server-defined URL for the resource.",
@@ -41175,6 +41186,10 @@
                         "The InterconnectLocation is closed for provisioning new Interconnects."
                     ],
                     "type": "string"
+                },
+                "supportsPzs": {
+                    "description": "[Output Only] Set to true for locations that support physical zone separation. Defaults to false if the field is not present.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -50420,6 +50435,13 @@
             "description": "Represents a Route resource. A route defines a path from VM instances in the VPC network to a specific destination. This destination can be inside or outside the VPC network. For more information, read the Routes overview.",
             "id": "Route",
             "properties": {
+                "asPaths": {
+                    "description": "[Output Only] AS path.",
+                    "items": {
+                        "$ref": "RouteAsPath"
+                    },
+                    "type": "array"
+                },
                 "creationTimestamp": {
                     "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
@@ -50503,6 +50525,22 @@
                     "description": "The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.",
                     "format": "uint32",
                     "type": "integer"
+                },
+                "routeType": {
+                    "description": "[Output Only] The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route",
+                    "enum": [
+                        "BGP",
+                        "STATIC",
+                        "SUBNET",
+                        "TRANSIT"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 },
                 "selfLink": {
                     "description": "[Output Only] Server-defined fully-qualified URL for this resource.",
@@ -50607,6 +50645,36 @@
                         "type": "object"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RouteAsPath": {
+            "id": "RouteAsPath",
+            "properties": {
+                "asLists": {
+                    "description": "[Output Only] The AS numbers of the AS Path.",
+                    "items": {
+                        "format": "uint32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "pathSegmentType": {
+                    "description": "[Output Only] The type of the AS Path, which can be one of the following values: - 'AS_SET': unordered set of autonomous systems that the route in has traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed ",
+                    "enum": [
+                        "AS_CONFED_SEQUENCE",
+                        "AS_CONFED_SET",
+                        "AS_SEQUENCE",
+                        "AS_SET"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -51036,6 +51104,10 @@
                     "format": "uint32",
                     "type": "integer"
                 },
+                "bfd": {
+                    "$ref": "RouterBgpPeerBfd",
+                    "description": "BFD configuration for the BGP peering."
+                },
                 "enable": {
                     "description": "The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.",
                     "enum": [
@@ -51091,6 +51163,45 @@
                 "peerIpAddress": {
                     "description": "IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.",
                     "type": "string"
+                },
+                "routerApplianceInstance": {
+                    "description": "URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RouterBgpPeerBfd": {
+            "id": "RouterBgpPeerBfd",
+            "properties": {
+                "minReceiveInterval": {
+                    "description": "The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "minTransmitInterval": {
+                    "description": "The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "multiplier": {
+                    "description": "The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "sessionInitializationMode": {
+                    "description": "The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.",
+                    "enum": [
+                        "ACTIVE",
+                        "DISABLED",
+                        "PASSIVE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -51130,6 +51241,19 @@
                     },
                     "description": "Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "privateIpAddress": {
+                    "description": "The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.",
+                    "type": "string"
+                },
+                "redundantInterface": {
+                    "description": "Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "subnetwork": {
+                    "description": "The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.",
                     "type": "string"
                 }
             },
@@ -51303,6 +51427,13 @@
                     },
                     "type": "array"
                 },
+                "rules": {
+                    "description": "A list of rules associated with this NAT.",
+                    "items": {
+                        "$ref": "RouterNatRule"
+                    },
+                    "type": "array"
+                },
                 "sourceSubnetworkIpRangesToNat": {
                     "description": "Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.",
                     "enum": [
@@ -51326,6 +51457,11 @@
                 },
                 "tcpEstablishedIdleTimeoutSec": {
                     "description": "Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "tcpTimeWaitTimeoutSec": {
+                    "description": "Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -51363,6 +51499,49 @@
                         "Export logs for successful connections only."
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RouterNatRule": {
+            "id": "RouterNatRule",
+            "properties": {
+                "action": {
+                    "$ref": "RouterNatRuleAction",
+                    "description": "The action to be enforced for traffic that matches this rule."
+                },
+                "description": {
+                    "description": "An optional description of this rule.",
+                    "type": "string"
+                },
+                "match": {
+                    "description": "CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: \"inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')\" \"destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'\" The following example is a valid match expression for private NAT: \"nexthop.hub == '/projects/my-project/global/hub/hub-1'\"",
+                    "type": "string"
+                },
+                "ruleNumber": {
+                    "description": "An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.",
+                    "format": "uint32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "RouterNatRuleAction": {
+            "id": "RouterNatRuleAction",
+            "properties": {
+                "sourceNatActiveIps": {
+                    "description": "A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sourceNatDrainIps": {
+                    "description": "A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -51469,6 +51648,10 @@
                     "description": "IP address of the remote BGP interface.",
                     "type": "string"
                 },
+                "routerApplianceInstance": {
+                    "description": "[Output only] URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance is the peer side of the BGP session.",
+                    "type": "string"
+                },
                 "state": {
                     "description": "BGP state as specified in RFC1771.",
                     "type": "string"
@@ -51537,6 +51720,13 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "ruleStatus": {
+                    "description": "Status of rules in this NAT.",
+                    "items": {
+                        "$ref": "RouterStatusNatStatusNatRuleStatus"
+                    },
+                    "type": "array"
+                },
                 "userAllocatedNatIpResources": {
                     "description": "A list of fully qualified URLs of reserved IP address resources.",
                     "items": {
@@ -51550,6 +51740,42 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RouterStatusNatStatusNatRuleStatus": {
+            "description": "Status of a NAT Rule contained in this NAT.",
+            "id": "RouterStatusNatStatusNatRuleStatus",
+            "properties": {
+                "activeNatIps": {
+                    "description": "A list of active IPs for NAT. Example: [\"1.1.1.1\", \"179.12.26.133\"].",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "drainNatIps": {
+                    "description": "A list of IPs for NAT that are in drain mode. Example: [\"1.1.1.1\", \"179.12.26.133\"].",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "minExtraIpsNeeded": {
+                    "description": "The number of extra IPs to allocate. This will be greater than 0 only if the existing IPs in this NAT Rule are NOT enough to allow all configured VMs to use NAT.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "numVmEndpointsWithNatMappings": {
+                    "description": "Number of VM endpoints (i.e., NICs) that have NAT Mappings from this NAT Rule.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "ruleNumber": {
+                    "description": "Rule number of the rule.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -54076,7 +54302,7 @@
                     "type": "string"
                 },
                 "network": {
-                    "description": "The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.",
+                    "description": "The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. This field can be set only at resource creation time.",
                     "type": "string"
                 },
                 "privateIpGoogleAccess": {
@@ -54597,6 +54823,24 @@
             "properties": {
                 "privateIpGoogleAccess": {
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Subsetting": {
+            "description": "Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.",
+            "id": "Subsetting",
+            "properties": {
+                "policy": {
+                    "enum": [
+                        "CONSISTENT_HASH_SUBSETTING",
+                        "NONE"
+                    ],
+                    "enumDescriptions": [
+                        "Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.",
+                        "No Subsetting. Clients may open connections and send traffic to all backends of this backend service. This can lead to performance issues if there is substantial imbalance in the count of clients and backends."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -55637,6 +55881,10 @@
                     "enumDescriptions": [
                         "No NAT performed."
                     ],
+                    "type": "string"
+                },
+                "network": {
+                    "description": "The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.",
                     "type": "string"
                 },
                 "selfLink": {

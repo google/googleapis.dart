@@ -325,10 +325,12 @@ class GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetada
   /// - "SUCCEEDED" : All stages of the migration have completed and the
   /// operation has been marked done and updated with a response.
   /// - "FAILED" : The migration failed at some stage and it is not possible to
-  /// continue retrying that stage. Manual recovery may be needed.
+  /// continue retrying that stage. Manual recovery may be needed. Rollback is
+  /// either impossible at this stage, or has been attempted and failed.
   /// - "ROLLING_BACK" : The migration has encountered a permanent failure and
   /// is now being rolled back so that the source bucket is restored to its
   /// original state.
+  /// - "ROLLED_BACK" : The migration has been successfully rolled back.
   core.String? state;
 
   GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata({
@@ -385,10 +387,12 @@ class GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadat
   /// - "SUCCEEDED" : All stages of the migration have completed and the
   /// operation has been marked done and updated with a response.
   /// - "FAILED" : The migration failed at some stage and it is not possible to
-  /// continue retrying that stage. Manual recovery may be needed.
+  /// continue retrying that stage. Manual recovery may be needed. Rollback is
+  /// either impossible at this stage, or has been attempted and failed.
   /// - "ROLLING_BACK" : The migration has encountered a permanent failure and
   /// is now being rolled back so that the source bucket is restored to its
   /// original state.
+  /// - "ROLLED_BACK" : The migration has been successfully rolled back.
   core.String? state;
 
   GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata({

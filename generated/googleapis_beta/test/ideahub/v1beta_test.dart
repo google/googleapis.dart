@@ -95,6 +95,78 @@ void checkGoogleSearchIdeahubV1betaIdea(api.GoogleSearchIdeahubV1betaIdea o) {
   buildCounterGoogleSearchIdeahubV1betaIdea--;
 }
 
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleSearchIdeahubV1betaIdeaActivity = 0;
+api.GoogleSearchIdeahubV1betaIdeaActivity
+    buildGoogleSearchIdeahubV1betaIdeaActivity() {
+  final o = api.GoogleSearchIdeahubV1betaIdeaActivity();
+  buildCounterGoogleSearchIdeahubV1betaIdeaActivity++;
+  if (buildCounterGoogleSearchIdeahubV1betaIdeaActivity < 3) {
+    o.ideas = buildUnnamed1();
+    o.name = 'foo';
+    o.topics = buildUnnamed2();
+    o.type = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterGoogleSearchIdeahubV1betaIdeaActivity--;
+  return o;
+}
+
+void checkGoogleSearchIdeahubV1betaIdeaActivity(
+    api.GoogleSearchIdeahubV1betaIdeaActivity o) {
+  buildCounterGoogleSearchIdeahubV1betaIdeaActivity++;
+  if (buildCounterGoogleSearchIdeahubV1betaIdeaActivity < 3) {
+    checkUnnamed1(o.ideas!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2(o.topics!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleSearchIdeahubV1betaIdeaActivity--;
+}
+
 core.int buildCounterGoogleSearchIdeahubV1betaIdeaState = 0;
 api.GoogleSearchIdeahubV1betaIdeaState
     buildGoogleSearchIdeahubV1betaIdeaState() {
@@ -123,12 +195,12 @@ void checkGoogleSearchIdeahubV1betaIdeaState(
   buildCounterGoogleSearchIdeahubV1betaIdeaState--;
 }
 
-core.List<api.GoogleSearchIdeahubV1betaAvailableLocale> buildUnnamed1() => [
+core.List<api.GoogleSearchIdeahubV1betaAvailableLocale> buildUnnamed3() => [
       buildGoogleSearchIdeahubV1betaAvailableLocale(),
       buildGoogleSearchIdeahubV1betaAvailableLocale(),
     ];
 
-void checkUnnamed1(core.List<api.GoogleSearchIdeahubV1betaAvailableLocale> o) {
+void checkUnnamed3(core.List<api.GoogleSearchIdeahubV1betaAvailableLocale> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSearchIdeahubV1betaAvailableLocale(o[0]);
   checkGoogleSearchIdeahubV1betaAvailableLocale(o[1]);
@@ -140,7 +212,7 @@ api.GoogleSearchIdeahubV1betaListAvailableLocalesResponse
   final o = api.GoogleSearchIdeahubV1betaListAvailableLocalesResponse();
   buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse++;
   if (buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse < 3) {
-    o.availableLocales = buildUnnamed1();
+    o.availableLocales = buildUnnamed3();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse--;
@@ -151,7 +223,7 @@ void checkGoogleSearchIdeahubV1betaListAvailableLocalesResponse(
     api.GoogleSearchIdeahubV1betaListAvailableLocalesResponse o) {
   buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse++;
   if (buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse < 3) {
-    checkUnnamed1(o.availableLocales!);
+    checkUnnamed3(o.availableLocales!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -160,12 +232,12 @@ void checkGoogleSearchIdeahubV1betaListAvailableLocalesResponse(
   buildCounterGoogleSearchIdeahubV1betaListAvailableLocalesResponse--;
 }
 
-core.List<api.GoogleSearchIdeahubV1betaIdea> buildUnnamed2() => [
+core.List<api.GoogleSearchIdeahubV1betaIdea> buildUnnamed4() => [
       buildGoogleSearchIdeahubV1betaIdea(),
       buildGoogleSearchIdeahubV1betaIdea(),
     ];
 
-void checkUnnamed2(core.List<api.GoogleSearchIdeahubV1betaIdea> o) {
+void checkUnnamed4(core.List<api.GoogleSearchIdeahubV1betaIdea> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSearchIdeahubV1betaIdea(o[0]);
   checkGoogleSearchIdeahubV1betaIdea(o[1]);
@@ -177,7 +249,7 @@ api.GoogleSearchIdeahubV1betaListIdeasResponse
   final o = api.GoogleSearchIdeahubV1betaListIdeasResponse();
   buildCounterGoogleSearchIdeahubV1betaListIdeasResponse++;
   if (buildCounterGoogleSearchIdeahubV1betaListIdeasResponse < 3) {
-    o.ideas = buildUnnamed2();
+    o.ideas = buildUnnamed4();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleSearchIdeahubV1betaListIdeasResponse--;
@@ -188,7 +260,7 @@ void checkGoogleSearchIdeahubV1betaListIdeasResponse(
     api.GoogleSearchIdeahubV1betaListIdeasResponse o) {
   buildCounterGoogleSearchIdeahubV1betaListIdeasResponse++;
   if (buildCounterGoogleSearchIdeahubV1betaListIdeasResponse < 3) {
-    checkUnnamed2(o.ideas!);
+    checkUnnamed4(o.ideas!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -278,6 +350,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleSearchIdeahubV1betaIdeaActivity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleSearchIdeahubV1betaIdeaActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleSearchIdeahubV1betaIdeaActivity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleSearchIdeahubV1betaIdeaActivity(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleSearchIdeahubV1betaIdeaState', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleSearchIdeahubV1betaIdeaState();
@@ -327,6 +409,68 @@ void main() {
       final od = api.GoogleSearchIdeahubV1betaTopicState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleSearchIdeahubV1betaTopicState(od);
+    });
+  });
+
+  unittest.group('resource-PlatformsPropertiesIdeaActivitiesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.IdeahubApi(mock).platforms.properties.ideaActivities;
+      final arg_request = buildGoogleSearchIdeahubV1betaIdeaActivity();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleSearchIdeahubV1betaIdeaActivity.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleSearchIdeahubV1betaIdeaActivity(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleSearchIdeahubV1betaIdeaActivity());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleSearchIdeahubV1betaIdeaActivity(
+          response as api.GoogleSearchIdeahubV1betaIdeaActivity);
     });
   });
 

@@ -535,7 +535,7 @@
                     ]
                 },
                 "verifyphonenumber": {
-                    "description": "Validates verification code to verify phone number for the account.",
+                    "description": "Validates verification code to verify phone number for the account. If successful this will overwrite the value of `accounts.businessinformation.phoneNumber`. Only verified phone number will replace an existing verified phone number.",
                     "flatPath": "{merchantId}/accounts/{accountId}/verifyphonenumber",
                     "httpMethod": "POST",
                     "id": "content.accounts.verifyphonenumber",
@@ -1118,7 +1118,7 @@
                             "type": "string"
                         },
                         "regionCode": {
-                            "description": "The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
+                            "description": "Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1150,7 +1150,7 @@
                             "type": "string"
                         },
                         "regionCode": {
-                            "description": "The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
+                            "description": "Required. The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1182,7 +1182,7 @@
                             "type": "string"
                         },
                         "regionCode": {
-                            "description": "The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
+                            "description": "Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1191,6 +1191,47 @@
                     "path": "{merchantId}/buyongoogleprograms/{regionCode}/onboard",
                     "request": {
                         "$ref": "OnboardBuyOnGoogleProgramRequest"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates the status of the BoG program for your Merchant Center account.",
+                    "flatPath": "{merchantId}/buyongoogleprograms/{regionCode}",
+                    "httpMethod": "PATCH",
+                    "id": "content.buyongoogleprograms.patch",
+                    "parameterOrder": [
+                        "merchantId",
+                        "regionCode"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "description": "Required. The ID of the account.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "regionCode": {
+                            "description": "Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "updateMask": {
+                            "description": "The list of fields to update. If the update mask is not provided, then all the fields set in buyOnGoogleProgramStatus will be updated. Clearing fields is only possible if update mask is provided.",
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/buyongoogleprograms/{regionCode}",
+                    "request": {
+                        "$ref": "BuyOnGoogleProgramStatus"
+                    },
+                    "response": {
+                        "$ref": "BuyOnGoogleProgramStatus"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/content"
@@ -1214,7 +1255,7 @@
                             "type": "string"
                         },
                         "regionCode": {
-                            "description": "The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
+                            "description": "Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1246,7 +1287,7 @@
                             "type": "string"
                         },
                         "regionCode": {
-                            "description": "The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
+                            "description": "Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -3024,7 +3065,7 @@
                     ]
                 },
                 "captureOrder": {
-                    "description": "Capture funds from the customer for the current order total. This method should be called after the merchant verifies that they are able and ready to start shipping the order. This method blocks until a response is received from the payment processsor. If this method succeeds, the merchant is guaranteed to receive funds for the order after shipment. If the request fails, it can be retried or the order may be cancelled. This method cannot be called after the entire order is already shipped.",
+                    "description": "Capture funds from the customer for the current order total. This method should be called after the merchant verifies that they are able and ready to start shipping the order. This method blocks until a response is received from the payment processsor. If this method succeeds, the merchant is guaranteed to receive funds for the order after shipment. If the request fails, it can be retried or the order may be cancelled. This method cannot be called after the entire order is already shipped. A rejected error code is returned when the payment service provider has declined the charge. This indicates a problem between the PSP and either the merchant's or customer's account. Sometimes this error will be resolved by the customer. We recommend retrying these errors once per day or cancelling the order with reason `failedToCaptureFunds` if the items cannot be held.",
                     "flatPath": "{merchantId}/orders/{orderId}/captureOrder",
                     "httpMethod": "POST",
                     "id": "content.orders.captureOrder",
@@ -5740,7 +5781,7 @@
             }
         }
     },
-    "revision": "20210901",
+    "revision": "20210924",
     "rootUrl": "https://shoppingcontent.googleapis.com/",
     "schemas": {
         "Account": {
@@ -5882,8 +5923,12 @@
                     "$ref": "AccountCustomerService",
                     "description": "The customer service information of the business."
                 },
+                "koreanBusinessRegistrationNumber": {
+                    "description": "The 10-digit [Korean business registration number](https://support.google.com/merchants/answer/9037766) separated with dashes in the format: XXX-XX-XXXXX. This field will only be updated if explicitly set.",
+                    "type": "string"
+                },
                 "phoneNumber": {
-                    "description": "The phone number of the business.",
+                    "description": "! The phone number of the business. This can only be updated if a verified ! phone number is not already set. To replace a verified phone number use ! the `Accounts.requestphoneverification` and ! `Accounts.verifyphonenumber`.",
                     "type": "string"
                 }
             },
@@ -5906,11 +5951,13 @@
                     "description": "Indicates to Google how Google should use these OAuth tokens.",
                     "enum": [
                         "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED",
-                        "SHOPIFY_ORDER_MANAGEMENT"
+                        "SHOPIFY_ORDER_MANAGEMENT",
+                        "SHOPIFY_INTEGRATION"
                     ],
                     "enumDescriptions": [
                         "Unknown purpose.",
-                        "The credentials allow Google to manage Shopify orders on behalf of the merchant."
+                        "The credentials allow Google to manage Shopify orders on behalf of the merchant (deprecated).",
+                        "The credentials allow Google to manage Shopify integration on behalf of the merchant."
                     ],
                     "type": "string"
                 }
@@ -6468,6 +6515,10 @@
                     "description": "Action to perform for this link. The `\"request\"` action is only available to select merchants. Acceptable values are: - \"`approve`\" - \"`remove`\" - \"`request`\" ",
                     "type": "string"
                 },
+                "eCommercePlatformLinkInfo": {
+                    "$ref": "ECommercePlatformLinkInfo",
+                    "description": "Additional information required for `eCommercePlatform` link type."
+                },
                 "linkType": {
                     "description": "Type of the link between the two accounts. Acceptable values are: - \"`channelPartner`\" - \"`eCommercePlatform`\" - \"`paymentServiceProvider`\" ",
                     "type": "string"
@@ -6809,13 +6860,66 @@
             "description": "Response message for the GetProgramStatus method.",
             "id": "BuyOnGoogleProgramStatus",
             "properties": {
+                "businessModel": {
+                    "description": "The business models in which merchant participates.",
+                    "items": {
+                        "enum": [
+                            "BUSINESS_MODEL_UNSPECIFIED",
+                            "MANUFACTURER",
+                            "IMPORTER",
+                            "RESELLER",
+                            "OTHER"
+                        ],
+                        "enumDescriptions": [
+                            "Default value when business model is not set.",
+                            "Merchant is a manufacturer.",
+                            "Merchant is an importer.",
+                            "Merchant is a reseller.",
+                            "Merchant has a different business model."
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "customerServicePendingEmail": {
                     "description": "The customer service pending email. After verification this field becomes empty.",
+                    "type": "string"
+                },
+                "customerServicePendingPhoneNumber": {
+                    "description": "The pending phone number specified for BuyOnGoogle program. It might be different than account level phone number. In order to update this field the customer_service_pending_phone_region_code must also be set. After verification this field becomes empty.",
+                    "type": "string"
+                },
+                "customerServicePendingPhoneRegionCode": {
+                    "description": "Two letter country code for the pending phone number, for example `CA` for Canadian numbers. See the [ISO 3166-1 alpha-2](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) officially assigned codes. In order to update this field the customer_service_pending_phone_number must also be set. After verification this field becomes empty.",
                     "type": "string"
                 },
                 "customerServiceVerifiedEmail": {
                     "description": "Output only. The customer service verified email.",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "customerServiceVerifiedPhoneNumber": {
+                    "description": "Output only. The verified phone number specified for BuyOnGoogle program. It might be different than account level phone number.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "customerServiceVerifiedPhoneRegionCode": {
+                    "description": "Output only. Two letter country code for the verified phone number, for example `CA` for Canadian numbers. See the [ISO 3166-1 alpha-2](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) officially assigned codes.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "onlineSalesChannel": {
+                    "description": "The channels through which the merchant is selling.",
+                    "enum": [
+                        "ONLINE_SALES_CHANNEL_UNSPECIFIED",
+                        "GOOGLE_EXCLUSIVE",
+                        "GOOGLE_AND_OTHER_WEBSITES"
+                    ],
+                    "enumDescriptions": [
+                        "Default value when online sales channel is not set.",
+                        "Merchant is selling exclusively on Google.",
+                        "Merchant is selling on Google and other websites."
+                    ],
                     "type": "string"
                 },
                 "participationStage": {
@@ -7791,6 +7895,17 @@
             },
             "type": "object"
         },
+        "ECommercePlatformLinkInfo": {
+            "description": "Additional information required for E_COMMERCE_PLATFORM link type.",
+            "id": "ECommercePlatformLinkInfo",
+            "properties": {
+                "externalAccountId": {
+                    "description": "The id used by the third party service provider to identify the merchant.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Error": {
             "description": "An error returned by the API.",
             "id": "Error",
@@ -8747,7 +8862,7 @@
                     "type": "string"
                 },
                 "pickupMethod": {
-                    "description": "Supported pickup method for this offer. Unless the value is \"not supported\", this field must be submitted together with `pickupSla`. For accepted attribute values, see the local product inventory feed // specification.",
+                    "description": "Supported pickup method for this offer. Unless the value is \"not supported\", this field must be submitted together with `pickupSla`. For accepted attribute values, see the local product inventory feed specification.",
                     "type": "string"
                 },
                 "pickupSla": {
@@ -9331,7 +9446,7 @@
                     "type": "integer"
                 },
                 "reason": {
-                    "description": "The reason for the cancellation. Orders that are canceled with a noInventory reason will lead to the removal of the product from Buy on Google until you make an update to that product. This will not affect your Shopping ads. Acceptable values are: - \"`autoPostInternal`\" - \"`autoPostInvalidBillingAddress`\" - \"`autoPostNoInventory`\" - \"`autoPostPriceError`\" - \"`autoPostUndeliverableShippingAddress`\" - \"`couponAbuse`\" - \"`customerCanceled`\" - \"`customerInitiatedCancel`\" - \"`customerSupportRequested`\" - \"`failToPushOrderGoogleError`\" - \"`failToPushOrderMerchantError`\" - \"`failToPushOrderMerchantFulfillmentError`\" - \"`failToPushOrderToMerchant`\" - \"`failToPushOrderToMerchantOutOfStock`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`merchantDidNotShipOnTime`\" - \"`noInventory`\" - \"`orderTimeout`\" - \"`other`\" - \"`paymentAbuse`\" - \"`paymentDeclined`\" - \"`priceError`\" - \"`returnRefundAbuse`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" ",
+                    "description": "The reason for the cancellation. Orders that are canceled with a noInventory reason will lead to the removal of the product from Buy on Google until you make an update to that product. This will not affect your Shopping ads. Acceptable values are: - \"`autoPostInternal`\" - \"`autoPostInvalidBillingAddress`\" - \"`autoPostNoInventory`\" - \"`autoPostPriceError`\" - \"`autoPostUndeliverableShippingAddress`\" - \"`couponAbuse`\" - \"`customerCanceled`\" - \"`customerInitiatedCancel`\" - \"`customerSupportRequested`\" - \"`failToPushOrderGoogleError`\" - \"`failToPushOrderMerchantError`\" - \"`failToPushOrderMerchantFulfillmentError`\" - \"`failToPushOrderToMerchant`\" - \"`failToPushOrderToMerchantOutOfStock`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`merchantDidNotShipOnTime`\" - \"`noInventory`\" - \"`orderTimeout`\" - \"`other`\" - \"`paymentAbuse`\" - \"`paymentDeclined`\" - \"`priceError`\" - \"`returnRefundAbuse`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`failedToCaptureFunds`\" ",
                     "type": "string"
                 },
                 "reasonText": {
@@ -10643,7 +10758,7 @@
                     "type": "integer"
                 },
                 "reason": {
-                    "description": "The reason for the cancellation. Acceptable values are: - \"`customerInitiatedCancel`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" ",
+                    "description": "The reason for the cancellation. Acceptable values are: - \"`customerInitiatedCancel`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`failedToCaptureFunds`\" ",
                     "type": "string"
                 },
                 "reasonText": {
@@ -10675,7 +10790,7 @@
                     "type": "string"
                 },
                 "reason": {
-                    "description": "The reason for the cancellation. Acceptable values are: - \"`customerInitiatedCancel`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" ",
+                    "description": "The reason for the cancellation. Acceptable values are: - \"`customerInitiatedCancel`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`failedToCaptureFunds`\" ",
                     "type": "string"
                 },
                 "reasonText": {
@@ -13081,6 +13196,20 @@
                         "Applicable to only a single product or list of products."
                     ],
                     "type": "string"
+                },
+                "productType": {
+                    "description": "Product filter by product type for the promotion.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "productTypeExclusion": {
+                    "description": "Product filter by product type exclusion for the promotion.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "promotionDestinationIds": {
                     "description": "Destination ID for the promotion.",
@@ -15704,7 +15833,7 @@
             "id": "VerifyPhoneNumberResponse",
             "properties": {
                 "verifiedPhoneNumber": {
-                    "description": "Verified phone number if verification is successful.",
+                    "description": "Verified phone number if verification is successful. This phone number can only be replaced by another verified phone number.",
                     "type": "string"
                 }
             },

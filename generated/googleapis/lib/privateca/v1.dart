@@ -5514,7 +5514,7 @@ class RevokedCertificate {
 
 /// Describes an RSA key that may be used in a Certificate issued from a CaPool.
 class RsaKeyType {
-  /// The maximum allowed RSA modulus size, in bits.
+  /// The maximum allowed RSA modulus size (inclusive), in bits.
   ///
   /// If this is not set, or if set to zero, the service will not enforce an
   /// explicit upper bound on RSA modulus sizes.
@@ -5522,7 +5522,7 @@ class RsaKeyType {
   /// Optional.
   core.String? maxModulusSize;
 
-  /// The minimum allowed RSA modulus size, in bits.
+  /// The minimum allowed RSA modulus size (inclusive), in bits.
   ///
   /// If this is not set, or if set to zero, the service-level min RSA modulus
   /// size will continue to apply.

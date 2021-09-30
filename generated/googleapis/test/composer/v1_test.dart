@@ -887,6 +887,7 @@ api.SoftwareConfig buildSoftwareConfig() {
     o.imageVersion = 'foo';
     o.pypiPackages = buildUnnamed12();
     o.pythonVersion = 'foo';
+    o.schedulerCount = 42;
   }
   buildCounterSoftwareConfig--;
   return o;
@@ -905,6 +906,10 @@ void checkSoftwareConfig(api.SoftwareConfig o) {
     unittest.expect(
       o.pythonVersion!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.schedulerCount!,
+      unittest.equals(42),
     );
   }
   buildCounterSoftwareConfig--;

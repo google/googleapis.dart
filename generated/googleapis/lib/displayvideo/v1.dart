@@ -14,8 +14,9 @@
 
 /// Display & Video 360 API - v1
 ///
-/// Display & Video 360 API allows users to manage and create campaigns and
-/// reports.
+/// Display & Video 360 API allows users to automate complex Display & Video 360
+/// workflows, such as creating insertion orders and setting targeting options
+/// for individual line items.
 ///
 /// For more information, see <https://developers.google.com/display-video/>
 ///
@@ -86,8 +87,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-/// Display & Video 360 API allows users to manage and create campaigns and
-/// reports.
+/// Display & Video 360 API allows users to automate complex Display & Video 360
+/// workflows, such as creating insertion orders and setting targeting options
+/// for individual line items.
 class DisplayVideoApi {
   /// Create, see, edit, and permanently delete your Display & Video 360
   /// entities and reports
@@ -6230,45 +6232,6 @@ class CustomBiddingAlgorithmsResource {
   CustomBiddingAlgorithmsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new custom bidding algorithm.
-  ///
-  /// Returns the newly created custom bidding algorithm if successful.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [CustomBiddingAlgorithm].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<CustomBiddingAlgorithm> create(
-    CustomBiddingAlgorithm request, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const _url = 'v1/customBiddingAlgorithms';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return CustomBiddingAlgorithm.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Gets a custom bidding algorithm.
   ///
   /// Request parameters:
@@ -6402,55 +6365,6 @@ class CustomBiddingAlgorithmsResource {
       queryParams: _queryParams,
     );
     return ListCustomBiddingAlgorithmsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates an existing custom bidding algorithm.
-  ///
-  /// Returns the updated custom bidding algorithm if successful.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [customBiddingAlgorithmId] - Output only. The unique ID of the custom
-  /// bidding algorithm. Assigned by the system.
-  /// Value must have pattern `^\[^/\]+$`.
-  ///
-  /// [updateMask] - Required. The mask to control which fields to update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [CustomBiddingAlgorithm].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<CustomBiddingAlgorithm> patch(
-    CustomBiddingAlgorithm request,
-    core.String customBiddingAlgorithmId, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/customBiddingAlgorithms/' +
-        core.Uri.encodeFull('$customBiddingAlgorithmId');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return CustomBiddingAlgorithm.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -9064,6 +8978,22 @@ class TargetingTypesTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [targetingType] - Required. The type of targeting option to retrieve.
+  /// Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
+  /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS`
+  /// * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE`
+  /// * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` *
+  /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE`
+  /// * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION`
+  /// * `TARGETING_TYPE_OMID`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -9201,6 +9131,22 @@ class TargetingTypesTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [targetingType] - Required. The type of targeting option to be listed.
+  /// Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
+  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
+  /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS`
+  /// * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+  /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE`
+  /// * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` *
+  /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+  /// `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+  /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` *
+  /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE`
+  /// * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION`
+  /// * `TARGETING_TYPE_OMID`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -13020,6 +12966,9 @@ class BusinessChainAssignedTargetingOptionDetails {
   /// The targeting_option_id of a TargetingOption of type
   /// `TARGETING_TYPE_BUSINESS_CHAIN`.
   ///
+  /// Accepted business chain targeting option IDs can be retrieved using
+  /// SearchTargetingOptions.
+  ///
   /// Required.
   core.String? targetingOptionId;
 
@@ -13064,30 +13013,31 @@ class BusinessChainSearchTerms {
   ///
   /// The query must be the full name of the business, e.g. "KFC",
   /// "mercedes-benz".
-  core.String? businessChain;
+  core.String? businessChainQuery;
 
   /// The search query for the desired geo region, e.g. "Seattle", "United
   /// State".
-  core.String? region;
+  core.String? regionQuery;
 
   BusinessChainSearchTerms({
-    this.businessChain,
-    this.region,
+    this.businessChainQuery,
+    this.regionQuery,
   });
 
   BusinessChainSearchTerms.fromJson(core.Map _json)
       : this(
-          businessChain: _json.containsKey('businessChain')
-              ? _json['businessChain'] as core.String
+          businessChainQuery: _json.containsKey('businessChainQuery')
+              ? _json['businessChainQuery'] as core.String
               : null,
-          region: _json.containsKey('region')
-              ? _json['region'] as core.String
+          regionQuery: _json.containsKey('regionQuery')
+              ? _json['regionQuery'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (businessChain != null) 'businessChain': businessChain!,
-        if (region != null) 'region': region!,
+        if (businessChainQuery != null)
+          'businessChainQuery': businessChainQuery!,
+        if (regionQuery != null) 'regionQuery': regionQuery!,
       };
 }
 
@@ -14592,6 +14542,7 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_5_1" : SDF version 5.1
   /// - "SDF_VERSION_5_2" : SDF version 5.2
   /// - "SDF_VERSION_5_3" : SDF version 5.3
+  /// - "SDF_VERSION_5_4" : SDF version 5.4
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -15584,8 +15535,11 @@ class CustomBiddingAlgorithm {
 
   /// The IDs of the advertisers who have access to this algorithm.
   ///
-  /// This field will not be set if the algorithm owner is a partner and is
-  /// being retrieved using an advertiser accessor.
+  /// If advertiser_id is set, this field will only consist of that value. This
+  /// field will not be set if the algorithm
+  /// \[`owner`\](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner)
+  /// is a partner and is being retrieved using an advertiser
+  /// \[`accessor`\](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor).
   core.List<core.String>? sharedAdvertiserIds;
 
   CustomBiddingAlgorithm({
@@ -23408,8 +23362,16 @@ class PoiAssignedTargetingOptionDetails {
   /// - "DISTANCE_UNIT_KILOMETERS" : Kilometers.
   core.String? proximityRadiusUnit;
 
-  /// The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`
-  /// or reuse an existing assigned_targeting_option_id.
+  /// The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`.
+  ///
+  /// Accepted POI targeting option IDs can be retrieved using
+  /// SearchTargetingOptions. If targeting a specific latitude/longitude
+  /// coordinate removed from an address or POI name, you can generate the
+  /// necessary targeting option ID by rounding the desired coordinate values to
+  /// the 6th decimal place, removing the decimals, and concatenating the string
+  /// values separated by a semicolon. For example, you can target the
+  /// latitude/longitude pair of 40.7414691, -74.003387 using the targeting
+  /// option ID "40741469;-74003387".
   ///
   /// Required.
   core.String? targetingOptionId;
@@ -24045,6 +24007,7 @@ class SdfConfig {
   /// - "SDF_VERSION_5_1" : SDF version 5.1
   /// - "SDF_VERSION_5_2" : SDF version 5.2
   /// - "SDF_VERSION_5_3" : SDF version 5.3
+  /// - "SDF_VERSION_5_4" : SDF version 5.4
   core.String? version;
 
   SdfConfig({
@@ -24117,6 +24080,7 @@ class SdfDownloadTaskMetadata {
   /// - "SDF_VERSION_5_1" : SDF version 5.1
   /// - "SDF_VERSION_5_2" : SDF version 5.2
   /// - "SDF_VERSION_5_3" : SDF version 5.3
+  /// - "SDF_VERSION_5_4" : SDF version 5.4
   core.String? version;
 
   SdfDownloadTaskMetadata({

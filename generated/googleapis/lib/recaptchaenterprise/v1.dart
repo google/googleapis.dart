@@ -461,17 +461,24 @@ class ProjectsKeysResource {
 
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
+  /// If set to true, it means allowed_package_names will not be enforced.
+  core.bool? allowAllPackageNames;
+
   /// Android package names of apps allowed to use the key.
   ///
   /// Example: 'com.companyname.appname'
   core.List<core.String>? allowedPackageNames;
 
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings({
+    this.allowAllPackageNames,
     this.allowedPackageNames,
   });
 
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(core.Map _json)
       : this(
+          allowAllPackageNames: _json.containsKey('allowAllPackageNames')
+              ? _json['allowAllPackageNames'] as core.bool
+              : null,
           allowedPackageNames: _json.containsKey('allowedPackageNames')
               ? (_json['allowedPackageNames'] as core.List)
                   .map((value) => value as core.String)
@@ -480,6 +487,8 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowAllPackageNames != null)
+          'allowAllPackageNames': allowAllPackageNames!,
         if (allowedPackageNames != null)
           'allowedPackageNames': allowedPackageNames!,
       };
@@ -715,17 +724,24 @@ class GoogleCloudRecaptchaenterpriseV1Event {
 
 /// Settings specific to keys that can be used by iOS apps.
 class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
+  /// If set to true, it means allowed_bundle_ids will not be enforced.
+  core.bool? allowAllBundleIds;
+
   /// iOS bundle ids of apps allowed to use the key.
   ///
   /// Example: 'com.companyname.productname.appname'
   core.List<core.String>? allowedBundleIds;
 
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings({
+    this.allowAllBundleIds,
     this.allowedBundleIds,
   });
 
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(core.Map _json)
       : this(
+          allowAllBundleIds: _json.containsKey('allowAllBundleIds')
+              ? _json['allowAllBundleIds'] as core.bool
+              : null,
           allowedBundleIds: _json.containsKey('allowedBundleIds')
               ? (_json['allowedBundleIds'] as core.List)
                   .map((value) => value as core.String)
@@ -734,6 +750,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowAllBundleIds != null) 'allowAllBundleIds': allowAllBundleIds!,
         if (allowedBundleIds != null) 'allowedBundleIds': allowedBundleIds!,
       };
 }

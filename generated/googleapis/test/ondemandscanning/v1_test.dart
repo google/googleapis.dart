@@ -123,6 +123,7 @@ api.AnalyzePackagesRequestV1 buildAnalyzePackagesRequestV1() {
   final o = api.AnalyzePackagesRequestV1();
   buildCounterAnalyzePackagesRequestV1++;
   if (buildCounterAnalyzePackagesRequestV1 < 3) {
+    o.includeOsvData = true;
     o.packages = buildUnnamed0();
     o.resourceUri = 'foo';
   }
@@ -133,6 +134,7 @@ api.AnalyzePackagesRequestV1 buildAnalyzePackagesRequestV1() {
 void checkAnalyzePackagesRequestV1(api.AnalyzePackagesRequestV1 o) {
   buildCounterAnalyzePackagesRequestV1++;
   if (buildCounterAnalyzePackagesRequestV1 < 3) {
+    unittest.expect(o.includeOsvData!, unittest.isTrue);
     checkUnnamed0(o.packages!);
     unittest.expect(
       o.resourceUri!,

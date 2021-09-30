@@ -342,9 +342,15 @@ class LongRunningRecognizeRequest {
   /// Required.
   RecognitionConfig? config;
 
+  /// Specifies an optional destination for the recognition results.
+  ///
+  /// Optional.
+  TranscriptOutputConfig? outputConfig;
+
   LongRunningRecognizeRequest({
     this.audio,
     this.config,
+    this.outputConfig,
   });
 
   LongRunningRecognizeRequest.fromJson(core.Map _json)
@@ -357,11 +363,16 @@ class LongRunningRecognizeRequest {
               ? RecognitionConfig.fromJson(
                   _json['config'] as core.Map<core.String, core.dynamic>)
               : null,
+          outputConfig: _json.containsKey('outputConfig')
+              ? TranscriptOutputConfig.fromJson(
+                  _json['outputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!,
         if (config != null) 'config': config!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
       };
 }
 
@@ -1211,6 +1222,30 @@ class Status {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
+      };
+}
+
+/// Specifies an optional destination for the recognition results.
+class TranscriptOutputConfig {
+  /// Specifies a Cloud Storage URI for the recognition results.
+  ///
+  /// Must be specified in the format: `gs://bucket_name/object_name`, and the
+  /// bucket must already exist.
+  core.String? gcsUri;
+
+  TranscriptOutputConfig({
+    this.gcsUri,
+  });
+
+  TranscriptOutputConfig.fromJson(core.Map _json)
+      : this(
+          gcsUri: _json.containsKey('gcsUri')
+              ? _json['gcsUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsUri != null) 'gcsUri': gcsUri!,
       };
 }
 

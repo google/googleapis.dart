@@ -265,6 +265,7 @@ api.ConfigManagementConfigSyncDeploymentState
   final o = api.ConfigManagementConfigSyncDeploymentState();
   buildCounterConfigManagementConfigSyncDeploymentState++;
   if (buildCounterConfigManagementConfigSyncDeploymentState < 3) {
+    o.admissionWebhook = 'foo';
     o.gitSync = 'foo';
     o.importer = 'foo';
     o.monitor = 'foo';
@@ -280,6 +281,10 @@ void checkConfigManagementConfigSyncDeploymentState(
     api.ConfigManagementConfigSyncDeploymentState o) {
   buildCounterConfigManagementConfigSyncDeploymentState++;
   if (buildCounterConfigManagementConfigSyncDeploymentState < 3) {
+    unittest.expect(
+      o.admissionWebhook!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.gitSync!,
       unittest.equals('foo'),
@@ -337,6 +342,7 @@ api.ConfigManagementConfigSyncVersion buildConfigManagementConfigSyncVersion() {
   final o = api.ConfigManagementConfigSyncVersion();
   buildCounterConfigManagementConfigSyncVersion++;
   if (buildCounterConfigManagementConfigSyncVersion < 3) {
+    o.admissionWebhook = 'foo';
     o.gitSync = 'foo';
     o.importer = 'foo';
     o.monitor = 'foo';
@@ -352,6 +358,10 @@ void checkConfigManagementConfigSyncVersion(
     api.ConfigManagementConfigSyncVersion o) {
   buildCounterConfigManagementConfigSyncVersion++;
   if (buildCounterConfigManagementConfigSyncVersion < 3) {
+    unittest.expect(
+      o.admissionWebhook!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.gitSync!,
       unittest.equals('foo'),

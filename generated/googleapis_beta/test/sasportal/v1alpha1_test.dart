@@ -520,6 +520,8 @@ api.SasPortalDeviceMetadata buildSasPortalDeviceMetadata() {
   buildCounterSasPortalDeviceMetadata++;
   if (buildCounterSasPortalDeviceMetadata < 3) {
     o.antennaModel = 'foo';
+    o.commonChannelGroup = 'foo';
+    o.interferenceCoordinationGroup = 'foo';
   }
   buildCounterSasPortalDeviceMetadata--;
   return o;
@@ -530,6 +532,14 @@ void checkSasPortalDeviceMetadata(api.SasPortalDeviceMetadata o) {
   if (buildCounterSasPortalDeviceMetadata < 3) {
     unittest.expect(
       o.antennaModel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.commonChannelGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.interferenceCoordinationGroup!,
       unittest.equals('foo'),
     );
   }

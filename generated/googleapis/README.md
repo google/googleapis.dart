@@ -541,7 +541,7 @@ Provides information about other Google APIs, such as what APIs are available, t
 
 #### Display & Video 360 API - `displayvideo.v1`
 
-Display & Video 360 API allows users to manage and create campaigns and reports.
+Display & Video 360 API allows users to automate complex Display & Video 360 workflows, such as creating insertion orders and setting targeting options for individual line items.
 
 - [Documentation](https://developers.google.com/display-video/)
 - [API details](https://pub.dev/documentation/googleapis/5.0.2-dev/displayvideo.v1/displayvideo.v1-library.html)
@@ -925,6 +925,13 @@ The My Business Verifications API provides an interface for taking verifications
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/5.0.2-dev/mybusinessverifications.v1/mybusinessverifications.v1-library.html)
+
+#### Network Connectivity API - `networkconnectivity.v1`
+
+The Network Connectivity API provides access to Network Connectivity Center.
+
+- [Documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest)
+- [API details](https://pub.dev/documentation/googleapis/5.0.2-dev/networkconnectivity.v1/networkconnectivity.v1-library.html)
 
 #### Network Management API - `networkmanagement.v1`
 

@@ -41291,15 +41291,14 @@ class ZoneOperationsResource {
   /// request to approach the 2 minute deadline, and retrieves the specified
   /// Operation resource.
   ///
-  /// This method differs from the `GET` method in that it waits for no more
-  /// than the default deadline (2 minutes) and then returns the current state
-  /// of the operation, which might be `DONE` or still in progress. This method
-  /// is called on a best-effort basis. Specifically: - In uncommon cases, when
-  /// the server is overloaded, the request might return before the default
-  /// deadline is reached, or might return after zero seconds. - If the default
-  /// deadline is reached, there is no guarantee that the operation is actually
-  /// done when the method returns. Be prepared to retry if the operation is not
-  /// `DONE`.
+  /// This method waits for no more than the 2 minutes and then returns the
+  /// current state of the operation, which might be `DONE` or still in
+  /// progress. This method is called on a best-effort basis. Specifically: - In
+  /// uncommon cases, when the server is overloaded, the request might return
+  /// before the default deadline is reached, or might return after zero
+  /// seconds. - If the default deadline is reached, there is no guarantee that
+  /// the operation is actually done when the method returns. Be prepared to
+  /// retry if the operation is not `DONE`.
   ///
   /// Request parameters:
   ///
@@ -53209,7 +53208,7 @@ class FirewallPolicy {
 
   /// Deprecated, please use short name instead.
   ///
-  /// User-provided name of the Organization firewall plicy. The name should be
+  /// User-provided name of the Organization firewall policy. The name should be
   /// unique in the organization in which the firewall policy is created. This
   /// name must be set on creation and cannot be changed. The name must be 1-63
   /// characters long, and comply with RFC1035. Specifically, the name must be
@@ -86043,6 +86042,9 @@ class RouterBgpPeer {
   /// with the lowest priority value win.
   core.int? advertisedRoutePriority;
 
+  /// BFD configuration for the BGP peering.
+  RouterBgpPeerBfd? bfd;
+
   /// The status of the BGP peer connection.
   ///
   /// If set to FALSE, any active session with the peer is terminated and all
@@ -86104,11 +86106,19 @@ class RouterBgpPeer {
   /// Only IPv4 is supported.
   core.String? peerIpAddress;
 
+  /// URI of the VM instance that is used as third-party router appliances such
+  /// as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+  ///
+  /// The VM instance must be located in zones contained in the same region as
+  /// this Cloud Router. The VM instance is the peer side of the BGP session.
+  core.String? routerApplianceInstance;
+
   RouterBgpPeer({
     this.advertiseMode,
     this.advertisedGroups,
     this.advertisedIpRanges,
     this.advertisedRoutePriority,
+    this.bfd,
     this.enable,
     this.interfaceName,
     this.ipAddress,
@@ -86116,6 +86126,7 @@ class RouterBgpPeer {
     this.name,
     this.peerAsn,
     this.peerIpAddress,
+    this.routerApplianceInstance,
   });
 
   RouterBgpPeer.fromJson(core.Map _json)
@@ -86137,6 +86148,10 @@ class RouterBgpPeer {
           advertisedRoutePriority: _json.containsKey('advertisedRoutePriority')
               ? _json['advertisedRoutePriority'] as core.int
               : null,
+          bfd: _json.containsKey('bfd')
+              ? RouterBgpPeerBfd.fromJson(
+                  _json['bfd'] as core.Map<core.String, core.dynamic>)
+              : null,
           enable: _json.containsKey('enable')
               ? _json['enable'] as core.String
               : null,
@@ -86156,6 +86171,9 @@ class RouterBgpPeer {
           peerIpAddress: _json.containsKey('peerIpAddress')
               ? _json['peerIpAddress'] as core.String
               : null,
+          routerApplianceInstance: _json.containsKey('routerApplianceInstance')
+              ? _json['routerApplianceInstance'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -86165,6 +86183,7 @@ class RouterBgpPeer {
           'advertisedIpRanges': advertisedIpRanges!,
         if (advertisedRoutePriority != null)
           'advertisedRoutePriority': advertisedRoutePriority!,
+        if (bfd != null) 'bfd': bfd!,
         if (enable != null) 'enable': enable!,
         if (interfaceName != null) 'interfaceName': interfaceName!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
@@ -86172,6 +86191,79 @@ class RouterBgpPeer {
         if (name != null) 'name': name!,
         if (peerAsn != null) 'peerAsn': peerAsn!,
         if (peerIpAddress != null) 'peerIpAddress': peerIpAddress!,
+        if (routerApplianceInstance != null)
+          'routerApplianceInstance': routerApplianceInstance!,
+      };
+}
+
+class RouterBgpPeerBfd {
+  /// The minimum interval, in milliseconds, between BFD control packets
+  /// received from the peer router.
+  ///
+  /// The actual value is negotiated between the two routers and is equal to the
+  /// greater of this value and the transmit interval of the other router. If
+  /// set, this value must be between 1000 and 30000. The default is 1000.
+  core.int? minReceiveInterval;
+
+  /// The minimum interval, in milliseconds, between BFD control packets
+  /// transmitted to the peer router.
+  ///
+  /// The actual value is negotiated between the two routers and is equal to the
+  /// greater of this value and the corresponding receive interval of the other
+  /// router. If set, this value must be between 1000 and 30000. The default is
+  /// 1000.
+  core.int? minTransmitInterval;
+
+  /// The number of consecutive BFD packets that must be missed before BFD
+  /// declares that a peer is unavailable.
+  ///
+  /// If set, the value must be a value between 5 and 16. The default is 5.
+  core.int? multiplier;
+
+  /// The BFD session initialization mode for this BGP peer.
+  ///
+  /// If set to ACTIVE, the Cloud Router will initiate the BFD session for this
+  /// BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer
+  /// router to initiate the BFD session for this BGP peer. If set to DISABLED,
+  /// BFD is disabled for this BGP peer. The default is PASSIVE.
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "DISABLED"
+  /// - "PASSIVE"
+  core.String? sessionInitializationMode;
+
+  RouterBgpPeerBfd({
+    this.minReceiveInterval,
+    this.minTransmitInterval,
+    this.multiplier,
+    this.sessionInitializationMode,
+  });
+
+  RouterBgpPeerBfd.fromJson(core.Map _json)
+      : this(
+          minReceiveInterval: _json.containsKey('minReceiveInterval')
+              ? _json['minReceiveInterval'] as core.int
+              : null,
+          minTransmitInterval: _json.containsKey('minTransmitInterval')
+              ? _json['minTransmitInterval'] as core.int
+              : null,
+          multiplier: _json.containsKey('multiplier')
+              ? _json['multiplier'] as core.int
+              : null,
+          sessionInitializationMode:
+              _json.containsKey('sessionInitializationMode')
+                  ? _json['sessionInitializationMode'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (minReceiveInterval != null)
+          'minReceiveInterval': minReceiveInterval!,
+        if (minTransmitInterval != null)
+          'minTransmitInterval': minTransmitInterval!,
+        if (multiplier != null) 'multiplier': multiplier!,
+        if (sessionInitializationMode != null)
+          'sessionInitializationMode': sessionInitializationMode!,
       };
 }
 
@@ -86227,12 +86319,43 @@ class RouterInterface {
   /// dash.
   core.String? name;
 
+  /// The regional private internal IP address that is used to establish BGP
+  /// sessions to a VM instance acting as a third-party Router Appliance, such
+  /// as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+  core.String? privateIpAddress;
+
+  /// Name of the interface that will be redundant with the current interface
+  /// you are creating.
+  ///
+  /// The redundantInterface must belong to the same Cloud Router as the
+  /// interface here. To establish the BGP session to a Router Appliance VM, you
+  /// must create two BGP peers. The two BGP peers must be attached to two
+  /// separate interfaces that are redundant with each other. The
+  /// redundant_interface must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the redundant_interface must be 1-63 characters long and
+  /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+  /// first character must be a lowercase letter, and all following characters
+  /// must be a dash, lowercase letter, or digit, except the last character,
+  /// which cannot be a dash.
+  core.String? redundantInterface;
+
+  /// The URI of the subnetwork resource that this interface belongs to, which
+  /// must be in the same region as the Cloud Router.
+  ///
+  /// When you establish a BGP session to a VM instance using this interface,
+  /// the VM instance must belong to the same subnetwork as the subnetwork
+  /// specified here.
+  core.String? subnetwork;
+
   RouterInterface({
     this.ipRange,
     this.linkedInterconnectAttachment,
     this.linkedVpnTunnel,
     this.managementType,
     this.name,
+    this.privateIpAddress,
+    this.redundantInterface,
+    this.subnetwork,
   });
 
   RouterInterface.fromJson(core.Map _json)
@@ -86251,6 +86374,15 @@ class RouterInterface {
               ? _json['managementType'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          privateIpAddress: _json.containsKey('privateIpAddress')
+              ? _json['privateIpAddress'] as core.String
+              : null,
+          redundantInterface: _json.containsKey('redundantInterface')
+              ? _json['redundantInterface'] as core.String
+              : null,
+          subnetwork: _json.containsKey('subnetwork')
+              ? _json['subnetwork'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -86260,6 +86392,10 @@ class RouterInterface {
         if (linkedVpnTunnel != null) 'linkedVpnTunnel': linkedVpnTunnel!,
         if (managementType != null) 'managementType': managementType!,
         if (name != null) 'name': name!,
+        if (privateIpAddress != null) 'privateIpAddress': privateIpAddress!,
+        if (redundantInterface != null)
+          'redundantInterface': redundantInterface!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
       };
 }
 
@@ -86837,6 +86973,14 @@ class RouterStatusBgpPeerStatus {
   /// IP address of the remote BGP interface.
   core.String? peerIpAddress;
 
+  /// URI of the VM instance that is used as third-party router appliances such
+  /// as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+  ///
+  /// The VM instance is the peer side of the BGP session.
+  ///
+  /// Output only.
+  core.String? routerApplianceInstance;
+
   /// BGP state as specified in RFC1771.
   core.String? state;
 
@@ -86864,6 +87008,7 @@ class RouterStatusBgpPeerStatus {
     this.name,
     this.numLearnedRoutes,
     this.peerIpAddress,
+    this.routerApplianceInstance,
     this.state,
     this.status,
     this.uptime,
@@ -86891,6 +87036,9 @@ class RouterStatusBgpPeerStatus {
           peerIpAddress: _json.containsKey('peerIpAddress')
               ? _json['peerIpAddress'] as core.String
               : null,
+          routerApplianceInstance: _json.containsKey('routerApplianceInstance')
+              ? _json['routerApplianceInstance'] as core.String
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
           status: _json.containsKey('status')
@@ -86911,6 +87059,8 @@ class RouterStatusBgpPeerStatus {
         if (name != null) 'name': name!,
         if (numLearnedRoutes != null) 'numLearnedRoutes': numLearnedRoutes!,
         if (peerIpAddress != null) 'peerIpAddress': peerIpAddress!,
+        if (routerApplianceInstance != null)
+          'routerApplianceInstance': routerApplianceInstance!,
         if (state != null) 'state': state!,
         if (status != null) 'status': status!,
         if (uptime != null) 'uptime': uptime!,
@@ -91788,8 +91938,7 @@ class Subnetwork {
   /// The URL of the network to which this subnetwork belongs, provided by the
   /// client when initially creating the subnetwork.
   ///
-  /// Only networks that are in the distributed mode can have subnetworks. This
-  /// field can be set only at resource creation time.
+  /// This field can be set only at resource creation time.
   core.String? network;
 
   /// Whether the VMs in this subnet can access Google services without assigned
@@ -94844,6 +94993,12 @@ class TargetInstance {
   /// - "NO_NAT" : No NAT performed.
   core.String? natPolicy;
 
+  /// The URL of the network this target instance uses to forward traffic.
+  ///
+  /// If not specified, the traffic will be forwarded to the network that the
+  /// default network interface belongs to.
+  core.String? network;
+
   /// Server-defined URL for the resource.
   ///
   /// Output only.
@@ -94865,6 +95020,7 @@ class TargetInstance {
     this.kind,
     this.name,
     this.natPolicy,
+    this.network,
     this.selfLink,
     this.zone,
   });
@@ -94886,6 +95042,9 @@ class TargetInstance {
           natPolicy: _json.containsKey('natPolicy')
               ? _json['natPolicy'] as core.String
               : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
@@ -94900,6 +95059,7 @@ class TargetInstance {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (natPolicy != null) 'natPolicy': natPolicy!,
+        if (network != null) 'network': network!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (zone != null) 'zone': zone!,
       };

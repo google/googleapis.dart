@@ -142,6 +142,43 @@ class ProjectsDatabasesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets information about a database.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the form
+  /// `projects/{project_id}/databases/{database_id}`
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1Database].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1Database> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirestoreAdminV1Database.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Imports documents into Google Cloud Firestore.
   ///
   /// Existing documents with the same name are overwritten. The import occurs
@@ -183,6 +220,88 @@ class ProjectsDatabasesResource {
     final _response = await _requester.request(
       _url,
       'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all the databases in the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. A parent name of the form `projects/{project_id}`
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ListDatabasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ListDatabasesResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirestoreAdminV1ListDatabasesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the Database. Format:
+  /// `projects/{project}/databases/{database}`
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleFirestoreAdminV1Database request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
     );
@@ -2697,6 +2816,82 @@ class Filter {
       };
 }
 
+/// A Cloud Firestore Database.
+///
+/// Currently only one database is allowed per cloud project; this database must
+/// have a `database_id` of '(default)'.
+class GoogleFirestoreAdminV1Database {
+  /// The concurrency control mode to use for this database.
+  /// Possible string values are:
+  /// - "CONCURRENCY_MODE_UNSPECIFIED" : Not used.
+  /// - "OPTIMISTIC" : Use optimistic concurrency control by default. This
+  /// setting is available for Cloud Firestore customers.
+  /// - "PESSIMISTIC" : Use pessimistic concurrency control by default. This
+  /// setting is available for Cloud Firestore customers. This is the default
+  /// setting for Cloud Firestore.
+  /// - "OPTIMISTIC_WITH_ENTITY_GROUPS" : Use optimistic concurrency control
+  /// with entity groups by default. This is the only available setting for
+  /// Cloud Datastore customers. This is the default setting for Cloud
+  /// Datastore.
+  core.String? concurrencyMode;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// The location of the database.
+  ///
+  /// Available databases are listed at
+  /// https://cloud.google.com/firestore/docs/locations.
+  core.String? locationId;
+
+  /// The resource name of the Database.
+  ///
+  /// Format: `projects/{project}/databases/{database}`
+  core.String? name;
+
+  /// The type of the database.
+  ///
+  /// See https://cloud.google.com/datastore/docs/firestore-or-datastore for
+  /// information about how to choose.
+  /// Possible string values are:
+  /// - "DATABASE_TYPE_UNSPECIFIED" : The default value. This value is used if
+  /// the database type is omitted.
+  /// - "FIRESTORE_NATIVE" : Firestore Native Mode
+  /// - "DATASTORE_MODE" : Firestore in Datastore Mode.
+  core.String? type;
+
+  GoogleFirestoreAdminV1Database({
+    this.concurrencyMode,
+    this.etag,
+    this.locationId,
+    this.name,
+    this.type,
+  });
+
+  GoogleFirestoreAdminV1Database.fromJson(core.Map _json)
+      : this(
+          concurrencyMode: _json.containsKey('concurrencyMode')
+              ? _json['concurrencyMode'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
+        if (etag != null) 'etag': etag!,
+        if (locationId != null) 'locationId': locationId!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Metadata for google.longrunning.Operation results from
 /// FirestoreAdmin.ExportDocuments.
 class GoogleFirestoreAdminV1ExportDocumentsMetadata {
@@ -3449,6 +3644,30 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
         if (progressDocuments != null) 'progressDocuments': progressDocuments!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// The list of databases for a project.
+class GoogleFirestoreAdminV1ListDatabasesResponse {
+  /// The databases in the project.
+  core.List<GoogleFirestoreAdminV1Database>? databases;
+
+  GoogleFirestoreAdminV1ListDatabasesResponse({
+    this.databases,
+  });
+
+  GoogleFirestoreAdminV1ListDatabasesResponse.fromJson(core.Map _json)
+      : this(
+          databases: _json.containsKey('databases')
+              ? (_json['databases'] as core.List)
+                  .map((value) => GoogleFirestoreAdminV1Database.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databases != null) 'databases': databases!,
       };
 }
 

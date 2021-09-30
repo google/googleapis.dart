@@ -2681,7 +2681,7 @@
             }
         }
     },
-    "revision": "20210830",
+    "revision": "20211004",
     "rootUrl": "https://gmail.googleapis.com/",
     "schemas": {
         "AutoForwarding": {

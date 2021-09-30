@@ -2038,6 +2038,7 @@ api.GoogleAnalyticsAdminV1alphaProperty
   final o = api.GoogleAnalyticsAdminV1alphaProperty();
   buildCounterGoogleAnalyticsAdminV1alphaProperty++;
   if (buildCounterGoogleAnalyticsAdminV1alphaProperty < 3) {
+    o.account = 'foo';
     o.createTime = 'foo';
     o.currencyCode = 'foo';
     o.deleteTime = 'foo';
@@ -2058,6 +2059,10 @@ void checkGoogleAnalyticsAdminV1alphaProperty(
     api.GoogleAnalyticsAdminV1alphaProperty o) {
   buildCounterGoogleAnalyticsAdminV1alphaProperty++;
   if (buildCounterGoogleAnalyticsAdminV1alphaProperty < 3) {
+    unittest.expect(
+      o.account!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

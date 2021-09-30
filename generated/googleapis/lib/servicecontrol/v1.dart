@@ -2677,11 +2677,8 @@ class QuotaOperation {
   /// - "CHECK_ONLY" : For AllocateQuota request, only checks if there is enough
   /// quota available and does not change the available quota. No lock is placed
   /// on the available quota either.
-  /// - "QUERY_ONLY" : Unimplemented. When used in AllocateQuotaRequest, this
-  /// returns the effective quota limit(s) in the response, and no quota check
-  /// will be performed. Not supported for other requests, and even for
-  /// AllocateQuotaRequest, this is currently supported only for allowlisted
-  /// services.
+  /// - "QUERY_ONLY" : Deprecated. Please use QueryLimits API to query quota
+  /// limits.
   /// - "ADJUST_ONLY" : The operation allocates quota for the amount specified
   /// in the service configuration or specified using the quota metrics. If the
   /// requested amount is higher than the available quota, request does not fail
@@ -3197,7 +3194,7 @@ class Resource {
   ///
   /// The syntax is platform-specific because different platforms define their
   /// resources differently. For Google APIs, the type format must be
-  /// "{service}/{kind}".
+  /// "{service}/{kind}", such as "pubsub.googleapis.com/Topic".
   core.String? type;
 
   /// The unique identifier of the resource.

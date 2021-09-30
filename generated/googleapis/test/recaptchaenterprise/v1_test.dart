@@ -49,6 +49,7 @@ api.GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
   final o = api.GoogleCloudRecaptchaenterpriseV1AndroidKeySettings();
   buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings < 3) {
+    o.allowAllPackageNames = true;
     o.allowedPackageNames = buildUnnamed0();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings--;
@@ -59,6 +60,7 @@ void checkGoogleCloudRecaptchaenterpriseV1AndroidKeySettings(
     api.GoogleCloudRecaptchaenterpriseV1AndroidKeySettings o) {
   buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings < 3) {
+    unittest.expect(o.allowAllPackageNames!, unittest.isTrue);
     checkUnnamed0(o.allowedPackageNames!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings--;
@@ -266,6 +268,7 @@ api.GoogleCloudRecaptchaenterpriseV1IOSKeySettings
   final o = api.GoogleCloudRecaptchaenterpriseV1IOSKeySettings();
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings < 3) {
+    o.allowAllBundleIds = true;
     o.allowedBundleIds = buildUnnamed2();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings--;
@@ -276,6 +279,7 @@ void checkGoogleCloudRecaptchaenterpriseV1IOSKeySettings(
     api.GoogleCloudRecaptchaenterpriseV1IOSKeySettings o) {
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings < 3) {
+    unittest.expect(o.allowAllBundleIds!, unittest.isTrue);
     checkUnnamed2(o.allowedBundleIds!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings--;

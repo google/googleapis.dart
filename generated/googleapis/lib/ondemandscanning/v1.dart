@@ -520,6 +520,9 @@ class AnalyzePackagesMetadataV1 {
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
 class AnalyzePackagesRequestV1 {
+  /// Whether to include OSV data in the scan.
+  core.bool? includeOsvData;
+
   /// The packages to analyze.
   core.List<PackageData>? packages;
 
@@ -529,12 +532,16 @@ class AnalyzePackagesRequestV1 {
   core.String? resourceUri;
 
   AnalyzePackagesRequestV1({
+    this.includeOsvData,
     this.packages,
     this.resourceUri,
   });
 
   AnalyzePackagesRequestV1.fromJson(core.Map _json)
       : this(
+          includeOsvData: _json.containsKey('includeOsvData')
+              ? _json['includeOsvData'] as core.bool
+              : null,
           packages: _json.containsKey('packages')
               ? (_json['packages'] as core.List)
                   .map((value) => PackageData.fromJson(
@@ -547,6 +554,7 @@ class AnalyzePackagesRequestV1 {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (includeOsvData != null) 'includeOsvData': includeOsvData!,
         if (packages != null) 'packages': packages!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
       };

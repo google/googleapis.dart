@@ -22,6 +22,8 @@
 ///   - [AdminProjectsResource]
 ///     - [AdminProjectsLocationsResource]
 ///       - [AdminProjectsLocationsOperationsResource]
+///       - [AdminProjectsLocationsReservationsResource]
+///         - [AdminProjectsLocationsReservationsTopicsResource]
 ///       - [AdminProjectsLocationsSubscriptionsResource]
 ///       - [AdminProjectsLocationsTopicsResource]
 ///         - [AdminProjectsLocationsTopicsSubscriptionsResource]
@@ -90,6 +92,8 @@ class AdminProjectsLocationsResource {
 
   AdminProjectsLocationsOperationsResource get operations =>
       AdminProjectsLocationsOperationsResource(_requester);
+  AdminProjectsLocationsReservationsResource get reservations =>
+      AdminProjectsLocationsReservationsResource(_requester);
   AdminProjectsLocationsSubscriptionsResource get subscriptions =>
       AdminProjectsLocationsSubscriptionsResource(_requester);
   AdminProjectsLocationsTopicsResource get topics =>
@@ -288,6 +292,298 @@ class AdminProjectsLocationsOperationsResource {
       queryParams: _queryParams,
     );
     return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AdminProjectsLocationsReservationsResource {
+  final commons.ApiRequester _requester;
+
+  AdminProjectsLocationsReservationsTopicsResource get topics =>
+      AdminProjectsLocationsReservationsTopicsResource(_requester);
+
+  AdminProjectsLocationsReservationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new reservation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent location in which to create the
+  /// reservation. Structured like
+  /// `projects/{project_number}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [reservationId] - Required. The ID to use for the reservation, which will
+  /// become the final component of the reservation's name. This value is
+  /// structured like: `my-reservation-name`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Reservation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reservation> create(
+    Reservation request,
+    core.String parent, {
+    core.String? reservationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (reservationId != null) 'reservationId': [reservationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/reservations';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Reservation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified reservation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the reservation to delete. Structured like:
+  /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the reservation configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the reservation whose configuration to
+  /// return. Structured like:
+  /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Reservation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reservation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Reservation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of reservations for the given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent whose reservations are to be listed.
+  /// Structured like `projects/{project_number}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of reservations to return. The service may
+  /// return fewer than this value. If unset or zero, all reservations for the
+  /// parent will be returned.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListReservations`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListReservations` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReservationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReservationsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/reservations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListReservationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates properties of the specified reservation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the reservation. Structured like:
+  /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A mask specifying the reservation fields to
+  /// change.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Reservation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reservation> patch(
+    Reservation request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Reservation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AdminProjectsLocationsReservationsTopicsResource {
+  final commons.ApiRequester _requester;
+
+  AdminProjectsLocationsReservationsTopicsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the topics attached to the specified reservation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the reservation whose topics to list.
+  /// Structured like:
+  /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of topics to return. The service may
+  /// return fewer than this value. If unset or zero, all topics for the given
+  /// reservation will be returned.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListReservationTopics` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListReservationTopics` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReservationTopicsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReservationTopicsResponse> list(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + '/topics';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListReservationTopicsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1626,6 +1922,79 @@ class ListPartitionCursorsResponse {
       };
 }
 
+/// Response for ListReservationTopics.
+class ListReservationTopicsResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page of
+  /// results.
+  ///
+  /// If this field is omitted, there are no more results.
+  core.String? nextPageToken;
+
+  /// The names of topics attached to the reservation.
+  ///
+  /// The order of the topics is unspecified.
+  core.List<core.String>? topics;
+
+  ListReservationTopicsResponse({
+    this.nextPageToken,
+    this.topics,
+  });
+
+  ListReservationTopicsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          topics: _json.containsKey('topics')
+              ? (_json['topics'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (topics != null) 'topics': topics!,
+      };
+}
+
+/// Response for ListReservations.
+class ListReservationsResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page of
+  /// results.
+  ///
+  /// If this field is omitted, there are no more results.
+  core.String? nextPageToken;
+
+  /// The list of reservation in the requested parent.
+  ///
+  /// The order of the reservations is unspecified.
+  core.List<Reservation>? reservations;
+
+  ListReservationsResponse({
+    this.nextPageToken,
+    this.reservations,
+  });
+
+  ListReservationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          reservations: _json.containsKey('reservations')
+              ? (_json['reservations'] as core.List)
+                  .map((value) => Reservation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (reservations != null) 'reservations': reservations!,
+      };
+}
+
 /// Response for ListSubscriptions.
 class ListSubscriptionsResponse {
   /// A token that can be sent as `page_token` to retrieve the next page of
@@ -1936,6 +2305,67 @@ class PartitionCursor {
       };
 }
 
+/// Metadata about a reservation resource.
+class Reservation {
+  /// The name of the reservation.
+  ///
+  /// Structured like:
+  /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+  core.String? name;
+
+  /// The reserved throughput capacity.
+  ///
+  /// Every unit of throughput capacity is equivalent to 1 MiB/s of published
+  /// messages or 2 MiB/s of subscribed messages. Any topics which are declared
+  /// as using capacity from a Reservation will consume resources from this
+  /// reservation instead of being charged individually.
+  core.String? throughputCapacity;
+
+  Reservation({
+    this.name,
+    this.throughputCapacity,
+  });
+
+  Reservation.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          throughputCapacity: _json.containsKey('throughputCapacity')
+              ? _json['throughputCapacity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (throughputCapacity != null)
+          'throughputCapacity': throughputCapacity!,
+      };
+}
+
+/// The settings for this topic's Reservation usage.
+class ReservationConfig {
+  /// The Reservation to use for this topic's throughput capacity.
+  ///
+  /// Structured like:
+  /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+  core.String? throughputReservation;
+
+  ReservationConfig({
+    this.throughputReservation,
+  });
+
+  ReservationConfig.fromJson(core.Map _json)
+      : this(
+          throughputReservation: _json.containsKey('throughputReservation')
+              ? _json['throughputReservation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (throughputReservation != null)
+          'throughputReservation': throughputReservation!,
+      };
+}
+
 /// The settings for a topic's message retention.
 class RetentionConfig {
   /// The provisioned storage, in bytes, per partition.
@@ -2158,12 +2588,16 @@ class Topic {
   /// The settings for this topic's partitions.
   PartitionConfig? partitionConfig;
 
+  /// The settings for this topic's Reservation usage.
+  ReservationConfig? reservationConfig;
+
   /// The settings for this topic's message retention.
   RetentionConfig? retentionConfig;
 
   Topic({
     this.name,
     this.partitionConfig,
+    this.reservationConfig,
     this.retentionConfig,
   });
 
@@ -2172,6 +2606,10 @@ class Topic {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           partitionConfig: _json.containsKey('partitionConfig')
               ? PartitionConfig.fromJson(_json['partitionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          reservationConfig: _json.containsKey('reservationConfig')
+              ? ReservationConfig.fromJson(_json['reservationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           retentionConfig: _json.containsKey('retentionConfig')
@@ -2183,6 +2621,7 @@ class Topic {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (partitionConfig != null) 'partitionConfig': partitionConfig!,
+        if (reservationConfig != null) 'reservationConfig': reservationConfig!,
         if (retentionConfig != null) 'retentionConfig': retentionConfig!,
       };
 }

@@ -1914,8 +1914,8 @@ api.BusinessChainSearchTerms buildBusinessChainSearchTerms() {
   final o = api.BusinessChainSearchTerms();
   buildCounterBusinessChainSearchTerms++;
   if (buildCounterBusinessChainSearchTerms < 3) {
-    o.businessChain = 'foo';
-    o.region = 'foo';
+    o.businessChainQuery = 'foo';
+    o.regionQuery = 'foo';
   }
   buildCounterBusinessChainSearchTerms--;
   return o;
@@ -1925,11 +1925,11 @@ void checkBusinessChainSearchTerms(api.BusinessChainSearchTerms o) {
   buildCounterBusinessChainSearchTerms++;
   if (buildCounterBusinessChainSearchTerms < 3) {
     unittest.expect(
-      o.businessChain!,
+      o.businessChainQuery!,
       unittest.equals('foo'),
     );
     unittest.expect(
-      o.region!,
+      o.regionQuery!,
       unittest.equals('foo'),
     );
   }
@@ -17732,61 +17732,6 @@ void main() {
   });
 
   unittest.group('resource-CustomBiddingAlgorithmsResource', () {
-    unittest.test('method--create', () async {
-      final mock = HttpServerMock();
-      final res = api.DisplayVideoApi(mock).customBiddingAlgorithms;
-      final arg_request = buildCustomBiddingAlgorithm();
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.CustomBiddingAlgorithm.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkCustomBiddingAlgorithm(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 26),
-          unittest.equals('v1/customBiddingAlgorithms'),
-        );
-        pathOffset += 26;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildCustomBiddingAlgorithm());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request, $fields: arg_$fields);
-      checkCustomBiddingAlgorithm(response as api.CustomBiddingAlgorithm);
-    });
-
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.DisplayVideoApi(mock).customBiddingAlgorithms;
@@ -17939,70 +17884,6 @@ void main() {
           $fields: arg_$fields);
       checkListCustomBiddingAlgorithmsResponse(
           response as api.ListCustomBiddingAlgorithmsResponse);
-    });
-
-    unittest.test('method--patch', () async {
-      final mock = HttpServerMock();
-      final res = api.DisplayVideoApi(mock).customBiddingAlgorithms;
-      final arg_request = buildCustomBiddingAlgorithm();
-      final arg_customBiddingAlgorithmId = 'foo';
-      final arg_updateMask = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.CustomBiddingAlgorithm.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkCustomBiddingAlgorithm(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 27),
-          unittest.equals('v1/customBiddingAlgorithms/'),
-        );
-        pathOffset += 27;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildCustomBiddingAlgorithm());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(
-          arg_request, arg_customBiddingAlgorithmId,
-          updateMask: arg_updateMask, $fields: arg_$fields);
-      checkCustomBiddingAlgorithm(response as api.CustomBiddingAlgorithm);
     });
   });
 

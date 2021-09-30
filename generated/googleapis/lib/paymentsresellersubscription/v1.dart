@@ -567,7 +567,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// - "CANCELLATION_REASON_PAST_DUE" : Payment is past due.
   /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : User account closed.
   /// - "CANCELLATION_REASON_UPGRADE_DOWNGRADE" : Used for notification only, do
-  /// not use in Cancel API. Cancallation due to upgrade or downgrade.
+  /// not use in Cancel API. Cancellation due to upgrade or downgrade.
+  /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
+  /// delinquency
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? cancellationReason;
 
@@ -974,9 +976,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
   /// Optional.
   core.String? endTime;
 
-  /// Specifies the duration of the free trial of the subscription.
+  /// Specifies the duration of the free trial of the subscription when
+  /// promotion_type is PROMOTION_TYPE_FREE_TRIAL
   ///
-  /// Output only.
+  /// Optional.
   GoogleCloudPaymentsResellerSubscriptionV1Duration? freeTrialDuration;
 
   /// Response only.
@@ -1295,7 +1298,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   /// - "CANCELLATION_REASON_PAST_DUE" : Payment is past due.
   /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : User account closed.
   /// - "CANCELLATION_REASON_UPGRADE_DOWNGRADE" : Used for notification only, do
-  /// not use in Cancel API. Cancallation due to upgrade or downgrade.
+  /// not use in Cancel API. Cancellation due to upgrade or downgrade.
+  /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
+  /// delinquency
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? reason;
 

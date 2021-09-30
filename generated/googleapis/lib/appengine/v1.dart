@@ -3398,7 +3398,7 @@ class FirewallRule {
 
   /// An optional string description of this rule.
   ///
-  /// This field has a maximum length of 100 characters.
+  /// This field has a maximum length of 400 characters.
   core.String? description;
 
   /// A positive integer between 1, Int32.MaxValue-1 that defines the order of
@@ -5393,6 +5393,20 @@ class Service {
   /// Example: default.@OutputOnly
   core.String? id;
 
+  /// A set of labels to apply to this service.
+  ///
+  /// Labels are key/value pairs that describe the service and all resources
+  /// that belong to it (e.g., versions). The labels can be used to search and
+  /// group resources, and are propagated to the usage and billing reports,
+  /// enabling fine-grain analysis of costs. An example of using labels is to
+  /// tag resources belonging to different environments (e.g., "env=prod",
+  /// "env=qa"). Label keys and values can be no longer than 63 characters, can
+  /// only contain lowercase letters, numeric characters, underscores, dashes,
+  /// and international characters. Label keys must start with a lowercase
+  /// letter or an international character. Each service can have at most 32
+  /// labels.
+  core.Map<core.String, core.String>? labels;
+
   /// Full path to the Service resource in the API.
   ///
   /// Example: apps/myapp/services/default.@OutputOnly
@@ -5409,6 +5423,7 @@ class Service {
 
   Service({
     this.id,
+    this.labels,
     this.name,
     this.networkSettings,
     this.split,
@@ -5417,6 +5432,14 @@ class Service {
   Service.fromJson(core.Map _json)
       : this(
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           networkSettings: _json.containsKey('networkSettings')
               ? NetworkSettings.fromJson(_json['networkSettings']
@@ -5430,6 +5453,7 @@ class Service {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (networkSettings != null) 'networkSettings': networkSettings!,
         if (split != null) 'split': split!,

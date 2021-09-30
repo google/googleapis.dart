@@ -456,6 +456,7 @@ api.ExecutionTemplate buildExecutionTemplate() {
     o.paramsYamlFile = 'foo';
     o.scaleTier = 'foo';
     o.serviceAccount = 'foo';
+    o.vertexAiParameters = buildVertexAIParameters();
   }
   buildCounterExecutionTemplate--;
   return o;
@@ -503,6 +504,7 @@ void checkExecutionTemplate(api.ExecutionTemplate o) {
       o.serviceAccount!,
       unittest.equals('foo'),
     );
+    checkVertexAIParameters(o.vertexAiParameters!);
   }
   buildCounterExecutionTemplate--;
 }
@@ -2753,6 +2755,28 @@ void checkUpgradeInstanceRequest(api.UpgradeInstanceRequest o) {
   buildCounterUpgradeInstanceRequest--;
 }
 
+core.int buildCounterVertexAIParameters = 0;
+api.VertexAIParameters buildVertexAIParameters() {
+  final o = api.VertexAIParameters();
+  buildCounterVertexAIParameters++;
+  if (buildCounterVertexAIParameters < 3) {
+    o.network = 'foo';
+  }
+  buildCounterVertexAIParameters--;
+  return o;
+}
+
+void checkVertexAIParameters(api.VertexAIParameters o) {
+  buildCounterVertexAIParameters++;
+  if (buildCounterVertexAIParameters < 3) {
+    unittest.expect(
+      o.network!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVertexAIParameters--;
+}
+
 core.int buildCounterVirtualMachine = 0;
 api.VirtualMachine buildVirtualMachine() {
   final o = api.VirtualMachine();
@@ -3613,6 +3637,16 @@ void main() {
       final od = api.UpgradeInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpgradeInstanceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-VertexAIParameters', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVertexAIParameters();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VertexAIParameters.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVertexAIParameters(od);
     });
   });
 

@@ -1646,6 +1646,14 @@ class ConfigManagementConfigSync {
 
 /// The state of ConfigSync's deployment on a cluster
 class ConfigManagementConfigSyncDeploymentState {
+  /// Deployment state of admission-webhook
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? admissionWebhook;
+
   /// Deployment state of the git-sync pod
   /// Possible string values are:
   /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
@@ -1695,6 +1703,7 @@ class ConfigManagementConfigSyncDeploymentState {
   core.String? syncer;
 
   ConfigManagementConfigSyncDeploymentState({
+    this.admissionWebhook,
     this.gitSync,
     this.importer,
     this.monitor,
@@ -1705,6 +1714,9 @@ class ConfigManagementConfigSyncDeploymentState {
 
   ConfigManagementConfigSyncDeploymentState.fromJson(core.Map _json)
       : this(
+          admissionWebhook: _json.containsKey('admissionWebhook')
+              ? _json['admissionWebhook'] as core.String
+              : null,
           gitSync: _json.containsKey('gitSync')
               ? _json['gitSync'] as core.String
               : null,
@@ -1726,6 +1738,7 @@ class ConfigManagementConfigSyncDeploymentState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (admissionWebhook != null) 'admissionWebhook': admissionWebhook!,
         if (gitSync != null) 'gitSync': gitSync!,
         if (importer != null) 'importer': importer!,
         if (monitor != null) 'monitor': monitor!,
@@ -1779,6 +1792,9 @@ class ConfigManagementConfigSyncState {
 
 /// Specific versioning information pertaining to ConfigSync's Pods
 class ConfigManagementConfigSyncVersion {
+  /// Version of the deployed admission_webhook pod
+  core.String? admissionWebhook;
+
   /// Version of the deployed git-sync pod
   core.String? gitSync;
 
@@ -1798,6 +1814,7 @@ class ConfigManagementConfigSyncVersion {
   core.String? syncer;
 
   ConfigManagementConfigSyncVersion({
+    this.admissionWebhook,
     this.gitSync,
     this.importer,
     this.monitor,
@@ -1808,6 +1825,9 @@ class ConfigManagementConfigSyncVersion {
 
   ConfigManagementConfigSyncVersion.fromJson(core.Map _json)
       : this(
+          admissionWebhook: _json.containsKey('admissionWebhook')
+              ? _json['admissionWebhook'] as core.String
+              : null,
           gitSync: _json.containsKey('gitSync')
               ? _json['gitSync'] as core.String
               : null,
@@ -1829,6 +1849,7 @@ class ConfigManagementConfigSyncVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (admissionWebhook != null) 'admissionWebhook': admissionWebhook!,
         if (gitSync != null) 'gitSync': gitSync!,
         if (importer != null) 'importer': importer!,
         if (monitor != null) 'monitor': monitor!,

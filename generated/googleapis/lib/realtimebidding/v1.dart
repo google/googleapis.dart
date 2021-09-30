@@ -198,7 +198,9 @@ class BiddersCreativesResource {
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListCreativesResponse.nextPageToken returned from the previous call to the
-  /// 'ListCreatives' method.
+  /// 'ListCreatives' method. Page tokens for continued pages are valid for up
+  /// to five hours, counting from the call to 'ListCreatives' for the first
+  /// page.
   ///
   /// [view] - Controls the amount of information included in the response. By
   /// default only creativeServingDecision is included. To retrieve the entire
@@ -1233,7 +1235,9 @@ class BuyersCreativesResource {
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListCreativesResponse.nextPageToken returned from the previous call to the
-  /// 'ListCreatives' method.
+  /// 'ListCreatives' method. Page tokens for continued pages are valid for up
+  /// to five hours, counting from the call to 'ListCreatives' for the first
+  /// page.
   ///
   /// [view] - Controls the amount of information included in the response. By
   /// default only creativeServingDecision is included. To retrieve the entire

@@ -41,7 +41,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Enables management and configuration of domain names.
 class CloudDomainsApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -411,9 +412,14 @@ class ProjectsLocationsRegistrationsResource {
 
   /// Deletes a `Registration` resource.
   ///
-  /// This method only works on resources in one of the following states: *
-  /// `state` is `EXPORTED` with `expire_time` in the past * `state` is
-  /// `REGISTRATION_FAILED`
+  /// For `Registration` resources , this method works if: * `state` is
+  /// `EXPORTED` with `expire_time` in the past * `state` is
+  /// `REGISTRATION_FAILED` When an active domain is successfully deleted, you
+  /// can continue to use the domain in
+  /// [Google Domains](https://domains.google/) until it expires. The calling
+  /// user becomes the domain's sole owner in Google Domains, and permissions
+  /// for the domain are subsequently managed there. The domain will not renew
+  /// automatically unless the new owner sets up billing in Google Domains.
   ///
   /// Request parameters:
   ///
@@ -450,18 +456,15 @@ class ProjectsLocationsRegistrationsResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Exports a `Registration` that you no longer want to use with Cloud
-  /// Domains.
+  /// Exports a `Registration` resource, such that it is no longer managed by
+  /// Cloud Domains.
   ///
-  /// You can continue to use the domain in
-  /// [Google Domains](https://domains.google/) until it expires. If the export
-  /// is successful: * The resource's `state` becomes `EXPORTED`, meaning that
-  /// it is no longer managed by Cloud Domains * Because individual users can
-  /// own domains in Google Domains, the calling user becomes the domain's sole
-  /// owner. Permissions for the domain are subsequently managed in Google
-  /// Domains. * Without further action, the domain does not renew
-  /// automatically. The new owner can set up billing in Google Domains to renew
-  /// the domain if needed.
+  /// When an active domain is successfully exported, you can continue to use
+  /// the domain in [Google Domains](https://domains.google/) until it expires.
+  /// The calling user becomes the domain's sole owner in Google Domains, and
+  /// permissions for the domain are subsequently managed there. The domain will
+  /// not renew automatically unless the new owner sets up billing in Google
+  /// Domains.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1613,6 +1616,8 @@ class DsRecord {
   /// The algorithm used to generate the referenced DNSKEY.
   /// Possible string values are:
   /// - "ALGORITHM_UNSPECIFIED" : The algorithm is unspecified.
+  /// - "RSAMD5" : RSA/MD5. Cannot be used for new deployments.
+  /// - "DH" : Diffie-Hellman. Cannot be used for new deployments.
   /// - "DSA" : DSA/SHA1. Not recommended for new deployments.
   /// - "ECC" : ECC. Not recommended for new deployments.
   /// - "RSASHA1" : RSA/SHA-1. Not recommended for new deployments.
@@ -1626,6 +1631,11 @@ class DsRecord {
   /// - "ECDSAP384SHA384" : ECDSA Curve P-384 with SHA-384.
   /// - "ED25519" : Ed25519.
   /// - "ED448" : Ed448.
+  /// - "INDIRECT" : Reserved for Indirect Keys. Cannot be used for new
+  /// deployments.
+  /// - "PRIVATEDNS" : Private algorithm. Cannot be used for new deployments.
+  /// - "PRIVATEOID" : Private algorithm OID. Cannot be used for new
+  /// deployments.
   core.String? algorithm;
 
   /// The digest generated from the referenced DNSKEY.
@@ -2053,8 +2063,8 @@ class ManagementSettings {
   /// Possible string values are:
   /// - "RENEWAL_METHOD_UNSPECIFIED" : The renewal method is undefined.
   /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year . To
-  /// disable automatic renewals, export the domain by calling
-  /// `ExportRegistration` .
+  /// disable automatic renewals, delete the resource by calling
+  /// `DeleteRegistration` or export it by calling `ExportRegistration`.
   /// - "MANUAL_RENEWAL" : The domain must be explicitly renewed each year
   /// before its `expire_time`. This option is only available when the
   /// `Registration` is in state `EXPORTED`. To manage the domain's current
@@ -2299,7 +2309,7 @@ class OperationMetadata {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -2813,11 +2823,11 @@ class Registration {
   /// automatically as long as it remains in this state.
   /// - "SUSPENDED" : The domain is suspended and inoperative. For more details,
   /// see the `issues` field.
-  /// - "EXPORTED" : The domain has been exported from Cloud Domains to
+  /// - "EXPORTED" : The domain is no longer managed with Cloud Domains. It may
+  /// have been transferred to another registrar or exported for management in
   /// [Google Domains](https://domains.google/). You can no longer update it
-  /// with this API, and information shown about it may be stale. Without
-  /// further action, domains in this state expire at their `expire_time`. You
-  /// can delete the resource after the `expire_time` has passed.
+  /// with this API, and information shown about it may be stale. Domains in
+  /// this state will not be automatically renewed by Cloud Domains.
   core.String? state;
 
   /// Set of options for the `contact_settings.privacy` field that this

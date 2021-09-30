@@ -2457,7 +2457,7 @@
             }
         }
     },
-    "revision": "20210820",
+    "revision": "20210920",
     "rootUrl": "https://container.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -2859,6 +2859,10 @@
                     "$ref": "MasterAuthorizedNetworksConfig",
                     "description": "The configuration options for master authorized networks feature."
                 },
+                "meshCertificates": {
+                    "$ref": "MeshCertificates",
+                    "description": "Configuration for issuance of mTLS keys and certificates to Kubernetes pods."
+                },
                 "monitoringConfig": {
                     "$ref": "MonitoringConfig",
                     "description": "Monitoring configuration for the cluster."
@@ -3106,6 +3110,10 @@
                 "desiredMasterVersion": {
                     "description": "The Kubernetes version to change the master to. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - \"latest\": picks the highest valid Kubernetes version - \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version - \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version - \"1.X.Y-gke.N\": picks an explicit Kubernetes version - \"-\": picks the default Kubernetes version",
                     "type": "string"
+                },
+                "desiredMeshCertificates": {
+                    "$ref": "MeshCertificates",
+                    "description": "Configuration for issuance of mTLS keys and certificates to Kubernetes pods."
                 },
                 "desiredMonitoringConfig": {
                     "$ref": "MonitoringConfig",
@@ -3851,6 +3859,12 @@
             },
             "type": "object"
         },
+        "MeshCertificates": {
+            "description": "Configuration for issuance of mTLS keys and certificates to Kubernetes pods.",
+            "id": "MeshCertificates",
+            "properties": {},
+            "type": "object"
+        },
         "Metric": {
             "description": "Progress metric is (string, int|float|string) pair.",
             "id": "Metric",
@@ -4289,12 +4303,12 @@
                     "type": "boolean"
                 },
                 "maxNodeCount": {
-                    "description": "Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.",
+                    "description": "Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "minNodeCount": {
-                    "description": "Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.",
+                    "description": "Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.",
                     "format": "int32",
                     "type": "integer"
                 }

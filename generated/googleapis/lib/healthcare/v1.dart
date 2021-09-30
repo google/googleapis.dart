@@ -38,6 +38,8 @@
 ///       - [ProjectsLocationsDatasetsHl7V2StoresResource]
 ///         - [ProjectsLocationsDatasetsHl7V2StoresMessagesResource]
 ///       - [ProjectsLocationsDatasetsOperationsResource]
+///     - [ProjectsLocationsServicesResource]
+///       - [ProjectsLocationsServicesNlpResource]
 library healthcare.v1;
 
 import 'dart:async' as async;
@@ -55,7 +57,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manage, store, and access healthcare data in Google Cloud Platform.
 class CloudHealthcareApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -84,6 +87,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsDatasetsResource get datasets =>
       ProjectsLocationsDatasetsResource(_requester);
+  ProjectsLocationsServicesResource get services =>
+      ProjectsLocationsServicesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -5739,6 +5744,56 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Exports the messages to a destination.
+  ///
+  /// To filter messages to be exported, define a filter using the start and end
+  /// time, relative to the message generation time (MSH.7). This API returns an
+  /// Operation that can be used to track the status of the job by calling
+  /// GetOperation. Immediate fatal errors appear in the error field. Otherwise,
+  /// when the operation finishes, a detailed response of type
+  /// ExportMessagesResponse is returned in the response field. The metadata
+  /// field type for this operation is OperationMetadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the source HL7v2 store, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> export(
+    ExportMessagesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':export';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the specified HL7v2 store.
   ///
   /// Request parameters:
@@ -5826,6 +5881,74 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Import messages to the HL7v2 store by loading data from the specified
+  /// sources.
+  ///
+  /// This method is optimized to load large quantities of data using import
+  /// semantics that ignore some HL7v2 store configuration options and are not
+  /// suitable for all use cases. It is primarily intended to load data into an
+  /// empty HL7v2 store that is not being used by other clients. An existing
+  /// message will be overwritten if a duplicate message is imported. A
+  /// duplicate message is a message with the same raw bytes as a message that
+  /// already exists in this HL7v2 store. When a message is overwritten, its
+  /// labels will also be overwritten. The import operation is idempotent unless
+  /// the input data contains multiple valid messages with the same raw bytes
+  /// but different labels. In that case, after the import completes, the store
+  /// contains exactly one message with those raw bytes but there is no ordering
+  /// guarantee on which version of the labels it has. The operation result
+  /// counters do not count duplicated raw bytes as an error and count one
+  /// success for each message in the input, which might result in a success
+  /// count larger than the number of messages in the HL7v2 store. If some
+  /// messages fail to import, for example due to parsing errors, successfully
+  /// imported messages are not rolled back. This method returns an Operation
+  /// that can be used to track the status of the import by calling
+  /// GetOperation. Immediate fatal errors appear in the error field, errors are
+  /// also logged to Cloud Logging (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  /// Otherwise, when the operation finishes, a response of type
+  /// ImportMessagesResponse is returned in the response field. The metadata
+  /// field type for this operation is OperationMetadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the target HL7v2 store, in the format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+    ImportMessagesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':import';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the HL7v2 stores in the given dataset.
@@ -6568,6 +6691,71 @@ class ProjectsLocationsDatasetsOperationsResource {
   }
 }
 
+class ProjectsLocationsServicesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesNlpResource get nlp =>
+      ProjectsLocationsServicesNlpResource(_requester);
+
+  ProjectsLocationsServicesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsServicesNlpResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesNlpResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Analyze heathcare entity in a document.
+  ///
+  /// Its response includes the recognized entity mentions and the relationships
+  /// between them. AnalyzeEntities uses context aware models to detect
+  /// entities.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [nlpService] - The resource name of the service of the form:
+  /// "projects/{project_id}/locations/{location_id}/services/nlp".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/nlp$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnalyzeEntitiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnalyzeEntitiesResponse> analyzeEntities(
+    AnalyzeEntitiesRequest request,
+    core.String nlpService, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$nlpService') + ':analyzeEntities';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return AnalyzeEntitiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Activates the latest revision of the specified Consent by committing a new
 /// revision with `state` updated to `ACTIVE`.
 ///
@@ -6612,6 +6800,90 @@ class ActivateConsentRequest {
         if (consentArtifact != null) 'consentArtifact': consentArtifact!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (ttl != null) 'ttl': ttl!,
+      };
+}
+
+/// The request to analyze healthcare entities in a document.
+class AnalyzeEntitiesRequest {
+  /// document_content is a document to be annotated.
+  core.String? documentContent;
+
+  /// A list of licensed vocabularies to use in the request, in addition to the
+  /// default unlicensed vocabularies.
+  core.List<core.String>? licensedVocabularies;
+
+  AnalyzeEntitiesRequest({
+    this.documentContent,
+    this.licensedVocabularies,
+  });
+
+  AnalyzeEntitiesRequest.fromJson(core.Map _json)
+      : this(
+          documentContent: _json.containsKey('documentContent')
+              ? _json['documentContent'] as core.String
+              : null,
+          licensedVocabularies: _json.containsKey('licensedVocabularies')
+              ? (_json['licensedVocabularies'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentContent != null) 'documentContent': documentContent!,
+        if (licensedVocabularies != null)
+          'licensedVocabularies': licensedVocabularies!,
+      };
+}
+
+/// Includes recognized entity mentions and relationships between them.
+class AnalyzeEntitiesResponse {
+  /// The union of all the candidate entities that the entity_mentions in this
+  /// response could link to.
+  ///
+  /// These are UMLS concepts or normalized mention content.
+  core.List<Entity>? entities;
+
+  /// entity_mentions contains all the annotated medical entities that were
+  /// mentioned in the provided document.
+  core.List<EntityMention>? entityMentions;
+
+  /// relationships contains all the binary relationships that were identified
+  /// between entity mentions within the provided document.
+  core.List<EntityMentionRelationship>? relationships;
+
+  AnalyzeEntitiesResponse({
+    this.entities,
+    this.entityMentions,
+    this.relationships,
+  });
+
+  AnalyzeEntitiesResponse.fromJson(core.Map _json)
+      : this(
+          entities: _json.containsKey('entities')
+              ? (_json['entities'] as core.List)
+                  .map((value) => Entity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          entityMentions: _json.containsKey('entityMentions')
+              ? (_json['entityMentions'] as core.List)
+                  .map((value) => EntityMention.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          relationships: _json.containsKey('relationships')
+              ? (_json['relationships'] as core.List)
+                  .map((value) => EntityMentionRelationship.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entities != null) 'entities': entities!,
+        if (entityMentions != null) 'entityMentions': entityMentions!,
+        if (relationships != null) 'relationships': relationships!,
       };
 }
 
@@ -6667,7 +6939,7 @@ class Attribute {
 class AttributeDefinition {
   /// Possible values for the attribute.
   ///
-  /// The number of allowed values must not exceed 100. An empty list is
+  /// The number of allowed values must not exceed 500. An empty list is
   /// invalid. The list can only be expanded after creation.
   ///
   /// Required.
@@ -7133,9 +7405,7 @@ class Consent {
   /// time of resource creation.
   /// - "ACTIVE" : The Consent is active and is considered when evaluating a
   /// user's consent on resources.
-  /// - "ARCHIVED" : When a Consent is updated, the current version is archived
-  /// and a new one is created with its state set to the updated Consent's
-  /// previous state.
+  /// - "ARCHIVED" : The archived state is currently not being used.
   /// - "REVOKED" : A revoked Consent is not considered when evaluating a user's
   /// consent on resources.
   /// - "DRAFT" : A draft Consent is not considered when evaluating a user's
@@ -7942,6 +8212,201 @@ class DicomStore {
 /// object `{}`.
 typedef Empty = $Empty;
 
+/// The candidate entities that an entity mention could link to.
+class Entity {
+  /// entity_id is a first class field entity_id uniquely identifies this
+  /// concept and its meta-vocabulary.
+  ///
+  /// For example, "UMLS/C0000970".
+  core.String? entityId;
+
+  /// preferred_term is the preferred term for this concept.
+  ///
+  /// For example, "Acetaminophen". For ad hoc entities formed by normalization,
+  /// this is the most popular unnormalized string.
+  core.String? preferredTerm;
+
+  /// Vocabulary codes are first-class fields and differentiated from the
+  /// concept unique identifier (entity_id).
+  ///
+  /// vocabulary_codes contains the representation of this concept in particular
+  /// vocabularies, such as ICD-10, SNOMED-CT and RxNORM. These are prefixed by
+  /// the name of the vocabulary, followed by the unique code within that
+  /// vocabulary. For example, "RXNORM/A10334543".
+  core.List<core.String>? vocabularyCodes;
+
+  Entity({
+    this.entityId,
+    this.preferredTerm,
+    this.vocabularyCodes,
+  });
+
+  Entity.fromJson(core.Map _json)
+      : this(
+          entityId: _json.containsKey('entityId')
+              ? _json['entityId'] as core.String
+              : null,
+          preferredTerm: _json.containsKey('preferredTerm')
+              ? _json['preferredTerm'] as core.String
+              : null,
+          vocabularyCodes: _json.containsKey('vocabularyCodes')
+              ? (_json['vocabularyCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entityId != null) 'entityId': entityId!,
+        if (preferredTerm != null) 'preferredTerm': preferredTerm!,
+        if (vocabularyCodes != null) 'vocabularyCodes': vocabularyCodes!,
+      };
+}
+
+/// An entity mention in the document.
+class EntityMention {
+  /// The certainty assessment of the entity mention.
+  ///
+  /// Its value is one of: LIKELY, SOMEWHAT_LIKELY, UNCERTAIN,
+  /// SOMEWHAT_UNLIKELY, UNLIKELY, CONDITIONAL
+  Feature? certaintyAssessment;
+
+  /// The model's confidence in this entity mention annotation.
+  ///
+  /// A number between 0 and 1.
+  core.double? confidence;
+
+  /// linked_entities are candidate ontological concepts that this entity
+  /// mention may refer to.
+  ///
+  /// They are sorted by decreasing confidence.it
+  core.List<LinkedEntity>? linkedEntities;
+
+  /// mention_id uniquely identifies each entity mention in a single response.
+  core.String? mentionId;
+
+  /// The subject this entity mention relates to.
+  ///
+  /// Its value is one of: PATIENT, FAMILY_MEMBER, OTHER
+  Feature? subject;
+
+  /// How this entity mention relates to the subject temporally.
+  ///
+  /// Its value is one of: CURRENT, CLINICAL_HISTORY, FAMILY_HISTORY, UPCOMING,
+  /// ALLERGY
+  Feature? temporalAssessment;
+
+  /// text is the location of the entity mention in the document.
+  TextSpan? text;
+
+  /// The semantic type of the entity: UNKNOWN_ENTITY_TYPE, ALONE,
+  /// ANATOMICAL_STRUCTURE, ASSISTED_LIVING, BF_RESULT, BM_RESULT, BM_UNIT,
+  /// BM_VALUE, BODY_FUNCTION, BODY_MEASUREMENT, COMPLIANT, DOESNOT_FOLLOWUP,
+  /// FAMILY, FOLLOWSUP, LABORATORY_DATA, LAB_RESULT, LAB_UNIT, LAB_VALUE,
+  /// MEDICAL_DEVICE, MEDICINE, MED_DOSE, MED_DURATION, MED_FORM, MED_FREQUENCY,
+  /// MED_ROUTE, MED_STATUS, MED_STRENGTH, MED_TOTALDOSE, MED_UNIT,
+  /// NON_COMPLIANT, OTHER_LIVINGSTATUS, PROBLEM, PROCEDURE, PROCEDURE_RESULT,
+  /// PROC_METHOD, REASON_FOR_NONCOMPLIANCE, SEVERITY, SUBSTANCE_ABUSE,
+  /// UNCLEAR_FOLLOWUP.
+  core.String? type;
+
+  EntityMention({
+    this.certaintyAssessment,
+    this.confidence,
+    this.linkedEntities,
+    this.mentionId,
+    this.subject,
+    this.temporalAssessment,
+    this.text,
+    this.type,
+  });
+
+  EntityMention.fromJson(core.Map _json)
+      : this(
+          certaintyAssessment: _json.containsKey('certaintyAssessment')
+              ? Feature.fromJson(_json['certaintyAssessment']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          linkedEntities: _json.containsKey('linkedEntities')
+              ? (_json['linkedEntities'] as core.List)
+                  .map((value) => LinkedEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          mentionId: _json.containsKey('mentionId')
+              ? _json['mentionId'] as core.String
+              : null,
+          subject: _json.containsKey('subject')
+              ? Feature.fromJson(
+                  _json['subject'] as core.Map<core.String, core.dynamic>)
+              : null,
+          temporalAssessment: _json.containsKey('temporalAssessment')
+              ? Feature.fromJson(_json['temporalAssessment']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          text: _json.containsKey('text')
+              ? TextSpan.fromJson(
+                  _json['text'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certaintyAssessment != null)
+          'certaintyAssessment': certaintyAssessment!,
+        if (confidence != null) 'confidence': confidence!,
+        if (linkedEntities != null) 'linkedEntities': linkedEntities!,
+        if (mentionId != null) 'mentionId': mentionId!,
+        if (subject != null) 'subject': subject!,
+        if (temporalAssessment != null)
+          'temporalAssessment': temporalAssessment!,
+        if (text != null) 'text': text!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Defines directed relationship from one entity mention to another.
+class EntityMentionRelationship {
+  /// The model's confidence in this annotation.
+  ///
+  /// A number between 0 and 1.
+  core.double? confidence;
+
+  /// object_id is the id of the object entity mention.
+  core.String? objectId;
+
+  /// subject_id is the id of the subject entity mention.
+  core.String? subjectId;
+
+  EntityMentionRelationship({
+    this.confidence,
+    this.objectId,
+    this.subjectId,
+  });
+
+  EntityMentionRelationship.fromJson(core.Map _json)
+      : this(
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          objectId: _json.containsKey('objectId')
+              ? _json['objectId'] as core.String
+              : null,
+          subjectId: _json.containsKey('subjectId')
+              ? _json['subjectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (objectId != null) 'objectId': objectId!,
+        if (subjectId != null) 'subjectId': subjectId!,
+      };
+}
+
 /// Evaluate a user's Consents for all matching User data mappings.
 ///
 /// Note: User data mappings are indexed asynchronously, causing slight delays
@@ -8152,6 +8617,63 @@ class ExportDicomDataRequest {
 /// Returns additional information in regards to a completed DICOM store export.
 typedef ExportDicomDataResponse = $Empty;
 
+/// Request to schedule an export.
+class ExportMessagesRequest {
+  /// The end of the range in `send_time` (MSH.7,
+  /// https://www.hl7.org/documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm)
+  /// to process.
+  ///
+  /// If not specified, the time when the export is scheduled is used. This
+  /// value has to come after the `start_time` defined below. Only messages
+  /// whose `send_time` lies in the range `start_time` (inclusive) to `end_time`
+  /// (exclusive) are exported.
+  core.String? endTime;
+
+  /// Export to a Cloud Storage destination.
+  GcsDestination? gcsDestination;
+
+  /// The start of the range in `send_time` (MSH.7,
+  /// https://www.hl7.org/documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm)
+  /// to process.
+  ///
+  /// If not specified, the UNIX epoch (1970-01-01T00:00:00Z) is used. This
+  /// value has to come before the `end_time` defined below. Only messages whose
+  /// `send_time` lies in the range `start_time` (inclusive) to `end_time`
+  /// (exclusive) are exported.
+  core.String? startTime;
+
+  ExportMessagesRequest({
+    this.endTime,
+    this.gcsDestination,
+    this.startTime,
+  });
+
+  ExportMessagesRequest.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          gcsDestination: _json.containsKey('gcsDestination')
+              ? GcsDestination.fromJson(_json['gcsDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Final response for the export operation.
+///
+/// This structure is included in the response to describe the detailed outcome.
+typedef ExportMessagesResponse = $Empty;
+
 /// Request to export resources.
 class ExportResourcesRequest {
   /// The BigQuery output destination.
@@ -8275,6 +8797,38 @@ class Expr {
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// A feature of an entity mention.
+class Feature {
+  /// The model's confidence in this feature annotation.
+  ///
+  /// A number between 0 and 1.
+  core.double? confidence;
+
+  /// The value of this feature annotation.
+  ///
+  /// Its range depends on the type of the feature.
+  core.String? value;
+
+  Feature({
+    this.confidence,
+    this.value,
+  });
+
+  Feature.fromJson(core.Map _json)
+      : this(
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -8608,6 +9162,98 @@ class FieldMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (paths != null) 'paths': paths!,
+      };
+}
+
+/// The Cloud Storage output destination.
+///
+/// The Cloud Healthcare Service Agent requires the `roles/storage.objectAdmin`
+/// Cloud IAM roles on the Cloud Storage location.
+class GcsDestination {
+  /// The format of the exported HL7v2 message files.
+  /// Possible string values are:
+  /// - "CONTENT_STRUCTURE_UNSPECIFIED" : If the content structure is not
+  /// specified, the default value `MESSAGE_JSON` will be used.
+  /// - "MESSAGE_JSON" : Messages are printed using the JSON format returned
+  /// from the `GetMessage` API. Messages are delimited with newlines.
+  core.String? contentStructure;
+
+  /// Specifies the parts of the Message resource to include in the export.
+  ///
+  /// If not specified, FULL is used.
+  /// Possible string values are:
+  /// - "MESSAGE_VIEW_UNSPECIFIED" : Not specified, equivalent to FULL.
+  /// - "RAW_ONLY" : Server responses include all the message fields except
+  /// parsed_data field, and schematized_data fields.
+  /// - "PARSED_ONLY" : Server responses include all the message fields except
+  /// data field, and schematized_data fields.
+  /// - "FULL" : Server responses include all the message fields.
+  /// - "SCHEMATIZED_ONLY" : Server responses include all the message fields
+  /// except data and parsed_data fields.
+  /// - "BASIC" : Server responses include only the name field.
+  core.String? messageView;
+
+  /// URI of an existing Cloud Storage directory where the server writes result
+  /// files, in the format `gs://{bucket-id}/{path/to/destination/dir}`.
+  ///
+  /// If there is no trailing slash, the service appends one when composing the
+  /// object path.
+  core.String? uriPrefix;
+
+  GcsDestination({
+    this.contentStructure,
+    this.messageView,
+    this.uriPrefix,
+  });
+
+  GcsDestination.fromJson(core.Map _json)
+      : this(
+          contentStructure: _json.containsKey('contentStructure')
+              ? _json['contentStructure'] as core.String
+              : null,
+          messageView: _json.containsKey('messageView')
+              ? _json['messageView'] as core.String
+              : null,
+          uriPrefix: _json.containsKey('uriPrefix')
+              ? _json['uriPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentStructure != null) 'contentStructure': contentStructure!,
+        if (messageView != null) 'messageView': messageView!,
+        if (uriPrefix != null) 'uriPrefix': uriPrefix!,
+      };
+}
+
+/// Specifies the configuration for importing data from Cloud Storage.
+class GcsSource {
+  /// Points to a Cloud Storage URI containing file(s) to import.
+  ///
+  /// The URI must be in the following format: `gs://{bucket_id}/{object_id}`.
+  /// The URI can include wildcards in `object_id` and thus identify multiple
+  /// files. Supported wildcards: * `*` to match 0 or more non-separator
+  /// characters * `**` to match 0 or more characters (including separators).
+  /// Must be used at the end of a path and with no other wildcards in the path.
+  /// Can also be used with a file extension (such as .ndjson), which imports
+  /// all files with the extension in the specified directory and its
+  /// sub-directories. For example, `gs://my-bucket/my-directory / * *.ndjson`
+  /// imports all files with `.ndjson` extensions in `my-directory/` and its
+  /// sub-directories. * `?` to match 1 character Files matching the wildcard
+  /// are expected to contain content only, no metadata.
+  core.String? uri;
+
+  GcsSource({
+    this.uri,
+  });
+
+  GcsSource.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -9386,6 +10032,38 @@ class ImportDicomDataRequest {
 /// Returns additional information in regards to a completed DICOM store import.
 typedef ImportDicomDataResponse = $Empty;
 
+/// Request to import messages.
+class ImportMessagesRequest {
+  /// Cloud Storage source data location and import configuration.
+  ///
+  /// The Cloud Healthcare Service Agent requires the
+  /// `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage
+  /// location.
+  GcsSource? gcsSource;
+
+  ImportMessagesRequest({
+    this.gcsSource,
+  });
+
+  ImportMessagesRequest.fromJson(core.Map _json)
+      : this(
+          gcsSource: _json.containsKey('gcsSource')
+              ? GcsSource.fromJson(
+                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+      };
+}
+
+/// Final response of importing messages.
+///
+/// This structure is included in the response to describe the detailed outcome.
+/// It is only included when the operation finishes successfully.
+typedef ImportMessagesResponse = $Empty;
+
 /// Request to import resources.
 class ImportResourcesRequest {
   /// The content structure in the source location.
@@ -9572,6 +10250,33 @@ class IngestMessageResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (hl7Ack != null) 'hl7Ack': hl7Ack!,
         if (message != null) 'message': message!,
+      };
+}
+
+/// EntityMentions can be linked to multiple entities using a LinkedEntity
+/// message lets us add other fields, e.g. confidence.
+class LinkedEntity {
+  /// entity_id is a concept unique identifier.
+  ///
+  /// These are prefixed by a string that identifies the entity coding system,
+  /// followed by the unique identifier within that system. For example,
+  /// "UMLS/C0000970". This also supports ad hoc entities, which are formed by
+  /// normalizing entity mention content.
+  core.String? entityId;
+
+  LinkedEntity({
+    this.entityId,
+  });
+
+  LinkedEntity.fromJson(core.Map _json)
+      : this(
+          entityId: _json.containsKey('entityId')
+              ? _json['entityId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entityId != null) 'entityId': entityId!,
       };
 }
 
@@ -10454,10 +11159,27 @@ class ParserConfig {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Determines the version of the unschematized parser to be used when
+  /// `schema` is not given.
+  ///
+  /// This field is immutable after store creation.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "PARSER_VERSION_UNSPECIFIED" : Unspecified parser version, equivalent to
+  /// V1.
+  /// - "V1" : The `parsed_data` includes every given non-empty message field
+  /// except the Field Separator (MSH-1) field. As a result, the parsed MSH
+  /// segment starts with the MSH-2 field and the field numbers are off-by-one
+  /// with respect to the HL7 standard.
+  /// - "V2" : The `parsed_data` includes every given non-empty message field.
+  core.String? version;
+
   ParserConfig({
     this.allowNullHeader,
     this.schema,
     this.segmentTerminator,
+    this.version,
   });
 
   ParserConfig.fromJson(core.Map _json)
@@ -10472,12 +11194,16 @@ class ParserConfig {
           segmentTerminator: _json.containsKey('segmentTerminator')
               ? _json['segmentTerminator'] as core.String
               : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowNullHeader != null) 'allowNullHeader': allowNullHeader!,
         if (schema != null) 'schema': schema!,
         if (segmentTerminator != null) 'segmentTerminator': segmentTerminator!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -10537,7 +11263,7 @@ class PatientId {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -11043,11 +11769,25 @@ class SchemaPackage {
   /// message.
   core.List<Hl7TypesConfig>? types;
 
+  /// Determines how unexpected segments (segments not matched to the schema)
+  /// are handled.
+  /// Possible string values are:
+  /// - "UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED" : Unspecified handling
+  /// mode, equivalent to FAIL.
+  /// - "FAIL" : Unexpected segments fail to parse and return an error.
+  /// - "SKIP" : Unexpected segments do not fail, but are omitted from the
+  /// output.
+  /// - "PARSE" : Unexpected segments do not fail, but are parsed in place and
+  /// added to the current group. If a segment has a type definition, it is
+  /// used, otherwise it is parsed as VARIES.
+  core.String? unexpectedSegmentHandling;
+
   SchemaPackage({
     this.ignoreMinOccurs,
     this.schemas,
     this.schematizedParsingType,
     this.types,
+    this.unexpectedSegmentHandling,
   });
 
   SchemaPackage.fromJson(core.Map _json)
@@ -11070,6 +11810,10 @@ class SchemaPackage {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          unexpectedSegmentHandling:
+              _json.containsKey('unexpectedSegmentHandling')
+                  ? _json['unexpectedSegmentHandling'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11078,6 +11822,8 @@ class SchemaPackage {
         if (schematizedParsingType != null)
           'schematizedParsingType': schematizedParsingType!,
         if (types != null) 'types': types!,
+        if (unexpectedSegmentHandling != null)
+          'unexpectedSegmentHandling': unexpectedSegmentHandling!,
       };
 }
 
@@ -11544,6 +12290,35 @@ class TextConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (transformations != null) 'transformations': transformations!,
+      };
+}
+
+/// A span of text in the provided document.
+class TextSpan {
+  /// The unicode codepoint index of the beginning of this span.
+  core.int? beginOffset;
+
+  /// The original text contained in this span.
+  core.String? content;
+
+  TextSpan({
+    this.beginOffset,
+    this.content,
+  });
+
+  TextSpan.fromJson(core.Map _json)
+      : this(
+          beginOffset: _json.containsKey('beginOffset')
+              ? _json['beginOffset'] as core.int
+              : null,
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (beginOffset != null) 'beginOffset': beginOffset!,
+        if (content != null) 'content': content!,
       };
 }
 

@@ -826,7 +826,7 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The list of fields update.
+  /// [updateMask] - Required. The list of fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2476,7 +2476,7 @@ class ProjectsServiceAccountsKeysResource {
   /// Disable a ServiceAccountKey.
   ///
   /// A disabled service account key can be enabled through
-  /// EnableServiceAccountKey. The API is currently in preview phase.
+  /// EnableServiceAccountKey.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2523,8 +2523,6 @@ class ProjectsServiceAccountsKeysResource {
   }
 
   /// Enable a ServiceAccountKey.
-  ///
-  /// The API is currently in preview phase.
   ///
   /// [request] - The metadata request object.
   ///

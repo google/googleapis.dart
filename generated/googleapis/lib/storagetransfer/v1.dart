@@ -1181,7 +1181,7 @@ class ListTransferJobsResponse {
       };
 }
 
-/// Logging configure.
+/// Logging configuration.
 class LoggingConfig {
   /// Enables the Cloud Storage transfer logs for this transfer.
   ///
@@ -1277,8 +1277,8 @@ class NotificationConfig {
 /// "last modification time" refers to the time of the last change to the
 /// object's content or metadata — specifically, this is the `updated` property
 /// of Cloud Storage objects, the `LastModified` field of S3 objects, and the
-/// `Last-Modified` header of Azure blobs. This is not supported for transfers
-/// involving PosixFilesystem.
+/// `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem
+/// and have a Cloud Storage source don't support `ObjectConditions`.
 class ObjectConditions {
   /// If you specify `exclude_prefixes`, Storage Transfer Service uses the items
   /// in the `exclude_prefixes` array to determine which objects to exclude from
@@ -1482,7 +1482,7 @@ class Operation {
 /// Request passed to PauseTransferOperation.
 typedef PauseTransferOperationRequest = $Empty;
 
-/// A POSIX filesystem data source or sink.
+/// A POSIX filesystem resource.
 class PosixFilesystem {
   /// Root directory path to the filesystem.
   core.String? rootDirectory;
@@ -1987,10 +1987,9 @@ class TransferJob {
   /// the creation request fails with an ALREADY_EXISTS error. This name must
   /// start with `"transferJobs/"` prefix and end with a letter or a number, and
   /// should be no more than 128 characters. For transfers involving
-  /// PosixFilesystem, this name must start with 'transferJobs/OPI'
+  /// PosixFilesystem, this name must start with `transferJobs/OPI`
   /// specifically. For all other transfer types, this name must not start with
-  /// 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix for
-  /// PosixFilesystem transfers. Non-PosixFilesystem example:
+  /// `transferJobs/OPI`. Non-PosixFilesystem example:
   /// `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem
   /// example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications
   /// must not rely on the enforcement of naming requirements involving OPI.

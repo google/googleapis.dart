@@ -868,6 +868,7 @@ class AbortInfo {
   /// endpoint could not be found.
   /// - "MISMATCHED_DESTINATION_NETWORK" : Aborted because the destination
   /// network does not match the destination endpoint.
+  /// - "UNSUPPORTED" : Aborted because the test scenario is not supported.
   core.String? cause;
 
   /// URI of the resource that caused the abort.

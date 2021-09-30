@@ -2033,6 +2033,9 @@ class DynamicGroupQuery {
   /// org.department=='engineering')` All users with at least one location that
   /// has `area` of `foo` and `building_id` of `bar`.
   /// `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+  /// All users with any variation of the name John Doe (case-insensitive
+  /// queries add `equalsIgnoreCase()` to the value being queried).
+  /// `user.name.value.equalsIgnoreCase('jOhn DoE')`
   core.String? query;
 
   /// Resource type for the Dynamic Group Query
@@ -2069,6 +2072,8 @@ class DynamicGroupStatus {
   /// - "UP_TO_DATE" : The dynamic group is up-to-date.
   /// - "UPDATING_MEMBERSHIPS" : The dynamic group has just been created and
   /// memberships are being updated.
+  /// - "INVALID_QUERY" : Group is in an unrecoverable state and its memberships
+  /// can't be updated.
   core.String? status;
 
   /// The latest time at which the dynamic group is guaranteed to be in the

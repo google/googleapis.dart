@@ -818,6 +818,7 @@ api.GoogleCloudContactcenterinsightsV1ConversationParticipant
       3) {
     o.dialogflowParticipant = 'foo';
     o.dialogflowParticipantName = 'foo';
+    o.obfuscatedExternalUserId = 'foo';
     o.role = 'foo';
     o.userId = 'foo';
   }
@@ -836,6 +837,10 @@ void checkGoogleCloudContactcenterinsightsV1ConversationParticipant(
     );
     unittest.expect(
       o.dialogflowParticipantName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.obfuscatedExternalUserId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -922,9 +927,13 @@ api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment
       3) {
     o.channelTag = 42;
     o.confidence = 42.0;
+    o.dialogflowSegmentMetadata =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata();
     o.languageCode = 'foo';
+    o.messageTime = 'foo';
     o.segmentParticipant =
         buildGoogleCloudContactcenterinsightsV1ConversationParticipant();
+    o.sentiment = buildGoogleCloudContactcenterinsightsV1SentimentData();
     o.text = 'foo';
     o.words = buildUnnamed14();
   }
@@ -946,12 +955,19 @@ void checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegm
       o.confidence!,
       unittest.equals(42.0),
     );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata(
+        o.dialogflowSegmentMetadata!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.messageTime!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudContactcenterinsightsV1ConversationParticipant(
         o.segmentParticipant!);
+    checkGoogleCloudContactcenterinsightsV1SentimentData(o.sentiment!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -959,6 +975,33 @@ void checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegm
     checkUnnamed14(o.words!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment--;
+}
+
+core.int
+    buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
+    buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata() {
+  final o = api
+      .GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata <
+      3) {
+    o.smartReplyAllowlistCovered = true;
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata--;
+  return o;
+}
+
+void checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata(
+    api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
+        o) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata <
+      3) {
+    unittest.expect(o.smartReplyAllowlistCovered!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata--;
 }
 
 core.int
@@ -1909,6 +1952,7 @@ api.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelInputDataConfig++;
   if (buildCounterGoogleCloudContactcenterinsightsV1IssueModelInputDataConfig <
       3) {
+    o.filter = 'foo';
     o.medium = 'foo';
     o.trainingConversationsCount = 'foo';
   }
@@ -1921,6 +1965,10 @@ void checkGoogleCloudContactcenterinsightsV1IssueModelInputDataConfig(
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelInputDataConfig++;
   if (buildCounterGoogleCloudContactcenterinsightsV1IssueModelInputDataConfig <
       3) {
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.medium!,
       unittest.equals('foo'),
@@ -2397,6 +2445,7 @@ api.GoogleCloudContactcenterinsightsV1PhraseMatcher
     o.revisionId = 'foo';
     o.roleMatch = 'foo';
     o.type = 'foo';
+    o.updateTime = 'foo';
     o.versionTag = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1PhraseMatcher--;
@@ -2435,6 +2484,10 @@ void checkGoogleCloudContactcenterinsightsV1PhraseMatcher(
     );
     unittest.expect(
       o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -3315,6 +3368,7 @@ api.GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig
   buildCounterGoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig++;
   if (buildCounterGoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig <
       3) {
+    o.filter = 'foo';
     o.medium = 'foo';
     o.trainingConversationsCount = 'foo';
   }
@@ -3327,6 +3381,10 @@ void checkGoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig(
   buildCounterGoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig++;
   if (buildCounterGoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig <
       3) {
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.medium!,
       unittest.equals('foo'),
@@ -4004,6 +4062,21 @@ void main() {
           api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata(
           od);
     });
   });

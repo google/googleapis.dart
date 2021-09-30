@@ -27260,6 +27260,7 @@ api.RouterBgpPeer buildRouterBgpPeer() {
     o.advertisedGroups = buildUnnamed458();
     o.advertisedIpRanges = buildUnnamed459();
     o.advertisedRoutePriority = 42;
+    o.bfd = buildRouterBgpPeerBfd();
     o.enable = 'foo';
     o.interfaceName = 'foo';
     o.ipAddress = 'foo';
@@ -27267,6 +27268,7 @@ api.RouterBgpPeer buildRouterBgpPeer() {
     o.name = 'foo';
     o.peerAsn = 42;
     o.peerIpAddress = 'foo';
+    o.routerApplianceInstance = 'foo';
   }
   buildCounterRouterBgpPeer--;
   return o;
@@ -27285,6 +27287,7 @@ void checkRouterBgpPeer(api.RouterBgpPeer o) {
       o.advertisedRoutePriority!,
       unittest.equals(42),
     );
+    checkRouterBgpPeerBfd(o.bfd!);
     unittest.expect(
       o.enable!,
       unittest.equals('foo'),
@@ -27313,8 +27316,49 @@ void checkRouterBgpPeer(api.RouterBgpPeer o) {
       o.peerIpAddress!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.routerApplianceInstance!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRouterBgpPeer--;
+}
+
+core.int buildCounterRouterBgpPeerBfd = 0;
+api.RouterBgpPeerBfd buildRouterBgpPeerBfd() {
+  final o = api.RouterBgpPeerBfd();
+  buildCounterRouterBgpPeerBfd++;
+  if (buildCounterRouterBgpPeerBfd < 3) {
+    o.minReceiveInterval = 42;
+    o.minTransmitInterval = 42;
+    o.multiplier = 42;
+    o.sessionInitializationMode = 'foo';
+  }
+  buildCounterRouterBgpPeerBfd--;
+  return o;
+}
+
+void checkRouterBgpPeerBfd(api.RouterBgpPeerBfd o) {
+  buildCounterRouterBgpPeerBfd++;
+  if (buildCounterRouterBgpPeerBfd < 3) {
+    unittest.expect(
+      o.minReceiveInterval!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minTransmitInterval!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.multiplier!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.sessionInitializationMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRouterBgpPeerBfd--;
 }
 
 core.int buildCounterRouterInterface = 0;
@@ -27327,6 +27371,9 @@ api.RouterInterface buildRouterInterface() {
     o.linkedVpnTunnel = 'foo';
     o.managementType = 'foo';
     o.name = 'foo';
+    o.privateIpAddress = 'foo';
+    o.redundantInterface = 'foo';
+    o.subnetwork = 'foo';
   }
   buildCounterRouterInterface--;
   return o;
@@ -27353,6 +27400,18 @@ void checkRouterInterface(api.RouterInterface o) {
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.privateIpAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.redundantInterface!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subnetwork!,
       unittest.equals('foo'),
     );
   }
@@ -27770,6 +27829,7 @@ api.RouterStatusBgpPeerStatus buildRouterStatusBgpPeerStatus() {
     o.name = 'foo';
     o.numLearnedRoutes = 42;
     o.peerIpAddress = 'foo';
+    o.routerApplianceInstance = 'foo';
     o.state = 'foo';
     o.status = 'foo';
     o.uptime = 'foo';
@@ -27801,6 +27861,10 @@ void checkRouterStatusBgpPeerStatus(api.RouterStatusBgpPeerStatus o) {
     );
     unittest.expect(
       o.peerIpAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.routerApplianceInstance!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -32779,6 +32843,7 @@ api.TargetInstance buildTargetInstance() {
     o.kind = 'foo';
     o.name = 'foo';
     o.natPolicy = 'foo';
+    o.network = 'foo';
     o.selfLink = 'foo';
     o.zone = 'foo';
   }
@@ -32815,6 +32880,10 @@ void checkTargetInstance(api.TargetInstance o) {
     );
     unittest.expect(
       o.natPolicy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.network!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -44049,6 +44118,16 @@ void main() {
       final od = api.RouterBgpPeer.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRouterBgpPeer(od);
+    });
+  });
+
+  unittest.group('obj-schema-RouterBgpPeerBfd', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRouterBgpPeerBfd();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RouterBgpPeerBfd.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRouterBgpPeerBfd(od);
     });
   });
 

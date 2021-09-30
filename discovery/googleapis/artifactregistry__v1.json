@@ -350,7 +350,7 @@
             }
         }
     },
-    "revision": "20210902",
+    "revision": "20210925",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "schemas": {
         "AptArtifact": {
@@ -412,7 +412,7 @@
             "id": "DockerImage",
             "properties": {
                 "buildTime": {
-                    "description": "The time this image was built. This field is returned as the 'metadata.buildTime' field in the Version resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the JavaScript Date constructor and keeps the Version timestamps returned via OnePlatform consistent, as JSON marshals google.protobuf.Timestamp into an RFC 3339 string.",
+                    "description": "The time this image was built. This field is returned as the 'metadata.buildTime' field in the Version resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the JavaScript Date constructor.",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -671,7 +671,6 @@
                         "DOCKER",
                         "MAVEN",
                         "NPM",
-                        "PYPI",
                         "APT",
                         "YUM",
                         "PYTHON"
@@ -681,7 +680,6 @@
                         "Docker package format.",
                         "Maven package format.",
                         "NPM package format.",
-                        "PyPI package format.",
                         "APT package format.",
                         "YUM package format.",
                         "Python package format."

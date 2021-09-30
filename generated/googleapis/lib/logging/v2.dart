@@ -918,6 +918,10 @@ class BillingAccountsLocationsBucketsViewsResource {
 
   /// Deletes a view on a log bucket.
   ///
+  /// If an UNAVAILABLE error is returned, this indicates that system is not in
+  /// a state where it can delete the view. If this occurs, please try again in
+  /// a few minutes.
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
@@ -1009,7 +1013,9 @@ class BillingAccountsLocationsBucketsViewsResource {
   /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter.
+  /// from the new view: filter. If an UNAVAILABLE error is returned, this
+  /// indicates that system is not in a state where it can update the view. If
+  /// this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2817,6 +2823,10 @@ class FoldersLocationsBucketsViewsResource {
 
   /// Deletes a view on a log bucket.
   ///
+  /// If an UNAVAILABLE error is returned, this indicates that system is not in
+  /// a state where it can delete the view. If this occurs, please try again in
+  /// a few minutes.
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
@@ -2947,7 +2957,9 @@ class FoldersLocationsBucketsViewsResource {
   /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter.
+  /// from the new view: filter. If an UNAVAILABLE error is returned, this
+  /// indicates that system is not in a state where it can update the view. If
+  /// this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4086,6 +4098,10 @@ class LocationsBucketsViewsResource {
 
   /// Deletes a view on a log bucket.
   ///
+  /// If an UNAVAILABLE error is returned, this indicates that system is not in
+  /// a state where it can delete the view. If this occurs, please try again in
+  /// a few minutes.
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
@@ -4216,7 +4232,9 @@ class LocationsBucketsViewsResource {
   /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter.
+  /// from the new view: filter. If an UNAVAILABLE error is returned, this
+  /// indicates that system is not in a state where it can update the view. If
+  /// this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5429,6 +5447,10 @@ class OrganizationsLocationsBucketsViewsResource {
 
   /// Deletes a view on a log bucket.
   ///
+  /// If an UNAVAILABLE error is returned, this indicates that system is not in
+  /// a state where it can delete the view. If this occurs, please try again in
+  /// a few minutes.
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
@@ -5559,7 +5581,9 @@ class OrganizationsLocationsBucketsViewsResource {
   /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter.
+  /// from the new view: filter. If an UNAVAILABLE error is returned, this
+  /// indicates that system is not in a state where it can update the view. If
+  /// this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6954,6 +6978,10 @@ class ProjectsLocationsBucketsViewsResource {
 
   /// Deletes a view on a log bucket.
   ///
+  /// If an UNAVAILABLE error is returned, this indicates that system is not in
+  /// a state where it can delete the view. If this occurs, please try again in
+  /// a few minutes.
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the view to delete:
@@ -7084,7 +7112,9 @@ class ProjectsLocationsBucketsViewsResource {
   /// Updates a view on a log bucket.
   ///
   /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter.
+  /// from the new view: filter. If an UNAVAILABLE error is returned, this
+  /// indicates that system is not in a state where it can update the view. If
+  /// this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10632,11 +10662,6 @@ class LogView {
   /// example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   core.String? name;
 
-  /// Describes the schema of the logs stored in the bucket that are accessible
-  /// via this view.This field is only populated for views in analytics-enabled
-  /// buckets.
-  TableSchema? schema;
-
   /// The last update timestamp of the view.
   ///
   /// Output only.
@@ -10647,7 +10672,6 @@ class LogView {
     this.description,
     this.filter,
     this.name,
-    this.schema,
     this.updateTime,
   });
 
@@ -10663,10 +10687,6 @@ class LogView {
               ? _json['filter'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          schema: _json.containsKey('schema')
-              ? TableSchema.fromJson(
-                  _json['schema'] as core.Map<core.String, core.dynamic>)
-              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -10677,7 +10697,6 @@ class LogView {
         if (description != null) 'description': description!,
         if (filter != null) 'filter': filter!,
         if (name != null) 'name': name!,
-        if (schema != null) 'schema': schema!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -11778,101 +11797,6 @@ class SuppressionInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (reason != null) 'reason': reason!,
         if (suppressedCount != null) 'suppressedCount': suppressedCount!,
-      };
-}
-
-/// A field in TableSchema.
-///
-/// The fields describe the static fields in the LogEntry. Any dynamic fields
-/// generated by the customer in fields like labels and jsonPayload are not
-/// listed in the schema as they use a native JSON type field.
-class TableFieldSchema {
-  /// The field description.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Describes the nested schema fields if the type property is set to RECORD.
-  ///
-  /// Optional.
-  core.List<TableFieldSchema>? fields;
-
-  /// The field mode.
-  ///
-  /// Possible values include NULLABLE, REQUIRED and REPEATED. The default value
-  /// is NULLABLE.
-  ///
-  /// Optional.
-  core.String? mode;
-
-  /// The field name corresponding to fields in the LogEntry.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The field data type.
-  ///
-  /// Possible values include: STRING INTEGER (or INT64) FLOAT (or FLOAT64)
-  /// BOOLEAN (or BOOL) TIMESTAMP RECORD (or STRUCT)Use of RECORD/STRUT
-  /// indicates that the field contains a nested schema.
-  ///
-  /// Required.
-  core.String? type;
-
-  TableFieldSchema({
-    this.description,
-    this.fields,
-    this.mode,
-    this.name,
-    this.type,
-  });
-
-  TableFieldSchema.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.List)
-                  .map((value) => TableFieldSchema.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (fields != null) 'fields': fields!,
-        if (mode != null) 'mode': mode!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Schema of a table containing logs.
-class TableSchema {
-  /// Describes the fields in a table.
-  core.List<TableFieldSchema>? fields;
-
-  TableSchema({
-    this.fields,
-  });
-
-  TableSchema.fromJson(core.Map _json)
-      : this(
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.List)
-                  .map((value) => TableFieldSchema.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
       };
 }
 

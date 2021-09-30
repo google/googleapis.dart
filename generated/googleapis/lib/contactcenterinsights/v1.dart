@@ -1892,6 +1892,7 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   /// matches in the set of conversations.
   ///
   /// Key has the format: `projects//locations//issueModels//issues/`
+  /// Deprecated, use `issue_matches_stats` field instead.
   core.Map<core.String, core.int>? issueMatches;
 
   /// A map associating each smart highlighter display name with its respective
@@ -2487,6 +2488,9 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipant {
   /// projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
   core.String? dialogflowParticipantName;
 
+  /// Obfuscated user ID from Dialogflow.
+  core.String? obfuscatedExternalUserId;
+
   /// The role of the participant.
   /// Possible string values are:
   /// - "ROLE_UNSPECIFIED" : Participant's role is not set.
@@ -2503,6 +2507,7 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipant {
   GoogleCloudContactcenterinsightsV1ConversationParticipant({
     this.dialogflowParticipant,
     this.dialogflowParticipantName,
+    this.obfuscatedExternalUserId,
     this.role,
     this.userId,
   });
@@ -2517,6 +2522,10 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipant {
               _json.containsKey('dialogflowParticipantName')
                   ? _json['dialogflowParticipantName'] as core.String
                   : null,
+          obfuscatedExternalUserId:
+              _json.containsKey('obfuscatedExternalUserId')
+                  ? _json['obfuscatedExternalUserId'] as core.String
+                  : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
           userId: _json.containsKey('userId')
               ? _json['userId'] as core.String
@@ -2528,6 +2537,8 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipant {
           'dialogflowParticipant': dialogflowParticipant!,
         if (dialogflowParticipantName != null)
           'dialogflowParticipantName': dialogflowParticipantName!,
+        if (obfuscatedExternalUserId != null)
+          'obfuscatedExternalUserId': obfuscatedExternalUserId!,
         if (role != null) 'role': role!,
         if (userId != null) 'userId': userId!,
       };
@@ -2577,14 +2588,24 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
   /// A default value of 0.0 indicates that the value is unset.
   core.double? confidence;
 
+  /// CCAI metadata relating to the current transcript segment.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata?
+      dialogflowSegmentMetadata;
+
   /// The language code of this segment as a
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   ///
   /// Example: "en-US".
   core.String? languageCode;
 
+  /// The time that the message occurred, if provided.
+  core.String? messageTime;
+
   /// The participant of this segment.
   GoogleCloudContactcenterinsightsV1ConversationParticipant? segmentParticipant;
+
+  /// The sentiment for this transcript segment.
+  GoogleCloudContactcenterinsightsV1SentimentData? sentiment;
 
   /// The text of this segment.
   core.String? text;
@@ -2597,8 +2618,11 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment({
     this.channelTag,
     this.confidence,
+    this.dialogflowSegmentMetadata,
     this.languageCode,
+    this.messageTime,
     this.segmentParticipant,
+    this.sentiment,
     this.text,
     this.words,
   });
@@ -2612,13 +2636,26 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
           confidence: _json.containsKey('confidence')
               ? (_json['confidence'] as core.num).toDouble()
               : null,
+          dialogflowSegmentMetadata: _json
+                  .containsKey('dialogflowSegmentMetadata')
+              ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
+                  .fromJson(_json['dialogflowSegmentMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           languageCode: _json.containsKey('languageCode')
               ? _json['languageCode'] as core.String
+              : null,
+          messageTime: _json.containsKey('messageTime')
+              ? _json['messageTime'] as core.String
               : null,
           segmentParticipant: _json.containsKey('segmentParticipant')
               ? GoogleCloudContactcenterinsightsV1ConversationParticipant
                   .fromJson(_json['segmentParticipant']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          sentiment: _json.containsKey('sentiment')
+              ? GoogleCloudContactcenterinsightsV1SentimentData.fromJson(
+                  _json['sentiment'] as core.Map<core.String, core.dynamic>)
               : null,
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
           words: _json.containsKey('words')
@@ -2634,11 +2671,40 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelTag != null) 'channelTag': channelTag!,
         if (confidence != null) 'confidence': confidence!,
+        if (dialogflowSegmentMetadata != null)
+          'dialogflowSegmentMetadata': dialogflowSegmentMetadata!,
         if (languageCode != null) 'languageCode': languageCode!,
+        if (messageTime != null) 'messageTime': messageTime!,
         if (segmentParticipant != null)
           'segmentParticipant': segmentParticipant!,
+        if (sentiment != null) 'sentiment': sentiment!,
         if (text != null) 'text': text!,
         if (words != null) 'words': words!,
+      };
+}
+
+/// Metadata from Dialogflow relating to the current transcript segment.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata {
+  /// Whether the transcript segment was covered under the configured smart
+  /// reply allowlist in Agent Assist.
+  core.bool? smartReplyAllowlistCovered;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata({
+    this.smartReplyAllowlistCovered,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata.fromJson(
+      core.Map _json)
+      : this(
+          smartReplyAllowlistCovered:
+              _json.containsKey('smartReplyAllowlistCovered')
+                  ? _json['smartReplyAllowlistCovered'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (smartReplyAllowlistCovered != null)
+          'smartReplyAllowlistCovered': smartReplyAllowlistCovered!,
       };
 }
 
@@ -3727,9 +3793,14 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
 
 /// Configs for the input data used to create the issue model.
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
+  /// A filter to reduce the conversations used for training the model to a
+  /// specific subset.
+  core.String? filter;
+
+  /// Medium of conversations used in training data.
   ///
-  ///
-  /// Required.
+  /// This field is being deprecated. To specify the medium to be used in
+  /// training a new issue model, set the `medium` field on `filter`.
   /// Possible string values are:
   /// - "MEDIUM_UNSPECIFIED" : Default value.
   /// - "PHONE_CALL" : The format for conversations that took place over the
@@ -3745,6 +3816,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   core.String? trainingConversationsCount;
 
   GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig({
+    this.filter,
     this.medium,
     this.trainingConversationsCount,
   });
@@ -3752,6 +3824,9 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromJson(
       core.Map _json)
       : this(
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
           medium: _json.containsKey('medium')
               ? _json['medium'] as core.String
               : null,
@@ -3762,6 +3837,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
         if (medium != null) 'medium': medium!,
         if (trainingConversationsCount != null)
           'trainingConversationsCount': trainingConversationsCount!,
@@ -4250,6 +4326,11 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
   /// match.
   core.String? type;
 
+  /// The most recent time at which the phrase matcher was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   /// The customized version tag to use for the phrase matcher.
   ///
   /// If not specified, it will default to `revision_id`.
@@ -4265,6 +4346,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
     this.revisionId,
     this.roleMatch,
     this.type,
+    this.updateTime,
     this.versionTag,
   });
 
@@ -4297,6 +4379,9 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
               ? _json['roleMatch'] as core.String
               : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
           versionTag: _json.containsKey('versionTag')
               ? _json['versionTag'] as core.String
               : null,
@@ -4315,6 +4400,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
         if (revisionId != null) 'revisionId': revisionId!,
         if (roleMatch != null) 'roleMatch': roleMatch!,
         if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (versionTag != null) 'versionTag': versionTag!,
       };
 }
@@ -5296,9 +5382,14 @@ class GoogleCloudContactcenterinsightsV1alpha1IssueModel {
 
 /// Configs for the input data used to create the issue model.
 class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig {
+  /// A filter to reduce the conversations used for training the model to a
+  /// specific subset.
+  core.String? filter;
+
+  /// Medium of conversations used in training data.
   ///
-  ///
-  /// Required.
+  /// This field is being deprecated. To specify the medium to be used in
+  /// training a new issue model, set the `medium` field on `filter`.
   /// Possible string values are:
   /// - "MEDIUM_UNSPECIFIED" : Default value.
   /// - "PHONE_CALL" : The format for conversations that took place over the
@@ -5314,6 +5405,7 @@ class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig {
   core.String? trainingConversationsCount;
 
   GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig({
+    this.filter,
     this.medium,
     this.trainingConversationsCount,
   });
@@ -5321,6 +5413,9 @@ class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig {
   GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig.fromJson(
       core.Map _json)
       : this(
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
           medium: _json.containsKey('medium')
               ? _json['medium'] as core.String
               : null,
@@ -5331,6 +5426,7 @@ class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
         if (medium != null) 'medium': medium!,
         if (trainingConversationsCount != null)
           'trainingConversationsCount': trainingConversationsCount!,

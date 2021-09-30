@@ -1087,7 +1087,7 @@
             }
         }
     },
-    "revision": "20210902",
+    "revision": "20211002",
     "rootUrl": "https://contactcenterinsights.googleapis.com/",
     "schemas": {
         "GoogleCloudContactcenterinsightsV1Analysis": {
@@ -1310,7 +1310,7 @@
                         "format": "int32",
                         "type": "integer"
                     },
-                    "description": "A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/`",
+                    "description": "A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` Deprecated, use `issue_matches_stats` field instead.",
                     "type": "object"
                 },
                 "smartHighlighterMatches": {
@@ -1466,14 +1466,14 @@
                     "readOnly": true
                 },
                 "medium": {
-                    "description": "Immutable. The conversation medium.",
+                    "description": "Immutable. The conversation medium, if unspecified will default to PHONE_CALL.",
                     "enum": [
                         "MEDIUM_UNSPECIFIED",
                         "PHONE_CALL",
                         "CHAT"
                     ],
                     "enumDescriptions": [
-                        "Default value.",
+                        "Default value, if unspecified will default to PHONE_CALL.",
                         "The format for conversations that took place over the phone.",
                         "The format for conversations that took place over chat."
                     ],
@@ -1581,6 +1581,10 @@
                     "description": "The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}",
                     "type": "string"
                 },
+                "obfuscatedExternalUserId": {
+                    "description": "Obfuscated user ID from Dialogflow.",
+                    "type": "string"
+                },
                 "role": {
                     "description": "The role of the participant.",
                     "enum": [
@@ -1634,13 +1638,26 @@
                     "format": "float",
                     "type": "number"
                 },
+                "dialogflowSegmentMetadata": {
+                    "$ref": "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata",
+                    "description": "CCAI metadata relating to the current transcript segment."
+                },
                 "languageCode": {
                     "description": "The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: \"en-US\".",
+                    "type": "string"
+                },
+                "messageTime": {
+                    "description": "The time that the message occurred, if provided.",
+                    "format": "google-datetime",
                     "type": "string"
                 },
                 "segmentParticipant": {
                     "$ref": "GoogleCloudContactcenterinsightsV1ConversationParticipant",
                     "description": "The participant of this segment."
+                },
+                "sentiment": {
+                    "$ref": "GoogleCloudContactcenterinsightsV1SentimentData",
+                    "description": "The sentiment for this transcript segment."
                 },
                 "text": {
                     "description": "The text of this segment.",
@@ -1652,6 +1669,17 @@
                         "$ref": "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata": {
+            "description": "Metadata from Dialogflow relating to the current transcript segment.",
+            "id": "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata",
+            "properties": {
+                "smartReplyAllowlistCovered": {
+                    "description": "Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2236,15 +2264,19 @@
             "description": "Configs for the input data used to create the issue model.",
             "id": "GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig",
             "properties": {
+                "filter": {
+                    "description": "A filter to reduce the conversations used for training the model to a specific subset.",
+                    "type": "string"
+                },
                 "medium": {
-                    "description": "Required. ",
+                    "description": "Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.",
                     "enum": [
                         "MEDIUM_UNSPECIFIED",
                         "PHONE_CALL",
                         "CHAT"
                     ],
                     "enumDescriptions": [
-                        "Default value.",
+                        "Default value, if unspecified will default to PHONE_CALL.",
                         "The format for conversations that took place over the phone.",
                         "The format for conversations that took place over chat."
                     ],
@@ -2542,6 +2574,12 @@
                         "Must meet all phrase match rule groups or there is no match.",
                         "If any of the phrase match rule groups are met, there is a match."
                     ],
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The most recent time at which the phrase matcher was updated.",
+                    "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "versionTag": {
@@ -3046,15 +3084,19 @@
             "description": "Configs for the input data used to create the issue model.",
             "id": "GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig",
             "properties": {
+                "filter": {
+                    "description": "A filter to reduce the conversations used for training the model to a specific subset.",
+                    "type": "string"
+                },
                 "medium": {
-                    "description": "Required. ",
+                    "description": "Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.",
                     "enum": [
                         "MEDIUM_UNSPECIFIED",
                         "PHONE_CALL",
                         "CHAT"
                     ],
                     "enumDescriptions": [
-                        "Default value.",
+                        "Default value, if unspecified will default to PHONE_CALL.",
                         "The format for conversations that took place over the phone.",
                         "The format for conversations that took place over chat."
                     ],

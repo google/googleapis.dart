@@ -337,7 +337,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Requests that a job is deleted. This call will return when the job is deleted. This method is available in limited preview.",
+                    "description": "Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted.",
                     "flatPath": "projects/{projectsId}/jobs/{jobsId}/delete",
                     "httpMethod": "DELETE",
                     "id": "bigquery.jobs.delete",
@@ -347,7 +347,7 @@
                     ],
                     "parameters": {
                         "jobId": {
-                            "description": "Required. Job ID of the job to be deleted. If this is a parent job which has child jobs, all child jobs will be deleted as well. Deletion of child jobs directly is not allowed.",
+                            "description": "Required. Job ID of the job for which metadata is to be deleted. If this is a parent job which has child jobs, the metadata from all child jobs will be deleted as well. Direct deletion of the metadata of child jobs is not allowed.",
                             "location": "path",
                             "pattern": "^[^/]+$",
                             "required": true,
@@ -359,7 +359,7 @@
                             "type": "string"
                         },
                         "projectId": {
-                            "description": "Required. Project ID of the job to be deleted.",
+                            "description": "Required. Project ID of the job for which metadata is to be deleted.",
                             "location": "path",
                             "pattern": "^[^/]+$",
                             "required": true,
@@ -1682,7 +1682,7 @@
             }
         }
     },
-    "revision": "20210828",
+    "revision": "20210927",
     "rootUrl": "https://bigquery.googleapis.com/",
     "schemas": {
         "AggregateClassificationMetrics": {
@@ -1867,7 +1867,7 @@
                             "YEARLY"
                         ],
                         "enumDescriptions": [
-                            "",
+                            "Unspecified seasonal period.",
                             "No seasonality",
                             "Daily period, 24 hours.",
                             "Weekly period, 7 days.",
@@ -1934,7 +1934,7 @@
                             "YEARLY"
                         ],
                         "enumDescriptions": [
-                            "",
+                            "Unspecified seasonal period.",
                             "No seasonality",
                             "Daily period, 24 hours.",
                             "Weekly period, 7 days.",
@@ -2006,7 +2006,7 @@
                             "YEARLY"
                         ],
                         "enumDescriptions": [
-                            "",
+                            "Unspecified seasonal period.",
                             "No seasonality",
                             "Daily period, 24 hours.",
                             "Weekly period, 7 days.",
@@ -2062,7 +2062,7 @@
                             "YEARLY"
                         ],
                         "enumDescriptions": [
-                            "",
+                            "Unspecified seasonal period.",
                             "No seasonality",
                             "Daily period, 24 hours.",
                             "Weekly period, 7 days.",
@@ -2140,7 +2140,7 @@
             "id": "AvroOptions",
             "properties": {
                 "useAvroLogicalTypes": {
-                    "description": "[Optional] If set to true will enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).",
+                    "description": "[Optional] If sourceFormat is set to \"AVRO\", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).",
                     "type": "boolean"
                 }
             },
@@ -2723,6 +2723,10 @@
                     "$ref": "DatasetReference",
                     "description": "[Required] A reference that identifies the dataset."
                 },
+                "defaultCollation": {
+                    "description": "[Output-only] The default collation of the dataset.",
+                    "type": "string"
+                },
                 "defaultEncryptionConfiguration": {
                     "$ref": "EncryptionConfiguration"
                 },
@@ -2895,6 +2899,11 @@
             "properties": {
                 "description": {
                     "description": "[Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.",
+                    "type": "string"
+                },
+                "expirationTimestampMillis": {
+                    "description": "[Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).",
+                    "format": "int64",
                     "type": "string"
                 },
                 "friendlyName": {
@@ -3758,7 +3767,7 @@
                     "description": "Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified."
                 },
                 "useAvroLogicalTypes": {
-                    "description": "[Optional] If sourceFormat is set to \"AVRO\", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).",
+                    "description": "[Optional] If sourceFormat is set to \"AVRO\", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).",
                     "type": "boolean"
                 },
                 "writeDisposition": {
@@ -5547,6 +5556,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "defaultCollation": {
+                    "description": "[Output-only] The default collation of the table.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "[Optional] A user-friendly description of this table.",
                     "type": "string"
@@ -6078,9 +6091,52 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "boosterType": {
+                    "description": "Booster type for boosted tree models.",
+                    "enum": [
+                        "BOOSTER_TYPE_UNSPECIFIED",
+                        "GBTREE",
+                        "DART"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified booster type.",
+                        "Gbtree booster.",
+                        "Dart booster."
+                    ],
+                    "type": "string"
+                },
                 "cleanSpikesAndDips": {
                     "description": "If true, clean spikes and dips in the input time series.",
                     "type": "boolean"
+                },
+                "colsampleBylevel": {
+                    "description": "Subsample ratio of columns for each level for boosted tree models.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "colsampleBynode": {
+                    "description": "Subsample ratio of columns for each node(split) for boosted tree models.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "colsampleBytree": {
+                    "description": "Subsample ratio of columns when constructing each tree for boosted tree models.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "dartNormalizeType": {
+                    "description": "Type of normalization algorithm for boosted tree models using dart booster.",
+                    "enum": [
+                        "DART_NORMALIZE_TYPE_UNSPECIFIED",
+                        "TREE",
+                        "FOREST"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified dart normalize type.",
+                        "New trees have the same weight of each of dropped trees.",
+                        "New trees have the same weight of sum of dropped trees."
+                    ],
+                    "type": "string"
                 },
                 "dataFrequency": {
                     "description": "The data frequency of a time series.",
@@ -6448,6 +6504,11 @@
                     "format": "double",
                     "type": "number"
                 },
+                "minTreeChildWeight": {
+                    "description": "Minimum sum of instance weight needed in a child for boosted tree models.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "modelUri": {
                     "description": "Google Cloud Storage URI from which the model was imported. Only applicable for imported models.",
                     "type": "string"
@@ -6463,6 +6524,11 @@
                 },
                 "numFactors": {
                     "description": "Num factors specified for matrix factorization models.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "numParallelTree": {
+                    "description": "Number of parallel trees constructed during each iteration for boosted tree models.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -6506,6 +6572,24 @@
                 },
                 "timeSeriesTimestampColumn": {
                     "description": "Column to be designated as time series timestamp for ARIMA model.",
+                    "type": "string"
+                },
+                "treeMethod": {
+                    "description": "Tree construction algorithm for boosted tree models.",
+                    "enum": [
+                        "TREE_METHOD_UNSPECIFIED",
+                        "AUTO",
+                        "EXACT",
+                        "APPROX",
+                        "HIST"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified tree method.",
+                        "Use heuristic to choose the fastest method.",
+                        "Exact greedy algorithm.",
+                        "Approximate greedy algorithm using quantile sketch and gradient histogram.",
+                        "Fast histogram optimized approximate greedy algorithm."
+                    ],
                     "type": "string"
                 },
                 "userColumn": {

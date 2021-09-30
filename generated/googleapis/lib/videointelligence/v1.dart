@@ -1686,8 +1686,8 @@ class GoogleCloudVideointelligenceV1PersonDetectionConfig {
 class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
   /// Model to use for shot change detection.
   ///
-  /// Supported values: "builtin/stable" (the default if unset) and
-  /// "builtin/latest".
+  /// Supported values: "builtin/stable" (the default if unset),
+  /// "builtin/latest", and "builtin/legacy".
   core.String? model;
 
   GoogleCloudVideointelligenceV1ShotChangeDetectionConfig({

@@ -534,16 +534,16 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
 /// An Workload object for managing highly regulated workloads of cloud
 /// customers.
 class GoogleCloudAssuredworkloadsV1Workload {
-  /// Input only.
-  ///
   /// The billing account used for the resources which are direct children of
-  /// workload. This billing account is initially associated with the resources
-  /// created as part of Workload creation. After the initial creation of these
-  /// resources, the customer can change the assigned billing account. The
-  /// resource name has the form `billingAccounts/{billing_account_id}`. For
-  /// example, `billingAccounts/012345-567890-ABCDEF`.
+  /// workload.
   ///
-  /// Required.
+  /// This billing account is initially associated with the resources created as
+  /// part of Workload creation. After the initial creation of these resources,
+  /// the customer can change the assigned billing account. The resource name
+  /// has the form `billingAccounts/{billing_account_id}`. For example,
+  /// `billingAccounts/012345-567890-ABCDEF`.
+  ///
+  /// Optional.
   core.String? billingAccount;
 
   /// Compliance Regime associated with this workload.

@@ -145,6 +145,7 @@ packages:
     - mybusinessnotifications:v1
     - mybusinessplaceactions:v1
     - mybusinessverifications:v1
+    - networkconnectivity:v1
     - networkmanagement:v1
     - networksecurity:v1
     - networkservices:v1
@@ -301,7 +302,6 @@ skipped_apis:
 - content:v2 # v2.1 included
 - datafusion:v1beta1 # v1 included
 - datamigration:v1beta1
-- dataproc:v1beta2 # v1 included
 - datastore:v1beta1 # v1 included
 - datastore:v1beta3 # v1 included
 - deploymentmanager:alpha # v2beta # v1 included

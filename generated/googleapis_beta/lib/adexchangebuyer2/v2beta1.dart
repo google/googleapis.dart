@@ -4295,7 +4295,7 @@ class Client {
   ///
   /// You may have multiple clients that map to the same entity, but for each
   /// client the combination of `clientName` and entity must be unique. You can
-  /// specify this field as empty.
+  /// specify this field as empty. Maximum length of 255 characters is allowed.
   core.String? clientName;
 
   /// Numerical identifier of the client entity.

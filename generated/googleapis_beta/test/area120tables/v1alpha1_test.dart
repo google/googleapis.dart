@@ -204,6 +204,7 @@ api.ColumnDescription buildColumnDescription() {
     o.lookupDetails = buildLookupDetails();
     o.multipleValuesDisallowed = true;
     o.name = 'foo';
+    o.readonly = true;
     o.relationshipDetails = buildRelationshipDetails();
   }
   buildCounterColumnDescription--;
@@ -228,6 +229,7 @@ void checkColumnDescription(api.ColumnDescription o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.readonly!, unittest.isTrue);
     checkRelationshipDetails(o.relationshipDetails!);
   }
   buildCounterColumnDescription--;

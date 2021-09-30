@@ -146,12 +146,48 @@ void checkUnnamed4(core.List<api.BucketCors> o) {
   checkBucketCors(o[1]);
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed5() => [
+core.List<core.String> buildUnnamed5() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed5(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterBucketCustomPlacementConfig = 0;
+api.BucketCustomPlacementConfig buildBucketCustomPlacementConfig() {
+  final o = api.BucketCustomPlacementConfig();
+  buildCounterBucketCustomPlacementConfig++;
+  if (buildCounterBucketCustomPlacementConfig < 3) {
+    o.dataLocations = buildUnnamed5();
+  }
+  buildCounterBucketCustomPlacementConfig--;
+  return o;
+}
+
+void checkBucketCustomPlacementConfig(api.BucketCustomPlacementConfig o) {
+  buildCounterBucketCustomPlacementConfig++;
+  if (buildCounterBucketCustomPlacementConfig < 3) {
+    checkUnnamed5(o.dataLocations!);
+  }
+  buildCounterBucketCustomPlacementConfig--;
+}
+
+core.List<api.ObjectAccessControl> buildUnnamed6() => [
       buildObjectAccessControl(),
       buildObjectAccessControl(),
     ];
 
-void checkUnnamed5(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed6(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -259,12 +295,12 @@ void checkBucketIamConfiguration(api.BucketIamConfiguration o) {
   buildCounterBucketIamConfiguration--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6() => {
+core.Map<core.String, core.String> buildUnnamed7() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed6(core.Map<core.String, core.String> o) {
+void checkUnnamed7(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -303,12 +339,12 @@ void checkBucketLifecycleRuleAction(api.BucketLifecycleRuleAction o) {
   buildCounterBucketLifecycleRuleAction--;
 }
 
-core.List<core.String> buildUnnamed7() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -332,7 +368,7 @@ api.BucketLifecycleRuleCondition buildBucketLifecycleRuleCondition() {
     o.daysSinceNoncurrentTime = 42;
     o.isLive = true;
     o.matchesPattern = 'foo';
-    o.matchesStorageClass = buildUnnamed7();
+    o.matchesStorageClass = buildUnnamed8();
     o.noncurrentTimeBefore = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.numNewerVersions = 42;
   }
@@ -368,7 +404,7 @@ void checkBucketLifecycleRuleCondition(api.BucketLifecycleRuleCondition o) {
       o.matchesPattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.matchesStorageClass!);
+    checkUnnamed8(o.matchesStorageClass!);
     unittest.expect(
       o.noncurrentTimeBefore!,
       unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
@@ -402,12 +438,12 @@ void checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule--;
 }
 
-core.List<api.BucketLifecycleRule> buildUnnamed8() => [
+core.List<api.BucketLifecycleRule> buildUnnamed9() => [
       buildBucketLifecycleRule(),
       buildBucketLifecycleRule(),
     ];
 
-void checkUnnamed8(core.List<api.BucketLifecycleRule> o) {
+void checkUnnamed9(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketLifecycleRule(o[0]);
   checkBucketLifecycleRule(o[1]);
@@ -418,7 +454,7 @@ api.BucketLifecycle buildBucketLifecycle() {
   final o = api.BucketLifecycle();
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    o.rule = buildUnnamed8();
+    o.rule = buildUnnamed9();
   }
   buildCounterBucketLifecycle--;
   return o;
@@ -427,7 +463,7 @@ api.BucketLifecycle buildBucketLifecycle() {
 void checkBucketLifecycle(api.BucketLifecycle o) {
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    checkUnnamed8(o.rule!);
+    checkUnnamed9(o.rule!);
   }
   buildCounterBucketLifecycle--;
 }
@@ -561,23 +597,6 @@ void checkBucketWebsite(api.BucketWebsite o) {
   buildCounterBucketWebsite--;
 }
 
-core.List<core.String> buildUnnamed9() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed9(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterBucket = 0;
 api.Bucket buildBucket() {
   final o = api.Bucket();
@@ -586,14 +605,15 @@ api.Bucket buildBucket() {
     o.acl = buildUnnamed0();
     o.billing = buildBucketBilling();
     o.cors = buildUnnamed4();
+    o.customPlacementConfig = buildBucketCustomPlacementConfig();
     o.defaultEventBasedHold = true;
-    o.defaultObjectAcl = buildUnnamed5();
+    o.defaultObjectAcl = buildUnnamed6();
     o.encryption = buildBucketEncryption();
     o.etag = 'foo';
     o.iamConfiguration = buildBucketIamConfiguration();
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed6();
+    o.labels = buildUnnamed7();
     o.lifecycle = buildBucketLifecycle();
     o.location = 'foo';
     o.locationType = 'foo';
@@ -603,6 +623,7 @@ api.Bucket buildBucket() {
     o.owner = buildBucketOwner();
     o.projectNumber = 'foo';
     o.retentionPolicy = buildBucketRetentionPolicy();
+    o.rpo = 'foo';
     o.satisfiesPZS = true;
     o.selfLink = 'foo';
     o.storageClass = 'foo';
@@ -610,7 +631,6 @@ api.Bucket buildBucket() {
     o.updated = core.DateTime.parse('2002-02-27T14:01:02');
     o.versioning = buildBucketVersioning();
     o.website = buildBucketWebsite();
-    o.zoneAffinity = buildUnnamed9();
   }
   buildCounterBucket--;
   return o;
@@ -622,8 +642,9 @@ void checkBucket(api.Bucket o) {
     checkUnnamed0(o.acl!);
     checkBucketBilling(o.billing!);
     checkUnnamed4(o.cors!);
+    checkBucketCustomPlacementConfig(o.customPlacementConfig!);
     unittest.expect(o.defaultEventBasedHold!, unittest.isTrue);
-    checkUnnamed5(o.defaultObjectAcl!);
+    checkUnnamed6(o.defaultObjectAcl!);
     checkBucketEncryption(o.encryption!);
     unittest.expect(
       o.etag!,
@@ -638,7 +659,7 @@ void checkBucket(api.Bucket o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.labels!);
+    checkUnnamed7(o.labels!);
     checkBucketLifecycle(o.lifecycle!);
     unittest.expect(
       o.location!,
@@ -663,6 +684,10 @@ void checkBucket(api.Bucket o) {
       unittest.equals('foo'),
     );
     checkBucketRetentionPolicy(o.retentionPolicy!);
+    unittest.expect(
+      o.rpo!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.satisfiesPZS!, unittest.isTrue);
     unittest.expect(
       o.selfLink!,
@@ -682,7 +707,6 @@ void checkBucket(api.Bucket o) {
     );
     checkBucketVersioning(o.versioning!);
     checkBucketWebsite(o.website!);
-    checkUnnamed9(o.zoneAffinity!);
   }
   buildCounterBucket--;
 }
@@ -2020,6 +2044,16 @@ void main() {
       final od =
           api.BucketCors.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBucketCors(od);
+    });
+  });
+
+  unittest.group('obj-schema-BucketCustomPlacementConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBucketCustomPlacementConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BucketCustomPlacementConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBucketCustomPlacementConfig(od);
     });
   });
 

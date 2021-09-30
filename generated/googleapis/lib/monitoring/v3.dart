@@ -2753,6 +2753,56 @@ class ProjectsTimeSeriesResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates or adds data to one or more service time series.
+  ///
+  /// A service time series is a time series for a metric from a Google Cloud
+  /// service. The response is empty if all time series in the request were
+  /// written. If any time series could not be written, a corresponding failure
+  /// message is included in the error response. This endpoint rejects writes to
+  /// user-defined metrics. This method is only for use by Google Cloud
+  /// services. Use projects.timeSeries.create instead.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) on which to
+  /// execute the request. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> createService(
+    CreateTimeSeriesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v3/' + core.Uri.encodeFull('$name') + '/timeSeries:createService';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists time series that match a filter.
   ///
   /// This method does not require a Workspace.
@@ -4595,7 +4645,7 @@ class AlertPolicy {
 /// Control over how the notification channels in notification_channels are
 /// notified when this alert fires.
 class AlertStrategy {
-  /// If an alert policy that was active has no data for this log, any open
+  /// If an alert policy that was active has no data for this long, any open
   /// incidents will close
   core.String? autoClose;
 

@@ -311,7 +311,7 @@
             }
         }
     },
-    "revision": "20210906",
+    "revision": "20211006",
     "rootUrl": "https://analyticsdata.googleapis.com/",
     "schemas": {
         "BatchRunPivotReportsRequest": {

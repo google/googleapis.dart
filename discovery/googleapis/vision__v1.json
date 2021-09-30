@@ -1280,7 +1280,7 @@
             }
         }
     },
-    "revision": "20210827",
+    "revision": "20211001",
     "rootUrl": "https://vision.googleapis.com/",
     "schemas": {
         "AddProductToProductSetRequest": {
