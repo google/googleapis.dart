@@ -2594,28 +2594,31 @@
         "RunQueryResponse": {
             "description": "The response for Firestore.RunQuery.",
             "id": "RunQueryResponse",
-            "properties": {
-                "document": {
-                    "$ref": "Document",
-                    "description": "A query result. Not set when reporting partial progress."
-                },
-                "readTime": {
-                    "description": "The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "skippedResults": {
-                    "description": "The number of results that have been skipped due to an offset between the last response and the current response.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "transaction": {
-                    "description": "The transaction that was started as part of this request. Can only be set in the first response, and only if RunQueryRequest.new_transaction was set in the request. If set, no other fields will be set in this response.",
-                    "format": "byte",
-                    "type": "string"
+            "items": {
+                "type": "object",
+                "properties": {
+                    "document": {
+                        "$ref": "Document",
+                        "description": "A query result. Not set when reporting partial progress."
+                    },
+                    "readTime": {
+                        "description": "The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run.",
+                        "format": "google-datetime",
+                        "type": "string"
+                    },
+                    "skippedResults": {
+                        "description": "The number of results that have been skipped due to an offset between the last response and the current response.",
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "transaction": {
+                        "description": "The transaction that was started as part of this request. Can only be set in the first response, and only if RunQueryRequest.new_transaction was set in the request. If set, no other fields will be set in this response.",
+                        "format": "byte",
+                        "type": "string"
+                    }
                 }
             },
-            "type": "object"
+            "type": "array"
         },
         "Status": {
             "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",

@@ -32,6 +32,7 @@
 library firestore.v1;
 
 import 'dart:async' as async;
+import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -1281,8 +1282,7 @@ class ProjectsDatabasesDocumentsResource {
       body: _body,
       queryParams: _queryParams,
     );
-    return RunQueryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+    return RunQueryResponse.fromJson(_response as core.List);
   }
 
   /// Streams batches of document updates and deletes, in order.
@@ -4475,8 +4475,7 @@ class RunQueryRequest {
       };
 }
 
-/// The response for Firestore.RunQuery.
-class RunQueryResponse {
+class RunQueryResponseElement {
   /// A query result.
   ///
   /// Not set when reporting partial progress.
@@ -4509,14 +4508,14 @@ class RunQueryResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  RunQueryResponse({
+  RunQueryResponseElement({
     this.document,
     this.readTime,
     this.skippedResults,
     this.transaction,
   });
 
-  RunQueryResponse.fromJson(core.Map _json)
+  RunQueryResponseElement.fromJson(core.Map _json)
       : this(
           document: _json.containsKey('document')
               ? Document.fromJson(
@@ -4539,6 +4538,44 @@ class RunQueryResponse {
         if (skippedResults != null) 'skippedResults': skippedResults!,
         if (transaction != null) 'transaction': transaction!,
       };
+}
+
+/// The response for Firestore.RunQuery.
+class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
+  final core.List<RunQueryResponseElement> _inner;
+
+  RunQueryResponse() : _inner = [];
+
+  RunQueryResponse.fromJson(core.List json)
+      : _inner = json
+            .map((value) => RunQueryResponseElement.fromJson(
+                value as core.Map<core.String, core.dynamic>))
+            .toList();
+
+  core.List<core.Map<core.String, core.dynamic>> toJson() {
+    return _inner.map((value) => value.toJson()).toList();
+  }
+
+  @core.override
+  RunQueryResponseElement operator [](core.int key) => _inner[key];
+
+  @core.override
+  void operator []=(core.int key, RunQueryResponseElement value) {
+    _inner[key] = value;
+  }
+
+  @core.override
+  core.int get length => _inner.length;
+
+  @core.override
+  set length(core.int newLength) {
+    _inner.length = newLength;
+  }
+
+  @core.override
+  void add(RunQueryResponseElement element) {
+    _inner.add(element);
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
