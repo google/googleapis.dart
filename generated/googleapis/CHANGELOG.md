@@ -1,5 +1,6 @@
 ## 5.0.2-dev
 
+- Fix an issue with the generated Firestore API. [#303](https://github.com/google/googleapis.dart/issues/303)
 - Reuse empty types using `typedef`.
 - Require Dart 2.13 or greater.
 

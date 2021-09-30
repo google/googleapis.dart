@@ -2309,23 +2309,23 @@ void checkRunQueryRequest(api.RunQueryRequest o) {
   buildCounterRunQueryRequest--;
 }
 
-core.int buildCounterRunQueryResponse = 0;
-api.RunQueryResponse buildRunQueryResponse() {
-  final o = api.RunQueryResponse();
-  buildCounterRunQueryResponse++;
-  if (buildCounterRunQueryResponse < 3) {
+core.int buildCounterRunQueryResponseElement = 0;
+api.RunQueryResponseElement buildRunQueryResponseElement() {
+  final o = api.RunQueryResponseElement();
+  buildCounterRunQueryResponseElement++;
+  if (buildCounterRunQueryResponseElement < 3) {
     o.document = buildDocument();
     o.readTime = 'foo';
     o.skippedResults = 42;
     o.transaction = 'foo';
   }
-  buildCounterRunQueryResponse--;
+  buildCounterRunQueryResponseElement--;
   return o;
 }
 
-void checkRunQueryResponse(api.RunQueryResponse o) {
-  buildCounterRunQueryResponse++;
-  if (buildCounterRunQueryResponse < 3) {
+void checkRunQueryResponseElement(api.RunQueryResponseElement o) {
+  buildCounterRunQueryResponseElement++;
+  if (buildCounterRunQueryResponseElement < 3) {
     checkDocument(o.document!);
     unittest.expect(
       o.readTime!,
@@ -2340,7 +2340,20 @@ void checkRunQueryResponse(api.RunQueryResponse o) {
       unittest.equals('foo'),
     );
   }
-  buildCounterRunQueryResponse--;
+  buildCounterRunQueryResponseElement--;
+}
+
+api.RunQueryResponse buildRunQueryResponse() {
+  final o = api.RunQueryResponse();
+  o.add(buildRunQueryResponseElement());
+  o.add(buildRunQueryResponseElement());
+  return o;
+}
+
+void checkRunQueryResponse(api.RunQueryResponse o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRunQueryResponseElement(o[0]);
+  checkRunQueryResponseElement(o[1]);
 }
 
 core.Map<core.String, core.Object> buildUnnamed39() => {
@@ -3586,12 +3599,21 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RunQueryResponseElement', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRunQueryResponseElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RunQueryResponseElement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRunQueryResponseElement(od);
+    });
+  });
+
   unittest.group('obj-schema-RunQueryResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRunQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RunQueryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = api.RunQueryResponse.fromJson(oJson as core.List);
       checkRunQueryResponse(od);
     });
   });
