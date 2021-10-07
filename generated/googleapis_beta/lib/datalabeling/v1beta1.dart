@@ -2419,7 +2419,7 @@ class GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2483,7 +2483,7 @@ class GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2727,7 +2727,7 @@ class GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig {
                   : null,
           contributorEmails: _json.containsKey('contributorEmails')
               ? (_json['contributorEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           instruction: _json.containsKey('instruction')
@@ -2804,7 +2804,7 @@ class GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3153,7 +3153,7 @@ class GoogleCloudDatalabelingV1alpha1LabelOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3562,7 +3562,7 @@ class GoogleCloudDatalabelingV1beta1AnnotatedDataset {
               : null,
           blockingResources: _json.containsKey('blockingResources')
               ? (_json['blockingResources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           completedExampleCount: _json.containsKey('completedExampleCount')
@@ -3962,14 +3962,14 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSet {
       : this(
           annotationSpecs: _json.containsKey('annotationSpecs')
               ? (_json['annotationSpecs'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1AnnotationSpec>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           blockingResources: _json.containsKey('blockingResources')
               ? (_json['blockingResources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           description: _json.containsKey('description')
@@ -4182,7 +4182,7 @@ class GoogleCloudDatalabelingV1beta1Attempt {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4270,9 +4270,8 @@ class GoogleCloudDatalabelingV1beta1BoundingPoly {
       : this(
           vertices: _json.containsKey('vertices')
               ? (_json['vertices'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Vertex>((value) =>
-                      GoogleCloudDatalabelingV1beta1Vertex.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDatalabelingV1beta1Vertex.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4490,9 +4489,8 @@ class GoogleCloudDatalabelingV1beta1ConfusionMatrix {
       : this(
           row: _json.containsKey('row')
               ? (_json['row'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Row>((value) =>
-                      GoogleCloudDatalabelingV1beta1Row.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDatalabelingV1beta1Row.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4647,7 +4645,7 @@ class GoogleCloudDatalabelingV1beta1CreateInstructionMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4833,7 +4831,7 @@ class GoogleCloudDatalabelingV1beta1Dataset {
       : this(
           blockingResources: _json.containsKey('blockingResources')
               ? (_json['blockingResources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           createTime: _json.containsKey('createTime')
@@ -4850,7 +4848,7 @@ class GoogleCloudDatalabelingV1beta1Dataset {
               : null,
           inputConfigs: _json.containsKey('inputConfigs')
               ? (_json['inputConfigs'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1InputConfig>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1InputConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5161,7 +5159,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJob {
               : null,
           attempts: _json.containsKey('attempts')
               ? (_json['attempts'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Attempt>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1Attempt.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5515,7 +5513,7 @@ class GoogleCloudDatalabelingV1beta1EventConfig {
       : this(
           annotationSpecSets: _json.containsKey('annotationSpecSets')
               ? (_json['annotationSpecSets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           clipLength: _json.containsKey('clipLength')
@@ -5573,7 +5571,7 @@ class GoogleCloudDatalabelingV1beta1Example {
       : this(
           annotations: _json.containsKey('annotations')
               ? (_json['annotations'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Annotation>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1Annotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5626,7 +5624,7 @@ class GoogleCloudDatalabelingV1beta1ExampleComparison {
               : null,
           modelCreatedExamples: _json.containsKey('modelCreatedExamples')
               ? (_json['modelCreatedExamples'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Example>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1Example.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5691,7 +5689,7 @@ class GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6193,7 +6191,7 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
                   : null,
           contributorEmails: _json.containsKey('contributorEmails')
               ? (_json['contributorEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           instruction: _json.containsKey('instruction')
@@ -6537,7 +6535,7 @@ class GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6822,7 +6820,7 @@ class GoogleCloudDatalabelingV1beta1Instruction {
       : this(
           blockingResources: _json.containsKey('blockingResources')
               ? (_json['blockingResources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           createTime: _json.containsKey('createTime')
@@ -7261,7 +7259,7 @@ class GoogleCloudDatalabelingV1beta1LabelOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7697,10 +7695,9 @@ class GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse {
       : this(
           annotatedDatasets: _json.containsKey('annotatedDatasets')
               ? (_json['annotatedDatasets'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1AnnotatedDataset>(
-                      (value) => GoogleCloudDatalabelingV1beta1AnnotatedDataset
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -7735,10 +7732,9 @@ class GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse {
       : this(
           annotationSpecSets: _json.containsKey('annotationSpecSets')
               ? (_json['annotationSpecSets'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>(
-                      (value) => GoogleCloudDatalabelingV1beta1AnnotationSpecSet
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -7771,7 +7767,7 @@ class GoogleCloudDatalabelingV1beta1ListDataItemsResponse {
       : this(
           dataItems: _json.containsKey('dataItems')
               ? (_json['dataItems'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1DataItem>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1DataItem.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7805,7 +7801,7 @@ class GoogleCloudDatalabelingV1beta1ListDatasetsResponse {
       : this(
           datasets: _json.containsKey('datasets')
               ? (_json['datasets'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Dataset>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1Dataset.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7840,7 +7836,7 @@ class GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse {
       : this(
           evaluationJobs: _json.containsKey('evaluationJobs')
               ? (_json['evaluationJobs'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1EvaluationJob>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7875,7 +7871,7 @@ class GoogleCloudDatalabelingV1beta1ListExamplesResponse {
       : this(
           examples: _json.containsKey('examples')
               ? (_json['examples'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Example>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1Example.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7910,7 +7906,7 @@ class GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse {
       : this(
           feedbackMessages: _json.containsKey('feedbackMessages')
               ? (_json['feedbackMessages'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1FeedbackMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7946,7 +7942,7 @@ class GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse {
       : this(
           feedbackThreads: _json.containsKey('feedbackThreads')
               ? (_json['feedbackThreads'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1FeedbackThread>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7982,7 +7978,7 @@ class GoogleCloudDatalabelingV1beta1ListInstructionsResponse {
       : this(
           instructions: _json.containsKey('instructions')
               ? (_json['instructions'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Instruction>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1Instruction.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -8012,10 +8008,9 @@ class GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly {
       : this(
           normalizedVertices: _json.containsKey('normalizedVertices')
               ? (_json['normalizedVertices'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1NormalizedVertex>(
-                      (value) => GoogleCloudDatalabelingV1beta1NormalizedVertex
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8040,10 +8035,9 @@ class GoogleCloudDatalabelingV1beta1NormalizedPolyline {
       : this(
           normalizedVertices: _json.containsKey('normalizedVertices')
               ? (_json['normalizedVertices'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1NormalizedVertex>(
-                      (value) => GoogleCloudDatalabelingV1beta1NormalizedVertex
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8262,7 +8256,7 @@ class GoogleCloudDatalabelingV1beta1OperatorMetadata {
       : this(
           comments: _json.containsKey('comments')
               ? (_json['comments'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           labelVotes: _json.containsKey('labelVotes')
@@ -8362,9 +8356,8 @@ class GoogleCloudDatalabelingV1beta1Polyline {
       : this(
           vertices: _json.containsKey('vertices')
               ? (_json['vertices'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Vertex>((value) =>
-                      GoogleCloudDatalabelingV1beta1Vertex.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDatalabelingV1beta1Vertex.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8453,11 +8446,10 @@ class GoogleCloudDatalabelingV1beta1PrCurve {
           confidenceMetricsEntries: _json
                   .containsKey('confidenceMetricsEntries')
               ? (_json['confidenceMetricsEntries'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>(
-                      (value) =>
-                          GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           meanAveragePrecision: _json.containsKey('meanAveragePrecision')
@@ -8508,11 +8500,10 @@ class GoogleCloudDatalabelingV1beta1Row {
               : null,
           entries: _json.containsKey('entries')
               ? (_json['entries'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>(
-                      (value) =>
-                          GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8542,7 +8533,7 @@ class GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse {
       : this(
           evaluations: _json.containsKey('evaluations')
               ? (_json['evaluations'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1Evaluation>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1Evaluation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -8618,10 +8609,9 @@ class GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse {
       : this(
           exampleComparisons: _json.containsKey('exampleComparisons')
               ? (_json['exampleComparisons'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1ExampleComparison>(
-                      (value) => GoogleCloudDatalabelingV1beta1ExampleComparison
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDatalabelingV1beta1ExampleComparison.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -9023,16 +9013,15 @@ class GoogleCloudDatalabelingV1beta1VideoClassificationConfig {
   GoogleCloudDatalabelingV1beta1VideoClassificationConfig.fromJson(
       core.Map _json)
       : this(
-          annotationSpecSetConfigs: _json
-                  .containsKey('annotationSpecSetConfigs')
-              ? (_json['annotationSpecSetConfigs'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>(
-                      (value) =>
+          annotationSpecSetConfigs:
+              _json.containsKey('annotationSpecSetConfigs')
+                  ? (_json['annotationSpecSetConfigs'] as core.List)
+                      .map((value) =>
                           GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                      .toList()
+                  : null,
           applyShotDetection: _json.containsKey('applyShotDetection')
               ? _json['applyShotDetection'] as core.bool
               : null,
@@ -9107,11 +9096,10 @@ class GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation {
               : null,
           objectTrackingFrames: _json.containsKey('objectTrackingFrames')
               ? (_json['objectTrackingFrames'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>(
-                      (value) =>
-                          GoogleCloudDatalabelingV1beta1ObjectTrackingFrame
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDatalabelingV1beta1ObjectTrackingFrame
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           timeSegment: _json.containsKey('timeSegment')
@@ -9167,7 +9155,7 @@ class GoogleCloudDatalabelingV1beta1VideoPayload {
               : null,
           videoThumbnails: _json.containsKey('videoThumbnails')
               ? (_json['videoThumbnails'] as core.List)
-                  .map<GoogleCloudDatalabelingV1beta1VideoThumbnail>((value) =>
+                  .map((value) =>
                       GoogleCloudDatalabelingV1beta1VideoThumbnail.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -9257,7 +9245,7 @@ class GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9321,7 +9309,7 @@ class GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9598,7 +9586,7 @@ class GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig {
                   : null,
           contributorEmails: _json.containsKey('contributorEmails')
               ? (_json['contributorEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           instruction: _json.containsKey('instruction')
@@ -9675,7 +9663,7 @@ class GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10025,7 +10013,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10347,7 +10335,7 @@ class GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10411,7 +10399,7 @@ class GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10656,7 +10644,7 @@ class GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig {
                   : null,
           contributorEmails: _json.containsKey('contributorEmails')
               ? (_json['contributorEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           instruction: _json.containsKey('instruction')
@@ -10733,7 +10721,7 @@ class GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11083,7 +11071,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata {
               : null,
           partialFailures: _json.containsKey('partialFailures')
               ? (_json['partialFailures'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11392,9 +11380,8 @@ class GoogleLongrunningListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<GoogleLongrunningOperation>((value) =>
-                      GoogleLongrunningOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -11427,7 +11414,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -11447,7 +11434,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation({
     this.done,
@@ -11465,21 +11452,11 @@ class GoogleLongrunningOperation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -11518,7 +11495,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -11537,13 +11514,7 @@ class GoogleRpcStatus {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

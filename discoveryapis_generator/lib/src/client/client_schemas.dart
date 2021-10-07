@@ -146,7 +146,7 @@ DartSchemaTypeDB parseSchemas(
         final anonClassScope = namer.newClassScope();
         final valueType = parse(
             anonValueClassName, anonClassScope, schema.additionalProperties!);
-        return db.register(UnnamedMapType(imports, db.stringType, valueType));
+        return db.register(UnnamedMapType(imports, valueType));
       } else if (schema.variant != null) {
         // This is a variant type, declaring the type discriminant field and all
         // subclasses.

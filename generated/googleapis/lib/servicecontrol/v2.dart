@@ -268,7 +268,7 @@ class AttributeContext {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   /// The origin of a network activity.
   ///
@@ -318,13 +318,7 @@ class AttributeContext {
               : null,
           extensions: _json.containsKey('extensions')
               ? (_json['extensions'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           origin: _json.containsKey('origin')
@@ -377,7 +371,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The name of the service method or operation.
   ///
@@ -400,7 +394,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? request;
+  core.Map<core.String, core.Object?>? request;
 
   /// Metadata about the operation.
   RequestMetadata? requestMetadata;
@@ -426,7 +420,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? resourceOriginalState;
+  core.Map<core.String, core.Object?>? resourceOriginalState;
 
   /// The operation response.
   ///
@@ -438,7 +432,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   /// Use the `metadata` field instead.
   ///
@@ -449,7 +443,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? serviceData;
+  core.Map<core.String, core.Object?>? serviceData;
 
   /// The name of the API service performing the operation.
   ///
@@ -484,17 +478,12 @@ class AuditLog {
               : null,
           authorizationInfo: _json.containsKey('authorizationInfo')
               ? (_json['authorizationInfo'] as core.List)
-                  .map<AuthorizationInfo>((value) => AuthorizationInfo.fromJson(
+                  .map((value) => AuthorizationInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           methodName: _json.containsKey('methodName')
               ? _json['methodName'] as core.String
@@ -503,12 +492,7 @@ class AuditLog {
               ? _json['numResponseItems'] as core.String
               : null,
           request: _json.containsKey('request')
-              ? (_json['request'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['request'] as core.Map<core.String, core.dynamic>
               : null,
           requestMetadata: _json.containsKey('requestMetadata')
               ? RequestMetadata.fromJson(_json['requestMetadata']
@@ -522,31 +506,14 @@ class AuditLog {
               ? _json['resourceName'] as core.String
               : null,
           resourceOriginalState: _json.containsKey('resourceOriginalState')
-              ? (_json['resourceOriginalState']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['resourceOriginalState']
+                  as core.Map<core.String, core.dynamic>
               : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
           serviceData: _json.containsKey('serviceData')
-              ? (_json['serviceData'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['serviceData'] as core.Map<core.String, core.dynamic>
               : null,
           serviceName: _json.containsKey('serviceName')
               ? _json['serviceName'] as core.String
@@ -622,7 +589,7 @@ class Auth {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? claims;
+  core.Map<core.String, core.Object?>? claims;
 
   /// The authorized presenter of the credential.
   ///
@@ -651,21 +618,16 @@ class Auth {
       : this(
           accessLevels: _json.containsKey('accessLevels')
               ? (_json['accessLevels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           audiences: _json.containsKey('audiences')
               ? (_json['audiences'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           claims: _json.containsKey('claims')
-              ? (_json['claims'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['claims'] as core.Map<core.String, core.dynamic>
               : null,
           presenter: _json.containsKey('presenter')
               ? _json['presenter'] as core.String
@@ -729,7 +691,7 @@ class AuthenticationInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? thirdPartyPrincipal;
+  core.Map<core.String, core.Object?>? thirdPartyPrincipal;
 
   AuthenticationInfo({
     this.authoritySelector,
@@ -754,23 +716,16 @@ class AuthenticationInfo {
           serviceAccountDelegationInfo:
               _json.containsKey('serviceAccountDelegationInfo')
                   ? (_json['serviceAccountDelegationInfo'] as core.List)
-                      .map<ServiceAccountDelegationInfo>((value) =>
-                          ServiceAccountDelegationInfo.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => ServiceAccountDelegationInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           serviceAccountKeyName: _json.containsKey('serviceAccountKeyName')
               ? _json['serviceAccountKeyName'] as core.String
               : null,
           thirdPartyPrincipal: _json.containsKey('thirdPartyPrincipal')
-              ? (_json['thirdPartyPrincipal']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['thirdPartyPrincipal']
+                  as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -881,7 +836,7 @@ class CheckRequest {
               _json.containsKey('flags') ? _json['flags'] as core.String : null,
           resources: _json.containsKey('resources')
               ? (_json['resources'] as core.List)
-                  .map<ResourceInfo>((value) => ResourceInfo.fromJson(
+                  .map((value) => ResourceInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -950,7 +905,7 @@ class FirstPartyPrincipal {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? serviceMetadata;
+  core.Map<core.String, core.Object?>? serviceMetadata;
 
   FirstPartyPrincipal({
     this.principalEmail,
@@ -963,14 +918,7 @@ class FirstPartyPrincipal {
               ? _json['principalEmail'] as core.String
               : null,
           serviceMetadata: _json.containsKey('serviceMetadata')
-              ? (_json['serviceMetadata']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['serviceMetadata'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1069,7 +1017,7 @@ class ReportRequest {
       : this(
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<AttributeContext>((value) => AttributeContext.fromJson(
+                  .map((value) => AttributeContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1574,12 +1522,12 @@ class ResourceLocation {
       : this(
           currentLocations: _json.containsKey('currentLocations')
               ? (_json['currentLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           originalLocations: _json.containsKey('originalLocations')
               ? (_json['originalLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1752,7 +1700,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1771,13 +1719,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -1798,7 +1740,7 @@ class ThirdPartyPrincipal {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? thirdPartyClaims;
+  core.Map<core.String, core.Object?>? thirdPartyClaims;
 
   ThirdPartyPrincipal({
     this.thirdPartyClaims,
@@ -1807,14 +1749,7 @@ class ThirdPartyPrincipal {
   ThirdPartyPrincipal.fromJson(core.Map _json)
       : this(
           thirdPartyClaims: _json.containsKey('thirdPartyClaims')
-              ? (_json['thirdPartyClaims']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['thirdPartyClaims'] as core.Map<core.String, core.dynamic>
               : null,
         );
 

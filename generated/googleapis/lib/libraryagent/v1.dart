@@ -384,9 +384,8 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
       : this(
           books: _json.containsKey('books')
               ? (_json['books'] as core.List)
-                  .map<GoogleExampleLibraryagentV1Book>((value) =>
-                      GoogleExampleLibraryagentV1Book.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleExampleLibraryagentV1Book.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -425,9 +424,8 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
               : null,
           shelves: _json.containsKey('shelves')
               ? (_json['shelves'] as core.List)
-                  .map<GoogleExampleLibraryagentV1Shelf>((value) =>
-                      GoogleExampleLibraryagentV1Shelf.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleExampleLibraryagentV1Shelf.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );

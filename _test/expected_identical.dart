@@ -389,9 +389,8 @@ class ToyApi {
       queryParams: _queryParams,
     );
     return (_response as core.List)
-        .map<core.List<core.String>>((value) => (value as core.List)
-            .map<core.String>((value) => value as core.String)
-            .toList())
+        .map((value) =>
+            (value as core.List).map((value) => value as core.String).toList())
         .toList();
   }
 
@@ -429,15 +428,14 @@ class ToyApi {
       queryParams: _queryParams,
     );
     return (_response as core.List)
-        .map<core.Map<core.String, core.List<core.String>>>(
-            (value) => (value as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    (item as core.List)
-                        .map<core.String>((value) => value as core.String)
-                        .toList(),
-                  ),
-                ))
+        .map((value) => (value as core.Map<core.String, core.dynamic>).map(
+              (key, item) => core.MapEntry(
+                key,
+                (item as core.List)
+                    .map((value) => value as core.String)
+                    .toList(),
+              ),
+            ))
         .toList();
   }
 
@@ -509,13 +507,12 @@ class ToyApi {
       (key, item) => core.MapEntry(
         key,
         (item as core.List)
-            .map<core.Map<core.String, core.bool>>(
-                (value) => (value as core.Map<core.String, core.dynamic>).map(
-                      (key, item) => core.MapEntry(
-                        key,
-                        item as core.bool,
-                      ),
-                    ))
+            .map((value) => (value as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.bool,
+                  ),
+                ))
             .toList(),
       ),
     );
@@ -721,7 +718,7 @@ class ToyApi {
       queryParams: _queryParams,
     );
     return (_response as core.List)
-        .map<core.String>((value) => value as core.String)
+        .map((value) => value as core.String)
         .toList();
   }
 }
@@ -989,6 +986,11 @@ class ToyMapResponseFactory {
         ),
       );
     }
+    if (_json.containsKey('msgValue')) {
+      message.msgValue = (_json['msgValue'] as core.List)
+          .map((value) => value as core.Map<core.String, core.dynamic>)
+          .toList();
+    }
     if (_json.containsKey('nullValue')) {
       message.nullValue = _json['nullValue'] as core.String;
     }
@@ -1004,6 +1006,9 @@ class ToyMapResponseFactory {
     if (_json.containsKey('result')) {
       message.result = _json['result'] as core.String;
     }
+    if (_json.containsKey('v')) {
+      message.v = _json['v'];
+    }
     return message;
   }
 
@@ -1013,6 +1018,9 @@ class ToyMapResponseFactory {
       _json['mapResult'] = message.mapResult!.map((key, item) =>
           core.MapEntry(key, NestedResponseFactory.toJson(item)));
     }
+    if (message.msgValue != null) {
+      _json['msgValue'] = message.msgValue!;
+    }
     if (message.nullValue != null) {
       _json['nullValue'] = message.nullValue!;
     }
@@ -1021,6 +1029,9 @@ class ToyMapResponseFactory {
     }
     if (message.result != null) {
       _json['result'] = message.result!;
+    }
+    if (message.v != null) {
+      _json['v'] = message.v!;
     }
     return _json;
   }

@@ -2110,7 +2110,7 @@ class GuestUnitType {
       : this(
           codes: _json.containsKey('codes')
               ? (_json['codes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           features: _json.containsKey('features')
@@ -4592,7 +4592,7 @@ class Lodging {
               : null,
           guestUnits: _json.containsKey('guestUnits')
               ? (_json['guestUnits'] as core.List)
-                  .map<GuestUnitType>((value) => GuestUnitType.fromJson(
+                  .map((value) => GuestUnitType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6803,7 +6803,7 @@ class Services {
               : null,
           languagesSpoken: _json.containsKey('languagesSpoken')
               ? (_json['languagesSpoken'] as core.List)
-                  .map<LanguageSpoken>((value) => LanguageSpoken.fromJson(
+                  .map((value) => LanguageSpoken.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

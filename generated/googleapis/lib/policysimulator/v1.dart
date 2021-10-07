@@ -1076,13 +1076,13 @@ class GoogleCloudPolicysimulatorV1ExplainedAccess {
               : null,
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           policies: _json.containsKey('policies')
               ? (_json['policies'] as core.List)
-                  .map<GoogleCloudPolicysimulatorV1ExplainedPolicy>((value) =>
+                  .map((value) =>
                       GoogleCloudPolicysimulatorV1ExplainedPolicy.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1169,10 +1169,9 @@ class GoogleCloudPolicysimulatorV1ExplainedPolicy {
               : null,
           bindingExplanations: _json.containsKey('bindingExplanations')
               ? (_json['bindingExplanations'] as core.List)
-                  .map<GoogleCloudPolicysimulatorV1BindingExplanation>(
-                      (value) => GoogleCloudPolicysimulatorV1BindingExplanation
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudPolicysimulatorV1BindingExplanation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fullResourceName: _json.containsKey('fullResourceName')
@@ -1221,7 +1220,7 @@ class GoogleCloudPolicysimulatorV1ListReplayResultsResponse {
               : null,
           replayResults: _json.containsKey('replayResults')
               ? (_json['replayResults'] as core.List)
-                  .map<GoogleCloudPolicysimulatorV1ReplayResult>((value) =>
+                  .map((value) =>
                       GoogleCloudPolicysimulatorV1ReplayResult.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1794,9 +1793,8 @@ class GoogleIamV1AuditConfig {
       : this(
           auditLogConfigs: _json.containsKey('auditLogConfigs')
               ? (_json['auditLogConfigs'] as core.List)
-                  .map<GoogleIamV1AuditLogConfig>((value) =>
-                      GoogleIamV1AuditLogConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           service: _json.containsKey('service')
@@ -1842,7 +1840,7 @@ class GoogleIamV1AuditLogConfig {
       : this(
           exemptedMembers: _json.containsKey('exemptedMembers')
               ? (_json['exemptedMembers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logType: _json.containsKey('logType')
@@ -1919,7 +1917,7 @@ class GoogleIamV1Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -2024,16 +2022,14 @@ class GoogleIamV1Policy {
       : this(
           auditConfigs: _json.containsKey('auditConfigs')
               ? (_json['auditConfigs'] as core.List)
-                  .map<GoogleIamV1AuditConfig>((value) =>
-                      GoogleIamV1AuditConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleIamV1AuditConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<GoogleIamV1Binding>((value) =>
-                      GoogleIamV1Binding.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleIamV1Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
@@ -2072,9 +2068,8 @@ class GoogleLongrunningListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<GoogleLongrunningOperation>((value) =>
-                      GoogleLongrunningOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2107,7 +2102,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2127,7 +2122,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation({
     this.done,
@@ -2145,21 +2140,11 @@ class GoogleLongrunningOperation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2189,7 +2174,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2208,13 +2193,7 @@ class GoogleRpcStatus {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

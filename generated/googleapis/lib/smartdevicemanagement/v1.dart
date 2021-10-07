@@ -415,7 +415,7 @@ class GoogleHomeEnterpriseSdmV1Device {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? traits;
+  core.Map<core.String, core.Object?>? traits;
 
   /// Type of the device for general display purposes.
   ///
@@ -438,18 +438,13 @@ class GoogleHomeEnterpriseSdmV1Device {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parentRelations: _json.containsKey('parentRelations')
               ? (_json['parentRelations'] as core.List)
-                  .map<GoogleHomeEnterpriseSdmV1ParentRelation>((value) =>
+                  .map((value) =>
                       GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           traits: _json.containsKey('traits')
-              ? (_json['traits'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['traits'] as core.Map<core.String, core.dynamic>
               : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
@@ -474,7 +469,7 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest({
     this.command,
@@ -487,12 +482,7 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
               ? _json['command'] as core.String
               : null,
           params: _json.containsKey('params')
-              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['params'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -508,7 +498,7 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? results;
+  core.Map<core.String, core.Object?>? results;
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse({
     this.results,
@@ -517,12 +507,7 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(core.Map _json)
       : this(
           results: _json.containsKey('results')
-              ? (_json['results'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['results'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -548,9 +533,8 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
       : this(
           devices: _json.containsKey('devices')
               ? (_json['devices'] as core.List)
-                  .map<GoogleHomeEnterpriseSdmV1Device>((value) =>
-                      GoogleHomeEnterpriseSdmV1Device.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleHomeEnterpriseSdmV1Device.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -587,9 +571,8 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
               : null,
           rooms: _json.containsKey('rooms')
               ? (_json['rooms'] as core.List)
-                  .map<GoogleHomeEnterpriseSdmV1Room>((value) =>
-                      GoogleHomeEnterpriseSdmV1Room.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -623,9 +606,8 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
               : null,
           structures: _json.containsKey('structures')
               ? (_json['structures'] as core.List)
-                  .map<GoogleHomeEnterpriseSdmV1Structure>((value) =>
-                      GoogleHomeEnterpriseSdmV1Structure.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -690,7 +672,7 @@ class GoogleHomeEnterpriseSdmV1Room {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? traits;
+  core.Map<core.String, core.Object?>? traits;
 
   GoogleHomeEnterpriseSdmV1Room({
     this.name,
@@ -701,12 +683,7 @@ class GoogleHomeEnterpriseSdmV1Room {
       : this(
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           traits: _json.containsKey('traits')
-              ? (_json['traits'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['traits'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -730,7 +707,7 @@ class GoogleHomeEnterpriseSdmV1Structure {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? traits;
+  core.Map<core.String, core.Object?>? traits;
 
   GoogleHomeEnterpriseSdmV1Structure({
     this.name,
@@ -741,12 +718,7 @@ class GoogleHomeEnterpriseSdmV1Structure {
       : this(
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           traits: _json.containsKey('traits')
-              ? (_json['traits'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['traits'] as core.Map<core.String, core.dynamic>
               : null,
         );
 

@@ -1918,7 +1918,7 @@ class AnalyticsDetails {
               : null,
           streamMappings: _json.containsKey('streamMappings')
               ? (_json['streamMappings'] as core.List)
-                  .map<StreamMapping>((value) => StreamMapping.fromJson(
+                  .map((value) => StreamMapping.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2499,7 +2499,7 @@ class ListAndroidAppsResponse {
       : this(
           apps: _json.containsKey('apps')
               ? (_json['apps'] as core.List)
-                  .map<AndroidApp>((value) => AndroidApp.fromJson(
+                  .map((value) => AndroidApp.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2536,7 +2536,7 @@ class ListAvailableLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2578,7 +2578,7 @@ class ListAvailableProjectsResponse {
               : null,
           projectInfo: _json.containsKey('projectInfo')
               ? (_json['projectInfo'] as core.List)
-                  .map<ProjectInfo>((value) => ProjectInfo.fromJson(
+                  .map((value) => ProjectInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2616,7 +2616,7 @@ class ListFirebaseProjectsResponse {
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<FirebaseProject>((value) => FirebaseProject.fromJson(
+                  .map((value) => FirebaseProject.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2651,7 +2651,7 @@ class ListIosAppsResponse {
       : this(
           apps: _json.containsKey('apps')
               ? (_json['apps'] as core.List)
-                  .map<IosApp>((value) => IosApp.fromJson(
+                  .map((value) => IosApp.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2678,7 +2678,7 @@ class ListShaCertificatesResponse {
       : this(
           certificates: _json.containsKey('certificates')
               ? (_json['certificates'] as core.List)
-                  .map<ShaCertificate>((value) => ShaCertificate.fromJson(
+                  .map((value) => ShaCertificate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2712,7 +2712,7 @@ class ListWebAppsResponse {
       : this(
           apps: _json.containsKey('apps')
               ? (_json['apps'] as core.List)
-                  .map<WebApp>((value) => WebApp.fromJson(
+                  .map((value) => WebApp.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2762,7 +2762,7 @@ class Location {
       : this(
           features: _json.containsKey('features')
               ? (_json['features'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           locationId: _json.containsKey('locationId')
@@ -2802,7 +2802,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2822,7 +2822,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -2840,21 +2840,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2966,7 +2956,7 @@ class SearchFirebaseAppsResponse {
       : this(
           apps: _json.containsKey('apps')
               ? (_json['apps'] as core.List)
-                  .map<FirebaseAppInfo>((value) => FirebaseAppInfo.fromJson(
+                  .map((value) => FirebaseAppInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3051,7 +3041,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3070,13 +3060,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -3260,7 +3244,7 @@ class WebApp {
               _json.containsKey('appId') ? _json['appId'] as core.String : null,
           appUrls: _json.containsKey('appUrls')
               ? (_json['appUrls'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           displayName: _json.containsKey('displayName')

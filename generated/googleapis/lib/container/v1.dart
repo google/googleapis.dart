@@ -3844,7 +3844,7 @@ class AutoprovisioningNodePoolDefaults {
               : null,
           oauthScopes: _json.containsKey('oauthScopes')
               ? (_json['oauthScopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           serviceAccount: _json.containsKey('serviceAccount')
@@ -4498,7 +4498,7 @@ class Cluster {
               : null,
           conditions: _json.containsKey('conditions')
               ? (_json['conditions'] as core.List)
-                  .map<StatusCondition>((value) => StatusCondition.fromJson(
+                  .map((value) => StatusCondition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4551,7 +4551,7 @@ class Cluster {
               : null,
           instanceGroupUrls: _json.containsKey('instanceGroupUrls')
               ? (_json['instanceGroupUrls'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           ipAllocationPolicy: _json.containsKey('ipAllocationPolicy')
@@ -4570,7 +4570,7 @@ class Cluster {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           loggingConfig: _json.containsKey('loggingConfig')
@@ -4622,7 +4622,7 @@ class Cluster {
               : null,
           nodePools: _json.containsKey('nodePools')
               ? (_json['nodePools'] as core.List)
-                  .map<NodePool>((value) => NodePool.fromJson(
+                  .map((value) => NodePool.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4808,7 +4808,7 @@ class ClusterAutoscaling {
           autoprovisioningLocations:
               _json.containsKey('autoprovisioningLocations')
                   ? (_json['autoprovisioningLocations'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           autoprovisioningNodePoolDefaults:
@@ -4826,7 +4826,7 @@ class ClusterAutoscaling {
                   : null,
           resourceLimits: _json.containsKey('resourceLimits')
               ? (_json['resourceLimits'] as core.List)
-                  .map<ResourceLimit>((value) => ResourceLimit.fromJson(
+                  .map((value) => ResourceLimit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5090,7 +5090,7 @@ class ClusterUpdate {
                   : null,
           desiredLocations: _json.containsKey('desiredLocations')
               ? (_json['desiredLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           desiredLoggingConfig: _json.containsKey('desiredLoggingConfig')
@@ -5687,7 +5687,7 @@ class GetJSONWebKeysResponse {
               : null,
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
-                  .map<Jwk>((value) => Jwk.fromJson(
+                  .map((value) => Jwk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5747,18 +5747,18 @@ class GetOpenIDConfigResponse {
               : null,
           claimsSupported: _json.containsKey('claims_supported')
               ? (_json['claims_supported'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           grantTypes: _json.containsKey('grant_types')
               ? (_json['grant_types'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           idTokenSigningAlgValuesSupported: _json
                   .containsKey('id_token_signing_alg_values_supported')
               ? (_json['id_token_signing_alg_values_supported'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           issuer: _json.containsKey('issuer')
@@ -5769,12 +5769,12 @@ class GetOpenIDConfigResponse {
               : null,
           responseTypesSupported: _json.containsKey('response_types_supported')
               ? (_json['response_types_supported'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           subjectTypesSupported: _json.containsKey('subject_types_supported')
               ? (_json['subject_types_supported'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6271,13 +6271,13 @@ class ListClustersResponse {
       : this(
           clusters: _json.containsKey('clusters')
               ? (_json['clusters'] as core.List)
-                  .map<Cluster>((value) => Cluster.fromJson(
+                  .map((value) => Cluster.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           missingZones: _json.containsKey('missingZones')
               ? (_json['missingZones'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6302,7 +6302,7 @@ class ListNodePoolsResponse {
       : this(
           nodePools: _json.containsKey('nodePools')
               ? (_json['nodePools'] as core.List)
-                  .map<NodePool>((value) => NodePool.fromJson(
+                  .map((value) => NodePool.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6332,12 +6332,12 @@ class ListOperationsResponse {
       : this(
           missingZones: _json.containsKey('missingZones')
               ? (_json['missingZones'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6375,7 +6375,7 @@ class ListUsableSubnetworksResponse {
               : null,
           subnetworks: _json.containsKey('subnetworks')
               ? (_json['subnetworks'] as core.List)
-                  .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(
+                  .map((value) => UsableSubnetwork.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6403,7 +6403,7 @@ class LoggingComponentConfig {
       : this(
           enableComponents: _json.containsKey('enableComponents')
               ? (_json['enableComponents'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6645,7 +6645,7 @@ class MasterAuthorizedNetworksConfig {
       : this(
           cidrBlocks: _json.containsKey('cidrBlocks')
               ? (_json['cidrBlocks'] as core.List)
-                  .map<CidrBlock>((value) => CidrBlock.fromJson(
+                  .map((value) => CidrBlock.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6742,7 +6742,7 @@ class MonitoringComponentConfig {
       : this(
           enableComponents: _json.containsKey('enableComponents')
               ? (_json['enableComponents'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -7130,7 +7130,7 @@ class NodeConfig {
       : this(
           accelerators: _json.containsKey('accelerators')
               ? (_json['accelerators'] as core.List)
-                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                  .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7188,7 +7188,7 @@ class NodeConfig {
               : null,
           oauthScopes: _json.containsKey('oauthScopes')
               ? (_json['oauthScopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           preemptible: _json.containsKey('preemptible')
@@ -7211,12 +7211,12 @@ class NodeConfig {
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           taints: _json.containsKey('taints')
               ? (_json['taints'] as core.List)
-                  .map<NodeTaint>((value) => NodeTaint.fromJson(
+                  .map((value) => NodeTaint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7552,7 +7552,7 @@ class NodePool {
               : null,
           conditions: _json.containsKey('conditions')
               ? (_json['conditions'] as core.List)
-                  .map<StatusCondition>((value) => StatusCondition.fromJson(
+                  .map((value) => StatusCondition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7565,12 +7565,12 @@ class NodePool {
               : null,
           instanceGroupUrls: _json.containsKey('instanceGroupUrls')
               ? (_json['instanceGroupUrls'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           management: _json.containsKey('management')
@@ -7869,7 +7869,7 @@ class Operation {
       : this(
           clusterConditions: _json.containsKey('clusterConditions')
               ? (_json['clusterConditions'] as core.List)
-                  .map<StatusCondition>((value) => StatusCondition.fromJson(
+                  .map((value) => StatusCondition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7889,7 +7889,7 @@ class Operation {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           nodepoolConditions: _json.containsKey('nodepoolConditions')
               ? (_json['nodepoolConditions'] as core.List)
-                  .map<StatusCondition>((value) => StatusCondition.fromJson(
+                  .map((value) => StatusCondition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7979,14 +7979,14 @@ class OperationProgress {
       : this(
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           stages: _json.containsKey('stages')
               ? (_json['stages'] as core.List)
-                  .map<OperationProgress>((value) => OperationProgress.fromJson(
+                  .map((value) => OperationProgress.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8266,7 +8266,7 @@ class ReleaseChannelConfig {
               : null,
           validVersions: _json.containsKey('validVersions')
               ? (_json['validVersions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8315,7 +8315,7 @@ class ReservationAffinity {
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8545,9 +8545,8 @@ class ServerConfig {
       : this(
           channels: _json.containsKey('channels')
               ? (_json['channels'] as core.List)
-                  .map<ReleaseChannelConfig>((value) =>
-                      ReleaseChannelConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReleaseChannelConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           defaultClusterVersion: _json.containsKey('defaultClusterVersion')
@@ -8558,17 +8557,17 @@ class ServerConfig {
               : null,
           validImageTypes: _json.containsKey('validImageTypes')
               ? (_json['validImageTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           validMasterVersions: _json.containsKey('validMasterVersions')
               ? (_json['validMasterVersions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           validNodeVersions: _json.containsKey('validNodeVersions')
               ? (_json['validNodeVersions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8876,7 +8875,7 @@ class SetLocationsRequest {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -9666,7 +9665,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -9685,13 +9684,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -10130,7 +10123,7 @@ class UpdateNodePoolRequest {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -10392,9 +10385,8 @@ class UsableSubnetwork {
               : null,
           secondaryIpRanges: _json.containsKey('secondaryIpRanges')
               ? (_json['secondaryIpRanges'] as core.List)
-                  .map<UsableSubnetworkSecondaryRange>((value) =>
-                      UsableSubnetworkSecondaryRange.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UsableSubnetworkSecondaryRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           statusMessage: _json.containsKey('statusMessage')

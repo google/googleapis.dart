@@ -1910,7 +1910,7 @@ class BlogPosts {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Post>((value) => Post.fromJson(
+                  .map((value) => Post.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2072,13 +2072,13 @@ class BlogList {
       : this(
           blogUserInfos: _json.containsKey('blogUserInfos')
               ? (_json['blogUserInfos'] as core.List)
-                  .map<BlogUserInfo>((value) => BlogUserInfo.fromJson(
+                  .map((value) => BlogUserInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Blog>((value) => Blog.fromJson(
+                  .map((value) => Blog.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2455,7 +2455,7 @@ class CommentList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Comment>((value) => Comment.fromJson(
+                  .map((value) => Comment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2693,7 +2693,7 @@ class PageList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Page>((value) => Page.fromJson(
+                  .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2768,7 +2768,7 @@ class Pageviews {
               : null,
           counts: _json.containsKey('counts')
               ? (_json['counts'] as core.List)
-                  .map<PageviewsCounts>((value) => PageviewsCounts.fromJson(
+                  .map((value) => PageviewsCounts.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2944,7 +2944,7 @@ class PostReplies {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Comment>((value) => Comment.fromJson(
+                  .map((value) => Comment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3078,14 +3078,14 @@ class Post {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           images: _json.containsKey('images')
               ? (_json['images'] as core.List)
-                  .map<PostImages>((value) => PostImages.fromJson(
+                  .map((value) => PostImages.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           location: _json.containsKey('location')
@@ -3174,7 +3174,7 @@ class PostList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Post>((value) => Post.fromJson(
+                  .map((value) => Post.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3309,7 +3309,7 @@ class PostUserInfosList {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PostUserInfo>((value) => PostUserInfo.fromJson(
+                  .map((value) => PostUserInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

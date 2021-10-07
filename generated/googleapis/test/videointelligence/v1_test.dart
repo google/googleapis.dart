@@ -8256,7 +8256,7 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed192() => {
+core.Map<core.String, core.Object?> buildUnnamed192() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8269,7 +8269,7 @@ core.Map<core.String, core.Object> buildUnnamed192() => {
       },
     };
 
-void checkUnnamed192(core.Map<core.String, core.Object> o) {
+void checkUnnamed192(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -8301,7 +8301,7 @@ void checkUnnamed192(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed193() => {
+core.Map<core.String, core.Object?> buildUnnamed193() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8314,7 +8314,7 @@ core.Map<core.String, core.Object> buildUnnamed193() => {
       },
     };
 
-void checkUnnamed193(core.Map<core.String, core.Object> o) {
+void checkUnnamed193(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -8391,7 +8391,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed194() => {
+core.Map<core.String, core.Object?> buildUnnamed194() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8404,7 +8404,7 @@ core.Map<core.String, core.Object> buildUnnamed194() => {
       },
     };
 
-void checkUnnamed194(core.Map<core.String, core.Object> o) {
+void checkUnnamed194(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -8436,12 +8436,12 @@ void checkUnnamed194(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed195() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed195() => [
       buildUnnamed194(),
       buildUnnamed194(),
     ];
 
-void checkUnnamed195(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed195(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed194(o[0]);
   checkUnnamed194(o[1]);

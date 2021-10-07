@@ -456,10 +456,9 @@ class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest {
       : this(
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<GoogleChromePolicyV1InheritOrgUnitPolicyRequest>(
-                      (value) => GoogleChromePolicyV1InheritOrgUnitPolicyRequest
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyV1InheritOrgUnitPolicyRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -492,10 +491,9 @@ class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest {
       : this(
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<GoogleChromePolicyV1ModifyOrgUnitPolicyRequest>(
-                      (value) => GoogleChromePolicyV1ModifyOrgUnitPolicyRequest
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyV1ModifyOrgUnitPolicyRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -563,9 +561,8 @@ class GoogleChromePolicyV1ListPolicySchemasResponse {
               : null,
           policySchemas: _json.containsKey('policySchemas')
               ? (_json['policySchemas'] as core.List)
-                  .map<GoogleChromePolicyV1PolicySchema>((value) =>
-                      GoogleChromePolicyV1PolicySchema.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleChromePolicyV1PolicySchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -701,38 +698,35 @@ class GoogleChromePolicyV1PolicySchema {
       : this(
           accessRestrictions: _json.containsKey('accessRestrictions')
               ? (_json['accessRestrictions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
-          additionalTargetKeyNames: _json
-                  .containsKey('additionalTargetKeyNames')
-              ? (_json['additionalTargetKeyNames'] as core.List)
-                  .map<GoogleChromePolicyV1AdditionalTargetKeyName>((value) =>
-                      GoogleChromePolicyV1AdditionalTargetKeyName.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          additionalTargetKeyNames:
+              _json.containsKey('additionalTargetKeyNames')
+                  ? (_json['additionalTargetKeyNames'] as core.List)
+                      .map((value) =>
+                          GoogleChromePolicyV1AdditionalTargetKeyName.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           definition: _json.containsKey('definition')
               ? Proto2FileDescriptorProto.fromJson(
                   _json['definition'] as core.Map<core.String, core.dynamic>)
               : null,
           fieldDescriptions: _json.containsKey('fieldDescriptions')
               ? (_json['fieldDescriptions'] as core.List)
-                  .map<GoogleChromePolicyV1PolicySchemaFieldDescription>(
-                      (value) =>
-                          GoogleChromePolicyV1PolicySchemaFieldDescription
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyV1PolicySchemaFieldDescription.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           notices: _json.containsKey('notices')
               ? (_json['notices'] as core.List)
-                  .map<GoogleChromePolicyV1PolicySchemaNoticeDescription>(
-                      (value) =>
-                          GoogleChromePolicyV1PolicySchemaNoticeDescription
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyV1PolicySchemaNoticeDescription
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           policyDescription: _json.containsKey('policyDescription')
@@ -853,11 +847,10 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
               _json.containsKey('field') ? _json['field'] as core.String : null,
           fieldDependencies: _json.containsKey('fieldDependencies')
               ? (_json['fieldDependencies'] as core.List)
-                  .map<GoogleChromePolicyV1PolicySchemaFieldDependencies>(
-                      (value) =>
-                          GoogleChromePolicyV1PolicySchemaFieldDependencies
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyV1PolicySchemaFieldDependencies
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           inputConstraint: _json.containsKey('inputConstraint')
@@ -865,20 +858,17 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
               : null,
           knownValueDescriptions: _json.containsKey('knownValueDescriptions')
               ? (_json['knownValueDescriptions'] as core.List)
-                  .map<GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>(
-                      (value) =>
-                          GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nestedFieldDescriptions: _json.containsKey('nestedFieldDescriptions')
               ? (_json['nestedFieldDescriptions'] as core.List)
-                  .map<GoogleChromePolicyV1PolicySchemaFieldDescription>(
-                      (value) =>
-                          GoogleChromePolicyV1PolicySchemaFieldDescription
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyV1PolicySchemaFieldDescription.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1042,7 +1032,7 @@ class GoogleChromePolicyV1PolicyValue {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? value;
+  core.Map<core.String, core.Object?>? value;
 
   GoogleChromePolicyV1PolicyValue({
     this.policySchema,
@@ -1055,12 +1045,7 @@ class GoogleChromePolicyV1PolicyValue {
               ? _json['policySchema'] as core.String
               : null,
           value: _json.containsKey('value')
-              ? (_json['value'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['value'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1155,9 +1140,8 @@ class GoogleChromePolicyV1ResolveResponse {
               : null,
           resolvedPolicies: _json.containsKey('resolvedPolicies')
               ? (_json['resolvedPolicies'] as core.List)
-                  .map<GoogleChromePolicyV1ResolvedPolicy>((value) =>
-                      GoogleChromePolicyV1ResolvedPolicy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleChromePolicyV1ResolvedPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1301,31 +1285,27 @@ class Proto2DescriptorProto {
       : this(
           enumType: _json.containsKey('enumType')
               ? (_json['enumType'] as core.List)
-                  .map<Proto2EnumDescriptorProto>((value) =>
-                      Proto2EnumDescriptorProto.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => Proto2EnumDescriptorProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           field: _json.containsKey('field')
               ? (_json['field'] as core.List)
-                  .map<Proto2FieldDescriptorProto>((value) =>
-                      Proto2FieldDescriptorProto.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => Proto2FieldDescriptorProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           nestedType: _json.containsKey('nestedType')
               ? (_json['nestedType'] as core.List)
-                  .map<Proto2DescriptorProto>((value) =>
-                      Proto2DescriptorProto.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => Proto2DescriptorProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           oneofDecl: _json.containsKey('oneofDecl')
               ? (_json['oneofDecl'] as core.List)
-                  .map<Proto2OneofDescriptorProto>((value) =>
-                      Proto2OneofDescriptorProto.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => Proto2OneofDescriptorProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1358,9 +1338,8 @@ class Proto2EnumDescriptorProto {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           value: _json.containsKey('value')
               ? (_json['value'] as core.List)
-                  .map<Proto2EnumValueDescriptorProto>((value) =>
-                      Proto2EnumValueDescriptorProto.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => Proto2EnumValueDescriptorProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1564,16 +1543,14 @@ class Proto2FileDescriptorProto {
       : this(
           enumType: _json.containsKey('enumType')
               ? (_json['enumType'] as core.List)
-                  .map<Proto2EnumDescriptorProto>((value) =>
-                      Proto2EnumDescriptorProto.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => Proto2EnumDescriptorProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           messageType: _json.containsKey('messageType')
               ? (_json['messageType'] as core.List)
-                  .map<Proto2DescriptorProto>((value) =>
-                      Proto2DescriptorProto.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => Proto2DescriptorProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,

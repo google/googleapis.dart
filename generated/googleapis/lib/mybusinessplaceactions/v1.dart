@@ -396,7 +396,7 @@ class ListPlaceActionLinksResponse {
               : null,
           placeActionLinks: _json.containsKey('placeActionLinks')
               ? (_json['placeActionLinks'] as core.List)
-                  .map<PlaceActionLink>((value) => PlaceActionLink.fromJson(
+                  .map((value) => PlaceActionLink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -435,9 +435,8 @@ class ListPlaceActionTypeMetadataResponse {
               : null,
           placeActionTypeMetadata: _json.containsKey('placeActionTypeMetadata')
               ? (_json['placeActionTypeMetadata'] as core.List)
-                  .map<PlaceActionTypeMetadata>((value) =>
-                      PlaceActionTypeMetadata.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PlaceActionTypeMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );

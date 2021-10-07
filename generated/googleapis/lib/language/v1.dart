@@ -359,7 +359,7 @@ class AnalyzeEntitiesResponse {
       : this(
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<Entity>((value) => Entity.fromJson(
+                  .map((value) => Entity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -439,7 +439,7 @@ class AnalyzeEntitySentimentResponse {
       : this(
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<Entity>((value) => Entity.fromJson(
+                  .map((value) => Entity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -530,7 +530,7 @@ class AnalyzeSentimentResponse {
               : null,
           sentences: _json.containsKey('sentences')
               ? (_json['sentences'] as core.List)
-                  .map<Sentence>((value) => Sentence.fromJson(
+                  .map((value) => Sentence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -616,13 +616,13 @@ class AnalyzeSyntaxResponse {
               : null,
           sentences: _json.containsKey('sentences')
               ? (_json['sentences'] as core.List)
-                  .map<Sentence>((value) => Sentence.fromJson(
+                  .map((value) => Sentence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           tokens: _json.containsKey('tokens')
               ? (_json['tokens'] as core.List)
-                  .map<Token>((value) => Token.fromJson(
+                  .map((value) => Token.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -739,9 +739,8 @@ class AnnotateTextResponse {
       : this(
           categories: _json.containsKey('categories')
               ? (_json['categories'] as core.List)
-                  .map<ClassificationCategory>((value) =>
-                      ClassificationCategory.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ClassificationCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           documentSentiment: _json.containsKey('documentSentiment')
@@ -750,7 +749,7 @@ class AnnotateTextResponse {
               : null,
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<Entity>((value) => Entity.fromJson(
+                  .map((value) => Entity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -759,13 +758,13 @@ class AnnotateTextResponse {
               : null,
           sentences: _json.containsKey('sentences')
               ? (_json['sentences'] as core.List)
-                  .map<Sentence>((value) => Sentence.fromJson(
+                  .map((value) => Sentence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           tokens: _json.containsKey('tokens')
               ? (_json['tokens'] as core.List)
-                  .map<Token>((value) => Token.fromJson(
+                  .map((value) => Token.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -854,9 +853,8 @@ class ClassifyTextResponse {
       : this(
           categories: _json.containsKey('categories')
               ? (_json['categories'] as core.List)
-                  .map<ClassificationCategory>((value) =>
-                      ClassificationCategory.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ClassificationCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1131,7 +1129,7 @@ class Entity {
       : this(
           mentions: _json.containsKey('mentions')
               ? (_json['mentions'] as core.List)
-                  .map<EntityMention>((value) => EntityMention.fromJson(
+                  .map((value) => EntityMention.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1560,7 +1558,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1579,13 +1577,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

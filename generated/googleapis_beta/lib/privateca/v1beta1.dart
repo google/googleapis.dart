@@ -1978,9 +1978,8 @@ class AllowedConfigList {
       : this(
           allowedConfigValues: _json.containsKey('allowedConfigValues')
               ? (_json['allowedConfigValues'] as core.List)
-                  .map<ReusableConfigWrapper>((value) =>
-                      ReusableConfigWrapper.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReusableConfigWrapper.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2067,22 +2066,22 @@ class AllowedSubjectAltNames {
                   : null,
           allowedDnsNames: _json.containsKey('allowedDnsNames')
               ? (_json['allowedDnsNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           allowedEmailAddresses: _json.containsKey('allowedEmailAddresses')
               ? (_json['allowedEmailAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           allowedIps: _json.containsKey('allowedIps')
               ? (_json['allowedIps'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           allowedUris: _json.containsKey('allowedUris')
               ? (_json['allowedUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2135,7 +2134,7 @@ class AuditConfig {
       : this(
           auditLogConfigs: _json.containsKey('auditLogConfigs')
               ? (_json['auditLogConfigs'] as core.List)
-                  .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+                  .map((value) => AuditLogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2182,7 +2181,7 @@ class AuditLogConfig {
       : this(
           exemptedMembers: _json.containsKey('exemptedMembers')
               ? (_json['exemptedMembers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logType: _json.containsKey('logType')
@@ -2259,7 +2258,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -2428,7 +2427,7 @@ class Certificate {
               : null,
           pemCertificateChain: _json.containsKey('pemCertificateChain')
               ? (_json['pemCertificateChain'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pemCsr: _json.containsKey('pemCsr')
@@ -2634,9 +2633,8 @@ class CertificateAuthority {
           caCertificateDescriptions:
               _json.containsKey('caCertificateDescriptions')
                   ? (_json['caCertificateDescriptions'] as core.List)
-                      .map<CertificateDescription>((value) =>
-                          CertificateDescription.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CertificateDescription.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           certificatePolicy: _json.containsKey('certificatePolicy')
@@ -2678,7 +2676,7 @@ class CertificateAuthority {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           pemCaCertificates: _json.containsKey('pemCaCertificates')
               ? (_json['pemCaCertificates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           state:
@@ -2793,7 +2791,7 @@ class CertificateAuthorityPolicy {
       : this(
           allowedCommonNames: _json.containsKey('allowedCommonNames')
               ? (_json['allowedCommonNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           allowedConfigList: _json.containsKey('allowedConfigList')
@@ -2807,7 +2805,7 @@ class CertificateAuthorityPolicy {
           allowedLocationsAndOrganizations:
               _json.containsKey('allowedLocationsAndOrganizations')
                   ? (_json['allowedLocationsAndOrganizations'] as core.List)
-                      .map<Subject>((value) => Subject.fromJson(
+                      .map((value) => Subject.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
@@ -2943,7 +2941,7 @@ class CertificateDescription {
           aiaIssuingCertificateUrls:
               _json.containsKey('aiaIssuingCertificateUrls')
                   ? (_json['aiaIssuingCertificateUrls'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           authorityKeyId: _json.containsKey('authorityKeyId')
@@ -2960,7 +2958,7 @@ class CertificateDescription {
               : null,
           crlDistributionPoints: _json.containsKey('crlDistributionPoints')
               ? (_json['crlDistributionPoints'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           publicKey: _json.containsKey('publicKey')
@@ -3105,9 +3103,8 @@ class CertificateRevocationList {
               : null,
           revokedCertificates: _json.containsKey('revokedCertificates')
               ? (_json['revokedCertificates'] as core.List)
-                  .map<RevokedCertificate>((value) =>
-                      RevokedCertificate.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RevokedCertificate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           sequenceNumber: _json.containsKey('sequenceNumber')
@@ -3520,7 +3517,7 @@ class KeyUsage {
           unknownExtendedKeyUsages:
               _json.containsKey('unknownExtendedKeyUsages')
                   ? (_json['unknownExtendedKeyUsages'] as core.List)
-                      .map<ObjectId>((value) => ObjectId.fromJson(
+                      .map((value) => ObjectId.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
@@ -3706,9 +3703,8 @@ class ListCertificateAuthoritiesResponse {
       : this(
           certificateAuthorities: _json.containsKey('certificateAuthorities')
               ? (_json['certificateAuthorities'] as core.List)
-                  .map<CertificateAuthority>((value) =>
-                      CertificateAuthority.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CertificateAuthority.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -3716,7 +3712,7 @@ class ListCertificateAuthoritiesResponse {
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3756,9 +3752,8 @@ class ListCertificateRevocationListsResponse {
           certificateRevocationLists:
               _json.containsKey('certificateRevocationLists')
                   ? (_json['certificateRevocationLists'] as core.List)
-                      .map<CertificateRevocationList>((value) =>
-                          CertificateRevocationList.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CertificateRevocationList.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -3766,7 +3761,7 @@ class ListCertificateRevocationListsResponse {
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3805,7 +3800,7 @@ class ListCertificatesResponse {
       : this(
           certificates: _json.containsKey('certificates')
               ? (_json['certificates'] as core.List)
-                  .map<Certificate>((value) => Certificate.fromJson(
+                  .map((value) => Certificate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3814,7 +3809,7 @@ class ListCertificatesResponse {
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3844,7 +3839,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3880,7 +3875,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3920,13 +3915,13 @@ class ListReusableConfigsResponse {
               : null,
           reusableConfigs: _json.containsKey('reusableConfigs')
               ? (_json['reusableConfigs'] as core.List)
-                  .map<ReusableConfig>((value) => ReusableConfig.fromJson(
+                  .map((value) => ReusableConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3963,7 +3958,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -3995,12 +3990,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -4033,7 +4023,7 @@ class ObjectId {
       : this(
           objectIdPath: _json.containsKey('objectIdPath')
               ? (_json['objectIdPath'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -4064,7 +4054,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -4084,7 +4074,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -4102,21 +4092,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -4307,13 +4287,13 @@ class Policy {
       : this(
           auditConfigs: _json.containsKey('auditConfigs')
               ? (_json['auditConfigs'] as core.List)
-                  .map<AuditConfig>((value) => AuditConfig.fromJson(
+                  .map((value) => AuditConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4587,13 +4567,13 @@ class ReusableConfigValues {
       : this(
           additionalExtensions: _json.containsKey('additionalExtensions')
               ? (_json['additionalExtensions'] as core.List)
-                  .map<X509Extension>((value) => X509Extension.fromJson(
+                  .map((value) => X509Extension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           aiaOcspServers: _json.containsKey('aiaOcspServers')
               ? (_json['aiaOcspServers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           caOptions: _json.containsKey('caOptions')
@@ -4606,7 +4586,7 @@ class ReusableConfigValues {
               : null,
           policyIds: _json.containsKey('policyIds')
               ? (_json['policyIds'] as core.List)
-                  .map<ObjectId>((value) => ObjectId.fromJson(
+                  .map((value) => ObjectId.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4930,7 +4910,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4949,13 +4929,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -5072,28 +5046,28 @@ class SubjectAltNames {
       : this(
           customSans: _json.containsKey('customSans')
               ? (_json['customSans'] as core.List)
-                  .map<X509Extension>((value) => X509Extension.fromJson(
+                  .map((value) => X509Extension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dnsNames: _json.containsKey('dnsNames')
               ? (_json['dnsNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           emailAddresses: _json.containsKey('emailAddresses')
               ? (_json['emailAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           ipAddresses: _json.containsKey('ipAddresses')
               ? (_json['ipAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           uris: _json.containsKey('uris')
               ? (_json['uris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5289,7 +5263,7 @@ class SubordinateConfigChain {
       : this(
           pemCertificates: _json.containsKey('pemCertificates')
               ? (_json['pemCertificates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5316,7 +5290,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5340,7 +5314,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

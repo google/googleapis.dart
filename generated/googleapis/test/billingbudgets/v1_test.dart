@@ -141,7 +141,7 @@ void checkUnnamed1(core.List<core.String> o) {
   );
 }
 
-core.List<core.Object> buildUnnamed2() => [
+core.List<core.Object?> buildUnnamed2() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -154,7 +154,7 @@ core.List<core.Object> buildUnnamed2() => [
       },
     ];
 
-void checkUnnamed2(core.List<core.Object> o) {
+void checkUnnamed2(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -186,12 +186,12 @@ void checkUnnamed2(core.List<core.Object> o) {
   );
 }
 
-core.Map<core.String, core.List<core.Object>> buildUnnamed3() => {
+core.Map<core.String, core.List<core.Object?>> buildUnnamed3() => {
       'x': buildUnnamed2(),
       'y': buildUnnamed2(),
     };
 
-void checkUnnamed3(core.Map<core.String, core.List<core.Object>> o) {
+void checkUnnamed3(core.Map<core.String, core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed2(o['x']!);
   checkUnnamed2(o['y']!);

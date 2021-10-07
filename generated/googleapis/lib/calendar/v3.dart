@@ -2443,7 +2443,7 @@ class Acl {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<AclRule>((value) => AclRule.fromJson(
+                  .map((value) => AclRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2680,7 +2680,7 @@ class CalendarList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<CalendarListEntry>((value) => CalendarListEntry.fromJson(
+                  .map((value) => CalendarListEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2717,9 +2717,8 @@ class CalendarListEntryNotificationSettings {
       : this(
           notifications: _json.containsKey('notifications')
               ? (_json['notifications'] as core.List)
-                  .map<CalendarNotification>((value) =>
-                      CalendarNotification.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CalendarNotification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2873,7 +2872,7 @@ class CalendarListEntry {
               : null,
           defaultReminders: _json.containsKey('defaultReminders')
               ? (_json['defaultReminders'] as core.List)
-                  .map<EventReminder>((value) => EventReminder.fromJson(
+                  .map((value) => EventReminder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3268,7 +3267,7 @@ class ConferenceData {
               : null,
           entryPoints: _json.containsKey('entryPoints')
               ? (_json['entryPoints'] as core.List)
-                  .map<EntryPoint>((value) => EntryPoint.fromJson(
+                  .map((value) => EntryPoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3361,7 +3360,7 @@ class ConferenceProperties {
           allowedConferenceSolutionTypes:
               _json.containsKey('allowedConferenceSolutionTypes')
                   ? (_json['allowedConferenceSolutionTypes'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
         );
@@ -3631,7 +3630,7 @@ class EntryPoint {
               : null,
           entryPointFeatures: _json.containsKey('entryPointFeatures')
               ? (_json['entryPointFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           entryPointType: _json.containsKey('entryPointType')
@@ -3960,7 +3959,7 @@ class EventReminders {
       : this(
           overrides: _json.containsKey('overrides')
               ? (_json['overrides'] as core.List)
-                  .map<EventReminder>((value) => EventReminder.fromJson(
+                  .map((value) => EventReminder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4331,13 +4330,13 @@ class Event {
               : null,
           attachments: _json.containsKey('attachments')
               ? (_json['attachments'] as core.List)
-                  .map<EventAttachment>((value) => EventAttachment.fromJson(
+                  .map((value) => EventAttachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           attendees: _json.containsKey('attendees')
               ? (_json['attendees'] as core.List)
-                  .map<EventAttendee>((value) => EventAttendee.fromJson(
+                  .map((value) => EventAttendee.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4418,7 +4417,7 @@ class Event {
               : null,
           recurrence: _json.containsKey('recurrence')
               ? (_json['recurrence'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           recurringEventId: _json.containsKey('recurringEventId')
@@ -4849,7 +4848,7 @@ class Events {
               : null,
           defaultReminders: _json.containsKey('defaultReminders')
               ? (_json['defaultReminders'] as core.List)
-                  .map<EventReminder>((value) => EventReminder.fromJson(
+                  .map((value) => EventReminder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4859,7 +4858,7 @@ class Events {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Event>((value) => Event.fromJson(
+                  .map((value) => Event.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4915,13 +4914,13 @@ class FreeBusyCalendar {
       : this(
           busy: _json.containsKey('busy')
               ? (_json['busy'] as core.List)
-                  .map<TimePeriod>((value) => TimePeriod.fromJson(
+                  .map((value) => TimePeriod.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<Error>((value) => Error.fromJson(
+                  .map((value) => Error.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4950,12 +4949,12 @@ class FreeBusyGroup {
       : this(
           calendars: _json.containsKey('calendars')
               ? (_json['calendars'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<Error>((value) => Error.fromJson(
+                  .map((value) => Error.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5014,9 +5013,8 @@ class FreeBusyRequest {
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<FreeBusyRequestItem>((value) =>
-                      FreeBusyRequestItem.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FreeBusyRequestItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           timeMax: _json.containsKey('timeMax')
@@ -5202,7 +5200,7 @@ class Settings {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Setting>((value) => Setting.fromJson(
+                  .map((value) => Setting.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

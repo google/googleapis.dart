@@ -24,7 +24,9 @@ abstract class ComplexDartSchemaType extends DartSchemaType {
   String? classDefinition(bool isPackage);
 
   @override
-  String? get declaration;
+  String get declaration => throw UnsupportedError(
+      'Complex schema types do not have a primitive string encoding for URI'
+      'query parameters.');
 
   @override
   String primitiveEncoding(String? value) {
@@ -86,8 +88,8 @@ class ObjectType extends ComplexDartSchemaType {
         postfix = ' = "${escapeString(discriminatorValue()!)}"';
       }
       propertyString.writeln(
-        '$comment  $prefix${property.type!.declaration}? ${property.name}'
-        '$postfix;',
+        '$comment  $prefix${property.type!.nullableDeclaration} '
+        '${property.name}$postfix;',
       );
 
       if (property.byteArrayAccessor != null) {
@@ -282,7 +284,9 @@ class DartSchemaForwardRef extends DartSchemaType {
   }
 
   @override
-  DartSchemaType? resolveCore(DartSchemaTypeDB db) => null;
+  DartSchemaType resolveCore(DartSchemaTypeDB db) =>
+      throw StateError('Type declarations can only be created after '
+          'resolving references.');
 
   @override
   JsonType get jsonType {
@@ -505,7 +509,10 @@ class AnyType extends PrimitiveDartSchemaType {
         super(imports);
 
   @override
-  String get declaration => '${imports.core.ref()}Object';
+  String get declaration => '${imports.core.ref()}Object?';
+
+  @override
+  String jsonDecode(String json) => json;
 }
 
 /// Represents an unnamed List<T> type with a given `T`.
@@ -537,26 +544,30 @@ class UnnamedArrayType extends ComplexDartSchemaType implements HasInnertype {
     if (innerType!.needsJsonEncoding) {
       return '$value.map((value) => ${innerType!.jsonEncode('value')})'
           '.toList()';
-    } else {
-      // NOTE: The List from the user is already JSON. We have a big
-      // ASSUMPTION here: The user does not modify the list while we're
-      // converting JSON -> String (-> Bytes).
-      return value;
     }
+    // NOTE: The List from the user is already JSON. We have a big
+    // ASSUMPTION here: The user does not modify the list while we're
+    // converting JSON -> String (-> Bytes).
+    return value;
   }
 
   @override
   String jsonDecode(String json) {
-    if (innerType!.needsJsonDecoding) {
-      return '($json as ${imports.core.ref()}List)'
-          '.map<${innerType!.declaration}>'
-          '((value) => ${innerType!.jsonDecode('value')}).toList()';
-    } else {
-      // NOTE: The List returned from JSON.decode() transfers ownership to the
-      // user (i.e. we don't need to make a copy of it).
-      return '($json as ${imports.core.ref()}List)'
-          '.cast<${innerType!.declaration}>()';
+    final innerType = this.innerType!;
+    if (innerType is AnyType) {
+      return '$json as ${imports.core.ref()}List';
     }
+
+    if (innerType.needsJsonDecoding) {
+      return '($json as ${imports.core.ref()}List)'
+          '.map'
+          '((value) => ${innerType.jsonDecode('value')}).toList()';
+    }
+
+    // NOTE: The List returned from JSON.decode() transfers ownership to the
+    // user (i.e. we don't need to make a copy of it).
+    return '($json as ${imports.core.ref()}List)'
+        '.cast<${innerType.declaration}>()';
   }
 }
 
@@ -629,7 +640,7 @@ $encode
   }
 
   @override
-  String? get declaration => className!.name;
+  String get declaration => className!.name!;
 
   @override
   String jsonEncode(String value) {
@@ -650,43 +661,39 @@ $encode
 
 /// Represents an unnamed Map<F, T> type with given types `F` and `T`.
 class UnnamedMapType extends ComplexDartSchemaType {
-  DartSchemaType? fromType;
-  DartSchemaType? toType;
+  late final DartSchemaType keyType;
+  DartSchemaType? valueType;
 
-  UnnamedMapType(DartApiImports imports, this.fromType, this.toType)
-      : super(imports, null) {
-    if (fromType is! StringType) {
-      throw StateError('Violation of assumption: Keys in map types must '
-          'be Strings.');
-    }
-  }
+  UnnamedMapType(DartApiImports imports, this.valueType) : super(imports, null);
 
   @override
   DartSchemaType resolveCore(DartSchemaTypeDB db) {
-    fromType = fromType!.resolve(db);
-    toType = toType!.resolve(db);
+    keyType = db.stringType;
+    valueType = valueType!.resolve(db);
     return this;
   }
 
   @override
   JsonType get jsonType =>
-      MapJsonType(imports, fromType!.jsonType, toType!.jsonType);
+      MapJsonType(imports, keyType.jsonType, valueType!.jsonType);
 
   @override
   String? classDefinition(bool isPackage) => null;
 
   @override
   String get declaration {
-    final from = fromType!.declaration;
-    final to = toType!.declaration;
+    final from = keyType.declaration;
+    final to = valueType!.declaration;
     return '${imports.core.ref()}Map<$from, $to>';
   }
 
   @override
   String jsonEncode(String value) {
-    if (fromType!.needsJsonEncoding || toType!.needsJsonEncoding) {
-      return '$value.map((key, item) => '
-          '${imports.core.ref()}MapEntry(key, ${toType!.jsonEncode('item')}))';
+    final valueType = this.valueType!;
+
+    if (valueType.needsJsonEncoding) {
+      return '$value.map((key, item) => ${imports.core.ref()}MapEntry'
+          '(key, ${valueType.jsonEncode('item')}))';
     } else {
       // NOTE: The Map from the user can be encoded directly. We have a big
       // ASSUMPTION here: The user does not modify the map while we're
@@ -697,20 +704,28 @@ class UnnamedMapType extends ComplexDartSchemaType {
 
   @override
   String jsonDecode(String json) {
-    if (fromType!.needsJsonDecoding || toType!.needsJsonDecoding) {
+    final valueType = this.valueType!;
+
+    if (valueType.needsJsonDecoding) {
       return '''
 ($json as $coreMapJsonType).map(
 (key, item) => ${imports.core.ref()}MapEntry(
 key,
-${toType!.jsonDecode('item')},
+${valueType.jsonDecode('item')},
 ),
 )''';
-    } else {
-      // NOTE: The Map returned from JSON.decode() transfers ownership to the
-      // user (i.e. we don't need to make a copy of it).
-      return '($json as $coreMapJsonType)'
-          '.cast<${fromType!.declaration}, ${toType!.declaration}>()';
     }
+
+    final castValue = '$json as $coreMapJsonType';
+
+    if (valueType is AnyType) {
+      return castValue;
+    }
+
+    // NOTE: The Map returned from JSON.decode() transfers ownership to the
+    // user (i.e. we don't need to make a copy of it).
+    return '($castValue)'
+        '.cast<${keyType.declaration}, ${valueType.declaration}>()';
   }
 }
 
@@ -769,7 +784,7 @@ $decode
 $encode
 
   @${core}override
-  ${toType!.declaration}? operator [](${core}Object? key)
+  ${toType!.nullableDeclaration} operator [](${core}Object? key)
       => _innerMap[key];
 
   @${core}override
@@ -786,7 +801,7 @@ $encode
   ${core}Iterable<$fromT> get keys => _innerMap.keys;
 
   @${core}override
-  $toT? remove(${core}Object? key) => _innerMap.remove(key);
+  ${toType!.nullableDeclaration} remove(${core}Object? key) => _innerMap.remove(key);
 }
 ''';
   }

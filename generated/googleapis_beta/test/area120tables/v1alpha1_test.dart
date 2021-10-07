@@ -458,7 +458,7 @@ void checkRelationshipDetails(api.RelationshipDetails o) {
   buildCounterRelationshipDetails--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed9() => {
+core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -471,7 +471,7 @@ core.Map<core.String, core.Object> buildUnnamed9() => {
       },
     };
 
-void checkUnnamed9(core.Map<core.String, core.Object> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));

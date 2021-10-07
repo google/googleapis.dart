@@ -11311,7 +11311,7 @@ class Account {
       : this(
           accountPermissionIds: _json.containsKey('accountPermissionIds')
               ? (_json['accountPermissionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           accountProfile: _json.containsKey('accountProfile')
@@ -11327,7 +11327,7 @@ class Account {
               : null,
           availablePermissionIds: _json.containsKey('availablePermissionIds')
               ? (_json['availablePermissionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           countryId: _json.containsKey('countryId')
@@ -11503,7 +11503,7 @@ class AccountPermission {
       : this(
           accountProfiles: _json.containsKey('accountProfiles')
               ? (_json['accountProfiles'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -11581,9 +11581,8 @@ class AccountPermissionGroupsListResponse {
       : this(
           accountPermissionGroups: _json.containsKey('accountPermissionGroups')
               ? (_json['accountPermissionGroups'] as core.List)
-                  .map<AccountPermissionGroup>((value) =>
-                      AccountPermissionGroup.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AccountPermissionGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -11616,7 +11615,7 @@ class AccountPermissionsListResponse {
       : this(
           accountPermissions: _json.containsKey('accountPermissions')
               ? (_json['accountPermissions'] as core.List)
-                  .map<AccountPermission>((value) => AccountPermission.fromJson(
+                  .map((value) => AccountPermission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11835,9 +11834,8 @@ class AccountUserProfilesListResponse {
       : this(
           accountUserProfiles: _json.containsKey('accountUserProfiles')
               ? (_json['accountUserProfiles'] as core.List)
-                  .map<AccountUserProfile>((value) =>
-                      AccountUserProfile.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AccountUserProfile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -11878,7 +11876,7 @@ class AccountsListResponse {
       : this(
           accounts: _json.containsKey('accounts')
               ? (_json['accounts'] as core.List)
-                  .map<Account>((value) => Account.fromJson(
+                  .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11920,14 +11918,14 @@ class Activities {
       : this(
           filters: _json.containsKey('filters')
               ? (_json['filters'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metricNames: _json.containsKey('metricNames')
               ? (_json['metricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -12256,9 +12254,8 @@ class Ad {
           creativeGroupAssignments:
               _json.containsKey('creativeGroupAssignments')
                   ? (_json['creativeGroupAssignments'] as core.List)
-                      .map<CreativeGroupAssignment>((value) =>
-                          CreativeGroupAssignment.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CreativeGroupAssignment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           creativeRotation: _json.containsKey('creativeRotation')
@@ -12287,7 +12284,7 @@ class Ad {
               : null,
           eventTagOverrides: _json.containsKey('eventTagOverrides')
               ? (_json['eventTagOverrides'] as core.List)
-                  .map<EventTagOverride>((value) => EventTagOverride.fromJson(
+                  .map((value) => EventTagOverride.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12318,9 +12315,8 @@ class Ad {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           placementAssignments: _json.containsKey('placementAssignments')
               ? (_json['placementAssignments'] as core.List)
-                  .map<PlacementAssignment>((value) =>
-                      PlacementAssignment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PlacementAssignment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           remarketingListExpression:
@@ -12596,7 +12592,7 @@ class AdsListResponse {
       : this(
           ads: _json.containsKey('ads')
               ? (_json['ads'] as core.List)
-                  .map<Ad>((value) =>
+                  .map((value) =>
                       Ad.fromJson(value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12865,7 +12861,7 @@ class AdvertiserGroupsListResponse {
       : this(
           advertiserGroups: _json.containsKey('advertiserGroups')
               ? (_json['advertiserGroups'] as core.List)
-                  .map<AdvertiserGroup>((value) => AdvertiserGroup.fromJson(
+                  .map((value) => AdvertiserGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12908,7 +12904,7 @@ class AdvertiserLandingPagesListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           landingPages: _json.containsKey('landingPages')
               ? (_json['landingPages'] as core.List)
-                  .map<LandingPage>((value) => LandingPage.fromJson(
+                  .map((value) => LandingPage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12948,7 +12944,7 @@ class AdvertisersListResponse {
       : this(
           advertisers: _json.containsKey('advertisers')
               ? (_json['advertisers'] as core.List)
-                  .map<Advertiser>((value) => Advertiser.fromJson(
+                  .map((value) => Advertiser.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13034,7 +13030,7 @@ class AudienceSegmentGroup {
       : this(
           audienceSegments: _json.containsKey('audienceSegments')
               ? (_json['audienceSegments'] as core.List)
-                  .map<AudienceSegment>((value) => AudienceSegment.fromJson(
+                  .map((value) => AudienceSegment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13149,7 +13145,7 @@ class BrowsersListResponse {
       : this(
           browsers: _json.containsKey('browsers')
               ? (_json['browsers'] as core.List)
-                  .map<Browser>((value) => Browser.fromJson(
+                  .map((value) => Browser.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13318,9 +13314,8 @@ class Campaign {
                   .containsKey('additionalCreativeOptimizationConfigurations')
               ? (_json['additionalCreativeOptimizationConfigurations']
                       as core.List)
-                  .map<CreativeOptimizationConfiguration>((value) =>
-                      CreativeOptimizationConfiguration.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeOptimizationConfiguration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           advertiserGroupId: _json.containsKey('advertiserGroupId')
@@ -13339,9 +13334,8 @@ class Campaign {
               : null,
           audienceSegmentGroups: _json.containsKey('audienceSegmentGroups')
               ? (_json['audienceSegmentGroups'] as core.List)
-                  .map<AudienceSegmentGroup>((value) =>
-                      AudienceSegmentGroup.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AudienceSegmentGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           billingInvoiceCode: _json.containsKey('billingInvoiceCode')
@@ -13362,7 +13356,7 @@ class Campaign {
               : null,
           creativeGroupIds: _json.containsKey('creativeGroupIds')
               ? (_json['creativeGroupIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           creativeOptimizationConfiguration:
@@ -13385,7 +13379,7 @@ class Campaign {
               : null,
           eventTagOverrides: _json.containsKey('eventTagOverrides')
               ? (_json['eventTagOverrides'] as core.List)
-                  .map<EventTagOverride>((value) => EventTagOverride.fromJson(
+                  .map((value) => EventTagOverride.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13414,7 +13408,7 @@ class Campaign {
               : null,
           traffickerEmails: _json.containsKey('traffickerEmails')
               ? (_json['traffickerEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -13531,9 +13525,8 @@ class CampaignCreativeAssociationsListResponse {
           campaignCreativeAssociations:
               _json.containsKey('campaignCreativeAssociations')
                   ? (_json['campaignCreativeAssociations'] as core.List)
-                      .map<CampaignCreativeAssociation>((value) =>
-                          CampaignCreativeAssociation.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CampaignCreativeAssociation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -13634,7 +13627,7 @@ class CampaignsListResponse {
       : this(
           campaigns: _json.containsKey('campaigns')
               ? (_json['campaigns'] as core.List)
-                  .map<Campaign>((value) => Campaign.fromJson(
+                  .map((value) => Campaign.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13801,7 +13794,7 @@ class ChangeLogsListResponse {
       : this(
           changeLogs: _json.containsKey('changeLogs')
               ? (_json['changeLogs'] as core.List)
-                  .map<ChangeLog>((value) => ChangeLog.fromJson(
+                  .map((value) => ChangeLog.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13849,9 +13842,8 @@ class ChannelGrouping {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<ChannelGroupingRule>((value) =>
-                      ChannelGroupingRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ChannelGroupingRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -13888,9 +13880,8 @@ class ChannelGroupingRule {
           disjunctiveMatchStatements:
               _json.containsKey('disjunctiveMatchStatements')
                   ? (_json['disjunctiveMatchStatements'] as core.List)
-                      .map<DisjunctiveMatchStatement>((value) =>
-                          DisjunctiveMatchStatement.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => DisjunctiveMatchStatement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -13926,7 +13917,7 @@ class CitiesListResponse {
       : this(
           cities: _json.containsKey('cities')
               ? (_json['cities'] as core.List)
-                  .map<City>((value) => City.fromJson(
+                  .map((value) => City.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14228,7 +14219,7 @@ class CompanionSetting {
               : null,
           enabledSizes: _json.containsKey('enabledSizes')
               ? (_json['enabledSizes'] as core.List)
-                  .map<Size>((value) => Size.fromJson(
+                  .map((value) => Size.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14417,7 +14408,7 @@ class ConnectionTypesListResponse {
       : this(
           connectionTypes: _json.containsKey('connectionTypes')
               ? (_json['connectionTypes'] as core.List)
-                  .map<ConnectionType>((value) => ConnectionType.fromJson(
+                  .map((value) => ConnectionType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14455,7 +14446,7 @@ class ContentCategoriesListResponse {
       : this(
           contentCategories: _json.containsKey('contentCategories')
               ? (_json['contentCategories'] as core.List)
-                  .map<ContentCategory>((value) => ContentCategory.fromJson(
+                  .map((value) => ContentCategory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14660,9 +14651,8 @@ class Conversion {
               : null,
           customVariables: _json.containsKey('customVariables')
               ? (_json['customVariables'] as core.List)
-                  .map<CustomFloodlightVariable>((value) =>
-                      CustomFloodlightVariable.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CustomFloodlightVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dclid:
@@ -14673,7 +14663,7 @@ class Conversion {
           encryptedUserIdCandidates:
               _json.containsKey('encryptedUserIdCandidates')
                   ? (_json['encryptedUserIdCandidates'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           floodlightActivityId: _json.containsKey('floodlightActivityId')
@@ -14813,7 +14803,7 @@ class ConversionStatus {
               : null,
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<ConversionError>((value) => ConversionError.fromJson(
+                  .map((value) => ConversionError.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14855,7 +14845,7 @@ class ConversionsBatchInsertRequest {
       : this(
           conversions: _json.containsKey('conversions')
               ? (_json['conversions'] as core.List)
-                  .map<Conversion>((value) => Conversion.fromJson(
+                  .map((value) => Conversion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14903,7 +14893,7 @@ class ConversionsBatchInsertResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           status: _json.containsKey('status')
               ? (_json['status'] as core.List)
-                  .map<ConversionStatus>((value) => ConversionStatus.fromJson(
+                  .map((value) => ConversionStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14942,7 +14932,7 @@ class ConversionsBatchUpdateRequest {
       : this(
           conversions: _json.containsKey('conversions')
               ? (_json['conversions'] as core.List)
-                  .map<Conversion>((value) => Conversion.fromJson(
+                  .map((value) => Conversion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14990,7 +14980,7 @@ class ConversionsBatchUpdateResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           status: _json.containsKey('status')
               ? (_json['status'] as core.List)
-                  .map<ConversionStatus>((value) => ConversionStatus.fromJson(
+                  .map((value) => ConversionStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15023,7 +15013,7 @@ class CountriesListResponse {
       : this(
           countries: _json.containsKey('countries')
               ? (_json['countries'] as core.List)
-                  .map<Country>((value) => Country.fromJson(
+                  .map((value) => Country.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15648,12 +15638,12 @@ class Creative {
               : null,
           adTagKeys: _json.containsKey('adTagKeys')
               ? (_json['adTagKeys'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           additionalSizes: _json.containsKey('additionalSizes')
               ? (_json['additionalSizes'] as core.List)
-                  .map<Size>((value) => Size.fromJson(
+                  .map((value) => Size.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15689,7 +15679,7 @@ class Creative {
                   : null,
           backupImageFeatures: _json.containsKey('backupImageFeatures')
               ? (_json['backupImageFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           backupImageReportingLabel:
@@ -15702,7 +15692,7 @@ class Creative {
               : null,
           clickTags: _json.containsKey('clickTags')
               ? (_json['clickTags'] as core.List)
-                  .map<ClickTag>((value) => ClickTag.fromJson(
+                  .map((value) => ClickTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15711,12 +15701,12 @@ class Creative {
               : null,
           companionCreatives: _json.containsKey('companionCreatives')
               ? (_json['companionCreatives'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           compatibility: _json.containsKey('compatibility')
               ? (_json['compatibility'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           convertFlashToHtml5: _json.containsKey('convertFlashToHtml5')
@@ -15724,9 +15714,8 @@ class Creative {
               : null,
           counterCustomEvents: _json.containsKey('counterCustomEvents')
               ? (_json['counterCustomEvents'] as core.List)
-                  .map<CreativeCustomEvent>((value) =>
-                      CreativeCustomEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeCustomEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           creativeAssetSelection: _json.containsKey('creativeAssetSelection')
@@ -15735,21 +15724,20 @@ class Creative {
               : null,
           creativeAssets: _json.containsKey('creativeAssets')
               ? (_json['creativeAssets'] as core.List)
-                  .map<CreativeAsset>((value) => CreativeAsset.fromJson(
+                  .map((value) => CreativeAsset.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           creativeFieldAssignments:
               _json.containsKey('creativeFieldAssignments')
                   ? (_json['creativeFieldAssignments'] as core.List)
-                      .map<CreativeFieldAssignment>((value) =>
-                          CreativeFieldAssignment.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CreativeFieldAssignment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           customKeyValues: _json.containsKey('customKeyValues')
               ? (_json['customKeyValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           dynamicAssetSelection: _json.containsKey('dynamicAssetSelection')
@@ -15757,9 +15745,8 @@ class Creative {
               : null,
           exitCustomEvents: _json.containsKey('exitCustomEvents')
               ? (_json['exitCustomEvents'] as core.List)
-                  .map<CreativeCustomEvent>((value) =>
-                      CreativeCustomEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeCustomEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fsCommand: _json.containsKey('fsCommand')
@@ -15862,16 +15849,14 @@ class Creative {
                   : null,
           thirdPartyUrls: _json.containsKey('thirdPartyUrls')
               ? (_json['thirdPartyUrls'] as core.List)
-                  .map<ThirdPartyTrackingUrl>((value) =>
-                      ThirdPartyTrackingUrl.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ThirdPartyTrackingUrl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           timerCustomEvents: _json.containsKey('timerCustomEvents')
               ? (_json['timerCustomEvents'] as core.List)
-                  .map<CreativeCustomEvent>((value) =>
-                      CreativeCustomEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeCustomEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           totalFileSize: _json.containsKey('totalFileSize')
@@ -16450,7 +16435,7 @@ class CreativeAsset {
               _json.containsKey('active') ? _json['active'] as core.bool : null,
           additionalSizes: _json.containsKey('additionalSizes')
               ? (_json['additionalSizes'] as core.List)
-                  .map<Size>((value) => Size.fromJson(
+                  .map((value) => Size.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -16486,7 +16471,7 @@ class CreativeAsset {
               : null,
           companionCreativeIds: _json.containsKey('companionCreativeIds')
               ? (_json['companionCreativeIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           customStartTimeValue: _json.containsKey('customStartTimeValue')
@@ -16494,7 +16479,7 @@ class CreativeAsset {
               : null,
           detectedFeatures: _json.containsKey('detectedFeatures')
               ? (_json['detectedFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           displayType: _json.containsKey('displayType')
@@ -16809,27 +16794,25 @@ class CreativeAssetMetadata {
               : null,
           clickTags: _json.containsKey('clickTags')
               ? (_json['clickTags'] as core.List)
-                  .map<ClickTag>((value) => ClickTag.fromJson(
+                  .map((value) => ClickTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           counterCustomEvents: _json.containsKey('counterCustomEvents')
               ? (_json['counterCustomEvents'] as core.List)
-                  .map<CreativeCustomEvent>((value) =>
-                      CreativeCustomEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeCustomEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           detectedFeatures: _json.containsKey('detectedFeatures')
               ? (_json['detectedFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           exitCustomEvents: _json.containsKey('exitCustomEvents')
               ? (_json['exitCustomEvents'] as core.List)
-                  .map<CreativeCustomEvent>((value) =>
-                      CreativeCustomEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeCustomEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -16843,14 +16826,13 @@ class CreativeAssetMetadata {
               : null,
           timerCustomEvents: _json.containsKey('timerCustomEvents')
               ? (_json['timerCustomEvents'] as core.List)
-                  .map<CreativeCustomEvent>((value) =>
-                      CreativeCustomEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeCustomEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           warnedValidationRules: _json.containsKey('warnedValidationRules')
               ? (_json['warnedValidationRules'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -16910,7 +16892,7 @@ class CreativeAssetSelection {
               : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<Rule>((value) => Rule.fromJson(
+                  .map((value) => Rule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -17021,17 +17003,15 @@ class CreativeAssignment {
           companionCreativeOverrides:
               _json.containsKey('companionCreativeOverrides')
                   ? (_json['companionCreativeOverrides'] as core.List)
-                      .map<CompanionClickThroughOverride>((value) =>
-                          CompanionClickThroughOverride.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CompanionClickThroughOverride.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           creativeGroupAssignments:
               _json.containsKey('creativeGroupAssignments')
                   ? (_json['creativeGroupAssignments'] as core.List)
-                      .map<CreativeGroupAssignment>((value) =>
-                          CreativeGroupAssignment.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CreativeGroupAssignment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           creativeId: _json.containsKey('creativeId')
@@ -17047,9 +17027,8 @@ class CreativeAssignment {
               : null,
           richMediaExitOverrides: _json.containsKey('richMediaExitOverrides')
               ? (_json['richMediaExitOverrides'] as core.List)
-                  .map<RichMediaExitOverride>((value) =>
-                      RichMediaExitOverride.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RichMediaExitOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           sequence: _json.containsKey('sequence')
@@ -17441,9 +17420,8 @@ class CreativeFieldValuesListResponse {
       : this(
           creativeFieldValues: _json.containsKey('creativeFieldValues')
               ? (_json['creativeFieldValues'] as core.List)
-                  .map<CreativeFieldValue>((value) =>
-                      CreativeFieldValue.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeFieldValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -17484,7 +17462,7 @@ class CreativeFieldsListResponse {
       : this(
           creativeFields: _json.containsKey('creativeFields')
               ? (_json['creativeFields'] as core.List)
-                  .map<CreativeField>((value) => CreativeField.fromJson(
+                  .map((value) => CreativeField.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -17652,7 +17630,7 @@ class CreativeGroupsListResponse {
       : this(
           creativeGroups: _json.containsKey('creativeGroups')
               ? (_json['creativeGroups'] as core.List)
-                  .map<CreativeGroup>((value) => CreativeGroup.fromJson(
+                  .map((value) => CreativeGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -17709,9 +17687,8 @@ class CreativeOptimizationConfiguration {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           optimizationActivitys: _json.containsKey('optimizationActivitys')
               ? (_json['optimizationActivitys'] as core.List)
-                  .map<OptimizationActivity>((value) =>
-                      OptimizationActivity.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OptimizationActivity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           optimizationModel: _json.containsKey('optimizationModel')
@@ -17770,9 +17747,8 @@ class CreativeRotation {
       : this(
           creativeAssignments: _json.containsKey('creativeAssignments')
               ? (_json['creativeAssignments'] as core.List)
-                  .map<CreativeAssignment>((value) =>
-                      CreativeAssignment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreativeAssignment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           creativeOptimizationConfigurationId:
@@ -17822,7 +17798,7 @@ class CreativesListResponse {
       : this(
           creatives: _json.containsKey('creatives')
               ? (_json['creatives'] as core.List)
-                  .map<Creative>((value) => Creative.fromJson(
+                  .map((value) => Creative.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -17875,26 +17851,26 @@ class CrossDimensionReachReportCompatibleFields {
       : this(
           breakdown: _json.containsKey('breakdown')
               ? (_json['breakdown'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           overlapMetrics: _json.containsKey('overlapMetrics')
               ? (_json['overlapMetrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -17998,7 +17974,7 @@ class CustomEvent {
               : null,
           customVariables: _json.containsKey('customVariables')
               ? (_json['customVariables'] as core.List)
-                  .map<CustomVariable>((value) => CustomVariable.fromJson(
+                  .map((value) => CustomVariable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -18246,7 +18222,7 @@ class CustomEventStatus {
               : null,
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<CustomEventError>((value) => CustomEventError.fromJson(
+                  .map((value) => CustomEventError.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -18280,7 +18256,7 @@ class CustomEventsBatchInsertRequest {
       : this(
           customEvents: _json.containsKey('customEvents')
               ? (_json['customEvents'] as core.List)
-                  .map<CustomEvent>((value) => CustomEvent.fromJson(
+                  .map((value) => CustomEvent.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -18323,7 +18299,7 @@ class CustomEventsBatchInsertResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           status: _json.containsKey('status')
               ? (_json['status'] as core.List)
-                  .map<CustomEventStatus>((value) => CustomEventStatus.fromJson(
+                  .map((value) => CustomEventStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -18496,7 +18472,7 @@ class CustomRichMediaEvents {
       : this(
           filteredEventIds: _json.containsKey('filteredEventIds')
               ? (_json['filteredEventIds'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -18795,12 +18771,12 @@ class DayPartTargeting {
       : this(
           daysOfWeek: _json.containsKey('daysOfWeek')
               ? (_json['daysOfWeek'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           hoursOfDay: _json.containsKey('hoursOfDay')
               ? (_json['hoursOfDay'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           userLocalTime: _json.containsKey('userLocalTime')
@@ -18861,7 +18837,7 @@ class DeepLink {
               : null,
           remarketingListIds: _json.containsKey('remarketingListIds')
               ? (_json['remarketingListIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -19200,7 +19176,7 @@ class DimensionValueList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -19253,7 +19229,7 @@ class DimensionValueRequest {
               : null,
           filters: _json.containsKey('filters')
               ? (_json['filters'] as core.List)
-                  .map<DimensionFilter>((value) => DimensionFilter.fromJson(
+                  .map((value) => DimensionFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -19338,12 +19314,12 @@ class DirectorySite {
               : null,
           inpageTagFormats: _json.containsKey('inpageTagFormats')
               ? (_json['inpageTagFormats'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           interstitialTagFormats: _json.containsKey('interstitialTagFormats')
               ? (_json['interstitialTagFormats'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -19442,7 +19418,7 @@ class DirectorySitesListResponse {
       : this(
           directorySites: _json.containsKey('directorySites')
               ? (_json['directorySites'] as core.List)
-                  .map<DirectorySite>((value) => DirectorySite.fromJson(
+                  .map((value) => DirectorySite.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -19480,7 +19456,7 @@ class DisjunctiveMatchStatement {
       : this(
           eventFilters: _json.containsKey('eventFilters')
               ? (_json['eventFilters'] as core.List)
-                  .map<EventFilter>((value) => EventFilter.fromJson(
+                  .map((value) => EventFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -19574,9 +19550,8 @@ class DynamicTargetingKeysListResponse {
       : this(
           dynamicTargetingKeys: _json.containsKey('dynamicTargetingKeys')
               ? (_json['dynamicTargetingKeys'] as core.List)
-                  .map<DynamicTargetingKey>((value) =>
-                      DynamicTargetingKey.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DynamicTargetingKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -19850,7 +19825,7 @@ class EventTag {
               : null,
           siteIds: _json.containsKey('siteIds')
               ? (_json['siteIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sslCompliant: _json.containsKey('sslCompliant')
@@ -19942,7 +19917,7 @@ class EventTagsListResponse {
       : this(
           eventTags: _json.containsKey('eventTags')
               ? (_json['eventTags'] as core.List)
-                  .map<EventTag>((value) => EventTag.fromJson(
+                  .map((value) => EventTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -20126,7 +20101,7 @@ class FileList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<File>((value) => File.fromJson(
+                  .map((value) => File.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -20260,9 +20235,8 @@ class FloodlightActivitiesListResponse {
       : this(
           floodlightActivities: _json.containsKey('floodlightActivities')
               ? (_json['floodlightActivities'] as core.List)
-                  .map<FloodlightActivity>((value) =>
-                      FloodlightActivity.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FloodlightActivity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -20513,9 +20487,8 @@ class FloodlightActivity {
               : null,
           defaultTags: _json.containsKey('defaultTags')
               ? (_json['defaultTags'] as core.List)
-                  .map<FloodlightActivityDynamicTag>((value) =>
-                      FloodlightActivityDynamicTag.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FloodlightActivityDynamicTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           expectedUrl: _json.containsKey('expectedUrl')
@@ -20561,7 +20534,7 @@ class FloodlightActivity {
               _json.containsKey('notes') ? _json['notes'] as core.String : null,
           publisherTags: _json.containsKey('publisherTags')
               ? (_json['publisherTags'] as core.List)
-                  .map<FloodlightActivityPublisherDynamicTag>((value) =>
+                  .map((value) =>
                       FloodlightActivityPublisherDynamicTag.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -20589,7 +20562,7 @@ class FloodlightActivity {
           userDefinedVariableTypes:
               _json.containsKey('userDefinedVariableTypes')
                   ? (_json['userDefinedVariableTypes'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
         );
@@ -20847,9 +20820,8 @@ class FloodlightActivityGroupsListResponse {
           floodlightActivityGroups:
               _json.containsKey('floodlightActivityGroups')
                   ? (_json['floodlightActivityGroups'] as core.List)
-                      .map<FloodlightActivityGroup>((value) =>
-                          FloodlightActivityGroup.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => FloodlightActivityGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -21100,17 +21072,15 @@ class FloodlightConfiguration {
           thirdPartyAuthenticationTokens:
               _json.containsKey('thirdPartyAuthenticationTokens')
                   ? (_json['thirdPartyAuthenticationTokens'] as core.List)
-                      .map<ThirdPartyAuthenticationToken>((value) =>
-                          ThirdPartyAuthenticationToken.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => ThirdPartyAuthenticationToken.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           userDefinedVariableConfigurations:
               _json.containsKey('userDefinedVariableConfigurations')
                   ? (_json['userDefinedVariableConfigurations'] as core.List)
-                      .map<UserDefinedVariableConfiguration>((value) =>
-                          UserDefinedVariableConfiguration.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => UserDefinedVariableConfiguration.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
         );
@@ -21175,9 +21145,8 @@ class FloodlightConfigurationsListResponse {
           floodlightConfigurations:
               _json.containsKey('floodlightConfigurations')
                   ? (_json['floodlightConfigurations'] as core.List)
-                      .map<FloodlightConfiguration>((value) =>
-                          FloodlightConfiguration.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => FloodlightConfiguration.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -21221,20 +21190,20 @@ class FloodlightReportCompatibleFields {
       : this(
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -21402,13 +21371,13 @@ class GeoTargeting {
       : this(
           cities: _json.containsKey('cities')
               ? (_json['cities'] as core.List)
-                  .map<City>((value) => City.fromJson(
+                  .map((value) => City.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           countries: _json.containsKey('countries')
               ? (_json['countries'] as core.List)
-                  .map<Country>((value) => Country.fromJson(
+                  .map((value) => Country.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -21417,19 +21386,19 @@ class GeoTargeting {
               : null,
           metros: _json.containsKey('metros')
               ? (_json['metros'] as core.List)
-                  .map<Metro>((value) => Metro.fromJson(
+                  .map((value) => Metro.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           postalCodes: _json.containsKey('postalCodes')
               ? (_json['postalCodes'] as core.List)
-                  .map<PostalCode>((value) => PostalCode.fromJson(
+                  .map((value) => PostalCode.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           regions: _json.containsKey('regions')
               ? (_json['regions'] as core.List)
-                  .map<Region>((value) => Region.fromJson(
+                  .map((value) => Region.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -21556,7 +21525,7 @@ class InventoryItem {
               : null,
           adSlots: _json.containsKey('adSlots')
               ? (_json['adSlots'] as core.List)
-                  .map<AdSlot>((value) => AdSlot.fromJson(
+                  .map((value) => AdSlot.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -21662,7 +21631,7 @@ class InventoryItemsListResponse {
       : this(
           inventoryItems: _json.containsKey('inventoryItems')
               ? (_json['inventoryItems'] as core.List)
-                  .map<InventoryItem>((value) => InventoryItem.fromJson(
+                  .map((value) => InventoryItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -21756,7 +21725,7 @@ class LandingPage {
               : null,
           deepLinks: _json.containsKey('deepLinks')
               ? (_json['deepLinks'] as core.List)
-                  .map<DeepLink>((value) => DeepLink.fromJson(
+                  .map((value) => DeepLink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -21840,7 +21809,7 @@ class LanguageTargeting {
       : this(
           languages: _json.containsKey('languages')
               ? (_json['languages'] as core.List)
-                  .map<Language>((value) => Language.fromJson(
+                  .map((value) => Language.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -21872,7 +21841,7 @@ class LanguagesListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           languages: _json.containsKey('languages')
               ? (_json['languages'] as core.List)
-                  .map<Language>((value) => Language.fromJson(
+                  .map((value) => Language.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -21921,9 +21890,8 @@ class ListPopulationClause {
       : this(
           terms: _json.containsKey('terms')
               ? (_json['terms'] as core.List)
-                  .map<ListPopulationTerm>((value) =>
-                      ListPopulationTerm.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ListPopulationTerm.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -21968,9 +21936,8 @@ class ListPopulationRule {
               : null,
           listPopulationClauses: _json.containsKey('listPopulationClauses')
               ? (_json['listPopulationClauses'] as core.List)
-                  .map<ListPopulationClause>((value) =>
-                      ListPopulationClause.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ListPopulationClause.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -22279,7 +22246,7 @@ class MetrosListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metros: _json.containsKey('metros')
               ? (_json['metros'] as core.List)
-                  .map<Metro>((value) => Metro.fromJson(
+                  .map((value) => Metro.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -22372,7 +22339,7 @@ class MobileAppsListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           mobileApps: _json.containsKey('mobileApps')
               ? (_json['mobileApps'] as core.List)
-                  .map<MobileApp>((value) => MobileApp.fromJson(
+                  .map((value) => MobileApp.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -22458,7 +22425,7 @@ class MobileCarriersListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           mobileCarriers: _json.containsKey('mobileCarriers')
               ? (_json['mobileCarriers'] as core.List)
-                  .map<MobileCarrier>((value) => MobileCarrier.fromJson(
+                  .map((value) => MobileCarrier.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -22595,7 +22562,7 @@ class ObjectFilter {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           objectIds: _json.containsKey('objectIds')
               ? (_json['objectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           status: _json.containsKey('status')
@@ -22806,9 +22773,8 @@ class OperatingSystemVersionsListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           operatingSystemVersions: _json.containsKey('operatingSystemVersions')
               ? (_json['operatingSystemVersions'] as core.List)
-                  .map<OperatingSystemVersion>((value) =>
-                      OperatingSystemVersion.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperatingSystemVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -22841,7 +22807,7 @@ class OperatingSystemsListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           operatingSystems: _json.containsKey('operatingSystems')
               ? (_json['operatingSystems'] as core.List)
-                  .map<OperatingSystem>((value) => OperatingSystem.fromJson(
+                  .map((value) => OperatingSystem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -23004,7 +22970,7 @@ class Order {
               : null,
           approverUserProfileIds: _json.containsKey('approverUserProfileIds')
               ? (_json['approverUserProfileIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           buyerInvoiceId: _json.containsKey('buyerInvoiceId')
@@ -23018,7 +22984,7 @@ class Order {
               : null,
           contacts: _json.containsKey('contacts')
               ? (_json['contacts'] as core.List)
-                  .map<OrderContact>((value) => OrderContact.fromJson(
+                  .map((value) => OrderContact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -23045,12 +23011,12 @@ class Order {
               : null,
           siteId: _json.containsKey('siteId')
               ? (_json['siteId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           siteNames: _json.containsKey('siteNames')
               ? (_json['siteNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           subaccountId: _json.containsKey('subaccountId')
@@ -23244,7 +23210,7 @@ class OrderDocument {
           approvedByUserProfileIds:
               _json.containsKey('approvedByUserProfileIds')
                   ? (_json['approvedByUserProfileIds'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           cancelled: _json.containsKey('cancelled')
@@ -23261,7 +23227,7 @@ class OrderDocument {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           lastSentRecipients: _json.containsKey('lastSentRecipients')
               ? (_json['lastSentRecipients'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           lastSentTime: _json.containsKey('lastSentTime')
@@ -23337,7 +23303,7 @@ class OrderDocumentsListResponse {
               : null,
           orderDocuments: _json.containsKey('orderDocuments')
               ? (_json['orderDocuments'] as core.List)
-                  .map<OrderDocument>((value) => OrderDocument.fromJson(
+                  .map((value) => OrderDocument.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -23379,7 +23345,7 @@ class OrdersListResponse {
               : null,
           orders: _json.containsKey('orders')
               ? (_json['orders'] as core.List)
-                  .map<Order>((value) => Order.fromJson(
+                  .map((value) => Order.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -23424,7 +23390,7 @@ class PathFilter {
       : this(
           eventFilters: _json.containsKey('eventFilters')
               ? (_json['eventFilters'] as core.List)
-                  .map<EventFilter>((value) => EventFilter.fromJson(
+                  .map((value) => EventFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -23477,26 +23443,26 @@ class PathReportCompatibleFields {
       : this(
           channelGroupings: _json.containsKey('channelGroupings')
               ? (_json['channelGroupings'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pathFilters: _json.containsKey('pathFilters')
               ? (_json['pathFilters'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -23559,7 +23525,7 @@ class PathReportDimensionValue {
               : null,
           ids: _json.containsKey('ids')
               ? (_json['ids'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -23568,7 +23534,7 @@ class PathReportDimensionValue {
               : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -23617,28 +23583,28 @@ class PathToConversionReportCompatibleFields {
       : this(
           conversionDimensions: _json.containsKey('conversionDimensions')
               ? (_json['conversionDimensions'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           customFloodlightVariables:
               _json.containsKey('customFloodlightVariables')
                   ? (_json['customFloodlightVariables'] as core.List)
-                      .map<Dimension>((value) => Dimension.fromJson(
+                      .map((value) => Dimension.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           perInteractionDimensions:
               _json.containsKey('perInteractionDimensions')
                   ? (_json['perInteractionDimensions'] as core.List)
-                      .map<Dimension>((value) => Dimension.fromJson(
+                      .map((value) => Dimension.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
@@ -23959,7 +23925,7 @@ class Placement {
               : null,
           additionalSizes: _json.containsKey('additionalSizes')
               ? (_json['additionalSizes'] as core.List)
-                  .map<Size>((value) => Size.fromJson(
+                  .map((value) => Size.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -24074,7 +24040,7 @@ class Placement {
               : null,
           tagFormats: _json.containsKey('tagFormats')
               ? (_json['tagFormats'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           tagSetting: _json.containsKey('tagSetting')
@@ -24402,7 +24368,7 @@ class PlacementGroup {
                   : null,
           childPlacementIds: _json.containsKey('childPlacementIds')
               ? (_json['childPlacementIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           comment: _json.containsKey('comment')
@@ -24538,7 +24504,7 @@ class PlacementGroupsListResponse {
               : null,
           placementGroups: _json.containsKey('placementGroups')
               ? (_json['placementGroups'] as core.List)
-                  .map<PlacementGroup>((value) => PlacementGroup.fromJson(
+                  .map((value) => PlacementGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -24580,7 +24546,7 @@ class PlacementStrategiesListResponse {
               : null,
           placementStrategies: _json.containsKey('placementStrategies')
               ? (_json['placementStrategies'] as core.List)
-                  .map<PlacementStrategy>((value) => PlacementStrategy.fromJson(
+                  .map((value) => PlacementStrategy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -24662,7 +24628,7 @@ class PlacementTag {
               : null,
           tagDatas: _json.containsKey('tagDatas')
               ? (_json['tagDatas'] as core.List)
-                  .map<TagData>((value) => TagData.fromJson(
+                  .map((value) => TagData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -24695,7 +24661,7 @@ class PlacementsGenerateTagsResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           placementTags: _json.containsKey('placementTags')
               ? (_json['placementTags'] as core.List)
-                  .map<PlacementTag>((value) => PlacementTag.fromJson(
+                  .map((value) => PlacementTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -24736,7 +24702,7 @@ class PlacementsListResponse {
               : null,
           placements: _json.containsKey('placements')
               ? (_json['placements'] as core.List)
-                  .map<Placement>((value) => Placement.fromJson(
+                  .map((value) => Placement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -24803,7 +24769,7 @@ class PlatformTypesListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           platformTypes: _json.containsKey('platformTypes')
               ? (_json['platformTypes'] as core.List)
-                  .map<PlatformType>((value) => PlatformType.fromJson(
+                  .map((value) => PlatformType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -24982,7 +24948,7 @@ class PostalCodesListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           postalCodes: _json.containsKey('postalCodes')
               ? (_json['postalCodes'] as core.List)
-                  .map<PostalCode>((value) => PostalCode.fromJson(
+                  .map((value) => PostalCode.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -25057,7 +25023,7 @@ class Pricing {
               : null,
           flights: _json.containsKey('flights')
               ? (_json['flights'] as core.List)
-                  .map<Flight>((value) => Flight.fromJson(
+                  .map((value) => Flight.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -25152,9 +25118,8 @@ class PricingSchedule {
               : null,
           pricingPeriods: _json.containsKey('pricingPeriods')
               ? (_json['pricingPeriods'] as core.List)
-                  .map<PricingSchedulePricingPeriod>((value) =>
-                      PricingSchedulePricingPeriod.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PricingSchedulePricingPeriod.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pricingType: _json.containsKey('pricingType')
@@ -25480,7 +25445,7 @@ class ProjectsListResponse {
               : null,
           projects: _json.containsKey('projects')
               ? (_json['projects'] as core.List)
-                  .map<Project>((value) => Project.fromJson(
+                  .map((value) => Project.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -25534,32 +25499,32 @@ class ReachReportCompatibleFields {
       : this(
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pivotedActivityMetrics: _json.containsKey('pivotedActivityMetrics')
               ? (_json['pivotedActivityMetrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           reachByFrequencyMetrics: _json.containsKey('reachByFrequencyMetrics')
               ? (_json['reachByFrequencyMetrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -25699,7 +25664,7 @@ class RegionsListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           regions: _json.containsKey('regions')
               ? (_json['regions'] as core.List)
-                  .map<Region>((value) => Region.fromJson(
+                  .map((value) => Region.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -25904,12 +25869,12 @@ class RemarketingListShare {
               : null,
           sharedAccountIds: _json.containsKey('sharedAccountIds')
               ? (_json['sharedAccountIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sharedAdvertiserIds: _json.containsKey('sharedAdvertiserIds')
               ? (_json['sharedAdvertiserIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -25950,7 +25915,7 @@ class RemarketingListsListResponse {
               : null,
           remarketingLists: _json.containsKey('remarketingLists')
               ? (_json['remarketingLists'] as core.List)
-                  .map<RemarketingList>((value) => RemarketingList.fromJson(
+                  .map((value) => RemarketingList.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26013,19 +25978,19 @@ class ReportCriteria {
               : null,
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<SortedDimension>((value) => SortedDimension.fromJson(
+                  .map((value) => SortedDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           metricNames: _json.containsKey('metricNames')
               ? (_json['metricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -26088,7 +26053,7 @@ class ReportCrossDimensionReachCriteria {
       : this(
           breakdown: _json.containsKey('breakdown')
               ? (_json['breakdown'] as core.List)
-                  .map<SortedDimension>((value) => SortedDimension.fromJson(
+                  .map((value) => SortedDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26101,18 +26066,18 @@ class ReportCrossDimensionReachCriteria {
               : null,
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           metricNames: _json.containsKey('metricNames')
               ? (_json['metricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           overlapMetricNames: _json.containsKey('overlapMetricNames')
               ? (_json['overlapMetricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pivoted: _json.containsKey('pivoted')
@@ -26172,7 +26137,7 @@ class ReportDelivery {
               : null,
           recipients: _json.containsKey('recipients')
               ? (_json['recipients'] as core.List)
-                  .map<Recipient>((value) => Recipient.fromJson(
+                  .map((value) => Recipient.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26283,7 +26248,7 @@ class ReportFloodlightCriteria {
       : this(
           customRichMediaEvents: _json.containsKey('customRichMediaEvents')
               ? (_json['customRichMediaEvents'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26293,13 +26258,13 @@ class ReportFloodlightCriteria {
               : null,
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<SortedDimension>((value) => SortedDimension.fromJson(
+                  .map((value) => SortedDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26309,7 +26274,7 @@ class ReportFloodlightCriteria {
               : null,
           metricNames: _json.containsKey('metricNames')
               ? (_json['metricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           reportProperties: _json.containsKey('reportProperties')
@@ -26377,7 +26342,7 @@ class ReportPathAttributionCriteria {
       : this(
           activityFilters: _json.containsKey('activityFilters')
               ? (_json['activityFilters'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26391,7 +26356,7 @@ class ReportPathAttributionCriteria {
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<SortedDimension>((value) => SortedDimension.fromJson(
+                  .map((value) => SortedDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26401,12 +26366,12 @@ class ReportPathAttributionCriteria {
               : null,
           metricNames: _json.containsKey('metricNames')
               ? (_json['metricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pathFilters: _json.containsKey('pathFilters')
               ? (_json['pathFilters'] as core.List)
-                  .map<PathFilter>((value) => PathFilter.fromJson(
+                  .map((value) => PathFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26469,7 +26434,7 @@ class ReportPathCriteria {
       : this(
           activityFilters: _json.containsKey('activityFilters')
               ? (_json['activityFilters'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26483,7 +26448,7 @@ class ReportPathCriteria {
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<SortedDimension>((value) => SortedDimension.fromJson(
+                  .map((value) => SortedDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26493,12 +26458,12 @@ class ReportPathCriteria {
               : null,
           metricNames: _json.containsKey('metricNames')
               ? (_json['metricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pathFilters: _json.containsKey('pathFilters')
               ? (_json['pathFilters'] as core.List)
-                  .map<PathFilter>((value) => PathFilter.fromJson(
+                  .map((value) => PathFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26697,26 +26662,26 @@ class ReportPathToConversionCriteria {
       : this(
           activityFilters: _json.containsKey('activityFilters')
               ? (_json['activityFilters'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           conversionDimensions: _json.containsKey('conversionDimensions')
               ? (_json['conversionDimensions'] as core.List)
-                  .map<SortedDimension>((value) => SortedDimension.fromJson(
+                  .map((value) => SortedDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           customFloodlightVariables:
               _json.containsKey('customFloodlightVariables')
                   ? (_json['customFloodlightVariables'] as core.List)
-                      .map<SortedDimension>((value) => SortedDimension.fromJson(
+                      .map((value) => SortedDimension.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           customRichMediaEvents: _json.containsKey('customRichMediaEvents')
               ? (_json['customRichMediaEvents'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26730,13 +26695,13 @@ class ReportPathToConversionCriteria {
               : null,
           metricNames: _json.containsKey('metricNames')
               ? (_json['metricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           perInteractionDimensions:
               _json.containsKey('perInteractionDimensions')
                   ? (_json['perInteractionDimensions'] as core.List)
-                      .map<SortedDimension>((value) => SortedDimension.fromJson(
+                      .map((value) => SortedDimension.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
@@ -26832,13 +26797,13 @@ class ReportReachCriteria {
               : null,
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<DimensionValue>((value) => DimensionValue.fromJson(
+                  .map((value) => DimensionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<SortedDimension>((value) => SortedDimension.fromJson(
+                  .map((value) => SortedDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26848,13 +26813,13 @@ class ReportReachCriteria {
                   : null,
           metricNames: _json.containsKey('metricNames')
               ? (_json['metricNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           reachByFrequencyMetricNames:
               _json.containsKey('reachByFrequencyMetricNames')
                   ? (_json['reachByFrequencyMetricNames'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
         );
@@ -26940,7 +26905,7 @@ class ReportSchedule {
               : null,
           repeatsOnWeekDays: _json.containsKey('repeatsOnWeekDays')
               ? (_json['repeatsOnWeekDays'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           runsOnDayOfMonth: _json.containsKey('runsOnDayOfMonth')
@@ -27201,26 +27166,26 @@ class ReportCompatibleFields {
       : this(
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pivotedActivityMetrics: _json.containsKey('pivotedActivityMetrics')
               ? (_json['pivotedActivityMetrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -27271,7 +27236,7 @@ class ReportList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Report>((value) => Report.fromJson(
+                  .map((value) => Report.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -27552,7 +27517,7 @@ class Site {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           siteContacts: _json.containsKey('siteContacts')
               ? (_json['siteContacts'] as core.List)
-                  .map<SiteContact>((value) => SiteContact.fromJson(
+                  .map((value) => SiteContact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -27622,7 +27587,7 @@ class SiteCompanionSetting {
               : null,
           enabledSizes: _json.containsKey('enabledSizes')
               ? (_json['enabledSizes'] as core.List)
-                  .map<Size>((value) => Size.fromJson(
+                  .map((value) => Size.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -27885,7 +27850,7 @@ class SiteTranscodeSetting {
       : this(
           enabledVideoFormats: _json.containsKey('enabledVideoFormats')
               ? (_json['enabledVideoFormats'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -28014,7 +27979,7 @@ class SitesListResponse {
               : null,
           sites: _json.containsKey('sites')
               ? (_json['sites'] as core.List)
-                  .map<Site>((value) => Site.fromJson(
+                  .map((value) => Site.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -28102,7 +28067,7 @@ class SizesListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           sizes: _json.containsKey('sizes')
               ? (_json['sizes'] as core.List)
-                  .map<Size>((value) => Size.fromJson(
+                  .map((value) => Size.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -28245,7 +28210,7 @@ class Subaccount {
               : null,
           availablePermissionIds: _json.containsKey('availablePermissionIds')
               ? (_json['availablePermissionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -28290,7 +28255,7 @@ class SubaccountsListResponse {
               : null,
           subaccounts: _json.containsKey('subaccounts')
               ? (_json['subaccounts'] as core.List)
-                  .map<Subaccount>((value) => Subaccount.fromJson(
+                  .map((value) => Subaccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -28673,9 +28638,8 @@ class TargetableRemarketingListsListResponse {
           targetableRemarketingLists:
               _json.containsKey('targetableRemarketingLists')
                   ? (_json['targetableRemarketingLists'] as core.List)
-                      .map<TargetableRemarketingList>((value) =>
-                          TargetableRemarketingList.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => TargetableRemarketingList.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
         );
@@ -28865,7 +28829,7 @@ class TargetingTemplatesListResponse {
               : null,
           targetingTemplates: _json.containsKey('targetingTemplates')
               ? (_json['targetingTemplates'] as core.List)
-                  .map<TargetingTemplate>((value) => TargetingTemplate.fromJson(
+                  .map((value) => TargetingTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -28941,38 +28905,37 @@ class TechnologyTargeting {
       : this(
           browsers: _json.containsKey('browsers')
               ? (_json['browsers'] as core.List)
-                  .map<Browser>((value) => Browser.fromJson(
+                  .map((value) => Browser.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           connectionTypes: _json.containsKey('connectionTypes')
               ? (_json['connectionTypes'] as core.List)
-                  .map<ConnectionType>((value) => ConnectionType.fromJson(
+                  .map((value) => ConnectionType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           mobileCarriers: _json.containsKey('mobileCarriers')
               ? (_json['mobileCarriers'] as core.List)
-                  .map<MobileCarrier>((value) => MobileCarrier.fromJson(
+                  .map((value) => MobileCarrier.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           operatingSystemVersions: _json.containsKey('operatingSystemVersions')
               ? (_json['operatingSystemVersions'] as core.List)
-                  .map<OperatingSystemVersion>((value) =>
-                      OperatingSystemVersion.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperatingSystemVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           operatingSystems: _json.containsKey('operatingSystems')
               ? (_json['operatingSystems'] as core.List)
-                  .map<OperatingSystem>((value) => OperatingSystem.fromJson(
+                  .map((value) => OperatingSystem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           platformTypes: _json.containsKey('platformTypes')
               ? (_json['platformTypes'] as core.List)
-                  .map<PlatformType>((value) => PlatformType.fromJson(
+                  .map((value) => PlatformType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -29095,7 +29058,7 @@ class TranscodeSetting {
       : this(
           enabledVideoFormats: _json.containsKey('enabledVideoFormats')
               ? (_json['enabledVideoFormats'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -29397,7 +29360,7 @@ class UserProfileList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<UserProfile>((value) => UserProfile.fromJson(
+                  .map((value) => UserProfile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -29485,9 +29448,8 @@ class UserRole {
               : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<UserRolePermission>((value) =>
-                      UserRolePermission.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UserRolePermission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           subaccountId: _json.containsKey('subaccountId')
@@ -29619,9 +29581,8 @@ class UserRolePermissionGroupsListResponse {
           userRolePermissionGroups:
               _json.containsKey('userRolePermissionGroups')
                   ? (_json['userRolePermissionGroups'] as core.List)
-                      .map<UserRolePermissionGroup>((value) =>
-                          UserRolePermissionGroup.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => UserRolePermissionGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
         );
@@ -29654,9 +29615,8 @@ class UserRolePermissionsListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           userRolePermissions: _json.containsKey('userRolePermissions')
               ? (_json['userRolePermissions'] as core.List)
-                  .map<UserRolePermission>((value) =>
-                      UserRolePermission.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UserRolePermission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -29696,7 +29656,7 @@ class UserRolesListResponse {
               : null,
           userRoles: _json.containsKey('userRoles')
               ? (_json['userRoles'] as core.List)
-                  .map<UserRole>((value) => UserRole.fromJson(
+                  .map((value) => UserRole.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -29788,7 +29748,7 @@ class VideoFormatsListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           videoFormats: _json.containsKey('videoFormats')
               ? (_json['videoFormats'] as core.List)
-                  .map<VideoFormat>((value) => VideoFormat.fromJson(
+                  .map((value) => VideoFormat.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

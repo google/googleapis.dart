@@ -156,7 +156,7 @@ void checkFile(api.File o) {
   buildCounterFile--;
 }
 
-core.List<core.Object> buildUnnamed2() => [
+core.List<core.Object?> buildUnnamed2() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -169,7 +169,7 @@ core.List<core.Object> buildUnnamed2() => [
       },
     ];
 
-void checkUnnamed2(core.List<core.Object> o) {
+void checkUnnamed2(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted2 = (o[0]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));

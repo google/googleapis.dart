@@ -3849,7 +3849,7 @@ void checkStartIPRotationRequest(api.StartIPRotationRequest o) {
   buildCounterStartIPRotationRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed47() => {
+core.Map<core.String, core.Object?> buildUnnamed47() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3862,7 +3862,7 @@ core.Map<core.String, core.Object> buildUnnamed47() => {
       },
     };
 
-void checkUnnamed47(core.Map<core.String, core.Object> o) {
+void checkUnnamed47(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -3894,12 +3894,12 @@ void checkUnnamed47(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed48() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed48() => [
       buildUnnamed47(),
       buildUnnamed47(),
     ];
 
-void checkUnnamed48(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed48(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed47(o[0]);
   checkUnnamed47(o[1]);

@@ -187,7 +187,7 @@ class NotificationSetting {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           notificationTypes: _json.containsKey('notificationTypes')
               ? (_json['notificationTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pubsubTopic: _json.containsKey('pubsubTopic')

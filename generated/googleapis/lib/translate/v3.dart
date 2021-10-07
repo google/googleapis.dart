@@ -1055,7 +1055,7 @@ class BatchTranslateTextRequest {
               : null,
           inputConfigs: _json.containsKey('inputConfigs')
               ? (_json['inputConfigs'] as core.List)
-                  .map<InputConfig>((value) => InputConfig.fromJson(
+                  .map((value) => InputConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1084,7 +1084,7 @@ class BatchTranslateTextRequest {
               : null,
           targetLanguageCodes: _json.containsKey('targetLanguageCodes')
               ? (_json['targetLanguageCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1193,7 +1193,7 @@ class DetectLanguageResponse {
       : this(
           languages: _json.containsKey('languages')
               ? (_json['languages'] as core.List)
-                  .map<DetectedLanguage>((value) => DetectedLanguage.fromJson(
+                  .map((value) => DetectedLanguage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1526,7 +1526,7 @@ class LanguageCodesSet {
       : this(
           languageCodes: _json.containsKey('languageCodes')
               ? (_json['languageCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1557,7 +1557,7 @@ class ListGlossariesResponse {
       : this(
           glossaries: _json.containsKey('glossaries')
               ? (_json['glossaries'] as core.List)
-                  .map<Glossary>((value) => Glossary.fromJson(
+                  .map((value) => Glossary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1590,7 +1590,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1626,7 +1626,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1662,7 +1662,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -1694,12 +1694,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -1734,7 +1729,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -1754,7 +1749,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -1772,21 +1767,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1886,7 +1871,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1905,13 +1890,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -1993,7 +1972,7 @@ class SupportedLanguages {
       : this(
           languages: _json.containsKey('languages')
               ? (_json['languages'] as core.List)
-                  .map<SupportedLanguage>((value) => SupportedLanguage.fromJson(
+                  .map((value) => SupportedLanguage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2125,7 +2104,7 @@ class TranslateTextRequest {
       : this(
           contents: _json.containsKey('contents')
               ? (_json['contents'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           glossaryConfig: _json.containsKey('glossaryConfig')
@@ -2187,13 +2166,13 @@ class TranslateTextResponse {
       : this(
           glossaryTranslations: _json.containsKey('glossaryTranslations')
               ? (_json['glossaryTranslations'] as core.List)
-                  .map<Translation>((value) => Translation.fromJson(
+                  .map((value) => Translation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           translations: _json.containsKey('translations')
               ? (_json['translations'] as core.List)
-                  .map<Translation>((value) => Translation.fromJson(
+                  .map((value) => Translation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

@@ -292,7 +292,7 @@ class GenerateAccessTokenRequest {
       : this(
           delegates: _json.containsKey('delegates')
               ? (_json['delegates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           lifetime: _json.containsKey('lifetime')
@@ -300,7 +300,7 @@ class GenerateAccessTokenRequest {
               : null,
           scope: _json.containsKey('scope')
               ? (_json['scope'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -380,7 +380,7 @@ class GenerateIdTokenRequest {
               : null,
           delegates: _json.containsKey('delegates')
               ? (_json['delegates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           includeEmail: _json.containsKey('includeEmail')
@@ -447,7 +447,7 @@ class SignBlobRequest {
       : this(
           delegates: _json.containsKey('delegates')
               ? (_json['delegates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           payload: _json.containsKey('payload')
@@ -542,7 +542,7 @@ class SignJwtRequest {
       : this(
           delegates: _json.containsKey('delegates')
               ? (_json['delegates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           payload: _json.containsKey('payload')

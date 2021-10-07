@@ -668,7 +668,7 @@ class ErrorProto {
       : this(
           argument: _json.containsKey('argument')
               ? (_json['argument'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
@@ -738,7 +738,7 @@ class Errors {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           error: _json.containsKey('error')
               ? (_json['error'] as core.List)
-                  .map<ErrorProto>((value) => ErrorProto.fromJson(
+                  .map((value) => ErrorProto.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1011,7 +1011,7 @@ class ListGroupItemsResponse {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GroupItem>((value) => GroupItem.fromJson(
+                  .map((value) => GroupItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1066,7 +1066,7 @@ class ListGroupsResponse {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Group>((value) => Group.fromJson(
+                  .map((value) => Group.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1122,7 +1122,7 @@ class QueryResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>>? rows;
+  core.List<core.List<core.Object?>>? rows;
 
   QueryResponse({
     this.columnHeaders,
@@ -1135,9 +1135,8 @@ class QueryResponse {
       : this(
           columnHeaders: _json.containsKey('columnHeaders')
               ? (_json['columnHeaders'] as core.List)
-                  .map<ResultTableColumnHeader>((value) =>
-                      ResultTableColumnHeader.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResultTableColumnHeader.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           errors: _json.containsKey('errors')
@@ -1147,9 +1146,7 @@ class QueryResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<core.List<core.Object>>((value) => (value as core.List)
-                      .map<core.Object>((value) => value as core.Object)
-                      .toList())
+                  .map((value) => value as core.List)
                   .toList()
               : null,
         );

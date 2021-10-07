@@ -2135,7 +2135,7 @@ class GoogleCloudRecommenderV1Insight {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? content;
+  core.Map<core.String, core.Object?>? content;
 
   /// Free-form human readable summary in English.
   ///
@@ -2196,26 +2196,20 @@ class GoogleCloudRecommenderV1Insight {
 
   GoogleCloudRecommenderV1Insight.fromJson(core.Map _json)
       : this(
-          associatedRecommendations: _json
-                  .containsKey('associatedRecommendations')
-              ? (_json['associatedRecommendations'] as core.List)
-                  .map<GoogleCloudRecommenderV1InsightRecommendationReference>(
-                      (value) =>
+          associatedRecommendations:
+              _json.containsKey('associatedRecommendations')
+                  ? (_json['associatedRecommendations'] as core.List)
+                      .map((value) =>
                           GoogleCloudRecommenderV1InsightRecommendationReference
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                      .toList()
+                  : null,
           category: _json.containsKey('category')
               ? _json['category'] as core.String
               : null,
           content: _json.containsKey('content')
-              ? (_json['content'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['content'] as core.Map<core.String, core.dynamic>
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
@@ -2240,7 +2234,7 @@ class GoogleCloudRecommenderV1Insight {
               : null,
           targetResources: _json.containsKey('targetResources')
               ? (_json['targetResources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2351,9 +2345,8 @@ class GoogleCloudRecommenderV1ListInsightsResponse {
       : this(
           insights: _json.containsKey('insights')
               ? (_json['insights'] as core.List)
-                  .map<GoogleCloudRecommenderV1Insight>((value) =>
-                      GoogleCloudRecommenderV1Insight.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudRecommenderV1Insight.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -2390,7 +2383,7 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
               : null,
           recommendations: _json.containsKey('recommendations')
               ? (_json['recommendations'] as core.List)
-                  .map<GoogleCloudRecommenderV1Recommendation>((value) =>
+                  .map((value) =>
                       GoogleCloudRecommenderV1Recommendation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2606,7 +2599,7 @@ class GoogleCloudRecommenderV1Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? pathFilters;
+  core.Map<core.String, core.Object?>? pathFilters;
 
   /// Similar to path_filters, this contains set of filters to apply if `path`
   /// field refers to array elements.
@@ -2679,13 +2672,7 @@ class GoogleCloudRecommenderV1Operation {
               : null,
           path: _json.containsKey('path') ? _json['path'] as core.String : null,
           pathFilters: _json.containsKey('pathFilters')
-              ? (_json['pathFilters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['pathFilters'] as core.Map<core.String, core.dynamic>
               : null,
           pathValueMatchers: _json.containsKey('pathValueMatchers')
               ? (_json['pathValueMatchers']
@@ -2710,8 +2697,7 @@ class GoogleCloudRecommenderV1Operation {
           sourceResource: _json.containsKey('sourceResource')
               ? _json['sourceResource'] as core.String
               : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.Object : null,
+          value: _json.containsKey('value') ? _json['value'] : null,
           valueMatcher: _json.containsKey('valueMatcher')
               ? GoogleCloudRecommenderV1ValueMatcher.fromJson(
                   _json['valueMatcher'] as core.Map<core.String, core.dynamic>)
@@ -2749,9 +2735,8 @@ class GoogleCloudRecommenderV1OperationGroup {
       : this(
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<GoogleCloudRecommenderV1Operation>((value) =>
-                      GoogleCloudRecommenderV1Operation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudRecommenderV1Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2844,18 +2829,16 @@ class GoogleCloudRecommenderV1Recommendation {
       : this(
           additionalImpact: _json.containsKey('additionalImpact')
               ? (_json['additionalImpact'] as core.List)
-                  .map<GoogleCloudRecommenderV1Impact>((value) =>
-                      GoogleCloudRecommenderV1Impact.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudRecommenderV1Impact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           associatedInsights: _json.containsKey('associatedInsights')
               ? (_json['associatedInsights'] as core.List)
-                  .map<GoogleCloudRecommenderV1RecommendationInsightReference>(
-                      (value) =>
-                          GoogleCloudRecommenderV1RecommendationInsightReference
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudRecommenderV1RecommendationInsightReference
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           content: _json.containsKey('content')
@@ -2917,7 +2900,7 @@ class GoogleCloudRecommenderV1RecommendationContent {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? overview;
+  core.Map<core.String, core.Object?>? overview;
 
   GoogleCloudRecommenderV1RecommendationContent({
     this.operationGroups,
@@ -2928,18 +2911,13 @@ class GoogleCloudRecommenderV1RecommendationContent {
       : this(
           operationGroups: _json.containsKey('operationGroups')
               ? (_json['operationGroups'] as core.List)
-                  .map<GoogleCloudRecommenderV1OperationGroup>((value) =>
+                  .map((value) =>
                       GoogleCloudRecommenderV1OperationGroup.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           overview: _json.containsKey('overview')
-              ? (_json['overview'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['overview'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3033,7 +3011,7 @@ class GoogleCloudRecommenderV1SecurityProjection {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? details;
+  core.Map<core.String, core.Object?>? details;
 
   GoogleCloudRecommenderV1SecurityProjection({
     this.details,
@@ -3042,12 +3020,7 @@ class GoogleCloudRecommenderV1SecurityProjection {
   GoogleCloudRecommenderV1SecurityProjection.fromJson(core.Map _json)
       : this(
           details: _json.containsKey('details')
-              ? (_json['details'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['details'] as core.Map<core.String, core.dynamic>
               : null,
         );
 

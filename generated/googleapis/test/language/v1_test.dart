@@ -763,7 +763,7 @@ void checkSentiment(api.Sentiment o) {
   buildCounterSentiment--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed12() => {
+core.Map<core.String, core.Object?> buildUnnamed12() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -776,7 +776,7 @@ core.Map<core.String, core.Object> buildUnnamed12() => {
       },
     };
 
-void checkUnnamed12(core.Map<core.String, core.Object> o) {
+void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -808,12 +808,12 @@ void checkUnnamed12(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed13() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed13() => [
       buildUnnamed12(),
       buildUnnamed12(),
     ];
 
-void checkUnnamed13(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed13(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed12(o[0]);
   checkUnnamed12(o[1]);

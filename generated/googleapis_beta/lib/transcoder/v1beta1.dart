@@ -709,7 +709,7 @@ class AudioAtom {
       : this(
           channels: _json.containsKey('channels')
               ? (_json['channels'] as core.List)
-                  .map<AudioChannel>((value) => AudioChannel.fromJson(
+                  .map((value) => AudioChannel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -736,7 +736,7 @@ class AudioChannel {
       : this(
           inputs: _json.containsKey('inputs')
               ? (_json['inputs'] as core.List)
-                  .map<AudioChannelInput>((value) => AudioChannelInput.fromJson(
+                  .map((value) => AudioChannelInput.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -854,14 +854,14 @@ class AudioStream {
               : null,
           channelLayout: _json.containsKey('channelLayout')
               ? (_json['channelLayout'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           codec:
               _json.containsKey('codec') ? _json['codec'] as core.String : null,
           mapping: _json.containsKey('mapping')
               ? (_json['mapping'] as core.List)
-                  .map<AudioAtom>((value) => AudioAtom.fromJson(
+                  .map((value) => AudioAtom.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1086,7 +1086,7 @@ class EditAtom {
               : null,
           inputs: _json.containsKey('inputs')
               ? (_json['inputs'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
@@ -1464,7 +1464,7 @@ class Job {
               : null,
           failureDetails: _json.containsKey('failureDetails')
               ? (_json['failureDetails'] as core.List)
-                  .map<FailureDetail>((value) => FailureDetail.fromJson(
+                  .map((value) => FailureDetail.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1577,37 +1577,37 @@ class JobConfig {
       : this(
           adBreaks: _json.containsKey('adBreaks')
               ? (_json['adBreaks'] as core.List)
-                  .map<AdBreak>((value) => AdBreak.fromJson(
+                  .map((value) => AdBreak.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           editList: _json.containsKey('editList')
               ? (_json['editList'] as core.List)
-                  .map<EditAtom>((value) => EditAtom.fromJson(
+                  .map((value) => EditAtom.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           elementaryStreams: _json.containsKey('elementaryStreams')
               ? (_json['elementaryStreams'] as core.List)
-                  .map<ElementaryStream>((value) => ElementaryStream.fromJson(
+                  .map((value) => ElementaryStream.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           inputs: _json.containsKey('inputs')
               ? (_json['inputs'] as core.List)
-                  .map<Input>((value) => Input.fromJson(
+                  .map((value) => Input.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           manifests: _json.containsKey('manifests')
               ? (_json['manifests'] as core.List)
-                  .map<Manifest>((value) => Manifest.fromJson(
+                  .map((value) => Manifest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           muxStreams: _json.containsKey('muxStreams')
               ? (_json['muxStreams'] as core.List)
-                  .map<MuxStream>((value) => MuxStream.fromJson(
+                  .map((value) => MuxStream.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1617,7 +1617,7 @@ class JobConfig {
               : null,
           overlays: _json.containsKey('overlays')
               ? (_json['overlays'] as core.List)
-                  .map<Overlay>((value) => Overlay.fromJson(
+                  .map((value) => Overlay.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1627,7 +1627,7 @@ class JobConfig {
               : null,
           spriteSheets: _json.containsKey('spriteSheets')
               ? (_json['spriteSheets'] as core.List)
-                  .map<SpriteSheet>((value) => SpriteSheet.fromJson(
+                  .map((value) => SpriteSheet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1705,7 +1705,7 @@ class ListJobTemplatesResponse {
       : this(
           jobTemplates: _json.containsKey('jobTemplates')
               ? (_json['jobTemplates'] as core.List)
-                  .map<JobTemplate>((value) => JobTemplate.fromJson(
+                  .map((value) => JobTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1738,7 +1738,7 @@ class ListJobsResponse {
       : this(
           jobs: _json.containsKey('jobs')
               ? (_json['jobs'] as core.List)
-                  .map<Job>((value) => Job.fromJson(
+                  .map((value) => Job.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1794,7 +1794,7 @@ class Manifest {
               : null,
           muxStreams: _json.containsKey('muxStreams')
               ? (_json['muxStreams'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
@@ -1889,7 +1889,7 @@ class MuxStream {
               : null,
           elementaryStreams: _json.containsKey('elementaryStreams')
               ? (_json['elementaryStreams'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           encryption: _json.containsKey('encryption')
@@ -2018,7 +2018,7 @@ class Overlay {
       : this(
           animations: _json.containsKey('animations')
               ? (_json['animations'] as core.List)
-                  .map<Animation>((value) => Animation.fromJson(
+                  .map((value) => Animation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2452,7 +2452,7 @@ class TextAtom {
       : this(
           inputs: _json.containsKey('inputs')
               ? (_json['inputs'] as core.List)
-                  .map<TextInput>((value) => TextInput.fromJson(
+                  .map((value) => TextInput.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2531,7 +2531,7 @@ class TextStream {
               : null,
           mapping: _json.containsKey('mapping')
               ? (_json['mapping'] as core.List)
-                  .map<TextAtom>((value) => TextAtom.fromJson(
+                  .map((value) => TextAtom.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

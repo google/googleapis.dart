@@ -325,9 +325,8 @@ class Application {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           transferParams: _json.containsKey('transferParams')
               ? (_json['transferParams'] as core.List)
-                  .map<ApplicationTransferParam>((value) =>
-                      ApplicationTransferParam.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApplicationTransferParam.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -373,9 +372,8 @@ class ApplicationDataTransfer {
           applicationTransferParams:
               _json.containsKey('applicationTransferParams')
                   ? (_json['applicationTransferParams'] as core.List)
-                      .map<ApplicationTransferParam>((value) =>
-                          ApplicationTransferParam.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => ApplicationTransferParam.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           applicationTransferStatus:
@@ -417,7 +415,7 @@ class ApplicationTransferParam {
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
           value: _json.containsKey('value')
               ? (_json['value'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -454,7 +452,7 @@ class ApplicationsListResponse {
       : this(
           applications: _json.containsKey('applications')
               ? (_json['applications'] as core.List)
-                  .map<Application>((value) => Application.fromJson(
+                  .map((value) => Application.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -522,9 +520,8 @@ class DataTransfer {
           applicationDataTransfers:
               _json.containsKey('applicationDataTransfers')
                   ? (_json['applicationDataTransfers'] as core.List)
-                      .map<ApplicationDataTransfer>((value) =>
-                          ApplicationDataTransfer.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => ApplicationDataTransfer.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
@@ -585,7 +582,7 @@ class DataTransfersListResponse {
       : this(
           dataTransfers: _json.containsKey('dataTransfers')
               ? (_json['dataTransfers'] as core.List)
-                  .map<DataTransfer>((value) => DataTransfer.fromJson(
+                  .map((value) => DataTransfer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

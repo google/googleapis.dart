@@ -487,7 +487,7 @@ void checkUnnamed6(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed7() => {
+core.Map<core.String, core.Object?> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -500,7 +500,7 @@ core.Map<core.String, core.Object> buildUnnamed7() => {
       },
     };
 
-void checkUnnamed7(core.Map<core.String, core.Object> o) {
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -884,7 +884,7 @@ void checkStackdriverLoggingConfig(api.StackdriverLoggingConfig o) {
   buildCounterStackdriverLoggingConfig--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed9() => {
+core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -897,7 +897,7 @@ core.Map<core.String, core.Object> buildUnnamed9() => {
       },
     };
 
-void checkUnnamed9(core.Map<core.String, core.Object> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -929,12 +929,12 @@ void checkUnnamed9(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed10() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed10() => [
       buildUnnamed9(),
       buildUnnamed9(),
     ];
 
-void checkUnnamed10(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed10(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed9(o[0]);
   checkUnnamed9(o[1]);

@@ -1531,7 +1531,7 @@ class Account {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           pendingTasks: _json.containsKey('pendingTasks')
               ? (_json['pendingTasks'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           premium: _json.containsKey('premium')
@@ -2028,7 +2028,7 @@ class HttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   HttpBody({
     this.contentType,
@@ -2044,13 +2044,7 @@ class HttpBody {
           data: _json.containsKey('data') ? _json['data'] as core.String : null,
           extensions: _json.containsKey('extensions')
               ? (_json['extensions'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
         );
@@ -2082,7 +2076,7 @@ class ListAccountsResponse {
       : this(
           accounts: _json.containsKey('accounts')
               ? (_json['accounts'] as core.List)
-                  .map<Account>((value) => Account.fromJson(
+                  .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2118,7 +2112,7 @@ class ListAdClientsResponse {
       : this(
           adClients: _json.containsKey('adClients')
               ? (_json['adClients'] as core.List)
-                  .map<AdClient>((value) => AdClient.fromJson(
+                  .map((value) => AdClient.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2154,7 +2148,7 @@ class ListAdUnitsResponse {
       : this(
           adUnits: _json.containsKey('adUnits')
               ? (_json['adUnits'] as core.List)
-                  .map<AdUnit>((value) => AdUnit.fromJson(
+                  .map((value) => AdUnit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2183,7 +2177,7 @@ class ListAlertsResponse {
       : this(
           alerts: _json.containsKey('alerts')
               ? (_json['alerts'] as core.List)
-                  .map<Alert>((value) => Alert.fromJson(
+                  .map((value) => Alert.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2215,7 +2209,7 @@ class ListChildAccountsResponse {
       : this(
           accounts: _json.containsKey('accounts')
               ? (_json['accounts'] as core.List)
-                  .map<Account>((value) => Account.fromJson(
+                  .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2251,7 +2245,7 @@ class ListCustomChannelsResponse {
       : this(
           customChannels: _json.containsKey('customChannels')
               ? (_json['customChannels'] as core.List)
-                  .map<CustomChannel>((value) => CustomChannel.fromJson(
+                  .map((value) => CustomChannel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2288,7 +2282,7 @@ class ListLinkedAdUnitsResponse {
       : this(
           adUnits: _json.containsKey('adUnits')
               ? (_json['adUnits'] as core.List)
-                  .map<AdUnit>((value) => AdUnit.fromJson(
+                  .map((value) => AdUnit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2324,7 +2318,7 @@ class ListLinkedCustomChannelsResponse {
       : this(
           customChannels: _json.containsKey('customChannels')
               ? (_json['customChannels'] as core.List)
-                  .map<CustomChannel>((value) => CustomChannel.fromJson(
+                  .map((value) => CustomChannel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2354,7 +2348,7 @@ class ListPaymentsResponse {
       : this(
           payments: _json.containsKey('payments')
               ? (_json['payments'] as core.List)
-                  .map<Payment>((value) => Payment.fromJson(
+                  .map((value) => Payment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2389,7 +2383,7 @@ class ListSavedReportsResponse {
               : null,
           savedReports: _json.containsKey('savedReports')
               ? (_json['savedReports'] as core.List)
-                  .map<SavedReport>((value) => SavedReport.fromJson(
+                  .map((value) => SavedReport.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2425,7 +2419,7 @@ class ListSitesResponse {
               : null,
           sites: _json.containsKey('sites')
               ? (_json['sites'] as core.List)
-                  .map<Site>((value) => Site.fromJson(
+                  .map((value) => Site.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2461,7 +2455,7 @@ class ListUrlChannelsResponse {
               : null,
           urlChannels: _json.containsKey('urlChannels')
               ? (_json['urlChannels'] as core.List)
-                  .map<UrlChannel>((value) => UrlChannel.fromJson(
+                  .map((value) => UrlChannel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2592,13 +2586,13 @@ class ReportResult {
               : null,
           headers: _json.containsKey('headers')
               ? (_json['headers'] as core.List)
-                  .map<Header>((value) => Header.fromJson(
+                  .map((value) => Header.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<Row>((value) => Row.fromJson(
+                  .map((value) => Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2615,7 +2609,7 @@ class ReportResult {
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2646,7 +2640,7 @@ class Row {
       : this(
           cells: _json.containsKey('cells')
               ? (_json['cells'] as core.List)
-                  .map<Cell>((value) => Cell.fromJson(
+                  .map((value) => Cell.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

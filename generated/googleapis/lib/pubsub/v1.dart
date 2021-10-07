@@ -2111,7 +2111,7 @@ class AcknowledgeRequest {
       : this(
           ackIds: _json.containsKey('ackIds')
               ? (_json['ackIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2184,7 +2184,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -2425,7 +2425,7 @@ class ListSchemasResponse {
               : null,
           schemas: _json.containsKey('schemas')
               ? (_json['schemas'] as core.List)
-                  .map<Schema>((value) => Schema.fromJson(
+                  .map((value) => Schema.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2459,7 +2459,7 @@ class ListSnapshotsResponse {
               : null,
           snapshots: _json.containsKey('snapshots')
               ? (_json['snapshots'] as core.List)
-                  .map<Snapshot>((value) => Snapshot.fromJson(
+                  .map((value) => Snapshot.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2494,7 +2494,7 @@ class ListSubscriptionsResponse {
               : null,
           subscriptions: _json.containsKey('subscriptions')
               ? (_json['subscriptions'] as core.List)
-                  .map<Subscription>((value) => Subscription.fromJson(
+                  .map((value) => Subscription.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2530,7 +2530,7 @@ class ListTopicSnapshotsResponse {
               : null,
           snapshots: _json.containsKey('snapshots')
               ? (_json['snapshots'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2563,7 +2563,7 @@ class ListTopicSubscriptionsResponse {
               : null,
           subscriptions: _json.containsKey('subscriptions')
               ? (_json['subscriptions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2595,7 +2595,7 @@ class ListTopicsResponse {
               : null,
           topics: _json.containsKey('topics')
               ? (_json['topics'] as core.List)
-                  .map<Topic>((value) => Topic.fromJson(
+                  .map((value) => Topic.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2628,7 +2628,7 @@ class MessageStoragePolicy {
           allowedPersistenceRegions:
               _json.containsKey('allowedPersistenceRegions')
                   ? (_json['allowedPersistenceRegions'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
         );
@@ -2672,7 +2672,7 @@ class ModifyAckDeadlineRequest {
               : null,
           ackIds: _json.containsKey('ackIds')
               ? (_json['ackIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2844,7 +2844,7 @@ class Policy {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2877,7 +2877,7 @@ class PublishRequest {
       : this(
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<PubsubMessage>((value) => PubsubMessage.fromJson(
+                  .map((value) => PubsubMessage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2905,7 +2905,7 @@ class PublishResponse {
       : this(
           messageIds: _json.containsKey('messageIds')
               ? (_json['messageIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3066,7 +3066,7 @@ class PullResponse {
       : this(
           receivedMessages: _json.containsKey('receivedMessages')
               ? (_json['receivedMessages'] as core.List)
-                  .map<ReceivedMessage>((value) => ReceivedMessage.fromJson(
+                  .map((value) => ReceivedMessage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3693,7 +3693,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3717,7 +3717,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

@@ -106,6 +106,21 @@
      "additionalProperties": {
       "$ref": "NestedResponse"
      }
+    },
+    "v": {
+     "type": "any"
+    },
+    "msgValue": {
+     "description": "Output only. Nested message value of the parameter.",
+     "items": {
+      "additionalProperties": {
+       "description": "Properties of the object.",
+       "type": "any"
+      },
+      "type": "object"
+     },
+     "readOnly": true,
+     "type": "array"
     }
    }
   },
@@ -125,12 +140,26 @@
     "type": "string"
    }
   },
+  "ListOfAny": {
+   "id": "ListOfAny",
+   "type": "array",
+   "items": {
+    "type": "any"
+   }
+  },
   "MapOfint": {
    "id": "MapOfint",
    "type": "object",
    "additionalProperties": {
     "type": "integer",
     "format": "int32"
+   }
+  },
+  "MapOfAny": {
+   "id": "MapOfAny",
+   "type": "object",
+   "additionalProperties": {
+    "type": "any"
    }
   },
   "MapOfMapOfint": {

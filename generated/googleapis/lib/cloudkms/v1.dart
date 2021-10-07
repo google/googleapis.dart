@@ -2205,7 +2205,7 @@ class AuditConfig {
       : this(
           auditLogConfigs: _json.containsKey('auditLogConfigs')
               ? (_json['auditLogConfigs'] as core.List)
-                  .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+                  .map((value) => AuditLogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2252,7 +2252,7 @@ class AuditLogConfig {
       : this(
           exemptedMembers: _json.containsKey('exemptedMembers')
               ? (_json['exemptedMembers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logType: _json.containsKey('logType')
@@ -2329,7 +2329,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -2366,17 +2366,17 @@ class CertificateChains {
       : this(
           caviumCerts: _json.containsKey('caviumCerts')
               ? (_json['caviumCerts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           googleCardCerts: _json.containsKey('googleCardCerts')
               ? (_json['googleCardCerts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           googlePartitionCerts: _json.containsKey('googlePartitionCerts')
               ? (_json['googlePartitionCerts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3888,7 +3888,7 @@ class ListCryptoKeyVersionsResponse {
       : this(
           cryptoKeyVersions: _json.containsKey('cryptoKeyVersions')
               ? (_json['cryptoKeyVersions'] as core.List)
-                  .map<CryptoKeyVersion>((value) => CryptoKeyVersion.fromJson(
+                  .map((value) => CryptoKeyVersion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3933,7 +3933,7 @@ class ListCryptoKeysResponse {
       : this(
           cryptoKeys: _json.containsKey('cryptoKeys')
               ? (_json['cryptoKeys'] as core.List)
-                  .map<CryptoKey>((value) => CryptoKey.fromJson(
+                  .map((value) => CryptoKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3977,7 +3977,7 @@ class ListImportJobsResponse {
       : this(
           importJobs: _json.containsKey('importJobs')
               ? (_json['importJobs'] as core.List)
-                  .map<ImportJob>((value) => ImportJob.fromJson(
+                  .map((value) => ImportJob.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4021,7 +4021,7 @@ class ListKeyRingsResponse {
       : this(
           keyRings: _json.containsKey('keyRings')
               ? (_json['keyRings'] as core.List)
-                  .map<KeyRing>((value) => KeyRing.fromJson(
+                  .map((value) => KeyRing.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4058,7 +4058,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4097,7 +4097,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -4129,12 +4129,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -4581,13 +4576,13 @@ class Policy {
       : this(
           auditConfigs: _json.containsKey('auditConfigs')
               ? (_json['auditConfigs'] as core.List)
-                  .map<AuditConfig>((value) => AuditConfig.fromJson(
+                  .map((value) => AuditConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4775,7 +4770,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4799,7 +4794,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

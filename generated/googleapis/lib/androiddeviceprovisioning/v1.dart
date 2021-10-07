@@ -1378,7 +1378,7 @@ class ClaimDevicesRequest {
       : this(
           claims: _json.containsKey('claims')
               ? (_json['claims'] as core.List)
-                  .map<PartnerClaim>((value) => PartnerClaim.fromJson(
+                  .map((value) => PartnerClaim.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1491,7 +1491,7 @@ class Company {
       : this(
           adminEmails: _json.containsKey('adminEmails')
               ? (_json['adminEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           companyId: _json.containsKey('companyId')
@@ -1506,7 +1506,7 @@ class Company {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           ownerEmails: _json.containsKey('ownerEmails')
               ? (_json['ownerEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           skipWelcomeEmail: _json.containsKey('skipWelcomeEmail')
@@ -1749,7 +1749,7 @@ class CustomerListConfigurationsResponse {
       : this(
           configurations: _json.containsKey('configurations')
               ? (_json['configurations'] as core.List)
-                  .map<Configuration>((value) => Configuration.fromJson(
+                  .map((value) => Configuration.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1781,7 +1781,7 @@ class CustomerListCustomersResponse {
       : this(
           customers: _json.containsKey('customers')
               ? (_json['customers'] as core.List)
-                  .map<Company>((value) => Company.fromJson(
+                  .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1816,7 +1816,7 @@ class CustomerListDevicesResponse {
       : this(
           devices: _json.containsKey('devices')
               ? (_json['devices'] as core.List)
-                  .map<Device>((value) => Device.fromJson(
+                  .map((value) => Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1846,7 +1846,7 @@ class CustomerListDpcsResponse {
       : this(
           dpcs: _json.containsKey('dpcs')
               ? (_json['dpcs'] as core.List)
-                  .map<Dpc>((value) => Dpc.fromJson(
+                  .map((value) => Dpc.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1960,7 +1960,7 @@ class Device {
       : this(
           claims: _json.containsKey('claims')
               ? (_json['claims'] as core.List)
-                  .map<DeviceClaim>((value) => DeviceClaim.fromJson(
+                  .map((value) => DeviceClaim.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2287,9 +2287,8 @@ class DevicesLongRunningOperationResponse {
       : this(
           perDeviceStatus: _json.containsKey('perDeviceStatus')
               ? (_json['perDeviceStatus'] as core.List)
-                  .map<OperationPerDevice>((value) =>
-                      OperationPerDevice.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperationPerDevice.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           successCount: _json.containsKey('successCount')
@@ -2437,7 +2436,7 @@ class FindDevicesByDeviceIdentifierResponse {
       : this(
           devices: _json.containsKey('devices')
               ? (_json['devices'] as core.List)
-                  .map<Device>((value) => Device.fromJson(
+                  .map((value) => Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2494,7 +2493,7 @@ class FindDevicesByOwnerRequest {
       : this(
           customerId: _json.containsKey('customerId')
               ? (_json['customerId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           limit:
@@ -2538,7 +2537,7 @@ class FindDevicesByOwnerResponse {
       : this(
           devices: _json.containsKey('devices')
               ? (_json['devices'] as core.List)
-                  .map<Device>((value) => Device.fromJson(
+                  .map((value) => Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2581,7 +2580,7 @@ class ListCustomersResponse {
       : this(
           customers: _json.containsKey('customers')
               ? (_json['customers'] as core.List)
-                  .map<Company>((value) => Company.fromJson(
+                  .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2624,7 +2623,7 @@ class ListVendorCustomersResponse {
       : this(
           customers: _json.containsKey('customers')
               ? (_json['customers'] as core.List)
-                  .map<Company>((value) => Company.fromJson(
+                  .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2676,7 +2675,7 @@ class ListVendorsResponse {
               : null,
           vendors: _json.containsKey('vendors')
               ? (_json['vendors'] as core.List)
-                  .map<Company>((value) => Company.fromJson(
+                  .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2712,7 +2711,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2727,7 +2726,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -2745,21 +2744,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3031,7 +3020,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3050,13 +3039,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -3155,7 +3138,7 @@ class UnclaimDevicesRequest {
       : this(
           unclaims: _json.containsKey('unclaims')
               ? (_json['unclaims'] as core.List)
-                  .map<PartnerUnclaim>((value) => PartnerUnclaim.fromJson(
+                  .map((value) => PartnerUnclaim.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3182,9 +3165,8 @@ class UpdateDeviceMetadataInBatchRequest {
       : this(
           updates: _json.containsKey('updates')
               ? (_json['updates'] as core.List)
-                  .map<UpdateMetadataArguments>((value) =>
-                      UpdateMetadataArguments.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UpdateMetadataArguments.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );

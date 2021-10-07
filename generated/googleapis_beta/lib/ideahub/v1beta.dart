@@ -369,9 +369,8 @@ class GoogleSearchIdeahubV1betaIdea {
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
           topics: _json.containsKey('topics')
               ? (_json['topics'] as core.List)
-                  .map<GoogleSearchIdeahubV1betaTopic>((value) =>
-                      GoogleSearchIdeahubV1betaTopic.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleSearchIdeahubV1betaTopic.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -440,7 +439,7 @@ class GoogleSearchIdeahubV1betaListAvailableLocalesResponse {
       : this(
           availableLocales: _json.containsKey('availableLocales')
               ? (_json['availableLocales'] as core.List)
-                  .map<GoogleSearchIdeahubV1betaAvailableLocale>((value) =>
+                  .map((value) =>
                       GoogleSearchIdeahubV1betaAvailableLocale.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -474,9 +473,8 @@ class GoogleSearchIdeahubV1betaListIdeasResponse {
       : this(
           ideas: _json.containsKey('ideas')
               ? (_json['ideas'] as core.List)
-                  .map<GoogleSearchIdeahubV1betaIdea>((value) =>
-                      GoogleSearchIdeahubV1betaIdea.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleSearchIdeahubV1betaIdea.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')

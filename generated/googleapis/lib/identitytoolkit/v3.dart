@@ -849,7 +849,7 @@ class CreateAuthUriResponse {
       : this(
           allProviders: _json.containsKey('allProviders')
               ? (_json['allProviders'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           authUri: _json.containsKey('authUri')
@@ -873,7 +873,7 @@ class CreateAuthUriResponse {
               : null,
           signinMethods: _json.containsKey('signinMethods')
               ? (_json['signinMethods'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -938,7 +938,7 @@ class DownloadAccountResponse {
               : null,
           users: _json.containsKey('users')
               ? (_json['users'] as core.List)
-                  .map<UserInfo>((value) => UserInfo.fromJson(
+                  .map((value) => UserInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1093,7 +1093,7 @@ class GetAccountInfoResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           users: _json.containsKey('users')
               ? (_json['users'] as core.List)
-                  .map<UserInfo>((value) => UserInfo.fromJson(
+                  .map((value) => UserInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1507,7 +1507,7 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
               : null,
           email: _json.containsKey('email')
               ? (_json['email'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           idToken: _json.containsKey('idToken')
@@ -1515,12 +1515,12 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
               : null,
           localId: _json.containsKey('localId')
               ? (_json['localId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           phoneNumber: _json.containsKey('phoneNumber')
               ? (_json['phoneNumber'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1596,7 +1596,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
               : null,
           authorizedDomains: _json.containsKey('authorizedDomains')
               ? (_json['authorizedDomains'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           changeEmailTemplate: _json.containsKey('changeEmailTemplate')
@@ -1611,7 +1611,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
               : null,
           idpConfig: _json.containsKey('idpConfig')
               ? (_json['idpConfig'] as core.List)
-                  .map<IdpConfig>((value) => IdpConfig.fromJson(
+                  .map((value) => IdpConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1926,12 +1926,12 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
               : null,
           deleteAttribute: _json.containsKey('deleteAttribute')
               ? (_json['deleteAttribute'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           deleteProvider: _json.containsKey('deleteProvider')
               ? (_json['deleteProvider'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           disableUser: _json.containsKey('disableUser')
@@ -1971,7 +1971,7 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
               : null,
           provider: _json.containsKey('provider')
               ? (_json['provider'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           returnSecureToken: _json.containsKey('returnSecureToken')
@@ -2075,7 +2075,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
               : null,
           authorizedDomains: _json.containsKey('authorizedDomains')
               ? (_json['authorizedDomains'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           changeEmailTemplate: _json.containsKey('changeEmailTemplate')
@@ -2090,7 +2090,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
               : null,
           idpConfig: _json.containsKey('idpConfig')
               ? (_json['idpConfig'] as core.List)
-                  .map<IdpConfig>((value) => IdpConfig.fromJson(
+                  .map((value) => IdpConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2453,7 +2453,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
               : null,
           users: _json.containsKey('users')
               ? (_json['users'] as core.List)
-                  .map<UserInfo>((value) => UserInfo.fromJson(
+                  .map((value) => UserInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2949,7 +2949,7 @@ class IdpConfig {
               : null,
           whitelistedAudiences: _json.containsKey('whitelistedAudiences')
               ? (_json['whitelistedAudiences'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3286,7 +3286,7 @@ class SetAccountInfoResponse {
               : null,
           providerUserInfo: _json.containsKey('providerUserInfo')
               ? (_json['providerUserInfo'] as core.List)
-                  .map<SetAccountInfoResponseProviderUserInfo>((value) =>
+                  .map((value) =>
                       SetAccountInfoResponseProviderUserInfo.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3425,9 +3425,8 @@ class UploadAccountResponse {
       : this(
           error: _json.containsKey('error')
               ? (_json['error'] as core.List)
-                  .map<UploadAccountResponseError>((value) =>
-                      UploadAccountResponseError.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UploadAccountResponseError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -3653,9 +3652,8 @@ class UserInfo {
               : null,
           providerUserInfo: _json.containsKey('providerUserInfo')
               ? (_json['providerUserInfo'] as core.List)
-                  .map<UserInfoProviderUserInfo>((value) =>
-                      UserInfoProviderUserInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UserInfoProviderUserInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rawPassword: _json.containsKey('rawPassword')
@@ -3995,7 +3993,7 @@ class VerifyAssertionResponse {
               : null,
           verifiedProvider: _json.containsKey('verifiedProvider')
               ? (_json['verifiedProvider'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

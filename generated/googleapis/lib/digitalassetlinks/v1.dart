@@ -474,7 +474,7 @@ class CheckResponse {
               : null,
           errorCode: _json.containsKey('errorCode')
               ? (_json['errorCode'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           linked:
@@ -530,7 +530,7 @@ class ListResponse {
               : null,
           errorCode: _json.containsKey('errorCode')
               ? (_json['errorCode'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           maxAge: _json.containsKey('maxAge')
@@ -538,7 +538,7 @@ class ListResponse {
               : null,
           statements: _json.containsKey('statements')
               ? (_json['statements'] as core.List)
-                  .map<Statement>((value) => Statement.fromJson(
+                  .map((value) => Statement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

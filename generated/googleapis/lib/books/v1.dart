@@ -3308,7 +3308,7 @@ class Annotation {
               : null,
           pageIds: _json.containsKey('pageIds')
               ? (_json['pageIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           selectedText: _json.containsKey('selectedText')
@@ -3378,7 +3378,7 @@ class Annotations {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Annotation>((value) => Annotation.fromJson(
+                  .map((value) => Annotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3459,9 +3459,8 @@ class AnnotationsSummary {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           layers: _json.containsKey('layers')
               ? (_json['layers'] as core.List)
-                  .map<AnnotationsSummaryLayers>((value) =>
-                      AnnotationsSummaryLayers.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AnnotationsSummaryLayers.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3499,7 +3498,7 @@ class Annotationsdata {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GeoAnnotationdata>((value) => GeoAnnotationdata.fromJson(
+                  .map((value) => GeoAnnotationdata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3727,7 +3726,7 @@ class Bookshelves {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Bookshelf>((value) => Bookshelf.fromJson(
+                  .map((value) => Bookshelf.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3786,7 +3785,7 @@ class Category {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<CategoryItems>((value) => CategoryItems.fromJson(
+                  .map((value) => CategoryItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4224,10 +4223,9 @@ class DictlayerdataDictWordsSensesDefinitions {
               : null,
           examples: _json.containsKey('examples')
               ? (_json['examples'] as core.List)
-                  .map<DictlayerdataDictWordsSensesDefinitionsExamples>(
-                      (value) => DictlayerdataDictWordsSensesDefinitionsExamples
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4334,14 +4332,14 @@ class DictlayerdataDictWordsSenses {
       : this(
           conjugations: _json.containsKey('conjugations')
               ? (_json['conjugations'] as core.List)
-                  .map<DictlayerdataDictWordsSensesConjugations>((value) =>
+                  .map((value) =>
                       DictlayerdataDictWordsSensesConjugations.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           definitions: _json.containsKey('definitions')
               ? (_json['definitions'] as core.List)
-                  .map<DictlayerdataDictWordsSensesDefinitions>((value) =>
+                  .map((value) =>
                       DictlayerdataDictWordsSensesDefinitions.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4364,9 +4362,8 @@ class DictlayerdataDictWordsSenses {
               : null,
           synonyms: _json.containsKey('synonyms')
               ? (_json['synonyms'] as core.List)
-                  .map<DictlayerdataDictWordsSensesSynonyms>((value) =>
-                      DictlayerdataDictWordsSensesSynonyms.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DictlayerdataDictWordsSensesSynonyms.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4431,23 +4428,20 @@ class DictlayerdataDictWords {
       : this(
           derivatives: _json.containsKey('derivatives')
               ? (_json['derivatives'] as core.List)
-                  .map<DictlayerdataDictWordsDerivatives>((value) =>
-                      DictlayerdataDictWordsDerivatives.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DictlayerdataDictWordsDerivatives.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           examples: _json.containsKey('examples')
               ? (_json['examples'] as core.List)
-                  .map<DictlayerdataDictWordsExamples>((value) =>
-                      DictlayerdataDictWordsExamples.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DictlayerdataDictWordsExamples.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           senses: _json.containsKey('senses')
               ? (_json['senses'] as core.List)
-                  .map<DictlayerdataDictWordsSenses>((value) =>
-                      DictlayerdataDictWordsSenses.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DictlayerdataDictWordsSenses.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           source: _json.containsKey('source')
@@ -4485,9 +4479,8 @@ class DictlayerdataDict {
               : null,
           words: _json.containsKey('words')
               ? (_json['words'] as core.List)
-                  .map<DictlayerdataDictWords>((value) =>
-                      DictlayerdataDictWords.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DictlayerdataDictWords.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4616,7 +4609,7 @@ class DiscoveryclustersClusters {
           uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
           volumes: _json.containsKey('volumes')
               ? (_json['volumes'] as core.List)
-                  .map<Volume>((value) => Volume.fromJson(
+                  .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4651,9 +4644,8 @@ class Discoveryclusters {
       : this(
           clusters: _json.containsKey('clusters')
               ? (_json['clusters'] as core.List)
-                  .map<DiscoveryclustersClusters>((value) =>
-                      DiscoveryclustersClusters.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DiscoveryclustersClusters.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -4802,9 +4794,8 @@ class DownloadAccesses {
       : this(
           downloadAccessList: _json.containsKey('downloadAccessList')
               ? (_json['downloadAccessList'] as core.List)
-                  .map<DownloadAccessRestriction>((value) =>
-                      DownloadAccessRestriction.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DownloadAccessRestriction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -5186,7 +5177,7 @@ class GeolayerdataGeo {
       : this(
           boundary: _json.containsKey('boundary')
               ? (_json['boundary'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           cachePolicy: _json.containsKey('cachePolicy')
@@ -5274,7 +5265,7 @@ class Layersummaries {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Layersummary>((value) => Layersummary.fromJson(
+                  .map((value) => Layersummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5361,7 +5352,7 @@ class Layersummary {
               : null,
           annotationTypes: _json.containsKey('annotationTypes')
               ? (_json['annotationTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           annotationsDataLink: _json.containsKey('annotationsDataLink')
@@ -5472,7 +5463,7 @@ class Metadata {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<MetadataItems>((value) => MetadataItems.fromJson(
+                  .map((value) => MetadataItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5532,7 +5523,7 @@ class Notification {
           body: _json.containsKey('body') ? _json['body'] as core.String : null,
           crmExperimentIds: _json.containsKey('crmExperimentIds')
               ? (_json['crmExperimentIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           docId: _json.containsKey('doc_id')
@@ -5672,7 +5663,7 @@ class OffersItems {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<OffersItemsItems>((value) => OffersItemsItems.fromJson(
+                  .map((value) => OffersItemsItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5703,7 +5694,7 @@ class Offers {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<OffersItems>((value) => OffersItems.fromJson(
+                  .map((value) => OffersItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6184,7 +6175,7 @@ class Series {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           series: _json.containsKey('series')
               ? (_json['series'] as core.List)
-                  .map<SeriesSeries>((value) => SeriesSeries.fromJson(
+                  .map((value) => SeriesSeries.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6214,7 +6205,7 @@ class Seriesmembership {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           member: _json.containsKey('member')
               ? (_json['member'] as core.List)
-                  .map<Volume>((value) => Volume.fromJson(
+                  .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6742,9 +6733,8 @@ class VolumeLayerInfo {
       : this(
           layers: _json.containsKey('layers')
               ? (_json['layers'] as core.List)
-                  .map<VolumeLayerInfoLayers>((value) =>
-                      VolumeLayerInfoLayers.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VolumeLayerInfoLayers.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -7052,9 +7042,8 @@ class VolumeSaleInfo {
               : null,
           offers: _json.containsKey('offers')
               ? (_json['offers'] as core.List)
-                  .map<VolumeSaleInfoOffers>((value) =>
-                      VolumeSaleInfoOffers.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VolumeSaleInfoOffers.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           onSaleDate: _json.containsKey('onSaleDate')
@@ -7774,7 +7763,7 @@ class VolumeVolumeInfo {
               : null,
           authors: _json.containsKey('authors')
               ? (_json['authors'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           averageRating: _json.containsKey('averageRating')
@@ -7785,7 +7774,7 @@ class VolumeVolumeInfo {
               : null,
           categories: _json.containsKey('categories')
               ? (_json['categories'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           comicsContent: _json.containsKey('comicsContent')
@@ -7807,9 +7796,8 @@ class VolumeVolumeInfo {
               : null,
           industryIdentifiers: _json.containsKey('industryIdentifiers')
               ? (_json['industryIdentifiers'] as core.List)
-                  .map<VolumeVolumeInfoIndustryIdentifiers>((value) =>
-                      VolumeVolumeInfoIndustryIdentifiers.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VolumeVolumeInfoIndustryIdentifiers.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           infoLink: _json.containsKey('infoLink')
@@ -8042,7 +8030,7 @@ class Volume2 {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Volume>((value) => Volume.fromJson(
+                  .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8196,7 +8184,7 @@ class Volumeannotation {
               : null,
           pageIds: _json.containsKey('pageIds')
               ? (_json['pageIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           selectedText: _json.containsKey('selectedText')
@@ -8267,7 +8255,7 @@ class Volumeannotations {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Volumeannotation>((value) => Volumeannotation.fromJson(
+                  .map((value) => Volumeannotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8316,7 +8304,7 @@ class Volumes {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Volume>((value) => Volume.fromJson(
+                  .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8388,9 +8376,8 @@ class VolumeseriesinfoVolumeSeries {
       : this(
           issue: _json.containsKey('issue')
               ? (_json['issue'] as core.List)
-                  .map<VolumeseriesinfoVolumeSeriesIssue>((value) =>
-                      VolumeseriesinfoVolumeSeriesIssue.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VolumeseriesinfoVolumeSeriesIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           orderNumber: _json.containsKey('orderNumber')
@@ -8445,9 +8432,8 @@ class Volumeseriesinfo {
               : null,
           volumeSeries: _json.containsKey('volumeSeries')
               ? (_json['volumeSeries'] as core.List)
-                  .map<VolumeseriesinfoVolumeSeries>((value) =>
-                      VolumeseriesinfoVolumeSeries.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VolumeseriesinfoVolumeSeries.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );

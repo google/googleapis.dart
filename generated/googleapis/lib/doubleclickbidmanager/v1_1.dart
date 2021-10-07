@@ -330,7 +330,7 @@ class ChannelGrouping {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<Rule>((value) => Rule.fromJson(
+                  .map((value) => Rule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -360,7 +360,7 @@ class DisjunctiveMatchStatement {
       : this(
           eventFilters: _json.containsKey('eventFilters')
               ? (_json['eventFilters'] as core.List)
-                  .map<EventFilter>((value) => EventFilter.fromJson(
+                  .map((value) => EventFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -732,7 +732,7 @@ class ListQueriesResponse {
               : null,
           queries: _json.containsKey('queries')
               ? (_json['queries'] as core.List)
-                  .map<Query>((value) => Query.fromJson(
+                  .map((value) => Query.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -773,7 +773,7 @@ class ListReportsResponse {
               : null,
           reports: _json.containsKey('reports')
               ? (_json['reports'] as core.List)
-                  .map<Report>((value) => Report.fromJson(
+                  .map((value) => Report.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -892,13 +892,13 @@ class Parameters {
       : this(
           filters: _json.containsKey('filters')
               ? (_json['filters'] as core.List)
-                  .map<FilterPair>((value) => FilterPair.fromJson(
+                  .map((value) => FilterPair.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           groupBys: _json.containsKey('groupBys')
               ? (_json['groupBys'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           includeInviteData: _json.containsKey('includeInviteData')
@@ -906,7 +906,7 @@ class Parameters {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           options: _json.containsKey('options')
@@ -954,7 +954,7 @@ class PathFilter {
       : this(
           eventFilters: _json.containsKey('eventFilters')
               ? (_json['eventFilters'] as core.List)
-                  .map<EventFilter>((value) => EventFilter.fromJson(
+                  .map((value) => EventFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -993,7 +993,7 @@ class PathQueryOptions {
               : null,
           pathFilters: _json.containsKey('pathFilters')
               ? (_json['pathFilters'] as core.List)
-                  .map<PathFilter>((value) => PathFilter.fromJson(
+                  .map((value) => PathFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1322,7 +1322,7 @@ class PathQueryOptionsFilter {
               _json.containsKey('match') ? _json['match'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1544,7 +1544,7 @@ class QueryMetadata {
               : null,
           shareEmailAddress: _json.containsKey('shareEmailAddress')
               ? (_json['shareEmailAddress'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           title:
@@ -1872,9 +1872,8 @@ class Rule {
           disjunctiveMatchStatements:
               _json.containsKey('disjunctiveMatchStatements')
                   ? (_json['disjunctiveMatchStatements'] as core.List)
-                      .map<DisjunctiveMatchStatement>((value) =>
-                          DisjunctiveMatchStatement.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => DisjunctiveMatchStatement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,

@@ -534,7 +534,7 @@ void checkUnnamed5(core.List<api.ReportApiColumnSpec> o) {
   checkReportApiColumnSpec(o[1]);
 }
 
-core.List<core.Object> buildUnnamed6() => [
+core.List<core.Object?> buildUnnamed6() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -547,7 +547,7 @@ core.List<core.Object> buildUnnamed6() => [
       },
     ];
 
-void checkUnnamed6(core.List<core.Object> o) {
+void checkUnnamed6(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));

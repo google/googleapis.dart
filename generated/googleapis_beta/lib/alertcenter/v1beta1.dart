@@ -663,9 +663,8 @@ class AccountSuspensionWarning {
               _json.containsKey('state') ? _json['state'] as core.String : null,
           suspensionDetails: _json.containsKey('suspensionDetails')
               ? (_json['suspensionDetails'] as core.List)
-                  .map<AccountSuspensionDetails>((value) =>
-                      AccountSuspensionDetails.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AccountSuspensionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -788,7 +787,7 @@ class ActivityRule {
       : this(
           actionNames: _json.containsKey('actionNames')
               ? (_json['actionNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           createTime: _json.containsKey('createTime')
@@ -805,7 +804,7 @@ class ActivityRule {
               _json.containsKey('query') ? _json['query'] as core.String : null,
           supersededAlerts: _json.containsKey('supersededAlerts')
               ? (_json['supersededAlerts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           supersedingAlert: _json.containsKey('supersedingAlert')
@@ -865,7 +864,7 @@ class Alert {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? data;
+  core.Map<core.String, core.Object?>? data;
 
   /// `True` if this alert is marked for deletion.
   ///
@@ -963,12 +962,7 @@ class Alert {
               ? _json['customerId'] as core.String
               : null,
           data: _json.containsKey('data')
-              ? (_json['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['data'] as core.Map<core.String, core.dynamic>
               : null,
           deleted: _json.containsKey('deleted')
               ? _json['deleted'] as core.bool
@@ -1195,7 +1189,7 @@ class AppMakerSqlSetupNotification {
       : this(
           requestInfo: _json.containsKey('requestInfo')
               ? (_json['requestInfo'] as core.List)
-                  .map<RequestInfo>((value) => RequestInfo.fromJson(
+                  .map((value) => RequestInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1288,7 +1282,7 @@ class AppsOutage {
               : null,
           products: _json.containsKey('products')
               ? (_json['products'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           resolutionTime: _json.containsKey('resolutionTime')
@@ -1364,7 +1358,7 @@ class BadWhitelist {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+                  .map((value) => GmailMessageInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1405,7 +1399,7 @@ class BatchDeleteAlertsRequest {
       : this(
           alertId: _json.containsKey('alertId')
               ? (_json['alertId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           customerId: _json.containsKey('customerId')
@@ -1447,7 +1441,7 @@ class BatchDeleteAlertsResponse {
               : null,
           successAlertIds: _json.containsKey('successAlertIds')
               ? (_json['successAlertIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1482,7 +1476,7 @@ class BatchUndeleteAlertsRequest {
       : this(
           alertId: _json.containsKey('alertId')
               ? (_json['alertId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           customerId: _json.containsKey('customerId')
@@ -1524,7 +1518,7 @@ class BatchUndeleteAlertsResponse {
               : null,
           successAlertIds: _json.containsKey('successAlertIds')
               ? (_json['successAlertIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1598,13 +1592,13 @@ class Csv {
       : this(
           dataRows: _json.containsKey('dataRows')
               ? (_json['dataRows'] as core.List)
-                  .map<CsvRow>((value) => CsvRow.fromJson(
+                  .map((value) => CsvRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           headers: _json.containsKey('headers')
               ? (_json['headers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1630,7 +1624,7 @@ class CsvRow {
       : this(
           entries: _json.containsKey('entries')
               ? (_json['entries'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1663,9 +1657,8 @@ class DeviceCompromised {
               _json.containsKey('email') ? _json['email'] as core.String : null,
           events: _json.containsKey('events')
               ? (_json['events'] as core.List)
-                  .map<DeviceCompromisedSecurityDetail>((value) =>
-                      DeviceCompromisedSecurityDetail.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DeviceCompromisedSecurityDetail.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1881,7 +1874,7 @@ class GmailMessageInfo {
       : this(
           attachmentsSha256Hash: _json.containsKey('attachmentsSha256Hash')
               ? (_json['attachmentsSha256Hash'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           date: _json.containsKey('date') ? _json['date'] as core.String : null,
@@ -1958,7 +1951,7 @@ class GoogleOperations {
       : this(
           affectedUserEmails: _json.containsKey('affectedUserEmails')
               ? (_json['affectedUserEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           attachmentData: _json.containsKey('attachmentData')
@@ -2000,7 +1993,7 @@ class ListAlertFeedbackResponse {
       : this(
           feedback: _json.containsKey('feedback')
               ? (_json['feedback'] as core.List)
-                  .map<AlertFeedback>((value) => AlertFeedback.fromJson(
+                  .map((value) => AlertFeedback.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2033,7 +2026,7 @@ class ListAlertsResponse {
       : this(
           alerts: _json.containsKey('alerts')
               ? (_json['alerts'] as core.List)
-                  .map<Alert>((value) => Alert.fromJson(
+                  .map((value) => Alert.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2134,7 +2127,7 @@ class MailPhishing {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+                  .map((value) => GmailMessageInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2291,7 +2284,7 @@ class PhishingSpike {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+                  .map((value) => GmailMessageInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2403,7 +2396,7 @@ class RequestInfo {
       : this(
           appDeveloperEmail: _json.containsKey('appDeveloperEmail')
               ? (_json['appDeveloperEmail'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           appKey: _json.containsKey('appKey')
@@ -2547,13 +2540,13 @@ class RuleViolationInfo {
               : null,
           matchInfo: _json.containsKey('matchInfo')
               ? (_json['matchInfo'] as core.List)
-                  .map<MatchInfo>((value) => MatchInfo.fromJson(
+                  .map((value) => MatchInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           recipients: _json.containsKey('recipients')
               ? (_json['recipients'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           resourceInfo: _json.containsKey('resourceInfo')
@@ -2566,7 +2559,7 @@ class RuleViolationInfo {
               : null,
           suppressedActionTypes: _json.containsKey('suppressedActionTypes')
               ? (_json['suppressedActionTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           trigger: _json.containsKey('trigger')
@@ -2574,13 +2567,13 @@ class RuleViolationInfo {
               : null,
           triggeredActionInfo: _json.containsKey('triggeredActionInfo')
               ? (_json['triggeredActionInfo'] as core.List)
-                  .map<ActionInfo>((value) => ActionInfo.fromJson(
+                  .map((value) => ActionInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           triggeredActionTypes: _json.containsKey('triggeredActionTypes')
               ? (_json['triggeredActionTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           triggeringUserEmail: _json.containsKey('triggeringUserEmail')
@@ -2621,7 +2614,7 @@ class Settings {
       : this(
           notifications: _json.containsKey('notifications')
               ? (_json['notifications'] as core.List)
-                  .map<Notification>((value) => Notification.fromJson(
+                  .map((value) => Notification.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2673,7 +2666,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2692,13 +2685,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2736,9 +2723,8 @@ class SuspiciousActivity {
               _json.containsKey('email') ? _json['email'] as core.String : null,
           events: _json.containsKey('events')
               ? (_json['events'] as core.List)
-                  .map<SuspiciousActivitySecurityDetail>((value) =>
-                      SuspiciousActivitySecurityDetail.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SuspiciousActivitySecurityDetail.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );

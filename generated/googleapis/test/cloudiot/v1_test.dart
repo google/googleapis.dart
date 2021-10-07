@@ -930,7 +930,7 @@ void checkStateNotificationConfig(api.StateNotificationConfig o) {
   buildCounterStateNotificationConfig--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed10() => {
+core.Map<core.String, core.Object?> buildUnnamed10() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -943,7 +943,7 @@ core.Map<core.String, core.Object> buildUnnamed10() => {
       },
     };
 
-void checkUnnamed10(core.Map<core.String, core.Object> o) {
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -975,12 +975,12 @@ void checkUnnamed10(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed11() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed11() => [
       buildUnnamed10(),
       buildUnnamed10(),
     ];
 
-void checkUnnamed11(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed11(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed10(o[0]);
   checkUnnamed10(o[1]);

@@ -537,7 +537,7 @@ void checkGoogleChromePolicyV1PolicyTargetKey(
   buildCounterGoogleChromePolicyV1PolicyTargetKey--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed11() => {
+core.Map<core.String, core.Object?> buildUnnamed11() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -550,7 +550,7 @@ core.Map<core.String, core.Object> buildUnnamed11() => {
       },
     };
 
-void checkUnnamed11(core.Map<core.String, core.Object> o) {
+void checkUnnamed11(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));

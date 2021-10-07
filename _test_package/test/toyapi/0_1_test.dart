@@ -41,6 +41,53 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+api.ListOfAny buildListOfAny() {
+  final o = api.ListOfAny();
+  o.add({
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  });
+  o.add({
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  });
+  return o;
+}
+
+void checkListOfAny(api.ListOfAny o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o[0]) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o[1]) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
+}
+
 core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
@@ -237,6 +284,53 @@ void checkListOfToyRequest(api.ListOfToyRequest o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToyRequest(o[0]);
   checkToyRequest(o[1]);
+}
+
+api.MapOfAny buildMapOfAny() {
+  final o = api.MapOfAny();
+  o['a'] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o['b'] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  return o;
+}
+
+void checkMapOfAny(api.MapOfAny o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted3 = (o['a']!) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['b']!) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.bool> buildUnnamed7() => {
@@ -456,12 +550,68 @@ void checkUnnamed13(core.Map<core.String, api.NestedResponse> o) {
   checkNestedResponse(o['y']!);
 }
 
-core.Map<core.String, core.String?> buildUnnamed14() => {
+core.Map<core.String, core.Object?> buildUnnamed14() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed14(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted5 = (o['x']!) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
+  var casted6 = (o['y']!) as core.Map;
+  unittest.expect(casted6, unittest.hasLength(3));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.Map<core.String, core.Object?>> buildUnnamed15() => [
+      buildUnnamed14(),
+      buildUnnamed14(),
+    ];
+
+void checkUnnamed15(core.List<core.Map<core.String, core.Object?>> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed14(o[0]);
+  checkUnnamed14(o[1]);
+}
+
+core.Map<core.String, core.String?> buildUnnamed16() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed14(core.Map<core.String, core.String?> o) {
+void checkUnnamed16(core.Map<core.String, core.String?> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -479,9 +629,15 @@ api.ToyMapResponse buildToyMapResponse() {
   buildCounterToyMapResponse++;
   if (buildCounterToyMapResponse < 3) {
     o.mapResult = buildUnnamed13();
+    o.msgValue = buildUnnamed15();
     o.nullValue = 'NULL_VALUE';
-    o.properties = buildUnnamed14();
+    o.properties = buildUnnamed16();
     o.result = 'foo';
+    o.v = {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    };
   }
   buildCounterToyMapResponse--;
   return o;
@@ -491,13 +647,28 @@ void checkToyMapResponse(api.ToyMapResponse o) {
   buildCounterToyMapResponse++;
   if (buildCounterToyMapResponse < 3) {
     checkUnnamed13(o.mapResult!);
+    checkUnnamed15(o.msgValue!);
     unittest.expect(
       o.nullValue!,
       unittest.equals('NULL_VALUE'),
     );
-    checkUnnamed14(o.properties!);
+    checkUnnamed16(o.properties!);
     unittest.expect(
       o.result!,
+      unittest.equals('foo'),
+    );
+    var casted7 = (o.v!) as core.Map;
+    unittest.expect(casted7, unittest.hasLength(3));
+    unittest.expect(
+      casted7['list'],
+      unittest.equals([1, 2, 3]),
+    );
+    unittest.expect(
+      casted7['bool'],
+      unittest.equals(true),
+    );
+    unittest.expect(
+      casted7['string'],
       unittest.equals('foo'),
     );
   }
@@ -586,6 +757,15 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListOfAny', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListOfAny();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOfAny.fromJson(oJson as core.List);
+      checkListOfAny(od);
+    });
+  });
+
   unittest.group('obj-schema-ListOfListOfString', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfListOfString();
@@ -646,6 +826,16 @@ void main() {
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListOfToyRequest.fromJson(oJson as core.List);
       checkListOfToyRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-MapOfAny', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMapOfAny();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.MapOfAny.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkMapOfAny(od);
     });
   });
 

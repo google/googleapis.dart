@@ -355,7 +355,7 @@ class AdministrationRegion {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           sources: _json.containsKey('sources')
               ? (_json['sources'] as core.List)
-                  .map<Source>((value) => Source.fromJson(
+                  .map((value) => Source.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -469,7 +469,7 @@ class AdministrativeBody {
               : null,
           electionOfficials: _json.containsKey('electionOfficials')
               ? (_json['electionOfficials'] as core.List)
-                  .map<ElectionOfficial>((value) => ElectionOfficial.fromJson(
+                  .map((value) => ElectionOfficial.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -493,7 +493,7 @@ class AdministrativeBody {
               : null,
           voterServices: _json.containsKey('voter_services')
               ? (_json['voter_services'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           votingLocationFinderUrl: _json.containsKey('votingLocationFinderUrl')
@@ -578,7 +578,7 @@ class Candidate {
               : null,
           channels: _json.containsKey('channels')
               ? (_json['channels'] as core.List)
-                  .map<Channel>((value) => Channel.fromJson(
+                  .map((value) => Channel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -800,7 +800,7 @@ class Contest {
               : null,
           candidates: _json.containsKey('candidates')
               ? (_json['candidates'] as core.List)
-                  .map<Candidate>((value) => Candidate.fromJson(
+                  .map((value) => Candidate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -814,7 +814,7 @@ class Contest {
                   : null,
           level: _json.containsKey('level')
               ? (_json['level'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           numberElected: _json.containsKey('numberElected')
@@ -828,7 +828,7 @@ class Contest {
               : null,
           primaryParties: _json.containsKey('primaryParties')
               ? (_json['primaryParties'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           primaryParty: _json.containsKey('primaryParty')
@@ -837,7 +837,7 @@ class Contest {
           referendumBallotResponses:
               _json.containsKey('referendumBallotResponses')
                   ? (_json['referendumBallotResponses'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           referendumBrief: _json.containsKey('referendumBrief')
@@ -871,12 +871,12 @@ class Contest {
               : null,
           roles: _json.containsKey('roles')
               ? (_json['roles'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sources: _json.containsKey('sources')
               ? (_json['sources'] as core.List)
-                  .map<Source>((value) => Source.fromJson(
+                  .map((value) => Source.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -942,9 +942,8 @@ class DivisionSearchResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<DivisionSearchResult>((value) =>
-                      DivisionSearchResult.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DivisionSearchResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -983,7 +982,7 @@ class DivisionSearchResult {
       : this(
           aliases: _json.containsKey('aliases')
               ? (_json['aliases'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -1113,7 +1112,7 @@ class ElectionsQueryResponse {
       : this(
           elections: _json.containsKey('elections')
               ? (_json['elections'] as core.List)
-                  .map<Election>((value) => Election.fromJson(
+                  .map((value) => Election.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1215,13 +1214,13 @@ class GeographicDivision {
       : this(
           alsoKnownAs: _json.containsKey('alsoKnownAs')
               ? (_json['alsoKnownAs'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           officeIndices: _json.containsKey('officeIndices')
               ? (_json['officeIndices'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -1283,23 +1282,23 @@ class Office {
               : null,
           levels: _json.containsKey('levels')
               ? (_json['levels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           officialIndices: _json.containsKey('officialIndices')
               ? (_json['officialIndices'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           roles: _json.containsKey('roles')
               ? (_json['roles'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sources: _json.containsKey('sources')
               ? (_json['sources'] as core.List)
-                  .map<Source>((value) => Source.fromJson(
+                  .map((value) => Source.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1357,19 +1356,19 @@ class Official {
       : this(
           address: _json.containsKey('address')
               ? (_json['address'] as core.List)
-                  .map<SimpleAddressType>((value) => SimpleAddressType.fromJson(
+                  .map((value) => SimpleAddressType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           channels: _json.containsKey('channels')
               ? (_json['channels'] as core.List)
-                  .map<Channel>((value) => Channel.fromJson(
+                  .map((value) => Channel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           emails: _json.containsKey('emails')
               ? (_json['emails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -1377,7 +1376,7 @@ class Official {
               _json.containsKey('party') ? _json['party'] as core.String : null,
           phones: _json.containsKey('phones')
               ? (_json['phones'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           photoUrl: _json.containsKey('photoUrl')
@@ -1385,7 +1384,7 @@ class Official {
               : null,
           urls: _json.containsKey('urls')
               ? (_json['urls'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1490,7 +1489,7 @@ class PollingLocation {
               : null,
           sources: _json.containsKey('sources')
               ? (_json['sources'] as core.List)
-                  .map<Source>((value) => Source.fromJson(
+                  .map((value) => Source.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1551,13 +1550,13 @@ class RepresentativeInfoData {
               : null,
           offices: _json.containsKey('offices')
               ? (_json['offices'] as core.List)
-                  .map<Office>((value) => Office.fromJson(
+                  .map((value) => Office.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           officials: _json.containsKey('officials')
               ? (_json['officials'] as core.List)
-                  .map<Official>((value) => Official.fromJson(
+                  .map((value) => Official.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1624,13 +1623,13 @@ class RepresentativeInfoResponse {
               : null,
           offices: _json.containsKey('offices')
               ? (_json['offices'] as core.List)
-                  .map<Office>((value) => Office.fromJson(
+                  .map((value) => Office.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           officials: _json.containsKey('officials')
               ? (_json['officials'] as core.List)
-                  .map<Official>((value) => Official.fromJson(
+                  .map((value) => Official.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1810,19 +1809,19 @@ class VoterInfoResponse {
       : this(
           contests: _json.containsKey('contests')
               ? (_json['contests'] as core.List)
-                  .map<Contest>((value) => Contest.fromJson(
+                  .map((value) => Contest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dropOffLocations: _json.containsKey('dropOffLocations')
               ? (_json['dropOffLocations'] as core.List)
-                  .map<PollingLocation>((value) => PollingLocation.fromJson(
+                  .map((value) => PollingLocation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           earlyVoteSites: _json.containsKey('earlyVoteSites')
               ? (_json['earlyVoteSites'] as core.List)
-                  .map<PollingLocation>((value) => PollingLocation.fromJson(
+                  .map((value) => PollingLocation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1840,13 +1839,13 @@ class VoterInfoResponse {
               : null,
           otherElections: _json.containsKey('otherElections')
               ? (_json['otherElections'] as core.List)
-                  .map<Election>((value) => Election.fromJson(
+                  .map((value) => Election.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pollingLocations: _json.containsKey('pollingLocations')
               ? (_json['pollingLocations'] as core.List)
-                  .map<PollingLocation>((value) => PollingLocation.fromJson(
+                  .map((value) => PollingLocation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1855,9 +1854,8 @@ class VoterInfoResponse {
               : null,
           state: _json.containsKey('state')
               ? (_json['state'] as core.List)
-                  .map<AdministrationRegion>((value) =>
-                      AdministrationRegion.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AdministrationRegion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );

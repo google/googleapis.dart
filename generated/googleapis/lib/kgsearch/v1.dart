@@ -142,7 +142,7 @@ class SearchResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? itemListElement;
+  core.List<core.Object?>? itemListElement;
 
   SearchResponse({
     this.P_context,
@@ -152,15 +152,10 @@ class SearchResponse {
 
   SearchResponse.fromJson(core.Map _json)
       : this(
-          P_context: _json.containsKey('@context')
-              ? _json['@context'] as core.Object
-              : null,
-          P_type:
-              _json.containsKey('@type') ? _json['@type'] as core.Object : null,
+          P_context: _json.containsKey('@context') ? _json['@context'] : null,
+          P_type: _json.containsKey('@type') ? _json['@type'] : null,
           itemListElement: _json.containsKey('itemListElement')
-              ? (_json['itemListElement'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
+              ? _json['itemListElement'] as core.List
               : null,
         );
 

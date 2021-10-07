@@ -1376,7 +1376,7 @@ class ListAssignmentsResponse {
       : this(
           assignments: _json.containsKey('assignments')
               ? (_json['assignments'] as core.List)
-                  .map<Assignment>((value) => Assignment.fromJson(
+                  .map((value) => Assignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1410,9 +1410,8 @@ class ListCapacityCommitmentsResponse {
       : this(
           capacityCommitments: _json.containsKey('capacityCommitments')
               ? (_json['capacityCommitments'] as core.List)
-                  .map<CapacityCommitment>((value) =>
-                      CapacityCommitment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CapacityCommitment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -1449,7 +1448,7 @@ class ListReservationsResponse {
               : null,
           reservations: _json.containsKey('reservations')
               ? (_json['reservations'] as core.List)
-                  .map<Reservation>((value) => Reservation.fromJson(
+                  .map((value) => Reservation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1480,7 +1479,7 @@ class MergeCapacityCommitmentsRequest {
       : this(
           capacityCommitmentIds: _json.containsKey('capacityCommitmentIds')
               ? (_json['capacityCommitmentIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1604,7 +1603,7 @@ class SearchAllAssignmentsResponse {
       : this(
           assignments: _json.containsKey('assignments')
               ? (_json['assignments'] as core.List)
-                  .map<Assignment>((value) => Assignment.fromJson(
+                  .map((value) => Assignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1638,7 +1637,7 @@ class SearchAssignmentsResponse {
       : this(
           assignments: _json.containsKey('assignments')
               ? (_json['assignments'] as core.List)
-                  .map<Assignment>((value) => Assignment.fromJson(
+                  .map((value) => Assignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1723,7 +1722,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1742,13 +1741,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

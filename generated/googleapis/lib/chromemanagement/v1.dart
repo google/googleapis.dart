@@ -456,7 +456,7 @@ class GoogleChromeManagementV1AndroidAppInfo {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<GoogleChromeManagementV1AndroidAppPermission>((value) =>
+                  .map((value) =>
                       GoogleChromeManagementV1AndroidAppPermission.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -869,14 +869,14 @@ class GoogleChromeManagementV1ChromeAppInfo {
               : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<GoogleChromeManagementV1ChromeAppPermission>((value) =>
+                  .map((value) =>
                       GoogleChromeManagementV1ChromeAppPermission.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           siteAccess: _json.containsKey('siteAccess')
               ? (_json['siteAccess'] as core.List)
-                  .map<GoogleChromeManagementV1ChromeAppSiteAccess>((value) =>
+                  .map((value) =>
                       GoogleChromeManagementV1ChromeAppSiteAccess.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -987,7 +987,7 @@ class GoogleChromeManagementV1CountChromeVersionsResponse {
       : this(
           browserVersions: _json.containsKey('browserVersions')
               ? (_json['browserVersions'] as core.List)
-                  .map<GoogleChromeManagementV1BrowserVersion>((value) =>
+                  .map((value) =>
                       GoogleChromeManagementV1BrowserVersion.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1030,9 +1030,8 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
       : this(
           installedApps: _json.containsKey('installedApps')
               ? (_json['installedApps'] as core.List)
-                  .map<GoogleChromeManagementV1InstalledApp>((value) =>
-                      GoogleChromeManagementV1InstalledApp.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleChromeManagementV1InstalledApp.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -1109,9 +1108,8 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
       : this(
           devices: _json.containsKey('devices')
               ? (_json['devices'] as core.List)
-                  .map<GoogleChromeManagementV1Device>((value) =>
-                      GoogleChromeManagementV1Device.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleChromeManagementV1Device.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -1257,7 +1255,7 @@ class GoogleChromeManagementV1InstalledApp {
               : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1295,7 +1293,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1314,13 +1312,7 @@ class GoogleRpcStatus {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

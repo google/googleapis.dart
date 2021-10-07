@@ -27,6 +27,10 @@ class ToyMapResponse {
   // Exists to validate fix for https://github.com/google/googleapis.dart/issues/200
   Map<String, String?>? properties;
 
+  Object? v;
+
+  List<Map<String, dynamic>>? msgValue;
+
   ToyMapResponse();
 }
 

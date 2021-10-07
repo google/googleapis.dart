@@ -729,9 +729,8 @@ class AchievementConfigurationListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<AchievementConfiguration>((value) =>
-                      AchievementConfiguration.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AchievementConfiguration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -1095,9 +1094,8 @@ class LeaderboardConfigurationListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<LeaderboardConfiguration>((value) =>
-                      LeaderboardConfiguration.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => LeaderboardConfiguration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -1171,7 +1169,7 @@ class LocalizedStringBundle {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           translations: _json.containsKey('translations')
               ? (_json['translations'] as core.List)
-                  .map<LocalizedString>((value) => LocalizedString.fromJson(
+                  .map((value) => LocalizedString.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

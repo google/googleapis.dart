@@ -3358,7 +3358,7 @@ void checkSourceContext(api.SourceContext o) {
   buildCounterSourceContext--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed51() => {
+core.Map<core.String, core.Object?> buildUnnamed51() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3371,7 +3371,7 @@ core.Map<core.String, core.Object> buildUnnamed51() => {
       },
     };
 
-void checkUnnamed51(core.Map<core.String, core.Object> o) {
+void checkUnnamed51(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -3403,12 +3403,12 @@ void checkUnnamed51(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed52() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed52() => [
       buildUnnamed51(),
       buildUnnamed51(),
     ];
 
-void checkUnnamed52(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed52(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed51(o[0]);
   checkUnnamed51(o[1]);

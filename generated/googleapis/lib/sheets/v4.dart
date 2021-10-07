@@ -1378,7 +1378,7 @@ class AddDimensionGroupResponse {
       : this(
           dimensionGroups: _json.containsKey('dimensionGroups')
               ? (_json['dimensionGroups'] as core.List)
-                  .map<DimensionGroup>((value) => DimensionGroup.fromJson(
+                  .map((value) => DimensionGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1665,7 +1665,7 @@ class AppendCellsRequest {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<RowData>((value) => RowData.fromJson(
+                  .map((value) => RowData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2367,9 +2367,8 @@ class BasicChartSeries {
               : null,
           styleOverrides: _json.containsKey('styleOverrides')
               ? (_json['styleOverrides'] as core.List)
-                  .map<BasicSeriesDataPointStyleOverride>((value) =>
-                      BasicSeriesDataPointStyleOverride.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => BasicSeriesDataPointStyleOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           targetAxis: _json.containsKey('targetAxis')
@@ -2510,7 +2509,7 @@ class BasicChartSpec {
       : this(
           axis: _json.containsKey('axis')
               ? (_json['axis'] as core.List)
-                  .map<BasicChartAxis>((value) => BasicChartAxis.fromJson(
+                  .map((value) => BasicChartAxis.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2522,7 +2521,7 @@ class BasicChartSpec {
               : null,
           domains: _json.containsKey('domains')
               ? (_json['domains'] as core.List)
-                  .map<BasicChartDomain>((value) => BasicChartDomain.fromJson(
+                  .map((value) => BasicChartDomain.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2540,7 +2539,7 @@ class BasicChartSpec {
               : null,
           series: _json.containsKey('series')
               ? (_json['series'] as core.List)
-                  .map<BasicChartSeries>((value) => BasicChartSeries.fromJson(
+                  .map((value) => BasicChartSeries.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2617,7 +2616,7 @@ class BasicFilter {
               : null,
           filterSpecs: _json.containsKey('filterSpecs')
               ? (_json['filterSpecs'] as core.List)
-                  .map<FilterSpec>((value) => FilterSpec.fromJson(
+                  .map((value) => FilterSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2627,7 +2626,7 @@ class BasicFilter {
               : null,
           sortSpecs: _json.containsKey('sortSpecs')
               ? (_json['sortSpecs'] as core.List)
-                  .map<SortSpec>((value) => SortSpec.fromJson(
+                  .map((value) => SortSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2714,7 +2713,7 @@ class BatchClearValuesByDataFilterRequest {
       : this(
           dataFilters: _json.containsKey('dataFilters')
               ? (_json['dataFilters'] as core.List)
-                  .map<DataFilter>((value) => DataFilter.fromJson(
+                  .map((value) => DataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2748,7 +2747,7 @@ class BatchClearValuesByDataFilterResponse {
       : this(
           clearedRanges: _json.containsKey('clearedRanges')
               ? (_json['clearedRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           spreadsheetId: _json.containsKey('spreadsheetId')
@@ -2775,7 +2774,7 @@ class BatchClearValuesRequest {
       : this(
           ranges: _json.containsKey('ranges')
               ? (_json['ranges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2806,7 +2805,7 @@ class BatchClearValuesResponse {
       : this(
           clearedRanges: _json.containsKey('clearedRanges')
               ? (_json['clearedRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           spreadsheetId: _json.containsKey('spreadsheetId')
@@ -2887,7 +2886,7 @@ class BatchGetValuesByDataFilterRequest {
       : this(
           dataFilters: _json.containsKey('dataFilters')
               ? (_json['dataFilters'] as core.List)
-                  .map<DataFilter>((value) => DataFilter.fromJson(
+                  .map((value) => DataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2933,7 +2932,7 @@ class BatchGetValuesByDataFilterResponse {
               : null,
           valueRanges: _json.containsKey('valueRanges')
               ? (_json['valueRanges'] as core.List)
-                  .map<MatchedValueRange>((value) => MatchedValueRange.fromJson(
+                  .map((value) => MatchedValueRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2969,7 +2968,7 @@ class BatchGetValuesResponse {
               : null,
           valueRanges: _json.containsKey('valueRanges')
               ? (_json['valueRanges'] as core.List)
-                  .map<ValueRange>((value) => ValueRange.fromJson(
+                  .map((value) => ValueRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3019,7 +3018,7 @@ class BatchUpdateSpreadsheetRequest {
                   : null,
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<Request>((value) => Request.fromJson(
+                  .map((value) => Request.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3028,7 +3027,7 @@ class BatchUpdateSpreadsheetRequest {
               : null,
           responseRanges: _json.containsKey('responseRanges')
               ? (_json['responseRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3071,7 +3070,7 @@ class BatchUpdateSpreadsheetResponse {
       : this(
           replies: _json.containsKey('replies')
               ? (_json['replies'] as core.List)
-                  .map<Response>((value) => Response.fromJson(
+                  .map((value) => Response.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3171,9 +3170,8 @@ class BatchUpdateValuesByDataFilterRequest {
       : this(
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<DataFilterValueRange>((value) =>
-                      DataFilterValueRange.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataFilterValueRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           includeValuesInResponse: _json.containsKey('includeValuesInResponse')
@@ -3239,9 +3237,8 @@ class BatchUpdateValuesByDataFilterResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<UpdateValuesByDataFilterResponse>((value) =>
-                      UpdateValuesByDataFilterResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UpdateValuesByDataFilterResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           spreadsheetId: _json.containsKey('spreadsheetId')
@@ -3349,7 +3346,7 @@ class BatchUpdateValuesRequest {
       : this(
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ValueRange>((value) => ValueRange.fromJson(
+                  .map((value) => ValueRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3417,9 +3414,8 @@ class BatchUpdateValuesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<UpdateValuesResponse>((value) =>
-                      UpdateValuesResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UpdateValuesResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           spreadsheetId: _json.containsKey('spreadsheetId')
@@ -3687,7 +3683,7 @@ class BooleanCondition {
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<ConditionValue>((value) => ConditionValue.fromJson(
+                  .map((value) => ConditionValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4019,7 +4015,7 @@ class CandlestickChartSpec {
       : this(
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<CandlestickData>((value) => CandlestickData.fromJson(
+                  .map((value) => CandlestickData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4283,7 +4279,7 @@ class CellData {
               : null,
           textFormatRuns: _json.containsKey('textFormatRuns')
               ? (_json['textFormatRuns'] as core.List)
-                  .map<TextFormatRun>((value) => TextFormatRun.fromJson(
+                  .map((value) => TextFormatRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4793,7 +4789,7 @@ class ChartSourceRange {
       : this(
           sources: _json.containsKey('sources')
               ? (_json['sources'] as core.List)
-                  .map<GridRange>((value) => GridRange.fromJson(
+                  .map((value) => GridRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4976,7 +4972,7 @@ class ChartSpec {
                   : null,
           filterSpecs: _json.containsKey('filterSpecs')
               ? (_json['filterSpecs'] as core.List)
-                  .map<FilterSpec>((value) => FilterSpec.fromJson(
+                  .map((value) => FilterSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5007,7 +5003,7 @@ class ChartSpec {
               : null,
           sortSpecs: _json.containsKey('sortSpecs')
               ? (_json['sortSpecs'] as core.List)
-                  .map<SortSpec>((value) => SortSpec.fromJson(
+                  .map((value) => SortSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5356,7 +5352,7 @@ class ConditionalFormatRule {
               : null,
           ranges: _json.containsKey('ranges')
               ? (_json['ranges'] as core.List)
-                  .map<GridRange>((value) => GridRange.fromJson(
+                  .map((value) => GridRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5709,7 +5705,7 @@ class DataFilterValueRange {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>>? values;
+  core.List<core.List<core.Object?>>? values;
 
   DataFilterValueRange({
     this.dataFilter,
@@ -5728,9 +5724,7 @@ class DataFilterValueRange {
               : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.List<core.Object>>((value) => (value as core.List)
-                      .map<core.Object>((value) => value as core.Object)
-                      .toList())
+                  .map((value) => value as core.List)
                   .toList()
               : null,
         );
@@ -5853,7 +5847,7 @@ class DataSource {
       : this(
           calculatedColumns: _json.containsKey('calculatedColumns')
               ? (_json['calculatedColumns'] as core.List)
-                  .map<DataSourceColumn>((value) => DataSourceColumn.fromJson(
+                  .map((value) => DataSourceColumn.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6071,9 +6065,8 @@ class DataSourceObjectReferences {
       : this(
           references: _json.containsKey('references')
               ? (_json['references'] as core.List)
-                  .map<DataSourceObjectReference>((value) =>
-                      DataSourceObjectReference.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceObjectReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6182,7 +6175,7 @@ class DataSourceRefreshMonthlySchedule {
       : this(
           daysOfMonth: _json.containsKey('daysOfMonth')
               ? (_json['daysOfMonth'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           startTime: _json.containsKey('startTime')
@@ -6302,7 +6295,7 @@ class DataSourceRefreshWeeklySchedule {
       : this(
           daysOfWeek: _json.containsKey('daysOfWeek')
               ? (_json['daysOfWeek'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           startTime: _json.containsKey('startTime')
@@ -6334,9 +6327,8 @@ class DataSourceSheetDimensionRange {
       : this(
           columnReferences: _json.containsKey('columnReferences')
               ? (_json['columnReferences'] as core.List)
-                  .map<DataSourceColumnReference>((value) =>
-                      DataSourceColumnReference.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceColumnReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           sheetId: _json.containsKey('sheetId')
@@ -6374,7 +6366,7 @@ class DataSourceSheetProperties {
       : this(
           columns: _json.containsKey('columns')
               ? (_json['columns'] as core.List)
-                  .map<DataSourceColumn>((value) => DataSourceColumn.fromJson(
+                  .map((value) => DataSourceColumn.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6420,9 +6412,8 @@ class DataSourceSpec {
               : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<DataSourceParameter>((value) =>
-                      DataSourceParameter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6496,9 +6487,8 @@ class DataSourceTable {
               : null,
           columns: _json.containsKey('columns')
               ? (_json['columns'] as core.List)
-                  .map<DataSourceColumnReference>((value) =>
-                      DataSourceColumnReference.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceColumnReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dataExecutionStatus: _json.containsKey('dataExecutionStatus')
@@ -6510,7 +6500,7 @@ class DataSourceTable {
               : null,
           filterSpecs: _json.containsKey('filterSpecs')
               ? (_json['filterSpecs'] as core.List)
-                  .map<FilterSpec>((value) => FilterSpec.fromJson(
+                  .map((value) => FilterSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6519,7 +6509,7 @@ class DataSourceTable {
               : null,
           sortSpecs: _json.containsKey('sortSpecs')
               ? (_json['sortSpecs'] as core.List)
-                  .map<SortSpec>((value) => SortSpec.fromJson(
+                  .map((value) => SortSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6775,13 +6765,13 @@ class DeleteDeveloperMetadataResponse {
 
   DeleteDeveloperMetadataResponse.fromJson(core.Map _json)
       : this(
-          deletedDeveloperMetadata: _json
-                  .containsKey('deletedDeveloperMetadata')
-              ? (_json['deletedDeveloperMetadata'] as core.List)
-                  .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          deletedDeveloperMetadata:
+              _json.containsKey('deletedDeveloperMetadata')
+                  ? (_json['deletedDeveloperMetadata'] as core.List)
+                      .map((value) => DeveloperMetadata.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6831,7 +6821,7 @@ class DeleteDimensionGroupResponse {
       : this(
           dimensionGroups: _json.containsKey('dimensionGroups')
               ? (_json['dimensionGroups'] as core.List)
-                  .map<DimensionGroup>((value) => DimensionGroup.fromJson(
+                  .map((value) => DimensionGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6894,7 +6884,7 @@ class DeleteDuplicatesRequest {
       : this(
           comparisonColumns: _json.containsKey('comparisonColumns')
               ? (_json['comparisonColumns'] as core.List)
-                  .map<DimensionRange>((value) => DimensionRange.fromJson(
+                  .map((value) => DimensionRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7435,7 +7425,7 @@ class DimensionProperties {
                   : null,
           developerMetadata: _json.containsKey('developerMetadata')
               ? (_json['developerMetadata'] as core.List)
-                  .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+                  .map((value) => DeveloperMetadata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7664,12 +7654,12 @@ class Editors {
               : null,
           groups: _json.containsKey('groups')
               ? (_json['groups'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           users: _json.containsKey('users')
               ? (_json['users'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -7965,7 +7955,7 @@ class FilterCriteria {
               : null,
           hiddenValues: _json.containsKey('hiddenValues')
               ? (_json['hiddenValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           visibleBackgroundColor: _json.containsKey('visibleBackgroundColor')
@@ -8103,7 +8093,7 @@ class FilterView {
               : null,
           filterSpecs: _json.containsKey('filterSpecs')
               ? (_json['filterSpecs'] as core.List)
-                  .map<FilterSpec>((value) => FilterSpec.fromJson(
+                  .map((value) => FilterSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8119,7 +8109,7 @@ class FilterView {
               : null,
           sortSpecs: _json.containsKey('sortSpecs')
               ? (_json['sortSpecs'] as core.List)
-                  .map<SortSpec>((value) => SortSpec.fromJson(
+                  .map((value) => SortSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8313,7 +8303,7 @@ class GetSpreadsheetByDataFilterRequest {
       : this(
           dataFilters: _json.containsKey('dataFilters')
               ? (_json['dataFilters'] as core.List)
-                  .map<DataFilter>((value) => DataFilter.fromJson(
+                  .map((value) => DataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8446,22 +8436,20 @@ class GridData {
       : this(
           columnMetadata: _json.containsKey('columnMetadata')
               ? (_json['columnMetadata'] as core.List)
-                  .map<DimensionProperties>((value) =>
-                      DimensionProperties.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DimensionProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rowData: _json.containsKey('rowData')
               ? (_json['rowData'] as core.List)
-                  .map<RowData>((value) => RowData.fromJson(
+                  .map((value) => RowData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rowMetadata: _json.containsKey('rowMetadata')
               ? (_json['rowMetadata'] as core.List)
-                  .map<DimensionProperties>((value) =>
-                      DimensionProperties.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DimensionProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           startColumn: _json.containsKey('startColumn')
@@ -8689,7 +8677,7 @@ class HistogramChartSpec {
               : null,
           series: _json.containsKey('series')
               ? (_json['series'] as core.List)
-                  .map<HistogramSeries>((value) => HistogramSeries.fromJson(
+                  .map((value) => HistogramSeries.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9159,7 +9147,7 @@ class ManualRule {
       : this(
           groups: _json.containsKey('groups')
               ? (_json['groups'] as core.List)
-                  .map<ManualRuleGroup>((value) => ManualRuleGroup.fromJson(
+                  .map((value) => ManualRuleGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9199,7 +9187,7 @@ class ManualRuleGroup {
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ExtendedValue>((value) => ExtendedValue.fromJson(
+                  .map((value) => ExtendedValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9230,7 +9218,7 @@ class MatchedDeveloperMetadata {
       : this(
           dataFilters: _json.containsKey('dataFilters')
               ? (_json['dataFilters'] as core.List)
-                  .map<DataFilter>((value) => DataFilter.fromJson(
+                  .map((value) => DataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9265,7 +9253,7 @@ class MatchedValueRange {
       : this(
           dataFilters: _json.containsKey('dataFilters')
               ? (_json['dataFilters'] as core.List)
-                  .map<DataFilter>((value) => DataFilter.fromJson(
+                  .map((value) => DataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9814,7 +9802,7 @@ class PivotFilterCriteria {
               : null,
           visibleValues: _json.containsKey('visibleValues')
               ? (_json['visibleValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -9980,9 +9968,8 @@ class PivotGroup {
               : null,
           valueMetadata: _json.containsKey('valueMetadata')
               ? (_json['valueMetadata'] as core.List)
-                  .map<PivotGroupValueMetadata>((value) =>
-                      PivotGroupValueMetadata.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PivotGroupValueMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -10112,7 +10099,7 @@ class PivotGroupSortValueBucket {
       : this(
           buckets: _json.containsKey('buckets')
               ? (_json['buckets'] as core.List)
-                  .map<ExtendedValue>((value) => ExtendedValue.fromJson(
+                  .map((value) => ExtendedValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10223,7 +10210,7 @@ class PivotTable {
       : this(
           columns: _json.containsKey('columns')
               ? (_json['columns'] as core.List)
-                  .map<PivotGroup>((value) => PivotGroup.fromJson(
+                  .map((value) => PivotGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10245,13 +10232,13 @@ class PivotTable {
               : null,
           filterSpecs: _json.containsKey('filterSpecs')
               ? (_json['filterSpecs'] as core.List)
-                  .map<PivotFilterSpec>((value) => PivotFilterSpec.fromJson(
+                  .map((value) => PivotFilterSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<PivotGroup>((value) => PivotGroup.fromJson(
+                  .map((value) => PivotGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10264,7 +10251,7 @@ class PivotTable {
               : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<PivotValue>((value) => PivotValue.fromJson(
+                  .map((value) => PivotValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10522,7 +10509,7 @@ class ProtectedRange {
               : null,
           unprotectedRanges: _json.containsKey('unprotectedRanges')
               ? (_json['unprotectedRanges'] as core.List)
-                  .map<GridRange>((value) => GridRange.fromJson(
+                  .map((value) => GridRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10672,7 +10659,7 @@ class RefreshDataSourceResponse {
       : this(
           statuses: _json.containsKey('statuses')
               ? (_json['statuses'] as core.List)
-                  .map<RefreshDataSourceObjectExecutionStatus>((value) =>
+                  .map((value) =>
                       RefreshDataSourceObjectExecutionStatus.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11655,7 +11642,7 @@ class RowData {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<CellData>((value) => CellData.fromJson(
+                  .map((value) => CellData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11808,7 +11795,7 @@ class SearchDeveloperMetadataRequest {
       : this(
           dataFilters: _json.containsKey('dataFilters')
               ? (_json['dataFilters'] as core.List)
-                  .map<DataFilter>((value) => DataFilter.fromJson(
+                  .map((value) => DataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11834,9 +11821,8 @@ class SearchDeveloperMetadataResponse {
           matchedDeveloperMetadata:
               _json.containsKey('matchedDeveloperMetadata')
                   ? (_json['matchedDeveloperMetadata'] as core.List)
-                      .map<MatchedDeveloperMetadata>((value) =>
-                          MatchedDeveloperMetadata.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => MatchedDeveloperMetadata.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
         );
@@ -11976,7 +11962,7 @@ class Sheet {
       : this(
           bandedRanges: _json.containsKey('bandedRanges')
               ? (_json['bandedRanges'] as core.List)
-                  .map<BandedRange>((value) => BandedRange.fromJson(
+                  .map((value) => BandedRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11986,44 +11972,43 @@ class Sheet {
               : null,
           charts: _json.containsKey('charts')
               ? (_json['charts'] as core.List)
-                  .map<EmbeddedChart>((value) => EmbeddedChart.fromJson(
+                  .map((value) => EmbeddedChart.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           columnGroups: _json.containsKey('columnGroups')
               ? (_json['columnGroups'] as core.List)
-                  .map<DimensionGroup>((value) => DimensionGroup.fromJson(
+                  .map((value) => DimensionGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           conditionalFormats: _json.containsKey('conditionalFormats')
               ? (_json['conditionalFormats'] as core.List)
-                  .map<ConditionalFormatRule>((value) =>
-                      ConditionalFormatRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ConditionalFormatRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<GridData>((value) => GridData.fromJson(
+                  .map((value) => GridData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           developerMetadata: _json.containsKey('developerMetadata')
               ? (_json['developerMetadata'] as core.List)
-                  .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+                  .map((value) => DeveloperMetadata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           filterViews: _json.containsKey('filterViews')
               ? (_json['filterViews'] as core.List)
-                  .map<FilterView>((value) => FilterView.fromJson(
+                  .map((value) => FilterView.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           merges: _json.containsKey('merges')
               ? (_json['merges'] as core.List)
-                  .map<GridRange>((value) => GridRange.fromJson(
+                  .map((value) => GridRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12033,19 +12018,19 @@ class Sheet {
               : null,
           protectedRanges: _json.containsKey('protectedRanges')
               ? (_json['protectedRanges'] as core.List)
-                  .map<ProtectedRange>((value) => ProtectedRange.fromJson(
+                  .map((value) => ProtectedRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rowGroups: _json.containsKey('rowGroups')
               ? (_json['rowGroups'] as core.List)
-                  .map<DimensionGroup>((value) => DimensionGroup.fromJson(
+                  .map((value) => DimensionGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           slicers: _json.containsKey('slicers')
               ? (_json['slicers'] as core.List)
-                  .map<Slicer>((value) => Slicer.fromJson(
+                  .map((value) => Slicer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12381,7 +12366,7 @@ class SortRangeRequest {
               : null,
           sortSpecs: _json.containsKey('sortSpecs')
               ? (_json['sortSpecs'] as core.List)
-                  .map<SortSpec>((value) => SortSpec.fromJson(
+                  .map((value) => SortSpec.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12586,26 +12571,25 @@ class Spreadsheet {
       : this(
           dataSourceSchedules: _json.containsKey('dataSourceSchedules')
               ? (_json['dataSourceSchedules'] as core.List)
-                  .map<DataSourceRefreshSchedule>((value) =>
-                      DataSourceRefreshSchedule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceRefreshSchedule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dataSources: _json.containsKey('dataSources')
               ? (_json['dataSources'] as core.List)
-                  .map<DataSource>((value) => DataSource.fromJson(
+                  .map((value) => DataSource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           developerMetadata: _json.containsKey('developerMetadata')
               ? (_json['developerMetadata'] as core.List)
-                  .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+                  .map((value) => DeveloperMetadata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           namedRanges: _json.containsKey('namedRanges')
               ? (_json['namedRanges'] as core.List)
-                  .map<NamedRange>((value) => NamedRange.fromJson(
+                  .map((value) => NamedRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12615,7 +12599,7 @@ class Spreadsheet {
               : null,
           sheets: _json.containsKey('sheets')
               ? (_json['sheets'] as core.List)
-                  .map<Sheet>((value) => Sheet.fromJson(
+                  .map((value) => Sheet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12766,7 +12750,7 @@ class SpreadsheetTheme {
               : null,
           themeColors: _json.containsKey('themeColors')
               ? (_json['themeColors'] as core.List)
-                  .map<ThemeColorPair>((value) => ThemeColorPair.fromJson(
+                  .map((value) => ThemeColorPair.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13641,7 +13625,7 @@ class UpdateCellsRequest {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<RowData>((value) => RowData.fromJson(
+                  .map((value) => RowData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13892,7 +13876,7 @@ class UpdateDeveloperMetadataRequest {
       : this(
           dataFilters: _json.containsKey('dataFilters')
               ? (_json['dataFilters'] as core.List)
-                  .map<DataFilter>((value) => DataFilter.fromJson(
+                  .map((value) => DataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -13927,7 +13911,7 @@ class UpdateDeveloperMetadataResponse {
       : this(
           developerMetadata: _json.containsKey('developerMetadata')
               ? (_json['developerMetadata'] as core.List)
-                  .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+                  .map((value) => DeveloperMetadata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14529,7 +14513,7 @@ class ValueRange {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>>? values;
+  core.List<core.List<core.Object?>>? values;
 
   ValueRange({
     this.majorDimension,
@@ -14546,9 +14530,7 @@ class ValueRange {
               _json.containsKey('range') ? _json['range'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.List<core.Object>>((value) => (value as core.List)
-                      .map<core.Object>((value) => value as core.Object)
-                      .toList())
+                  .map((value) => value as core.List)
                   .toList()
               : null,
         );
@@ -14719,9 +14701,8 @@ class WaterfallChartSeries {
       : this(
           customSubtotals: _json.containsKey('customSubtotals')
               ? (_json['customSubtotals'] as core.List)
-                  .map<WaterfallChartCustomSubtotal>((value) =>
-                      WaterfallChartCustomSubtotal.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => WaterfallChartCustomSubtotal.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           data: _json.containsKey('data')
@@ -14827,9 +14808,8 @@ class WaterfallChartSpec {
               : null,
           series: _json.containsKey('series')
               ? (_json['series'] as core.List)
-                  .map<WaterfallChartSeries>((value) =>
-                      WaterfallChartSeries.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => WaterfallChartSeries.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           stackedType: _json.containsKey('stackedType')

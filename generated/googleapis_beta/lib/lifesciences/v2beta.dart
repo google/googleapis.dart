@@ -616,7 +616,7 @@ class Action {
               : null,
           commands: _json.containsKey('commands')
               ? (_json['commands'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           containerName: _json.containsKey('containerName')
@@ -668,7 +668,7 @@ class Action {
               : null,
           mounts: _json.containsKey('mounts')
               ? (_json['mounts'] as core.List)
-                  .map<Mount>((value) => Mount.fromJson(
+                  .map((value) => Mount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -874,7 +874,7 @@ class DelayedEvent {
               _json.containsKey('cause') ? _json['cause'] as core.String : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1229,7 +1229,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1265,7 +1265,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1301,7 +1301,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -1333,12 +1333,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -1398,7 +1393,7 @@ class Metadata {
               : null,
           events: _json.containsKey('events')
               ? (_json['events'] as core.List)
-                  .map<Event>((value) => Event.fromJson(
+                  .map((value) => Event.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1560,7 +1555,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name for the operation.
   ///
@@ -1572,7 +1567,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -1590,21 +1585,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1705,7 +1690,7 @@ class Pipeline {
       : this(
           actions: _json.containsKey('actions')
               ? (_json['actions'] as core.List)
-                  .map<Action>((value) => Action.fromJson(
+                  .map((value) => Action.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1811,7 +1796,7 @@ class Resources {
       : this(
           regions: _json.containsKey('regions')
               ? (_json['regions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           virtualMachine: _json.containsKey('virtualMachine')
@@ -1820,7 +1805,7 @@ class Resources {
               : null,
           zones: _json.containsKey('zones')
               ? (_json['zones'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1953,7 +1938,7 @@ class ServiceAccount {
               _json.containsKey('email') ? _json['email'] as core.String : null,
           scopes: _json.containsKey('scopes')
               ? (_json['scopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1981,7 +1966,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2000,13 +1985,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2183,7 +2162,7 @@ class VirtualMachine {
       : this(
           accelerators: _json.containsKey('accelerators')
               ? (_json['accelerators'] as core.List)
-                  .map<Accelerator>((value) => Accelerator.fromJson(
+                  .map((value) => Accelerator.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2198,13 +2177,13 @@ class VirtualMachine {
               : null,
           disks: _json.containsKey('disks')
               ? (_json['disks'] as core.List)
-                  .map<Disk>((value) => Disk.fromJson(
+                  .map((value) => Disk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dockerCacheImages: _json.containsKey('dockerCacheImages')
               ? (_json['dockerCacheImages'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           enableStackdriverMonitoring:
@@ -2241,7 +2220,7 @@ class VirtualMachine {
               : null,
           volumes: _json.containsKey('volumes')
               ? (_json['volumes'] as core.List)
-                  .map<Volume>((value) => Volume.fromJson(
+                  .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

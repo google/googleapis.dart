@@ -824,7 +824,7 @@ class AdmissionRule {
               : null,
           requireAttestationsBy: _json.containsKey('requireAttestationsBy')
               ? (_json['requireAttestationsBy'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -913,7 +913,7 @@ class AttestationOccurrence {
       : this(
           jwts: _json.containsKey('jwts')
               ? (_json['jwts'] as core.List)
-                  .map<Jwt>((value) => Jwt.fromJson(
+                  .map((value) => Jwt.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -922,7 +922,7 @@ class AttestationOccurrence {
               : null,
           signatures: _json.containsKey('signatures')
               ? (_json['signatures'] as core.List)
-                  .map<Signature>((value) => Signature.fromJson(
+                  .map((value) => Signature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1127,7 +1127,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -1311,7 +1311,7 @@ class IamPolicy {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1373,7 +1373,7 @@ class ListAttestorsResponse {
       : this(
           attestors: _json.containsKey('attestors')
               ? (_json['attestors'] as core.List)
-                  .map<Attestor>((value) => Attestor.fromJson(
+                  .map((value) => Attestor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1556,9 +1556,8 @@ class Policy {
           admissionWhitelistPatterns:
               _json.containsKey('admissionWhitelistPatterns')
                   ? (_json['admissionWhitelistPatterns'] as core.List)
-                      .map<AdmissionWhitelistPattern>((value) =>
-                          AdmissionWhitelistPattern.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => AdmissionWhitelistPattern.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           clusterAdmissionRules: _json.containsKey('clusterAdmissionRules')
@@ -1768,7 +1767,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1792,7 +1791,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1855,7 +1854,7 @@ class UserOwnedGrafeasNote {
               : null,
           publicKeys: _json.containsKey('publicKeys')
               ? (_json['publicKeys'] as core.List)
-                  .map<AttestorPublicKey>((value) => AttestorPublicKey.fromJson(
+                  .map((value) => AttestorPublicKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

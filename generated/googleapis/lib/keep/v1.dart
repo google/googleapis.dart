@@ -430,7 +430,7 @@ class Attachment {
       : this(
           mimeType: _json.containsKey('mimeType')
               ? (_json['mimeType'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -458,9 +458,8 @@ class BatchCreatePermissionsRequest {
       : this(
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<CreatePermissionRequest>((value) =>
-                      CreatePermissionRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CreatePermissionRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -484,7 +483,7 @@ class BatchCreatePermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<Permission>((value) => Permission.fromJson(
+                  .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -518,7 +517,7 @@ class BatchDeletePermissionsRequest {
       : this(
           names: _json.containsKey('names')
               ? (_json['names'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -613,7 +612,7 @@ class ListContent {
       : this(
           listItems: _json.containsKey('listItems')
               ? (_json['listItems'] as core.List)
-                  .map<ListItem>((value) => ListItem.fromJson(
+                  .map((value) => ListItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -653,7 +652,7 @@ class ListItem {
               : null,
           childListItems: _json.containsKey('childListItems')
               ? (_json['childListItems'] as core.List)
-                  .map<ListItem>((value) => ListItem.fromJson(
+                  .map((value) => ListItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -692,7 +691,7 @@ class ListNotesResponse {
               : null,
           notes: _json.containsKey('notes')
               ? (_json['notes'] as core.List)
-                  .map<Note>((value) => Note.fromJson(
+                  .map((value) => Note.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -775,7 +774,7 @@ class Note {
       : this(
           attachments: _json.containsKey('attachments')
               ? (_json['attachments'] as core.List)
-                  .map<Attachment>((value) => Attachment.fromJson(
+                  .map((value) => Attachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -789,7 +788,7 @@ class Note {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<Permission>((value) => Permission.fromJson(
+                  .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

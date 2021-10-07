@@ -1280,7 +1280,7 @@ class AuditConfig {
       : this(
           auditLogConfigs: _json.containsKey('auditLogConfigs')
               ? (_json['auditLogConfigs'] as core.List)
-                  .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+                  .map((value) => AuditLogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1327,7 +1327,7 @@ class AuditLogConfig {
       : this(
           exemptedMembers: _json.containsKey('exemptedMembers')
               ? (_json['exemptedMembers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logType: _json.containsKey('logType')
@@ -1404,7 +1404,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -1548,9 +1548,8 @@ class Deployment {
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<DeploymentLabelEntry>((value) =>
-                      DeploymentLabelEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DeploymentLabelEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           manifest: _json.containsKey('manifest')
@@ -1655,9 +1654,8 @@ class DeploymentUpdate {
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<DeploymentUpdateLabelEntry>((value) =>
-                      DeploymentUpdateLabelEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DeploymentUpdateLabelEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           manifest: _json.containsKey('manifest')
@@ -1757,7 +1755,7 @@ class DeploymentsListResponse {
       : this(
           deployments: _json.containsKey('deployments')
               ? (_json['deployments'] as core.List)
-                  .map<Deployment>((value) => Deployment.fromJson(
+                  .map((value) => Deployment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1917,7 +1915,7 @@ class GlobalSetPolicyRequest {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2035,7 +2033,7 @@ class Manifest {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           imports: _json.containsKey('imports')
               ? (_json['imports'] as core.List)
-                  .map<ImportFile>((value) => ImportFile.fromJson(
+                  .map((value) => ImportFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2095,7 +2093,7 @@ class ManifestsListResponse {
       : this(
           manifests: _json.containsKey('manifests')
               ? (_json['manifests'] as core.List)
-                  .map<Manifest>((value) => Manifest.fromJson(
+                  .map((value) => Manifest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2171,9 +2169,8 @@ class OperationError {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<OperationErrorErrors>((value) =>
-                      OperationErrorErrors.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperationErrorErrors.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2300,9 +2297,8 @@ class OperationWarnings {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<OperationWarningsData>((value) =>
-                      OperationWarningsData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperationWarningsData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2578,7 +2574,7 @@ class Operation {
           user: _json.containsKey('user') ? _json['user'] as core.String : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<OperationWarnings>((value) => OperationWarnings.fromJson(
+                  .map((value) => OperationWarnings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2640,7 +2636,7 @@ class OperationsListResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2745,13 +2741,13 @@ class Policy {
       : this(
           auditConfigs: _json.containsKey('auditConfigs')
               ? (_json['auditConfigs'] as core.List)
-                  .map<AuditConfig>((value) => AuditConfig.fromJson(
+                  .map((value) => AuditConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2887,9 +2883,8 @@ class ResourceWarnings {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ResourceWarningsData>((value) =>
-                      ResourceWarningsData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResourceWarningsData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -3014,7 +3009,7 @@ class Resource {
           url: _json.containsKey('url') ? _json['url'] as core.String : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<ResourceWarnings>((value) => ResourceWarnings.fromJson(
+                  .map((value) => ResourceWarnings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3118,9 +3113,8 @@ class ResourceUpdateError {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<ResourceUpdateErrorErrors>((value) =>
-                      ResourceUpdateErrorErrors.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResourceUpdateErrorErrors.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3247,9 +3241,8 @@ class ResourceUpdateWarnings {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ResourceUpdateWarningsData>((value) =>
-                      ResourceUpdateWarningsData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResourceUpdateWarningsData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -3364,9 +3357,8 @@ class ResourceUpdate {
               _json.containsKey('state') ? _json['state'] as core.String : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<ResourceUpdateWarnings>((value) =>
-                      ResourceUpdateWarnings.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResourceUpdateWarnings.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3405,7 +3397,7 @@ class ResourcesListResponse {
               : null,
           resources: _json.containsKey('resources')
               ? (_json['resources'] as core.List)
-                  .map<Resource>((value) => Resource.fromJson(
+                  .map((value) => Resource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3441,7 +3433,7 @@ class TargetConfiguration {
               : null,
           imports: _json.containsKey('imports')
               ? (_json['imports'] as core.List)
-                  .map<ImportFile>((value) => ImportFile.fromJson(
+                  .map((value) => ImportFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3468,7 +3460,7 @@ class TestPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3491,7 +3483,7 @@ class TestPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3579,7 +3571,7 @@ class TypesListResponse {
               : null,
           types: _json.containsKey('types')
               ? (_json['types'] as core.List)
-                  .map<Type>((value) => Type.fromJson(
+                  .map((value) => Type.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

@@ -3929,7 +3929,7 @@ class BatchOperationMetadata {
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4010,7 +4010,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -4130,7 +4130,7 @@ class Cluster {
               : null,
           statusHistory: _json.containsKey('statusHistory')
               ? (_json['statusHistory'] as core.List)
-                  .map<ClusterStatus>((value) => ClusterStatus.fromJson(
+                  .map((value) => ClusterStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4309,9 +4309,8 @@ class ClusterConfig {
               : null,
           initializationActions: _json.containsKey('initializationActions')
               ? (_json['initializationActions'] as core.List)
-                  .map<NodeInitializationAction>((value) =>
-                      NodeInitializationAction.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeInitializationAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           lifecycleConfig: _json.containsKey('lifecycleConfig')
@@ -4540,14 +4539,13 @@ class ClusterOperationMetadata {
               : null,
           statusHistory: _json.containsKey('statusHistory')
               ? (_json['statusHistory'] as core.List)
-                  .map<ClusterOperationStatus>((value) =>
-                      ClusterOperationStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ClusterOperationStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5179,7 +5177,7 @@ class GceClusterConfig {
               : null,
           serviceAccountScopes: _json.containsKey('serviceAccountScopes')
               ? (_json['serviceAccountScopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           shieldedInstanceConfig: _json.containsKey('shieldedInstanceConfig')
@@ -5191,7 +5189,7 @@ class GceClusterConfig {
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           zoneUri: _json.containsKey('zoneUri')
@@ -5382,22 +5380,22 @@ class HadoopJob {
       : this(
           archiveUris: _json.containsKey('archiveUris')
               ? (_json['archiveUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           args: _json.containsKey('args')
               ? (_json['args'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           fileUris: _json.containsKey('fileUris')
               ? (_json['fileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           jarFileUris: _json.containsKey('jarFileUris')
               ? (_json['jarFileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           loggingConfig: _json.containsKey('loggingConfig')
@@ -5489,7 +5487,7 @@ class HiveJob {
               : null,
           jarFileUris: _json.containsKey('jarFileUris')
               ? (_json['jarFileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           properties: _json.containsKey('properties')
@@ -5786,7 +5784,7 @@ class InstanceGroupConfig {
       : this(
           accelerators: _json.containsKey('accelerators')
               ? (_json['accelerators'] as core.List)
-                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                  .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5799,12 +5797,12 @@ class InstanceGroupConfig {
               : null,
           instanceNames: _json.containsKey('instanceNames')
               ? (_json['instanceNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           instanceReferences: _json.containsKey('instanceReferences')
               ? (_json['instanceReferences'] as core.List)
-                  .map<InstanceReference>((value) => InstanceReference.fromJson(
+                  .map((value) => InstanceReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6172,13 +6170,13 @@ class Job {
               : null,
           statusHistory: _json.containsKey('statusHistory')
               ? (_json['statusHistory'] as core.List)
-                  .map<JobStatus>((value) => JobStatus.fromJson(
+                  .map((value) => JobStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           yarnApplications: _json.containsKey('yarnApplications')
               ? (_json['yarnApplications'] as core.List)
-                  .map<YarnApplication>((value) => YarnApplication.fromJson(
+                  .map((value) => YarnApplication.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6764,7 +6762,7 @@ class ListAutoscalingPoliciesResponse {
               : null,
           policies: _json.containsKey('policies')
               ? (_json['policies'] as core.List)
-                  .map<AutoscalingPolicy>((value) => AutoscalingPolicy.fromJson(
+                  .map((value) => AutoscalingPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6801,7 +6799,7 @@ class ListClustersResponse {
       : this(
           clusters: _json.containsKey('clusters')
               ? (_json['clusters'] as core.List)
-                  .map<Cluster>((value) => Cluster.fromJson(
+                  .map((value) => Cluster.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6841,7 +6839,7 @@ class ListJobsResponse {
       : this(
           jobs: _json.containsKey('jobs')
               ? (_json['jobs'] as core.List)
-                  .map<Job>((value) => Job.fromJson(
+                  .map((value) => Job.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6876,7 +6874,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6916,7 +6914,7 @@ class ListWorkflowTemplatesResponse {
               : null,
           templates: _json.containsKey('templates')
               ? (_json['templates'] as core.List)
-                  .map<WorkflowTemplate>((value) => WorkflowTemplate.fromJson(
+                  .map((value) => WorkflowTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7208,7 +7206,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -7228,7 +7226,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -7246,21 +7244,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -7388,7 +7376,7 @@ class OrderedJob {
               : null,
           prerequisiteStepIds: _json.containsKey('prerequisiteStepIds')
               ? (_json['prerequisiteStepIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           prestoJob: _json.containsKey('prestoJob')
@@ -7530,7 +7518,7 @@ class PigJob {
               : null,
           jarFileUris: _json.containsKey('jarFileUris')
               ? (_json['jarFileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           loggingConfig: _json.containsKey('loggingConfig')
@@ -7662,7 +7650,7 @@ class Policy {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7740,7 +7728,7 @@ class PrestoJob {
       : this(
           clientTags: _json.containsKey('clientTags')
               ? (_json['clientTags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           continueOnFailure: _json.containsKey('continueOnFailure')
@@ -7859,22 +7847,22 @@ class PySparkJob {
       : this(
           archiveUris: _json.containsKey('archiveUris')
               ? (_json['archiveUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           args: _json.containsKey('args')
               ? (_json['args'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           fileUris: _json.containsKey('fileUris')
               ? (_json['fileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           jarFileUris: _json.containsKey('jarFileUris')
               ? (_json['jarFileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           loggingConfig: _json.containsKey('loggingConfig')
@@ -7895,7 +7883,7 @@ class PySparkJob {
               : null,
           pythonFileUris: _json.containsKey('pythonFileUris')
               ? (_json['pythonFileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -7933,7 +7921,7 @@ class QueryList {
       : this(
           queries: _json.containsKey('queries')
               ? (_json['queries'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -7961,7 +7949,7 @@ class RegexValidation {
       : this(
           regexes: _json.containsKey('regexes')
               ? (_json['regexes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8050,7 +8038,7 @@ class ReservationAffinity {
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8216,7 +8204,7 @@ class SoftwareConfig {
               : null,
           optionalComponents: _json.containsKey('optionalComponents')
               ? (_json['optionalComponents'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           properties: _json.containsKey('properties')
@@ -8309,22 +8297,22 @@ class SparkJob {
       : this(
           archiveUris: _json.containsKey('archiveUris')
               ? (_json['archiveUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           args: _json.containsKey('args')
               ? (_json['args'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           fileUris: _json.containsKey('fileUris')
               ? (_json['fileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           jarFileUris: _json.containsKey('jarFileUris')
               ? (_json['jarFileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           loggingConfig: _json.containsKey('loggingConfig')
@@ -8421,17 +8409,17 @@ class SparkRJob {
       : this(
           archiveUris: _json.containsKey('archiveUris')
               ? (_json['archiveUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           args: _json.containsKey('args')
               ? (_json['args'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           fileUris: _json.containsKey('fileUris')
               ? (_json['fileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           loggingConfig: _json.containsKey('loggingConfig')
@@ -8509,7 +8497,7 @@ class SparkSqlJob {
       : this(
           jarFileUris: _json.containsKey('jarFileUris')
               ? (_json['jarFileUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           loggingConfig: _json.containsKey('loggingConfig')
@@ -8614,7 +8602,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -8633,13 +8621,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -8813,7 +8795,7 @@ class TemplateParameter {
               : null,
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -8848,7 +8830,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8871,7 +8853,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8896,7 +8878,7 @@ class ValueValidation {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8921,7 +8903,7 @@ class WorkflowGraph {
       : this(
           nodes: _json.containsKey('nodes')
               ? (_json['nodes'] as core.List)
-                  .map<WorkflowNode>((value) => WorkflowNode.fromJson(
+                  .map((value) => WorkflowNode.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9158,7 +9140,7 @@ class WorkflowNode {
               _json.containsKey('jobId') ? _json['jobId'] as core.String : null,
           prerequisiteStepIds: _json.containsKey('prerequisiteStepIds')
               ? (_json['prerequisiteStepIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           state:
@@ -9283,7 +9265,7 @@ class WorkflowTemplate {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           jobs: _json.containsKey('jobs')
               ? (_json['jobs'] as core.List)
-                  .map<OrderedJob>((value) => OrderedJob.fromJson(
+                  .map((value) => OrderedJob.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9298,7 +9280,7 @@ class WorkflowTemplate {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<TemplateParameter>((value) => TemplateParameter.fromJson(
+                  .map((value) => TemplateParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

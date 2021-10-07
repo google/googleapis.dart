@@ -236,9 +236,8 @@ class ViolatingSitesResponse {
       : this(
           violatingSites: _json.containsKey('violatingSites')
               ? (_json['violatingSites'] as core.List)
-                  .map<SiteSummaryResponse>((value) =>
-                      SiteSummaryResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SiteSummaryResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );

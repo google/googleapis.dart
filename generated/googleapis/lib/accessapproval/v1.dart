@@ -1137,14 +1137,14 @@ class AccessApprovalSettings {
               : null,
           enrolledServices: _json.containsKey('enrolledServices')
               ? (_json['enrolledServices'] as core.List)
-                  .map<EnrolledService>((value) => EnrolledService.fromJson(
+                  .map((value) => EnrolledService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           notificationEmails: _json.containsKey('notificationEmails')
               ? (_json['notificationEmails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1515,7 +1515,7 @@ class ListApprovalRequestsResponse {
       : this(
           approvalRequests: _json.containsKey('approvalRequests')
               ? (_json['approvalRequests'] as core.List)
-                  .map<ApprovalRequest>((value) => ApprovalRequest.fromJson(
+                  .map((value) => ApprovalRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

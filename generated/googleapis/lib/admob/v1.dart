@@ -437,7 +437,7 @@ class AdUnit {
               : null,
           adTypes: _json.containsKey('adTypes')
               ? (_json['adTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           adUnitId: _json.containsKey('adUnitId')
@@ -847,7 +847,7 @@ class ListAdUnitsResponse {
       : this(
           adUnits: _json.containsKey('adUnits')
               ? (_json['adUnits'] as core.List)
-                  .map<AdUnit>((value) => AdUnit.fromJson(
+                  .map((value) => AdUnit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -881,7 +881,7 @@ class ListAppsResponse {
       : this(
           apps: _json.containsKey('apps')
               ? (_json['apps'] as core.List)
-                  .map<App>((value) => App.fromJson(
+                  .map((value) => App.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -914,7 +914,7 @@ class ListPublisherAccountsResponse {
       : this(
           account: _json.containsKey('account')
               ? (_json['account'] as core.List)
-                  .map<PublisherAccount>((value) => PublisherAccount.fromJson(
+                  .map((value) => PublisherAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1047,14 +1047,13 @@ class MediationReportSpec {
               : null,
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<MediationReportSpecDimensionFilter>((value) =>
-                      MediationReportSpecDimensionFilter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MediationReportSpecDimensionFilter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           localizationSettings: _json.containsKey('localizationSettings')
@@ -1066,14 +1065,13 @@ class MediationReportSpec {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sortConditions: _json.containsKey('sortConditions')
               ? (_json['sortConditions'] as core.List)
-                  .map<MediationReportSpecSortCondition>((value) =>
-                      MediationReportSpecSortCondition.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MediationReportSpecSortCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           timeZone: _json.containsKey('timeZone')
@@ -1359,14 +1357,13 @@ class NetworkReportSpec {
               : null,
           dimensionFilters: _json.containsKey('dimensionFilters')
               ? (_json['dimensionFilters'] as core.List)
-                  .map<NetworkReportSpecDimensionFilter>((value) =>
-                      NetworkReportSpecDimensionFilter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NetworkReportSpecDimensionFilter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           localizationSettings: _json.containsKey('localizationSettings')
@@ -1378,14 +1375,13 @@ class NetworkReportSpec {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sortConditions: _json.containsKey('sortConditions')
               ? (_json['sortConditions'] as core.List)
-                  .map<NetworkReportSpecSortCondition>((value) =>
-                      NetworkReportSpecSortCondition.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NetworkReportSpecSortCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           timeZone: _json.containsKey('timeZone')
@@ -1652,7 +1648,7 @@ class ReportFooter {
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<ReportWarning>((value) => ReportWarning.fromJson(
+                  .map((value) => ReportWarning.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1897,7 +1893,7 @@ class StringList {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

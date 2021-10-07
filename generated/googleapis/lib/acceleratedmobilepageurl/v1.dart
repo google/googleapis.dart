@@ -217,7 +217,7 @@ class BatchGetAmpUrlsRequest {
               : null,
           urls: _json.containsKey('urls')
               ? (_json['urls'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -249,13 +249,13 @@ class BatchGetAmpUrlsResponse {
       : this(
           ampUrls: _json.containsKey('ampUrls')
               ? (_json['ampUrls'] as core.List)
-                  .map<AmpUrl>((value) => AmpUrl.fromJson(
+                  .map((value) => AmpUrl.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           urlErrors: _json.containsKey('urlErrors')
               ? (_json['urlErrors'] as core.List)
-                  .map<AmpUrlError>((value) => AmpUrlError.fromJson(
+                  .map((value) => AmpUrlError.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

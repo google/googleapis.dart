@@ -1629,7 +1629,7 @@ class ArrayValue {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<Value>((value) => Value.fromJson(
+                  .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1690,7 +1690,7 @@ class BatchGetDocumentsRequest {
       : this(
           documents: _json.containsKey('documents')
               ? (_json['documents'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           mask: _json.containsKey('mask')
@@ -1810,7 +1810,7 @@ class BatchWriteRequest {
               : null,
           writes: _json.containsKey('writes')
               ? (_json['writes'] as core.List)
-                  .map<Write>((value) => Write.fromJson(
+                  .map((value) => Write.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1844,13 +1844,13 @@ class BatchWriteResponse {
       : this(
           status: _json.containsKey('status')
               ? (_json['status'] as core.List)
-                  .map<Status>((value) => Status.fromJson(
+                  .map((value) => Status.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           writeResults: _json.containsKey('writeResults')
               ? (_json['writeResults'] as core.List)
-                  .map<WriteResult>((value) => WriteResult.fromJson(
+                  .map((value) => WriteResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1979,7 +1979,7 @@ class CommitRequest {
               : null,
           writes: _json.containsKey('writes')
               ? (_json['writes'] as core.List)
-                  .map<Write>((value) => Write.fromJson(
+                  .map((value) => Write.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2017,7 +2017,7 @@ class CommitResponse {
               : null,
           writeResults: _json.containsKey('writeResults')
               ? (_json['writeResults'] as core.List)
-                  .map<WriteResult>((value) => WriteResult.fromJson(
+                  .map((value) => WriteResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2053,7 +2053,7 @@ class CompositeFilter {
       : this(
           filters: _json.containsKey('filters')
               ? (_json['filters'] as core.List)
-                  .map<Filter>((value) => Filter.fromJson(
+                  .map((value) => Filter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2090,7 +2090,7 @@ class Cursor {
               _json.containsKey('before') ? _json['before'] as core.bool : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<Value>((value) => Value.fromJson(
+                  .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2216,12 +2216,12 @@ class DocumentChange {
               : null,
           removedTargetIds: _json.containsKey('removedTargetIds')
               ? (_json['removedTargetIds'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           targetIds: _json.containsKey('targetIds')
               ? (_json['targetIds'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -2266,7 +2266,7 @@ class DocumentDelete {
               : null,
           removedTargetIds: _json.containsKey('removedTargetIds')
               ? (_json['removedTargetIds'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -2297,7 +2297,7 @@ class DocumentMask {
       : this(
           fieldPaths: _json.containsKey('fieldPaths')
               ? (_json['fieldPaths'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2342,7 +2342,7 @@ class DocumentRemove {
               : null,
           removedTargetIds: _json.containsKey('removedTargetIds')
               ? (_json['removedTargetIds'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -2377,7 +2377,7 @@ class DocumentTransform {
               : null,
           fieldTransforms: _json.containsKey('fieldTransforms')
               ? (_json['fieldTransforms'] as core.List)
-                  .map<FieldTransform>((value) => FieldTransform.fromJson(
+                  .map((value) => FieldTransform.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2409,7 +2409,7 @@ class DocumentsTarget {
       : this(
           documents: _json.containsKey('documents')
               ? (_json['documents'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2763,7 +2763,7 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
       : this(
           collectionIds: _json.containsKey('collectionIds')
               ? (_json['collectionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           endTime: _json.containsKey('endTime')
@@ -2829,7 +2829,7 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
       : this(
           collectionIds: _json.containsKey('collectionIds')
               ? (_json['collectionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           outputUriPrefix: _json.containsKey('outputUriPrefix')
@@ -2983,7 +2983,7 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
               _json.containsKey('field') ? _json['field'] as core.String : null,
           indexConfigDeltas: _json.containsKey('indexConfigDeltas')
               ? (_json['indexConfigDeltas'] as core.List)
-                  .map<GoogleFirestoreAdminV1IndexConfigDelta>((value) =>
+                  .map((value) =>
                       GoogleFirestoreAdminV1IndexConfigDelta.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3071,7 +3071,7 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
       : this(
           collectionIds: _json.containsKey('collectionIds')
               ? (_json['collectionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           endTime: _json.containsKey('endTime')
@@ -3132,7 +3132,7 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
       : this(
           collectionIds: _json.containsKey('collectionIds')
               ? (_json['collectionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           inputUriPrefix: _json.containsKey('inputUriPrefix')
@@ -3219,9 +3219,8 @@ class GoogleFirestoreAdminV1Index {
       : this(
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<GoogleFirestoreAdminV1IndexField>((value) =>
-                      GoogleFirestoreAdminV1IndexField.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleFirestoreAdminV1IndexField.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -3284,9 +3283,8 @@ class GoogleFirestoreAdminV1IndexConfig {
               : null,
           indexes: _json.containsKey('indexes')
               ? (_json['indexes'] as core.List)
-                  .map<GoogleFirestoreAdminV1Index>((value) =>
-                      GoogleFirestoreAdminV1Index.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleFirestoreAdminV1Index.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           reverting: _json.containsKey('reverting')
@@ -3494,9 +3492,8 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
       : this(
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<GoogleFirestoreAdminV1Field>((value) =>
-                      GoogleFirestoreAdminV1Field.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleFirestoreAdminV1Field.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -3530,9 +3527,8 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
       : this(
           indexes: _json.containsKey('indexes')
               ? (_json['indexes'] as core.List)
-                  .map<GoogleFirestoreAdminV1Index>((value) =>
-                      GoogleFirestoreAdminV1Index.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleFirestoreAdminV1Index.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -3605,9 +3601,8 @@ class GoogleLongrunningListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<GoogleLongrunningOperation>((value) =>
-                      GoogleLongrunningOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3640,7 +3635,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -3660,7 +3655,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation({
     this.done,
@@ -3678,21 +3673,11 @@ class GoogleLongrunningOperation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3790,7 +3775,7 @@ class ListCollectionIdsResponse {
       : this(
           collectionIds: _json.containsKey('collectionIds')
               ? (_json['collectionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -3821,7 +3806,7 @@ class ListDocumentsResponse {
       : this(
           documents: _json.containsKey('documents')
               ? (_json['documents'] as core.List)
-                  .map<Document>((value) => Document.fromJson(
+                  .map((value) => Document.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3854,7 +3839,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3999,7 +3984,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -4031,12 +4016,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -4225,7 +4205,7 @@ class PartitionQueryResponse {
               : null,
           partitions: _json.containsKey('partitions')
               ? (_json['partitions'] as core.List)
-                  .map<Cursor>((value) => Cursor.fromJson(
+                  .map((value) => Cursor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4285,7 +4265,7 @@ class Projection {
       : this(
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<FieldReference>((value) => FieldReference.fromJson(
+                  .map((value) => FieldReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4595,7 +4575,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4614,13 +4594,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -4696,9 +4670,8 @@ class StructuredQuery {
               : null,
           from: _json.containsKey('from')
               ? (_json['from'] as core.List)
-                  .map<CollectionSelector>((value) =>
-                      CollectionSelector.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CollectionSelector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           limit: _json.containsKey('limit') ? _json['limit'] as core.int : null,
@@ -4706,7 +4679,7 @@ class StructuredQuery {
               _json.containsKey('offset') ? _json['offset'] as core.int : null,
           orderBy: _json.containsKey('orderBy')
               ? (_json['orderBy'] as core.List)
-                  .map<Order>((value) => Order.fromJson(
+                  .map((value) => Order.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4887,7 +4860,7 @@ class TargetChange {
               : null,
           targetIds: _json.containsKey('targetIds')
               ? (_json['targetIds'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -5166,7 +5139,7 @@ class Write {
               : null,
           updateTransforms: _json.containsKey('updateTransforms')
               ? (_json['updateTransforms'] as core.List)
-                  .map<FieldTransform>((value) => FieldTransform.fromJson(
+                  .map((value) => FieldTransform.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5253,7 +5226,7 @@ class WriteRequest {
               : null,
           writes: _json.containsKey('writes')
               ? (_json['writes'] as core.List)
-                  .map<Write>((value) => Write.fromJson(
+                  .map((value) => Write.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5319,7 +5292,7 @@ class WriteResponse {
               : null,
           writeResults: _json.containsKey('writeResults')
               ? (_json['writeResults'] as core.List)
-                  .map<WriteResult>((value) => WriteResult.fromJson(
+                  .map((value) => WriteResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5355,7 +5328,7 @@ class WriteResult {
       : this(
           transformResults: _json.containsKey('transformResults')
               ? (_json['transformResults'] as core.List)
-                  .map<Value>((value) => Value.fromJson(
+                  .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

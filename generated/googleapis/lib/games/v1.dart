@@ -1715,9 +1715,8 @@ class AchievementDefinitionsListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<AchievementDefinition>((value) =>
-                      AchievementDefinition.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AchievementDefinition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -1896,9 +1895,8 @@ class AchievementUpdateMultipleRequest {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           updates: _json.containsKey('updates')
               ? (_json['updates'] as core.List)
-                  .map<AchievementUpdateRequest>((value) =>
-                      AchievementUpdateRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AchievementUpdateRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1931,9 +1929,8 @@ class AchievementUpdateMultipleResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           updatedAchievements: _json.containsKey('updatedAchievements')
               ? (_json['updatedAchievements'] as core.List)
-                  .map<AchievementUpdateResponse>((value) =>
-                      AchievementUpdateResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AchievementUpdateResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2148,7 +2145,7 @@ class Application {
               : null,
           assets: _json.containsKey('assets')
               ? (_json['assets'] as core.List)
-                  .map<ImageAsset>((value) => ImageAsset.fromJson(
+                  .map((value) => ImageAsset.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2164,13 +2161,13 @@ class Application {
               : null,
           enabledFeatures: _json.containsKey('enabledFeatures')
               ? (_json['enabledFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<Instance>((value) => Instance.fromJson(
+                  .map((value) => Instance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2345,7 +2342,7 @@ class CategoryListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Category>((value) => Category.fromJson(
+                  .map((value) => Category.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2512,7 +2509,7 @@ class EventDefinition {
       : this(
           childEvents: _json.containsKey('childEvents')
               ? (_json['childEvents'] as core.List)
-                  .map<EventChild>((value) => EventChild.fromJson(
+                  .map((value) => EventChild.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2571,7 +2568,7 @@ class EventDefinitionListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<EventDefinition>((value) => EventDefinition.fromJson(
+                  .map((value) => EventDefinition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2656,9 +2653,8 @@ class EventPeriodUpdate {
               : null,
           updates: _json.containsKey('updates')
               ? (_json['updates'] as core.List)
-                  .map<EventUpdateRequest>((value) =>
-                      EventUpdateRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => EventUpdateRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2749,7 +2745,7 @@ class EventRecordRequest {
               : null,
           timePeriods: _json.containsKey('timePeriods')
               ? (_json['timePeriods'] as core.List)
-                  .map<EventPeriodUpdate>((value) => EventPeriodUpdate.fromJson(
+                  .map((value) => EventPeriodUpdate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2828,22 +2824,20 @@ class EventUpdateResponse {
       : this(
           batchFailures: _json.containsKey('batchFailures')
               ? (_json['batchFailures'] as core.List)
-                  .map<EventBatchRecordFailure>((value) =>
-                      EventBatchRecordFailure.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => EventBatchRecordFailure.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           eventFailures: _json.containsKey('eventFailures')
               ? (_json['eventFailures'] as core.List)
-                  .map<EventRecordFailure>((value) =>
-                      EventRecordFailure.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => EventRecordFailure.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           playerEvents: _json.containsKey('playerEvents')
               ? (_json['playerEvents'] as core.List)
-                  .map<PlayerEvent>((value) => PlayerEvent.fromJson(
+                  .map((value) => PlayerEvent.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3399,7 +3393,7 @@ class LeaderboardListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Leaderboard>((value) => Leaderboard.fromJson(
+                  .map((value) => Leaderboard.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3509,7 +3503,7 @@ class LeaderboardScores {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<LeaderboardEntry>((value) => LeaderboardEntry.fromJson(
+                  .map((value) => LeaderboardEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3569,7 +3563,7 @@ class MetagameConfig {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           playerLevels: _json.containsKey('playerLevels')
               ? (_json['playerLevels'] as core.List)
-                  .map<PlayerLevel>((value) => PlayerLevel.fromJson(
+                  .map((value) => PlayerLevel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3845,7 +3839,7 @@ class PlayerAchievementListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PlayerAchievement>((value) => PlayerAchievement.fromJson(
+                  .map((value) => PlayerAchievement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3943,7 +3937,7 @@ class PlayerEventListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PlayerEvent>((value) => PlayerEvent.fromJson(
+                  .map((value) => PlayerEvent.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4159,9 +4153,8 @@ class PlayerLeaderboardScoreListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PlayerLeaderboardScore>((value) =>
-                      PlayerLeaderboardScore.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PlayerLeaderboardScore.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -4251,7 +4244,7 @@ class PlayerListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Player>((value) => Player.fromJson(
+                  .map((value) => Player.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4349,9 +4342,8 @@ class PlayerScoreListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           submittedScores: _json.containsKey('submittedScores')
               ? (_json['submittedScores'] as core.List)
-                  .map<PlayerScoreResponse>((value) =>
-                      PlayerScoreResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PlayerScoreResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4407,7 +4399,7 @@ class PlayerScoreResponse {
       : this(
           beatenScoreTimeSpans: _json.containsKey('beatenScoreTimeSpans')
               ? (_json['beatenScoreTimeSpans'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           formattedScore: _json.containsKey('formattedScore')
@@ -4422,7 +4414,7 @@ class PlayerScoreResponse {
               : null,
           unbeatenScores: _json.containsKey('unbeatenScores')
               ? (_json['unbeatenScores'] as core.List)
-                  .map<PlayerScore>((value) => PlayerScore.fromJson(
+                  .map((value) => PlayerScore.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4461,7 +4453,7 @@ class PlayerScoreSubmissionList {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           scores: _json.containsKey('scores')
               ? (_json['scores'] as core.List)
-                  .map<ScoreSubmission>((value) => ScoreSubmission.fromJson(
+                  .map((value) => ScoreSubmission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4806,7 +4798,7 @@ class SnapshotListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Snapshot>((value) => Snapshot.fromJson(
+                  .map((value) => Snapshot.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

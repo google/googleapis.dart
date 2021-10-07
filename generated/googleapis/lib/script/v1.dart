@@ -980,7 +980,7 @@ class Content {
       : this(
           files: _json.containsKey('files')
               ? (_json['files'] as core.List)
-                  .map<File>((value) => File.fromJson(
+                  .map((value) => File.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1061,7 +1061,7 @@ class Deployment {
               : null,
           entryPoints: _json.containsKey('entryPoints')
               ? (_json['entryPoints'] as core.List)
-                  .map<EntryPoint>((value) => EntryPoint.fromJson(
+                  .map((value) => EntryPoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1248,9 +1248,8 @@ class ExecutionError {
           scriptStackTraceElements:
               _json.containsKey('scriptStackTraceElements')
                   ? (_json['scriptStackTraceElements'] as core.List)
-                      .map<ScriptStackTraceElement>((value) =>
-                          ScriptStackTraceElement.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => ScriptStackTraceElement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
         );
@@ -1291,7 +1290,7 @@ class ExecutionRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? parameters;
+  core.List<core.Object?>? parameters;
 
   /// *Deprecated*.
   ///
@@ -1325,9 +1324,7 @@ class ExecutionRequest {
               ? _json['function'] as core.String
               : null,
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
+              ? _json['parameters'] as core.List
               : null,
           sessionState: _json.containsKey('sessionState')
               ? _json['sessionState'] as core.String
@@ -1365,9 +1362,7 @@ class ExecutionResponse {
 
   ExecutionResponse.fromJson(core.Map _json)
       : this(
-          result: _json.containsKey('result')
-              ? _json['result'] as core.Object
-              : null,
+          result: _json.containsKey('result') ? _json['result'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1618,9 +1613,8 @@ class GoogleAppsScriptTypeFunctionSet {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<GoogleAppsScriptTypeFunction>((value) =>
-                      GoogleAppsScriptTypeFunction.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleAppsScriptTypeFunction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1866,7 +1860,7 @@ class ListDeploymentsResponse {
       : this(
           deployments: _json.containsKey('deployments')
               ? (_json['deployments'] as core.List)
-                  .map<Deployment>((value) => Deployment.fromJson(
+                  .map((value) => Deployment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1904,9 +1898,8 @@ class ListScriptProcessesResponse {
               : null,
           processes: _json.containsKey('processes')
               ? (_json['processes'] as core.List)
-                  .map<GoogleAppsScriptTypeProcess>((value) =>
-                      GoogleAppsScriptTypeProcess.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleAppsScriptTypeProcess.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1940,9 +1933,8 @@ class ListUserProcessesResponse {
               : null,
           processes: _json.containsKey('processes')
               ? (_json['processes'] as core.List)
-                  .map<GoogleAppsScriptTypeProcess>((value) =>
-                      GoogleAppsScriptTypeProcess.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleAppsScriptTypeProcess.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1967,7 +1959,7 @@ class ListValue {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<Value>((value) => Value.fromJson(
+                  .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2001,7 +1993,7 @@ class ListVersionsResponse {
               : null,
           versions: _json.containsKey('versions')
               ? (_json['versions'] as core.List)
-                  .map<Version>((value) => Version.fromJson(
+                  .map((value) => Version.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2036,19 +2028,19 @@ class Metrics {
       : this(
           activeUsers: _json.containsKey('activeUsers')
               ? (_json['activeUsers'] as core.List)
-                  .map<MetricsValue>((value) => MetricsValue.fromJson(
+                  .map((value) => MetricsValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           failedExecutions: _json.containsKey('failedExecutions')
               ? (_json['failedExecutions'] as core.List)
-                  .map<MetricsValue>((value) => MetricsValue.fromJson(
+                  .map((value) => MetricsValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           totalExecutions: _json.containsKey('totalExecutions')
               ? (_json['totalExecutions'] as core.List)
-                  .map<MetricsValue>((value) => MetricsValue.fromJson(
+                  .map((value) => MetricsValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2141,7 +2133,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -2157,12 +2149,7 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2313,7 +2300,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which is in English.
   ///
@@ -2332,13 +2319,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2439,7 +2420,7 @@ class Value {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? protoValue;
+  core.Map<core.String, core.Object?>? protoValue;
 
   /// Represents a string value.
   core.String? stringValue;
@@ -2479,13 +2460,7 @@ class Value {
               ? (_json['numberValue'] as core.num).toDouble()
               : null,
           protoValue: _json.containsKey('protoValue')
-              ? (_json['protoValue'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['protoValue'] as core.Map<core.String, core.dynamic>
               : null,
           stringValue: _json.containsKey('stringValue')
               ? _json['stringValue'] as core.String

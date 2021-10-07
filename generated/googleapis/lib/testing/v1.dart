@@ -441,7 +441,7 @@ class AndroidDeviceCatalog {
       : this(
           models: _json.containsKey('models')
               ? (_json['models'] as core.List)
-                  .map<AndroidModel>((value) => AndroidModel.fromJson(
+                  .map((value) => AndroidModel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -452,7 +452,7 @@ class AndroidDeviceCatalog {
               : null,
           versions: _json.containsKey('versions')
               ? (_json['versions'] as core.List)
-                  .map<AndroidVersion>((value) => AndroidVersion.fromJson(
+                  .map((value) => AndroidVersion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -483,7 +483,7 @@ class AndroidDeviceList {
       : this(
           androidDevices: _json.containsKey('androidDevices')
               ? (_json['androidDevices'] as core.List)
-                  .map<AndroidDevice>((value) => AndroidDevice.fromJson(
+                  .map((value) => AndroidDevice.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -603,7 +603,7 @@ class AndroidInstrumentationTest {
               : null,
           testTargets: _json.containsKey('testTargets')
               ? (_json['testTargets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -668,22 +668,22 @@ class AndroidMatrix {
       : this(
           androidModelIds: _json.containsKey('androidModelIds')
               ? (_json['androidModelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           androidVersionIds: _json.containsKey('androidVersionIds')
               ? (_json['androidVersionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           locales: _json.containsKey('locales')
               ? (_json['locales'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           orientations: _json.containsKey('orientations')
               ? (_json['orientations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -828,17 +828,17 @@ class AndroidModel {
               : null,
           supportedAbis: _json.containsKey('supportedAbis')
               ? (_json['supportedAbis'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           supportedVersionIds: _json.containsKey('supportedVersionIds')
               ? (_json['supportedVersionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           thumbnailUrl: _json.containsKey('thumbnailUrl')
@@ -961,7 +961,7 @@ class AndroidRoboTest {
               : null,
           roboDirectives: _json.containsKey('roboDirectives')
               ? (_json['roboDirectives'] as core.List)
-                  .map<RoboDirective>((value) => RoboDirective.fromJson(
+                  .map((value) => RoboDirective.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -974,9 +974,8 @@ class AndroidRoboTest {
               : null,
           startingIntents: _json.containsKey('startingIntents')
               ? (_json['startingIntents'] as core.List)
-                  .map<RoboStartingIntent>((value) =>
-                      RoboStartingIntent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RoboStartingIntent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1017,13 +1016,13 @@ class AndroidRuntimeConfiguration {
       : this(
           locales: _json.containsKey('locales')
               ? (_json['locales'] as core.List)
-                  .map<Locale>((value) => Locale.fromJson(
+                  .map((value) => Locale.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           orientations: _json.containsKey('orientations')
               ? (_json['orientations'] as core.List)
-                  .map<Orientation>((value) => Orientation.fromJson(
+                  .map((value) => Orientation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1090,12 +1089,12 @@ class AndroidTestLoop {
               : null,
           scenarioLabels: _json.containsKey('scenarioLabels')
               ? (_json['scenarioLabels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           scenarios: _json.containsKey('scenarios')
               ? (_json['scenarios'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -1171,7 +1170,7 @@ class AndroidVersion {
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           versionString: _json.containsKey('versionString')
@@ -1284,7 +1283,7 @@ class ApkManifest {
               : null,
           intentFilters: _json.containsKey('intentFilters')
               ? (_json['intentFilters'] as core.List)
-                  .map<IntentFilter>((value) => IntentFilter.fromJson(
+                  .map((value) => IntentFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1302,7 +1301,7 @@ class ApkManifest {
               : null,
           usesPermission: _json.containsKey('usesPermission')
               ? (_json['usesPermission'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1416,7 +1415,7 @@ class ClientInfo {
       : this(
           clientInfoDetails: _json.containsKey('clientInfoDetails')
               ? (_json['clientInfoDetails'] as core.List)
-                  .map<ClientInfoDetail>((value) => ClientInfoDetail.fromJson(
+                  .map((value) => ClientInfoDetail.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1596,7 +1595,7 @@ class DeviceIpBlockCatalog {
       : this(
           ipBlocks: _json.containsKey('ipBlocks')
               ? (_json['ipBlocks'] as core.List)
-                  .map<DeviceIpBlock>((value) => DeviceIpBlock.fromJson(
+                  .map((value) => DeviceIpBlock.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1846,12 +1845,12 @@ class IntentFilter {
       : this(
           actionNames: _json.containsKey('actionNames')
               ? (_json['actionNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           categoryNames: _json.containsKey('categoryNames')
               ? (_json['categoryNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           mimeType: _json.containsKey('mimeType')
@@ -1952,7 +1951,7 @@ class IosDeviceCatalog {
       : this(
           models: _json.containsKey('models')
               ? (_json['models'] as core.List)
-                  .map<IosModel>((value) => IosModel.fromJson(
+                  .map((value) => IosModel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1962,13 +1961,13 @@ class IosDeviceCatalog {
               : null,
           versions: _json.containsKey('versions')
               ? (_json['versions'] as core.List)
-                  .map<IosVersion>((value) => IosVersion.fromJson(
+                  .map((value) => IosVersion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           xcodeVersions: _json.containsKey('xcodeVersions')
               ? (_json['xcodeVersions'] as core.List)
-                  .map<XcodeVersion>((value) => XcodeVersion.fromJson(
+                  .map((value) => XcodeVersion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2043,7 +2042,7 @@ class IosDeviceList {
       : this(
           iosDevices: _json.containsKey('iosDevices')
               ? (_json['iosDevices'] as core.List)
-                  .map<IosDevice>((value) => IosDevice.fromJson(
+                  .map((value) => IosDevice.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2115,7 +2114,7 @@ class IosModel {
       : this(
           deviceCapabilities: _json.containsKey('deviceCapabilities')
               ? (_json['deviceCapabilities'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           formFactor: _json.containsKey('formFactor')
@@ -2134,12 +2133,12 @@ class IosModel {
               : null,
           supportedVersionIds: _json.containsKey('supportedVersionIds')
               ? (_json['supportedVersionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2176,13 +2175,13 @@ class IosRuntimeConfiguration {
       : this(
           locales: _json.containsKey('locales')
               ? (_json['locales'] as core.List)
-                  .map<Locale>((value) => Locale.fromJson(
+                  .map((value) => Locale.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           orientations: _json.containsKey('orientations')
               ? (_json['orientations'] as core.List)
-                  .map<Orientation>((value) => Orientation.fromJson(
+                  .map((value) => Orientation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2234,7 +2233,7 @@ class IosTestLoop {
               : null,
           scenarios: _json.containsKey('scenarios')
               ? (_json['scenarios'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -2280,7 +2279,7 @@ class IosTestSetup {
       : this(
           additionalIpas: _json.containsKey('additionalIpas')
               ? (_json['additionalIpas'] as core.List)
-                  .map<FileReference>((value) => FileReference.fromJson(
+                  .map((value) => FileReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2289,13 +2288,13 @@ class IosTestSetup {
               : null,
           pullDirectories: _json.containsKey('pullDirectories')
               ? (_json['pullDirectories'] as core.List)
-                  .map<IosDeviceFile>((value) => IosDeviceFile.fromJson(
+                  .map((value) => IosDeviceFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pushFiles: _json.containsKey('pushFiles')
               ? (_json['pushFiles'] as core.List)
-                  .map<IosDeviceFile>((value) => IosDeviceFile.fromJson(
+                  .map((value) => IosDeviceFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2359,12 +2358,12 @@ class IosVersion {
           supportedXcodeVersionIds:
               _json.containsKey('supportedXcodeVersionIds')
                   ? (_json['supportedXcodeVersionIds'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2502,7 +2501,7 @@ class Locale {
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2538,9 +2537,8 @@ class ManualSharding {
       : this(
           testTargetsForShard: _json.containsKey('testTargetsForShard')
               ? (_json['testTargetsForShard'] as core.List)
-                  .map<TestTargetsForShard>((value) =>
-                      TestTargetsForShard.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TestTargetsForShard.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2599,9 +2597,8 @@ class NetworkConfigurationCatalog {
       : this(
           configurations: _json.containsKey('configurations')
               ? (_json['configurations'] as core.List)
-                  .map<NetworkConfiguration>((value) =>
-                      NetworkConfiguration.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NetworkConfiguration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2678,7 +2675,7 @@ class Orientation {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3037,7 +3034,7 @@ class StartActivityIntent {
               : null,
           categories: _json.containsKey('categories')
               ? (_json['categories'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
@@ -3100,7 +3097,7 @@ class TestDetails {
               : null,
           progressMessages: _json.containsKey('progressMessages')
               ? (_json['progressMessages'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3557,7 +3554,7 @@ class TestMatrix {
               _json.containsKey('state') ? _json['state'] as core.String : null,
           testExecutions: _json.containsKey('testExecutions')
               ? (_json['testExecutions'] as core.List)
-                  .map<TestExecution>((value) => TestExecution.fromJson(
+                  .map((value) => TestExecution.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3660,13 +3657,13 @@ class TestSetup {
               : null,
           additionalApks: _json.containsKey('additionalApks')
               ? (_json['additionalApks'] as core.List)
-                  .map<Apk>((value) => Apk.fromJson(
+                  .map((value) => Apk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           directoriesToPull: _json.containsKey('directoriesToPull')
               ? (_json['directoriesToPull'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           dontAutograntPermissions:
@@ -3675,14 +3672,13 @@ class TestSetup {
                   : null,
           environmentVariables: _json.containsKey('environmentVariables')
               ? (_json['environmentVariables'] as core.List)
-                  .map<EnvironmentVariable>((value) =>
-                      EnvironmentVariable.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => EnvironmentVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           filesToPush: _json.containsKey('filesToPush')
               ? (_json['filesToPush'] as core.List)
-                  .map<DeviceFile>((value) => DeviceFile.fromJson(
+                  .map((value) => DeviceFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3846,7 +3842,7 @@ class TestTargetsForShard {
       : this(
           testTargets: _json.containsKey('testTargets')
               ? (_json['testTargets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4093,7 +4089,7 @@ class XcodeVersion {
       : this(
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           version: _json.containsKey('version')

@@ -132,7 +132,7 @@ class BuildVersion {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// SemVer version of extension.
   SemanticVersion? version;
@@ -145,12 +145,7 @@ class BuildVersion {
   BuildVersion.fromJson(core.Map _json)
       : this(
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           version: _json.containsKey('version')
               ? SemanticVersion.fromJson(
@@ -183,7 +178,7 @@ class ClientConfig {
               : null,
           xdsConfig: _json.containsKey('xdsConfig')
               ? (_json['xdsConfig'] as core.List)
-                  .map<PerXdsConfig>((value) => PerXdsConfig.fromJson(
+                  .map((value) => PerXdsConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -211,7 +206,7 @@ class ClientStatusRequest {
       : this(
           nodeMatchers: _json.containsKey('nodeMatchers')
               ? (_json['nodeMatchers'] as core.List)
-                  .map<NodeMatcher>((value) => NodeMatcher.fromJson(
+                  .map((value) => NodeMatcher.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -235,7 +230,7 @@ class ClientStatusResponse {
       : this(
           config: _json.containsKey('config')
               ? (_json['config'] as core.List)
-                  .map<ClientConfig>((value) => ClientConfig.fromJson(
+                  .map((value) => ClientConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -287,19 +282,19 @@ class ClustersConfigDump {
       : this(
           dynamicActiveClusters: _json.containsKey('dynamicActiveClusters')
               ? (_json['dynamicActiveClusters'] as core.List)
-                  .map<DynamicCluster>((value) => DynamicCluster.fromJson(
+                  .map((value) => DynamicCluster.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dynamicWarmingClusters: _json.containsKey('dynamicWarmingClusters')
               ? (_json['dynamicWarmingClusters'] as core.List)
-                  .map<DynamicCluster>((value) => DynamicCluster.fromJson(
+                  .map((value) => DynamicCluster.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           staticClusters: _json.containsKey('staticClusters')
               ? (_json['staticClusters'] as core.List)
-                  .map<StaticCluster>((value) => StaticCluster.fromJson(
+                  .map((value) => StaticCluster.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -391,7 +386,7 @@ class DynamicCluster {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? cluster;
+  core.Map<core.String, core.Object?>? cluster;
 
   /// The timestamp when the Cluster was last updated.
   core.String? lastUpdated;
@@ -412,12 +407,7 @@ class DynamicCluster {
   DynamicCluster.fromJson(core.Map _json)
       : this(
           cluster: _json.containsKey('cluster')
-              ? (_json['cluster'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['cluster'] as core.Map<core.String, core.dynamic>
               : null,
           lastUpdated: _json.containsKey('lastUpdated')
               ? _json['lastUpdated'] as core.String
@@ -512,7 +502,7 @@ class DynamicListenerState {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? listener;
+  core.Map<core.String, core.Object?>? listener;
 
   /// This is the per-resource version information.
   ///
@@ -533,12 +523,7 @@ class DynamicListenerState {
               ? _json['lastUpdated'] as core.String
               : null,
           listener: _json.containsKey('listener')
-              ? (_json['listener'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['listener'] as core.Map<core.String, core.dynamic>
               : null,
           versionInfo: _json.containsKey('versionInfo')
               ? _json['versionInfo'] as core.String
@@ -560,7 +545,7 @@ class DynamicRouteConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? routeConfig;
+  core.Map<core.String, core.Object?>? routeConfig;
 
   /// This is the per-resource version information.
   ///
@@ -580,13 +565,7 @@ class DynamicRouteConfig {
               ? _json['lastUpdated'] as core.String
               : null,
           routeConfig: _json.containsKey('routeConfig')
-              ? (_json['routeConfig'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['routeConfig'] as core.Map<core.String, core.dynamic>
               : null,
           versionInfo: _json.containsKey('versionInfo')
               ? _json['versionInfo'] as core.String
@@ -611,7 +590,7 @@ class DynamicScopedRouteConfigs {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? scopedRouteConfigs;
+  core.List<core.Map<core.String, core.Object?>>? scopedRouteConfigs;
 
   /// This is the per-resource version information.
   ///
@@ -634,13 +613,7 @@ class DynamicScopedRouteConfigs {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           scopedRouteConfigs: _json.containsKey('scopedRouteConfigs')
               ? (_json['scopedRouteConfigs'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           versionInfo: _json.containsKey('versionInfo')
@@ -776,7 +749,7 @@ class InlineScopedRouteConfigs {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? scopedRouteConfigs;
+  core.List<core.Map<core.String, core.Object?>>? scopedRouteConfigs;
 
   InlineScopedRouteConfigs({
     this.lastUpdated,
@@ -792,13 +765,7 @@ class InlineScopedRouteConfigs {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           scopedRouteConfigs: _json.containsKey('scopedRouteConfigs')
               ? (_json['scopedRouteConfigs'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
         );
@@ -863,13 +830,13 @@ class ListenersConfigDump {
       : this(
           dynamicListeners: _json.containsKey('dynamicListeners')
               ? (_json['dynamicListeners'] as core.List)
-                  .map<DynamicListener>((value) => DynamicListener.fromJson(
+                  .map((value) => DynamicListener.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           staticListeners: _json.containsKey('staticListeners')
               ? (_json['staticListeners'] as core.List)
-                  .map<StaticListener>((value) => StaticListener.fromJson(
+                  .map((value) => StaticListener.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -989,7 +956,7 @@ class Node {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Structured version of the entity requesting config.
   BuildVersion? userAgentBuildVersion;
@@ -1026,7 +993,7 @@ class Node {
               : null,
           clientFeatures: _json.containsKey('clientFeatures')
               ? (_json['clientFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           cluster: _json.containsKey('cluster')
@@ -1034,14 +1001,14 @@ class Node {
               : null,
           extensions: _json.containsKey('extensions')
               ? (_json['extensions'] as core.List)
-                  .map<Extension>((value) => Extension.fromJson(
+                  .map((value) => Extension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           listeningAddresses: _json.containsKey('listeningAddresses')
               ? (_json['listeningAddresses'] as core.List)
-                  .map<Address>((value) => Address.fromJson(
+                  .map((value) => Address.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1050,12 +1017,7 @@ class Node {
                   _json['locality'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           userAgentBuildVersion: _json.containsKey('userAgentBuildVersion')
               ? BuildVersion.fromJson(_json['userAgentBuildVersion']
@@ -1111,7 +1073,7 @@ class NodeMatcher {
               : null,
           nodeMetadatas: _json.containsKey('nodeMetadatas')
               ? (_json['nodeMetadatas'] as core.List)
-                  .map<StructMatcher>((value) => StructMatcher.fromJson(
+                  .map((value) => StructMatcher.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1294,14 +1256,13 @@ class RoutesConfigDump {
       : this(
           dynamicRouteConfigs: _json.containsKey('dynamicRouteConfigs')
               ? (_json['dynamicRouteConfigs'] as core.List)
-                  .map<DynamicRouteConfig>((value) =>
-                      DynamicRouteConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DynamicRouteConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           staticRouteConfigs: _json.containsKey('staticRouteConfigs')
               ? (_json['staticRouteConfigs'] as core.List)
-                  .map<StaticRouteConfig>((value) => StaticRouteConfig.fromJson(
+                  .map((value) => StaticRouteConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1341,17 +1302,15 @@ class ScopedRoutesConfigDump {
           dynamicScopedRouteConfigs:
               _json.containsKey('dynamicScopedRouteConfigs')
                   ? (_json['dynamicScopedRouteConfigs'] as core.List)
-                      .map<DynamicScopedRouteConfigs>((value) =>
-                          DynamicScopedRouteConfigs.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => DynamicScopedRouteConfigs.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           inlineScopedRouteConfigs:
               _json.containsKey('inlineScopedRouteConfigs')
                   ? (_json['inlineScopedRouteConfigs'] as core.List)
-                      .map<InlineScopedRouteConfigs>((value) =>
-                          InlineScopedRouteConfigs.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => InlineScopedRouteConfigs.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
         );
@@ -1490,7 +1449,7 @@ class StaticCluster {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? cluster;
+  core.Map<core.String, core.Object?>? cluster;
 
   /// The timestamp when the Cluster was last updated.
   core.String? lastUpdated;
@@ -1503,12 +1462,7 @@ class StaticCluster {
   StaticCluster.fromJson(core.Map _json)
       : this(
           cluster: _json.containsKey('cluster')
-              ? (_json['cluster'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['cluster'] as core.Map<core.String, core.dynamic>
               : null,
           lastUpdated: _json.containsKey('lastUpdated')
               ? _json['lastUpdated'] as core.String
@@ -1530,7 +1484,7 @@ class StaticListener {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? listener;
+  core.Map<core.String, core.Object?>? listener;
 
   StaticListener({
     this.lastUpdated,
@@ -1543,12 +1497,7 @@ class StaticListener {
               ? _json['lastUpdated'] as core.String
               : null,
           listener: _json.containsKey('listener')
-              ? (_json['listener'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['listener'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1566,7 +1515,7 @@ class StaticRouteConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? routeConfig;
+  core.Map<core.String, core.Object?>? routeConfig;
 
   StaticRouteConfig({
     this.lastUpdated,
@@ -1579,13 +1528,7 @@ class StaticRouteConfig {
               ? _json['lastUpdated'] as core.String
               : null,
           routeConfig: _json.containsKey('routeConfig')
-              ? (_json['routeConfig'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['routeConfig'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1707,7 +1650,7 @@ class StructMatcher {
       : this(
           path: _json.containsKey('path')
               ? (_json['path'] as core.List)
-                  .map<PathSegment>((value) => PathSegment.fromJson(
+                  .map((value) => PathSegment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1732,7 +1675,7 @@ class UpdateFailureState {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? failedConfiguration;
+  core.Map<core.String, core.Object?>? failedConfiguration;
 
   /// Time of the latest failed update attempt.
   core.String? lastUpdateAttempt;
@@ -1749,14 +1692,8 @@ class UpdateFailureState {
               ? _json['details'] as core.String
               : null,
           failedConfiguration: _json.containsKey('failedConfiguration')
-              ? (_json['failedConfiguration']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['failedConfiguration']
+                  as core.Map<core.String, core.dynamic>
               : null,
           lastUpdateAttempt: _json.containsKey('lastUpdateAttempt')
               ? _json['lastUpdateAttempt'] as core.String

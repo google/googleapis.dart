@@ -938,7 +938,7 @@ class AggregateBucket {
               : null,
           dataset: _json.containsKey('dataset')
               ? (_json['dataset'] as core.List)
-                  .map<Dataset>((value) => Dataset.fromJson(
+                  .map((value) => Dataset.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1078,7 +1078,7 @@ class AggregateRequest {
       : this(
           aggregateBy: _json.containsKey('aggregateBy')
               ? (_json['aggregateBy'] as core.List)
-                  .map<AggregateBy>((value) => AggregateBy.fromJson(
+                  .map((value) => AggregateBy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1104,7 +1104,7 @@ class AggregateRequest {
           filteredDataQualityStandard:
               _json.containsKey('filteredDataQualityStandard')
                   ? (_json['filteredDataQualityStandard'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           startTimeMillis: _json.containsKey('startTimeMillis')
@@ -1141,7 +1141,7 @@ class AggregateResponse {
       : this(
           bucket: _json.containsKey('bucket')
               ? (_json['bucket'] as core.List)
-                  .map<AggregateBucket>((value) => AggregateBucket.fromJson(
+                  .map((value) => AggregateBucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1415,7 +1415,7 @@ class DataPoint {
               : null,
           value: _json.containsKey('value')
               ? (_json['value'] as core.List)
-                  .map<Value>((value) => Value.fromJson(
+                  .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1536,7 +1536,7 @@ class DataSource {
               : null,
           dataQualityStandard: _json.containsKey('dataQualityStandard')
               ? (_json['dataQualityStandard'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           dataStreamId: _json.containsKey('dataStreamId')
@@ -1589,7 +1589,7 @@ class DataType {
       : this(
           field: _json.containsKey('field')
               ? (_json['field'] as core.List)
-                  .map<DataTypeField>((value) => DataTypeField.fromJson(
+                  .map((value) => DataTypeField.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1715,7 +1715,7 @@ class Dataset {
               : null,
           point: _json.containsKey('point')
               ? (_json['point'] as core.List)
-                  .map<DataPoint>((value) => DataPoint.fromJson(
+                  .map((value) => DataPoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1835,13 +1835,13 @@ class ListDataPointChangesResponse {
               : null,
           deletedDataPoint: _json.containsKey('deletedDataPoint')
               ? (_json['deletedDataPoint'] as core.List)
-                  .map<DataPoint>((value) => DataPoint.fromJson(
+                  .map((value) => DataPoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           insertedDataPoint: _json.containsKey('insertedDataPoint')
               ? (_json['insertedDataPoint'] as core.List)
-                  .map<DataPoint>((value) => DataPoint.fromJson(
+                  .map((value) => DataPoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1874,7 +1874,7 @@ class ListDataSourcesResponse {
       : this(
           dataSource: _json.containsKey('dataSource')
               ? (_json['dataSource'] as core.List)
-                  .map<DataSource>((value) => DataSource.fromJson(
+                  .map((value) => DataSource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1918,7 +1918,7 @@ class ListSessionsResponse {
       : this(
           deletedSession: _json.containsKey('deletedSession')
               ? (_json['deletedSession'] as core.List)
-                  .map<Session>((value) => Session.fromJson(
+                  .map((value) => Session.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1930,7 +1930,7 @@ class ListSessionsResponse {
               : null,
           session: _json.containsKey('session')
               ? (_json['session'] as core.List)
-                  .map<Session>((value) => Session.fromJson(
+                  .map((value) => Session.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2107,7 +2107,7 @@ class Value {
               _json.containsKey('intVal') ? _json['intVal'] as core.int : null,
           mapVal: _json.containsKey('mapVal')
               ? (_json['mapVal'] as core.List)
-                  .map<ValueMapValEntry>((value) => ValueMapValEntry.fromJson(
+                  .map((value) => ValueMapValEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

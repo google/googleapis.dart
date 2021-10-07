@@ -472,17 +472,17 @@ class Area {
               : null,
           internalEdges: _json.containsKey('internalEdges')
               ? (_json['internalEdges'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           loopBreaks: _json.containsKey('loopBreaks')
               ? (_json['loopBreaks'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           triangleIndices: _json.containsKey('triangleIndices')
               ? (_json['triangleIndices'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
@@ -681,7 +681,7 @@ class Feature {
               : null,
           relations: _json.containsKey('relations')
               ? (_json['relations'] as core.List)
-                  .map<Relation>((value) => Relation.fromJson(
+                  .map((value) => Relation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -764,14 +764,14 @@ class FeatureTile {
               : null,
           features: _json.containsKey('features')
               ? (_json['features'] as core.List)
-                  .map<Feature>((value) => Feature.fromJson(
+                  .map((value) => Feature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           providers: _json.containsKey('providers')
               ? (_json['providers'] as core.List)
-                  .map<ProviderInfo>((value) => ProviderInfo.fromJson(
+                  .map((value) => ProviderInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -834,7 +834,7 @@ class FirstDerivativeElevationGrid {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<Row>((value) => Row.fromJson(
+                  .map((value) => Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -888,25 +888,25 @@ class Geometry {
       : this(
           areas: _json.containsKey('areas')
               ? (_json['areas'] as core.List)
-                  .map<Area>((value) => Area.fromJson(
+                  .map((value) => Area.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           extrudedAreas: _json.containsKey('extrudedAreas')
               ? (_json['extrudedAreas'] as core.List)
-                  .map<ExtrudedArea>((value) => ExtrudedArea.fromJson(
+                  .map((value) => ExtrudedArea.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           lines: _json.containsKey('lines')
               ? (_json['lines'] as core.List)
-                  .map<Line>((value) => Line.fromJson(
+                  .map((value) => Line.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           modeledVolumes: _json.containsKey('modeledVolumes')
               ? (_json['modeledVolumes'] as core.List)
-                  .map<ModeledVolume>((value) => ModeledVolume.fromJson(
+                  .map((value) => ModeledVolume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1001,7 +1001,7 @@ class ModeledVolume {
       : this(
           strips: _json.containsKey('strips')
               ? (_json['strips'] as core.List)
-                  .map<TriangleStrip>((value) => TriangleStrip.fromJson(
+                  .map((value) => TriangleStrip.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1126,7 +1126,7 @@ class Row {
       : this(
           altitudeDiffs: _json.containsKey('altitudeDiffs')
               ? (_json['altitudeDiffs'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -1378,7 +1378,7 @@ class TriangleStrip {
       : this(
           vertexIndices: _json.containsKey('vertexIndices')
               ? (_json['vertexIndices'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -1410,12 +1410,12 @@ class Vertex2DList {
       : this(
           xOffsets: _json.containsKey('xOffsets')
               ? (_json['xOffsets'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           yOffsets: _json.containsKey('yOffsets')
               ? (_json['yOffsets'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -1450,17 +1450,17 @@ class Vertex3DList {
       : this(
           xOffsets: _json.containsKey('xOffsets')
               ? (_json['xOffsets'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           yOffsets: _json.containsKey('yOffsets')
               ? (_json['yOffsets'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           zOffsets: _json.containsKey('zOffsets')
               ? (_json['zOffsets'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );

@@ -272,7 +272,7 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
               : null,
           impressions: _json.containsKey('impressions')
               ? (_json['impressions'] as core.List)
-                  .map<GoogleMapsPlayablelocationsV3Impression>((value) =>
+                  .map((value) =>
                       GoogleMapsPlayablelocationsV3Impression.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -335,7 +335,7 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
               : null,
           playerReports: _json.containsKey('playerReports')
               ? (_json['playerReports'] as core.List)
-                  .map<GoogleMapsPlayablelocationsV3PlayerReport>((value) =>
+                  .map((value) =>
                       GoogleMapsPlayablelocationsV3PlayerReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -405,7 +405,7 @@ class GoogleMapsPlayablelocationsV3PlayerReport {
               : null,
           reasons: _json.containsKey('reasons')
               ? (_json['reasons'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -532,7 +532,7 @@ class GoogleMapsPlayablelocationsV3SampleFilter {
       : this(
           includedTypes: _json.containsKey('includedTypes')
               ? (_json['includedTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           maxLocationCount: _json.containsKey('maxLocationCount')
@@ -613,7 +613,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocation {
               : null,
           types: _json.containsKey('types')
               ? (_json['types'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -642,11 +642,10 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationList {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<GoogleMapsPlayablelocationsV3SamplePlayableLocation>(
-                      (value) =>
-                          GoogleMapsPlayablelocationsV3SamplePlayableLocation
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleMapsPlayablelocationsV3SamplePlayableLocation
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -698,7 +697,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest {
               : null,
           criteria: _json.containsKey('criteria')
               ? (_json['criteria'] as core.List)
-                  .map<GoogleMapsPlayablelocationsV3SampleCriterion>((value) =>
+                  .map((value) =>
                       GoogleMapsPlayablelocationsV3SampleCriterion.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()

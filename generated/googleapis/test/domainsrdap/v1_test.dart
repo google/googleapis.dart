@@ -26,7 +26,7 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.Object> buildUnnamed0() => {
+core.Map<core.String, core.Object?> buildUnnamed0() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -39,7 +39,7 @@ core.Map<core.String, core.Object> buildUnnamed0() => {
       },
     };
 
-void checkUnnamed0(core.Map<core.String, core.Object> o) {
+void checkUnnamed0(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -71,12 +71,12 @@ void checkUnnamed0(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed1() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed1() => [
       buildUnnamed0(),
       buildUnnamed0(),
     ];
 
-void checkUnnamed1(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed1(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed0(o[0]);
   checkUnnamed0(o[1]);

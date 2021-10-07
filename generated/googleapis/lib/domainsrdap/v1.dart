@@ -497,7 +497,7 @@ class HttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   HttpBody({
     this.contentType,
@@ -513,13 +513,7 @@ class HttpBody {
           data: _json.containsKey('data') ? _json['data'] as core.String : null,
           extensions: _json.containsKey('extensions')
               ? (_json['extensions'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
         );
@@ -638,12 +632,12 @@ class Notice {
       : this(
           description: _json.containsKey('description')
               ? (_json['description'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           links: _json.containsKey('links')
               ? (_json['links'] as core.List)
-                  .map<Link>((value) => Link.fromJson(
+                  .map((value) => Link.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -703,7 +697,7 @@ class RdapResponse {
       : this(
           description: _json.containsKey('description')
               ? (_json['description'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           errorCode: _json.containsKey('errorCode')
@@ -716,13 +710,13 @@ class RdapResponse {
           lang: _json.containsKey('lang') ? _json['lang'] as core.String : null,
           notices: _json.containsKey('notices')
               ? (_json['notices'] as core.List)
-                  .map<Notice>((value) => Notice.fromJson(
+                  .map((value) => Notice.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rdapConformance: _json.containsKey('rdapConformance')
               ? (_json['rdapConformance'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           title:

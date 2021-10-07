@@ -436,7 +436,7 @@ class ListBucketsResponse {
       : this(
           buckets: _json.containsKey('buckets')
               ? (_json['buckets'] as core.List)
-                  .map<Bucket>((value) => Bucket.fromJson(
+                  .map((value) => Bucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

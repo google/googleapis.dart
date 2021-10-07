@@ -414,11 +414,10 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
               : null,
           bindingExplanations: _json.containsKey('bindingExplanations')
               ? (_json['bindingExplanations'] as core.List)
-                  .map<GoogleCloudPolicytroubleshooterV1BindingExplanation>(
-                      (value) =>
-                          GoogleCloudPolicytroubleshooterV1BindingExplanation
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudPolicytroubleshooterV1BindingExplanation
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fullResourceName: _json.containsKey('fullResourceName')
@@ -508,11 +507,9 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
               : null,
           explainedPolicies: _json.containsKey('explainedPolicies')
               ? (_json['explainedPolicies'] as core.List)
-                  .map<GoogleCloudPolicytroubleshooterV1ExplainedPolicy>(
-                      (value) =>
-                          GoogleCloudPolicytroubleshooterV1ExplainedPolicy
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -561,9 +558,8 @@ class GoogleIamV1AuditConfig {
       : this(
           auditLogConfigs: _json.containsKey('auditLogConfigs')
               ? (_json['auditLogConfigs'] as core.List)
-                  .map<GoogleIamV1AuditLogConfig>((value) =>
-                      GoogleIamV1AuditLogConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           service: _json.containsKey('service')
@@ -609,7 +605,7 @@ class GoogleIamV1AuditLogConfig {
       : this(
           exemptedMembers: _json.containsKey('exemptedMembers')
               ? (_json['exemptedMembers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logType: _json.containsKey('logType')
@@ -686,7 +682,7 @@ class GoogleIamV1Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -791,16 +787,14 @@ class GoogleIamV1Policy {
       : this(
           auditConfigs: _json.containsKey('auditConfigs')
               ? (_json['auditConfigs'] as core.List)
-                  .map<GoogleIamV1AuditConfig>((value) =>
-                      GoogleIamV1AuditConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleIamV1AuditConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<GoogleIamV1Binding>((value) =>
-                      GoogleIamV1Binding.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleIamV1Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,

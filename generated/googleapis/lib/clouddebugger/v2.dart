@@ -754,13 +754,13 @@ class Breakpoint {
               : null,
           evaluatedExpressions: _json.containsKey('evaluatedExpressions')
               ? (_json['evaluatedExpressions'] as core.List)
-                  .map<Variable>((value) => Variable.fromJson(
+                  .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           expressions: _json.containsKey('expressions')
               ? (_json['expressions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           finalTime: _json.containsKey('finalTime')
@@ -790,7 +790,7 @@ class Breakpoint {
               : null,
           stackFrames: _json.containsKey('stackFrames')
               ? (_json['stackFrames'] as core.List)
-                  .map<StackFrame>((value) => StackFrame.fromJson(
+                  .map((value) => StackFrame.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -805,7 +805,7 @@ class Breakpoint {
               : null,
           variableTable: _json.containsKey('variableTable')
               ? (_json['variableTable'] as core.List)
-                  .map<Variable>((value) => Variable.fromJson(
+                  .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1060,9 +1060,8 @@ class Debuggee {
               : null,
           extSourceContexts: _json.containsKey('extSourceContexts')
               ? (_json['extSourceContexts'] as core.List)
-                  .map<ExtendedSourceContext>((value) =>
-                      ExtendedSourceContext.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ExtendedSourceContext.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -1085,7 +1084,7 @@ class Debuggee {
               : null,
           sourceContexts: _json.containsKey('sourceContexts')
               ? (_json['sourceContexts'] as core.List)
-                  .map<SourceContext>((value) => SourceContext.fromJson(
+                  .map((value) => SourceContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1188,7 +1187,7 @@ class FormatMessage {
               : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1338,7 +1337,7 @@ class ListActiveBreakpointsResponse {
       : this(
           breakpoints: _json.containsKey('breakpoints')
               ? (_json['breakpoints'] as core.List)
-                  .map<Breakpoint>((value) => Breakpoint.fromJson(
+                  .map((value) => Breakpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1381,7 +1380,7 @@ class ListBreakpointsResponse {
       : this(
           breakpoints: _json.containsKey('breakpoints')
               ? (_json['breakpoints'] as core.List)
-                  .map<Breakpoint>((value) => Breakpoint.fromJson(
+                  .map((value) => Breakpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1414,7 +1413,7 @@ class ListDebuggeesResponse {
       : this(
           debuggees: _json.containsKey('debuggees')
               ? (_json['debuggees'] as core.List)
-                  .map<Debuggee>((value) => Debuggee.fromJson(
+                  .map((value) => Debuggee.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1692,7 +1691,7 @@ class StackFrame {
       : this(
           arguments: _json.containsKey('arguments')
               ? (_json['arguments'] as core.List)
-                  .map<Variable>((value) => Variable.fromJson(
+                  .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1701,7 +1700,7 @@ class StackFrame {
               : null,
           locals: _json.containsKey('locals')
               ? (_json['locals'] as core.List)
-                  .map<Variable>((value) => Variable.fromJson(
+                  .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1896,7 +1895,7 @@ class Variable {
       : this(
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<Variable>((value) => Variable.fromJson(
+                  .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

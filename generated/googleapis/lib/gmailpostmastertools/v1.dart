@@ -480,7 +480,7 @@ class IpReputation {
               : null,
           sampleIps: _json.containsKey('sampleIps')
               ? (_json['sampleIps'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -510,7 +510,7 @@ class ListDomainsResponse {
       : this(
           domains: _json.containsKey('domains')
               ? (_json['domains'] as core.List)
-                  .map<Domain>((value) => Domain.fromJson(
+                  .map((value) => Domain.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -547,7 +547,7 @@ class ListTrafficStatsResponse {
               : null,
           trafficStats: _json.containsKey('trafficStats')
               ? (_json['trafficStats'] as core.List)
-                  .map<TrafficStats>((value) => TrafficStats.fromJson(
+                  .map((value) => TrafficStats.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -664,7 +664,7 @@ class TrafficStats {
       : this(
           deliveryErrors: _json.containsKey('deliveryErrors')
               ? (_json['deliveryErrors'] as core.List)
-                  .map<DeliveryError>((value) => DeliveryError.fromJson(
+                  .map((value) => DeliveryError.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -682,7 +682,7 @@ class TrafficStats {
               : null,
           ipReputations: _json.containsKey('ipReputations')
               ? (_json['ipReputations'] as core.List)
-                  .map<IpReputation>((value) => IpReputation.fromJson(
+                  .map((value) => IpReputation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -692,7 +692,7 @@ class TrafficStats {
               : null,
           spammyFeedbackLoops: _json.containsKey('spammyFeedbackLoops')
               ? (_json['spammyFeedbackLoops'] as core.List)
-                  .map<FeedbackLoop>((value) => FeedbackLoop.fromJson(
+                  .map((value) => FeedbackLoop.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

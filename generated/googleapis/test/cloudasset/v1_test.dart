@@ -1359,7 +1359,7 @@ void checkGoogleCloudAssetV1p7beta1RelationshipAttributes(
   buildCounterGoogleCloudAssetV1p7beta1RelationshipAttributes--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed26() => {
+core.Map<core.String, core.Object?> buildUnnamed26() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1372,7 +1372,7 @@ core.Map<core.String, core.Object> buildUnnamed26() => {
       },
     };
 
-void checkUnnamed26(core.Map<core.String, core.Object> o) {
+void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2999,7 +2999,7 @@ void checkMoveImpact(api.MoveImpact o) {
   buildCounterMoveImpact--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed60() => {
+core.Map<core.String, core.Object?> buildUnnamed60() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3012,7 +3012,7 @@ core.Map<core.String, core.Object> buildUnnamed60() => {
       },
     };
 
-void checkUnnamed60(core.Map<core.String, core.Object> o) {
+void checkUnnamed60(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -3044,7 +3044,7 @@ void checkUnnamed60(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed61() => {
+core.Map<core.String, core.Object?> buildUnnamed61() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3057,7 +3057,7 @@ core.Map<core.String, core.Object> buildUnnamed61() => {
       },
     };
 
-void checkUnnamed61(core.Map<core.String, core.Object> o) {
+void checkUnnamed61(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3531,7 +3531,7 @@ void checkRelationshipAttributes(api.RelationshipAttributes o) {
   buildCounterRelationshipAttributes--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed68() => {
+core.Map<core.String, core.Object?> buildUnnamed68() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3544,7 +3544,7 @@ core.Map<core.String, core.Object> buildUnnamed68() => {
       },
     };
 
-void checkUnnamed68(core.Map<core.String, core.Object> o) {
+void checkUnnamed68(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -3625,7 +3625,7 @@ void checkResource(api.Resource o) {
   buildCounterResource--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed69() => {
+core.Map<core.String, core.Object?> buildUnnamed69() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3638,7 +3638,7 @@ core.Map<core.String, core.Object> buildUnnamed69() => {
       },
     };
 
-void checkUnnamed69(core.Map<core.String, core.Object> o) {
+void checkUnnamed69(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -3977,7 +3977,7 @@ void checkSoftwarePackage(api.SoftwarePackage o) {
   buildCounterSoftwarePackage--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed78() => {
+core.Map<core.String, core.Object?> buildUnnamed78() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3990,7 +3990,7 @@ core.Map<core.String, core.Object> buildUnnamed78() => {
       },
     };
 
-void checkUnnamed78(core.Map<core.String, core.Object> o) {
+void checkUnnamed78(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -4022,12 +4022,12 @@ void checkUnnamed78(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed79() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed79() => [
       buildUnnamed78(),
       buildUnnamed78(),
     ];
 
-void checkUnnamed79(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed79(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed78(o[0]);
   checkUnnamed78(o[1]);
@@ -4175,7 +4175,7 @@ void checkVersionedPackage(api.VersionedPackage o) {
   buildCounterVersionedPackage--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed80() => {
+core.Map<core.String, core.Object?> buildUnnamed80() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4188,7 +4188,7 @@ core.Map<core.String, core.Object> buildUnnamed80() => {
       },
     };
 
-void checkUnnamed80(core.Map<core.String, core.Object> o) {
+void checkUnnamed80(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));

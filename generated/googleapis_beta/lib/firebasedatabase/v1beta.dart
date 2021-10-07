@@ -499,7 +499,7 @@ class ListDatabaseInstancesResponse {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(
+                  .map((value) => DatabaseInstance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

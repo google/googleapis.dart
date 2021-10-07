@@ -1133,7 +1133,7 @@ class ListAccountAdminsResponse {
       : this(
           accountAdmins: _json.containsKey('accountAdmins')
               ? (_json['accountAdmins'] as core.List)
-                  .map<Admin>((value) => Admin.fromJson(
+                  .map((value) => Admin.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1170,7 +1170,7 @@ class ListAccountsResponse {
       : this(
           accounts: _json.containsKey('accounts')
               ? (_json['accounts'] as core.List)
-                  .map<Account>((value) => Account.fromJson(
+                  .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1201,7 +1201,7 @@ class ListInvitationsResponse {
       : this(
           invitations: _json.containsKey('invitations')
               ? (_json['invitations'] as core.List)
-                  .map<Invitation>((value) => Invitation.fromJson(
+                  .map((value) => Invitation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1226,7 +1226,7 @@ class ListLocationAdminsResponse {
       : this(
           admins: _json.containsKey('admins')
               ? (_json['admins'] as core.List)
-                  .map<Admin>((value) => Admin.fromJson(
+                  .map((value) => Admin.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1421,7 +1421,7 @@ class PostalAddress {
       : this(
           addressLines: _json.containsKey('addressLines')
               ? (_json['addressLines'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           administrativeArea: _json.containsKey('administrativeArea')
@@ -1441,7 +1441,7 @@ class PostalAddress {
               : null,
           recipients: _json.containsKey('recipients')
               ? (_json['recipients'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           regionCode: _json.containsKey('regionCode')

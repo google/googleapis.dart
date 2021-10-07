@@ -433,9 +433,8 @@ class SiteVerificationWebResourceListResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<SiteVerificationWebResourceResource>((value) =>
-                      SiteVerificationWebResourceResource.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SiteVerificationWebResourceResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -502,7 +501,7 @@ class SiteVerificationWebResourceResource {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           owners: _json.containsKey('owners')
               ? (_json['owners'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           site: _json.containsKey('site')

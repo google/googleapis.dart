@@ -1232,7 +1232,7 @@ class FileShareConfig {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           nfsExportOptions: _json.containsKey('nfsExportOptions')
               ? (_json['nfsExportOptions'] as core.List)
-                  .map<NfsExportOptions>((value) => NfsExportOptions.fromJson(
+                  .map((value) => NfsExportOptions.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1441,11 +1441,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
               : null,
           provisionedResources: _json.containsKey('provisionedResources')
               ? (_json['provisionedResources'] as core.List)
-                  .map<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>(
-                      (value) =>
-                          GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           slmInstanceTemplate: _json.containsKey('slmInstanceTemplate')
@@ -1846,11 +1845,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
       : this(
           nodes: _json.containsKey('nodes')
               ? (_json['nodes'] as core.List)
-                  .map<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>(
-                      (value) =>
-                          GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           perSliEligibility: _json.containsKey('perSliEligibility')
@@ -1970,7 +1968,7 @@ class Instance {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           fileShares: _json.containsKey('fileShares')
               ? (_json['fileShares'] as core.List)
-                  .map<FileShareConfig>((value) => FileShareConfig.fromJson(
+                  .map((value) => FileShareConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1985,7 +1983,7 @@ class Instance {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           networks: _json.containsKey('networks')
               ? (_json['networks'] as core.List)
-                  .map<NetworkConfig>((value) => NetworkConfig.fromJson(
+                  .map((value) => NetworkConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2046,7 +2044,7 @@ class ListBackupsResponse {
       : this(
           backups: _json.containsKey('backups')
               ? (_json['backups'] as core.List)
-                  .map<Backup>((value) => Backup.fromJson(
+                  .map((value) => Backup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2055,7 +2053,7 @@ class ListBackupsResponse {
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2097,7 +2095,7 @@ class ListInstancesResponse {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<Instance>((value) => Instance.fromJson(
+                  .map((value) => Instance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2106,7 +2104,7 @@ class ListInstancesResponse {
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2136,7 +2134,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2172,7 +2170,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2208,7 +2206,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -2240,12 +2238,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -2430,12 +2423,12 @@ class NetworkConfig {
       : this(
           ipAddresses: _json.containsKey('ipAddresses')
               ? (_json['ipAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           modes: _json.containsKey('modes')
               ? (_json['modes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           network: _json.containsKey('network')
@@ -2523,7 +2516,7 @@ class NfsExportOptions {
               : null,
           ipRanges: _json.containsKey('ipRanges')
               ? (_json['ipRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           squashMode: _json.containsKey('squashMode')
@@ -2561,7 +2554,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2581,7 +2574,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -2599,21 +2592,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2809,7 +2792,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2828,13 +2811,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2940,9 +2917,8 @@ class UpdatePolicy {
               : null,
           denyMaintenancePeriods: _json.containsKey('denyMaintenancePeriods')
               ? (_json['denyMaintenancePeriods'] as core.List)
-                  .map<DenyMaintenancePeriod>((value) =>
-                      DenyMaintenancePeriod.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DenyMaintenancePeriod.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           window: _json.containsKey('window')
@@ -2975,7 +2951,7 @@ class WeeklyCycle {
       : this(
           schedule: _json.containsKey('schedule')
               ? (_json['schedule'] as core.List)
-                  .map<Schedule>((value) => Schedule.fromJson(
+                  .map((value) => Schedule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

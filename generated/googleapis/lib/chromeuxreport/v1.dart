@@ -137,9 +137,8 @@ class Bin {
           density: _json.containsKey('density')
               ? (_json['density'] as core.num).toDouble()
               : null,
-          end: _json.containsKey('end') ? _json['end'] as core.Object : null,
-          start:
-              _json.containsKey('start') ? _json['start'] as core.Object : null,
+          end: _json.containsKey('end') ? _json['end'] : null,
+          start: _json.containsKey('start') ? _json['start'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -242,7 +241,7 @@ class Metric {
       : this(
           histogram: _json.containsKey('histogram')
               ? (_json['histogram'] as core.List)
-                  .map<Bin>((value) => Bin.fromJson(
+                  .map((value) => Bin.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -277,7 +276,7 @@ class Percentiles {
 
   Percentiles.fromJson(core.Map _json)
       : this(
-          p75: _json.containsKey('p75') ? _json['p75'] as core.Object : null,
+          p75: _json.containsKey('p75') ? _json['p75'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -350,7 +349,7 @@ class QueryRequest {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           origin: _json.containsKey('origin')

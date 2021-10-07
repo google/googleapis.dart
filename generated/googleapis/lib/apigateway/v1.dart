@@ -1749,7 +1749,7 @@ class ApigatewayApiConfig {
               : null,
           grpcServices: _json.containsKey('grpcServices')
               ? (_json['grpcServices'] as core.List)
-                  .map<ApigatewayApiConfigGrpcServiceDefinition>((value) =>
+                  .map((value) =>
                       ApigatewayApiConfigGrpcServiceDefinition.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1764,17 +1764,15 @@ class ApigatewayApiConfig {
               : null,
           managedServiceConfigs: _json.containsKey('managedServiceConfigs')
               ? (_json['managedServiceConfigs'] as core.List)
-                  .map<ApigatewayApiConfigFile>((value) =>
-                      ApigatewayApiConfigFile.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApigatewayApiConfigFile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           openapiDocuments: _json.containsKey('openapiDocuments')
               ? (_json['openapiDocuments'] as core.List)
-                  .map<ApigatewayApiConfigOpenApiDocument>((value) =>
-                      ApigatewayApiConfigOpenApiDocument.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApigatewayApiConfigOpenApiDocument.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           serviceConfigId: _json.containsKey('serviceConfigId')
@@ -1875,9 +1873,8 @@ class ApigatewayApiConfigGrpcServiceDefinition {
               : null,
           source: _json.containsKey('source')
               ? (_json['source'] as core.List)
-                  .map<ApigatewayApiConfigFile>((value) =>
-                      ApigatewayApiConfigFile.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApigatewayApiConfigFile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1948,9 +1945,8 @@ class ApigatewayAuditConfig {
       : this(
           auditLogConfigs: _json.containsKey('auditLogConfigs')
               ? (_json['auditLogConfigs'] as core.List)
-                  .map<ApigatewayAuditLogConfig>((value) =>
-                      ApigatewayAuditLogConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApigatewayAuditLogConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           service: _json.containsKey('service')
@@ -1996,7 +1992,7 @@ class ApigatewayAuditLogConfig {
       : this(
           exemptedMembers: _json.containsKey('exemptedMembers')
               ? (_json['exemptedMembers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logType: _json.containsKey('logType')
@@ -2073,7 +2069,7 @@ class ApigatewayBinding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -2297,9 +2293,8 @@ class ApigatewayListApiConfigsResponse {
       : this(
           apiConfigs: _json.containsKey('apiConfigs')
               ? (_json['apiConfigs'] as core.List)
-                  .map<ApigatewayApiConfig>((value) =>
-                      ApigatewayApiConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApigatewayApiConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -2307,7 +2302,7 @@ class ApigatewayListApiConfigsResponse {
               : null,
           unreachableLocations: _json.containsKey('unreachableLocations')
               ? (_json['unreachableLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2342,7 +2337,7 @@ class ApigatewayListApisResponse {
       : this(
           apis: _json.containsKey('apis')
               ? (_json['apis'] as core.List)
-                  .map<ApigatewayApi>((value) => ApigatewayApi.fromJson(
+                  .map((value) => ApigatewayApi.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2351,7 +2346,7 @@ class ApigatewayListApisResponse {
               : null,
           unreachableLocations: _json.containsKey('unreachableLocations')
               ? (_json['unreachableLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2385,7 +2380,7 @@ class ApigatewayListGatewaysResponse {
       : this(
           gateways: _json.containsKey('gateways')
               ? (_json['gateways'] as core.List)
-                  .map<ApigatewayGateway>((value) => ApigatewayGateway.fromJson(
+                  .map((value) => ApigatewayGateway.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2394,7 +2389,7 @@ class ApigatewayListGatewaysResponse {
               : null,
           unreachableLocations: _json.containsKey('unreachableLocations')
               ? (_json['unreachableLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2425,9 +2420,8 @@ class ApigatewayListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<ApigatewayLocation>((value) =>
-                      ApigatewayLocation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApigatewayLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -2462,9 +2456,8 @@ class ApigatewayListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<ApigatewayOperation>((value) =>
-                      ApigatewayOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApigatewayOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2499,7 +2492,7 @@ class ApigatewayLocation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -2531,12 +2524,7 @@ class ApigatewayLocation {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -2571,7 +2559,7 @@ class ApigatewayOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2591,7 +2579,7 @@ class ApigatewayOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   ApigatewayOperation({
     this.done,
@@ -2609,21 +2597,11 @@ class ApigatewayOperation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2703,7 +2681,7 @@ class ApigatewayOperationMetadata {
               : null,
           diagnostics: _json.containsKey('diagnostics')
               ? (_json['diagnostics'] as core.List)
-                  .map<ApigatewayOperationMetadataDiagnostic>((value) =>
+                  .map((value) =>
                       ApigatewayOperationMetadataDiagnostic.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2858,14 +2836,13 @@ class ApigatewayPolicy {
       : this(
           auditConfigs: _json.containsKey('auditConfigs')
               ? (_json['auditConfigs'] as core.List)
-                  .map<ApigatewayAuditConfig>((value) =>
-                      ApigatewayAuditConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ApigatewayAuditConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<ApigatewayBinding>((value) => ApigatewayBinding.fromJson(
+                  .map((value) => ApigatewayBinding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2939,7 +2916,7 @@ class ApigatewayStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2958,13 +2935,7 @@ class ApigatewayStatus {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2996,7 +2967,7 @@ class ApigatewayTestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3020,7 +2991,7 @@ class ApigatewayTestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

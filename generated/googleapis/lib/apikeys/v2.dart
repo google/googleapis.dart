@@ -582,7 +582,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -602,7 +602,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -620,21 +620,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -664,7 +654,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -683,13 +673,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -751,9 +735,8 @@ class V2AndroidKeyRestrictions {
       : this(
           allowedApplications: _json.containsKey('allowedApplications')
               ? (_json['allowedApplications'] as core.List)
-                  .map<V2AndroidApplication>((value) =>
-                      V2AndroidApplication.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => V2AndroidApplication.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -797,7 +780,7 @@ class V2ApiTarget {
       : this(
           methods: _json.containsKey('methods')
               ? (_json['methods'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           service: _json.containsKey('service')
@@ -825,7 +808,7 @@ class V2BrowserKeyRestrictions {
       : this(
           allowedReferrers: _json.containsKey('allowedReferrers')
               ? (_json['allowedReferrers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -895,7 +878,7 @@ class V2IosKeyRestrictions {
       : this(
           allowedBundleIds: _json.containsKey('allowedBundleIds')
               ? (_json['allowedBundleIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1031,7 +1014,7 @@ class V2ListKeysResponse {
       : this(
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
-                  .map<V2Key>((value) => V2Key.fromJson(
+                  .map((value) => V2Key.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1113,7 +1096,7 @@ class V2Restrictions {
               : null,
           apiTargets: _json.containsKey('apiTargets')
               ? (_json['apiTargets'] as core.List)
-                  .map<V2ApiTarget>((value) => V2ApiTarget.fromJson(
+                  .map((value) => V2ApiTarget.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1160,7 +1143,7 @@ class V2ServerKeyRestrictions {
       : this(
           allowedIps: _json.containsKey('allowedIps')
               ? (_json['allowedIps'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

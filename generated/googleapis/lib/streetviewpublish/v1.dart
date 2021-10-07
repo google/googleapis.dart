@@ -575,7 +575,7 @@ class BatchDeletePhotosRequest {
       : this(
           photoIds: _json.containsKey('photoIds')
               ? (_json['photoIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -599,7 +599,7 @@ class BatchDeletePhotosResponse {
       : this(
           status: _json.containsKey('status')
               ? (_json['status'] as core.List)
-                  .map<Status>((value) => Status.fromJson(
+                  .map((value) => Status.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -625,7 +625,7 @@ class BatchGetPhotosResponse {
       : this(
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<PhotoResponse>((value) => PhotoResponse.fromJson(
+                  .map((value) => PhotoResponse.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -654,9 +654,8 @@ class BatchUpdatePhotosRequest {
       : this(
           updatePhotoRequests: _json.containsKey('updatePhotoRequests')
               ? (_json['updatePhotoRequests'] as core.List)
-                  .map<UpdatePhotoRequest>((value) =>
-                      UpdatePhotoRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UpdatePhotoRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -682,7 +681,7 @@ class BatchUpdatePhotosResponse {
       : this(
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<PhotoResponse>((value) => PhotoResponse.fromJson(
+                  .map((value) => PhotoResponse.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -824,7 +823,7 @@ class ListPhotosResponse {
               : null,
           photos: _json.containsKey('photos')
               ? (_json['photos'] as core.List)
-                  .map<Photo>((value) => Photo.fromJson(
+                  .map((value) => Photo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -858,7 +857,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -878,7 +877,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -896,21 +895,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1027,7 +1016,7 @@ class Photo {
               : null,
           connections: _json.containsKey('connections')
               ? (_json['connections'] as core.List)
-                  .map<Connection>((value) => Connection.fromJson(
+                  .map((value) => Connection.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1043,7 +1032,7 @@ class Photo {
               : null,
           places: _json.containsKey('places')
               ? (_json['places'] as core.List)
-                  .map<Place>((value) => Place.fromJson(
+                  .map((value) => Place.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1295,7 +1284,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1314,13 +1303,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

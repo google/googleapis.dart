@@ -866,7 +866,7 @@ class AllocateIdsRequest {
       : this(
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
-                  .map<Key>((value) => Key.fromJson(
+                  .map((value) => Key.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -891,7 +891,7 @@ class AllocateIdsResponse {
       : this(
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
-                  .map<Key>((value) => Key.fromJson(
+                  .map((value) => Key.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -918,7 +918,7 @@ class ArrayValue {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<Value>((value) => Value.fromJson(
+                  .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1029,7 +1029,7 @@ class CommitRequest {
           mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
           mutations: _json.containsKey('mutations')
               ? (_json['mutations'] as core.List)
-                  .map<Mutation>((value) => Mutation.fromJson(
+                  .map((value) => Mutation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1069,7 +1069,7 @@ class CommitResponse {
               : null,
           mutationResults: _json.containsKey('mutationResults')
               ? (_json['mutationResults'] as core.List)
-                  .map<MutationResult>((value) => MutationResult.fromJson(
+                  .map((value) => MutationResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1106,7 +1106,7 @@ class CompositeFilter {
       : this(
           filters: _json.containsKey('filters')
               ? (_json['filters'] as core.List)
-                  .map<Filter>((value) => Filter.fromJson(
+                  .map((value) => Filter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1375,12 +1375,12 @@ class GoogleDatastoreAdminV1EntityFilter {
       : this(
           kinds: _json.containsKey('kinds')
               ? (_json['kinds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           namespaceIds: _json.containsKey('namespaceIds')
               ? (_json['namespaceIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1741,7 +1741,7 @@ class GoogleDatastoreAdminV1Index {
               : null,
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.List)
-                  .map<GoogleDatastoreAdminV1IndexedProperty>((value) =>
+                  .map((value) =>
                       GoogleDatastoreAdminV1IndexedProperty.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1858,9 +1858,8 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
       : this(
           indexes: _json.containsKey('indexes')
               ? (_json['indexes'] as core.List)
-                  .map<GoogleDatastoreAdminV1Index>((value) =>
-                      GoogleDatastoreAdminV1Index.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleDatastoreAdminV1Index.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -2018,12 +2017,12 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
       : this(
           kinds: _json.containsKey('kinds')
               ? (_json['kinds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           namespaceIds: _json.containsKey('namespaceIds')
               ? (_json['namespaceIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2240,9 +2239,8 @@ class GoogleLongrunningListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<GoogleLongrunningOperation>((value) =>
-                      GoogleLongrunningOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2275,7 +2273,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2295,7 +2293,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation({
     this.done,
@@ -2313,21 +2311,11 @@ class GoogleLongrunningOperation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2392,7 +2380,7 @@ class GqlQuery {
               : null,
           positionalBindings: _json.containsKey('positionalBindings')
               ? (_json['positionalBindings'] as core.List)
-                  .map<GqlQueryParameter>((value) => GqlQueryParameter.fromJson(
+                  .map((value) => GqlQueryParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2492,7 +2480,7 @@ class Key {
               : null,
           path: _json.containsKey('path')
               ? (_json['path'] as core.List)
-                  .map<PathElement>((value) => PathElement.fromJson(
+                  .map((value) => PathElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2579,7 +2567,7 @@ class LookupRequest {
       : this(
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
-                  .map<Key>((value) => Key.fromJson(
+                  .map((value) => Key.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2625,19 +2613,19 @@ class LookupResponse {
       : this(
           deferred: _json.containsKey('deferred')
               ? (_json['deferred'] as core.List)
-                  .map<Key>((value) => Key.fromJson(
+                  .map((value) => Key.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           found: _json.containsKey('found')
               ? (_json['found'] as core.List)
-                  .map<EntityResult>((value) => EntityResult.fromJson(
+                  .map((value) => EntityResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           missing: _json.containsKey('missing')
               ? (_json['missing'] as core.List)
-                  .map<EntityResult>((value) => EntityResult.fromJson(
+                  .map((value) => EntityResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3056,7 +3044,7 @@ class Query {
       : this(
           distinctOn: _json.containsKey('distinctOn')
               ? (_json['distinctOn'] as core.List)
-                  .map<PropertyReference>((value) => PropertyReference.fromJson(
+                  .map((value) => PropertyReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3069,7 +3057,7 @@ class Query {
               : null,
           kind: _json.containsKey('kind')
               ? (_json['kind'] as core.List)
-                  .map<KindExpression>((value) => KindExpression.fromJson(
+                  .map((value) => KindExpression.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3078,13 +3066,13 @@ class Query {
               _json.containsKey('offset') ? _json['offset'] as core.int : null,
           order: _json.containsKey('order')
               ? (_json['order'] as core.List)
-                  .map<PropertyOrder>((value) => PropertyOrder.fromJson(
+                  .map((value) => PropertyOrder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           projection: _json.containsKey('projection')
               ? (_json['projection'] as core.List)
-                  .map<Projection>((value) => Projection.fromJson(
+                  .map((value) => Projection.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3191,7 +3179,7 @@ class QueryResultBatch {
               : null,
           entityResults: _json.containsKey('entityResults')
               ? (_json['entityResults'] as core.List)
-                  .map<EntityResult>((value) => EntityResult.fromJson(
+                  .map((value) => EntityResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3323,7 +3311,7 @@ class ReserveIdsRequest {
               : null,
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
-                  .map<Key>((value) => Key.fromJson(
+                  .map((value) => Key.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3474,7 +3462,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3493,13 +3481,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

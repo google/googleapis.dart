@@ -1178,7 +1178,7 @@ class ImageVersion {
               : null,
           supportedPythonVersions: _json.containsKey('supportedPythonVersions')
               ? (_json['supportedPythonVersions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           upgradeDisabled: _json.containsKey('upgradeDisabled')
@@ -1214,7 +1214,7 @@ class ListEnvironmentsResponse {
       : this(
           environments: _json.containsKey('environments')
               ? (_json['environments'] as core.List)
-                  .map<Environment>((value) => Environment.fromJson(
+                  .map((value) => Environment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1247,7 +1247,7 @@ class ListImageVersionsResponse {
       : this(
           imageVersions: _json.containsKey('imageVersions')
               ? (_json['imageVersions'] as core.List)
-                  .map<ImageVersion>((value) => ImageVersion.fromJson(
+                  .map((value) => ImageVersion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1284,7 +1284,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1438,7 +1438,7 @@ class NodeConfig {
               : null,
           oauthScopes: _json.containsKey('oauthScopes')
               ? (_json['oauthScopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           serviceAccount: _json.containsKey('serviceAccount')
@@ -1449,7 +1449,7 @@ class NodeConfig {
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1489,7 +1489,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -1509,7 +1509,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -1527,21 +1527,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1927,7 +1917,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1946,13 +1936,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2008,7 +1992,7 @@ class WebServerNetworkAccessControl {
       : this(
           allowedIpRanges: _json.containsKey('allowedIpRanges')
               ? (_json['allowedIpRanges'] as core.List)
-                  .map<AllowedIpRange>((value) => AllowedIpRange.fromJson(
+                  .map((value) => AllowedIpRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

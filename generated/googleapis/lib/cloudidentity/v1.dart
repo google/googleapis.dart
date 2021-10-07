@@ -2008,7 +2008,7 @@ class DynamicGroupMetadata {
       : this(
           queries: _json.containsKey('queries')
               ? (_json['queries'] as core.List)
-                  .map<DynamicGroupQuery>((value) => DynamicGroupQuery.fromJson(
+                  .map((value) => DynamicGroupQuery.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2189,14 +2189,13 @@ class GetMembershipGraphResponse {
       : this(
           adjacencyList: _json.containsKey('adjacencyList')
               ? (_json['adjacencyList'] as core.List)
-                  .map<MembershipAdjacencyList>((value) =>
-                      MembershipAdjacencyList.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MembershipAdjacencyList.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           groups: _json.containsKey('groups')
               ? (_json['groups'] as core.List)
-                  .map<Group>((value) => Group.fromJson(
+                  .map((value) => Group.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2617,7 +2616,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
       : this(
           assetTags: _json.containsKey('assetTags')
               ? (_json['assetTags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           complianceState: _json.containsKey('complianceState')
@@ -3012,7 +3011,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
               : null,
           otherAccounts: _json.containsKey('otherAccounts')
               ? (_json['otherAccounts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           ownerType: _json.containsKey('ownerType')
@@ -3029,7 +3028,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
               : null,
           wifiMacAddresses: _json.containsKey('wifiMacAddresses')
               ? (_json['wifiMacAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3215,7 +3214,7 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
       : this(
           clientStates: _json.containsKey('clientStates')
               ? (_json['clientStates'] as core.List)
-                  .map<GoogleAppsCloudidentityDevicesV1ClientState>((value) =>
+                  .map((value) =>
                       GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3252,7 +3251,7 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
       : this(
           deviceUsers: _json.containsKey('deviceUsers')
               ? (_json['deviceUsers'] as core.List)
-                  .map<GoogleAppsCloudidentityDevicesV1DeviceUser>((value) =>
+                  .map((value) =>
                       GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3288,7 +3287,7 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
       : this(
           devices: _json.containsKey('devices')
               ? (_json['devices'] as core.List)
-                  .map<GoogleAppsCloudidentityDevicesV1Device>((value) =>
+                  .map((value) =>
                       GoogleAppsCloudidentityDevicesV1Device.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3340,7 +3339,7 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
               : null,
           names: _json.containsKey('names')
               ? (_json['names'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -3669,9 +3668,8 @@ class GroupRelation {
               : null,
           roles: _json.containsKey('roles')
               ? (_json['roles'] as core.List)
-                  .map<TransitiveMembershipRole>((value) =>
-                      TransitiveMembershipRole.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TransitiveMembershipRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3707,7 +3705,7 @@ class ListGroupsResponse {
       : this(
           groups: _json.containsKey('groups')
               ? (_json['groups'] as core.List)
-                  .map<Group>((value) => Group.fromJson(
+                  .map((value) => Group.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3741,7 +3739,7 @@ class ListMembershipsResponse {
       : this(
           memberships: _json.containsKey('memberships')
               ? (_json['memberships'] as core.List)
-                  .map<Membership>((value) => Membership.fromJson(
+                  .map((value) => Membership.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3839,7 +3837,7 @@ class MemberRelation {
               : null,
           preferredMemberKey: _json.containsKey('preferredMemberKey')
               ? (_json['preferredMemberKey'] as core.List)
-                  .map<EntityKey>((value) => EntityKey.fromJson(
+                  .map((value) => EntityKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3848,9 +3846,8 @@ class MemberRelation {
               : null,
           roles: _json.containsKey('roles')
               ? (_json['roles'] as core.List)
-                  .map<TransitiveMembershipRole>((value) =>
-                      TransitiveMembershipRole.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TransitiveMembershipRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3934,7 +3931,7 @@ class Membership {
               : null,
           roles: _json.containsKey('roles')
               ? (_json['roles'] as core.List)
-                  .map<MembershipRole>((value) => MembershipRole.fromJson(
+                  .map((value) => MembershipRole.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3978,7 +3975,7 @@ class MembershipAdjacencyList {
       : this(
           edges: _json.containsKey('edges')
               ? (_json['edges'] as core.List)
-                  .map<Membership>((value) => Membership.fromJson(
+                  .map((value) => Membership.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4061,20 +4058,19 @@ class ModifyMembershipRolesRequest {
       : this(
           addRoles: _json.containsKey('addRoles')
               ? (_json['addRoles'] as core.List)
-                  .map<MembershipRole>((value) => MembershipRole.fromJson(
+                  .map((value) => MembershipRole.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           removeRoles: _json.containsKey('removeRoles')
               ? (_json['removeRoles'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           updateRolesParams: _json.containsKey('updateRolesParams')
               ? (_json['updateRolesParams'] as core.List)
-                  .map<UpdateMembershipRolesParams>((value) =>
-                      UpdateMembershipRolesParams.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UpdateMembershipRolesParams.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4132,7 +4128,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -4152,7 +4148,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -4170,21 +4166,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -4215,7 +4201,7 @@ class SearchGroupsResponse {
       : this(
           groups: _json.containsKey('groups')
               ? (_json['groups'] as core.List)
-                  .map<Group>((value) => Group.fromJson(
+                  .map((value) => Group.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4249,7 +4235,7 @@ class SearchTransitiveGroupsResponse {
       : this(
           memberships: _json.containsKey('memberships')
               ? (_json['memberships'] as core.List)
-                  .map<GroupRelation>((value) => GroupRelation.fromJson(
+                  .map((value) => GroupRelation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4283,7 +4269,7 @@ class SearchTransitiveMembershipsResponse {
       : this(
           memberships: _json.containsKey('memberships')
               ? (_json['memberships'] as core.List)
-                  .map<MemberRelation>((value) => MemberRelation.fromJson(
+                  .map((value) => MemberRelation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4316,7 +4302,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4335,13 +4321,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

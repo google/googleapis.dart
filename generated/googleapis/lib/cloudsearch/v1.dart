@@ -2803,7 +2803,7 @@ class CompositeFilter {
               : null,
           subFilters: _json.containsKey('subFilters')
               ? (_json['subFilters'] as core.List)
-                  .map<Filter>((value) => Filter.fromJson(
+                  .map((value) => Filter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2843,7 +2843,7 @@ class ContextAttribute {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2875,7 +2875,7 @@ class CustomerIndexStats {
               : null,
           itemCountByStatus: _json.containsKey('itemCountByStatus')
               ? (_json['itemCountByStatus'] as core.List)
-                  .map<ItemCountByStatus>((value) => ItemCountByStatus.fromJson(
+                  .map((value) => ItemCountByStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2909,9 +2909,8 @@ class CustomerQueryStats {
               : null,
           queryCountByStatus: _json.containsKey('queryCountByStatus')
               ? (_json['queryCountByStatus'] as core.List)
-                  .map<QueryCountByStatus>((value) =>
-                      QueryCountByStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => QueryCountByStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3123,19 +3122,19 @@ class DataSource {
               : null,
           indexingServiceAccounts: _json.containsKey('indexingServiceAccounts')
               ? (_json['indexingServiceAccounts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           itemsVisibility: _json.containsKey('itemsVisibility')
               ? (_json['itemsVisibility'] as core.List)
-                  .map<GSuitePrincipal>((value) => GSuitePrincipal.fromJson(
+                  .map((value) => GSuitePrincipal.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           operationIds: _json.containsKey('operationIds')
               ? (_json['operationIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           shortName: _json.containsKey('shortName')
@@ -3185,7 +3184,7 @@ class DataSourceIndexStats {
               : null,
           itemCountByStatus: _json.containsKey('itemCountByStatus')
               ? (_json['itemCountByStatus'] as core.List)
-                  .map<ItemCountByStatus>((value) => ItemCountByStatus.fromJson(
+                  .map((value) => ItemCountByStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3223,7 +3222,7 @@ class DataSourceRestriction {
       : this(
           filterOptions: _json.containsKey('filterOptions')
               ? (_json['filterOptions'] as core.List)
-                  .map<FilterOptions>((value) => FilterOptions.fromJson(
+                  .map((value) => FilterOptions.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3387,7 +3386,7 @@ class DateValues {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<Date>((value) => Date.fromJson(
+                  .map((value) => Date.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3553,7 +3552,7 @@ class DoubleValues {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.double>((value) => (value as core.num).toDouble())
+                  .map((value) => (value as core.num).toDouble())
                   .toList()
               : null,
         );
@@ -3791,7 +3790,7 @@ class EnumPropertyOptions {
               : null,
           possibleValues: _json.containsKey('possibleValues')
               ? (_json['possibleValues'] as core.List)
-                  .map<EnumValuePair>((value) => EnumValuePair.fromJson(
+                  .map((value) => EnumValuePair.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3866,7 +3865,7 @@ class EnumValues {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3888,7 +3887,7 @@ class ErrorInfo {
       : this(
           errorMessages: _json.containsKey('errorMessages')
               ? (_json['errorMessages'] as core.List)
-                  .map<ErrorMessage>((value) => ErrorMessage.fromJson(
+                  .map((value) => ErrorMessage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4066,7 +4065,7 @@ class FacetResult {
       : this(
           buckets: _json.containsKey('buckets')
               ? (_json['buckets'] as core.List)
-                  .map<FacetBucket>((value) => FacetBucket.fromJson(
+                  .map((value) => FacetBucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4279,9 +4278,8 @@ class GetCustomerIndexStatsResponse {
       : this(
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
-                  .map<CustomerIndexStats>((value) =>
-                      CustomerIndexStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CustomerIndexStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4303,9 +4301,8 @@ class GetCustomerQueryStatsResponse {
       : this(
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
-                  .map<CustomerQueryStats>((value) =>
-                      CustomerQueryStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CustomerQueryStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4327,9 +4324,8 @@ class GetCustomerSessionStatsResponse {
       : this(
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
-                  .map<CustomerSessionStats>((value) =>
-                      CustomerSessionStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CustomerSessionStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4351,7 +4347,7 @@ class GetCustomerUserStatsResponse {
       : this(
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
-                  .map<CustomerUserStats>((value) => CustomerUserStats.fromJson(
+                  .map((value) => CustomerUserStats.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4375,9 +4371,8 @@ class GetDataSourceIndexStatsResponse {
       : this(
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
-                  .map<DataSourceIndexStats>((value) =>
-                      DataSourceIndexStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceIndexStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4399,9 +4394,8 @@ class GetSearchApplicationQueryStatsResponse {
       : this(
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
-                  .map<SearchApplicationQueryStats>((value) =>
-                      SearchApplicationQueryStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SearchApplicationQueryStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4423,9 +4417,8 @@ class GetSearchApplicationSessionStatsResponse {
       : this(
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
-                  .map<SearchApplicationSessionStats>((value) =>
-                      SearchApplicationSessionStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SearchApplicationSessionStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4447,9 +4440,8 @@ class GetSearchApplicationUserStatsResponse {
       : this(
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
-                  .map<SearchApplicationUserStats>((value) =>
-                      SearchApplicationUserStats.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SearchApplicationUserStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4542,7 +4534,7 @@ class HtmlValues {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4783,7 +4775,7 @@ class IntegerValues {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5045,7 +5037,7 @@ class ItemAcl {
               : null,
           deniedReaders: _json.containsKey('deniedReaders')
               ? (_json['deniedReaders'] as core.List)
-                  .map<Principal>((value) => Principal.fromJson(
+                  .map((value) => Principal.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5054,13 +5046,13 @@ class ItemAcl {
               : null,
           owners: _json.containsKey('owners')
               ? (_json['owners'] as core.List)
-                  .map<Principal>((value) => Principal.fromJson(
+                  .map((value) => Principal.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           readers: _json.containsKey('readers')
               ? (_json['readers'] as core.List)
-                  .map<Principal>((value) => Principal.fromJson(
+                  .map((value) => Principal.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5286,7 +5278,7 @@ class ItemMetadata {
               : null,
           contextAttributes: _json.containsKey('contextAttributes')
               ? (_json['contextAttributes'] as core.List)
-                  .map<ContextAttribute>((value) => ContextAttribute.fromJson(
+                  .map((value) => ContextAttribute.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5296,13 +5288,13 @@ class ItemMetadata {
           hash: _json.containsKey('hash') ? _json['hash'] as core.String : null,
           interactions: _json.containsKey('interactions')
               ? (_json['interactions'] as core.List)
-                  .map<Interaction>((value) => Interaction.fromJson(
+                  .map((value) => Interaction.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           keywords: _json.containsKey('keywords')
               ? (_json['keywords'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           mimeType: _json.containsKey('mimeType')
@@ -5380,13 +5372,13 @@ class ItemStatus {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           processingErrors: _json.containsKey('processingErrors')
               ? (_json['processingErrors'] as core.List)
-                  .map<ProcessingError>((value) => ProcessingError.fromJson(
+                  .map((value) => ProcessingError.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           repositoryErrors: _json.containsKey('repositoryErrors')
               ? (_json['repositoryErrors'] as core.List)
-                  .map<RepositoryError>((value) => RepositoryError.fromJson(
+                  .map((value) => RepositoryError.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5453,7 +5445,7 @@ class ListDataSourceResponse {
               : null,
           sources: _json.containsKey('sources')
               ? (_json['sources'] as core.List)
-                  .map<DataSource>((value) => DataSource.fromJson(
+                  .map((value) => DataSource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5482,7 +5474,7 @@ class ListItemNamesForUnmappedIdentityResponse {
       : this(
           itemNames: _json.containsKey('itemNames')
               ? (_json['itemNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -5512,7 +5504,7 @@ class ListItemsResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Item>((value) => Item.fromJson(
+                  .map((value) => Item.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5548,7 +5540,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5578,7 +5570,7 @@ class ListQuerySourcesResponse {
               : null,
           sources: _json.containsKey('sources')
               ? (_json['sources'] as core.List)
-                  .map<QuerySource>((value) => QuerySource.fromJson(
+                  .map((value) => QuerySource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5609,7 +5601,7 @@ class ListSearchApplicationsResponse {
               : null,
           searchApplications: _json.containsKey('searchApplications')
               ? (_json['searchApplications'] as core.List)
-                  .map<SearchApplication>((value) => SearchApplication.fromJson(
+                  .map((value) => SearchApplication.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5641,7 +5633,7 @@ class ListUnmappedIdentitiesResponse {
               : null,
           unmappedIdentities: _json.containsKey('unmappedIdentities')
               ? (_json['unmappedIdentities'] as core.List)
-                  .map<UnmappedIdentity>((value) => UnmappedIdentity.fromJson(
+                  .map((value) => UnmappedIdentity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5753,7 +5745,7 @@ class Metadata {
               : null,
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<NamedProperty>((value) => NamedProperty.fromJson(
+                  .map((value) => NamedProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5805,7 +5797,7 @@ class Metaline {
       : this(
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.List)
-                  .map<DisplayedProperty>((value) => DisplayedProperty.fromJson(
+                  .map((value) => DisplayedProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5964,9 +5956,8 @@ class ObjectDefinition {
               : null,
           propertyDefinitions: _json.containsKey('propertyDefinitions')
               ? (_json['propertyDefinitions'] as core.List)
-                  .map<PropertyDefinition>((value) =>
-                      PropertyDefinition.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PropertyDefinition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6008,7 +5999,7 @@ class ObjectDisplayOptions {
       : this(
           metalines: _json.containsKey('metalines')
               ? (_json['metalines'] as core.List)
-                  .map<Metaline>((value) => Metaline.fromJson(
+                  .map((value) => Metaline.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6075,9 +6066,8 @@ class ObjectPropertyOptions {
       : this(
           subobjectProperties: _json.containsKey('subobjectProperties')
               ? (_json['subobjectProperties'] as core.List)
-                  .map<PropertyDefinition>((value) =>
-                      PropertyDefinition.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PropertyDefinition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6101,9 +6091,8 @@ class ObjectValues {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<StructuredDataObject>((value) =>
-                      StructuredDataObject.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => StructuredDataObject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6135,7 +6124,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -6155,7 +6144,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -6173,21 +6162,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -6258,7 +6237,7 @@ class Person {
       : this(
           emailAddresses: _json.containsKey('emailAddresses')
               ? (_json['emailAddresses'] as core.List)
-                  .map<EmailAddress>((value) => EmailAddress.fromJson(
+                  .map((value) => EmailAddress.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6268,13 +6247,13 @@ class Person {
               : null,
           personNames: _json.containsKey('personNames')
               ? (_json['personNames'] as core.List)
-                  .map<Name>((value) => Name.fromJson(
+                  .map((value) => Name.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           photos: _json.containsKey('photos')
               ? (_json['photos'] as core.List)
-                  .map<Photo>((value) => Photo.fromJson(
+                  .map((value) => Photo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6357,7 +6336,7 @@ class PollItemsRequest {
               _json.containsKey('queue') ? _json['queue'] as core.String : null,
           statusCodes: _json.containsKey('statusCodes')
               ? (_json['statusCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6386,7 +6365,7 @@ class PollItemsResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Item>((value) => Item.fromJson(
+                  .map((value) => Item.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6479,7 +6458,7 @@ class ProcessingError {
               : null,
           fieldViolations: _json.containsKey('fieldViolations')
               ? (_json['fieldViolations'] as core.List)
-                  .map<FieldViolation>((value) => FieldViolation.fromJson(
+                  .map((value) => FieldViolation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7143,7 +7122,7 @@ class QueryOperator {
               : null,
           enumValues: _json.containsKey('enumValues')
               ? (_json['enumValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           greaterThanOperatorName: _json.containsKey('greaterThanOperatorName')
@@ -7224,7 +7203,7 @@ class QuerySource {
               : null,
           operators: _json.containsKey('operators')
               ? (_json['operators'] as core.List)
-                  .map<QueryOperator>((value) => QueryOperator.fromJson(
+                  .map((value) => QueryOperator.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7483,7 +7462,7 @@ class ResultCounts {
       : this(
           sourceResultCounts: _json.containsKey('sourceResultCounts')
               ? (_json['sourceResultCounts'] as core.List)
-                  .map<SourceResultCount>((value) => SourceResultCount.fromJson(
+                  .map((value) => SourceResultCount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7567,9 +7546,8 @@ class ResultDisplayLine {
       : this(
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<ResultDisplayField>((value) =>
-                      ResultDisplayField.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResultDisplayField.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -7596,7 +7574,7 @@ class ResultDisplayMetadata {
       : this(
           metalines: _json.containsKey('metalines')
               ? (_json['metalines'] as core.List)
-                  .map<ResultDisplayLine>((value) => ResultDisplayLine.fromJson(
+                  .map((value) => ResultDisplayLine.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7665,13 +7643,13 @@ class Schema {
       : this(
           objectDefinitions: _json.containsKey('objectDefinitions')
               ? (_json['objectDefinitions'] as core.List)
-                  .map<ObjectDefinition>((value) => ObjectDefinition.fromJson(
+                  .map((value) => ObjectDefinition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           operationIds: _json.containsKey('operationIds')
               ? (_json['operationIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -7784,14 +7762,13 @@ class SearchApplication {
       : this(
           dataSourceRestrictions: _json.containsKey('dataSourceRestrictions')
               ? (_json['dataSourceRestrictions'] as core.List)
-                  .map<DataSourceRestriction>((value) =>
-                      DataSourceRestriction.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceRestriction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           defaultFacetOptions: _json.containsKey('defaultFacetOptions')
               ? (_json['defaultFacetOptions'] as core.List)
-                  .map<FacetOptions>((value) => FacetOptions.fromJson(
+                  .map((value) => FacetOptions.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7808,7 +7785,7 @@ class SearchApplication {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           operationIds: _json.containsKey('operationIds')
               ? (_json['operationIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           queryInterpretationConfig:
@@ -7823,7 +7800,7 @@ class SearchApplication {
               : null,
           sourceConfig: _json.containsKey('sourceConfig')
               ? (_json['sourceConfig'] as core.List)
-                  .map<SourceConfig>((value) => SourceConfig.fromJson(
+                  .map((value) => SourceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7870,9 +7847,8 @@ class SearchApplicationQueryStats {
               : null,
           queryCountByStatus: _json.containsKey('queryCountByStatus')
               ? (_json['queryCountByStatus'] as core.List)
-                  .map<QueryCountByStatus>((value) =>
-                      QueryCountByStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => QueryCountByStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8024,7 +8000,7 @@ class SearchItemsByViewUrlResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Item>((value) => Item.fromJson(
+                  .map((value) => Item.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8120,20 +8096,19 @@ class SearchRequest {
       : this(
           contextAttributes: _json.containsKey('contextAttributes')
               ? (_json['contextAttributes'] as core.List)
-                  .map<ContextAttribute>((value) => ContextAttribute.fromJson(
+                  .map((value) => ContextAttribute.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dataSourceRestrictions: _json.containsKey('dataSourceRestrictions')
               ? (_json['dataSourceRestrictions'] as core.List)
-                  .map<DataSourceRestriction>((value) =>
-                      DataSourceRestriction.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceRestriction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           facetOptions: _json.containsKey('facetOptions')
               ? (_json['facetOptions'] as core.List)
-                  .map<FacetOptions>((value) => FacetOptions.fromJson(
+                  .map((value) => FacetOptions.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8243,7 +8218,7 @@ class SearchResponse {
               : null,
           facetResults: _json.containsKey('facetResults')
               ? (_json['facetResults'] as core.List)
-                  .map<FacetResult>((value) => FacetResult.fromJson(
+                  .map((value) => FacetResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8266,19 +8241,19 @@ class SearchResponse {
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<SearchResult>((value) => SearchResult.fromJson(
+                  .map((value) => SearchResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           spellResults: _json.containsKey('spellResults')
               ? (_json['spellResults'] as core.List)
-                  .map<SpellResult>((value) => SpellResult.fromJson(
+                  .map((value) => SpellResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           structuredResults: _json.containsKey('structuredResults')
               ? (_json['structuredResults'] as core.List)
-                  .map<StructuredResult>((value) => StructuredResult.fromJson(
+                  .map((value) => StructuredResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8345,7 +8320,7 @@ class SearchResult {
       : this(
           clusteredResults: _json.containsKey('clusteredResults')
               ? (_json['clusteredResults'] as core.List)
-                  .map<SearchResult>((value) => SearchResult.fromJson(
+                  .map((value) => SearchResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8399,7 +8374,7 @@ class Snippet {
       : this(
           matchRanges: _json.containsKey('matchRanges')
               ? (_json['matchRanges'] as core.List)
-                  .map<MatchRange>((value) => MatchRange.fromJson(
+                  .map((value) => MatchRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8708,7 +8683,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -8727,13 +8702,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -8763,7 +8732,7 @@ class StructuredDataObject {
       : this(
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.List)
-                  .map<NamedProperty>((value) => NamedProperty.fromJson(
+                  .map((value) => NamedProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8826,9 +8795,8 @@ class SuggestRequest {
       : this(
           dataSourceRestrictions: _json.containsKey('dataSourceRestrictions')
               ? (_json['dataSourceRestrictions'] as core.List)
-                  .map<DataSourceRestriction>((value) =>
-                      DataSourceRestriction.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceRestriction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           query:
@@ -8861,7 +8829,7 @@ class SuggestResponse {
       : this(
           suggestResults: _json.containsKey('suggestResults')
               ? (_json['suggestResults'] as core.List)
-                  .map<SuggestResult>((value) => SuggestResult.fromJson(
+                  .map((value) => SuggestResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9027,7 +8995,7 @@ class TextValues {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -9138,7 +9106,7 @@ class TimestampValues {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
