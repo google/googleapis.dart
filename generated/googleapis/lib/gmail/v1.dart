@@ -3519,7 +3519,7 @@ class BatchDeleteMessagesRequest {
       : this(
           ids: _json.containsKey('ids')
               ? (_json['ids'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3551,17 +3551,17 @@ class BatchModifyMessagesRequest {
       : this(
           addLabelIds: _json.containsKey('addLabelIds')
               ? (_json['addLabelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           ids: _json.containsKey('ids')
               ? (_json['ids'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           removeLabelIds: _json.containsKey('removeLabelIds')
               ? (_json['removeLabelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3707,7 +3707,7 @@ class FilterAction {
       : this(
           addLabelIds: _json.containsKey('addLabelIds')
               ? (_json['addLabelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           forward: _json.containsKey('forward')
@@ -3715,7 +3715,7 @@ class FilterAction {
               : null,
           removeLabelIds: _json.containsKey('removeLabelIds')
               ? (_json['removeLabelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3900,35 +3900,32 @@ class History {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           labelsAdded: _json.containsKey('labelsAdded')
               ? (_json['labelsAdded'] as core.List)
-                  .map<HistoryLabelAdded>((value) => HistoryLabelAdded.fromJson(
+                  .map((value) => HistoryLabelAdded.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           labelsRemoved: _json.containsKey('labelsRemoved')
               ? (_json['labelsRemoved'] as core.List)
-                  .map<HistoryLabelRemoved>((value) =>
-                      HistoryLabelRemoved.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HistoryLabelRemoved.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<Message>((value) => Message.fromJson(
+                  .map((value) => Message.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           messagesAdded: _json.containsKey('messagesAdded')
               ? (_json['messagesAdded'] as core.List)
-                  .map<HistoryMessageAdded>((value) =>
-                      HistoryMessageAdded.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HistoryMessageAdded.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           messagesDeleted: _json.containsKey('messagesDeleted')
               ? (_json['messagesDeleted'] as core.List)
-                  .map<HistoryMessageDeleted>((value) =>
-                      HistoryMessageDeleted.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HistoryMessageDeleted.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3965,7 +3962,7 @@ class HistoryLabelAdded {
       : this(
           labelIds: _json.containsKey('labelIds')
               ? (_json['labelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -3994,7 +3991,7 @@ class HistoryLabelRemoved {
       : this(
           labelIds: _json.containsKey('labelIds')
               ? (_json['labelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -4335,7 +4332,7 @@ class ListDelegatesResponse {
       : this(
           delegates: _json.containsKey('delegates')
               ? (_json['delegates'] as core.List)
-                  .map<Delegate>((value) => Delegate.fromJson(
+                  .map((value) => Delegate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4371,7 +4368,7 @@ class ListDraftsResponse {
       : this(
           drafts: _json.containsKey('drafts')
               ? (_json['drafts'] as core.List)
-                  .map<Draft>((value) => Draft.fromJson(
+                  .map((value) => Draft.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4405,7 +4402,7 @@ class ListFiltersResponse {
       : this(
           filter: _json.containsKey('filter')
               ? (_json['filter'] as core.List)
-                  .map<Filter>((value) => Filter.fromJson(
+                  .map((value) => Filter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4430,7 +4427,7 @@ class ListForwardingAddressesResponse {
       : this(
           forwardingAddresses: _json.containsKey('forwardingAddresses')
               ? (_json['forwardingAddresses'] as core.List)
-                  .map<ForwardingAddress>((value) => ForwardingAddress.fromJson(
+                  .map((value) => ForwardingAddress.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4466,7 +4463,7 @@ class ListHistoryResponse {
       : this(
           history: _json.containsKey('history')
               ? (_json['history'] as core.List)
-                  .map<History>((value) => History.fromJson(
+                  .map((value) => History.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4502,7 +4499,7 @@ class ListLabelsResponse {
       : this(
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<Label>((value) => Label.fromJson(
+                  .map((value) => Label.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4537,7 +4534,7 @@ class ListMessagesResponse {
       : this(
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<Message>((value) => Message.fromJson(
+                  .map((value) => Message.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4571,7 +4568,7 @@ class ListSendAsResponse {
       : this(
           sendAs: _json.containsKey('sendAs')
               ? (_json['sendAs'] as core.List)
-                  .map<SendAs>((value) => SendAs.fromJson(
+                  .map((value) => SendAs.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4595,7 +4592,7 @@ class ListSmimeInfoResponse {
       : this(
           smimeInfo: _json.containsKey('smimeInfo')
               ? (_json['smimeInfo'] as core.List)
-                  .map<SmimeInfo>((value) => SmimeInfo.fromJson(
+                  .map((value) => SmimeInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4637,7 +4634,7 @@ class ListThreadsResponse {
               : null,
           threads: _json.containsKey('threads')
               ? (_json['threads'] as core.List)
-                  .map<Thread>((value) => Thread.fromJson(
+                  .map((value) => Thread.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4727,7 +4724,7 @@ class Message {
               : null,
           labelIds: _json.containsKey('labelIds')
               ? (_json['labelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           payload: _json.containsKey('payload')
@@ -4810,7 +4807,7 @@ class MessagePart {
               : null,
           headers: _json.containsKey('headers')
               ? (_json['headers'] as core.List)
-                  .map<MessagePartHeader>((value) => MessagePartHeader.fromJson(
+                  .map((value) => MessagePartHeader.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4822,7 +4819,7 @@ class MessagePart {
               : null,
           parts: _json.containsKey('parts')
               ? (_json['parts'] as core.List)
-                  .map<MessagePart>((value) => MessagePart.fromJson(
+                  .map((value) => MessagePart.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4932,12 +4929,12 @@ class ModifyMessageRequest {
       : this(
           addLabelIds: _json.containsKey('addLabelIds')
               ? (_json['addLabelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           removeLabelIds: _json.containsKey('removeLabelIds')
               ? (_json['removeLabelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4964,12 +4961,12 @@ class ModifyThreadRequest {
       : this(
           addLabelIds: _json.containsKey('addLabelIds')
               ? (_json['addLabelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           removeLabelIds: _json.containsKey('removeLabelIds')
               ? (_json['removeLabelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5379,7 +5376,7 @@ class Thread {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<Message>((value) => Message.fromJson(
+                  .map((value) => Message.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5542,7 +5539,7 @@ class WatchRequest {
               : null,
           labelIds: _json.containsKey('labelIds')
               ? (_json['labelIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           topicName: _json.containsKey('topicName')

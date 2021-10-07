@@ -171,7 +171,7 @@ class AuditRefs {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           relevantAudits: _json.containsKey('relevantAudits')
               ? (_json['relevantAudits'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           weight: _json.containsKey('weight')
@@ -358,7 +358,7 @@ class ConfigSettings {
               ? _json['locale'] as core.String
               : null,
           onlyCategories: _json.containsKey('onlyCategories')
-              ? _json['onlyCategories'] as core.Object
+              ? _json['onlyCategories']
               : null,
         );
 
@@ -444,7 +444,7 @@ class LighthouseAuditResultV5 {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? details;
+  core.Map<core.String, core.Object?>? details;
 
   /// The value that should be displayed on the UI for this audit.
   core.String? displayValue;
@@ -508,12 +508,7 @@ class LighthouseAuditResultV5 {
               ? _json['description'] as core.String
               : null,
           details: _json.containsKey('details')
-              ? (_json['details'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['details'] as core.Map<core.String, core.dynamic>
               : null,
           displayValue: _json.containsKey('displayValue')
               ? _json['displayValue'] as core.String
@@ -531,16 +526,13 @@ class LighthouseAuditResultV5 {
           numericValue: _json.containsKey('numericValue')
               ? (_json['numericValue'] as core.num).toDouble()
               : null,
-          score:
-              _json.containsKey('score') ? _json['score'] as core.Object : null,
+          score: _json.containsKey('score') ? _json['score'] : null,
           scoreDisplayMode: _json.containsKey('scoreDisplayMode')
               ? _json['scoreDisplayMode'] as core.String
               : null,
           title:
               _json.containsKey('title') ? _json['title'] as core.String : null,
-          warnings: _json.containsKey('warnings')
-              ? _json['warnings'] as core.Object
-              : null,
+          warnings: _json.containsKey('warnings') ? _json['warnings'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -597,7 +589,7 @@ class LighthouseCategoryV5 {
       : this(
           auditRefs: _json.containsKey('auditRefs')
               ? (_json['auditRefs'] as core.List)
-                  .map<AuditRefs>((value) => AuditRefs.fromJson(
+                  .map((value) => AuditRefs.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -608,8 +600,7 @@ class LighthouseCategoryV5 {
           manualDescription: _json.containsKey('manualDescription')
               ? _json['manualDescription'] as core.String
               : null,
-          score:
-              _json.containsKey('score') ? _json['score'] as core.Object : null,
+          score: _json.containsKey('score') ? _json['score'] : null,
           title:
               _json.containsKey('title') ? _json['title'] as core.String : null,
         );
@@ -663,7 +654,7 @@ class LighthouseResultV5 {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? runWarnings;
+  core.List<core.Object?>? runWarnings;
 
   /// A top-level error message that, if present, indicates a serious enough
   /// problem that this Lighthouse result may need to be discarded.
@@ -746,9 +737,7 @@ class LighthouseResultV5 {
               ? _json['requestedUrl'] as core.String
               : null,
           runWarnings: _json.containsKey('runWarnings')
-              ? (_json['runWarnings'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
+              ? _json['runWarnings'] as core.List
               : null,
           runtimeError: _json.containsKey('runtimeError')
               ? RuntimeError.fromJson(
@@ -756,7 +745,7 @@ class LighthouseResultV5 {
               : null,
           stackPacks: _json.containsKey('stackPacks')
               ? (_json['stackPacks'] as core.List)
-                  .map<StackPack>((value) => StackPack.fromJson(
+                  .map((value) => StackPack.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1581,7 +1570,7 @@ class UserPageLoadMetricV5 {
               : null,
           distributions: _json.containsKey('distributions')
               ? (_json['distributions'] as core.List)
-                  .map<Bucket>((value) => Bucket.fromJson(
+                  .map((value) => Bucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

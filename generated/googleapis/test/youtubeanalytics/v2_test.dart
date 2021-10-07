@@ -411,7 +411,7 @@ void checkUnnamed4(core.List<api.ResultTableColumnHeader> o) {
   checkResultTableColumnHeader(o[1]);
 }
 
-core.List<core.Object> buildUnnamed5() => [
+core.List<core.Object?> buildUnnamed5() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -424,7 +424,7 @@ core.List<core.Object> buildUnnamed5() => [
       },
     ];
 
-void checkUnnamed5(core.List<core.Object> o) {
+void checkUnnamed5(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -456,12 +456,12 @@ void checkUnnamed5(core.List<core.Object> o) {
   );
 }
 
-core.List<core.List<core.Object>> buildUnnamed6() => [
+core.List<core.List<core.Object?>> buildUnnamed6() => [
       buildUnnamed5(),
       buildUnnamed5(),
     ];
 
-void checkUnnamed6(core.List<core.List<core.Object>> o) {
+void checkUnnamed6(core.List<core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed5(o[0]);
   checkUnnamed5(o[1]);

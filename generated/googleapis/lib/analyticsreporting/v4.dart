@@ -284,7 +284,7 @@ class Activity {
               : null,
           customDimension: _json.containsKey('customDimension')
               ? (_json['customDimension'] as core.List)
-                  .map<CustomDimension>((value) => CustomDimension.fromJson(
+                  .map((value) => CustomDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -442,7 +442,7 @@ class CohortGroup {
       : this(
           cohorts: _json.containsKey('cohorts')
               ? (_json['cohorts'] as core.List)
-                  .map<Cohort>((value) => Cohort.fromJson(
+                  .map((value) => Cohort.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -475,7 +475,7 @@ class ColumnHeader {
       : this(
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           metricHeader: _json.containsKey('metricHeader')
@@ -569,13 +569,13 @@ class DateRangeValues {
       : this(
           pivotValueRegions: _json.containsKey('pivotValueRegions')
               ? (_json['pivotValueRegions'] as core.List)
-                  .map<PivotValueRegion>((value) => PivotValueRegion.fromJson(
+                  .map((value) => PivotValueRegion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -630,7 +630,7 @@ class Dimension {
       : this(
           histogramBuckets: _json.containsKey('histogramBuckets')
               ? (_json['histogramBuckets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -717,7 +717,7 @@ class DimensionFilter {
               : null,
           expressions: _json.containsKey('expressions')
               ? (_json['expressions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           not: _json.containsKey('not') ? _json['not'] as core.bool : null,
@@ -762,7 +762,7 @@ class DimensionFilterClause {
       : this(
           filters: _json.containsKey('filters')
               ? (_json['filters'] as core.List)
-                  .map<DimensionFilter>((value) => DimensionFilter.fromJson(
+                  .map((value) => DimensionFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -864,7 +864,7 @@ class EcommerceData {
               : null,
           products: _json.containsKey('products')
               ? (_json['products'] as core.List)
-                  .map<ProductData>((value) => ProductData.fromJson(
+                  .map((value) => ProductData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -969,7 +969,7 @@ class GetReportsRequest {
       : this(
           reportRequests: _json.containsKey('reportRequests')
               ? (_json['reportRequests'] as core.List)
-                  .map<ReportRequest>((value) => ReportRequest.fromJson(
+                  .map((value) => ReportRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1013,7 +1013,7 @@ class GetReportsResponse {
               : null,
           reports: _json.containsKey('reports')
               ? (_json['reports'] as core.List)
-                  .map<Report>((value) => Report.fromJson(
+                  .map((value) => Report.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1124,7 +1124,7 @@ class GoalSetData {
       : this(
           goals: _json.containsKey('goals')
               ? (_json['goals'] as core.List)
-                  .map<GoalData>((value) => GoalData.fromJson(
+                  .map((value) => GoalData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1289,7 +1289,7 @@ class MetricFilterClause {
       : this(
           filters: _json.containsKey('filters')
               ? (_json['filters'] as core.List)
-                  .map<MetricFilter>((value) => MetricFilter.fromJson(
+                  .map((value) => MetricFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1322,13 +1322,13 @@ class MetricHeader {
       : this(
           metricHeaderEntries: _json.containsKey('metricHeaderEntries')
               ? (_json['metricHeaderEntries'] as core.List)
-                  .map<MetricHeaderEntry>((value) => MetricHeaderEntry.fromJson(
+                  .map((value) => MetricHeaderEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pivotHeaders: _json.containsKey('pivotHeaders')
               ? (_json['pivotHeaders'] as core.List)
-                  .map<PivotHeader>((value) => PivotHeader.fromJson(
+                  .map((value) => PivotHeader.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1389,9 +1389,8 @@ class OrFiltersForSegment {
       : this(
           segmentFilterClauses: _json.containsKey('segmentFilterClauses')
               ? (_json['segmentFilterClauses'] as core.List)
-                  .map<SegmentFilterClause>((value) =>
-                      SegmentFilterClause.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SegmentFilterClause.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1558,14 +1557,13 @@ class Pivot {
       : this(
           dimensionFilterClauses: _json.containsKey('dimensionFilterClauses')
               ? (_json['dimensionFilterClauses'] as core.List)
-                  .map<DimensionFilterClause>((value) =>
-                      DimensionFilterClause.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DimensionFilterClause.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1574,7 +1572,7 @@ class Pivot {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1613,7 +1611,7 @@ class PivotHeader {
       : this(
           pivotHeaderEntries: _json.containsKey('pivotHeaderEntries')
               ? (_json['pivotHeaderEntries'] as core.List)
-                  .map<PivotHeaderEntry>((value) => PivotHeaderEntry.fromJson(
+                  .map((value) => PivotHeaderEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1653,12 +1651,12 @@ class PivotHeaderEntry {
       : this(
           dimensionNames: _json.containsKey('dimensionNames')
               ? (_json['dimensionNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           dimensionValues: _json.containsKey('dimensionValues')
               ? (_json['dimensionValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           metric: _json.containsKey('metric')
@@ -1687,7 +1685,7 @@ class PivotValueRegion {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1866,13 +1864,13 @@ class ReportData {
               : null,
           maximums: _json.containsKey('maximums')
               ? (_json['maximums'] as core.List)
-                  .map<DateRangeValues>((value) => DateRangeValues.fromJson(
+                  .map((value) => DateRangeValues.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           minimums: _json.containsKey('minimums')
               ? (_json['minimums'] as core.List)
-                  .map<DateRangeValues>((value) => DateRangeValues.fromJson(
+                  .map((value) => DateRangeValues.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1881,23 +1879,23 @@ class ReportData {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<ReportRow>((value) => ReportRow.fromJson(
+                  .map((value) => ReportRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           samplesReadCounts: _json.containsKey('samplesReadCounts')
               ? (_json['samplesReadCounts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           samplingSpaceSizes: _json.containsKey('samplingSpaceSizes')
               ? (_json['samplingSpaceSizes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           totals: _json.containsKey('totals')
               ? (_json['totals'] as core.List)
-                  .map<DateRangeValues>((value) => DateRangeValues.fromJson(
+                  .map((value) => DateRangeValues.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2088,20 +2086,19 @@ class ReportRequest {
               : null,
           dateRanges: _json.containsKey('dateRanges')
               ? (_json['dateRanges'] as core.List)
-                  .map<DateRange>((value) => DateRange.fromJson(
+                  .map((value) => DateRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensionFilterClauses: _json.containsKey('dimensionFilterClauses')
               ? (_json['dimensionFilterClauses'] as core.List)
-                  .map<DimensionFilterClause>((value) =>
-                      DimensionFilterClause.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DimensionFilterClause.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<Dimension>((value) => Dimension.fromJson(
+                  .map((value) => Dimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2119,20 +2116,19 @@ class ReportRequest {
               : null,
           metricFilterClauses: _json.containsKey('metricFilterClauses')
               ? (_json['metricFilterClauses'] as core.List)
-                  .map<MetricFilterClause>((value) =>
-                      MetricFilterClause.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MetricFilterClause.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           orderBys: _json.containsKey('orderBys')
               ? (_json['orderBys'] as core.List)
-                  .map<OrderBy>((value) => OrderBy.fromJson(
+                  .map((value) => OrderBy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2144,7 +2140,7 @@ class ReportRequest {
               : null,
           pivots: _json.containsKey('pivots')
               ? (_json['pivots'] as core.List)
-                  .map<Pivot>((value) => Pivot.fromJson(
+                  .map((value) => Pivot.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2153,7 +2149,7 @@ class ReportRequest {
               : null,
           segments: _json.containsKey('segments')
               ? (_json['segments'] as core.List)
-                  .map<Segment>((value) => Segment.fromJson(
+                  .map((value) => Segment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2210,12 +2206,12 @@ class ReportRow {
       : this(
           dimensions: _json.containsKey('dimensions')
               ? (_json['dimensions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<DateRangeValues>((value) => DateRangeValues.fromJson(
+                  .map((value) => DateRangeValues.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2370,7 +2366,7 @@ class SearchUserActivityRequest {
       : this(
           activityTypes: _json.containsKey('activityTypes')
               ? (_json['activityTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           dateRange: _json.containsKey('dateRange')
@@ -2441,9 +2437,8 @@ class SearchUserActivityResponse {
               : null,
           sessions: _json.containsKey('sessions')
               ? (_json['sessions'] as core.List)
-                  .map<UserActivitySession>((value) =>
-                      UserActivitySession.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UserActivitySession.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           totalRows: _json.containsKey('totalRows')
@@ -2508,7 +2503,7 @@ class SegmentDefinition {
       : this(
           segmentFilters: _json.containsKey('segmentFilters')
               ? (_json['segmentFilters'] as core.List)
-                  .map<SegmentFilter>((value) => SegmentFilter.fromJson(
+                  .map((value) => SegmentFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2587,7 +2582,7 @@ class SegmentDimensionFilter {
               : null,
           expressions: _json.containsKey('expressions')
               ? (_json['expressions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           maxComparisonValue: _json.containsKey('maxComparisonValue')
@@ -2815,9 +2810,8 @@ class SegmentSequenceStep {
               : null,
           orFiltersForSegment: _json.containsKey('orFiltersForSegment')
               ? (_json['orFiltersForSegment'] as core.List)
-                  .map<OrFiltersForSegment>((value) =>
-                      OrFiltersForSegment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OrFiltersForSegment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2855,9 +2849,8 @@ class SequenceSegment {
                   : null,
           segmentSequenceSteps: _json.containsKey('segmentSequenceSteps')
               ? (_json['segmentSequenceSteps'] as core.List)
-                  .map<SegmentSequenceStep>((value) =>
-                      SegmentSequenceStep.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SegmentSequenceStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2886,9 +2879,8 @@ class SimpleSegment {
       : this(
           orFiltersForSegment: _json.containsKey('orFiltersForSegment')
               ? (_json['orFiltersForSegment'] as core.List)
-                  .map<OrFiltersForSegment>((value) =>
-                      OrFiltersForSegment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OrFiltersForSegment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3023,7 +3015,7 @@ class UserActivitySession {
       : this(
           activities: _json.containsKey('activities')
               ? (_json['activities'] as core.List)
-                  .map<Activity>((value) => Activity.fromJson(
+                  .map((value) => Activity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

@@ -2820,7 +2820,7 @@ void checkSource(api.Source o) {
   buildCounterSource--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed60() => {
+core.Map<core.String, core.Object?> buildUnnamed60() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2833,7 +2833,7 @@ core.Map<core.String, core.Object> buildUnnamed60() => {
       },
     };
 
-void checkUnnamed60(core.Map<core.String, core.Object> o) {
+void checkUnnamed60(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2865,12 +2865,12 @@ void checkUnnamed60(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed61() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed61() => [
       buildUnnamed60(),
       buildUnnamed60(),
     ];
 
-void checkUnnamed61(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed61(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed60(o[0]);
   checkUnnamed60(o[1]);

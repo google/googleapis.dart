@@ -29,7 +29,7 @@ abstract class DartSchemaType {
   DartSchemaType(this.imports, this.className, {Comment? comment})
       : comment = comment ?? Comment.empty;
 
-  DartSchemaType? resolve(DartSchemaTypeDB db) {
+  DartSchemaType resolve(DartSchemaTypeDB db) {
     if (!_resolved) {
       _resolved = true;
       return resolveCore(db);
@@ -38,9 +38,15 @@ abstract class DartSchemaType {
   }
 
   @visibleForOverriding
-  DartSchemaType? resolveCore(DartSchemaTypeDB db);
+  DartSchemaType resolveCore(DartSchemaTypeDB db);
 
-  String? get declaration;
+  String get declaration;
+
+  String get nullableDeclaration {
+    final value = declaration;
+    if (value.endsWith('?')) return value;
+    return '$value?';
+  }
 
   JsonType get jsonType;
 

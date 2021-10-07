@@ -275,7 +275,7 @@ void checkI18n(api.I18n o) {
   buildCounterI18n--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1() => {
+core.Map<core.String, core.Object?> buildUnnamed1() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -288,7 +288,7 @@ core.Map<core.String, core.Object> buildUnnamed1() => {
       },
     };
 
-void checkUnnamed1(core.Map<core.String, core.Object> o) {
+void checkUnnamed1(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted2 = (o['x']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
@@ -513,7 +513,7 @@ void checkUnnamed4(core.Map<core.String, api.CategoryGroupV5> o) {
   checkCategoryGroupV5(o['y']!);
 }
 
-core.List<core.Object> buildUnnamed5() => [
+core.List<core.Object?> buildUnnamed5() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -526,7 +526,7 @@ core.List<core.Object> buildUnnamed5() => [
       },
     ];
 
-void checkUnnamed5(core.List<core.Object> o) {
+void checkUnnamed5(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o[0]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));

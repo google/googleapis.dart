@@ -388,7 +388,7 @@ void checkHeader(api.Header o) {
   buildCounterHeader--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1() => {
+core.Map<core.String, core.Object?> buildUnnamed1() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -401,7 +401,7 @@ core.Map<core.String, core.Object> buildUnnamed1() => {
       },
     };
 
-void checkUnnamed1(core.Map<core.String, core.Object> o) {
+void checkUnnamed1(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -433,12 +433,12 @@ void checkUnnamed1(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed2() => [
       buildUnnamed1(),
       buildUnnamed1(),
     ];
 
-void checkUnnamed2(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed2(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed1(o[0]);
   checkUnnamed1(o[1]);

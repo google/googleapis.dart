@@ -3256,7 +3256,7 @@ class Backup {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           referencingDatabases: _json.containsKey('referencingDatabases')
               ? (_json['referencingDatabases'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sizeBytes: _json.containsKey('sizeBytes')
@@ -3382,7 +3382,7 @@ class BatchCreateSessionsResponse {
       : this(
           session: _json.containsKey('session')
               ? (_json['session'] as core.List)
-                  .map<Session>((value) => Session.fromJson(
+                  .map((value) => Session.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3495,7 +3495,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -3604,7 +3604,7 @@ class CommitRequest {
       : this(
           mutations: _json.containsKey('mutations')
               ? (_json['mutations'] as core.List)
-                  .map<Mutation>((value) => Mutation.fromJson(
+                  .map((value) => Mutation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3871,7 +3871,7 @@ class CreateDatabaseRequest {
               : null,
           extraStatements: _json.containsKey('extraStatements')
               ? (_json['extraStatements'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4113,7 +4113,7 @@ class Database {
               : null,
           encryptionInfo: _json.containsKey('encryptionInfo')
               ? (_json['encryptionInfo'] as core.List)
-                  .map<EncryptionInfo>((value) => EncryptionInfo.fromJson(
+                  .map((value) => EncryptionInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4432,7 +4432,7 @@ class ExecuteBatchDmlRequest {
               _json.containsKey('seqno') ? _json['seqno'] as core.String : null,
           statements: _json.containsKey('statements')
               ? (_json['statements'] as core.List)
-                  .map<Statement>((value) => Statement.fromJson(
+                  .map((value) => Statement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4491,7 +4491,7 @@ class ExecuteBatchDmlResponse {
       : this(
           resultSets: _json.containsKey('resultSets')
               ? (_json['resultSets'] as core.List)
-                  .map<ResultSet>((value) => ResultSet.fromJson(
+                  .map((value) => ResultSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4533,7 +4533,7 @@ class ExecuteSqlRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// If present, results will be restricted to the specified partition
   /// previously created using PartitionQuery().
@@ -4635,12 +4635,7 @@ class ExecuteSqlRequest {
                 )
               : null,
           params: _json.containsKey('params')
-              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['params'] as core.Map<core.String, core.dynamic>
               : null,
           partitionToken: _json.containsKey('partitionToken')
               ? _json['partitionToken'] as core.String
@@ -4807,7 +4802,7 @@ class GetDatabaseDdlResponse {
       : this(
           statements: _json.containsKey('statements')
               ? (_json['statements'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5040,7 +5035,7 @@ class Instance {
               : null,
           endpointUris: _json.containsKey('endpointUris')
               ? (_json['endpointUris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           labels: _json.containsKey('labels')
@@ -5109,13 +5104,13 @@ class InstanceConfig {
               : null,
           leaderOptions: _json.containsKey('leaderOptions')
               ? (_json['leaderOptions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           replicas: _json.containsKey('replicas')
               ? (_json['replicas'] as core.List)
-                  .map<ReplicaInfo>((value) => ReplicaInfo.fromJson(
+                  .map((value) => ReplicaInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5172,28 +5167,28 @@ class KeyRange {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? endClosed;
+  core.List<core.Object?>? endClosed;
 
   /// If the end is open, then the range excludes rows whose first
   /// `len(end_open)` key columns exactly match `end_open`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? endOpen;
+  core.List<core.Object?>? endOpen;
 
   /// If the start is closed, then the range includes all rows whose first
   /// `len(start_closed)` key columns exactly match `start_closed`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? startClosed;
+  core.List<core.Object?>? startClosed;
 
   /// If the start is open, then the range excludes rows whose first
   /// `len(start_open)` key columns exactly match `start_open`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? startOpen;
+  core.List<core.Object?>? startOpen;
 
   KeyRange({
     this.endClosed,
@@ -5205,24 +5200,16 @@ class KeyRange {
   KeyRange.fromJson(core.Map _json)
       : this(
           endClosed: _json.containsKey('endClosed')
-              ? (_json['endClosed'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
+              ? _json['endClosed'] as core.List
               : null,
           endOpen: _json.containsKey('endOpen')
-              ? (_json['endOpen'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
+              ? _json['endOpen'] as core.List
               : null,
           startClosed: _json.containsKey('startClosed')
-              ? (_json['startClosed'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
+              ? _json['startClosed'] as core.List
               : null,
           startOpen: _json.containsKey('startOpen')
-              ? (_json['startOpen'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
+              ? _json['startOpen'] as core.List
               : null,
         );
 
@@ -5285,7 +5272,7 @@ class KeyRangeInfo {
       : this(
           contextValues: _json.containsKey('contextValues')
               ? (_json['contextValues'] as core.List)
-                  .map<ContextValue>((value) => ContextValue.fromJson(
+                  .map((value) => ContextValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5355,7 +5342,7 @@ class KeyRangeInfos {
       : this(
           infos: _json.containsKey('infos')
               ? (_json['infos'] as core.List)
-                  .map<KeyRangeInfo>((value) => KeyRangeInfo.fromJson(
+                  .map((value) => KeyRangeInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5392,7 +5379,7 @@ class KeySet {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>>? keys;
+  core.List<core.List<core.Object?>>? keys;
 
   /// A list of key ranges.
   ///
@@ -5410,14 +5397,12 @@ class KeySet {
           all: _json.containsKey('all') ? _json['all'] as core.bool : null,
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
-                  .map<core.List<core.Object>>((value) => (value as core.List)
-                      .map<core.Object>((value) => value as core.Object)
-                      .toList())
+                  .map((value) => value as core.List)
                   .toList()
               : null,
           ranges: _json.containsKey('ranges')
               ? (_json['ranges'] as core.List)
-                  .map<KeyRange>((value) => KeyRange.fromJson(
+                  .map((value) => KeyRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5459,7 +5444,7 @@ class ListBackupOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5493,7 +5478,7 @@ class ListBackupsResponse {
       : this(
           backups: _json.containsKey('backups')
               ? (_json['backups'] as core.List)
-                  .map<Backup>((value) => Backup.fromJson(
+                  .map((value) => Backup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5534,7 +5519,7 @@ class ListDatabaseOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5565,7 +5550,7 @@ class ListDatabasesResponse {
       : this(
           databases: _json.containsKey('databases')
               ? (_json['databases'] as core.List)
-                  .map<Database>((value) => Database.fromJson(
+                  .map((value) => Database.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5599,7 +5584,7 @@ class ListInstanceConfigsResponse {
       : this(
           instanceConfigs: _json.containsKey('instanceConfigs')
               ? (_json['instanceConfigs'] as core.List)
-                  .map<InstanceConfig>((value) => InstanceConfig.fromJson(
+                  .map((value) => InstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5641,7 +5626,7 @@ class ListInstancesResponse {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<Instance>((value) => Instance.fromJson(
+                  .map((value) => Instance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5650,7 +5635,7 @@ class ListInstancesResponse {
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5683,7 +5668,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5717,7 +5702,7 @@ class ListScansResponse {
               : null,
           scans: _json.containsKey('scans')
               ? (_json['scans'] as core.List)
-                  .map<Scan>((value) => Scan.fromJson(
+                  .map((value) => Scan.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5751,7 +5736,7 @@ class ListSessionsResponse {
               : null,
           sessions: _json.containsKey('sessions')
               ? (_json['sessions'] as core.List)
-                  .map<Session>((value) => Session.fromJson(
+                  .map((value) => Session.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5973,7 +5958,7 @@ class MetricMatrix {
       : this(
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<MetricMatrixRow>((value) => MetricMatrixRow.fromJson(
+                  .map((value) => MetricMatrixRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5997,7 +5982,7 @@ class MetricMatrixRow {
       : this(
           cols: _json.containsKey('cols')
               ? (_json['cols'] as core.List)
-                  .map<core.double>((value) => (value as core.num).toDouble())
+                  .map((value) => (value as core.num).toDouble())
                   .toList()
               : null,
         );
@@ -6110,7 +6095,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -6130,7 +6115,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -6148,21 +6133,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -6325,7 +6300,7 @@ class PartialResultSet {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? values;
+  core.List<core.Object?>? values;
 
   PartialResultSet({
     this.chunkedValue,
@@ -6351,11 +6326,8 @@ class PartialResultSet {
               ? ResultSetStats.fromJson(
                   _json['stats'] as core.Map<core.String, core.dynamic>)
               : null,
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
-              : null,
+          values:
+              _json.containsKey('values') ? _json['values'] as core.List : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6462,7 +6434,7 @@ class PartitionQueryRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// Additional options that affect how many partitions are created.
   PartitionOptions? partitionOptions;
@@ -6504,12 +6476,7 @@ class PartitionQueryRequest {
                 )
               : null,
           params: _json.containsKey('params')
-              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['params'] as core.Map<core.String, core.dynamic>
               : null,
           partitionOptions: _json.containsKey('partitionOptions')
               ? PartitionOptions.fromJson(_json['partitionOptions']
@@ -6581,7 +6548,7 @@ class PartitionReadRequest {
       : this(
           columns: _json.containsKey('columns')
               ? (_json['columns'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           index:
@@ -6630,7 +6597,7 @@ class PartitionResponse {
       : this(
           partitions: _json.containsKey('partitions')
               ? (_json['partitions'] as core.List)
-                  .map<Partition>((value) => Partition.fromJson(
+                  .map((value) => Partition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6666,7 +6633,7 @@ class PlanNode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? executionStats;
+  core.Map<core.String, core.Object?>? executionStats;
 
   /// The `PlanNode`'s index in node list.
   core.int? index;
@@ -6697,7 +6664,7 @@ class PlanNode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Condensed representation for SCALAR nodes.
   ShortRepresentation? shortRepresentation;
@@ -6716,7 +6683,7 @@ class PlanNode {
       : this(
           childLinks: _json.containsKey('childLinks')
               ? (_json['childLinks'] as core.List)
-                  .map<ChildLink>((value) => ChildLink.fromJson(
+                  .map((value) => ChildLink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6724,23 +6691,12 @@ class PlanNode {
               ? _json['displayName'] as core.String
               : null,
           executionStats: _json.containsKey('executionStats')
-              ? (_json['executionStats'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['executionStats'] as core.Map<core.String, core.dynamic>
               : null,
           index: _json.containsKey('index') ? _json['index'] as core.int : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           shortRepresentation: _json.containsKey('shortRepresentation')
               ? ShortRepresentation.fromJson(_json['shortRepresentation']
@@ -6849,7 +6805,7 @@ class Policy {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6995,7 +6951,7 @@ class QueryPlan {
       : this(
           planNodes: _json.containsKey('planNodes')
               ? (_json['planNodes'] as core.List)
-                  .map<PlanNode>((value) => PlanNode.fromJson(
+                  .map((value) => PlanNode.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7194,7 +7150,7 @@ class ReadRequest {
       : this(
           columns: _json.containsKey('columns')
               ? (_json['columns'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           index:
@@ -7589,7 +7545,7 @@ class ResultSet {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>>? rows;
+  core.List<core.List<core.Object?>>? rows;
 
   /// Query plan and execution statistics for the SQL statement that produced
   /// this result set.
@@ -7615,9 +7571,7 @@ class ResultSet {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<core.List<core.Object>>((value) => (value as core.List)
-                      .map<core.Object>((value) => value as core.Object)
-                      .toList())
+                  .map((value) => value as core.List)
                   .toList()
               : null,
           stats: _json.containsKey('stats')
@@ -7683,7 +7637,7 @@ class ResultSetStats {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? queryStats;
+  core.Map<core.String, core.Object?>? queryStats;
 
   /// Standard DML returns an exact count of rows that were modified.
   core.String? rowCountExact;
@@ -7706,13 +7660,7 @@ class ResultSetStats {
                   _json['queryPlan'] as core.Map<core.String, core.dynamic>)
               : null,
           queryStats: _json.containsKey('queryStats')
-              ? (_json['queryStats'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['queryStats'] as core.Map<core.String, core.dynamic>
               : null,
           rowCountExact: _json.containsKey('rowCountExact')
               ? _json['rowCountExact'] as core.String
@@ -7767,7 +7715,7 @@ class Scan {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? details;
+  core.Map<core.String, core.Object?>? details;
 
   /// The upper bound for when the scan is defined.
   core.String? endTime;
@@ -7799,12 +7747,7 @@ class Scan {
   Scan.fromJson(core.Map _json)
       : this(
           details: _json.containsKey('details')
-              ? (_json['details'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['details'] as core.Map<core.String, core.dynamic>
               : null,
           endTime: _json.containsKey('endTime')
               ? _json['endTime'] as core.String
@@ -8029,7 +7972,7 @@ class Statement {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// The DML string.
   ///
@@ -8054,12 +7997,7 @@ class Statement {
                 )
               : null,
           params: _json.containsKey('params')
-              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['params'] as core.Map<core.String, core.dynamic>
               : null,
           sql: _json.containsKey('sql') ? _json['sql'] as core.String : null,
         );
@@ -8090,7 +8028,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -8109,13 +8047,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -8149,7 +8081,7 @@ class StructType {
       : this(
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<Field>((value) => Field.fromJson(
+                  .map((value) => Field.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8177,7 +8109,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8201,7 +8133,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8642,7 +8574,7 @@ class UpdateDatabaseDdlMetadata {
       : this(
           commitTimestamps: _json.containsKey('commitTimestamps')
               ? (_json['commitTimestamps'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           database: _json.containsKey('database')
@@ -8650,13 +8582,13 @@ class UpdateDatabaseDdlMetadata {
               : null,
           progress: _json.containsKey('progress')
               ? (_json['progress'] as core.List)
-                  .map<OperationProgress>((value) => OperationProgress.fromJson(
+                  .map((value) => OperationProgress.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           statements: _json.containsKey('statements')
               ? (_json['statements'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           throttled: _json.containsKey('throttled')
@@ -8720,7 +8652,7 @@ class UpdateDatabaseDdlRequest {
               : null,
           statements: _json.containsKey('statements')
               ? (_json['statements'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -8885,20 +8817,20 @@ class VisualizationData {
                   : null,
           diagnosticMessages: _json.containsKey('diagnosticMessages')
               ? (_json['diagnosticMessages'] as core.List)
-                  .map<DiagnosticMessage>((value) => DiagnosticMessage.fromJson(
+                  .map((value) => DiagnosticMessage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           endKeyStrings: _json.containsKey('endKeyStrings')
               ? (_json['endKeyStrings'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           hasPii:
               _json.containsKey('hasPii') ? _json['hasPii'] as core.bool : null,
           indexedKeys: _json.containsKey('indexedKeys')
               ? (_json['indexedKeys'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           keySeparator: _json.containsKey('keySeparator')
@@ -8909,13 +8841,13 @@ class VisualizationData {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<Metric>((value) => Metric.fromJson(
+                  .map((value) => Metric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           prefixNodes: _json.containsKey('prefixNodes')
               ? (_json['prefixNodes'] as core.List)
-                  .map<PrefixNode>((value) => PrefixNode.fromJson(
+                  .map((value) => PrefixNode.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8965,7 +8897,7 @@ class Write {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>>? values;
+  core.List<core.List<core.Object?>>? values;
 
   Write({
     this.columns,
@@ -8977,16 +8909,14 @@ class Write {
       : this(
           columns: _json.containsKey('columns')
               ? (_json['columns'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           table:
               _json.containsKey('table') ? _json['table'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.List<core.Object>>((value) => (value as core.List)
-                      .map<core.Object>((value) => value as core.Object)
-                      .toList())
+                  .map((value) => value as core.List)
                   .toList()
               : null,
         );

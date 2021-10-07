@@ -1384,7 +1384,7 @@ class ResellernotifyGetwatchdetailsResponse {
           serviceAccountEmailAddresses:
               _json.containsKey('serviceAccountEmailAddresses')
                   ? (_json['serviceAccountEmailAddresses'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           topicName: _json.containsKey('topicName')
@@ -1873,7 +1873,7 @@ class Subscription {
               : null,
           suspensionReasons: _json.containsKey('suspensionReasons')
               ? (_json['suspensionReasons'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           transferInfo: _json.containsKey('transferInfo')
@@ -1944,7 +1944,7 @@ class Subscriptions {
               : null,
           subscriptions: _json.containsKey('subscriptions')
               ? (_json['subscriptions'] as core.List)
-                  .map<Subscription>((value) => Subscription.fromJson(
+                  .map((value) => Subscription.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

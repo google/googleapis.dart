@@ -715,11 +715,10 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
       : this(
           accountReports: _json.containsKey('accountReports')
               ? (_json['accountReports'] as core.List)
-                  .map<GoogleAdsHomeservicesLocalservicesV1AccountReport>(
-                      (value) =>
-                          GoogleAdsHomeservicesLocalservicesV1AccountReport
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleAdsHomeservicesLocalservicesV1AccountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -761,11 +760,10 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
       : this(
           detailedLeadReports: _json.containsKey('detailedLeadReports')
               ? (_json['detailedLeadReports'] as core.List)
-                  .map<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>(
-                      (value) =>
-                          GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')

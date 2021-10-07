@@ -160,12 +160,12 @@ class Webfont {
               : null,
           subsets: _json.containsKey('subsets')
               ? (_json['subsets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           variants: _json.containsKey('variants')
               ? (_json['variants'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           version: _json.containsKey('version')
@@ -203,7 +203,7 @@ class WebfontList {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Webfont>((value) => Webfont.fromJson(
+                  .map((value) => Webfont.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

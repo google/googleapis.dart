@@ -892,7 +892,7 @@ class ApplicationInfo {
       : this(
           emails: _json.containsKey('emails')
               ? (_json['emails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           instruction: _json.containsKey('instruction')
@@ -900,7 +900,7 @@ class ApplicationInfo {
               : null,
           uris: _json.containsKey('uris')
               ? (_json['uris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1391,7 +1391,7 @@ class Company {
           keywordSearchableJobCustomAttributes:
               _json.containsKey('keywordSearchableJobCustomAttributes')
                   ? (_json['keywordSearchableJobCustomAttributes'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -1626,7 +1626,7 @@ class CompensationFilter {
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
           units: _json.containsKey('units')
               ? (_json['units'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1778,7 +1778,7 @@ class CompensationInfo {
                   : null,
           entries: _json.containsKey('entries')
               ? (_json['entries'] as core.List)
-                  .map<CompensationEntry>((value) => CompensationEntry.fromJson(
+                  .map((value) => CompensationEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1859,7 +1859,7 @@ class CompleteQueryResponse {
       : this(
           completionResults: _json.containsKey('completionResults')
               ? (_json['completionResults'] as core.List)
-                  .map<CompletionResult>((value) => CompletionResult.fromJson(
+                  .map((value) => CompletionResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2039,12 +2039,12 @@ class CustomAttribute {
               : null,
           longValues: _json.containsKey('longValues')
               ? (_json['longValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           stringValues: _json.containsKey('stringValues')
               ? (_json['stringValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2257,22 +2257,20 @@ class HistogramFacets {
           compensationHistogramFacets:
               _json.containsKey('compensationHistogramFacets')
                   ? (_json['compensationHistogramFacets'] as core.List)
-                      .map<CompensationHistogramRequest>((value) =>
-                          CompensationHistogramRequest.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CompensationHistogramRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           customAttributeHistogramFacets:
               _json.containsKey('customAttributeHistogramFacets')
                   ? (_json['customAttributeHistogramFacets'] as core.List)
-                      .map<CustomAttributeHistogramRequest>((value) =>
-                          CustomAttributeHistogramRequest.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CustomAttributeHistogramRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           simpleHistogramFacets: _json.containsKey('simpleHistogramFacets')
               ? (_json['simpleHistogramFacets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2399,22 +2397,20 @@ class HistogramResults {
           compensationHistogramResults:
               _json.containsKey('compensationHistogramResults')
                   ? (_json['compensationHistogramResults'] as core.List)
-                      .map<CompensationHistogramResult>((value) =>
-                          CompensationHistogramResult.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CompensationHistogramResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           customAttributeHistogramResults:
               _json.containsKey('customAttributeHistogramResults')
                   ? (_json['customAttributeHistogramResults'] as core.List)
-                      .map<CustomAttributeHistogramResult>((value) =>
-                          CustomAttributeHistogramResult.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => CustomAttributeHistogramResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           simpleHistogramResults: _json.containsKey('simpleHistogramResults')
               ? (_json['simpleHistogramResults'] as core.List)
-                  .map<HistogramResult>((value) => HistogramResult.fromJson(
+                  .map((value) => HistogramResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2783,7 +2779,7 @@ class Job {
       : this(
           addresses: _json.containsKey('addresses')
               ? (_json['addresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           applicationInfo: _json.containsKey('applicationInfo')
@@ -2813,7 +2809,7 @@ class Job {
               : null,
           degreeTypes: _json.containsKey('degreeTypes')
               ? (_json['degreeTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           department: _json.containsKey('department')
@@ -2828,7 +2824,7 @@ class Job {
               : null,
           employmentTypes: _json.containsKey('employmentTypes')
               ? (_json['employmentTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           incentives: _json.containsKey('incentives')
@@ -2836,7 +2832,7 @@ class Job {
               : null,
           jobBenefits: _json.containsKey('jobBenefits')
               ? (_json['jobBenefits'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           jobEndTime: _json.containsKey('jobEndTime')
@@ -2952,12 +2948,12 @@ class JobDerivedInfo {
       : this(
           jobCategories: _json.containsKey('jobCategories')
               ? (_json['jobCategories'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3061,7 +3057,7 @@ class JobEvent {
       : this(
           jobs: _json.containsKey('jobs')
               ? (_json['jobs'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
@@ -3238,12 +3234,12 @@ class JobQuery {
               : null,
           companyDisplayNames: _json.containsKey('companyDisplayNames')
               ? (_json['companyDisplayNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           companyNames: _json.containsKey('companyNames')
               ? (_json['companyNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           compensationFilter: _json.containsKey('compensationFilter')
@@ -3258,22 +3254,22 @@ class JobQuery {
               : null,
           employmentTypes: _json.containsKey('employmentTypes')
               ? (_json['employmentTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           jobCategories: _json.containsKey('jobCategories')
               ? (_json['jobCategories'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           languageCodes: _json.containsKey('languageCodes')
               ? (_json['languageCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           locationFilters: _json.containsKey('locationFilters')
               ? (_json['locationFilters'] as core.List)
-                  .map<LocationFilter>((value) => LocationFilter.fromJson(
+                  .map((value) => LocationFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3372,7 +3368,7 @@ class ListCompaniesResponse {
       : this(
           companies: _json.containsKey('companies')
               ? (_json['companies'] as core.List)
-                  .map<Company>((value) => Company.fromJson(
+                  .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3420,7 +3416,7 @@ class ListJobsResponse {
       : this(
           jobs: _json.containsKey('jobs')
               ? (_json['jobs'] as core.List)
-                  .map<Job>((value) => Job.fromJson(
+                  .map((value) => Job.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3890,34 +3886,34 @@ class NamespacedDebugInput {
           absolutelyForcedExpNames:
               _json.containsKey('absolutelyForcedExpNames')
                   ? (_json['absolutelyForcedExpNames'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           absolutelyForcedExpTags: _json.containsKey('absolutelyForcedExpTags')
               ? (_json['absolutelyForcedExpTags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           absolutelyForcedExps: _json.containsKey('absolutelyForcedExps')
               ? (_json['absolutelyForcedExps'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           conditionallyForcedExpNames:
               _json.containsKey('conditionallyForcedExpNames')
                   ? (_json['conditionallyForcedExpNames'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           conditionallyForcedExpTags:
               _json.containsKey('conditionallyForcedExpTags')
                   ? (_json['conditionallyForcedExpTags'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           conditionallyForcedExps: _json.containsKey('conditionallyForcedExps')
               ? (_json['conditionallyForcedExps'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           disableAutomaticEnrollmentSelection:
@@ -3926,17 +3922,17 @@ class NamespacedDebugInput {
                   : null,
           disableExpNames: _json.containsKey('disableExpNames')
               ? (_json['disableExpNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           disableExpTags: _json.containsKey('disableExpTags')
               ? (_json['disableExpTags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           disableExps: _json.containsKey('disableExps')
               ? (_json['disableExps'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           disableManualEnrollmentSelection:
@@ -4023,7 +4019,7 @@ class NumericBucketingOption {
       : this(
           bucketBounds: _json.containsKey('bucketBounds')
               ? (_json['bucketBounds'] as core.List)
-                  .map<core.double>((value) => (value as core.num).toDouble())
+                  .map((value) => (value as core.num).toDouble())
                   .toList()
               : null,
           requiresMinMax: _json.containsKey('requiresMinMax')
@@ -4068,7 +4064,7 @@ class NumericBucketingResult {
       : this(
           counts: _json.containsKey('counts')
               ? (_json['counts'] as core.List)
-                  .map<BucketizedCount>((value) => BucketizedCount.fromJson(
+                  .map((value) => BucketizedCount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4227,7 +4223,7 @@ class PostalAddress {
       : this(
           addressLines: _json.containsKey('addressLines')
               ? (_json['addressLines'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           administrativeArea: _json.containsKey('administrativeArea')
@@ -4247,7 +4243,7 @@ class PostalAddress {
               : null,
           recipients: _json.containsKey('recipients')
               ? (_json['recipients'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           regionCode: _json.containsKey('regionCode')
@@ -4764,13 +4760,13 @@ class SearchJobsResponse {
               : null,
           locationFilters: _json.containsKey('locationFilters')
               ? (_json['locationFilters'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           matchingJobs: _json.containsKey('matchingJobs')
               ? (_json['matchingJobs'] as core.List)
-                  .map<MatchingJob>((value) => MatchingJob.fromJson(
+                  .map((value) => MatchingJob.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

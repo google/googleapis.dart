@@ -843,7 +843,7 @@ class Task {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           links: _json.containsKey('links')
               ? (_json['links'] as core.List)
-                  .map<TaskLinks>((value) => TaskLinks.fromJson(
+                  .map((value) => TaskLinks.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -972,7 +972,7 @@ class TaskLists {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TaskList>((value) => TaskList.fromJson(
+                  .map((value) => TaskList.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1018,7 +1018,7 @@ class Tasks {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Task>((value) => Task.fromJson(
+                  .map((value) => Task.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

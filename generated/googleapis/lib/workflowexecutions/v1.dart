@@ -479,7 +479,7 @@ class ListExecutionsResponse {
       : this(
           executions: _json.containsKey('executions')
               ? (_json['executions'] as core.List)
-                  .map<Execution>((value) => Execution.fromJson(
+                  .map((value) => Execution.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -546,7 +546,7 @@ class StackTrace {
       : this(
           elements: _json.containsKey('elements')
               ? (_json['elements'] as core.List)
-                  .map<StackTraceElement>((value) => StackTraceElement.fromJson(
+                  .map((value) => StackTraceElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

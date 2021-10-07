@@ -1096,7 +1096,7 @@ class Form {
               : null,
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1239,7 +1239,7 @@ class ListCrawledUrlsResponse {
       : this(
           crawledUrls: _json.containsKey('crawledUrls')
               ? (_json['crawledUrls'] as core.List)
-                  .map<CrawledUrl>((value) => CrawledUrl.fromJson(
+                  .map((value) => CrawledUrl.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1268,7 +1268,7 @@ class ListFindingTypeStatsResponse {
       : this(
           findingTypeStats: _json.containsKey('findingTypeStats')
               ? (_json['findingTypeStats'] as core.List)
-                  .map<FindingTypeStats>((value) => FindingTypeStats.fromJson(
+                  .map((value) => FindingTypeStats.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1299,7 +1299,7 @@ class ListFindingsResponse {
       : this(
           findings: _json.containsKey('findings')
               ? (_json['findings'] as core.List)
-                  .map<Finding>((value) => Finding.fromJson(
+                  .map((value) => Finding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1336,7 +1336,7 @@ class ListScanConfigsResponse {
               : null,
           scanConfigs: _json.containsKey('scanConfigs')
               ? (_json['scanConfigs'] as core.List)
-                  .map<ScanConfig>((value) => ScanConfig.fromJson(
+                  .map((value) => ScanConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1370,7 +1370,7 @@ class ListScanRunsResponse {
               : null,
           scanRuns: _json.containsKey('scanRuns')
               ? (_json['scanRuns'] as core.List)
-                  .map<ScanRun>((value) => ScanRun.fromJson(
+                  .map((value) => ScanRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1404,7 +1404,7 @@ class OutdatedLibrary {
       : this(
           learnMoreUrls: _json.containsKey('learnMoreUrls')
               ? (_json['learnMoreUrls'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           libraryName: _json.containsKey('libraryName')
@@ -1523,7 +1523,7 @@ class ScanConfig {
               : null,
           blacklistPatterns: _json.containsKey('blacklistPatterns')
               ? (_json['blacklistPatterns'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           displayName: _json.containsKey('displayName')
@@ -1551,7 +1551,7 @@ class ScanConfig {
               : null,
           startingUrls: _json.containsKey('startingUrls')
               ? (_json['startingUrls'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           staticIpScan: _json.containsKey('staticIpScan')
@@ -1837,9 +1837,8 @@ class ScanRun {
               : null,
           warningTraces: _json.containsKey('warningTraces')
               ? (_json['warningTraces'] as core.List)
-                  .map<ScanRunWarningTrace>((value) =>
-                      ScanRunWarningTrace.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ScanRunWarningTrace.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2061,13 +2060,13 @@ class VulnerableHeaders {
       : this(
           headers: _json.containsKey('headers')
               ? (_json['headers'] as core.List)
-                  .map<Header>((value) => Header.fromJson(
+                  .map((value) => Header.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           missingHeaders: _json.containsKey('missingHeaders')
               ? (_json['missingHeaders'] as core.List)
-                  .map<Header>((value) => Header.fromJson(
+                  .map((value) => Header.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2095,7 +2094,7 @@ class VulnerableParameters {
       : this(
           parameterNames: _json.containsKey('parameterNames')
               ? (_json['parameterNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2159,7 +2158,7 @@ class Xss {
               : null,
           stackTraces: _json.containsKey('stackTraces')
               ? (_json['stackTraces'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           storedXssSeedingUrl: _json.containsKey('storedXssSeedingUrl')

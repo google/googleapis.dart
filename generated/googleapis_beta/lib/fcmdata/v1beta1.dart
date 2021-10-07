@@ -351,10 +351,9 @@ class GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
       : this(
           androidDeliveryData: _json.containsKey('androidDeliveryData')
               ? (_json['androidDeliveryData'] as core.List)
-                  .map<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>(
-                      (value) => GoogleFirebaseFcmDataV1beta1AndroidDeliveryData
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleFirebaseFcmDataV1beta1AndroidDeliveryData.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')

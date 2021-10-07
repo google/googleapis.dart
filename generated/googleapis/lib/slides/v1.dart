@@ -529,7 +529,7 @@ class BatchUpdatePresentationRequest {
       : this(
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<Request>((value) => Request.fromJson(
+                  .map((value) => Request.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -573,7 +573,7 @@ class BatchUpdatePresentationResponse {
               : null,
           replies: _json.containsKey('replies')
               ? (_json['replies'] as core.List)
-                  .map<Response>((value) => Response.fromJson(
+                  .map((value) => Response.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -649,7 +649,7 @@ class ColorScheme {
       : this(
           colors: _json.containsKey('colors')
               ? (_json['colors'] as core.List)
-                  .map<ThemeColorPair>((value) => ThemeColorPair.fromJson(
+                  .map((value) => ThemeColorPair.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1463,9 +1463,8 @@ class CreateSlideRequest {
               : null,
           placeholderIdMappings: _json.containsKey('placeholderIdMappings')
               ? (_json['placeholderIdMappings'] as core.List)
-                  .map<LayoutPlaceholderIdMapping>((value) =>
-                      LayoutPlaceholderIdMapping.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => LayoutPlaceholderIdMapping.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           slideLayoutReference: _json.containsKey('slideLayoutReference')
@@ -2072,7 +2071,7 @@ class Group {
       : this(
           children: _json.containsKey('children')
               ? (_json['children'] as core.List)
-                  .map<PageElement>((value) => PageElement.fromJson(
+                  .map((value) => PageElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2115,7 +2114,7 @@ class GroupObjectsRequest {
       : this(
           childrenObjectIds: _json.containsKey('childrenObjectIds')
               ? (_json['childrenObjectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           groupObjectId: _json.containsKey('groupObjectId')
@@ -3378,7 +3377,7 @@ class Page {
               : null,
           pageElements: _json.containsKey('pageElements')
               ? (_json['pageElements'] as core.List)
-                  .map<PageElement>((value) => PageElement.fromJson(
+                  .map((value) => PageElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4017,7 +4016,7 @@ class Presentation {
       : this(
           layouts: _json.containsKey('layouts')
               ? (_json['layouts'] as core.List)
-                  .map<Page>((value) => Page.fromJson(
+                  .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4026,7 +4025,7 @@ class Presentation {
               : null,
           masters: _json.containsKey('masters')
               ? (_json['masters'] as core.List)
-                  .map<Page>((value) => Page.fromJson(
+                  .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4046,7 +4045,7 @@ class Presentation {
               : null,
           slides: _json.containsKey('slides')
               ? (_json['slides'] as core.List)
-                  .map<Page>((value) => Page.fromJson(
+                  .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4195,7 +4194,7 @@ class Recolor {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           recolorStops: _json.containsKey('recolorStops')
               ? (_json['recolorStops'] as core.List)
-                  .map<ColorStop>((value) => ColorStop.fromJson(
+                  .map((value) => ColorStop.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4314,7 +4313,7 @@ class ReplaceAllShapesWithImageRequest {
               : null,
           pageObjectIds: _json.containsKey('pageObjectIds')
               ? (_json['pageObjectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           replaceMethod: _json.containsKey('replaceMethod')
@@ -4413,7 +4412,7 @@ class ReplaceAllShapesWithSheetsChartRequest {
               : null,
           pageObjectIds: _json.containsKey('pageObjectIds')
               ? (_json['pageObjectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           spreadsheetId: _json.containsKey('spreadsheetId')
@@ -4481,7 +4480,7 @@ class ReplaceAllTextRequest {
               : null,
           pageObjectIds: _json.containsKey('pageObjectIds')
               ? (_json['pageObjectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           replaceText: _json.containsKey('replaceText')
@@ -6168,27 +6167,26 @@ class Table {
               : null,
           horizontalBorderRows: _json.containsKey('horizontalBorderRows')
               ? (_json['horizontalBorderRows'] as core.List)
-                  .map<TableBorderRow>((value) => TableBorderRow.fromJson(
+                  .map((value) => TableBorderRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rows: _json.containsKey('rows') ? _json['rows'] as core.int : null,
           tableColumns: _json.containsKey('tableColumns')
               ? (_json['tableColumns'] as core.List)
-                  .map<TableColumnProperties>((value) =>
-                      TableColumnProperties.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TableColumnProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           tableRows: _json.containsKey('tableRows')
               ? (_json['tableRows'] as core.List)
-                  .map<TableRow>((value) => TableRow.fromJson(
+                  .map((value) => TableRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           verticalBorderRows: _json.containsKey('verticalBorderRows')
               ? (_json['verticalBorderRows'] as core.List)
-                  .map<TableBorderRow>((value) => TableBorderRow.fromJson(
+                  .map((value) => TableBorderRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6334,7 +6332,7 @@ class TableBorderRow {
       : this(
           tableBorderCells: _json.containsKey('tableBorderCells')
               ? (_json['tableBorderCells'] as core.List)
-                  .map<TableBorderCell>((value) => TableBorderCell.fromJson(
+                  .map((value) => TableBorderCell.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6628,7 +6626,7 @@ class TableRow {
               : null,
           tableCells: _json.containsKey('tableCells')
               ? (_json['tableCells'] as core.List)
-                  .map<TableCell>((value) => TableCell.fromJson(
+                  .map((value) => TableCell.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6704,7 +6702,7 @@ class TextContent {
               : null,
           textElements: _json.containsKey('textElements')
               ? (_json['textElements'] as core.List)
-                  .map<TextElement>((value) => TextElement.fromJson(
+                  .map((value) => TextElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7114,7 +7112,7 @@ class UngroupObjectsRequest {
       : this(
           objectIds: _json.containsKey('objectIds')
               ? (_json['objectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -7420,7 +7418,7 @@ class UpdatePageElementsZOrderRequest {
               : null,
           pageElementObjectIds: _json.containsKey('pageElementObjectIds')
               ? (_json['pageElementObjectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -7664,7 +7662,7 @@ class UpdateSlidesPositionRequest {
               : null,
           slideObjectIds: _json.containsKey('slideObjectIds')
               ? (_json['slideObjectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -7852,7 +7850,7 @@ class UpdateTableColumnPropertiesRequest {
       : this(
           columnIndices: _json.containsKey('columnIndices')
               ? (_json['columnIndices'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           fields: _json.containsKey('fields')
@@ -7916,7 +7914,7 @@ class UpdateTableRowPropertiesRequest {
               : null,
           rowIndices: _json.containsKey('rowIndices')
               ? (_json['rowIndices'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           tableRowProperties: _json.containsKey('tableRowProperties')

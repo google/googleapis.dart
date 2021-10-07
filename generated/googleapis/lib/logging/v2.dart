@@ -8726,7 +8726,7 @@ class Explicit {
       : this(
           bounds: _json.containsKey('bounds')
               ? (_json['bounds'] as core.List)
-                  .map<core.double>((value) => (value as core.num).toDouble())
+                  .map((value) => (value as core.num).toDouble())
                   .toList()
               : null,
         );
@@ -9048,7 +9048,7 @@ class ListBucketsResponse {
       : this(
           buckets: _json.containsKey('buckets')
               ? (_json['buckets'] as core.List)
-                  .map<LogBucket>((value) => LogBucket.fromJson(
+                  .map((value) => LogBucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9085,7 +9085,7 @@ class ListExclusionsResponse {
       : this(
           exclusions: _json.containsKey('exclusions')
               ? (_json['exclusions'] as core.List)
-                  .map<LogExclusion>((value) => LogExclusion.fromJson(
+                  .map((value) => LogExclusion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9118,7 +9118,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9225,12 +9225,12 @@ class ListLogEntriesRequest {
               : null,
           projectIds: _json.containsKey('projectIds')
               ? (_json['projectIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           resourceNames: _json.containsKey('resourceNames')
               ? (_json['resourceNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -9275,7 +9275,7 @@ class ListLogEntriesResponse {
       : this(
           entries: _json.containsKey('entries')
               ? (_json['entries'] as core.List)
-                  .map<LogEntry>((value) => LogEntry.fromJson(
+                  .map((value) => LogEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9312,7 +9312,7 @@ class ListLogMetricsResponse {
       : this(
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<LogMetric>((value) => LogMetric.fromJson(
+                  .map((value) => LogMetric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9352,7 +9352,7 @@ class ListLogsResponse {
       : this(
           logNames: _json.containsKey('logNames')
               ? (_json['logNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -9390,9 +9390,8 @@ class ListMonitoredResourceDescriptorsResponse {
               : null,
           resourceDescriptors: _json.containsKey('resourceDescriptors')
               ? (_json['resourceDescriptors'] as core.List)
-                  .map<MonitoredResourceDescriptor>((value) =>
-                      MonitoredResourceDescriptor.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MonitoredResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -9425,7 +9424,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9462,7 +9461,7 @@ class ListSinksResponse {
               : null,
           sinks: _json.containsKey('sinks')
               ? (_json['sinks'] as core.List)
-                  .map<LogSink>((value) => LogSink.fromJson(
+                  .map((value) => LogSink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9499,7 +9498,7 @@ class ListViewsResponse {
               : null,
           views: _json.containsKey('views')
               ? (_json['views'] as core.List)
-                  .map<LogView>((value) => LogView.fromJson(
+                  .map((value) => LogView.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9535,7 +9534,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -9567,12 +9566,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -9673,7 +9667,7 @@ class LogBucket {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           restrictedFields: _json.containsKey('restrictedFields')
               ? (_json['restrictedFields'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           retentionDays: _json.containsKey('retentionDays')
@@ -9722,7 +9716,7 @@ class LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? jsonPayload;
+  core.Map<core.String, core.Object?>? jsonPayload;
 
   /// A map of key, value pairs that provides additional information about the
   /// log entry.
@@ -9783,7 +9777,7 @@ class LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? protoPayload;
+  core.Map<core.String, core.Object?>? protoPayload;
 
   /// The time the log entry was received by Logging.
   ///
@@ -9898,13 +9892,7 @@ class LogEntry {
               ? _json['insertId'] as core.String
               : null,
           jsonPayload: _json.containsKey('jsonPayload')
-              ? (_json['jsonPayload'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['jsonPayload'] as core.Map<core.String, core.dynamic>
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -9926,13 +9914,7 @@ class LogEntry {
                   _json['operation'] as core.Map<core.String, core.dynamic>)
               : null,
           protoPayload: _json.containsKey('protoPayload')
-              ? (_json['protoPayload'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['protoPayload'] as core.Map<core.String, core.dynamic>
               : null,
           receiveTimestamp: _json.containsKey('receiveTimestamp')
               ? _json['receiveTimestamp'] as core.String
@@ -10600,7 +10582,7 @@ class LogSink {
               : null,
           exclusions: _json.containsKey('exclusions')
               ? (_json['exclusions'] as core.List)
-                  .map<LogExclusion>((value) => LogExclusion.fromJson(
+                  .map((value) => LogExclusion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10902,7 +10884,7 @@ class MetricDescriptor {
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<LabelDescriptor>((value) => LabelDescriptor.fromJson(
+                  .map((value) => LabelDescriptor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10918,7 +10900,7 @@ class MetricDescriptor {
               : null,
           monitoredResourceTypes: _json.containsKey('monitoredResourceTypes')
               ? (_json['monitoredResourceTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -11189,7 +11171,7 @@ class MonitoredResourceDescriptor {
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<LabelDescriptor>((value) => LabelDescriptor.fromJson(
+                  .map((value) => LabelDescriptor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11231,7 +11213,7 @@ class MonitoredResourceMetadata {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? systemLabels;
+  core.Map<core.String, core.Object?>? systemLabels;
 
   /// A map of user-defined metadata labels.
   ///
@@ -11246,13 +11228,7 @@ class MonitoredResourceMetadata {
   MonitoredResourceMetadata.fromJson(core.Map _json)
       : this(
           systemLabels: _json.containsKey('systemLabels')
-              ? (_json['systemLabels'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['systemLabels'] as core.Map<core.String, core.dynamic>
               : null,
           userLabels: _json.containsKey('userLabels')
               ? (_json['userLabels'] as core.Map<core.String, core.dynamic>)
@@ -11292,7 +11268,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -11312,7 +11288,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -11330,21 +11306,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -11559,7 +11525,7 @@ class RequestLog {
               : null,
           line: _json.containsKey('line')
               ? (_json['line'] as core.List)
-                  .map<LogLine>((value) => LogLine.fromJson(
+                  .map((value) => LogLine.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11592,7 +11558,7 @@ class RequestLog {
               : null,
           sourceReference: _json.containsKey('sourceReference')
               ? (_json['sourceReference'] as core.List)
-                  .map<SourceReference>((value) => SourceReference.fromJson(
+                  .map((value) => SourceReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11761,7 +11727,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -11780,13 +11746,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -11891,7 +11851,7 @@ class TableFieldSchema {
               : null,
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<TableFieldSchema>((value) => TableFieldSchema.fromJson(
+                  .map((value) => TableFieldSchema.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11923,7 +11883,7 @@ class TableSchema {
       : this(
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<TableFieldSchema>((value) => TableFieldSchema.fromJson(
+                  .map((value) => TableFieldSchema.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11986,7 +11946,7 @@ class TailLogEntriesRequest {
               : null,
           resourceNames: _json.containsKey('resourceNames')
               ? (_json['resourceNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -12024,13 +11984,13 @@ class TailLogEntriesResponse {
       : this(
           entries: _json.containsKey('entries')
               ? (_json['entries'] as core.List)
-                  .map<LogEntry>((value) => LogEntry.fromJson(
+                  .map((value) => LogEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           suppressionInfo: _json.containsKey('suppressionInfo')
               ? (_json['suppressionInfo'] as core.List)
-                  .map<SuppressionInfo>((value) => SuppressionInfo.fromJson(
+                  .map((value) => SuppressionInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12144,7 +12104,7 @@ class WriteLogEntriesRequest {
               _json.containsKey('dryRun') ? _json['dryRun'] as core.bool : null,
           entries: _json.containsKey('entries')
               ? (_json['entries'] as core.List)
-                  .map<LogEntry>((value) => LogEntry.fromJson(
+                  .map((value) => LogEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

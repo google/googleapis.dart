@@ -2615,7 +2615,7 @@ void checkStartActivityNotFound(api.StartActivityNotFound o) {
   buildCounterStartActivityNotFound--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed31() => {
+core.Map<core.String, core.Object?> buildUnnamed31() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2628,7 +2628,7 @@ core.Map<core.String, core.Object> buildUnnamed31() => {
       },
     };
 
-void checkUnnamed31(core.Map<core.String, core.Object> o) {
+void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2660,12 +2660,12 @@ void checkUnnamed31(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed32() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed32() => [
       buildUnnamed31(),
       buildUnnamed31(),
     ];
 
-void checkUnnamed32(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed32(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed31(o[0]);
   checkUnnamed31(o[1]);

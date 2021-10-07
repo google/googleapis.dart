@@ -480,7 +480,7 @@ void checkGoogleCloudDialogflowCxV3ConversationTurn(
   buildCounterGoogleCloudDialogflowCxV3ConversationTurn--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7() => {
+core.Map<core.String, core.Object?> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -493,7 +493,7 @@ core.Map<core.String, core.Object> buildUnnamed7() => {
       },
     };
 
-void checkUnnamed7(core.Map<core.String, core.Object> o) {
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -552,7 +552,7 @@ void checkGoogleCloudDialogflowCxV3ConversationTurnUserInput(
   buildCounterGoogleCloudDialogflowCxV3ConversationTurnUserInput--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8() => {
+core.Map<core.String, core.Object?> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -565,7 +565,7 @@ core.Map<core.String, core.Object> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object> o) {
+void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -609,7 +609,7 @@ void checkUnnamed9(
   checkGoogleCloudDialogflowCxV3TestRunDifference(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed10() => {
+core.Map<core.String, core.Object?> buildUnnamed10() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -622,7 +622,7 @@ core.Map<core.String, core.Object> buildUnnamed10() => {
       },
     };
 
-void checkUnnamed10(core.Map<core.String, core.Object> o) {
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3377,7 +3377,7 @@ void checkGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse(
   buildCounterGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed55() => {
+core.Map<core.String, core.Object?> buildUnnamed55() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3390,7 +3390,7 @@ core.Map<core.String, core.Object> buildUnnamed55() => {
       },
     };
 
-void checkUnnamed55(core.Map<core.String, core.Object> o) {
+void checkUnnamed55(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -3845,7 +3845,7 @@ void checkUnnamed61(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed62() => {
+core.Map<core.String, core.Object?> buildUnnamed62() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3858,7 +3858,7 @@ core.Map<core.String, core.Object> buildUnnamed62() => {
       },
     };
 
-void checkUnnamed62(core.Map<core.String, core.Object> o) {
+void checkUnnamed62(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted12 = (o['x']!) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
@@ -3890,7 +3890,7 @@ void checkUnnamed62(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed63() => {
+core.Map<core.String, core.Object?> buildUnnamed63() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3903,7 +3903,7 @@ core.Map<core.String, core.Object> buildUnnamed63() => {
       },
     };
 
-void checkUnnamed63(core.Map<core.String, core.Object> o) {
+void checkUnnamed63(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted14 = (o['x']!) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
@@ -4009,7 +4009,7 @@ void checkGoogleCloudDialogflowCxV3QueryParameters(
   buildCounterGoogleCloudDialogflowCxV3QueryParameters--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed66() => {
+core.Map<core.String, core.Object?> buildUnnamed66() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4022,7 +4022,7 @@ core.Map<core.String, core.Object> buildUnnamed66() => {
       },
     };
 
-void checkUnnamed66(core.Map<core.String, core.Object> o) {
+void checkUnnamed66(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted16 = (o['x']!) as core.Map;
   unittest.expect(casted16, unittest.hasLength(3));
@@ -4054,7 +4054,7 @@ void checkUnnamed66(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed67() => {
+core.Map<core.String, core.Object?> buildUnnamed67() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4067,7 +4067,7 @@ core.Map<core.String, core.Object> buildUnnamed67() => {
       },
     };
 
-void checkUnnamed67(core.Map<core.String, core.Object> o) {
+void checkUnnamed67(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted18 = (o['x']!) as core.Map;
   unittest.expect(casted18, unittest.hasLength(3));
@@ -4110,7 +4110,7 @@ void checkUnnamed68(core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> o) {
   checkGoogleCloudDialogflowCxV3ResponseMessage(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed69() => {
+core.Map<core.String, core.Object?> buildUnnamed69() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4123,7 +4123,7 @@ core.Map<core.String, core.Object> buildUnnamed69() => {
       },
     };
 
-void checkUnnamed69(core.Map<core.String, core.Object> o) {
+void checkUnnamed69(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted20 = (o['x']!) as core.Map;
   unittest.expect(casted20, unittest.hasLength(3));
@@ -4155,12 +4155,12 @@ void checkUnnamed69(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed70() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed70() => [
       buildUnnamed69(),
       buildUnnamed69(),
     ];
 
-void checkUnnamed70(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed70(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed69(o[0]);
   checkUnnamed69(o[1]);
@@ -4301,7 +4301,7 @@ void checkGoogleCloudDialogflowCxV3ResourceName(
   buildCounterGoogleCloudDialogflowCxV3ResourceName--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed72() => {
+core.Map<core.String, core.Object?> buildUnnamed72() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4314,7 +4314,7 @@ core.Map<core.String, core.Object> buildUnnamed72() => {
       },
     };
 
-void checkUnnamed72(core.Map<core.String, core.Object> o) {
+void checkUnnamed72(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted22 = (o['x']!) as core.Map;
   unittest.expect(casted22, unittest.hasLength(3));
@@ -4389,7 +4389,7 @@ void checkGoogleCloudDialogflowCxV3ResponseMessage(
   buildCounterGoogleCloudDialogflowCxV3ResponseMessage--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed73() => {
+core.Map<core.String, core.Object?> buildUnnamed73() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4402,7 +4402,7 @@ core.Map<core.String, core.Object> buildUnnamed73() => {
       },
     };
 
-void checkUnnamed73(core.Map<core.String, core.Object> o) {
+void checkUnnamed73(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted24 = (o['x']!) as core.Map;
   unittest.expect(casted24, unittest.hasLength(3));
@@ -4475,7 +4475,7 @@ void checkGoogleCloudDialogflowCxV3ResponseMessageEndInteraction(
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageEndInteraction--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed74() => {
+core.Map<core.String, core.Object?> buildUnnamed74() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4488,7 +4488,7 @@ core.Map<core.String, core.Object> buildUnnamed74() => {
       },
     };
 
-void checkUnnamed74(core.Map<core.String, core.Object> o) {
+void checkUnnamed74(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted26 = (o['x']!) as core.Map;
   unittest.expect(casted26, unittest.hasLength(3));
@@ -5165,7 +5165,7 @@ void checkGoogleCloudDialogflowCxV3SessionEntityType(
   buildCounterGoogleCloudDialogflowCxV3SessionEntityType--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed81() => {
+core.Map<core.String, core.Object?> buildUnnamed81() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -5178,7 +5178,7 @@ core.Map<core.String, core.Object> buildUnnamed81() => {
       },
     };
 
-void checkUnnamed81(core.Map<core.String, core.Object> o) {
+void checkUnnamed81(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted28 = (o['x']!) as core.Map;
   unittest.expect(casted28, unittest.hasLength(3));
@@ -6359,7 +6359,7 @@ void checkUnnamed95(core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> o) {
   checkGoogleCloudDialogflowCxV3ResponseMessage(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed96() => {
+core.Map<core.String, core.Object?> buildUnnamed96() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6372,7 +6372,7 @@ core.Map<core.String, core.Object> buildUnnamed96() => {
       },
     };
 
-void checkUnnamed96(core.Map<core.String, core.Object> o) {
+void checkUnnamed96(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted30 = (o['x']!) as core.Map;
   unittest.expect(casted30, unittest.hasLength(3));
@@ -6634,7 +6634,7 @@ void checkGoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult(
   buildCounterGoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed98() => {
+core.Map<core.String, core.Object?> buildUnnamed98() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6647,7 +6647,7 @@ core.Map<core.String, core.Object> buildUnnamed98() => {
       },
     };
 
-void checkUnnamed98(core.Map<core.String, core.Object> o) {
+void checkUnnamed98(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted33 = (o['x']!) as core.Map;
   unittest.expect(casted33, unittest.hasLength(3));
@@ -6959,7 +6959,7 @@ void checkGoogleCloudDialogflowCxV3beta1ConversationTurn(
   buildCounterGoogleCloudDialogflowCxV3beta1ConversationTurn--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed103() => {
+core.Map<core.String, core.Object?> buildUnnamed103() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6972,7 +6972,7 @@ core.Map<core.String, core.Object> buildUnnamed103() => {
       },
     };
 
-void checkUnnamed103(core.Map<core.String, core.Object> o) {
+void checkUnnamed103(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted35 = (o['x']!) as core.Map;
   unittest.expect(casted35, unittest.hasLength(3));
@@ -7032,7 +7032,7 @@ void checkGoogleCloudDialogflowCxV3beta1ConversationTurnUserInput(
   buildCounterGoogleCloudDialogflowCxV3beta1ConversationTurnUserInput--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed104() => {
+core.Map<core.String, core.Object?> buildUnnamed104() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -7045,7 +7045,7 @@ core.Map<core.String, core.Object> buildUnnamed104() => {
       },
     };
 
-void checkUnnamed104(core.Map<core.String, core.Object> o) {
+void checkUnnamed104(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted37 = (o['x']!) as core.Map;
   unittest.expect(casted37, unittest.hasLength(3));
@@ -7090,7 +7090,7 @@ void checkUnnamed105(
   checkGoogleCloudDialogflowCxV3beta1TestRunDifference(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed106() => {
+core.Map<core.String, core.Object?> buildUnnamed106() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -7103,7 +7103,7 @@ core.Map<core.String, core.Object> buildUnnamed106() => {
       },
     };
 
-void checkUnnamed106(core.Map<core.String, core.Object> o) {
+void checkUnnamed106(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted39 = (o['x']!) as core.Map;
   unittest.expect(casted39, unittest.hasLength(3));
@@ -8561,7 +8561,7 @@ void checkGoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata(
   buildCounterGoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed127() => {
+core.Map<core.String, core.Object?> buildUnnamed127() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8574,7 +8574,7 @@ core.Map<core.String, core.Object> buildUnnamed127() => {
       },
     };
 
-void checkUnnamed127(core.Map<core.String, core.Object> o) {
+void checkUnnamed127(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted44 = (o['x']!) as core.Map;
   unittest.expect(casted44, unittest.hasLength(3));
@@ -8650,7 +8650,7 @@ void checkGoogleCloudDialogflowCxV3beta1ResponseMessage(
   buildCounterGoogleCloudDialogflowCxV3beta1ResponseMessage--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed128() => {
+core.Map<core.String, core.Object?> buildUnnamed128() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8663,7 +8663,7 @@ core.Map<core.String, core.Object> buildUnnamed128() => {
       },
     };
 
-void checkUnnamed128(core.Map<core.String, core.Object> o) {
+void checkUnnamed128(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted46 = (o['x']!) as core.Map;
   unittest.expect(casted46, unittest.hasLength(3));
@@ -8741,7 +8741,7 @@ void checkGoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction(
   buildCounterGoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed129() => {
+core.Map<core.String, core.Object?> buildUnnamed129() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -8754,7 +8754,7 @@ core.Map<core.String, core.Object> buildUnnamed129() => {
       },
     };
 
-void checkUnnamed129(core.Map<core.String, core.Object> o) {
+void checkUnnamed129(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted48 = (o['x']!) as core.Map;
   unittest.expect(casted48, unittest.hasLength(3));
@@ -9080,7 +9080,7 @@ void checkGoogleCloudDialogflowCxV3beta1RunTestCaseResponse(
   buildCounterGoogleCloudDialogflowCxV3beta1RunTestCaseResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed133() => {
+core.Map<core.String, core.Object?> buildUnnamed133() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -9093,7 +9093,7 @@ core.Map<core.String, core.Object> buildUnnamed133() => {
       },
     };
 
-void checkUnnamed133(core.Map<core.String, core.Object> o) {
+void checkUnnamed133(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted50 = (o['x']!) as core.Map;
   unittest.expect(casted50, unittest.hasLength(3));
@@ -9518,7 +9518,7 @@ void checkUnnamed138(
   checkGoogleCloudDialogflowCxV3beta1ResponseMessage(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed139() => {
+core.Map<core.String, core.Object?> buildUnnamed139() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -9531,7 +9531,7 @@ core.Map<core.String, core.Object> buildUnnamed139() => {
       },
     };
 
-void checkUnnamed139(core.Map<core.String, core.Object> o) {
+void checkUnnamed139(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted52 = (o['x']!) as core.Map;
   unittest.expect(casted52, unittest.hasLength(3));
@@ -9797,7 +9797,7 @@ void checkGoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult(
   buildCounterGoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed141() => {
+core.Map<core.String, core.Object?> buildUnnamed141() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -9810,7 +9810,7 @@ core.Map<core.String, core.Object> buildUnnamed141() => {
       },
     };
 
-void checkUnnamed141(core.Map<core.String, core.Object> o) {
+void checkUnnamed141(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted55 = (o['x']!) as core.Map;
   unittest.expect(casted55, unittest.hasLength(3));
@@ -10114,7 +10114,7 @@ void checkGoogleCloudDialogflowV2BatchUpdateIntentsResponse(
   buildCounterGoogleCloudDialogflowV2BatchUpdateIntentsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed147() => {
+core.Map<core.String, core.Object?> buildUnnamed147() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -10127,7 +10127,7 @@ core.Map<core.String, core.Object> buildUnnamed147() => {
       },
     };
 
-void checkUnnamed147(core.Map<core.String, core.Object> o) {
+void checkUnnamed147(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted58 = (o['x']!) as core.Map;
   unittest.expect(casted58, unittest.hasLength(3));
@@ -10317,7 +10317,7 @@ void checkGoogleCloudDialogflowV2EntityTypeEntity(
   buildCounterGoogleCloudDialogflowV2EntityTypeEntity--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed150() => {
+core.Map<core.String, core.Object?> buildUnnamed150() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -10330,7 +10330,7 @@ core.Map<core.String, core.Object> buildUnnamed150() => {
       },
     };
 
-void checkUnnamed150(core.Map<core.String, core.Object> o) {
+void checkUnnamed150(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted60 = (o['x']!) as core.Map;
   unittest.expect(casted60, unittest.hasLength(3));
@@ -10742,7 +10742,7 @@ void checkGoogleCloudDialogflowV2IntentFollowupIntentInfo(
   buildCounterGoogleCloudDialogflowV2IntentFollowupIntentInfo--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed161() => {
+core.Map<core.String, core.Object?> buildUnnamed161() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -10755,7 +10755,7 @@ core.Map<core.String, core.Object> buildUnnamed161() => {
       },
     };
 
-void checkUnnamed161(core.Map<core.String, core.Object> o) {
+void checkUnnamed161(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted62 = (o['x']!) as core.Map;
   unittest.expect(casted62, unittest.hasLength(3));
@@ -12122,7 +12122,7 @@ void checkGoogleCloudDialogflowV2MessageAnnotation(
   buildCounterGoogleCloudDialogflowV2MessageAnnotation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed180() => {
+core.Map<core.String, core.Object?> buildUnnamed180() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -12135,7 +12135,7 @@ core.Map<core.String, core.Object> buildUnnamed180() => {
       },
     };
 
-void checkUnnamed180(core.Map<core.String, core.Object> o) {
+void checkUnnamed180(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted64 = (o['x']!) as core.Map;
   unittest.expect(casted64, unittest.hasLength(3));
@@ -12198,7 +12198,7 @@ void checkGoogleCloudDialogflowV2OriginalDetectIntentRequest(
   buildCounterGoogleCloudDialogflowV2OriginalDetectIntentRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed181() => {
+core.Map<core.String, core.Object?> buildUnnamed181() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -12211,7 +12211,7 @@ core.Map<core.String, core.Object> buildUnnamed181() => {
       },
     };
 
-void checkUnnamed181(core.Map<core.String, core.Object> o) {
+void checkUnnamed181(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted66 = (o['x']!) as core.Map;
   unittest.expect(casted66, unittest.hasLength(3));
@@ -12265,7 +12265,7 @@ void checkUnnamed183(core.List<api.GoogleCloudDialogflowV2Context> o) {
   checkGoogleCloudDialogflowV2Context(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed184() => {
+core.Map<core.String, core.Object?> buildUnnamed184() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -12278,7 +12278,7 @@ core.Map<core.String, core.Object> buildUnnamed184() => {
       },
     };
 
-void checkUnnamed184(core.Map<core.String, core.Object> o) {
+void checkUnnamed184(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted68 = (o['x']!) as core.Map;
   unittest.expect(casted68, unittest.hasLength(3));
@@ -12310,7 +12310,7 @@ void checkUnnamed184(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed185() => {
+core.Map<core.String, core.Object?> buildUnnamed185() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -12323,7 +12323,7 @@ core.Map<core.String, core.Object> buildUnnamed185() => {
       },
     };
 
-void checkUnnamed185(core.Map<core.String, core.Object> o) {
+void checkUnnamed185(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted70 = (o['x']!) as core.Map;
   unittest.expect(casted70, unittest.hasLength(3));
@@ -12690,7 +12690,7 @@ void checkUnnamed190(core.List<api.GoogleCloudDialogflowV2Context> o) {
   checkGoogleCloudDialogflowV2Context(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed191() => {
+core.Map<core.String, core.Object?> buildUnnamed191() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -12703,7 +12703,7 @@ core.Map<core.String, core.Object> buildUnnamed191() => {
       },
     };
 
-void checkUnnamed191(core.Map<core.String, core.Object> o) {
+void checkUnnamed191(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted72 = (o['x']!) as core.Map;
   unittest.expect(casted72, unittest.hasLength(3));
@@ -12973,7 +12973,7 @@ void checkGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse(
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed197() => {
+core.Map<core.String, core.Object?> buildUnnamed197() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -12986,7 +12986,7 @@ core.Map<core.String, core.Object> buildUnnamed197() => {
       },
     };
 
-void checkUnnamed197(core.Map<core.String, core.Object> o) {
+void checkUnnamed197(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted75 = (o['x']!) as core.Map;
   unittest.expect(casted75, unittest.hasLength(3));
@@ -13181,7 +13181,7 @@ void checkGoogleCloudDialogflowV2beta1EntityTypeEntity(
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeEntity--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed200() => {
+core.Map<core.String, core.Object?> buildUnnamed200() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -13194,7 +13194,7 @@ core.Map<core.String, core.Object> buildUnnamed200() => {
       },
     };
 
-void checkUnnamed200(core.Map<core.String, core.Object> o) {
+void checkUnnamed200(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted77 = (o['x']!) as core.Map;
   unittest.expect(casted77, unittest.hasLength(3));
@@ -13649,7 +13649,7 @@ void checkGoogleCloudDialogflowV2beta1IntentFollowupIntentInfo(
   buildCounterGoogleCloudDialogflowV2beta1IntentFollowupIntentInfo--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed212() => {
+core.Map<core.String, core.Object?> buildUnnamed212() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -13662,7 +13662,7 @@ core.Map<core.String, core.Object> buildUnnamed212() => {
       },
     };
 
-void checkUnnamed212(core.Map<core.String, core.Object> o) {
+void checkUnnamed212(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted79 = (o['x']!) as core.Map;
   unittest.expect(casted79, unittest.hasLength(3));
@@ -15647,7 +15647,7 @@ void checkGoogleCloudDialogflowV2beta1MessageAnnotation(
   buildCounterGoogleCloudDialogflowV2beta1MessageAnnotation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed235() => {
+core.Map<core.String, core.Object?> buildUnnamed235() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -15660,7 +15660,7 @@ core.Map<core.String, core.Object> buildUnnamed235() => {
       },
     };
 
-void checkUnnamed235(core.Map<core.String, core.Object> o) {
+void checkUnnamed235(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted81 = (o['x']!) as core.Map;
   unittest.expect(casted81, unittest.hasLength(3));
@@ -15724,7 +15724,7 @@ void checkGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest(
   buildCounterGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed236() => {
+core.Map<core.String, core.Object?> buildUnnamed236() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -15737,7 +15737,7 @@ core.Map<core.String, core.Object> buildUnnamed236() => {
       },
     };
 
-void checkUnnamed236(core.Map<core.String, core.Object> o) {
+void checkUnnamed236(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted83 = (o['x']!) as core.Map;
   unittest.expect(casted83, unittest.hasLength(3));
@@ -15792,7 +15792,7 @@ void checkUnnamed238(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
   checkGoogleCloudDialogflowV2beta1Context(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed239() => {
+core.Map<core.String, core.Object?> buildUnnamed239() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -15805,7 +15805,7 @@ core.Map<core.String, core.Object> buildUnnamed239() => {
       },
     };
 
-void checkUnnamed239(core.Map<core.String, core.Object> o) {
+void checkUnnamed239(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted85 = (o['x']!) as core.Map;
   unittest.expect(casted85, unittest.hasLength(3));
@@ -15837,7 +15837,7 @@ void checkUnnamed239(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed240() => {
+core.Map<core.String, core.Object?> buildUnnamed240() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -15850,7 +15850,7 @@ core.Map<core.String, core.Object> buildUnnamed240() => {
       },
     };
 
-void checkUnnamed240(core.Map<core.String, core.Object> o) {
+void checkUnnamed240(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted87 = (o['x']!) as core.Map;
   unittest.expect(casted87, unittest.hasLength(3));
@@ -16320,7 +16320,7 @@ void checkUnnamed247(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
   checkGoogleCloudDialogflowV2beta1Context(o[1]);
 }
 
-core.Map<core.String, core.Object> buildUnnamed248() => {
+core.Map<core.String, core.Object?> buildUnnamed248() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -16333,7 +16333,7 @@ core.Map<core.String, core.Object> buildUnnamed248() => {
       },
     };
 
-void checkUnnamed248(core.Map<core.String, core.Object> o) {
+void checkUnnamed248(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted89 = (o['x']!) as core.Map;
   unittest.expect(casted89, unittest.hasLength(3));
@@ -16671,7 +16671,7 @@ void checkUnnamed252(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed253() => {
+core.Map<core.String, core.Object?> buildUnnamed253() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -16684,7 +16684,7 @@ core.Map<core.String, core.Object> buildUnnamed253() => {
       },
     };
 
-void checkUnnamed253(core.Map<core.String, core.Object> o) {
+void checkUnnamed253(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted91 = (o['x']!) as core.Map;
   unittest.expect(casted91, unittest.hasLength(3));
@@ -16789,7 +16789,7 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed255() => {
+core.Map<core.String, core.Object?> buildUnnamed255() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -16802,7 +16802,7 @@ core.Map<core.String, core.Object> buildUnnamed255() => {
       },
     };
 
-void checkUnnamed255(core.Map<core.String, core.Object> o) {
+void checkUnnamed255(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted93 = (o['x']!) as core.Map;
   unittest.expect(casted93, unittest.hasLength(3));
@@ -16834,7 +16834,7 @@ void checkUnnamed255(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed256() => {
+core.Map<core.String, core.Object?> buildUnnamed256() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -16847,7 +16847,7 @@ core.Map<core.String, core.Object> buildUnnamed256() => {
       },
     };
 
-void checkUnnamed256(core.Map<core.String, core.Object> o) {
+void checkUnnamed256(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted95 = (o['x']!) as core.Map;
   unittest.expect(casted95, unittest.hasLength(3));
@@ -16924,7 +16924,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed257() => {
+core.Map<core.String, core.Object?> buildUnnamed257() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -16937,7 +16937,7 @@ core.Map<core.String, core.Object> buildUnnamed257() => {
       },
     };
 
-void checkUnnamed257(core.Map<core.String, core.Object> o) {
+void checkUnnamed257(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted97 = (o['x']!) as core.Map;
   unittest.expect(casted97, unittest.hasLength(3));
@@ -16969,12 +16969,12 @@ void checkUnnamed257(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed258() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed258() => [
       buildUnnamed257(),
       buildUnnamed257(),
     ];
 
-void checkUnnamed258(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed258(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed257(o[0]);
   checkUnnamed257(o[1]);

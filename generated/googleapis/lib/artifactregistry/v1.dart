@@ -588,7 +588,7 @@ class DockerImage {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           uploadTime: _json.containsKey('uploadTime')
@@ -665,7 +665,7 @@ class ImportAptArtifactsGcsSource {
       : this(
           uris: _json.containsKey('uris')
               ? (_json['uris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           useWildcards: _json.containsKey('useWildcards')
@@ -696,15 +696,14 @@ class ImportAptArtifactsResponse {
       : this(
           aptArtifacts: _json.containsKey('aptArtifacts')
               ? (_json['aptArtifacts'] as core.List)
-                  .map<AptArtifact>((value) => AptArtifact.fromJson(
+                  .map((value) => AptArtifact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<ImportAptArtifactsErrorInfo>((value) =>
-                      ImportAptArtifactsErrorInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ImportAptArtifactsErrorInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -765,7 +764,7 @@ class ImportYumArtifactsGcsSource {
       : this(
           uris: _json.containsKey('uris')
               ? (_json['uris'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           useWildcards: _json.containsKey('useWildcards')
@@ -796,14 +795,13 @@ class ImportYumArtifactsResponse {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<ImportYumArtifactsErrorInfo>((value) =>
-                      ImportYumArtifactsErrorInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ImportYumArtifactsErrorInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           yumArtifacts: _json.containsKey('yumArtifacts')
               ? (_json['yumArtifacts'] as core.List)
-                  .map<YumArtifact>((value) => YumArtifact.fromJson(
+                  .map((value) => YumArtifact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -835,7 +833,7 @@ class ListDockerImagesResponse {
       : this(
           dockerImages: _json.containsKey('dockerImages')
               ? (_json['dockerImages'] as core.List)
-                  .map<DockerImage>((value) => DockerImage.fromJson(
+                  .map((value) => DockerImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -871,7 +869,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -905,7 +903,7 @@ class ListRepositoriesResponse {
               : null,
           repositories: _json.containsKey('repositories')
               ? (_json['repositories'] as core.List)
-                  .map<Repository>((value) => Repository.fromJson(
+                  .map((value) => Repository.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -939,7 +937,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -959,7 +957,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -977,21 +975,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1113,7 +1101,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1132,13 +1120,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -1190,7 +1172,7 @@ class UploadAptArtifactResponse {
       : this(
           aptArtifacts: _json.containsKey('aptArtifacts')
               ? (_json['aptArtifacts'] as core.List)
-                  .map<AptArtifact>((value) => AptArtifact.fromJson(
+                  .map((value) => AptArtifact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1239,7 +1221,7 @@ class UploadYumArtifactResponse {
       : this(
           yumArtifacts: _json.containsKey('yumArtifacts')
               ? (_json['yumArtifacts'] as core.List)
-                  .map<YumArtifact>((value) => YumArtifact.fromJson(
+                  .map((value) => YumArtifact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

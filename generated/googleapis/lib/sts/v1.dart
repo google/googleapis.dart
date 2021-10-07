@@ -163,7 +163,7 @@ class GoogleIamV1Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -198,7 +198,7 @@ class GoogleIdentityStsV1AccessBoundary {
       : this(
           accessBoundaryRules: _json.containsKey('accessBoundaryRules')
               ? (_json['accessBoundaryRules'] as core.List)
-                  .map<GoogleIdentityStsV1AccessBoundaryRule>((value) =>
+                  .map((value) =>
                       GoogleIdentityStsV1AccessBoundaryRule.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -262,7 +262,7 @@ class GoogleIdentityStsV1AccessBoundaryRule {
               : null,
           availablePermissions: _json.containsKey('availablePermissions')
               ? (_json['availablePermissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           availableResource: _json.containsKey('availableResource')
@@ -551,7 +551,7 @@ class GoogleIdentityStsV1Options {
               : null,
           audiences: _json.containsKey('audiences')
               ? (_json['audiences'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           userProject: _json.containsKey('userProject')
@@ -588,7 +588,7 @@ class GoogleIdentityStsV1betaAccessBoundary {
       : this(
           accessBoundaryRules: _json.containsKey('accessBoundaryRules')
               ? (_json['accessBoundaryRules'] as core.List)
-                  .map<GoogleIdentityStsV1betaAccessBoundaryRule>((value) =>
+                  .map((value) =>
                       GoogleIdentityStsV1betaAccessBoundaryRule.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -652,7 +652,7 @@ class GoogleIdentityStsV1betaAccessBoundaryRule {
               : null,
           availablePermissions: _json.containsKey('availablePermissions')
               ? (_json['availablePermissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           availableResource: _json.containsKey('availableResource')
@@ -713,7 +713,7 @@ class GoogleIdentityStsV1betaOptions {
               : null,
           audiences: _json.containsKey('audiences')
               ? (_json['audiences'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           userProject: _json.containsKey('userProject')

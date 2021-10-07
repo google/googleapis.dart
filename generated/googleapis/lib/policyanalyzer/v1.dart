@@ -154,7 +154,7 @@ class GoogleCloudPolicyanalyzerV1Activity {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? activity;
+  core.Map<core.String, core.Object?>? activity;
 
   /// The type of the activity.
   core.String? activityType;
@@ -178,12 +178,7 @@ class GoogleCloudPolicyanalyzerV1Activity {
   GoogleCloudPolicyanalyzerV1Activity.fromJson(core.Map _json)
       : this(
           activity: _json.containsKey('activity')
-              ? (_json['activity'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['activity'] as core.Map<core.String, core.dynamic>
               : null,
           activityType: _json.containsKey('activityType')
               ? _json['activityType'] as core.String
@@ -261,9 +256,8 @@ class GoogleCloudPolicyanalyzerV1QueryActivityResponse {
       : this(
           activities: _json.containsKey('activities')
               ? (_json['activities'] as core.List)
-                  .map<GoogleCloudPolicyanalyzerV1Activity>((value) =>
-                      GoogleCloudPolicyanalyzerV1Activity.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudPolicyanalyzerV1Activity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')

@@ -2987,7 +2987,7 @@ class About {
               : null,
           driveThemes: _json.containsKey('driveThemes')
               ? (_json['driveThemes'] as core.List)
-                  .map<AboutDriveThemes>((value) => AboutDriveThemes.fromJson(
+                  .map((value) => AboutDriveThemes.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2997,14 +2997,14 @@ class About {
                   (key, item) => core.MapEntry(
                     key,
                     (item as core.List)
-                        .map<core.String>((value) => value as core.String)
+                        .map((value) => value as core.String)
                         .toList(),
                   ),
                 )
               : null,
           folderColorPalette: _json.containsKey('folderColorPalette')
               ? (_json['folderColorPalette'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           importFormats: _json.containsKey('importFormats')
@@ -3013,7 +3013,7 @@ class About {
                   (key, item) => core.MapEntry(
                     key,
                     (item as core.List)
-                        .map<core.String>((value) => value as core.String)
+                        .map((value) => value as core.String)
                         .toList(),
                   ),
                 )
@@ -3037,9 +3037,8 @@ class About {
               : null,
           teamDriveThemes: _json.containsKey('teamDriveThemes')
               ? (_json['teamDriveThemes'] as core.List)
-                  .map<AboutTeamDriveThemes>((value) =>
-                      AboutTeamDriveThemes.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AboutTeamDriveThemes.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           user: _json.containsKey('user')
@@ -3218,7 +3217,7 @@ class ChangeList {
       : this(
           changes: _json.containsKey('changes')
               ? (_json['changes'] as core.List)
-                  .map<Change>((value) => Change.fromJson(
+                  .map((value) => Change.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3483,7 +3482,7 @@ class Comment {
               : null,
           replies: _json.containsKey('replies')
               ? (_json['replies'] as core.List)
-                  .map<Reply>((value) => Reply.fromJson(
+                  .map((value) => Reply.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3541,7 +3540,7 @@ class CommentList {
       : this(
           comments: _json.containsKey('comments')
               ? (_json['comments'] as core.List)
-                  .map<Comment>((value) => Comment.fromJson(
+                  .map((value) => Comment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4076,7 +4075,7 @@ class DriveList {
       : this(
           drives: _json.containsKey('drives')
               ? (_json['drives'] as core.List)
-                  .map<Drive>((value) => Drive.fromJson(
+                  .map((value) => Drive.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5247,9 +5246,8 @@ class File {
               : null,
           contentRestrictions: _json.containsKey('contentRestrictions')
               ? (_json['contentRestrictions'] as core.List)
-                  .map<ContentRestriction>((value) =>
-                      ContentRestriction.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ContentRestriction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           copyRequiresWriterPermission:
@@ -5339,23 +5337,23 @@ class File {
               : null,
           owners: _json.containsKey('owners')
               ? (_json['owners'] as core.List)
-                  .map<User>((value) => User.fromJson(
+                  .map((value) => User.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           parents: _json.containsKey('parents')
               ? (_json['parents'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           permissionIds: _json.containsKey('permissionIds')
               ? (_json['permissionIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<Permission>((value) => Permission.fromJson(
+                  .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5390,7 +5388,7 @@ class File {
           size: _json.containsKey('size') ? _json['size'] as core.String : null,
           spaces: _json.containsKey('spaces')
               ? (_json['spaces'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           starred: _json.containsKey('starred')
@@ -5561,7 +5559,7 @@ class FileList {
       : this(
           files: _json.containsKey('files')
               ? (_json['files'] as core.List)
-                  .map<File>((value) => File.fromJson(
+                  .map((value) => File.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5606,7 +5604,7 @@ class GeneratedIds {
       : this(
           ids: _json.containsKey('ids')
               ? (_json['ids'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -5856,23 +5854,21 @@ class Permission {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           permissionDetails: _json.containsKey('permissionDetails')
               ? (_json['permissionDetails'] as core.List)
-                  .map<PermissionPermissionDetails>((value) =>
-                      PermissionPermissionDetails.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PermissionPermissionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           photoLink: _json.containsKey('photoLink')
               ? _json['photoLink'] as core.String
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
-          teamDrivePermissionDetails:
-              _json.containsKey('teamDrivePermissionDetails')
-                  ? (_json['teamDrivePermissionDetails'] as core.List)
-                      .map<PermissionTeamDrivePermissionDetails>((value) =>
-                          PermissionTeamDrivePermissionDetails.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+          teamDrivePermissionDetails: _json
+                  .containsKey('teamDrivePermissionDetails')
+              ? (_json['teamDrivePermissionDetails'] as core.List)
+                  .map((value) => PermissionTeamDrivePermissionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
           view: _json.containsKey('view') ? _json['view'] as core.String : null,
         );
@@ -5936,7 +5932,7 @@ class PermissionList {
               : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<Permission>((value) => Permission.fromJson(
+                  .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6080,7 +6076,7 @@ class ReplyList {
               : null,
           replies: _json.containsKey('replies')
               ? (_json['replies'] as core.List)
-                  .map<Reply>((value) => Reply.fromJson(
+                  .map((value) => Reply.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6279,7 +6275,7 @@ class RevisionList {
               : null,
           revisions: _json.containsKey('revisions')
               ? (_json['revisions'] as core.List)
-                  .map<Revision>((value) => Revision.fromJson(
+                  .map((value) => Revision.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6779,7 +6775,7 @@ class TeamDriveList {
               : null,
           teamDrives: _json.containsKey('teamDrives')
               ? (_json['teamDrives'] as core.List)
-                  .map<TeamDrive>((value) => TeamDrive.fromJson(
+                  .map((value) => TeamDrive.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

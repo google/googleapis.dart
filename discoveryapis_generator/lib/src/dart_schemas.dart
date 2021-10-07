@@ -169,7 +169,7 @@ DartSchemaTypeDB parseSchemas(
           );
         } else {
           // This is an unnamed map type.
-          return db.register(UnnamedMapType(imports, db.stringType, valueType));
+          return db.register(UnnamedMapType(imports, valueType));
         }
       } else if (schema.variant != null) {
         // This is a variant type, declaring the type discriminant field and all
@@ -357,7 +357,7 @@ Comment extendAnyTypeComment(Comment baseComment, DartSchemaType type,
     if (type is UnnamedArrayType) {
       return traverseType(type.innerType);
     } else if (type is UnnamedMapType) {
-      return traverseType(type.toType);
+      return traverseType(type.valueType);
     } else if (type is AnyType) {
       return true;
     }

@@ -2011,14 +2011,13 @@ class DataSource {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<DataSourceParameter>((value) =>
-                      DataSourceParameter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           scopes: _json.containsKey('scopes')
               ? (_json['scopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           supportsCustomSchedule: _json.containsKey('supportsCustomSchedule')
@@ -2161,7 +2160,7 @@ class DataSourceParameter {
       : this(
           allowedValues: _json.containsKey('allowedValues')
               ? (_json['allowedValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           deprecated: _json.containsKey('deprecated')
@@ -2175,9 +2174,8 @@ class DataSourceParameter {
               : null,
           fields: _json.containsKey('fields')
               ? (_json['fields'] as core.List)
-                  .map<DataSourceParameter>((value) =>
-                      DataSourceParameter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DataSourceParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           immutable: _json.containsKey('immutable')
@@ -2283,7 +2281,7 @@ class EnrollDataSourcesRequest {
       : this(
           dataSourceIds: _json.containsKey('dataSourceIds')
               ? (_json['dataSourceIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2316,7 +2314,7 @@ class ListDataSourcesResponse {
       : this(
           dataSources: _json.containsKey('dataSources')
               ? (_json['dataSources'] as core.List)
-                  .map<DataSource>((value) => DataSource.fromJson(
+                  .map((value) => DataSource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2349,7 +2347,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2393,7 +2391,7 @@ class ListTransferConfigsResponse {
               : null,
           transferConfigs: _json.containsKey('transferConfigs')
               ? (_json['transferConfigs'] as core.List)
-                  .map<TransferConfig>((value) => TransferConfig.fromJson(
+                  .map((value) => TransferConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2435,7 +2433,7 @@ class ListTransferLogsResponse {
               : null,
           transferMessages: _json.containsKey('transferMessages')
               ? (_json['transferMessages'] as core.List)
-                  .map<TransferMessage>((value) => TransferMessage.fromJson(
+                  .map((value) => TransferMessage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2477,7 +2475,7 @@ class ListTransferRunsResponse {
               : null,
           transferRuns: _json.containsKey('transferRuns')
               ? (_json['transferRuns'] as core.List)
-                  .map<TransferRun>((value) => TransferRun.fromJson(
+                  .map((value) => TransferRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2513,7 +2511,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -2545,12 +2543,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -2666,7 +2659,7 @@ class ScheduleTransferRunsResponse {
       : this(
           runs: _json.containsKey('runs')
               ? (_json['runs'] as core.List)
-                  .map<TransferRun>((value) => TransferRun.fromJson(
+                  .map((value) => TransferRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2723,7 +2716,7 @@ class StartManualTransferRunsResponse {
       : this(
           runs: _json.containsKey('runs')
               ? (_json['runs'] as core.List)
-                  .map<TransferRun>((value) => TransferRun.fromJson(
+                  .map((value) => TransferRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2751,7 +2744,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -2770,13 +2763,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2907,7 +2894,7 @@ class TransferConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// Data transfer schedule.
   ///
@@ -3004,12 +2991,7 @@ class TransferConfig {
                   _json['ownerInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           params: _json.containsKey('params')
-              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['params'] as core.Map<core.String, core.dynamic>
               : null,
           schedule: _json.containsKey('schedule')
               ? _json['schedule'] as core.String
@@ -3152,7 +3134,7 @@ class TransferRun {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? params;
+  core.Map<core.String, core.Object?>? params;
 
   /// For batch transfer runs, specifies the date and time of the data should be
   /// ingested.
@@ -3243,12 +3225,7 @@ class TransferRun {
               ? _json['notificationPubsubTopic'] as core.String
               : null,
           params: _json.containsKey('params')
-              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['params'] as core.Map<core.String, core.dynamic>
               : null,
           runTime: _json.containsKey('runTime')
               ? _json['runTime'] as core.String

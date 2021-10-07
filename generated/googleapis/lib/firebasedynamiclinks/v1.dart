@@ -470,9 +470,8 @@ class CreateManagedShortLinkResponse {
               : null,
           warning: _json.containsKey('warning')
               ? (_json['warning'] as core.List)
-                  .map<DynamicLinkWarning>((value) =>
-                      DynamicLinkWarning.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DynamicLinkWarning.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -575,9 +574,8 @@ class CreateShortDynamicLinkResponse {
               : null,
           warning: _json.containsKey('warning')
               ? (_json['warning'] as core.List)
-                  .map<DynamicLinkWarning>((value) =>
-                      DynamicLinkWarning.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DynamicLinkWarning.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -873,9 +871,8 @@ class DynamicLinkStats {
       : this(
           linkEventStats: _json.containsKey('linkEventStats')
               ? (_json['linkEventStats'] as core.List)
-                  .map<DynamicLinkEventStat>((value) =>
-                      DynamicLinkEventStat.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DynamicLinkEventStat.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1629,7 +1626,7 @@ class ManagedShortLink {
               : null,
           flaggedAttribute: _json.containsKey('flaggedAttribute')
               ? (_json['flaggedAttribute'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           info: _json.containsKey('info')

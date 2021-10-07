@@ -1195,9 +1195,8 @@ class GdataMedia {
               : null,
           compositeMedia: _json.containsKey('compositeMedia')
               ? (_json['compositeMedia'] as core.List)
-                  .map<GdataCompositeMedia>((value) =>
-                      GdataCompositeMedia.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GdataCompositeMedia.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           contentType: _json.containsKey('contentType')
@@ -1448,7 +1447,7 @@ class ListJobsResponse {
       : this(
           jobs: _json.containsKey('jobs')
               ? (_json['jobs'] as core.List)
-                  .map<Job>((value) => Job.fromJson(
+                  .map((value) => Job.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1487,7 +1486,7 @@ class ListReportTypesResponse {
               : null,
           reportTypes: _json.containsKey('reportTypes')
               ? (_json['reportTypes'] as core.List)
-                  .map<ReportType>((value) => ReportType.fromJson(
+                  .map((value) => ReportType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1524,7 +1523,7 @@ class ListReportsResponse {
               : null,
           reports: _json.containsKey('reports')
               ? (_json['reports'] as core.List)
-                  .map<Report>((value) => Report.fromJson(
+                  .map((value) => Report.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

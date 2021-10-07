@@ -1119,7 +1119,7 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
       : this(
           contacts: _json.containsKey('contacts')
               ? (_json['contacts'] as core.List)
-                  .map<GoogleCloudEssentialcontactsV1Contact>((value) =>
+                  .map((value) =>
                       GoogleCloudEssentialcontactsV1Contact.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1201,7 +1201,7 @@ class GoogleCloudEssentialcontactsV1Contact {
           notificationCategorySubscriptions:
               _json.containsKey('notificationCategorySubscriptions')
                   ? (_json['notificationCategorySubscriptions'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           validateTime: _json.containsKey('validateTime')
@@ -1246,7 +1246,7 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
       : this(
           contacts: _json.containsKey('contacts')
               ? (_json['contacts'] as core.List)
-                  .map<GoogleCloudEssentialcontactsV1Contact>((value) =>
+                  .map((value) =>
                       GoogleCloudEssentialcontactsV1Contact.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1309,7 +1309,7 @@ class GoogleCloudEssentialcontactsV1SendTestMessageRequest {
       : this(
           contacts: _json.containsKey('contacts')
               ? (_json['contacts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           notificationCategory: _json.containsKey('notificationCategory')

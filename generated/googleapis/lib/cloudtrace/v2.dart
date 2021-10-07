@@ -321,7 +321,7 @@ class BatchWriteSpansRequest {
       : this(
           spans: _json.containsKey('spans')
               ? (_json['spans'] as core.List)
-                  .map<Span>((value) => Span.fromJson(
+                  .map((value) => Span.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -420,7 +420,7 @@ class Links {
               : null,
           link: _json.containsKey('link')
               ? (_json['link'] as core.List)
-                  .map<Link>((value) => Link.fromJson(
+                  .map((value) => Link.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -832,7 +832,7 @@ class StackFrames {
               : null,
           frame: _json.containsKey('frame')
               ? (_json['frame'] as core.List)
-                  .map<StackFrame>((value) => StackFrame.fromJson(
+                  .map((value) => StackFrame.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -901,7 +901,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -920,13 +920,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -1014,7 +1008,7 @@ class TimeEvents {
                   : null,
           timeEvent: _json.containsKey('timeEvent')
               ? (_json['timeEvent'] as core.List)
-                  .map<TimeEvent>((value) => TimeEvent.fromJson(
+                  .map((value) => TimeEvent.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

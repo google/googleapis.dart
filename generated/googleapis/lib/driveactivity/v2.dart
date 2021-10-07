@@ -433,7 +433,7 @@ class Comment {
               : null,
           mentionedUsers: _json.containsKey('mentionedUsers')
               ? (_json['mentionedUsers'] as core.List)
-                  .map<User>((value) => User.fromJson(
+                  .map((value) => User.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -721,13 +721,13 @@ class DriveActivity {
       : this(
           actions: _json.containsKey('actions')
               ? (_json['actions'] as core.List)
-                  .map<Action>((value) => Action.fromJson(
+                  .map((value) => Action.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           actors: _json.containsKey('actors')
               ? (_json['actors'] as core.List)
-                  .map<Actor>((value) => Actor.fromJson(
+                  .map((value) => Actor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -737,7 +737,7 @@ class DriveActivity {
               : null,
           targets: _json.containsKey('targets')
               ? (_json['targets'] as core.List)
-                  .map<Target>((value) => Target.fromJson(
+                  .map((value) => Target.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1172,13 +1172,13 @@ class Move {
       : this(
           addedParents: _json.containsKey('addedParents')
               ? (_json['addedParents'] as core.List)
-                  .map<TargetReference>((value) => TargetReference.fromJson(
+                  .map((value) => TargetReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           removedParents: _json.containsKey('removedParents')
               ? (_json['removedParents'] as core.List)
-                  .map<TargetReference>((value) => TargetReference.fromJson(
+                  .map((value) => TargetReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1348,13 +1348,13 @@ class PermissionChange {
       : this(
           addedPermissions: _json.containsKey('addedPermissions')
               ? (_json['addedPermissions'] as core.List)
-                  .map<Permission>((value) => Permission.fromJson(
+                  .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           removedPermissions: _json.containsKey('removedPermissions')
               ? (_json['removedPermissions'] as core.List)
-                  .map<Permission>((value) => Permission.fromJson(
+                  .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1505,7 +1505,7 @@ class QueryDriveActivityResponse {
       : this(
           activities: _json.containsKey('activities')
               ? (_json['activities'] as core.List)
-                  .map<DriveActivity>((value) => DriveActivity.fromJson(
+                  .map((value) => DriveActivity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1629,7 +1629,7 @@ class SettingsChange {
       : this(
           restrictionChanges: _json.containsKey('restrictionChanges')
               ? (_json['restrictionChanges'] as core.List)
-                  .map<RestrictionChange>((value) => RestrictionChange.fromJson(
+                  .map((value) => RestrictionChange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

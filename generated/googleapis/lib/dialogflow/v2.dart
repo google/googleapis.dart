@@ -10567,9 +10567,8 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3TestError>((value) =>
-                      GoogleCloudDialogflowCxV3TestError.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowCxV3TestError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -10595,7 +10594,7 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesResponse {
       : this(
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3TestCaseResult>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3TestCaseResult.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -10649,7 +10648,7 @@ class GoogleCloudDialogflowCxV3ContinuousTestResult {
               : null,
           testCaseResults: _json.containsKey('testCaseResults')
               ? (_json['testCaseResults'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -10708,7 +10707,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? injectedParameters;
+  core.Map<core.String, core.Object?>? injectedParameters;
 
   /// Supports text input, event input, dtmf input in the test case.
   GoogleCloudDialogflowCxV3QueryInput? input;
@@ -10732,14 +10731,8 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
               ? _json['enableSentimentAnalysis'] as core.bool
               : null,
           injectedParameters: _json.containsKey('injectedParameters')
-              ? (_json['injectedParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['injectedParameters']
+                  as core.Map<core.String, core.dynamic>
               : null,
           input: _json.containsKey('input')
               ? GoogleCloudDialogflowCxV3QueryInput.fromJson(
@@ -10776,7 +10769,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// If this is part of a result conversation turn, the list of differences
   /// between the original run and the replay for this output, if any.
@@ -10788,7 +10781,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? sessionParameters;
+  core.Map<core.String, core.Object?>? sessionParameters;
 
   /// Response error from the agent in the test result.
   ///
@@ -10821,30 +10814,18 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
                   _json['currentPage'] as core.Map<core.String, core.dynamic>)
               : null,
           diagnosticInfo: _json.containsKey('diagnosticInfo')
-              ? (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['diagnosticInfo'] as core.Map<core.String, core.dynamic>
               : null,
           differences: _json.containsKey('differences')
               ? (_json['differences'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3TestRunDifference>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3TestRunDifference.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           sessionParameters: _json.containsKey('sessionParameters')
-              ? (_json['sessionParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['sessionParameters']
+                  as core.Map<core.String, core.dynamic>
               : null,
           status: _json.containsKey('status')
               ? GoogleRpcStatus.fromJson(
@@ -10852,7 +10833,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
               : null,
           textResponses: _json.containsKey('textResponses')
               ? (_json['textResponses'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3ResponseMessageText>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3ResponseMessageText.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11215,7 +11196,7 @@ class GoogleCloudDialogflowCxV3Form {
       : this(
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3FormParameter>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3FormParameter.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11288,9 +11269,8 @@ class GoogleCloudDialogflowCxV3FormParameter {
 
   GoogleCloudDialogflowCxV3FormParameter.fromJson(core.Map _json)
       : this(
-          defaultValue: _json.containsKey('defaultValue')
-              ? _json['defaultValue'] as core.Object
-              : null,
+          defaultValue:
+              _json.containsKey('defaultValue') ? _json['defaultValue'] : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
@@ -11368,7 +11348,7 @@ class GoogleCloudDialogflowCxV3FormParameterFillBehavior {
                   : null,
           repromptEventHandlers: _json.containsKey('repromptEventHandlers')
               ? (_json['repromptEventHandlers'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3EventHandler>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3EventHandler.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11439,16 +11419,15 @@ class GoogleCloudDialogflowCxV3Fulfillment {
       : this(
           conditionalCases: _json.containsKey('conditionalCases')
               ? (_json['conditionalCases'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3FulfillmentConditionalCases
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3FulfillmentConditionalCases
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3ResponseMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3ResponseMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11458,11 +11437,10 @@ class GoogleCloudDialogflowCxV3Fulfillment {
               : null,
           setParameterActions: _json.containsKey('setParameterActions')
               ? (_json['setParameterActions'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
@@ -11503,11 +11481,10 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCases {
       : this(
           cases: _json.containsKey('cases')
               ? (_json['cases'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -11545,11 +11522,10 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase {
       : this(
           caseContent: _json.containsKey('caseContent')
               ? (_json['caseContent'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           condition: _json.containsKey('condition')
@@ -11622,8 +11598,7 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
           parameter: _json.containsKey('parameter')
               ? _json['parameter'] as core.String
               : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.Object : null,
+          value: _json.containsKey('value') ? _json['value'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11698,7 +11673,7 @@ class GoogleCloudDialogflowCxV3ImportDocumentsResponse {
       : this(
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11744,7 +11719,7 @@ class GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3TestCaseError>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3TestCaseError.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11772,7 +11747,7 @@ class GoogleCloudDialogflowCxV3ImportTestCasesResponse {
       : this(
           names: _json.containsKey('names')
               ? (_json['names'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -11922,7 +11897,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
               : null,
           phraseHints: _json.containsKey('phraseHints')
               ? (_json['phraseHints'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sampleRateHertz: _json.containsKey('sampleRateHertz')
@@ -12039,7 +12014,7 @@ class GoogleCloudDialogflowCxV3Intent {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3IntentParameter>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3IntentParameter.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -12049,7 +12024,7 @@ class GoogleCloudDialogflowCxV3Intent {
               : null,
           trainingPhrases: _json.containsKey('trainingPhrases')
               ? (_json['trainingPhrases'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3IntentTrainingPhrase>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3IntentTrainingPhrase.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -12192,11 +12167,10 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           parts: _json.containsKey('parts')
               ? (_json['parts'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3IntentTrainingPhrasePart>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           repeatCount: _json.containsKey('repeatCount')
@@ -12326,7 +12300,7 @@ class GoogleCloudDialogflowCxV3Page {
               : null,
           eventHandlers: _json.containsKey('eventHandlers')
               ? (_json['eventHandlers'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3EventHandler>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3EventHandler.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -12338,12 +12312,12 @@ class GoogleCloudDialogflowCxV3Page {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           transitionRouteGroups: _json.containsKey('transitionRouteGroups')
               ? (_json['transitionRouteGroups'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           transitionRoutes: _json.containsKey('transitionRoutes')
               ? (_json['transitionRoutes'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3TransitionRoute>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3TransitionRoute.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -12419,11 +12393,10 @@ class GoogleCloudDialogflowCxV3PageInfoFormInfo {
       : this(
           parameterInfo: _json.containsKey('parameterInfo')
               ? (_json['parameterInfo'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -12502,8 +12475,7 @@ class GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo {
               : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.Object : null,
+          value: _json.containsKey('value') ? _json['value'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -12666,7 +12638,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Signal that the client should play an audio clip hosted at a
   /// client-specific URI.
@@ -12716,12 +12688,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
                       as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           playAudio: _json.containsKey('playAudio')
               ? GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromJson(
@@ -12766,7 +12733,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess({
     this.metadata,
@@ -12776,12 +12743,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
       core.Map _json)
       : this(
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -12811,7 +12773,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff({
     this.metadata,
@@ -12821,12 +12783,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
       core.Map _json)
       : this(
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -12854,11 +12811,10 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
       : this(
           segments: _json.containsKey('segments')
               ? (_json['segments'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -13025,7 +12981,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
                   : null,
           text: _json.containsKey('text')
               ? (_json['text'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -13051,9 +13007,8 @@ class GoogleCloudDialogflowCxV3RunContinuousTestMetadata {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3TestError>((value) =>
-                      GoogleCloudDialogflowCxV3TestError.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowCxV3TestError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -13127,7 +13082,7 @@ class GoogleCloudDialogflowCxV3SessionInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// Always present for WebhookRequest.
   ///
@@ -13146,13 +13101,7 @@ class GoogleCloudDialogflowCxV3SessionInfo {
   GoogleCloudDialogflowCxV3SessionInfo.fromJson(core.Map _json)
       : this(
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
               : null,
           session: _json.containsKey('session')
               ? _json['session'] as core.String
@@ -13239,13 +13188,13 @@ class GoogleCloudDialogflowCxV3TestCase {
               _json.containsKey('notes') ? _json['notes'] as core.String : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           testCaseConversationTurns:
               _json.containsKey('testCaseConversationTurns')
                   ? (_json['testCaseConversationTurns'] as core.List)
-                      .map<GoogleCloudDialogflowCxV3ConversationTurn>((value) =>
+                      .map((value) =>
                           GoogleCloudDialogflowCxV3ConversationTurn.fromJson(
                               value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -13340,7 +13289,7 @@ class GoogleCloudDialogflowCxV3TestCaseResult {
       : this(
           conversationTurns: _json.containsKey('conversationTurns')
               ? (_json['conversationTurns'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3ConversationTurn>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3ConversationTurn.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -13389,7 +13338,7 @@ class GoogleCloudDialogflowCxV3TestConfig {
           flow: _json.containsKey('flow') ? _json['flow'] as core.String : null,
           trackingParameters: _json.containsKey('trackingParameters')
               ? (_json['trackingParameters'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -13646,7 +13595,7 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The sentiment analysis result of the current user request.
   ///
@@ -13711,7 +13660,7 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3ResponseMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3ResponseMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -13721,12 +13670,7 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
                   _json['pageInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           sentimentAnalysisResult: _json.containsKey('sentimentAnalysisResult')
               ? GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
@@ -13886,7 +13830,7 @@ class GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue {
               ? _json['originalValue'] as core.String
               : null,
           resolvedValue: _json.containsKey('resolvedValue')
-              ? _json['resolvedValue'] as core.Object
+              ? _json['resolvedValue']
               : null,
         );
 
@@ -13948,7 +13892,7 @@ class GoogleCloudDialogflowCxV3WebhookResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Information about session status.
   ///
@@ -13987,12 +13931,7 @@ class GoogleCloudDialogflowCxV3WebhookResponse {
                   _json['pageInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           sessionInfo: _json.containsKey('sessionInfo')
               ? GoogleCloudDialogflowCxV3SessionInfo.fromJson(
@@ -14044,7 +13983,7 @@ class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3ResponseMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3ResponseMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -14116,7 +14055,7 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1TestError>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1TestError.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -14145,7 +14084,7 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse {
       : this(
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1TestCaseResult>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1TestCaseResult.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -14199,7 +14138,7 @@ class GoogleCloudDialogflowCxV3beta1ContinuousTestResult {
               : null,
           testCaseResults: _json.containsKey('testCaseResults')
               ? (_json['testCaseResults'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -14259,7 +14198,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? injectedParameters;
+  core.Map<core.String, core.Object?>? injectedParameters;
 
   /// Supports text input, event input, dtmf input in the test case.
   GoogleCloudDialogflowCxV3beta1QueryInput? input;
@@ -14284,14 +14223,8 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
               ? _json['enableSentimentAnalysis'] as core.bool
               : null,
           injectedParameters: _json.containsKey('injectedParameters')
-              ? (_json['injectedParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['injectedParameters']
+                  as core.Map<core.String, core.dynamic>
               : null,
           input: _json.containsKey('input')
               ? GoogleCloudDialogflowCxV3beta1QueryInput.fromJson(
@@ -14328,7 +14261,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// If this is part of a result conversation turn, the list of differences
   /// between the original run and the replay for this output, if any.
@@ -14340,7 +14273,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? sessionParameters;
+  core.Map<core.String, core.Object?>? sessionParameters;
 
   /// Response error from the agent in the test result.
   ///
@@ -14373,31 +14306,18 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
                   _json['currentPage'] as core.Map<core.String, core.dynamic>)
               : null,
           diagnosticInfo: _json.containsKey('diagnosticInfo')
-              ? (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['diagnosticInfo'] as core.Map<core.String, core.dynamic>
               : null,
           differences: _json.containsKey('differences')
               ? (_json['differences'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1TestRunDifference>(
-                      (value) => GoogleCloudDialogflowCxV3beta1TestRunDifference
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1TestRunDifference.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           sessionParameters: _json.containsKey('sessionParameters')
-              ? (_json['sessionParameters']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['sessionParameters']
+                  as core.Map<core.String, core.dynamic>
               : null,
           status: _json.containsKey('status')
               ? GoogleRpcStatus.fromJson(
@@ -14405,11 +14325,10 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
               : null,
           textResponses: _json.containsKey('textResponses')
               ? (_json['textResponses'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1ResponseMessageText>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1ResponseMessageText
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1ResponseMessageText
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           triggeredIntent: _json.containsKey('triggeredIntent')
@@ -14772,7 +14691,7 @@ class GoogleCloudDialogflowCxV3beta1Form {
       : this(
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1FormParameter>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1FormParameter.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -14845,9 +14764,8 @@ class GoogleCloudDialogflowCxV3beta1FormParameter {
 
   GoogleCloudDialogflowCxV3beta1FormParameter.fromJson(core.Map _json)
       : this(
-          defaultValue: _json.containsKey('defaultValue')
-              ? _json['defaultValue'] as core.Object
-              : null,
+          defaultValue:
+              _json.containsKey('defaultValue') ? _json['defaultValue'] : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
@@ -14927,7 +14845,7 @@ class GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
                   : null,
           repromptEventHandlers: _json.containsKey('repromptEventHandlers')
               ? (_json['repromptEventHandlers'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1EventHandler>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1EventHandler.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -14998,16 +14916,15 @@ class GoogleCloudDialogflowCxV3beta1Fulfillment {
       : this(
           conditionalCases: _json.containsKey('conditionalCases')
               ? (_json['conditionalCases'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1ResponseMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1ResponseMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -15017,11 +14934,10 @@ class GoogleCloudDialogflowCxV3beta1Fulfillment {
               : null,
           setParameterActions: _json.containsKey('setParameterActions')
               ? (_json['setParameterActions'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
@@ -15064,11 +14980,10 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases {
       : this(
           cases: _json.containsKey('cases')
               ? (_json['cases'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -15106,11 +15021,10 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase {
       : this(
           caseContent: _json.containsKey('caseContent')
               ? (_json['caseContent'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           condition: _json.containsKey('condition')
@@ -15183,8 +15097,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
           parameter: _json.containsKey('parameter')
               ? _json['parameter'] as core.String
               : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.Object : null,
+          value: _json.containsKey('value') ? _json['value'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15260,7 +15173,7 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse {
       : this(
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15306,7 +15219,7 @@ class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1TestCaseError>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1TestCaseError.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -15334,7 +15247,7 @@ class GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse {
       : this(
           names: _json.containsKey('names')
               ? (_json['names'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -15484,7 +15397,7 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfig {
               : null,
           phraseHints: _json.containsKey('phraseHints')
               ? (_json['phraseHints'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sampleRateHertz: _json.containsKey('sampleRateHertz')
@@ -15602,7 +15515,7 @@ class GoogleCloudDialogflowCxV3beta1Intent {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1IntentParameter>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1IntentParameter.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -15612,11 +15525,10 @@ class GoogleCloudDialogflowCxV3beta1Intent {
               : null,
           trainingPhrases: _json.containsKey('trainingPhrases')
               ? (_json['trainingPhrases'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -15757,11 +15669,10 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           parts: _json.containsKey('parts')
               ? (_json['parts'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           repeatCount: _json.containsKey('repeatCount')
@@ -15892,7 +15803,7 @@ class GoogleCloudDialogflowCxV3beta1Page {
               : null,
           eventHandlers: _json.containsKey('eventHandlers')
               ? (_json['eventHandlers'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1EventHandler>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1EventHandler.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -15904,12 +15815,12 @@ class GoogleCloudDialogflowCxV3beta1Page {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           transitionRouteGroups: _json.containsKey('transitionRouteGroups')
               ? (_json['transitionRouteGroups'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           transitionRoutes: _json.containsKey('transitionRoutes')
               ? (_json['transitionRoutes'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1TransitionRoute>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1TransitionRoute.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -15985,11 +15896,10 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
       : this(
           parameterInfo: _json.containsKey('parameterInfo')
               ? (_json['parameterInfo'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -16068,8 +15978,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
               : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.Object : null,
+          value: _json.containsKey('value') ? _json['value'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16234,7 +16143,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Signal that the client should play an audio clip hosted at a
   /// client-specific URI.
@@ -16285,12 +16194,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
                       as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           playAudio: _json.containsKey('playAudio')
               ? GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromJson(
@@ -16335,7 +16239,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess({
     this.metadata,
@@ -16345,12 +16249,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
       core.Map _json)
       : this(
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -16380,7 +16279,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff({
     this.metadata,
@@ -16390,12 +16289,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
       core.Map _json)
       : this(
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -16424,11 +16318,10 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
       : this(
           segments: _json.containsKey('segments')
               ? (_json['segments'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>(
-                      (value) =>
-                          GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -16596,7 +16489,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageText {
                   : null,
           text: _json.containsKey('text')
               ? (_json['text'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -16623,7 +16516,7 @@ class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1TestError>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1TestError.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -16700,7 +16593,7 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// Always present for WebhookRequest.
   ///
@@ -16719,13 +16612,7 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
   GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(core.Map _json)
       : this(
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
               : null,
           session: _json.containsKey('session')
               ? _json['session'] as core.String
@@ -16812,16 +16699,15 @@ class GoogleCloudDialogflowCxV3beta1TestCase {
               _json.containsKey('notes') ? _json['notes'] as core.String : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           testCaseConversationTurns: _json
                   .containsKey('testCaseConversationTurns')
               ? (_json['testCaseConversationTurns'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1ConversationTurn>(
-                      (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1ConversationTurn.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           testConfig: _json.containsKey('testConfig')
@@ -16914,10 +16800,9 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResult {
       : this(
           conversationTurns: _json.containsKey('conversationTurns')
               ? (_json['conversationTurns'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1ConversationTurn>(
-                      (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1ConversationTurn.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           environment: _json.containsKey('environment')
@@ -16964,7 +16849,7 @@ class GoogleCloudDialogflowCxV3beta1TestConfig {
           flow: _json.containsKey('flow') ? _json['flow'] as core.String : null,
           trackingParameters: _json.containsKey('trackingParameters')
               ? (_json['trackingParameters'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -17222,7 +17107,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The sentiment analysis result of the current user request.
   ///
@@ -17287,7 +17172,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1ResponseMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1ResponseMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -17297,12 +17182,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
                   _json['pageInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           sentimentAnalysisResult: _json.containsKey('sentimentAnalysisResult')
               ? GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
@@ -17463,7 +17343,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
               ? _json['originalValue'] as core.String
               : null,
           resolvedValue: _json.containsKey('resolvedValue')
-              ? _json['resolvedValue'] as core.Object
+              ? _json['resolvedValue']
               : null,
         );
 
@@ -17525,7 +17405,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Information about session status.
   ///
@@ -17564,12 +17444,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
                   _json['pageInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           sessionInfo: _json.containsKey('sessionInfo')
               ? GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
@@ -17621,7 +17496,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowCxV3beta1ResponseMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowCxV3beta1ResponseMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -17799,7 +17674,7 @@ class GoogleCloudDialogflowV2Agent {
               : null,
           supportedLanguageCodes: _json.containsKey('supportedLanguageCodes')
               ? (_json['supportedLanguageCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           tier: _json.containsKey('tier') ? _json['tier'] as core.String : null,
@@ -18072,7 +17947,7 @@ class GoogleCloudDialogflowV2AnalyzeContentResponse {
           endUserSuggestionResults:
               _json.containsKey('endUserSuggestionResults')
                   ? (_json['endUserSuggestionResults'] as core.List)
-                      .map<GoogleCloudDialogflowV2SuggestionResult>((value) =>
+                      .map((value) =>
                           GoogleCloudDialogflowV2SuggestionResult.fromJson(
                               value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -18080,7 +17955,7 @@ class GoogleCloudDialogflowV2AnalyzeContentResponse {
           humanAgentSuggestionResults:
               _json.containsKey('humanAgentSuggestionResults')
                   ? (_json['humanAgentSuggestionResults'] as core.List)
-                      .map<GoogleCloudDialogflowV2SuggestionResult>((value) =>
+                      .map((value) =>
                           GoogleCloudDialogflowV2SuggestionResult.fromJson(
                               value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -18154,7 +18029,7 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
               ? _json['entityType'] as core.String
               : null,
           formattedValue: _json.containsKey('formattedValue')
-              ? _json['formattedValue'] as core.Object
+              ? _json['formattedValue']
               : null,
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
         );
@@ -18359,7 +18234,7 @@ class GoogleCloudDialogflowV2ArticleAnswer {
               : null,
           snippets: _json.containsKey('snippets')
               ? (_json['snippets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           title:
@@ -18484,7 +18359,7 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
       : this(
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<GoogleCloudDialogflowV2EntityTypeEntity>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -18529,7 +18404,7 @@ class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
       : this(
           entityValues: _json.containsKey('entityValues')
               ? (_json['entityValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           languageCode: _json.containsKey('languageCode')
@@ -18560,7 +18435,7 @@ class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
       : this(
           entityTypeNames: _json.containsKey('entityTypeNames')
               ? (_json['entityTypeNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -18587,9 +18462,8 @@ class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
       : this(
           intents: _json.containsKey('intents')
               ? (_json['intents'] as core.List)
-                  .map<GoogleCloudDialogflowV2Intent>((value) =>
-                      GoogleCloudDialogflowV2Intent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Intent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -18631,7 +18505,7 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
       : this(
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<GoogleCloudDialogflowV2EntityTypeEntity>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -18726,9 +18600,8 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
       : this(
           entityTypes: _json.containsKey('entityTypes')
               ? (_json['entityTypes'] as core.List)
-                  .map<GoogleCloudDialogflowV2EntityType>((value) =>
-                      GoogleCloudDialogflowV2EntityType.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2EntityType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -18825,9 +18698,8 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
       : this(
           intents: _json.containsKey('intents')
               ? (_json['intents'] as core.List)
-                  .map<GoogleCloudDialogflowV2Intent>((value) =>
-                      GoogleCloudDialogflowV2Intent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Intent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -18895,7 +18767,7 @@ class GoogleCloudDialogflowV2Context {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   GoogleCloudDialogflowV2Context({
     this.lifespanCount,
@@ -18910,13 +18782,7 @@ class GoogleCloudDialogflowV2Context {
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -19554,7 +19420,7 @@ class GoogleCloudDialogflowV2Document {
               : null,
           knowledgeTypes: _json.containsKey('knowledgeTypes')
               ? (_json['knowledgeTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           latestReloadStatus: _json.containsKey('latestReloadStatus')
@@ -19724,7 +19590,7 @@ class GoogleCloudDialogflowV2EntityType {
               : null,
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<GoogleCloudDialogflowV2EntityTypeEntity>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -19758,9 +19624,8 @@ class GoogleCloudDialogflowV2EntityTypeBatch {
       : this(
           entityTypes: _json.containsKey('entityTypes')
               ? (_json['entityTypes'] as core.List)
-                  .map<GoogleCloudDialogflowV2EntityType>((value) =>
-                      GoogleCloudDialogflowV2EntityType.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2EntityType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -19802,7 +19667,7 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
       : this(
           synonyms: _json.containsKey('synonyms')
               ? (_json['synonyms'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           value:
@@ -19964,10 +19829,9 @@ class GoogleCloudDialogflowV2EnvironmentHistory {
       : this(
           entries: _json.containsKey('entries')
               ? (_json['entries'] as core.List)
-                  .map<GoogleCloudDialogflowV2EnvironmentHistoryEntry>(
-                      (value) => GoogleCloudDialogflowV2EnvironmentHistoryEntry
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2EnvironmentHistoryEntry.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -20058,7 +19922,7 @@ class GoogleCloudDialogflowV2EventInput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   GoogleCloudDialogflowV2EventInput({
     this.languageCode,
@@ -20073,13 +19937,7 @@ class GoogleCloudDialogflowV2EventInput {
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -20285,7 +20143,7 @@ class GoogleCloudDialogflowV2Fulfillment {
               : null,
           features: _json.containsKey('features')
               ? (_json['features'] as core.List)
-                  .map<GoogleCloudDialogflowV2FulfillmentFeature>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2FulfillmentFeature.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -20579,11 +20437,10 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
       : this(
           featureConfigs: _json.containsKey('featureConfigs')
               ? (_json['featureConfigs'] as core.List)
-                  .map<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>(
-                      (value) =>
-                          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           groupSuggestionResponses:
@@ -20871,7 +20728,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocum
       : this(
           documents: _json.containsKey('documents')
               ? (_json['documents'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -20902,7 +20759,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
       : this(
           knowledgeBases: _json.containsKey('knowledgeBases')
               ? (_json['knowledgeBases'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -20975,7 +20832,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantEvent {
               : null,
           suggestionResults: _json.containsKey('suggestionResults')
               ? (_json['suggestionResults'] as core.List)
-                  .map<GoogleCloudDialogflowV2SuggestionResult>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2SuggestionResult.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -21327,7 +21184,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
               : null,
           phraseHints: _json.containsKey('phraseHints')
               ? (_json['phraseHints'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sampleRateHertz: _json.containsKey('sampleRateHertz')
@@ -21338,9 +21195,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
               : null,
           speechContexts: _json.containsKey('speechContexts')
               ? (_json['speechContexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2SpeechContext>((value) =>
-                      GoogleCloudDialogflowV2SpeechContext.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2SpeechContext.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -21559,7 +21415,7 @@ class GoogleCloudDialogflowV2Intent {
           defaultResponsePlatforms:
               _json.containsKey('defaultResponsePlatforms')
                   ? (_json['defaultResponsePlatforms'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           displayName: _json.containsKey('displayName')
@@ -21570,20 +21426,19 @@ class GoogleCloudDialogflowV2Intent {
               : null,
           events: _json.containsKey('events')
               ? (_json['events'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           followupIntentInfo: _json.containsKey('followupIntentInfo')
               ? (_json['followupIntentInfo'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentFollowupIntentInfo>(
-                      (value) => GoogleCloudDialogflowV2IntentFollowupIntentInfo
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentFollowupIntentInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           inputContextNames: _json.containsKey('inputContextNames')
               ? (_json['inputContextNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           isFallback: _json.containsKey('isFallback')
@@ -21594,9 +21449,8 @@ class GoogleCloudDialogflowV2Intent {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessage>((value) =>
-                      GoogleCloudDialogflowV2IntentMessage.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           mlDisabled: _json.containsKey('mlDisabled')
@@ -21605,14 +21459,13 @@ class GoogleCloudDialogflowV2Intent {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           outputContexts: _json.containsKey('outputContexts')
               ? (_json['outputContexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2Context>((value) =>
-                      GoogleCloudDialogflowV2Context.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Context.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentParameter>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2IntentParameter.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -21632,7 +21485,7 @@ class GoogleCloudDialogflowV2Intent {
               : null,
           trainingPhrases: _json.containsKey('trainingPhrases')
               ? (_json['trainingPhrases'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentTrainingPhrase>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -21690,9 +21543,8 @@ class GoogleCloudDialogflowV2IntentBatch {
       : this(
           intents: _json.containsKey('intents')
               ? (_json['intents'] as core.List)
-                  .map<GoogleCloudDialogflowV2Intent>((value) =>
-                      GoogleCloudDialogflowV2Intent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Intent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -21773,7 +21625,7 @@ class GoogleCloudDialogflowV2IntentMessage {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The platform that this message is intended for.
   ///
@@ -21863,12 +21715,7 @@ class GoogleCloudDialogflowV2IntentMessage {
                   _json['mediaContent'] as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           platform: _json.containsKey('platform')
               ? _json['platform'] as core.String
@@ -21959,11 +21806,10 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
       : this(
           buttons: _json.containsKey('buttons')
               ? (_json['buttons'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageBasicCardButton>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageBasicCardButton
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageBasicCardButton
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           formattedText: _json.containsKey('formattedText')
@@ -22095,11 +21941,10 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -22257,10 +22102,9 @@ class GoogleCloudDialogflowV2IntentMessageCard {
       : this(
           buttons: _json.containsKey('buttons')
               ? (_json['buttons'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageCardButton>(
-                      (value) => GoogleCloudDialogflowV2IntentMessageCardButton
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           imageUri: _json.containsKey('imageUri')
@@ -22328,11 +22172,10 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageCarouselSelectItem
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageCarouselSelectItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -22531,11 +22374,10 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageListSelectItem>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageListSelectItem
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageListSelectItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           subtitle: _json.containsKey('subtitle')
@@ -22633,11 +22475,10 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
       : this(
           mediaObjects: _json.containsKey('mediaObjects')
               ? (_json['mediaObjects'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           mediaType: _json.containsKey('mediaType')
@@ -22737,7 +22578,7 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
       : this(
           quickReplies: _json.containsKey('quickReplies')
               ? (_json['quickReplies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           title:
@@ -22773,7 +22614,7 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
           synonyms: _json.containsKey('synonyms')
               ? (_json['synonyms'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -22846,11 +22687,10 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
       : this(
           simpleResponses: _json.containsKey('simpleResponses')
               ? (_json['simpleResponses'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageSimpleResponse>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageSimpleResponse
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageSimpleResponse
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -22900,10 +22740,9 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
       : this(
           suggestions: _json.containsKey('suggestions')
               ? (_json['suggestions'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageSuggestion>(
-                      (value) => GoogleCloudDialogflowV2IntentMessageSuggestion
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -22960,20 +22799,18 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
       : this(
           buttons: _json.containsKey('buttons')
               ? (_json['buttons'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageBasicCardButton>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageBasicCardButton
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageBasicCardButton
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           columnProperties: _json.containsKey('columnProperties')
               ? (_json['columnProperties'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageColumnProperties>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageColumnProperties
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageColumnProperties
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           image: _json.containsKey('image')
@@ -22982,11 +22819,9 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageTableCardRow>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageTableCardRow
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           subtitle: _json.containsKey('subtitle')
@@ -23051,11 +22886,10 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
       : this(
           cells: _json.containsKey('cells')
               ? (_json['cells'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessageTableCardCell>(
-                      (value) =>
-                          GoogleCloudDialogflowV2IntentMessageTableCardCell
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentMessageTableCardCell
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dividerAfter: _json.containsKey('dividerAfter')
@@ -23085,7 +22919,7 @@ class GoogleCloudDialogflowV2IntentMessageText {
       : this(
           text: _json.containsKey('text')
               ? (_json['text'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -23180,7 +23014,7 @@ class GoogleCloudDialogflowV2IntentParameter {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           prompts: _json.containsKey('prompts')
               ? (_json['prompts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           value:
@@ -23258,10 +23092,9 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parts: _json.containsKey('parts')
               ? (_json['parts'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentTrainingPhrasePart>(
-                      (value) => GoogleCloudDialogflowV2IntentTrainingPhrasePart
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           timesAddedCount: _json.containsKey('timesAddedCount')
@@ -23442,9 +23275,8 @@ class GoogleCloudDialogflowV2ListAnswerRecordsResponse {
       : this(
           answerRecords: _json.containsKey('answerRecords')
               ? (_json['answerRecords'] as core.List)
-                  .map<GoogleCloudDialogflowV2AnswerRecord>((value) =>
-                      GoogleCloudDialogflowV2AnswerRecord.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2AnswerRecord.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23481,9 +23313,8 @@ class GoogleCloudDialogflowV2ListContextsResponse {
       : this(
           contexts: _json.containsKey('contexts')
               ? (_json['contexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2Context>((value) =>
-                      GoogleCloudDialogflowV2Context.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Context.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23520,7 +23351,7 @@ class GoogleCloudDialogflowV2ListConversationProfilesResponse {
       : this(
           conversationProfiles: _json.containsKey('conversationProfiles')
               ? (_json['conversationProfiles'] as core.List)
-                  .map<GoogleCloudDialogflowV2ConversationProfile>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2ConversationProfile.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -23559,9 +23390,8 @@ class GoogleCloudDialogflowV2ListConversationsResponse {
       : this(
           conversations: _json.containsKey('conversations')
               ? (_json['conversations'] as core.List)
-                  .map<GoogleCloudDialogflowV2Conversation>((value) =>
-                      GoogleCloudDialogflowV2Conversation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Conversation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23595,9 +23425,8 @@ class GoogleCloudDialogflowV2ListDocumentsResponse {
       : this(
           documents: _json.containsKey('documents')
               ? (_json['documents'] as core.List)
-                  .map<GoogleCloudDialogflowV2Document>((value) =>
-                      GoogleCloudDialogflowV2Document.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Document.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23633,9 +23462,8 @@ class GoogleCloudDialogflowV2ListEntityTypesResponse {
       : this(
           entityTypes: _json.containsKey('entityTypes')
               ? (_json['entityTypes'] as core.List)
-                  .map<GoogleCloudDialogflowV2EntityType>((value) =>
-                      GoogleCloudDialogflowV2EntityType.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2EntityType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23671,9 +23499,8 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
       : this(
           environments: _json.containsKey('environments')
               ? (_json['environments'] as core.List)
-                  .map<GoogleCloudDialogflowV2Environment>((value) =>
-                      GoogleCloudDialogflowV2Environment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Environment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23709,9 +23536,8 @@ class GoogleCloudDialogflowV2ListIntentsResponse {
       : this(
           intents: _json.containsKey('intents')
               ? (_json['intents'] as core.List)
-                  .map<GoogleCloudDialogflowV2Intent>((value) =>
-                      GoogleCloudDialogflowV2Intent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Intent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23744,9 +23570,8 @@ class GoogleCloudDialogflowV2ListKnowledgeBasesResponse {
       : this(
           knowledgeBases: _json.containsKey('knowledgeBases')
               ? (_json['knowledgeBases'] as core.List)
-                  .map<GoogleCloudDialogflowV2KnowledgeBase>((value) =>
-                      GoogleCloudDialogflowV2KnowledgeBase.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2KnowledgeBase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23784,9 +23609,8 @@ class GoogleCloudDialogflowV2ListMessagesResponse {
       : this(
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowV2Message>((value) =>
-                      GoogleCloudDialogflowV2Message.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Message.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -23825,9 +23649,8 @@ class GoogleCloudDialogflowV2ListParticipantsResponse {
               : null,
           participants: _json.containsKey('participants')
               ? (_json['participants'] as core.List)
-                  .map<GoogleCloudDialogflowV2Participant>((value) =>
-                      GoogleCloudDialogflowV2Participant.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Participant.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -23863,7 +23686,7 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
               : null,
           sessionEntityTypes: _json.containsKey('sessionEntityTypes')
               ? (_json['sessionEntityTypes'] as core.List)
-                  .map<GoogleCloudDialogflowV2SessionEntityType>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2SessionEntityType.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -23902,9 +23725,8 @@ class GoogleCloudDialogflowV2ListVersionsResponse {
               : null,
           versions: _json.containsKey('versions')
               ? (_json['versions'] as core.List)
-                  .map<GoogleCloudDialogflowV2Version>((value) =>
-                      GoogleCloudDialogflowV2Version.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Version.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -24059,7 +23881,7 @@ class GoogleCloudDialogflowV2MessageAnnotation {
               : null,
           parts: _json.containsKey('parts')
               ? (_json['parts'] as core.List)
-                  .map<GoogleCloudDialogflowV2AnnotatedMessagePart>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -24130,7 +23952,7 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The source of this request, e.g., `google`, `facebook`, `slack`.
   ///
@@ -24153,12 +23975,7 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
   GoogleCloudDialogflowV2OriginalDetectIntentRequest.fromJson(core.Map _json)
       : this(
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           source: _json.containsKey('source')
               ? _json['source'] as core.String
@@ -24391,7 +24208,7 @@ class GoogleCloudDialogflowV2QueryParameters {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Specifies whether to delete all contexts in the current session before the
   /// new ones are activated.
@@ -24444,9 +24261,8 @@ class GoogleCloudDialogflowV2QueryParameters {
       : this(
           contexts: _json.containsKey('contexts')
               ? (_json['contexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2Context>((value) =>
-                      GoogleCloudDialogflowV2Context.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Context.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           geoLocation: _json.containsKey('geoLocation')
@@ -24454,12 +24270,7 @@ class GoogleCloudDialogflowV2QueryParameters {
                   _json['geoLocation'] as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           resetContexts: _json.containsKey('resetContexts')
               ? _json['resetContexts'] as core.bool
@@ -24472,7 +24283,7 @@ class GoogleCloudDialogflowV2QueryParameters {
               : null,
           sessionEntityTypes: _json.containsKey('sessionEntityTypes')
               ? (_json['sessionEntityTypes'] as core.List)
-                  .map<GoogleCloudDialogflowV2SessionEntityType>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2SessionEntityType.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -24533,7 +24344,7 @@ class GoogleCloudDialogflowV2QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// The collection of rich messages to present to the user.
   core.List<GoogleCloudDialogflowV2IntentMessage>? fulfillmentMessages;
@@ -24586,7 +24397,7 @@ class GoogleCloudDialogflowV2QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// The original conversational query text: - If natural language text was
   /// provided as input, `query_text` contains a copy of the input.
@@ -24616,7 +24427,7 @@ class GoogleCloudDialogflowV2QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? webhookPayload;
+  core.Map<core.String, core.Object?>? webhookPayload;
 
   /// If the query was fulfilled by a webhook call, this field is set to the
   /// value of the `source` field returned in the webhook response.
@@ -24654,19 +24465,12 @@ class GoogleCloudDialogflowV2QueryResult {
               ? _json['cancelsSlotFilling'] as core.bool
               : null,
           diagnosticInfo: _json.containsKey('diagnosticInfo')
-              ? (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['diagnosticInfo'] as core.Map<core.String, core.dynamic>
               : null,
           fulfillmentMessages: _json.containsKey('fulfillmentMessages')
               ? (_json['fulfillmentMessages'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessage>((value) =>
-                      GoogleCloudDialogflowV2IntentMessage.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fulfillmentText: _json.containsKey('fulfillmentText')
@@ -24685,19 +24489,12 @@ class GoogleCloudDialogflowV2QueryResult {
               : null,
           outputContexts: _json.containsKey('outputContexts')
               ? (_json['outputContexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2Context>((value) =>
-                      GoogleCloudDialogflowV2Context.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Context.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
               : null,
           queryText: _json.containsKey('queryText')
               ? _json['queryText'] as core.String
@@ -24712,13 +24509,7 @@ class GoogleCloudDialogflowV2QueryResult {
               ? (_json['speechRecognitionConfidence'] as core.num).toDouble()
               : null,
           webhookPayload: _json.containsKey('webhookPayload')
-              ? (_json['webhookPayload'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['webhookPayload'] as core.Map<core.String, core.dynamic>
               : null,
           webhookSource: _json.containsKey('webhookSource')
               ? _json['webhookSource'] as core.String
@@ -24839,9 +24630,8 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
       : this(
           agents: _json.containsKey('agents')
               ? (_json['agents'] as core.List)
-                  .map<GoogleCloudDialogflowV2Agent>((value) =>
-                      GoogleCloudDialogflowV2Agent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Agent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -25003,7 +24793,7 @@ class GoogleCloudDialogflowV2SessionEntityType {
       : this(
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<GoogleCloudDialogflowV2EntityTypeEntity>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -25061,7 +24851,7 @@ class GoogleCloudDialogflowV2SpeechContext {
               : null,
           phrases: _json.containsKey('phrases')
               ? (_json['phrases'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -25182,9 +24972,8 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
       : this(
           articleAnswers: _json.containsKey('articleAnswers')
               ? (_json['articleAnswers'] as core.List)
-                  .map<GoogleCloudDialogflowV2ArticleAnswer>((value) =>
-                      GoogleCloudDialogflowV2ArticleAnswer.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2ArticleAnswer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           contextSize: _json.containsKey('contextSize')
@@ -25270,9 +25059,8 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
               : null,
           faqAnswers: _json.containsKey('faqAnswers')
               ? (_json['faqAnswers'] as core.List)
-                  .map<GoogleCloudDialogflowV2FaqAnswer>((value) =>
-                      GoogleCloudDialogflowV2FaqAnswer.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2FaqAnswer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           latestMessage: _json.containsKey('latestMessage')
@@ -25418,7 +25206,7 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
       : this(
           effectsProfileId: _json.containsKey('effectsProfileId')
               ? (_json['effectsProfileId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pitch: _json.containsKey('pitch')
@@ -25612,7 +25400,7 @@ class GoogleCloudDialogflowV2ValidationError {
       : this(
           entries: _json.containsKey('entries')
               ? (_json['entries'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           errorMessage: _json.containsKey('errorMessage')
@@ -25643,7 +25431,7 @@ class GoogleCloudDialogflowV2ValidationResult {
       : this(
           validationErrors: _json.containsKey('validationErrors')
               ? (_json['validationErrors'] as core.List)
-                  .map<GoogleCloudDialogflowV2ValidationError>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2ValidationError.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -25910,7 +25698,7 @@ class GoogleCloudDialogflowV2WebhookResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Additional session entity types to replace or extend developer entity
   /// types with.
@@ -25951,9 +25739,8 @@ class GoogleCloudDialogflowV2WebhookResponse {
               : null,
           fulfillmentMessages: _json.containsKey('fulfillmentMessages')
               ? (_json['fulfillmentMessages'] as core.List)
-                  .map<GoogleCloudDialogflowV2IntentMessage>((value) =>
-                      GoogleCloudDialogflowV2IntentMessage.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2IntentMessage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fulfillmentText: _json.containsKey('fulfillmentText')
@@ -25961,22 +25748,16 @@ class GoogleCloudDialogflowV2WebhookResponse {
               : null,
           outputContexts: _json.containsKey('outputContexts')
               ? (_json['outputContexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2Context>((value) =>
-                      GoogleCloudDialogflowV2Context.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2Context.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           sessionEntityTypes: _json.containsKey('sessionEntityTypes')
               ? (_json['sessionEntityTypes'] as core.List)
-                  .map<GoogleCloudDialogflowV2SessionEntityType>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2SessionEntityType.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -26049,7 +25830,7 @@ class GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
               ? _json['entityType'] as core.String
               : null,
           formattedValue: _json.containsKey('formattedValue')
-              ? _json['formattedValue'] as core.Object
+              ? _json['formattedValue']
               : null,
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
         );
@@ -26105,7 +25886,7 @@ class GoogleCloudDialogflowV2beta1ArticleAnswer {
               : null,
           snippets: _json.containsKey('snippets')
               ? (_json['snippets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           title:
@@ -26136,7 +25917,7 @@ class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
       : this(
           entityTypes: _json.containsKey('entityTypes')
               ? (_json['entityTypes'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1EntityType>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1EntityType.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -26163,9 +25944,8 @@ class GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
       : this(
           intents: _json.containsKey('intents')
               ? (_json['intents'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1Intent>((value) =>
-                      GoogleCloudDialogflowV2beta1Intent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2beta1Intent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -26232,7 +26012,7 @@ class GoogleCloudDialogflowV2beta1Context {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   GoogleCloudDialogflowV2beta1Context({
     this.lifespanCount,
@@ -26247,13 +26027,7 @@ class GoogleCloudDialogflowV2beta1Context {
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -26418,7 +26192,7 @@ class GoogleCloudDialogflowV2beta1EntityType {
               : null,
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1EntityTypeEntity>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1EntityTypeEntity.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -26470,7 +26244,7 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntity {
       : this(
           synonyms: _json.containsKey('synonyms')
               ? (_json['synonyms'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           value:
@@ -26518,7 +26292,7 @@ class GoogleCloudDialogflowV2beta1EventInput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   GoogleCloudDialogflowV2beta1EventInput({
     this.languageCode,
@@ -26533,13 +26307,7 @@ class GoogleCloudDialogflowV2beta1EventInput {
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -26701,7 +26469,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent {
               : null,
           suggestionResults: _json.containsKey('suggestionResults')
               ? (_json['suggestionResults'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1SuggestionResult>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1SuggestionResult.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -26730,7 +26498,7 @@ class GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
       : this(
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -26956,7 +26724,7 @@ class GoogleCloudDialogflowV2beta1Intent {
           defaultResponsePlatforms:
               _json.containsKey('defaultResponsePlatforms')
                   ? (_json['defaultResponsePlatforms'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           displayName: _json.containsKey('displayName')
@@ -26967,21 +26735,20 @@ class GoogleCloudDialogflowV2beta1Intent {
               : null,
           events: _json.containsKey('events')
               ? (_json['events'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           followupIntentInfo: _json.containsKey('followupIntentInfo')
               ? (_json['followupIntentInfo'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           inputContextNames: _json.containsKey('inputContextNames')
               ? (_json['inputContextNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           isFallback: _json.containsKey('isFallback')
@@ -26992,7 +26759,7 @@ class GoogleCloudDialogflowV2beta1Intent {
               : null,
           messages: _json.containsKey('messages')
               ? (_json['messages'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1IntentMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -27006,14 +26773,13 @@ class GoogleCloudDialogflowV2beta1Intent {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           outputContexts: _json.containsKey('outputContexts')
               ? (_json['outputContexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1Context>((value) =>
-                      GoogleCloudDialogflowV2beta1Context.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2beta1Context.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentParameter>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1IntentParameter.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -27033,11 +26799,9 @@ class GoogleCloudDialogflowV2beta1Intent {
               : null,
           trainingPhrases: _json.containsKey('trainingPhrases')
               ? (_json['trainingPhrases'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentTrainingPhrase>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentTrainingPhrase
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentTrainingPhrase.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           webhookState: _json.containsKey('webhookState')
@@ -27148,7 +26912,7 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The platform that this message is intended for.
   ///
@@ -27270,12 +27034,7 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
                   _json['mediaContent'] as core.Map<core.String, core.dynamic>)
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           platform: _json.containsKey('platform')
               ? _json['platform'] as core.String
@@ -27407,11 +27166,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
       : this(
           buttons: _json.containsKey('buttons')
               ? (_json['buttons'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           formattedText: _json.containsKey('formattedText')
@@ -27544,11 +27302,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -27706,11 +27463,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
       : this(
           buttons: _json.containsKey('buttons')
               ? (_json['buttons'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageCardButton>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageCardButton
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageCardButton
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           imageUri: _json.containsKey('imageUri')
@@ -27781,11 +27537,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -27987,11 +27742,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageListSelectItem
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageListSelectItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           subtitle: _json.containsKey('subtitle')
@@ -28091,11 +27845,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
       : this(
           mediaObjects: _json.containsKey('mediaObjects')
               ? (_json['mediaObjects'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           mediaType: _json.containsKey('mediaType')
@@ -28195,7 +27948,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
       : this(
           quickReplies: _json.containsKey('quickReplies')
               ? (_json['quickReplies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           title:
@@ -28257,11 +28010,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
               : null,
           suggestions: _json.containsKey('suggestions')
               ? (_json['suggestions'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           title:
@@ -28375,11 +28127,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
       : this(
           cardContents: _json.containsKey('cardContents')
               ? (_json['cardContents'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           cardWidth: _json.containsKey('cardWidth')
@@ -28670,11 +28421,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
       : this(
           rbmSuggestion: _json.containsKey('rbmSuggestion')
               ? (_json['rbmSuggestion'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
@@ -28712,7 +28462,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
           synonyms: _json.containsKey('synonyms')
               ? (_json['synonyms'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -28787,11 +28537,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
       : this(
           simpleResponses: _json.containsKey('simpleResponses')
               ? (_json['simpleResponses'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -28841,11 +28590,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
       : this(
           suggestions: _json.containsKey('suggestions')
               ? (_json['suggestions'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageSuggestion>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageSuggestion
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageSuggestion
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -28902,20 +28650,18 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
       : this(
           buttons: _json.containsKey('buttons')
               ? (_json['buttons'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           columnProperties: _json.containsKey('columnProperties')
               ? (_json['columnProperties'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           image: _json.containsKey('image')
@@ -28924,11 +28670,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageTableCardRow
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageTableCardRow
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           subtitle: _json.containsKey('subtitle')
@@ -28994,11 +28739,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
       : this(
           cells: _json.containsKey('cells')
               ? (_json['cells'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dividerAfter: _json.containsKey('dividerAfter')
@@ -29123,7 +28867,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageText {
       : this(
           text: _json.containsKey('text')
               ? (_json['text'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -29218,7 +28962,7 @@ class GoogleCloudDialogflowV2beta1IntentParameter {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           prompts: _json.containsKey('prompts')
               ? (_json['prompts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           value:
@@ -29296,11 +29040,10 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parts: _json.containsKey('parts')
               ? (_json['parts'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           timesAddedCount: _json.containsKey('timesAddedCount')
@@ -29390,11 +29133,10 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswers {
       : this(
           answers: _json.containsKey('answers')
               ? (_json['answers'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -29656,11 +29398,9 @@ class GoogleCloudDialogflowV2beta1MessageAnnotation {
               : null,
           parts: _json.containsKey('parts')
               ? (_json['parts'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>(
-                      (value) =>
-                          GoogleCloudDialogflowV2beta1AnnotatedMessagePart
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudDialogflowV2beta1AnnotatedMessagePart.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -29690,7 +29430,7 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// The source of this request, e.g., `google`, `facebook`, `slack`.
   ///
@@ -29714,12 +29454,7 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
       core.Map _json)
       : this(
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           source: _json.containsKey('source')
               ? _json['source'] as core.String
@@ -29761,7 +29496,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? diagnosticInfo;
+  core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// The collection of rich messages to present to the user.
   core.List<GoogleCloudDialogflowV2beta1IntentMessage>? fulfillmentMessages;
@@ -29818,7 +29553,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? parameters;
+  core.Map<core.String, core.Object?>? parameters;
 
   /// The original conversational query text: - If natural language text was
   /// provided as input, `query_text` contains a copy of the input.
@@ -29848,7 +29583,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? webhookPayload;
+  core.Map<core.String, core.Object?>? webhookPayload;
 
   /// If the query was fulfilled by a webhook call, this field is set to the
   /// value of the `source` field returned in the webhook response.
@@ -29887,17 +29622,11 @@ class GoogleCloudDialogflowV2beta1QueryResult {
               ? _json['cancelsSlotFilling'] as core.bool
               : null,
           diagnosticInfo: _json.containsKey('diagnosticInfo')
-              ? (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['diagnosticInfo'] as core.Map<core.String, core.dynamic>
               : null,
           fulfillmentMessages: _json.containsKey('fulfillmentMessages')
               ? (_json['fulfillmentMessages'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1IntentMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -29923,19 +29652,12 @@ class GoogleCloudDialogflowV2beta1QueryResult {
               : null,
           outputContexts: _json.containsKey('outputContexts')
               ? (_json['outputContexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1Context>((value) =>
-                      GoogleCloudDialogflowV2beta1Context.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2beta1Context.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
               : null,
           queryText: _json.containsKey('queryText')
               ? _json['queryText'] as core.String
@@ -29950,13 +29672,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
               ? (_json['speechRecognitionConfidence'] as core.num).toDouble()
               : null,
           webhookPayload: _json.containsKey('webhookPayload')
-              ? (_json['webhookPayload'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['webhookPayload'] as core.Map<core.String, core.dynamic>
               : null,
           webhookSource: _json.containsKey('webhookSource')
               ? _json['webhookSource'] as core.String
@@ -30119,7 +29835,7 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
       : this(
           entities: _json.containsKey('entities')
               ? (_json['entities'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1EntityTypeEntity>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1EntityTypeEntity.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -30210,7 +29926,7 @@ class GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
       : this(
           articleAnswers: _json.containsKey('articleAnswers')
               ? (_json['articleAnswers'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1ArticleAnswer>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1ArticleAnswer.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -30265,7 +29981,7 @@ class GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse {
               : null,
           faqAnswers: _json.containsKey('faqAnswers')
               ? (_json['faqAnswers'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1FaqAnswer>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1FaqAnswer.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -30323,7 +30039,7 @@ class GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse {
               : null,
           smartReplyAnswers: _json.containsKey('smartReplyAnswers')
               ? (_json['smartReplyAnswers'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1SmartReplyAnswer>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1SmartReplyAnswer.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -30443,7 +30159,7 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
       : this(
           alternativeQueryResults: _json.containsKey('alternativeQueryResults')
               ? (_json['alternativeQueryResults'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1QueryResult>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1QueryResult.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -30552,7 +30268,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   /// Additional session entity types to replace or extend developer entity
   /// types with.
@@ -30598,7 +30314,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
               : null,
           fulfillmentMessages: _json.containsKey('fulfillmentMessages')
               ? (_json['fulfillmentMessages'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1IntentMessage>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1IntentMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -30611,22 +30327,16 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
               : null,
           outputContexts: _json.containsKey('outputContexts')
               ? (_json['outputContexts'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1Context>((value) =>
-                      GoogleCloudDialogflowV2beta1Context.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudDialogflowV2beta1Context.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
           sessionEntityTypes: _json.containsKey('sessionEntityTypes')
               ? (_json['sessionEntityTypes'] as core.List)
-                  .map<GoogleCloudDialogflowV2beta1SessionEntityType>((value) =>
+                  .map((value) =>
                       GoogleCloudDialogflowV2beta1SessionEntityType.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -30775,7 +30485,7 @@ class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse {
       : this(
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                  .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -30856,9 +30566,8 @@ class GoogleCloudLocationListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<GoogleCloudLocationLocation>((value) =>
-                      GoogleCloudLocationLocation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudLocationLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -30896,7 +30605,7 @@ class GoogleCloudLocationLocation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -30928,12 +30637,7 @@ class GoogleCloudLocationLocation {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -30967,9 +30671,8 @@ class GoogleLongrunningListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<GoogleLongrunningOperation>((value) =>
-                      GoogleLongrunningOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -31002,7 +30705,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -31022,7 +30725,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation({
     this.done,
@@ -31040,21 +30743,11 @@ class GoogleLongrunningOperation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -31093,7 +30786,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -31112,13 +30805,7 @@ class GoogleRpcStatus {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

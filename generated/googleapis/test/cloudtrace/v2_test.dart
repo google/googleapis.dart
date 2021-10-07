@@ -442,7 +442,7 @@ void checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4() => {
+core.Map<core.String, core.Object?> buildUnnamed4() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -455,7 +455,7 @@ core.Map<core.String, core.Object> buildUnnamed4() => {
       },
     };
 
-void checkUnnamed4(core.Map<core.String, core.Object> o) {
+void checkUnnamed4(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -487,12 +487,12 @@ void checkUnnamed4(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed5() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed5() => [
       buildUnnamed4(),
       buildUnnamed4(),
     ];
 
-void checkUnnamed5(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed5(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed4(o[0]);
   checkUnnamed4(o[1]);

@@ -2575,7 +2575,7 @@ class ArtifactObjects {
               : null,
           paths: _json.containsKey('paths')
               ? (_json['paths'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           timing: _json.containsKey('timing')
@@ -2613,7 +2613,7 @@ class ArtifactResult {
       : this(
           fileHash: _json.containsKey('fileHash')
               ? (_json['fileHash'] as core.List)
-                  .map<FileHashes>((value) => FileHashes.fromJson(
+                  .map((value) => FileHashes.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2660,7 +2660,7 @@ class Artifacts {
       : this(
           images: _json.containsKey('images')
               ? (_json['images'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           objects: _json.containsKey('objects')
@@ -2925,7 +2925,7 @@ class Build {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           images: _json.containsKey('images')
               ? (_json['images'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logUrl: _json.containsKey('logUrl')
@@ -2951,7 +2951,7 @@ class Build {
               : null,
           secrets: _json.containsKey('secrets')
               ? (_json['secrets'] as core.List)
-                  .map<Secret>((value) => Secret.fromJson(
+                  .map((value) => Secret.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2977,7 +2977,7 @@ class Build {
               : null,
           steps: _json.containsKey('steps')
               ? (_json['steps'] as core.List)
-                  .map<BuildStep>((value) => BuildStep.fromJson(
+                  .map((value) => BuildStep.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2992,7 +2992,7 @@ class Build {
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           timeout: _json.containsKey('timeout')
@@ -3009,7 +3009,7 @@ class Build {
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<Warning>((value) => Warning.fromJson(
+                  .map((value) => Warning.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3262,7 +3262,7 @@ class BuildOptions {
               : null,
           env: _json.containsKey('env')
               ? (_json['env'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logStreamingOption: _json.containsKey('logStreamingOption')
@@ -3283,12 +3283,12 @@ class BuildOptions {
               : null,
           secretEnv: _json.containsKey('secretEnv')
               ? (_json['secretEnv'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sourceProvenanceHash: _json.containsKey('sourceProvenanceHash')
               ? (_json['sourceProvenanceHash'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           substitutionOption: _json.containsKey('substitutionOption')
@@ -3296,7 +3296,7 @@ class BuildOptions {
               : null,
           volumes: _json.containsKey('volumes')
               ? (_json['volumes'] as core.List)
-                  .map<Volume>((value) => Volume.fromJson(
+                  .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3467,7 +3467,7 @@ class BuildStep {
       : this(
           args: _json.containsKey('args')
               ? (_json['args'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
@@ -3476,7 +3476,7 @@ class BuildStep {
               : null,
           env: _json.containsKey('env')
               ? (_json['env'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -3490,7 +3490,7 @@ class BuildStep {
               : null,
           secretEnv: _json.containsKey('secretEnv')
               ? (_json['secretEnv'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           status: _json.containsKey('status')
@@ -3505,13 +3505,13 @@ class BuildStep {
               : null,
           volumes: _json.containsKey('volumes')
               ? (_json['volumes'] as core.List)
-                  .map<Volume>((value) => Volume.fromJson(
+                  .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           waitFor: _json.containsKey('waitFor')
               ? (_json['waitFor'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3721,12 +3721,12 @@ class BuildTrigger {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           ignoredFiles: _json.containsKey('ignoredFiles')
               ? (_json['ignoredFiles'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           includedFiles: _json.containsKey('includedFiles')
               ? (_json['includedFiles'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -3755,7 +3755,7 @@ class BuildTrigger {
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           triggerTemplate: _json.containsKey('triggerTemplate')
@@ -4096,7 +4096,7 @@ class FileHashes {
       : this(
           fileHash: _json.containsKey('fileHash')
               ? (_json['fileHash'] as core.List)
-                  .map<Hash>((value) => Hash.fromJson(
+                  .map((value) => Hash.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4650,7 +4650,7 @@ class HttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? extensions;
+  core.List<core.Map<core.String, core.Object?>>? extensions;
 
   HttpBody({
     this.contentType,
@@ -4666,13 +4666,7 @@ class HttpBody {
           data: _json.containsKey('data') ? _json['data'] as core.String : null,
           extensions: _json.containsKey('extensions')
               ? (_json['extensions'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
         );
@@ -4746,7 +4740,7 @@ class ListBuildTriggersResponse {
               : null,
           triggers: _json.containsKey('triggers')
               ? (_json['triggers'] as core.List)
-                  .map<BuildTrigger>((value) => BuildTrigger.fromJson(
+                  .map((value) => BuildTrigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4778,7 +4772,7 @@ class ListBuildsResponse {
       : this(
           builds: _json.containsKey('builds')
               ? (_json['builds'] as core.List)
-                  .map<Build>((value) => Build.fromJson(
+                  .map((value) => Build.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4807,9 +4801,8 @@ class ListGithubEnterpriseConfigsResponse {
       : this(
           configs: _json.containsKey('configs')
               ? (_json['configs'] as core.List)
-                  .map<GitHubEnterpriseConfig>((value) =>
-                      GitHubEnterpriseConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GitHubEnterpriseConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4843,7 +4836,7 @@ class ListWorkerPoolsResponse {
               : null,
           workerPools: _json.containsKey('workerPools')
               ? (_json['workerPools'] as core.List)
-                  .map<WorkerPool>((value) => WorkerPool.fromJson(
+                  .map((value) => WorkerPool.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4923,7 +4916,7 @@ class Notification {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? structDelivery;
+  core.Map<core.String, core.Object?>? structDelivery;
 
   Notification({
     this.filter,
@@ -4951,13 +4944,7 @@ class Notification {
                   _json['smtpDelivery'] as core.Map<core.String, core.dynamic>)
               : null,
           structDelivery: _json.containsKey('structDelivery')
-              ? (_json['structDelivery'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['structDelivery'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -5125,7 +5112,7 @@ class NotifierSpec {
               : null,
           secrets: _json.containsKey('secrets')
               ? (_json['secrets'] as core.List)
-                  .map<NotifierSecret>((value) => NotifierSecret.fromJson(
+                  .map((value) => NotifierSecret.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5159,7 +5146,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -5179,7 +5166,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -5197,21 +5184,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -5710,17 +5687,17 @@ class Results {
               : null,
           buildStepImages: _json.containsKey('buildStepImages')
               ? (_json['buildStepImages'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           buildStepOutputs: _json.containsKey('buildStepOutputs')
               ? (_json['buildStepOutputs'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           images: _json.containsKey('images')
               ? (_json['images'] as core.List)
-                  .map<BuiltImage>((value) => BuiltImage.fromJson(
+                  .map((value) => BuiltImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5865,7 +5842,7 @@ class SMTPDelivery {
           port: _json.containsKey('port') ? _json['port'] as core.String : null,
           recipientAddresses: _json.containsKey('recipientAddresses')
               ? (_json['recipientAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           senderAddress: _json.containsKey('senderAddress')
@@ -5981,15 +5958,14 @@ class Secrets {
       : this(
           inline: _json.containsKey('inline')
               ? (_json['inline'] as core.List)
-                  .map<InlineSecret>((value) => InlineSecret.fromJson(
+                  .map((value) => InlineSecret.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           secretManager: _json.containsKey('secretManager')
               ? (_json['secretManager'] as core.List)
-                  .map<SecretManagerSecret>((value) =>
-                      SecretManagerSecret.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SecretManagerSecret.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6173,7 +6149,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -6192,13 +6168,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

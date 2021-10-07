@@ -3889,17 +3889,17 @@ class BucketCors {
               : null,
           method: _json.containsKey('method')
               ? (_json['method'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           origin: _json.containsKey('origin')
               ? (_json['origin'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           responseHeader: _json.containsKey('responseHeader')
               ? (_json['responseHeader'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4198,7 +4198,7 @@ class BucketLifecycleRuleCondition {
               : null,
           matchesStorageClass: _json.containsKey('matchesStorageClass')
               ? (_json['matchesStorageClass'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           noncurrentTimeBefore: _json.containsKey('noncurrentTimeBefore')
@@ -4279,9 +4279,8 @@ class BucketLifecycle {
       : this(
           rule: _json.containsKey('rule')
               ? (_json['rule'] as core.List)
-                  .map<BucketLifecycleRule>((value) =>
-                      BucketLifecycleRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => BucketLifecycleRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4638,9 +4637,8 @@ class Bucket {
       : this(
           acl: _json.containsKey('acl')
               ? (_json['acl'] as core.List)
-                  .map<BucketAccessControl>((value) =>
-                      BucketAccessControl.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => BucketAccessControl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           billing: _json.containsKey('billing')
@@ -4649,7 +4647,7 @@ class Bucket {
               : null,
           cors: _json.containsKey('cors')
               ? (_json['cors'] as core.List)
-                  .map<BucketCors>((value) => BucketCors.fromJson(
+                  .map((value) => BucketCors.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4658,9 +4656,8 @@ class Bucket {
               : null,
           defaultObjectAcl: _json.containsKey('defaultObjectAcl')
               ? (_json['defaultObjectAcl'] as core.List)
-                  .map<ObjectAccessControl>((value) =>
-                      ObjectAccessControl.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ObjectAccessControl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           encryption: _json.containsKey('encryption')
@@ -4736,7 +4733,7 @@ class Bucket {
               : null,
           zoneAffinity: _json.containsKey('zoneAffinity')
               ? (_json['zoneAffinity'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4936,9 +4933,8 @@ class BucketAccessControls {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<BucketAccessControl>((value) =>
-                      BucketAccessControl.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => BucketAccessControl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -4977,7 +4973,7 @@ class Buckets {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Bucket>((value) => Bucket.fromJson(
+                  .map((value) => Bucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5189,9 +5185,8 @@ class ComposeRequest {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           sourceObjects: _json.containsKey('sourceObjects')
               ? (_json['sourceObjects'] as core.List)
-                  .map<ComposeRequestSourceObjects>((value) =>
-                      ComposeRequestSourceObjects.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ComposeRequestSourceObjects.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -5419,7 +5414,7 @@ class HmacKeysMetadata {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<HmacKeyMetadata>((value) => HmacKeyMetadata.fromJson(
+                  .map((value) => HmacKeyMetadata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5502,7 +5497,7 @@ class Notification {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           eventTypes: _json.containsKey('event_types')
               ? (_json['event_types'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -5552,7 +5547,7 @@ class Notifications {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Notification>((value) => Notification.fromJson(
+                  .map((value) => Notification.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5827,9 +5822,8 @@ class Object {
       : this(
           acl: _json.containsKey('acl')
               ? (_json['acl'] as core.List)
-                  .map<ObjectAccessControl>((value) =>
-                      ObjectAccessControl.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ObjectAccessControl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bucket: _json.containsKey('bucket')
@@ -6140,9 +6134,8 @@ class ObjectAccessControls {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ObjectAccessControl>((value) =>
-                      ObjectAccessControl.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ObjectAccessControl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -6186,7 +6179,7 @@ class Objects {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Object>((value) => Object.fromJson(
+                  .map((value) => Object.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6196,7 +6189,7 @@ class Objects {
               : null,
           prefixes: _json.containsKey('prefixes')
               ? (_json['prefixes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6285,7 +6278,7 @@ class PolicyBindings {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -6344,7 +6337,7 @@ class Policy {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<PolicyBindings>((value) => PolicyBindings.fromJson(
+                  .map((value) => PolicyBindings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6504,7 +6497,7 @@ class TestIamPermissionsResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

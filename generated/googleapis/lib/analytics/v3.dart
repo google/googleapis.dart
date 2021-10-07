@@ -4941,7 +4941,7 @@ class AccountPermissions {
       : this(
           effective: _json.containsKey('effective')
               ? (_json['effective'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5121,7 +5121,7 @@ class AccountSummaries {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<AccountSummary>((value) => AccountSummary.fromJson(
+                  .map((value) => AccountSummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5196,9 +5196,8 @@ class AccountSummary {
               : null,
           webProperties: _json.containsKey('webProperties')
               ? (_json['webProperties'] as core.List)
-                  .map<WebPropertySummary>((value) =>
-                      WebPropertySummary.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => WebPropertySummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -5433,7 +5432,7 @@ class Accounts {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Account>((value) => Account.fromJson(
+                  .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5524,7 +5523,7 @@ class AnalyticsDataimportDeleteUploadDataRequest {
       : this(
           customDataImportUids: _json.containsKey('customDataImportUids')
               ? (_json['customDataImportUids'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5606,13 +5605,13 @@ class Columns {
       : this(
           attributeNames: _json.containsKey('attributeNames')
               ? (_json['attributeNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Column>((value) => Column.fromJson(
+                  .map((value) => Column.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5782,12 +5781,12 @@ class CustomDataSource {
               : null,
           profilesLinked: _json.containsKey('profilesLinked')
               ? (_json['profilesLinked'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           schema: _json.containsKey('schema')
               ? (_json['schema'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -5875,7 +5874,7 @@ class CustomDataSources {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<CustomDataSource>((value) => CustomDataSource.fromJson(
+                  .map((value) => CustomDataSource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6097,7 +6096,7 @@ class CustomDimensions {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<CustomDimension>((value) => CustomDimension.fromJson(
+                  .map((value) => CustomDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6341,7 +6340,7 @@ class CustomMetrics {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<CustomMetric>((value) => CustomMetric.fromJson(
+                  .map((value) => CustomMetric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6442,7 +6441,7 @@ class EntityAdWordsLink {
       : this(
           adWordsAccounts: _json.containsKey('adWordsAccounts')
               ? (_json['adWordsAccounts'] as core.List)
-                  .map<AdWordsAccount>((value) => AdWordsAccount.fromJson(
+                  .map((value) => AdWordsAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6455,7 +6454,7 @@ class EntityAdWordsLink {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           profileIds: _json.containsKey('profileIds')
               ? (_json['profileIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -6520,7 +6519,7 @@ class EntityAdWordsLinks {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<EntityAdWordsLink>((value) => EntityAdWordsLink.fromJson(
+                  .map((value) => EntityAdWordsLink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6621,12 +6620,12 @@ class EntityUserLinkPermissions {
       : this(
           effective: _json.containsKey('effective')
               ? (_json['effective'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           local: _json.containsKey('local')
               ? (_json['local'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6745,7 +6744,7 @@ class EntityUserLinks {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<EntityUserLink>((value) => EntityUserLink.fromJson(
+                  .map((value) => EntityUserLink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7151,9 +7150,8 @@ class Experiment {
               : null,
           variations: _json.containsKey('variations')
               ? (_json['variations'] as core.List)
-                  .map<ExperimentVariations>((value) =>
-                      ExperimentVariations.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ExperimentVariations.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           webPropertyId: _json.containsKey('webPropertyId')
@@ -7256,7 +7254,7 @@ class Experiments {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Experiment>((value) => Experiment.fromJson(
+                  .map((value) => Experiment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7949,7 +7947,7 @@ class Filters {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Filter>((value) => Filter.fromJson(
+                  .map((value) => Filter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -8081,9 +8079,8 @@ class GaDataDataTableRows {
       : this(
           c: _json.containsKey('c')
               ? (_json['c'] as core.List)
-                  .map<GaDataDataTableRowsC>((value) =>
-                      GaDataDataTableRowsC.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GaDataDataTableRowsC.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8106,16 +8103,14 @@ class GaDataDataTable {
       : this(
           cols: _json.containsKey('cols')
               ? (_json['cols'] as core.List)
-                  .map<GaDataDataTableCols>((value) =>
-                      GaDataDataTableCols.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GaDataDataTableCols.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<GaDataDataTableRows>((value) =>
-                      GaDataDataTableRows.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GaDataDataTableRows.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8255,7 +8250,7 @@ class GaDataQuery {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           samplingLevel: _json.containsKey('samplingLevel')
@@ -8266,7 +8261,7 @@ class GaDataQuery {
               : null,
           sort: _json.containsKey('sort')
               ? (_json['sort'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           startDate: _json.containsKey('start-date')
@@ -8382,9 +8377,8 @@ class GaData {
       : this(
           columnHeaders: _json.containsKey('columnHeaders')
               ? (_json['columnHeaders'] as core.List)
-                  .map<GaDataColumnHeaders>((value) =>
-                      GaDataColumnHeaders.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GaDataColumnHeaders.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           containsSampledData: _json.containsKey('containsSampledData')
@@ -8418,8 +8412,8 @@ class GaData {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<core.List<core.String>>((value) => (value as core.List)
-                      .map<core.String>((value) => value as core.String)
+                  .map((value) => (value as core.List)
+                      .map((value) => value as core.String)
                       .toList())
                   .toList()
               : null,
@@ -8545,9 +8539,8 @@ class GoalEventDetails {
       : this(
           eventConditions: _json.containsKey('eventConditions')
               ? (_json['eventConditions'] as core.List)
-                  .map<GoalEventDetailsEventConditions>((value) =>
-                      GoalEventDetailsEventConditions.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoalEventDetailsEventConditions.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           useEventValue: _json.containsKey('useEventValue')
@@ -8662,9 +8655,8 @@ class GoalUrlDestinationDetails {
               : null,
           steps: _json.containsKey('steps')
               ? (_json['steps'] as core.List)
-                  .map<GoalUrlDestinationDetailsSteps>((value) =>
-                      GoalUrlDestinationDetailsSteps.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoalUrlDestinationDetailsSteps.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           url: _json.containsKey('url') ? _json['url'] as core.String : null,
@@ -8958,7 +8950,7 @@ class Goals {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Goal>((value) => Goal.fromJson(
+                  .map((value) => Goal.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9386,7 +9378,7 @@ class McfDataQuery {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           samplingLevel: _json.containsKey('samplingLevel')
@@ -9397,7 +9389,7 @@ class McfDataQuery {
               : null,
           sort: _json.containsKey('sort')
               ? (_json['sort'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           startDate: _json.containsKey('start-date')
@@ -9478,9 +9470,8 @@ class McfDataRows {
       : this(
           conversionPathValue: _json.containsKey('conversionPathValue')
               ? (_json['conversionPathValue'] as core.List)
-                  .map<McfDataRowsConversionPathValue>((value) =>
-                      McfDataRowsConversionPathValue.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => McfDataRowsConversionPathValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           primitiveValue: _json.containsKey('primitiveValue')
@@ -9580,9 +9571,8 @@ class McfData {
       : this(
           columnHeaders: _json.containsKey('columnHeaders')
               ? (_json['columnHeaders'] as core.List)
-                  .map<McfDataColumnHeaders>((value) =>
-                      McfDataColumnHeaders.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => McfDataColumnHeaders.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           containsSampledData: _json.containsKey('containsSampledData')
@@ -9609,8 +9599,8 @@ class McfData {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<core.List<McfDataRows>>((value) => (value as core.List)
-                      .map<McfDataRows>((value) => McfDataRows.fromJson(
+                  .map((value) => (value as core.List)
+                      .map((value) => McfDataRows.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList())
                   .toList()
@@ -9735,7 +9725,7 @@ class ProfilePermissions {
       : this(
           effective: _json.containsKey('effective')
               ? (_json['effective'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -10114,7 +10104,7 @@ class ProfileFilterLinks {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ProfileFilterLink>((value) => ProfileFilterLink.fromJson(
+                  .map((value) => ProfileFilterLink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10315,7 +10305,7 @@ class Profiles {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Profile>((value) => Profile.fromJson(
+                  .map((value) => Profile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10499,12 +10489,12 @@ class RealtimeDataQuery {
               : null,
           metrics: _json.containsKey('metrics')
               ? (_json['metrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sort: _json.containsKey('sort')
               ? (_json['sort'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -10575,9 +10565,8 @@ class RealtimeData {
       : this(
           columnHeaders: _json.containsKey('columnHeaders')
               ? (_json['columnHeaders'] as core.List)
-                  .map<RealtimeDataColumnHeaders>((value) =>
-                      RealtimeDataColumnHeaders.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RealtimeDataColumnHeaders.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -10592,8 +10581,8 @@ class RealtimeData {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<core.List<core.String>>((value) => (value as core.List)
-                      .map<core.String>((value) => value as core.String)
+                  .map((value) => (value as core.List)
+                      .map((value) => value as core.String)
                       .toList())
                   .toList()
               : null,
@@ -10815,14 +10804,13 @@ class RemarketingAudience {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           linkedAdAccounts: _json.containsKey('linkedAdAccounts')
               ? (_json['linkedAdAccounts'] as core.List)
-                  .map<LinkedForeignAccount>((value) =>
-                      LinkedForeignAccount.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => LinkedForeignAccount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           linkedViews: _json.containsKey('linkedViews')
               ? (_json['linkedViews'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -10915,9 +10903,8 @@ class RemarketingAudiences {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<RemarketingAudience>((value) =>
-                      RemarketingAudience.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RemarketingAudience.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           itemsPerPage: _json.containsKey('itemsPerPage')
@@ -11084,7 +11071,7 @@ class Segments {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Segment>((value) => Segment.fromJson(
+                  .map((value) => Segment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11400,7 +11387,7 @@ class UnsampledReports {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<UnsampledReport>((value) => UnsampledReport.fromJson(
+                  .map((value) => UnsampledReport.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11483,7 +11470,7 @@ class Upload {
               : null,
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -11554,7 +11541,7 @@ class Uploads {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Upload>((value) => Upload.fromJson(
+                  .map((value) => Upload.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11815,7 +11802,7 @@ class WebPropertySummary {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           profiles: _json.containsKey('profiles')
               ? (_json['profiles'] as core.List)
-                  .map<ProfileSummary>((value) => ProfileSummary.fromJson(
+                  .map((value) => ProfileSummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -11892,7 +11879,7 @@ class Webproperties {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Webproperty>((value) => Webproperty.fromJson(
+                  .map((value) => Webproperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12004,7 +11991,7 @@ class WebpropertyPermissions {
       : this(
           effective: _json.containsKey('effective')
               ? (_json['effective'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

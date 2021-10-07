@@ -1528,7 +1528,7 @@ class ApiOperation {
       : this(
           methodSelectors: _json.containsKey('methodSelectors')
               ? (_json['methodSelectors'] as core.List)
-                  .map<MethodSelector>((value) => MethodSelector.fromJson(
+                  .map((value) => MethodSelector.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1577,7 +1577,7 @@ class BasicLevel {
               : null,
           conditions: _json.containsKey('conditions')
               ? (_json['conditions'] as core.List)
-                  .map<Condition>((value) => Condition.fromJson(
+                  .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1637,7 +1637,7 @@ class CommitServicePerimetersResponse {
       : this(
           servicePerimeters: _json.containsKey('servicePerimeters')
               ? (_json['servicePerimeters'] as core.List)
-                  .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+                  .map((value) => ServicePerimeter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1719,24 +1719,24 @@ class Condition {
               : null,
           ipSubnetworks: _json.containsKey('ipSubnetworks')
               ? (_json['ipSubnetworks'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           negate:
               _json.containsKey('negate') ? _json['negate'] as core.bool : null,
           regions: _json.containsKey('regions')
               ? (_json['regions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           requiredAccessLevels: _json.containsKey('requiredAccessLevels')
               ? (_json['requiredAccessLevels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1826,18 +1826,18 @@ class DevicePolicy {
           allowedDeviceManagementLevels:
               _json.containsKey('allowedDeviceManagementLevels')
                   ? (_json['allowedDeviceManagementLevels'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           allowedEncryptionStatuses:
               _json.containsKey('allowedEncryptionStatuses')
                   ? (_json['allowedEncryptionStatuses'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           osConstraints: _json.containsKey('osConstraints')
               ? (_json['osConstraints'] as core.List)
-                  .map<OsConstraint>((value) => OsConstraint.fromJson(
+                  .map((value) => OsConstraint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1905,7 +1905,7 @@ class EgressFrom {
       : this(
           identities: _json.containsKey('identities')
               ? (_json['identities'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           identityType: _json.containsKey('identityType')
@@ -1998,13 +1998,13 @@ class EgressTo {
       : this(
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<ApiOperation>((value) => ApiOperation.fromJson(
+                  .map((value) => ApiOperation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           resources: _json.containsKey('resources')
               ? (_json['resources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2143,7 +2143,7 @@ class GcpUserAccessBinding {
       : this(
           accessLevels: _json.containsKey('accessLevels')
               ? (_json['accessLevels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           groupKey: _json.containsKey('groupKey')
@@ -2205,7 +2205,7 @@ class IngressFrom {
       : this(
           identities: _json.containsKey('identities')
               ? (_json['identities'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           identityType: _json.containsKey('identityType')
@@ -2213,7 +2213,7 @@ class IngressFrom {
               : null,
           sources: _json.containsKey('sources')
               ? (_json['sources'] as core.List)
-                  .map<IngressSource>((value) => IngressSource.fromJson(
+                  .map((value) => IngressSource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2341,13 +2341,13 @@ class IngressTo {
       : this(
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<ApiOperation>((value) => ApiOperation.fromJson(
+                  .map((value) => ApiOperation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           resources: _json.containsKey('resources')
               ? (_json['resources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2378,7 +2378,7 @@ class ListAccessLevelsResponse {
       : this(
           accessLevels: _json.containsKey('accessLevels')
               ? (_json['accessLevels'] as core.List)
-                  .map<AccessLevel>((value) => AccessLevel.fromJson(
+                  .map((value) => AccessLevel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2413,7 +2413,7 @@ class ListAccessPoliciesResponse {
       : this(
           accessPolicies: _json.containsKey('accessPolicies')
               ? (_json['accessPolicies'] as core.List)
-                  .map<AccessPolicy>((value) => AccessPolicy.fromJson(
+                  .map((value) => AccessPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2449,9 +2449,8 @@ class ListGcpUserAccessBindingsResponse {
       : this(
           gcpUserAccessBindings: _json.containsKey('gcpUserAccessBindings')
               ? (_json['gcpUserAccessBindings'] as core.List)
-                  .map<GcpUserAccessBinding>((value) =>
-                      GcpUserAccessBinding.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GcpUserAccessBinding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -2487,7 +2486,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2522,7 +2521,7 @@ class ListServicePerimetersResponse {
               : null,
           servicePerimeters: _json.containsKey('servicePerimeters')
               ? (_json['servicePerimeters'] as core.List)
-                  .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+                  .map((value) => ServicePerimeter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2591,7 +2590,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -2611,7 +2610,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -2629,21 +2628,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2744,7 +2733,7 @@ class ReplaceAccessLevelsRequest {
       : this(
           accessLevels: _json.containsKey('accessLevels')
               ? (_json['accessLevels'] as core.List)
-                  .map<AccessLevel>((value) => AccessLevel.fromJson(
+                  .map((value) => AccessLevel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2773,7 +2762,7 @@ class ReplaceAccessLevelsResponse {
       : this(
           accessLevels: _json.containsKey('accessLevels')
               ? (_json['accessLevels'] as core.List)
-                  .map<AccessLevel>((value) => AccessLevel.fromJson(
+                  .map((value) => AccessLevel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2818,7 +2807,7 @@ class ReplaceServicePerimetersRequest {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           servicePerimeters: _json.containsKey('servicePerimeters')
               ? (_json['servicePerimeters'] as core.List)
-                  .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+                  .map((value) => ServicePerimeter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2847,7 +2836,7 @@ class ReplaceServicePerimetersResponse {
       : this(
           servicePerimeters: _json.containsKey('servicePerimeters')
               ? (_json['servicePerimeters'] as core.List)
-                  .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+                  .map((value) => ServicePerimeter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3035,29 +3024,29 @@ class ServicePerimeterConfig {
       : this(
           accessLevels: _json.containsKey('accessLevels')
               ? (_json['accessLevels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           egressPolicies: _json.containsKey('egressPolicies')
               ? (_json['egressPolicies'] as core.List)
-                  .map<EgressPolicy>((value) => EgressPolicy.fromJson(
+                  .map((value) => EgressPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           ingressPolicies: _json.containsKey('ingressPolicies')
               ? (_json['ingressPolicies'] as core.List)
-                  .map<IngressPolicy>((value) => IngressPolicy.fromJson(
+                  .map((value) => IngressPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           resources: _json.containsKey('resources')
               ? (_json['resources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           restrictedServices: _json.containsKey('restrictedServices')
               ? (_json['restrictedServices'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           vpcAccessibleServices: _json.containsKey('vpcAccessibleServices')
@@ -3099,7 +3088,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -3118,13 +3107,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -3162,7 +3145,7 @@ class VpcAccessibleServices {
       : this(
           allowedServices: _json.containsKey('allowedServices')
               ? (_json['allowedServices'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           enableRestriction: _json.containsKey('enableRestriction')

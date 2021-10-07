@@ -666,7 +666,7 @@ class BatchCreateRowsRequest {
       : this(
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<CreateRowRequest>((value) => CreateRowRequest.fromJson(
+                  .map((value) => CreateRowRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -691,7 +691,7 @@ class BatchCreateRowsResponse {
       : this(
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<Row>((value) => Row.fromJson(
+                  .map((value) => Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -721,7 +721,7 @@ class BatchDeleteRowsRequest {
       : this(
           names: _json.containsKey('names')
               ? (_json['names'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -748,7 +748,7 @@ class BatchUpdateRowsRequest {
       : this(
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<UpdateRowRequest>((value) => UpdateRowRequest.fromJson(
+                  .map((value) => UpdateRowRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -773,7 +773,7 @@ class BatchUpdateRowsResponse {
       : this(
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<Row>((value) => Row.fromJson(
+                  .map((value) => Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -850,7 +850,7 @@ class ColumnDescription {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<LabeledItem>((value) => LabeledItem.fromJson(
+                  .map((value) => LabeledItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -989,7 +989,7 @@ class ListRowsResponse {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<Row>((value) => Row.fromJson(
+                  .map((value) => Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1023,7 +1023,7 @@ class ListTablesResponse {
               : null,
           tables: _json.containsKey('tables')
               ? (_json['tables'] as core.List)
-                  .map<Table>((value) => Table.fromJson(
+                  .map((value) => Table.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1058,7 +1058,7 @@ class ListWorkspacesResponse {
               : null,
           workspaces: _json.containsKey('workspaces')
               ? (_json['workspaces'] as core.List)
-                  .map<Workspace>((value) => Workspace.fromJson(
+                  .map((value) => Workspace.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1145,7 +1145,7 @@ class Row {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? values;
+  core.Map<core.String, core.Object?>? values;
 
   Row({
     this.createTime,
@@ -1164,12 +1164,7 @@ class Row {
               ? _json['updateTime'] as core.String
               : null,
           values: _json.containsKey('values')
-              ? (_json['values'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['values'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1247,7 +1242,7 @@ class Table {
       : this(
           columns: _json.containsKey('columns')
               ? (_json['columns'] as core.List)
-                  .map<ColumnDescription>((value) => ColumnDescription.fromJson(
+                  .map((value) => ColumnDescription.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1260,7 +1255,7 @@ class Table {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           savedViews: _json.containsKey('savedViews')
               ? (_json['savedViews'] as core.List)
-                  .map<SavedView>((value) => SavedView.fromJson(
+                  .map((value) => SavedView.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1365,7 +1360,7 @@ class Workspace {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           tables: _json.containsKey('tables')
               ? (_json['tables'] as core.List)
-                  .map<Table>((value) => Table.fromJson(
+                  .map((value) => Table.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

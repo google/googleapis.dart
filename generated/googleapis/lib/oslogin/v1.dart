@@ -401,7 +401,7 @@ class LoginProfile {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           posixAccounts: _json.containsKey('posixAccounts')
               ? (_json['posixAccounts'] as core.List)
-                  .map<PosixAccount>((value) => PosixAccount.fromJson(
+                  .map((value) => PosixAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

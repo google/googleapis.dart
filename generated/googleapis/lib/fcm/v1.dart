@@ -510,7 +510,7 @@ class AndroidNotification {
           body: _json.containsKey('body') ? _json['body'] as core.String : null,
           bodyLocArgs: _json.containsKey('bodyLocArgs')
               ? (_json['bodyLocArgs'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           bodyLocKey: _json.containsKey('bodyLocKey')
@@ -564,7 +564,7 @@ class AndroidNotification {
               _json.containsKey('title') ? _json['title'] as core.String : null,
           titleLocArgs: _json.containsKey('titleLocArgs')
               ? (_json['titleLocArgs'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           titleLocKey: _json.containsKey('titleLocKey')
@@ -572,7 +572,7 @@ class AndroidNotification {
               : null,
           vibrateTimings: _json.containsKey('vibrateTimings')
               ? (_json['vibrateTimings'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           visibility: _json.containsKey('visibility')
@@ -636,7 +636,7 @@ class ApnsConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? payload;
+  core.Map<core.String, core.Object?>? payload;
 
   ApnsConfig({
     this.fcmOptions,
@@ -659,12 +659,7 @@ class ApnsConfig {
                 )
               : null,
           payload: _json.containsKey('payload')
-              ? (_json['payload'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1099,7 +1094,7 @@ class WebpushConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? notification;
+  core.Map<core.String, core.Object?>? notification;
 
   WebpushConfig({
     this.data,
@@ -1131,13 +1126,7 @@ class WebpushConfig {
                 )
               : null,
           notification: _json.containsKey('notification')
-              ? (_json['notification'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['notification'] as core.Map<core.String, core.dynamic>
               : null,
         );
 

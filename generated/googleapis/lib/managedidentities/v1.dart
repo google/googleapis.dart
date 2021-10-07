@@ -1650,7 +1650,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -1705,7 +1705,7 @@ class Certificate {
               : null,
           subjectAlternativeName: _json.containsKey('subjectAlternativeName')
               ? (_json['subjectAlternativeName'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           thumbprint: _json.containsKey('thumbprint')
@@ -2012,7 +2012,7 @@ class Domain {
               : null,
           authorizedNetworks: _json.containsKey('authorizedNetworks')
               ? (_json['authorizedNetworks'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           createTime: _json.containsKey('createTime')
@@ -2029,7 +2029,7 @@ class Domain {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -2043,7 +2043,7 @@ class Domain {
               : null,
           trusts: _json.containsKey('trusts')
               ? (_json['trusts'] as core.List)
-                  .map<Trust>((value) => Trust.fromJson(
+                  .map((value) => Trust.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2572,11 +2572,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
               : null,
           provisionedResources: _json.containsKey('provisionedResources')
               ? (_json['provisionedResources'] as core.List)
-                  .map<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>(
-                      (value) =>
-                          GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           slmInstanceTemplate: _json.containsKey('slmInstanceTemplate')
@@ -2977,11 +2976,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
       : this(
           nodes: _json.containsKey('nodes')
               ? (_json['nodes'] as core.List)
-                  .map<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>(
-                      (value) =>
-                          GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           perSliEligibility: _json.containsKey('perSliEligibility')
@@ -3131,7 +3129,7 @@ class ListDomainsResponse {
       : this(
           domains: _json.containsKey('domains')
               ? (_json['domains'] as core.List)
-                  .map<Domain>((value) => Domain.fromJson(
+                  .map((value) => Domain.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3140,7 +3138,7 @@ class ListDomainsResponse {
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3170,7 +3168,7 @@ class ListLocationsResponse {
       : this(
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3206,7 +3204,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3244,13 +3242,13 @@ class ListPeeringsResponse {
               : null,
           peerings: _json.containsKey('peerings')
               ? (_json['peerings'] as core.List)
-                  .map<Peering>((value) => Peering.fromJson(
+                  .map((value) => Peering.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3289,13 +3287,13 @@ class ListSqlIntegrationsResponse {
               : null,
           sqlIntegrations: _json.containsKey('sqlIntegrations')
               ? (_json['sqlIntegrations'] as core.List)
-                  .map<SqlIntegration>((value) => SqlIntegration.fromJson(
+                  .map((value) => SqlIntegration.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           unreachable: _json.containsKey('unreachable')
               ? (_json['unreachable'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3332,7 +3330,7 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
@@ -3364,12 +3362,7 @@ class Location {
               ? _json['locationId'] as core.String
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -3535,7 +3528,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -3555,7 +3548,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -3573,21 +3566,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3885,7 +3868,7 @@ class Policy {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3926,7 +3909,7 @@ class ReconfigureTrustRequest {
       : this(
           targetDnsIpAddresses: _json.containsKey('targetDnsIpAddresses')
               ? (_json['targetDnsIpAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           targetDomainName: _json.containsKey('targetDomainName')
@@ -4119,7 +4102,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -4138,13 +4121,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -4176,7 +4153,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4200,7 +4177,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4383,7 +4360,7 @@ class Trust {
               : null,
           targetDnsIpAddresses: _json.containsKey('targetDnsIpAddresses')
               ? (_json['targetDnsIpAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           targetDomainName: _json.containsKey('targetDomainName')
@@ -4458,9 +4435,8 @@ class UpdatePolicy {
               : null,
           denyMaintenancePeriods: _json.containsKey('denyMaintenancePeriods')
               ? (_json['denyMaintenancePeriods'] as core.List)
-                  .map<DenyMaintenancePeriod>((value) =>
-                      DenyMaintenancePeriod.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DenyMaintenancePeriod.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           window: _json.containsKey('window')
@@ -4517,7 +4493,7 @@ class WeeklyCycle {
       : this(
           schedule: _json.containsKey('schedule')
               ? (_json['schedule'] as core.List)
-                  .map<Schedule>((value) => Schedule.fromJson(
+                  .map((value) => Schedule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

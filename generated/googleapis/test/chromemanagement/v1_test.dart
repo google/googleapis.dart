@@ -583,7 +583,7 @@ void checkGoogleChromeManagementV1InstalledApp(
   buildCounterGoogleChromeManagementV1InstalledApp--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7() => {
+core.Map<core.String, core.Object?> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -596,7 +596,7 @@ core.Map<core.String, core.Object> buildUnnamed7() => {
       },
     };
 
-void checkUnnamed7(core.Map<core.String, core.Object> o) {
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -628,12 +628,12 @@ void checkUnnamed7(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8() => [
+core.List<core.Map<core.String, core.Object?>> buildUnnamed8() => [
       buildUnnamed7(),
       buildUnnamed7(),
     ];
 
-void checkUnnamed8(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed8(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed7(o[0]);
   checkUnnamed7(o[1]);

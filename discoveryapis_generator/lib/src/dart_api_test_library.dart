@@ -755,13 +755,13 @@ class UnnamedMapTest extends UnnamedSchemaTest<UnnamedMapType> {
 
   @override
   String get declaration {
-    final toType = apiTestLibrary.schemaTests[schema.toType]!.declaration;
+    final toType = apiTestLibrary.schemaTests[schema.valueType]!.declaration;
     return 'core.Map<core.String, $toType>';
   }
 
   @override
   String get buildSchemaFunction {
-    final innerTest = apiTestLibrary.schemaTests[schema.toType]!;
+    final innerTest = apiTestLibrary.schemaTests[schema.valueType]!;
 
     return '''
 $declaration buildUnnamed$_id() => 
@@ -775,7 +775,7 @@ $declaration buildUnnamed$_id() =>
 
   @override
   String get checkSchemaFunction {
-    final innerTest = apiTestLibrary.schemaTests[schema.toType];
+    final innerTest = apiTestLibrary.schemaTests[schema.valueType];
 
     final sb = StringBuffer();
     withFunc(0, sb, 'void checkUnnamed$_id', '$declaration o', () {
@@ -1036,7 +1036,7 @@ class AnySchemaTest extends SchemaTest<AnyType> {
   String get schemaTest => '';
 
   @override
-  String get declaration => 'core.Object';
+  String get declaration => 'core.Object?';
 
   @override
   String get newSchemaExpr =>

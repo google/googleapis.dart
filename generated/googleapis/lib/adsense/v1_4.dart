@@ -2251,7 +2251,7 @@ class Account {
               : null,
           subAccounts: _json.containsKey('subAccounts')
               ? (_json['subAccounts'] as core.List)
-                  .map<Account>((value) => Account.fromJson(
+                  .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2300,7 +2300,7 @@ class Accounts {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Account>((value) => Account.fromJson(
+                  .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2396,7 +2396,7 @@ class AdClients {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<AdClient>((value) => AdClient.fromJson(
+                  .map((value) => AdClient.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2873,7 +2873,7 @@ class AdUnits {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<AdUnit>((value) => AdUnit.fromJson(
+                  .map((value) => AdUnit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2987,7 +2987,7 @@ class AdsenseReportsGenerateResponse {
       : this(
           averages: _json.containsKey('averages')
               ? (_json['averages'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           endDate: _json.containsKey('endDate')
@@ -2995,7 +2995,7 @@ class AdsenseReportsGenerateResponse {
               : null,
           headers: _json.containsKey('headers')
               ? (_json['headers'] as core.List)
-                  .map<AdsenseReportsGenerateResponseHeaders>((value) =>
+                  .map((value) =>
                       AdsenseReportsGenerateResponseHeaders.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3003,8 +3003,8 @@ class AdsenseReportsGenerateResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<core.List<core.String>>((value) => (value as core.List)
-                      .map<core.String>((value) => value as core.String)
+                  .map((value) => (value as core.List)
+                      .map((value) => value as core.String)
                       .toList())
                   .toList()
               : null,
@@ -3016,12 +3016,12 @@ class AdsenseReportsGenerateResponse {
               : null,
           totals: _json.containsKey('totals')
               ? (_json['totals'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3119,7 +3119,7 @@ class Alerts {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Alert>((value) => Alert.fromJson(
+                  .map((value) => Alert.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3260,7 +3260,7 @@ class CustomChannels {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<CustomChannel>((value) => CustomChannel.fromJson(
+                  .map((value) => CustomChannel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3294,9 +3294,8 @@ class Metadata {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ReportingMetadataEntry>((value) =>
-                      ReportingMetadataEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReportingMetadataEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -3379,7 +3378,7 @@ class Payments {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Payment>((value) => Payment.fromJson(
+                  .map((value) => Payment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3444,29 +3443,29 @@ class ReportingMetadataEntry {
       : this(
           compatibleDimensions: _json.containsKey('compatibleDimensions')
               ? (_json['compatibleDimensions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           compatibleMetrics: _json.containsKey('compatibleMetrics')
               ? (_json['compatibleMetrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           requiredDimensions: _json.containsKey('requiredDimensions')
               ? (_json['requiredDimensions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           requiredMetrics: _json.containsKey('requiredMetrics')
               ? (_json['requiredMetrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           supportedProducts: _json.containsKey('supportedProducts')
               ? (_json['supportedProducts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3554,7 +3553,7 @@ class SavedAdStyles {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<SavedAdStyle>((value) => SavedAdStyle.fromJson(
+                  .map((value) => SavedAdStyle.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3631,7 +3630,7 @@ class SavedReports {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<SavedReport>((value) => SavedReport.fromJson(
+                  .map((value) => SavedReport.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3715,7 +3714,7 @@ class UrlChannels {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<UrlChannel>((value) => UrlChannel.fromJson(
+                  .map((value) => UrlChannel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

@@ -81,7 +81,7 @@ void checkUnnamed0(core.List<api.UriAttributeValue> o) {
   checkUriAttributeValue(o[1]);
 }
 
-core.List<core.Object> buildUnnamed1() => [
+core.List<core.Object?> buildUnnamed1() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -94,7 +94,7 @@ core.List<core.Object> buildUnnamed1() => [
       },
     ];
 
-void checkUnnamed1(core.List<core.Object> o) {
+void checkUnnamed1(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));

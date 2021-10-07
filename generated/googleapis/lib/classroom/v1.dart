@@ -3799,7 +3799,7 @@ class Announcement {
                   : null,
           materials: _json.containsKey('materials')
               ? (_json['materials'] as core.List)
-                  .map<Material>((value) => Material.fromJson(
+                  .map((value) => Material.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3876,7 +3876,7 @@ class AssignmentSubmission {
       : this(
           attachments: _json.containsKey('attachments')
               ? (_json['attachments'] as core.List)
-                  .map<Attachment>((value) => Attachment.fromJson(
+                  .map((value) => Attachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4133,7 +4133,7 @@ class Course {
               : null,
           courseMaterialSets: _json.containsKey('courseMaterialSets')
               ? (_json['courseMaterialSets'] as core.List)
-                  .map<CourseMaterialSet>((value) => CourseMaterialSet.fromJson(
+                  .map((value) => CourseMaterialSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4307,7 +4307,7 @@ class CourseMaterialSet {
       : this(
           materials: _json.containsKey('materials')
               ? (_json['materials'] as core.List)
-                  .map<CourseMaterial>((value) => CourseMaterial.fromJson(
+                  .map((value) => CourseMaterial.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4559,7 +4559,7 @@ class CourseWork {
                   : null,
           materials: _json.containsKey('materials')
               ? (_json['materials'] as core.List)
-                  .map<Material>((value) => Material.fromJson(
+                  .map((value) => Material.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4784,7 +4784,7 @@ class CourseWorkMaterial {
                   : null,
           materials: _json.containsKey('materials')
               ? (_json['materials'] as core.List)
-                  .map<Material>((value) => Material.fromJson(
+                  .map((value) => Material.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5301,7 +5301,7 @@ class IndividualStudentsOptions {
       : this(
           studentIds: _json.containsKey('studentIds')
               ? (_json['studentIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5426,7 +5426,7 @@ class ListAnnouncementsResponse {
       : this(
           announcements: _json.containsKey('announcements')
               ? (_json['announcements'] as core.List)
-                  .map<Announcement>((value) => Announcement.fromJson(
+                  .map((value) => Announcement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5462,7 +5462,7 @@ class ListCourseAliasesResponse {
       : this(
           aliases: _json.containsKey('aliases')
               ? (_json['aliases'] as core.List)
-                  .map<CourseAlias>((value) => CourseAlias.fromJson(
+                  .map((value) => CourseAlias.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5497,9 +5497,8 @@ class ListCourseWorkMaterialResponse {
       : this(
           courseWorkMaterial: _json.containsKey('courseWorkMaterial')
               ? (_json['courseWorkMaterial'] as core.List)
-                  .map<CourseWorkMaterial>((value) =>
-                      CourseWorkMaterial.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CourseWorkMaterial.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -5534,7 +5533,7 @@ class ListCourseWorkResponse {
       : this(
           courseWork: _json.containsKey('courseWork')
               ? (_json['courseWork'] as core.List)
-                  .map<CourseWork>((value) => CourseWork.fromJson(
+                  .map((value) => CourseWork.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5569,7 +5568,7 @@ class ListCoursesResponse {
       : this(
           courses: _json.containsKey('courses')
               ? (_json['courses'] as core.List)
-                  .map<Course>((value) => Course.fromJson(
+                  .map((value) => Course.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5604,9 +5603,8 @@ class ListGuardianInvitationsResponse {
       : this(
           guardianInvitations: _json.containsKey('guardianInvitations')
               ? (_json['guardianInvitations'] as core.List)
-                  .map<GuardianInvitation>((value) =>
-                      GuardianInvitation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GuardianInvitation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -5642,7 +5640,7 @@ class ListGuardiansResponse {
       : this(
           guardians: _json.containsKey('guardians')
               ? (_json['guardians'] as core.List)
-                  .map<Guardian>((value) => Guardian.fromJson(
+                  .map((value) => Guardian.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5677,7 +5675,7 @@ class ListInvitationsResponse {
       : this(
           invitations: _json.containsKey('invitations')
               ? (_json['invitations'] as core.List)
-                  .map<Invitation>((value) => Invitation.fromJson(
+                  .map((value) => Invitation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5715,7 +5713,7 @@ class ListStudentSubmissionsResponse {
               : null,
           studentSubmissions: _json.containsKey('studentSubmissions')
               ? (_json['studentSubmissions'] as core.List)
-                  .map<StudentSubmission>((value) => StudentSubmission.fromJson(
+                  .map((value) => StudentSubmission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5751,7 +5749,7 @@ class ListStudentsResponse {
               : null,
           students: _json.containsKey('students')
               ? (_json['students'] as core.List)
-                  .map<Student>((value) => Student.fromJson(
+                  .map((value) => Student.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5786,7 +5784,7 @@ class ListTeachersResponse {
               : null,
           teachers: _json.containsKey('teachers')
               ? (_json['teachers'] as core.List)
-                  .map<Teacher>((value) => Teacher.fromJson(
+                  .map((value) => Teacher.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5821,7 +5819,7 @@ class ListTopicResponse {
               : null,
           topic: _json.containsKey('topic')
               ? (_json['topic'] as core.List)
-                  .map<Topic>((value) => Topic.fromJson(
+                  .map((value) => Topic.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5946,7 +5944,7 @@ class ModifyAttachmentsRequest {
       : this(
           addAttachments: _json.containsKey('addAttachments')
               ? (_json['addAttachments'] as core.List)
-                  .map<Attachment>((value) => Attachment.fromJson(
+                  .map((value) => Attachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6021,12 +6019,12 @@ class ModifyIndividualStudentsOptions {
       : this(
           addStudentIds: _json.containsKey('addStudentIds')
               ? (_json['addStudentIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           removeStudentIds: _json.containsKey('removeStudentIds')
               ? (_json['removeStudentIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6050,7 +6048,7 @@ class MultipleChoiceQuestion {
       : this(
           choices: _json.containsKey('choices')
               ? (_json['choices'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6522,7 +6520,7 @@ class StudentSubmission {
               _json.containsKey('state') ? _json['state'] as core.String : null,
           submissionHistory: _json.containsKey('submissionHistory')
               ? (_json['submissionHistory'] as core.List)
-                  .map<SubmissionHistory>((value) => SubmissionHistory.fromJson(
+                  .map((value) => SubmissionHistory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6807,7 +6805,7 @@ class UserProfile {
               : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<GlobalPermission>((value) => GlobalPermission.fromJson(
+                  .map((value) => GlobalPermission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

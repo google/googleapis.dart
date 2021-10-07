@@ -598,7 +598,7 @@ class LicenseAssignmentList {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<LicenseAssignment>((value) => LicenseAssignment.fromJson(
+                  .map((value) => LicenseAssignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

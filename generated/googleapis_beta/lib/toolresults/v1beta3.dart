@@ -1998,7 +1998,7 @@ class AndroidInstrumentationTest {
               : null,
           testTargets: _json.containsKey('testTargets')
               ? (_json['testTargets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           useOrchestrator: _json.containsKey('useOrchestrator')
@@ -2351,7 +2351,7 @@ class BatchCreatePerfSamplesRequest {
       : this(
           perfSamples: _json.containsKey('perfSamples')
               ? (_json['perfSamples'] as core.List)
-                  .map<PerfSample>((value) => PerfSample.fromJson(
+                  .map((value) => PerfSample.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2374,7 +2374,7 @@ class BatchCreatePerfSamplesResponse {
       : this(
           perfSamples: _json.containsKey('perfSamples')
               ? (_json['perfSamples'] as core.List)
-                  .map<PerfSample>((value) => PerfSample.fromJson(
+                  .map((value) => PerfSample.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2530,7 +2530,7 @@ class EncounteredLoginScreen {
               : null,
           screenIds: _json.containsKey('screenIds')
               ? (_json['screenIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2562,7 +2562,7 @@ class EncounteredNonAndroidUiWidgetScreen {
               : null,
           screenIds: _json.containsKey('screenIds')
               ? (_json['screenIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2665,9 +2665,8 @@ class Environment {
               : null,
           dimensionValue: _json.containsKey('dimensionValue')
               ? (_json['dimensionValue'] as core.List)
-                  .map<EnvironmentDimensionValueEntry>((value) =>
-                      EnvironmentDimensionValueEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => EnvironmentDimensionValueEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           displayName: _json.containsKey('displayName')
@@ -2695,7 +2694,7 @@ class Environment {
               : null,
           shardSummaries: _json.containsKey('shardSummaries')
               ? (_json['shardSummaries'] as core.List)
-                  .map<ShardSummary>((value) => ShardSummary.fromJson(
+                  .map((value) => ShardSummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2841,9 +2840,8 @@ class Execution {
               : null,
           dimensionDefinitions: _json.containsKey('dimensionDefinitions')
               ? (_json['dimensionDefinitions'] as core.List)
-                  .map<MatrixDimensionDefinition>((value) =>
-                      MatrixDimensionDefinition.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MatrixDimensionDefinition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           executionId: _json.containsKey('executionId')
@@ -3074,9 +3072,8 @@ class GraphicsStats {
       : this(
           buckets: _json.containsKey('buckets')
               ? (_json['buckets'] as core.List)
-                  .map<GraphicsStatsBucket>((value) =>
-                      GraphicsStatsBucket.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GraphicsStatsBucket.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           highInputLatencyCount: _json.containsKey('highInputLatencyCount')
@@ -3621,7 +3618,7 @@ class ListEnvironmentsResponse {
       : this(
           environments: _json.containsKey('environments')
               ? (_json['environments'] as core.List)
-                  .map<Environment>((value) => Environment.fromJson(
+                  .map((value) => Environment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3669,7 +3666,7 @@ class ListExecutionsResponse {
       : this(
           executions: _json.containsKey('executions')
               ? (_json['executions'] as core.List)
-                  .map<Execution>((value) => Execution.fromJson(
+                  .map((value) => Execution.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3708,7 +3705,7 @@ class ListHistoriesResponse {
       : this(
           histories: _json.containsKey('histories')
               ? (_json['histories'] as core.List)
-                  .map<History>((value) => History.fromJson(
+                  .map((value) => History.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3736,7 +3733,7 @@ class ListPerfSampleSeriesResponse {
       : this(
           perfSampleSeries: _json.containsKey('perfSampleSeries')
               ? (_json['perfSampleSeries'] as core.List)
-                  .map<PerfSampleSeries>((value) => PerfSampleSeries.fromJson(
+                  .map((value) => PerfSampleSeries.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3770,7 +3767,7 @@ class ListPerfSamplesResponse {
               : null,
           perfSamples: _json.containsKey('perfSamples')
               ? (_json['perfSamples'] as core.List)
-                  .map<PerfSample>((value) => PerfSample.fromJson(
+                  .map((value) => PerfSample.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3795,7 +3792,7 @@ class ListScreenshotClustersResponse {
       : this(
           clusters: _json.containsKey('clusters')
               ? (_json['clusters'] as core.List)
-                  .map<ScreenshotCluster>((value) => ScreenshotCluster.fromJson(
+                  .map((value) => ScreenshotCluster.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3832,9 +3829,8 @@ class ListStepAccessibilityClustersResponse {
       : this(
           clusters: _json.containsKey('clusters')
               ? (_json['clusters'] as core.List)
-                  .map<SuggestionClusterProto>((value) =>
-                      SuggestionClusterProto.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SuggestionClusterProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -3877,7 +3873,7 @@ class ListStepThumbnailsResponse {
               : null,
           thumbnails: _json.containsKey('thumbnails')
               ? (_json['thumbnails'] as core.List)
-                  .map<Image>((value) => Image.fromJson(
+                  .map((value) => Image.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3913,7 +3909,7 @@ class ListStepsResponse {
               : null,
           steps: _json.containsKey('steps')
               ? (_json['steps'] as core.List)
-                  .map<Step>((value) => Step.fromJson(
+                  .map((value) => Step.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3945,7 +3941,7 @@ class ListTestCasesResponse {
               : null,
           testCases: _json.containsKey('testCases')
               ? (_json['testCases'] as core.List)
-                  .map<TestCase>((value) => TestCase.fromJson(
+                  .map((value) => TestCase.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4044,7 +4040,7 @@ class MergedResult {
               _json.containsKey('state') ? _json['state'] as core.String : null,
           testSuiteOverviews: _json.containsKey('testSuiteOverviews')
               ? (_json['testSuiteOverviews'] as core.List)
-                  .map<TestSuiteOverview>((value) => TestSuiteOverview.fromJson(
+                  .map((value) => TestSuiteOverview.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4166,12 +4162,12 @@ class NonSdkApi {
               : null,
           exampleStackTraces: _json.containsKey('exampleStackTraces')
               ? (_json['exampleStackTraces'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           insights: _json.containsKey('insights')
               ? (_json['insights'] as core.List)
-                  .map<NonSdkApiInsight>((value) => NonSdkApiInsight.fromJson(
+                  .map((value) => NonSdkApiInsight.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4223,7 +4219,7 @@ class NonSdkApiInsight {
       : this(
           exampleTraceMessages: _json.containsKey('exampleTraceMessages')
               ? (_json['exampleTraceMessages'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           matcherId: _json.containsKey('matcherId')
@@ -4268,7 +4264,7 @@ class NonSdkApiUsageViolation {
       : this(
           apiSignatures: _json.containsKey('apiSignatures')
               ? (_json['apiSignatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           uniqueApis: _json.containsKey('uniqueApis')
@@ -4307,7 +4303,7 @@ class NonSdkApiUsageViolationReport {
       : this(
           exampleApis: _json.containsKey('exampleApis')
               ? (_json['exampleApis'] as core.List)
-                  .map<NonSdkApi>((value) => NonSdkApi.fromJson(
+                  .map((value) => NonSdkApi.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4435,7 +4431,7 @@ class OverlappingUIElements {
       : this(
           resourceName: _json.containsKey('resourceName')
               ? (_json['resourceName'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           screenId: _json.containsKey('screenId')
@@ -4572,7 +4568,7 @@ class PerfMetricsSummary {
               : null,
           perfMetrics: _json.containsKey('perfMetrics')
               ? (_json['perfMetrics'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           projectId: _json.containsKey('projectId')
@@ -4752,7 +4748,7 @@ class PrimaryStep {
       : this(
           individualOutcome: _json.containsKey('individualOutcome')
               ? (_json['individualOutcome'] as core.List)
-                  .map<IndividualOutcome>((value) => IndividualOutcome.fromJson(
+                  .map((value) => IndividualOutcome.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4818,7 +4814,7 @@ class PublishXunitXmlFilesRequest {
       : this(
           xunitXmlFiles: _json.containsKey('xunitXmlFiles')
               ? (_json['xunitXmlFiles'] as core.List)
-                  .map<FileReference>((value) => FileReference.fromJson(
+                  .map((value) => FileReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5068,7 +5064,7 @@ class ScreenshotCluster {
               : null,
           screens: _json.containsKey('screens')
               ? (_json['screens'] as core.List)
-                  .map<Screen>((value) => Screen.fromJson(
+                  .map((value) => Screen.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5103,7 +5099,7 @@ class ShardSummary {
       : this(
           runs: _json.containsKey('runs')
               ? (_json['runs'] as core.List)
-                  .map<StepSummary>((value) => StepSummary.fromJson(
+                  .map((value) => StepSummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5255,7 +5251,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -5274,13 +5270,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -5484,9 +5474,8 @@ class Step {
               : null,
           dimensionValue: _json.containsKey('dimensionValue')
               ? (_json['dimensionValue'] as core.List)
-                  .map<StepDimensionValueEntry>((value) =>
-                      StepDimensionValueEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => StepDimensionValueEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           hasImages: _json.containsKey('hasImages')
@@ -5494,7 +5483,7 @@ class Step {
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<StepLabelsEntry>((value) => StepLabelsEntry.fromJson(
+                  .map((value) => StepLabelsEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5657,7 +5646,7 @@ class SuggestionClusterProto {
               : null,
           suggestions: _json.containsKey('suggestions')
               ? (_json['suggestions'] as core.List)
-                  .map<SuggestionProto>((value) => SuggestionProto.fromJson(
+                  .map((value) => SuggestionProto.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5872,7 +5861,7 @@ class TestCase {
               : null,
           stackTraces: _json.containsKey('stackTraces')
               ? (_json['stackTraces'] as core.List)
-                  .map<StackTrace>((value) => StackTrace.fromJson(
+                  .map((value) => StackTrace.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5892,9 +5881,8 @@ class TestCase {
               : null,
           toolOutputs: _json.containsKey('toolOutputs')
               ? (_json['toolOutputs'] as core.List)
-                  .map<ToolOutputReference>((value) =>
-                      ToolOutputReference.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ToolOutputReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6003,13 +5991,13 @@ class TestExecutionStep {
       : this(
           testIssues: _json.containsKey('testIssues')
               ? (_json['testIssues'] as core.List)
-                  .map<TestIssue>((value) => TestIssue.fromJson(
+                  .map((value) => TestIssue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           testSuiteOverviews: _json.containsKey('testSuiteOverviews')
               ? (_json['testSuiteOverviews'] as core.List)
-                  .map<TestSuiteOverview>((value) => TestSuiteOverview.fromJson(
+                  .map((value) => TestSuiteOverview.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6449,7 +6437,7 @@ class ToolExecution {
       : this(
           commandLineArguments: _json.containsKey('commandLineArguments')
               ? (_json['commandLineArguments'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           exitCode: _json.containsKey('exitCode')
@@ -6458,15 +6446,14 @@ class ToolExecution {
               : null,
           toolLogs: _json.containsKey('toolLogs')
               ? (_json['toolLogs'] as core.List)
-                  .map<FileReference>((value) => FileReference.fromJson(
+                  .map((value) => FileReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           toolOutputs: _json.containsKey('toolOutputs')
               ? (_json['toolOutputs'] as core.List)
-                  .map<ToolOutputReference>((value) =>
-                      ToolOutputReference.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ToolOutputReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );

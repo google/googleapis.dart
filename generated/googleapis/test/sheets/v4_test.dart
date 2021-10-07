@@ -2623,7 +2623,7 @@ void checkDataFilter(api.DataFilter o) {
   buildCounterDataFilter--;
 }
 
-core.List<core.Object> buildUnnamed30() => [
+core.List<core.Object?> buildUnnamed30() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -2636,7 +2636,7 @@ core.List<core.Object> buildUnnamed30() => [
       },
     ];
 
-void checkUnnamed30(core.List<core.Object> o) {
+void checkUnnamed30(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2668,12 +2668,12 @@ void checkUnnamed30(core.List<core.Object> o) {
   );
 }
 
-core.List<core.List<core.Object>> buildUnnamed31() => [
+core.List<core.List<core.Object?>> buildUnnamed31() => [
       buildUnnamed30(),
       buildUnnamed30(),
     ];
 
-void checkUnnamed31(core.List<core.List<core.Object>> o) {
+void checkUnnamed31(core.List<core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed30(o[0]);
   checkUnnamed30(o[1]);
@@ -7951,7 +7951,7 @@ void checkUpdateValuesResponse(api.UpdateValuesResponse o) {
   buildCounterUpdateValuesResponse--;
 }
 
-core.List<core.Object> buildUnnamed95() => [
+core.List<core.Object?> buildUnnamed95() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -7964,7 +7964,7 @@ core.List<core.Object> buildUnnamed95() => [
       },
     ];
 
-void checkUnnamed95(core.List<core.Object> o) {
+void checkUnnamed95(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o[0]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -7996,12 +7996,12 @@ void checkUnnamed95(core.List<core.Object> o) {
   );
 }
 
-core.List<core.List<core.Object>> buildUnnamed96() => [
+core.List<core.List<core.Object?>> buildUnnamed96() => [
       buildUnnamed95(),
       buildUnnamed95(),
     ];
 
-void checkUnnamed96(core.List<core.List<core.Object>> o) {
+void checkUnnamed96(core.List<core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnnamed95(o[0]);
   checkUnnamed95(o[1]);

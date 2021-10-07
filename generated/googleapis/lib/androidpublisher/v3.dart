@@ -3545,7 +3545,7 @@ class ApksListResponse {
       : this(
           apks: _json.containsKey('apks')
               ? (_json['apks'] as core.List)
-                  .map<Apk>((value) => Apk.fromJson(
+                  .map((value) => Apk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3698,7 +3698,7 @@ class BundlesListResponse {
       : this(
           bundles: _json.containsKey('bundles')
               ? (_json['bundles'] as core.List)
-                  .map<Bundle>((value) => Bundle.fromJson(
+                  .map((value) => Bundle.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3762,7 +3762,7 @@ class CountryTargeting {
       : this(
           countries: _json.containsKey('countries')
               ? (_json['countries'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           includeRestOfWorld: _json.containsKey('includeRestOfWorld')
@@ -3980,12 +3980,12 @@ class DeviceSpec {
               : null,
           supportedAbis: _json.containsKey('supportedAbis')
               ? (_json['supportedAbis'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           supportedLocales: _json.containsKey('supportedLocales')
               ? (_json['supportedLocales'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4135,7 +4135,7 @@ class ExternallyHostedApk {
               : null,
           certificateBase64s: _json.containsKey('certificateBase64s')
               ? (_json['certificateBase64s'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           externallyHostedUrl: _json.containsKey('externallyHostedUrl')
@@ -4161,7 +4161,7 @@ class ExternallyHostedApk {
               : null,
           nativeCodes: _json.containsKey('nativeCodes')
               ? (_json['nativeCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           packageName: _json.containsKey('packageName')
@@ -4169,12 +4169,12 @@ class ExternallyHostedApk {
               : null,
           usesFeatures: _json.containsKey('usesFeatures')
               ? (_json['usesFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           usesPermissions: _json.containsKey('usesPermissions')
               ? (_json['usesPermissions'] as core.List)
-                  .map<UsesPermission>((value) => UsesPermission.fromJson(
+                  .map((value) => UsesPermission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4263,7 +4263,7 @@ class ImagesDeleteAllResponse {
       : this(
           deleted: _json.containsKey('deleted')
               ? (_json['deleted'] as core.List)
-                  .map<Image>((value) => Image.fromJson(
+                  .map((value) => Image.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4288,7 +4288,7 @@ class ImagesListResponse {
       : this(
           images: _json.containsKey('images')
               ? (_json['images'] as core.List)
-                  .map<Image>((value) => Image.fromJson(
+                  .map((value) => Image.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4492,7 +4492,7 @@ class InAppProductListing {
       : this(
           benefits: _json.containsKey('benefits')
               ? (_json['benefits'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           description: _json.containsKey('description')
@@ -4534,7 +4534,7 @@ class InappproductsListResponse {
       : this(
           inappproduct: _json.containsKey('inappproduct')
               ? (_json['inappproduct'] as core.List)
-                  .map<InAppProduct>((value) => InAppProduct.fromJson(
+                  .map((value) => InAppProduct.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4737,7 +4737,7 @@ class ListingsListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           listings: _json.containsKey('listings')
               ? (_json['listings'] as core.List)
-                  .map<Listing>((value) => Listing.fromJson(
+                  .map((value) => Listing.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5052,7 +5052,7 @@ class Review {
               : null,
           comments: _json.containsKey('comments')
               ? (_json['comments'] as core.List)
-                  .map<Comment>((value) => Comment.fromJson(
+                  .map((value) => Comment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5124,7 +5124,7 @@ class ReviewsListResponse {
               : null,
           reviews: _json.containsKey('reviews')
               ? (_json['reviews'] as core.List)
-                  .map<Review>((value) => Review.fromJson(
+                  .map((value) => Review.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5735,7 +5735,7 @@ class SystemApksListResponse {
       : this(
           variants: _json.containsKey('variants')
               ? (_json['variants'] as core.List)
-                  .map<Variant>((value) => Variant.fromJson(
+                  .map((value) => Variant.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5762,7 +5762,7 @@ class Testers {
       : this(
           googleGroups: _json.containsKey('googleGroups')
               ? (_json['googleGroups'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5864,7 +5864,7 @@ class Track {
       : this(
           releases: _json.containsKey('releases')
               ? (_json['releases'] as core.List)
-                  .map<TrackRelease>((value) => TrackRelease.fromJson(
+                  .map((value) => TrackRelease.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5948,7 +5948,7 @@ class TrackRelease {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           releaseNotes: _json.containsKey('releaseNotes')
               ? (_json['releaseNotes'] as core.List)
-                  .map<LocalizedText>((value) => LocalizedText.fromJson(
+                  .map((value) => LocalizedText.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5960,7 +5960,7 @@ class TrackRelease {
               : null,
           versionCodes: _json.containsKey('versionCodes')
               ? (_json['versionCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5997,7 +5997,7 @@ class TracksListResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           tracks: _json.containsKey('tracks')
               ? (_json['tracks'] as core.List)
-                  .map<Track>((value) => Track.fromJson(
+                  .map((value) => Track.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6308,7 +6308,7 @@ class VoidedPurchasesListResponse {
               : null,
           voidedPurchases: _json.containsKey('voidedPurchases')
               ? (_json['voidedPurchases'] as core.List)
-                  .map<VoidedPurchase>((value) => VoidedPurchase.fromJson(
+                  .map((value) => VoidedPurchase.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

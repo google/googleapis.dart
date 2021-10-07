@@ -244,7 +244,7 @@ class AudioConfig {
               : null,
           effectsProfileId: _json.containsKey('effectsProfileId')
               ? (_json['effectsProfileId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pitch: _json.containsKey('pitch')
@@ -284,7 +284,7 @@ class ListVoicesResponse {
       : this(
           voices: _json.containsKey('voices')
               ? (_json['voices'] as core.List)
-                  .map<Voice>((value) => Voice.fromJson(
+                  .map((value) => Voice.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -446,7 +446,7 @@ class Voice {
       : this(
           languageCodes: _json.containsKey('languageCodes')
               ? (_json['languageCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,

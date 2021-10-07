@@ -1239,7 +1239,7 @@ class Artifact {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           names: _json.containsKey('names')
               ? (_json['names'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1283,7 +1283,7 @@ class ArtifactRule {
       : this(
           artifactRule: _json.containsKey('artifactRule')
               ? (_json['artifactRule'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1448,7 +1448,7 @@ class BatchCreateNotesResponse {
       : this(
           notes: _json.containsKey('notes')
               ? (_json['notes'] as core.List)
-                  .map<Note>((value) => Note.fromJson(
+                  .map((value) => Note.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1477,7 +1477,7 @@ class BatchCreateOccurrencesRequest {
       : this(
           occurrences: _json.containsKey('occurrences')
               ? (_json['occurrences'] as core.List)
-                  .map<Occurrence>((value) => Occurrence.fromJson(
+                  .map((value) => Occurrence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1502,7 +1502,7 @@ class BatchCreateOccurrencesResponse {
       : this(
           occurrences: _json.containsKey('occurrences')
               ? (_json['occurrences'] as core.List)
-                  .map<Occurrence>((value) => Occurrence.fromJson(
+                  .map((value) => Occurrence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1577,7 +1577,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -1708,13 +1708,13 @@ class BuildProvenance {
               : null,
           builtArtifacts: _json.containsKey('builtArtifacts')
               ? (_json['builtArtifacts'] as core.List)
-                  .map<Artifact>((value) => Artifact.fromJson(
+                  .map((value) => Artifact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           commands: _json.containsKey('commands')
               ? (_json['commands'] as core.List)
-                  .map<Command>((value) => Command.fromJson(
+                  .map((value) => Command.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2089,20 +2089,20 @@ class Command {
       : this(
           args: _json.containsKey('args')
               ? (_json['args'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
           env: _json.containsKey('env')
               ? (_json['env'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           waitFor: _json.containsKey('waitFor')
               ? (_json['waitFor'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2132,7 +2132,7 @@ class Deployable {
       : this(
           resourceUri: _json.containsKey('resourceUri')
               ? (_json['resourceUri'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -2201,7 +2201,7 @@ class Deployment {
               : null,
           resourceUri: _json.containsKey('resourceUri')
               ? (_json['resourceUri'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           undeployTime: _json.containsKey('undeployTime')
@@ -2270,7 +2270,7 @@ class Derived {
               : null,
           layerInfo: _json.containsKey('layerInfo')
               ? (_json['layerInfo'] as core.List)
-                  .map<Layer>((value) => Layer.fromJson(
+                  .map((value) => Layer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2712,7 +2712,7 @@ class DocumentOccurrence {
               : null,
           creators: _json.containsKey('creators')
               ? (_json['creators'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           documentComment: _json.containsKey('documentComment')
@@ -2720,7 +2720,7 @@ class DocumentOccurrence {
               : null,
           externalDocumentRefs: _json.containsKey('externalDocumentRefs')
               ? (_json['externalDocumentRefs'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -2931,7 +2931,7 @@ class FileHashes {
       : this(
           fileHash: _json.containsKey('fileHash')
               ? (_json['fileHash'] as core.List)
-                  .map<Hash>((value) => Hash.fromJson(
+                  .map((value) => Hash.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2986,7 +2986,7 @@ class FileNote {
       : this(
           checksum: _json.containsKey('checksum')
               ? (_json['checksum'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           fileType: _json.containsKey('fileType')
@@ -3060,7 +3060,7 @@ class FileOccurrence {
       : this(
           attributions: _json.containsKey('attributions')
               ? (_json['attributions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           comment: _json.containsKey('comment')
@@ -3068,7 +3068,7 @@ class FileOccurrence {
               : null,
           contributors: _json.containsKey('contributors')
               ? (_json['contributors'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           copyright: _json.containsKey('copyright')
@@ -3076,7 +3076,7 @@ class FileOccurrence {
               : null,
           filesLicenseInfo: _json.containsKey('filesLicenseInfo')
               ? (_json['filesLicenseInfo'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -3136,7 +3136,7 @@ class Fingerprint {
               : null,
           v2Blob: _json.containsKey('v2Blob')
               ? (_json['v2Blob'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           v2Name: _json.containsKey('v2Name')
@@ -3261,7 +3261,7 @@ class GenericSignedAttestation {
               : null,
           signatures: _json.containsKey('signatures')
               ? (_json['signatures'] as core.List)
-                  .map<Signature>((value) => Signature.fromJson(
+                  .map((value) => Signature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3597,9 +3597,8 @@ class GrafeasV1beta1IntotoDetails {
       : this(
           signatures: _json.containsKey('signatures')
               ? (_json['signatures'] as core.List)
-                  .map<GrafeasV1beta1IntotoSignature>((value) =>
-                      GrafeasV1beta1IntotoSignature.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GrafeasV1beta1IntotoSignature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           signed: _json.containsKey('signed')
@@ -3753,13 +3752,13 @@ class GrafeasV1beta1VulnerabilityDetails {
               : null,
           packageIssue: _json.containsKey('packageIssue')
               ? (_json['packageIssue'] as core.List)
-                  .map<PackageIssue>((value) => PackageIssue.fromJson(
+                  .map((value) => PackageIssue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           relatedUrls: _json.containsKey('relatedUrls')
               ? (_json['relatedUrls'] as core.List)
-                  .map<RelatedUrl>((value) => RelatedUrl.fromJson(
+                  .map((value) => RelatedUrl.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3893,24 +3892,24 @@ class InToto {
       : this(
           expectedCommand: _json.containsKey('expectedCommand')
               ? (_json['expectedCommand'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           expectedMaterials: _json.containsKey('expectedMaterials')
               ? (_json['expectedMaterials'] as core.List)
-                  .map<ArtifactRule>((value) => ArtifactRule.fromJson(
+                  .map((value) => ArtifactRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           expectedProducts: _json.containsKey('expectedProducts')
               ? (_json['expectedProducts'] as core.List)
-                  .map<ArtifactRule>((value) => ArtifactRule.fromJson(
+                  .map((value) => ArtifactRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           signingKeys: _json.containsKey('signingKeys')
               ? (_json['signingKeys'] as core.List)
-                  .map<SigningKey>((value) => SigningKey.fromJson(
+                  .map((value) => SigningKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3960,7 +3959,7 @@ class Installation {
       : this(
           location: _json.containsKey('location')
               ? (_json['location'] as core.List)
-                  .map<Location>((value) => Location.fromJson(
+                  .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4104,7 +4103,7 @@ class Link {
               : null,
           command: _json.containsKey('command')
               ? (_json['command'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           environment: _json.containsKey('environment')
@@ -4113,16 +4112,14 @@ class Link {
               : null,
           materials: _json.containsKey('materials')
               ? (_json['materials'] as core.List)
-                  .map<GrafeasV1beta1IntotoArtifact>((value) =>
-                      GrafeasV1beta1IntotoArtifact.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GrafeasV1beta1IntotoArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           products: _json.containsKey('products')
               ? (_json['products'] as core.List)
-                  .map<GrafeasV1beta1IntotoArtifact>((value) =>
-                      GrafeasV1beta1IntotoArtifact.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GrafeasV1beta1IntotoArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4158,7 +4155,7 @@ class ListNoteOccurrencesResponse {
               : null,
           occurrences: _json.containsKey('occurrences')
               ? (_json['occurrences'] as core.List)
-                  .map<Occurrence>((value) => Occurrence.fromJson(
+                  .map((value) => Occurrence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4194,7 +4191,7 @@ class ListNotesResponse {
               : null,
           notes: _json.containsKey('notes')
               ? (_json['notes'] as core.List)
-                  .map<Note>((value) => Note.fromJson(
+                  .map((value) => Note.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4230,7 +4227,7 @@ class ListOccurrencesResponse {
               : null,
           occurrences: _json.containsKey('occurrences')
               ? (_json['occurrences'] as core.List)
-                  .map<Occurrence>((value) => Occurrence.fromJson(
+                  .map((value) => Occurrence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4266,7 +4263,7 @@ class ListScanConfigsResponse {
               : null,
           scanConfigs: _json.containsKey('scanConfigs')
               ? (_json['scanConfigs'] as core.List)
-                  .map<ScanConfig>((value) => ScanConfig.fromJson(
+                  .map((value) => ScanConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4486,12 +4483,12 @@ class Note {
               : null,
           relatedNoteNames: _json.containsKey('relatedNoteNames')
               ? (_json['relatedNoteNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           relatedUrl: _json.containsKey('relatedUrl')
               ? (_json['relatedUrl'] as core.List)
-                  .map<RelatedUrl>((value) => RelatedUrl.fromJson(
+                  .map((value) => RelatedUrl.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4782,7 +4779,7 @@ class Package {
       : this(
           distribution: _json.containsKey('distribution')
               ? (_json['distribution'] as core.List)
-                  .map<Distribution>((value) => Distribution.fromJson(
+                  .map((value) => Distribution.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4977,13 +4974,13 @@ class PackageNote {
               : null,
           externalRefs: _json.containsKey('externalRefs')
               ? (_json['externalRefs'] as core.List)
-                  .map<ExternalRef>((value) => ExternalRef.fromJson(
+                  .map((value) => ExternalRef.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           filesLicenseInfo: _json.containsKey('filesLicenseInfo')
               ? (_json['filesLicenseInfo'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           homePage: _json.containsKey('homePage')
@@ -5264,7 +5261,7 @@ class Policy {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5800,7 +5797,7 @@ class Source {
       : this(
           additionalContexts: _json.containsKey('additionalContexts')
               ? (_json['additionalContexts'] as core.List)
-                  .map<SourceContext>((value) => SourceContext.fromJson(
+                  .map((value) => SourceContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5910,7 +5907,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -5929,13 +5926,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -5967,7 +5958,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -5991,7 +5982,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -6122,7 +6113,7 @@ class Vulnerability {
               : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<Detail>((value) => Detail.fromJson(
+                  .map((value) => Detail.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6134,7 +6125,7 @@ class Vulnerability {
               : null,
           windowsDetails: _json.containsKey('windowsDetails')
               ? (_json['windowsDetails'] as core.List)
-                  .map<WindowsDetail>((value) => WindowsDetail.fromJson(
+                  .map((value) => WindowsDetail.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6213,9 +6204,8 @@ class VulnerabilityOccurrencesSummary {
       : this(
           counts: _json.containsKey('counts')
               ? (_json['counts'] as core.List)
-                  .map<FixableTotalByDigest>((value) =>
-                      FixableTotalByDigest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FixableTotalByDigest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6269,7 +6259,7 @@ class WindowsDetail {
               : null,
           fixingKbs: _json.containsKey('fixingKbs')
               ? (_json['fixingKbs'] as core.List)
-                  .map<KnowledgeBase>((value) => KnowledgeBase.fromJson(
+                  .map((value) => KnowledgeBase.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

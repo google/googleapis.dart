@@ -2076,7 +2076,7 @@ class AnnotateFileRequest {
       : this(
           features: _json.containsKey('features')
               ? (_json['features'] as core.List)
-                  .map<Feature>((value) => Feature.fromJson(
+                  .map((value) => Feature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2090,7 +2090,7 @@ class AnnotateFileRequest {
               : null,
           pages: _json.containsKey('pages')
               ? (_json['pages'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -2144,9 +2144,8 @@ class AnnotateFileResponse {
               : null,
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<AnnotateImageResponse>((value) =>
-                      AnnotateImageResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AnnotateImageResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           totalPages: _json.containsKey('totalPages')
@@ -2185,7 +2184,7 @@ class AnnotateImageRequest {
       : this(
           features: _json.containsKey('features')
               ? (_json['features'] as core.List)
-                  .map<Feature>((value) => Feature.fromJson(
+                  .map((value) => Feature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2294,7 +2293,7 @@ class AnnotateImageResponse {
               : null,
           faceAnnotations: _json.containsKey('faceAnnotations')
               ? (_json['faceAnnotations'] as core.List)
-                  .map<FaceAnnotation>((value) => FaceAnnotation.fromJson(
+                  .map((value) => FaceAnnotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2309,27 +2308,26 @@ class AnnotateImageResponse {
                   : null,
           labelAnnotations: _json.containsKey('labelAnnotations')
               ? (_json['labelAnnotations'] as core.List)
-                  .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(
+                  .map((value) => EntityAnnotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           landmarkAnnotations: _json.containsKey('landmarkAnnotations')
               ? (_json['landmarkAnnotations'] as core.List)
-                  .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(
+                  .map((value) => EntityAnnotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           localizedObjectAnnotations:
               _json.containsKey('localizedObjectAnnotations')
                   ? (_json['localizedObjectAnnotations'] as core.List)
-                      .map<LocalizedObjectAnnotation>((value) =>
-                          LocalizedObjectAnnotation.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => LocalizedObjectAnnotation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           logoAnnotations: _json.containsKey('logoAnnotations')
               ? (_json['logoAnnotations'] as core.List)
-                  .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(
+                  .map((value) => EntityAnnotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2343,7 +2341,7 @@ class AnnotateImageResponse {
               : null,
           textAnnotations: _json.containsKey('textAnnotations')
               ? (_json['textAnnotations'] as core.List)
-                  .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(
+                  .map((value) => EntityAnnotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2420,7 +2418,7 @@ class AsyncAnnotateFileRequest {
       : this(
           features: _json.containsKey('features')
               ? (_json['features'] as core.List)
-                  .map<Feature>((value) => Feature.fromJson(
+                  .map((value) => Feature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2499,9 +2497,8 @@ class AsyncBatchAnnotateFilesRequest {
               : null,
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<AsyncAnnotateFileRequest>((value) =>
-                      AsyncAnnotateFileRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AsyncAnnotateFileRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2527,9 +2524,8 @@ class AsyncBatchAnnotateFilesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<AsyncAnnotateFileResponse>((value) =>
-                      AsyncAnnotateFileResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AsyncAnnotateFileResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2579,9 +2575,8 @@ class AsyncBatchAnnotateImagesRequest {
               : null,
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<AnnotateImageRequest>((value) =>
-                      AnnotateImageRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AnnotateImageRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2648,9 +2643,8 @@ class BatchAnnotateFilesRequest {
               : null,
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<AnnotateFileRequest>((value) =>
-                      AnnotateFileRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AnnotateFileRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2676,9 +2670,8 @@ class BatchAnnotateFilesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<AnnotateFileResponse>((value) =>
-                      AnnotateFileResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AnnotateFileResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2718,9 +2711,8 @@ class BatchAnnotateImagesRequest {
               : null,
           requests: _json.containsKey('requests')
               ? (_json['requests'] as core.List)
-                  .map<AnnotateImageRequest>((value) =>
-                      AnnotateImageRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AnnotateImageRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2745,9 +2737,8 @@ class BatchAnnotateImagesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<AnnotateImageResponse>((value) =>
-                      AnnotateImageResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AnnotateImageResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2865,7 +2856,7 @@ class Block {
               : null,
           paragraphs: _json.containsKey('paragraphs')
               ? (_json['paragraphs'] as core.List)
-                  .map<Paragraph>((value) => Paragraph.fromJson(
+                  .map((value) => Paragraph.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2902,13 +2893,13 @@ class BoundingPoly {
       : this(
           normalizedVertices: _json.containsKey('normalizedVertices')
               ? (_json['normalizedVertices'] as core.List)
-                  .map<NormalizedVertex>((value) => NormalizedVertex.fromJson(
+                  .map((value) => NormalizedVertex.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           vertices: _json.containsKey('vertices')
               ? (_json['vertices'] as core.List)
-                  .map<Vertex>((value) => Vertex.fromJson(
+                  .map((value) => Vertex.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3128,7 +3119,7 @@ class CropHintsAnnotation {
       : this(
           cropHints: _json.containsKey('cropHints')
               ? (_json['cropHints'] as core.List)
-                  .map<CropHint>((value) => CropHint.fromJson(
+                  .map((value) => CropHint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3159,7 +3150,7 @@ class CropHintsParams {
       : this(
           aspectRatios: _json.containsKey('aspectRatios')
               ? (_json['aspectRatios'] as core.List)
-                  .map<core.double>((value) => (value as core.num).toDouble())
+                  .map((value) => (value as core.num).toDouble())
                   .toList()
               : null,
         );
@@ -3251,7 +3242,7 @@ class DominantColorsAnnotation {
       : this(
           colors: _json.containsKey('colors')
               ? (_json['colors'] as core.List)
-                  .map<ColorInfo>((value) => ColorInfo.fromJson(
+                  .map((value) => ColorInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3354,14 +3345,14 @@ class EntityAnnotation {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<LocationInfo>((value) => LocationInfo.fromJson(
+                  .map((value) => LocationInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           mid: _json.containsKey('mid') ? _json['mid'] as core.String : null,
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.List)
-                  .map<Property>((value) => Property.fromJson(
+                  .map((value) => Property.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3559,7 +3550,7 @@ class FaceAnnotation {
               : null,
           landmarks: _json.containsKey('landmarks')
               ? (_json['landmarks'] as core.List)
-                  .map<Landmark>((value) => Landmark.fromJson(
+                  .map((value) => Landmark.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3767,10 +3758,9 @@ class GoogleCloudVisionV1p1beta1AnnotateFileResponse {
               : null,
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1AnnotateImageResponse>(
-                      (value) => GoogleCloudVisionV1p1beta1AnnotateImageResponse
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           totalPages: _json.containsKey('totalPages')
@@ -3876,7 +3866,7 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
               : null,
           faceAnnotations: _json.containsKey('faceAnnotations')
               ? (_json['faceAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1FaceAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3894,31 +3884,30 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
                   : null,
           labelAnnotations: _json.containsKey('labelAnnotations')
               ? (_json['labelAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           landmarkAnnotations: _json.containsKey('landmarkAnnotations')
               ? (_json['landmarkAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          localizedObjectAnnotations: _json.containsKey(
-                  'localizedObjectAnnotations')
-              ? (_json['localizedObjectAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>(
-                      (value) =>
+          localizedObjectAnnotations:
+              _json.containsKey('localizedObjectAnnotations')
+                  ? (_json['localizedObjectAnnotations'] as core.List)
+                      .map((value) =>
                           GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                      .toList()
+                  : null,
           logoAnnotations: _json.containsKey('logoAnnotations')
               ? (_json['logoAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3935,7 +3924,7 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
               : null,
           textAnnotations: _json.containsKey('textAnnotations')
               ? (_json['textAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4019,11 +4008,10 @@ class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>(
-                      (value) =>
-                          GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4090,9 +4078,8 @@ class GoogleCloudVisionV1p1beta1Block {
               : null,
           paragraphs: _json.containsKey('paragraphs')
               ? (_json['paragraphs'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1Paragraph>((value) =>
-                      GoogleCloudVisionV1p1beta1Paragraph.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1Paragraph.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           property: _json.containsKey('property')
@@ -4128,16 +4115,15 @@ class GoogleCloudVisionV1p1beta1BoundingPoly {
       : this(
           normalizedVertices: _json.containsKey('normalizedVertices')
               ? (_json['normalizedVertices'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1NormalizedVertex>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           vertices: _json.containsKey('vertices')
               ? (_json['vertices'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1Vertex>((value) =>
-                      GoogleCloudVisionV1p1beta1Vertex.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1Vertex.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4251,9 +4237,8 @@ class GoogleCloudVisionV1p1beta1CropHintsAnnotation {
       : this(
           cropHints: _json.containsKey('cropHints')
               ? (_json['cropHints'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1CropHint>((value) =>
-                      GoogleCloudVisionV1p1beta1CropHint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1CropHint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4277,9 +4262,8 @@ class GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
       : this(
           colors: _json.containsKey('colors')
               ? (_json['colors'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1ColorInfo>((value) =>
-                      GoogleCloudVisionV1p1beta1ColorInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1ColorInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4372,7 +4356,7 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1LocationInfo>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1LocationInfo.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4380,9 +4364,8 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
           mid: _json.containsKey('mid') ? _json['mid'] as core.String : null,
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1Property>((value) =>
-                      GoogleCloudVisionV1p1beta1Property.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1Property.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           score: _json.containsKey('score')
@@ -4580,11 +4563,9 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
               : null,
           landmarks: _json.containsKey('landmarks')
               ? (_json['landmarks'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>(
-                      (value) =>
-                          GoogleCloudVisionV1p1beta1FaceAnnotationLandmark
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           panAngle: _json.containsKey('panAngle')
@@ -5088,9 +5069,8 @@ class GoogleCloudVisionV1p1beta1Page {
       : this(
           blocks: _json.containsKey('blocks')
               ? (_json['blocks'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1Block>((value) =>
-                      GoogleCloudVisionV1p1beta1Block.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1Block.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           confidence: _json.containsKey('confidence')
@@ -5161,9 +5141,8 @@ class GoogleCloudVisionV1p1beta1Paragraph {
               : null,
           words: _json.containsKey('words')
               ? (_json['words'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1Word>((value) =>
-                      GoogleCloudVisionV1p1beta1Word.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1Word.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -5279,7 +5258,7 @@ class GoogleCloudVisionV1p1beta1Product {
               : null,
           productLabels: _json.containsKey('productLabels')
               ? (_json['productLabels'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1ProductKeyValue>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5359,20 +5338,18 @@ class GoogleCloudVisionV1p1beta1ProductSearchResults {
               : null,
           productGroupedResults: _json.containsKey('productGroupedResults')
               ? (_json['productGroupedResults'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p1beta1ProductSearchResultsResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1ProductSearchResultsResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -5414,20 +5391,18 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
               : null,
           objectAnnotations: _json.containsKey('objectAnnotations')
               ? (_json['objectAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>(
-                      (value) =>
-                          GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p1beta1ProductSearchResultsResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1ProductSearchResultsResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -5736,9 +5711,8 @@ class GoogleCloudVisionV1p1beta1TextAnnotation {
       : this(
           pages: _json.containsKey('pages')
               ? (_json['pages'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1Page>((value) =>
-                      GoogleCloudVisionV1p1beta1Page.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1Page.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
@@ -5843,11 +5817,10 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
               : null,
           detectedLanguages: _json.containsKey('detectedLanguages')
               ? (_json['detectedLanguages'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>(
-                      (value) =>
-                          GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -5930,49 +5903,44 @@ class GoogleCloudVisionV1p1beta1WebDetection {
       : this(
           bestGuessLabels: _json.containsKey('bestGuessLabels')
               ? (_json['bestGuessLabels'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>(
-                      (value) => GoogleCloudVisionV1p1beta1WebDetectionWebLabel
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p1beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pagesWithMatchingImages: _json.containsKey('pagesWithMatchingImages')
               ? (_json['pagesWithMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1WebDetectionWebPage>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p1beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           visuallySimilarImages: _json.containsKey('visuallySimilarImages')
               ? (_json['visuallySimilarImages'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p1beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           webEntities: _json.containsKey('webEntities')
               ? (_json['webEntities'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1WebDetectionWebEntity>(
-                      (value) => GoogleCloudVisionV1p1beta1WebDetectionWebEntity
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6130,10 +6098,9 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
       : this(
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p1beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pageTitle: _json.containsKey('pageTitle')
@@ -6141,10 +6108,9 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p1beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           score: _json.containsKey('score')
@@ -6214,9 +6180,8 @@ class GoogleCloudVisionV1p1beta1Word {
               : null,
           symbols: _json.containsKey('symbols')
               ? (_json['symbols'] as core.List)
-                  .map<GoogleCloudVisionV1p1beta1Symbol>((value) =>
-                      GoogleCloudVisionV1p1beta1Symbol.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p1beta1Symbol.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6270,10 +6235,9 @@ class GoogleCloudVisionV1p2beta1AnnotateFileResponse {
               : null,
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1AnnotateImageResponse>(
-                      (value) => GoogleCloudVisionV1p2beta1AnnotateImageResponse
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           totalPages: _json.containsKey('totalPages')
@@ -6379,7 +6343,7 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
               : null,
           faceAnnotations: _json.containsKey('faceAnnotations')
               ? (_json['faceAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1FaceAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6397,31 +6361,30 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
                   : null,
           labelAnnotations: _json.containsKey('labelAnnotations')
               ? (_json['labelAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           landmarkAnnotations: _json.containsKey('landmarkAnnotations')
               ? (_json['landmarkAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          localizedObjectAnnotations: _json.containsKey(
-                  'localizedObjectAnnotations')
-              ? (_json['localizedObjectAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>(
-                      (value) =>
+          localizedObjectAnnotations:
+              _json.containsKey('localizedObjectAnnotations')
+                  ? (_json['localizedObjectAnnotations'] as core.List)
+                      .map((value) =>
                           GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                      .toList()
+                  : null,
           logoAnnotations: _json.containsKey('logoAnnotations')
               ? (_json['logoAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6438,7 +6401,7 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
               : null,
           textAnnotations: _json.containsKey('textAnnotations')
               ? (_json['textAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6522,11 +6485,10 @@ class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>(
-                      (value) =>
-                          GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6593,9 +6555,8 @@ class GoogleCloudVisionV1p2beta1Block {
               : null,
           paragraphs: _json.containsKey('paragraphs')
               ? (_json['paragraphs'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1Paragraph>((value) =>
-                      GoogleCloudVisionV1p2beta1Paragraph.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1Paragraph.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           property: _json.containsKey('property')
@@ -6631,16 +6592,15 @@ class GoogleCloudVisionV1p2beta1BoundingPoly {
       : this(
           normalizedVertices: _json.containsKey('normalizedVertices')
               ? (_json['normalizedVertices'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1NormalizedVertex>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           vertices: _json.containsKey('vertices')
               ? (_json['vertices'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1Vertex>((value) =>
-                      GoogleCloudVisionV1p2beta1Vertex.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1Vertex.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6754,9 +6714,8 @@ class GoogleCloudVisionV1p2beta1CropHintsAnnotation {
       : this(
           cropHints: _json.containsKey('cropHints')
               ? (_json['cropHints'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1CropHint>((value) =>
-                      GoogleCloudVisionV1p2beta1CropHint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1CropHint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6780,9 +6739,8 @@ class GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
       : this(
           colors: _json.containsKey('colors')
               ? (_json['colors'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1ColorInfo>((value) =>
-                      GoogleCloudVisionV1p2beta1ColorInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1ColorInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6875,7 +6833,7 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1LocationInfo>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1LocationInfo.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6883,9 +6841,8 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
           mid: _json.containsKey('mid') ? _json['mid'] as core.String : null,
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1Property>((value) =>
-                      GoogleCloudVisionV1p2beta1Property.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1Property.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           score: _json.containsKey('score')
@@ -7083,11 +7040,9 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
               : null,
           landmarks: _json.containsKey('landmarks')
               ? (_json['landmarks'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>(
-                      (value) =>
-                          GoogleCloudVisionV1p2beta1FaceAnnotationLandmark
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           panAngle: _json.containsKey('panAngle')
@@ -7591,9 +7546,8 @@ class GoogleCloudVisionV1p2beta1Page {
       : this(
           blocks: _json.containsKey('blocks')
               ? (_json['blocks'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1Block>((value) =>
-                      GoogleCloudVisionV1p2beta1Block.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1Block.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           confidence: _json.containsKey('confidence')
@@ -7664,9 +7618,8 @@ class GoogleCloudVisionV1p2beta1Paragraph {
               : null,
           words: _json.containsKey('words')
               ? (_json['words'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1Word>((value) =>
-                      GoogleCloudVisionV1p2beta1Word.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1Word.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -7782,7 +7735,7 @@ class GoogleCloudVisionV1p2beta1Product {
               : null,
           productLabels: _json.containsKey('productLabels')
               ? (_json['productLabels'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1ProductKeyValue>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7862,20 +7815,18 @@ class GoogleCloudVisionV1p2beta1ProductSearchResults {
               : null,
           productGroupedResults: _json.containsKey('productGroupedResults')
               ? (_json['productGroupedResults'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p2beta1ProductSearchResultsResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1ProductSearchResultsResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -7917,20 +7868,18 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
               : null,
           objectAnnotations: _json.containsKey('objectAnnotations')
               ? (_json['objectAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>(
-                      (value) =>
-                          GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p2beta1ProductSearchResultsResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1ProductSearchResultsResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8239,9 +8188,8 @@ class GoogleCloudVisionV1p2beta1TextAnnotation {
       : this(
           pages: _json.containsKey('pages')
               ? (_json['pages'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1Page>((value) =>
-                      GoogleCloudVisionV1p2beta1Page.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1Page.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
@@ -8346,11 +8294,10 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
               : null,
           detectedLanguages: _json.containsKey('detectedLanguages')
               ? (_json['detectedLanguages'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>(
-                      (value) =>
-                          GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8433,49 +8380,44 @@ class GoogleCloudVisionV1p2beta1WebDetection {
       : this(
           bestGuessLabels: _json.containsKey('bestGuessLabels')
               ? (_json['bestGuessLabels'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1WebDetectionWebLabel>(
-                      (value) => GoogleCloudVisionV1p2beta1WebDetectionWebLabel
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p2beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pagesWithMatchingImages: _json.containsKey('pagesWithMatchingImages')
               ? (_json['pagesWithMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1WebDetectionWebPage>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p2beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           visuallySimilarImages: _json.containsKey('visuallySimilarImages')
               ? (_json['visuallySimilarImages'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p2beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           webEntities: _json.containsKey('webEntities')
               ? (_json['webEntities'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1WebDetectionWebEntity>(
-                      (value) => GoogleCloudVisionV1p2beta1WebDetectionWebEntity
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8633,10 +8575,9 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
       : this(
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p2beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pageTitle: _json.containsKey('pageTitle')
@@ -8644,10 +8585,9 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p2beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           score: _json.containsKey('score')
@@ -8717,9 +8657,8 @@ class GoogleCloudVisionV1p2beta1Word {
               : null,
           symbols: _json.containsKey('symbols')
               ? (_json['symbols'] as core.List)
-                  .map<GoogleCloudVisionV1p2beta1Symbol>((value) =>
-                      GoogleCloudVisionV1p2beta1Symbol.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p2beta1Symbol.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -8773,10 +8712,9 @@ class GoogleCloudVisionV1p3beta1AnnotateFileResponse {
               : null,
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1AnnotateImageResponse>(
-                      (value) => GoogleCloudVisionV1p3beta1AnnotateImageResponse
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           totalPages: _json.containsKey('totalPages')
@@ -8882,7 +8820,7 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
               : null,
           faceAnnotations: _json.containsKey('faceAnnotations')
               ? (_json['faceAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1FaceAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -8900,31 +8838,30 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
                   : null,
           labelAnnotations: _json.containsKey('labelAnnotations')
               ? (_json['labelAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           landmarkAnnotations: _json.containsKey('landmarkAnnotations')
               ? (_json['landmarkAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          localizedObjectAnnotations: _json.containsKey(
-                  'localizedObjectAnnotations')
-              ? (_json['localizedObjectAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>(
-                      (value) =>
+          localizedObjectAnnotations:
+              _json.containsKey('localizedObjectAnnotations')
+                  ? (_json['localizedObjectAnnotations'] as core.List)
+                      .map((value) =>
                           GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                      .toList()
+                  : null,
           logoAnnotations: _json.containsKey('logoAnnotations')
               ? (_json['logoAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -8941,7 +8878,7 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
               : null,
           textAnnotations: _json.containsKey('textAnnotations')
               ? (_json['textAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -9025,11 +8962,10 @@ class GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>(
-                      (value) =>
-                          GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -9147,9 +9083,8 @@ class GoogleCloudVisionV1p3beta1Block {
               : null,
           paragraphs: _json.containsKey('paragraphs')
               ? (_json['paragraphs'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1Paragraph>((value) =>
-                      GoogleCloudVisionV1p3beta1Paragraph.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1Paragraph.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           property: _json.containsKey('property')
@@ -9185,16 +9120,15 @@ class GoogleCloudVisionV1p3beta1BoundingPoly {
       : this(
           normalizedVertices: _json.containsKey('normalizedVertices')
               ? (_json['normalizedVertices'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1NormalizedVertex>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           vertices: _json.containsKey('vertices')
               ? (_json['vertices'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1Vertex>((value) =>
-                      GoogleCloudVisionV1p3beta1Vertex.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1Vertex.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -9308,9 +9242,8 @@ class GoogleCloudVisionV1p3beta1CropHintsAnnotation {
       : this(
           cropHints: _json.containsKey('cropHints')
               ? (_json['cropHints'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1CropHint>((value) =>
-                      GoogleCloudVisionV1p3beta1CropHint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1CropHint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -9334,9 +9267,8 @@ class GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
       : this(
           colors: _json.containsKey('colors')
               ? (_json['colors'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1ColorInfo>((value) =>
-                      GoogleCloudVisionV1p3beta1ColorInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1ColorInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -9429,7 +9361,7 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1LocationInfo>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1LocationInfo.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -9437,9 +9369,8 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
           mid: _json.containsKey('mid') ? _json['mid'] as core.String : null,
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1Property>((value) =>
-                      GoogleCloudVisionV1p3beta1Property.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1Property.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           score: _json.containsKey('score')
@@ -9637,11 +9568,9 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
               : null,
           landmarks: _json.containsKey('landmarks')
               ? (_json['landmarks'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>(
-                      (value) =>
-                          GoogleCloudVisionV1p3beta1FaceAnnotationLandmark
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           panAngle: _json.containsKey('panAngle')
@@ -9889,14 +9818,14 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
       : this(
           referenceImages: _json.containsKey('referenceImages')
               ? (_json['referenceImages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1ReferenceImage>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           statuses: _json.containsKey('statuses')
               ? (_json['statuses'] as core.List)
-                  .map<Status>((value) => Status.fromJson(
+                  .map((value) => Status.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -10192,9 +10121,8 @@ class GoogleCloudVisionV1p3beta1Page {
       : this(
           blocks: _json.containsKey('blocks')
               ? (_json['blocks'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1Block>((value) =>
-                      GoogleCloudVisionV1p3beta1Block.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1Block.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           confidence: _json.containsKey('confidence')
@@ -10265,9 +10193,8 @@ class GoogleCloudVisionV1p3beta1Paragraph {
               : null,
           words: _json.containsKey('words')
               ? (_json['words'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1Word>((value) =>
-                      GoogleCloudVisionV1p3beta1Word.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1Word.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -10383,7 +10310,7 @@ class GoogleCloudVisionV1p3beta1Product {
               : null,
           productLabels: _json.containsKey('productLabels')
               ? (_json['productLabels'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1ProductKeyValue>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -10463,20 +10390,18 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
               : null,
           productGroupedResults: _json.containsKey('productGroupedResults')
               ? (_json['productGroupedResults'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p3beta1ProductSearchResultsResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1ProductSearchResultsResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -10518,20 +10443,18 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
               : null,
           objectAnnotations: _json.containsKey('objectAnnotations')
               ? (_json['objectAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>(
-                      (value) =>
-                          GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p3beta1ProductSearchResultsResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1ProductSearchResultsResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -10704,7 +10627,7 @@ class GoogleCloudVisionV1p3beta1ReferenceImage {
       : this(
           boundingPolys: _json.containsKey('boundingPolys')
               ? (_json['boundingPolys'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1BoundingPoly>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -10896,9 +10819,8 @@ class GoogleCloudVisionV1p3beta1TextAnnotation {
       : this(
           pages: _json.containsKey('pages')
               ? (_json['pages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1Page>((value) =>
-                      GoogleCloudVisionV1p3beta1Page.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1Page.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
@@ -11003,11 +10925,10 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
               : null,
           detectedLanguages: _json.containsKey('detectedLanguages')
               ? (_json['detectedLanguages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>(
-                      (value) =>
-                          GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -11090,49 +11011,44 @@ class GoogleCloudVisionV1p3beta1WebDetection {
       : this(
           bestGuessLabels: _json.containsKey('bestGuessLabels')
               ? (_json['bestGuessLabels'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1WebDetectionWebLabel>(
-                      (value) => GoogleCloudVisionV1p3beta1WebDetectionWebLabel
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p3beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pagesWithMatchingImages: _json.containsKey('pagesWithMatchingImages')
               ? (_json['pagesWithMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1WebDetectionWebPage>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p3beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           visuallySimilarImages: _json.containsKey('visuallySimilarImages')
               ? (_json['visuallySimilarImages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p3beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           webEntities: _json.containsKey('webEntities')
               ? (_json['webEntities'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1WebDetectionWebEntity>(
-                      (value) => GoogleCloudVisionV1p3beta1WebDetectionWebEntity
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -11290,10 +11206,9 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
       : this(
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p3beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pageTitle: _json.containsKey('pageTitle')
@@ -11301,10 +11216,9 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p3beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           score: _json.containsKey('score')
@@ -11374,9 +11288,8 @@ class GoogleCloudVisionV1p3beta1Word {
               : null,
           symbols: _json.containsKey('symbols')
               ? (_json['symbols'] as core.List)
-                  .map<GoogleCloudVisionV1p3beta1Symbol>((value) =>
-                      GoogleCloudVisionV1p3beta1Symbol.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p3beta1Symbol.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -11430,10 +11343,9 @@ class GoogleCloudVisionV1p4beta1AnnotateFileResponse {
               : null,
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1AnnotateImageResponse>(
-                      (value) => GoogleCloudVisionV1p4beta1AnnotateImageResponse
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           totalPages: _json.containsKey('totalPages')
@@ -11539,7 +11451,7 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
               : null,
           faceAnnotations: _json.containsKey('faceAnnotations')
               ? (_json['faceAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1FaceAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11557,31 +11469,30 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
                   : null,
           labelAnnotations: _json.containsKey('labelAnnotations')
               ? (_json['labelAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           landmarkAnnotations: _json.containsKey('landmarkAnnotations')
               ? (_json['landmarkAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          localizedObjectAnnotations: _json.containsKey(
-                  'localizedObjectAnnotations')
-              ? (_json['localizedObjectAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>(
-                      (value) =>
+          localizedObjectAnnotations:
+              _json.containsKey('localizedObjectAnnotations')
+                  ? (_json['localizedObjectAnnotations'] as core.List)
+                      .map((value) =>
                           GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                      .toList()
+                  : null,
           logoAnnotations: _json.containsKey('logoAnnotations')
               ? (_json['logoAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11598,7 +11509,7 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
               : null,
           textAnnotations: _json.containsKey('textAnnotations')
               ? (_json['textAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11682,11 +11593,10 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>(
-                      (value) =>
-                          GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -11734,10 +11644,9 @@ class GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
       : this(
           responses: _json.containsKey('responses')
               ? (_json['responses'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1AnnotateFileResponse>(
-                      (value) => GoogleCloudVisionV1p4beta1AnnotateFileResponse
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -11855,9 +11764,8 @@ class GoogleCloudVisionV1p4beta1Block {
               : null,
           paragraphs: _json.containsKey('paragraphs')
               ? (_json['paragraphs'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1Paragraph>((value) =>
-                      GoogleCloudVisionV1p4beta1Paragraph.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1Paragraph.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           property: _json.containsKey('property')
@@ -11893,16 +11801,15 @@ class GoogleCloudVisionV1p4beta1BoundingPoly {
       : this(
           normalizedVertices: _json.containsKey('normalizedVertices')
               ? (_json['normalizedVertices'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1NormalizedVertex>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           vertices: _json.containsKey('vertices')
               ? (_json['vertices'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1Vertex>((value) =>
-                      GoogleCloudVisionV1p4beta1Vertex.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1Vertex.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -12053,9 +11960,8 @@ class GoogleCloudVisionV1p4beta1CropHintsAnnotation {
       : this(
           cropHints: _json.containsKey('cropHints')
               ? (_json['cropHints'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1CropHint>((value) =>
-                      GoogleCloudVisionV1p4beta1CropHint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1CropHint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -12079,9 +11985,8 @@ class GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
       : this(
           colors: _json.containsKey('colors')
               ? (_json['colors'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1ColorInfo>((value) =>
-                      GoogleCloudVisionV1p4beta1ColorInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1ColorInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -12174,7 +12079,7 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
               : null,
           locations: _json.containsKey('locations')
               ? (_json['locations'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1LocationInfo>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1LocationInfo.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -12182,9 +12087,8 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
           mid: _json.containsKey('mid') ? _json['mid'] as core.String : null,
           properties: _json.containsKey('properties')
               ? (_json['properties'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1Property>((value) =>
-                      GoogleCloudVisionV1p4beta1Property.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1Property.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           score: _json.containsKey('score')
@@ -12390,11 +12294,9 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
               : null,
           landmarks: _json.containsKey('landmarks')
               ? (_json['landmarks'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>(
-                      (value) =>
-                          GoogleCloudVisionV1p4beta1FaceAnnotationLandmark
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           panAngle: _json.containsKey('panAngle')
@@ -12402,10 +12304,9 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
               : null,
           recognitionResult: _json.containsKey('recognitionResult')
               ? (_json['recognitionResult'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1FaceRecognitionResult>(
-                      (value) => GoogleCloudVisionV1p4beta1FaceRecognitionResult
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           rollAngle: _json.containsKey('rollAngle')
@@ -12685,14 +12586,14 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
       : this(
           referenceImages: _json.containsKey('referenceImages')
               ? (_json['referenceImages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1ReferenceImage>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           statuses: _json.containsKey('statuses')
               ? (_json['statuses'] as core.List)
-                  .map<Status>((value) => Status.fromJson(
+                  .map((value) => Status.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -12988,9 +12889,8 @@ class GoogleCloudVisionV1p4beta1Page {
       : this(
           blocks: _json.containsKey('blocks')
               ? (_json['blocks'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1Block>((value) =>
-                      GoogleCloudVisionV1p4beta1Block.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1Block.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           confidence: _json.containsKey('confidence')
@@ -13061,9 +12961,8 @@ class GoogleCloudVisionV1p4beta1Paragraph {
               : null,
           words: _json.containsKey('words')
               ? (_json['words'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1Word>((value) =>
-                      GoogleCloudVisionV1p4beta1Word.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1Word.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -13179,7 +13078,7 @@ class GoogleCloudVisionV1p4beta1Product {
               : null,
           productLabels: _json.containsKey('productLabels')
               ? (_json['productLabels'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1ProductKeyValue>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -13259,20 +13158,18 @@ class GoogleCloudVisionV1p4beta1ProductSearchResults {
               : null,
           productGroupedResults: _json.containsKey('productGroupedResults')
               ? (_json['productGroupedResults'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p4beta1ProductSearchResultsResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1ProductSearchResultsResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -13314,20 +13211,18 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
               : null,
           objectAnnotations: _json.containsKey('objectAnnotations')
               ? (_json['objectAnnotations'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>(
-                      (value) =>
-                          GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>(
-                      (value) =>
-                          GoogleCloudVisionV1p4beta1ProductSearchResultsResult
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1ProductSearchResultsResult
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -13500,7 +13395,7 @@ class GoogleCloudVisionV1p4beta1ReferenceImage {
       : this(
           boundingPolys: _json.containsKey('boundingPolys')
               ? (_json['boundingPolys'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1BoundingPoly>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -13692,9 +13587,8 @@ class GoogleCloudVisionV1p4beta1TextAnnotation {
       : this(
           pages: _json.containsKey('pages')
               ? (_json['pages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1Page>((value) =>
-                      GoogleCloudVisionV1p4beta1Page.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1Page.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
@@ -13799,11 +13693,10 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
               : null,
           detectedLanguages: _json.containsKey('detectedLanguages')
               ? (_json['detectedLanguages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>(
-                      (value) =>
-                          GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -13886,49 +13779,44 @@ class GoogleCloudVisionV1p4beta1WebDetection {
       : this(
           bestGuessLabels: _json.containsKey('bestGuessLabels')
               ? (_json['bestGuessLabels'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1WebDetectionWebLabel>(
-                      (value) => GoogleCloudVisionV1p4beta1WebDetectionWebLabel
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p4beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pagesWithMatchingImages: _json.containsKey('pagesWithMatchingImages')
               ? (_json['pagesWithMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1WebDetectionWebPage>((value) =>
+                  .map((value) =>
                       GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p4beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           visuallySimilarImages: _json.containsKey('visuallySimilarImages')
               ? (_json['visuallySimilarImages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p4beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           webEntities: _json.containsKey('webEntities')
               ? (_json['webEntities'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1WebDetectionWebEntity>(
-                      (value) => GoogleCloudVisionV1p4beta1WebDetectionWebEntity
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -14086,10 +13974,9 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
       : this(
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p4beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pageTitle: _json.containsKey('pageTitle')
@@ -14097,10 +13984,9 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>(
-                      (value) => GoogleCloudVisionV1p4beta1WebDetectionWebImage
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           score: _json.containsKey('score')
@@ -14170,9 +14056,8 @@ class GoogleCloudVisionV1p4beta1Word {
               : null,
           symbols: _json.containsKey('symbols')
               ? (_json['symbols'] as core.List)
-                  .map<GoogleCloudVisionV1p4beta1Symbol>((value) =>
-                      GoogleCloudVisionV1p4beta1Symbol.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudVisionV1p4beta1Symbol.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -14211,13 +14096,13 @@ class GroupedResult {
               : null,
           objectAnnotations: _json.containsKey('objectAnnotations')
               ? (_json['objectAnnotations'] as core.List)
-                  .map<ObjectAnnotation>((value) => ObjectAnnotation.fromJson(
+                  .map((value) => ObjectAnnotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<Result>((value) => Result.fromJson(
+                  .map((value) => Result.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14352,7 +14237,7 @@ class ImageContext {
               : null,
           languageHints: _json.containsKey('languageHints')
               ? (_json['languageHints'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           latLongRect: _json.containsKey('latLongRect')
@@ -14582,13 +14467,13 @@ class ImportProductSetsResponse {
       : this(
           referenceImages: _json.containsKey('referenceImages')
               ? (_json['referenceImages'] as core.List)
-                  .map<ReferenceImage>((value) => ReferenceImage.fromJson(
+                  .map((value) => ReferenceImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           statuses: _json.containsKey('statuses')
               ? (_json['statuses'] as core.List)
-                  .map<Status>((value) => Status.fromJson(
+                  .map((value) => Status.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14840,7 +14725,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14874,7 +14759,7 @@ class ListProductSetsResponse {
               : null,
           productSets: _json.containsKey('productSets')
               ? (_json['productSets'] as core.List)
-                  .map<ProductSet>((value) => ProductSet.fromJson(
+                  .map((value) => ProductSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14908,7 +14793,7 @@ class ListProductsInProductSetResponse {
               : null,
           products: _json.containsKey('products')
               ? (_json['products'] as core.List)
-                  .map<Product>((value) => Product.fromJson(
+                  .map((value) => Product.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14942,7 +14827,7 @@ class ListProductsResponse {
               : null,
           products: _json.containsKey('products')
               ? (_json['products'] as core.List)
-                  .map<Product>((value) => Product.fromJson(
+                  .map((value) => Product.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -14984,7 +14869,7 @@ class ListReferenceImagesResponse {
               : null,
           referenceImages: _json.containsKey('referenceImages')
               ? (_json['referenceImages'] as core.List)
-                  .map<ReferenceImage>((value) => ReferenceImage.fromJson(
+                  .map((value) => ReferenceImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15177,7 +15062,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -15197,7 +15082,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -15215,21 +15100,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -15359,7 +15234,7 @@ class Page {
       : this(
           blocks: _json.containsKey('blocks')
               ? (_json['blocks'] as core.List)
-                  .map<Block>((value) => Block.fromJson(
+                  .map((value) => Block.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15431,7 +15306,7 @@ class Paragraph {
               : null,
           words: _json.containsKey('words')
               ? (_json['words'] as core.List)
-                  .map<Word>((value) => Word.fromJson(
+                  .map((value) => Word.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15548,7 +15423,7 @@ class Product {
               : null,
           productLabels: _json.containsKey('productLabels')
               ? (_json['productLabels'] as core.List)
-                  .map<KeyValue>((value) => KeyValue.fromJson(
+                  .map((value) => KeyValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15618,7 +15493,7 @@ class ProductSearchParams {
               : null,
           productCategories: _json.containsKey('productCategories')
               ? (_json['productCategories'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           productSet: _json.containsKey('productSet')
@@ -15665,13 +15540,13 @@ class ProductSearchResults {
               : null,
           productGroupedResults: _json.containsKey('productGroupedResults')
               ? (_json['productGroupedResults'] as core.List)
-                  .map<GroupedResult>((value) => GroupedResult.fromJson(
+                  .map((value) => GroupedResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<Result>((value) => Result.fromJson(
+                  .map((value) => Result.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -15889,7 +15764,7 @@ class ReferenceImage {
       : this(
           boundingPolys: _json.containsKey('boundingPolys')
               ? (_json['boundingPolys'] as core.List)
-                  .map<BoundingPoly>((value) => BoundingPoly.fromJson(
+                  .map((value) => BoundingPoly.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -16082,7 +15957,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -16101,13 +15976,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -16201,7 +16070,7 @@ class TextAnnotation {
       : this(
           pages: _json.containsKey('pages')
               ? (_json['pages'] as core.List)
-                  .map<Page>((value) => Page.fromJson(
+                  .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -16266,7 +16135,7 @@ class TextProperty {
               : null,
           detectedLanguages: _json.containsKey('detectedLanguages')
               ? (_json['detectedLanguages'] as core.List)
-                  .map<DetectedLanguage>((value) => DetectedLanguage.fromJson(
+                  .map((value) => DetectedLanguage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -16347,37 +16216,37 @@ class WebDetection {
       : this(
           bestGuessLabels: _json.containsKey('bestGuessLabels')
               ? (_json['bestGuessLabels'] as core.List)
-                  .map<WebLabel>((value) => WebLabel.fromJson(
+                  .map((value) => WebLabel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<WebImage>((value) => WebImage.fromJson(
+                  .map((value) => WebImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           pagesWithMatchingImages: _json.containsKey('pagesWithMatchingImages')
               ? (_json['pagesWithMatchingImages'] as core.List)
-                  .map<WebPage>((value) => WebPage.fromJson(
+                  .map((value) => WebPage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<WebImage>((value) => WebImage.fromJson(
+                  .map((value) => WebImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           visuallySimilarImages: _json.containsKey('visuallySimilarImages')
               ? (_json['visuallySimilarImages'] as core.List)
-                  .map<WebImage>((value) => WebImage.fromJson(
+                  .map((value) => WebImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           webEntities: _json.containsKey('webEntities')
               ? (_json['webEntities'] as core.List)
-                  .map<WebEntity>((value) => WebEntity.fromJson(
+                  .map((value) => WebEntity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -16556,7 +16425,7 @@ class WebPage {
       : this(
           fullMatchingImages: _json.containsKey('fullMatchingImages')
               ? (_json['fullMatchingImages'] as core.List)
-                  .map<WebImage>((value) => WebImage.fromJson(
+                  .map((value) => WebImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -16565,7 +16434,7 @@ class WebPage {
               : null,
           partialMatchingImages: _json.containsKey('partialMatchingImages')
               ? (_json['partialMatchingImages'] as core.List)
-                  .map<WebImage>((value) => WebImage.fromJson(
+                  .map((value) => WebImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -16636,7 +16505,7 @@ class Word {
               : null,
           symbols: _json.containsKey('symbols')
               ? (_json['symbols'] as core.List)
-                  .map<Symbol>((value) => Symbol.fromJson(
+                  .map((value) => Symbol.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

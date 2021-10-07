@@ -868,7 +868,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -1097,7 +1097,7 @@ class GcipSettings {
               : null,
           tenantIds: _json.containsKey('tenantIds')
               ? (_json['tenantIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1254,7 +1254,7 @@ class ListBrandsResponse {
       : this(
           brands: _json.containsKey('brands')
               ? (_json['brands'] as core.List)
-                  .map<Brand>((value) => Brand.fromJson(
+                  .map((value) => Brand.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1286,9 +1286,8 @@ class ListIdentityAwareProxyClientsResponse {
           identityAwareProxyClients:
               _json.containsKey('identityAwareProxyClients')
                   ? (_json['identityAwareProxyClients'] as core.List)
-                      .map<IdentityAwareProxyClient>((value) =>
-                          IdentityAwareProxyClient.fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                      .map((value) => IdentityAwareProxyClient.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -1420,7 +1419,7 @@ class Policy {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1669,7 +1668,7 @@ class TestIamPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1693,7 +1692,7 @@ class TestIamPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

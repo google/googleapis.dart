@@ -247,7 +247,7 @@ class CreateProfileRequest {
               : null,
           profileType: _json.containsKey('profileType')
               ? (_json['profileType'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

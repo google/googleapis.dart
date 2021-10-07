@@ -763,13 +763,13 @@ class Conversion {
               : null,
           customDimension: _json.containsKey('customDimension')
               ? (_json['customDimension'] as core.List)
-                  .map<CustomDimension>((value) => CustomDimension.fromJson(
+                  .map((value) => CustomDimension.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           customMetric: _json.containsKey('customMetric')
               ? (_json['customMetric'] as core.List)
-                  .map<CustomMetric>((value) => CustomMetric.fromJson(
+                  .map((value) => CustomMetric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -885,7 +885,7 @@ class ConversionList {
       : this(
           conversion: _json.containsKey('conversion')
               ? (_json['conversion'] as core.List)
-                  .map<Conversion>((value) => Conversion.fromJson(
+                  .map((value) => Conversion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1049,7 +1049,7 @@ class Report {
       : this(
           files: _json.containsKey('files')
               ? (_json['files'] as core.List)
-                  .map<ReportFiles>((value) => ReportFiles.fromJson(
+                  .map((value) => ReportFiles.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1067,7 +1067,7 @@ class Report {
               : null,
           rows: _json.containsKey('rows')
               ? (_json['rows'] as core.List)
-                  .map<ReportRow>((value) => ReportRow.fromJson(
+                  .map((value) => ReportRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1240,7 +1240,7 @@ class ReportRequestFilters {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object>? values;
+  core.List<core.Object?>? values;
 
   ReportRequestFilters({
     this.column,
@@ -1257,11 +1257,8 @@ class ReportRequestFilters {
           operator: _json.containsKey('operator')
               ? _json['operator'] as core.String
               : null,
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList()
-              : null,
+          values:
+              _json.containsKey('values') ? _json['values'] as core.List : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1537,9 +1534,8 @@ class ReportRequest {
       : this(
           columns: _json.containsKey('columns')
               ? (_json['columns'] as core.List)
-                  .map<ReportApiColumnSpec>((value) =>
-                      ReportApiColumnSpec.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReportApiColumnSpec.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           downloadFormat: _json.containsKey('downloadFormat')
@@ -1547,9 +1543,8 @@ class ReportRequest {
               : null,
           filters: _json.containsKey('filters')
               ? (_json['filters'] as core.List)
-                  .map<ReportRequestFilters>((value) =>
-                      ReportRequestFilters.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReportRequestFilters.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           includeDeletedEntities: _json.containsKey('includeDeletedEntities')
@@ -1563,9 +1558,8 @@ class ReportRequest {
               : null,
           orderBy: _json.containsKey('orderBy')
               ? (_json['orderBy'] as core.List)
-                  .map<ReportRequestOrderBy>((value) =>
-                      ReportRequestOrderBy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReportRequestOrderBy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           reportScope: _json.containsKey('reportScope')
@@ -1622,14 +1616,14 @@ class ReportRequest {
 ///
 /// Indicates the columns that are represented in this row. That is, each key
 /// corresponds to a column with a non-empty cell in this row.
-class ReportRow extends collection.MapBase<core.String, core.Object> {
-  final _innerMap = <core.String, core.Object>{};
+class ReportRow extends collection.MapBase<core.String, core.Object?> {
+  final _innerMap = <core.String, core.Object?>{};
 
   ReportRow();
 
   ReportRow.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = value as core.Object;
+      this[key] = value;
     });
   }
 
@@ -1640,7 +1634,7 @@ class ReportRow extends collection.MapBase<core.String, core.Object> {
   core.Object? operator [](core.Object? key) => _innerMap[key];
 
   @core.override
-  void operator []=(core.String key, core.Object value) {
+  void operator []=(core.String key, core.Object? value) {
     _innerMap[key] = value;
   }
 
@@ -1714,7 +1708,7 @@ class SavedColumnList {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<SavedColumn>((value) => SavedColumn.fromJson(
+                  .map((value) => SavedColumn.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1741,7 +1735,7 @@ class UpdateAvailabilityRequest {
       : this(
           availabilities: _json.containsKey('availabilities')
               ? (_json['availabilities'] as core.List)
-                  .map<Availability>((value) => Availability.fromJson(
+                  .map((value) => Availability.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1767,7 +1761,7 @@ class UpdateAvailabilityResponse {
       : this(
           availabilities: _json.containsKey('availabilities')
               ? (_json['availabilities'] as core.List)
-                  .map<Availability>((value) => Availability.fromJson(
+                  .map((value) => Availability.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

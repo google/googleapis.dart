@@ -786,12 +786,12 @@ class AptSettings {
       : this(
           excludes: _json.containsKey('excludes')
               ? (_json['excludes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           exclusivePackages: _json.containsKey('exclusivePackages')
               ? (_json['exclusivePackages'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
@@ -1074,7 +1074,7 @@ class ExecStepConfig {
       : this(
           allowedSuccessCodes: _json.containsKey('allowedSuccessCodes')
               ? (_json['allowedSuccessCodes'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
           gcsObject: _json.containsKey('gcsObject')
@@ -1740,11 +1740,10 @@ class InventoryWindowsUpdatePackage {
       : this(
           categories: _json.containsKey('categories')
               ? (_json['categories'] as core.List)
-                  .map<InventoryWindowsUpdatePackageWindowsUpdateCategory>(
-                      (value) =>
-                          InventoryWindowsUpdatePackageWindowsUpdateCategory
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      InventoryWindowsUpdatePackageWindowsUpdateCategory
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           description: _json.containsKey('description')
@@ -1752,7 +1751,7 @@ class InventoryWindowsUpdatePackage {
               : null,
           kbArticleIds: _json.containsKey('kbArticleIds')
               ? (_json['kbArticleIds'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           lastDeploymentChangeTime:
@@ -1761,7 +1760,7 @@ class InventoryWindowsUpdatePackage {
                   : null,
           moreInfoUrls: _json.containsKey('moreInfoUrls')
               ? (_json['moreInfoUrls'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           revisionNumber: _json.containsKey('revisionNumber')
@@ -1880,7 +1879,7 @@ class ListInventoriesResponse {
       : this(
           inventories: _json.containsKey('inventories')
               ? (_json['inventories'] as core.List)
-                  .map<Inventory>((value) => Inventory.fromJson(
+                  .map((value) => Inventory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1917,7 +1916,7 @@ class ListPatchDeploymentsResponse {
               : null,
           patchDeployments: _json.containsKey('patchDeployments')
               ? (_json['patchDeployments'] as core.List)
-                  .map<PatchDeployment>((value) => PatchDeployment.fromJson(
+                  .map((value) => PatchDeployment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1951,9 +1950,8 @@ class ListPatchJobInstanceDetailsResponse {
               : null,
           patchJobInstanceDetails: _json.containsKey('patchJobInstanceDetails')
               ? (_json['patchJobInstanceDetails'] as core.List)
-                  .map<PatchJobInstanceDetails>((value) =>
-                      PatchJobInstanceDetails.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PatchJobInstanceDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1986,7 +1984,7 @@ class ListPatchJobsResponse {
               : null,
           patchJobs: _json.containsKey('patchJobs')
               ? (_json['patchJobs'] as core.List)
-                  .map<PatchJob>((value) => PatchJob.fromJson(
+                  .map((value) => PatchJob.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2021,9 +2019,8 @@ class ListVulnerabilityReportsResponse {
               : null,
           vulnerabilityReports: _json.containsKey('vulnerabilityReports')
               ? (_json['vulnerabilityReports'] as core.List)
-                  .map<VulnerabilityReport>((value) =>
-                      VulnerabilityReport.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VulnerabilityReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -2473,24 +2470,23 @@ class PatchInstanceFilter {
           all: _json.containsKey('all') ? _json['all'] as core.bool : null,
           groupLabels: _json.containsKey('groupLabels')
               ? (_json['groupLabels'] as core.List)
-                  .map<PatchInstanceFilterGroupLabel>((value) =>
-                      PatchInstanceFilterGroupLabel.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PatchInstanceFilterGroupLabel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           instanceNamePrefixes: _json.containsKey('instanceNamePrefixes')
               ? (_json['instanceNamePrefixes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           zones: _json.containsKey('zones')
               ? (_json['zones'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3245,9 +3241,8 @@ class VulnerabilityReport {
               : null,
           vulnerabilities: _json.containsKey('vulnerabilities')
               ? (_json['vulnerabilities'] as core.List)
-                  .map<VulnerabilityReportVulnerability>((value) =>
-                      VulnerabilityReportVulnerability.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VulnerabilityReportVulnerability.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3302,7 +3297,7 @@ class VulnerabilityReportVulnerability {
           availableInventoryItemIds:
               _json.containsKey('availableInventoryItemIds')
                   ? (_json['availableInventoryItemIds'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           createTime: _json.containsKey('createTime')
@@ -3315,7 +3310,7 @@ class VulnerabilityReportVulnerability {
           installedInventoryItemIds:
               _json.containsKey('installedInventoryItemIds')
                   ? (_json['installedInventoryItemIds'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           updateTime: _json.containsKey('updateTime')
@@ -3387,11 +3382,9 @@ class VulnerabilityReportVulnerabilityDetails {
               : null,
           references: _json.containsKey('references')
               ? (_json['references'] as core.List)
-                  .map<VulnerabilityReportVulnerabilityDetailsReference>(
-                      (value) =>
-                          VulnerabilityReportVulnerabilityDetailsReference
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      VulnerabilityReportVulnerabilityDetailsReference.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           severity: _json.containsKey('severity')
@@ -3542,17 +3535,17 @@ class WindowsUpdateSettings {
       : this(
           classifications: _json.containsKey('classifications')
               ? (_json['classifications'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           excludes: _json.containsKey('excludes')
               ? (_json['excludes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           exclusivePatches: _json.containsKey('exclusivePatches')
               ? (_json['exclusivePatches'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3600,12 +3593,12 @@ class YumSettings {
       : this(
           excludes: _json.containsKey('excludes')
               ? (_json['excludes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           exclusivePackages: _json.containsKey('exclusivePackages')
               ? (_json['exclusivePackages'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           minimal: _json.containsKey('minimal')
@@ -3667,22 +3660,22 @@ class ZypperSettings {
       : this(
           categories: _json.containsKey('categories')
               ? (_json['categories'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           excludes: _json.containsKey('excludes')
               ? (_json['excludes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           exclusivePatches: _json.containsKey('exclusivePatches')
               ? (_json['exclusivePatches'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           severities: _json.containsKey('severities')
               ? (_json['severities'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           withOptional: _json.containsKey('withOptional')

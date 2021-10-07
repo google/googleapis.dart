@@ -635,9 +635,8 @@ class GoogleCloudResourcesettingsV1ListSettingsResponse {
               : null,
           settings: _json.containsKey('settings')
               ? (_json['settings'] as core.List)
-                  .map<GoogleCloudResourcesettingsV1Setting>((value) =>
-                      GoogleCloudResourcesettingsV1Setting.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudResourcesettingsV1Setting.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -930,7 +929,7 @@ class GoogleCloudResourcesettingsV1ValueStringSet {
       : this(
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

@@ -4257,7 +4257,7 @@ class Client {
               _json.containsKey('notes') ? _json['notes'] as core.String : null,
           parameter: _json.containsKey('parameter')
               ? (_json['parameter'] as core.List)
-                  .map<Parameter>((value) => Parameter.fromJson(
+                  .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4339,7 +4339,7 @@ class Condition {
       : this(
           parameter: _json.containsKey('parameter')
               ? (_json['parameter'] as core.List)
-                  .map<Parameter>((value) => Parameter.fromJson(
+                  .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4424,7 +4424,7 @@ class Container {
               : null,
           domainName: _json.containsKey('domainName')
               ? (_json['domainName'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           fingerprint: _json.containsKey('fingerprint')
@@ -4442,7 +4442,7 @@ class Container {
               : null,
           usageContext: _json.containsKey('usageContext')
               ? (_json['usageContext'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -4593,13 +4593,13 @@ class ContainerVersion {
               : null,
           builtInVariable: _json.containsKey('builtInVariable')
               ? (_json['builtInVariable'] as core.List)
-                  .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+                  .map((value) => BuiltInVariable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           client: _json.containsKey('client')
               ? (_json['client'] as core.List)
-                  .map<Client>((value) => Client.fromJson(
+                  .map((value) => Client.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4615,7 +4615,7 @@ class ContainerVersion {
               : null,
           customTemplate: _json.containsKey('customTemplate')
               ? (_json['customTemplate'] as core.List)
-                  .map<CustomTemplate>((value) => CustomTemplate.fromJson(
+                  .map((value) => CustomTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4630,7 +4630,7 @@ class ContainerVersion {
               : null,
           folder: _json.containsKey('folder')
               ? (_json['folder'] as core.List)
-                  .map<Folder>((value) => Folder.fromJson(
+                  .map((value) => Folder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4638,7 +4638,7 @@ class ContainerVersion {
           path: _json.containsKey('path') ? _json['path'] as core.String : null,
           tag: _json.containsKey('tag')
               ? (_json['tag'] as core.List)
-                  .map<Tag>((value) => Tag.fromJson(
+                  .map((value) => Tag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4647,19 +4647,19 @@ class ContainerVersion {
               : null,
           trigger: _json.containsKey('trigger')
               ? (_json['trigger'] as core.List)
-                  .map<Trigger>((value) => Trigger.fromJson(
+                  .map((value) => Trigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           variable: _json.containsKey('variable')
               ? (_json['variable'] as core.List)
-                  .map<Variable>((value) => Variable.fromJson(
+                  .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           zone: _json.containsKey('zone')
               ? (_json['zone'] as core.List)
-                  .map<Zone>((value) => Zone.fromJson(
+                  .map((value) => Zone.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4831,7 +4831,7 @@ class CreateBuiltInVariableResponse {
       : this(
           builtInVariable: _json.containsKey('builtInVariable')
               ? (_json['builtInVariable'] as core.List)
-                  .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+                  .map((value) => BuiltInVariable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5357,19 +5357,19 @@ class FolderEntities {
               : null,
           tag: _json.containsKey('tag')
               ? (_json['tag'] as core.List)
-                  .map<Tag>((value) => Tag.fromJson(
+                  .map((value) => Tag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           trigger: _json.containsKey('trigger')
               ? (_json['trigger'] as core.List)
-                  .map<Trigger>((value) => Trigger.fromJson(
+                  .map((value) => Trigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           variable: _json.containsKey('variable')
               ? (_json['variable'] as core.List)
-                  .map<Variable>((value) => Variable.fromJson(
+                  .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5466,13 +5466,13 @@ class GetWorkspaceStatusResponse {
       : this(
           mergeConflict: _json.containsKey('mergeConflict')
               ? (_json['mergeConflict'] as core.List)
-                  .map<MergeConflict>((value) => MergeConflict.fromJson(
+                  .map((value) => MergeConflict.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           workspaceChange: _json.containsKey('workspaceChange')
               ? (_json['workspaceChange'] as core.List)
-                  .map<Entity>((value) => Entity.fromJson(
+                  .map((value) => Entity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5505,7 +5505,7 @@ class ListAccountsResponse {
       : this(
           account: _json.containsKey('account')
               ? (_json['account'] as core.List)
-                  .map<Account>((value) => Account.fromJson(
+                  .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5537,7 +5537,7 @@ class ListClientsResponse {
       : this(
           client: _json.containsKey('client')
               ? (_json['client'] as core.List)
-                  .map<Client>((value) => Client.fromJson(
+                  .map((value) => Client.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5570,9 +5570,8 @@ class ListContainerVersionsResponse {
       : this(
           containerVersionHeader: _json.containsKey('containerVersionHeader')
               ? (_json['containerVersionHeader'] as core.List)
-                  .map<ContainerVersionHeader>((value) =>
-                      ContainerVersionHeader.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ContainerVersionHeader.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -5605,7 +5604,7 @@ class ListContainersResponse {
       : this(
           container: _json.containsKey('container')
               ? (_json['container'] as core.List)
-                  .map<Container>((value) => Container.fromJson(
+                  .map((value) => Container.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5638,7 +5637,7 @@ class ListEnabledBuiltInVariablesResponse {
       : this(
           builtInVariable: _json.containsKey('builtInVariable')
               ? (_json['builtInVariable'] as core.List)
-                  .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+                  .map((value) => BuiltInVariable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5672,7 +5671,7 @@ class ListEnvironmentsResponse {
       : this(
           environment: _json.containsKey('environment')
               ? (_json['environment'] as core.List)
-                  .map<Environment>((value) => Environment.fromJson(
+                  .map((value) => Environment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5705,7 +5704,7 @@ class ListFoldersResponse {
       : this(
           folder: _json.containsKey('folder')
               ? (_json['folder'] as core.List)
-                  .map<Folder>((value) => Folder.fromJson(
+                  .map((value) => Folder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5741,7 +5740,7 @@ class ListTagsResponse {
               : null,
           tag: _json.containsKey('tag')
               ? (_json['tag'] as core.List)
-                  .map<Tag>((value) => Tag.fromJson(
+                  .map((value) => Tag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5772,7 +5771,7 @@ class ListTemplatesResponse {
               : null,
           template: _json.containsKey('template')
               ? (_json['template'] as core.List)
-                  .map<CustomTemplate>((value) => CustomTemplate.fromJson(
+                  .map((value) => CustomTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5805,7 +5804,7 @@ class ListTriggersResponse {
               : null,
           trigger: _json.containsKey('trigger')
               ? (_json['trigger'] as core.List)
-                  .map<Trigger>((value) => Trigger.fromJson(
+                  .map((value) => Trigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5838,7 +5837,7 @@ class ListUserPermissionsResponse {
               : null,
           userPermission: _json.containsKey('userPermission')
               ? (_json['userPermission'] as core.List)
-                  .map<UserPermission>((value) => UserPermission.fromJson(
+                  .map((value) => UserPermission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5872,7 +5871,7 @@ class ListVariablesResponse {
               : null,
           variable: _json.containsKey('variable')
               ? (_json['variable'] as core.List)
-                  .map<Variable>((value) => Variable.fromJson(
+                  .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5905,7 +5904,7 @@ class ListWorkspacesResponse {
               : null,
           workspace: _json.containsKey('workspace')
               ? (_json['workspace'] as core.List)
-                  .map<Workspace>((value) => Workspace.fromJson(
+                  .map((value) => Workspace.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -5937,7 +5936,7 @@ class ListZonesResponse {
               : null,
           zone: _json.containsKey('zone')
               ? (_json['zone'] as core.List)
-                  .map<Zone>((value) => Zone.fromJson(
+                  .map((value) => Zone.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6075,13 +6074,13 @@ class Parameter {
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
           list: _json.containsKey('list')
               ? (_json['list'] as core.List)
-                  .map<Parameter>((value) => Parameter.fromJson(
+                  .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           map: _json.containsKey('map')
               ? (_json['map'] as core.List)
-                  .map<Parameter>((value) => Parameter.fromJson(
+                  .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6458,7 +6457,7 @@ class SyncWorkspaceResponse {
       : this(
           mergeConflict: _json.containsKey('mergeConflict')
               ? (_json['mergeConflict'] as core.List)
-                  .map<MergeConflict>((value) => MergeConflict.fromJson(
+                  .map((value) => MergeConflict.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6671,12 +6670,12 @@ class Tag {
               : null,
           blockingRuleId: _json.containsKey('blockingRuleId')
               ? (_json['blockingRuleId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           blockingTriggerId: _json.containsKey('blockingTriggerId')
               ? (_json['blockingTriggerId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           consentSettings: _json.containsKey('consentSettings')
@@ -6691,12 +6690,12 @@ class Tag {
               : null,
           firingRuleId: _json.containsKey('firingRuleId')
               ? (_json['firingRuleId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           firingTriggerId: _json.containsKey('firingTriggerId')
               ? (_json['firingTriggerId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           liveOnly: _json.containsKey('liveOnly')
@@ -6715,7 +6714,7 @@ class Tag {
               _json.containsKey('notes') ? _json['notes'] as core.String : null,
           parameter: _json.containsKey('parameter')
               ? (_json['parameter'] as core.List)
-                  .map<Parameter>((value) => Parameter.fromJson(
+                  .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6737,7 +6736,7 @@ class Tag {
               : null,
           setupTag: _json.containsKey('setupTag')
               ? (_json['setupTag'] as core.List)
-                  .map<SetupTag>((value) => SetupTag.fromJson(
+                  .map((value) => SetupTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -6751,7 +6750,7 @@ class Tag {
               : null,
           teardownTag: _json.containsKey('teardownTag')
               ? (_json['teardownTag'] as core.List)
-                  .map<TeardownTag>((value) => TeardownTag.fromJson(
+                  .map((value) => TeardownTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7152,7 +7151,7 @@ class Trigger {
               : null,
           autoEventFilter: _json.containsKey('autoEventFilter')
               ? (_json['autoEventFilter'] as core.List)
-                  .map<Condition>((value) => Condition.fromJson(
+                  .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7170,7 +7169,7 @@ class Trigger {
                   : null,
           customEventFilter: _json.containsKey('customEventFilter')
               ? (_json['customEventFilter'] as core.List)
-                  .map<Condition>((value) => Condition.fromJson(
+                  .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7180,7 +7179,7 @@ class Trigger {
               : null,
           filter: _json.containsKey('filter')
               ? (_json['filter'] as core.List)
-                  .map<Condition>((value) => Condition.fromJson(
+                  .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7213,7 +7212,7 @@ class Trigger {
               _json.containsKey('notes') ? _json['notes'] as core.String : null,
           parameter: _json.containsKey('parameter')
               ? (_json['parameter'] as core.List)
-                  .map<Parameter>((value) => Parameter.fromJson(
+                  .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7372,7 +7371,7 @@ class UserPermission {
               : null,
           containerAccess: _json.containsKey('containerAccess')
               ? (_json['containerAccess'] as core.List)
-                  .map<ContainerAccess>((value) => ContainerAccess.fromJson(
+                  .map((value) => ContainerAccess.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7508,12 +7507,12 @@ class Variable {
               : null,
           disablingTriggerId: _json.containsKey('disablingTriggerId')
               ? (_json['disablingTriggerId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           enablingTriggerId: _json.containsKey('enablingTriggerId')
               ? (_json['enablingTriggerId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           fingerprint: _json.containsKey('fingerprint')
@@ -7528,7 +7527,7 @@ class Variable {
               _json.containsKey('notes') ? _json['notes'] as core.String : null,
           parameter: _json.containsKey('parameter')
               ? (_json['parameter'] as core.List)
-                  .map<Parameter>((value) => Parameter.fromJson(
+                  .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -7790,9 +7789,8 @@ class Zone {
               : null,
           childContainer: _json.containsKey('childContainer')
               ? (_json['childContainer'] as core.List)
-                  .map<ZoneChildContainer>((value) =>
-                      ZoneChildContainer.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ZoneChildContainer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           containerId: _json.containsKey('containerId')
@@ -7859,14 +7857,14 @@ class ZoneBoundary {
       : this(
           condition: _json.containsKey('condition')
               ? (_json['condition'] as core.List)
-                  .map<Condition>((value) => Condition.fromJson(
+                  .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           customEvaluationTriggerId:
               _json.containsKey('customEvaluationTriggerId')
                   ? (_json['customEvaluationTriggerId'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
         );
@@ -7927,7 +7925,7 @@ class ZoneTypeRestriction {
               _json.containsKey('enable') ? _json['enable'] as core.bool : null,
           whitelistedTypeId: _json.containsKey('whitelistedTypeId')
               ? (_json['whitelistedTypeId'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

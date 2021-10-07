@@ -236,7 +236,7 @@ class DirectoryListItems {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -291,9 +291,8 @@ class DirectoryList {
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<DirectoryListItems>((value) =>
-                      DirectoryListItems.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DirectoryListItems.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -320,7 +319,7 @@ class JsonSchemaAnnotations {
       : this(
           required: _json.containsKey('required')
               ? (_json['required'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -377,9 +376,8 @@ class JsonSchemaVariant {
               : null,
           map: _json.containsKey('map')
               ? (_json['map'] as core.List)
-                  .map<JsonSchemaVariantMap>((value) =>
-                      JsonSchemaVariantMap.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => JsonSchemaVariantMap.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -516,12 +514,12 @@ class JsonSchema {
               : null,
           enum_: _json.containsKey('enum')
               ? (_json['enum'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           enumDescriptions: _json.containsKey('enumDescriptions')
               ? (_json['enumDescriptions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           format: _json.containsKey('format')
@@ -865,7 +863,7 @@ class RestDescription {
                   : null,
           features: _json.containsKey('features')
               ? (_json['features'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           icons: _json.containsKey('icons')
@@ -876,7 +874,7 @@ class RestDescription {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           methods: _json.containsKey('methods')
@@ -1101,7 +1099,7 @@ class RestMethodMediaUpload {
       : this(
           accept: _json.containsKey('accept')
               ? (_json['accept'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           maxSize: _json.containsKey('maxSize')
@@ -1274,7 +1272,7 @@ class RestMethod {
               : null,
           parameterOrder: _json.containsKey('parameterOrder')
               ? (_json['parameterOrder'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           parameters: _json.containsKey('parameters')
@@ -1298,7 +1296,7 @@ class RestMethod {
               : null,
           scopes: _json.containsKey('scopes')
               ? (_json['scopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           supportsMediaDownload: _json.containsKey('supportsMediaDownload')

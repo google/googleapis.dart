@@ -145,8 +145,8 @@ void main() {
         expect(properties.type is UnnamedMapType, isTrue);
         final propertiesTyped = properties.type as UnnamedMapType;
         expect(propertiesTyped.className, isNull);
-        expect(propertiesTyped.fromType, equals(db.stringType));
-        expect(propertiesTyped.toType, equals(db.stringType));
+        expect(propertiesTyped.keyType, equals(db.stringType));
+        expect(propertiesTyped.valueType, equals(db.stringType));
 
         final date = task.properties[7];
         expect(date, isNotNull);
@@ -465,7 +465,7 @@ void main() {
           expect(db.dateTimeType.needsJsonEncoding, true);
           expect(db.dateTimeType.needsJsonDecoding, true);
           expect(db.anyType.needsJsonEncoding, false);
-          expect(db.anyType.needsJsonDecoding, true);
+          expect(db.anyType.needsJsonDecoding, false);
 
           // Named complex types
           final namedArraySimple = db.namedSchemaTypes['NamedArraySimple']!;

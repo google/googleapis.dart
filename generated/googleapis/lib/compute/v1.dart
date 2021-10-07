@@ -41755,7 +41755,7 @@ class AcceleratorTypeAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AcceleratorTypeAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       AcceleratorTypeAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -41845,7 +41845,7 @@ class AcceleratorTypeAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -41985,9 +41985,8 @@ class AcceleratorTypeListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AcceleratorTypeListWarningData>((value) =>
-                      AcceleratorTypeListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AcceleratorTypeListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -42053,7 +42052,7 @@ class AcceleratorTypeList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<AcceleratorType>((value) => AcceleratorType.fromJson(
+                  .map((value) => AcceleratorType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -42201,7 +42200,7 @@ class AcceleratorTypesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AcceleratorTypesScopedListWarningData>((value) =>
+                  .map((value) =>
                       AcceleratorTypesScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -42239,7 +42238,7 @@ class AcceleratorTypesScopedList {
       : this(
           acceleratorTypes: _json.containsKey('acceleratorTypes')
               ? (_json['acceleratorTypes'] as core.List)
-                  .map<AcceleratorType>((value) => AcceleratorType.fromJson(
+                  .map((value) => AcceleratorType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -42612,7 +42611,7 @@ class Address {
               : null,
           users: _json.containsKey('users')
               ? (_json['users'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -42757,9 +42756,8 @@ class AddressAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AddressAggregatedListWarningData>((value) =>
-                      AddressAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AddressAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -42846,7 +42844,7 @@ class AddressAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -42986,9 +42984,8 @@ class AddressListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AddressListWarningData>((value) =>
-                      AddressListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AddressListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -43054,7 +43051,7 @@ class AddressList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Address>((value) => Address.fromJson(
+                  .map((value) => Address.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -43202,9 +43199,8 @@ class AddressesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AddressesScopedListWarningData>((value) =>
-                      AddressesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AddressesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -43240,7 +43236,7 @@ class AddressesScopedList {
       : this(
           addresses: _json.containsKey('addresses')
               ? (_json['addresses'] as core.List)
-                  .map<Address>((value) => Address.fromJson(
+                  .map((value) => Address.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -43414,17 +43410,16 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
       : this(
           guestAccelerators: _json.containsKey('guestAccelerators')
               ? (_json['guestAccelerators'] as core.List)
-                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                  .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           localSsds: _json.containsKey('localSsds')
               ? (_json['localSsds'] as core.List)
-                  .map<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>(
-                      (value) =>
-                          AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           locationHint: _json.containsKey('locationHint')
@@ -43654,7 +43649,7 @@ class AttachedDisk {
               : null,
           guestOsFeatures: _json.containsKey('guestOsFeatures')
               ? (_json['guestOsFeatures'] as core.List)
-                  .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(
+                  .map((value) => GuestOsFeature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -43669,7 +43664,7 @@ class AttachedDisk {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           licenses: _json.containsKey('licenses')
               ? (_json['licenses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
@@ -43863,7 +43858,7 @@ class AttachedDiskInitializeParams {
               : null,
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sourceImage: _json.containsKey('sourceImage')
@@ -43945,13 +43940,13 @@ class AuditConfig {
       : this(
           auditLogConfigs: _json.containsKey('auditLogConfigs')
               ? (_json['auditLogConfigs'] as core.List)
-                  .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+                  .map((value) => AuditLogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           exemptedMembers: _json.containsKey('exemptedMembers')
               ? (_json['exemptedMembers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           service: _json.containsKey('service')
@@ -44004,7 +43999,7 @@ class AuditLogConfig {
       : this(
           exemptedMembers: _json.containsKey('exemptedMembers')
               ? (_json['exemptedMembers'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           ignoreChildExemptions: _json.containsKey('ignoreChildExemptions')
@@ -44227,9 +44222,8 @@ class Autoscaler {
               : null,
           statusDetails: _json.containsKey('statusDetails')
               ? (_json['statusDetails'] as core.List)
-                  .map<AutoscalerStatusDetails>((value) =>
-                      AutoscalerStatusDetails.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AutoscalerStatusDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           target: _json.containsKey('target')
@@ -44380,9 +44374,8 @@ class AutoscalerAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AutoscalerAggregatedListWarningData>((value) =>
-                      AutoscalerAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AutoscalerAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -44472,7 +44465,7 @@ class AutoscalerAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -44612,9 +44605,8 @@ class AutoscalerListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AutoscalerListWarningData>((value) =>
-                      AutoscalerListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AutoscalerListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -44680,7 +44672,7 @@ class AutoscalerList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Autoscaler>((value) => Autoscaler.fromJson(
+                  .map((value) => Autoscaler.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -44936,9 +44928,8 @@ class AutoscalersScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<AutoscalersScopedListWarningData>((value) =>
-                      AutoscalersScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AutoscalersScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -44974,7 +44965,7 @@ class AutoscalersScopedList {
       : this(
           autoscalers: _json.containsKey('autoscalers')
               ? (_json['autoscalers'] as core.List)
-                  .map<Autoscaler>((value) => Autoscaler.fromJson(
+                  .map((value) => Autoscaler.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -45070,7 +45061,7 @@ class AutoscalingPolicy {
           customMetricUtilizations:
               _json.containsKey('customMetricUtilizations')
                   ? (_json['customMetricUtilizations'] as core.List)
-                      .map<AutoscalingPolicyCustomMetricUtilization>((value) =>
+                      .map((value) =>
                           AutoscalingPolicyCustomMetricUtilization.fromJson(
                               value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -45683,7 +45674,7 @@ class BackendBucket {
               : null,
           customResponseHeaders: _json.containsKey('customResponseHeaders')
               ? (_json['customResponseHeaders'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           description: _json.containsKey('description')
@@ -45871,11 +45862,9 @@ class BackendBucketCdnPolicy {
           bypassCacheOnRequestHeaders: _json
                   .containsKey('bypassCacheOnRequestHeaders')
               ? (_json['bypassCacheOnRequestHeaders'] as core.List)
-                  .map<BackendBucketCdnPolicyBypassCacheOnRequestHeader>(
-                      (value) =>
-                          BackendBucketCdnPolicyBypassCacheOnRequestHeader
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      BackendBucketCdnPolicyBypassCacheOnRequestHeader.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           cacheMode: _json.containsKey('cacheMode')
@@ -45894,7 +45883,7 @@ class BackendBucketCdnPolicy {
               : null,
           negativeCachingPolicy: _json.containsKey('negativeCachingPolicy')
               ? (_json['negativeCachingPolicy'] as core.List)
-                  .map<BackendBucketCdnPolicyNegativeCachingPolicy>((value) =>
+                  .map((value) =>
                       BackendBucketCdnPolicyNegativeCachingPolicy.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -45910,7 +45899,7 @@ class BackendBucketCdnPolicy {
               : null,
           signedUrlKeyNames: _json.containsKey('signedUrlKeyNames')
               ? (_json['signedUrlKeyNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -46115,9 +46104,8 @@ class BackendBucketListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<BackendBucketListWarningData>((value) =>
-                      BackendBucketListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => BackendBucketListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -46179,7 +46167,7 @@ class BackendBucketList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<BackendBucket>((value) => BackendBucket.fromJson(
+                  .map((value) => BackendBucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -46599,7 +46587,7 @@ class BackendService {
               : null,
           backends: _json.containsKey('backends')
               ? (_json['backends'] as core.List)
-                  .map<Backend>((value) => Backend.fromJson(
+                  .map((value) => Backend.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -46625,12 +46613,12 @@ class BackendService {
               : null,
           customRequestHeaders: _json.containsKey('customRequestHeaders')
               ? (_json['customRequestHeaders'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           customResponseHeaders: _json.containsKey('customResponseHeaders')
               ? (_json['customResponseHeaders'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           description: _json.containsKey('description')
@@ -46648,7 +46636,7 @@ class BackendService {
               : null,
           healthChecks: _json.containsKey('healthChecks')
               ? (_json['healthChecks'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           iap: _json.containsKey('iap')
@@ -46873,7 +46861,7 @@ class BackendServiceAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<BackendServiceAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       BackendServiceAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -46959,7 +46947,7 @@ class BackendServiceAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -47138,16 +47126,15 @@ class BackendServiceCdnPolicy {
 
   BackendServiceCdnPolicy.fromJson(core.Map _json)
       : this(
-          bypassCacheOnRequestHeaders: _json.containsKey(
-                  'bypassCacheOnRequestHeaders')
-              ? (_json['bypassCacheOnRequestHeaders'] as core.List)
-                  .map<BackendServiceCdnPolicyBypassCacheOnRequestHeader>(
-                      (value) =>
+          bypassCacheOnRequestHeaders:
+              _json.containsKey('bypassCacheOnRequestHeaders')
+                  ? (_json['bypassCacheOnRequestHeaders'] as core.List)
+                      .map((value) =>
                           BackendServiceCdnPolicyBypassCacheOnRequestHeader
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+                      .toList()
+                  : null,
           cacheKeyPolicy: _json.containsKey('cacheKeyPolicy')
               ? CacheKeyPolicy.fromJson(_json['cacheKeyPolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -47168,7 +47155,7 @@ class BackendServiceCdnPolicy {
               : null,
           negativeCachingPolicy: _json.containsKey('negativeCachingPolicy')
               ? (_json['negativeCachingPolicy'] as core.List)
-                  .map<BackendServiceCdnPolicyNegativeCachingPolicy>((value) =>
+                  .map((value) =>
                       BackendServiceCdnPolicyNegativeCachingPolicy.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -47184,7 +47171,7 @@ class BackendServiceCdnPolicy {
               : null,
           signedUrlKeyNames: _json.containsKey('signedUrlKeyNames')
               ? (_json['signedUrlKeyNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -47376,7 +47363,7 @@ class BackendServiceGroupHealth {
               : null,
           healthStatus: _json.containsKey('healthStatus')
               ? (_json['healthStatus'] as core.List)
-                  .map<HealthStatus>((value) => HealthStatus.fromJson(
+                  .map((value) => HealthStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -47568,9 +47555,8 @@ class BackendServiceListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<BackendServiceListWarningData>((value) =>
-                      BackendServiceListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => BackendServiceListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -47636,7 +47622,7 @@ class BackendServiceList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<BackendService>((value) => BackendService.fromJson(
+                  .map((value) => BackendService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -47837,9 +47823,8 @@ class BackendServicesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<BackendServicesScopedListWarningData>((value) =>
-                      BackendServicesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => BackendServicesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -47871,7 +47856,7 @@ class BackendServicesScopedList {
       : this(
           backendServices: _json.containsKey('backendServices')
               ? (_json['backendServices'] as core.List)
-                  .map<BackendService>((value) => BackendService.fromJson(
+                  .map((value) => BackendService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -47961,7 +47946,7 @@ class Binding {
               : null,
           members: _json.containsKey('members')
               ? (_json['members'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
@@ -48188,12 +48173,12 @@ class CacheKeyPolicy {
               : null,
           queryStringBlacklist: _json.containsKey('queryStringBlacklist')
               ? (_json['queryStringBlacklist'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           queryStringWhitelist: _json.containsKey('queryStringWhitelist')
               ? (_json['queryStringWhitelist'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -48454,15 +48439,14 @@ class Commitment {
               : null,
           reservations: _json.containsKey('reservations')
               ? (_json['reservations'] as core.List)
-                  .map<Reservation>((value) => Reservation.fromJson(
+                  .map((value) => Reservation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           resources: _json.containsKey('resources')
               ? (_json['resources'] as core.List)
-                  .map<ResourceCommitment>((value) =>
-                      ResourceCommitment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResourceCommitment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -48623,9 +48607,8 @@ class CommitmentAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<CommitmentAggregatedListWarningData>((value) =>
-                      CommitmentAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CommitmentAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -48713,7 +48696,7 @@ class CommitmentAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -48853,9 +48836,8 @@ class CommitmentListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<CommitmentListWarningData>((value) =>
-                      CommitmentListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CommitmentListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -48921,7 +48903,7 @@ class CommitmentList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Commitment>((value) => Commitment.fromJson(
+                  .map((value) => Commitment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -49069,9 +49051,8 @@ class CommitmentsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<CommitmentsScopedListWarningData>((value) =>
-                      CommitmentsScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CommitmentsScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -49107,7 +49088,7 @@ class CommitmentsScopedList {
       : this(
           commitments: _json.containsKey('commitments')
               ? (_json['commitments'] as core.List)
-                  .map<Commitment>((value) => Commitment.fromJson(
+                  .map((value) => Commitment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -49191,7 +49172,7 @@ class Condition {
           sys: _json.containsKey('sys') ? _json['sys'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -49401,22 +49382,22 @@ class CorsPolicy {
               : null,
           allowHeaders: _json.containsKey('allowHeaders')
               ? (_json['allowHeaders'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           allowMethods: _json.containsKey('allowMethods')
               ? (_json['allowMethods'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           allowOriginRegexes: _json.containsKey('allowOriginRegexes')
               ? (_json['allowOriginRegexes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           allowOrigins: _json.containsKey('allowOrigins')
               ? (_json['allowOrigins'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           disabled: _json.containsKey('disabled')
@@ -49424,7 +49405,7 @@ class CorsPolicy {
               : null,
           exposeHeaders: _json.containsKey('exposeHeaders')
               ? (_json['exposeHeaders'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           maxAge:
@@ -49973,7 +49954,7 @@ class Disk {
               : null,
           guestOsFeatures: _json.containsKey('guestOsFeatures')
               ? (_json['guestOsFeatures'] as core.List)
-                  .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(
+                  .map((value) => GuestOsFeature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -49998,12 +49979,12 @@ class Disk {
               : null,
           licenseCodes: _json.containsKey('licenseCodes')
               ? (_json['licenseCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           licenses: _json.containsKey('licenses')
               ? (_json['licenses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           locationHint: _json.containsKey('locationHint')
@@ -50024,12 +50005,12 @@ class Disk {
               : null,
           replicaZones: _json.containsKey('replicaZones')
               ? (_json['replicaZones'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           satisfiesPzs: _json.containsKey('satisfiesPzs')
@@ -50079,7 +50060,7 @@ class Disk {
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
           users: _json.containsKey('users')
               ? (_json['users'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
@@ -50253,9 +50234,8 @@ class DiskAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<DiskAggregatedListWarningData>((value) =>
-                      DiskAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DiskAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -50343,7 +50323,7 @@ class DiskAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -50565,9 +50545,8 @@ class DiskListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<DiskListWarningData>((value) =>
-                      DiskListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DiskListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -50633,7 +50612,7 @@ class DiskList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Disk>((value) => Disk.fromJson(
+                  .map((value) => Disk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -50956,9 +50935,8 @@ class DiskTypeAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<DiskTypeAggregatedListWarningData>((value) =>
-                      DiskTypeAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DiskTypeAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -51045,7 +51023,7 @@ class DiskTypeAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -51185,9 +51163,8 @@ class DiskTypeListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<DiskTypeListWarningData>((value) =>
-                      DiskTypeListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DiskTypeListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -51253,7 +51230,7 @@ class DiskTypeList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<DiskType>((value) => DiskType.fromJson(
+                  .map((value) => DiskType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -51401,9 +51378,8 @@ class DiskTypesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<DiskTypesScopedListWarningData>((value) =>
-                      DiskTypesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DiskTypesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -51439,7 +51415,7 @@ class DiskTypesScopedList {
       : this(
           diskTypes: _json.containsKey('diskTypes')
               ? (_json['diskTypes'] as core.List)
-                  .map<DiskType>((value) => DiskType.fromJson(
+                  .map((value) => DiskType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -51470,7 +51446,7 @@ class DisksAddResourcePoliciesRequest {
       : this(
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -51492,7 +51468,7 @@ class DisksRemoveResourcePoliciesRequest {
       : this(
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -51642,9 +51618,8 @@ class DisksScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<DisksScopedListWarningData>((value) =>
-                      DisksScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DisksScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -51680,7 +51655,7 @@ class DisksScopedList {
       : this(
           disks: _json.containsKey('disks')
               ? (_json['disks'] as core.List)
-                  .map<Disk>((value) => Disk.fromJson(
+                  .map((value) => Disk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -51754,9 +51729,8 @@ class DistributionPolicy {
               : null,
           zones: _json.containsKey('zones')
               ? (_json['zones'] as core.List)
-                  .map<DistributionPolicyZoneConfiguration>((value) =>
-                      DistributionPolicyZoneConfiguration.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DistributionPolicyZoneConfiguration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -52005,7 +51979,7 @@ class ExchangedPeeringRoutesListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ExchangedPeeringRoutesListWarningData>((value) =>
+                  .map((value) =>
                       ExchangedPeeringRoutesListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -52073,9 +52047,8 @@ class ExchangedPeeringRoutesList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ExchangedPeeringRoute>((value) =>
-                      ExchangedPeeringRoute.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ExchangedPeeringRoute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -52307,9 +52280,8 @@ class ExternalVpnGateway {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           interfaces: _json.containsKey('interfaces')
               ? (_json['interfaces'] as core.List)
-                  .map<ExternalVpnGatewayInterface>((value) =>
-                      ExternalVpnGatewayInterface.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ExternalVpnGatewayInterface.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -52502,9 +52474,8 @@ class ExternalVpnGatewayListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ExternalVpnGatewayListWarningData>((value) =>
-                      ExternalVpnGatewayListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ExternalVpnGatewayListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -52574,9 +52545,8 @@ class ExternalVpnGatewayList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ExternalVpnGateway>((value) =>
-                      ExternalVpnGateway.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ExternalVpnGateway.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -52670,7 +52640,7 @@ class FirewallAllowed {
               : null,
           ports: _json.containsKey('ports')
               ? (_json['ports'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -52709,7 +52679,7 @@ class FirewallDenied {
               : null,
           ports: _json.containsKey('ports')
               ? (_json['ports'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -52909,7 +52879,7 @@ class Firewall {
       : this(
           allowed: _json.containsKey('allowed')
               ? (_json['allowed'] as core.List)
-                  .map<FirewallAllowed>((value) => FirewallAllowed.fromJson(
+                  .map((value) => FirewallAllowed.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -52918,7 +52888,7 @@ class Firewall {
               : null,
           denied: _json.containsKey('denied')
               ? (_json['denied'] as core.List)
-                  .map<FirewallDenied>((value) => FirewallDenied.fromJson(
+                  .map((value) => FirewallDenied.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -52927,7 +52897,7 @@ class Firewall {
               : null,
           destinationRanges: _json.containsKey('destinationRanges')
               ? (_json['destinationRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           direction: _json.containsKey('direction')
@@ -52954,27 +52924,27 @@ class Firewall {
               : null,
           sourceRanges: _json.containsKey('sourceRanges')
               ? (_json['sourceRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sourceServiceAccounts: _json.containsKey('sourceServiceAccounts')
               ? (_json['sourceServiceAccounts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sourceTags: _json.containsKey('sourceTags')
               ? (_json['sourceTags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           targetServiceAccounts: _json.containsKey('targetServiceAccounts')
               ? (_json['targetServiceAccounts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           targetTags: _json.containsKey('targetTags')
               ? (_json['targetTags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -53125,9 +53095,8 @@ class FirewallListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<FirewallListWarningData>((value) =>
-                      FirewallListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FirewallListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -53193,7 +53162,7 @@ class FirewallList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Firewall>((value) => Firewall.fromJson(
+                  .map((value) => Firewall.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -53278,9 +53247,8 @@ class FirewallPoliciesListAssociationsResponse {
       : this(
           associations: _json.containsKey('associations')
               ? (_json['associations'] as core.List)
-                  .map<FirewallPolicyAssociation>((value) =>
-                      FirewallPolicyAssociation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FirewallPolicyAssociation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -53420,9 +53388,8 @@ class FirewallPolicy {
       : this(
           associations: _json.containsKey('associations')
               ? (_json['associations'] as core.List)
-                  .map<FirewallPolicyAssociation>((value) =>
-                      FirewallPolicyAssociation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FirewallPolicyAssociation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           creationTimestamp: _json.containsKey('creationTimestamp')
@@ -53448,9 +53415,8 @@ class FirewallPolicy {
               : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<FirewallPolicyRule>((value) =>
-                      FirewallPolicyRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FirewallPolicyRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -53661,9 +53627,8 @@ class FirewallPolicyListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<FirewallPolicyListWarningData>((value) =>
-                      FirewallPolicyListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FirewallPolicyListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -53722,7 +53687,7 @@ class FirewallPolicyList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<FirewallPolicy>((value) => FirewallPolicy.fromJson(
+                  .map((value) => FirewallPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -53857,12 +53822,12 @@ class FirewallPolicyRule {
               : null,
           targetResources: _json.containsKey('targetResources')
               ? (_json['targetResources'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           targetServiceAccounts: _json.containsKey('targetServiceAccounts')
               ? (_json['targetServiceAccounts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -53910,19 +53875,19 @@ class FirewallPolicyRuleMatcher {
       : this(
           destIpRanges: _json.containsKey('destIpRanges')
               ? (_json['destIpRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           layer4Configs: _json.containsKey('layer4Configs')
               ? (_json['layer4Configs'] as core.List)
-                  .map<FirewallPolicyRuleMatcherLayer4Config>((value) =>
+                  .map((value) =>
                       FirewallPolicyRuleMatcherLayer4Config.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           srcIpRanges: _json.containsKey('srcIpRanges')
               ? (_json['srcIpRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -53964,7 +53929,7 @@ class FirewallPolicyRuleMatcherLayer4Config {
               : null,
           ports: _json.containsKey('ports')
               ? (_json['ports'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -54416,7 +54381,7 @@ class ForwardingRule {
               : null,
           metadataFilters: _json.containsKey('metadataFilters')
               ? (_json['metadataFilters'] as core.List)
-                  .map<MetadataFilter>((value) => MetadataFilter.fromJson(
+                  .map((value) => MetadataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -54432,7 +54397,7 @@ class ForwardingRule {
               : null,
           ports: _json.containsKey('ports')
               ? (_json['ports'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pscConnectionId: _json.containsKey('pscConnectionId')
@@ -54447,14 +54412,14 @@ class ForwardingRule {
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
-          serviceDirectoryRegistrations: _json
-                  .containsKey('serviceDirectoryRegistrations')
-              ? (_json['serviceDirectoryRegistrations'] as core.List)
-                  .map<ForwardingRuleServiceDirectoryRegistration>((value) =>
-                      ForwardingRuleServiceDirectoryRegistration.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
+          serviceDirectoryRegistrations:
+              _json.containsKey('serviceDirectoryRegistrations')
+                  ? (_json['serviceDirectoryRegistrations'] as core.List)
+                      .map((value) =>
+                          ForwardingRuleServiceDirectoryRegistration.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           serviceLabel: _json.containsKey('serviceLabel')
               ? _json['serviceLabel'] as core.String
               : null,
@@ -54630,7 +54595,7 @@ class ForwardingRuleAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ForwardingRuleAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       ForwardingRuleAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -54719,7 +54684,7 @@ class ForwardingRuleAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -54859,9 +54824,8 @@ class ForwardingRuleListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ForwardingRuleListWarningData>((value) =>
-                      ForwardingRuleListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ForwardingRuleListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -54923,7 +54887,7 @@ class ForwardingRuleList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ForwardingRule>((value) => ForwardingRule.fromJson(
+                  .map((value) => ForwardingRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -55135,9 +55099,8 @@ class ForwardingRulesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ForwardingRulesScopedListWarningData>((value) =>
-                      ForwardingRulesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ForwardingRulesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -55169,7 +55132,7 @@ class ForwardingRulesScopedList {
       : this(
           forwardingRules: _json.containsKey('forwardingRules')
               ? (_json['forwardingRules'] as core.List)
-                  .map<ForwardingRule>((value) => ForwardingRule.fromJson(
+                  .map((value) => ForwardingRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -55269,7 +55232,7 @@ class GlobalNetworkEndpointGroupsAttachEndpointsRequest {
       : this(
           networkEndpoints: _json.containsKey('networkEndpoints')
               ? (_json['networkEndpoints'] as core.List)
-                  .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+                  .map((value) => NetworkEndpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -55294,7 +55257,7 @@ class GlobalNetworkEndpointGroupsDetachEndpointsRequest {
       : this(
           networkEndpoints: _json.containsKey('networkEndpoints')
               ? (_json['networkEndpoints'] as core.List)
-                  .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+                  .map((value) => NetworkEndpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -55341,7 +55304,7 @@ class GlobalOrganizationSetPolicyRequest {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -55449,7 +55412,7 @@ class GlobalSetPolicyRequest {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -55587,9 +55550,8 @@ class GuestAttributesValue {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<GuestAttributesEntry>((value) =>
-                      GuestAttributesEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GuestAttributesEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -56261,9 +56223,8 @@ class HealthCheckListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<HealthCheckListWarningData>((value) =>
-                      HealthCheckListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HealthCheckListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -56325,7 +56286,7 @@ class HealthCheckList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<HealthCheck>((value) => HealthCheck.fromJson(
+                  .map((value) => HealthCheck.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -56542,7 +56503,7 @@ class HealthCheckService {
               : null,
           healthChecks: _json.containsKey('healthChecks')
               ? (_json['healthChecks'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           healthStatusAggregationPolicy:
@@ -56554,12 +56515,12 @@ class HealthCheckService {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           networkEndpointGroups: _json.containsKey('networkEndpointGroups')
               ? (_json['networkEndpointGroups'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           notificationEndpoints: _json.containsKey('notificationEndpoints')
               ? (_json['notificationEndpoints'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           region: _json.containsKey('region')
@@ -56735,9 +56696,8 @@ class HealthCheckServicesListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<HealthCheckServicesListWarningData>((value) =>
-                      HealthCheckServicesListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HealthCheckServicesListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -56802,9 +56762,8 @@ class HealthCheckServicesList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<HealthCheckService>((value) =>
-                      HealthCheckService.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HealthCheckService.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -56950,7 +56909,7 @@ class HealthChecksAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<HealthChecksAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       HealthChecksAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -57035,7 +56994,7 @@ class HealthChecksAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -57174,9 +57133,8 @@ class HealthChecksScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<HealthChecksScopedListWarningData>((value) =>
-                      HealthChecksScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HealthChecksScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -57208,7 +57166,7 @@ class HealthChecksScopedList {
       : this(
           healthChecks: _json.containsKey('healthChecks')
               ? (_json['healthChecks'] as core.List)
-                  .map<HealthCheck>((value) => HealthCheck.fromJson(
+                  .map((value) => HealthCheck.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -57439,7 +57397,7 @@ class HostRule {
               : null,
           hosts: _json.containsKey('hosts')
               ? (_json['hosts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           pathMatcher: _json.containsKey('pathMatcher')
@@ -57594,24 +57552,24 @@ class HttpHeaderAction {
       : this(
           requestHeadersToAdd: _json.containsKey('requestHeadersToAdd')
               ? (_json['requestHeadersToAdd'] as core.List)
-                  .map<HttpHeaderOption>((value) => HttpHeaderOption.fromJson(
+                  .map((value) => HttpHeaderOption.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           requestHeadersToRemove: _json.containsKey('requestHeadersToRemove')
               ? (_json['requestHeadersToRemove'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           responseHeadersToAdd: _json.containsKey('responseHeadersToAdd')
               ? (_json['responseHeadersToAdd'] as core.List)
-                  .map<HttpHeaderOption>((value) => HttpHeaderOption.fromJson(
+                  .map((value) => HttpHeaderOption.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           responseHeadersToRemove: _json.containsKey('responseHeadersToRemove')
               ? (_json['responseHeadersToRemove'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -58067,9 +58025,8 @@ class HttpHealthCheckListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<HttpHealthCheckListWarningData>((value) =>
-                      HttpHealthCheckListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HttpHealthCheckListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -58131,7 +58088,7 @@ class HttpHealthCheckList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<HttpHealthCheck>((value) => HttpHealthCheck.fromJson(
+                  .map((value) => HttpHealthCheck.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -58374,7 +58331,7 @@ class HttpRetryPolicy {
               : null,
           retryConditions: _json.containsKey('retryConditions')
               ? (_json['retryConditions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -58506,9 +58463,8 @@ class HttpRouteAction {
               : null,
           weightedBackendServices: _json.containsKey('weightedBackendServices')
               ? (_json['weightedBackendServices'] as core.List)
-                  .map<WeightedBackendService>((value) =>
-                      WeightedBackendService.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => WeightedBackendService.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -58624,9 +58580,8 @@ class HttpRouteRule {
               : null,
           matchRules: _json.containsKey('matchRules')
               ? (_json['matchRules'] as core.List)
-                  .map<HttpRouteRuleMatch>((value) =>
-                      HttpRouteRuleMatch.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HttpRouteRuleMatch.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           priority: _json.containsKey('priority')
@@ -58741,7 +58696,7 @@ class HttpRouteRuleMatch {
               : null,
           headerMatches: _json.containsKey('headerMatches')
               ? (_json['headerMatches'] as core.List)
-                  .map<HttpHeaderMatch>((value) => HttpHeaderMatch.fromJson(
+                  .map((value) => HttpHeaderMatch.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -58750,7 +58705,7 @@ class HttpRouteRuleMatch {
               : null,
           metadataFilters: _json.containsKey('metadataFilters')
               ? (_json['metadataFilters'] as core.List)
-                  .map<MetadataFilter>((value) => MetadataFilter.fromJson(
+                  .map((value) => MetadataFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -58759,9 +58714,8 @@ class HttpRouteRuleMatch {
               : null,
           queryParameterMatches: _json.containsKey('queryParameterMatches')
               ? (_json['queryParameterMatches'] as core.List)
-                  .map<HttpQueryParameterMatch>((value) =>
-                      HttpQueryParameterMatch.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HttpQueryParameterMatch.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           regexMatch: _json.containsKey('regexMatch')
@@ -59055,9 +59009,8 @@ class HttpsHealthCheckListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<HttpsHealthCheckListWarningData>((value) =>
-                      HttpsHealthCheckListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HttpsHealthCheckListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -59119,7 +59072,7 @@ class HttpsHealthCheckList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<HttpsHealthCheck>((value) => HttpsHealthCheck.fromJson(
+                  .map((value) => HttpsHealthCheck.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -59475,7 +59428,7 @@ class Image {
               : null,
           guestOsFeatures: _json.containsKey('guestOsFeatures')
               ? (_json['guestOsFeatures'] as core.List)
-                  .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(
+                  .map((value) => GuestOsFeature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -59498,12 +59451,12 @@ class Image {
               : null,
           licenseCodes: _json.containsKey('licenseCodes')
               ? (_json['licenseCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           licenses: _json.containsKey('licenses')
               ? (_json['licenses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -59564,7 +59517,7 @@ class Image {
               : null,
           storageLocations: _json.containsKey('storageLocations')
               ? (_json['storageLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -59753,9 +59706,8 @@ class ImageListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ImageListWarningData>((value) =>
-                      ImageListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ImageListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -59817,7 +59769,7 @@ class ImageList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Image>((value) => Image.fromJson(
+                  .map((value) => Image.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -59871,19 +59823,19 @@ class InitialStateConfig {
       : this(
           dbs: _json.containsKey('dbs')
               ? (_json['dbs'] as core.List)
-                  .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(
+                  .map((value) => FileContentBuffer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           dbxs: _json.containsKey('dbxs')
               ? (_json['dbxs'] as core.List)
-                  .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(
+                  .map((value) => FileContentBuffer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           keks: _json.containsKey('keks')
               ? (_json['keks'] as core.List)
-                  .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(
+                  .map((value) => FileContentBuffer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -60234,7 +60186,7 @@ class Instance {
               : null,
           disks: _json.containsKey('disks')
               ? (_json['disks'] as core.List)
-                  .map<AttachedDisk>((value) => AttachedDisk.fromJson(
+                  .map((value) => AttachedDisk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -60247,7 +60199,7 @@ class Instance {
               : null,
           guestAccelerators: _json.containsKey('guestAccelerators')
               ? (_json['guestAccelerators'] as core.List)
-                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                  .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -60289,7 +60241,7 @@ class Instance {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           networkInterfaces: _json.containsKey('networkInterfaces')
               ? (_json['networkInterfaces'] as core.List)
-                  .map<NetworkInterface>((value) => NetworkInterface.fromJson(
+                  .map((value) => NetworkInterface.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -60302,7 +60254,7 @@ class Instance {
               : null,
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           satisfiesPzs: _json.containsKey('satisfiesPzs')
@@ -60317,7 +60269,7 @@ class Instance {
               : null,
           serviceAccounts: _json.containsKey('serviceAccounts')
               ? (_json['serviceAccounts'] as core.List)
-                  .map<ServiceAccount>((value) => ServiceAccount.fromJson(
+                  .map((value) => ServiceAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -60525,9 +60477,8 @@ class InstanceAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceAggregatedListWarningData>((value) =>
-                      InstanceAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -60615,7 +60566,7 @@ class InstanceAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -60772,7 +60723,7 @@ class InstanceGroup {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           namedPorts: _json.containsKey('namedPorts')
               ? (_json['namedPorts'] as core.List)
-                  .map<NamedPort>((value) => NamedPort.fromJson(
+                  .map((value) => NamedPort.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -60929,7 +60880,7 @@ class InstanceGroupAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceGroupAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       InstanceGroupAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -61017,7 +60968,7 @@ class InstanceGroupAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -61157,9 +61108,8 @@ class InstanceGroupListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceGroupListWarningData>((value) =>
-                      InstanceGroupListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceGroupListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -61224,7 +61174,7 @@ class InstanceGroupList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceGroup>((value) => InstanceGroup.fromJson(
+                  .map((value) => InstanceGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -61426,7 +61376,7 @@ class InstanceGroupManager {
       : this(
           autoHealingPolicies: _json.containsKey('autoHealingPolicies')
               ? (_json['autoHealingPolicies'] as core.List)
-                  .map<InstanceGroupManagerAutoHealingPolicy>((value) =>
+                  .map((value) =>
                       InstanceGroupManagerAutoHealingPolicy.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -61463,7 +61413,7 @@ class InstanceGroupManager {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           namedPorts: _json.containsKey('namedPorts')
               ? (_json['namedPorts'] as core.List)
-                  .map<NamedPort>((value) => NamedPort.fromJson(
+                  .map((value) => NamedPort.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -61483,7 +61433,7 @@ class InstanceGroupManager {
               : null,
           targetPools: _json.containsKey('targetPools')
               ? (_json['targetPools'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           targetSize: _json.containsKey('targetSize')
@@ -61495,9 +61445,8 @@ class InstanceGroupManager {
               : null,
           versions: _json.containsKey('versions')
               ? (_json['versions'] as core.List)
-                  .map<InstanceGroupManagerVersion>((value) =>
-                      InstanceGroupManagerVersion.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceGroupManagerVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
@@ -61785,7 +61734,7 @@ class InstanceGroupManagerAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceGroupManagerAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       InstanceGroupManagerAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -61874,7 +61823,7 @@ class InstanceGroupManagerAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -62049,9 +61998,8 @@ class InstanceGroupManagerListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceGroupManagerListWarningData>((value) =>
-                      InstanceGroupManagerListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceGroupManagerListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -62118,9 +62066,8 @@ class InstanceGroupManagerList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceGroupManager>((value) =>
-                      InstanceGroupManager.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceGroupManager.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -62490,7 +62437,7 @@ class InstanceGroupManagersAbandonInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -62561,7 +62508,7 @@ class InstanceGroupManagersApplyUpdatesRequest {
               : null,
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           minimalAction: _json.containsKey('minimalAction')
@@ -62597,7 +62544,7 @@ class InstanceGroupManagersCreateInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+                  .map((value) => PerInstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -62635,7 +62582,7 @@ class InstanceGroupManagersDeleteInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           skipInstancesOnValidationError:
@@ -62665,7 +62612,7 @@ class InstanceGroupManagersDeletePerInstanceConfigsReq {
       : this(
           names: _json.containsKey('names')
               ? (_json['names'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -62700,9 +62647,8 @@ class InstanceGroupManagersListErrorsResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceManagedByIgmError>((value) =>
-                      InstanceManagedByIgmError.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceManagedByIgmError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -62742,7 +62688,7 @@ class InstanceGroupManagersListManagedInstancesResponse {
       : this(
           managedInstances: _json.containsKey('managedInstances')
               ? (_json['managedInstances'] as core.List)
-                  .map<ManagedInstance>((value) => ManagedInstance.fromJson(
+                  .map((value) => ManagedInstance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -62880,11 +62826,10 @@ class InstanceGroupManagersListPerInstanceConfigsRespWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceGroupManagersListPerInstanceConfigsRespWarningData>(
-                      (value) =>
-                          InstanceGroupManagersListPerInstanceConfigsRespWarningData
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      InstanceGroupManagersListPerInstanceConfigsRespWarningData
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -62930,7 +62875,7 @@ class InstanceGroupManagersListPerInstanceConfigsResp {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+                  .map((value) => PerInstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -62965,7 +62910,7 @@ class InstanceGroupManagersPatchPerInstanceConfigsReq {
       : this(
           perInstanceConfigs: _json.containsKey('perInstanceConfigs')
               ? (_json['perInstanceConfigs'] as core.List)
-                  .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+                  .map((value) => PerInstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -62993,7 +62938,7 @@ class InstanceGroupManagersRecreateInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -63123,7 +63068,7 @@ class InstanceGroupManagersScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceGroupManagersScopedListWarningData>((value) =>
+                  .map((value) =>
                       InstanceGroupManagersScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -63162,9 +63107,8 @@ class InstanceGroupManagersScopedList {
       : this(
           instanceGroupManagers: _json.containsKey('instanceGroupManagers')
               ? (_json['instanceGroupManagers'] as core.List)
-                  .map<InstanceGroupManager>((value) =>
-                      InstanceGroupManager.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceGroupManager.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -63244,7 +63188,7 @@ class InstanceGroupManagersSetTargetPoolsRequest {
               : null,
           targetPools: _json.containsKey('targetPools')
               ? (_json['targetPools'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -63269,7 +63213,7 @@ class InstanceGroupManagersUpdatePerInstanceConfigsReq {
       : this(
           perInstanceConfigs: _json.containsKey('perInstanceConfigs')
               ? (_json['perInstanceConfigs'] as core.List)
-                  .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+                  .map((value) => PerInstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -63294,7 +63238,7 @@ class InstanceGroupsAddInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<InstanceReference>((value) => InstanceReference.fromJson(
+                  .map((value) => InstanceReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -63425,7 +63369,7 @@ class InstanceGroupsListInstancesWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceGroupsListInstancesWarningData>((value) =>
+                  .map((value) =>
                       InstanceGroupsListInstancesWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -63491,9 +63435,8 @@ class InstanceGroupsListInstances {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceWithNamedPorts>((value) =>
-                      InstanceWithNamedPorts.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceWithNamedPorts.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -63560,7 +63503,7 @@ class InstanceGroupsRemoveInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<InstanceReference>((value) => InstanceReference.fromJson(
+                  .map((value) => InstanceReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -63692,9 +63635,8 @@ class InstanceGroupsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceGroupsScopedListWarningData>((value) =>
-                      InstanceGroupsScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceGroupsScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -63730,7 +63672,7 @@ class InstanceGroupsScopedList {
       : this(
           instanceGroups: _json.containsKey('instanceGroups')
               ? (_json['instanceGroups'] as core.List)
-                  .map<InstanceGroup>((value) => InstanceGroup.fromJson(
+                  .map((value) => InstanceGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -63781,7 +63723,7 @@ class InstanceGroupsSetNamedPortsRequest {
               : null,
           namedPorts: _json.containsKey('namedPorts')
               ? (_json['namedPorts'] as core.List)
-                  .map<NamedPort>((value) => NamedPort.fromJson(
+                  .map((value) => NamedPort.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -63913,9 +63855,8 @@ class InstanceListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceListWarningData>((value) =>
-                      InstanceListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -63981,7 +63922,7 @@ class InstanceList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Instance>((value) => Instance.fromJson(
+                  .map((value) => Instance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -64128,9 +64069,8 @@ class InstanceListReferrersWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceListReferrersWarningData>((value) =>
-                      InstanceListReferrersWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceListReferrersWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -64196,7 +64136,7 @@ class InstanceListReferrers {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Reference>((value) => Reference.fromJson(
+                  .map((value) => Reference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -64562,13 +64502,13 @@ class InstanceProperties {
               : null,
           disks: _json.containsKey('disks')
               ? (_json['disks'] as core.List)
-                  .map<AttachedDisk>((value) => AttachedDisk.fromJson(
+                  .map((value) => AttachedDisk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           guestAccelerators: _json.containsKey('guestAccelerators')
               ? (_json['guestAccelerators'] as core.List)
-                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                  .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -64592,7 +64532,7 @@ class InstanceProperties {
               : null,
           networkInterfaces: _json.containsKey('networkInterfaces')
               ? (_json['networkInterfaces'] as core.List)
-                  .map<NetworkInterface>((value) => NetworkInterface.fromJson(
+                  .map((value) => NetworkInterface.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -64605,7 +64545,7 @@ class InstanceProperties {
               : null,
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           scheduling: _json.containsKey('scheduling')
@@ -64614,7 +64554,7 @@ class InstanceProperties {
               : null,
           serviceAccounts: _json.containsKey('serviceAccounts')
               ? (_json['serviceAccounts'] as core.List)
-                  .map<ServiceAccount>((value) => ServiceAccount.fromJson(
+                  .map((value) => ServiceAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -64915,9 +64855,8 @@ class InstanceTemplateListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstanceTemplateListWarningData>((value) =>
-                      InstanceTemplateListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceTemplateListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -64982,7 +64921,7 @@ class InstanceTemplateList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceTemplate>((value) => InstanceTemplate.fromJson(
+                  .map((value) => InstanceTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -65055,7 +64994,7 @@ class InstanceWithNamedPorts {
               : null,
           namedPorts: _json.containsKey('namedPorts')
               ? (_json['namedPorts'] as core.List)
-                  .map<NamedPort>((value) => NamedPort.fromJson(
+                  .map((value) => NamedPort.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -65084,7 +65023,7 @@ class InstancesAddResourcePoliciesRequest {
       : this(
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -65111,16 +65050,15 @@ class InstancesGetEffectiveFirewallsResponse {
       : this(
           firewallPolicys: _json.containsKey('firewallPolicys')
               ? (_json['firewallPolicys'] as core.List)
-                  .map<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>(
-                      (value) =>
-                          InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           firewalls: _json.containsKey('firewalls')
               ? (_json['firewalls'] as core.List)
-                  .map<Firewall>((value) => Firewall.fromJson(
+                  .map((value) => Firewall.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -65181,9 +65119,8 @@ class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<FirewallPolicyRule>((value) =>
-                      FirewallPolicyRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FirewallPolicyRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           shortName: _json.containsKey('shortName')
@@ -65214,7 +65151,7 @@ class InstancesRemoveResourcePoliciesRequest {
       : this(
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -65344,9 +65281,8 @@ class InstancesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InstancesScopedListWarningData>((value) =>
-                      InstancesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstancesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -65382,7 +65318,7 @@ class InstancesScopedList {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<Instance>((value) => Instance.fromJson(
+                  .map((value) => Instance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -65455,7 +65391,7 @@ class InstancesSetMachineResourcesRequest {
       : this(
           guestAccelerators: _json.containsKey('guestAccelerators')
               ? (_json['guestAccelerators'] as core.List)
-                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                  .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -65529,7 +65465,7 @@ class InstancesSetServiceAccountRequest {
               _json.containsKey('email') ? _json['email'] as core.String : null,
           scopes: _json.containsKey('scopes')
               ? (_json['scopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -65557,9 +65493,8 @@ class InstancesStartWithEncryptionKeyRequest {
       : this(
           disks: _json.containsKey('disks')
               ? (_json['disks'] as core.List)
-                  .map<CustomerEncryptionKeyProtectedDisk>((value) =>
-                      CustomerEncryptionKeyProtectedDisk.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => CustomerEncryptionKeyProtectedDisk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -65810,9 +65745,8 @@ class Interconnect {
               : null,
           circuitInfos: _json.containsKey('circuitInfos')
               ? (_json['circuitInfos'] as core.List)
-                  .map<InterconnectCircuitInfo>((value) =>
-                      InterconnectCircuitInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectCircuitInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           creationTimestamp: _json.containsKey('creationTimestamp')
@@ -65826,9 +65760,8 @@ class Interconnect {
               : null,
           expectedOutages: _json.containsKey('expectedOutages')
               ? (_json['expectedOutages'] as core.List)
-                  .map<InterconnectOutageNotification>((value) =>
-                      InterconnectOutageNotification.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectOutageNotification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           googleIpAddress: _json.containsKey('googleIpAddress')
@@ -65840,7 +65773,7 @@ class Interconnect {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           interconnectAttachments: _json.containsKey('interconnectAttachments')
               ? (_json['interconnectAttachments'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           interconnectType: _json.containsKey('interconnectType')
@@ -66239,7 +66172,7 @@ class InterconnectAttachment {
               : null,
           candidateSubnets: _json.containsKey('candidateSubnets')
               ? (_json['candidateSubnets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           cloudRouterIpAddress: _json.containsKey('cloudRouterIpAddress')
@@ -66272,7 +66205,7 @@ class InterconnectAttachment {
               : null,
           ipsecInternalAddresses: _json.containsKey('ipsecInternalAddresses')
               ? (_json['ipsecInternalAddresses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -66471,10 +66404,9 @@ class InterconnectAttachmentAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InterconnectAttachmentAggregatedListWarningData>(
-                      (value) => InterconnectAttachmentAggregatedListWarningData
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      InterconnectAttachmentAggregatedListWarningData.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -66562,7 +66494,7 @@ class InterconnectAttachmentAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -66702,7 +66634,7 @@ class InterconnectAttachmentListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InterconnectAttachmentListWarningData>((value) =>
+                  .map((value) =>
                       InterconnectAttachmentListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -66772,9 +66704,8 @@ class InterconnectAttachmentList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InterconnectAttachment>((value) =>
-                      InterconnectAttachment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectAttachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -66995,7 +66926,7 @@ class InterconnectAttachmentsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InterconnectAttachmentsScopedListWarningData>((value) =>
+                  .map((value) =>
                       InterconnectAttachmentsScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -67029,9 +66960,8 @@ class InterconnectAttachmentsScopedList {
       : this(
           interconnectAttachments: _json.containsKey('interconnectAttachments')
               ? (_json['interconnectAttachments'] as core.List)
-                  .map<InterconnectAttachment>((value) =>
-                      InterconnectAttachment.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectAttachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -67119,16 +67049,14 @@ class InterconnectDiagnostics {
       : this(
           arpCaches: _json.containsKey('arpCaches')
               ? (_json['arpCaches'] as core.List)
-                  .map<InterconnectDiagnosticsARPEntry>((value) =>
-                      InterconnectDiagnosticsARPEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectDiagnosticsARPEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           links: _json.containsKey('links')
               ? (_json['links'] as core.List)
-                  .map<InterconnectDiagnosticsLinkStatus>((value) =>
-                      InterconnectDiagnosticsLinkStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectDiagnosticsLinkStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           macAddress: _json.containsKey('macAddress')
@@ -67301,9 +67229,8 @@ class InterconnectDiagnosticsLinkStatus {
       : this(
           arpCaches: _json.containsKey('arpCaches')
               ? (_json['arpCaches'] as core.List)
-                  .map<InterconnectDiagnosticsARPEntry>((value) =>
-                      InterconnectDiagnosticsARPEntry.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectDiagnosticsARPEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           circuitId: _json.containsKey('circuitId')
@@ -67461,9 +67388,8 @@ class InterconnectListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InterconnectListWarningData>((value) =>
-                      InterconnectListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -67529,7 +67455,7 @@ class InterconnectList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Interconnect>((value) => Interconnect.fromJson(
+                  .map((value) => Interconnect.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -67725,9 +67651,8 @@ class InterconnectLocation {
               : null,
           regionInfos: _json.containsKey('regionInfos')
               ? (_json['regionInfos'] as core.List)
-                  .map<InterconnectLocationRegionInfo>((value) =>
-                      InterconnectLocationRegionInfo.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectLocationRegionInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -67879,9 +67804,8 @@ class InterconnectLocationListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<InterconnectLocationListWarningData>((value) =>
-                      InterconnectLocationListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectLocationListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -67948,9 +67872,8 @@ class InterconnectLocationList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InterconnectLocation>((value) =>
-                      InterconnectLocation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InterconnectLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -68112,7 +68035,7 @@ class InterconnectOutageNotification {
       : this(
           affectedCircuits: _json.containsKey('affectedCircuits')
               ? (_json['affectedCircuits'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           description: _json.containsKey('description')
@@ -68374,9 +68297,8 @@ class LicenseCode {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           licenseAlias: _json.containsKey('licenseAlias')
               ? (_json['licenseAlias'] as core.List)
-                  .map<LicenseCodeLicenseAlias>((value) =>
-                      LicenseCodeLicenseAlias.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => LicenseCodeLicenseAlias.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -68624,9 +68546,8 @@ class LicensesListResponseWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<LicensesListResponseWarningData>((value) =>
-                      LicensesListResponseWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => LicensesListResponseWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -68683,7 +68604,7 @@ class LicensesListResponse {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<License>((value) => License.fromJson(
+                  .map((value) => License.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -68927,9 +68848,8 @@ class LogConfigCounterOptions {
       : this(
           customFields: _json.containsKey('customFields')
               ? (_json['customFields'] as core.List)
-                  .map<LogConfigCounterOptionsCustomField>((value) =>
-                      LogConfigCounterOptionsCustomField.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => LogConfigCounterOptionsCustomField.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           field:
@@ -69177,9 +69097,8 @@ class MachineType {
       : this(
           accelerators: _json.containsKey('accelerators')
               ? (_json['accelerators'] as core.List)
-                  .map<MachineTypeAccelerators>((value) =>
-                      MachineTypeAccelerators.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MachineTypeAccelerators.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           creationTimestamp: _json.containsKey('creationTimestamp')
@@ -69216,9 +69135,8 @@ class MachineType {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           scratchDisks: _json.containsKey('scratchDisks')
               ? (_json['scratchDisks'] as core.List)
-                  .map<MachineTypeScratchDisks>((value) =>
-                      MachineTypeScratchDisks.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MachineTypeScratchDisks.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -69370,9 +69288,8 @@ class MachineTypeAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<MachineTypeAggregatedListWarningData>((value) =>
-                      MachineTypeAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MachineTypeAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -69460,7 +69377,7 @@ class MachineTypeAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -69600,9 +69517,8 @@ class MachineTypeListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<MachineTypeListWarningData>((value) =>
-                      MachineTypeListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MachineTypeListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -69668,7 +69584,7 @@ class MachineTypeList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<MachineType>((value) => MachineType.fromJson(
+                  .map((value) => MachineType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -69815,9 +69731,8 @@ class MachineTypesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<MachineTypesScopedListWarningData>((value) =>
-                      MachineTypesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MachineTypesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -69853,7 +69768,7 @@ class MachineTypesScopedList {
       : this(
           machineTypes: _json.containsKey('machineTypes')
               ? (_json['machineTypes'] as core.List)
-                  .map<MachineType>((value) => MachineType.fromJson(
+                  .map((value) => MachineType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -70010,9 +69925,8 @@ class ManagedInstance {
               : null,
           instanceHealth: _json.containsKey('instanceHealth')
               ? (_json['instanceHealth'] as core.List)
-                  .map<ManagedInstanceInstanceHealth>((value) =>
-                      ManagedInstanceInstanceHealth.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ManagedInstanceInstanceHealth.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           instanceStatus: _json.containsKey('instanceStatus')
@@ -70161,7 +70075,7 @@ class ManagedInstanceLastAttemptErrors {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<ManagedInstanceLastAttemptErrorsErrors>((value) =>
+                  .map((value) =>
                       ManagedInstanceLastAttemptErrorsErrors.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -70310,7 +70224,7 @@ class Metadata {
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<MetadataItems>((value) => MetadataItems.fromJson(
+                  .map((value) => MetadataItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -70369,9 +70283,8 @@ class MetadataFilter {
       : this(
           filterLabels: _json.containsKey('filterLabels')
               ? (_json['filterLabels'] as core.List)
-                  .map<MetadataFilterLabelMatch>((value) =>
-                      MetadataFilterLabelMatch.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => MetadataFilterLabelMatch.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           filterMatchCriteria: _json.containsKey('filterMatchCriteria')
@@ -70578,7 +70491,7 @@ class Network {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           peerings: _json.containsKey('peerings')
               ? (_json['peerings'] as core.List)
-                  .map<NetworkPeering>((value) => NetworkPeering.fromJson(
+                  .map((value) => NetworkPeering.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -70591,7 +70504,7 @@ class Network {
               : null,
           subnetworks: _json.containsKey('subnetworks')
               ? (_json['subnetworks'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -71012,7 +70925,7 @@ class NetworkEndpointGroupAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NetworkEndpointGroupAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       NetworkEndpointGroupAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -71101,7 +71014,7 @@ class NetworkEndpointGroupAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -71394,9 +71307,8 @@ class NetworkEndpointGroupListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NetworkEndpointGroupListWarningData>((value) =>
-                      NetworkEndpointGroupListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NetworkEndpointGroupListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -71460,9 +71372,8 @@ class NetworkEndpointGroupList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<NetworkEndpointGroup>((value) =>
-                      NetworkEndpointGroup.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NetworkEndpointGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -71501,7 +71412,7 @@ class NetworkEndpointGroupsAttachEndpointsRequest {
       : this(
           networkEndpoints: _json.containsKey('networkEndpoints')
               ? (_json['networkEndpoints'] as core.List)
-                  .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+                  .map((value) => NetworkEndpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -71526,7 +71437,7 @@ class NetworkEndpointGroupsDetachEndpointsRequest {
       : this(
           networkEndpoints: _json.containsKey('networkEndpoints')
               ? (_json['networkEndpoints'] as core.List)
-                  .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+                  .map((value) => NetworkEndpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -71686,11 +71597,10 @@ class NetworkEndpointGroupsListNetworkEndpointsWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NetworkEndpointGroupsListNetworkEndpointsWarningData>(
-                      (value) =>
-                          NetworkEndpointGroupsListNetworkEndpointsWarningData
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      NetworkEndpointGroupsListNetworkEndpointsWarningData
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -71749,9 +71659,8 @@ class NetworkEndpointGroupsListNetworkEndpoints {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<NetworkEndpointWithHealthStatus>((value) =>
-                      NetworkEndpointWithHealthStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NetworkEndpointWithHealthStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -71894,7 +71803,7 @@ class NetworkEndpointGroupsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NetworkEndpointGroupsScopedListWarningData>((value) =>
+                  .map((value) =>
                       NetworkEndpointGroupsScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -71932,9 +71841,8 @@ class NetworkEndpointGroupsScopedList {
       : this(
           networkEndpointGroups: _json.containsKey('networkEndpointGroups')
               ? (_json['networkEndpointGroups'] as core.List)
-                  .map<NetworkEndpointGroup>((value) =>
-                      NetworkEndpointGroup.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NetworkEndpointGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -71971,9 +71879,8 @@ class NetworkEndpointWithHealthStatus {
       : this(
           healths: _json.containsKey('healths')
               ? (_json['healths'] as core.List)
-                  .map<HealthStatusForNetworkEndpoint>((value) =>
-                      HealthStatusForNetworkEndpoint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HealthStatusForNetworkEndpoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           networkEndpoint: _json.containsKey('networkEndpoint')
@@ -72138,13 +72045,13 @@ class NetworkInterface {
       : this(
           accessConfigs: _json.containsKey('accessConfigs')
               ? (_json['accessConfigs'] as core.List)
-                  .map<AccessConfig>((value) => AccessConfig.fromJson(
+                  .map((value) => AccessConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           aliasIpRanges: _json.containsKey('aliasIpRanges')
               ? (_json['aliasIpRanges'] as core.List)
-                  .map<AliasIpRange>((value) => AliasIpRange.fromJson(
+                  .map((value) => AliasIpRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -72153,7 +72060,7 @@ class NetworkInterface {
               : null,
           ipv6AccessConfigs: _json.containsKey('ipv6AccessConfigs')
               ? (_json['ipv6AccessConfigs'] as core.List)
-                  .map<AccessConfig>((value) => AccessConfig.fromJson(
+                  .map((value) => AccessConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -72328,9 +72235,8 @@ class NetworkListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NetworkListWarningData>((value) =>
-                      NetworkListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NetworkListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -72396,7 +72302,7 @@ class NetworkList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Network>((value) => Network.fromJson(
+                  .map((value) => Network.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -72682,16 +72588,15 @@ class NetworksGetEffectiveFirewallsResponse {
       : this(
           firewallPolicys: _json.containsKey('firewallPolicys')
               ? (_json['firewallPolicys'] as core.List)
-                  .map<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>(
-                      (value) =>
-                          NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           firewalls: _json.containsKey('firewalls')
               ? (_json['firewalls'] as core.List)
-                  .map<Firewall>((value) => Firewall.fromJson(
+                  .map((value) => Firewall.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -72753,9 +72658,8 @@ class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<FirewallPolicyRule>((value) =>
-                      FirewallPolicyRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FirewallPolicyRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           shortName: _json.containsKey('shortName')
@@ -73120,9 +73024,8 @@ class NodeGroupAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeGroupAggregatedListWarningData>((value) =>
-                      NodeGroupAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeGroupAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -73208,7 +73111,7 @@ class NodeGroupAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -73393,9 +73296,8 @@ class NodeGroupListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeGroupListWarningData>((value) =>
-                      NodeGroupListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeGroupListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -73459,7 +73361,7 @@ class NodeGroupList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<NodeGroup>((value) => NodeGroup.fromJson(
+                  .map((value) => NodeGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -73586,7 +73488,7 @@ class NodeGroupNode {
       : this(
           accelerators: _json.containsKey('accelerators')
               ? (_json['accelerators'] as core.List)
-                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                  .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -73595,13 +73497,13 @@ class NodeGroupNode {
               : null,
           disks: _json.containsKey('disks')
               ? (_json['disks'] as core.List)
-                  .map<LocalDisk>((value) => LocalDisk.fromJson(
+                  .map((value) => LocalDisk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -73672,7 +73574,7 @@ class NodeGroupsDeleteNodesRequest {
       : this(
           nodes: _json.containsKey('nodes')
               ? (_json['nodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -73801,9 +73703,8 @@ class NodeGroupsListNodesWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeGroupsListNodesWarningData>((value) =>
-                      NodeGroupsListNodesWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeGroupsListNodesWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -73867,7 +73768,7 @@ class NodeGroupsListNodes {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<NodeGroupNode>((value) => NodeGroupNode.fromJson(
+                  .map((value) => NodeGroupNode.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -74014,9 +73915,8 @@ class NodeGroupsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeGroupsScopedListWarningData>((value) =>
-                      NodeGroupsScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeGroupsScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -74051,7 +73951,7 @@ class NodeGroupsScopedList {
       : this(
           nodeGroups: _json.containsKey('nodeGroups')
               ? (_json['nodeGroups'] as core.List)
-                  .map<NodeGroup>((value) => NodeGroup.fromJson(
+                  .map((value) => NodeGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -74212,7 +74112,7 @@ class NodeTemplate {
       : this(
           accelerators: _json.containsKey('accelerators')
               ? (_json['accelerators'] as core.List)
-                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                  .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -74227,7 +74127,7 @@ class NodeTemplate {
               : null,
           disks: _json.containsKey('disks')
               ? (_json['disks'] as core.List)
-                  .map<LocalDisk>((value) => LocalDisk.fromJson(
+                  .map((value) => LocalDisk.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -74413,7 +74313,7 @@ class NodeTemplateAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeTemplateAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       NodeTemplateAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -74501,7 +74401,7 @@ class NodeTemplateAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -74641,9 +74541,8 @@ class NodeTemplateListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeTemplateListWarningData>((value) =>
-                      NodeTemplateListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeTemplateListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -74708,7 +74607,7 @@ class NodeTemplateList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<NodeTemplate>((value) => NodeTemplate.fromJson(
+                  .map((value) => NodeTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -74884,9 +74783,8 @@ class NodeTemplatesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeTemplatesScopedListWarningData>((value) =>
-                      NodeTemplatesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeTemplatesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -74922,7 +74820,7 @@ class NodeTemplatesScopedList {
       : this(
           nodeTemplates: _json.containsKey('nodeTemplates')
               ? (_json['nodeTemplates'] as core.List)
-                  .map<NodeTemplate>((value) => NodeTemplate.fromJson(
+                  .map((value) => NodeTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -75195,9 +75093,8 @@ class NodeTypeAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeTypeAggregatedListWarningData>((value) =>
-                      NodeTypeAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeTypeAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -75283,7 +75180,7 @@ class NodeTypeAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -75423,9 +75320,8 @@ class NodeTypeListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeTypeListWarningData>((value) =>
-                      NodeTypeListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeTypeListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -75489,7 +75385,7 @@ class NodeTypeList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<NodeType>((value) => NodeType.fromJson(
+                  .map((value) => NodeType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -75636,9 +75532,8 @@ class NodeTypesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NodeTypesScopedListWarningData>((value) =>
-                      NodeTypesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NodeTypesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -75673,7 +75568,7 @@ class NodeTypesScopedList {
       : this(
           nodeTypes: _json.containsKey('nodeTypes')
               ? (_json['nodeTypes'] as core.List)
-                  .map<NodeType>((value) => NodeType.fromJson(
+                  .map((value) => NodeType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -75987,9 +75882,8 @@ class NotificationEndpointListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<NotificationEndpointListWarningData>((value) =>
-                      NotificationEndpointListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NotificationEndpointListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -76054,9 +75948,8 @@ class NotificationEndpointList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<NotificationEndpoint>((value) =>
-                      NotificationEndpoint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => NotificationEndpoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -76143,9 +76036,8 @@ class OperationError {
       : this(
           errors: _json.containsKey('errors')
               ? (_json['errors'] as core.List)
-                  .map<OperationErrorErrors>((value) =>
-                      OperationErrorErrors.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperationErrorErrors.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -76272,9 +76164,8 @@ class OperationWarnings {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<OperationWarningsData>((value) =>
-                      OperationWarningsData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperationWarningsData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -76550,7 +76441,7 @@ class Operation {
           user: _json.containsKey('user') ? _json['user'] as core.String : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<OperationWarnings>((value) => OperationWarnings.fromJson(
+                  .map((value) => OperationWarnings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -76706,9 +76597,8 @@ class OperationAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<OperationAggregatedListWarningData>((value) =>
-                      OperationAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperationAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -76800,7 +76690,7 @@ class OperationAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -76940,9 +76830,8 @@ class OperationListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<OperationListWarningData>((value) =>
-                      OperationListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperationListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -77012,7 +76901,7 @@ class OperationList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -77160,9 +77049,8 @@ class OperationsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<OperationsScopedListWarningData>((value) =>
-                      OperationsScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => OperationsScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -77198,7 +77086,7 @@ class OperationsScopedList {
       : this(
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -77666,7 +77554,7 @@ class PacketMirroringAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<PacketMirroringAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       PacketMirroringAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -77752,7 +77640,7 @@ class PacketMirroringAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -77808,12 +77696,12 @@ class PacketMirroringFilter {
       : this(
           IPProtocols: _json.containsKey('IPProtocols')
               ? (_json['IPProtocols'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           cidrRanges: _json.containsKey('cidrRanges')
               ? (_json['cidrRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           direction: _json.containsKey('direction')
@@ -77976,9 +77864,8 @@ class PacketMirroringListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<PacketMirroringListWarningData>((value) =>
-                      PacketMirroringListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PacketMirroringListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -78044,7 +77931,7 @@ class PacketMirroringList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PacketMirroring>((value) => PacketMirroring.fromJson(
+                  .map((value) => PacketMirroring.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -78104,22 +77991,21 @@ class PacketMirroringMirroredResourceInfo {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<PacketMirroringMirroredResourceInfoInstanceInfo>(
-                      (value) => PacketMirroringMirroredResourceInfoInstanceInfo
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      PacketMirroringMirroredResourceInfoInstanceInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           subnetworks: _json.containsKey('subnetworks')
               ? (_json['subnetworks'] as core.List)
-                  .map<PacketMirroringMirroredResourceInfoSubnetInfo>((value) =>
+                  .map((value) =>
                       PacketMirroringMirroredResourceInfoSubnetInfo.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -78336,7 +78222,7 @@ class PacketMirroringsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<PacketMirroringsScopedListWarningData>((value) =>
+                  .map((value) =>
                       PacketMirroringsScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -78370,7 +78256,7 @@ class PacketMirroringsScopedList {
       : this(
           packetMirrorings: _json.containsKey('packetMirrorings')
               ? (_json['packetMirrorings'] as core.List)
-                  .map<PacketMirroring>((value) => PacketMirroring.fromJson(
+                  .map((value) => PacketMirroring.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -78508,13 +78394,13 @@ class PathMatcher {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           pathRules: _json.containsKey('pathRules')
               ? (_json['pathRules'] as core.List)
-                  .map<PathRule>((value) => PathRule.fromJson(
+                  .map((value) => PathRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           routeRules: _json.containsKey('routeRules')
               ? (_json['routeRules'] as core.List)
-                  .map<HttpRouteRule>((value) => HttpRouteRule.fromJson(
+                  .map((value) => HttpRouteRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -78588,7 +78474,7 @@ class PathRule {
       : this(
           paths: _json.containsKey('paths')
               ? (_json['paths'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           routeAction: _json.containsKey('routeAction')
@@ -78795,13 +78681,13 @@ class Policy {
       : this(
           auditConfigs: _json.containsKey('auditConfigs')
               ? (_json['auditConfigs'] as core.List)
-                  .map<AuditConfig>((value) => AuditConfig.fromJson(
+                  .map((value) => AuditConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -78811,7 +78697,7 @@ class Policy {
               : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<Rule>((value) => Rule.fromJson(
+                  .map((value) => Rule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -78845,7 +78731,7 @@ class PreconfiguredWafSet {
       : this(
           expressionSets: _json.containsKey('expressionSets')
               ? (_json['expressionSets'] as core.List)
-                  .map<WafExpressionSet>((value) => WafExpressionSet.fromJson(
+                  .map((value) => WafExpressionSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -79071,7 +78957,7 @@ class Project {
               : null,
           enabledFeatures: _json.containsKey('enabledFeatures')
               ? (_json['enabledFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -79079,7 +78965,7 @@ class Project {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           quotas: _json.containsKey('quotas')
               ? (_json['quotas'] as core.List)
-                  .map<Quota>((value) => Quota.fromJson(
+                  .map((value) => Quota.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -79196,7 +79082,7 @@ class ProjectsGetXpnResources {
               : null,
           resources: _json.containsKey('resources')
               ? (_json['resources'] as core.List)
-                  .map<XpnResourceId>((value) => XpnResourceId.fromJson(
+                  .map((value) => XpnResourceId.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -79387,7 +79273,7 @@ class PublicAdvertisedPrefix {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           publicDelegatedPrefixs: _json.containsKey('publicDelegatedPrefixs')
               ? (_json['publicDelegatedPrefixs'] as core.List)
-                  .map<PublicAdvertisedPrefixPublicDelegatedPrefix>((value) =>
+                  .map((value) =>
                       PublicAdvertisedPrefixPublicDelegatedPrefix.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -79540,7 +79426,7 @@ class PublicAdvertisedPrefixListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<PublicAdvertisedPrefixListWarningData>((value) =>
+                  .map((value) =>
                       PublicAdvertisedPrefixListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -79607,9 +79493,8 @@ class PublicAdvertisedPrefixList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PublicAdvertisedPrefix>((value) =>
-                      PublicAdvertisedPrefix.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PublicAdvertisedPrefix.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -79835,7 +79720,7 @@ class PublicDelegatedPrefix {
           publicDelegatedSubPrefixs: _json
                   .containsKey('publicDelegatedSubPrefixs')
               ? (_json['publicDelegatedSubPrefixs'] as core.List)
-                  .map<PublicDelegatedPrefixPublicDelegatedSubPrefix>((value) =>
+                  .map((value) =>
                       PublicDelegatedPrefixPublicDelegatedSubPrefix.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -79990,10 +79875,9 @@ class PublicDelegatedPrefixAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<PublicDelegatedPrefixAggregatedListWarningData>(
-                      (value) => PublicDelegatedPrefixAggregatedListWarningData
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      PublicDelegatedPrefixAggregatedListWarningData.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -80081,7 +79965,7 @@ class PublicDelegatedPrefixAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -80221,9 +80105,8 @@ class PublicDelegatedPrefixListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<PublicDelegatedPrefixListWarningData>((value) =>
-                      PublicDelegatedPrefixListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PublicDelegatedPrefixListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -80288,9 +80171,8 @@ class PublicDelegatedPrefixList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PublicDelegatedPrefix>((value) =>
-                      PublicDelegatedPrefix.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PublicDelegatedPrefix.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -80517,7 +80399,7 @@ class PublicDelegatedPrefixesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<PublicDelegatedPrefixesScopedListWarningData>((value) =>
+                  .map((value) =>
                       PublicDelegatedPrefixesScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -80555,9 +80437,8 @@ class PublicDelegatedPrefixesScopedList {
       : this(
           publicDelegatedPrefixes: _json.containsKey('publicDelegatedPrefixes')
               ? (_json['publicDelegatedPrefixes'] as core.List)
-                  .map<PublicDelegatedPrefix>((value) =>
-                      PublicDelegatedPrefix.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PublicDelegatedPrefix.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -80900,7 +80781,7 @@ class Region {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           quotas: _json.containsKey('quotas')
               ? (_json['quotas'] as core.List)
-                  .map<Quota>((value) => Quota.fromJson(
+                  .map((value) => Quota.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -80915,7 +80796,7 @@ class Region {
               : null,
           zones: _json.containsKey('zones')
               ? (_json['zones'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -81055,9 +80936,8 @@ class RegionAutoscalerListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RegionAutoscalerListWarningData>((value) =>
-                      RegionAutoscalerListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RegionAutoscalerListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -81119,7 +80999,7 @@ class RegionAutoscalerList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Autoscaler>((value) => Autoscaler.fromJson(
+                  .map((value) => Autoscaler.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -81266,9 +81146,8 @@ class RegionDiskTypeListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RegionDiskTypeListWarningData>((value) =>
-                      RegionDiskTypeListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RegionDiskTypeListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -81333,7 +81212,7 @@ class RegionDiskTypeList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<DiskType>((value) => DiskType.fromJson(
+                  .map((value) => DiskType.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -81373,7 +81252,7 @@ class RegionDisksAddResourcePoliciesRequest {
       : this(
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -81395,7 +81274,7 @@ class RegionDisksRemoveResourcePoliciesRequest {
       : this(
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -81544,9 +81423,8 @@ class RegionInstanceGroupListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RegionInstanceGroupListWarningData>((value) =>
-                      RegionInstanceGroupListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RegionInstanceGroupListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -81608,7 +81486,7 @@ class RegionInstanceGroupList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceGroup>((value) => InstanceGroup.fromJson(
+                  .map((value) => InstanceGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -81650,7 +81528,7 @@ class RegionInstanceGroupManagerDeleteInstanceConfigReq {
       : this(
           names: _json.containsKey('names')
               ? (_json['names'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -81779,7 +81657,7 @@ class RegionInstanceGroupManagerListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RegionInstanceGroupManagerListWarningData>((value) =>
+                  .map((value) =>
                       RegionInstanceGroupManagerListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -81846,9 +81724,8 @@ class RegionInstanceGroupManagerList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceGroupManager>((value) =>
-                      InstanceGroupManager.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceGroupManager.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -81889,7 +81766,7 @@ class RegionInstanceGroupManagerPatchInstanceConfigReq {
       : this(
           perInstanceConfigs: _json.containsKey('perInstanceConfigs')
               ? (_json['perInstanceConfigs'] as core.List)
-                  .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+                  .map((value) => PerInstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -81916,7 +81793,7 @@ class RegionInstanceGroupManagerUpdateInstanceConfigReq {
       : this(
           perInstanceConfigs: _json.containsKey('perInstanceConfigs')
               ? (_json['perInstanceConfigs'] as core.List)
-                  .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+                  .map((value) => PerInstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -81944,7 +81821,7 @@ class RegionInstanceGroupManagersAbandonInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -82015,7 +81892,7 @@ class RegionInstanceGroupManagersApplyUpdatesRequest {
               : null,
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           minimalAction: _json.containsKey('minimalAction')
@@ -82051,7 +81928,7 @@ class RegionInstanceGroupManagersCreateInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+                  .map((value) => PerInstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -82089,7 +81966,7 @@ class RegionInstanceGroupManagersDeleteInstancesRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           skipInstancesOnValidationError:
@@ -82130,9 +82007,8 @@ class RegionInstanceGroupManagersListErrorsResponse {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceManagedByIgmError>((value) =>
-                      InstanceManagedByIgmError.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceManagedByIgmError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -82269,11 +82145,10 @@ class RegionInstanceGroupManagersListInstanceConfigsRespWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RegionInstanceGroupManagersListInstanceConfigsRespWarningData>(
-                      (value) =>
-                          RegionInstanceGroupManagersListInstanceConfigsRespWarningData
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      RegionInstanceGroupManagersListInstanceConfigsRespWarningData
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -82319,7 +82194,7 @@ class RegionInstanceGroupManagersListInstanceConfigsResp {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+                  .map((value) => PerInstanceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -82364,7 +82239,7 @@ class RegionInstanceGroupManagersListInstancesResponse {
       : this(
           managedInstances: _json.containsKey('managedInstances')
               ? (_json['managedInstances'] as core.List)
-                  .map<ManagedInstance>((value) => ManagedInstance.fromJson(
+                  .map((value) => ManagedInstance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -82396,7 +82271,7 @@ class RegionInstanceGroupManagersRecreateRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -82440,7 +82315,7 @@ class RegionInstanceGroupManagersSetTargetPoolsRequest {
               : null,
           targetPools: _json.containsKey('targetPools')
               ? (_json['targetPools'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -82591,7 +82466,7 @@ class RegionInstanceGroupsListInstancesWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RegionInstanceGroupsListInstancesWarningData>((value) =>
+                  .map((value) =>
                       RegionInstanceGroupsListInstancesWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -82654,9 +82529,8 @@ class RegionInstanceGroupsListInstances {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<InstanceWithNamedPorts>((value) =>
-                      InstanceWithNamedPorts.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => InstanceWithNamedPorts.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -82753,7 +82627,7 @@ class RegionInstanceGroupsSetNamedPortsRequest {
               : null,
           namedPorts: _json.containsKey('namedPorts')
               ? (_json['namedPorts'] as core.List)
-                  .map<NamedPort>((value) => NamedPort.fromJson(
+                  .map((value) => NamedPort.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -82885,9 +82759,8 @@ class RegionListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RegionListWarningData>((value) =>
-                      RegionListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RegionListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -82953,7 +82826,7 @@ class RegionList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Region>((value) => Region.fromJson(
+                  .map((value) => Region.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -83061,7 +82934,7 @@ class RegionSetPolicyRequest {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -83095,7 +82968,7 @@ class RegionTargetHttpsProxiesSetSslCertificatesRequest {
       : this(
           sslCertificates: _json.containsKey('sslCertificates')
               ? (_json['sslCertificates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -83347,7 +83220,7 @@ class ReservationAffinity {
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -83479,9 +83352,8 @@ class ReservationAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ReservationAggregatedListWarningData>((value) =>
-                      ReservationAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReservationAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -83565,7 +83437,7 @@ class ReservationAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -83705,9 +83577,8 @@ class ReservationListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ReservationListWarningData>((value) =>
-                      ReservationListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReservationListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -83774,7 +83645,7 @@ class ReservationList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Reservation>((value) => Reservation.fromJson(
+                  .map((value) => Reservation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -83941,9 +83812,8 @@ class ReservationsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ReservationsScopedListWarningData>((value) =>
-                      ReservationsScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ReservationsScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -83975,7 +83845,7 @@ class ReservationsScopedList {
       : this(
           reservations: _json.containsKey('reservations')
               ? (_json['reservations'] as core.List)
-                  .map<Reservation>((value) => Reservation.fromJson(
+                  .map((value) => Reservation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -84181,7 +84051,7 @@ class ResourcePoliciesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ResourcePoliciesScopedListWarningData>((value) =>
+                  .map((value) =>
                       ResourcePoliciesScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -84215,7 +84085,7 @@ class ResourcePoliciesScopedList {
       : this(
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
-                  .map<ResourcePolicy>((value) => ResourcePolicy.fromJson(
+                  .map((value) => ResourcePolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -84495,7 +84365,7 @@ class ResourcePolicyAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ResourcePolicyAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       ResourcePolicyAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -84585,7 +84455,7 @@ class ResourcePolicyAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -84948,9 +84818,8 @@ class ResourcePolicyListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ResourcePolicyListWarningData>((value) =>
-                      ResourcePolicyListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResourcePolicyListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -85022,7 +84891,7 @@ class ResourcePolicyList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ResourcePolicy>((value) => ResourcePolicy.fromJson(
+                  .map((value) => ResourcePolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -85290,7 +85159,7 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
               : null,
           storageLocations: _json.containsKey('storageLocations')
               ? (_json['storageLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -85316,9 +85185,8 @@ class ResourcePolicyWeeklyCycle {
       : this(
           dayOfWeeks: _json.containsKey('dayOfWeeks')
               ? (_json['dayOfWeeks'] as core.List)
-                  .map<ResourcePolicyWeeklyCycleDayOfWeek>((value) =>
-                      ResourcePolicyWeeklyCycleDayOfWeek.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ResourcePolicyWeeklyCycleDayOfWeek.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -85496,7 +85364,7 @@ class RouteWarnings {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RouteWarningsData>((value) => RouteWarningsData.fromJson(
+                  .map((value) => RouteWarningsData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -85689,12 +85557,12 @@ class Route {
               : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<RouteWarnings>((value) => RouteWarnings.fromJson(
+                  .map((value) => RouteWarnings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -85842,9 +85710,8 @@ class RouteListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RouteListWarningData>((value) =>
-                      RouteListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RouteListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -85906,7 +85773,7 @@ class RouteList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Route>((value) => Route.fromJson(
+                  .map((value) => Route.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -86038,7 +85905,7 @@ class Router {
               : null,
           bgpPeers: _json.containsKey('bgpPeers')
               ? (_json['bgpPeers'] as core.List)
-                  .map<RouterBgpPeer>((value) => RouterBgpPeer.fromJson(
+                  .map((value) => RouterBgpPeer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -86055,7 +85922,7 @@ class Router {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           interfaces: _json.containsKey('interfaces')
               ? (_json['interfaces'] as core.List)
-                  .map<RouterInterface>((value) => RouterInterface.fromJson(
+                  .map((value) => RouterInterface.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -86063,7 +85930,7 @@ class Router {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           nats: _json.containsKey('nats')
               ? (_json['nats'] as core.List)
-                  .map<RouterNat>((value) => RouterNat.fromJson(
+                  .map((value) => RouterNat.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -86247,9 +86114,8 @@ class RouterAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RouterAggregatedListWarningData>((value) =>
-                      RouterAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RouterAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -86333,7 +86199,7 @@ class RouterAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -86412,14 +86278,13 @@ class RouterBgp {
               : null,
           advertisedGroups: _json.containsKey('advertisedGroups')
               ? (_json['advertisedGroups'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           advertisedIpRanges: _json.containsKey('advertisedIpRanges')
               ? (_json['advertisedIpRanges'] as core.List)
-                  .map<RouterAdvertisedIpRange>((value) =>
-                      RouterAdvertisedIpRange.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RouterAdvertisedIpRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           asn: _json.containsKey('asn') ? _json['asn'] as core.int : null,
@@ -86553,14 +86418,13 @@ class RouterBgpPeer {
               : null,
           advertisedGroups: _json.containsKey('advertisedGroups')
               ? (_json['advertisedGroups'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           advertisedIpRanges: _json.containsKey('advertisedIpRanges')
               ? (_json['advertisedIpRanges'] as core.List)
-                  .map<RouterAdvertisedIpRange>((value) =>
-                      RouterAdvertisedIpRange.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RouterAdvertisedIpRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           advertisedRoutePriority: _json.containsKey('advertisedRoutePriority')
@@ -86812,9 +86676,8 @@ class RouterListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RouterListWarningData>((value) =>
-                      RouterListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RouterListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -86880,7 +86743,7 @@ class RouterList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Router>((value) => Router.fromJson(
+                  .map((value) => Router.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -87025,7 +86888,7 @@ class RouterNat {
       : this(
           drainNatIps: _json.containsKey('drainNatIps')
               ? (_json['drainNatIps'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           enableEndpointIndependentMapping:
@@ -87048,7 +86911,7 @@ class RouterNat {
               : null,
           natIps: _json.containsKey('natIps')
               ? (_json['natIps'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sourceSubnetworkIpRangesToNat:
@@ -87057,9 +86920,8 @@ class RouterNat {
                   : null,
           subnetworks: _json.containsKey('subnetworks')
               ? (_json['subnetworks'] as core.List)
-                  .map<RouterNatSubnetworkToNat>((value) =>
-                      RouterNatSubnetworkToNat.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RouterNatSubnetworkToNat.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           tcpEstablishedIdleTimeoutSec:
@@ -87170,12 +87032,12 @@ class RouterNatSubnetworkToNat {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           secondaryIpRangeNames: _json.containsKey('secondaryIpRangeNames')
               ? (_json['secondaryIpRangeNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sourceIpRangesToNat: _json.containsKey('sourceIpRangesToNat')
               ? (_json['sourceIpRangesToNat'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -87213,28 +87075,26 @@ class RouterStatus {
       : this(
           bestRoutes: _json.containsKey('bestRoutes')
               ? (_json['bestRoutes'] as core.List)
-                  .map<Route>((value) => Route.fromJson(
+                  .map((value) => Route.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bestRoutesForRouter: _json.containsKey('bestRoutesForRouter')
               ? (_json['bestRoutesForRouter'] as core.List)
-                  .map<Route>((value) => Route.fromJson(
+                  .map((value) => Route.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           bgpPeerStatus: _json.containsKey('bgpPeerStatus')
               ? (_json['bgpPeerStatus'] as core.List)
-                  .map<RouterStatusBgpPeerStatus>((value) =>
-                      RouterStatusBgpPeerStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RouterStatusBgpPeerStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           natStatus: _json.containsKey('natStatus')
               ? (_json['natStatus'] as core.List)
-                  .map<RouterStatusNatStatus>((value) =>
-                      RouterStatusNatStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RouterStatusNatStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           network: _json.containsKey('network')
@@ -87315,7 +87175,7 @@ class RouterStatusBgpPeerStatus {
       : this(
           advertisedRoutes: _json.containsKey('advertisedRoutes')
               ? (_json['advertisedRoutes'] as core.List)
-                  .map<Route>((value) => Route.fromJson(
+                  .map((value) => Route.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -87414,19 +87274,19 @@ class RouterStatusNatStatus {
       : this(
           autoAllocatedNatIps: _json.containsKey('autoAllocatedNatIps')
               ? (_json['autoAllocatedNatIps'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           drainAutoAllocatedNatIps:
               _json.containsKey('drainAutoAllocatedNatIps')
                   ? (_json['drainAutoAllocatedNatIps'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           drainUserAllocatedNatIps:
               _json.containsKey('drainUserAllocatedNatIps')
                   ? (_json['drainUserAllocatedNatIps'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           minExtraNatIpsNeeded: _json.containsKey('minExtraNatIpsNeeded')
@@ -87440,12 +87300,12 @@ class RouterStatusNatStatus {
           userAllocatedNatIpResources:
               _json.containsKey('userAllocatedNatIpResources')
                   ? (_json['userAllocatedNatIpResources'] as core.List)
-                      .map<core.String>((value) => value as core.String)
+                      .map((value) => value as core.String)
                       .toList()
                   : null,
           userAllocatedNatIps: _json.containsKey('userAllocatedNatIps')
               ? (_json['userAllocatedNatIps'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -87633,9 +87493,8 @@ class RoutersScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<RoutersScopedListWarningData>((value) =>
-                      RoutersScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => RoutersScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -87667,7 +87526,7 @@ class RoutersScopedList {
       : this(
           routers: _json.containsKey('routers')
               ? (_json['routers'] as core.List)
-                  .map<Router>((value) => Router.fromJson(
+                  .map((value) => Router.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -87747,7 +87606,7 @@ class Rule {
               : null,
           conditions: _json.containsKey('conditions')
               ? (_json['conditions'] as core.List)
-                  .map<Condition>((value) => Condition.fromJson(
+                  .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -87756,23 +87615,23 @@ class Rule {
               : null,
           ins: _json.containsKey('ins')
               ? (_json['ins'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           logConfigs: _json.containsKey('logConfigs')
               ? (_json['logConfigs'] as core.List)
-                  .map<LogConfig>((value) => LogConfig.fromJson(
+                  .map((value) => LogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           notIns: _json.containsKey('notIns')
               ? (_json['notIns'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -88009,9 +87868,8 @@ class Scheduling {
               : null,
           nodeAffinities: _json.containsKey('nodeAffinities')
               ? (_json['nodeAffinities'] as core.List)
-                  .map<SchedulingNodeAffinity>((value) =>
-                      SchedulingNodeAffinity.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SchedulingNodeAffinity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           onHostMaintenance: _json.containsKey('onHostMaintenance')
@@ -88066,7 +87924,7 @@ class SchedulingNodeAffinity {
               : null,
           values: _json.containsKey('values')
               ? (_json['values'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -88267,9 +88125,8 @@ class SecurityPolicy {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<SecurityPolicyRule>((value) =>
-                      SecurityPolicyRule.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SecurityPolicyRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -88506,9 +88363,8 @@ class SecurityPolicyListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SecurityPolicyListWarningData>((value) =>
-                      SecurityPolicyListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SecurityPolicyListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -88567,7 +88423,7 @@ class SecurityPolicyList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<SecurityPolicy>((value) => SecurityPolicy.fromJson(
+                  .map((value) => SecurityPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -88754,7 +88610,7 @@ class SecurityPolicyRuleMatcherConfig {
       : this(
           srcIpRanges: _json.containsKey('srcIpRanges')
               ? (_json['srcIpRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -88807,7 +88663,7 @@ class SecuritySettings {
               : null,
           subjectAltNames: _json.containsKey('subjectAltNames')
               ? (_json['subjectAltNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -88928,7 +88784,7 @@ class ServiceAccount {
               _json.containsKey('email') ? _json['email'] as core.String : null,
           scopes: _json.containsKey('scopes')
               ? (_json['scopes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -89082,9 +88938,8 @@ class ServiceAttachment {
       : this(
           connectedEndpoints: _json.containsKey('connectedEndpoints')
               ? (_json['connectedEndpoints'] as core.List)
-                  .map<ServiceAttachmentConnectedEndpoint>((value) =>
-                      ServiceAttachmentConnectedEndpoint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ServiceAttachmentConnectedEndpoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           connectionPreference: _json.containsKey('connectionPreference')
@@ -89092,14 +88947,14 @@ class ServiceAttachment {
               : null,
           consumerAcceptLists: _json.containsKey('consumerAcceptLists')
               ? (_json['consumerAcceptLists'] as core.List)
-                  .map<ServiceAttachmentConsumerProjectLimit>((value) =>
+                  .map((value) =>
                       ServiceAttachmentConsumerProjectLimit.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           consumerRejectLists: _json.containsKey('consumerRejectLists')
               ? (_json['consumerRejectLists'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           creationTimestamp: _json.containsKey('creationTimestamp')
@@ -89119,7 +88974,7 @@ class ServiceAttachment {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           natSubnets: _json.containsKey('natSubnets')
               ? (_json['natSubnets'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           producerForwardingRule: _json.containsKey('producerForwardingRule')
@@ -89289,7 +89144,7 @@ class ServiceAttachmentAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ServiceAttachmentAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       ServiceAttachmentAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -89375,7 +89230,7 @@ class ServiceAttachmentAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -89589,9 +89444,8 @@ class ServiceAttachmentListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ServiceAttachmentListWarningData>((value) =>
-                      ServiceAttachmentListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ServiceAttachmentListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -89656,7 +89510,7 @@ class ServiceAttachmentList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<ServiceAttachment>((value) => ServiceAttachment.fromJson(
+                  .map((value) => ServiceAttachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -89802,7 +89656,7 @@ class ServiceAttachmentsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ServiceAttachmentsScopedListWarningData>((value) =>
+                  .map((value) =>
                       ServiceAttachmentsScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -89836,7 +89690,7 @@ class ServiceAttachmentsScopedList {
       : this(
           serviceAttachments: _json.containsKey('serviceAttachments')
               ? (_json['serviceAttachments'] as core.List)
-                  .map<ServiceAttachment>((value) => ServiceAttachment.fromJson(
+                  .map((value) => ServiceAttachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -90282,12 +90136,12 @@ class Snapshot {
               : null,
           licenseCodes: _json.containsKey('licenseCodes')
               ? (_json['licenseCodes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           licenses: _json.containsKey('licenses')
               ? (_json['licenses'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           locationHint: _json.containsKey('locationHint')
@@ -90325,7 +90179,7 @@ class Snapshot {
               : null,
           storageLocations: _json.containsKey('storageLocations')
               ? (_json['storageLocations'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -90480,9 +90334,8 @@ class SnapshotListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SnapshotListWarningData>((value) =>
-                      SnapshotListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SnapshotListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -90544,7 +90397,7 @@ class SnapshotList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Snapshot>((value) => Snapshot.fromJson(
+                  .map((value) => Snapshot.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -90591,9 +90444,8 @@ class SourceInstanceParams {
       : this(
           diskConfigs: _json.containsKey('diskConfigs')
               ? (_json['diskConfigs'] as core.List)
-                  .map<DiskInstantiationConfig>((value) =>
-                      DiskInstantiationConfig.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => DiskInstantiationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -90759,7 +90611,7 @@ class SslCertificate {
               : null,
           subjectAlternativeNames: _json.containsKey('subjectAlternativeNames')
               ? (_json['subjectAlternativeNames'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
@@ -90903,7 +90755,7 @@ class SslCertificateAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SslCertificateAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       SslCertificateAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -90992,7 +90844,7 @@ class SslCertificateAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -91132,9 +90984,8 @@ class SslCertificateListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SslCertificateListWarningData>((value) =>
-                      SslCertificateListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SslCertificateListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -91196,7 +91047,7 @@ class SslCertificateList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<SslCertificate>((value) => SslCertificate.fromJson(
+                  .map((value) => SslCertificate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -91281,7 +91132,7 @@ class SslCertificateManagedSslCertificate {
               : null,
           domains: _json.containsKey('domains')
               ? (_json['domains'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           status: _json.containsKey('status')
@@ -91449,9 +91300,8 @@ class SslCertificatesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SslCertificatesScopedListWarningData>((value) =>
-                      SslCertificatesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SslCertificatesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -91483,7 +91333,7 @@ class SslCertificatesScopedList {
       : this(
           sslCertificates: _json.containsKey('sslCertificates')
               ? (_json['sslCertificates'] as core.List)
-                  .map<SslCertificate>((value) => SslCertificate.fromJson(
+                  .map((value) => SslCertificate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -91620,9 +91470,8 @@ class SslPoliciesListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SslPoliciesListWarningData>((value) =>
-                      SslPoliciesListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SslPoliciesListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -91687,7 +91536,7 @@ class SslPoliciesList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<SslPolicy>((value) => SslPolicy.fromJson(
+                  .map((value) => SslPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -91726,7 +91575,7 @@ class SslPoliciesListAvailableFeaturesResponse {
       : this(
           features: _json.containsKey('features')
               ? (_json['features'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -91852,9 +91701,8 @@ class SslPolicyWarnings {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SslPolicyWarningsData>((value) =>
-                      SslPolicyWarningsData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SslPolicyWarningsData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -91998,7 +91846,7 @@ class SslPolicy {
               : null,
           customFeatures: _json.containsKey('customFeatures')
               ? (_json['customFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           description: _json.containsKey('description')
@@ -92006,7 +91854,7 @@ class SslPolicy {
               : null,
           enabledFeatures: _json.containsKey('enabledFeatures')
               ? (_json['enabledFeatures'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           fingerprint: _json.containsKey('fingerprint')
@@ -92026,7 +91874,7 @@ class SslPolicy {
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<SslPolicyWarnings>((value) => SslPolicyWarnings.fromJson(
+                  .map((value) => SslPolicyWarnings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -92445,9 +92293,8 @@ class Subnetwork {
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
           secondaryIpRanges: _json.containsKey('secondaryIpRanges')
               ? (_json['secondaryIpRanges'] as core.List)
-                  .map<SubnetworkSecondaryRange>((value) =>
-                      SubnetworkSecondaryRange.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SubnetworkSecondaryRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -92611,9 +92458,8 @@ class SubnetworkAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SubnetworkAggregatedListWarningData>((value) =>
-                      SubnetworkAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SubnetworkAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -92701,7 +92547,7 @@ class SubnetworkAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -92841,9 +92687,8 @@ class SubnetworkListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SubnetworkListWarningData>((value) =>
-                      SubnetworkListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SubnetworkListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -92909,7 +92754,7 @@ class SubnetworkList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Subnetwork>((value) => Subnetwork.fromJson(
+                  .map((value) => Subnetwork.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -93013,7 +92858,7 @@ class SubnetworkLogConfig {
               : null,
           metadataFields: _json.containsKey('metadataFields')
               ? (_json['metadataFields'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -93209,9 +93054,8 @@ class SubnetworksScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<SubnetworksScopedListWarningData>((value) =>
-                      SubnetworksScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => SubnetworksScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -93242,7 +93086,7 @@ class SubnetworksScopedList {
       : this(
           subnetworks: _json.containsKey('subnetworks')
               ? (_json['subnetworks'] as core.List)
-                  .map<Subnetwork>((value) => Subnetwork.fromJson(
+                  .map((value) => Subnetwork.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -93405,7 +93249,7 @@ class Tags {
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -93678,9 +93522,8 @@ class TargetGrpcProxyListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetGrpcProxyListWarningData>((value) =>
-                      TargetGrpcProxyListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetGrpcProxyListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -93745,7 +93588,7 @@ class TargetGrpcProxyList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TargetGrpcProxy>((value) => TargetGrpcProxy.fromJson(
+                  .map((value) => TargetGrpcProxy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -93891,7 +93734,7 @@ class TargetHttpProxiesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetHttpProxiesScopedListWarningData>((value) =>
+                  .map((value) =>
                       TargetHttpProxiesScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -93925,7 +93768,7 @@ class TargetHttpProxiesScopedList {
       : this(
           targetHttpProxies: _json.containsKey('targetHttpProxies')
               ? (_json['targetHttpProxies'] as core.List)
-                  .map<TargetHttpProxy>((value) => TargetHttpProxy.fromJson(
+                  .map((value) => TargetHttpProxy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -94155,7 +93998,7 @@ class TargetHttpProxyAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -94290,9 +94133,8 @@ class TargetHttpProxyListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetHttpProxyListWarningData>((value) =>
-                      TargetHttpProxyListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetHttpProxyListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -94356,7 +94198,7 @@ class TargetHttpProxyList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TargetHttpProxy>((value) => TargetHttpProxy.fromJson(
+                  .map((value) => TargetHttpProxy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -94502,7 +94344,7 @@ class TargetHttpsProxiesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetHttpsProxiesScopedListWarningData>((value) =>
+                  .map((value) =>
                       TargetHttpsProxiesScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -94536,7 +94378,7 @@ class TargetHttpsProxiesScopedList {
       : this(
           targetHttpsProxies: _json.containsKey('targetHttpsProxies')
               ? (_json['targetHttpsProxies'] as core.List)
-                  .map<TargetHttpsProxy>((value) => TargetHttpsProxy.fromJson(
+                  .map((value) => TargetHttpsProxy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -94597,7 +94439,7 @@ class TargetHttpsProxiesSetSslCertificatesRequest {
       : this(
           sslCertificates: _json.containsKey('sslCertificates')
               ? (_json['sslCertificates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -94807,7 +94649,7 @@ class TargetHttpsProxy {
               : null,
           sslCertificates: _json.containsKey('sslCertificates')
               ? (_json['sslCertificates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sslPolicy: _json.containsKey('sslPolicy')
@@ -94957,7 +94799,7 @@ class TargetHttpsProxyAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetHttpsProxyAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       TargetHttpsProxyAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -95047,7 +94889,7 @@ class TargetHttpsProxyAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -95187,9 +95029,8 @@ class TargetHttpsProxyListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetHttpsProxyListWarningData>((value) =>
-                      TargetHttpsProxyListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetHttpsProxyListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -95253,7 +95094,7 @@ class TargetHttpsProxyList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TargetHttpsProxy>((value) => TargetHttpsProxy.fromJson(
+                  .map((value) => TargetHttpsProxy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -95520,7 +95361,7 @@ class TargetInstanceAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetInstanceAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       TargetInstanceAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -95605,7 +95446,7 @@ class TargetInstanceAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -95745,9 +95586,8 @@ class TargetInstanceListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetInstanceListWarningData>((value) =>
-                      TargetInstanceListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetInstanceListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -95809,7 +95649,7 @@ class TargetInstanceList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TargetInstance>((value) => TargetInstance.fromJson(
+                  .map((value) => TargetInstance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -95955,9 +95795,8 @@ class TargetInstancesScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetInstancesScopedListWarningData>((value) =>
-                      TargetInstancesScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetInstancesScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -95989,7 +95828,7 @@ class TargetInstancesScopedList {
       : this(
           targetInstances: _json.containsKey('targetInstances')
               ? (_json['targetInstances'] as core.List)
-                  .map<TargetInstance>((value) => TargetInstance.fromJson(
+                  .map((value) => TargetInstance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -96167,13 +96006,13 @@ class TargetPool {
               : null,
           healthChecks: _json.containsKey('healthChecks')
               ? (_json['healthChecks'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -96324,9 +96163,8 @@ class TargetPoolAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetPoolAggregatedListWarningData>((value) =>
-                      TargetPoolAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetPoolAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -96414,7 +96252,7 @@ class TargetPoolAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -96455,7 +96293,7 @@ class TargetPoolInstanceHealth {
       : this(
           healthStatus: _json.containsKey('healthStatus')
               ? (_json['healthStatus'] as core.List)
-                  .map<HealthStatus>((value) => HealthStatus.fromJson(
+                  .map((value) => HealthStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -96588,9 +96426,8 @@ class TargetPoolListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetPoolListWarningData>((value) =>
-                      TargetPoolListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetPoolListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -96656,7 +96493,7 @@ class TargetPoolList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TargetPool>((value) => TargetPool.fromJson(
+                  .map((value) => TargetPool.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -96696,9 +96533,8 @@ class TargetPoolsAddHealthCheckRequest {
       : this(
           healthChecks: _json.containsKey('healthChecks')
               ? (_json['healthChecks'] as core.List)
-                  .map<HealthCheckReference>((value) =>
-                      HealthCheckReference.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HealthCheckReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -96728,7 +96564,7 @@ class TargetPoolsAddInstanceRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<InstanceReference>((value) => InstanceReference.fromJson(
+                  .map((value) => InstanceReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -96758,9 +96594,8 @@ class TargetPoolsRemoveHealthCheckRequest {
       : this(
           healthChecks: _json.containsKey('healthChecks')
               ? (_json['healthChecks'] as core.List)
-                  .map<HealthCheckReference>((value) =>
-                      HealthCheckReference.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => HealthCheckReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -96783,7 +96618,7 @@ class TargetPoolsRemoveInstanceRequest {
       : this(
           instances: _json.containsKey('instances')
               ? (_json['instances'] as core.List)
-                  .map<InstanceReference>((value) => InstanceReference.fromJson(
+                  .map((value) => InstanceReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -96913,9 +96748,8 @@ class TargetPoolsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetPoolsScopedListWarningData>((value) =>
-                      TargetPoolsScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetPoolsScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -96947,7 +96781,7 @@ class TargetPoolsScopedList {
       : this(
           targetPools: _json.containsKey('targetPools')
               ? (_json['targetPools'] as core.List)
-                  .map<TargetPool>((value) => TargetPool.fromJson(
+                  .map((value) => TargetPool.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -97044,7 +96878,7 @@ class TargetSslProxiesSetSslCertificatesRequest {
       : this(
           sslCertificates: _json.containsKey('sslCertificates')
               ? (_json['sslCertificates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -97162,7 +96996,7 @@ class TargetSslProxy {
               : null,
           sslCertificates: _json.containsKey('sslCertificates')
               ? (_json['sslCertificates'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           sslPolicy: _json.containsKey('sslPolicy')
@@ -97303,9 +97137,8 @@ class TargetSslProxyListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetSslProxyListWarningData>((value) =>
-                      TargetSslProxyListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetSslProxyListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -97367,7 +97200,7 @@ class TargetSslProxyList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TargetSslProxy>((value) => TargetSslProxy.fromJson(
+                  .map((value) => TargetSslProxy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -97678,9 +97511,8 @@ class TargetTcpProxyListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetTcpProxyListWarningData>((value) =>
-                      TargetTcpProxyListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetTcpProxyListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -97742,7 +97574,7 @@ class TargetTcpProxyList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TargetTcpProxy>((value) => TargetTcpProxy.fromJson(
+                  .map((value) => TargetTcpProxy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -97878,7 +97710,7 @@ class TargetVpnGateway {
               : null,
           forwardingRules: _json.containsKey('forwardingRules')
               ? (_json['forwardingRules'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -97898,7 +97730,7 @@ class TargetVpnGateway {
               : null,
           tunnels: _json.containsKey('tunnels')
               ? (_json['tunnels'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -98037,7 +97869,7 @@ class TargetVpnGatewayAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetVpnGatewayAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       TargetVpnGatewayAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -98126,7 +97958,7 @@ class TargetVpnGatewayAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -98266,9 +98098,8 @@ class TargetVpnGatewayListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetVpnGatewayListWarningData>((value) =>
-                      TargetVpnGatewayListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => TargetVpnGatewayListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -98334,7 +98165,7 @@ class TargetVpnGatewayList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<TargetVpnGateway>((value) => TargetVpnGateway.fromJson(
+                  .map((value) => TargetVpnGateway.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -98482,7 +98313,7 @@ class TargetVpnGatewaysScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<TargetVpnGatewaysScopedListWarningData>((value) =>
+                  .map((value) =>
                       TargetVpnGatewaysScopedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -98520,7 +98351,7 @@ class TargetVpnGatewaysScopedList {
       : this(
           targetVpnGateways: _json.containsKey('targetVpnGateways')
               ? (_json['targetVpnGateways'] as core.List)
-                  .map<TargetVpnGateway>((value) => TargetVpnGateway.fromJson(
+                  .map((value) => TargetVpnGateway.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -98607,7 +98438,7 @@ class TestFailure {
               : null,
           headers: _json.containsKey('headers')
               ? (_json['headers'] as core.List)
-                  .map<UrlMapTestHeader>((value) => UrlMapTestHeader.fromJson(
+                  .map((value) => UrlMapTestHeader.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -98645,7 +98476,7 @@ class TestPermissionsRequest {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -98668,7 +98499,7 @@ class TestPermissionsResponse {
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -98888,7 +98719,7 @@ class UrlMap {
               : null,
           hostRules: _json.containsKey('hostRules')
               ? (_json['hostRules'] as core.List)
-                  .map<HostRule>((value) => HostRule.fromJson(
+                  .map((value) => HostRule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -98897,7 +98728,7 @@ class UrlMap {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           pathMatchers: _json.containsKey('pathMatchers')
               ? (_json['pathMatchers'] as core.List)
-                  .map<PathMatcher>((value) => PathMatcher.fromJson(
+                  .map((value) => PathMatcher.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -98909,7 +98740,7 @@ class UrlMap {
               : null,
           tests: _json.containsKey('tests')
               ? (_json['tests'] as core.List)
-                  .map<UrlMapTest>((value) => UrlMapTest.fromJson(
+                  .map((value) => UrlMapTest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -99058,9 +98889,8 @@ class UrlMapListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<UrlMapListWarningData>((value) =>
-                      UrlMapListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UrlMapListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -99122,7 +98952,7 @@ class UrlMapList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<UrlMap>((value) => UrlMap.fromJson(
+                  .map((value) => UrlMap.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -99243,7 +99073,7 @@ class UrlMapTest {
                   : null,
           headers: _json.containsKey('headers')
               ? (_json['headers'] as core.List)
-                  .map<UrlMapTestHeader>((value) => UrlMapTestHeader.fromJson(
+                  .map((value) => UrlMapTestHeader.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -99319,7 +99149,7 @@ class UrlMapValidationResult {
       : this(
           loadErrors: _json.containsKey('loadErrors')
               ? (_json['loadErrors'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           loadSucceeded: _json.containsKey('loadSucceeded')
@@ -99327,7 +99157,7 @@ class UrlMapValidationResult {
               : null,
           testFailures: _json.containsKey('testFailures')
               ? (_json['testFailures'] as core.List)
-                  .map<TestFailure>((value) => TestFailure.fromJson(
+                  .map((value) => TestFailure.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -99464,9 +99294,8 @@ class UrlMapsAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<UrlMapsAggregatedListWarningData>((value) =>
-                      UrlMapsAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UrlMapsAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -99549,7 +99378,7 @@ class UrlMapsAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -99688,9 +99517,8 @@ class UrlMapsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<UrlMapsScopedListWarningData>((value) =>
-                      UrlMapsScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UrlMapsScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -99722,7 +99550,7 @@ class UrlMapsScopedList {
       : this(
           urlMaps: _json.containsKey('urlMaps')
               ? (_json['urlMaps'] as core.List)
-                  .map<UrlMap>((value) => UrlMap.fromJson(
+                  .map((value) => UrlMap.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -99847,9 +99675,8 @@ class UsableSubnetwork {
               : null,
           secondaryIpRanges: _json.containsKey('secondaryIpRanges')
               ? (_json['secondaryIpRanges'] as core.List)
-                  .map<UsableSubnetworkSecondaryRange>((value) =>
-                      UsableSubnetworkSecondaryRange.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UsableSubnetworkSecondaryRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           subnetwork: _json.containsKey('subnetwork')
@@ -100019,7 +99846,7 @@ class UsableSubnetworksAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<UsableSubnetworksAggregatedListWarningData>((value) =>
+                  .map((value) =>
                       UsableSubnetworksAggregatedListWarningData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -100091,7 +99918,7 @@ class UsableSubnetworksAggregatedList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(
+                  .map((value) => UsableSubnetwork.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -100180,7 +100007,7 @@ class VmEndpointNatMappings {
               : null,
           interfaceNatMappings: _json.containsKey('interfaceNatMappings')
               ? (_json['interfaceNatMappings'] as core.List)
-                  .map<VmEndpointNatMappingsInterfaceNatMappings>((value) =>
+                  .map((value) =>
                       VmEndpointNatMappingsInterfaceNatMappings.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -100243,12 +100070,12 @@ class VmEndpointNatMappingsInterfaceNatMappings {
       : this(
           drainNatIpPortRanges: _json.containsKey('drainNatIpPortRanges')
               ? (_json['drainNatIpPortRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           natIpPortRanges: _json.containsKey('natIpPortRanges')
               ? (_json['natIpPortRanges'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           numTotalDrainNatPorts: _json.containsKey('numTotalDrainNatPorts')
@@ -100397,9 +100224,8 @@ class VmEndpointNatMappingsListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<VmEndpointNatMappingsListWarningData>((value) =>
-                      VmEndpointNatMappingsListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VmEndpointNatMappingsListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -100474,9 +100300,8 @@ class VmEndpointNatMappingsList {
               : null,
           result: _json.containsKey('result')
               ? (_json['result'] as core.List)
-                  .map<VmEndpointNatMappings>((value) =>
-                      VmEndpointNatMappings.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VmEndpointNatMappings.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           selfLink: _json.containsKey('selfLink')
@@ -100628,9 +100453,8 @@ class VpnGateway {
               : null,
           vpnInterfaces: _json.containsKey('vpnInterfaces')
               ? (_json['vpnInterfaces'] as core.List)
-                  .map<VpnGatewayVpnGatewayInterface>((value) =>
-                      VpnGatewayVpnGatewayInterface.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnGatewayVpnGatewayInterface.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -100771,9 +100595,8 @@ class VpnGatewayAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<VpnGatewayAggregatedListWarningData>((value) =>
-                      VpnGatewayAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnGatewayAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -100860,7 +100683,7 @@ class VpnGatewayAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -101000,9 +100823,8 @@ class VpnGatewayListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<VpnGatewayListWarningData>((value) =>
-                      VpnGatewayListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnGatewayListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -101068,7 +100890,7 @@ class VpnGatewayList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<VpnGateway>((value) => VpnGateway.fromJson(
+                  .map((value) => VpnGateway.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -101108,9 +100930,8 @@ class VpnGatewayStatus {
       : this(
           vpnConnections: _json.containsKey('vpnConnections')
               ? (_json['vpnConnections'] as core.List)
-                  .map<VpnGatewayStatusVpnConnection>((value) =>
-                      VpnGatewayStatusVpnConnection.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnGatewayStatusVpnConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -101251,9 +101072,8 @@ class VpnGatewayStatusVpnConnection {
               : null,
           tunnels: _json.containsKey('tunnels')
               ? (_json['tunnels'] as core.List)
-                  .map<VpnGatewayStatusTunnel>((value) =>
-                      VpnGatewayStatusTunnel.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnGatewayStatusTunnel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -101464,9 +101284,8 @@ class VpnGatewaysScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<VpnGatewaysScopedListWarningData>((value) =>
-                      VpnGatewaysScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnGatewaysScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -101502,7 +101321,7 @@ class VpnGatewaysScopedList {
       : this(
           vpnGateways: _json.containsKey('vpnGateways')
               ? (_json['vpnGateways'] as core.List)
-                  .map<VpnGateway>((value) => VpnGateway.fromJson(
+                  .map((value) => VpnGateway.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -101736,7 +101555,7 @@ class VpnTunnel {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           localTrafficSelector: _json.containsKey('localTrafficSelector')
               ? (_json['localTrafficSelector'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -101758,7 +101577,7 @@ class VpnTunnel {
               : null,
           remoteTrafficSelector: _json.containsKey('remoteTrafficSelector')
               ? (_json['remoteTrafficSelector'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           router: _json.containsKey('router')
@@ -101937,9 +101756,8 @@ class VpnTunnelAggregatedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<VpnTunnelAggregatedListWarningData>((value) =>
-                      VpnTunnelAggregatedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnTunnelAggregatedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -102026,7 +101844,7 @@ class VpnTunnelAggregatedList {
               : null,
           unreachables: _json.containsKey('unreachables')
               ? (_json['unreachables'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           warning: _json.containsKey('warning')
@@ -102166,9 +101984,8 @@ class VpnTunnelListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<VpnTunnelListWarningData>((value) =>
-                      VpnTunnelListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnTunnelListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -102234,7 +102051,7 @@ class VpnTunnelList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<VpnTunnel>((value) => VpnTunnel.fromJson(
+                  .map((value) => VpnTunnel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -102380,9 +102197,8 @@ class VpnTunnelsScopedListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<VpnTunnelsScopedListWarningData>((value) =>
-                      VpnTunnelsScopedListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VpnTunnelsScopedListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -102414,7 +102230,7 @@ class VpnTunnelsScopedList {
       : this(
           vpnTunnels: _json.containsKey('vpnTunnels')
               ? (_json['vpnTunnels'] as core.List)
-                  .map<VpnTunnel>((value) => VpnTunnel.fromJson(
+                  .map((value) => VpnTunnel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -102458,14 +102274,13 @@ class WafExpressionSet {
       : this(
           aliases: _json.containsKey('aliases')
               ? (_json['aliases'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           expressions: _json.containsKey('expressions')
               ? (_json['expressions'] as core.List)
-                  .map<WafExpressionSetExpression>((value) =>
-                      WafExpressionSetExpression.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => WafExpressionSetExpression.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
@@ -102680,9 +102495,8 @@ class XpnHostListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<XpnHostListWarningData>((value) =>
-                      XpnHostListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => XpnHostListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -102749,7 +102563,7 @@ class XpnHostList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Project>((value) => Project.fromJson(
+                  .map((value) => Project.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -102894,7 +102708,7 @@ class Zone {
       : this(
           availableCpuPlatforms: _json.containsKey('availableCpuPlatforms')
               ? (_json['availableCpuPlatforms'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           creationTimestamp: _json.containsKey('creationTimestamp')
@@ -103059,9 +102873,8 @@ class ZoneListWarning {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<ZoneListWarningData>((value) =>
-                      ZoneListWarningData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ZoneListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -103123,7 +102936,7 @@ class ZoneList {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Zone>((value) => Zone.fromJson(
+                  .map((value) => Zone.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -103231,7 +103044,7 @@ class ZoneSetPolicyRequest {
       : this(
           bindings: _json.containsKey('bindings')
               ? (_json['bindings'] as core.List)
-                  .map<Binding>((value) => Binding.fromJson(
+                  .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

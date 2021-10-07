@@ -68,7 +68,7 @@ void checkAlias(api.Alias o) {
   buildCounterAlias--;
 }
 
-core.List<core.Object> buildUnnamed0() => [
+core.List<core.Object?> buildUnnamed0() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -81,7 +81,7 @@ core.List<core.Object> buildUnnamed0() => [
       },
     ];
 
-void checkUnnamed0(core.List<core.Object> o) {
+void checkUnnamed0(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));

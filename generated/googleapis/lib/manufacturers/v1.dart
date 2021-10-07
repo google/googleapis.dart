@@ -559,7 +559,7 @@ class Attributes {
       : this(
           additionalImageLink: _json.containsKey('additionalImageLink')
               ? (_json['additionalImageLink'] as core.List)
-                  .map<Image>((value) => Image.fromJson(
+                  .map((value) => Image.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -586,14 +586,13 @@ class Attributes {
               : null,
           excludedDestination: _json.containsKey('excludedDestination')
               ? (_json['excludedDestination'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           featureDescription: _json.containsKey('featureDescription')
               ? (_json['featureDescription'] as core.List)
-                  .map<FeatureDescription>((value) =>
-                      FeatureDescription.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => FeatureDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           flavor: _json.containsKey('flavor')
@@ -607,7 +606,7 @@ class Attributes {
               : null,
           gtin: _json.containsKey('gtin')
               ? (_json['gtin'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           imageLink: _json.containsKey('imageLink')
@@ -616,7 +615,7 @@ class Attributes {
               : null,
           includedDestination: _json.containsKey('includedDestination')
               ? (_json['includedDestination'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           itemGroupId: _json.containsKey('itemGroupId')
@@ -631,13 +630,13 @@ class Attributes {
               : null,
           productDetail: _json.containsKey('productDetail')
               ? (_json['productDetail'] as core.List)
-                  .map<ProductDetail>((value) => ProductDetail.fromJson(
+                  .map((value) => ProductDetail.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           productHighlight: _json.containsKey('productHighlight')
               ? (_json['productHighlight'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           productLine: _json.containsKey('productLine')
@@ -651,7 +650,7 @@ class Attributes {
               : null,
           productType: _json.containsKey('productType')
               ? (_json['productType'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           releaseDate: _json.containsKey('releaseDate')
@@ -659,7 +658,7 @@ class Attributes {
               : null,
           richProductContent: _json.containsKey('richProductContent')
               ? (_json['richProductContent'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           scent:
@@ -670,7 +669,7 @@ class Attributes {
               : null,
           sizeType: _json.containsKey('sizeType')
               ? (_json['sizeType'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           suggestedRetailPrice: _json.containsKey('suggestedRetailPrice')
@@ -686,7 +685,7 @@ class Attributes {
               _json.containsKey('title') ? _json['title'] as core.String : null,
           videoLink: _json.containsKey('videoLink')
               ? (_json['videoLink'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1061,7 +1060,7 @@ class ListProductsResponse {
               : null,
           products: _json.containsKey('products')
               ? (_json['products'] as core.List)
-                  .map<Product>((value) => Product.fromJson(
+                  .map((value) => Product.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1166,13 +1165,13 @@ class Product {
               : null,
           destinationStatuses: _json.containsKey('destinationStatuses')
               ? (_json['destinationStatuses'] as core.List)
-                  .map<DestinationStatus>((value) => DestinationStatus.fromJson(
+                  .map((value) => DestinationStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           issues: _json.containsKey('issues')
               ? (_json['issues'] as core.List)
-                  .map<Issue>((value) => Issue.fromJson(
+                  .map((value) => Issue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

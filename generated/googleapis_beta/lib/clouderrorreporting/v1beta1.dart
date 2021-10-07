@@ -542,7 +542,7 @@ class ErrorContext {
               : null,
           sourceReferences: _json.containsKey('sourceReferences')
               ? (_json['sourceReferences'] as core.List)
-                  .map<SourceReference>((value) => SourceReference.fromJson(
+                  .map((value) => SourceReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -659,7 +659,7 @@ class ErrorGroup {
               : null,
           trackingIssues: _json.containsKey('trackingIssues')
               ? (_json['trackingIssues'] as core.List)
-                  .map<TrackingIssue>((value) => TrackingIssue.fromJson(
+                  .map((value) => TrackingIssue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -750,7 +750,7 @@ class ErrorGroupStats {
       : this(
           affectedServices: _json.containsKey('affectedServices')
               ? (_json['affectedServices'] as core.List)
-                  .map<ServiceContext>((value) => ServiceContext.fromJson(
+                  .map((value) => ServiceContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -778,7 +778,7 @@ class ErrorGroupStats {
               : null,
           timedCounts: _json.containsKey('timedCounts')
               ? (_json['timedCounts'] as core.List)
-                  .map<TimedCount>((value) => TimedCount.fromJson(
+                  .map((value) => TimedCount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -894,7 +894,7 @@ class ListEventsResponse {
       : this(
           errorEvents: _json.containsKey('errorEvents')
               ? (_json['errorEvents'] as core.List)
-                  .map<ErrorEvent>((value) => ErrorEvent.fromJson(
+                  .map((value) => ErrorEvent.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -943,7 +943,7 @@ class ListGroupStatsResponse {
       : this(
           errorGroupStats: _json.containsKey('errorGroupStats')
               ? (_json['errorGroupStats'] as core.List)
-                  .map<ErrorGroupStats>((value) => ErrorGroupStats.fromJson(
+                  .map((value) => ErrorGroupStats.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

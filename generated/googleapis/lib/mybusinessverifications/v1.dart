@@ -515,9 +515,8 @@ class FetchVerificationOptionsResponse {
       : this(
           options: _json.containsKey('options')
               ? (_json['options'] as core.List)
-                  .map<VerificationOption>((value) =>
-                      VerificationOption.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => VerificationOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -599,7 +598,7 @@ class ListVerificationsResponse {
               : null,
           verifications: _json.containsKey('verifications')
               ? (_json['verifications'] as core.List)
-                  .map<Verification>((value) => Verification.fromJson(
+                  .map((value) => Verification.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -844,7 +843,7 @@ class PostalAddress {
       : this(
           addressLines: _json.containsKey('addressLines')
               ? (_json['addressLines'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           administrativeArea: _json.containsKey('administrativeArea')
@@ -864,7 +863,7 @@ class PostalAddress {
               : null,
           recipients: _json.containsKey('recipients')
               ? (_json['recipients'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           regionCode: _json.containsKey('regionCode')

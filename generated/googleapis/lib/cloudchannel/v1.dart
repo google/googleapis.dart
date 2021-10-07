@@ -2792,9 +2792,8 @@ class GoogleCloudChannelV1ChangeOfferRequest {
               _json.containsKey('offer') ? _json['offer'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudChannelV1Parameter>((value) =>
-                      GoogleCloudChannelV1Parameter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           purchaseOrderId: _json.containsKey('purchaseOrderId')
@@ -2851,9 +2850,8 @@ class GoogleCloudChannelV1ChangeParametersRequest {
       : this(
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudChannelV1Parameter>((value) =>
-                      GoogleCloudChannelV1Parameter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           purchaseOrderId: _json.containsKey('purchaseOrderId')
@@ -3064,11 +3062,9 @@ class GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
       : this(
           cloudIdentityAccounts: _json.containsKey('cloudIdentityAccounts')
               ? (_json['cloudIdentityAccounts'] as core.List)
-                  .map<GoogleCloudChannelV1CloudIdentityCustomerAccount>(
-                      (value) =>
-                          GoogleCloudChannelV1CloudIdentityCustomerAccount
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -3587,17 +3583,17 @@ class GoogleCloudChannelV1CustomerConstraints {
       : this(
           allowedCustomerTypes: _json.containsKey('allowedCustomerTypes')
               ? (_json['allowedCustomerTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           allowedRegions: _json.containsKey('allowedRegions')
               ? (_json['allowedRegions'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           promotionalOrderTypes: _json.containsKey('promotionalOrderTypes')
               ? (_json['promotionalOrderTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -3809,9 +3805,8 @@ class GoogleCloudChannelV1Entitlement {
               _json.containsKey('offer') ? _json['offer'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudChannelV1Parameter>((value) =>
-                      GoogleCloudChannelV1Parameter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           provisionedService: _json.containsKey('provisionedService')
@@ -3827,7 +3822,7 @@ class GoogleCloudChannelV1Entitlement {
               : null,
           suspensionReasons: _json.containsKey('suspensionReasons')
               ? (_json['suspensionReasons'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           trialSettings: _json.containsKey('trialSettings')
@@ -4016,7 +4011,7 @@ class GoogleCloudChannelV1ListChannelPartnerLinksResponse {
       : this(
           channelPartnerLinks: _json.containsKey('channelPartnerLinks')
               ? (_json['channelPartnerLinks'] as core.List)
-                  .map<GoogleCloudChannelV1ChannelPartnerLink>((value) =>
+                  .map((value) =>
                       GoogleCloudChannelV1ChannelPartnerLink.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4053,9 +4048,8 @@ class GoogleCloudChannelV1ListCustomersResponse {
       : this(
           customers: _json.containsKey('customers')
               ? (_json['customers'] as core.List)
-                  .map<GoogleCloudChannelV1Customer>((value) =>
-                      GoogleCloudChannelV1Customer.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Customer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -4089,9 +4083,8 @@ class GoogleCloudChannelV1ListEntitlementsResponse {
       : this(
           entitlements: _json.containsKey('entitlements')
               ? (_json['entitlements'] as core.List)
-                  .map<GoogleCloudChannelV1Entitlement>((value) =>
-                      GoogleCloudChannelV1Entitlement.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Entitlement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -4126,9 +4119,8 @@ class GoogleCloudChannelV1ListOffersResponse {
               : null,
           offers: _json.containsKey('offers')
               ? (_json['offers'] as core.List)
-                  .map<GoogleCloudChannelV1Offer>((value) =>
-                      GoogleCloudChannelV1Offer.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Offer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4160,9 +4152,8 @@ class GoogleCloudChannelV1ListProductsResponse {
               : null,
           products: _json.containsKey('products')
               ? (_json['products'] as core.List)
-                  .map<GoogleCloudChannelV1Product>((value) =>
-                      GoogleCloudChannelV1Product.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Product.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4194,9 +4185,8 @@ class GoogleCloudChannelV1ListPurchasableOffersResponse {
               : null,
           purchasableOffers: _json.containsKey('purchasableOffers')
               ? (_json['purchasableOffers'] as core.List)
-                  .map<GoogleCloudChannelV1PurchasableOffer>((value) =>
-                      GoogleCloudChannelV1PurchasableOffer.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1PurchasableOffer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4229,9 +4219,8 @@ class GoogleCloudChannelV1ListPurchasableSkusResponse {
               : null,
           purchasableSkus: _json.containsKey('purchasableSkus')
               ? (_json['purchasableSkus'] as core.List)
-                  .map<GoogleCloudChannelV1PurchasableSku>((value) =>
-                      GoogleCloudChannelV1PurchasableSku.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1PurchasableSku.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4264,9 +4253,8 @@ class GoogleCloudChannelV1ListSkusResponse {
               : null,
           skus: _json.containsKey('skus')
               ? (_json['skus'] as core.List)
-                  .map<GoogleCloudChannelV1Sku>((value) =>
-                      GoogleCloudChannelV1Sku.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Sku.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4303,7 +4291,7 @@ class GoogleCloudChannelV1ListSubscribersResponse {
               : null,
           serviceAccounts: _json.containsKey('serviceAccounts')
               ? (_json['serviceAccounts'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           topic:
@@ -4411,7 +4399,7 @@ class GoogleCloudChannelV1ListTransferableOffersResponse {
               : null,
           transferableOffers: _json.containsKey('transferableOffers')
               ? (_json['transferableOffers'] as core.List)
-                  .map<GoogleCloudChannelV1TransferableOffer>((value) =>
+                  .map((value) =>
                       GoogleCloudChannelV1TransferableOffer.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4528,9 +4516,8 @@ class GoogleCloudChannelV1ListTransferableSkusResponse {
               : null,
           transferableSkus: _json.containsKey('transferableSkus')
               ? (_json['transferableSkus'] as core.List)
-                  .map<GoogleCloudChannelV1TransferableSku>((value) =>
-                      GoogleCloudChannelV1TransferableSku.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1TransferableSku.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -4684,7 +4671,7 @@ class GoogleCloudChannelV1Offer {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameterDefinitions: _json.containsKey('parameterDefinitions')
               ? (_json['parameterDefinitions'] as core.List)
-                  .map<GoogleCloudChannelV1ParameterDefinition>((value) =>
+                  .map((value) =>
                       GoogleCloudChannelV1ParameterDefinition.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4695,9 +4682,8 @@ class GoogleCloudChannelV1Offer {
               : null,
           priceByResources: _json.containsKey('priceByResources')
               ? (_json['priceByResources'] as core.List)
-                  .map<GoogleCloudChannelV1PriceByResource>((value) =>
-                      GoogleCloudChannelV1PriceByResource.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1PriceByResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           sku: _json.containsKey('sku')
@@ -4864,9 +4850,8 @@ class GoogleCloudChannelV1ParameterDefinition {
       : this(
           allowedValues: _json.containsKey('allowedValues')
               ? (_json['allowedValues'] as core.List)
-                  .map<GoogleCloudChannelV1Value>((value) =>
-                      GoogleCloudChannelV1Value.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Value.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           maxValue: _json.containsKey('maxValue')
@@ -5101,9 +5086,8 @@ class GoogleCloudChannelV1PriceByResource {
               : null,
           pricePhases: _json.containsKey('pricePhases')
               ? (_json['pricePhases'] as core.List)
-                  .map<GoogleCloudChannelV1PricePhase>((value) =>
-                      GoogleCloudChannelV1PricePhase.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1PricePhase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           resourceType: _json.containsKey('resourceType')
@@ -5171,9 +5155,8 @@ class GoogleCloudChannelV1PricePhase {
               : null,
           priceTiers: _json.containsKey('priceTiers')
               ? (_json['priceTiers'] as core.List)
-                  .map<GoogleCloudChannelV1PriceTier>((value) =>
-                      GoogleCloudChannelV1PriceTier.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1PriceTier.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -5719,9 +5702,8 @@ class GoogleCloudChannelV1TransferEntitlementsRequest {
               : null,
           entitlements: _json.containsKey('entitlements')
               ? (_json['entitlements'] as core.List)
-                  .map<GoogleCloudChannelV1Entitlement>((value) =>
-                      GoogleCloudChannelV1Entitlement.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Entitlement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           requestId: _json.containsKey('requestId')
@@ -5752,9 +5734,8 @@ class GoogleCloudChannelV1TransferEntitlementsResponse {
       : this(
           entitlements: _json.containsKey('entitlements')
               ? (_json['entitlements'] as core.List)
-                  .map<GoogleCloudChannelV1Entitlement>((value) =>
-                      GoogleCloudChannelV1Entitlement.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Entitlement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -5795,9 +5776,8 @@ class GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
       : this(
           entitlements: _json.containsKey('entitlements')
               ? (_json['entitlements'] as core.List)
-                  .map<GoogleCloudChannelV1Entitlement>((value) =>
-                      GoogleCloudChannelV1Entitlement.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1Entitlement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           requestId: _json.containsKey('requestId')
@@ -6016,7 +5996,7 @@ class GoogleCloudChannelV1Value {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? protoValue;
+  core.Map<core.String, core.Object?>? protoValue;
 
   /// Represents a string value.
   core.String? stringValue;
@@ -6041,13 +6021,7 @@ class GoogleCloudChannelV1Value {
               ? _json['int64Value'] as core.String
               : null,
           protoValue: _json.containsKey('protoValue')
-              ? (_json['protoValue'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['protoValue'] as core.Map<core.String, core.dynamic>
               : null,
           stringValue: _json.containsKey('stringValue')
               ? _json['stringValue'] as core.String
@@ -6331,9 +6305,8 @@ class GoogleCloudChannelV1alpha1Entitlement {
               _json.containsKey('offer') ? _json['offer'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<GoogleCloudChannelV1alpha1Parameter>((value) =>
-                      GoogleCloudChannelV1alpha1Parameter.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudChannelV1alpha1Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           provisionedService: _json.containsKey('provisionedService')
@@ -6349,7 +6322,7 @@ class GoogleCloudChannelV1alpha1Entitlement {
               : null,
           suspensionReasons: _json.containsKey('suspensionReasons')
               ? (_json['suspensionReasons'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           trialSettings: _json.containsKey('trialSettings')
@@ -6735,7 +6708,7 @@ class GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
       : this(
           entitlements: _json.containsKey('entitlements')
               ? (_json['entitlements'] as core.List)
-                  .map<GoogleCloudChannelV1alpha1Entitlement>((value) =>
+                  .map((value) =>
                       GoogleCloudChannelV1alpha1Entitlement.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6797,7 +6770,7 @@ class GoogleCloudChannelV1alpha1Value {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? protoValue;
+  core.Map<core.String, core.Object?>? protoValue;
 
   /// Represents a string value.
   core.String? stringValue;
@@ -6822,13 +6795,7 @@ class GoogleCloudChannelV1alpha1Value {
               ? _json['int64Value'] as core.String
               : null,
           protoValue: _json.containsKey('protoValue')
-              ? (_json['protoValue'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['protoValue'] as core.Map<core.String, core.dynamic>
               : null,
           stringValue: _json.containsKey('stringValue')
               ? _json['stringValue'] as core.String
@@ -6867,9 +6834,8 @@ class GoogleLongrunningListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<GoogleLongrunningOperation>((value) =>
-                      GoogleLongrunningOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -6902,7 +6868,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -6922,7 +6888,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation({
     this.done,
@@ -6940,21 +6906,11 @@ class GoogleLongrunningOperation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -6993,7 +6949,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -7012,13 +6968,7 @@ class GoogleRpcStatus {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -7214,7 +7164,7 @@ class GoogleTypePostalAddress {
       : this(
           addressLines: _json.containsKey('addressLines')
               ? (_json['addressLines'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           administrativeArea: _json.containsKey('administrativeArea')
@@ -7234,7 +7184,7 @@ class GoogleTypePostalAddress {
               : null,
           recipients: _json.containsKey('recipients')
               ? (_json['recipients'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           regionCode: _json.containsKey('regionCode')

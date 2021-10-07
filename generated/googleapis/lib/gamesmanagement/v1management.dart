@@ -786,9 +786,8 @@ class AchievementResetAllResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<AchievementResetResponse>((value) =>
-                      AchievementResetResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => AchievementResetResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -819,7 +818,7 @@ class AchievementResetMultipleForAllRequest {
       : this(
           achievementIds: _json.containsKey('achievement_ids')
               ? (_json['achievement_ids'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -901,7 +900,7 @@ class EventsResetMultipleForAllRequest {
       : this(
           eventIds: _json.containsKey('event_ids')
               ? (_json['event_ids'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
@@ -1071,7 +1070,7 @@ class HiddenPlayerList {
       : this(
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<HiddenPlayer>((value) => HiddenPlayer.fromJson(
+                  .map((value) => HiddenPlayer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1261,9 +1260,8 @@ class PlayerScoreResetAllResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
-                  .map<PlayerScoreResetResponse>((value) =>
-                      PlayerScoreResetResponse.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => PlayerScoreResetResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1307,7 +1305,7 @@ class PlayerScoreResetResponse {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           resetScoreTimeSpans: _json.containsKey('resetScoreTimeSpans')
               ? (_json['resetScoreTimeSpans'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -1367,7 +1365,7 @@ class ScoresResetMultipleForAllRequest {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           leaderboardIds: _json.containsKey('leaderboard_ids')
               ? (_json['leaderboard_ids'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

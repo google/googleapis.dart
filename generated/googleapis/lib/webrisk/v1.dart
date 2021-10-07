@@ -757,7 +757,7 @@ class GoogleCloudWebriskV1RawIndices {
       : this(
           indices: _json.containsKey('indices')
               ? (_json['indices'] as core.List)
-                  .map<core.int>((value) => value as core.int)
+                  .map((value) => value as core.int)
                   .toList()
               : null,
         );
@@ -851,11 +851,10 @@ class GoogleCloudWebriskV1SearchHashesResponse {
               : null,
           threats: _json.containsKey('threats')
               ? (_json['threats'] as core.List)
-                  .map<GoogleCloudWebriskV1SearchHashesResponseThreatHash>(
-                      (value) =>
-                          GoogleCloudWebriskV1SearchHashesResponseThreatHash
-                              .fromJson(
-                                  value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudWebriskV1SearchHashesResponseThreatHash
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -907,7 +906,7 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
           hash: _json.containsKey('hash') ? _json['hash'] as core.String : null,
           threatTypes: _json.containsKey('threatTypes')
               ? (_json['threatTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -965,7 +964,7 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
               : null,
           threatTypes: _json.containsKey('threatTypes')
               ? (_json['threatTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -998,7 +997,7 @@ class GoogleCloudWebriskV1Submission {
       : this(
           threatTypes: _json.containsKey('threatTypes')
               ? (_json['threatTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
@@ -1101,9 +1100,8 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
       : this(
           rawHashes: _json.containsKey('rawHashes')
               ? (_json['rawHashes'] as core.List)
-                  .map<GoogleCloudWebriskV1RawHashes>((value) =>
-                      GoogleCloudWebriskV1RawHashes.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudWebriskV1RawHashes.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           riceHashes: _json.containsKey('riceHashes')
@@ -1178,9 +1176,8 @@ class GoogleLongrunningListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<GoogleLongrunningOperation>((value) =>
-                      GoogleLongrunningOperation.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleLongrunningOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1213,7 +1210,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
@@ -1233,7 +1230,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   GoogleLongrunningOperation({
     this.done,
@@ -1251,21 +1248,11 @@ class GoogleLongrunningOperation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1304,7 +1291,7 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1323,13 +1310,7 @@ class GoogleRpcStatus {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')

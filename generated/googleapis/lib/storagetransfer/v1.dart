@@ -862,7 +862,7 @@ class ErrorLogEntry {
       : this(
           errorDetails: _json.containsKey('errorDetails')
               ? (_json['errorDetails'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           url: _json.containsKey('url') ? _json['url'] as core.String : null,
@@ -987,7 +987,7 @@ class ErrorSummary {
               : null,
           errorLogEntries: _json.containsKey('errorLogEntries')
               ? (_json['errorLogEntries'] as core.List)
-                  .map<ErrorLogEntry>((value) => ErrorLogEntry.fromJson(
+                  .map((value) => ErrorLogEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1140,7 +1140,7 @@ class ListOperationsResponse {
               : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
-                  .map<Operation>((value) => Operation.fromJson(
+                  .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1173,7 +1173,7 @@ class ListTransferJobsResponse {
               : null,
           transferJobs: _json.containsKey('transferJobs')
               ? (_json['transferJobs'] as core.List)
-                  .map<TransferJob>((value) => TransferJob.fromJson(
+                  .map((value) => TransferJob.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1258,7 +1258,7 @@ class NotificationConfig {
       : this(
           eventTypes: _json.containsKey('eventTypes')
               ? (_json['eventTypes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           payloadFormat: _json.containsKey('payloadFormat')
@@ -1374,12 +1374,12 @@ class ObjectConditions {
       : this(
           excludePrefixes: _json.containsKey('excludePrefixes')
               ? (_json['excludePrefixes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           includePrefixes: _json.containsKey('includePrefixes')
               ? (_json['includePrefixes'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           lastModifiedBefore: _json.containsKey('lastModifiedBefore')
@@ -1431,7 +1431,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? metadata;
+  core.Map<core.String, core.Object?>? metadata;
 
   /// The server-assigned unique name.
   ///
@@ -1449,7 +1449,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object>? response;
+  core.Map<core.String, core.Object?>? response;
 
   Operation({
     this.done,
@@ -1467,21 +1467,11 @@ class Operation {
                   _json['error'] as core.Map<core.String, core.dynamic>)
               : null,
           metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           response: _json.containsKey('response')
-              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.Object,
-                  ),
-                )
+              ? _json['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1661,7 +1651,7 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? details;
+  core.List<core.Map<core.String, core.Object?>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
@@ -1680,13 +1670,7 @@ class Status {
           code: _json.containsKey('code') ? _json['code'] as core.int : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -2196,7 +2180,7 @@ class TransferOperation {
               : null,
           errorBreakdowns: _json.containsKey('errorBreakdowns')
               ? (_json['errorBreakdowns'] as core.List)
-                  .map<ErrorSummary>((value) => ErrorSummary.fromJson(
+                  .map((value) => ErrorSummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

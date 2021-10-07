@@ -1293,9 +1293,8 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
       : this(
           constraints: _json.containsKey('constraints')
               ? (_json['constraints'] as core.List)
-                  .map<GoogleCloudOrgpolicyV2Constraint>((value) =>
-                      GoogleCloudOrgpolicyV2Constraint.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudOrgpolicyV2Constraint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -1337,9 +1336,8 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
               : null,
           policies: _json.containsKey('policies')
               ? (_json['policies'] as core.List)
-                  .map<GoogleCloudOrgpolicyV2Policy>((value) =>
-                      GoogleCloudOrgpolicyV2Policy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudOrgpolicyV2Policy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1459,7 +1457,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
               _json.containsKey('reset') ? _json['reset'] as core.bool : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
-                  .map<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>((value) =>
+                  .map((value) =>
                       GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1584,12 +1582,12 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
       : this(
           allowedValues: _json.containsKey('allowedValues')
               ? (_json['allowedValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           deniedValues: _json.containsKey('deniedValues')
               ? (_json['deniedValues'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );

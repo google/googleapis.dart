@@ -956,7 +956,7 @@ class Activities {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map<Activity>((value) => Activity.fromJson(
+                  .map((value) => Activity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1041,7 +1041,7 @@ class ActivityEventsParametersMessageValue {
       : this(
           parameter: _json.containsKey('parameter')
               ? (_json['parameter'] as core.List)
-                  .map<NestedParameter>((value) => NestedParameter.fromJson(
+                  .map((value) => NestedParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1065,7 +1065,7 @@ class ActivityEventsParametersMultiMessageValue {
       : this(
           parameter: _json.containsKey('parameter')
               ? (_json['parameter'] as core.List)
-                  .map<NestedParameter>((value) => NestedParameter.fromJson(
+                  .map((value) => NestedParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1131,19 +1131,19 @@ class ActivityEventsParameters {
               : null,
           multiIntValue: _json.containsKey('multiIntValue')
               ? (_json['multiIntValue'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           multiMessageValue: _json.containsKey('multiMessageValue')
               ? (_json['multiMessageValue'] as core.List)
-                  .map<ActivityEventsParametersMultiMessageValue>((value) =>
+                  .map((value) =>
                       ActivityEventsParametersMultiMessageValue.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           multiValue: _json.containsKey('multiValue')
               ? (_json['multiValue'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -1206,9 +1206,8 @@ class ActivityEvents {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<ActivityEventsParameters>((value) =>
-                      ActivityEventsParameters.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => ActivityEventsParameters.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
@@ -1325,7 +1324,7 @@ class Activity {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           events: _json.containsKey('events')
               ? (_json['events'] as core.List)
-                  .map<ActivityEvents>((value) => ActivityEvents.fromJson(
+                  .map((value) => ActivityEvents.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1503,17 +1502,17 @@ class NestedParameter {
               : null,
           multiBoolValue: _json.containsKey('multiBoolValue')
               ? (_json['multiBoolValue'] as core.List)
-                  .map<core.bool>((value) => value as core.bool)
+                  .map((value) => value as core.bool)
                   .toList()
               : null,
           multiIntValue: _json.containsKey('multiIntValue')
               ? (_json['multiIntValue'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           multiValue: _json.containsKey('multiValue')
               ? (_json['multiValue'] as core.List)
-                  .map<core.String>((value) => value as core.String)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -1623,7 +1622,7 @@ class UsageReportParameters {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>>? msgValue;
+  core.List<core.Map<core.String, core.Object?>>? msgValue;
 
   /// The name of the parameter.
   ///
@@ -1658,13 +1657,7 @@ class UsageReportParameters {
               : null,
           msgValue: _json.containsKey('msgValue')
               ? (_json['msgValue'] as core.List)
-                  .map<core.Map<core.String, core.Object>>((value) =>
-                      (value as core.Map<core.String, core.dynamic>).map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -1732,9 +1725,8 @@ class UsageReport {
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           parameters: _json.containsKey('parameters')
               ? (_json['parameters'] as core.List)
-                  .map<UsageReportParameters>((value) =>
-                      UsageReportParameters.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UsageReportParameters.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1805,9 +1797,8 @@ class UsageReportsWarnings {
           code: _json.containsKey('code') ? _json['code'] as core.String : null,
           data: _json.containsKey('data')
               ? (_json['data'] as core.List)
-                  .map<UsageReportsWarningsData>((value) =>
-                      UsageReportsWarningsData.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UsageReportsWarningsData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           message: _json.containsKey('message')
@@ -1861,15 +1852,14 @@ class UsageReports {
               : null,
           usageReports: _json.containsKey('usageReports')
               ? (_json['usageReports'] as core.List)
-                  .map<UsageReport>((value) => UsageReport.fromJson(
+                  .map((value) => UsageReport.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           warnings: _json.containsKey('warnings')
               ? (_json['warnings'] as core.List)
-                  .map<UsageReportsWarnings>((value) =>
-                      UsageReportsWarnings.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => UsageReportsWarnings.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
