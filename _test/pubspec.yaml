@@ -8,9 +8,6 @@ dependencies:
   _discoveryapis_commons: ^1.0.0
   http: any
 
-dev_dependencies:
-  pedantic: any
-
 dependency_overrides:
   _discoveryapis_commons:
     path: ../discoveryapis_commons
