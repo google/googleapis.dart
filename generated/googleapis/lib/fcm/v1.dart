@@ -245,25 +245,7 @@ class AndroidConfig {
 }
 
 /// Options for features provided by the FCM SDK for Android.
-class AndroidFcmOptions {
-  /// Label associated with the message's analytics data.
-  core.String? analyticsLabel;
-
-  AndroidFcmOptions({
-    this.analyticsLabel,
-  });
-
-  AndroidFcmOptions.fromJson(core.Map _json)
-      : this(
-          analyticsLabel: _json.containsKey('analyticsLabel')
-              ? _json['analyticsLabel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
-      };
-}
+typedef AndroidFcmOptions = $FcmOptions;
 
 /// Notification to send to android devices.
 class AndroidNotification {
@@ -754,25 +736,7 @@ class ApnsFcmOptions {
 typedef Color = $Color;
 
 /// Platform independent options for features provided by the FCM SDKs.
-class FcmOptions {
-  /// Label associated with the message's analytics data.
-  core.String? analyticsLabel;
-
-  FcmOptions({
-    this.analyticsLabel,
-  });
-
-  FcmOptions.fromJson(core.Map _json)
-      : this(
-          analyticsLabel: _json.containsKey('analyticsLabel')
-              ? _json['analyticsLabel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
-      };
-}
+typedef FcmOptions = $FcmOptions;
 
 /// Settings to control notification LED.
 class LightSettings {

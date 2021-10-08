@@ -4961,54 +4961,7 @@ class RuntimeMetrics {
 /// Check
 /// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 /// Not all combinations are valid.
-class RuntimeShieldedInstanceConfig {
-  /// Defines whether the instance has integrity monitoring enabled.
-  ///
-  /// Enables monitoring and attestation of the boot integrity of the instance.
-  /// The attestation is performed against the integrity policy baseline. This
-  /// baseline is initially derived from the implicitly trusted boot image when
-  /// the instance is created. Enabled by default.
-  core.bool? enableIntegrityMonitoring;
-
-  /// Defines whether the instance has Secure Boot enabled.
-  ///
-  /// Secure Boot helps ensure that the system only runs authentic software by
-  /// verifying the digital signature of all boot components, and halting the
-  /// boot process if signature verification fails. Disabled by default.
-  core.bool? enableSecureBoot;
-
-  /// Defines whether the instance has the vTPM enabled.
-  ///
-  /// Enabled by default.
-  core.bool? enableVtpm;
-
-  RuntimeShieldedInstanceConfig({
-    this.enableIntegrityMonitoring,
-    this.enableSecureBoot,
-    this.enableVtpm,
-  });
-
-  RuntimeShieldedInstanceConfig.fromJson(core.Map _json)
-      : this(
-          enableIntegrityMonitoring:
-              _json.containsKey('enableIntegrityMonitoring')
-                  ? _json['enableIntegrityMonitoring'] as core.bool
-                  : null,
-          enableSecureBoot: _json.containsKey('enableSecureBoot')
-              ? _json['enableSecureBoot'] as core.bool
-              : null,
-          enableVtpm: _json.containsKey('enableVtpm')
-              ? _json['enableVtpm'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enableIntegrityMonitoring != null)
-          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
-        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
-        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
-      };
-}
+typedef RuntimeShieldedInstanceConfig = $ShieldedInstanceConfig;
 
 /// Specifies the selection and configuration of software inside the runtime.
 ///
@@ -5408,54 +5361,7 @@ class SetInstanceMachineTypeRequest {
 ///
 /// Check \[Images using supported Shielded VM features\] Not all combinations
 /// are valid.
-class ShieldedInstanceConfig {
-  /// Defines whether the instance has integrity monitoring enabled.
-  ///
-  /// Enables monitoring and attestation of the boot integrity of the instance.
-  /// The attestation is performed against the integrity policy baseline. This
-  /// baseline is initially derived from the implicitly trusted boot image when
-  /// the instance is created. Enabled by default.
-  core.bool? enableIntegrityMonitoring;
-
-  /// Defines whether the instance has Secure Boot enabled.
-  ///
-  /// Secure Boot helps ensure that the system only runs authentic software by
-  /// verifying the digital signature of all boot components, and halting the
-  /// boot process if signature verification fails. Disabled by default.
-  core.bool? enableSecureBoot;
-
-  /// Defines whether the instance has the vTPM enabled.
-  ///
-  /// Enabled by default.
-  core.bool? enableVtpm;
-
-  ShieldedInstanceConfig({
-    this.enableIntegrityMonitoring,
-    this.enableSecureBoot,
-    this.enableVtpm,
-  });
-
-  ShieldedInstanceConfig.fromJson(core.Map _json)
-      : this(
-          enableIntegrityMonitoring:
-              _json.containsKey('enableIntegrityMonitoring')
-                  ? _json['enableIntegrityMonitoring'] as core.bool
-                  : null,
-          enableSecureBoot: _json.containsKey('enableSecureBoot')
-              ? _json['enableSecureBoot'] as core.bool
-              : null,
-          enableVtpm: _json.containsKey('enableVtpm')
-              ? _json['enableVtpm'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enableIntegrityMonitoring != null)
-          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
-        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
-        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
-      };
-}
+typedef ShieldedInstanceConfig = $ShieldedInstanceConfig;
 
 /// Request for starting a notebook instance
 typedef StartInstanceRequest = $Empty;
@@ -5512,7 +5418,28 @@ class SwitchRuntimeRequest {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+class TestIamPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String>? permissions;
+
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
+
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 /// Request for created scheduled notebooks
 typedef TriggerScheduleRequest = $Empty;

@@ -22443,8 +22443,35 @@ class GoogleCloudDialogflowV2IntentMessageCard {
 }
 
 /// Contains information about a button.
-typedef GoogleCloudDialogflowV2IntentMessageCardButton
-    = $GoogleCloudDialogflowV2IntentMessageCardButton;
+class GoogleCloudDialogflowV2IntentMessageCardButton {
+  /// The text to send back to the Dialogflow API or a URI to open.
+  ///
+  /// Optional.
+  core.String? postback;
+
+  /// The text to show on the button.
+  ///
+  /// Optional.
+  core.String? text;
+
+  GoogleCloudDialogflowV2IntentMessageCardButton({
+    this.postback,
+    this.text,
+  });
+
+  GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(core.Map _json)
+      : this(
+          postback: _json.containsKey('postback')
+              ? _json['postback'] as core.String
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postback != null) 'postback': postback!,
+        if (text != null) 'text': text!,
+      };
+}
 
 /// The card for presenting a carousel of options to select from.
 class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
@@ -27488,8 +27515,35 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
 /// Contains information about a button.
 ///
 /// Optional.
-typedef GoogleCloudDialogflowV2beta1IntentMessageCardButton
-    = $GoogleCloudDialogflowV2beta1IntentMessageCardButton;
+class GoogleCloudDialogflowV2beta1IntentMessageCardButton {
+  /// The text to send back to the Dialogflow API or a URI to open.
+  ///
+  /// Optional.
+  core.String? postback;
+
+  /// The text to show on the button.
+  ///
+  /// Optional.
+  core.String? text;
+
+  GoogleCloudDialogflowV2beta1IntentMessageCardButton({
+    this.postback,
+    this.text,
+  });
+
+  GoogleCloudDialogflowV2beta1IntentMessageCardButton.fromJson(core.Map _json)
+      : this(
+          postback: _json.containsKey('postback')
+              ? _json['postback'] as core.String
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postback != null) 'postback': postback!,
+        if (text != null) 'text': text!,
+      };
+}
 
 /// The card for presenting a carousel of options to select from.
 class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {

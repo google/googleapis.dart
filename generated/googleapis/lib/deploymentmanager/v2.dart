@@ -3364,7 +3364,29 @@ class TargetConfiguration {
 }
 
 typedef TestPermissionsRequest = $TestPermissionsRequest;
-typedef TestPermissionsResponse = $TestPermissionsResponse;
+
+class TestPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String>? permissions;
+
+  TestPermissionsResponse({
+    this.permissions,
+  });
+
+  TestPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 /// A resource type supported by Deployment Manager.
 class Type {

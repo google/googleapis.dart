@@ -15,12 +15,6 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
-/// `AccessPolicy` is a container for `AccessLevels` (which define the necessary
-/// attributes to use Google Cloud services) and `ServicePerimeters` (which
-/// define regions of services able to freely pass data within a perimeter).
-///
-/// An access policy is globally visible within an organization, and the
-/// restrictions it specifies apply to all projects within an organization.
 class $AccessPolicy {
   /// An opaque identifier for the current version of the `AccessPolicy`.
   ///
@@ -79,7 +73,6 @@ class $AccessPolicy {
       };
 }
 
-/// Gets a summary of active ads in an account.
 class $AccountActiveAdSummary {
   /// ID of the account.
   core.String? accountId;
@@ -142,11 +135,6 @@ class $AccountActiveAdSummary {
       };
 }
 
-/// AccountPermissions contains information about a particular account
-/// permission.
-///
-/// Some features of Campaign Manager require an account permission to be
-/// present in the account.
 class $AccountPermission {
   /// Account profiles associated with this account permission.
   ///
@@ -210,9 +198,6 @@ class $AccountPermission {
       };
 }
 
-/// AccountPermissionGroups contains a mapping of permission group IDs to names.
-///
-/// A permission group is a grouping of account permissions.
 class $AccountPermissionGroup {
   /// ID of this account permission group.
   core.String? id;
@@ -245,11 +230,6 @@ class $AccountPermissionGroup {
       };
 }
 
-/// List of string parameters to supply when the action method is invoked.
-///
-/// For example, consider three snooze buttons: snooze now, snooze 1 day, snooze
-/// next week. You might use action method = snooze(), passing the snooze type
-/// and snooze time in the list of string parameters.
 class $ActionParameter {
   /// The name of the parameter for the action script.
   core.String? key;
@@ -275,7 +255,6 @@ class $ActionParameter {
       };
 }
 
-/// Ad Slot
 class $AdSlot {
   /// Comment for this ad slot.
   core.String? comment;
@@ -366,8 +345,6 @@ class $AdSlot {
       };
 }
 
-/// Groups advertisers together so that reports can be generated for the entire
-/// group at once.
 class $AdvertiserGroup {
   /// Account ID of this advertiser group.
   ///
@@ -460,7 +437,6 @@ class $ApiDataRow {
       };
 }
 
-/// Audience Segment.
 class $AudienceSegment {
   /// Weight allocated to this segment.
   ///
@@ -501,12 +477,6 @@ class $AudienceSegment {
       };
 }
 
-/// Provides the configuration for logging a type of permissions.
-///
-/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
-/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
-/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
-/// exempting jose@example.com from DATA_READ logging.
 class $AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -545,10 +515,6 @@ class $AuditLogConfig {
       };
 }
 
-/// This message defines request authentication attributes.
-///
-/// Terminology is based on the JSON Web Token (JWT) standard, but the terms
-/// also correlate to concepts in other standards.
 class $Auth {
   /// A list of access level resource names that allow resources to be accessed
   /// by authenticated requester.
@@ -643,9 +609,6 @@ class $Auth {
       };
 }
 
-/// User-defined authentication requirements, including support for \[JSON Web
-/// Token
-/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class $AuthRequirement {
   /// NOTE: This will be deprecated soon, once AuthProvider.audiences is
   /// implemented and accepted in all the runtime components.
@@ -688,7 +651,6 @@ class $AuthRequirement {
       };
 }
 
-/// A backend rule provides configuration for an individual API element.
 class $BackendRule {
   /// The address of the API backend.
   ///
@@ -822,10 +784,6 @@ class $BackendRule {
       };
 }
 
-/// Metadata for the batch operations such as the current state.
-///
-/// This is included in the `metadata` field of the `Operation` returned by the
-/// `GetOperation` call of the `google::longrunning::Operations` service.
 class $BatchOperationMetadata {
   /// The time when the batch request is finished and
   /// google.longrunning.Operation.done is set to true.
@@ -873,8 +831,6 @@ class $BatchOperationMetadata {
       };
 }
 
-/// Configuration of a specific billing destination (Currently only support bill
-/// against consumer project).
 class $BillingDestination {
   /// Names of the metrics to report to this billing destination.
   ///
@@ -909,8 +865,6 @@ class $BillingDestination {
       };
 }
 
-/// Used in `policy_type` to specify how `boolean_policy` will behave at this
-/// resource.
 class $BooleanPolicy {
   /// If `true`, then the `Policy` is enforced.
   ///
@@ -956,7 +910,6 @@ class $BooleanPolicy {
       };
 }
 
-/// Contains information about a browser that can be targeted by ads.
 class $Browser {
   /// ID referring to this grouping of browser and version numbers.
   ///
@@ -1035,7 +988,6 @@ class $Browser {
       };
 }
 
-/// Identifies a creative which has been associated with a given campaign.
 class $CampaignCreativeAssociation {
   /// ID of the creative associated with the campaign.
   ///
@@ -1066,7 +1018,6 @@ class $CampaignCreativeAssociation {
       };
 }
 
-/// Describes a change that a user has made to a resource.
 class $ChangeLog {
   /// Account ID of the modified object.
   core.String? accountId;
@@ -1192,7 +1143,6 @@ class $ChangeLog {
       };
 }
 
-/// An notification channel used to watch for resource changes.
 class $Channel {
   /// The address where notifications are delivered for this channel.
   core.String? address;
@@ -1299,7 +1249,6 @@ class $Channel {
       };
 }
 
-/// Contains information about a city that can be targeted by ads.
 class $City {
   /// Country code of the country to which this city belongs.
   core.String? countryCode;
@@ -1384,7 +1333,6 @@ class $City {
       };
 }
 
-/// Click-through URL
 class $ClickThroughUrl {
   /// Read-only convenience field representing the actual URL that will be used
   /// for this click-through.
@@ -1445,7 +1393,6 @@ class $ClickThroughUrl {
       };
 }
 
-/// Click Through URL Suffix settings.
 class $ClickThroughUrlSuffixProperties {
   /// Click-through URL suffix to apply to all ads in this entity's scope.
   ///
@@ -1479,55 +1426,6 @@ class $ClickThroughUrlSuffixProperties {
       };
 }
 
-/// Represents a color in the RGBA color space.
-///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
-/// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
-/// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
-/// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
-/// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (!\[color
-/// getRed:&red green:&green blue:&blue alpha:&alpha\]) { return nil; } Color*
-/// result = \[\[Color alloc\] init\]; \[result setRed:red\]; \[result
-/// setGreen:green\]; \[result setBlue:blue\]; if (alpha <= 0.9999) { \[result
-/// setAlpha:floatWrapperWithValue(alpha)\]; } \[result autorelease\]; return
-/// result; } // ... Example (JavaScript): // ... var protoToCssColor =
-/// function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
-/// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
-/// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
-/// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
-/// rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
-/// 0.0; var rgbParams = \[red, green, blue\].join(','); return \['rgba(',
-/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor =
-/// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
-/// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
-/// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
-/// missingZeros; i++) { resultBuilder.push('0'); }
-/// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 class $Color {
   /// The fraction of this color that should be applied to the pixel.
   ///
@@ -1581,10 +1479,6 @@ class $Color {
       };
 }
 
-/// Contains information about an internet connection type that can be targeted
-/// by ads.
-///
-/// Clients can use the connection type to target mobile vs. broadband users.
 class $ConnectionType {
   /// ID of this connection type.
   core.String? id;
@@ -1617,7 +1511,6 @@ class $ConnectionType {
       };
 }
 
-/// Organizes placements according to the contents of their associated webpages.
 class $ContentCategory {
   /// Account ID of this content category.
   ///
@@ -1665,8 +1558,6 @@ class $ContentCategory {
       };
 }
 
-/// A context rule provides information about the context for an individual API
-/// element.
 class $ContextRule {
   /// A list of full type names or extension IDs of extensions allowed in grpc
   /// side channel from client to backend.
@@ -1735,10 +1626,6 @@ class $ContextRule {
       };
 }
 
-/// Selects and configures the service controller used by the service.
-///
-/// The service controller handles features like abuse, quota, billing, logging,
-/// monitoring, etc.
 class $Control {
   /// The service control environment to use.
   ///
@@ -1762,8 +1649,6 @@ class $Control {
       };
 }
 
-/// The error code and description for a conversion that failed to insert or
-/// update.
 class $ConversionError {
   /// The error code.
   /// Possible string values are:
@@ -1803,7 +1688,6 @@ class $ConversionError {
       };
 }
 
-/// Contains information about a country that can be targeted by ads.
 class $Country {
   /// Country code.
   core.String? countryCode;
@@ -1856,7 +1740,6 @@ class $Country {
       };
 }
 
-/// Metadata pertaining to the Folder creation process.
 class $CreateFolderMetadata {
   /// The display name of the folder.
   core.String? displayName;
@@ -1886,11 +1769,6 @@ class $CreateFolderMetadata {
       };
 }
 
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by CreateProject.
-///
-/// It provides insight for when significant phases of Project creation have
-/// completed.
 class $CreateProjectMetadata {
   /// Creation time of the project creation workflow.
   core.String? createTime;
@@ -1929,7 +1807,6 @@ class $CreateProjectMetadata {
       };
 }
 
-/// Creative Asset ID.
 class $CreativeAssetId {
   /// Name of the creative asset.
   ///
@@ -1969,7 +1846,6 @@ class $CreativeAssetId {
       };
 }
 
-/// Click-through URL
 class $CreativeClickThroughUrl {
   /// Read-only convenience field representing the actual URL that will be used
   /// for this click-through.
@@ -2015,7 +1891,6 @@ class $CreativeClickThroughUrl {
       };
 }
 
-/// Creative Field Assignment.
 class $CreativeFieldAssignment {
   /// ID of the creative field.
   core.String? creativeFieldId;
@@ -2045,7 +1920,6 @@ class $CreativeFieldAssignment {
       };
 }
 
-/// Contains properties of a creative field value.
 class $CreativeFieldValue {
   /// ID of this creative field value.
   ///
@@ -2084,7 +1958,6 @@ class $CreativeFieldValue {
       };
 }
 
-/// Creative Group Assignment.
 class $CreativeGroupAssignment {
   /// ID of the creative group to be assigned.
   core.String? creativeGroupId;
@@ -2117,7 +1990,6 @@ class $CreativeGroupAssignment {
       };
 }
 
-/// A custom error rule.
 class $CustomErrorRule {
   /// Mark this message as possible payload in error response.
   ///
@@ -2151,7 +2023,6 @@ class $CustomErrorRule {
       };
 }
 
-/// A custom floodlight variable.
 class $CustomFloodlightVariable {
   /// Identifies what kind of resource this is.
   ///
@@ -2290,7 +2161,6 @@ class $CustomFloodlightVariable {
       };
 }
 
-/// A custom pattern is used for defining custom HTTP verb.
 class $CustomHttpPattern {
   /// The name of this custom HTTP verb.
   core.String? kind;
@@ -2315,8 +2185,6 @@ class $CustomHttpPattern {
       };
 }
 
-/// The attributes, like playtime and percent onscreen, that define the Custom
-/// Viewability Metric.
 class $CustomViewabilityMetricConfiguration {
   /// Whether the video must be audible to count an impression.
   core.bool? audible;
@@ -2371,15 +2239,6 @@ class $CustomViewabilityMetricConfiguration {
       };
 }
 
-/// Represents a whole or partial calendar date, such as a birthday.
-///
-/// The time of day and time zone are either specified elsewhere or are
-/// insignificant. The date is relative to the Gregorian Calendar. This can
-/// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class $Date {
   /// Day of a month.
   ///
@@ -2417,7 +2276,6 @@ class $Date {
       };
 }
 
-/// Represents a date range.
 class $DateRange {
   core.DateTime? endDate;
 
@@ -2479,7 +2337,6 @@ class $DateRange {
       };
 }
 
-/// Day Part Targeting.
 class $DayPartTargeting {
   /// Days of the week when the ad will serve.
   ///
@@ -2532,10 +2389,6 @@ class $DayPartTargeting {
       };
 }
 
-/// Properties of inheriting and overriding the default click-through event tag.
-///
-/// A campaign may override the event tag defined at the advertiser level, and
-/// an ad may also override the campaign's setting further.
 class $DefaultClickThroughEventTagProperties {
   /// ID of the click-through event tag to apply to all ads in this entity's
   /// scope.
@@ -2570,7 +2423,6 @@ class $DefaultClickThroughEventTagProperties {
       };
 }
 
-/// Detected start or end of a structural component.
 class $DetectedBreak {
   /// True if break prepends the element.
   core.bool? isPrefix;
@@ -2605,7 +2457,6 @@ class $DetectedBreak {
       };
 }
 
-/// Detected language for a structural component.
 class $DetectedLanguage {
   /// Confidence of detected language.
   ///
@@ -2639,7 +2490,6 @@ class $DetectedLanguage {
       };
 }
 
-/// Google Ad Manager Settings
 class $DfpSettings {
   /// Ad Manager network code for this directory site.
   core.String? dfpNetworkCode;
@@ -2697,7 +2547,6 @@ class $DfpSettings {
       };
 }
 
-/// Represents a dimension.
 class $Dimension {
   /// The kind of resource this is, in this case dfareporting#dimension.
   core.String? kind;
@@ -2722,7 +2571,6 @@ class $Dimension {
       };
 }
 
-/// Represents a dimension filter.
 class $DimensionFilter {
   /// The name of the dimension to filter.
   core.String? dimensionName;
@@ -2756,7 +2604,6 @@ class $DimensionFilter {
       };
 }
 
-/// Represents a DimensionValue resource.
 class $DimensionValue {
   /// The name of the dimension.
   core.String? dimensionName;
@@ -2842,7 +2689,6 @@ class $DisksRemoveResourcePoliciesRequest {
       };
 }
 
-/// A documentation rule provides information about individual API elements.
 class $DocumentationRule {
   /// Deprecation description of the selected element(s).
   ///
@@ -2894,13 +2740,6 @@ class $DocumentationRule {
       };
 }
 
-/// Contains properties of a dynamic targeting key.
-///
-/// Dynamic targeting keys are unique, user-friendly labels, created at the
-/// advertiser level in DCM, that can be assigned to ads, creatives, and
-/// placements and used for targeting with Studio dynamic creatives. Use these
-/// labels instead of numeric Campaign Manager IDs (such as placement IDs) to
-/// save time and avoid errors in your dynamic feeds.
 class $DynamicTargetingKey {
   /// Identifies what kind of resource this is.
   ///
@@ -2955,12 +2794,6 @@ class $DynamicTargetingKey {
       };
 }
 
-/// Defines the conditions under which an EgressPolicy matches a request.
-///
-/// Conditions based on information about the source of the request. Note that
-/// if the destination of the request is also protected by a ServicePerimeter,
-/// then that ServicePerimeter must have an IngressPolicy which allows access in
-/// order for this request to succeed.
 class $EgressFrom {
   /// A list of identities that are allowed access through this
   /// \[EgressPolicy\].
@@ -3018,7 +2851,6 @@ class $Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// A description of how user IDs are encrypted.
 class $EncryptionInfo {
   /// The encryption entity ID.
   ///
@@ -3084,20 +2916,6 @@ class $EncryptionInfo {
       };
 }
 
-/// `Endpoint` describes a network address of a service that serves a set of
-/// APIs.
-///
-/// It is commonly known as a service endpoint. A service may expose any number
-/// of service endpoints, and all service endpoints share the same service
-/// definition, such as quota limits and monitoring metrics. Example: type:
-/// google.api.Service name: library-example.googleapis.com endpoints: #
-/// Declares network address `https://library-example.googleapis.com` # for
-/// service `library-example.googleapis.com`. The `https` scheme # is implicit
-/// for all service endpoints. Other schemes may be # supported in the future. -
-/// name: library-example.googleapis.com allow_cors: false - name:
-/// content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls
-/// to be passed to the API frontend, for it # to decide whether the subsequent
-/// cross-origin request is allowed # to proceed. allow_cors: true
 class $Endpoint {
   /// Allowing
   /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
@@ -3143,7 +2961,6 @@ class $Endpoint {
       };
 }
 
-/// Event tag override information.
 class $EventTagOverride {
   /// Whether this override is enabled.
   core.bool? enabled;
@@ -3172,14 +2989,6 @@ class $EventTagOverride {
       };
 }
 
-/// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
-/// (= N) buckets.
-///
-/// Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi
-/// Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least
-/// one element. If bounds has only one element, then there are no finite
-/// buckets, and that single element is the common boundary of the overflow and
-/// underflow buckets.
 class $Explicit {
   /// The values must be monotonically increasing.
   core.List<core.double>? bounds;
@@ -3202,13 +3011,6 @@ class $Explicit {
       };
 }
 
-/// Specifies an exponential sequence of buckets that have a width that is
-/// proportional to the value of the lower bound.
-///
-/// Each bucket represents a constant relative uncertainty on a specific value
-/// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor
-/// ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
 class $Exponential {
   /// Must be greater than 1.
   core.double? growthFactor;
@@ -3245,24 +3047,6 @@ class $Exponential {
       };
 }
 
-/// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax.
-///
-/// CEL is a C-like expression language. The syntax and semantics of CEL are
-/// documented at https://github.com/google/cel-spec. Example (Comparison):
-/// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100" Example
-/// (Equality): title: "Requestor is owner" description: "Determines if
-/// requestor is the document owner" expression: "document.owner ==
-/// request.auth.claims.email" Example (Logic): title: "Public documents"
-/// description: "Determine whether the document should be publicly visible"
-/// expression: "document.type != 'private' && document.type != 'internal'"
-/// Example (Data Manipulation): title: "Notification string" description:
-/// "Create a notification string with a timestamp." expression: "'New message
-/// received at ' + string(document.create_time)" The exact variables and
-/// functions that may be referenced within an expression are determined by the
-/// service that evaluates it. See the service documentation for additional
-/// information.
 class $Expr {
   /// Description of the expression.
   ///
@@ -3319,7 +3103,26 @@ class $Expr {
       };
 }
 
-/// First party identity principal.
+class $FcmOptions {
+  /// Label associated with the message's analytics data.
+  core.String? analyticsLabel;
+
+  $FcmOptions({
+    this.analyticsLabel,
+  });
+
+  $FcmOptions.fromJson(core.Map _json)
+      : this(
+          analyticsLabel: _json.containsKey('analyticsLabel')
+              ? _json['analyticsLabel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
+      };
+}
+
 class $FirstPartyPrincipal {
   /// The email address of a Google account.
   ///
@@ -3355,7 +3158,6 @@ class $FirstPartyPrincipal {
       };
 }
 
-/// Flight
 class $Flight {
   core.DateTime? endDate;
 
@@ -3400,7 +3202,6 @@ class $Flight {
       };
 }
 
-/// Floodlight Activity GenerateTag Response
 class $FloodlightActivitiesGenerateTagResponse {
   /// Generated tag for this Floodlight activity.
   ///
@@ -3447,7 +3248,6 @@ class $FloodlightActivitiesGenerateTagResponse {
       };
 }
 
-/// Dynamic Tag
 class $FloodlightActivityDynamicTag {
   /// ID of this dynamic tag.
   ///
@@ -3480,8 +3280,6 @@ class $FloodlightActivityDynamicTag {
       };
 }
 
-/// Message that contains the resource name and display name of a folder
-/// resource.
 class $Folder {
   /// Full resource name of this folder.
   ///
@@ -3515,7 +3313,6 @@ class $Folder {
       };
 }
 
-/// Metadata describing a long running folder operation
 class $FolderOperation {
   /// The resource name of the folder or organization we are either creating the
   /// folder under or moving the folder to.
@@ -3567,7 +3364,6 @@ class $FolderOperation {
       };
 }
 
-/// A classification of the Folder Operation error.
 class $FolderOperationError {
   /// The type of operation error experienced.
   /// Possible string values are:
@@ -3609,7 +3405,6 @@ class $FolderOperationError {
       };
 }
 
-/// Frequency Cap.
 class $FrequencyCap {
   /// Duration of time, in seconds, for this frequency cap.
   ///
@@ -3644,7 +3439,6 @@ class $FrequencyCap {
       };
 }
 
-/// FsCommand.
 class $FsCommand {
   /// Distance from the left of the browser.Applicable when positionOption is
   /// DISTANCE_FROM_TOP_LEFT_CORNER.
@@ -3699,7 +3493,6 @@ class $FsCommand {
       };
 }
 
-/// The Google Cloud Storage location where the output will be written to.
 class $GcsDestination {
   /// Google Cloud Storage URI prefix where the results will be stored.
   ///
@@ -3733,7 +3526,6 @@ class $GcsDestination {
       };
 }
 
-/// Specifies the configuration for importing data from Cloud Storage.
 class $GcsSource {
   /// Points to a Cloud Storage URI containing file(s) to import.
   ///
@@ -3764,7 +3556,6 @@ class $GcsSource {
       };
 }
 
-/// The Google Cloud Storage location where the input will be read from.
 class $GcsSource01 {
   /// Google Cloud Storage URI for the input file.
   ///
@@ -3786,7 +3577,6 @@ class $GcsSource01 {
       };
 }
 
-/// Encapsulates settings provided to GetIamPolicy.
 class $GetPolicyOptions {
   /// The policy format version to be returned.
   ///
@@ -3817,10 +3607,6 @@ class $GetPolicyOptions {
       };
 }
 
-/// Represents a part of a message possibly annotated with an entity.
-///
-/// The part can be an entity or purely a part of the message between two
-/// entities or message start/end.
 class $GoogleCloudDialogflowV2AnnotatedMessagePart {
   /// The
   /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
@@ -3868,7 +3654,6 @@ class $GoogleCloudDialogflowV2AnnotatedMessagePart {
       };
 }
 
-/// Represents article answer.
 class $GoogleCloudDialogflowV2ArticleAnswer {
   /// The name of answer record, in the format of
   /// "projects//locations//answerRecords/"
@@ -3939,19 +3724,6 @@ class $GoogleCloudDialogflowV2ArticleAnswer {
       };
 }
 
-/// Dialogflow contexts are similar to natural language context.
-///
-/// If a person says to you "they are orange", you need context in order to
-/// understand what "they" is referring to. Similarly, for Dialogflow to handle
-/// an end-user expression like that, it needs to be provided with context in
-/// order to correctly match an intent. Using contexts, you can control the flow
-/// of a conversation. You can configure contexts for an intent by setting input
-/// and output contexts, which are identified by string names. When an intent is
-/// matched, any configured output contexts for that intent become active. While
-/// any contexts are active, Dialogflow is more likely to match intents that are
-/// configured with input contexts that correspond to the currently active
-/// contexts. For more information about context, see the
-/// [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 class $GoogleCloudDialogflowV2Context {
   /// The number of conversational query requests after which the context
   /// expires.
@@ -4019,38 +3791,6 @@ class $GoogleCloudDialogflowV2Context {
       };
 }
 
-/// Contains information about a button.
-class $GoogleCloudDialogflowV2IntentMessageCardButton {
-  /// The text to send back to the Dialogflow API or a URI to open.
-  ///
-  /// Optional.
-  core.String? postback;
-
-  /// The text to show on the button.
-  ///
-  /// Optional.
-  core.String? text;
-
-  $GoogleCloudDialogflowV2IntentMessageCardButton({
-    this.postback,
-    this.text,
-  });
-
-  $GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(core.Map _json)
-      : this(
-          postback: _json.containsKey('postback')
-              ? _json['postback'] as core.String
-              : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (postback != null) 'postback': postback!,
-        if (text != null) 'text': text!,
-      };
-}
-
-/// The image response message.
 class $GoogleCloudDialogflowV2IntentMessageImage {
   /// A text description of the image to be used for accessibility, e.g., screen
   /// readers.
@@ -4084,7 +3824,6 @@ class $GoogleCloudDialogflowV2IntentMessageImage {
       };
 }
 
-/// Metadata in google::longrunning::Operation for Knowledge operations.
 class $GoogleCloudDialogflowV2KnowledgeOperationMetadata {
   /// The current state of this operation.
   ///
@@ -4111,10 +3850,6 @@ class $GoogleCloudDialogflowV2KnowledgeOperationMetadata {
       };
 }
 
-/// Represents a part of a message possibly annotated with an entity.
-///
-/// The part can be an entity or purely a part of the message between two
-/// entities or message start/end.
 class $GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
   /// The
   /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
@@ -4168,7 +3903,6 @@ class $GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
       };
 }
 
-/// Represents article answer.
 class $GoogleCloudDialogflowV2beta1ArticleAnswer {
   /// The name of answer record, in the format of
   /// "projects//locations//answerRecords/"
@@ -4229,19 +3963,6 @@ class $GoogleCloudDialogflowV2beta1ArticleAnswer {
       };
 }
 
-/// Dialogflow contexts are similar to natural language context.
-///
-/// If a person says to you "they are orange", you need context in order to
-/// understand what "they" is referring to. Similarly, for Dialogflow to handle
-/// an end-user expression like that, it needs to be provided with context in
-/// order to correctly match an intent. Using contexts, you can control the flow
-/// of a conversation. You can configure contexts for an intent by setting input
-/// and output contexts, which are identified by string names. When an intent is
-/// matched, any configured output contexts for that intent become active. While
-/// any contexts are active, Dialogflow is more likely to match intents that are
-/// configured with input contexts that correspond to the currently active
-/// contexts. For more information about context, see the
-/// [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 class $GoogleCloudDialogflowV2beta1Context {
   /// The number of conversational query requests after which the context
   /// expires.
@@ -4311,40 +4032,6 @@ class $GoogleCloudDialogflowV2beta1Context {
       };
 }
 
-/// Contains information about a button.
-///
-/// Optional.
-class $GoogleCloudDialogflowV2beta1IntentMessageCardButton {
-  /// The text to send back to the Dialogflow API or a URI to open.
-  ///
-  /// Optional.
-  core.String? postback;
-
-  /// The text to show on the button.
-  ///
-  /// Optional.
-  core.String? text;
-
-  $GoogleCloudDialogflowV2beta1IntentMessageCardButton({
-    this.postback,
-    this.text,
-  });
-
-  $GoogleCloudDialogflowV2beta1IntentMessageCardButton.fromJson(core.Map _json)
-      : this(
-          postback: _json.containsKey('postback')
-              ? _json['postback'] as core.String
-              : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (postback != null) 'postback': postback!,
-        if (text != null) 'text': text!,
-      };
-}
-
-/// The image response message.
 class $GoogleCloudDialogflowV2beta1IntentMessageImage {
   /// A text description of the image to be used for accessibility, e.g., screen
   /// readers.
@@ -4378,10 +4065,6 @@ class $GoogleCloudDialogflowV2beta1IntentMessageImage {
       };
 }
 
-/// Rich Business Messaging (RBM) Media displayed in Cards The following
-/// media-types are currently supported: Image Types * image/jpeg * image/jpg' *
-/// image/gif * image/png Video Types * video/h263 * video/m4v * video/mp4 *
-/// video/mpeg * video/mpeg4 * video/webm
 class $GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   /// Publicly reachable URI of the file.
   ///
@@ -4443,8 +4126,6 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
       };
 }
 
-/// Opens the user's default dialer app with the specified phone number but does
-/// not dial automatically.
 class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial {
   /// The phone number to fill in the default dialer app.
   ///
@@ -4471,10 +4152,6 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAc
       };
 }
 
-/// Opens the user's default web browser app to the specified uri If the user
-/// has an app installed that is registered as the default handler for the URL,
-/// then this app will be opened instead, and its icon will be used in the
-/// suggested action UI.
 class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri {
   /// The uri to open on the user device
   ///
@@ -4496,8 +4173,6 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAc
       };
 }
 
-/// Rich Business Messaging (RBM) suggested reply that the user can click
-/// instead of typing in their own response.
 class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   /// Opaque payload that the Dialogflow receives in a user event when the user
   /// taps the suggested reply.
@@ -4529,7 +4204,6 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
       };
 }
 
-/// Plays audio from a file in Telephony Gateway.
 class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
   /// URI to a Google Cloud Storage object containing the audio to play, e.g.,
   /// "gs://bucket/object".
@@ -4563,12 +4237,6 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
       };
 }
 
-/// Synthesizes speech and plays back the synthesized audio to the caller in
-/// Telephony Gateway.
-///
-/// Telephony Gateway takes the synthesizer settings from
-/// `DetectIntentResponse.output_audio_config` which can either be set at
-/// request-level or can come from the agent-level synthesizer config.
 class $GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
   /// The SSML to be synthesized.
   ///
@@ -4597,7 +4265,6 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
       };
 }
 
-/// Transfers the call in Telephony Gateway.
 class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
   /// The phone number to transfer the call to in
   /// [E.164 format](https://en.wikipedia.org/wiki/E.164).
@@ -4624,7 +4291,6 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
       };
 }
 
-/// An answer from Knowledge Connector.
 class $GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
   /// The piece of text from the `source` knowledge base document that answers
   /// this conversational query.
@@ -4700,7 +4366,6 @@ class $GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
       };
 }
 
-/// Represents a smart reply answer.
 class $GoogleCloudDialogflowV2beta1SmartReplyAnswer {
   /// The name of answer record, in the format of
   /// "projects//locations//answerRecords/"
@@ -4741,8 +4406,6 @@ class $GoogleCloudDialogflowV2beta1SmartReplyAnswer {
       };
 }
 
-/// Maintenance schedule which is exposed to customer and potentially end user,
-/// indicating published upcoming future maintenance schedule
 class $GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// This field is deprecated, and will be always set to true since reschedule
   /// can happen multiple times now.
@@ -4811,7 +4474,6 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
       };
 }
 
-/// Describes provisioned dataplane resources.
 class $GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
   /// Type of the resource.
   ///
@@ -4849,9 +4511,6 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
       };
 }
 
-/// SloEligibility is a tuple containing eligibility value: true if an instance
-/// is eligible for SLO calculation or false if it should be excluded from all
-/// SLO-related calculations along with a user-defined reason.
 class $GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
   /// Whether an instance is eligible or ineligible.
   core.bool? eligible;
@@ -4884,24 +4543,31 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
       };
 }
 
-/// Message that represents an arbitrary HTTP body.
-///
-/// It should only be used for payload formats that can't be represented as
-/// JSON, such as raw binary or an HTML page. This message can be used both in
-/// streaming and non-streaming API methods in the request as well as the
-/// response. It can be used as a top-level request field, which is convenient
-/// if one wants to extract parameters from either the URL or HTTP template into
-/// the request fields and also want access to the raw HTTP body. Example:
-/// message GetResourceRequest { // A unique request id. string request_id = 1;
-/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
-/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
-/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
-/// (google.protobuf.Empty); } Example with streaming methods: service
-/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
-/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
-/// (stream google.api.HttpBody); } Use of this type only changes how the
-/// request and response bodies are handled, all other features will continue to
-/// work unchanged.
+class $Header {
+  /// Header name.
+  core.String? name;
+
+  /// Header value.
+  core.String? value;
+
+  $Header({
+    this.name,
+    this.value,
+  });
+
+  $Header.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
 class $HttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
@@ -4950,8 +4616,6 @@ class $HttpBody {
       };
 }
 
-/// If an image was produced from a file (e.g. a PDF), this message gives
-/// information about the source of that image.
 class $ImageAnnotationContext {
   /// If the file was a PDF or TIFF, this field gives the page number within the
   /// file used to produce the image.
@@ -4979,7 +4643,6 @@ class $ImageAnnotationContext {
       };
 }
 
-/// The source that IngressPolicy authorizes access from.
 class $IngressSource {
   /// An AccessLevel resource name that allow resources within the
   /// ServicePerimeters to be accessed from the internet.
@@ -5044,6 +4707,87 @@ class $InstanceGroupManagersAbandonInstancesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null) 'instances': instances!,
+      };
+}
+
+class $InstanceGroupManagersApplyUpdatesRequest {
+  /// Flag to update all instances instead of specified list of “instances”.
+  ///
+  /// If the flag is set to true then the instances may not be specified in the
+  /// request.
+  core.bool? allInstances;
+
+  /// The list of URLs of one or more instances for which you want to apply
+  /// updates.
+  ///
+  /// Each URL can be a full URL or a partial URL, such as
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
+  core.List<core.String>? instances;
+
+  /// The minimal action that you want to perform on each instance during the
+  /// update: - REPLACE: At minimum, delete the instance and create it again.
+  ///
+  /// - RESTART: Stop the instance and start it again. - REFRESH: Do not stop
+  /// the instance. - NONE: Do not disrupt the instance at all. By default, the
+  /// minimum action is NONE. If your update requires a more disruptive action
+  /// than you set with this flag, the necessary action is performed to execute
+  /// the update.
+  /// Possible string values are:
+  /// - "NONE" : Do not perform any action.
+  /// - "REFRESH" : Updates applied in runtime, instances will not be disrupted.
+  /// - "REPLACE" : Old instances will be deleted. New instances will be created
+  /// from the target template.
+  /// - "RESTART" : Every instance will be restarted.
+  core.String? minimalAction;
+
+  /// The most disruptive action that you want to perform on each instance
+  /// during the update: - REPLACE: Delete the instance and create it again.
+  ///
+  /// - RESTART: Stop the instance and start it again. - REFRESH: Do not stop
+  /// the instance. - NONE: Do not disrupt the instance at all. By default, the
+  /// most disruptive allowed action is REPLACE. If your update requires a more
+  /// disruptive action than you set with this flag, the update request will
+  /// fail.
+  /// Possible string values are:
+  /// - "NONE" : Do not perform any action.
+  /// - "REFRESH" : Updates applied in runtime, instances will not be disrupted.
+  /// - "REPLACE" : Old instances will be deleted. New instances will be created
+  /// from the target template.
+  /// - "RESTART" : Every instance will be restarted.
+  core.String? mostDisruptiveAllowedAction;
+
+  $InstanceGroupManagersApplyUpdatesRequest({
+    this.allInstances,
+    this.instances,
+    this.minimalAction,
+    this.mostDisruptiveAllowedAction,
+  });
+
+  $InstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map _json)
+      : this(
+          allInstances: _json.containsKey('allInstances')
+              ? _json['allInstances'] as core.bool
+              : null,
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          minimalAction: _json.containsKey('minimalAction')
+              ? _json['minimalAction'] as core.String
+              : null,
+          mostDisruptiveAllowedAction:
+              _json.containsKey('mostDisruptiveAllowedAction')
+                  ? _json['mostDisruptiveAllowedAction'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allInstances != null) 'allInstances': allInstances!,
+        if (instances != null) 'instances': instances!,
+        if (minimalAction != null) 'minimalAction': minimalAction!,
+        if (mostDisruptiveAllowedAction != null)
+          'mostDisruptiveAllowedAction': mostDisruptiveAllowedAction!,
       };
 }
 
@@ -5112,7 +4856,6 @@ class $Jwt {
       };
 }
 
-/// Specifies a location to extract JWT from an API request.
 class $JwtLocation {
   /// Specifies HTTP header name to extract JWT token.
   core.String? header;
@@ -5155,7 +4898,6 @@ class $JwtLocation {
       };
 }
 
-/// A product label represented as a key-value pair.
 class $KeyValue {
   /// The key of the label attached to the product.
   ///
@@ -5185,7 +4927,6 @@ class $KeyValue {
       };
 }
 
-/// Key Value Targeting Expression.
 class $KeyValueTargetingExpression {
   /// Keyword expression being targeted by the ad.
   core.String? expression;
@@ -5206,7 +4947,24 @@ class $KeyValueTargetingExpression {
       };
 }
 
-/// A description of a label.
+class $KindExpression {
+  /// The name of the kind.
+  core.String? name;
+
+  $KindExpression({
+    this.name,
+  });
+
+  $KindExpression.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 class $LabelDescriptor {
   /// A human-readable description for the label.
   core.String? description;
@@ -5245,7 +5003,6 @@ class $LabelDescriptor {
       };
 }
 
-/// Contains information about a language that can be targeted by ads.
 class $Language {
   /// Language ID of this language.
   ///
@@ -5291,7 +5048,6 @@ class $Language {
       };
 }
 
-/// Modification timestamp.
 class $LastModifiedInfo {
   /// Timestamp of the last change in milliseconds since epoch.
   core.String? time;
@@ -5310,11 +5066,6 @@ class $LastModifiedInfo {
       };
 }
 
-/// An object that represents a latitude/longitude pair.
-///
-/// This is expressed as a pair of doubles to represent degrees latitude and
-/// degrees longitude. Unless specified otherwise, this object must conform to
-/// the WGS84 standard. Values must be within normalized ranges.
 class $LatLng {
   /// The latitude in degrees.
   ///
@@ -5347,8 +5098,6 @@ class $LatLng {
       };
 }
 
-/// A Lien represents an encumbrance on the actions that can be performed on a
-/// resource.
 class $Lien {
   /// The creation time of this Lien.
   core.String? createTime;
@@ -5425,13 +5174,6 @@ class $Lien {
       };
 }
 
-/// Specifies a linear sequence of buckets that all have the same width (except
-/// overflow and underflow).
-///
-/// Each bucket represents a constant absolute uncertainty on the specific value
-/// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).
-/// Lower bound (1 <= i < N): offset + (width * (i - 1)).
 class $Linear {
   /// Must be greater than 0.
   core.int? numFiniteBuckets;
@@ -5468,24 +5210,6 @@ class $Linear {
       };
 }
 
-/// Used in `policy_type` to specify how `list_policy` behaves at this resource.
-///
-/// `ListPolicy` can define specific values and subtrees of Cloud Resource
-/// Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are
-/// allowed or denied by setting the `allowed_values` and `denied_values`
-/// fields. This is achieved by using the `under:` and optional `is:` prefixes.
-/// The `under:` prefix is used to denote resource subtree values. The `is:`
-/// prefix is used to denote specific values, and is required only if the value
-/// contains a ":". Values prefixed with "is:" are treated the same as values
-/// with no prefix. Ancestry subtrees must be in one of the following formats: -
-/// "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g.
-/// "folders/1234" - "organizations/", e.g. "organizations/1234" The
-/// `supports_under` field of the associated `Constraint` defines whether
-/// ancestry prefixes can be used. You can set `allowed_values` and
-/// `denied_values` in the same `Policy` if `all_values` is
-/// `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all
-/// values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values`
-/// and `denied_values` must be unset.
 class $ListPolicy {
   /// The policy all_values state.
   /// Possible string values are:
@@ -5617,7 +5341,6 @@ class $ListPolicy {
       };
 }
 
-/// Remarketing List Population Rule Term.
 class $ListPopulationTerm {
   /// Will be true if the term should check if the user is in the list and false
   /// if the term should check if the user is not in the list.
@@ -5732,7 +5455,6 @@ class $ListPopulationTerm {
       };
 }
 
-/// Remarketing List Targeting Expression.
 class $ListTargetingExpression {
   /// Expression describing which lists are being targeted by the ad.
   core.String? expression;
@@ -5753,7 +5475,6 @@ class $ListTargetingExpression {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
 class $Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -5822,7 +5543,6 @@ class $Location {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
 class $Location01 {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -5891,7 +5611,6 @@ class $Location01 {
       };
 }
 
-/// Metadata for the given google.cloud.location.Location.
 class $LocationMetadata {
   /// App Engine flexible environment is available in the given
   /// location.@OutputOnly
@@ -5939,8 +5658,6 @@ class $LocationMetadata {
       };
 }
 
-/// Configuration of a specific logging destination (the producer project or the
-/// consumer project).
 class $LoggingDestination {
   /// Names of the logs to be sent to this destination.
   ///
@@ -5977,7 +5694,6 @@ class $LoggingDestination {
       };
 }
 
-/// Lookback configuration settings.
 class $LookbackConfiguration {
   /// Lookback window, in days, from the last time a given user clicked on one
   /// of your ads.
@@ -6018,7 +5734,6 @@ class $LookbackConfiguration {
       };
 }
 
-/// Media resource.
 class $Media {
   /// Name of the media resource.
   core.String? resourceName;
@@ -6039,7 +5754,6 @@ class $Media {
       };
 }
 
-/// An allowed method or permission of a service specified in ApiOperation.
 class $MethodSelector {
   /// Value for `method` should be a valid method name for the corresponding
   /// `service_name` in ApiOperation.
@@ -6073,7 +5787,6 @@ class $MethodSelector {
       };
 }
 
-/// Represents a metric.
 class $Metric {
   /// The kind of resource this is, in this case dfareporting#metric.
   core.String? kind;
@@ -6098,7 +5811,6 @@ class $Metric {
       };
 }
 
-/// Additional annotations that can be used to guide the usage of a metric.
 class $MetricDescriptorMetadata {
   /// The delay of data points caused by ingestion.
   ///
@@ -6176,7 +5888,6 @@ class $MetricDescriptorMetadata {
       };
 }
 
-/// Additional annotations that can be used to guide the usage of a metric.
 class $MetricDescriptorMetadata01 {
   /// The delay of data points caused by ingestion.
   ///
@@ -6254,10 +5965,6 @@ class $MetricDescriptorMetadata01 {
       };
 }
 
-/// Bind API methods to metrics.
-///
-/// Binding a method to a metric causes that metric's configured quota behaviors
-/// to apply to the method call.
 class $MetricRule {
   /// Metrics to update when the selected methods are called, and the associated
   /// cost applied to each metric.
@@ -6299,7 +6006,6 @@ class $MetricRule {
       };
 }
 
-/// Contains information about a metro region that can be targeted by ads.
 class $Metro {
   /// Country code of the country to which this metro region belongs.
   core.String? countryCode;
@@ -6370,38 +6076,6 @@ class $Metro {
       };
 }
 
-/// Declares an API Interface to be included in this interface.
-///
-/// The including interface must redeclare all the methods from the included
-/// interface, but documentation and options are inherited as follows: - If
-/// after comment and whitespace stripping, the documentation string of the
-/// redeclared method is empty, it will be inherited from the original method. -
-/// Each annotation belonging to the service config (http, visibility) which is
-/// not set in the redeclared method will be inherited. - If an http annotation
-/// is inherited, the path pattern will be modified as follows. Any version
-/// prefix will be replaced by the version of the including interface plus the
-/// root path if specified. Example of a simple mixin: package google.acl.v1;
-/// service AccessControl { // Get the underlying ACL object. rpc
-/// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
-/// "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage {
-/// // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc
-/// GetData(GetDataRequest) returns (Data) { option (google.api.http).get =
-/// "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name:
-/// google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The
-/// mixin construct implies that all methods in `AccessControl` are also
-/// declared with same name and request/response types in `Storage`. A
-/// documentation generator or annotation processor will see the effective
-/// `Storage.GetAcl` method after inheriting documentation and annotations as
-/// follows: service Storage { // Get the underlying ACL object. rpc
-/// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
-/// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern
-/// changed from `v1` to `v2`. If the `root` field in the mixin is specified, it
-/// should be a relative path under which inherited HTTP paths are placed.
-/// Example: apis: - name: google.storage.v2.Storage mixins: - name:
-/// google.acl.v1.AccessControl root: acls This implies the following inherited
-/// HTTP annotation: service Storage { // Get the underlying ACL object. rpc
-/// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
-/// "/v2/acls/{resource=**}:getAcl"; } ... }
 class $Mixin {
   /// The fully qualified name of the interface which is included.
   core.String? name;
@@ -6426,9 +6100,6 @@ class $Mixin {
       };
 }
 
-/// Contains information about a mobile app.
-///
-/// Used as a landing page deep link.
 class $MobileApp {
   /// Mobile app directory.
   /// Possible string values are:
@@ -6482,7 +6153,6 @@ class $MobileApp {
       };
 }
 
-/// Contains information about a mobile carrier that can be targeted by ads.
 class $MobileCarrier {
   /// Country code of the country to which this mobile carrier belongs.
   core.String? countryCode;
@@ -6531,7 +6201,6 @@ class $MobileCarrier {
       };
 }
 
-/// Represents an amount of money with its currency type.
 class $Money {
   /// The three-letter currency code defined in ISO 4217.
   core.String? currencyCode;
@@ -6573,13 +6242,6 @@ class $Money {
       };
 }
 
-/// Auxiliary metadata for a MonitoredResource object.
-///
-/// MonitoredResource objects contain the minimum set of information to uniquely
-/// identify a monitored resource instance. There is some other useful auxiliary
-/// metadata. Monitoring and Logging use an ingestion pipeline to extract
-/// metadata for cloud resources of all types, and store the metadata in this
-/// message.
 class $MonitoredResourceMetadata {
   /// Values for predefined system metadata labels.
   ///
@@ -6627,8 +6289,6 @@ class $MonitoredResourceMetadata {
       };
 }
 
-/// Configuration of a specific monitoring destination (the producer project or
-/// the consumer project).
 class $MonitoringDestination {
   /// Types of the metrics to report to this monitoring destination.
   ///
@@ -6663,7 +6323,6 @@ class $MonitoringDestination {
       };
 }
 
-/// Metadata pertaining to the folder move process.
 class $MoveFolderMetadata {
   /// The resource name of the folder or organization to move the folder to.
   core.String? destinationParent;
@@ -6700,7 +6359,6 @@ class $MoveFolderMetadata {
       };
 }
 
-/// Next ID: 15
 class $NamespacedDebugInput {
   /// Set of experiment names to be absolutely forced.
   ///
@@ -6923,10 +6581,6 @@ class $NamespacedDebugInput {
       };
 }
 
-/// A vertex represents a 2D point in the image.
-///
-/// NOTE: the normalized vertex coordinates are relative to the original image
-/// and range from 0 to 1.
 class $NormalizedVertex {
   /// X coordinate.
   core.double? x;
@@ -6955,21 +6609,6 @@ class $NormalizedVertex {
       };
 }
 
-/// OAuth scopes are a way to define data and permissions on data.
-///
-/// For example, there are scopes defined for "Read-only access to Google
-/// Calendar" and "Access to Cloud Platform". Users can consent to a scope for
-/// an application, giving it permission to access that data on their behalf.
-/// OAuth scope specifications should be fairly coarse grained; a user will need
-/// to see and understand the text description of what your scope means. In most
-/// cases: use one or at most two OAuth scopes for an entire family of products.
-/// If your product has multiple APIs, you should probably be sharing the OAuth
-/// scope across all of those APIs. When you need finer grained OAuth consent
-/// screens: talk with your product management about how developers will use
-/// them in practice. Please note that even though each of the canonical scopes
-/// is enough for a request to be accepted and passed to the backend, a request
-/// can still fail due to the backend requiring additional scopes or
-/// permissions.
 class $OAuthRequirements {
   /// The list of publicly documented OAuth scopes that are allowed access.
   ///
@@ -6994,7 +6633,6 @@ class $OAuthRequirements {
       };
 }
 
-/// Prediction for what the object in the bounding box is.
 class $ObjectAnnotation {
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
   ///
@@ -7040,7 +6678,6 @@ class $ObjectAnnotation {
       };
 }
 
-/// Object Filter.
 class $ObjectFilter {
   /// Identifies what kind of resource this is.
   ///
@@ -7089,7 +6726,6 @@ class $ObjectFilter {
       };
 }
 
-/// Offset Position.
 class $OffsetPosition {
   /// Offset distance from left side of an asset or a window.
   core.int? left;
@@ -7114,7 +6750,6 @@ class $OffsetPosition {
       };
 }
 
-/// Omniture Integration Settings.
 class $OmnitureSettings {
   /// Whether placement cost data will be sent to Omniture.
   ///
@@ -7151,7 +6786,6 @@ class $OmnitureSettings {
       };
 }
 
-/// Contains information about an operating system that can be targeted by ads.
 class $OperatingSystem {
   /// DART ID of this operating system.
   ///
@@ -7203,7 +6837,6 @@ class $OperatingSystem {
       };
 }
 
-/// The operation metadata returned for the batchend services operation.
 class $OperationMetadata {
   /// The full name of the resources that this operation is directly associated
   /// with.
@@ -7227,7 +6860,6 @@ class $OperationMetadata {
       };
 }
 
-/// Represents the metadata of the long-running operation.
 class $OperationMetadata01 {
   /// API version used to start the operation.
   ///
@@ -7313,7 +6945,6 @@ class $OperationMetadata01 {
       };
 }
 
-/// Represents the metadata of the long-running operation.
 class $OperationMetadata02 {
   /// API version used to start the operation.
   ///
@@ -7398,7 +7029,6 @@ class $OperationMetadata02 {
       };
 }
 
-/// Contains metadata for the BatchAnnotateImages operation.
 class $OperationMetadata03 {
   /// The time when the batch request was received.
   core.String? createTime;
@@ -7440,7 +7070,6 @@ class $OperationMetadata03 {
       };
 }
 
-/// Represents the metadata of a long-running operation.
 class $OperationMetadata04 {
   /// API version used to start the operation.
   ///
@@ -7525,8 +7154,45 @@ class $OperationMetadata04 {
       };
 }
 
-/// A protocol buffer option, which can be attached to a message, field,
-/// enumeration, etc.
+class $OperationProgress {
+  /// If set, the time at which this operation failed or was completed
+  /// successfully.
+  core.String? endTime;
+
+  /// Percent completion of the operation.
+  ///
+  /// Values are between 0 and 100 inclusive.
+  core.int? progressPercent;
+
+  /// Time the request was received.
+  core.String? startTime;
+
+  $OperationProgress({
+    this.endTime,
+    this.progressPercent,
+    this.startTime,
+  });
+
+  $OperationProgress.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          progressPercent: _json.containsKey('progressPercent')
+              ? _json['progressPercent'] as core.int
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (progressPercent != null) 'progressPercent': progressPercent!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
 class $Option {
   /// The option's name.
   ///
@@ -7653,7 +7319,6 @@ class $OrderAddress {
       };
 }
 
-/// Contact of an order.
 class $OrderContact {
   /// Free-form information about this contact.
   ///
@@ -7715,7 +7380,6 @@ class $OrderContact {
       };
 }
 
-/// A restriction on the OS type and version of devices making requests.
 class $OsConstraint {
   /// The minimum allowed OS version.
   ///
@@ -7771,7 +7435,6 @@ class $OsConstraint {
       };
 }
 
-/// Operating system information for the VM.
 class $OsInfo {
   /// The system architecture of the operating system.
   core.String? architecture;
@@ -7854,10 +7517,6 @@ class $OsInfo {
       };
 }
 
-/// Information about the current page.
-///
-/// List operations that supports paging return only one "page" of results. This
-/// protocol buffer message describes the page that has been returned.
 class $PageInfo {
   /// Maximum number of results returned in one page.
   ///
@@ -7897,10 +7556,34 @@ class $PageInfo {
       };
 }
 
-/// A (kind, ID/name) pair used to construct a key path.
-///
-/// If either name or ID is set, the element is complete. If neither is set, the
-/// element is incomplete.
+class $PartitionId {
+  /// If not empty, the ID of the namespace to which the entities belong.
+  core.String? namespaceId;
+
+  /// The ID of the project to which the entities belong.
+  core.String? projectId;
+
+  $PartitionId({
+    this.namespaceId,
+    this.projectId,
+  });
+
+  $PartitionId.fromJson(core.Map _json)
+      : this(
+          namespaceId: _json.containsKey('namespaceId')
+              ? _json['namespaceId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (namespaceId != null) 'namespaceId': namespaceId!,
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
+
 class $PathElement {
   /// The auto-allocated ID of the entity.
   ///
@@ -7940,7 +7623,6 @@ class $PathElement {
       };
 }
 
-/// Represents a PathReportDimensionValue resource.
 class $PathReportDimensionValue {
   /// The name of the dimension.
   core.String? dimensionName;
@@ -8006,11 +7688,6 @@ class $PathReportDimensionValue {
       };
 }
 
-/// This message defines attributes for a node that handles a network request.
-///
-/// The node can be either a service or an application that sends, forwards, or
-/// receives the request. Service peers should fill in `principal` and `labels`
-/// as appropriate.
 class $Peer {
   /// The IP address of the peer.
   core.String? ip;
@@ -8071,7 +7748,6 @@ class $Peer {
       };
 }
 
-/// Contains properties of a placement strategy.
 class $PlacementStrategy {
   /// Account ID of this placement strategy.This is a read-only field that can
   /// be left blank.
@@ -8118,7 +7794,6 @@ class $PlacementStrategy {
       };
 }
 
-/// Contains information about a platform type that can be targeted by ads.
 class $PlatformType {
   /// ID of this platform type.
   core.String? id;
@@ -8151,10 +7826,6 @@ class $PlatformType {
       };
 }
 
-/// A 3D position in the image, used primarily for Face detection landmarks.
-///
-/// A valid Position must have both x and y coordinates. The position
-/// coordinates are in the same scale as the original image.
 class $Position {
   /// X coordinate.
   core.double? x;
@@ -8191,17 +7862,6 @@ class $Position {
       };
 }
 
-/// Represents a postal address, e.g. for postal delivery or payments addresses.
-///
-/// Given a postal address, a postal service can deliver items to a premise,
-/// P.O. Box or similar. It is not intended to model geographical locations
-/// (roads, towns, mountains). In typical usage an address would be created via
-/// user input or from importing existing data, depending on the type of
-/// process. Advice on address input / editing: - Use an i18n-ready address
-/// widget such as https://github.com/google/libaddressinput) - Users should not
-/// be presented with UI elements for input or editing of fields outside
-/// countries where that field is used. For more guidance on how to use this
-/// schema, please see: https://support.google.com/business/answer/6397478
 class $PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   ///
@@ -8383,7 +8043,6 @@ class $PostalAddress {
       };
 }
 
-/// Contains information about a postal code that can be targeted by ads.
 class $PostalCode {
   /// Postal code.
   ///
@@ -8434,7 +8093,6 @@ class $PostalCode {
       };
 }
 
-/// Pricing Period
 class $PricingSchedulePricingPeriod {
   core.DateTime? endDate;
 
@@ -8492,11 +8150,6 @@ class $PricingSchedulePricingPeriod {
       };
 }
 
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by CreateProject.
-///
-/// It provides insight for when significant phases of Project creation have
-/// completed.
 class $ProjectCreationStatus {
   /// Creation time of the project creation workflow.
   core.String? createTime;
@@ -8535,7 +8188,36 @@ class $ProjectCreationStatus {
       };
 }
 
-/// A `Property` consists of a user-supplied name/value pair.
+class $ProjectRepoId {
+  /// The ID of the project.
+  core.String? projectId;
+
+  /// The name of the repo.
+  ///
+  /// Leave empty for the default repo.
+  core.String? repoName;
+
+  $ProjectRepoId({
+    this.projectId,
+    this.repoName,
+  });
+
+  $ProjectRepoId.fromJson(core.Map _json)
+      : this(
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          repoName: _json.containsKey('repoName')
+              ? _json['repoName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (repoName != null) 'repoName': repoName!,
+      };
+}
+
 class $Property {
   /// Name of the property.
   core.String? name;
@@ -8569,15 +8251,6 @@ class $Property {
       };
 }
 
-/// A message that is published by publishers and consumed by subscribers.
-///
-/// The message must contain either a non-empty data field or at least one
-/// attribute. Note that client libraries represent this object differently
-/// depending on the language. See the corresponding
-/// [client library documentation](https://cloud.google.com/pubsub/docs/reference/libraries)
-/// for more information. See
-/// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
-/// information about message limits.
 class $PubsubMessage {
   /// Attributes for this message.
   ///
@@ -8659,11 +8332,6 @@ class $PubsubMessage {
       };
 }
 
-/// `QuotaLimit` defines a specific limit that applies over a specified duration
-/// for a limit type.
-///
-/// There can be at most one limit for a duration and limit type combination
-/// defined within a `QuotaGroup`.
 class $QuotaLimit {
   /// Default number of tokens that can be consumed during the specified
   /// duration.
@@ -8806,7 +8474,6 @@ class $QuotaLimit {
       };
 }
 
-/// Represents a recipient.
 class $Recipient {
   /// The delivery type for the recipient.
   /// Possible string values are:
@@ -8843,7 +8510,6 @@ class $Recipient {
       };
 }
 
-/// Contains information about a region that can be targeted by ads.
 class $Region {
   /// Country code of the country to which this region belongs.
   core.String? countryCode;
@@ -8902,8 +8568,59 @@ class $Region {
       };
 }
 
-/// The relationship attributes which include `type`, `source_resource_type`,
-/// `target_resource_type` and `action`.
+class $RelatedAsset {
+  /// The ancestors of an asset in Google Cloud
+  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+  /// represented as a list of relative resource names.
+  ///
+  /// An ancestry path starts with the closest ancestor in the hierarchy and
+  /// ends at root. Example: `["projects/123456789", "folders/5432",
+  /// "organizations/1234"]`
+  core.List<core.String>? ancestors;
+
+  /// The full name of the asset.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
+  /// See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information.
+  core.String? asset;
+
+  /// The type of the asset.
+  ///
+  /// Example: `compute.googleapis.com/Disk` See
+  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// for more information.
+  core.String? assetType;
+
+  $RelatedAsset({
+    this.ancestors,
+    this.asset,
+    this.assetType,
+  });
+
+  $RelatedAsset.fromJson(core.Map _json)
+      : this(
+          ancestors: _json.containsKey('ancestors')
+              ? (_json['ancestors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          asset:
+              _json.containsKey('asset') ? _json['asset'] as core.String : null,
+          assetType: _json.containsKey('assetType')
+              ? _json['assetType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ancestors != null) 'ancestors': ancestors!,
+        if (asset != null) 'asset': asset!,
+        if (assetType != null) 'assetType': assetType!,
+      };
+}
+
 class $RelationshipAttributes {
   /// The detail of the relationship, e.g. `contains`, `attaches`
   core.String? action;
@@ -8954,11 +8671,6 @@ class $RelationshipAttributes {
       };
 }
 
-/// Contains properties of a remarketing list's sharing information.
-///
-/// Sharing allows other accounts or advertisers to target to your remarketing
-/// lists. This resource can be used to manage remarketing list sharing to other
-/// accounts and advertisers.
 class $RemarketingListShare {
   /// Identifies what kind of resource this is.
   ///
@@ -9010,7 +8722,6 @@ class $RemarketingListShare {
       };
 }
 
-/// The result of replacing text.
 class $ReplaceAllTextResponse {
   /// The number of occurrences changed by replacing all text.
   core.int? occurrencesChanged;
@@ -9032,10 +8743,6 @@ class $ReplaceAllTextResponse {
       };
 }
 
-/// This message defines core attributes for a resource.
-///
-/// A resource is an addressable (named) entity provided by the destination
-/// service. For example, a file stored on a network storage service.
 class $Resource {
   /// Annotations is an unstructured key-value map stored with a resource that
   /// may be set by external tools to store and retrieve arbitrary metadata.
@@ -9206,7 +8913,6 @@ class $Resource {
       };
 }
 
-/// A representation of a Google Cloud resource.
 class $Resource01 {
   /// The content of the resource, in which some sensitive fields are removed
   /// and may not be present.
@@ -9303,7 +9009,6 @@ class $Resource01 {
       };
 }
 
-/// Location information about a resource.
 class $ResourceLocation {
   /// The locations of a resource after the execution of the operation.
   ///
@@ -9344,7 +9049,28 @@ class $ResourceLocation {
       };
 }
 
-/// An RGB color.
+class $ResponseMetadata {
+  /// A unique id associated with this call.
+  ///
+  /// This id is logged for tracking purposes.
+  core.String? requestId;
+
+  $ResponseMetadata({
+    this.requestId,
+  });
+
+  $ResponseMetadata.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
 class $RgbColor {
   /// The blue component of the color, from 0.0 to 1.0.
   core.double? blue;
@@ -9381,10 +9107,6 @@ class $RgbColor {
       };
 }
 
-/// A rule associates an asset with a targeting template for asset-level
-/// targeting.
-///
-/// Applicable to INSTREAM_VIDEO creatives.
 class $Rule {
   /// A creativeAssets\[\].id.
   ///
@@ -9428,8 +9150,6 @@ class $Rule {
       };
 }
 
-/// Set of features pertaining to the image, computed by computer vision methods
-/// over safe-search verticals (for example, adult, spoof, medical, violence).
 class $SafeSearchAnnotation {
   /// Represents the adult content likelihood for the image.
   ///
@@ -9523,12 +9243,6 @@ class $SafeSearchAnnotation {
       };
 }
 
-/// User specified security marks that are attached to the parent Security
-/// Command Center resource.
-///
-/// Security marks are scoped within a Security Command Center organization --
-/// they can be modified and viewed by all users who have proper permissions on
-/// the organization.
 class $SecurityMarks {
   /// The canonical name of the marks.
   ///
@@ -9588,10 +9302,6 @@ class $SecurityMarks {
       };
 }
 
-/// Service identity for a service.
-///
-/// This is the identity that service producer should use to access consumer
-/// resources.
 class $ServiceIdentity {
   /// The email address of the service account that a service producer would use
   /// to access consumer resources.
@@ -9622,25 +9332,87 @@ class $ServiceIdentity {
       };
 }
 
-/// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
-/// to the trust anchors defined in policy (e.g. a Kritis policy).
-///
-/// Typically this means that the verifier has been configured with a map from
-/// `public_key_id` to public key material (and any required parameters, e.g.
-/// signing algorithm). In particular, verification implementations MUST NOT
-/// treat the signature `public_key_id` as anything more than a key lookup hint.
-/// The `public_key_id` DOES NOT validate or authenticate a public key; it only
-/// provides a mechanism for quickly selecting a public key ALREADY CONFIGURED
-/// on the verifier through a trusted channel. Verification implementations MUST
-/// reject signatures in any of the following circumstances: * The
-/// `public_key_id` is not recognized by the verifier. * The public key that
-/// `public_key_id` refers to does not verify the signature with respect to the
-/// payload. The `signature` contents SHOULD NOT be "attached" (where the
-/// payload is included with the serialized `signature` bytes). Verifiers MUST
-/// ignore any "attached" payload and only verify signatures with respect to
-/// explicitly provided payload (e.g. a `payload` field on the proto message
-/// that holds this Signature, or the canonical serialization of the proto
-/// message that holds this signature).
+class $SetupTag {
+  /// If true, fire the main tag if and only if the setup tag fires
+  /// successfully.
+  ///
+  /// If false, fire the main tag regardless of setup tag firing status.
+  core.bool? stopOnSetupFailure;
+
+  /// The name of the setup tag.
+  core.String? tagName;
+
+  $SetupTag({
+    this.stopOnSetupFailure,
+    this.tagName,
+  });
+
+  $SetupTag.fromJson(core.Map _json)
+      : this(
+          stopOnSetupFailure: _json.containsKey('stopOnSetupFailure')
+              ? _json['stopOnSetupFailure'] as core.bool
+              : null,
+          tagName: _json.containsKey('tagName')
+              ? _json['tagName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stopOnSetupFailure != null)
+          'stopOnSetupFailure': stopOnSetupFailure!,
+        if (tagName != null) 'tagName': tagName!,
+      };
+}
+
+class $ShieldedInstanceConfig {
+  /// Defines whether the instance has integrity monitoring enabled.
+  ///
+  /// Enables monitoring and attestation of the boot integrity of the instance.
+  /// The attestation is performed against the integrity policy baseline. This
+  /// baseline is initially derived from the implicitly trusted boot image when
+  /// the instance is created. Enabled by default.
+  core.bool? enableIntegrityMonitoring;
+
+  /// Defines whether the instance has Secure Boot enabled.
+  ///
+  /// Secure Boot helps ensure that the system only runs authentic software by
+  /// verifying the digital signature of all boot components, and halting the
+  /// boot process if signature verification fails. Disabled by default.
+  core.bool? enableSecureBoot;
+
+  /// Defines whether the instance has the vTPM enabled.
+  ///
+  /// Enabled by default.
+  core.bool? enableVtpm;
+
+  $ShieldedInstanceConfig({
+    this.enableIntegrityMonitoring,
+    this.enableSecureBoot,
+    this.enableVtpm,
+  });
+
+  $ShieldedInstanceConfig.fromJson(core.Map _json)
+      : this(
+          enableIntegrityMonitoring:
+              _json.containsKey('enableIntegrityMonitoring')
+                  ? _json['enableIntegrityMonitoring'] as core.bool
+                  : null,
+          enableSecureBoot: _json.containsKey('enableSecureBoot')
+              ? _json['enableSecureBoot'] as core.bool
+              : null,
+          enableVtpm: _json.containsKey('enableVtpm')
+              ? _json['enableVtpm'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableIntegrityMonitoring != null)
+          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
+      };
+}
+
 class $Signature {
   /// The identifier for the public key that verifies this signature.
   ///
@@ -9692,7 +9464,6 @@ class $Signature {
       };
 }
 
-/// Site Contact
 class $SiteContact {
   /// Address of this site contact.
   core.String? address;
@@ -9771,7 +9542,6 @@ class $SiteContact {
       };
 }
 
-/// Transcode Settings
 class $SiteTranscodeSetting {
   /// Allowlist of video formats to be served to this site template.
   ///
@@ -9805,7 +9575,6 @@ class $SiteTranscodeSetting {
       };
 }
 
-/// Represents the dimensions of ads, placements, creatives, or creative assets.
 class $Size {
   /// Height of this size.
   ///
@@ -9859,7 +9628,6 @@ class $Size {
       };
 }
 
-/// Represents a sorted dimension.
 class $SortedDimension {
   /// The kind of resource this is, in this case dfareporting#sortedDimension.
   core.String? kind;
@@ -9895,8 +9663,6 @@ class $SortedDimension {
       };
 }
 
-/// `SourceContext` represents information about the source of a protobuf
-/// element, like the file in which it is defined.
 class $SourceContext {
   /// The path-qualified name of the .proto file that contained the associated
   /// protobuf element.
@@ -9920,7 +9686,6 @@ class $SourceContext {
       };
 }
 
-/// Source information used to create a Service Config
 class $SourceInfo {
   /// All files used during config generation.
   ///
@@ -9946,11 +9711,6 @@ class $SourceInfo {
       };
 }
 
-/// The context of a span.
-///
-/// This is attached to an Exemplar in Distribution values during aggregation.
-/// It contains the name of a span with format:
-/// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
 class $SpanContext {
   /// The resource name of the span.
   ///
@@ -10006,13 +9766,6 @@ class $StartPageToken {
       };
 }
 
-/// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs.
-///
-/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
-/// contains three pieces of data: error code, error message, and error details.
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int? code;
@@ -10057,58 +9810,6 @@ class $Status {
       };
 }
 
-/// The Status type defines a logical error model that is suitable for different
-/// programming environments, including REST APIs and RPC APIs.
-///
-/// It is used by gRPC (https://github.com/grpc). Each Status message contains
-/// three pieces of data: error code, error message, and error details.You can
-/// find out more about this error model and how to work with it in the API
-/// Design Guide (https://cloud.google.com/apis/design/errors).
-class $Status01 {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  $Status01({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  $Status01.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
-
-/// Contains properties of a Campaign Manager subaccount.
 class $Subaccount {
   /// ID of the account that contains this subaccount.
   ///
@@ -10167,10 +9868,6 @@ class $Subaccount {
       };
 }
 
-/// Define a parameter's name and location.
-///
-/// The parameter may be passed as either an HTTP header or a URL query
-/// parameter, and if both are passed the behavior is implementation-dependent.
 class $SystemParameter {
   /// Define the HTTP header name to use for the parameter.
   ///
@@ -10211,7 +9908,6 @@ class $SystemParameter {
       };
 }
 
-/// Placement Tag Data
 class $TagData {
   /// Ad associated with this placement tag.
   ///
@@ -10286,7 +9982,6 @@ class $TagData {
       };
 }
 
-/// Tag Settings
 class $TagSetting {
   /// Additional key-values to be included in tags.
   ///
@@ -10348,7 +10043,6 @@ class $TagSetting {
       };
 }
 
-/// Dynamic and Image Tag Settings.
 class $TagSettings {
   /// Whether dynamic floodlight tags are enabled.
   core.bool? dynamicTagEnabled;
@@ -10377,7 +10071,6 @@ class $TagSettings {
       };
 }
 
-/// Target Window.
 class $TargetWindow {
   /// User-entered value.
   core.String? customHtml;
@@ -10412,7 +10105,38 @@ class $TargetWindow {
       };
 }
 
-/// Request message for `TestIamPermissions` method.
+class $TeardownTag {
+  /// If true, fire the teardown tag if and only if the main tag fires
+  /// successfully.
+  ///
+  /// If false, fire the teardown tag regardless of main tag firing status.
+  core.bool? stopTeardownOnFailure;
+
+  /// The name of the teardown tag.
+  core.String? tagName;
+
+  $TeardownTag({
+    this.stopTeardownOnFailure,
+    this.tagName,
+  });
+
+  $TeardownTag.fromJson(core.Map _json)
+      : this(
+          stopTeardownOnFailure: _json.containsKey('stopTeardownOnFailure')
+              ? _json['stopTeardownOnFailure'] as core.bool
+              : null,
+          tagName: _json.containsKey('tagName')
+              ? _json['tagName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stopTeardownOnFailure != null)
+          'stopTeardownOnFailure': stopTeardownOnFailure!,
+        if (tagName != null) 'tagName': tagName!,
+      };
+}
+
 class $TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
@@ -10426,30 +10150,6 @@ class $TestIamPermissionsRequest {
   });
 
   $TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-/// Response message for `TestIamPermissions` method.
-class $TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  $TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  $TestIamPermissionsResponse.fromJson(core.Map _json)
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
@@ -10487,30 +10187,6 @@ class $TestPermissionsRequest {
       };
 }
 
-class $TestPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  $TestPermissionsResponse({
-    this.permissions,
-  });
-
-  $TestPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-/// Third Party Authentication Token
 class $ThirdPartyAuthenticationToken {
   /// Name of the third-party authentication token.
   core.String? name;
@@ -10538,7 +10214,6 @@ class $ThirdPartyAuthenticationToken {
       };
 }
 
-/// Third party identity principal.
 class $ThirdPartyPrincipal {
   /// Metadata about third party identity.
   ///
@@ -10562,7 +10237,6 @@ class $ThirdPartyPrincipal {
       };
 }
 
-/// Third-party Tracking URL.
 class $ThirdPartyTrackingUrl {
   /// Third-party URL type for in-stream video and in-stream audio creatives.
   /// Possible string values are:
@@ -10609,11 +10283,6 @@ class $ThirdPartyTrackingUrl {
       };
 }
 
-/// Represents a time of day.
-///
-/// The date and time zone are either not significant or are specified
-/// elsewhere. An API may choose to allow leap seconds. Related types are
-/// google.type.Date and `google.protobuf.Timestamp`.
 class $TimeOfDay {
   /// Hours of day in 24 hour format.
   ///
@@ -10664,8 +10333,6 @@ class $TimeOfDay {
       };
 }
 
-/// Represents a time zone from the
-/// [IANA Time Zone Database](https://www.iana.org/time-zones).
 class $TimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   core.String? id;
@@ -10694,16 +10361,6 @@ class $TimeZone {
       };
 }
 
-/// Pagination information returned by a List operation when token pagination is
-/// enabled.
-///
-/// List operations that supports paging return only one "page" of results. This
-/// protocol buffer message describes the page that has been returned. When
-/// using token pagination, clients should use the next/previous token to get
-/// another page of the result. The presence or absence of next/previous token
-/// indicates whether a next/previous page is available and provides a mean of
-/// accessing this page. ListRequest.page_token should be set to either
-/// next_page_token or previous_page_token to access another page.
 class $TokenPagination {
   /// Tokens to pass to the standard list field 'page_token'.
   ///
@@ -10732,7 +10389,6 @@ class $TokenPagination {
       };
 }
 
-/// Transcode Settings
 class $TranscodeSetting {
   /// Allowlist of video formats to be served to this placement.
   ///
@@ -10766,7 +10422,6 @@ class $TranscodeSetting {
       };
 }
 
-/// Represents a string that might be shortened to a specified length.
 class $TruncatableString {
   /// The number of bytes removed from the original string.
   ///
@@ -10803,10 +10458,6 @@ class $TruncatableString {
       };
 }
 
-/// A Universal Ad ID as per the VAST 4.0 spec.
-///
-/// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
-/// and VPAID.
 class $UniversalAdId {
   /// Registry used for the Ad ID value.
   /// Possible string values are:
@@ -10842,19 +10493,6 @@ class $UniversalAdId {
       };
 }
 
-/// Usage configuration rules for the service.
-///
-/// NOTE: Under development. Use this rule to configure unregistered calls for
-/// the service. Unregistered calls are calls that do not contain consumer
-/// project identity. (Example: calls that do not contain an API key). By
-/// default, API methods do not allow unregistered calls, and each method call
-/// must be identified by a consumer project identity. Use this rule to
-/// allow/disallow unregistered calls. Example of an API that wants to allow
-/// unregistered calls for entire service. usage: rules: - selector: "*"
-/// allow_unregistered_calls: true Example of a method that wants to allow
-/// unregistered calls. usage: rules: - selector:
-/// "google.example.library.v1.LibraryService.CreateBook"
-/// allow_unregistered_calls: true
 class $UsageRule {
   /// If true, the selected method allows unregistered calls, e.g. calls that
   /// don't identify any user or application.
@@ -10901,7 +10539,6 @@ class $UsageRule {
       };
 }
 
-/// User Defined Variable configuration.
 class $UserDefinedVariableConfiguration {
   /// Data type for the variable.
   ///
@@ -11049,10 +10686,6 @@ class $UserDefinedVariableConfiguration {
       };
 }
 
-/// A UserProfile resource lets you list all DFA user profiles that are
-/// associated with a Google user account.
-///
-/// The profile_id needs to be specified in other API requests.
 class $UserProfile {
   /// The account ID to which this profile belongs.
   core.String? accountId;
@@ -11127,7 +10760,6 @@ class $UserProfile {
       };
 }
 
-/// Contains properties of a user role permission.
 class $UserRolePermission {
   /// Levels of availability for a user role permission.
   /// Possible string values are:
@@ -11183,7 +10815,6 @@ class $UserRolePermission {
       };
 }
 
-/// Represents a grouping of related user role permissions.
 class $UserRolePermissionGroup {
   /// ID of this user role permission.
   core.String? id;
@@ -11216,10 +10847,6 @@ class $UserRolePermissionGroup {
       };
 }
 
-/// Information related to the a standard versioned package.
-///
-/// This includes package info for APT, Yum, Zypper, and Googet package
-/// managers.
 class $VersionedPackage {
   /// The system architecture this package is intended for.
   core.String? architecture;
@@ -11256,9 +10883,6 @@ class $VersionedPackage {
       };
 }
 
-/// A vertex represents a 2D point in the image.
-///
-/// NOTE: the vertex coordinates are in the same scale as the original image.
 class $Vertex {
   /// X coordinate.
   core.int? x;
@@ -11283,7 +10907,6 @@ class $Vertex {
       };
 }
 
-/// Video Offset
 class $VideoOffset {
   /// Duration, as a percentage of video duration.
   ///
@@ -11318,7 +10941,6 @@ class $VideoOffset {
       };
 }
 
-/// Specifies how APIs are allowed to communicate within the Service Perimeter.
 class $VpcAccessibleServices {
   /// The list of APIs usable within the Service Perimeter.
   ///
@@ -11355,7 +10977,30 @@ class $VpcAccessibleServices {
       };
 }
 
-/// Entity deduced from similar images on the Internet.
+class $WebAppIcon {
+  /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
+  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
+  ///
+  /// - The image type can be png or jpg. - The image should ideally be square.
+  /// - The image should ideally have a size of 512x512.
+  core.String? imageData;
+
+  $WebAppIcon({
+    this.imageData,
+  });
+
+  $WebAppIcon.fromJson(core.Map _json)
+      : this(
+          imageData: _json.containsKey('imageData')
+              ? _json['imageData'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageData != null) 'imageData': imageData!,
+      };
+}
+
 class $WebEntity {
   /// Canonical description of the entity, in English.
   core.String? description;
@@ -11394,7 +11039,6 @@ class $WebEntity {
       };
 }
 
-/// Metadata for online images.
 class $WebImage {
   /// (Deprecated) Overall relevancy score for the image.
   core.double? score;
@@ -11421,7 +11065,6 @@ class $WebImage {
       };
 }
 
-/// Label to provide extra metadata for the web detection.
 class $WebLabel {
   /// Label for extra metadata.
   core.String? label;
@@ -11452,11 +11095,6 @@ class $WebLabel {
       };
 }
 
-/// Information related to a Quick Fix Engineering package.
-///
-/// Fields are taken from Windows QuickFixEngineering Interface and match the
-/// source names:
-/// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
 class $WindowsQuickFixEngineeringPackage {
   /// A short textual description of the QFE update.
   core.String? caption;
@@ -11503,7 +11141,6 @@ class $WindowsQuickFixEngineeringPackage {
       };
 }
 
-/// Categories specified by the Windows Update.
 class $WindowsUpdateCategory {
   /// The identifier of the windows update category.
   core.String? id;
@@ -11528,7 +11165,6 @@ class $WindowsUpdateCategory {
       };
 }
 
-/// Details related to a Zypper Patch.
 class $ZypperPatch {
   /// The category of the patch.
   core.String? category;

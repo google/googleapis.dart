@@ -2001,7 +2001,28 @@ typedef Status = $Status;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+class TestIamPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String>? permissions;
+
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
+
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 /// Specification of a port-based selector.
 class TrafficPortSelector {

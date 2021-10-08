@@ -10,8 +10,11 @@ final _libraryZoneKey = Object();
 
 final _expando = Expando<String>();
 
-String _schemaUniqueId(JsonSchema schema) =>
-    convert.jsonEncode(schema.toJson()..remove('id'));
+String _schemaUniqueId(JsonSchema schema) => convert.jsonEncode(
+      schema.toJson()
+        ..remove('id')
+        ..remove('description'),
+    );
 
 bool generatedDuplicateLibraries() {
   final zoneValue = Zone.current[_libraryZoneKey] as _LibraryZoneData?;
@@ -47,7 +50,10 @@ extension ObjectTypeExtention on ObjectType {
 
     if (duplicateItem != _DuplicateItem._empty) {
       final initialCovertCallCount = imports.convert.callCount;
-      final initialDefinition = classDefinitionCore(duplicateItem.className);
+      final initialDefinition = classDefinitionCore(
+        duplicateItem.className,
+        includeDescription: false,
+      );
 
       final convertUsed = imports.convert.callCount > initialCovertCallCount;
       if (convertUsed) {

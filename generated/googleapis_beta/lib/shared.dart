@@ -15,7 +15,6 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
-/// An alias to a repo revision.
 class $AliasContext {
   /// The alias kind.
   /// Possible string values are:
@@ -46,7 +45,6 @@ class $AliasContext {
       };
 }
 
-/// Artifact describes a build product.
 class $Artifact {
   /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
   /// container.
@@ -91,12 +89,6 @@ class $Artifact {
       };
 }
 
-/// Provides the configuration for logging a type of permissions.
-///
-/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
-/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
-/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
-/// exempting jose@example.com from DATA_READ logging.
 class $AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -135,7 +127,6 @@ class $AuditLogConfig {
       };
 }
 
-/// Command describes a step performed as part of the build pipeline.
 class $Command {
   /// Command-line arguments used when executing this command.
   core.List<core.String>? args;
@@ -201,15 +192,6 @@ class $Command {
       };
 }
 
-/// Represents a whole or partial calendar date, such as a birthday.
-///
-/// The time of day and time zone are either specified elsewhere or are
-/// insignificant. The date is relative to the Gregorian Calendar. This can
-/// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class $Date {
   /// Day of a month.
   ///
@@ -258,24 +240,6 @@ class $Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax.
-///
-/// CEL is a C-like expression language. The syntax and semantics of CEL are
-/// documented at https://github.com/google/cel-spec. Example (Comparison):
-/// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100" Example
-/// (Equality): title: "Requestor is owner" description: "Determines if
-/// requestor is the document owner" expression: "document.owner ==
-/// request.auth.claims.email" Example (Logic): title: "Public documents"
-/// description: "Determine whether the document should be publicly visible"
-/// expression: "document.type != 'private' && document.type != 'internal'"
-/// Example (Data Manipulation): title: "Notification string" description:
-/// "Create a notification string with a timestamp." expression: "'New message
-/// received at ' + string(document.create_time)" The exact variables and
-/// functions that may be referenced within an expression are determined by the
-/// service that evaluates it. See the service documentation for additional
-/// information.
 class $Expr {
   /// Description of the expression.
   ///
@@ -332,7 +296,6 @@ class $Expr {
       };
 }
 
-/// A set of properties that uniquely identify a given Docker image.
 class $Fingerprint {
   /// The layer ID of the final layer in the Docker image's v1 representation.
   ///
@@ -379,7 +342,6 @@ class $Fingerprint {
       };
 }
 
-/// Encapsulates settings provided to GetIamPolicy.
 class $GetPolicyOptions {
   /// The policy format version to be returned.
   ///
@@ -410,8 +372,6 @@ class $GetPolicyOptions {
       };
 }
 
-/// A GitSourceContext denotes a particular revision in a third party Git
-/// repository (e.g., GitHub).
 class $GitSourceContext {
   /// Git commit hash.
   core.String? revisionId;
@@ -438,7 +398,6 @@ class $GitSourceContext {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
 class $Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -507,7 +466,6 @@ class $Location {
       };
 }
 
-/// Represents an amount of money with its currency type.
 class $Money {
   /// The three-letter currency code defined in ISO 4217.
   core.String? currencyCode;
@@ -549,7 +507,6 @@ class $Money {
       };
 }
 
-/// Represents the metadata of the long-running operation.
 class $OperationMetadata {
   /// API version used to start the operation.
   ///
@@ -635,17 +592,6 @@ class $OperationMetadata {
       };
 }
 
-/// Represents a postal address, e.g. for postal delivery or payments addresses.
-///
-/// Given a postal address, a postal service can deliver items to a premise,
-/// P.O. Box or similar. It is not intended to model geographical locations
-/// (roads, towns, mountains). In typical usage an address would be created via
-/// user input or from importing existing data, depending on the type of
-/// process. Advice on address input / editing: - Use an i18n-ready address
-/// widget such as https://github.com/google/libaddressinput) - Users should not
-/// be presented with UI elements for input or editing of fields outside
-/// countries where that field is used. For more guidance on how to use this
-/// schema, please see: https://support.google.com/business/answer/6397478
 class $PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   ///
@@ -827,8 +773,6 @@ class $PostalAddress {
       };
 }
 
-/// Selects a repo using a Google Cloud Platform project ID (e.g.,
-/// winged-cargo-31) and a repo name within that project.
 class $ProjectRepoId {
   /// The ID of the project.
   core.String? projectId;
@@ -859,7 +803,6 @@ class $ProjectRepoId {
       };
 }
 
-/// Metadata for any related URL information.
 class $RelatedUrl {
   /// Label to describe usage of the URL.
   core.String? label;
@@ -885,7 +828,6 @@ class $RelatedUrl {
       };
 }
 
-/// Associates `members` with a `role`.
 class $SasPortalAssignment {
   /// The identities the role is assigned to.
   ///
@@ -921,7 +863,6 @@ class $SasPortalAssignment {
       };
 }
 
-/// Request for CreateSignedDevice.
 class $SasPortalCreateSignedDeviceRequest {
   /// JSON Web Token signed using a CPI private key.
   ///
@@ -965,7 +906,6 @@ class $SasPortalCreateSignedDeviceRequest {
       };
 }
 
-/// Entity representing a SAS customer.
 class $SasPortalCustomer {
   /// Name of the organization that the customer entity represents.
   ///
@@ -1006,7 +946,6 @@ class $SasPortalCustomer {
       };
 }
 
-/// The Deployment.
 class $SasPortalDeployment {
   /// The allowed billing modes under this deployment.
   core.List<core.String>? allowedBillingModes;
@@ -1084,7 +1023,6 @@ class $SasPortalDeployment {
       };
 }
 
-/// Information about the device's air interface.
 class $SasPortalDeviceAirInterface {
   /// Conditional.
   ///
@@ -1130,7 +1068,6 @@ class $SasPortalDeviceAirInterface {
       };
 }
 
-/// Device data overridable by both SAS Portal and registration requests.
 class $SasPortalDeviceMetadata {
   /// If populated, the Antenna Model Pattern to use.
   ///
@@ -1178,7 +1115,6 @@ class $SasPortalDeviceMetadata {
       };
 }
 
-/// Information about the model of the device.
 class $SasPortalDeviceModel {
   /// The firmware version of the device.
   core.String? firmwareVersion;
@@ -1229,7 +1165,6 @@ class $SasPortalDeviceModel {
       };
 }
 
-/// Frequency range from `low_frequency` to `high_frequency`.
 class $SasPortalFrequencyRange {
   /// The highest frequency of the frequency range in MHz.
   core.double? highFrequencyMhz;
@@ -1258,7 +1193,6 @@ class $SasPortalFrequencyRange {
       };
 }
 
-/// Response for GenerateSecret.
 class $SasPortalGenerateSecretResponse {
   /// The secret generated by the string and used by ValidateInstaller.
   core.String? secret;
@@ -1279,7 +1213,6 @@ class $SasPortalGenerateSecretResponse {
       };
 }
 
-/// Request message for `GetPolicy` method.
 class $SasPortalGetPolicyRequest {
   /// The resource for which the policy is being requested.
   ///
@@ -1302,7 +1235,6 @@ class $SasPortalGetPolicyRequest {
       };
 }
 
-/// Information about the device installation parameters.
 class $SasPortalInstallationParams {
   /// Boresight direction of the horizontal plane of the antenna in degrees with
   /// respect to true north.
@@ -1483,7 +1415,6 @@ class $SasPortalInstallationParams {
       };
 }
 
-/// Request for MoveDeployment.
 class $SasPortalMoveDeploymentRequest {
   /// The name of the new parent resource node or customer to reparent the
   /// deployment under.
@@ -1507,7 +1438,6 @@ class $SasPortalMoveDeploymentRequest {
       };
 }
 
-/// Request for MoveDevice.
 class $SasPortalMoveDeviceRequest {
   /// The name of the new parent resource node or customer to reparent the
   /// device under.
@@ -1531,7 +1461,6 @@ class $SasPortalMoveDeviceRequest {
       };
 }
 
-/// Request for MoveNode.
 class $SasPortalMoveNodeRequest {
   /// The name of the new parent resource node or customer to reparent the node
   /// under.
@@ -1555,7 +1484,6 @@ class $SasPortalMoveNodeRequest {
       };
 }
 
-/// The Node.
 class $SasPortalNode {
   /// The node's display name.
   core.String? displayName;
@@ -1594,7 +1522,6 @@ class $SasPortalNode {
       };
 }
 
-/// Request message for `TestPermissions` method.
 class $SasPortalTestPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   core.List<core.String>? permissions;
@@ -1627,7 +1554,6 @@ class $SasPortalTestPermissionsRequest {
       };
 }
 
-/// Response message for `TestPermissions` method.
 class $SasPortalTestPermissionsResponse {
   /// A set of permissions that the caller is allowed.
   core.List<core.String>? permissions;
@@ -1650,7 +1576,6 @@ class $SasPortalTestPermissionsResponse {
       };
 }
 
-/// Request for UpdateSignedDevice.
 class $SasPortalUpdateSignedDeviceRequest {
   /// The JSON Web Token signed using a CPI private key.
   ///
@@ -1694,7 +1619,6 @@ class $SasPortalUpdateSignedDeviceRequest {
       };
 }
 
-/// Request for ValidateInstaller.
 class $SasPortalValidateInstallerRequest {
   /// JSON Web Token signed using a CPI private key.
   ///
@@ -1740,25 +1664,6 @@ class $SasPortalValidateInstallerRequest {
       };
 }
 
-/// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
-/// to the trust anchors defined in policy (e.g. a Kritis policy).
-///
-/// Typically this means that the verifier has been configured with a map from
-/// `public_key_id` to public key material (and any required parameters, e.g.
-/// signing algorithm). In particular, verification implementations MUST NOT
-/// treat the signature `public_key_id` as anything more than a key lookup hint.
-/// The `public_key_id` DOES NOT validate or authenticate a public key; it only
-/// provides a mechanism for quickly selecting a public key ALREADY CONFIGURED
-/// on the verifier through a trusted channel. Verification implementations MUST
-/// reject signatures in any of the following circumstances: * The
-/// `public_key_id` is not recognized by the verifier. * The public key that
-/// `public_key_id` refers to does not verify the signature with respect to the
-/// payload. The `signature` contents SHOULD NOT be "attached" (where the
-/// payload is included with the serialized `signature` bytes). Verifiers MUST
-/// ignore any "attached" payload and only verify signatures with respect to
-/// explicitly provided payload (e.g. a `payload` field on the proto message
-/// that holds this Signature, or the canonical serialization of the proto
-/// message that holds this signature).
 class $Signature {
   /// The identifier for the public key that verifies this signature.
   ///
@@ -1810,13 +1715,6 @@ class $Signature {
       };
 }
 
-/// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs.
-///
-/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
-/// contains three pieces of data: error code, error message, and error details.
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int? code;
@@ -1861,7 +1759,6 @@ class $Status {
       };
 }
 
-/// Request message for `TestIamPermissions` method.
 class $TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
@@ -1888,7 +1785,6 @@ class $TestIamPermissionsRequest {
       };
 }
 
-/// Response message for `TestIamPermissions` method.
 class $TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.

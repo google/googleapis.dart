@@ -45,6 +45,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -6338,37 +6339,7 @@ class RevertZoneResponse {
 
 /// Represents a reference to atag that fires before another tag in order to set
 /// up dependencies.
-class SetupTag {
-  /// If true, fire the main tag if and only if the setup tag fires
-  /// successfully.
-  ///
-  /// If false, fire the main tag regardless of setup tag firing status.
-  core.bool? stopOnSetupFailure;
-
-  /// The name of the setup tag.
-  core.String? tagName;
-
-  SetupTag({
-    this.stopOnSetupFailure,
-    this.tagName,
-  });
-
-  SetupTag.fromJson(core.Map _json)
-      : this(
-          stopOnSetupFailure: _json.containsKey('stopOnSetupFailure')
-              ? _json['stopOnSetupFailure'] as core.bool
-              : null,
-          tagName: _json.containsKey('tagName')
-              ? _json['tagName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (stopOnSetupFailure != null)
-          'stopOnSetupFailure': stopOnSetupFailure!,
-        if (tagName != null) 'tagName': tagName!,
-      };
-}
+typedef SetupTag = $SetupTag;
 
 /// The status of a workspace after synchronization.
 class SyncStatus {
@@ -6796,37 +6767,7 @@ class TagConsentSetting {
 
 /// Represents a tag that fires after another tag in order to tear down
 /// dependencies.
-class TeardownTag {
-  /// If true, fire the teardown tag if and only if the main tag fires
-  /// successfully.
-  ///
-  /// If false, fire the teardown tag regardless of main tag firing status.
-  core.bool? stopTeardownOnFailure;
-
-  /// The name of the teardown tag.
-  core.String? tagName;
-
-  TeardownTag({
-    this.stopTeardownOnFailure,
-    this.tagName,
-  });
-
-  TeardownTag.fromJson(core.Map _json)
-      : this(
-          stopTeardownOnFailure: _json.containsKey('stopTeardownOnFailure')
-              ? _json['stopTeardownOnFailure'] as core.bool
-              : null,
-          tagName: _json.containsKey('tagName')
-              ? _json['tagName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (stopTeardownOnFailure != null)
-          'stopTeardownOnFailure': stopTeardownOnFailure!,
-        if (tagName != null) 'tagName': tagName!,
-      };
-}
+typedef TeardownTag = $TeardownTag;
 
 /// Represents a Google Tag Manager Trigger
 class Trigger {

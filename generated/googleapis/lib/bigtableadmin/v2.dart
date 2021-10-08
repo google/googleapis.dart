@@ -4154,44 +4154,7 @@ class Operation {
 
 /// Encapsulates progress related information for a Cloud Bigtable long running
 /// operation.
-class OperationProgress {
-  /// If set, the time at which this operation failed or was completed
-  /// successfully.
-  core.String? endTime;
-
-  /// Percent completion of the operation.
-  ///
-  /// Values are between 0 and 100 inclusive.
-  core.int? progressPercent;
-
-  /// Time the request was received.
-  core.String? startTime;
-
-  OperationProgress({
-    this.endTime,
-    this.progressPercent,
-    this.startTime,
-  });
-
-  OperationProgress.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          progressPercent: _json.containsKey('progressPercent')
-              ? _json['progressPercent'] as core.int
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (progressPercent != null) 'progressPercent': progressPercent!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef OperationProgress = $OperationProgress;
 
 /// Metadata type for the long-running operation used to track the progress of
 /// optimizations performed on a newly restored table.
@@ -4772,7 +4735,28 @@ class TableProgress {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+class TestIamPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String>? permissions;
+
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
+
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 /// A GcRule which deletes cells matching any of the given rules.
 class Union {

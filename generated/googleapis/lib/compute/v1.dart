@@ -62253,86 +62253,8 @@ typedef InstanceGroupManagersAbandonInstancesRequest
     = $InstanceGroupManagersAbandonInstancesRequest;
 
 /// InstanceGroupManagers.applyUpdatesToInstances
-class InstanceGroupManagersApplyUpdatesRequest {
-  /// Flag to update all instances instead of specified list of “instances”.
-  ///
-  /// If the flag is set to true then the instances may not be specified in the
-  /// request.
-  core.bool? allInstances;
-
-  /// The list of URLs of one or more instances for which you want to apply
-  /// updates.
-  ///
-  /// Each URL can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  /// The minimal action that you want to perform on each instance during the
-  /// update: - REPLACE: At minimum, delete the instance and create it again.
-  ///
-  /// - RESTART: Stop the instance and start it again. - REFRESH: Do not stop
-  /// the instance. - NONE: Do not disrupt the instance at all. By default, the
-  /// minimum action is NONE. If your update requires a more disruptive action
-  /// than you set with this flag, the necessary action is performed to execute
-  /// the update.
-  /// Possible string values are:
-  /// - "NONE" : Do not perform any action.
-  /// - "REFRESH" : Updates applied in runtime, instances will not be disrupted.
-  /// - "REPLACE" : Old instances will be deleted. New instances will be created
-  /// from the target template.
-  /// - "RESTART" : Every instance will be restarted.
-  core.String? minimalAction;
-
-  /// The most disruptive action that you want to perform on each instance
-  /// during the update: - REPLACE: Delete the instance and create it again.
-  ///
-  /// - RESTART: Stop the instance and start it again. - REFRESH: Do not stop
-  /// the instance. - NONE: Do not disrupt the instance at all. By default, the
-  /// most disruptive allowed action is REPLACE. If your update requires a more
-  /// disruptive action than you set with this flag, the update request will
-  /// fail.
-  /// Possible string values are:
-  /// - "NONE" : Do not perform any action.
-  /// - "REFRESH" : Updates applied in runtime, instances will not be disrupted.
-  /// - "REPLACE" : Old instances will be deleted. New instances will be created
-  /// from the target template.
-  /// - "RESTART" : Every instance will be restarted.
-  core.String? mostDisruptiveAllowedAction;
-
-  InstanceGroupManagersApplyUpdatesRequest({
-    this.allInstances,
-    this.instances,
-    this.minimalAction,
-    this.mostDisruptiveAllowedAction,
-  });
-
-  InstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map _json)
-      : this(
-          allInstances: _json.containsKey('allInstances')
-              ? _json['allInstances'] as core.bool
-              : null,
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          minimalAction: _json.containsKey('minimalAction')
-              ? _json['minimalAction'] as core.String
-              : null,
-          mostDisruptiveAllowedAction:
-              _json.containsKey('mostDisruptiveAllowedAction')
-                  ? _json['mostDisruptiveAllowedAction'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allInstances != null) 'allInstances': allInstances!,
-        if (instances != null) 'instances': instances!,
-        if (minimalAction != null) 'minimalAction': minimalAction!,
-        if (mostDisruptiveAllowedAction != null)
-          'mostDisruptiveAllowedAction': mostDisruptiveAllowedAction!,
-      };
-}
+typedef InstanceGroupManagersApplyUpdatesRequest
+    = $InstanceGroupManagersApplyUpdatesRequest;
 
 /// InstanceGroupManagers.createInstances
 class InstanceGroupManagersCreateInstancesRequest {
@@ -81457,86 +81379,8 @@ typedef RegionInstanceGroupManagersAbandonInstancesRequest
     = $InstanceGroupManagersAbandonInstancesRequest;
 
 /// RegionInstanceGroupManagers.applyUpdatesToInstances
-class RegionInstanceGroupManagersApplyUpdatesRequest {
-  /// Flag to update all instances instead of specified list of “instances”.
-  ///
-  /// If the flag is set to true then the instances may not be specified in the
-  /// request.
-  core.bool? allInstances;
-
-  /// The list of URLs of one or more instances for which you want to apply
-  /// updates.
-  ///
-  /// Each URL can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  /// The minimal action that you want to perform on each instance during the
-  /// update: - REPLACE: At minimum, delete the instance and create it again.
-  ///
-  /// - RESTART: Stop the instance and start it again. - REFRESH: Do not stop
-  /// the instance. - NONE: Do not disrupt the instance at all. By default, the
-  /// minimum action is NONE. If your update requires a more disruptive action
-  /// than you set with this flag, the necessary action is performed to execute
-  /// the update.
-  /// Possible string values are:
-  /// - "NONE" : Do not perform any action.
-  /// - "REFRESH" : Updates applied in runtime, instances will not be disrupted.
-  /// - "REPLACE" : Old instances will be deleted. New instances will be created
-  /// from the target template.
-  /// - "RESTART" : Every instance will be restarted.
-  core.String? minimalAction;
-
-  /// The most disruptive action that you want to perform on each instance
-  /// during the update: - REPLACE: Delete the instance and create it again.
-  ///
-  /// - RESTART: Stop the instance and start it again. - REFRESH: Do not stop
-  /// the instance. - NONE: Do not disrupt the instance at all. By default, the
-  /// most disruptive allowed action is REPLACE. If your update requires a more
-  /// disruptive action than you set with this flag, the update request will
-  /// fail.
-  /// Possible string values are:
-  /// - "NONE" : Do not perform any action.
-  /// - "REFRESH" : Updates applied in runtime, instances will not be disrupted.
-  /// - "REPLACE" : Old instances will be deleted. New instances will be created
-  /// from the target template.
-  /// - "RESTART" : Every instance will be restarted.
-  core.String? mostDisruptiveAllowedAction;
-
-  RegionInstanceGroupManagersApplyUpdatesRequest({
-    this.allInstances,
-    this.instances,
-    this.minimalAction,
-    this.mostDisruptiveAllowedAction,
-  });
-
-  RegionInstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map _json)
-      : this(
-          allInstances: _json.containsKey('allInstances')
-              ? _json['allInstances'] as core.bool
-              : null,
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          minimalAction: _json.containsKey('minimalAction')
-              ? _json['minimalAction'] as core.String
-              : null,
-          mostDisruptiveAllowedAction:
-              _json.containsKey('mostDisruptiveAllowedAction')
-                  ? _json['mostDisruptiveAllowedAction'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allInstances != null) 'allInstances': allInstances!,
-        if (instances != null) 'instances': instances!,
-        if (minimalAction != null) 'minimalAction': minimalAction!,
-        if (mostDisruptiveAllowedAction != null)
-          'mostDisruptiveAllowedAction': mostDisruptiveAllowedAction!,
-      };
-}
+typedef RegionInstanceGroupManagersApplyUpdatesRequest
+    = $InstanceGroupManagersApplyUpdatesRequest;
 
 /// RegionInstanceGroupManagers.createInstances
 class RegionInstanceGroupManagersCreateInstancesRequest {
@@ -98431,7 +98275,29 @@ class TestFailure {
 }
 
 typedef TestPermissionsRequest = $TestPermissionsRequest;
-typedef TestPermissionsResponse = $TestPermissionsResponse;
+
+class TestPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String>? permissions;
+
+  TestPermissionsResponse({
+    this.permissions,
+  });
+
+  TestPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 class Uint128 {
   core.String? high;
@@ -99017,30 +98883,7 @@ class UrlMapTest {
 }
 
 /// HTTP headers used in UrlMapTests.
-class UrlMapTestHeader {
-  /// Header name.
-  core.String? name;
-
-  /// Header value.
-  core.String? value;
-
-  UrlMapTestHeader({
-    this.name,
-    this.value,
-  });
-
-  UrlMapTestHeader.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef UrlMapTestHeader = $Header;
 
 /// Message representing the validation result for a UrlMap.
 class UrlMapValidationResult {

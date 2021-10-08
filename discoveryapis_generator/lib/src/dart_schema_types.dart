@@ -74,10 +74,13 @@ class ObjectType extends ComplexDartSchemaType {
       return typeDef;
     }
 
-    return classDefinitionCore(className.toString());
+    return classDefinitionCore(className.toString(), includeDescription: true);
   }
 
-  String classDefinitionCore(String className) {
+  String classDefinitionCore(
+    String className, {
+    required bool includeDescription,
+  }) {
     var superClassString = '';
     if (superVariantType != null) {
       superClassString = ' extends ${superVariantType!.declaration} ';
@@ -157,8 +160,10 @@ class ObjectType extends ComplexDartSchemaType {
       positionalConstructorParams = '{$positionalConstructorParams}';
     }
 
+    final description = includeDescription ? comment.asDartDoc(0) : '';
+
     return '''
-${comment.asDartDoc(0)}class $className $superClassString{
+${description}class $className $superClassString{
 $propertyString
   $className($positionalConstructorParams);
 

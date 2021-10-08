@@ -7529,29 +7529,7 @@ class WebApp {
 }
 
 /// Icon for a web app.
-class WebAppIcon {
-  /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
-  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
-  ///
-  /// - The image type can be png or jpg. - The image should ideally be square.
-  /// - The image should ideally have a size of 512x512.
-  core.String? imageData;
-
-  WebAppIcon({
-    this.imageData,
-  });
-
-  WebAppIcon.fromJson(core.Map _json)
-      : this(
-          imageData: _json.containsKey('imageData')
-              ? _json['imageData'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (imageData != null) 'imageData': imageData!,
-      };
-}
+typedef WebAppIcon = $WebAppIcon;
 
 class WebAppsListResponse {
   /// The manifest describing a web app.

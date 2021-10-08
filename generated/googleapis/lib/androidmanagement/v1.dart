@@ -2643,42 +2643,7 @@ class CrossProfilePolicies {
 /// year on its own, with zero month and day values A year and month value, with
 /// a zero day, such as a credit card expiration dateRelated types are
 /// google.type.TimeOfDay and google.protobuf.Timestamp.
-class Date {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  Date({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  Date.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef Date = $Date;
 
 /// A device owned by an enterprise.
 ///
@@ -6881,7 +6846,7 @@ class SoftwareInfo {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-typedef Status = $Status01;
+typedef Status = $Status;
 
 /// Settings controlling the behavior of status reports.
 class StatusReportingSettings {
@@ -7344,29 +7309,7 @@ class WebApp {
 /// An icon for a web app.
 ///
 /// Supported formats are: png, jpg and webp.
-class WebAppIcon {
-  /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
-  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
-  ///
-  /// - The image type can be png or jpg. - The image should ideally be square.
-  /// - The image should ideally have a size of 512x512.
-  core.String? imageData;
-
-  WebAppIcon({
-    this.imageData,
-  });
-
-  WebAppIcon.fromJson(core.Map _json)
-      : this(
-          imageData: _json.containsKey('imageData')
-              ? _json['imageData'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (imageData != null) 'imageData': imageData!,
-      };
-}
+typedef WebAppIcon = $WebAppIcon;
 
 /// A web token used to access the managed Google Play iframe.
 class WebToken {

@@ -2815,58 +2815,7 @@ class GoogleCloudAssetV1p7beta1Asset {
 /// policy). See
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
-class GoogleCloudAssetV1p7beta1RelatedAsset {
-  /// The ancestors of an asset in Google Cloud
-  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
-  /// represented as a list of relative resource names.
-  ///
-  /// An ancestry path starts with the closest ancestor in the hierarchy and
-  /// ends at root. Example: `["projects/123456789", "folders/5432",
-  /// "organizations/1234"]`
-  core.List<core.String>? ancestors;
-
-  /// The full name of the asset.
-  ///
-  /// Example:
-  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
-  /// See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more information.
-  core.String? asset;
-
-  /// The type of the asset.
-  ///
-  /// Example: `compute.googleapis.com/Disk` See
-  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
-  /// for more information.
-  core.String? assetType;
-
-  GoogleCloudAssetV1p7beta1RelatedAsset({
-    this.ancestors,
-    this.asset,
-    this.assetType,
-  });
-
-  GoogleCloudAssetV1p7beta1RelatedAsset.fromJson(core.Map _json)
-      : this(
-          ancestors: _json.containsKey('ancestors')
-              ? (_json['ancestors'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          asset:
-              _json.containsKey('asset') ? _json['asset'] as core.String : null,
-          assetType: _json.containsKey('assetType')
-              ? _json['assetType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ancestors != null) 'ancestors': ancestors!,
-        if (asset != null) 'asset': asset!,
-        if (assetType != null) 'assetType': assetType!,
-      };
-}
+typedef GoogleCloudAssetV1p7beta1RelatedAsset = $RelatedAsset;
 
 /// The detailed related assets with the `relationship_type`.
 class GoogleCloudAssetV1p7beta1RelatedAssets {
@@ -5184,58 +5133,7 @@ class PubsubDestination {
 /// policy). See
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
-class RelatedAsset {
-  /// The ancestors of an asset in Google Cloud
-  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
-  /// represented as a list of relative resource names.
-  ///
-  /// An ancestry path starts with the closest ancestor in the hierarchy and
-  /// ends at root. Example: `["projects/123456789", "folders/5432",
-  /// "organizations/1234"]`
-  core.List<core.String>? ancestors;
-
-  /// The full name of the asset.
-  ///
-  /// Example:
-  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
-  /// See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more information.
-  core.String? asset;
-
-  /// The type of the asset.
-  ///
-  /// Example: `compute.googleapis.com/Disk` See
-  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
-  /// for more information.
-  core.String? assetType;
-
-  RelatedAsset({
-    this.ancestors,
-    this.asset,
-    this.assetType,
-  });
-
-  RelatedAsset.fromJson(core.Map _json)
-      : this(
-          ancestors: _json.containsKey('ancestors')
-              ? (_json['ancestors'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          asset:
-              _json.containsKey('asset') ? _json['asset'] as core.String : null,
-          assetType: _json.containsKey('assetType')
-              ? _json['assetType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ancestors != null) 'ancestors': ancestors!,
-        if (asset != null) 'asset': asset!,
-        if (assetType != null) 'assetType': assetType!,
-      };
-}
+typedef RelatedAsset = $RelatedAsset;
 
 /// The detailed related assets with the `relationship_type`.
 class RelatedAssets {

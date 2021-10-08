@@ -4047,27 +4047,7 @@ class RequestMetadata {
 }
 
 /// Additional information returned to client, such as debugging information.
-class ResponseMetadata {
-  /// A unique id associated with this call.
-  ///
-  /// This id is logged for tracking purposes.
-  core.String? requestId;
-
-  ResponseMetadata({
-    this.requestId,
-  });
-
-  ResponseMetadata.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef ResponseMetadata = $ResponseMetadata;
 
 /// The Request body of the `SearchJobs` call.
 class SearchJobsRequest {

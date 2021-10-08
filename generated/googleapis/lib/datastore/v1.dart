@@ -2474,23 +2474,7 @@ class Key {
 }
 
 /// A representation of a kind.
-class KindExpression {
-  /// The name of the kind.
-  core.String? name;
-
-  KindExpression({
-    this.name,
-  });
-
-  KindExpression.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef KindExpression = $KindExpression;
 
 /// An object that represents a latitude/longitude pair.
 ///
@@ -2719,33 +2703,7 @@ class MutationResult {
 /// certain documented contexts. Foreign partition IDs (in which the project ID
 /// does not match the context project ID ) are discouraged. Reads and writes of
 /// foreign partition IDs may fail if the project is not in an active state.
-class PartitionId {
-  /// If not empty, the ID of the namespace to which the entities belong.
-  core.String? namespaceId;
-
-  /// The ID of the project to which the entities belong.
-  core.String? projectId;
-
-  PartitionId({
-    this.namespaceId,
-    this.projectId,
-  });
-
-  PartitionId.fromJson(core.Map _json)
-      : this(
-          namespaceId: _json.containsKey('namespaceId')
-              ? _json['namespaceId'] as core.String
-              : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (namespaceId != null) 'namespaceId': namespaceId!,
-        if (projectId != null) 'projectId': projectId!,
-      };
-}
+typedef PartitionId = $PartitionId;
 
 /// A (kind, ID/name) pair used to construct a key path.
 ///

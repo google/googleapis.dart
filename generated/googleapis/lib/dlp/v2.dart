@@ -10917,23 +10917,7 @@ class GooglePrivacyDlpV2Key {
 }
 
 /// A representation of a Datastore kind.
-class GooglePrivacyDlpV2KindExpression {
-  /// The name of the kind.
-  core.String? name;
-
-  GooglePrivacyDlpV2KindExpression({
-    this.name,
-  });
-
-  GooglePrivacyDlpV2KindExpression.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef GooglePrivacyDlpV2KindExpression = $KindExpression;
 
 /// Include to use an existing data crypto key wrapped by KMS.
 ///
@@ -11718,33 +11702,7 @@ class GooglePrivacyDlpV2OutputStorageConfig {
 /// A partition ID identifies a grouping of entities. The grouping is always by
 /// project and namespace, however the namespace ID may be empty. A partition ID
 /// contains several dimensions: project ID and namespace ID.
-class GooglePrivacyDlpV2PartitionId {
-  /// If not empty, the ID of the namespace to which the entities belong.
-  core.String? namespaceId;
-
-  /// The ID of the project to which the entities belong.
-  core.String? projectId;
-
-  GooglePrivacyDlpV2PartitionId({
-    this.namespaceId,
-    this.projectId,
-  });
-
-  GooglePrivacyDlpV2PartitionId.fromJson(core.Map _json)
-      : this(
-          namespaceId: _json.containsKey('namespaceId')
-              ? _json['namespaceId'] as core.String
-              : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (namespaceId != null) 'namespaceId': namespaceId!,
-        if (projectId != null) 'projectId': projectId!,
-      };
-}
+typedef GooglePrivacyDlpV2PartitionId = $PartitionId;
 
 /// A (kind, ID/name) pair used to construct a key path.
 ///
