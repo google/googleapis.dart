@@ -222,7 +222,7 @@ String _bestName(Set<String> allKeys) {
   }
 
   final indices = _upperIndices(shortestKey);
-  var subShortest = shortestKey;
+  var subShortest = 'Shared';
   for (var index in indices.reversed) {
     String lastNChars(String value) => value.substring(
         value.length - (shortestKey.length - index), value.length);

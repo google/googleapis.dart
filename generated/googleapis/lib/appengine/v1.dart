@@ -2870,15 +2870,15 @@ class CpuUtilization {
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1.CreateVersionRequest.
-typedef CreateVersionMetadataV1 = $CreateVersionMetadataV1;
+typedef CreateVersionMetadataV1 = $Shared;
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1alpha.CreateVersionRequest.
-typedef CreateVersionMetadataV1Alpha = $CreateVersionMetadataV1;
+typedef CreateVersionMetadataV1Alpha = $Shared;
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1beta.CreateVersionRequest.
-typedef CreateVersionMetadataV1Beta = $CreateVersionMetadataV1;
+typedef CreateVersionMetadataV1Beta = $Shared;
 
 /// Request message for Instances.DebugInstance.
 class DebugInstanceRequest {

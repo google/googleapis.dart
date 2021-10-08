@@ -6832,12 +6832,10 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
-typedef GoogleCloudDocumentaiV1beta1GcsDestination
-    = $GoogleCloudDocumentaiV1beta2GcsSource;
+typedef GoogleCloudDocumentaiV1beta1GcsDestination = $Shared05;
 
 /// The Google Cloud Storage location where the input file will be read from.
-typedef GoogleCloudDocumentaiV1beta1GcsSource
-    = $GoogleCloudDocumentaiV1beta2GcsSource;
+typedef GoogleCloudDocumentaiV1beta1GcsSource = $Shared05;
 
 /// The desired input location and metadata.
 class GoogleCloudDocumentaiV1beta1InputConfig {
@@ -8694,12 +8692,10 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
-typedef GoogleCloudDocumentaiV1beta2GcsDestination
-    = $GoogleCloudDocumentaiV1beta2GcsSource;
+typedef GoogleCloudDocumentaiV1beta2GcsDestination = $Shared05;
 
 /// The Google Cloud Storage location where the input file will be read from.
-typedef GoogleCloudDocumentaiV1beta2GcsSource
-    = $GoogleCloudDocumentaiV1beta2GcsSource;
+typedef GoogleCloudDocumentaiV1beta2GcsSource = $Shared05;
 
 /// The desired input location and metadata.
 class GoogleCloudDocumentaiV1beta2InputConfig {

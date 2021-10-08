@@ -80,52 +80,6 @@ class $AliasContext {
       };
 }
 
-class $AnalyzePackagesMetadata {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  $AnalyzePackagesMetadata({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  $AnalyzePackagesMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
-
-class $AnalyzePackagesResponse {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  $AnalyzePackagesResponse({
-    this.scan,
-  });
-
-  $AnalyzePackagesResponse.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
-
 class $Artifact {
   /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
   /// container.
@@ -205,31 +159,6 @@ class $AuditLogConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
-      };
-}
-
-class $ByProducts {
-  core.Map<core.String, core.String>? customValues;
-
-  $ByProducts({
-    this.customValues,
-  });
-
-  $ByProducts.fromJson(core.Map _json)
-      : this(
-          customValues: _json.containsKey('customValues')
-              ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customValues != null) 'customValues': customValues!,
       };
 }
 
@@ -448,86 +377,6 @@ class $Date {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
-      };
-}
-
-class $Deployment {
-  /// Address of the runtime element hosting this deployment.
-  core.String? address;
-
-  /// Configuration used to create this deployment.
-  core.String? config;
-
-  /// Beginning of the lifetime of this deployment.
-  ///
-  /// Required.
-  core.String? deployTime;
-
-  /// Platform hosting this deployment.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Unknown.
-  /// - "GKE" : Google Container Engine.
-  /// - "FLEX" : Google App Engine: Flexible Environment.
-  /// - "CUSTOM" : Custom user-defined platform.
-  core.String? platform;
-
-  /// Resource URI for the artifact being deployed taken from the deployable
-  /// field with the same name.
-  ///
-  /// Output only.
-  core.List<core.String>? resourceUri;
-
-  /// End of the lifetime of this deployment.
-  core.String? undeployTime;
-
-  /// Identity of the user that triggered this deployment.
-  core.String? userEmail;
-
-  $Deployment({
-    this.address,
-    this.config,
-    this.deployTime,
-    this.platform,
-    this.resourceUri,
-    this.undeployTime,
-    this.userEmail,
-  });
-
-  $Deployment.fromJson(core.Map _json)
-      : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
-              : null,
-          config: _json.containsKey('config')
-              ? _json['config'] as core.String
-              : null,
-          deployTime: _json.containsKey('deployTime')
-              ? _json['deployTime'] as core.String
-              : null,
-          platform: _json.containsKey('platform')
-              ? _json['platform'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? (_json['resourceUri'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          undeployTime: _json.containsKey('undeployTime')
-              ? _json['undeployTime'] as core.String
-              : null,
-          userEmail: _json.containsKey('userEmail')
-              ? _json['userEmail'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (config != null) 'config': config!,
-        if (deployTime != null) 'deployTime': deployTime!,
-        if (platform != null) 'platform': platform!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (undeployTime != null) 'undeployTime': undeployTime!,
-        if (userEmail != null) 'userEmail': userEmail!,
       };
 }
 
@@ -1199,23 +1048,6 @@ class $GitSourceContext {
       };
 }
 
-class $GoogleCloudDocumentaiV1beta2GcsSource {
-  core.String? uri;
-
-  $GoogleCloudDocumentaiV1beta2GcsSource({
-    this.uri,
-  });
-
-  $GoogleCloudDocumentaiV1beta2GcsSource.fromJson(core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
-}
-
 class $HumanAnnotationConfig {
   /// A human-readable description for AnnotatedDataset.
   ///
@@ -1665,61 +1497,6 @@ class $NormalizedVertex {
   core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
-      };
-}
-
-class $OSPolicyInventoryFilter {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  $OSPolicyInventoryFilter({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  $OSPolicyInventoryFilter.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
-
-class $OSPolicyResourcePackageResourceYUM {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  $OSPolicyResourcePackageResourceYUM({
-    this.name,
-  });
-
-  $OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
       };
 }
 
@@ -2990,6 +2767,229 @@ class $SasPortalValidateInstallerRequest {
         if (encodedSecret != null) 'encodedSecret': encodedSecret!,
         if (installerId != null) 'installerId': installerId!,
         if (secret != null) 'secret': secret!,
+      };
+}
+
+class $Shared {
+  core.String? uri;
+
+  $Shared({
+    this.uri,
+  });
+
+  $Shared.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+class $Shared01 {
+  core.Map<core.String, core.String>? customValues;
+
+  $Shared01({
+    this.customValues,
+  });
+
+  $Shared01.fromJson(core.Map _json)
+      : this(
+          customValues: _json.containsKey('customValues')
+              ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customValues != null) 'customValues': customValues!,
+      };
+}
+
+class $Shared02 {
+  /// Address of the runtime element hosting this deployment.
+  core.String? address;
+
+  /// Configuration used to create this deployment.
+  core.String? config;
+
+  /// Beginning of the lifetime of this deployment.
+  ///
+  /// Required.
+  core.String? deployTime;
+
+  /// Platform hosting this deployment.
+  /// Possible string values are:
+  /// - "PLATFORM_UNSPECIFIED" : Unknown.
+  /// - "GKE" : Google Container Engine.
+  /// - "FLEX" : Google App Engine: Flexible Environment.
+  /// - "CUSTOM" : Custom user-defined platform.
+  core.String? platform;
+
+  /// Resource URI for the artifact being deployed taken from the deployable
+  /// field with the same name.
+  ///
+  /// Output only.
+  core.List<core.String>? resourceUri;
+
+  /// End of the lifetime of this deployment.
+  core.String? undeployTime;
+
+  /// Identity of the user that triggered this deployment.
+  core.String? userEmail;
+
+  $Shared02({
+    this.address,
+    this.config,
+    this.deployTime,
+    this.platform,
+    this.resourceUri,
+    this.undeployTime,
+    this.userEmail,
+  });
+
+  $Shared02.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? _json['address'] as core.String
+              : null,
+          config: _json.containsKey('config')
+              ? _json['config'] as core.String
+              : null,
+          deployTime: _json.containsKey('deployTime')
+              ? _json['deployTime'] as core.String
+              : null,
+          platform: _json.containsKey('platform')
+              ? _json['platform'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? (_json['resourceUri'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          undeployTime: _json.containsKey('undeployTime')
+              ? _json['undeployTime'] as core.String
+              : null,
+          userEmail: _json.containsKey('userEmail')
+              ? _json['userEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (config != null) 'config': config!,
+        if (deployTime != null) 'deployTime': deployTime!,
+        if (platform != null) 'platform': platform!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (undeployTime != null) 'undeployTime': undeployTime!,
+        if (userEmail != null) 'userEmail': userEmail!,
+      };
+}
+
+class $Shared03 {
+  /// The OS short name
+  ///
+  /// Required.
+  core.String? osShortName;
+
+  /// The OS version Prefix matches are supported if asterisk(*) is provided as
+  /// the last character.
+  ///
+  /// For example, to match all versions with a major version of `7`, specify
+  /// the following value for this field `7.*` An empty string matches all OS
+  /// versions.
+  core.String? osVersion;
+
+  $Shared03({
+    this.osShortName,
+    this.osVersion,
+  });
+
+  $Shared03.fromJson(core.Map _json)
+      : this(
+          osShortName: _json.containsKey('osShortName')
+              ? _json['osShortName'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osShortName != null) 'osShortName': osShortName!,
+        if (osVersion != null) 'osVersion': osVersion!,
+      };
+}
+
+class $Shared04 {
+  /// Package name.
+  ///
+  /// Required.
+  core.String? name;
+
+  $Shared04({
+    this.name,
+  });
+
+  $Shared04.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+class $Shared05 {
+  /// When the scan was created.
+  core.String? createTime;
+
+  /// The resource URI of the container image being scanned.
+  core.String? resourceUri;
+
+  $Shared05({
+    this.createTime,
+    this.resourceUri,
+  });
+
+  $Shared05.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? _json['resourceUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+      };
+}
+
+class $Shared06 {
+  /// The name of the scan resource created by this successful scan.
+  core.String? scan;
+
+  $Shared06({
+    this.scan,
+  });
+
+  $Shared06.fromJson(core.Map _json)
+      : this(
+          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scan != null) 'scan': scan!,
       };
 }
 

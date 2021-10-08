@@ -13116,7 +13116,7 @@ typedef GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
 
 /// Represents the result of sentiment analysis.
 typedef GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
-    = $GoogleCloudDialogflowV2Sentiment;
+    = $Shared11;
 
 /// The response message for a webhook call.
 class GoogleCloudDialogflowCxV3WebhookResponse {
@@ -15692,7 +15692,7 @@ typedef GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterVal
 
 /// Represents the result of sentiment analysis.
 typedef GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
-    = $GoogleCloudDialogflowV2Sentiment;
+    = $Shared11;
 
 /// The response message for a webhook call.
 class GoogleCloudDialogflowCxV3beta1WebhookResponse {
@@ -21911,7 +21911,7 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
-typedef GoogleCloudDialogflowV2Sentiment = $GoogleCloudDialogflowV2Sentiment;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared11;
 
 /// Configures the types of sentiment analysis to perform.
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
@@ -25645,8 +25645,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
-typedef GoogleCloudDialogflowV2beta1Sentiment
-    = $GoogleCloudDialogflowV2Sentiment;
+typedef GoogleCloudDialogflowV2beta1Sentiment = $Shared11;
 
 /// The result of sentiment analysis.
 ///

@@ -2898,7 +2898,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $OSPolicyInventoryFilter;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared07;
 
 /// Message representing label set.
 ///
@@ -3363,7 +3363,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $OSPolicyInventoryFilter;
+typedef OSPolicyInventoryFilter = $Shared07;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -3905,8 +3905,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT
-    = $OSPolicyResourcePackageResourceYUM;
+typedef OSPolicyResourcePackageResourceAPT = $Shared08;
 
 /// A deb package file.
 ///
@@ -3949,8 +3948,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet
-    = $OSPolicyResourcePackageResourceYUM;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared08;
 
 /// An MSI package.
 ///
@@ -4031,14 +4029,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM
-    = $OSPolicyResourcePackageResourceYUM;
+typedef OSPolicyResourcePackageResourceYUM = $Shared08;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper
-    = $OSPolicyResourcePackageResourceYUM;
+typedef OSPolicyResourcePackageResourceZypper = $Shared08;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {

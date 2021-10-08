@@ -459,11 +459,11 @@ class AliasContext {
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-typedef AnalyzePackagesMetadata = $AnalyzePackagesMetadata;
+typedef AnalyzePackagesMetadata = $Shared01;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-typedef AnalyzePackagesMetadataV1 = $AnalyzePackagesMetadata;
+typedef AnalyzePackagesMetadataV1 = $Shared01;
 
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
@@ -510,11 +510,11 @@ class AnalyzePackagesRequestV1 {
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-typedef AnalyzePackagesResponse = $AnalyzePackagesResponse;
+typedef AnalyzePackagesResponse = $Shared02;
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-typedef AnalyzePackagesResponseV1 = $AnalyzePackagesResponse;
+typedef AnalyzePackagesResponseV1 = $Shared02;
 
 /// Artifact describes a build product.
 class Artifact {
@@ -822,7 +822,7 @@ class BuildProvenance {
       };
 }
 
-typedef BuilderConfig = $AbuseType;
+typedef BuilderConfig = $Shared03;
 
 /// The category to which the update belongs.
 class Category {

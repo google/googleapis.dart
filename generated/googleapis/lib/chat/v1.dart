@@ -3154,7 +3154,7 @@ class GoogleAppsCardV1SelectionItem {
 /// A suggestion item.
 ///
 /// Only supports text for now.
-typedef GoogleAppsCardV1SuggestionItem = $TextParagraph;
+typedef GoogleAppsCardV1SuggestionItem = $Shared09;
 
 /// A container wrapping elements necessary for showing suggestion items used in
 /// text input autocomplete.
@@ -4347,7 +4347,7 @@ class TextButton {
 /// A paragraph of text.
 ///
 /// Formatted text supported.
-typedef TextParagraph = $TextParagraph;
+typedef TextParagraph = $Shared09;
 
 /// A thread in Google Chat.
 class Thread {

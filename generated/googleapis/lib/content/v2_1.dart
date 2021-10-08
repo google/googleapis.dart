@@ -20742,10 +20742,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Price;
+typedef Price = $Shared10;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Price;
+typedef PriceAmount = $Shared10;
 
 /// Required product attributes are primarily defined by the products data
 /// specification.

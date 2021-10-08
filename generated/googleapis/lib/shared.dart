@@ -15,23 +15,6 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
-class $AbuseType {
-  core.String? id;
-
-  $AbuseType({
-    this.id,
-  });
-
-  $AbuseType.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
-}
-
 class $AccessPolicy {
   /// An opaque identifier for the current version of the `AccessPolicy`.
   ///
@@ -406,52 +389,6 @@ class $AdvertiserGroup {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-      };
-}
-
-class $AnalyzePackagesMetadata {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  $AnalyzePackagesMetadata({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  $AnalyzePackagesMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
-
-class $AnalyzePackagesResponse {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  $AnalyzePackagesResponse({
-    this.scan,
-  });
-
-  $AnalyzePackagesResponse.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
       };
 }
 
@@ -2166,28 +2103,6 @@ class $CreateProjectMetadata {
         if (createTime != null) 'createTime': createTime!,
         if (gettable != null) 'gettable': gettable!,
         if (ready != null) 'ready': ready!,
-      };
-}
-
-class $CreateVersionMetadataV1 {
-  /// The Cloud Build ID if one was created as part of the version create.
-  ///
-  /// @OutputOnly
-  core.String? cloudBuildId;
-
-  $CreateVersionMetadataV1({
-    this.cloudBuildId,
-  });
-
-  $CreateVersionMetadataV1.fromJson(core.Map _json)
-      : this(
-          cloudBuildId: _json.containsKey('cloudBuildId')
-              ? _json['cloudBuildId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
       };
 }
 
@@ -5492,37 +5407,6 @@ class $GoogleCloudDialogflowV2KnowledgeOperationMetadata {
       };
 }
 
-class $GoogleCloudDialogflowV2Sentiment {
-  /// A non-negative number in the \[0, +inf) range, which represents the
-  /// absolute magnitude of sentiment, regardless of score (positive or
-  /// negative).
-  core.double? magnitude;
-
-  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
-  /// sentiment).
-  core.double? score;
-
-  $GoogleCloudDialogflowV2Sentiment({
-    this.magnitude,
-    this.score,
-  });
-
-  $GoogleCloudDialogflowV2Sentiment.fromJson(core.Map _json)
-      : this(
-          magnitude: _json.containsKey('magnitude')
-              ? (_json['magnitude'] as core.num).toDouble()
-              : null,
-          score: _json.containsKey('score')
-              ? (_json['score'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
-      };
-}
-
 class $GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
   /// The
   /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
@@ -6076,23 +5960,6 @@ class $GoogleCloudDialogflowV2beta1SmartReplyAnswer {
         if (answerRecord != null) 'answerRecord': answerRecord!,
         if (confidence != null) 'confidence': confidence!,
         if (reply != null) 'reply': reply!,
-      };
-}
-
-class $GoogleCloudDocumentaiV1beta2GcsSource {
-  core.String? uri;
-
-  $GoogleCloudDocumentaiV1beta2GcsSource({
-    this.uri,
-  });
-
-  $GoogleCloudDocumentaiV1beta2GcsSource.fromJson(core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -7911,24 +7778,6 @@ class $Language {
       };
 }
 
-class $LanguageTag {
-  core.String? value;
-
-  $LanguageTag({
-    this.value,
-  });
-
-  $LanguageTag.fromJson(core.Map _json)
-      : this(
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
-
 class $LastModifiedInfo {
   /// Timestamp of the last change in milliseconds since epoch.
   core.String? time;
@@ -9583,61 +9432,6 @@ class $OAuthRequirements {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalScopes != null) 'canonicalScopes': canonicalScopes!,
-      };
-}
-
-class $OSPolicyInventoryFilter {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  $OSPolicyInventoryFilter({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  $OSPolicyInventoryFilter.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
-
-class $OSPolicyResourcePackageResourceYUM {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  $OSPolicyResourcePackageResourceYUM({
-    this.name,
-  });
-
-  $OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
       };
 }
 
@@ -11454,33 +11248,6 @@ class $PostalCode {
         if (countryDartId != null) 'countryDartId': countryDartId!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-      };
-}
-
-class $Price {
-  /// The currency of the price.
-  core.String? currency;
-
-  /// The price represented as a number.
-  core.String? value;
-
-  $Price({
-    this.currency,
-    this.value,
-  });
-
-  $Price.fromJson(core.Map _json)
-      : this(
-          currency: _json.containsKey('currency')
-              ? _json['currency'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currency != null) 'currency': currency!,
-        if (value != null) 'value': value!,
       };
 }
 
@@ -13514,35 +13281,6 @@ class $SecurityMarks {
       };
 }
 
-class $ServiceAccount {
-  /// Email address of the service account.
-  core.String? email;
-
-  /// The list of scopes to be made available for this service account.
-  core.List<core.String>? scopes;
-
-  $ServiceAccount({
-    this.email,
-    this.scopes,
-  });
-
-  $ServiceAccount.fromJson(core.Map _json)
-      : this(
-          email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          scopes: _json.containsKey('scopes')
-              ? (_json['scopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (scopes != null) 'scopes': scopes!,
-      };
-}
-
 class $ServiceIdentity {
   /// The email address of the service account that a service producer would use
   /// to access consumer resources.
@@ -13691,6 +13429,285 @@ class $SetupTag {
         if (stopOnSetupFailure != null)
           'stopOnSetupFailure': stopOnSetupFailure!,
         if (tagName != null) 'tagName': tagName!,
+      };
+}
+
+class $Shared {
+  /// The Cloud Build ID if one was created as part of the version create.
+  ///
+  /// @OutputOnly
+  core.String? cloudBuildId;
+
+  $Shared({
+    this.cloudBuildId,
+  });
+
+  $Shared.fromJson(core.Map _json)
+      : this(
+          cloudBuildId: _json.containsKey('cloudBuildId')
+              ? _json['cloudBuildId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
+      };
+}
+
+class $Shared01 {
+  /// When the scan was created.
+  core.String? createTime;
+
+  /// The resource URI of the container image being scanned.
+  core.String? resourceUri;
+
+  $Shared01({
+    this.createTime,
+    this.resourceUri,
+  });
+
+  $Shared01.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? _json['resourceUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+      };
+}
+
+class $Shared02 {
+  /// The name of the scan resource created by this successful scan.
+  core.String? scan;
+
+  $Shared02({
+    this.scan,
+  });
+
+  $Shared02.fromJson(core.Map _json)
+      : this(
+          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scan != null) 'scan': scan!,
+      };
+}
+
+class $Shared03 {
+  core.String? id;
+
+  $Shared03({
+    this.id,
+  });
+
+  $Shared03.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
+class $Shared04 {
+  /// Email address of the service account.
+  core.String? email;
+
+  /// The list of scopes to be made available for this service account.
+  core.List<core.String>? scopes;
+
+  $Shared04({
+    this.email,
+    this.scopes,
+  });
+
+  $Shared04.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+        if (scopes != null) 'scopes': scopes!,
+      };
+}
+
+class $Shared05 {
+  core.String? uri;
+
+  $Shared05({
+    this.uri,
+  });
+
+  $Shared05.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+class $Shared06 {
+  core.String? value;
+
+  $Shared06({
+    this.value,
+  });
+
+  $Shared06.fromJson(core.Map _json)
+      : this(
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+class $Shared07 {
+  /// The OS short name
+  ///
+  /// Required.
+  core.String? osShortName;
+
+  /// The OS version Prefix matches are supported if asterisk(*) is provided as
+  /// the last character.
+  ///
+  /// For example, to match all versions with a major version of `7`, specify
+  /// the following value for this field `7.*` An empty string matches all OS
+  /// versions.
+  core.String? osVersion;
+
+  $Shared07({
+    this.osShortName,
+    this.osVersion,
+  });
+
+  $Shared07.fromJson(core.Map _json)
+      : this(
+          osShortName: _json.containsKey('osShortName')
+              ? _json['osShortName'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osShortName != null) 'osShortName': osShortName!,
+        if (osVersion != null) 'osVersion': osVersion!,
+      };
+}
+
+class $Shared08 {
+  /// Package name.
+  ///
+  /// Required.
+  core.String? name;
+
+  $Shared08({
+    this.name,
+  });
+
+  $Shared08.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+class $Shared09 {
+  core.String? text;
+
+  $Shared09({
+    this.text,
+  });
+
+  $Shared09.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
+
+class $Shared10 {
+  /// The currency of the price.
+  core.String? currency;
+
+  /// The price represented as a number.
+  core.String? value;
+
+  $Shared10({
+    this.currency,
+    this.value,
+  });
+
+  $Shared10.fromJson(core.Map _json)
+      : this(
+          currency: _json.containsKey('currency')
+              ? _json['currency'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currency != null) 'currency': currency!,
+        if (value != null) 'value': value!,
+      };
+}
+
+class $Shared11 {
+  /// A non-negative number in the \[0, +inf) range, which represents the
+  /// absolute magnitude of sentiment, regardless of score (positive or
+  /// negative).
+  core.double? magnitude;
+
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
+  core.double? score;
+
+  $Shared11({
+    this.magnitude,
+    this.score,
+  });
+
+  $Shared11.fromJson(core.Map _json)
+      : this(
+          magnitude: _json.containsKey('magnitude')
+              ? (_json['magnitude'] as core.num).toDouble()
+              : null,
+          score: _json.containsKey('score')
+              ? (_json['score'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude!,
+        if (score != null) 'score': score!,
       };
 }
 
@@ -14614,23 +14631,6 @@ class $TextInput {
   });
 
   $TextInput.fromJson(core.Map _json)
-      : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
-}
-
-class $TextParagraph {
-  core.String? text;
-
-  $TextParagraph({
-    this.text,
-  });
-
-  $TextParagraph.fromJson(core.Map _json)
       : this(
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
         );

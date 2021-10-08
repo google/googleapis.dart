@@ -2626,7 +2626,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $OSPolicyInventoryFilter;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared03;
 
 /// Message representing label set.
 ///
@@ -3091,7 +3091,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $OSPolicyInventoryFilter;
+typedef OSPolicyInventoryFilter = $Shared03;
 
 /// Filtering criteria to select VMs based on OS details.
 class OSPolicyOSFilter {
@@ -3827,8 +3827,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT
-    = $OSPolicyResourcePackageResourceYUM;
+typedef OSPolicyResourcePackageResourceAPT = $Shared04;
 
 /// A deb package file.
 ///
@@ -3871,8 +3870,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet
-    = $OSPolicyResourcePackageResourceYUM;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared04;
 
 /// An MSI package.
 ///
@@ -3953,14 +3951,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM
-    = $OSPolicyResourcePackageResourceYUM;
+typedef OSPolicyResourcePackageResourceYUM = $Shared04;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper
-    = $OSPolicyResourcePackageResourceYUM;
+typedef OSPolicyResourcePackageResourceZypper = $Shared04;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {

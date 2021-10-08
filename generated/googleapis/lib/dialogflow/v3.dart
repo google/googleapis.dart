@@ -11040,8 +11040,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult
-    = $GoogleCloudDialogflowV2Sentiment;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared11;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,
@@ -12577,7 +12576,7 @@ typedef GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
 
 /// Represents the result of sentiment analysis.
 typedef GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
-    = $GoogleCloudDialogflowV2Sentiment;
+    = $Shared11;
 
 /// The response message for a webhook call.
 class GoogleCloudDialogflowCxV3WebhookResponse {
@@ -15192,7 +15191,7 @@ typedef GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterVal
 
 /// Represents the result of sentiment analysis.
 typedef GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
-    = $GoogleCloudDialogflowV2Sentiment;
+    = $Shared11;
 
 /// The response message for a webhook call.
 class GoogleCloudDialogflowCxV3beta1WebhookResponse {
@@ -17376,7 +17375,7 @@ class GoogleCloudDialogflowV2QueryResult {
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
-typedef GoogleCloudDialogflowV2Sentiment = $GoogleCloudDialogflowV2Sentiment;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared11;
 
 /// The result of sentiment analysis.
 ///
@@ -20467,8 +20466,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
-typedef GoogleCloudDialogflowV2beta1Sentiment
-    = $GoogleCloudDialogflowV2Sentiment;
+typedef GoogleCloudDialogflowV2beta1Sentiment = $Shared11;
 
 /// The result of sentiment analysis.
 ///
