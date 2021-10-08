@@ -27,6 +27,8 @@
 ///     - [ProjectsLocationsInstanceOSPoliciesCompliancesResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///       - [ProjectsLocationsInstancesInventoriesResource]
+///       - [ProjectsLocationsInstancesOsPolicyAssignmentsResource]
+///         - [ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource]
 ///       - [ProjectsLocationsInstancesVulnerabilityReportsResource]
 ///     - [ProjectsLocationsOsPolicyAssignmentsResource]
 ///       - [ProjectsLocationsOsPolicyAssignmentsOperationsResource]
@@ -200,6 +202,9 @@ class ProjectsLocationsInstancesResource {
 
   ProjectsLocationsInstancesInventoriesResource get inventories =>
       ProjectsLocationsInstancesInventoriesResource(_requester);
+  ProjectsLocationsInstancesOsPolicyAssignmentsResource
+      get osPolicyAssignments =>
+          ProjectsLocationsInstancesOsPolicyAssignmentsResource(_requester);
   ProjectsLocationsInstancesVulnerabilityReportsResource
       get vulnerabilityReports =>
           ProjectsLocationsInstancesVulnerabilityReportsResource(_requester);
@@ -329,6 +334,138 @@ class ProjectsLocationsInstancesInventoriesResource {
       queryParams: _queryParams,
     );
     return ListInventoriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInstancesOsPolicyAssignmentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource get reports =>
+      ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource(_requester);
+
+  ProjectsLocationsInstancesOsPolicyAssignmentsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the OS policy asssignment report for the specified Compute Engine VM
+  /// instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. API resource name for OS policy assignment report.
+  /// Format:
+  /// `/projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/report`
+  /// For `{project}`, either `project-number` or `project-id` can be provided.
+  /// For `{instance_id}`, either Compute Engine `instance-id` or
+  /// `instance-name` can be provided. For `{assignment_id}`, the
+  /// OSPolicyAssignment id must be provided.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/osPolicyAssignments/\[^/\]+/report$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OSPolicyAssignmentReport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OSPolicyAssignmentReport> getReport(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return OSPolicyAssignmentReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// List OS policy asssignment reports for all Compute Engine VM instances in
+  /// the specified zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Format:
+  /// `projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/reports`
+  /// For `{project}`, either `project-number` or `project-id` can be provided.
+  /// For `{instance}`, either `instance-name`, `instance-id`, or `-` can be
+  /// provided. If '-' is provided, the response will include
+  /// OSPolicyAssignmentReports for all instances in the project/location. For
+  /// `{assignment}`, either `assignment-id` or `-` can be provided. If '-' is
+  /// provided, the response will include OSPolicyAssignmentReports for all
+  /// OSPolicyAssignments in the project/location. Either {instance} or
+  /// {assignment} must be `-`. For example:
+  /// `projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/-/reports`
+  /// returns all reports for the instance
+  /// `projects/{project}/locations/{location}/instances/-/osPolicyAssignments/{assignment-id}/reports`
+  /// returns all the reports for the given assignment across all instances.
+  /// `projects/{project}/locations/{location}/instances/-/osPolicyAssignments/-/reports`
+  /// returns all the reports for all assignments across all instances.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/osPolicyAssignments/\[^/\]+$`.
+  ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by the `OSPolicyAssignmentReport` API resource that is included in the
+  /// response.
+  ///
+  /// [pageSize] - The maximum number of results to return.
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to the
+  /// `ListOSPolicyAssignmentReports` method that indicates where this listing
+  /// should continue from.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOSPolicyAssignmentReportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOSPolicyAssignmentReportsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/reports';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListOSPolicyAssignmentReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1692,12 +1829,11 @@ class InventoryVersionedPackage {
       };
 }
 
-/// Contains information about a Windows application as retrieved from the
+/// Contains information about a Windows application that is retrieved from the
 /// Windows Registry.
 ///
-/// For more information about these fields, see
-/// [Windows Installer Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key){:
-/// class="external" }
+/// For more information about these fields, see Windows Installer Properties
+/// for the Uninstall Registry.
 class InventoryWindowsApplication {
   /// The name of the application or product.
   core.String? displayName;
@@ -2046,6 +2182,42 @@ class ListInventoriesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventories != null) 'inventories': inventories!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A response message for listing OS Policy assignment reports including the
+/// page of results and page token.
+class ListOSPolicyAssignmentReportsResponse {
+  /// The pagination token to retrieve the next page of OS policy assignment
+  /// report objects.
+  core.String? nextPageToken;
+
+  /// List of OS policy assignment reports.
+  core.List<OSPolicyAssignmentReport>? osPolicyAssignmentReports;
+
+  ListOSPolicyAssignmentReportsResponse({
+    this.nextPageToken,
+    this.osPolicyAssignmentReports,
+  });
+
+  ListOSPolicyAssignmentReportsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          osPolicyAssignmentReports:
+              _json.containsKey('osPolicyAssignmentReports')
+                  ? (_json['osPolicyAssignmentReports'] as core.List)
+                      .map((value) => OSPolicyAssignmentReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (osPolicyAssignmentReports != null)
+          'osPolicyAssignmentReports': osPolicyAssignmentReports!,
       };
 }
 
@@ -2625,6 +2797,324 @@ class OSPolicyAssignmentOperationMetadata {
         if (rolloutStartTime != null) 'rolloutStartTime': rolloutStartTime!,
         if (rolloutState != null) 'rolloutState': rolloutState!,
         if (rolloutUpdateTime != null) 'rolloutUpdateTime': rolloutUpdateTime!,
+      };
+}
+
+/// A report of the OS policy assignment status for a given instance.
+class OSPolicyAssignmentReport {
+  /// The Compute Engine VM instance name.
+  core.String? instance;
+
+  /// Unique identifier of the last attempted run to apply the OS policies
+  /// associated with this assignment on the VM.
+  ///
+  /// This ID is logged by the OS Config agent while applying the OS policies
+  /// associated with this assignment on the VM. NOTE: If the service is unable
+  /// to successfully connect to the agent for this run, then this id will not
+  /// be available in the agent logs.
+  core.String? lastRunId;
+
+  /// The `OSPolicyAssignmentReport` API resource name.
+  ///
+  /// Format:
+  /// `projects/{project_number}/locations/{location}/instances/{instance_id}/osPolicyAssignments/{os_policy_assignment_id}/report`
+  core.String? name;
+
+  /// Reference to the `OSPolicyAssignment` API resource that the `OSPolicy`
+  /// belongs to.
+  ///
+  /// Format:
+  /// `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}`
+  core.String? osPolicyAssignment;
+
+  /// Compliance data for each `OSPolicy` that is applied to the VM.
+  core.List<OSPolicyAssignmentReportOSPolicyCompliance>? osPolicyCompliances;
+
+  /// Timestamp for when the report was last generated.
+  core.String? updateTime;
+
+  OSPolicyAssignmentReport({
+    this.instance,
+    this.lastRunId,
+    this.name,
+    this.osPolicyAssignment,
+    this.osPolicyCompliances,
+    this.updateTime,
+  });
+
+  OSPolicyAssignmentReport.fromJson(core.Map _json)
+      : this(
+          instance: _json.containsKey('instance')
+              ? _json['instance'] as core.String
+              : null,
+          lastRunId: _json.containsKey('lastRunId')
+              ? _json['lastRunId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          osPolicyAssignment: _json.containsKey('osPolicyAssignment')
+              ? _json['osPolicyAssignment'] as core.String
+              : null,
+          osPolicyCompliances: _json.containsKey('osPolicyCompliances')
+              ? (_json['osPolicyCompliances'] as core.List)
+                  .map((value) =>
+                      OSPolicyAssignmentReportOSPolicyCompliance.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instance != null) 'instance': instance!,
+        if (lastRunId != null) 'lastRunId': lastRunId!,
+        if (name != null) 'name': name!,
+        if (osPolicyAssignment != null)
+          'osPolicyAssignment': osPolicyAssignment!,
+        if (osPolicyCompliances != null)
+          'osPolicyCompliances': osPolicyCompliances!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Compliance data for an OS policy
+class OSPolicyAssignmentReportOSPolicyCompliance {
+  /// The compliance state of the OS policy.
+  /// Possible string values are:
+  /// - "UNKNOWN" : The policy is in an unknown compliance state. Refer to the
+  /// field `compliance_state_reason` to learn the exact reason for the policy
+  /// to be in this compliance state.
+  /// - "COMPLIANT" : Policy is compliant. The policy is compliant if all the
+  /// underlying resources are also compliant.
+  /// - "NON_COMPLIANT" : Policy is non-compliant. The policy is non-compliant
+  /// if one or more underlying resources are non-compliant.
+  core.String? complianceState;
+
+  /// The reason for the OS policy to be in an unknown compliance state.
+  ///
+  /// This field is always populated when `compliance_state` is `UNKNOWN`. If
+  /// populated, the field can contain one of the following values: *
+  /// `vm-not-running`: The VM was not running. *
+  /// `os-policies-not-supported-by-agent`: The version of the OS Config agent
+  /// running on the VM does not support running OS policies. *
+  /// `no-agent-detected`: The OS Config agent is not detected for the VM. *
+  /// `resource-execution-errors`: The OS Config agent encountered errors while
+  /// executing one or more resources in the policy. See
+  /// `os_policy_resource_compliances` for details. * `task-timeout`: The task
+  /// sent to the agent to apply the policy timed out. *
+  /// `unexpected-agent-state`: The OS Config agent did not report the final
+  /// status of the task that attempted to apply the policy. Instead, the agent
+  /// unexpectedly started working on a different task. This mostly happens when
+  /// the agent or VM unexpectedly restarts while applying OS policies. *
+  /// `internal-service-errors`: Internal service errors were encountered while
+  /// attempting to apply the policy.
+  core.String? complianceStateReason;
+
+  /// The OS policy id
+  core.String? osPolicyId;
+
+  /// Compliance data for each resource within the policy that is applied to the
+  /// VM.
+  core.List<
+          OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>?
+      osPolicyResourceCompliances;
+
+  OSPolicyAssignmentReportOSPolicyCompliance({
+    this.complianceState,
+    this.complianceStateReason,
+    this.osPolicyId,
+    this.osPolicyResourceCompliances,
+  });
+
+  OSPolicyAssignmentReportOSPolicyCompliance.fromJson(core.Map _json)
+      : this(
+          complianceState: _json.containsKey('complianceState')
+              ? _json['complianceState'] as core.String
+              : null,
+          complianceStateReason: _json.containsKey('complianceStateReason')
+              ? _json['complianceStateReason'] as core.String
+              : null,
+          osPolicyId: _json.containsKey('osPolicyId')
+              ? _json['osPolicyId'] as core.String
+              : null,
+          osPolicyResourceCompliances: _json
+                  .containsKey('osPolicyResourceCompliances')
+              ? (_json['osPolicyResourceCompliances'] as core.List)
+                  .map((value) =>
+                      OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (complianceState != null) 'complianceState': complianceState!,
+        if (complianceStateReason != null)
+          'complianceStateReason': complianceStateReason!,
+        if (osPolicyId != null) 'osPolicyId': osPolicyId!,
+        if (osPolicyResourceCompliances != null)
+          'osPolicyResourceCompliances': osPolicyResourceCompliances!,
+      };
+}
+
+/// Compliance data for an OS policy resource.
+class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance {
+  /// The compliance state of the resource.
+  /// Possible string values are:
+  /// - "UNKNOWN" : The resource is in an unknown compliance state. To get more
+  /// details about why the policy is in this state, review the output of the
+  /// `compliance_state_reason` field.
+  /// - "COMPLIANT" : Resource is compliant.
+  /// - "NON_COMPLIANT" : Resource is non-compliant.
+  core.String? complianceState;
+
+  /// A reason for the resource to be in the given compliance state.
+  ///
+  /// This field is always populated when `compliance_state` is `UNKNOWN`. The
+  /// following values are supported when `compliance_state == UNKNOWN` *
+  /// `execution-errors`: Errors were encountered by the agent while executing
+  /// the resource and the compliance state couldn't be determined. *
+  /// `execution-skipped-by-agent`: Resource execution was skipped by the agent
+  /// because errors were encountered while executing prior resources in the OS
+  /// policy. * `os-policy-execution-attempt-failed`: The execution of the OS
+  /// policy containing this resource failed and the compliance state couldn't
+  /// be determined.
+  core.String? complianceStateReason;
+
+  /// Ordered list of configuration completed by the agent for the OS policy
+  /// resource.
+  core.List<
+          OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>?
+      configSteps;
+
+  /// ExecResource specific output.
+  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput?
+      execResourceOutput;
+
+  /// The ID of the OS policy resource.
+  core.String? osPolicyResourceId;
+
+  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance({
+    this.complianceState,
+    this.complianceStateReason,
+    this.configSteps,
+    this.execResourceOutput,
+    this.osPolicyResourceId,
+  });
+
+  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance.fromJson(
+      core.Map _json)
+      : this(
+          complianceState: _json.containsKey('complianceState')
+              ? _json['complianceState'] as core.String
+              : null,
+          complianceStateReason: _json.containsKey('complianceStateReason')
+              ? _json['complianceStateReason'] as core.String
+              : null,
+          configSteps: _json.containsKey('configSteps')
+              ? (_json['configSteps'] as core.List)
+                  .map((value) =>
+                      OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          execResourceOutput: _json.containsKey('execResourceOutput')
+              ? OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput
+                  .fromJson(_json['execResourceOutput']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          osPolicyResourceId: _json.containsKey('osPolicyResourceId')
+              ? _json['osPolicyResourceId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (complianceState != null) 'complianceState': complianceState!,
+        if (complianceStateReason != null)
+          'complianceStateReason': complianceStateReason!,
+        if (configSteps != null) 'configSteps': configSteps!,
+        if (execResourceOutput != null)
+          'execResourceOutput': execResourceOutput!,
+        if (osPolicyResourceId != null)
+          'osPolicyResourceId': osPolicyResourceId!,
+      };
+}
+
+/// ExecResource specific output.
+class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput {
+  /// Output from enforcement phase output file (if run).
+  ///
+  /// Output size is limited to 100K bytes.
+  core.String? enforcementOutput;
+  core.List<core.int> get enforcementOutputAsBytes =>
+      convert.base64.decode(enforcementOutput!);
+
+  set enforcementOutputAsBytes(core.List<core.int> _bytes) {
+    enforcementOutput =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput({
+    this.enforcementOutput,
+  });
+
+  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput.fromJson(
+      core.Map _json)
+      : this(
+          enforcementOutput: _json.containsKey('enforcementOutput')
+              ? _json['enforcementOutput'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enforcementOutput != null) 'enforcementOutput': enforcementOutput!,
+      };
+}
+
+/// Step performed by the OS Config agent for configuring an `OSPolicy` resource
+/// to its desired state.
+class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep {
+  /// An error message recorded during the execution of this step.
+  ///
+  /// Only populated if errors were encountered during this step execution.
+  core.String? errorMessage;
+
+  /// Configuration step type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "VALIDATION" : Checks for resource conflicts such as schema errors.
+  /// - "DESIRED_STATE_CHECK" : Checks the current status of the desired state
+  /// for a resource.
+  /// - "DESIRED_STATE_ENFORCEMENT" : Enforces the desired state for a resource
+  /// that is not in desired state.
+  /// - "DESIRED_STATE_CHECK_POST_ENFORCEMENT" : Re-checks the status of the
+  /// desired state. This check is done for a resource after the enforcement of
+  /// all OS policies. This step is used to determine the final desired state
+  /// status for the resource. It accounts for any resources that might have
+  /// drifted from their desired state due to side effects from executing other
+  /// resources.
+  core.String? type;
+
+  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep({
+    this.errorMessage,
+    this.type,
+  });
+
+  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep.fromJson(
+      core.Map _json)
+      : this(
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (type != null) 'type': type!,
       };
 }
 

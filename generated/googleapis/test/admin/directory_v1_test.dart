@@ -894,6 +894,137 @@ void checkUnnamed13(core.List<api.ChromeOsDeviceActiveTimeRanges> o) {
   checkChromeOsDeviceActiveTimeRanges(o[1]);
 }
 
+core.int buildCounterChromeOsDeviceCpuInfoLogicalCpusCStates = 0;
+api.ChromeOsDeviceCpuInfoLogicalCpusCStates
+    buildChromeOsDeviceCpuInfoLogicalCpusCStates() {
+  final o = api.ChromeOsDeviceCpuInfoLogicalCpusCStates();
+  buildCounterChromeOsDeviceCpuInfoLogicalCpusCStates++;
+  if (buildCounterChromeOsDeviceCpuInfoLogicalCpusCStates < 3) {
+    o.displayName = 'foo';
+    o.sessionDuration = 'foo';
+  }
+  buildCounterChromeOsDeviceCpuInfoLogicalCpusCStates--;
+  return o;
+}
+
+void checkChromeOsDeviceCpuInfoLogicalCpusCStates(
+    api.ChromeOsDeviceCpuInfoLogicalCpusCStates o) {
+  buildCounterChromeOsDeviceCpuInfoLogicalCpusCStates++;
+  if (buildCounterChromeOsDeviceCpuInfoLogicalCpusCStates < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sessionDuration!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterChromeOsDeviceCpuInfoLogicalCpusCStates--;
+}
+
+core.List<api.ChromeOsDeviceCpuInfoLogicalCpusCStates> buildUnnamed14() => [
+      buildChromeOsDeviceCpuInfoLogicalCpusCStates(),
+      buildChromeOsDeviceCpuInfoLogicalCpusCStates(),
+    ];
+
+void checkUnnamed14(core.List<api.ChromeOsDeviceCpuInfoLogicalCpusCStates> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChromeOsDeviceCpuInfoLogicalCpusCStates(o[0]);
+  checkChromeOsDeviceCpuInfoLogicalCpusCStates(o[1]);
+}
+
+core.int buildCounterChromeOsDeviceCpuInfoLogicalCpus = 0;
+api.ChromeOsDeviceCpuInfoLogicalCpus buildChromeOsDeviceCpuInfoLogicalCpus() {
+  final o = api.ChromeOsDeviceCpuInfoLogicalCpus();
+  buildCounterChromeOsDeviceCpuInfoLogicalCpus++;
+  if (buildCounterChromeOsDeviceCpuInfoLogicalCpus < 3) {
+    o.cStates = buildUnnamed14();
+    o.currentScalingFrequencyKhz = 42;
+    o.idleDuration = 'foo';
+    o.maxScalingFrequencyKhz = 42;
+  }
+  buildCounterChromeOsDeviceCpuInfoLogicalCpus--;
+  return o;
+}
+
+void checkChromeOsDeviceCpuInfoLogicalCpus(
+    api.ChromeOsDeviceCpuInfoLogicalCpus o) {
+  buildCounterChromeOsDeviceCpuInfoLogicalCpus++;
+  if (buildCounterChromeOsDeviceCpuInfoLogicalCpus < 3) {
+    checkUnnamed14(o.cStates!);
+    unittest.expect(
+      o.currentScalingFrequencyKhz!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.idleDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxScalingFrequencyKhz!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterChromeOsDeviceCpuInfoLogicalCpus--;
+}
+
+core.List<api.ChromeOsDeviceCpuInfoLogicalCpus> buildUnnamed15() => [
+      buildChromeOsDeviceCpuInfoLogicalCpus(),
+      buildChromeOsDeviceCpuInfoLogicalCpus(),
+    ];
+
+void checkUnnamed15(core.List<api.ChromeOsDeviceCpuInfoLogicalCpus> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChromeOsDeviceCpuInfoLogicalCpus(o[0]);
+  checkChromeOsDeviceCpuInfoLogicalCpus(o[1]);
+}
+
+core.int buildCounterChromeOsDeviceCpuInfo = 0;
+api.ChromeOsDeviceCpuInfo buildChromeOsDeviceCpuInfo() {
+  final o = api.ChromeOsDeviceCpuInfo();
+  buildCounterChromeOsDeviceCpuInfo++;
+  if (buildCounterChromeOsDeviceCpuInfo < 3) {
+    o.architecture = 'foo';
+    o.logicalCpus = buildUnnamed15();
+    o.maxClockSpeedKhz = 42;
+    o.model = 'foo';
+  }
+  buildCounterChromeOsDeviceCpuInfo--;
+  return o;
+}
+
+void checkChromeOsDeviceCpuInfo(api.ChromeOsDeviceCpuInfo o) {
+  buildCounterChromeOsDeviceCpuInfo++;
+  if (buildCounterChromeOsDeviceCpuInfo < 3) {
+    unittest.expect(
+      o.architecture!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed15(o.logicalCpus!);
+    unittest.expect(
+      o.maxClockSpeedKhz!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.model!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterChromeOsDeviceCpuInfo--;
+}
+
+core.List<api.ChromeOsDeviceCpuInfo> buildUnnamed16() => [
+      buildChromeOsDeviceCpuInfo(),
+      buildChromeOsDeviceCpuInfo(),
+    ];
+
+void checkUnnamed16(core.List<api.ChromeOsDeviceCpuInfo> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChromeOsDeviceCpuInfo(o[0]);
+  checkChromeOsDeviceCpuInfo(o[1]);
+}
+
 core.int buildCounterChromeOsDeviceCpuStatusReportsCpuTemperatureInfo = 0;
 api.ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo
     buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo() {
@@ -924,24 +1055,24 @@ void checkChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(
 }
 
 core.List<api.ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>
-    buildUnnamed14() => [
+    buildUnnamed17() => [
           buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(),
           buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(),
         ];
 
-void checkUnnamed14(
+void checkUnnamed17(
     core.List<api.ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(o[0]);
   checkChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(o[1]);
 }
 
-core.List<core.int> buildUnnamed15() => [
+core.List<core.int> buildUnnamed18() => [
       42,
       42,
     ];
 
-void checkUnnamed15(core.List<core.int> o) {
+void checkUnnamed18(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -958,8 +1089,8 @@ api.ChromeOsDeviceCpuStatusReports buildChromeOsDeviceCpuStatusReports() {
   final o = api.ChromeOsDeviceCpuStatusReports();
   buildCounterChromeOsDeviceCpuStatusReports++;
   if (buildCounterChromeOsDeviceCpuStatusReports < 3) {
-    o.cpuTemperatureInfo = buildUnnamed14();
-    o.cpuUtilizationPercentageInfo = buildUnnamed15();
+    o.cpuTemperatureInfo = buildUnnamed17();
+    o.cpuUtilizationPercentageInfo = buildUnnamed18();
     o.reportTime = core.DateTime.parse('2002-02-27T14:01:02');
   }
   buildCounterChromeOsDeviceCpuStatusReports--;
@@ -969,8 +1100,8 @@ api.ChromeOsDeviceCpuStatusReports buildChromeOsDeviceCpuStatusReports() {
 void checkChromeOsDeviceCpuStatusReports(api.ChromeOsDeviceCpuStatusReports o) {
   buildCounterChromeOsDeviceCpuStatusReports++;
   if (buildCounterChromeOsDeviceCpuStatusReports < 3) {
-    checkUnnamed14(o.cpuTemperatureInfo!);
-    checkUnnamed15(o.cpuUtilizationPercentageInfo!);
+    checkUnnamed17(o.cpuTemperatureInfo!);
+    checkUnnamed18(o.cpuUtilizationPercentageInfo!);
     unittest.expect(
       o.reportTime!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
@@ -979,12 +1110,12 @@ void checkChromeOsDeviceCpuStatusReports(api.ChromeOsDeviceCpuStatusReports o) {
   buildCounterChromeOsDeviceCpuStatusReports--;
 }
 
-core.List<api.ChromeOsDeviceCpuStatusReports> buildUnnamed16() => [
+core.List<api.ChromeOsDeviceCpuStatusReports> buildUnnamed19() => [
       buildChromeOsDeviceCpuStatusReports(),
       buildChromeOsDeviceCpuStatusReports(),
     ];
 
-void checkUnnamed16(core.List<api.ChromeOsDeviceCpuStatusReports> o) {
+void checkUnnamed19(core.List<api.ChromeOsDeviceCpuStatusReports> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceCpuStatusReports(o[0]);
   checkChromeOsDeviceCpuStatusReports(o[1]);
@@ -1027,12 +1158,12 @@ void checkChromeOsDeviceDeviceFiles(api.ChromeOsDeviceDeviceFiles o) {
   buildCounterChromeOsDeviceDeviceFiles--;
 }
 
-core.List<api.ChromeOsDeviceDeviceFiles> buildUnnamed17() => [
+core.List<api.ChromeOsDeviceDeviceFiles> buildUnnamed20() => [
       buildChromeOsDeviceDeviceFiles(),
       buildChromeOsDeviceDeviceFiles(),
     ];
 
-void checkUnnamed17(core.List<api.ChromeOsDeviceDeviceFiles> o) {
+void checkUnnamed20(core.List<api.ChromeOsDeviceDeviceFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceDeviceFiles(o[0]);
   checkChromeOsDeviceDeviceFiles(o[1]);
@@ -1072,12 +1203,12 @@ void checkChromeOsDeviceDiskVolumeReportsVolumeInfo(
   buildCounterChromeOsDeviceDiskVolumeReportsVolumeInfo--;
 }
 
-core.List<api.ChromeOsDeviceDiskVolumeReportsVolumeInfo> buildUnnamed18() => [
+core.List<api.ChromeOsDeviceDiskVolumeReportsVolumeInfo> buildUnnamed21() => [
       buildChromeOsDeviceDiskVolumeReportsVolumeInfo(),
       buildChromeOsDeviceDiskVolumeReportsVolumeInfo(),
     ];
 
-void checkUnnamed18(
+void checkUnnamed21(
     core.List<api.ChromeOsDeviceDiskVolumeReportsVolumeInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceDiskVolumeReportsVolumeInfo(o[0]);
@@ -1089,7 +1220,7 @@ api.ChromeOsDeviceDiskVolumeReports buildChromeOsDeviceDiskVolumeReports() {
   final o = api.ChromeOsDeviceDiskVolumeReports();
   buildCounterChromeOsDeviceDiskVolumeReports++;
   if (buildCounterChromeOsDeviceDiskVolumeReports < 3) {
-    o.volumeInfo = buildUnnamed18();
+    o.volumeInfo = buildUnnamed21();
   }
   buildCounterChromeOsDeviceDiskVolumeReports--;
   return o;
@@ -1099,17 +1230,17 @@ void checkChromeOsDeviceDiskVolumeReports(
     api.ChromeOsDeviceDiskVolumeReports o) {
   buildCounterChromeOsDeviceDiskVolumeReports++;
   if (buildCounterChromeOsDeviceDiskVolumeReports < 3) {
-    checkUnnamed18(o.volumeInfo!);
+    checkUnnamed21(o.volumeInfo!);
   }
   buildCounterChromeOsDeviceDiskVolumeReports--;
 }
 
-core.List<api.ChromeOsDeviceDiskVolumeReports> buildUnnamed19() => [
+core.List<api.ChromeOsDeviceDiskVolumeReports> buildUnnamed22() => [
       buildChromeOsDeviceDiskVolumeReports(),
       buildChromeOsDeviceDiskVolumeReports(),
     ];
 
-void checkUnnamed19(core.List<api.ChromeOsDeviceDiskVolumeReports> o) {
+void checkUnnamed22(core.List<api.ChromeOsDeviceDiskVolumeReports> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceDiskVolumeReports(o[0]);
   checkChromeOsDeviceDiskVolumeReports(o[1]);
@@ -1142,12 +1273,12 @@ void checkChromeOsDeviceLastKnownNetwork(api.ChromeOsDeviceLastKnownNetwork o) {
   buildCounterChromeOsDeviceLastKnownNetwork--;
 }
 
-core.List<api.ChromeOsDeviceLastKnownNetwork> buildUnnamed20() => [
+core.List<api.ChromeOsDeviceLastKnownNetwork> buildUnnamed23() => [
       buildChromeOsDeviceLastKnownNetwork(),
       buildChromeOsDeviceLastKnownNetwork(),
     ];
 
-void checkUnnamed20(core.List<api.ChromeOsDeviceLastKnownNetwork> o) {
+void checkUnnamed23(core.List<api.ChromeOsDeviceLastKnownNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceLastKnownNetwork(o[0]);
   checkChromeOsDeviceLastKnownNetwork(o[1]);
@@ -1180,12 +1311,12 @@ void checkChromeOsDeviceRecentUsers(api.ChromeOsDeviceRecentUsers o) {
   buildCounterChromeOsDeviceRecentUsers--;
 }
 
-core.List<api.ChromeOsDeviceRecentUsers> buildUnnamed21() => [
+core.List<api.ChromeOsDeviceRecentUsers> buildUnnamed24() => [
       buildChromeOsDeviceRecentUsers(),
       buildChromeOsDeviceRecentUsers(),
     ];
 
-void checkUnnamed21(core.List<api.ChromeOsDeviceRecentUsers> o) {
+void checkUnnamed24(core.List<api.ChromeOsDeviceRecentUsers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceRecentUsers(o[0]);
   checkChromeOsDeviceRecentUsers(o[1]);
@@ -1228,23 +1359,23 @@ void checkChromeOsDeviceScreenshotFiles(api.ChromeOsDeviceScreenshotFiles o) {
   buildCounterChromeOsDeviceScreenshotFiles--;
 }
 
-core.List<api.ChromeOsDeviceScreenshotFiles> buildUnnamed22() => [
+core.List<api.ChromeOsDeviceScreenshotFiles> buildUnnamed25() => [
       buildChromeOsDeviceScreenshotFiles(),
       buildChromeOsDeviceScreenshotFiles(),
     ];
 
-void checkUnnamed22(core.List<api.ChromeOsDeviceScreenshotFiles> o) {
+void checkUnnamed25(core.List<api.ChromeOsDeviceScreenshotFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceScreenshotFiles(o[0]);
   checkChromeOsDeviceScreenshotFiles(o[1]);
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.List<core.String> buildUnnamed26() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1263,7 +1394,7 @@ api.ChromeOsDeviceSystemRamFreeReports
   buildCounterChromeOsDeviceSystemRamFreeReports++;
   if (buildCounterChromeOsDeviceSystemRamFreeReports < 3) {
     o.reportTime = core.DateTime.parse('2002-02-27T14:01:02');
-    o.systemRamFreeInfo = buildUnnamed23();
+    o.systemRamFreeInfo = buildUnnamed26();
   }
   buildCounterChromeOsDeviceSystemRamFreeReports--;
   return o;
@@ -1277,17 +1408,17 @@ void checkChromeOsDeviceSystemRamFreeReports(
       o.reportTime!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
     );
-    checkUnnamed23(o.systemRamFreeInfo!);
+    checkUnnamed26(o.systemRamFreeInfo!);
   }
   buildCounterChromeOsDeviceSystemRamFreeReports--;
 }
 
-core.List<api.ChromeOsDeviceSystemRamFreeReports> buildUnnamed24() => [
+core.List<api.ChromeOsDeviceSystemRamFreeReports> buildUnnamed27() => [
       buildChromeOsDeviceSystemRamFreeReports(),
       buildChromeOsDeviceSystemRamFreeReports(),
     ];
 
-void checkUnnamed24(core.List<api.ChromeOsDeviceSystemRamFreeReports> o) {
+void checkUnnamed27(core.List<api.ChromeOsDeviceSystemRamFreeReports> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDeviceSystemRamFreeReports(o[0]);
   checkChromeOsDeviceSystemRamFreeReports(o[1]);
@@ -1351,10 +1482,11 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.annotatedUser = 'foo';
     o.autoUpdateExpiration = 'foo';
     o.bootMode = 'foo';
-    o.cpuStatusReports = buildUnnamed16();
-    o.deviceFiles = buildUnnamed17();
+    o.cpuInfo = buildUnnamed16();
+    o.cpuStatusReports = buildUnnamed19();
+    o.deviceFiles = buildUnnamed20();
     o.deviceId = 'foo';
-    o.diskVolumeReports = buildUnnamed19();
+    o.diskVolumeReports = buildUnnamed22();
     o.dockMacAddress = 'foo';
     o.etag = 'foo';
     o.ethernetMacAddress = 'foo';
@@ -1362,7 +1494,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.firmwareVersion = 'foo';
     o.kind = 'foo';
     o.lastEnrollmentTime = core.DateTime.parse('2002-02-27T14:01:02');
-    o.lastKnownNetwork = buildUnnamed20();
+    o.lastKnownNetwork = buildUnnamed23();
     o.lastSync = core.DateTime.parse('2002-02-27T14:01:02');
     o.macAddress = 'foo';
     o.manufactureDate = 'foo';
@@ -1373,12 +1505,12 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.orgUnitPath = 'foo';
     o.osVersion = 'foo';
     o.platformVersion = 'foo';
-    o.recentUsers = buildUnnamed21();
-    o.screenshotFiles = buildUnnamed22();
+    o.recentUsers = buildUnnamed24();
+    o.screenshotFiles = buildUnnamed25();
     o.serialNumber = 'foo';
     o.status = 'foo';
     o.supportEndDate = core.DateTime.parse('2002-02-27T14:01:02');
-    o.systemRamFreeReports = buildUnnamed24();
+    o.systemRamFreeReports = buildUnnamed27();
     o.systemRamTotal = 'foo';
     o.tpmVersionInfo = buildChromeOsDeviceTpmVersionInfo();
     o.willAutoRenew = true;
@@ -1411,13 +1543,14 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
       o.bootMode!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.cpuStatusReports!);
-    checkUnnamed17(o.deviceFiles!);
+    checkUnnamed16(o.cpuInfo!);
+    checkUnnamed19(o.cpuStatusReports!);
+    checkUnnamed20(o.deviceFiles!);
     unittest.expect(
       o.deviceId!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.diskVolumeReports!);
+    checkUnnamed22(o.diskVolumeReports!);
     unittest.expect(
       o.dockMacAddress!,
       unittest.equals('foo'),
@@ -1446,7 +1579,7 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
       o.lastEnrollmentTime!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
     );
-    checkUnnamed20(o.lastKnownNetwork!);
+    checkUnnamed23(o.lastKnownNetwork!);
     unittest.expect(
       o.lastSync!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
@@ -1487,8 +1620,8 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
       o.platformVersion!,
       unittest.equals('foo'),
     );
-    checkUnnamed21(o.recentUsers!);
-    checkUnnamed22(o.screenshotFiles!);
+    checkUnnamed24(o.recentUsers!);
+    checkUnnamed25(o.screenshotFiles!);
     unittest.expect(
       o.serialNumber!,
       unittest.equals('foo'),
@@ -1501,7 +1634,7 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
       o.supportEndDate!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
     );
-    checkUnnamed24(o.systemRamFreeReports!);
+    checkUnnamed27(o.systemRamFreeReports!);
     unittest.expect(
       o.systemRamTotal!,
       unittest.equals('foo'),
@@ -1539,12 +1672,12 @@ void checkChromeOsDeviceAction(api.ChromeOsDeviceAction o) {
   buildCounterChromeOsDeviceAction--;
 }
 
-core.List<api.ChromeOsDevice> buildUnnamed25() => [
+core.List<api.ChromeOsDevice> buildUnnamed28() => [
       buildChromeOsDevice(),
       buildChromeOsDevice(),
     ];
 
-void checkUnnamed25(core.List<api.ChromeOsDevice> o) {
+void checkUnnamed28(core.List<api.ChromeOsDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChromeOsDevice(o[0]);
   checkChromeOsDevice(o[1]);
@@ -1555,7 +1688,7 @@ api.ChromeOsDevices buildChromeOsDevices() {
   final o = api.ChromeOsDevices();
   buildCounterChromeOsDevices++;
   if (buildCounterChromeOsDevices < 3) {
-    o.chromeosdevices = buildUnnamed25();
+    o.chromeosdevices = buildUnnamed28();
     o.etag = 'foo';
     o.kind = 'foo';
     o.nextPageToken = 'foo';
@@ -1567,7 +1700,7 @@ api.ChromeOsDevices buildChromeOsDevices() {
 void checkChromeOsDevices(api.ChromeOsDevices o) {
   buildCounterChromeOsDevices++;
   if (buildCounterChromeOsDevices < 3) {
-    checkUnnamed25(o.chromeosdevices!);
+    checkUnnamed28(o.chromeosdevices!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1584,12 +1717,12 @@ void checkChromeOsDevices(api.ChromeOsDevices o) {
   buildCounterChromeOsDevices--;
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed29() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1606,7 +1739,7 @@ api.ChromeOsMoveDevicesToOu buildChromeOsMoveDevicesToOu() {
   final o = api.ChromeOsMoveDevicesToOu();
   buildCounterChromeOsMoveDevicesToOu++;
   if (buildCounterChromeOsMoveDevicesToOu < 3) {
-    o.deviceIds = buildUnnamed26();
+    o.deviceIds = buildUnnamed29();
   }
   buildCounterChromeOsMoveDevicesToOu--;
   return o;
@@ -1615,7 +1748,7 @@ api.ChromeOsMoveDevicesToOu buildChromeOsMoveDevicesToOu() {
 void checkChromeOsMoveDevicesToOu(api.ChromeOsMoveDevicesToOu o) {
   buildCounterChromeOsMoveDevicesToOu++;
   if (buildCounterChromeOsMoveDevicesToOu < 3) {
-    checkUnnamed26(o.deviceIds!);
+    checkUnnamed29(o.deviceIds!);
   }
   buildCounterChromeOsMoveDevicesToOu--;
 }
@@ -1946,12 +2079,12 @@ void checkDomainAlias(api.DomainAlias o) {
   buildCounterDomainAlias--;
 }
 
-core.List<api.DomainAlias> buildUnnamed27() => [
+core.List<api.DomainAlias> buildUnnamed30() => [
       buildDomainAlias(),
       buildDomainAlias(),
     ];
 
-void checkUnnamed27(core.List<api.DomainAlias> o) {
+void checkUnnamed30(core.List<api.DomainAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDomainAlias(o[0]);
   checkDomainAlias(o[1]);
@@ -1962,7 +2095,7 @@ api.DomainAliases buildDomainAliases() {
   final o = api.DomainAliases();
   buildCounterDomainAliases++;
   if (buildCounterDomainAliases < 3) {
-    o.domainAliases = buildUnnamed27();
+    o.domainAliases = buildUnnamed30();
     o.etag = 'foo';
     o.kind = 'foo';
   }
@@ -1973,7 +2106,7 @@ api.DomainAliases buildDomainAliases() {
 void checkDomainAliases(api.DomainAliases o) {
   buildCounterDomainAliases++;
   if (buildCounterDomainAliases < 3) {
-    checkUnnamed27(o.domainAliases!);
+    checkUnnamed30(o.domainAliases!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1986,12 +2119,12 @@ void checkDomainAliases(api.DomainAliases o) {
   buildCounterDomainAliases--;
 }
 
-core.List<api.DomainAlias> buildUnnamed28() => [
+core.List<api.DomainAlias> buildUnnamed31() => [
       buildDomainAlias(),
       buildDomainAlias(),
     ];
 
-void checkUnnamed28(core.List<api.DomainAlias> o) {
+void checkUnnamed31(core.List<api.DomainAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDomainAlias(o[0]);
   checkDomainAlias(o[1]);
@@ -2003,7 +2136,7 @@ api.Domains buildDomains() {
   buildCounterDomains++;
   if (buildCounterDomains < 3) {
     o.creationTime = 'foo';
-    o.domainAliases = buildUnnamed28();
+    o.domainAliases = buildUnnamed31();
     o.domainName = 'foo';
     o.etag = 'foo';
     o.isPrimary = true;
@@ -2021,7 +2154,7 @@ void checkDomains(api.Domains o) {
       o.creationTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed28(o.domainAliases!);
+    checkUnnamed31(o.domainAliases!);
     unittest.expect(
       o.domainName!,
       unittest.equals('foo'),
@@ -2040,12 +2173,12 @@ void checkDomains(api.Domains o) {
   buildCounterDomains--;
 }
 
-core.List<api.Domains> buildUnnamed29() => [
+core.List<api.Domains> buildUnnamed32() => [
       buildDomains(),
       buildDomains(),
     ];
 
-void checkUnnamed29(core.List<api.Domains> o) {
+void checkUnnamed32(core.List<api.Domains> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDomains(o[0]);
   checkDomains(o[1]);
@@ -2056,7 +2189,7 @@ api.Domains2 buildDomains2() {
   final o = api.Domains2();
   buildCounterDomains2++;
   if (buildCounterDomains2 < 3) {
-    o.domains = buildUnnamed29();
+    o.domains = buildUnnamed32();
     o.etag = 'foo';
     o.kind = 'foo';
   }
@@ -2067,7 +2200,7 @@ api.Domains2 buildDomains2() {
 void checkDomains2(api.Domains2 o) {
   buildCounterDomains2++;
   if (buildCounterDomains2 < 3) {
-    checkUnnamed29(o.domains!);
+    checkUnnamed32(o.domains!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -2202,12 +2335,12 @@ void checkFeatureRename(api.FeatureRename o) {
   buildCounterFeatureRename--;
 }
 
-core.List<api.Feature> buildUnnamed30() => [
+core.List<api.Feature> buildUnnamed33() => [
       buildFeature(),
       buildFeature(),
     ];
 
-void checkUnnamed30(core.List<api.Feature> o) {
+void checkUnnamed33(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -2219,7 +2352,7 @@ api.Features buildFeatures() {
   buildCounterFeatures++;
   if (buildCounterFeatures < 3) {
     o.etag = 'foo';
-    o.features = buildUnnamed30();
+    o.features = buildUnnamed33();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2234,7 +2367,7 @@ void checkFeatures(api.Features o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.features!);
+    checkUnnamed33(o.features!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2247,12 +2380,12 @@ void checkFeatures(api.Features o) {
   buildCounterFeatures--;
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed34() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2264,12 +2397,12 @@ void checkUnnamed31(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed32() => [
+core.List<core.String> buildUnnamed35() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed32(core.List<core.String> o) {
+void checkUnnamed35(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2287,7 +2420,7 @@ api.Group buildGroup() {
   buildCounterGroup++;
   if (buildCounterGroup < 3) {
     o.adminCreated = true;
-    o.aliases = buildUnnamed31();
+    o.aliases = buildUnnamed34();
     o.description = 'foo';
     o.directMembersCount = 'foo';
     o.email = 'foo';
@@ -2295,7 +2428,7 @@ api.Group buildGroup() {
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
-    o.nonEditableAliases = buildUnnamed32();
+    o.nonEditableAliases = buildUnnamed35();
   }
   buildCounterGroup--;
   return o;
@@ -2305,7 +2438,7 @@ void checkGroup(api.Group o) {
   buildCounterGroup++;
   if (buildCounterGroup < 3) {
     unittest.expect(o.adminCreated!, unittest.isTrue);
-    checkUnnamed31(o.aliases!);
+    checkUnnamed34(o.aliases!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -2334,17 +2467,17 @@ void checkGroup(api.Group o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed32(o.nonEditableAliases!);
+    checkUnnamed35(o.nonEditableAliases!);
   }
   buildCounterGroup--;
 }
 
-core.List<api.Group> buildUnnamed33() => [
+core.List<api.Group> buildUnnamed36() => [
       buildGroup(),
       buildGroup(),
     ];
 
-void checkUnnamed33(core.List<api.Group> o) {
+void checkUnnamed36(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -2356,7 +2489,7 @@ api.Groups buildGroups() {
   buildCounterGroups++;
   if (buildCounterGroups < 3) {
     o.etag = 'foo';
-    o.groups = buildUnnamed33();
+    o.groups = buildUnnamed36();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2371,7 +2504,7 @@ void checkGroups(api.Groups o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.groups!);
+    checkUnnamed36(o.groups!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2384,12 +2517,12 @@ void checkGroups(api.Groups o) {
   buildCounterGroups--;
 }
 
-core.List<api.PrinterModel> buildUnnamed34() => [
+core.List<api.PrinterModel> buildUnnamed37() => [
       buildPrinterModel(),
       buildPrinterModel(),
     ];
 
-void checkUnnamed34(core.List<api.PrinterModel> o) {
+void checkUnnamed37(core.List<api.PrinterModel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrinterModel(o[0]);
   checkPrinterModel(o[1]);
@@ -2401,7 +2534,7 @@ api.ListPrinterModelsResponse buildListPrinterModelsResponse() {
   buildCounterListPrinterModelsResponse++;
   if (buildCounterListPrinterModelsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.printerModels = buildUnnamed34();
+    o.printerModels = buildUnnamed37();
   }
   buildCounterListPrinterModelsResponse--;
   return o;
@@ -2414,17 +2547,17 @@ void checkListPrinterModelsResponse(api.ListPrinterModelsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.printerModels!);
+    checkUnnamed37(o.printerModels!);
   }
   buildCounterListPrinterModelsResponse--;
 }
 
-core.List<api.Printer> buildUnnamed35() => [
+core.List<api.Printer> buildUnnamed38() => [
       buildPrinter(),
       buildPrinter(),
     ];
 
-void checkUnnamed35(core.List<api.Printer> o) {
+void checkUnnamed38(core.List<api.Printer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrinter(o[0]);
   checkPrinter(o[1]);
@@ -2436,7 +2569,7 @@ api.ListPrintersResponse buildListPrintersResponse() {
   buildCounterListPrintersResponse++;
   if (buildCounterListPrintersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.printers = buildUnnamed35();
+    o.printers = buildUnnamed38();
   }
   buildCounterListPrintersResponse--;
   return o;
@@ -2449,7 +2582,7 @@ void checkListPrintersResponse(api.ListPrintersResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed35(o.printers!);
+    checkUnnamed38(o.printers!);
   }
   buildCounterListPrintersResponse--;
 }
@@ -2511,12 +2644,12 @@ void checkMember(api.Member o) {
   buildCounterMember--;
 }
 
-core.List<api.Member> buildUnnamed36() => [
+core.List<api.Member> buildUnnamed39() => [
       buildMember(),
       buildMember(),
     ];
 
-void checkUnnamed36(core.List<api.Member> o) {
+void checkUnnamed39(core.List<api.Member> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMember(o[0]);
   checkMember(o[1]);
@@ -2529,7 +2662,7 @@ api.Members buildMembers() {
   if (buildCounterMembers < 3) {
     o.etag = 'foo';
     o.kind = 'foo';
-    o.members = buildUnnamed36();
+    o.members = buildUnnamed39();
     o.nextPageToken = 'foo';
   }
   buildCounterMembers--;
@@ -2547,7 +2680,7 @@ void checkMembers(api.Members o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.members!);
+    checkUnnamed39(o.members!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2575,12 +2708,12 @@ void checkMembersHasMember(api.MembersHasMember o) {
   buildCounterMembersHasMember--;
 }
 
-core.List<core.String> buildUnnamed37() => [
+core.List<core.String> buildUnnamed40() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed37(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2599,7 +2732,7 @@ api.MobileDeviceApplications buildMobileDeviceApplications() {
   if (buildCounterMobileDeviceApplications < 3) {
     o.displayName = 'foo';
     o.packageName = 'foo';
-    o.permission = buildUnnamed37();
+    o.permission = buildUnnamed40();
     o.versionCode = 42;
     o.versionName = 'foo';
   }
@@ -2618,7 +2751,7 @@ void checkMobileDeviceApplications(api.MobileDeviceApplications o) {
       o.packageName!,
       unittest.equals('foo'),
     );
-    checkUnnamed37(o.permission!);
+    checkUnnamed40(o.permission!);
     unittest.expect(
       o.versionCode!,
       unittest.equals(42),
@@ -2631,23 +2764,23 @@ void checkMobileDeviceApplications(api.MobileDeviceApplications o) {
   buildCounterMobileDeviceApplications--;
 }
 
-core.List<api.MobileDeviceApplications> buildUnnamed38() => [
+core.List<api.MobileDeviceApplications> buildUnnamed41() => [
       buildMobileDeviceApplications(),
       buildMobileDeviceApplications(),
     ];
 
-void checkUnnamed38(core.List<api.MobileDeviceApplications> o) {
+void checkUnnamed41(core.List<api.MobileDeviceApplications> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileDeviceApplications(o[0]);
   checkMobileDeviceApplications(o[1]);
 }
 
-core.List<core.String> buildUnnamed39() => [
+core.List<core.String> buildUnnamed42() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed39(core.List<core.String> o) {
+void checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2659,12 +2792,12 @@ void checkUnnamed39(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed40() => [
+core.List<core.String> buildUnnamed43() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed40(core.List<core.String> o) {
+void checkUnnamed43(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2676,12 +2809,12 @@ void checkUnnamed40(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed41() => [
+core.List<core.String> buildUnnamed44() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed41(core.List<core.String> o) {
+void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2699,7 +2832,7 @@ api.MobileDevice buildMobileDevice() {
   buildCounterMobileDevice++;
   if (buildCounterMobileDevice < 3) {
     o.adbStatus = true;
-    o.applications = buildUnnamed38();
+    o.applications = buildUnnamed41();
     o.basebandVersion = 'foo';
     o.bootloaderVersion = 'foo';
     o.brand = 'foo';
@@ -2709,7 +2842,7 @@ api.MobileDevice buildMobileDevice() {
     o.deviceCompromisedStatus = 'foo';
     o.deviceId = 'foo';
     o.devicePasswordStatus = 'foo';
-    o.email = buildUnnamed39();
+    o.email = buildUnnamed42();
     o.encryptionStatus = 'foo';
     o.etag = 'foo';
     o.firstSync = core.DateTime.parse('2002-02-27T14:01:02');
@@ -2723,10 +2856,10 @@ api.MobileDevice buildMobileDevice() {
     o.manufacturer = 'foo';
     o.meid = 'foo';
     o.model = 'foo';
-    o.name = buildUnnamed40();
+    o.name = buildUnnamed43();
     o.networkOperator = 'foo';
     o.os = 'foo';
-    o.otherAccountsInfo = buildUnnamed41();
+    o.otherAccountsInfo = buildUnnamed44();
     o.privilege = 'foo';
     o.releaseVersion = 'foo';
     o.resourceId = 'foo';
@@ -2747,7 +2880,7 @@ void checkMobileDevice(api.MobileDevice o) {
   buildCounterMobileDevice++;
   if (buildCounterMobileDevice < 3) {
     unittest.expect(o.adbStatus!, unittest.isTrue);
-    checkUnnamed38(o.applications!);
+    checkUnnamed41(o.applications!);
     unittest.expect(
       o.basebandVersion!,
       unittest.equals('foo'),
@@ -2781,7 +2914,7 @@ void checkMobileDevice(api.MobileDevice o) {
       o.devicePasswordStatus!,
       unittest.equals('foo'),
     );
-    checkUnnamed39(o.email!);
+    checkUnnamed42(o.email!);
     unittest.expect(
       o.encryptionStatus!,
       unittest.equals('foo'),
@@ -2831,7 +2964,7 @@ void checkMobileDevice(api.MobileDevice o) {
       o.model!,
       unittest.equals('foo'),
     );
-    checkUnnamed40(o.name!);
+    checkUnnamed43(o.name!);
     unittest.expect(
       o.networkOperator!,
       unittest.equals('foo'),
@@ -2840,7 +2973,7 @@ void checkMobileDevice(api.MobileDevice o) {
       o.os!,
       unittest.equals('foo'),
     );
-    checkUnnamed41(o.otherAccountsInfo!);
+    checkUnnamed44(o.otherAccountsInfo!);
     unittest.expect(
       o.privilege!,
       unittest.equals('foo'),
@@ -2905,12 +3038,12 @@ void checkMobileDeviceAction(api.MobileDeviceAction o) {
   buildCounterMobileDeviceAction--;
 }
 
-core.List<api.MobileDevice> buildUnnamed42() => [
+core.List<api.MobileDevice> buildUnnamed45() => [
       buildMobileDevice(),
       buildMobileDevice(),
     ];
 
-void checkUnnamed42(core.List<api.MobileDevice> o) {
+void checkUnnamed45(core.List<api.MobileDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileDevice(o[0]);
   checkMobileDevice(o[1]);
@@ -2923,7 +3056,7 @@ api.MobileDevices buildMobileDevices() {
   if (buildCounterMobileDevices < 3) {
     o.etag = 'foo';
     o.kind = 'foo';
-    o.mobiledevices = buildUnnamed42();
+    o.mobiledevices = buildUnnamed45();
     o.nextPageToken = 'foo';
   }
   buildCounterMobileDevices--;
@@ -2941,7 +3074,7 @@ void checkMobileDevices(api.MobileDevices o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed42(o.mobiledevices!);
+    checkUnnamed45(o.mobiledevices!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -3009,12 +3142,12 @@ void checkOrgUnit(api.OrgUnit o) {
   buildCounterOrgUnit--;
 }
 
-core.List<api.OrgUnit> buildUnnamed43() => [
+core.List<api.OrgUnit> buildUnnamed46() => [
       buildOrgUnit(),
       buildOrgUnit(),
     ];
 
-void checkUnnamed43(core.List<api.OrgUnit> o) {
+void checkUnnamed46(core.List<api.OrgUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrgUnit(o[0]);
   checkOrgUnit(o[1]);
@@ -3027,7 +3160,7 @@ api.OrgUnits buildOrgUnits() {
   if (buildCounterOrgUnits < 3) {
     o.etag = 'foo';
     o.kind = 'foo';
-    o.organizationUnits = buildUnnamed43();
+    o.organizationUnits = buildUnnamed46();
   }
   buildCounterOrgUnits--;
   return o;
@@ -3044,17 +3177,17 @@ void checkOrgUnits(api.OrgUnits o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.organizationUnits!);
+    checkUnnamed46(o.organizationUnits!);
   }
   buildCounterOrgUnits--;
 }
 
-core.List<api.AuxiliaryMessage> buildUnnamed44() => [
+core.List<api.AuxiliaryMessage> buildUnnamed47() => [
       buildAuxiliaryMessage(),
       buildAuxiliaryMessage(),
     ];
 
-void checkUnnamed44(core.List<api.AuxiliaryMessage> o) {
+void checkUnnamed47(core.List<api.AuxiliaryMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuxiliaryMessage(o[0]);
   checkAuxiliaryMessage(o[1]);
@@ -3065,7 +3198,7 @@ api.Printer buildPrinter() {
   final o = api.Printer();
   buildCounterPrinter++;
   if (buildCounterPrinter < 3) {
-    o.auxiliaryMessages = buildUnnamed44();
+    o.auxiliaryMessages = buildUnnamed47();
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
@@ -3083,7 +3216,7 @@ api.Printer buildPrinter() {
 void checkPrinter(api.Printer o) {
   buildCounterPrinter++;
   if (buildCounterPrinter < 3) {
-    checkUnnamed44(o.auxiliaryMessages!);
+    checkUnnamed47(o.auxiliaryMessages!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -3153,12 +3286,12 @@ void checkPrinterModel(api.PrinterModel o) {
   buildCounterPrinterModel--;
 }
 
-core.List<api.Privilege> buildUnnamed45() => [
+core.List<api.Privilege> buildUnnamed48() => [
       buildPrivilege(),
       buildPrivilege(),
     ];
 
-void checkUnnamed45(core.List<api.Privilege> o) {
+void checkUnnamed48(core.List<api.Privilege> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrivilege(o[0]);
   checkPrivilege(o[1]);
@@ -3169,7 +3302,7 @@ api.Privilege buildPrivilege() {
   final o = api.Privilege();
   buildCounterPrivilege++;
   if (buildCounterPrivilege < 3) {
-    o.childPrivileges = buildUnnamed45();
+    o.childPrivileges = buildUnnamed48();
     o.etag = 'foo';
     o.isOuScopable = true;
     o.kind = 'foo';
@@ -3184,7 +3317,7 @@ api.Privilege buildPrivilege() {
 void checkPrivilege(api.Privilege o) {
   buildCounterPrivilege++;
   if (buildCounterPrivilege < 3) {
-    checkUnnamed45(o.childPrivileges!);
+    checkUnnamed48(o.childPrivileges!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -3210,12 +3343,12 @@ void checkPrivilege(api.Privilege o) {
   buildCounterPrivilege--;
 }
 
-core.List<api.Privilege> buildUnnamed46() => [
+core.List<api.Privilege> buildUnnamed49() => [
       buildPrivilege(),
       buildPrivilege(),
     ];
 
-void checkUnnamed46(core.List<api.Privilege> o) {
+void checkUnnamed49(core.List<api.Privilege> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrivilege(o[0]);
   checkPrivilege(o[1]);
@@ -3227,7 +3360,7 @@ api.Privileges buildPrivileges() {
   buildCounterPrivileges++;
   if (buildCounterPrivileges < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed46();
+    o.items = buildUnnamed49();
     o.kind = 'foo';
   }
   buildCounterPrivileges--;
@@ -3241,7 +3374,7 @@ void checkPrivileges(api.Privileges o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed46(o.items!);
+    checkUnnamed49(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3277,12 +3410,12 @@ void checkRoleRolePrivileges(api.RoleRolePrivileges o) {
   buildCounterRoleRolePrivileges--;
 }
 
-core.List<api.RoleRolePrivileges> buildUnnamed47() => [
+core.List<api.RoleRolePrivileges> buildUnnamed50() => [
       buildRoleRolePrivileges(),
       buildRoleRolePrivileges(),
     ];
 
-void checkUnnamed47(core.List<api.RoleRolePrivileges> o) {
+void checkUnnamed50(core.List<api.RoleRolePrivileges> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRoleRolePrivileges(o[0]);
   checkRoleRolePrivileges(o[1]);
@@ -3300,7 +3433,7 @@ api.Role buildRole() {
     o.roleDescription = 'foo';
     o.roleId = 'foo';
     o.roleName = 'foo';
-    o.rolePrivileges = buildUnnamed47();
+    o.rolePrivileges = buildUnnamed50();
   }
   buildCounterRole--;
   return o;
@@ -3331,7 +3464,7 @@ void checkRole(api.Role o) {
       o.roleName!,
       unittest.equals('foo'),
     );
-    checkUnnamed47(o.rolePrivileges!);
+    checkUnnamed50(o.rolePrivileges!);
   }
   buildCounterRole--;
 }
@@ -3388,12 +3521,12 @@ void checkRoleAssignment(api.RoleAssignment o) {
   buildCounterRoleAssignment--;
 }
 
-core.List<api.RoleAssignment> buildUnnamed48() => [
+core.List<api.RoleAssignment> buildUnnamed51() => [
       buildRoleAssignment(),
       buildRoleAssignment(),
     ];
 
-void checkUnnamed48(core.List<api.RoleAssignment> o) {
+void checkUnnamed51(core.List<api.RoleAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRoleAssignment(o[0]);
   checkRoleAssignment(o[1]);
@@ -3405,7 +3538,7 @@ api.RoleAssignments buildRoleAssignments() {
   buildCounterRoleAssignments++;
   if (buildCounterRoleAssignments < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed48();
+    o.items = buildUnnamed51();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -3420,7 +3553,7 @@ void checkRoleAssignments(api.RoleAssignments o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed48(o.items!);
+    checkUnnamed51(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3433,12 +3566,12 @@ void checkRoleAssignments(api.RoleAssignments o) {
   buildCounterRoleAssignments--;
 }
 
-core.List<api.Role> buildUnnamed49() => [
+core.List<api.Role> buildUnnamed52() => [
       buildRole(),
       buildRole(),
     ];
 
-void checkUnnamed49(core.List<api.Role> o) {
+void checkUnnamed52(core.List<api.Role> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRole(o[0]);
   checkRole(o[1]);
@@ -3450,7 +3583,7 @@ api.Roles buildRoles() {
   buildCounterRoles++;
   if (buildCounterRoles < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed49();
+    o.items = buildUnnamed52();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -3465,7 +3598,7 @@ void checkRoles(api.Roles o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed49(o.items!);
+    checkUnnamed52(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3478,12 +3611,12 @@ void checkRoles(api.Roles o) {
   buildCounterRoles--;
 }
 
-core.List<api.SchemaFieldSpec> buildUnnamed50() => [
+core.List<api.SchemaFieldSpec> buildUnnamed53() => [
       buildSchemaFieldSpec(),
       buildSchemaFieldSpec(),
     ];
 
-void checkUnnamed50(core.List<api.SchemaFieldSpec> o) {
+void checkUnnamed53(core.List<api.SchemaFieldSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSchemaFieldSpec(o[0]);
   checkSchemaFieldSpec(o[1]);
@@ -3496,7 +3629,7 @@ api.Schema buildSchema() {
   if (buildCounterSchema < 3) {
     o.displayName = 'foo';
     o.etag = 'foo';
-    o.fields = buildUnnamed50();
+    o.fields = buildUnnamed53();
     o.kind = 'foo';
     o.schemaId = 'foo';
     o.schemaName = 'foo';
@@ -3516,7 +3649,7 @@ void checkSchema(api.Schema o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed50(o.fields!);
+    checkUnnamed53(o.fields!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3620,12 +3753,12 @@ void checkSchemaFieldSpec(api.SchemaFieldSpec o) {
   buildCounterSchemaFieldSpec--;
 }
 
-core.List<api.Schema> buildUnnamed51() => [
+core.List<api.Schema> buildUnnamed54() => [
       buildSchema(),
       buildSchema(),
     ];
 
-void checkUnnamed51(core.List<api.Schema> o) {
+void checkUnnamed54(core.List<api.Schema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSchema(o[0]);
   checkSchema(o[1]);
@@ -3638,7 +3771,7 @@ api.Schemas buildSchemas() {
   if (buildCounterSchemas < 3) {
     o.etag = 'foo';
     o.kind = 'foo';
-    o.schemas = buildUnnamed51();
+    o.schemas = buildUnnamed54();
   }
   buildCounterSchemas--;
   return o;
@@ -3655,17 +3788,17 @@ void checkSchemas(api.Schemas o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed51(o.schemas!);
+    checkUnnamed54(o.schemas!);
   }
   buildCounterSchemas--;
 }
 
-core.List<core.String> buildUnnamed52() => [
+core.List<core.String> buildUnnamed55() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed52(core.List<core.String> o) {
+void checkUnnamed55(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3688,7 +3821,7 @@ api.Token buildToken() {
     o.etag = 'foo';
     o.kind = 'foo';
     o.nativeApp = true;
-    o.scopes = buildUnnamed52();
+    o.scopes = buildUnnamed55();
     o.userKey = 'foo';
   }
   buildCounterToken--;
@@ -3716,7 +3849,7 @@ void checkToken(api.Token o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.nativeApp!, unittest.isTrue);
-    checkUnnamed52(o.scopes!);
+    checkUnnamed55(o.scopes!);
     unittest.expect(
       o.userKey!,
       unittest.equals('foo'),
@@ -3725,12 +3858,12 @@ void checkToken(api.Token o) {
   buildCounterToken--;
 }
 
-core.List<api.Token> buildUnnamed53() => [
+core.List<api.Token> buildUnnamed56() => [
       buildToken(),
       buildToken(),
     ];
 
-void checkUnnamed53(core.List<api.Token> o) {
+void checkUnnamed56(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToken(o[0]);
   checkToken(o[1]);
@@ -3742,7 +3875,7 @@ api.Tokens buildTokens() {
   buildCounterTokens++;
   if (buildCounterTokens < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed53();
+    o.items = buildUnnamed56();
     o.kind = 'foo';
   }
   buildCounterTokens--;
@@ -3756,7 +3889,7 @@ void checkTokens(api.Tokens o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed53(o.items!);
+    checkUnnamed56(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3765,12 +3898,12 @@ void checkTokens(api.Tokens o) {
   buildCounterTokens--;
 }
 
-core.List<core.String> buildUnnamed54() => [
+core.List<core.String> buildUnnamed57() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed54(core.List<core.String> o) {
+void checkUnnamed57(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3782,23 +3915,23 @@ void checkUnnamed54(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.UserCustomProperties> buildUnnamed55() => {
+core.Map<core.String, api.UserCustomProperties> buildUnnamed58() => {
       'x': buildUserCustomProperties(),
       'y': buildUserCustomProperties(),
     };
 
-void checkUnnamed55(core.Map<core.String, api.UserCustomProperties> o) {
+void checkUnnamed58(core.Map<core.String, api.UserCustomProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserCustomProperties(o['x']!);
   checkUserCustomProperties(o['y']!);
 }
 
-core.List<core.String> buildUnnamed56() => [
+core.List<core.String> buildUnnamed59() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed56(core.List<core.String> o) {
+void checkUnnamed59(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3821,11 +3954,11 @@ api.User buildUser() {
       'string': 'foo'
     };
     o.agreedToTerms = true;
-    o.aliases = buildUnnamed54();
+    o.aliases = buildUnnamed57();
     o.archived = true;
     o.changePasswordAtNextLogin = true;
     o.creationTime = core.DateTime.parse('2002-02-27T14:01:02');
-    o.customSchemas = buildUnnamed55();
+    o.customSchemas = buildUnnamed58();
     o.customerId = 'foo';
     o.deletionTime = core.DateTime.parse('2002-02-27T14:01:02');
     o.emails = {
@@ -3876,7 +4009,7 @@ api.User buildUser() {
       'string': 'foo'
     };
     o.name = buildUserName();
-    o.nonEditableAliases = buildUnnamed56();
+    o.nonEditableAliases = buildUnnamed59();
     o.notes = {
       'list': [1, 2, 3],
       'bool': true,
@@ -3944,14 +4077,14 @@ void checkUser(api.User o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.agreedToTerms!, unittest.isTrue);
-    checkUnnamed54(o.aliases!);
+    checkUnnamed57(o.aliases!);
     unittest.expect(o.archived!, unittest.isTrue);
     unittest.expect(o.changePasswordAtNextLogin!, unittest.isTrue);
     unittest.expect(
       o.creationTime!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
     );
-    checkUnnamed55(o.customSchemas!);
+    checkUnnamed58(o.customSchemas!);
     unittest.expect(
       o.customerId!,
       unittest.equals('foo'),
@@ -4086,7 +4219,7 @@ void checkUser(api.User o) {
       unittest.equals('foo'),
     );
     checkUserName(o.name!);
-    checkUnnamed56(o.nonEditableAliases!);
+    checkUnnamed59(o.nonEditableAliases!);
     var casted12 = (o.notes!) as core.Map;
     unittest.expect(casted12, unittest.hasLength(3));
     unittest.expect(
@@ -5025,12 +5158,12 @@ void checkUserWebsite(api.UserWebsite o) {
   buildCounterUserWebsite--;
 }
 
-core.List<api.User> buildUnnamed57() => [
+core.List<api.User> buildUnnamed60() => [
       buildUser(),
       buildUser(),
     ];
 
-void checkUnnamed57(core.List<api.User> o) {
+void checkUnnamed60(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -5045,7 +5178,7 @@ api.Users buildUsers() {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.triggerEvent = 'foo';
-    o.users = buildUnnamed57();
+    o.users = buildUnnamed60();
   }
   buildCounterUsers--;
   return o;
@@ -5070,7 +5203,7 @@ void checkUsers(api.Users o) {
       o.triggerEvent!,
       unittest.equals('foo'),
     );
-    checkUnnamed57(o.users!);
+    checkUnnamed60(o.users!);
   }
   buildCounterUsers--;
 }
@@ -5112,12 +5245,12 @@ void checkVerificationCode(api.VerificationCode o) {
   buildCounterVerificationCode--;
 }
 
-core.List<api.VerificationCode> buildUnnamed58() => [
+core.List<api.VerificationCode> buildUnnamed61() => [
       buildVerificationCode(),
       buildVerificationCode(),
     ];
 
-void checkUnnamed58(core.List<api.VerificationCode> o) {
+void checkUnnamed61(core.List<api.VerificationCode> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVerificationCode(o[0]);
   checkVerificationCode(o[1]);
@@ -5129,7 +5262,7 @@ api.VerificationCodes buildVerificationCodes() {
   buildCounterVerificationCodes++;
   if (buildCounterVerificationCodes < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed58();
+    o.items = buildUnnamed61();
     o.kind = 'foo';
   }
   buildCounterVerificationCodes--;
@@ -5143,7 +5276,7 @@ void checkVerificationCodes(api.VerificationCodes o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed58(o.items!);
+    checkUnnamed61(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -5319,6 +5452,36 @@ void main() {
       final od = api.ChromeOsDeviceActiveTimeRanges.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkChromeOsDeviceActiveTimeRanges(od);
+    });
+  });
+
+  unittest.group('obj-schema-ChromeOsDeviceCpuInfoLogicalCpusCStates', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChromeOsDeviceCpuInfoLogicalCpusCStates();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkChromeOsDeviceCpuInfoLogicalCpusCStates(od);
+    });
+  });
+
+  unittest.group('obj-schema-ChromeOsDeviceCpuInfoLogicalCpus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChromeOsDeviceCpuInfoLogicalCpus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChromeOsDeviceCpuInfoLogicalCpus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkChromeOsDeviceCpuInfoLogicalCpus(od);
+    });
+  });
+
+  unittest.group('obj-schema-ChromeOsDeviceCpuInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChromeOsDeviceCpuInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChromeOsDeviceCpuInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkChromeOsDeviceCpuInfo(od);
     });
   });
 

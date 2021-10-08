@@ -1332,7 +1332,7 @@ class Resource {
   ///
   /// The syntax is platform-specific because different platforms define their
   /// resources differently. For Google APIs, the type format must be
-  /// "{service}/{kind}".
+  /// "{service}/{kind}", such as "pubsub.googleapis.com/Topic".
   core.String? type;
 
   /// The unique identifier of the resource.

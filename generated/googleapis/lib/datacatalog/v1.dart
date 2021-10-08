@@ -839,6 +839,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
 
   /// Lists entries.
   ///
+  /// Note: Currently, this method can list only custom entries. To get a list
+  /// of both custom and automatically created entries, use SearchCatalog.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the entry group that contains the entries

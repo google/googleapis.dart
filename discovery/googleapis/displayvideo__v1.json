@@ -21,7 +21,7 @@
     "baseUrl": "https://displayvideo.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Display Video",
-    "description": "Display & Video 360 API allows users to manage and create campaigns and reports.",
+    "description": "Display & Video 360 API allows users to automate complex Display & Video 360 workflows, such as creating insertion orders and setting targeting options for individual line items.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/display-video/",
     "icons": {
@@ -4715,24 +4715,6 @@
         },
         "customBiddingAlgorithms": {
             "methods": {
-                "create": {
-                    "description": "Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.",
-                    "flatPath": "v1/customBiddingAlgorithms",
-                    "httpMethod": "POST",
-                    "id": "displayvideo.customBiddingAlgorithms.create",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/customBiddingAlgorithms",
-                    "request": {
-                        "$ref": "CustomBiddingAlgorithm"
-                    },
-                    "response": {
-                        "$ref": "CustomBiddingAlgorithm"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/display-video"
-                    ]
-                },
                 "get": {
                     "description": "Gets a custom bidding algorithm.",
                     "flatPath": "v1/customBiddingAlgorithms/{customBiddingAlgorithmsId}",
@@ -4815,41 +4797,6 @@
                     "path": "v1/customBiddingAlgorithms",
                     "response": {
                         "$ref": "ListCustomBiddingAlgorithmsResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/display-video"
-                    ]
-                },
-                "patch": {
-                    "description": "Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.",
-                    "flatPath": "v1/customBiddingAlgorithms/{customBiddingAlgorithmsId}",
-                    "httpMethod": "PATCH",
-                    "id": "displayvideo.customBiddingAlgorithms.patch",
-                    "parameterOrder": [
-                        "customBiddingAlgorithmId"
-                    ],
-                    "parameters": {
-                        "customBiddingAlgorithmId": {
-                            "description": "Output only. The unique ID of the custom bidding algorithm. Assigned by the system.",
-                            "format": "int64",
-                            "location": "path",
-                            "pattern": "^[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "updateMask": {
-                            "description": "Required. The mask to control which fields to update.",
-                            "format": "google-fieldmask",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}",
-                    "request": {
-                        "$ref": "CustomBiddingAlgorithm"
-                    },
-                    "response": {
-                        "$ref": "CustomBiddingAlgorithm"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/display-video"
@@ -6829,7 +6776,7 @@
                                     "type": "string"
                                 },
                                 "targetingType": {
-                                    "description": "Required. The type of targeting option to retrieve.",
+                                    "description": "Required. The type of targeting option to retrieve. Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`",
                                     "enum": [
                                         "TARGETING_TYPE_UNSPECIFIED",
                                         "TARGETING_TYPE_CHANNEL",
@@ -6969,7 +6916,7 @@
                                     "type": "string"
                                 },
                                 "targetingType": {
-                                    "description": "Required. The type of targeting option to be listed.",
+                                    "description": "Required. The type of targeting option to be listed. Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`",
                                     "enum": [
                                         "TARGETING_TYPE_UNSPECIFIED",
                                         "TARGETING_TYPE_CHANNEL",
@@ -7368,7 +7315,7 @@
             }
         }
     },
-    "revision": "20210902",
+    "revision": "20211007",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "schemas": {
         "ActivateManualTriggerRequest": {
@@ -8937,7 +8884,7 @@
                     "type": "string"
                 },
                 "targetingOptionId": {
-                    "description": "Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_BUSINESS_CHAIN`.",
+                    "description": "Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_BUSINESS_CHAIN`. Accepted business chain targeting option IDs can be retrieved using SearchTargetingOptions.",
                     "type": "string"
                 }
             },
@@ -8947,11 +8894,11 @@
             "description": "Search terms for Business Chain targeting options. At least one of the field should be populated.",
             "id": "BusinessChainSearchTerms",
             "properties": {
-                "businessChain": {
+                "businessChainQuery": {
                     "description": "The search query for the desired business chain. The query must be the full name of the business, e.g. \"KFC\", \"mercedes-benz\".",
                     "type": "string"
                 },
-                "region": {
+                "regionQuery": {
                     "description": "The search query for the desired geo region, e.g. \"Seattle\", \"United State\".",
                     "type": "string"
                 }
@@ -9821,7 +9768,8 @@
                         "SDF_VERSION_5",
                         "SDF_VERSION_5_1",
                         "SDF_VERSION_5_2",
-                        "SDF_VERSION_5_3"
+                        "SDF_VERSION_5_3",
+                        "SDF_VERSION_5_4"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -9832,7 +9780,8 @@
                         "SDF version 5.",
                         "SDF version 5.1",
                         "SDF version 5.2",
-                        "SDF version 5.3"
+                        "SDF version 5.3",
+                        "SDF version 5.4"
                     ],
                     "type": "string"
                 }
@@ -10333,7 +10282,7 @@
                     "type": "string"
                 },
                 "sharedAdvertiserIds": {
-                    "description": "The IDs of the advertisers who have access to this algorithm. This field will not be set if the algorithm owner is a partner and is being retrieved using an advertiser accessor.",
+                    "description": "The IDs of the advertisers who have access to this algorithm. If advertiser_id is set, this field will only consist of that value. This field will not be set if the algorithm [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner) is a partner and is being retrieved using an advertiser [`accessor`](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor).",
                     "items": {
                         "format": "int64",
                         "type": "string"
@@ -15378,7 +15327,7 @@
                     "type": "string"
                 },
                 "targetingOptionId": {
-                    "description": "Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI` or reuse an existing assigned_targeting_option_id.",
+                    "description": "Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`. Accepted POI targeting option IDs can be retrieved using SearchTargetingOptions. If targeting a specific latitude/longitude coordinate removed from an address or POI name, you can generate the necessary targeting option ID by rounding the desired coordinate values to the 6th decimal place, removing the decimals, and concatenating the string values separated by a semicolon. For example, you can target the latitude/longitude pair of 40.7414691, -74.003387 using the targeting option ID \"40741469;-74003387\".",
                     "type": "string"
                 }
             },
@@ -15741,7 +15690,8 @@
                         "SDF_VERSION_5",
                         "SDF_VERSION_5_1",
                         "SDF_VERSION_5_2",
-                        "SDF_VERSION_5_3"
+                        "SDF_VERSION_5_3",
+                        "SDF_VERSION_5_4"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -15752,7 +15702,8 @@
                         "SDF version 5.",
                         "SDF version 5.1",
                         "SDF version 5.2",
-                        "SDF version 5.3"
+                        "SDF version 5.3",
+                        "SDF version 5.4"
                     ],
                     "type": "string"
                 }
@@ -15795,7 +15746,8 @@
                         "SDF_VERSION_5",
                         "SDF_VERSION_5_1",
                         "SDF_VERSION_5_2",
-                        "SDF_VERSION_5_3"
+                        "SDF_VERSION_5_3",
+                        "SDF_VERSION_5_4"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -15806,7 +15758,8 @@
                         "SDF version 5.",
                         "SDF version 5.1",
                         "SDF version 5.2",
-                        "SDF version 5.3"
+                        "SDF version 5.3",
+                        "SDF version 5.4"
                     ],
                     "type": "string"
                 }

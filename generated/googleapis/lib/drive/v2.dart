@@ -2042,9 +2042,11 @@ class FilesResource {
     return FileList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates file metadata and/or content.
+  /// Updates a file's metadata and/or content.
   ///
-  /// This method supports patch semantics.
+  /// When calling this method, only populate fields in the request that you
+  /// want to modify. When updating fields, some fields might might change
+  /// automatically, such as modifiedDate. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2353,7 +2355,11 @@ class FilesResource {
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates file metadata and/or content.
+  /// Updates a file's metadata and/or content.
+  ///
+  /// When calling this method, only populate fields in the request that you
+  /// want to modify. When updating fields, some fields might be changed
+  /// automatically, such as modifiedDate. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///

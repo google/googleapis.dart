@@ -184,7 +184,8 @@ class ProjectsLocationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Looks up assignments for a specified resource for a particular region.
+  /// Deprecated: Looks up assignments for a specified resource for a particular
+  /// region.
   ///
   /// If the request is about a project: 1. Assignments created on the project
   /// will be returned if they exist. 2. Otherwise assignments created on the
@@ -1107,7 +1108,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   }
 }
 
-/// A Assignment allows a project to submit jobs of a certain type using slots
+/// An assignment allows a project to submit jobs of a certain type using slots
 /// from the specified reservation.
 class Assignment {
   /// The resource which will use the reservation.
@@ -1525,7 +1526,7 @@ class Reservation {
   /// slots from other reservations within the same admin project.
   ///
   /// If true, a query or pipeline job using this reservation will execute with
-  /// the slot capacity specified above at most.
+  /// the slot capacity specified in the slot_capacity field at most.
   core.bool? ignoreIdleSlots;
 
   /// The resource name of the reservation, e.g., `projects / * /locations / *

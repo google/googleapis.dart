@@ -823,6 +823,11 @@ class ColumnDescription {
   /// column name
   core.String? name;
 
+  /// Indicates that values for the column cannot be set by the user.
+  ///
+  /// Optional.
+  core.bool? readonly;
+
   /// Additional details about a relationship column.
   ///
   /// Specified when data_type is relationship.
@@ -837,6 +842,7 @@ class ColumnDescription {
     this.lookupDetails,
     this.multipleValuesDisallowed,
     this.name,
+    this.readonly,
     this.relationshipDetails,
   });
 
@@ -861,6 +867,9 @@ class ColumnDescription {
                   ? _json['multipleValuesDisallowed'] as core.bool
                   : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          readonly: _json.containsKey('readonly')
+              ? _json['readonly'] as core.bool
+              : null,
           relationshipDetails: _json.containsKey('relationshipDetails')
               ? RelationshipDetails.fromJson(_json['relationshipDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -875,6 +884,7 @@ class ColumnDescription {
         if (multipleValuesDisallowed != null)
           'multipleValuesDisallowed': multipleValuesDisallowed!,
         if (name != null) 'name': name!,
+        if (readonly != null) 'readonly': readonly!,
         if (relationshipDetails != null)
           'relationshipDetails': relationshipDetails!,
       };

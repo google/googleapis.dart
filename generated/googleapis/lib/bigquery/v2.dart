@@ -450,19 +450,20 @@ class JobsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Requests that a job is deleted.
+  /// Requests the deletion of the metadata of a job.
   ///
-  /// This call will return when the job is deleted. This method is available in
-  /// limited preview.
+  /// This call returns when the job's metadata is deleted.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Required. Project ID of the job to be deleted.
+  /// [projectId] - Required. Project ID of the job for which metadata is to be
+  /// deleted.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [jobId] - Required. Job ID of the job to be deleted. If this is a parent
-  /// job which has child jobs, all child jobs will be deleted as well. Deletion
-  /// of child jobs directly is not allowed.
+  /// [jobId] - Required. Job ID of the job for which metadata is to be deleted.
+  /// If this is a parent job which has child jobs, the metadata from all child
+  /// jobs will be deleted as well. Direct deletion of the metadata of child
+  /// jobs is not allowed.
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [location] - The geographic location of the job. Required. See details at:
@@ -2878,10 +2879,9 @@ class AuditLogConfig {
 }
 
 class AvroOptions {
-  /// If set to true will enable interpreting logical types into their
-  /// corresponding types (ie.
-  ///
-  /// TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+  /// If sourceFormat is set to "AVRO", indicates whether to interpret logical
+  /// types as the corresponding BigQuery data type (for example, TIMESTAMP),
+  /// instead of using the raw type (for example, INTEGER).
   ///
   /// Optional.
   core.bool? useAvroLogicalTypes;
@@ -4225,6 +4225,9 @@ class Dataset {
   ///
   /// Required.
   DatasetReference? datasetReference;
+
+  /// \[Output-only\] The default collation of the dataset.
+  core.String? defaultCollation;
   EncryptionConfiguration? defaultEncryptionConfiguration;
 
   /// The default partition expiration for all partitioned tables in the
@@ -4318,6 +4321,7 @@ class Dataset {
     this.access,
     this.creationTime,
     this.datasetReference,
+    this.defaultCollation,
     this.defaultEncryptionConfiguration,
     this.defaultPartitionExpirationMs,
     this.defaultTableExpirationMs,
@@ -4348,6 +4352,9 @@ class Dataset {
           datasetReference: _json.containsKey('datasetReference')
               ? DatasetReference.fromJson(_json['datasetReference']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          defaultCollation: _json.containsKey('defaultCollation')
+              ? _json['defaultCollation'] as core.String
               : null,
           defaultEncryptionConfiguration:
               _json.containsKey('defaultEncryptionConfiguration')
@@ -4401,6 +4408,7 @@ class Dataset {
         if (access != null) 'access': access!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (datasetReference != null) 'datasetReference': datasetReference!,
+        if (defaultCollation != null) 'defaultCollation': defaultCollation!,
         if (defaultEncryptionConfiguration != null)
           'defaultEncryptionConfiguration': defaultEncryptionConfiguration!,
         if (defaultPartitionExpirationMs != null)
@@ -4647,6 +4655,20 @@ class DestinationTableProperties {
   /// Optional.
   core.String? description;
 
+  /// The expiration timestamp for the destination table.
+  ///
+  /// If this field is set: For a new table, it will set the table's expiration
+  /// time (even if there is a dataset level default table expiration time). For
+  /// an existing table, it will update the table's expiration time. If this
+  /// field is not set: For a new table, if dataset level default table
+  /// expiration time is present, that will be applied. For an existing table,
+  /// no change is made to the table's expiration time. Additionally this field
+  /// is only applied when data is written to an empty table (WRITE_EMPTY) or
+  /// data is overwritten to a table (WRITE_TRUNCATE).
+  ///
+  /// Optional.
+  core.String? expirationTimestampMillis;
+
   /// The friendly name for the destination table.
   ///
   /// This will only be used if the destination table is newly created. If the
@@ -4668,6 +4690,7 @@ class DestinationTableProperties {
 
   DestinationTableProperties({
     this.description,
+    this.expirationTimestampMillis,
     this.friendlyName,
     this.labels,
   });
@@ -4677,6 +4700,10 @@ class DestinationTableProperties {
           description: _json.containsKey('description')
               ? _json['description'] as core.String
               : null,
+          expirationTimestampMillis:
+              _json.containsKey('expirationTimestampMillis')
+                  ? _json['expirationTimestampMillis'] as core.String
+                  : null,
           friendlyName: _json.containsKey('friendlyName')
               ? _json['friendlyName'] as core.String
               : null,
@@ -4692,6 +4719,8 @@ class DestinationTableProperties {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (expirationTimestampMillis != null)
+          'expirationTimestampMillis': expirationTimestampMillis!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
         if (labels != null) 'labels': labels!,
       };
@@ -6536,10 +6565,9 @@ class JobConfigurationLoad {
   /// Only one of timePartitioning and rangePartitioning should be specified.
   TimePartitioning? timePartitioning;
 
-  /// If sourceFormat is set to "AVRO", indicates whether to enable interpreting
-  /// logical types into their corresponding types (ie.
-  ///
-  /// TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+  /// If sourceFormat is set to "AVRO", indicates whether to interpret logical
+  /// types as the corresponding BigQuery data type (for example, TIMESTAMP),
+  /// instead of using the raw type (for example, INTEGER).
   ///
   /// Optional.
   core.bool? useAvroLogicalTypes;
@@ -10635,6 +10663,9 @@ class Table {
   /// since the epoch.
   core.String? creationTime;
 
+  /// \[Output-only\] The default collation of the table.
+  core.String? defaultCollation;
+
   /// A user-friendly description of this table.
   ///
   /// Optional.
@@ -10784,6 +10815,7 @@ class Table {
   Table({
     this.clustering,
     this.creationTime,
+    this.defaultCollation,
     this.description,
     this.encryptionConfiguration,
     this.etag,
@@ -10821,6 +10853,9 @@ class Table {
               : null,
           creationTime: _json.containsKey('creationTime')
               ? _json['creationTime'] as core.String
+              : null,
+          defaultCollation: _json.containsKey('defaultCollation')
+              ? _json['defaultCollation'] as core.String
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
@@ -10919,6 +10954,7 @@ class Table {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clustering != null) 'clustering': clustering!,
         if (creationTime != null) 'creationTime': creationTime!,
+        if (defaultCollation != null) 'defaultCollation': defaultCollation!,
         if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
           'encryptionConfiguration': encryptionConfiguration!,
@@ -11814,8 +11850,33 @@ class TrainingOptions {
   /// Batch size for dnn models.
   core.String? batchSize;
 
+  /// Booster type for boosted tree models.
+  /// Possible string values are:
+  /// - "BOOSTER_TYPE_UNSPECIFIED" : Unspecified booster type.
+  /// - "GBTREE" : Gbtree booster.
+  /// - "DART" : Dart booster.
+  core.String? boosterType;
+
   /// If true, clean spikes and dips in the input time series.
   core.bool? cleanSpikesAndDips;
+
+  /// Subsample ratio of columns for each level for boosted tree models.
+  core.double? colsampleBylevel;
+
+  /// Subsample ratio of columns for each node(split) for boosted tree models.
+  core.double? colsampleBynode;
+
+  /// Subsample ratio of columns when constructing each tree for boosted tree
+  /// models.
+  core.double? colsampleBytree;
+
+  /// Type of normalization algorithm for boosted tree models using dart
+  /// booster.
+  /// Possible string values are:
+  /// - "DART_NORMALIZE_TYPE_UNSPECIFIED" : Unspecified dart normalize type.
+  /// - "TREE" : New trees have the same weight of each of dropped trees.
+  /// - "FOREST" : New trees have the same weight of sum of dropped trees.
+  core.String? dartNormalizeType;
 
   /// The data frequency of a time series.
   /// Possible string values are:
@@ -12044,6 +12105,9 @@ class TrainingOptions {
   /// Minimum split loss for boosted tree models.
   core.double? minSplitLoss;
 
+  /// Minimum sum of instance weight needed in a child for boosted tree models.
+  core.String? minTreeChildWeight;
+
   /// Google Cloud Storage URI from which the model was imported.
   ///
   /// Only applicable for imported models.
@@ -12059,6 +12123,10 @@ class TrainingOptions {
 
   /// Num factors specified for matrix factorization models.
   core.String? numFactors;
+
+  /// Number of parallel trees constructed during each iteration for boosted
+  /// tree models.
+  core.String? numParallelTree;
 
   /// Optimization strategy for training linear regression models.
   /// Possible string values are:
@@ -12091,6 +12159,16 @@ class TrainingOptions {
   /// Column to be designated as time series timestamp for ARIMA model.
   core.String? timeSeriesTimestampColumn;
 
+  /// Tree construction algorithm for boosted tree models.
+  /// Possible string values are:
+  /// - "TREE_METHOD_UNSPECIFIED" : Unspecified tree method.
+  /// - "AUTO" : Use heuristic to choose the fastest method.
+  /// - "EXACT" : Exact greedy algorithm.
+  /// - "APPROX" : Approximate greedy algorithm using quantile sketch and
+  /// gradient histogram.
+  /// - "HIST" : Fast histogram optimized approximate greedy algorithm.
+  core.String? treeMethod;
+
   /// User column specified for matrix factorization models.
   core.String? userColumn;
 
@@ -12106,7 +12184,12 @@ class TrainingOptions {
     this.autoArima,
     this.autoArimaMaxOrder,
     this.batchSize,
+    this.boosterType,
     this.cleanSpikesAndDips,
+    this.colsampleBylevel,
+    this.colsampleBynode,
+    this.colsampleBytree,
+    this.dartNormalizeType,
     this.dataFrequency,
     this.dataSplitColumn,
     this.dataSplitEvalFraction,
@@ -12135,10 +12218,12 @@ class TrainingOptions {
     this.maxTreeDepth,
     this.minRelativeProgress,
     this.minSplitLoss,
+    this.minTreeChildWeight,
     this.modelUri,
     this.nonSeasonalOrder,
     this.numClusters,
     this.numFactors,
+    this.numParallelTree,
     this.optimizationStrategy,
     this.preserveInputStructs,
     this.subsample,
@@ -12146,6 +12231,7 @@ class TrainingOptions {
     this.timeSeriesIdColumn,
     this.timeSeriesIdColumns,
     this.timeSeriesTimestampColumn,
+    this.treeMethod,
     this.userColumn,
     this.walsAlpha,
     this.warmStart,
@@ -12165,8 +12251,23 @@ class TrainingOptions {
           batchSize: _json.containsKey('batchSize')
               ? _json['batchSize'] as core.String
               : null,
+          boosterType: _json.containsKey('boosterType')
+              ? _json['boosterType'] as core.String
+              : null,
           cleanSpikesAndDips: _json.containsKey('cleanSpikesAndDips')
               ? _json['cleanSpikesAndDips'] as core.bool
+              : null,
+          colsampleBylevel: _json.containsKey('colsampleBylevel')
+              ? (_json['colsampleBylevel'] as core.num).toDouble()
+              : null,
+          colsampleBynode: _json.containsKey('colsampleBynode')
+              ? (_json['colsampleBynode'] as core.num).toDouble()
+              : null,
+          colsampleBytree: _json.containsKey('colsampleBytree')
+              ? (_json['colsampleBytree'] as core.num).toDouble()
+              : null,
+          dartNormalizeType: _json.containsKey('dartNormalizeType')
+              ? _json['dartNormalizeType'] as core.String
               : null,
           dataFrequency: _json.containsKey('dataFrequency')
               ? _json['dataFrequency'] as core.String
@@ -12265,6 +12366,9 @@ class TrainingOptions {
           minSplitLoss: _json.containsKey('minSplitLoss')
               ? (_json['minSplitLoss'] as core.num).toDouble()
               : null,
+          minTreeChildWeight: _json.containsKey('minTreeChildWeight')
+              ? _json['minTreeChildWeight'] as core.String
+              : null,
           modelUri: _json.containsKey('modelUri')
               ? _json['modelUri'] as core.String
               : null,
@@ -12277,6 +12381,9 @@ class TrainingOptions {
               : null,
           numFactors: _json.containsKey('numFactors')
               ? _json['numFactors'] as core.String
+              : null,
+          numParallelTree: _json.containsKey('numParallelTree')
+              ? _json['numParallelTree'] as core.String
               : null,
           optimizationStrategy: _json.containsKey('optimizationStrategy')
               ? _json['optimizationStrategy'] as core.String
@@ -12302,6 +12409,9 @@ class TrainingOptions {
               _json.containsKey('timeSeriesTimestampColumn')
                   ? _json['timeSeriesTimestampColumn'] as core.String
                   : null,
+          treeMethod: _json.containsKey('treeMethod')
+              ? _json['treeMethod'] as core.String
+              : null,
           userColumn: _json.containsKey('userColumn')
               ? _json['userColumn'] as core.String
               : null,
@@ -12318,8 +12428,13 @@ class TrainingOptions {
         if (autoArima != null) 'autoArima': autoArima!,
         if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder!,
         if (batchSize != null) 'batchSize': batchSize!,
+        if (boosterType != null) 'boosterType': boosterType!,
         if (cleanSpikesAndDips != null)
           'cleanSpikesAndDips': cleanSpikesAndDips!,
+        if (colsampleBylevel != null) 'colsampleBylevel': colsampleBylevel!,
+        if (colsampleBynode != null) 'colsampleBynode': colsampleBynode!,
+        if (colsampleBytree != null) 'colsampleBytree': colsampleBytree!,
+        if (dartNormalizeType != null) 'dartNormalizeType': dartNormalizeType!,
         if (dataFrequency != null) 'dataFrequency': dataFrequency!,
         if (dataSplitColumn != null) 'dataSplitColumn': dataSplitColumn!,
         if (dataSplitEvalFraction != null)
@@ -12353,10 +12468,13 @@ class TrainingOptions {
         if (minRelativeProgress != null)
           'minRelativeProgress': minRelativeProgress!,
         if (minSplitLoss != null) 'minSplitLoss': minSplitLoss!,
+        if (minTreeChildWeight != null)
+          'minTreeChildWeight': minTreeChildWeight!,
         if (modelUri != null) 'modelUri': modelUri!,
         if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
         if (numClusters != null) 'numClusters': numClusters!,
         if (numFactors != null) 'numFactors': numFactors!,
+        if (numParallelTree != null) 'numParallelTree': numParallelTree!,
         if (optimizationStrategy != null)
           'optimizationStrategy': optimizationStrategy!,
         if (preserveInputStructs != null)
@@ -12370,6 +12488,7 @@ class TrainingOptions {
           'timeSeriesIdColumns': timeSeriesIdColumns!,
         if (timeSeriesTimestampColumn != null)
           'timeSeriesTimestampColumn': timeSeriesTimestampColumn!,
+        if (treeMethod != null) 'treeMethod': treeMethod!,
         if (userColumn != null) 'userColumn': userColumn!,
         if (walsAlpha != null) 'walsAlpha': walsAlpha!,
         if (warmStart != null) 'warmStart': warmStart!,

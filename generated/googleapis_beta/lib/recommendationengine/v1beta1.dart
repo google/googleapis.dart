@@ -61,7 +61,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// personalized recommendation systems without requiring a high level of
 /// expertise in machine learning, recommendation system, or Google Cloud.
 class RecommendationsAIApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -2648,7 +2649,7 @@ class GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
 class GoogleCloudRecommendationengineV1beta1PredictRequest {
   /// Use dryRun mode for this prediction query.
   ///
-  /// If set to true, a dummy model will be used that returns arbitrary catalog
+  /// If set to true, a fake model will be used that returns arbitrary catalog
   /// items. Note that the dryRun mode should only be used for testing the API,
   /// or if the model is not ready.
   ///

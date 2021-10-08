@@ -4319,6 +4319,9 @@ class ThirdPartyLinksResource {
   /// channel with a store on a merchandising platform in order to enable retail
   /// commerce capabilities for that channel on YouTube.
   ///
+  /// [externalChannelId] - Channel ID to which changes should be applied, for
+  /// delegation.
+  ///
   /// [part] - Do not use. Required for compatibility.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4332,12 +4335,14 @@ class ThirdPartyLinksResource {
   async.Future<void> delete(
     core.String linkingToken,
     core.String type, {
+    core.String? externalChannelId,
     core.List<core.String>? part,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       'linkingToken': [linkingToken],
       'type': [type],
+      if (externalChannelId != null) 'externalChannelId': [externalChannelId],
       if (part != null) 'part': part,
       if ($fields != null) 'fields': [$fields],
     };
@@ -4362,6 +4367,9 @@ class ThirdPartyLinksResource {
   /// that the API request and response will include. Supported values are
   /// linkingToken, status, and snippet.
   ///
+  /// [externalChannelId] - Channel ID to which changes should be applied, for
+  /// delegation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4375,6 +4383,7 @@ class ThirdPartyLinksResource {
   async.Future<ThirdPartyLink> insert(
     ThirdPartyLink request,
     core.List<core.String> part, {
+    core.String? externalChannelId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -4383,6 +4392,7 @@ class ThirdPartyLinksResource {
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
+      if (externalChannelId != null) 'externalChannelId': [externalChannelId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4406,6 +4416,9 @@ class ThirdPartyLinksResource {
   /// that the API response will include. Supported values are linkingToken,
   /// status, and snippet.
   ///
+  /// [externalChannelId] - Channel ID to which changes should be applied, for
+  /// delegation.
+  ///
   /// [linkingToken] - Get a third party link with the given linking token.
   ///
   /// [type] - Get a third party link of the given type.
@@ -4427,6 +4440,7 @@ class ThirdPartyLinksResource {
   /// this method will complete with the same error.
   async.Future<ThirdPartyLink> list(
     core.List<core.String> part, {
+    core.String? externalChannelId,
     core.String? linkingToken,
     core.String? type,
     core.String? $fields,
@@ -4436,6 +4450,7 @@ class ThirdPartyLinksResource {
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
+      if (externalChannelId != null) 'externalChannelId': [externalChannelId],
       if (linkingToken != null) 'linkingToken': [linkingToken],
       if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
@@ -4462,6 +4477,9 @@ class ThirdPartyLinksResource {
   /// that the API request and response will include. Supported values are
   /// linkingToken, status, and snippet.
   ///
+  /// [externalChannelId] - Channel ID to which changes should be applied, for
+  /// delegation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4475,6 +4493,7 @@ class ThirdPartyLinksResource {
   async.Future<ThirdPartyLink> update(
     ThirdPartyLink request,
     core.List<core.String> part, {
+    core.String? externalChannelId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -4483,6 +4502,7 @@ class ThirdPartyLinksResource {
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
+      if (externalChannelId != null) 'externalChannelId': [externalChannelId],
       if ($fields != null) 'fields': [$fields],
     };
 

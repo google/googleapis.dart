@@ -45,8 +45,17 @@ class CloudOSLoginApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
+  static const cloudPlatformReadOnlyScope =
+      'https://www.googleapis.com/auth/cloud-platform.read-only';
+
   /// View and manage your Google Compute Engine resources
   static const computeScope = 'https://www.googleapis.com/auth/compute';
+
+  /// View your Google Compute Engine resources
+  static const computeReadonlyScope =
+      'https://www.googleapis.com/auth/compute.readonly';
 
   final commons.ApiRequester _requester;
 

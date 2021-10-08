@@ -229,9 +229,13 @@ class ProjectsProfilesResource {
 /// profile of one of these types needs to be collected.
 class CreateProfileRequest {
   /// Deployment details.
+  ///
+  /// Required.
   Deployment? deployment;
 
   /// One or more profile types that the agent is capable of providing.
+  ///
+  /// Required.
   core.List<core.String>? profileType;
 
   CreateProfileRequest({
@@ -279,11 +283,11 @@ class Deployment {
   core.String? projectId;
 
   /// Target is the service name used to group related deployments: * Service
-  /// name for GAE Flex / Standard.
+  /// name for App Engine Flex / Standard.
   ///
   /// * Cluster and container name for GKE. * User-specified string for direct
-  /// GCE profiling (e.g. Java). * Job name for Dataflow. Validation regex:
-  /// `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
+  /// Compute Engine profiling (e.g. Java). * Job name for Dataflow. Validation
+  /// regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
   core.String? target;
 
   Deployment({

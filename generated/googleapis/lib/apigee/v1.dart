@@ -47,6 +47,7 @@
 ///         - [OrganizationsDevelopersAppsKeysApiproductsResource]
 ///         - [OrganizationsDevelopersAppsKeysCreateResource]
 ///     - [OrganizationsDevelopersAttributesResource]
+///     - [OrganizationsDevelopersBalanceResource]
 ///     - [OrganizationsDevelopersSubscriptionsResource]
 ///   - [OrganizationsEnvgroupsResource]
 ///     - [OrganizationsEnvgroupsAttachmentsResource]
@@ -2703,6 +2704,8 @@ class OrganizationsDevelopersResource {
       OrganizationsDevelopersAppsResource(_requester);
   OrganizationsDevelopersAttributesResource get attributes_1 =>
       OrganizationsDevelopersAttributesResource(_requester);
+  OrganizationsDevelopersBalanceResource get balance =>
+      OrganizationsDevelopersBalanceResource(_requester);
   OrganizationsDevelopersSubscriptionsResource get subscriptions =>
       OrganizationsDevelopersSubscriptionsResource(_requester);
 
@@ -2901,6 +2904,85 @@ class OrganizationsDevelopersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the account balance for the developer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Account balance for the developer. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/developers/{developer}/balance`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/balance$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DeveloperBalance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DeveloperBalance> getBalance(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1DeveloperBalance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the monetization configuration for the developer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Monetization configuration for the developer. Use the
+  /// following structure in your request:
+  /// `organizations/{org}/developers/{developer}/monetizationConfig`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/monetizationConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DeveloperMonetizationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DeveloperMonetizationConfig>
+      getMonetizationConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1DeveloperMonetizationConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all developers in an organization by email address.
   ///
   /// By default, the response does not include company developers. Set the
@@ -3081,6 +3163,51 @@ class OrganizationsDevelopersResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the monetization configuration for the developer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Monetization configuration for the developer. Use the
+  /// following structure in your request:
+  /// `organizations/{org}/developers/{developer}/monetizationConfig`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/monetizationConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DeveloperMonetizationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DeveloperMonetizationConfig>
+      updateMonetizationConfig(
+    GoogleCloudApigeeV1DeveloperMonetizationConfig request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PUT',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1DeveloperMonetizationConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4254,6 +4381,57 @@ class OrganizationsDevelopersAttributesResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsDevelopersBalanceResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsDevelopersBalanceResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Credits the account balance for the developer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Account balance for the developer. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/developers/{developer}/balance`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/balance$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DeveloperBalance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DeveloperBalance> credit(
+    GoogleCloudApigeeV1CreditDeveloperBalanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':credit';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1DeveloperBalance.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -11698,11 +11876,19 @@ class GoogleCloudApigeeV1AddonsConfig {
   /// Configuration for the Advanced API Ops add-on.
   GoogleCloudApigeeV1AdvancedApiOpsConfig? advancedApiOpsConfig;
 
+  /// Configuration for the Connectors Platform add-on.
+  GoogleCloudApigeeV1ConnectorsPlatformConfig? connectorsPlatformConfig;
+
+  /// Configuration for the Integration add-on.
+  GoogleCloudApigeeV1IntegrationConfig? integrationConfig;
+
   /// Configuration for the Monetization add-on.
   GoogleCloudApigeeV1MonetizationConfig? monetizationConfig;
 
   GoogleCloudApigeeV1AddonsConfig({
     this.advancedApiOpsConfig,
+    this.connectorsPlatformConfig,
+    this.integrationConfig,
     this.monetizationConfig,
   });
 
@@ -11711,6 +11897,17 @@ class GoogleCloudApigeeV1AddonsConfig {
           advancedApiOpsConfig: _json.containsKey('advancedApiOpsConfig')
               ? GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(
                   _json['advancedApiOpsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          connectorsPlatformConfig:
+              _json.containsKey('connectorsPlatformConfig')
+                  ? GoogleCloudApigeeV1ConnectorsPlatformConfig.fromJson(
+                      _json['connectorsPlatformConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          integrationConfig: _json.containsKey('integrationConfig')
+              ? GoogleCloudApigeeV1IntegrationConfig.fromJson(
+                  _json['integrationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           monetizationConfig: _json.containsKey('monetizationConfig')
@@ -11723,6 +11920,9 @@ class GoogleCloudApigeeV1AddonsConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (advancedApiOpsConfig != null)
           'advancedApiOpsConfig': advancedApiOpsConfig!,
+        if (connectorsPlatformConfig != null)
+          'connectorsPlatformConfig': connectorsPlatformConfig!,
+        if (integrationConfig != null) 'integrationConfig': integrationConfig!,
         if (monetizationConfig != null)
           'monetizationConfig': monetizationConfig!,
       };
@@ -13353,6 +13553,40 @@ class GoogleCloudApigeeV1ConfigVersion {
       };
 }
 
+/// Configuration for the Connectors Platform add-on.
+class GoogleCloudApigeeV1ConnectorsPlatformConfig {
+  /// Flag that specifies whether the Connectors Platform add-on is enabled.
+  core.bool? enabled;
+
+  /// Time at which the Connectors Platform add-on expires in in milliseconds
+  /// since epoch.
+  ///
+  /// If unspecified, the add-on will never expire.
+  ///
+  /// Output only.
+  core.String? expiresAt;
+
+  GoogleCloudApigeeV1ConnectorsPlatformConfig({
+    this.enabled,
+    this.expiresAt,
+  });
+
+  GoogleCloudApigeeV1ConnectorsPlatformConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          expiresAt: _json.containsKey('expiresAt')
+              ? _json['expiresAt'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (expiresAt != null) 'expiresAt': expiresAt!,
+      };
+}
+
 class GoogleCloudApigeeV1Credential {
   /// List of API products this credential can be used for.
   core.List<GoogleCloudApigeeV1ApiProductRef>? apiProducts;
@@ -13437,6 +13671,45 @@ class GoogleCloudApigeeV1Credential {
         if (issuedAt != null) 'issuedAt': issuedAt!,
         if (scopes != null) 'scopes': scopes!,
         if (status != null) 'status': status!,
+      };
+}
+
+/// Request for CreditDeveloperBalance.
+class GoogleCloudApigeeV1CreditDeveloperBalanceRequest {
+  /// The amount of money to be credited.
+  ///
+  /// The wallet corresponding to the currency specified within
+  /// `transaction_amount` will be updated. For example, if you specified
+  /// `currency_code` within `transaction_amount` as "USD", then the amount
+  /// would be added to the wallet which has the "USD" currency or if no such
+  /// wallet exists, a new wallet will be created with the "USD" currency.
+  GoogleTypeMoney? transactionAmount;
+
+  /// Each transaction_id uniquely identifies a credit balance request.
+  ///
+  /// If multiple requests are received with the same transaction_id, only one
+  /// of them will be considered.
+  core.String? transactionId;
+
+  GoogleCloudApigeeV1CreditDeveloperBalanceRequest({
+    this.transactionAmount,
+    this.transactionId,
+  });
+
+  GoogleCloudApigeeV1CreditDeveloperBalanceRequest.fromJson(core.Map _json)
+      : this(
+          transactionAmount: _json.containsKey('transactionAmount')
+              ? GoogleTypeMoney.fromJson(_json['transactionAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          transactionId: _json.containsKey('transactionId')
+              ? _json['transactionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (transactionAmount != null) 'transactionAmount': transactionAmount!,
+        if (transactionId != null) 'transactionId': transactionId!,
       };
 }
 
@@ -15052,6 +15325,96 @@ class GoogleCloudApigeeV1DeveloperAppKey {
       };
 }
 
+/// Account balance for the developer.
+class GoogleCloudApigeeV1DeveloperBalance {
+  /// List of all wallets.
+  ///
+  /// Each individual wallet stores the account balance for a particular
+  /// currency.
+  ///
+  /// Output only.
+  core.List<GoogleCloudApigeeV1DeveloperBalanceWallet>? wallets;
+
+  GoogleCloudApigeeV1DeveloperBalance({
+    this.wallets,
+  });
+
+  GoogleCloudApigeeV1DeveloperBalance.fromJson(core.Map _json)
+      : this(
+          wallets: _json.containsKey('wallets')
+              ? (_json['wallets'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1DeveloperBalanceWallet.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wallets != null) 'wallets': wallets!,
+      };
+}
+
+/// Wallet used to manage an account balance for a particular currency.
+class GoogleCloudApigeeV1DeveloperBalanceWallet {
+  /// Current remaining balance of the developer for a particular currency.
+  GoogleTypeMoney? balance;
+
+  /// Time at which the developer last added credit to the account in
+  /// milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? lastCreditTime;
+
+  GoogleCloudApigeeV1DeveloperBalanceWallet({
+    this.balance,
+    this.lastCreditTime,
+  });
+
+  GoogleCloudApigeeV1DeveloperBalanceWallet.fromJson(core.Map _json)
+      : this(
+          balance: _json.containsKey('balance')
+              ? GoogleTypeMoney.fromJson(
+                  _json['balance'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lastCreditTime: _json.containsKey('lastCreditTime')
+              ? _json['lastCreditTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (balance != null) 'balance': balance!,
+        if (lastCreditTime != null) 'lastCreditTime': lastCreditTime!,
+      };
+}
+
+/// Monetization configuration for the developer.
+class GoogleCloudApigeeV1DeveloperMonetizationConfig {
+  /// Billing type.
+  /// Possible string values are:
+  /// - "BILLING_TYPE_UNSPECIFIED" : The default/unset value.
+  /// - "PREPAID" : Developer pays in advance for the use of APIs and the
+  /// charged amount is deducted from their account balance.
+  /// - "POSTPAID" : Developer does not maintain an account balance. The API
+  /// provider bills the developer for API usage.
+  core.String? billingType;
+
+  GoogleCloudApigeeV1DeveloperMonetizationConfig({
+    this.billingType,
+  });
+
+  GoogleCloudApigeeV1DeveloperMonetizationConfig.fromJson(core.Map _json)
+      : this(
+          billingType: _json.containsKey('billingType')
+              ? _json['billingType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingType != null) 'billingType': billingType!,
+      };
+}
+
 /// Structure of a DeveloperSubscription.
 class GoogleCloudApigeeV1DeveloperSubscription {
   /// Name of the API product for which the developer is purchasing a
@@ -16582,6 +16945,27 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
       };
 }
 
+/// Configuration for the Integration add-on.
+class GoogleCloudApigeeV1IntegrationConfig {
+  /// Flag that specifies whether the Integration add-on is enabled.
+  core.bool? enabled;
+
+  GoogleCloudApigeeV1IntegrationConfig({
+    this.enabled,
+  });
+
+  GoogleCloudApigeeV1IntegrationConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 class GoogleCloudApigeeV1KeyAliasReference {
   /// Alias ID.
   ///
@@ -18060,6 +18444,10 @@ class GoogleCloudApigeeV1Organization {
 
   /// Description of the Apigee organization.
   core.String? description;
+
+  /// Display name for the Apigee organization.
+  ///
+  /// Unused, but reserved for future use.
   core.String? displayName;
 
   /// List of environments in the Apigee organization.
@@ -18868,24 +19256,14 @@ class GoogleCloudApigeeV1RatePlan {
   /// - "CONSUMPTION_PRICING_TYPE_UNSPECIFIED" : Pricing model not specified.
   /// This is the default.
   /// - "FIXED_PER_UNIT" : Fixed rate charged for each API call.
-  /// - "BANDED" : Variable rate charged based on the total volume of API calls.
-  /// Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per
-  /// call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2
-  /// = $100 * Total price for 150 calls: 150 x $1.5 = $225 * Total price for
-  /// 250 calls: 250 x $1 = $250. **Note**: Not supported by Apigee at this
-  /// time.
-  /// - "TIERED" : Variable rate charged for each API call based on price tiers.
+  /// - "BANDED" : Variable rate charged for each API call based on price tiers.
   /// Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per
   /// call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2
   /// = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total
   /// price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not
   /// supported by Apigee at this time.
-  /// - "STAIRSTEP" : Flat rate charged for a bundle of API calls whether or not
-  /// the entire bundle is used. Example: * 1-100 calls cost $75 flat fee *
-  /// 101-200 calls cost $100 flat free * 201-300 calls cost $150 flat fee *
-  /// Total price for 1 call: $75 * Total price for 50 calls: $75 * Total price
-  /// for 150 calls: $100 * Total price for 250 calls: $150. **Note**: Not
-  /// supported by Apigee at this time.
+  /// - "TIERED" : **Note**: Not supported by Apigee at this time.
+  /// - "STAIRSTEP" : **Note**: Not supported by Apigee at this time.
   core.String? consumptionPricingType;
 
   /// Time that the rate plan was created in milliseconds since epoch.
@@ -18929,7 +19307,12 @@ class GoogleCloudApigeeV1RatePlan {
   /// Output only.
   core.String? name;
 
-  /// Flag that specifies the billing account type, prepaid or postpaid.
+  /// DEPRECATED: This field is no longer supported and will eventually be
+  /// removed when Apigee Hybrid 1.5/1.6 is no longer supported.
+  ///
+  /// Instead, use the `billingType` field inside `DeveloperMonetizationConfig`
+  /// resource. Flag that specifies the billing account type, prepaid or
+  /// postpaid.
   /// Possible string values are:
   /// - "PAYMENT_FUNDING_MODEL_UNSPECIFIED" : Billing account type not
   /// specified.

@@ -4113,8 +4113,22 @@ class SasPortalDeviceMetadata {
   /// Format is: RecordCreatorId:PatternId
   core.String? antennaModel;
 
+  /// CCG.
+  ///
+  /// A group of CBSDs in the same ICG requesting a common primary channel
+  /// assignment. See CBRSA-TS-2001 V3.0.0 for more details.
+  core.String? commonChannelGroup;
+
+  /// ICG.
+  ///
+  /// A group of CBSDs that manage their own interference with the group. See
+  /// CBRSA-TS-2001 V3.0.0 for more details.
+  core.String? interferenceCoordinationGroup;
+
   SasPortalDeviceMetadata({
     this.antennaModel,
+    this.commonChannelGroup,
+    this.interferenceCoordinationGroup,
   });
 
   SasPortalDeviceMetadata.fromJson(core.Map _json)
@@ -4122,10 +4136,21 @@ class SasPortalDeviceMetadata {
           antennaModel: _json.containsKey('antennaModel')
               ? _json['antennaModel'] as core.String
               : null,
+          commonChannelGroup: _json.containsKey('commonChannelGroup')
+              ? _json['commonChannelGroup'] as core.String
+              : null,
+          interferenceCoordinationGroup:
+              _json.containsKey('interferenceCoordinationGroup')
+                  ? _json['interferenceCoordinationGroup'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (antennaModel != null) 'antennaModel': antennaModel!,
+        if (commonChannelGroup != null)
+          'commonChannelGroup': commonChannelGroup!,
+        if (interferenceCoordinationGroup != null)
+          'interferenceCoordinationGroup': interferenceCoordinationGroup!,
       };
 }
 

@@ -20,6 +20,8 @@
 ///
 /// Create an instance of [AndroidPublisherApi] to access these resources:
 ///
+/// - [ApplicationsResource]
+///   - [ApplicationsPricingResource]
 /// - [EditsResource]
 ///   - [EditsApksResource]
 ///   - [EditsBundlesResource]
@@ -70,6 +72,7 @@ class AndroidPublisherApi {
 
   final commons.ApiRequester _requester;
 
+  ApplicationsResource get applications => ApplicationsResource(_requester);
   EditsResource get edits => EditsResource(_requester);
   InappproductsResource get inappproducts => InappproductsResource(_requester);
   InternalappsharingartifactsResource get internalappsharingartifacts =>
@@ -84,6 +87,66 @@ class AndroidPublisherApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class ApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ApplicationsPricingResource get pricing =>
+      ApplicationsPricingResource(_requester);
+
+  ApplicationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ApplicationsPricingResource {
+  final commons.ApiRequester _requester;
+
+  ApplicationsPricingResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Calculates the region prices, using today's exchange rate and
+  /// country-specific pricing patterns, based on the price in the request for a
+  /// set of regions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The app package name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConvertRegionPricesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConvertRegionPricesResponse> convertRegionPrices(
+    ConvertRegionPricesRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/pricing:convertRegionPrices';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ConvertRegionPricesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class EditsResource {
@@ -3742,6 +3805,143 @@ class Comment {
       };
 }
 
+/// Request message for ConvertRegionPrices.
+class ConvertRegionPricesRequest {
+  /// The intital price to convert other regions from.
+  ///
+  /// Tax exclusive.
+  Money? price;
+
+  ConvertRegionPricesRequest({
+    this.price,
+  });
+
+  ConvertRegionPricesRequest.fromJson(core.Map _json)
+      : this(
+          price: _json.containsKey('price')
+              ? Money.fromJson(
+                  _json['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (price != null) 'price': price!,
+      };
+}
+
+/// Response message for ConvertRegionPrices.
+class ConvertRegionPricesResponse {
+  /// Converted other regions prices in USD and EUR, to use for countries where
+  /// Play doesn't support a country's local currency.
+  ConvertedOtherRegionsPrice? convertedOtherRegionsPrice;
+
+  /// Map from region code to converted region price.
+  core.Map<core.String, ConvertedRegionPrice>? convertedRegionPrices;
+
+  ConvertRegionPricesResponse({
+    this.convertedOtherRegionsPrice,
+    this.convertedRegionPrices,
+  });
+
+  ConvertRegionPricesResponse.fromJson(core.Map _json)
+      : this(
+          convertedOtherRegionsPrice:
+              _json.containsKey('convertedOtherRegionsPrice')
+                  ? ConvertedOtherRegionsPrice.fromJson(
+                      _json['convertedOtherRegionsPrice']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          convertedRegionPrices: _json.containsKey('convertedRegionPrices')
+              ? (_json['convertedRegionPrices']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ConvertedRegionPrice.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (convertedOtherRegionsPrice != null)
+          'convertedOtherRegionsPrice': convertedOtherRegionsPrice!,
+        if (convertedRegionPrices != null)
+          'convertedRegionPrices': convertedRegionPrices!,
+      };
+}
+
+/// Converted other regions prices.
+class ConvertedOtherRegionsPrice {
+  /// Price in EUR to use for the "Other regions" location exclusive of taxes.
+  Money? eurPrice;
+
+  /// Price in USD to use for the "Other regions" location exclusive of taxes.
+  Money? usdPrice;
+
+  ConvertedOtherRegionsPrice({
+    this.eurPrice,
+    this.usdPrice,
+  });
+
+  ConvertedOtherRegionsPrice.fromJson(core.Map _json)
+      : this(
+          eurPrice: _json.containsKey('eurPrice')
+              ? Money.fromJson(
+                  _json['eurPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          usdPrice: _json.containsKey('usdPrice')
+              ? Money.fromJson(
+                  _json['usdPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eurPrice != null) 'eurPrice': eurPrice!,
+        if (usdPrice != null) 'usdPrice': usdPrice!,
+      };
+}
+
+/// A converted region price.
+class ConvertedRegionPrice {
+  /// The converted price tax inclusive.
+  Money? price;
+
+  /// The region code of the region.
+  core.String? regionCode;
+
+  /// The tax amount of the converted price.
+  Money? taxAmount;
+
+  ConvertedRegionPrice({
+    this.price,
+    this.regionCode,
+    this.taxAmount,
+  });
+
+  ConvertedRegionPrice.fromJson(core.Map _json)
+      : this(
+          price: _json.containsKey('price')
+              ? Money.fromJson(
+                  _json['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          taxAmount: _json.containsKey('taxAmount')
+              ? Money.fromJson(
+                  _json['taxAmount'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (price != null) 'price': price!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (taxAmount != null) 'taxAmount': taxAmount!,
+      };
+}
+
 /// Country targeting specification.
 class CountryTargeting {
   /// Countries to target, specified as two letter
@@ -4761,6 +4961,48 @@ class LocalizedText {
   core.Map<core.String, core.dynamic> toJson() => {
         if (language != null) 'language': language!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// Represents an amount of money with its currency type.
+class Money {
+  /// The three-letter currency code defined in ISO 4217.
+  core.String? currencyCode;
+
+  /// Number of nano (10^-9) units of the amount.
+  ///
+  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
+  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
+  /// `nanos` can be positive, zero, or negative. If `units` is negative,
+  /// `nanos` must be negative or zero. For example $-1.75 is represented as
+  /// `units`=-1 and `nanos`=-750,000,000.
+  core.int? nanos;
+
+  /// The whole units of the amount.
+  ///
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+  core.String? units;
+
+  Money({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
+
+  Money.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          units:
+              _json.containsKey('units') ? _json['units'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 

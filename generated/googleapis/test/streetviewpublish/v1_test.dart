@@ -463,6 +463,7 @@ api.Photo buildPhoto() {
     o.thumbnailUrl = 'foo';
     o.transferStatus = 'foo';
     o.uploadReference = buildUploadRef();
+    o.uploadTime = 'foo';
     o.viewCount = 'foo';
   }
   buildCounterPhoto--;
@@ -501,6 +502,10 @@ void checkPhoto(api.Photo o) {
       unittest.equals('foo'),
     );
     checkUploadRef(o.uploadReference!);
+    unittest.expect(
+      o.uploadTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.viewCount!,
       unittest.equals('foo'),

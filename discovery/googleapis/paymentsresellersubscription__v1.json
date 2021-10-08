@@ -364,7 +364,7 @@
             }
         }
     },
-    "revision": "20210907",
+    "revision": "20211007",
     "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
     "schemas": {
         "GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest": {
@@ -384,6 +384,7 @@
                         "CANCELLATION_REASON_PAST_DUE",
                         "CANCELLATION_REASON_ACCOUNT_CLOSED",
                         "CANCELLATION_REASON_UPGRADE_DOWNGRADE",
+                        "CANCELLATION_REASON_USER_DELINQUENCY",
                         "CANCELLATION_REASON_OTHER"
                     ],
                     "enumDescriptions": [
@@ -393,7 +394,8 @@
                         "Accidential purchase.",
                         "Payment is past due.",
                         "User account closed.",
-                        "Used for notification only, do not use in Cancel API. Cancallation due to upgrade or downgrade.",
+                        "Used for notification only, do not use in Cancel API. Cancellation due to upgrade or downgrade.",
+                        "Cancellation due to user delinquency",
                         "Other reason."
                     ],
                     "type": "string"
@@ -600,8 +602,7 @@
                 },
                 "freeTrialDuration": {
                     "$ref": "GoogleCloudPaymentsResellerSubscriptionV1Duration",
-                    "description": "Output only. Specifies the duration of the free trial of the subscription.",
-                    "readOnly": true
+                    "description": "Optional. Specifies the duration of the free trial of the subscription when promotion_type is PROMOTION_TYPE_FREE_TRIAL"
                 },
                 "name": {
                     "description": "Output only. Response only. Resource name of the subscription promotion. It will have the format of \"partners/{partner_id}/promotion/{promotion_id}\"",
@@ -759,6 +760,7 @@
                         "CANCELLATION_REASON_PAST_DUE",
                         "CANCELLATION_REASON_ACCOUNT_CLOSED",
                         "CANCELLATION_REASON_UPGRADE_DOWNGRADE",
+                        "CANCELLATION_REASON_USER_DELINQUENCY",
                         "CANCELLATION_REASON_OTHER"
                     ],
                     "enumDescriptions": [
@@ -768,7 +770,8 @@
                         "Accidential purchase.",
                         "Payment is past due.",
                         "User account closed.",
-                        "Used for notification only, do not use in Cancel API. Cancallation due to upgrade or downgrade.",
+                        "Used for notification only, do not use in Cancel API. Cancellation due to upgrade or downgrade.",
+                        "Cancellation due to user delinquency",
                         "Other reason."
                     ],
                     "type": "string"

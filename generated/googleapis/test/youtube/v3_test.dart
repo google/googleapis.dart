@@ -15338,6 +15338,7 @@ void main() {
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_linkingToken = 'foo';
       final arg_type = 'foo';
+      final arg_externalChannelId = 'foo';
       final arg_part = buildUnnamed122();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15380,6 +15381,10 @@ void main() {
           unittest.equals(arg_type),
         );
         unittest.expect(
+          queryMap['externalChannelId']!.first,
+          unittest.equals(arg_externalChannelId),
+        );
+        unittest.expect(
           queryMap['part']!,
           unittest.equals(arg_part),
         );
@@ -15395,7 +15400,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_linkingToken, arg_type,
-          part: arg_part, $fields: arg_$fields);
+          externalChannelId: arg_externalChannelId,
+          part: arg_part,
+          $fields: arg_$fields);
     });
 
     unittest.test('method--insert', () async {
@@ -15403,6 +15410,7 @@ void main() {
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_request = buildThirdPartyLink();
       final arg_part = buildUnnamed123();
+      final arg_externalChannelId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.ThirdPartyLink.fromJson(
@@ -15444,6 +15452,10 @@ void main() {
           unittest.equals(arg_part),
         );
         unittest.expect(
+          queryMap['externalChannelId']!.first,
+          unittest.equals(arg_externalChannelId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -15454,8 +15466,8 @@ void main() {
         final resp = convert.json.encode(buildThirdPartyLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.insert(arg_request, arg_part, $fields: arg_$fields);
+      final response = await res.insert(arg_request, arg_part,
+          externalChannelId: arg_externalChannelId, $fields: arg_$fields);
       checkThirdPartyLink(response as api.ThirdPartyLink);
     });
 
@@ -15463,6 +15475,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_part = buildUnnamed124();
+      final arg_externalChannelId = 'foo';
       final arg_linkingToken = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
@@ -15502,6 +15515,10 @@ void main() {
           unittest.equals(arg_part),
         );
         unittest.expect(
+          queryMap['externalChannelId']!.first,
+          unittest.equals(arg_externalChannelId),
+        );
+        unittest.expect(
           queryMap['linkingToken']!.first,
           unittest.equals(arg_linkingToken),
         );
@@ -15521,7 +15538,10 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_part,
-          linkingToken: arg_linkingToken, type: arg_type, $fields: arg_$fields);
+          externalChannelId: arg_externalChannelId,
+          linkingToken: arg_linkingToken,
+          type: arg_type,
+          $fields: arg_$fields);
       checkThirdPartyLink(response as api.ThirdPartyLink);
     });
 
@@ -15530,6 +15550,7 @@ void main() {
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_request = buildThirdPartyLink();
       final arg_part = buildUnnamed125();
+      final arg_externalChannelId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.ThirdPartyLink.fromJson(
@@ -15571,6 +15592,10 @@ void main() {
           unittest.equals(arg_part),
         );
         unittest.expect(
+          queryMap['externalChannelId']!.first,
+          unittest.equals(arg_externalChannelId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -15581,8 +15606,8 @@ void main() {
         final resp = convert.json.encode(buildThirdPartyLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.update(arg_request, arg_part, $fields: arg_$fields);
+      final response = await res.update(arg_request, arg_part,
+          externalChannelId: arg_externalChannelId, $fields: arg_$fields);
       checkThirdPartyLink(response as api.ThirdPartyLink);
     });
   });

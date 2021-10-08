@@ -585,6 +585,43 @@ class ProjectsLocationsProcessorsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets a processor detail.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The processor resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1beta3Processor].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1beta3Processor> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDocumentaiV1beta3Processor.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all processors which belong to this project.
   ///
   /// Request parameters:
@@ -676,6 +713,52 @@ class ProjectsLocationsProcessorsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudDocumentaiV1beta3ProcessResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Set the default (active) version of a Processor that will be used in
+  /// ProcessDocument and BatchProcessDocuments.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [processor] - Required. The resource name of the Processor to change
+  /// default version.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> setDefaultProcessorVersion(
+    GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionRequest request,
+    core.String processor, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta3/' +
+        core.Uri.encodeFull('$processor') +
+        ':setDefaultProcessorVersion';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -788,6 +871,175 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes the processor version, all artifacts under the processor version
+  /// will be deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The processor version resource name to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deploys the processor version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The processor version resource name to be deployed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> deploy(
+    GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name') + ':deploy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a processor version detail.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The processor resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDocumentaiV1beta3ProcessorVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1beta3ProcessorVersion> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDocumentaiV1beta3ProcessorVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all versions of a processor.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project, location and processor) to list
+  /// all versions. Format:
+  /// projects/{project}/locations/{location}/processors/{processor}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of processor versions to return. If
+  /// unspecified, at most 10 processor versions will be returned. The maximum
+  /// value is 20; values above 20 will be coerced to 20.
+  ///
+  /// [pageToken] - We will return the processor versions sorted by creation
+  /// time. The page token will point to the next processor version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1beta3/' + core.Uri.encodeFull('$parent') + '/processorVersions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Processes a single document.
   ///
   /// [request] - The metadata request object.
@@ -831,6 +1083,48 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudDocumentaiV1beta3ProcessResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeploys the processor version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The processor version resource name to be undeployed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> undeploy(
+    GoogleCloudDocumentaiV1beta3UndeployProcessorVersionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta3/' + core.Uri.encodeFull('$name') + ':undeploy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1676,6 +1970,134 @@ class GoogleCloudDocumentaiV1CommonOperationMetadata {
       };
 }
 
+/// The long running operation metadata for delete processor method.
+class GoogleCloudDocumentaiV1DeleteProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1DeleteProcessorMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1DeleteProcessorMetadata.fromJson(core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// The long running operation metadata for delete processor version method.
+class GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata.fromJson(core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// The long running operation metadata for deploy processor version method.
+class GoogleCloudDocumentaiV1DeployProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1DeployProcessorVersionMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1DeployProcessorVersionMetadata.fromJson(core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// Response message for the deploy processor version method.
+typedef GoogleCloudDocumentaiV1DeployProcessorVersionResponse = $Empty;
+
+/// The long running operation metadata for disable processor method.
+class GoogleCloudDocumentaiV1DisableProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1DisableProcessorMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1DisableProcessorMetadata.fromJson(core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// Response message for the disable processor method.
+///
+/// Intentionally empty proto for adding fields in future.
+typedef GoogleCloudDocumentaiV1DisableProcessorResponse = $Empty;
+
+/// The long running operation metadata for enable processor method.
+class GoogleCloudDocumentaiV1EnableProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1EnableProcessorMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1EnableProcessorMetadata.fromJson(core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// Response message for the enable processor method.
+///
+/// Intentionally empty proto for adding fields in future.
+typedef GoogleCloudDocumentaiV1EnableProcessorResponse = $Empty;
+
 /// The status of human review on a processed document.
 class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
@@ -1773,6 +2195,62 @@ class GoogleCloudDocumentaiV1ReviewDocumentResponse {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
+
+/// The long running operation metadata for set default processor version
+/// method.
+class GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// Response message for set default processor version method.
+typedef GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse = $Empty;
+
+/// The long running operation metadata for the undeploy processor version
+/// method.
+class GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// Response message for the undeploy processor version method.
+typedef GoogleCloudDocumentaiV1UndeployProcessorVersionResponse = $Empty;
 
 /// Response to an batch document processing request.
 ///
@@ -6825,6 +7303,60 @@ class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata {
       };
 }
 
+/// The long running operation metadata for delete processor version method.
+class GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1beta3CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// The long running operation metadata for deploy processor version method.
+class GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1beta3CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// Request message for the deploy processor version method.
+typedef GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest = $Empty;
+
+/// Response message for the deploy processor version method.
+typedef GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse = $Empty;
+
 /// The long running operation metadata for disable processor method.
 class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata {
   /// The basic metadata of the long running operation.
@@ -8887,6 +9419,138 @@ typedef GoogleCloudDocumentaiV1beta3EnableProcessorRequest = $Empty;
 /// Intentionally empty proto for adding fields in future.
 typedef GoogleCloudDocumentaiV1beta3EnableProcessorResponse = $Empty;
 
+/// Evaluation metrics, either in aggregate or about a specific entity.
+class GoogleCloudDocumentaiV1beta3EvaluationMetrics {
+  /// The calculated f1 score.
+  core.double? f1Score;
+
+  /// The amount of false negatives.
+  core.int? falseNegativesCount;
+
+  /// The amount of false positives.
+  core.int? falsePositivesCount;
+
+  /// The amount of occurrences in ground truth documents.
+  core.int? groundTruthOccurrencesCount;
+
+  /// The calculated precision.
+  core.double? precision;
+
+  /// The amount of occurrences in predicted documents.
+  core.int? predictedOccurrencesCount;
+
+  /// The calculated recall.
+  core.double? recall;
+
+  /// The amount of documents that had an occurrence of this label.
+  core.int? totalDocumentsCount;
+
+  /// The amount of true positives.
+  core.int? truePositivesCount;
+
+  GoogleCloudDocumentaiV1beta3EvaluationMetrics({
+    this.f1Score,
+    this.falseNegativesCount,
+    this.falsePositivesCount,
+    this.groundTruthOccurrencesCount,
+    this.precision,
+    this.predictedOccurrencesCount,
+    this.recall,
+    this.totalDocumentsCount,
+    this.truePositivesCount,
+  });
+
+  GoogleCloudDocumentaiV1beta3EvaluationMetrics.fromJson(core.Map _json)
+      : this(
+          f1Score: _json.containsKey('f1Score')
+              ? (_json['f1Score'] as core.num).toDouble()
+              : null,
+          falseNegativesCount: _json.containsKey('falseNegativesCount')
+              ? _json['falseNegativesCount'] as core.int
+              : null,
+          falsePositivesCount: _json.containsKey('falsePositivesCount')
+              ? _json['falsePositivesCount'] as core.int
+              : null,
+          groundTruthOccurrencesCount:
+              _json.containsKey('groundTruthOccurrencesCount')
+                  ? _json['groundTruthOccurrencesCount'] as core.int
+                  : null,
+          precision: _json.containsKey('precision')
+              ? (_json['precision'] as core.num).toDouble()
+              : null,
+          predictedOccurrencesCount:
+              _json.containsKey('predictedOccurrencesCount')
+                  ? _json['predictedOccurrencesCount'] as core.int
+                  : null,
+          recall: _json.containsKey('recall')
+              ? (_json['recall'] as core.num).toDouble()
+              : null,
+          totalDocumentsCount: _json.containsKey('totalDocumentsCount')
+              ? _json['totalDocumentsCount'] as core.int
+              : null,
+          truePositivesCount: _json.containsKey('truePositivesCount')
+              ? _json['truePositivesCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (f1Score != null) 'f1Score': f1Score!,
+        if (falseNegativesCount != null)
+          'falseNegativesCount': falseNegativesCount!,
+        if (falsePositivesCount != null)
+          'falsePositivesCount': falsePositivesCount!,
+        if (groundTruthOccurrencesCount != null)
+          'groundTruthOccurrencesCount': groundTruthOccurrencesCount!,
+        if (precision != null) 'precision': precision!,
+        if (predictedOccurrencesCount != null)
+          'predictedOccurrencesCount': predictedOccurrencesCount!,
+        if (recall != null) 'recall': recall!,
+        if (totalDocumentsCount != null)
+          'totalDocumentsCount': totalDocumentsCount!,
+        if (truePositivesCount != null)
+          'truePositivesCount': truePositivesCount!,
+      };
+}
+
+/// Gives a short summary of an evaluation, and links to the evaluation itself.
+class GoogleCloudDocumentaiV1beta3EvaluationReference {
+  /// An aggregate of the statistics for the evaluation.
+  GoogleCloudDocumentaiV1beta3EvaluationMetrics? aggregateMetrics;
+
+  /// The resource name of the evaluation.
+  core.String? evaluation;
+
+  /// The resource name of the Long Running Operation for the evaluation.
+  core.String? operation;
+
+  GoogleCloudDocumentaiV1beta3EvaluationReference({
+    this.aggregateMetrics,
+    this.evaluation,
+    this.operation,
+  });
+
+  GoogleCloudDocumentaiV1beta3EvaluationReference.fromJson(core.Map _json)
+      : this(
+          aggregateMetrics: _json.containsKey('aggregateMetrics')
+              ? GoogleCloudDocumentaiV1beta3EvaluationMetrics.fromJson(
+                  _json['aggregateMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          evaluation: _json.containsKey('evaluation')
+              ? _json['evaluation'] as core.String
+              : null,
+          operation: _json.containsKey('operation')
+              ? _json['operation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregateMetrics != null) 'aggregateMetrics': aggregateMetrics!,
+        if (evaluation != null) 'evaluation': evaluation!,
+        if (operation != null) 'operation': operation!,
+      };
+}
+
 /// Response message for fetch processor types.
 class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse {
   /// The list of processor types.
@@ -9038,6 +9702,40 @@ class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
           'humanReviewOperation': humanReviewOperation!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
+/// Response message for list processors.
+class GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse {
+  /// Points to the next processor, otherwise empty.
+  core.String? nextPageToken;
+
+  /// The list of processors.
+  core.List<GoogleCloudDocumentaiV1beta3ProcessorVersion>? processorVersions;
+
+  GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse({
+    this.nextPageToken,
+    this.processorVersions,
+  });
+
+  GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse.fromJson(
+      core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          processorVersions: _json.containsKey('processorVersions')
+              ? (_json['processorVersions'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1beta3ProcessorVersion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (processorVersions != null) 'processorVersions': processorVersions!,
       };
 }
 
@@ -9331,7 +10029,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
   /// Whether the processor type allows creation.
   ///
   /// If yes, user can create a processor of this processor type. Otherwise,
-  /// user needs to require for whitelisting.
+  /// user needs to request access.
   core.bool? allowCreation;
 
   /// The locations in which this processor is available.
@@ -9405,6 +10103,89 @@ class GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationId != null) 'locationId': locationId!,
+      };
+}
+
+/// A processor version is an implementation of a processor.
+///
+/// Each processor can have multiple versions, pre-trained by Google internally
+/// or up-trained by the customer. At a time, a processor can only have one
+/// default version version. So the processor's behavior (when processing
+/// documents) is defined by a default version.
+class GoogleCloudDocumentaiV1beta3ProcessorVersion {
+  /// The time the processor version was created.
+  core.String? createTime;
+
+  /// The display name of the processor version.
+  core.String? displayName;
+
+  /// The most recently invoked evaluation for the processor version.
+  GoogleCloudDocumentaiV1beta3EvaluationReference? latestEvaluation;
+
+  /// The resource name of the processor version.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
+  core.String? name;
+
+  /// The schema of the processor version.
+  ///
+  /// Describes the output.
+  GoogleCloudDocumentaiV1beta3Schema? schema;
+
+  /// The state of the processor version.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The processor version is in an unspecified state.
+  /// - "DEPLOYED" : The processor version is deployed and can be used for
+  /// processing.
+  /// - "DEPLOYING" : The processor version is being deployed.
+  /// - "UNDEPLOYED" : The processor version is not deployed and cannot be used
+  /// for processing.
+  /// - "UNDEPLOYING" : The processor version is being undeployed.
+  /// - "CREATING" : The processor version is being created.
+  /// - "DELETING" : The processor version is being deleted.
+  /// - "FAILED" : The processor version failed and is in an indeterminate
+  /// state.
+  core.String? state;
+
+  GoogleCloudDocumentaiV1beta3ProcessorVersion({
+    this.createTime,
+    this.displayName,
+    this.latestEvaluation,
+    this.name,
+    this.schema,
+    this.state,
+  });
+
+  GoogleCloudDocumentaiV1beta3ProcessorVersion.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          latestEvaluation: _json.containsKey('latestEvaluation')
+              ? GoogleCloudDocumentaiV1beta3EvaluationReference.fromJson(
+                  _json['latestEvaluation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          schema: _json.containsKey('schema')
+              ? GoogleCloudDocumentaiV1beta3Schema.fromJson(
+                  _json['schema'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (latestEvaluation != null) 'latestEvaluation': latestEvaluation!,
+        if (name != null) 'name': name!,
+        if (schema != null) 'schema': schema!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -9584,6 +10365,238 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
+
+/// The schema defines the output of the processed document by a processor.
+class GoogleCloudDocumentaiV1beta3Schema {
+  /// Description of the schema.
+  core.String? description;
+
+  /// Display name to show to users.
+  core.String? displayName;
+
+  /// Entity types of the schema.
+  core.List<GoogleCloudDocumentaiV1beta3SchemaEntityType>? entityTypes;
+
+  GoogleCloudDocumentaiV1beta3Schema({
+    this.description,
+    this.displayName,
+    this.entityTypes,
+  });
+
+  GoogleCloudDocumentaiV1beta3Schema.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityTypes: _json.containsKey('entityTypes')
+              ? (_json['entityTypes'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1beta3SchemaEntityType.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (entityTypes != null) 'entityTypes': entityTypes!,
+      };
+}
+
+/// EntityType is the wrapper of a label of the corresponding model with
+/// detailed attributes and limitations for entity-based processors.
+///
+/// Multiple types can also compose a dependency tree to represent nested types.
+class GoogleCloudDocumentaiV1beta3SchemaEntityType {
+  /// Type of the entity.
+  ///
+  /// It must be one of the following: `document` - the entity represents a
+  /// classification of a logical document. `object` - if the entity has
+  /// properties it is likely an object (or or a document.) `datetime` - the
+  /// entity is a date or time value. `money` - the entity represents a money
+  /// value amount. `number` - the entity is a number - integer or floating
+  /// point. `string` - the entity is a string value. `boolean` - the entity is
+  /// a boolean value. `address` - the entity is a location address. `duration`
+  /// - the entity is a duration.
+  core.String? baseType;
+
+  /// Description of the entity type.
+  core.String? description;
+
+  /// If specified, lists all the possible values for this entity.
+  core.List<core.String>? enumValues;
+
+  /// Occurrence type limits the number of times an entity type appears in the
+  /// document.
+  /// Possible string values are:
+  /// - "OCCURRENCE_TYPE_UNSPECIFIED" : Unspecified occurrence type.
+  /// - "OPTIONAL_ONCE" : The entity type will appear zero times or once.
+  /// - "OPTIONAL_MULTIPLE" : The entity type will appear zero or multiple
+  /// times.
+  /// - "REQUIRED_ONCE" : The entity type will only appear exactly once.
+  /// - "REQUIRED_MULTIPLE" : The entity type will appear once or more times.
+  core.String? occurrenceType;
+
+  /// Describing the nested structure of an entity.
+  ///
+  /// An EntityType may consist of several other EntityTypes. For example, in a
+  /// document there can be an EntityType 'ID', which consists of EntityType
+  /// 'name' and 'address', with corresponding attributes, such as TEXT for both
+  /// types and ONCE for occurrence types.
+  core.List<GoogleCloudDocumentaiV1beta3SchemaEntityType>? properties;
+
+  /// Source of this entity type.
+  /// Possible string values are:
+  /// - "SOURCE_UNSPECIFIED" : Unspecified source.
+  /// - "PREDEFINED" : The entity type is in the predefined schema of a
+  /// pretrained version of a processor.
+  /// - "USER_INPUT" : The entity type is added by the users either: - during an
+  /// uptraining of an existing processor, or - during the process of creating a
+  /// customized processor.
+  core.String? source;
+
+  /// Name of the type.
+  ///
+  /// It must be unique within the set of same level types.
+  core.String? type;
+
+  GoogleCloudDocumentaiV1beta3SchemaEntityType({
+    this.baseType,
+    this.description,
+    this.enumValues,
+    this.occurrenceType,
+    this.properties,
+    this.source,
+    this.type,
+  });
+
+  GoogleCloudDocumentaiV1beta3SchemaEntityType.fromJson(core.Map _json)
+      : this(
+          baseType: _json.containsKey('baseType')
+              ? _json['baseType'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          enumValues: _json.containsKey('enumValues')
+              ? (_json['enumValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          occurrenceType: _json.containsKey('occurrenceType')
+              ? _json['occurrenceType'] as core.String
+              : null,
+          properties: _json.containsKey('properties')
+              ? (_json['properties'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1beta3SchemaEntityType.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseType != null) 'baseType': baseType!,
+        if (description != null) 'description': description!,
+        if (enumValues != null) 'enumValues': enumValues!,
+        if (occurrenceType != null) 'occurrenceType': occurrenceType!,
+        if (properties != null) 'properties': properties!,
+        if (source != null) 'source': source!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// The long running operation metadata for set default processor version
+/// method.
+class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1beta3CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// Request message for the set default processor version method.
+class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionRequest {
+  /// The resource name of child ProcessorVersion to use as default.
+  ///
+  /// Required.
+  core.String? defaultProcessorVersion;
+
+  GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionRequest({
+    this.defaultProcessorVersion,
+  });
+
+  GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionRequest.fromJson(
+      core.Map _json)
+      : this(
+          defaultProcessorVersion: _json.containsKey('defaultProcessorVersion')
+              ? _json['defaultProcessorVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultProcessorVersion != null)
+          'defaultProcessorVersion': defaultProcessorVersion!,
+      };
+}
+
+/// Response message for set default processor version method.
+typedef GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse = $Empty;
+
+/// The long running operation metadata for the undeploy processor version
+/// method.
+class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiV1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata({
+    this.commonMetadata,
+  });
+
+  GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata.fromJson(
+      core.Map _json)
+      : this(
+          commonMetadata: _json.containsKey('commonMetadata')
+              ? GoogleCloudDocumentaiV1beta3CommonOperationMetadata.fromJson(
+                  _json['commonMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
+      };
+}
+
+/// Request message for the undeploy processor version method.
+typedef GoogleCloudDocumentaiV1beta3UndeployProcessorVersionRequest = $Empty;
+
+/// Response message for the undeploy processor version method.
+typedef GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse = $Empty;
 
 /// A vertex represents a 2D point in the image.
 ///

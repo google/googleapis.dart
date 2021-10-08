@@ -1914,7 +1914,7 @@
             }
         }
     },
-    "revision": "20210831",
+    "revision": "20210927",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "schemas": {
         "AuditLoggingSettings": {
@@ -2760,9 +2760,11 @@
             "type": "object"
         },
         "GetSearchApplicationQueryStatsResponse": {
+            "description": "Response format for getting query stats at a search application level between given dates.",
             "id": "GetSearchApplicationQueryStatsResponse",
             "properties": {
                 "stats": {
+                    "description": "Search application level query stats per date",
                     "items": {
                         "$ref": "SearchApplicationQueryStats"
                     },
@@ -3848,7 +3850,7 @@
                     "type": "boolean"
                 },
                 "isSortable": {
-                    "description": "Indicates that the property can be used for sorting. Cannot be true for properties that are repeatable. Cannot be true for properties whose type is object or user identifier. IsReturnable must be true to set this option. Only supported for Boolean, Date, Double, Integer, and Timestamp properties.",
+                    "description": "Indicates that the property can be used for sorting. Cannot be true for properties that are repeatable. Cannot be true for properties whose type is object. IsReturnable must be true to set this option. Only supported for Boolean, Date, Double, Integer, and Timestamp properties.",
                     "type": "boolean"
                 },
                 "isSuggestable": {
@@ -4471,6 +4473,7 @@
             "type": "object"
         },
         "SearchApplicationQueryStats": {
+            "description": "Search application level query stats per date",
             "id": "SearchApplicationQueryStats",
             "properties": {
                 "date": {

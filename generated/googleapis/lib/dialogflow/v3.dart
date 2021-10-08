@@ -27,6 +27,7 @@
 ///       - [ProjectsLocationsAgentsEntityTypesResource]
 ///       - [ProjectsLocationsAgentsEnvironmentsResource]
 /// - [ProjectsLocationsAgentsEnvironmentsContinuousTestResultsResource]
+///         - [ProjectsLocationsAgentsEnvironmentsDeploymentsResource]
 ///         - [ProjectsLocationsAgentsEnvironmentsExperimentsResource]
 ///         - [ProjectsLocationsAgentsEnvironmentsSessionsResource]
 /// - [ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource]
@@ -918,6 +919,8 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       get continuousTestResults =>
           ProjectsLocationsAgentsEnvironmentsContinuousTestResultsResource(
               _requester);
+  ProjectsLocationsAgentsEnvironmentsDeploymentsResource get deployments =>
+      ProjectsLocationsAgentsEnvironmentsDeploymentsResource(_requester);
   ProjectsLocationsAgentsEnvironmentsExperimentsResource get experiments =>
       ProjectsLocationsAgentsEnvironmentsExperimentsResource(_requester);
   ProjectsLocationsAgentsEnvironmentsSessionsResource get sessions =>
@@ -1011,6 +1014,54 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       queryParams: _queryParams,
     );
     return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deploys a flow to the specified Environment.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: DeployFlowMetadata - `response`: DeployFlowResponse
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - Required. The environment to deploy the flow to. Format:
+  /// `projects//locations//agents// environments/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> deployFlow(
+    GoogleCloudDialogflowCxV3DeployFlowRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$environment') + ':deployFlow';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -1310,6 +1361,100 @@ class ProjectsLocationsAgentsEnvironmentsContinuousTestResultsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentsEnvironmentsDeploymentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentsEnvironmentsDeploymentsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves the specified Deployment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Deployment. Format:
+  /// `projects//locations//agents//environments//deployments/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/environments/\[^/\]+/deployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Deployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Deployment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowCxV3Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all deployments in the specified Environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Environment to list all environments for. Format:
+  /// `projects//locations//agents//environments/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 20 and at most 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ListDeploymentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ListDeploymentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/deployments';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowCxV3ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5298,8 +5443,10 @@ class ProjectsLocationsSecuritySettingsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the settings. Format:
-  /// `projects//locations//securitySettings/`.
+  /// [name] - Resource name of the settings. Required for the
+  /// SecuritySettingsService.UpdateSecuritySettings method.
+  /// SecuritySettingsService.CreateSecuritySettings populates the name
+  /// automatically. Format: `projects//locations//securitySettings/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/securitySettings/\[^/\]+$`.
   ///
@@ -6290,6 +6437,195 @@ class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata {
       };
 }
 
+/// Metadata returned for the Environments.DeployFlow long running operation.
+class GoogleCloudDialogflowCxV3DeployFlowMetadata {
+  /// Errors of running deployment tests.
+  core.List<GoogleCloudDialogflowCxV3TestError>? testErrors;
+
+  GoogleCloudDialogflowCxV3DeployFlowMetadata({
+    this.testErrors,
+  });
+
+  GoogleCloudDialogflowCxV3DeployFlowMetadata.fromJson(core.Map _json)
+      : this(
+          testErrors: _json.containsKey('testErrors')
+              ? (_json['testErrors'] as core.List)
+                  .map((value) => GoogleCloudDialogflowCxV3TestError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (testErrors != null) 'testErrors': testErrors!,
+      };
+}
+
+/// The request message for Environments.DeployFlow.
+class GoogleCloudDialogflowCxV3DeployFlowRequest {
+  /// The flow version to deploy.
+  ///
+  /// Format: `projects//locations//agents// flows//versions/`.
+  ///
+  /// Required.
+  core.String? flowVersion;
+
+  GoogleCloudDialogflowCxV3DeployFlowRequest({
+    this.flowVersion,
+  });
+
+  GoogleCloudDialogflowCxV3DeployFlowRequest.fromJson(core.Map _json)
+      : this(
+          flowVersion: _json.containsKey('flowVersion')
+              ? _json['flowVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flowVersion != null) 'flowVersion': flowVersion!,
+      };
+}
+
+/// The response message for Environments.DeployFlow.
+class GoogleCloudDialogflowCxV3DeployFlowResponse {
+  /// The name of the flow version Deployment.
+  ///
+  /// Format: `projects//locations//agents// environments//deployments/`.
+  core.String? deployment;
+
+  /// The updated environment where the flow is deployed.
+  GoogleCloudDialogflowCxV3Environment? environment;
+
+  GoogleCloudDialogflowCxV3DeployFlowResponse({
+    this.deployment,
+    this.environment,
+  });
+
+  GoogleCloudDialogflowCxV3DeployFlowResponse.fromJson(core.Map _json)
+      : this(
+          deployment: _json.containsKey('deployment')
+              ? _json['deployment'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? GoogleCloudDialogflowCxV3Environment.fromJson(
+                  _json['environment'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployment != null) 'deployment': deployment!,
+        if (environment != null) 'environment': environment!,
+      };
+}
+
+/// Represents an deployment in an environment.
+///
+/// A deployment happens when a flow version configured to be active in the
+/// environment. You can configure running pre-deployment steps, e.g. running
+/// validation test cases, experiment auto-rollout, etc.
+class GoogleCloudDialogflowCxV3Deployment {
+  /// End time of this deployment.
+  core.String? endTime;
+
+  /// The name of the flow version for this deployment.
+  ///
+  /// Format: projects//locations//agents//flows//versions/.
+  core.String? flowVersion;
+
+  /// The name of the deployment.
+  ///
+  /// Format: projects//locations//agents//environments//deployments/.
+  core.String? name;
+
+  /// Result of the deployment.
+  GoogleCloudDialogflowCxV3DeploymentResult? result;
+
+  /// Start time of this deployment.
+  core.String? startTime;
+
+  /// The current state of the deployment.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "RUNNING" : The deployment is running.
+  /// - "SUCCEEDED" : The deployment succeeded.
+  /// - "FAILED" : The deployment failed.
+  core.String? state;
+
+  GoogleCloudDialogflowCxV3Deployment({
+    this.endTime,
+    this.flowVersion,
+    this.name,
+    this.result,
+    this.startTime,
+    this.state,
+  });
+
+  GoogleCloudDialogflowCxV3Deployment.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          flowVersion: _json.containsKey('flowVersion')
+              ? _json['flowVersion'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          result: _json.containsKey('result')
+              ? GoogleCloudDialogflowCxV3DeploymentResult.fromJson(
+                  _json['result'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (flowVersion != null) 'flowVersion': flowVersion!,
+        if (name != null) 'name': name!,
+        if (result != null) 'result': result!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Result of the deployment.
+class GoogleCloudDialogflowCxV3DeploymentResult {
+  /// Results of test cases running before the deployment.
+  ///
+  /// Format: `projects//locations//agents//testCases//results/`.
+  core.List<core.String>? deploymentTestResults;
+
+  /// The name of the experiment triggered by this deployment.
+  ///
+  /// Format: projects//locations//agents//environments//experiments/.
+  core.String? experiment;
+
+  GoogleCloudDialogflowCxV3DeploymentResult({
+    this.deploymentTestResults,
+    this.experiment,
+  });
+
+  GoogleCloudDialogflowCxV3DeploymentResult.fromJson(core.Map _json)
+      : this(
+          deploymentTestResults: _json.containsKey('deploymentTestResults')
+              ? (_json['deploymentTestResults'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          experiment: _json.containsKey('experiment')
+              ? _json['experiment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentTestResults != null)
+          'deploymentTestResults': deploymentTestResults!,
+        if (experiment != null) 'experiment': experiment!,
+      };
+}
+
 /// The request to detect user's intent.
 class GoogleCloudDialogflowCxV3DetectIntentRequest {
   /// Instructs the speech synthesizer how to generate the output audio.
@@ -6680,6 +7016,9 @@ class GoogleCloudDialogflowCxV3Environment {
   /// Format: `projects//locations//agents//environments/`.
   core.String? name;
 
+  /// The test cases config for continuous tests of this environment.
+  GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig? testCasesConfig;
+
   /// Update time of this environment.
   ///
   /// Output only.
@@ -6697,6 +7036,7 @@ class GoogleCloudDialogflowCxV3Environment {
     this.description,
     this.displayName,
     this.name,
+    this.testCasesConfig,
     this.updateTime,
     this.versionConfigs,
   });
@@ -6710,6 +7050,11 @@ class GoogleCloudDialogflowCxV3Environment {
               ? _json['displayName'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          testCasesConfig: _json.containsKey('testCasesConfig')
+              ? GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig.fromJson(
+                  _json['testCasesConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -6727,8 +7072,58 @@ class GoogleCloudDialogflowCxV3Environment {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
+        if (testCasesConfig != null) 'testCasesConfig': testCasesConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (versionConfigs != null) 'versionConfigs': versionConfigs!,
+      };
+}
+
+/// The configuration for continuous tests.
+class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
+  /// Whether to run test cases in TestCasesConfig.test_cases periodically.
+  ///
+  /// Default false. If set to ture, run once a day.
+  core.bool? enableContinuousRun;
+
+  /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
+  /// flow version to the environment.
+  ///
+  /// Default false.
+  core.bool? enablePredeploymentRun;
+
+  /// A list of test case names to run.
+  ///
+  /// They should be under the same agent. Format of each test case name:
+  /// `projects//locations/ /agents//testCases/`
+  core.List<core.String>? testCases;
+
+  GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig({
+    this.enableContinuousRun,
+    this.enablePredeploymentRun,
+    this.testCases,
+  });
+
+  GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig.fromJson(core.Map _json)
+      : this(
+          enableContinuousRun: _json.containsKey('enableContinuousRun')
+              ? _json['enableContinuousRun'] as core.bool
+              : null,
+          enablePredeploymentRun: _json.containsKey('enablePredeploymentRun')
+              ? _json['enablePredeploymentRun'] as core.bool
+              : null,
+          testCases: _json.containsKey('testCases')
+              ? (_json['testCases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableContinuousRun != null)
+          'enableContinuousRun': enableContinuousRun!,
+        if (enablePredeploymentRun != null)
+          'enablePredeploymentRun': enablePredeploymentRun!,
+        if (testCases != null) 'testCases': testCases!,
       };
 }
 
@@ -9036,6 +9431,43 @@ class GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (continuousTestResults != null)
           'continuousTestResults': continuousTestResults!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for Deployments.ListDeployments.
+class GoogleCloudDialogflowCxV3ListDeploymentsResponse {
+  /// The list of deployments.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request. The list may in some cases be empty or contain fewer
+  /// entries than page_size even if this isn't the last page.
+  core.List<GoogleCloudDialogflowCxV3Deployment>? deployments;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowCxV3ListDeploymentsResponse({
+    this.deployments,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDialogflowCxV3ListDeploymentsResponse.fromJson(core.Map _json)
+      : this(
+          deployments: _json.containsKey('deployments')
+              ? (_json['deployments'] as core.List)
+                  .map((value) => GoogleCloudDialogflowCxV3Deployment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployments != null) 'deployments': deployments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -11392,9 +11824,9 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
 
   /// Resource name of the settings.
   ///
-  /// Format: `projects//locations//securitySettings/`.
-  ///
-  /// Required.
+  /// Required for the SecuritySettingsService.UpdateSecuritySettings method.
+  /// SecuritySettingsService.CreateSecuritySettings populates the name
+  /// automatically. Format: `projects//locations//securitySettings/`.
   core.String? name;
 
   /// List of types of data to remove when retention settings triggers purge.
@@ -13910,6 +14342,63 @@ class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata {
       };
 }
 
+/// Metadata returned for the Environments.DeployFlow long running operation.
+class GoogleCloudDialogflowCxV3beta1DeployFlowMetadata {
+  /// Errors of running deployment tests.
+  core.List<GoogleCloudDialogflowCxV3beta1TestError>? testErrors;
+
+  GoogleCloudDialogflowCxV3beta1DeployFlowMetadata({
+    this.testErrors,
+  });
+
+  GoogleCloudDialogflowCxV3beta1DeployFlowMetadata.fromJson(core.Map _json)
+      : this(
+          testErrors: _json.containsKey('testErrors')
+              ? (_json['testErrors'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1TestError.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (testErrors != null) 'testErrors': testErrors!,
+      };
+}
+
+/// The response message for Environments.DeployFlow.
+class GoogleCloudDialogflowCxV3beta1DeployFlowResponse {
+  /// The name of the flow version deployment.
+  ///
+  /// Format: `projects//locations//agents// environments//deployments/`.
+  core.String? deployment;
+
+  /// The updated environment where the flow is deployed.
+  GoogleCloudDialogflowCxV3beta1Environment? environment;
+
+  GoogleCloudDialogflowCxV3beta1DeployFlowResponse({
+    this.deployment,
+    this.environment,
+  });
+
+  GoogleCloudDialogflowCxV3beta1DeployFlowResponse.fromJson(core.Map _json)
+      : this(
+          deployment: _json.containsKey('deployment')
+              ? _json['deployment'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? GoogleCloudDialogflowCxV3beta1Environment.fromJson(
+                  _json['environment'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployment != null) 'deployment': deployment!,
+        if (environment != null) 'environment': environment!,
+      };
+}
+
 /// Represents the input for dtmf event.
 class GoogleCloudDialogflowCxV3beta1DtmfInput {
   /// The dtmf digits.
@@ -13936,6 +14425,171 @@ class GoogleCloudDialogflowCxV3beta1DtmfInput {
   core.Map<core.String, core.dynamic> toJson() => {
         if (digits != null) 'digits': digits!,
         if (finishDigit != null) 'finishDigit': finishDigit!,
+      };
+}
+
+/// Represents an environment for an agent.
+///
+/// You can create multiple versions of your agent and publish them to separate
+/// environments. When you edit an agent, you are editing the draft agent. At
+/// any point, you can save the draft agent as an agent version, which is an
+/// immutable snapshot of your agent. When you save the draft agent, it is
+/// published to the default environment. When you create agent versions, you
+/// can publish them to custom environments. You can create a variety of custom
+/// environments for testing, development, production, etc.
+class GoogleCloudDialogflowCxV3beta1Environment {
+  /// The human-readable description of the environment.
+  ///
+  /// The maximum length is 500 characters. If exceeded, the request is
+  /// rejected.
+  core.String? description;
+
+  /// The human-readable name of the environment (unique in an agent).
+  ///
+  /// Limit of 64 characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The name of the environment.
+  ///
+  /// Format: `projects//locations//agents//environments/`.
+  core.String? name;
+
+  /// The test cases config for continuous tests of this environment.
+  GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig? testCasesConfig;
+
+  /// Update time of this environment.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// A list of configurations for flow versions.
+  ///
+  /// You should include version configs for all flows that are reachable from
+  /// `Start Flow` in the agent. Otherwise, an error will be returned.
+  ///
+  /// Required.
+  core.List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>?
+      versionConfigs;
+
+  GoogleCloudDialogflowCxV3beta1Environment({
+    this.description,
+    this.displayName,
+    this.name,
+    this.testCasesConfig,
+    this.updateTime,
+    this.versionConfigs,
+  });
+
+  GoogleCloudDialogflowCxV3beta1Environment.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          testCasesConfig: _json.containsKey('testCasesConfig')
+              ? GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
+                  .fromJson(_json['testCasesConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          versionConfigs: _json.containsKey('versionConfigs')
+              ? (_json['versionConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (testCasesConfig != null) 'testCasesConfig': testCasesConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (versionConfigs != null) 'versionConfigs': versionConfigs!,
+      };
+}
+
+/// The configuration for continuous tests.
+class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig {
+  /// Whether to run test cases in TestCasesConfig.test_cases periodically.
+  ///
+  /// Default false. If set to ture, run once a day.
+  core.bool? enableContinuousRun;
+
+  /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
+  /// flow version to the environment.
+  ///
+  /// Default false.
+  core.bool? enablePredeploymentRun;
+
+  /// A list of test case names to run.
+  ///
+  /// They should be under the same agent. Format of each test case name:
+  /// `projects//locations/ /agents//testCases/`
+  core.List<core.String>? testCases;
+
+  GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig({
+    this.enableContinuousRun,
+    this.enablePredeploymentRun,
+    this.testCases,
+  });
+
+  GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig.fromJson(
+      core.Map _json)
+      : this(
+          enableContinuousRun: _json.containsKey('enableContinuousRun')
+              ? _json['enableContinuousRun'] as core.bool
+              : null,
+          enablePredeploymentRun: _json.containsKey('enablePredeploymentRun')
+              ? _json['enablePredeploymentRun'] as core.bool
+              : null,
+          testCases: _json.containsKey('testCases')
+              ? (_json['testCases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableContinuousRun != null)
+          'enableContinuousRun': enableContinuousRun!,
+        if (enablePredeploymentRun != null)
+          'enablePredeploymentRun': enablePredeploymentRun!,
+        if (testCases != null) 'testCases': testCases!,
+      };
+}
+
+/// Configuration for the version.
+class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig {
+  /// Format: projects//locations//agents//flows//versions/.
+  ///
+  /// Required.
+  core.String? version;
+
+  GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig({
+    this.version,
+  });
+
+  GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig.fromJson(
+      core.Map _json)
+      : this(
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
       };
 }
 

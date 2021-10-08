@@ -1838,6 +1838,56 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "getBalance": {
+                            "description": "Gets the account balance for the developer.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/balance",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.developers.getBalance",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Account balance for the developer. Use the following structure in your request: `organizations/{org}/developers/{developer}/balance`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/developers/[^/]+/balance$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1DeveloperBalance"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "getMonetizationConfig": {
+                            "description": "Gets the monetization configuration for the developer.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/monetizationConfig",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.developers.getMonetizationConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Monetization configuration for the developer. Use the following structure in your request: `organizations/{org}/developers/{developer}/monetizationConfig`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/developers/[^/]+/monetizationConfig$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1DeveloperMonetizationConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "list": {
                             "description": "Lists all developers in an organization by email address. By default, the response does not include company developers. Set the `includeCompany` query parameter to `true` to include company developers. **Note**: A maximum of 1000 developers are returned in the response. You paginate the list of developers returned using the `startKey` and `count` query parameters.",
                             "flatPath": "v1/organizations/{organizationsId}/developers",
@@ -1947,6 +1997,34 @@
                             },
                             "response": {
                                 "$ref": "GoogleCloudApigeeV1Developer"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "updateMonetizationConfig": {
+                            "description": "Updates the monetization configuration for the developer.",
+                            "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/monetizationConfig",
+                            "httpMethod": "PUT",
+                            "id": "apigee.organizations.developers.updateMonetizationConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Monetization configuration for the developer. Use the following structure in your request: `organizations/{org}/developers/{developer}/monetizationConfig`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/developers/[^/]+/monetizationConfig$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "GoogleCloudApigeeV1DeveloperMonetizationConfig"
+                            },
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1DeveloperMonetizationConfig"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -2626,6 +2704,38 @@
                                     },
                                     "response": {
                                         "$ref": "GoogleCloudApigeeV1Attribute"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "balance": {
+                            "methods": {
+                                "credit": {
+                                    "description": "Credits the account balance for the developer.",
+                                    "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/balance:credit",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.developers.balance.credit",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Account balance for the developer. Use the following structure in your request: `organizations/{org}/developers/{developer}/balance`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/developers/[^/]+/balance$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:credit",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1CreditDeveloperBalanceRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1DeveloperBalance"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -7300,7 +7410,7 @@
             }
         }
     },
-    "revision": "20210826",
+    "revision": "20211002",
     "rootUrl": "https://apigee.googleapis.com/",
     "schemas": {
         "EdgeConfigstoreBundleBadBundle": {
@@ -7429,6 +7539,14 @@
                 "advancedApiOpsConfig": {
                     "$ref": "GoogleCloudApigeeV1AdvancedApiOpsConfig",
                     "description": "Configuration for the Advanced API Ops add-on."
+                },
+                "connectorsPlatformConfig": {
+                    "$ref": "GoogleCloudApigeeV1ConnectorsPlatformConfig",
+                    "description": "Configuration for the Connectors Platform add-on."
+                },
+                "integrationConfig": {
+                    "$ref": "GoogleCloudApigeeV1IntegrationConfig",
+                    "description": "Configuration for the Integration add-on."
                 },
                 "monetizationConfig": {
                     "$ref": "GoogleCloudApigeeV1MonetizationConfig",
@@ -8280,6 +8398,23 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1ConnectorsPlatformConfig": {
+            "description": "Configuration for the Connectors Platform add-on.",
+            "id": "GoogleCloudApigeeV1ConnectorsPlatformConfig",
+            "properties": {
+                "enabled": {
+                    "description": "Flag that specifies whether the Connectors Platform add-on is enabled.",
+                    "type": "boolean"
+                },
+                "expiresAt": {
+                    "description": "Output only. Time at which the Connectors Platform add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1Credential": {
             "id": "GoogleCloudApigeeV1Credential",
             "properties": {
@@ -8324,6 +8459,21 @@
                 },
                 "status": {
                     "description": "Status of the credential.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1CreditDeveloperBalanceRequest": {
+            "description": "Request for CreditDeveloperBalance.",
+            "id": "GoogleCloudApigeeV1CreditDeveloperBalanceRequest",
+            "properties": {
+                "transactionAmount": {
+                    "$ref": "GoogleTypeMoney",
+                    "description": "The amount of money to be credited. The wallet corresponding to the currency specified within `transaction_amount` will be updated. For example, if you specified `currency_code` within `transaction_amount` as \"USD\", then the amount would be added to the wallet which has the \"USD\" currency or if no such wallet exists, a new wallet will be created with the \"USD\" currency."
+                },
+                "transactionId": {
+                    "description": "Each transaction_id uniquely identifies a credit balance request. If multiple requests are received with the same transaction_id, only one of them will be considered.",
                     "type": "string"
                 }
             },
@@ -9163,6 +9313,59 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1DeveloperBalance": {
+            "description": "Account balance for the developer.",
+            "id": "GoogleCloudApigeeV1DeveloperBalance",
+            "properties": {
+                "wallets": {
+                    "description": "Output only. List of all wallets. Each individual wallet stores the account balance for a particular currency.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1DeveloperBalanceWallet"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1DeveloperBalanceWallet": {
+            "description": "Wallet used to manage an account balance for a particular currency.",
+            "id": "GoogleCloudApigeeV1DeveloperBalanceWallet",
+            "properties": {
+                "balance": {
+                    "$ref": "GoogleTypeMoney",
+                    "description": "Current remaining balance of the developer for a particular currency."
+                },
+                "lastCreditTime": {
+                    "description": "Output only. Time at which the developer last added credit to the account in milliseconds since epoch.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1DeveloperMonetizationConfig": {
+            "description": "Monetization configuration for the developer.",
+            "id": "GoogleCloudApigeeV1DeveloperMonetizationConfig",
+            "properties": {
+                "billingType": {
+                    "description": "Billing type.",
+                    "enum": [
+                        "BILLING_TYPE_UNSPECIFIED",
+                        "PREPAID",
+                        "POSTPAID"
+                    ],
+                    "enumDescriptions": [
+                        "The default/unset value.",
+                        "Developer pays in advance for the use of APIs and the charged amount is deducted from their account balance.",
+                        "Developer does not maintain an account balance. The API provider bills the developer for API usage."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1DeveloperSubscription": {
             "description": "Structure of a DeveloperSubscription.",
             "id": "GoogleCloudApigeeV1DeveloperSubscription",
@@ -9977,6 +10180,17 @@
                     "description": "Percentage of ingress replicas reporting this route.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1IntegrationConfig": {
+            "description": "Configuration for the Integration add-on.",
+            "id": "GoogleCloudApigeeV1IntegrationConfig",
+            "properties": {
+                "enabled": {
+                    "description": "Flag that specifies whether the Integration add-on is enabled.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -10798,6 +11012,7 @@
                     "type": "string"
                 },
                 "displayName": {
+                    "description": "Display name for the Apigee organization. Unused, but reserved for future use.",
                     "type": "string"
                 },
                 "environments": {
@@ -11213,9 +11428,9 @@
                     "enumDescriptions": [
                         "Pricing model not specified. This is the default.",
                         "Fixed rate charged for each API call.",
-                        "Variable rate charged based on the total volume of API calls. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 150 x $1.5 = $225 * Total price for 250 calls: 250 x $1 = $250. **Note**: Not supported by Apigee at this time.",
                         "Variable rate charged for each API call based on price tiers. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not supported by Apigee at this time.",
-                        "Flat rate charged for a bundle of API calls whether or not the entire bundle is used. Example: * 1-100 calls cost $75 flat fee * 101-200 calls cost $100 flat free * 201-300 calls cost $150 flat fee * Total price for 1 call: $75 * Total price for 50 calls: $75 * Total price for 150 calls: $100 * Total price for 250 calls: $150. **Note**: Not supported by Apigee at this time."
+                        "**Note**: Not supported by Apigee at this time.",
+                        "**Note**: Not supported by Apigee at this time."
                     ],
                     "type": "string"
                 },
@@ -11263,7 +11478,7 @@
                     "type": "string"
                 },
                 "paymentFundingModel": {
-                    "description": "Flag that specifies the billing account type, prepaid or postpaid.",
+                    "description": "DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.",
                     "enum": [
                         "PAYMENT_FUNDING_MODEL_UNSPECIFIED",
                         "PREPAID",
@@ -12502,7 +12717,7 @@
                     "type": "array"
                 },
                 "bindings": {
-                    "description": "Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.",
+                    "description": "Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the `bindings` in the `Policy`.",
                     "items": {
                         "$ref": "GoogleIamV1Binding"
                     },

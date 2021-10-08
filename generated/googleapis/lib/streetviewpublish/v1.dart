@@ -491,9 +491,10 @@ class PhotosResource {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Required. The filter expression. For example:
-  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only filter supported at the
-  /// moment is `placeId`.
+  /// [filter] - Optional. The filter expression. For example:
+  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported at the moment
+  /// are: `placeId`, `min_latitude`, `max_latitude`, `min_longitude`, and
+  /// `max_longitude`.
   ///
   /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
   /// For more information, see
@@ -984,6 +985,9 @@ class Photo {
   /// Input only. The resource URL where the photo bytes are uploaded to.
   UploadRef? uploadReference;
 
+  /// Time when the image was uploaded.
+  core.String? uploadTime;
+
   /// View count of the photo.
   ///
   /// Output only.
@@ -1001,6 +1005,7 @@ class Photo {
     this.thumbnailUrl,
     this.transferStatus,
     this.uploadReference,
+    this.uploadTime,
     this.viewCount,
   });
 
@@ -1048,6 +1053,9 @@ class Photo {
               ? UploadRef.fromJson(_json['uploadReference']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          uploadTime: _json.containsKey('uploadTime')
+              ? _json['uploadTime'] as core.String
+              : null,
           viewCount: _json.containsKey('viewCount')
               ? _json['viewCount'] as core.String
               : null,
@@ -1065,6 +1073,7 @@ class Photo {
         if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
         if (transferStatus != null) 'transferStatus': transferStatus!,
         if (uploadReference != null) 'uploadReference': uploadReference!,
+        if (uploadTime != null) 'uploadTime': uploadTime!,
         if (viewCount != null) 'viewCount': viewCount!,
       };
 }

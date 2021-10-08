@@ -1155,7 +1155,7 @@ class InputConfig {
 
 /// A Google Cloud Redis instance.
 ///
-/// next id = 36
+/// next id = 37
 class Instance {
   /// Only applicable to STANDARD_HA tier which protects the instance against
   /// zonal failures by provisioning it across two zones.

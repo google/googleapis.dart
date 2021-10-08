@@ -6853,6 +6853,139 @@ class ChromeOsDeviceActiveTimeRanges {
       };
 }
 
+/// Status of a single C-state.
+///
+/// C-states are various modes the CPU can transition to in order to use more or
+/// less power.
+class ChromeOsDeviceCpuInfoLogicalCpusCStates {
+  /// Name of the state.
+  core.String? displayName;
+
+  /// Time spent in the state since the last reboot.
+  core.String? sessionDuration;
+
+  ChromeOsDeviceCpuInfoLogicalCpusCStates({
+    this.displayName,
+    this.sessionDuration,
+  });
+
+  ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          sessionDuration: _json.containsKey('sessionDuration')
+              ? _json['sessionDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (sessionDuration != null) 'sessionDuration': sessionDuration!,
+      };
+}
+
+/// Status of a single logical CPU.
+class ChromeOsDeviceCpuInfoLogicalCpus {
+  /// C-States indicate the power consumption state of the CPU.
+  ///
+  /// For more information look at documentation published by the CPU maker.
+  core.List<ChromeOsDeviceCpuInfoLogicalCpusCStates>? cStates;
+
+  /// Current frequency the CPU is running at.
+  core.int? currentScalingFrequencyKhz;
+
+  /// Idle time since last boot.
+  core.String? idleDuration;
+
+  /// Maximum frequency the CPU is allowed to run at, by policy.
+  core.int? maxScalingFrequencyKhz;
+
+  ChromeOsDeviceCpuInfoLogicalCpus({
+    this.cStates,
+    this.currentScalingFrequencyKhz,
+    this.idleDuration,
+    this.maxScalingFrequencyKhz,
+  });
+
+  ChromeOsDeviceCpuInfoLogicalCpus.fromJson(core.Map _json)
+      : this(
+          cStates: _json.containsKey('cStates')
+              ? (_json['cStates'] as core.List)
+                  .map((value) =>
+                      ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          currentScalingFrequencyKhz:
+              _json.containsKey('currentScalingFrequencyKhz')
+                  ? _json['currentScalingFrequencyKhz'] as core.int
+                  : null,
+          idleDuration: _json.containsKey('idleDuration')
+              ? _json['idleDuration'] as core.String
+              : null,
+          maxScalingFrequencyKhz: _json.containsKey('maxScalingFrequencyKhz')
+              ? _json['maxScalingFrequencyKhz'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cStates != null) 'cStates': cStates!,
+        if (currentScalingFrequencyKhz != null)
+          'currentScalingFrequencyKhz': currentScalingFrequencyKhz!,
+        if (idleDuration != null) 'idleDuration': idleDuration!,
+        if (maxScalingFrequencyKhz != null)
+          'maxScalingFrequencyKhz': maxScalingFrequencyKhz!,
+      };
+}
+
+/// CPU specs for a CPU.
+class ChromeOsDeviceCpuInfo {
+  /// The CPU architecture.
+  core.String? architecture;
+
+  /// Information for the Logical CPUs
+  core.List<ChromeOsDeviceCpuInfoLogicalCpus>? logicalCpus;
+
+  /// The max CPU clock speed in kHz.
+  core.int? maxClockSpeedKhz;
+
+  /// The CPU model name.
+  core.String? model;
+
+  ChromeOsDeviceCpuInfo({
+    this.architecture,
+    this.logicalCpus,
+    this.maxClockSpeedKhz,
+    this.model,
+  });
+
+  ChromeOsDeviceCpuInfo.fromJson(core.Map _json)
+      : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          logicalCpus: _json.containsKey('logicalCpus')
+              ? (_json['logicalCpus'] as core.List)
+                  .map((value) => ChromeOsDeviceCpuInfoLogicalCpus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          maxClockSpeedKhz: _json.containsKey('maxClockSpeedKhz')
+              ? _json['maxClockSpeedKhz'] as core.int
+              : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (logicalCpus != null) 'logicalCpus': logicalCpus!,
+        if (maxClockSpeedKhz != null) 'maxClockSpeedKhz': maxClockSpeedKhz!,
+        if (model != null) 'model': model!,
+      };
+}
+
 class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
   /// CPU label
   core.String? label;
@@ -7251,6 +7384,9 @@ class ChromeOsDevice {
   /// [Chromebook developer information](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/samsung-series-5-chromebook#TOC-Developer-switch).
   core.String? bootMode;
 
+  /// Information regarding CPU specs in the device.
+  core.List<ChromeOsDeviceCpuInfo>? cpuInfo;
+
   /// Reports of CPU utilization and temperature (Read-only)
   core.List<ChromeOsDeviceCpuStatusReports>? cpuStatusReports;
 
@@ -7403,6 +7539,7 @@ class ChromeOsDevice {
     this.annotatedUser,
     this.autoUpdateExpiration,
     this.bootMode,
+    this.cpuInfo,
     this.cpuStatusReports,
     this.deviceFiles,
     this.deviceId,
@@ -7458,6 +7595,12 @@ class ChromeOsDevice {
               : null,
           bootMode: _json.containsKey('bootMode')
               ? _json['bootMode'] as core.String
+              : null,
+          cpuInfo: _json.containsKey('cpuInfo')
+              ? (_json['cpuInfo'] as core.List)
+                  .map((value) => ChromeOsDeviceCpuInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           cpuStatusReports: _json.containsKey('cpuStatusReports')
               ? (_json['cpuStatusReports'] as core.List)
@@ -7576,6 +7719,7 @@ class ChromeOsDevice {
         if (autoUpdateExpiration != null)
           'autoUpdateExpiration': autoUpdateExpiration!,
         if (bootMode != null) 'bootMode': bootMode!,
+        if (cpuInfo != null) 'cpuInfo': cpuInfo!,
         if (cpuStatusReports != null) 'cpuStatusReports': cpuStatusReports!,
         if (deviceFiles != null) 'deviceFiles': deviceFiles!,
         if (deviceId != null) 'deviceId': deviceId!,
@@ -10229,6 +10373,9 @@ class Schema {
   core.String? schemaId;
 
   /// The schema's name.
+  ///
+  /// Each `schema_name` must be unique within a customer. Reusing a name
+  /// results in a `409: Entity already exists` error.
   core.String? schemaName;
 
   Schema({
@@ -10618,6 +10765,9 @@ class User {
   core.DateTime? creationTime;
 
   /// Custom fields of the user.
+  ///
+  /// The key is a `schema_name` and its values are `'field_name':
+  /// 'field_value'`.
   core.Map<core.String, UserCustomProperties>? customSchemas;
 
   /// The customer ID to \[retrieve all account

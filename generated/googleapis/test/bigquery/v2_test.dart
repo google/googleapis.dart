@@ -1559,6 +1559,7 @@ api.Dataset buildDataset() {
     o.access = buildUnnamed27();
     o.creationTime = 'foo';
     o.datasetReference = buildDatasetReference();
+    o.defaultCollation = 'foo';
     o.defaultEncryptionConfiguration = buildEncryptionConfiguration();
     o.defaultPartitionExpirationMs = 'foo';
     o.defaultTableExpirationMs = 'foo';
@@ -1587,6 +1588,10 @@ void checkDataset(api.Dataset o) {
       unittest.equals('foo'),
     );
     checkDatasetReference(o.datasetReference!);
+    unittest.expect(
+      o.defaultCollation!,
+      unittest.equals('foo'),
+    );
     checkEncryptionConfiguration(o.defaultEncryptionConfiguration!);
     unittest.expect(
       o.defaultPartitionExpirationMs!,
@@ -1842,6 +1847,7 @@ api.DestinationTableProperties buildDestinationTableProperties() {
   buildCounterDestinationTableProperties++;
   if (buildCounterDestinationTableProperties < 3) {
     o.description = 'foo';
+    o.expirationTimestampMillis = 'foo';
     o.friendlyName = 'foo';
     o.labels = buildUnnamed32();
   }
@@ -1854,6 +1860,10 @@ void checkDestinationTableProperties(api.DestinationTableProperties o) {
   if (buildCounterDestinationTableProperties < 3) {
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expirationTimestampMillis!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -5589,6 +5599,7 @@ api.Table buildTable() {
   if (buildCounterTable < 3) {
     o.clustering = buildClustering();
     o.creationTime = 'foo';
+    o.defaultCollation = 'foo';
     o.description = 'foo';
     o.encryptionConfiguration = buildEncryptionConfiguration();
     o.etag = 'foo';
@@ -5627,6 +5638,10 @@ void checkTable(api.Table o) {
     checkClustering(o.clustering!);
     unittest.expect(
       o.creationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultCollation!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -6494,7 +6509,12 @@ api.TrainingOptions buildTrainingOptions() {
     o.autoArima = true;
     o.autoArimaMaxOrder = 'foo';
     o.batchSize = 'foo';
+    o.boosterType = 'foo';
     o.cleanSpikesAndDips = true;
+    o.colsampleBylevel = 42.0;
+    o.colsampleBynode = 42.0;
+    o.colsampleBytree = 42.0;
+    o.dartNormalizeType = 'foo';
     o.dataFrequency = 'foo';
     o.dataSplitColumn = 'foo';
     o.dataSplitEvalFraction = 42.0;
@@ -6523,10 +6543,12 @@ api.TrainingOptions buildTrainingOptions() {
     o.maxTreeDepth = 'foo';
     o.minRelativeProgress = 42.0;
     o.minSplitLoss = 42.0;
+    o.minTreeChildWeight = 'foo';
     o.modelUri = 'foo';
     o.nonSeasonalOrder = buildArimaOrder();
     o.numClusters = 'foo';
     o.numFactors = 'foo';
+    o.numParallelTree = 'foo';
     o.optimizationStrategy = 'foo';
     o.preserveInputStructs = true;
     o.subsample = 42.0;
@@ -6534,6 +6556,7 @@ api.TrainingOptions buildTrainingOptions() {
     o.timeSeriesIdColumn = 'foo';
     o.timeSeriesIdColumns = buildUnnamed108();
     o.timeSeriesTimestampColumn = 'foo';
+    o.treeMethod = 'foo';
     o.userColumn = 'foo';
     o.walsAlpha = 42.0;
     o.warmStart = true;
@@ -6555,7 +6578,27 @@ void checkTrainingOptions(api.TrainingOptions o) {
       o.batchSize!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.boosterType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.cleanSpikesAndDips!, unittest.isTrue);
+    unittest.expect(
+      o.colsampleBylevel!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.colsampleBynode!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.colsampleBytree!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.dartNormalizeType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.dataFrequency!,
       unittest.equals('foo'),
@@ -6651,6 +6694,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
       unittest.equals(42.0),
     );
     unittest.expect(
+      o.minTreeChildWeight!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.modelUri!,
       unittest.equals('foo'),
     );
@@ -6661,6 +6708,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
     );
     unittest.expect(
       o.numFactors!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numParallelTree!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -6683,6 +6734,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
     checkUnnamed108(o.timeSeriesIdColumns!);
     unittest.expect(
       o.timeSeriesTimestampColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.treeMethod!,
       unittest.equals('foo'),
     );
     unittest.expect(

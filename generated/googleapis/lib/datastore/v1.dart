@@ -2847,12 +2847,18 @@ class PropertyFilter {
   /// The operator to filter by.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
-  /// - "LESS_THAN" : Less than.
-  /// - "LESS_THAN_OR_EQUAL" : Less than or equal.
-  /// - "GREATER_THAN" : Greater than.
-  /// - "GREATER_THAN_OR_EQUAL" : Greater than or equal.
-  /// - "EQUAL" : Equal.
-  /// - "HAS_ANCESTOR" : Has ancestor.
+  /// - "LESS_THAN" : The given `property` is less than the given `value`.
+  /// Requires: * That `property` comes first in `order_by`.
+  /// - "LESS_THAN_OR_EQUAL" : The given `property` is less than or equal to the
+  /// given `value`. Requires: * That `property` comes first in `order_by`.
+  /// - "GREATER_THAN" : The given `property` is greater than the given `value`.
+  /// Requires: * That `property` comes first in `order_by`.
+  /// - "GREATER_THAN_OR_EQUAL" : The given `property` is greater than or equal
+  /// to the given `value`. Requires: * That `property` comes first in
+  /// `order_by`.
+  /// - "EQUAL" : The given `property` is equal to the given `value`.
+  /// - "HAS_ANCESTOR" : Limit the result set to the given entity and its
+  /// descendants. Requires: * That `value` is an entity key.
   core.String? op;
 
   /// The property to filter by.

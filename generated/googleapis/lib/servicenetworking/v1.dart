@@ -1525,6 +1525,14 @@ class AddSubnetworkRequest {
   /// Required.
   core.int? ipPrefixLength;
 
+  /// Enable outside allocation using public IP addresses.
+  ///
+  /// Any public IP range may be specified. If this field is provided, we will
+  /// not use customer reserved ranges for this primary IP range.
+  ///
+  /// Optional.
+  core.String? outsideAllocationPublicIpRange;
+
   /// The private IPv6 google access type for the VMs in this subnet.
   ///
   /// For information about the access types that can be set using this field,
@@ -1584,6 +1592,7 @@ class AddSubnetworkRequest {
     this.consumerNetwork,
     this.description,
     this.ipPrefixLength,
+    this.outsideAllocationPublicIpRange,
     this.privateIpv6GoogleAccess,
     this.region,
     this.requestedAddress,
@@ -1607,6 +1616,10 @@ class AddSubnetworkRequest {
           ipPrefixLength: _json.containsKey('ipPrefixLength')
               ? _json['ipPrefixLength'] as core.int
               : null,
+          outsideAllocationPublicIpRange:
+              _json.containsKey('outsideAllocationPublicIpRange')
+                  ? _json['outsideAllocationPublicIpRange'] as core.String
+                  : null,
           privateIpv6GoogleAccess: _json.containsKey('privateIpv6GoogleAccess')
               ? _json['privateIpv6GoogleAccess'] as core.String
               : null,
@@ -1642,6 +1655,8 @@ class AddSubnetworkRequest {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
         if (description != null) 'description': description!,
         if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
+        if (outsideAllocationPublicIpRange != null)
+          'outsideAllocationPublicIpRange': outsideAllocationPublicIpRange!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (region != null) 'region': region!,
@@ -5722,6 +5737,14 @@ class SecondaryIpRangeSpec {
   /// Required.
   core.int? ipPrefixLength;
 
+  /// Enable outside allocation using public IP addresses.
+  ///
+  /// Any public IP range may be specified. If this field is provided, we will
+  /// not use customer reserved ranges for this secondary IP range.
+  ///
+  /// Optional.
+  core.String? outsideAllocationPublicIpRange;
+
   /// A name for the secondary IP range.
   ///
   /// The name must be 1-63 characters long, and comply with RFC1035. The name
@@ -5742,6 +5765,7 @@ class SecondaryIpRangeSpec {
 
   SecondaryIpRangeSpec({
     this.ipPrefixLength,
+    this.outsideAllocationPublicIpRange,
     this.rangeName,
     this.requestedAddress,
   });
@@ -5751,6 +5775,10 @@ class SecondaryIpRangeSpec {
           ipPrefixLength: _json.containsKey('ipPrefixLength')
               ? _json['ipPrefixLength'] as core.int
               : null,
+          outsideAllocationPublicIpRange:
+              _json.containsKey('outsideAllocationPublicIpRange')
+                  ? _json['outsideAllocationPublicIpRange'] as core.String
+                  : null,
           rangeName: _json.containsKey('rangeName')
               ? _json['rangeName'] as core.String
               : null,
@@ -5761,6 +5789,8 @@ class SecondaryIpRangeSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
+        if (outsideAllocationPublicIpRange != null)
+          'outsideAllocationPublicIpRange': outsideAllocationPublicIpRange!,
         if (rangeName != null) 'rangeName': rangeName!,
         if (requestedAddress != null) 'requestedAddress': requestedAddress!,
       };

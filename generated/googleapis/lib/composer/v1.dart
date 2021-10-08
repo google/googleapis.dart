@@ -306,11 +306,16 @@ class ProjectsLocationsEnvironmentsResource {
   /// mapping in `environment.labels`. It is an error to provide both a mask of
   /// this form and the `labels` mask. * `config.nodeCount` * Horizontally scale
   /// the number of nodes in the environment. An integer greater than or equal
-  /// to 3 must be provided in the `config.nodeCount` field. *
+  /// to 3 must be provided in the `config.nodeCount` field. Supported for Cloud
+  /// Composer environments in versions composer-1.*.*-airflow-*.*.*. *
   /// `config.webServerNetworkAccessControl` * Replace the environment's current
-  /// `WebServerNetworkAccessControl`. * `config.databaseConfig` * Replace the
-  /// environment's current `DatabaseConfig`. * `config.webServerConfig` *
-  /// Replace the environment's current `WebServerConfig`. *
+  /// `WebServerNetworkAccessControl`. * `config.databaseConfig` Supported for
+  /// Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. *
+  /// Replace the environment's current `DatabaseConfig`. *
+  /// `config.webServerConfig.machineType` * Machine type on which Airflow web
+  /// server is running. It has to be one of: composer-n1-webserver-2,
+  /// composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud
+  /// Composer environments in versions composer-1.*.*-airflow-*.*.*. *
   /// `config.softwareConfig.airflowConfigOverrides` * Replace all Apache
   /// Airflow config overrides. If a replacement config overrides map is not
   /// included in `environment`, all config overrides are cleared. It is an
@@ -327,7 +332,19 @@ class ProjectsLocationsEnvironmentsResource {
   /// If a replacement environment variable map is not included in
   /// `environment`, all custom environment variables are cleared. It is an
   /// error to provide both this mask and a mask specifying one or more
-  /// individual environment variables.
+  /// individual environment variables. * `config.softwareConfig.schedulerCount`
+  /// * Horizontally scale the number of schedulers in Airflow. A positive
+  /// integer not greater than the number of nodes must be provided in the
+  /// `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer
+  /// environments in versions composer-1.*.*-airflow-2.*.*. *
+  /// `config.databaseConfig.machineType` * Cloud SQL machine type used by
+  /// Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4,
+  /// db-n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer
+  /// environments in versions composer-1.*.*-airflow-*.*.*. *
+  /// `config.webServerConfig.machineType` * Machine type on which Airflow web
+  /// server is running. It has to be one of: composer-n1-webserver-2,
+  /// composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud
+  /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -684,6 +701,9 @@ class CheckUpgradeResponse {
 
 /// The configuration of Cloud SQL instance that is used by the Apache Airflow
 /// software.
+///
+/// Supported for Cloud Composer environments in versions
+/// composer-1.*.*-airflow-*.*.*.
 class DatabaseConfig {
   /// Cloud SQL machine type used by Airflow database.
   ///
@@ -765,7 +785,8 @@ class Date {
 typedef Empty = $Empty;
 
 /// The encryption options for the Cloud Composer environment and its
-/// dependencies.
+/// dependencies.Supported for Cloud Composer environments in versions
+/// composer-1.*.*-airflow-*.*.*.
 class EncryptionConfig {
   /// Customer-managed Encryption Key available through Google's Key Management
   /// Service.
@@ -911,13 +932,17 @@ class EnvironmentConfig {
   /// The configuration settings for Cloud SQL instance used internally by
   /// Apache Airflow software.
   ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
+  ///
   /// Optional.
   DatabaseConfig? databaseConfig;
 
   /// The encryption options for the Cloud Composer environment and its
   /// dependencies.
   ///
-  /// Cannot be updated.
+  /// Cannot be updated. This field is supported for Cloud Composer environments
+  /// in versions composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   EncryptionConfig? encryptionConfig;
@@ -932,6 +957,9 @@ class EnvironmentConfig {
 
   /// The number of nodes in the Kubernetes Engine cluster that will be used to
   /// run this environment.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
   core.int? nodeCount;
 
   /// The configuration used for the Private IP Cloud Composer environment.
@@ -947,7 +975,9 @@ class EnvironmentConfig {
 
   /// The network-level access control policy for the Airflow web server.
   ///
-  /// If unspecified, no network-level access restrictions will be applied.
+  /// If unspecified, no network-level access restrictions will be applied. This
+  /// field is supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   WebServerNetworkAccessControl? webServerNetworkAccessControl;
@@ -1037,7 +1067,8 @@ class IPAllocationPolicy {
   /// The IP address range used to allocate IP addresses to pods in the GKE
   /// cluster.
   ///
-  /// This field is applicable only when `use_ip_aliases` is true. Set to blank
+  /// For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+  /// this field is applicable only when `use_ip_aliases` is true. Set to blank
   /// to have GKE choose a range with the default size. Set to /netmask (e.g.
   /// `/14`) to have GKE choose a range with a specific netmask. Set to a
   /// [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -1051,14 +1082,16 @@ class IPAllocationPolicy {
   /// The name of the GKE cluster's secondary range used to allocate IP
   /// addresses to pods.
   ///
-  /// This field is applicable only when `use_ip_aliases` is true.
+  /// For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+  /// this field is applicable only when `use_ip_aliases` is true.
   ///
   /// Optional.
   core.String? clusterSecondaryRangeName;
 
   /// The IP address range of the services IP addresses in this GKE cluster.
   ///
-  /// This field is applicable only when `use_ip_aliases` is true. Set to blank
+  /// For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+  /// this field is applicable only when `use_ip_aliases` is true. Set to blank
   /// to have GKE choose a range with the default size. Set to /netmask (e.g.
   /// `/14`) to have GKE choose a range with a specific netmask. Set to a
   /// [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -1072,14 +1105,17 @@ class IPAllocationPolicy {
   /// The name of the services' secondary range used to allocate IP addresses to
   /// the GKE cluster.
   ///
-  /// This field is applicable only when `use_ip_aliases` is true.
+  /// For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+  /// this field is applicable only when `use_ip_aliases` is true.
   ///
   /// Optional.
   core.String? servicesSecondaryRangeName;
 
   /// Whether or not to enable Alias IPs in the GKE cluster.
   ///
-  /// If `true`, a VPC-native cluster is created.
+  /// If `true`, a VPC-native cluster is created. This field is only supported
+  /// for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+  /// Environments in newer versions always use VPC-native GKE clusters.
   ///
   /// Optional.
   core.bool? useIpAliases;
@@ -1296,7 +1332,8 @@ class NodeConfig {
   /// The disk size in GB used for node VMs.
   ///
   /// Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be
-  /// updated.
+  /// updated. This field is supported for Cloud Composer environments in
+  /// versions composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   core.int? diskSizeGb;
@@ -1320,7 +1357,8 @@ class NodeConfig {
   /// Composer location, and propagate that choice to both fields. If only one
   /// field (`location` or `nodeConfig.machineType`) is specified, the location
   /// information from the specified field will be propagated to the unspecified
-  /// field.
+  /// field. This field is supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   core.String? location;
@@ -1341,7 +1379,8 @@ class NodeConfig {
   /// propagated to the unspecified field. The `machineTypeId` must not be a
   /// \[shared-core machine type\](/compute/docs/machine-types#sharedcore). If
   /// this field is unspecified, the `machineTypeId` defaults to
-  /// "n1-standard-1".
+  /// "n1-standard-1". This field is supported for Cloud Composer environments
+  /// in versions composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   core.String? machineType;
@@ -1365,6 +1404,8 @@ class NodeConfig {
   ///
   /// If `oauth_scopes` is empty, defaults to
   /// \["https://www.googleapis.com/auth/cloud-platform"\]. Cannot be updated.
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   core.List<core.String>? oauthScopes;
@@ -1394,7 +1435,9 @@ class NodeConfig {
   ///
   /// Tags are used to identify valid sources or targets for network firewalls.
   /// Each tag within the list must comply with
-  /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+  /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This
+  /// field is supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   core.List<core.String>? tags;
@@ -1693,7 +1736,8 @@ class PrivateEnvironmentConfig {
   /// If `true`, a Private IP Cloud Composer environment is created.
   ///
   /// If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be
-  /// set to true.
+  /// set to true for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   core.bool? enablePrivateEnvironment;
@@ -1707,12 +1751,16 @@ class PrivateEnvironmentConfig {
   /// The CIDR block from which IP range for web server will be reserved.
   ///
   /// Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block`
-  /// and `cloud_sql_ipv4_cidr_block`.
+  /// and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud
+  /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   core.String? webServerIpv4CidrBlock;
 
   /// The IP range reserved for the tenant project's App Engine VMs.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
   ///
   /// Output only.
   core.String? webServerIpv4ReservedRange;
@@ -1832,10 +1880,20 @@ class SoftwareConfig {
   /// worker, and webserver processes.
   ///
   /// Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be
-  /// updated.
+  /// updated. This field is only supported for Cloud Composer environments in
+  /// versions composer-1.*.*-airflow-*.*.*. Environments in newer versions
+  /// always use Python major version 3.
   ///
   /// Optional.
   core.String? pythonVersion;
+
+  /// The number of schedulers for Airflow.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-2.*.*.
+  ///
+  /// Optional.
+  core.int? schedulerCount;
 
   SoftwareConfig({
     this.airflowConfigOverrides,
@@ -1843,6 +1901,7 @@ class SoftwareConfig {
     this.imageVersion,
     this.pypiPackages,
     this.pythonVersion,
+    this.schedulerCount,
   });
 
   SoftwareConfig.fromJson(core.Map _json)
@@ -1881,6 +1940,9 @@ class SoftwareConfig {
           pythonVersion: _json.containsKey('pythonVersion')
               ? _json['pythonVersion'] as core.String
               : null,
+          schedulerCount: _json.containsKey('schedulerCount')
+              ? _json['schedulerCount'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1890,6 +1952,7 @@ class SoftwareConfig {
         if (imageVersion != null) 'imageVersion': imageVersion!,
         if (pypiPackages != null) 'pypiPackages': pypiPackages!,
         if (pythonVersion != null) 'pythonVersion': pythonVersion!,
+        if (schedulerCount != null) 'schedulerCount': schedulerCount!,
       };
 }
 
@@ -1945,6 +2008,9 @@ class Status {
 }
 
 /// The configuration settings for the Airflow web server App Engine instance.
+///
+/// Supported for Cloud Composer environments in versions
+/// composer-1.*.*-airflow-*.*.*
 class WebServerConfig {
   /// Machine type on which Airflow web server is running.
   ///
@@ -1973,6 +2039,9 @@ class WebServerConfig {
 }
 
 /// Network-level access control policy for the Airflow web server.
+///
+/// Supported for Cloud Composer environments in versions
+/// composer-1.*.*-airflow-*.*.*.
 class WebServerNetworkAccessControl {
   /// A collection of allowed IP ranges with descriptions.
   core.List<AllowedIpRange>? allowedIpRanges;

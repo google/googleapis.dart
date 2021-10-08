@@ -2314,7 +2314,7 @@
             }
         }
     },
-    "revision": "20210825",
+    "revision": "20210930",
     "rootUrl": "https://dataproc.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -4058,7 +4058,7 @@
             "id": "Policy",
             "properties": {
                 "bindings": {
-                    "description": "Associates a list of members to a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one member.",
+                    "description": "Associates a list of members to a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one member.The bindings in a Policy can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each occurrence of a member counts towards these limits. For example, if the bindings grant 50 different roles to user:alice@example.com, and not to any other member, then you can add another 1,450 members to the bindings in the Policy.",
                     "items": {
                         "$ref": "Binding"
                     },
@@ -4263,6 +4263,65 @@
                 "kerberosConfig": {
                     "$ref": "KerberosConfig",
                     "description": "Optional. Kerberos related configuration."
+                }
+            },
+            "type": "object"
+        },
+        "SessionOperationMetadata": {
+            "description": "Metadata describing the Session operation.",
+            "id": "SessionOperationMetadata",
+            "properties": {
+                "createTime": {
+                    "description": "The time when the operation was created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Short description of the operation.",
+                    "type": "string"
+                },
+                "doneTime": {
+                    "description": "The time when the operation was finished.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels associated with the operation.",
+                    "type": "object"
+                },
+                "operationType": {
+                    "description": "The operation type.",
+                    "enum": [
+                        "SESSION_OPERATION_TYPE_UNSPECIFIED",
+                        "CREATE",
+                        "TERMINATE",
+                        "DELETE"
+                    ],
+                    "enumDescriptions": [
+                        "Session operation type is unknown.",
+                        "Create Session operation type.",
+                        "Terminate Session operation type.",
+                        "Delete Session operation type."
+                    ],
+                    "type": "string"
+                },
+                "session": {
+                    "description": "Name of the session for the operation.",
+                    "type": "string"
+                },
+                "sessionUuid": {
+                    "description": "Session UUID for the operation.",
+                    "type": "string"
+                },
+                "warnings": {
+                    "description": "Warnings encountered during operation execution.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

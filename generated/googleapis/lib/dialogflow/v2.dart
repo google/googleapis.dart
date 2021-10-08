@@ -271,6 +271,13 @@ class ProjectsAgentResource {
 
   /// Exports the specified agent to a ZIP file.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: ExportAgentResponse
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -405,10 +412,16 @@ class ProjectsAgentResource {
   /// agent will be trained automatically (unless disabled in agent settings).
   /// However, once the import is done, training may not be completed yet.
   /// Please call TrainAgent and wait for the operation it returns in order to
-  /// train explicitly. An operation which tracks when importing is complete. It
-  /// only tracks when the draft agent is updated not when it is done training.
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
+  /// train explicitly. This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+  /// The operation only tracks when importing is complete, not when it is done
+  /// training. Note: You should always train an agent prior to sending it
+  /// queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -458,10 +471,16 @@ class ProjectsAgentResource {
   /// restored draft agent will be trained automatically (unless disabled in
   /// agent settings). However, once the restore is done, training may not be
   /// completed yet. Please call TrainAgent and wait for the operation it
-  /// returns in order to train explicitly. An operation which tracks when
-  /// restoring is complete. It only tracks when the draft agent is updated not
-  /// when it is done training. Note: You should always train an agent prior to
-  /// sending it queries. See the
+  /// returns in order to train explicitly. This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+  /// The operation only tracks when restoring is complete, not when it is done
+  /// training. Note: You should always train an agent prior to sending it
+  /// queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -558,6 +577,13 @@ class ProjectsAgentResource {
 
   /// Trains the specified agent.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -663,6 +689,13 @@ class ProjectsAgentEntityTypesResource {
 
   /// Deletes entity types in the specified agent.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -710,8 +743,13 @@ class ProjectsAgentEntityTypesResource {
 
   /// Updates/Creates multiple entity types in the specified agent.
   ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: BatchUpdateEntityTypesResponse Note: You should always train
+  /// an agent prior to sending it queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -1014,6 +1052,13 @@ class ProjectsAgentEntityTypesEntitiesResource {
 
   /// Creates multiple new entities in the specified entity type.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -1061,6 +1106,13 @@ class ProjectsAgentEntityTypesEntitiesResource {
 
   /// Deletes entities in the specified entity type.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -1109,8 +1161,15 @@ class ProjectsAgentEntityTypesEntitiesResource {
   /// Updates or creates multiple entities in the specified entity type.
   ///
   /// This method does not affect entities in the entity type that aren't
-  /// explicitly specified in the request. Note: You should always train an
-  /// agent prior to sending it queries. See the
+  /// explicitly specified in the request. This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+  /// Note: You should always train an agent prior to sending it queries. See
+  /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -2166,6 +2225,13 @@ class ProjectsAgentIntentsResource {
 
   /// Deletes intents in the specified agent.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -2213,8 +2279,13 @@ class ProjectsAgentIntentsResource {
 
   /// Updates/Creates multiple intents in the specified agent.
   ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: BatchUpdateIntentsResponse Note: You should always train an
+  /// agent prior to sending it queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -2784,7 +2855,10 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
 
   /// Creates a new document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
   ///
   /// [request] - The metadata request object.
   ///
@@ -2828,7 +2902,11 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
 
   /// Deletes the specified document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   ///
   /// Request parameters:
   ///
@@ -2953,7 +3031,10 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
 
   /// Updates the specified document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
   ///
   /// [request] - The metadata request object.
   ///
@@ -3008,9 +3089,13 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   ///
   /// The previously loaded content of the document will be deleted. Note: Even
   /// when the content of the document has not changed, there still may be side
-  /// effects because of internal implementation changes. Note: The
+  /// effects because of internal implementation changes. This method is a
+  /// \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document Note: The
   /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-  /// `projects.knowledgeBases.documents`. Operation
+  /// `projects.knowledgeBases.documents`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5076,7 +5161,10 @@ class ProjectsKnowledgeBasesDocumentsResource {
 
   /// Creates a new document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
   ///
   /// [request] - The metadata request object.
   ///
@@ -5120,7 +5208,11 @@ class ProjectsKnowledgeBasesDocumentsResource {
 
   /// Deletes the specified document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   ///
   /// Request parameters:
   ///
@@ -5245,7 +5337,10 @@ class ProjectsKnowledgeBasesDocumentsResource {
 
   /// Updates the specified document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
   ///
   /// [request] - The metadata request object.
   ///
@@ -5300,9 +5395,13 @@ class ProjectsKnowledgeBasesDocumentsResource {
   ///
   /// The previously loaded content of the document will be deleted. Note: Even
   /// when the content of the document has not changed, there still may be side
-  /// effects because of internal implementation changes. Note: The
+  /// effects because of internal implementation changes. This method is a
+  /// \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document Note: The
   /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-  /// `projects.knowledgeBases.documents`. Operation
+  /// `projects.knowledgeBases.documents`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5595,6 +5694,13 @@ class ProjectsLocationsAgentResource {
 
   /// Exports the specified agent to a ZIP file.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: ExportAgentResponse
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -5730,10 +5836,16 @@ class ProjectsLocationsAgentResource {
   /// agent will be trained automatically (unless disabled in agent settings).
   /// However, once the import is done, training may not be completed yet.
   /// Please call TrainAgent and wait for the operation it returns in order to
-  /// train explicitly. An operation which tracks when importing is complete. It
-  /// only tracks when the draft agent is updated not when it is done training.
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
+  /// train explicitly. This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+  /// The operation only tracks when importing is complete, not when it is done
+  /// training. Note: You should always train an agent prior to sending it
+  /// queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -5783,10 +5895,16 @@ class ProjectsLocationsAgentResource {
   /// restored draft agent will be trained automatically (unless disabled in
   /// agent settings). However, once the restore is done, training may not be
   /// completed yet. Please call TrainAgent and wait for the operation it
-  /// returns in order to train explicitly. An operation which tracks when
-  /// restoring is complete. It only tracks when the draft agent is updated not
-  /// when it is done training. Note: You should always train an agent prior to
-  /// sending it queries. See the
+  /// returns in order to train explicitly. This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+  /// The operation only tracks when restoring is complete, not when it is done
+  /// training. Note: You should always train an agent prior to sending it
+  /// queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -5883,6 +6001,13 @@ class ProjectsLocationsAgentResource {
 
   /// Trains the specified agent.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -5989,6 +6114,13 @@ class ProjectsLocationsAgentEntityTypesResource {
 
   /// Deletes entity types in the specified agent.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -6036,8 +6168,13 @@ class ProjectsLocationsAgentEntityTypesResource {
 
   /// Updates/Creates multiple entity types in the specified agent.
   ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: BatchUpdateEntityTypesResponse Note: You should always train
+  /// an agent prior to sending it queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -6343,6 +6480,13 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
 
   /// Creates multiple new entities in the specified entity type.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -6391,6 +6535,13 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
 
   /// Deletes entities in the specified entity type.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -6440,8 +6591,15 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
   /// Updates or creates multiple entities in the specified entity type.
   ///
   /// This method does not affect entities in the entity type that aren't
-  /// explicitly specified in the request. Note: You should always train an
-  /// agent prior to sending it queries. See the
+  /// explicitly specified in the request. This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+  /// Note: You should always train an agent prior to sending it queries. See
+  /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -7508,6 +7666,13 @@ class ProjectsLocationsAgentIntentsResource {
 
   /// Deletes intents in the specified agent.
   ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   /// Note: You should always train an agent prior to sending it queries. See
   /// the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -7555,8 +7720,13 @@ class ProjectsLocationsAgentIntentsResource {
 
   /// Updates/Creates multiple intents in the specified agent.
   ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: An empty
+  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+  /// - `response`: BatchUpdateIntentsResponse Note: You should always train an
+  /// agent prior to sending it queries. See the
   /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
   ///
   /// [request] - The metadata request object.
@@ -9941,7 +10111,10 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
 
   /// Creates a new document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
   ///
   /// [request] - The metadata request object.
   ///
@@ -9986,7 +10159,11 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
 
   /// Deletes the specified document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: An
+  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
   ///
   /// Request parameters:
   ///
@@ -10112,7 +10289,10 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
 
   /// Updates the specified document.
   ///
-  /// Operation
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
   ///
   /// [request] - The metadata request object.
   ///
@@ -10167,9 +10347,13 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   ///
   /// The previously loaded content of the document will be deleted. Note: Even
   /// when the content of the document has not changed, there still may be side
-  /// effects because of internal implementation changes. Note: The
+  /// effects because of internal implementation changes. This method is a
+  /// \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document Note: The
   /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-  /// `projects.knowledgeBases.documents`. Operation
+  /// `projects.knowledgeBases.documents`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10927,6 +11111,62 @@ class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata {
       };
 }
 
+/// Metadata returned for the Environments.DeployFlow long running operation.
+class GoogleCloudDialogflowCxV3DeployFlowMetadata {
+  /// Errors of running deployment tests.
+  core.List<GoogleCloudDialogflowCxV3TestError>? testErrors;
+
+  GoogleCloudDialogflowCxV3DeployFlowMetadata({
+    this.testErrors,
+  });
+
+  GoogleCloudDialogflowCxV3DeployFlowMetadata.fromJson(core.Map _json)
+      : this(
+          testErrors: _json.containsKey('testErrors')
+              ? (_json['testErrors'] as core.List)
+                  .map((value) => GoogleCloudDialogflowCxV3TestError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (testErrors != null) 'testErrors': testErrors!,
+      };
+}
+
+/// The response message for Environments.DeployFlow.
+class GoogleCloudDialogflowCxV3DeployFlowResponse {
+  /// The name of the flow version Deployment.
+  ///
+  /// Format: `projects//locations//agents// environments//deployments/`.
+  core.String? deployment;
+
+  /// The updated environment where the flow is deployed.
+  GoogleCloudDialogflowCxV3Environment? environment;
+
+  GoogleCloudDialogflowCxV3DeployFlowResponse({
+    this.deployment,
+    this.environment,
+  });
+
+  GoogleCloudDialogflowCxV3DeployFlowResponse.fromJson(core.Map _json)
+      : this(
+          deployment: _json.containsKey('deployment')
+              ? _json['deployment'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? GoogleCloudDialogflowCxV3Environment.fromJson(
+                  _json['environment'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployment != null) 'deployment': deployment!,
+        if (environment != null) 'environment': environment!,
+      };
+}
+
 /// Represents the input for dtmf event.
 class GoogleCloudDialogflowCxV3DtmfInput {
   /// The dtmf digits.
@@ -10953,6 +11193,168 @@ class GoogleCloudDialogflowCxV3DtmfInput {
   core.Map<core.String, core.dynamic> toJson() => {
         if (digits != null) 'digits': digits!,
         if (finishDigit != null) 'finishDigit': finishDigit!,
+      };
+}
+
+/// Represents an environment for an agent.
+///
+/// You can create multiple versions of your agent and publish them to separate
+/// environments. When you edit an agent, you are editing the draft agent. At
+/// any point, you can save the draft agent as an agent version, which is an
+/// immutable snapshot of your agent. When you save the draft agent, it is
+/// published to the default environment. When you create agent versions, you
+/// can publish them to custom environments. You can create a variety of custom
+/// environments for testing, development, production, etc.
+class GoogleCloudDialogflowCxV3Environment {
+  /// The human-readable description of the environment.
+  ///
+  /// The maximum length is 500 characters. If exceeded, the request is
+  /// rejected.
+  core.String? description;
+
+  /// The human-readable name of the environment (unique in an agent).
+  ///
+  /// Limit of 64 characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The name of the environment.
+  ///
+  /// Format: `projects//locations//agents//environments/`.
+  core.String? name;
+
+  /// The test cases config for continuous tests of this environment.
+  GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig? testCasesConfig;
+
+  /// Update time of this environment.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// A list of configurations for flow versions.
+  ///
+  /// You should include version configs for all flows that are reachable from
+  /// `Start Flow` in the agent. Otherwise, an error will be returned.
+  ///
+  /// Required.
+  core.List<GoogleCloudDialogflowCxV3EnvironmentVersionConfig>? versionConfigs;
+
+  GoogleCloudDialogflowCxV3Environment({
+    this.description,
+    this.displayName,
+    this.name,
+    this.testCasesConfig,
+    this.updateTime,
+    this.versionConfigs,
+  });
+
+  GoogleCloudDialogflowCxV3Environment.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          testCasesConfig: _json.containsKey('testCasesConfig')
+              ? GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig.fromJson(
+                  _json['testCasesConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          versionConfigs: _json.containsKey('versionConfigs')
+              ? (_json['versionConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3EnvironmentVersionConfig
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (testCasesConfig != null) 'testCasesConfig': testCasesConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (versionConfigs != null) 'versionConfigs': versionConfigs!,
+      };
+}
+
+/// The configuration for continuous tests.
+class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
+  /// Whether to run test cases in TestCasesConfig.test_cases periodically.
+  ///
+  /// Default false. If set to ture, run once a day.
+  core.bool? enableContinuousRun;
+
+  /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
+  /// flow version to the environment.
+  ///
+  /// Default false.
+  core.bool? enablePredeploymentRun;
+
+  /// A list of test case names to run.
+  ///
+  /// They should be under the same agent. Format of each test case name:
+  /// `projects//locations/ /agents//testCases/`
+  core.List<core.String>? testCases;
+
+  GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig({
+    this.enableContinuousRun,
+    this.enablePredeploymentRun,
+    this.testCases,
+  });
+
+  GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig.fromJson(core.Map _json)
+      : this(
+          enableContinuousRun: _json.containsKey('enableContinuousRun')
+              ? _json['enableContinuousRun'] as core.bool
+              : null,
+          enablePredeploymentRun: _json.containsKey('enablePredeploymentRun')
+              ? _json['enablePredeploymentRun'] as core.bool
+              : null,
+          testCases: _json.containsKey('testCases')
+              ? (_json['testCases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableContinuousRun != null)
+          'enableContinuousRun': enableContinuousRun!,
+        if (enablePredeploymentRun != null)
+          'enablePredeploymentRun': enablePredeploymentRun!,
+        if (testCases != null) 'testCases': testCases!,
+      };
+}
+
+/// Configuration for the version.
+class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
+  /// Format: projects//locations//agents//flows//versions/.
+  ///
+  /// Required.
+  core.String? version;
+
+  GoogleCloudDialogflowCxV3EnvironmentVersionConfig({
+    this.version,
+  });
+
+  GoogleCloudDialogflowCxV3EnvironmentVersionConfig.fromJson(core.Map _json)
+      : this(
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
       };
 }
 
@@ -14376,6 +14778,63 @@ class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata {
       };
 }
 
+/// Metadata returned for the Environments.DeployFlow long running operation.
+class GoogleCloudDialogflowCxV3beta1DeployFlowMetadata {
+  /// Errors of running deployment tests.
+  core.List<GoogleCloudDialogflowCxV3beta1TestError>? testErrors;
+
+  GoogleCloudDialogflowCxV3beta1DeployFlowMetadata({
+    this.testErrors,
+  });
+
+  GoogleCloudDialogflowCxV3beta1DeployFlowMetadata.fromJson(core.Map _json)
+      : this(
+          testErrors: _json.containsKey('testErrors')
+              ? (_json['testErrors'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1TestError.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (testErrors != null) 'testErrors': testErrors!,
+      };
+}
+
+/// The response message for Environments.DeployFlow.
+class GoogleCloudDialogflowCxV3beta1DeployFlowResponse {
+  /// The name of the flow version deployment.
+  ///
+  /// Format: `projects//locations//agents// environments//deployments/`.
+  core.String? deployment;
+
+  /// The updated environment where the flow is deployed.
+  GoogleCloudDialogflowCxV3beta1Environment? environment;
+
+  GoogleCloudDialogflowCxV3beta1DeployFlowResponse({
+    this.deployment,
+    this.environment,
+  });
+
+  GoogleCloudDialogflowCxV3beta1DeployFlowResponse.fromJson(core.Map _json)
+      : this(
+          deployment: _json.containsKey('deployment')
+              ? _json['deployment'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? GoogleCloudDialogflowCxV3beta1Environment.fromJson(
+                  _json['environment'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployment != null) 'deployment': deployment!,
+        if (environment != null) 'environment': environment!,
+      };
+}
+
 /// Represents the input for dtmf event.
 class GoogleCloudDialogflowCxV3beta1DtmfInput {
   /// The dtmf digits.
@@ -14402,6 +14861,171 @@ class GoogleCloudDialogflowCxV3beta1DtmfInput {
   core.Map<core.String, core.dynamic> toJson() => {
         if (digits != null) 'digits': digits!,
         if (finishDigit != null) 'finishDigit': finishDigit!,
+      };
+}
+
+/// Represents an environment for an agent.
+///
+/// You can create multiple versions of your agent and publish them to separate
+/// environments. When you edit an agent, you are editing the draft agent. At
+/// any point, you can save the draft agent as an agent version, which is an
+/// immutable snapshot of your agent. When you save the draft agent, it is
+/// published to the default environment. When you create agent versions, you
+/// can publish them to custom environments. You can create a variety of custom
+/// environments for testing, development, production, etc.
+class GoogleCloudDialogflowCxV3beta1Environment {
+  /// The human-readable description of the environment.
+  ///
+  /// The maximum length is 500 characters. If exceeded, the request is
+  /// rejected.
+  core.String? description;
+
+  /// The human-readable name of the environment (unique in an agent).
+  ///
+  /// Limit of 64 characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The name of the environment.
+  ///
+  /// Format: `projects//locations//agents//environments/`.
+  core.String? name;
+
+  /// The test cases config for continuous tests of this environment.
+  GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig? testCasesConfig;
+
+  /// Update time of this environment.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// A list of configurations for flow versions.
+  ///
+  /// You should include version configs for all flows that are reachable from
+  /// `Start Flow` in the agent. Otherwise, an error will be returned.
+  ///
+  /// Required.
+  core.List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>?
+      versionConfigs;
+
+  GoogleCloudDialogflowCxV3beta1Environment({
+    this.description,
+    this.displayName,
+    this.name,
+    this.testCasesConfig,
+    this.updateTime,
+    this.versionConfigs,
+  });
+
+  GoogleCloudDialogflowCxV3beta1Environment.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          testCasesConfig: _json.containsKey('testCasesConfig')
+              ? GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
+                  .fromJson(_json['testCasesConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          versionConfigs: _json.containsKey('versionConfigs')
+              ? (_json['versionConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (testCasesConfig != null) 'testCasesConfig': testCasesConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (versionConfigs != null) 'versionConfigs': versionConfigs!,
+      };
+}
+
+/// The configuration for continuous tests.
+class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig {
+  /// Whether to run test cases in TestCasesConfig.test_cases periodically.
+  ///
+  /// Default false. If set to ture, run once a day.
+  core.bool? enableContinuousRun;
+
+  /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
+  /// flow version to the environment.
+  ///
+  /// Default false.
+  core.bool? enablePredeploymentRun;
+
+  /// A list of test case names to run.
+  ///
+  /// They should be under the same agent. Format of each test case name:
+  /// `projects//locations/ /agents//testCases/`
+  core.List<core.String>? testCases;
+
+  GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig({
+    this.enableContinuousRun,
+    this.enablePredeploymentRun,
+    this.testCases,
+  });
+
+  GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig.fromJson(
+      core.Map _json)
+      : this(
+          enableContinuousRun: _json.containsKey('enableContinuousRun')
+              ? _json['enableContinuousRun'] as core.bool
+              : null,
+          enablePredeploymentRun: _json.containsKey('enablePredeploymentRun')
+              ? _json['enablePredeploymentRun'] as core.bool
+              : null,
+          testCases: _json.containsKey('testCases')
+              ? (_json['testCases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableContinuousRun != null)
+          'enableContinuousRun': enableContinuousRun!,
+        if (enablePredeploymentRun != null)
+          'enablePredeploymentRun': enablePredeploymentRun!,
+        if (testCases != null) 'testCases': testCases!,
+      };
+}
+
+/// Configuration for the version.
+class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig {
+  /// Format: projects//locations//agents//flows//versions/.
+  ///
+  /// Required.
+  core.String? version;
+
+  GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig({
+    this.version,
+  });
+
+  GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig.fromJson(
+      core.Map _json)
+      : this(
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
       };
 }
 

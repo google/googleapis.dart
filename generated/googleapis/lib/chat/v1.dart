@@ -98,7 +98,7 @@ class DmsResource {
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
   /// the same thread. This relieves bots and webhooks from having to store the
-  /// Hangouts Chat thread ID of a thread (created earlier by them) to post
+  /// Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -152,7 +152,7 @@ class DmsResource {
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
   /// the same thread. This relieves bots and webhooks from having to store the
-  /// Hangouts Chat thread ID of a thread (created earlier by them) to post
+  /// Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -212,7 +212,7 @@ class DmsConversationsResource {
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
   /// the same thread. This relieves bots and webhooks from having to store the
-  /// Hangouts Chat thread ID of a thread (created earlier by them) to post
+  /// Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -333,7 +333,7 @@ class RoomsResource {
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
   /// the same thread. This relieves bots and webhooks from having to store the
-  /// Hangouts Chat thread ID of a thread (created earlier by them) to post
+  /// Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -387,7 +387,7 @@ class RoomsResource {
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
   /// the same thread. This relieves bots and webhooks from having to store the
-  /// Hangouts Chat thread ID of a thread (created earlier by them) to post
+  /// Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -447,7 +447,7 @@ class RoomsConversationsResource {
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
   /// the same thread. This relieves bots and webhooks from having to store the
-  /// Hangouts Chat thread ID of a thread (created earlier by them) to post
+  /// Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -589,7 +589,7 @@ class SpacesResource {
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
   /// the same thread. This relieves bots and webhooks from having to store the
-  /// Hangouts Chat thread ID of a thread (created earlier by them) to post
+  /// Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -743,7 +743,7 @@ class SpacesMessagesResource {
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
   /// the same thread. This relieves bots and webhooks from having to store the
-  /// Hangouts Chat thread ID of a thread (created earlier by them) to post
+  /// Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -1204,7 +1204,7 @@ class Annotation {
       };
 }
 
-/// An attachment in Hangouts Chat.
+/// An attachment in Google Chat.
 class Attachment {
   /// A reference to the attachment data.
   ///
@@ -1790,7 +1790,7 @@ class DeprecatedEvent {
   /// The message that triggered the event, if applicable.
   Message? message;
 
-  /// The room or DM in which the event occurred.
+  /// The space in which the event occurred.
   Space? space;
 
   /// The bot-defined key for the thread related to the event.
@@ -1809,9 +1809,9 @@ class DeprecatedEvent {
   /// The type of the event.
   /// Possible string values are:
   /// - "UNSPECIFIED" : Default value for the enum. DO NOT USE.
-  /// - "MESSAGE" : A message was sent in a room or direct message.
-  /// - "ADDED_TO_SPACE" : The bot was added to a room or DM.
-  /// - "REMOVED_FROM_SPACE" : The bot was removed from a room or DM.
+  /// - "MESSAGE" : A message was sent in a space.
+  /// - "ADDED_TO_SPACE" : The bot was added to a space.
+  /// - "REMOVED_FROM_SPACE" : The bot was removed from a space.
   /// - "CARD_CLICKED" : The bot's interactive card was clicked.
   core.String? type;
 
@@ -3983,13 +3983,13 @@ class Media {
       };
 }
 
-/// Represents a membership relation in Hangouts Chat.
+/// Represents a membership relation in Google Chat.
 class Membership {
   /// The creation time of the membership a.k.a the time at which the member
   /// joined the space, if applicable.
   core.String? createTime;
 
-  /// A User in Hangout Chat
+  /// A user in Google Chat.
   User? member;
   core.String? name;
 
@@ -4032,7 +4032,7 @@ class Membership {
       };
 }
 
-/// A message in Hangouts Chat.
+/// A message in Google Chat.
 class Message {
   /// Input only.
   ///
@@ -4056,7 +4056,7 @@ class Message {
   /// Cards are normally displayed below the plain-text body of the message.
   core.List<Card>? cards;
 
-  /// The time at which the message was created in Hangouts Chat server.
+  /// The time at which the message was created in Google Chat server.
   ///
   /// Output only.
   core.String? createTime;
@@ -4065,7 +4065,7 @@ class Message {
   /// cards cannot be displayed (e.g. mobile notifications).
   core.String? fallbackText;
 
-  /// The time at which the message was last updated in Hangouts Chat server.
+  /// The time at which the message was last updated in Google Chat server.
   ///
   /// If the message was never updated, this field will be same as create_time.
   ///
@@ -4353,9 +4353,12 @@ class SlashCommandMetadata {
       };
 }
 
-/// A room or DM in Hangouts Chat.
+/// A space in Google Chat.
+///
+/// Spaces are conversations between two or more users or 1:1 messages between a
+/// user and a Chat bot.
 class Space {
-  /// The display name (only if the space is a room).
+  /// The display name (only if the space is of type `ROOM`).
   ///
   /// Please note that this field might not be populated in direct messages
   /// between humans.
@@ -4381,9 +4384,9 @@ class Space {
   /// Output only.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED"
-  /// - "ROOM" : Multi-user spaces such as rooms and DMs between humans.
-  /// - "DM" : 1:1 Direct Message between a human and a bot, where all messages
-  /// are flat.
+  /// - "ROOM" : Conversations between two or more humans.
+  /// - "DM" : 1:1 Direct Message between a human and a Chat bot, where all
+  /// messages are flat.
   core.String? type;
 
   Space({
@@ -4491,7 +4494,7 @@ class TextParagraph {
       };
 }
 
-/// A thread in Hangouts Chat.
+/// A thread in Google Chat.
 class Thread {
   /// Resource name, in the form "spaces / * /threads / * ".
   ///

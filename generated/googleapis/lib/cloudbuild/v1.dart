@@ -498,8 +498,6 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Create an association between a GCP project and a GitHub Enterprise
   /// server.
   ///
-  /// This API is experimental.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -547,8 +545,6 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Delete an association between a GCP project and a GitHub Enterprise
   /// server.
   ///
-  /// This API is experimental.
-  ///
   /// Request parameters:
   ///
   /// [name] - This field should contain the name of the enterprise config
@@ -594,8 +590,6 @@ class ProjectsGithubEnterpriseConfigsResource {
   }
 
   /// Retrieve a GitHubEnterpriseConfig.
-  ///
-  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -644,8 +638,6 @@ class ProjectsGithubEnterpriseConfigsResource {
 
   /// List all GitHubEnterpriseConfigs for a given project.
   ///
-  /// This API is experimental.
-  ///
   /// Request parameters:
   ///
   /// [parent] - Name of the parent project. For example:
@@ -688,8 +680,6 @@ class ProjectsGithubEnterpriseConfigsResource {
 
   /// Update an association between a GCP project and a GitHub Enterprise
   /// server.
-  ///
-  /// This API is experimental.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1075,8 +1065,6 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Create an association between a GCP project and a GitHub Enterprise
   /// server.
   ///
-  /// This API is experimental.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1124,8 +1112,6 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Delete an association between a GCP project and a GitHub Enterprise
   /// server.
   ///
-  /// This API is experimental.
-  ///
   /// Request parameters:
   ///
   /// [name] - This field should contain the name of the enterprise config
@@ -1171,8 +1157,6 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   }
 
   /// Retrieve a GitHubEnterpriseConfig.
-  ///
-  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -1221,8 +1205,6 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
 
   /// List all GitHubEnterpriseConfigs for a given project.
   ///
-  /// This API is experimental.
-  ///
   /// Request parameters:
   ///
   /// [parent] - Name of the parent project. For example:
@@ -1265,8 +1247,6 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
 
   /// Update an association between a GCP project and a GitHub Enterprise
   /// server.
-  ///
-  /// This API is experimental.
   ///
   /// [request] - The metadata request object.
   ///

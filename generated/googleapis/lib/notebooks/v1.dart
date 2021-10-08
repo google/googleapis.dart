@@ -356,7 +356,7 @@ class ProjectsLocationsExecutionsResource {
   ProjectsLocationsExecutionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Scheduled Notebook in a given project and location.
+  /// Creates a new Execution in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2520,7 +2520,7 @@ class Disk {
   /// will fail if you attempt to attach a persistent disk in any other format
   /// than SCSI. Local SSDs can use either NVME or SCSI. For performance
   /// characteristics of SCSI over NVMe, see Local SSD performance. Valid
-  /// values: NVME SCSI
+  /// values: * NVME * SCSI
   core.String? interface;
 
   /// Type of the resource.
@@ -2537,7 +2537,7 @@ class Disk {
   /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
   ///
   /// If not specified, the default is to attach the disk in READ_WRITE mode.
-  /// Valid values: READ_ONLY READ_WRITE
+  /// Valid values: * READ_ONLY * READ_WRITE
   core.String? mode;
 
   /// Indicates a valid partial or full URL to an existing Persistent Disk
@@ -2546,7 +2546,7 @@ class Disk {
 
   /// Indicates the type of the disk, either SCRATCH or PERSISTENT.
   ///
-  /// Valid values: PERSISTENT SCRATCH
+  /// Valid values: * PERSISTENT * SCRATCH
   core.String? type;
 
   Disk({
@@ -2792,7 +2792,7 @@ class Execution {
   /// The resource name of the execute.
   ///
   /// Format:
-  /// \`projects/{project_id}/locations/{location}/execution/{execution_id}
+  /// `projects/{project_id}/locations/{location}/executions/{execution_id}`
   ///
   /// Output only.
   core.String? name;
@@ -2816,7 +2816,7 @@ class Execution {
   /// describe the reason for the cancellation.
   /// - "CANCELLED" : The job has been cancelled. `error_message` should
   /// describe the reason for the cancellation.
-  /// - "EXPIRED" : The jobs has become expired (added for uCAIP jobs)
+  /// - "EXPIRED" : The job has become expired (relevant to Vertex AI jobs)
   /// https://cloud.google.com/vertex-ai/docs/reference/rest/v1/JobState
   /// - "INITIALIZING" : The Execution is being created.
   core.String? state;
@@ -2899,7 +2899,7 @@ class ExecutionTemplate {
   /// Path to the notebook file to execute.
   ///
   /// Must be in a Google Cloud Storage bucket. Format:
-  /// gs://{project_id}/{folder}/{notebook_file_name} Ex:
+  /// gs://{bucket_name}/{folder}/{notebook_file_name} Ex:
   /// gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
   core.String? inputNotebookFile;
 
@@ -2936,13 +2936,14 @@ class ExecutionTemplate {
   /// `complex_model_m_p100` - `standard_v100` - `large_model_v100` -
   /// `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to
   /// use a TPU for training, specify `cloud_tpu` in this field. Learn more
-  /// about the \[special configuration options for training with TPU.
+  /// about the
+  /// [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
   core.String? masterType;
 
   /// Path to the notebook folder to write to.
   ///
   /// Must be in a Google Cloud Storage bucket path. Format:
-  /// gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+  /// gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
   core.String? outputNotebookFolder;
 
   /// Parameters used within the 'input_notebook_file' notebook.
@@ -2973,19 +2974,8 @@ class ExecutionTemplate {
   /// - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
   /// use your own cluster specification. When you use this tier, set values to
   /// configure your processing cluster according to these guidelines: * You
-  /// _must_ set `TrainingInput.masterType` to specify the type of machine to
-  /// use for your master node. This is the only required setting. * You _may_
-  /// set `TrainingInput.workerCount` to specify the number of workers to use.
-  /// If you specify one or more workers, you _must_ also set
-  /// `TrainingInput.workerType` to specify the type of machine to use for your
-  /// worker nodes. * You _may_ set `TrainingInput.parameterServerCount` to
-  /// specify the number of parameter servers to use. If you specify one or more
-  /// parameter servers, you _must_ also set `TrainingInput.parameterServerType`
-  /// to specify the type of machine to use for your parameter servers. Note
-  /// that all of your workers must use the same machine type, which can be
-  /// different from your parameter server type and master type. Your parameter
-  /// servers must likewise use the same machine type, which can be different
-  /// from your worker type and master type.
+  /// _must_ set `ExecutionTemplate.masterType` to specify the type of machine
+  /// to use for your master node. This is the only required setting.
   core.String? scaleTier;
 
   /// The email address of a service account to use when running the execution.
@@ -2993,6 +2983,9 @@ class ExecutionTemplate {
   /// You must have the `iam.serviceAccounts.actAs` permission for the specified
   /// service account.
   core.String? serviceAccount;
+
+  /// Parameters used in Vertex AI JobType executions.
+  VertexAIParameters? vertexAiParameters;
 
   ExecutionTemplate({
     this.acceleratorConfig,
@@ -3007,6 +3000,7 @@ class ExecutionTemplate {
     this.paramsYamlFile,
     this.scaleTier,
     this.serviceAccount,
+    this.vertexAiParameters,
   });
 
   ExecutionTemplate.fromJson(core.Map _json)
@@ -3054,6 +3048,10 @@ class ExecutionTemplate {
           serviceAccount: _json.containsKey('serviceAccount')
               ? _json['serviceAccount'] as core.String
               : null,
+          vertexAiParameters: _json.containsKey('vertexAiParameters')
+              ? VertexAIParameters.fromJson(_json['vertexAiParameters']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3071,6 +3069,8 @@ class ExecutionTemplate {
         if (paramsYamlFile != null) 'paramsYamlFile': paramsYamlFile!,
         if (scaleTier != null) 'scaleTier': scaleTier!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (vertexAiParameters != null)
+          'vertexAiParameters': vertexAiParameters!,
       };
 }
 
@@ -3206,8 +3206,8 @@ class GuestOsFeature {
   /// The ID of a supported feature.
   ///
   /// Read Enabling guest operating system features to see a list of available
-  /// options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET
-  /// SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+  /// options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET *
+  /// SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
   core.String? type;
 
   GuestOsFeature({
@@ -3670,8 +3670,6 @@ class Instance {
 /// Notebook instance configurations that can be updated.
 class InstanceConfig {
   /// Verifies core internal services are running.
-  ///
-  /// More info: go/notebooks-health
   core.bool? enableHealthMonitoring;
 
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade.
@@ -4046,7 +4044,7 @@ class ListSchedulesResponse {
       };
 }
 
-/// An Local attached disk resource.
+/// A Local attached disk resource.
 class LocalDisk {
   /// Specifies whether the disk will be auto-deleted when the instance is
   /// deleted (but not when the disk is detached from the instance).
@@ -4107,7 +4105,7 @@ class LocalDisk {
   /// will fail if you attempt to attach a persistent disk in any other format
   /// than SCSI. Local SSDs can use either NVME or SCSI. For performance
   /// characteristics of SCSI over NVMe, see Local SSD performance. Valid
-  /// values: NVME SCSI
+  /// values: * NVME * SCSI
   core.String? interface;
 
   /// Type of the resource.
@@ -4125,7 +4123,7 @@ class LocalDisk {
   /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
   ///
   /// If not specified, the default is to attach the disk in READ_WRITE mode.
-  /// Valid values: READ_ONLY READ_WRITE
+  /// Valid values: * READ_ONLY * READ_WRITE
   core.String? mode;
 
   /// Specifies a valid partial or full URL to an existing Persistent Disk
@@ -4134,7 +4132,7 @@ class LocalDisk {
 
   /// Specifies the type of the disk, either SCRATCH or PERSISTENT.
   ///
-  /// If not specified, the default is PERSISTENT. Valid values: PERSISTENT
+  /// If not specified, the default is PERSISTENT. Valid values: * PERSISTENT *
   /// SCRATCH
   core.String? type;
 
@@ -5153,7 +5151,7 @@ class RuntimeSoftwareConfig {
   /// Default: True
   core.bool? idleShutdown;
 
-  /// Time in minutes to wait before shuting down runtime.
+  /// Time in minutes to wait before shutting down runtime.
   ///
   /// Default: 180 minutes
   core.int? idleShutdownTimeout;
@@ -5230,9 +5228,10 @@ class Schedule {
   /// Output only.
   core.String? createTime;
 
-  /// Cron-tab formatted schedule by which the job will execute Format: minute,
-  /// hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday
-  /// More examples: https://crontab.guru/examples.html
+  /// Cron-tab formatted schedule by which the job will execute.
+  ///
+  /// Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED =
+  /// every Wednesday More examples: https://crontab.guru/examples.html
   core.String? cronSchedule;
 
   /// A brief description of this environment.
@@ -5358,7 +5357,8 @@ class Schedule {
 /// Definition of a hardware accelerator.
 ///
 /// Note that not all combinations of `type` and `core_count` are valid. Check
-/// GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+/// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find
+/// a valid combination. TPUs are not supported.
 class SchedulerAcceleratorConfig {
   /// Count of cores of this accelerator.
   core.String? coreCount;
@@ -5901,6 +5901,36 @@ class UpgradeInstanceInternalRequest {
 
 /// Request for upgrading a notebook instance
 typedef UpgradeInstanceRequest = $Empty;
+
+/// Parameters used in Vertex AI JobType executions.
+class VertexAIParameters {
+  /// The full name of the Compute Engine
+  /// \[network\](/compute/docs/networks-and-firewalls#networks) to which the
+  /// Job should be peered.
+  ///
+  /// For example, `projects/12345/global/networks/myVPC`.
+  /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert)
+  /// is of the form `projects/{project}/global/networks/{network}`. Where
+  /// {project} is a project number, as in `12345`, and {network} is a network
+  /// name. Private services access must already be configured for the network.
+  /// If left unspecified, the job is not peered with any network.
+  core.String? network;
+
+  VertexAIParameters({
+    this.network,
+  });
+
+  VertexAIParameters.fromJson(core.Map _json)
+      : this(
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (network != null) 'network': network!,
+      };
+}
 
 /// Runtime using Virtual Machine for computing.
 class VirtualMachine {

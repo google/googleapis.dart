@@ -105,6 +105,7 @@ api.LongRunningRecognizeRequest buildLongRunningRecognizeRequest() {
   if (buildCounterLongRunningRecognizeRequest < 3) {
     o.audio = buildRecognitionAudio();
     o.config = buildRecognitionConfig();
+    o.outputConfig = buildTranscriptOutputConfig();
   }
   buildCounterLongRunningRecognizeRequest--;
   return o;
@@ -115,6 +116,7 @@ void checkLongRunningRecognizeRequest(api.LongRunningRecognizeRequest o) {
   if (buildCounterLongRunningRecognizeRequest < 3) {
     checkRecognitionAudio(o.audio!);
     checkRecognitionConfig(o.config!);
+    checkTranscriptOutputConfig(o.outputConfig!);
   }
   buildCounterLongRunningRecognizeRequest--;
 }
@@ -718,6 +720,28 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.int buildCounterTranscriptOutputConfig = 0;
+api.TranscriptOutputConfig buildTranscriptOutputConfig() {
+  final o = api.TranscriptOutputConfig();
+  buildCounterTranscriptOutputConfig++;
+  if (buildCounterTranscriptOutputConfig < 3) {
+    o.gcsUri = 'foo';
+  }
+  buildCounterTranscriptOutputConfig--;
+  return o;
+}
+
+void checkTranscriptOutputConfig(api.TranscriptOutputConfig o) {
+  buildCounterTranscriptOutputConfig++;
+  if (buildCounterTranscriptOutputConfig < 3) {
+    unittest.expect(
+      o.gcsUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTranscriptOutputConfig--;
+}
+
 core.int buildCounterWordInfo = 0;
 api.WordInfo buildWordInfo() {
   final o = api.WordInfo();
@@ -903,6 +927,16 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-TranscriptOutputConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTranscriptOutputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TranscriptOutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTranscriptOutputConfig(od);
     });
   });
 

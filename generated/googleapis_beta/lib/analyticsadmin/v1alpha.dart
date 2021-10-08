@@ -5046,14 +5046,14 @@ typedef GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest = $Empty;
 class GoogleAnalyticsAdminV1alphaAuditUserLink {
   /// Roles directly assigned to this user for this entity.
   ///
-  /// Format: predefinedRoles/read Excludes roles that are inherited from an
+  /// Format: predefinedRoles/viewer Excludes roles that are inherited from an
   /// account (if this is for a property), group, or organization admin role.
   core.List<core.String>? directRoles;
 
   /// Union of all permissions a user has at this account or property (includes
   /// direct permissions, group-inherited permissions, etc.).
   ///
-  /// Format: predefinedRoles/read
+  /// Format: predefinedRoles/viewer
   core.List<core.String>? effectiveRoles;
 
   /// Email address of the linked user
@@ -7475,6 +7475,12 @@ class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret {
 
 /// A resource message representing a Google Analytics GA4 property.
 class GoogleAnalyticsAdminV1alphaProperty {
+  /// The resource name of the parent account Format: accounts/{account_id}
+  /// Example: "accounts/123"
+  ///
+  /// Immutable.
+  core.String? account;
+
   /// Time when the entity was originally created.
   ///
   /// Output only.
@@ -7581,6 +7587,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
   core.String? updateTime;
 
   GoogleAnalyticsAdminV1alphaProperty({
+    this.account,
     this.createTime,
     this.currencyCode,
     this.deleteTime,
@@ -7596,6 +7603,9 @@ class GoogleAnalyticsAdminV1alphaProperty {
 
   GoogleAnalyticsAdminV1alphaProperty.fromJson(core.Map _json)
       : this(
+          account: _json.containsKey('account')
+              ? _json['account'] as core.String
+              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -7630,6 +7640,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (account != null) 'account': account!,
         if (createTime != null) 'createTime': createTime!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
@@ -7908,11 +7919,11 @@ class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest {
 class GoogleAnalyticsAdminV1alphaUserLink {
   /// Roles directly assigned to this user for this account or property.
   ///
-  /// Valid values: predefinedRoles/read predefinedRoles/collaborate
-  /// predefinedRoles/edit predefinedRoles/manage-users Excludes roles that are
-  /// inherited from a higher-level entity, group, or organization admin role. A
-  /// UserLink that is updated to have an empty list of direct_roles will be
-  /// deleted.
+  /// Valid values: predefinedRoles/viewer predefinedRoles/analyst
+  /// predefinedRoles/editor predefinedRoles/admin predefinedRoles/no-cost-data
+  /// predefinedRoles/no-revenue-data Excludes roles that are inherited from a
+  /// higher-level entity, group, or organization admin role. A UserLink that is
+  /// updated to have an empty list of direct_roles will be deleted.
   core.List<core.String>? directRoles;
 
   /// Email address of the user to link

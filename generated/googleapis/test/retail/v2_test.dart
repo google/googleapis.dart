@@ -3551,6 +3551,23 @@ void checkGoogleCloudRetailV2alphaAddFulfillmentPlacesResponse(
   buildCounterGoogleCloudRetailV2alphaAddFulfillmentPlacesResponse--;
 }
 
+core.int buildCounterGoogleCloudRetailV2alphaEnrollSolutionMetadata = 0;
+api.GoogleCloudRetailV2alphaEnrollSolutionMetadata
+    buildGoogleCloudRetailV2alphaEnrollSolutionMetadata() {
+  final o = api.GoogleCloudRetailV2alphaEnrollSolutionMetadata();
+  buildCounterGoogleCloudRetailV2alphaEnrollSolutionMetadata++;
+  if (buildCounterGoogleCloudRetailV2alphaEnrollSolutionMetadata < 3) {}
+  buildCounterGoogleCloudRetailV2alphaEnrollSolutionMetadata--;
+  return o;
+}
+
+void checkGoogleCloudRetailV2alphaEnrollSolutionMetadata(
+    api.GoogleCloudRetailV2alphaEnrollSolutionMetadata o) {
+  buildCounterGoogleCloudRetailV2alphaEnrollSolutionMetadata++;
+  if (buildCounterGoogleCloudRetailV2alphaEnrollSolutionMetadata < 3) {}
+  buildCounterGoogleCloudRetailV2alphaEnrollSolutionMetadata--;
+}
+
 core.int buildCounterGoogleCloudRetailV2alphaExportErrorsConfig = 0;
 api.GoogleCloudRetailV2alphaExportErrorsConfig
     buildGoogleCloudRetailV2alphaExportErrorsConfig() {
@@ -5678,6 +5695,17 @@ void main() {
           api.GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRetailV2alphaAddFulfillmentPlacesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRetailV2alphaEnrollSolutionMetadata',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRetailV2alphaEnrollSolutionMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRetailV2alphaEnrollSolutionMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRetailV2alphaEnrollSolutionMetadata(od);
     });
   });
 

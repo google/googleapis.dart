@@ -1082,6 +1082,351 @@ class Connectivity {
       };
 }
 
+/// An eco certificate awarded to the hotel.
+class EcoCertification {
+  /// Whether the eco certificate was awarded or not.
+  core.bool? awarded;
+
+  /// Awarded exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? awardedException;
+
+  /// The eco certificate.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ECO_CERTIFICATE_UNSPECIFIED" : Default EcoCertificate. Do not use.
+  /// - "ISO14001" : ISO14001.
+  /// - "ISO50001" : ISO50001.
+  /// - "ASIAN_ECOTOURISM" : Asian Ecotourism Standard for Accommodations
+  /// (AESA).
+  /// - "BIOSPHERE_RESPOSNIBLE_TOURISM" : Biosphere Responsible Tourism
+  /// Standard.
+  /// - "BUREAU_VERITAS" : Bureau Veritas.
+  /// - "CONTROL_UNION" : Control Union.
+  /// - "EARTHCHECK" : EarthCheck.
+  /// - "ECO_CERTIFICATION_MALTA" : Eco-Certification Malta Standard.
+  /// - "ECOTOURISM_AUSTRALIAS_ECO" : Ecotourism Australia's ECO Certification
+  /// Standard.
+  /// - "GREAT_GREEN_DEAL" : GREAT Green Deal Certification.
+  /// - "GREEN_GLOBE" : Green Globe.
+  /// - "GREEN_GROWTH2050" : Green Growth 2050 Standard.
+  /// - "GREEN_KEY" : Green Key.
+  /// - "GREEN_KEY_ECO_RATING" : Geen Key Eco Rating.
+  /// - "GREEN_SEAL" : Green Seal.
+  /// - "GREEN_STAR" : Green Star Hotel Standard.
+  /// - "GREEN_TOURISM_ACTIVE" : Green Tourism Active Standard.
+  /// - "HILTON_LIGHTSTAY" : Hilton LightStay.
+  /// - "HOSTELLING_INTERNATIONALS_QUALITY_AND_SUSTAINABILITY" : Hostelling
+  /// International's Quality and Sustainability Standard.
+  /// - "HOTELES_MAS_VERDES" : Hoteles más Verdes (AHT) Standard.
+  /// - "NORDIC_SWAN_ECOLABEL" : Nordic Swan Ecolabel.
+  /// - "PREFERRED_BY_NATURE_SUSTAINABLE_TOURISM" : Preferred by Nature
+  /// Sustainable Tourism Standard for Accommodation.
+  /// - "SUSTAINABLE_TRAVEL_IRELAND" : Sustainable Travel Ireland – GSTC
+  /// Industry Criteria.
+  /// - "TOF_TIGERS_INITITIVES_PUG" : TOFTigers Initiative's Pug Standard.
+  /// - "TRAVELIFE" : Travelife Standard for Hotels & Accommodations.
+  /// - "UNITED_CERTIFICATION_SYSTEMS_LIMITED" : United Certification Systems
+  /// Limited.
+  /// - "VIREO_SRL" : Vireo Srl.
+  core.String? ecoCertificate;
+
+  EcoCertification({
+    this.awarded,
+    this.awardedException,
+    this.ecoCertificate,
+  });
+
+  EcoCertification.fromJson(core.Map _json)
+      : this(
+          awarded: _json.containsKey('awarded')
+              ? _json['awarded'] as core.bool
+              : null,
+          awardedException: _json.containsKey('awardedException')
+              ? _json['awardedException'] as core.String
+              : null,
+          ecoCertificate: _json.containsKey('ecoCertificate')
+              ? _json['ecoCertificate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (awarded != null) 'awarded': awarded!,
+        if (awardedException != null) 'awardedException': awardedException!,
+        if (ecoCertificate != null) 'ecoCertificate': ecoCertificate!,
+      };
+}
+
+/// Energy efficiency practices implemented at the hotel.
+class EnergyEfficiency {
+  /// Carbon free energy sources.
+  ///
+  /// Property sources carbon-free electricity via at least one of the following
+  /// methods: on-site clean energy generation, power purchase agreement(s) with
+  /// clean energy generators, green power provided by electricity supplier, or
+  /// purchases of Energy Attribute Certificates (such as Renewable Energy
+  /// Certificates or Guarantees of Origin).
+  core.bool? carbonFreeEnergySources;
+
+  /// Carbon free energy sources exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? carbonFreeEnergySourcesException;
+
+  /// Energy conservation program.
+  ///
+  /// The property tracks corporate-level Scope 1 and 2 GHG emissions, and Scope
+  /// 3 emissions if available. The property has a commitment to implement
+  /// initiatives that reduce GHG emissions year over year. The property has
+  /// shown an absolute reduction in emissions for at least 2 years. Emissions
+  /// are either verfied by a third-party and/or published in external
+  /// communications.
+  core.bool? energyConservationProgram;
+
+  /// Energy conservation program exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? energyConservationProgramException;
+
+  /// Energy efficient heating and cooling systems.
+  ///
+  /// The property doesn't use chlorofluorocarbon (CFC)-based refrigerants in
+  /// heating, ventilating, and air-conditioning systems unless a third-party
+  /// audit shows it's not economically feasible. The CFC-based refrigerants
+  /// which are used should have a Global Warming Potential (GWP) ≤ 10. The
+  /// property uses occupancy sensors on HVAC systems in back-of-house spaces,
+  /// meeting rooms, and other low-traffic areas.
+  core.bool? energyEfficientHeatingAndCoolingSystems;
+
+  /// Energy efficient heating and cooling systems exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? energyEfficientHeatingAndCoolingSystemsException;
+
+  /// Energy efficient lighting.
+  ///
+  /// At least 75% of the property's lighting is energy efficient, using
+  /// lighting that is more than 45 lumens per watt – typically LED or CFL
+  /// lightbulbs.
+  core.bool? energyEfficientLighting;
+
+  /// Energy efficient lighting exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? energyEfficientLightingException;
+
+  /// Energy saving thermostats.
+  ///
+  /// The property installed energy-saving thermostats throughout the building
+  /// to conserve energy when rooms or areas are not in use. Energy-saving
+  /// thermostats are devices that control heating/cooling in the building by
+  /// learning temperature preferences and automatically adjusting to
+  /// energy-saving temperatures as the default. The thermostats are
+  /// automatically set to a temperature between 68-78 degrees F (20-26 °C),
+  /// depending on seasonality. In the winter, set the thermostat to 68°F (20°C)
+  /// when the room is occupied, lowering room temperature when unoccupied. In
+  /// the summer, set the thermostat to 78°F (26°C) when the room is occupied.
+  core.bool? energySavingThermostats;
+
+  /// Energy saving thermostats exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? energySavingThermostatsException;
+
+  /// Green building design.
+  ///
+  /// True if BREEAM-* or LEED-* certified.
+  ///
+  /// Output only.
+  core.bool? greenBuildingDesign;
+
+  /// Green building design exception.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? greenBuildingDesignException;
+
+  /// Independent organization audits energy use.
+  ///
+  /// The property conducts an energy audit at least every 5 years, the results
+  /// of which are either verified by a third-party and/or published in external
+  /// communications. An energy audit is a detailed assessment of the facility
+  /// which provides recommendations to existing operations and procedures to
+  /// improve energy efficiency, available incentives or rebates,and
+  /// opportunities for improvements through renovations or upgrades. Examples
+  /// of organizations that conduct credible third party audits include: Engie
+  /// Impact, DNV GL (EU), Dexma, and local utility providers (they often
+  /// provide energy and water audits).
+  core.bool? independentOrganizationAuditsEnergyUse;
+
+  /// Independent organization audits energy use exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? independentOrganizationAuditsEnergyUseException;
+
+  EnergyEfficiency({
+    this.carbonFreeEnergySources,
+    this.carbonFreeEnergySourcesException,
+    this.energyConservationProgram,
+    this.energyConservationProgramException,
+    this.energyEfficientHeatingAndCoolingSystems,
+    this.energyEfficientHeatingAndCoolingSystemsException,
+    this.energyEfficientLighting,
+    this.energyEfficientLightingException,
+    this.energySavingThermostats,
+    this.energySavingThermostatsException,
+    this.greenBuildingDesign,
+    this.greenBuildingDesignException,
+    this.independentOrganizationAuditsEnergyUse,
+    this.independentOrganizationAuditsEnergyUseException,
+  });
+
+  EnergyEfficiency.fromJson(core.Map _json)
+      : this(
+          carbonFreeEnergySources: _json.containsKey('carbonFreeEnergySources')
+              ? _json['carbonFreeEnergySources'] as core.bool
+              : null,
+          carbonFreeEnergySourcesException:
+              _json.containsKey('carbonFreeEnergySourcesException')
+                  ? _json['carbonFreeEnergySourcesException'] as core.String
+                  : null,
+          energyConservationProgram:
+              _json.containsKey('energyConservationProgram')
+                  ? _json['energyConservationProgram'] as core.bool
+                  : null,
+          energyConservationProgramException:
+              _json.containsKey('energyConservationProgramException')
+                  ? _json['energyConservationProgramException'] as core.String
+                  : null,
+          energyEfficientHeatingAndCoolingSystems: _json
+                  .containsKey('energyEfficientHeatingAndCoolingSystems')
+              ? _json['energyEfficientHeatingAndCoolingSystems'] as core.bool
+              : null,
+          energyEfficientHeatingAndCoolingSystemsException: _json.containsKey(
+                  'energyEfficientHeatingAndCoolingSystemsException')
+              ? _json['energyEfficientHeatingAndCoolingSystemsException']
+                  as core.String
+              : null,
+          energyEfficientLighting: _json.containsKey('energyEfficientLighting')
+              ? _json['energyEfficientLighting'] as core.bool
+              : null,
+          energyEfficientLightingException:
+              _json.containsKey('energyEfficientLightingException')
+                  ? _json['energyEfficientLightingException'] as core.String
+                  : null,
+          energySavingThermostats: _json.containsKey('energySavingThermostats')
+              ? _json['energySavingThermostats'] as core.bool
+              : null,
+          energySavingThermostatsException:
+              _json.containsKey('energySavingThermostatsException')
+                  ? _json['energySavingThermostatsException'] as core.String
+                  : null,
+          greenBuildingDesign: _json.containsKey('greenBuildingDesign')
+              ? _json['greenBuildingDesign'] as core.bool
+              : null,
+          greenBuildingDesignException:
+              _json.containsKey('greenBuildingDesignException')
+                  ? _json['greenBuildingDesignException'] as core.String
+                  : null,
+          independentOrganizationAuditsEnergyUse:
+              _json.containsKey('independentOrganizationAuditsEnergyUse')
+                  ? _json['independentOrganizationAuditsEnergyUse'] as core.bool
+                  : null,
+          independentOrganizationAuditsEnergyUseException: _json.containsKey(
+                  'independentOrganizationAuditsEnergyUseException')
+              ? _json['independentOrganizationAuditsEnergyUseException']
+                  as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (carbonFreeEnergySources != null)
+          'carbonFreeEnergySources': carbonFreeEnergySources!,
+        if (carbonFreeEnergySourcesException != null)
+          'carbonFreeEnergySourcesException': carbonFreeEnergySourcesException!,
+        if (energyConservationProgram != null)
+          'energyConservationProgram': energyConservationProgram!,
+        if (energyConservationProgramException != null)
+          'energyConservationProgramException':
+              energyConservationProgramException!,
+        if (energyEfficientHeatingAndCoolingSystems != null)
+          'energyEfficientHeatingAndCoolingSystems':
+              energyEfficientHeatingAndCoolingSystems!,
+        if (energyEfficientHeatingAndCoolingSystemsException != null)
+          'energyEfficientHeatingAndCoolingSystemsException':
+              energyEfficientHeatingAndCoolingSystemsException!,
+        if (energyEfficientLighting != null)
+          'energyEfficientLighting': energyEfficientLighting!,
+        if (energyEfficientLightingException != null)
+          'energyEfficientLightingException': energyEfficientLightingException!,
+        if (energySavingThermostats != null)
+          'energySavingThermostats': energySavingThermostats!,
+        if (energySavingThermostatsException != null)
+          'energySavingThermostatsException': energySavingThermostatsException!,
+        if (greenBuildingDesign != null)
+          'greenBuildingDesign': greenBuildingDesign!,
+        if (greenBuildingDesignException != null)
+          'greenBuildingDesignException': greenBuildingDesignException!,
+        if (independentOrganizationAuditsEnergyUse != null)
+          'independentOrganizationAuditsEnergyUse':
+              independentOrganizationAuditsEnergyUse!,
+        if (independentOrganizationAuditsEnergyUseException != null)
+          'independentOrganizationAuditsEnergyUseException':
+              independentOrganizationAuditsEnergyUseException!,
+      };
+}
+
 /// Enhanced cleaning measures implemented by the hotel during COVID-19.
 class EnhancedCleaning {
   /// Commercial-grade disinfectant used to clean the property.
@@ -4521,6 +4866,9 @@ class Lodging {
   /// Output only.
   GuestUnitFeatures? someUnits;
 
+  /// Sustainability practices implemented at the hotel.
+  Sustainability? sustainability;
+
   /// Vehicles or vehicular services facilitated or owned by the property.
   Transportation? transportation;
 
@@ -4549,6 +4897,7 @@ class Lodging {
     this.property,
     this.services,
     this.someUnits,
+    this.sustainability,
     this.transportation,
     this.wellness,
   });
@@ -4634,6 +4983,10 @@ class Lodging {
               ? GuestUnitFeatures.fromJson(
                   _json['someUnits'] as core.Map<core.String, core.dynamic>)
               : null,
+          sustainability: _json.containsKey('sustainability')
+              ? Sustainability.fromJson(_json['sustainability']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           transportation: _json.containsKey('transportation')
               ? Transportation.fromJson(_json['transportation']
                   as core.Map<core.String, core.dynamic>)
@@ -4665,6 +5018,7 @@ class Lodging {
         if (property != null) 'property': property!,
         if (services != null) 'services': services!,
         if (someUnits != null) 'someUnits': someUnits!,
+        if (sustainability != null) 'sustainability': sustainability!,
         if (transportation != null) 'transportation': transportation!,
         if (wellness != null) 'wellness': wellness!,
       };
@@ -6871,6 +7225,429 @@ class Services {
       };
 }
 
+/// Sustainability practices implemented at the hotel.
+class Sustainability {
+  /// Energy efficiency practices implemented at the hotel.
+  EnergyEfficiency? energyEfficiency;
+
+  /// Sustainability certifications the hotel has been awarded.
+  SustainabilityCertifications? sustainabilityCertifications;
+
+  /// Sustainable sourcing practices implemented at the hotel.
+  SustainableSourcing? sustainableSourcing;
+
+  /// Waste reduction practices implemented at the hotel.
+  WasteReduction? wasteReduction;
+
+  /// Water conservation practices implemented at the hotel.
+  WaterConservation? waterConservation;
+
+  Sustainability({
+    this.energyEfficiency,
+    this.sustainabilityCertifications,
+    this.sustainableSourcing,
+    this.wasteReduction,
+    this.waterConservation,
+  });
+
+  Sustainability.fromJson(core.Map _json)
+      : this(
+          energyEfficiency: _json.containsKey('energyEfficiency')
+              ? EnergyEfficiency.fromJson(_json['energyEfficiency']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sustainabilityCertifications:
+              _json.containsKey('sustainabilityCertifications')
+                  ? SustainabilityCertifications.fromJson(
+                      _json['sustainabilityCertifications']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          sustainableSourcing: _json.containsKey('sustainableSourcing')
+              ? SustainableSourcing.fromJson(_json['sustainableSourcing']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          wasteReduction: _json.containsKey('wasteReduction')
+              ? WasteReduction.fromJson(_json['wasteReduction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          waterConservation: _json.containsKey('waterConservation')
+              ? WaterConservation.fromJson(_json['waterConservation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (energyEfficiency != null) 'energyEfficiency': energyEfficiency!,
+        if (sustainabilityCertifications != null)
+          'sustainabilityCertifications': sustainabilityCertifications!,
+        if (sustainableSourcing != null)
+          'sustainableSourcing': sustainableSourcing!,
+        if (wasteReduction != null) 'wasteReduction': wasteReduction!,
+        if (waterConservation != null) 'waterConservation': waterConservation!,
+      };
+}
+
+/// Sustainability certifications the hotel has been awarded.
+class SustainabilityCertifications {
+  /// BREEAM certification.
+  /// Possible string values are:
+  /// - "BREEAM_CERTIFICATION_UNSPECIFIED" : Default BreeamCertification. Do not
+  /// use.
+  /// - "NO_BREEAM_CERTIFICATION" : Not certified.
+  /// - "BREEAM_PASS" : BREEAM Pass.
+  /// - "BREEAM_GOOD" : BREEAM Good.
+  /// - "BREEAM_VERY_GOOD" : BREEAM Very Good.
+  /// - "BREEAM_EXCELLENT" : BREEAM Excellent.
+  /// - "BREEAM_OUTSTANDING" : BREEAM Outstanding.
+  core.String? breeamCertification;
+
+  /// BREEAM certification exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? breeamCertificationException;
+
+  /// The eco certificates awarded to the hotel.
+  core.List<EcoCertification>? ecoCertifications;
+
+  /// LEED certification.
+  /// Possible string values are:
+  /// - "LEED_CERTIFICATION_UNSPECIFIED" : Default LeedCertification. Do not
+  /// use.
+  /// - "NO_LEED_CERTIFICATION" : Not certified.
+  /// - "LEED_CERTIFIED" : LEED Certified.
+  /// - "LEED_SILVER" : LEED Silver.
+  /// - "LEED_GOLD" : LEED Gold.
+  /// - "LEED_PLATINUM" : LEED Platinum.
+  core.String? leedCertification;
+
+  /// LEED certification exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? leedCertificationException;
+
+  SustainabilityCertifications({
+    this.breeamCertification,
+    this.breeamCertificationException,
+    this.ecoCertifications,
+    this.leedCertification,
+    this.leedCertificationException,
+  });
+
+  SustainabilityCertifications.fromJson(core.Map _json)
+      : this(
+          breeamCertification: _json.containsKey('breeamCertification')
+              ? _json['breeamCertification'] as core.String
+              : null,
+          breeamCertificationException:
+              _json.containsKey('breeamCertificationException')
+                  ? _json['breeamCertificationException'] as core.String
+                  : null,
+          ecoCertifications: _json.containsKey('ecoCertifications')
+              ? (_json['ecoCertifications'] as core.List)
+                  .map((value) => EcoCertification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          leedCertification: _json.containsKey('leedCertification')
+              ? _json['leedCertification'] as core.String
+              : null,
+          leedCertificationException:
+              _json.containsKey('leedCertificationException')
+                  ? _json['leedCertificationException'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (breeamCertification != null)
+          'breeamCertification': breeamCertification!,
+        if (breeamCertificationException != null)
+          'breeamCertificationException': breeamCertificationException!,
+        if (ecoCertifications != null) 'ecoCertifications': ecoCertifications!,
+        if (leedCertification != null) 'leedCertification': leedCertification!,
+        if (leedCertificationException != null)
+          'leedCertificationException': leedCertificationException!,
+      };
+}
+
+/// Sustainable sourcing practices implemented at the hotel.
+class SustainableSourcing {
+  /// Eco friendly toiletries.
+  ///
+  /// Soap, shampoo, lotion, and other toiletries provided for guests have a
+  /// nationally or internationally recognized sustainability certification,
+  /// such as USDA Organic, EU Organic, or cruelty-free.
+  core.bool? ecoFriendlyToiletries;
+
+  /// Eco friendly toiletries exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? ecoFriendlyToiletriesException;
+
+  /// Locally sourced food and beverages.
+  ///
+  /// Property sources locally in order to lower the environmental footprint
+  /// from reduced transportation and to stimulate the local economy. Products
+  /// produced less than 62 miles from the establishment are normally considered
+  /// as locally produced.
+  core.bool? locallySourcedFoodAndBeverages;
+
+  /// Locally sourced food and beverages exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? locallySourcedFoodAndBeveragesException;
+
+  /// Organic cage free eggs.
+  ///
+  /// The property sources 100% certified organic and cage-free eggs (shell,
+  /// liquid, and egg products). Cage-free means hens are able to walk, spread
+  /// their wings and lay their eggs in nests).
+  core.bool? organicCageFreeEggs;
+
+  /// Organic cage free eggs exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? organicCageFreeEggsException;
+
+  /// Organic food and beverages.
+  ///
+  /// At least 25% of food and beverages, by spend, are certified organic.
+  /// Organic means products that are certified to one of the organic standard
+  /// listed in the IFOAM family of standards. Qualifying certifications include
+  /// USDA Organic and EU Organic, among others.
+  core.bool? organicFoodAndBeverages;
+
+  /// Organic food and beverages exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? organicFoodAndBeveragesException;
+
+  /// Responsible purchasing policy.
+  ///
+  /// The property has a responsible procurement policy in place. Responsible
+  /// means integration of social, ethical, and/or environmental performance
+  /// factors into the procurement process when selecting suppliers.
+  core.bool? responsiblePurchasingPolicy;
+
+  /// Responsible purchasing policy exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? responsiblePurchasingPolicyException;
+
+  /// Responsibly sources seafood.
+  ///
+  /// The property does not source seafood from the Monterey Bay Aquarium
+  /// Seafood Watch "avoid" list, and must sustainably source seafood listed as
+  /// "good alternative," "eco-certified," and "best choice". The property has a
+  /// policy outlining a commitment to source Marine Stewardship Council (MSC)
+  /// and/or Aquaculture Stewardship Council (ASC) Chain of Custody certified
+  /// seafood.
+  core.bool? responsiblySourcesSeafood;
+
+  /// Responsibly sources seafood exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? responsiblySourcesSeafoodException;
+
+  /// Vegan meals.
+  ///
+  /// The property provides vegan menu options for guests. Vegan food does not
+  /// contain animal products or byproducts.
+  core.bool? veganMeals;
+
+  /// Vegan meals exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? veganMealsException;
+
+  /// Vegetarian meals.
+  ///
+  /// The property provides vegetarian menu options for guests. Vegetarian food
+  /// does not contain animal products.
+  core.bool? vegetarianMeals;
+
+  /// Vegetarian meals exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? vegetarianMealsException;
+
+  SustainableSourcing({
+    this.ecoFriendlyToiletries,
+    this.ecoFriendlyToiletriesException,
+    this.locallySourcedFoodAndBeverages,
+    this.locallySourcedFoodAndBeveragesException,
+    this.organicCageFreeEggs,
+    this.organicCageFreeEggsException,
+    this.organicFoodAndBeverages,
+    this.organicFoodAndBeveragesException,
+    this.responsiblePurchasingPolicy,
+    this.responsiblePurchasingPolicyException,
+    this.responsiblySourcesSeafood,
+    this.responsiblySourcesSeafoodException,
+    this.veganMeals,
+    this.veganMealsException,
+    this.vegetarianMeals,
+    this.vegetarianMealsException,
+  });
+
+  SustainableSourcing.fromJson(core.Map _json)
+      : this(
+          ecoFriendlyToiletries: _json.containsKey('ecoFriendlyToiletries')
+              ? _json['ecoFriendlyToiletries'] as core.bool
+              : null,
+          ecoFriendlyToiletriesException:
+              _json.containsKey('ecoFriendlyToiletriesException')
+                  ? _json['ecoFriendlyToiletriesException'] as core.String
+                  : null,
+          locallySourcedFoodAndBeverages:
+              _json.containsKey('locallySourcedFoodAndBeverages')
+                  ? _json['locallySourcedFoodAndBeverages'] as core.bool
+                  : null,
+          locallySourcedFoodAndBeveragesException: _json
+                  .containsKey('locallySourcedFoodAndBeveragesException')
+              ? _json['locallySourcedFoodAndBeveragesException'] as core.String
+              : null,
+          organicCageFreeEggs: _json.containsKey('organicCageFreeEggs')
+              ? _json['organicCageFreeEggs'] as core.bool
+              : null,
+          organicCageFreeEggsException:
+              _json.containsKey('organicCageFreeEggsException')
+                  ? _json['organicCageFreeEggsException'] as core.String
+                  : null,
+          organicFoodAndBeverages: _json.containsKey('organicFoodAndBeverages')
+              ? _json['organicFoodAndBeverages'] as core.bool
+              : null,
+          organicFoodAndBeveragesException:
+              _json.containsKey('organicFoodAndBeveragesException')
+                  ? _json['organicFoodAndBeveragesException'] as core.String
+                  : null,
+          responsiblePurchasingPolicy:
+              _json.containsKey('responsiblePurchasingPolicy')
+                  ? _json['responsiblePurchasingPolicy'] as core.bool
+                  : null,
+          responsiblePurchasingPolicyException:
+              _json.containsKey('responsiblePurchasingPolicyException')
+                  ? _json['responsiblePurchasingPolicyException'] as core.String
+                  : null,
+          responsiblySourcesSeafood:
+              _json.containsKey('responsiblySourcesSeafood')
+                  ? _json['responsiblySourcesSeafood'] as core.bool
+                  : null,
+          responsiblySourcesSeafoodException:
+              _json.containsKey('responsiblySourcesSeafoodException')
+                  ? _json['responsiblySourcesSeafoodException'] as core.String
+                  : null,
+          veganMeals: _json.containsKey('veganMeals')
+              ? _json['veganMeals'] as core.bool
+              : null,
+          veganMealsException: _json.containsKey('veganMealsException')
+              ? _json['veganMealsException'] as core.String
+              : null,
+          vegetarianMeals: _json.containsKey('vegetarianMeals')
+              ? _json['vegetarianMeals'] as core.bool
+              : null,
+          vegetarianMealsException:
+              _json.containsKey('vegetarianMealsException')
+                  ? _json['vegetarianMealsException'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ecoFriendlyToiletries != null)
+          'ecoFriendlyToiletries': ecoFriendlyToiletries!,
+        if (ecoFriendlyToiletriesException != null)
+          'ecoFriendlyToiletriesException': ecoFriendlyToiletriesException!,
+        if (locallySourcedFoodAndBeverages != null)
+          'locallySourcedFoodAndBeverages': locallySourcedFoodAndBeverages!,
+        if (locallySourcedFoodAndBeveragesException != null)
+          'locallySourcedFoodAndBeveragesException':
+              locallySourcedFoodAndBeveragesException!,
+        if (organicCageFreeEggs != null)
+          'organicCageFreeEggs': organicCageFreeEggs!,
+        if (organicCageFreeEggsException != null)
+          'organicCageFreeEggsException': organicCageFreeEggsException!,
+        if (organicFoodAndBeverages != null)
+          'organicFoodAndBeverages': organicFoodAndBeverages!,
+        if (organicFoodAndBeveragesException != null)
+          'organicFoodAndBeveragesException': organicFoodAndBeveragesException!,
+        if (responsiblePurchasingPolicy != null)
+          'responsiblePurchasingPolicy': responsiblePurchasingPolicy!,
+        if (responsiblePurchasingPolicyException != null)
+          'responsiblePurchasingPolicyException':
+              responsiblePurchasingPolicyException!,
+        if (responsiblySourcesSeafood != null)
+          'responsiblySourcesSeafood': responsiblySourcesSeafood!,
+        if (responsiblySourcesSeafoodException != null)
+          'responsiblySourcesSeafoodException':
+              responsiblySourcesSeafoodException!,
+        if (veganMeals != null) 'veganMeals': veganMeals!,
+        if (veganMealsException != null)
+          'veganMealsException': veganMealsException!,
+        if (vegetarianMeals != null) 'vegetarianMeals': vegetarianMeals!,
+        if (vegetarianMealsException != null)
+          'vegetarianMealsException': vegetarianMealsException!,
+      };
+}
+
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
@@ -7377,6 +8154,739 @@ class ViewsFromUnit {
         if (valleyView != null) 'valleyView': valleyView!,
         if (valleyViewException != null)
           'valleyViewException': valleyViewException!,
+      };
+}
+
+/// Waste reduction practices implemented at the hotel.
+class WasteReduction {
+  /// Compostable food containers and cutlery.
+  ///
+  /// 100% of food service containers and to-go cutlery are compostable, and
+  /// reusable utensils are offered wherever possible. Compostable materials are
+  /// capable of undergoing biological decomposition in a compost site, such
+  /// that material is not visually distinguishable and breaks down into carbon
+  /// dioxide, water, inorganic compounds, and biomass.
+  core.bool? compostableFoodContainersAndCutlery;
+
+  /// Compostable food containers and cutlery exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? compostableFoodContainersAndCutleryException;
+
+  /// Composts excess food.
+  ///
+  /// The property has a program and/or policy for diverting waste from landfill
+  /// by composting food and yard waste, either through compost collection and
+  /// off-site processing or on-site compost processing.
+  core.bool? compostsExcessFood;
+
+  /// Composts excess food exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? compostsExcessFoodException;
+
+  /// Donates excess food.
+  ///
+  /// The property has a program and/or policy for diverting waste from landfill
+  /// that may include efforts to donate for human consumption or divert food
+  /// for animal feed.
+  core.bool? donatesExcessFood;
+
+  /// Donates excess food exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? donatesExcessFoodException;
+
+  /// Food waste reduction program.
+  ///
+  /// The property has established a food waste reduction and donation program,
+  /// aiming to reduce food waste by half. These programs typically use tools
+  /// such as the Hotel Kitchen Toolkit and others to track waste and measure
+  /// progress.
+  core.bool? foodWasteReductionProgram;
+
+  /// Food waste reduction program exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? foodWasteReductionProgramException;
+
+  /// No single use plastic straws.
+  ///
+  /// The property bans single-use plastic straws.
+  core.bool? noSingleUsePlasticStraws;
+
+  /// No single use plastic straws exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? noSingleUsePlasticStrawsException;
+
+  /// No single use plastic water bottles.
+  ///
+  /// The property bans single-use plastic water bottles.
+  core.bool? noSingleUsePlasticWaterBottles;
+
+  /// No single use plastic water bottles exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? noSingleUsePlasticWaterBottlesException;
+
+  /// No styrofoam food containers.
+  ///
+  /// The property eliminates the use of Styrofoam in disposable food service
+  /// items.
+  core.bool? noStyrofoamFoodContainers;
+
+  /// No styrofoam food containers exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? noStyrofoamFoodContainersException;
+
+  /// Recycling program.
+  ///
+  /// The property has a recycling program, aligned with LEED waste
+  /// requirements, and a policy outlining efforts to send less than 50% of
+  /// waste to landfill. The recycling program includes storage locations for
+  /// recyclable materials, including mixed paper, corrugated cardboard, glass,
+  /// plastics, and metals.
+  core.bool? recyclingProgram;
+
+  /// Recycling program exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? recyclingProgramException;
+
+  /// Refillable toiletry containers.
+  ///
+  /// The property has replaced miniature individual containers with refillable
+  /// amenity dispensers for shampoo, conditioner, soap, and lotion.
+  core.bool? refillableToiletryContainers;
+
+  /// Refillable toiletry containers exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? refillableToiletryContainersException;
+
+  /// Safely disposes batteries.
+  ///
+  /// The property safely stores and disposes batteries.
+  core.bool? safelyDisposesBatteries;
+
+  /// Safely disposes batteries exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? safelyDisposesBatteriesException;
+
+  /// Safely disposes electronics.
+  ///
+  /// The property has a reputable recycling program that keeps hazardous
+  /// electronic parts and chemical compounds out of landfills, dumps and other
+  /// unauthorized abandonment sites, and recycles/reuses applicable materials.
+  /// (e.g. certified electronics recyclers).
+  core.bool? safelyDisposesElectronics;
+
+  /// Safely disposes electronics exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? safelyDisposesElectronicsException;
+
+  /// Safely disposes lightbulbs.
+  ///
+  /// The property safely stores and disposes lightbulbs.
+  core.bool? safelyDisposesLightbulbs;
+
+  /// Safely disposes lightbulbs exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? safelyDisposesLightbulbsException;
+
+  /// Safely handles hazardous substances.
+  ///
+  /// The property has a hazardous waste management program aligned wit
+  /// GreenSeal and LEED requirements, and meets all regulatory requirements for
+  /// hazardous waste disposal and recycling. Hazardous means substances that
+  /// are classified as "hazardous" by an authoritative body (such as OSHA or
+  /// DOT), are labeled with signal words such as "Danger," "Caution,"
+  /// "Warning," or are flammable, corrosive, or ignitable. Requirements
+  /// include: - The property shall maintain records of the efforts it has made
+  /// to replace the hazardous substances it uses with less hazardous
+  /// alternatives. - An inventory of the hazardous materials stored on-site. -
+  /// Products intended for cleaning, dishwashing, laundry, and pool maintenance
+  /// shall be stored in clearly labeled containers. These containers shall be
+  /// checked regularly for leaks, and replaced a necessary. - Spill containment
+  /// devices shall be installed to collect spills, drips, or leaching of
+  /// chemicals.
+  core.bool? safelyHandlesHazardousSubstances;
+
+  /// Safely handles hazardous substances exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? safelyHandlesHazardousSubstancesException;
+
+  /// Soap donation program.
+  ///
+  /// The property participates in a soap donation program such as Clean the
+  /// World or something similar.
+  core.bool? soapDonationProgram;
+
+  /// Soap donation program exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? soapDonationProgramException;
+
+  /// Toiletry donation program.
+  ///
+  /// The property participates in a toiletry donation program such as Clean the
+  /// World or something similar.
+  core.bool? toiletryDonationProgram;
+
+  /// Toiletry donation program exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? toiletryDonationProgramException;
+
+  /// Water bottle filling stations.
+  ///
+  /// The property offers water stations throughout the building for guest use.
+  core.bool? waterBottleFillingStations;
+
+  /// Water bottle filling stations exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? waterBottleFillingStationsException;
+
+  WasteReduction({
+    this.compostableFoodContainersAndCutlery,
+    this.compostableFoodContainersAndCutleryException,
+    this.compostsExcessFood,
+    this.compostsExcessFoodException,
+    this.donatesExcessFood,
+    this.donatesExcessFoodException,
+    this.foodWasteReductionProgram,
+    this.foodWasteReductionProgramException,
+    this.noSingleUsePlasticStraws,
+    this.noSingleUsePlasticStrawsException,
+    this.noSingleUsePlasticWaterBottles,
+    this.noSingleUsePlasticWaterBottlesException,
+    this.noStyrofoamFoodContainers,
+    this.noStyrofoamFoodContainersException,
+    this.recyclingProgram,
+    this.recyclingProgramException,
+    this.refillableToiletryContainers,
+    this.refillableToiletryContainersException,
+    this.safelyDisposesBatteries,
+    this.safelyDisposesBatteriesException,
+    this.safelyDisposesElectronics,
+    this.safelyDisposesElectronicsException,
+    this.safelyDisposesLightbulbs,
+    this.safelyDisposesLightbulbsException,
+    this.safelyHandlesHazardousSubstances,
+    this.safelyHandlesHazardousSubstancesException,
+    this.soapDonationProgram,
+    this.soapDonationProgramException,
+    this.toiletryDonationProgram,
+    this.toiletryDonationProgramException,
+    this.waterBottleFillingStations,
+    this.waterBottleFillingStationsException,
+  });
+
+  WasteReduction.fromJson(core.Map _json)
+      : this(
+          compostableFoodContainersAndCutlery:
+              _json.containsKey('compostableFoodContainersAndCutlery')
+                  ? _json['compostableFoodContainersAndCutlery'] as core.bool
+                  : null,
+          compostableFoodContainersAndCutleryException:
+              _json.containsKey('compostableFoodContainersAndCutleryException')
+                  ? _json['compostableFoodContainersAndCutleryException']
+                      as core.String
+                  : null,
+          compostsExcessFood: _json.containsKey('compostsExcessFood')
+              ? _json['compostsExcessFood'] as core.bool
+              : null,
+          compostsExcessFoodException:
+              _json.containsKey('compostsExcessFoodException')
+                  ? _json['compostsExcessFoodException'] as core.String
+                  : null,
+          donatesExcessFood: _json.containsKey('donatesExcessFood')
+              ? _json['donatesExcessFood'] as core.bool
+              : null,
+          donatesExcessFoodException:
+              _json.containsKey('donatesExcessFoodException')
+                  ? _json['donatesExcessFoodException'] as core.String
+                  : null,
+          foodWasteReductionProgram:
+              _json.containsKey('foodWasteReductionProgram')
+                  ? _json['foodWasteReductionProgram'] as core.bool
+                  : null,
+          foodWasteReductionProgramException:
+              _json.containsKey('foodWasteReductionProgramException')
+                  ? _json['foodWasteReductionProgramException'] as core.String
+                  : null,
+          noSingleUsePlasticStraws:
+              _json.containsKey('noSingleUsePlasticStraws')
+                  ? _json['noSingleUsePlasticStraws'] as core.bool
+                  : null,
+          noSingleUsePlasticStrawsException:
+              _json.containsKey('noSingleUsePlasticStrawsException')
+                  ? _json['noSingleUsePlasticStrawsException'] as core.String
+                  : null,
+          noSingleUsePlasticWaterBottles:
+              _json.containsKey('noSingleUsePlasticWaterBottles')
+                  ? _json['noSingleUsePlasticWaterBottles'] as core.bool
+                  : null,
+          noSingleUsePlasticWaterBottlesException: _json
+                  .containsKey('noSingleUsePlasticWaterBottlesException')
+              ? _json['noSingleUsePlasticWaterBottlesException'] as core.String
+              : null,
+          noStyrofoamFoodContainers:
+              _json.containsKey('noStyrofoamFoodContainers')
+                  ? _json['noStyrofoamFoodContainers'] as core.bool
+                  : null,
+          noStyrofoamFoodContainersException:
+              _json.containsKey('noStyrofoamFoodContainersException')
+                  ? _json['noStyrofoamFoodContainersException'] as core.String
+                  : null,
+          recyclingProgram: _json.containsKey('recyclingProgram')
+              ? _json['recyclingProgram'] as core.bool
+              : null,
+          recyclingProgramException:
+              _json.containsKey('recyclingProgramException')
+                  ? _json['recyclingProgramException'] as core.String
+                  : null,
+          refillableToiletryContainers:
+              _json.containsKey('refillableToiletryContainers')
+                  ? _json['refillableToiletryContainers'] as core.bool
+                  : null,
+          refillableToiletryContainersException: _json
+                  .containsKey('refillableToiletryContainersException')
+              ? _json['refillableToiletryContainersException'] as core.String
+              : null,
+          safelyDisposesBatteries: _json.containsKey('safelyDisposesBatteries')
+              ? _json['safelyDisposesBatteries'] as core.bool
+              : null,
+          safelyDisposesBatteriesException:
+              _json.containsKey('safelyDisposesBatteriesException')
+                  ? _json['safelyDisposesBatteriesException'] as core.String
+                  : null,
+          safelyDisposesElectronics:
+              _json.containsKey('safelyDisposesElectronics')
+                  ? _json['safelyDisposesElectronics'] as core.bool
+                  : null,
+          safelyDisposesElectronicsException:
+              _json.containsKey('safelyDisposesElectronicsException')
+                  ? _json['safelyDisposesElectronicsException'] as core.String
+                  : null,
+          safelyDisposesLightbulbs:
+              _json.containsKey('safelyDisposesLightbulbs')
+                  ? _json['safelyDisposesLightbulbs'] as core.bool
+                  : null,
+          safelyDisposesLightbulbsException:
+              _json.containsKey('safelyDisposesLightbulbsException')
+                  ? _json['safelyDisposesLightbulbsException'] as core.String
+                  : null,
+          safelyHandlesHazardousSubstances:
+              _json.containsKey('safelyHandlesHazardousSubstances')
+                  ? _json['safelyHandlesHazardousSubstances'] as core.bool
+                  : null,
+          safelyHandlesHazardousSubstancesException:
+              _json.containsKey('safelyHandlesHazardousSubstancesException')
+                  ? _json['safelyHandlesHazardousSubstancesException']
+                      as core.String
+                  : null,
+          soapDonationProgram: _json.containsKey('soapDonationProgram')
+              ? _json['soapDonationProgram'] as core.bool
+              : null,
+          soapDonationProgramException:
+              _json.containsKey('soapDonationProgramException')
+                  ? _json['soapDonationProgramException'] as core.String
+                  : null,
+          toiletryDonationProgram: _json.containsKey('toiletryDonationProgram')
+              ? _json['toiletryDonationProgram'] as core.bool
+              : null,
+          toiletryDonationProgramException:
+              _json.containsKey('toiletryDonationProgramException')
+                  ? _json['toiletryDonationProgramException'] as core.String
+                  : null,
+          waterBottleFillingStations:
+              _json.containsKey('waterBottleFillingStations')
+                  ? _json['waterBottleFillingStations'] as core.bool
+                  : null,
+          waterBottleFillingStationsException:
+              _json.containsKey('waterBottleFillingStationsException')
+                  ? _json['waterBottleFillingStationsException'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (compostableFoodContainersAndCutlery != null)
+          'compostableFoodContainersAndCutlery':
+              compostableFoodContainersAndCutlery!,
+        if (compostableFoodContainersAndCutleryException != null)
+          'compostableFoodContainersAndCutleryException':
+              compostableFoodContainersAndCutleryException!,
+        if (compostsExcessFood != null)
+          'compostsExcessFood': compostsExcessFood!,
+        if (compostsExcessFoodException != null)
+          'compostsExcessFoodException': compostsExcessFoodException!,
+        if (donatesExcessFood != null) 'donatesExcessFood': donatesExcessFood!,
+        if (donatesExcessFoodException != null)
+          'donatesExcessFoodException': donatesExcessFoodException!,
+        if (foodWasteReductionProgram != null)
+          'foodWasteReductionProgram': foodWasteReductionProgram!,
+        if (foodWasteReductionProgramException != null)
+          'foodWasteReductionProgramException':
+              foodWasteReductionProgramException!,
+        if (noSingleUsePlasticStraws != null)
+          'noSingleUsePlasticStraws': noSingleUsePlasticStraws!,
+        if (noSingleUsePlasticStrawsException != null)
+          'noSingleUsePlasticStrawsException':
+              noSingleUsePlasticStrawsException!,
+        if (noSingleUsePlasticWaterBottles != null)
+          'noSingleUsePlasticWaterBottles': noSingleUsePlasticWaterBottles!,
+        if (noSingleUsePlasticWaterBottlesException != null)
+          'noSingleUsePlasticWaterBottlesException':
+              noSingleUsePlasticWaterBottlesException!,
+        if (noStyrofoamFoodContainers != null)
+          'noStyrofoamFoodContainers': noStyrofoamFoodContainers!,
+        if (noStyrofoamFoodContainersException != null)
+          'noStyrofoamFoodContainersException':
+              noStyrofoamFoodContainersException!,
+        if (recyclingProgram != null) 'recyclingProgram': recyclingProgram!,
+        if (recyclingProgramException != null)
+          'recyclingProgramException': recyclingProgramException!,
+        if (refillableToiletryContainers != null)
+          'refillableToiletryContainers': refillableToiletryContainers!,
+        if (refillableToiletryContainersException != null)
+          'refillableToiletryContainersException':
+              refillableToiletryContainersException!,
+        if (safelyDisposesBatteries != null)
+          'safelyDisposesBatteries': safelyDisposesBatteries!,
+        if (safelyDisposesBatteriesException != null)
+          'safelyDisposesBatteriesException': safelyDisposesBatteriesException!,
+        if (safelyDisposesElectronics != null)
+          'safelyDisposesElectronics': safelyDisposesElectronics!,
+        if (safelyDisposesElectronicsException != null)
+          'safelyDisposesElectronicsException':
+              safelyDisposesElectronicsException!,
+        if (safelyDisposesLightbulbs != null)
+          'safelyDisposesLightbulbs': safelyDisposesLightbulbs!,
+        if (safelyDisposesLightbulbsException != null)
+          'safelyDisposesLightbulbsException':
+              safelyDisposesLightbulbsException!,
+        if (safelyHandlesHazardousSubstances != null)
+          'safelyHandlesHazardousSubstances': safelyHandlesHazardousSubstances!,
+        if (safelyHandlesHazardousSubstancesException != null)
+          'safelyHandlesHazardousSubstancesException':
+              safelyHandlesHazardousSubstancesException!,
+        if (soapDonationProgram != null)
+          'soapDonationProgram': soapDonationProgram!,
+        if (soapDonationProgramException != null)
+          'soapDonationProgramException': soapDonationProgramException!,
+        if (toiletryDonationProgram != null)
+          'toiletryDonationProgram': toiletryDonationProgram!,
+        if (toiletryDonationProgramException != null)
+          'toiletryDonationProgramException': toiletryDonationProgramException!,
+        if (waterBottleFillingStations != null)
+          'waterBottleFillingStations': waterBottleFillingStations!,
+        if (waterBottleFillingStationsException != null)
+          'waterBottleFillingStationsException':
+              waterBottleFillingStationsException!,
+      };
+}
+
+/// Water conservation practices implemented at the hotel.
+class WaterConservation {
+  /// Independent organization audits water use.
+  ///
+  /// The property conducts a water conservation audit every 5 years, the
+  /// results of which are either verified by a third-party and/or published in
+  /// external communications. A water conservation audit is a detailed
+  /// assessment of the facility, providing recommendations to existing
+  /// operations and procedures to improve water efficiency, available
+  /// incentives or rebates, and opportunities for improvements through
+  /// renovations or upgrades. Examples of organizations who conduct credible
+  /// third party audits include: Engie Impact, and local utility providers
+  /// (they often provide energy and water audits).
+  core.bool? independentOrganizationAuditsWaterUse;
+
+  /// Independent organization audits water use exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? independentOrganizationAuditsWaterUseException;
+
+  /// Linen reuse program.
+  ///
+  /// The property offers a linen reuse program.
+  core.bool? linenReuseProgram;
+
+  /// Linen reuse program exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? linenReuseProgramException;
+
+  /// Towel reuse program.
+  ///
+  /// The property offers a towel reuse program.
+  core.bool? towelReuseProgram;
+
+  /// Towel reuse program exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? towelReuseProgramException;
+
+  /// Water saving showers.
+  ///
+  /// All of the property's guest rooms have shower heads that use no more than
+  /// 2.0 gallons per minute (gpm).
+  core.bool? waterSavingShowers;
+
+  /// Water saving showers exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? waterSavingShowersException;
+
+  /// Water saving sinks.
+  ///
+  /// All of the property's guest rooms have bathroom faucets that use a maximum
+  /// of 1.5 gallons per minute (gpm), public restroom faucets do not exceed 0.5
+  /// gpm, and kitchen faucets (excluding faucets used exclusively for filling
+  /// operations) do not exceed 2.2 gpm.
+  core.bool? waterSavingSinks;
+
+  /// Water saving sinks exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? waterSavingSinksException;
+
+  /// Water saving toilets.
+  ///
+  /// All of the property's toilets use 1.6 gallons per flush, or less.
+  core.bool? waterSavingToilets;
+
+  /// Water saving toilets exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? waterSavingToiletsException;
+
+  WaterConservation({
+    this.independentOrganizationAuditsWaterUse,
+    this.independentOrganizationAuditsWaterUseException,
+    this.linenReuseProgram,
+    this.linenReuseProgramException,
+    this.towelReuseProgram,
+    this.towelReuseProgramException,
+    this.waterSavingShowers,
+    this.waterSavingShowersException,
+    this.waterSavingSinks,
+    this.waterSavingSinksException,
+    this.waterSavingToilets,
+    this.waterSavingToiletsException,
+  });
+
+  WaterConservation.fromJson(core.Map _json)
+      : this(
+          independentOrganizationAuditsWaterUse:
+              _json.containsKey('independentOrganizationAuditsWaterUse')
+                  ? _json['independentOrganizationAuditsWaterUse'] as core.bool
+                  : null,
+          independentOrganizationAuditsWaterUseException: _json
+                  .containsKey('independentOrganizationAuditsWaterUseException')
+              ? _json['independentOrganizationAuditsWaterUseException']
+                  as core.String
+              : null,
+          linenReuseProgram: _json.containsKey('linenReuseProgram')
+              ? _json['linenReuseProgram'] as core.bool
+              : null,
+          linenReuseProgramException:
+              _json.containsKey('linenReuseProgramException')
+                  ? _json['linenReuseProgramException'] as core.String
+                  : null,
+          towelReuseProgram: _json.containsKey('towelReuseProgram')
+              ? _json['towelReuseProgram'] as core.bool
+              : null,
+          towelReuseProgramException:
+              _json.containsKey('towelReuseProgramException')
+                  ? _json['towelReuseProgramException'] as core.String
+                  : null,
+          waterSavingShowers: _json.containsKey('waterSavingShowers')
+              ? _json['waterSavingShowers'] as core.bool
+              : null,
+          waterSavingShowersException:
+              _json.containsKey('waterSavingShowersException')
+                  ? _json['waterSavingShowersException'] as core.String
+                  : null,
+          waterSavingSinks: _json.containsKey('waterSavingSinks')
+              ? _json['waterSavingSinks'] as core.bool
+              : null,
+          waterSavingSinksException:
+              _json.containsKey('waterSavingSinksException')
+                  ? _json['waterSavingSinksException'] as core.String
+                  : null,
+          waterSavingToilets: _json.containsKey('waterSavingToilets')
+              ? _json['waterSavingToilets'] as core.bool
+              : null,
+          waterSavingToiletsException:
+              _json.containsKey('waterSavingToiletsException')
+                  ? _json['waterSavingToiletsException'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (independentOrganizationAuditsWaterUse != null)
+          'independentOrganizationAuditsWaterUse':
+              independentOrganizationAuditsWaterUse!,
+        if (independentOrganizationAuditsWaterUseException != null)
+          'independentOrganizationAuditsWaterUseException':
+              independentOrganizationAuditsWaterUseException!,
+        if (linenReuseProgram != null) 'linenReuseProgram': linenReuseProgram!,
+        if (linenReuseProgramException != null)
+          'linenReuseProgramException': linenReuseProgramException!,
+        if (towelReuseProgram != null) 'towelReuseProgram': towelReuseProgram!,
+        if (towelReuseProgramException != null)
+          'towelReuseProgramException': towelReuseProgramException!,
+        if (waterSavingShowers != null)
+          'waterSavingShowers': waterSavingShowers!,
+        if (waterSavingShowersException != null)
+          'waterSavingShowersException': waterSavingShowersException!,
+        if (waterSavingSinks != null) 'waterSavingSinks': waterSavingSinks!,
+        if (waterSavingSinksException != null)
+          'waterSavingSinksException': waterSavingSinksException!,
+        if (waterSavingToilets != null)
+          'waterSavingToilets': waterSavingToilets!,
+        if (waterSavingToiletsException != null)
+          'waterSavingToiletsException': waterSavingToiletsException!,
       };
 }
 

@@ -806,7 +806,6 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// [name] - Immutable. Full resource name of the product, such as `projects /
   /// *
   /// /locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-  /// The branch ID must be "default_branch".
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/branches/\[^/\]+/products/.*$`.
   ///
@@ -939,7 +938,6 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// [name] - Immutable. Full resource name of the product, such as `projects /
   /// *
   /// /locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-  /// The branch ID must be "default_branch".
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/branches/\[^/\]+/products/.*$`.
   ///
@@ -2224,7 +2222,7 @@ class GoogleCloudRetailV2ColorInfo {
   /// names, such as the color aliases used in the website frontend.
   ///
   /// Normally it is expected to have only 1 color. May consider using single
-  /// "Mixed" instead of multiple values. A maximum of 5 colors are allowed.
+  /// "Mixed" instead of multiple values. A maximum of 25 colors are allowed.
   /// Each value must be a UTF-8 encoded string with a length limit of 128
   /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
   /// Merchant Center property
@@ -2528,8 +2526,8 @@ class GoogleCloudRetailV2FulfillmentInfo {
   /// FulfillmentInfo.type.pickup-in-store or the region IDs for
   /// FulfillmentInfo.type.same-day-delivery.
   ///
-  /// A maximum of 2000 values are allowed. Each value must be a string with a
-  /// length limit of 10 characters, matching the pattern \[a-zA-Z0-9_-\]+, such
+  /// A maximum of 3000 values are allowed. Each value must be a string with a
+  /// length limit of 30 characters, matching the pattern \[a-zA-Z0-9_-\]+, such
   /// as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is
   /// returned.
   core.List<core.String>? placeIds;
@@ -3752,8 +3750,6 @@ class GoogleCloudRetailV2Product {
   /// Full resource name of the product, such as `projects / *
   /// /locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
   ///
-  /// The branch ID must be "default_branch".
-  ///
   /// Immutable.
   core.String? name;
 
@@ -4643,7 +4639,8 @@ typedef GoogleCloudRetailV2RemoveFulfillmentPlacesResponse = $Empty;
 class GoogleCloudRetailV2SearchRequest {
   /// Boost specification to boost certain products.
   ///
-  /// See more details at this \[user guide\](/retail/private/docs/boosting).
+  /// See more details at this
+  /// [user guide](https://cloud.google.com/retail/docs/boosting).
   GoogleCloudRetailV2SearchRequestBoostSpec? boostSpec;
 
   /// The branch resource name, such as `projects / *
@@ -4679,9 +4676,9 @@ class GoogleCloudRetailV2SearchRequest {
   /// The filter syntax consists of an expression language for constructing a
   /// predicate from one or more fields of the products being filtered.
   ///
-  /// Filter expression is case-sensitive. See more details at this \[user
-  /// guide\](/retail/private/docs/filter-and-order#filter). If this field is
-  /// unrecognizable, an INVALID_ARGUMENT is returned.
+  /// Filter expression is case-sensitive. See more details at this
+  /// [user guide](https://cloud.google.com/retail/docs/filter-and-order#filter).
+  /// If this field is unrecognizable, an INVALID_ARGUMENT is returned.
   core.String? filter;
 
   /// A 0-indexed integer that specifies the current offset (that is, starting
@@ -4696,9 +4693,9 @@ class GoogleCloudRetailV2SearchRequest {
   ///
   /// Products can be ordered by a field in an Product object. Leave it unset if
   /// ordered by relevance. OrderBy expression is case-sensitive. See more
-  /// details at this \[user
-  /// guide\](/retail/private/docs/filter-and-order#order). If this field is
-  /// unrecognizable, an INVALID_ARGUMENT is returned.
+  /// details at this
+  /// [user guide](https://cloud.google.com/retail/docs/filter-and-order#order).
+  /// If this field is unrecognizable, an INVALID_ARGUMENT is returned.
   core.String? orderBy;
 
   /// The categories associated with a category page.
@@ -4733,8 +4730,8 @@ class GoogleCloudRetailV2SearchRequest {
   /// The query expansion specification that specifies the conditions under
   /// which query expansion will occur.
   ///
-  /// See more details at this \[user
-  /// guide\](/retail/private/docs/result-size#query_expansion).
+  /// See more details at this
+  /// [user guide](https://cloud.google.com/retail/docs/result-size#query_expansion).
   GoogleCloudRetailV2SearchRequestQueryExpansionSpec? queryExpansionSpec;
 
   /// User information.
@@ -5432,7 +5429,7 @@ class GoogleCloudRetailV2SearchResponseQueryExpansionInfo {
   /// Number of pinned results.
   ///
   /// This field will only be set when expansion happens and
-  /// SearchRequest.query_expansion_spec.pin_unexpanded_results is set to true.
+  /// SearchRequest.QueryExpansionSpec.pin_unexpanded_results is set to true.
   core.String? pinnedResultCount;
 
   GoogleCloudRetailV2SearchResponseQueryExpansionInfo({
@@ -5704,9 +5701,9 @@ class GoogleCloudRetailV2UserEvent {
   /// PredictResponse.attribution_token to this field.
   core.String? attributionToken;
 
-  /// The id or name of the associated shopping cart.
+  /// The ID or name of the associated shopping cart.
   ///
-  /// This id is used to associate multiple items added or present in the cart
+  /// This ID is used to associate multiple items added or present in the cart
   /// before purchase. This can only be set for `add-to-cart`,
   /// `purchase-complete`, or `shopping-cart-page-view` events.
   core.String? cartId;
@@ -5783,7 +5780,7 @@ class GoogleCloudRetailV2UserEvent {
   /// not set this field. Otherwise, an INVALID_ARGUMENT error is returned.
   core.List<core.String>? pageCategories;
 
-  /// A unique id of a web page view.
+  /// A unique ID of a web page view.
   ///
   /// This should be kept the same for all user events triggered from the same
   /// pageview. For example, an item detail page view could trigger multiple
@@ -5798,10 +5795,10 @@ class GoogleCloudRetailV2UserEvent {
   /// This field is required for the following event types: * `add-to-cart` *
   /// `detail-page-view` * `purchase-complete` In a `search` event, this field
   /// represents the products returned to the end user on the current page (the
-  /// end user may have not finished broswing the whole page yet). When a new
+  /// end user may have not finished browsing the whole page yet). When a new
   /// page is returned to the end user, after pagination/filtering/ordering even
   /// for the same query, a new `search` event with different product_details is
-  /// desired. The end user may have not finished broswing the whole page yet.
+  /// desired. The end user may have not finished browsing the whole page yet.
   core.List<GoogleCloudRetailV2ProductDetail>? productDetails;
 
   /// A transaction represents the entire purchase transaction.
@@ -6175,6 +6172,11 @@ typedef GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata = $Empty;
 /// Currently empty because there is no meaningful response populated from the
 /// AddFulfillmentPlaces method.
 typedef GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse = $Empty;
+
+/// Metadata related to the EnrollSolution method.
+///
+/// This will be returned by the google.longrunning.Operation.metadata field.
+typedef GoogleCloudRetailV2alphaEnrollSolutionMetadata = $Empty;
 
 /// Configuration of destination for Export related errors.
 class GoogleCloudRetailV2alphaExportErrorsConfig {

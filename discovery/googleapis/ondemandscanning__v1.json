@@ -337,7 +337,7 @@
             }
         }
     },
-    "revision": "20210827",
+    "revision": "20211005",
     "rootUrl": "https://ondemandscanning.googleapis.com/",
     "schemas": {
         "AliasContext": {
@@ -403,6 +403,10 @@
             "description": "AnalyzePackagesRequest is the request to analyze a list of packages and create Vulnerability Occurrences for it.",
             "id": "AnalyzePackagesRequestV1",
             "properties": {
+                "includeOsvData": {
+                    "description": "Whether to include OSV data in the scan.",
+                    "type": "boolean"
+                },
                 "packages": {
                     "description": "The packages to analyze.",
                     "items": {

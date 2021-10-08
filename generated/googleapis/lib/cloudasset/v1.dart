@@ -846,8 +846,8 @@ class V1Resource {
   /// For Cloud Storage location destinations, the output format is
   /// newline-delimited JSON. Each line represents a google.cloud.asset.v1.Asset
   /// in the JSON format; for BigQuery table destinations, the output table
-  /// stores the fields in asset proto as columns. This API implements the
-  /// google.longrunning.Operation API , which allows you to keep track of the
+  /// stores the fields in asset Protobuf as columns. This API implements the
+  /// google.longrunning.Operation API, which allows you to keep track of the
   /// export. We recommend intervals of at least 2 seconds with exponential
   /// retry to poll the export operation result. For regular-size resource
   /// parent, the export operation usually finishes within 5 minutes.
@@ -5723,7 +5723,8 @@ class OsInfo {
 class OutputConfig {
   /// Destination on BigQuery.
   ///
-  /// The output table stores the fields in asset proto as columns in BigQuery.
+  /// The output table stores the fields in asset Protobuf as columns in
+  /// BigQuery.
   BigQueryDestination? bigqueryDestination;
 
   /// Destination on Cloud Storage.
@@ -5949,7 +5950,7 @@ class PubsubDestination {
       };
 }
 
-/// An asset identify in Google Cloud which contains its name, type and
+/// An asset identifier in Google Cloud which contains its name, type and
 /// ancestors.
 ///
 /// An asset can be any resource in the Google Cloud
@@ -6293,24 +6294,24 @@ class ResourceSearchResult {
   /// The create timestamp of this resource, at which the resource was created.
   ///
   /// The granularity is in seconds. Timestamp.nanos will always be 0. This
-  /// field is available only when the resource's proto contains it. To search
-  /// against `create_time`: * use a field query. - value in seconds since unix
-  /// epoch. Example: `createTime > 1609459200` - value in date string. Example:
-  /// `createTime > 2021-01-01` - value in date-time string (must be quoted).
-  /// Example: `createTime > "2021-01-01T00:00:00"`
+  /// field is available only when the resource's Protobuf contains it. To
+  /// search against `create_time`: * use a field query. - value in seconds
+  /// since unix epoch. Example: `createTime > 1609459200` - value in date
+  /// string. Example: `createTime > 2021-01-01` - value in date-time string
+  /// (must be quoted). Example: `createTime > "2021-01-01T00:00:00"`
   core.String? createTime;
 
   /// One or more paragraphs of text description of this resource.
   ///
   /// Maximum length could be up to 1M bytes. This field is available only when
-  /// the resource's proto contains it. To search against the `description`: *
-  /// use a field query. Example: `description:"important instance"` * use a
+  /// the resource's Protobuf contains it. To search against the `description`:
+  /// * use a field query. Example: `description:"important instance"` * use a
   /// free text query. Example: `"important instance"`
   core.String? description;
 
   /// The display name of this resource.
   ///
-  /// This field is available only when the resource's proto contains it. To
+  /// This field is available only when the resource's Protobuf contains it. To
   /// search against the `display_name`: * use a field query. Example:
   /// `displayName:"My Instance"` * use a free text query. Example: `"My
   /// Instance"`
@@ -6326,12 +6327,12 @@ class ResourceSearchResult {
   core.List<core.String>? folders;
 
   /// The Cloud KMS
-  /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys?hl=en)
+  /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
   /// name or
-  /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en)
+  /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
   /// name.
   ///
-  /// This field is available only when the resource's proto contains it. To
+  /// This field is available only when the resource's Protobuf contains it. To
   /// search against the `kms_key`: * use a field query. Example: `kmsKey:key` *
   /// use a free text query. Example: `key`
   core.String? kmsKey;
@@ -6341,8 +6342,8 @@ class ResourceSearchResult {
   /// See
   /// [Labelling and grouping GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
   /// for more information. This field is available only when the resource's
-  /// proto contains it. To search against the `labels`: * use a field query: -
-  /// query on any label's key or value. Example: `labels:prod` - query by a
+  /// Protobuf contains it. To search against the `labels`: * use a field query:
+  /// - query on any label's key or value. Example: `labels:prod` - query by a
   /// given label. Example: `labels.env:prod` - query by a given label's
   /// existence. Example: `labels.env:*` * use a free text query. Example:
   /// `prod`
@@ -6351,7 +6352,7 @@ class ResourceSearchResult {
   /// Location can be `global`, regional like `us-east1`, or zonal like
   /// `us-west1-b`.
   ///
-  /// This field is available only when the resource's proto contains it. To
+  /// This field is available only when the resource's Protobuf contains it. To
   /// search against the `location`: * use a field query. Example:
   /// `location:us-west*` * use a free text query. Example: `us-west*`
   core.String? location;
@@ -6372,7 +6373,7 @@ class ResourceSearchResult {
   /// resources. See
   /// [Labelling GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
   /// for more information. This field is available only when the resource's
-  /// proto contains it. To search against the `network_tags`: * use a field
+  /// Protobuf contains it. To search against the `network_tags`: * use a field
   /// query. Example: `networkTags:internal` * use a free text query. Example:
   /// `internal`
   core.List<core.String>? networkTags;
@@ -6422,10 +6423,10 @@ class ResourceSearchResult {
   ///
   /// Different resources types have different state definitions that are mapped
   /// from various fields of different resource types. This field is available
-  /// only when the resource's proto contains it. Example: If the resource is an
-  /// instance provided by Compute Engine, its state will include PROVISIONING,
-  /// STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and
-  /// TERMINATED. See `status` definition in
+  /// only when the resource's Protobuf contains it. Example: If the resource is
+  /// an instance provided by Compute Engine, its state will include
+  /// PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED,
+  /// REPAIRING, and TERMINATED. See `status` definition in
   /// [API Reference](https://cloud.google.com/compute/docs/reference/rest/v1/instances).
   /// If the resource is a project provided by Cloud Resource Manager, its state
   /// will include LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and
@@ -6439,11 +6440,11 @@ class ResourceSearchResult {
   /// modified or deleted.
   ///
   /// The granularity is in seconds. Timestamp.nanos will always be 0. This
-  /// field is available only when the resource's proto contains it. To search
-  /// against `update_time`: * use a field query. - value in seconds since unix
-  /// epoch. Example: `updateTime < 1609459200` - value in date string. Example:
-  /// `updateTime < 2021-01-01` - value in date-time string (must be quoted).
-  /// Example: `updateTime < "2021-01-01T00:00:00"`
+  /// field is available only when the resource's Protobuf contains it. To
+  /// search against `update_time`: * use a field query. - value in seconds
+  /// since unix epoch. Example: `updateTime < 1609459200` - value in date
+  /// string. Example: `updateTime < 2021-01-01` - value in date-time string
+  /// (must be quoted). Example: `updateTime < "2021-01-01T00:00:00"`
   core.String? updateTime;
 
   /// Versioned resource representations of this resource.
@@ -7087,12 +7088,11 @@ class VersionedResource {
       };
 }
 
-/// Contains information about a Windows application as retrieved from the
+/// Contains information about a Windows application that is retrieved from the
 /// Windows Registry.
 ///
-/// For more information about these fields, see
-/// [Windows Installer Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key){:
-/// class="external" }
+/// For more information about these fields, see Windows Installer Properties
+/// for the Uninstall Registry.
 class WindowsApplication {
   /// The name of the application or product.
   core.String? displayName;

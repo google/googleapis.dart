@@ -44,7 +44,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Google Cloud Memorystore for Memcached API is used for creating and managing
 /// Memcached instances in GCP.
 class CloudMemorystoreForMemcachedApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -1386,15 +1387,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
 /// information in SloMetadata for custom precomputations. SSA Eligibility
 /// Exporter will emit per-node metric based on this information.
 class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
-  /// By default node is eligible if instance is eligible.
-  ///
-  /// But individual node might be excluded from SLO by adding entry here. For
-  /// semantic see SloMetadata.exclusions. If both instance and node level
-  /// exclusions are present for time period, the node level's reason will be
-  /// reported by Eligibility Exporter.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>?
-      exclusions;
-
   /// The location of the node, if different from instance location.
   core.String? location;
 
@@ -1409,7 +1401,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
       perSliEligibility;
 
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata({
-    this.exclusions,
     this.location,
     this.nodeId,
     this.perSliEligibility,
@@ -1418,14 +1409,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata.fromJson(
       core.Map _json)
       : this(
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
-                  .map((value) =>
-                      GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           location: _json.containsKey('location')
               ? _json['location'] as core.String
               : null,
@@ -1440,7 +1423,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null) 'exclusions': exclusions!,
         if (location != null) 'location': location!,
         if (nodeId != null) 'nodeId': nodeId!,
         if (perSliEligibility != null) 'perSliEligibility': perSliEligibility!,
@@ -1564,87 +1546,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
       };
 }
 
-/// SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
-class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
-  /// Exclusion duration.
-  ///
-  /// No restrictions on the possible values. When an ongoing operation is
-  /// taking longer than initially expected, an existing entry in the exclusion
-  /// list can be updated by extending the duration. This is supported by the
-  /// subsystem exporting eligibility data as long as such extension is
-  /// committed at least 10 minutes before the original exclusion expiration -
-  /// otherwise it is possible that there will be "gaps" in the exclusion
-  /// application in the exported timeseries.
-  core.String? duration;
-
-  /// Human-readable reason for the exclusion.
-  ///
-  /// This should be a static string (e.g. "Disruptive update in progress") and
-  /// should not contain dynamically generated data (e.g. instance name). Can be
-  /// left empty.
-  core.String? reason;
-
-  /// Name of an SLI that this exclusion applies to.
-  ///
-  /// Can be left empty, signaling that the instance should be excluded from all
-  /// SLIs.
-  core.String? sliName;
-
-  /// Start time of the exclusion.
-  ///
-  /// No alignment (e.g. to a full minute) needed.
-  core.String? startTime;
-
-  GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion({
-    this.duration,
-    this.reason,
-    this.sliName,
-    this.startTime,
-  });
-
-  GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion.fromJson(
-      core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
-              : null,
-          sliName: _json.containsKey('sliName')
-              ? _json['sliName'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (reason != null) 'reason': reason!,
-        if (sliName != null) 'sliName': sliName!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
-
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-  /// List of SLO exclusion windows.
-  ///
-  /// When multiple entries in the list match (matching the exclusion
-  /// time-window against current time point) the exclusion reason used in the
-  /// first matching entry will be published. It is not needed to include
-  /// expired exclusion in this list, as only the currently applicable
-  /// exclusions are taken into account by the eligibility exporting subsystem
-  /// (the historical state of exclusions will be reflected in the historically
-  /// produced timeseries regardless of the current state). This field can be
-  /// used to mark the instance as temporary ineligible for the purpose of SLO
-  /// calculation. For permanent instance SLO exclusion, use of custom instance
-  /// eligibility is recommended. See 'eligibility' field below.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>?
-      exclusions;
-
   /// List of nodes.
   ///
   /// Some producers need to use per-node metadata to calculate SLO. This field
@@ -1669,7 +1573,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   core.String? tier;
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata({
-    this.exclusions,
     this.nodes,
     this.perSliEligibility,
     this.tier,
@@ -1678,14 +1581,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata.fromJson(
       core.Map _json)
       : this(
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
-                  .map((value) =>
-                      GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-                          .fromJson(
-                              value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           nodes: _json.containsKey('nodes')
               ? (_json['nodes'] as core.List)
                   .map((value) =>
@@ -1703,7 +1598,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null) 'exclusions': exclusions!,
         if (nodes != null) 'nodes': nodes!,
         if (perSliEligibility != null) 'perSliEligibility': perSliEligibility!,
         if (tier != null) 'tier': tier!,

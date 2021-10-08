@@ -4324,8 +4324,8 @@ class Rule {
   /// PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
   core.List<core.String>? in_;
 
-  /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-  /// that match the LOG action.
+  /// The config returned to callers of CheckPolicy for any entries that match
+  /// the LOG action.
   core.List<LogConfig>? logConfig;
 
   /// If one or more 'not_in' clauses are specified, the rule matches if the

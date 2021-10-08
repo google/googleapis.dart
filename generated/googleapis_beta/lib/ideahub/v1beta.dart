@@ -21,6 +21,7 @@
 ///
 /// - [PlatformsResource]
 ///   - [PlatformsPropertiesResource]
+///     - [PlatformsPropertiesIdeaActivitiesResource]
 ///     - [PlatformsPropertiesIdeaStatesResource]
 ///     - [PlatformsPropertiesIdeasResource]
 ///     - [PlatformsPropertiesLocalesResource]
@@ -63,6 +64,8 @@ class PlatformsResource {
 class PlatformsPropertiesResource {
   final commons.ApiRequester _requester;
 
+  PlatformsPropertiesIdeaActivitiesResource get ideaActivities =>
+      PlatformsPropertiesIdeaActivitiesResource(_requester);
   PlatformsPropertiesIdeaStatesResource get ideaStates =>
       PlatformsPropertiesIdeaStatesResource(_requester);
   PlatformsPropertiesIdeasResource get ideas =>
@@ -74,6 +77,55 @@ class PlatformsPropertiesResource {
 
   PlatformsPropertiesResource(commons.ApiRequester client)
       : _requester = client;
+}
+
+class PlatformsPropertiesIdeaActivitiesResource {
+  final commons.ApiRequester _requester;
+
+  PlatformsPropertiesIdeaActivitiesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an idea activity entry.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this idea activity will be
+  /// created. Format: platforms/{platform}/property/{property}
+  /// Value must have pattern `^platforms/\[^/\]+/properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleSearchIdeahubV1betaIdeaActivity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleSearchIdeahubV1betaIdeaActivity> create(
+    GoogleSearchIdeahubV1betaIdeaActivity request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/ideaActivities';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleSearchIdeahubV1betaIdeaActivity.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class PlatformsPropertiesIdeaStatesResource {
@@ -379,6 +431,74 @@ class GoogleSearchIdeahubV1betaIdea {
         if (name != null) 'name': name!,
         if (text != null) 'text': text!,
         if (topics != null) 'topics': topics!,
+      };
+}
+
+/// An idea activity entry.
+class GoogleSearchIdeahubV1betaIdeaActivity {
+  /// The Idea IDs for this entry.
+  ///
+  /// If empty, topics should be set.
+  core.List<core.String>? ideas;
+
+  /// Unique identifier for the idea activity.
+  ///
+  /// The name is ignored when creating an idea activity. Format:
+  /// platforms/{platform}/properties/{property}/ideaActivities/{idea_activity}
+  core.String? name;
+
+  /// The Topic IDs for this entry.
+  ///
+  /// If empty, ideas should be set.
+  core.List<core.String>? topics;
+
+  /// The type of activity performed.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : An unspecified, unknown type of idea activity.
+  /// - "POST_DRAFTED" : An idea activity type indicating a post has been
+  /// drafted.
+  /// - "POST_PUBLISHED" : An idea activity type indicating a post has been
+  /// published.
+  /// - "POST_DELETED" : An idea activity type indicating a post has been
+  /// deleted.
+  /// - "POST_UNPUBLISHED" : An idea activity type indicating a post has been
+  /// unpublished.
+  core.String? type;
+
+  /// The uri the activity relates to.
+  core.String? uri;
+
+  GoogleSearchIdeahubV1betaIdeaActivity({
+    this.ideas,
+    this.name,
+    this.topics,
+    this.type,
+    this.uri,
+  });
+
+  GoogleSearchIdeahubV1betaIdeaActivity.fromJson(core.Map _json)
+      : this(
+          ideas: _json.containsKey('ideas')
+              ? (_json['ideas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          topics: _json.containsKey('topics')
+              ? (_json['topics'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ideas != null) 'ideas': ideas!,
+        if (name != null) 'name': name!,
+        if (topics != null) 'topics': topics!,
+        if (type != null) 'type': type!,
+        if (uri != null) 'uri': uri!,
       };
 }
 

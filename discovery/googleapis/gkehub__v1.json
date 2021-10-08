@@ -903,7 +903,7 @@
             }
         }
     },
-    "revision": "20210827",
+    "revision": "20210927",
     "rootUrl": "https://gkehub.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -1050,6 +1050,22 @@
             "description": "The state of ConfigSync's deployment on a cluster",
             "id": "ConfigManagementConfigSyncDeploymentState",
             "properties": {
+                "admissionWebhook": {
+                    "description": "Deployment state of admission-webhook",
+                    "enum": [
+                        "DEPLOYMENT_STATE_UNSPECIFIED",
+                        "NOT_INSTALLED",
+                        "INSTALLED",
+                        "ERROR"
+                    ],
+                    "enumDescriptions": [
+                        "Deployment's state cannot be determined",
+                        "Deployment is not installed",
+                        "Deployment is installed",
+                        "Deployment was attempted to be installed, but has errors"
+                    ],
+                    "type": "string"
+                },
                 "gitSync": {
                     "description": "Deployment state of the git-sync pod",
                     "enum": [
@@ -1172,6 +1188,10 @@
             "description": "Specific versioning information pertaining to ConfigSync's Pods",
             "id": "ConfigManagementConfigSyncVersion",
             "properties": {
+                "admissionWebhook": {
+                    "description": "Version of the deployed admission_webhook pod",
+                    "type": "string"
+                },
                 "gitSync": {
                     "description": "Version of the deployed git-sync pod",
                     "type": "string"

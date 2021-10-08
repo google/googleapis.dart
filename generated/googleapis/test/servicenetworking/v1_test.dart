@@ -272,6 +272,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
     o.consumerNetwork = 'foo';
     o.description = 'foo';
     o.ipPrefixLength = 42;
+    o.outsideAllocationPublicIpRange = 'foo';
     o.privateIpv6GoogleAccess = 'foo';
     o.region = 'foo';
     o.requestedAddress = 'foo';
@@ -302,6 +303,10 @@ void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
     unittest.expect(
       o.ipPrefixLength!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.outsideAllocationPublicIpRange!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.privateIpv6GoogleAccess!,
@@ -3284,6 +3289,7 @@ api.SecondaryIpRangeSpec buildSecondaryIpRangeSpec() {
   buildCounterSecondaryIpRangeSpec++;
   if (buildCounterSecondaryIpRangeSpec < 3) {
     o.ipPrefixLength = 42;
+    o.outsideAllocationPublicIpRange = 'foo';
     o.rangeName = 'foo';
     o.requestedAddress = 'foo';
   }
@@ -3297,6 +3303,10 @@ void checkSecondaryIpRangeSpec(api.SecondaryIpRangeSpec o) {
     unittest.expect(
       o.ipPrefixLength!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.outsideAllocationPublicIpRange!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.rangeName!,

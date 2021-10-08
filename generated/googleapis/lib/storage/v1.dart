@@ -3912,6 +3912,29 @@ class BucketCors {
       };
 }
 
+/// The bucket's custom placement configuration for Custom Dual Regions.
+class BucketCustomPlacementConfig {
+  /// The list of regional locations in which data is placed.
+  core.List<core.String>? dataLocations;
+
+  BucketCustomPlacementConfig({
+    this.dataLocations,
+  });
+
+  BucketCustomPlacementConfig.fromJson(core.Map _json)
+      : this(
+          dataLocations: _json.containsKey('dataLocations')
+              ? (_json['dataLocations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataLocations != null) 'dataLocations': dataLocations!,
+      };
+}
+
 /// Encryption configuration for a bucket.
 class BucketEncryption {
   /// A Cloud KMS key that will be used to encrypt objects inserted into this
@@ -4475,6 +4498,9 @@ class Bucket {
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
   core.List<BucketCors>? cors;
 
+  /// The bucket's custom placement configuration for Custom Dual Regions.
+  BucketCustomPlacementConfig? customPlacementConfig;
+
   /// The default value for event-based hold on newly created objects in this
   /// bucket.
   ///
@@ -4562,6 +4588,11 @@ class Bucket {
   /// locked retention policy will result in a PERMISSION_DENIED error.
   BucketRetentionPolicy? retentionPolicy;
 
+  /// The Recovery Point Objective (RPO) of this bucket.
+  ///
+  /// Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+  core.String? rpo;
+
   /// Reserved for future use.
   core.bool? satisfiesPZS;
 
@@ -4593,18 +4624,11 @@ class Bucket {
   /// See the Static Website Examples for more information.
   BucketWebsite? website;
 
-  /// The zone or zones from which the bucket is intended to use zonal quota.
-  ///
-  /// Requests for data from outside the specified affinities are still allowed
-  /// but won't be able to use zonal quota. The zone or zones need to be within
-  /// the bucket location otherwise the requests will fail with a 400 Bad
-  /// Request response.
-  core.List<core.String>? zoneAffinity;
-
   Bucket({
     this.acl,
     this.billing,
     this.cors,
+    this.customPlacementConfig,
     this.defaultEventBasedHold,
     this.defaultObjectAcl,
     this.encryption,
@@ -4622,6 +4646,7 @@ class Bucket {
     this.owner,
     this.projectNumber,
     this.retentionPolicy,
+    this.rpo,
     this.satisfiesPZS,
     this.selfLink,
     this.storageClass,
@@ -4629,7 +4654,6 @@ class Bucket {
     this.updated,
     this.versioning,
     this.website,
-    this.zoneAffinity,
   });
 
   Bucket.fromJson(core.Map _json)
@@ -4649,6 +4673,11 @@ class Bucket {
                   .map((value) => BucketCors.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          customPlacementConfig: _json.containsKey('customPlacementConfig')
+              ? BucketCustomPlacementConfig.fromJson(
+                  _json['customPlacementConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           defaultEventBasedHold: _json.containsKey('defaultEventBasedHold')
               ? _json['defaultEventBasedHold'] as core.bool
@@ -4707,6 +4736,7 @@ class Bucket {
               ? BucketRetentionPolicy.fromJson(_json['retentionPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          rpo: _json.containsKey('rpo') ? _json['rpo'] as core.String : null,
           satisfiesPZS: _json.containsKey('satisfiesPZS')
               ? _json['satisfiesPZS'] as core.bool
               : null,
@@ -4730,17 +4760,14 @@ class Bucket {
               ? BucketWebsite.fromJson(
                   _json['website'] as core.Map<core.String, core.dynamic>)
               : null,
-          zoneAffinity: _json.containsKey('zoneAffinity')
-              ? (_json['zoneAffinity'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acl != null) 'acl': acl!,
         if (billing != null) 'billing': billing!,
         if (cors != null) 'cors': cors!,
+        if (customPlacementConfig != null)
+          'customPlacementConfig': customPlacementConfig!,
         if (defaultEventBasedHold != null)
           'defaultEventBasedHold': defaultEventBasedHold!,
         if (defaultObjectAcl != null) 'defaultObjectAcl': defaultObjectAcl!,
@@ -4759,6 +4786,7 @@ class Bucket {
         if (owner != null) 'owner': owner!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
         if (retentionPolicy != null) 'retentionPolicy': retentionPolicy!,
+        if (rpo != null) 'rpo': rpo!,
         if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (storageClass != null) 'storageClass': storageClass!,
@@ -4766,7 +4794,6 @@ class Bucket {
         if (updated != null) 'updated': updated!.toIso8601String(),
         if (versioning != null) 'versioning': versioning!,
         if (website != null) 'website': website!,
-        if (zoneAffinity != null) 'zoneAffinity': zoneAffinity!,
       };
 }
 

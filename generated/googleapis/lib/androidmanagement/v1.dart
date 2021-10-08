@@ -1787,6 +1787,11 @@ class ApplicationPolicy {
   /// When disabled, the app data is still preserved.
   core.bool? disabled;
 
+  /// Configuration to enable this app as an extension app, with the capability
+  /// of interacting with Android Device Policy offline.This field can be set
+  /// for at most one app.
+  ExtensionConfig? extensionConfig;
+
   /// The type of installation to perform.
   /// Possible string values are:
   /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. Defaults to AVAILABLE.
@@ -1861,6 +1866,7 @@ class ApplicationPolicy {
     this.defaultPermissionPolicy,
     this.delegatedScopes,
     this.disabled,
+    this.extensionConfig,
     this.installType,
     this.lockTaskAllowed,
     this.managedConfiguration,
@@ -1894,6 +1900,10 @@ class ApplicationPolicy {
               : null,
           disabled: _json.containsKey('disabled')
               ? _json['disabled'] as core.bool
+              : null,
+          extensionConfig: _json.containsKey('extensionConfig')
+              ? ExtensionConfig.fromJson(_json['extensionConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           installType: _json.containsKey('installType')
               ? _json['installType'] as core.String
@@ -1935,6 +1945,7 @@ class ApplicationPolicy {
           'defaultPermissionPolicy': defaultPermissionPolicy!,
         if (delegatedScopes != null) 'delegatedScopes': delegatedScopes!,
         if (disabled != null) 'disabled': disabled!,
+        if (extensionConfig != null) 'extensionConfig': extensionConfig!,
         if (installType != null) 'installType': installType!,
         if (lockTaskAllowed != null) 'lockTaskAllowed': lockTaskAllowed!,
         if (managedConfiguration != null)
@@ -3527,6 +3538,53 @@ class Enterprise {
         if (signinDetails != null) 'signinDetails': signinDetails!,
         if (termsAndConditions != null)
           'termsAndConditions': termsAndConditions!,
+      };
+}
+
+/// Configuration to enable an app as an extension app, with the capability of
+/// interacting with Android Device Policy offline.
+class ExtensionConfig {
+  /// Fully qualified class name of the receiver service class for Android
+  /// Device Policy to notify the extension app of any local command status
+  /// updates.
+  core.String? notificationReceiver;
+
+  /// Hex-encoded SHA256 hash of the signing certificate of the extension app.
+  ///
+  /// Only hexadecimal string representations of 64 characters are valid.If not
+  /// specified, the signature for the corresponding package name is obtained
+  /// from the Play Store instead.If this list is empty, the signature of the
+  /// extension app on the device must match the signature obtained from the
+  /// Play Store for the app to be able to communicate with Android Device
+  /// Policy.If this list is not empty, the signature of the extension app on
+  /// the device must match one of the entries in this list for the app to be
+  /// able to communicate with Android Device Policy.In production use cases, it
+  /// is recommended to leave this empty.
+  core.List<core.String>? signingKeyFingerprintsSha256;
+
+  ExtensionConfig({
+    this.notificationReceiver,
+    this.signingKeyFingerprintsSha256,
+  });
+
+  ExtensionConfig.fromJson(core.Map _json)
+      : this(
+          notificationReceiver: _json.containsKey('notificationReceiver')
+              ? _json['notificationReceiver'] as core.String
+              : null,
+          signingKeyFingerprintsSha256:
+              _json.containsKey('signingKeyFingerprintsSha256')
+                  ? (_json['signingKeyFingerprintsSha256'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (notificationReceiver != null)
+          'notificationReceiver': notificationReceiver!,
+        if (signingKeyFingerprintsSha256 != null)
+          'signingKeyFingerprintsSha256': signingKeyFingerprintsSha256!,
       };
 }
 

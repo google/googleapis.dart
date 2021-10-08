@@ -415,6 +415,7 @@ api.ConnectSettings buildConnectSettings() {
     o.databaseVersion = 'foo';
     o.ipAddresses = buildUnnamed1();
     o.kind = 'foo';
+    o.region = 'foo';
     o.serverCaCert = buildSslCert();
   }
   buildCounterConnectSettings--;
@@ -435,6 +436,10 @@ void checkConnectSettings(api.ConnectSettings o) {
     checkUnnamed1(o.ipAddresses!);
     unittest.expect(
       o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.region!,
       unittest.equals('foo'),
     );
     checkSslCert(o.serverCaCert!);
@@ -973,6 +978,10 @@ api.ExportContextCsvExportOptions buildExportContextCsvExportOptions() {
   final o = api.ExportContextCsvExportOptions();
   buildCounterExportContextCsvExportOptions++;
   if (buildCounterExportContextCsvExportOptions < 3) {
+    o.escapeCharacter = 'foo';
+    o.fieldsTerminatedBy = 'foo';
+    o.linesTerminatedBy = 'foo';
+    o.quoteCharacter = 'foo';
     o.selectQuery = 'foo';
   }
   buildCounterExportContextCsvExportOptions--;
@@ -982,6 +991,22 @@ api.ExportContextCsvExportOptions buildExportContextCsvExportOptions() {
 void checkExportContextCsvExportOptions(api.ExportContextCsvExportOptions o) {
   buildCounterExportContextCsvExportOptions++;
   if (buildCounterExportContextCsvExportOptions < 3) {
+    unittest.expect(
+      o.escapeCharacter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fieldsTerminatedBy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.linesTerminatedBy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.quoteCharacter!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.selectQuery!,
       unittest.equals('foo'),
@@ -1404,6 +1429,10 @@ api.ImportContextCsvImportOptions buildImportContextCsvImportOptions() {
   buildCounterImportContextCsvImportOptions++;
   if (buildCounterImportContextCsvImportOptions < 3) {
     o.columns = buildUnnamed12();
+    o.escapeCharacter = 'foo';
+    o.fieldsTerminatedBy = 'foo';
+    o.linesTerminatedBy = 'foo';
+    o.quoteCharacter = 'foo';
     o.table = 'foo';
   }
   buildCounterImportContextCsvImportOptions--;
@@ -1414,6 +1443,22 @@ void checkImportContextCsvImportOptions(api.ImportContextCsvImportOptions o) {
   buildCounterImportContextCsvImportOptions++;
   if (buildCounterImportContextCsvImportOptions < 3) {
     checkUnnamed12(o.columns!);
+    unittest.expect(
+      o.escapeCharacter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fieldsTerminatedBy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.linesTerminatedBy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.quoteCharacter!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.table!,
       unittest.equals('foo'),
@@ -2476,6 +2521,7 @@ api.Settings buildSettings() {
     o.pricingPlan = 'foo';
     o.replicationType = 'foo';
     o.settingsVersion = 'foo';
+    o.sqlServerAuditConfig = buildSqlServerAuditConfig();
     o.storageAutoResize = true;
     o.storageAutoResizeLimit = 'foo';
     o.tier = 'foo';
@@ -2535,6 +2581,7 @@ void checkSettings(api.Settings o) {
       o.settingsVersion!,
       unittest.equals('foo'),
     );
+    checkSqlServerAuditConfig(o.sqlServerAuditConfig!);
     unittest.expect(o.storageAutoResize!, unittest.isTrue);
     unittest.expect(
       o.storageAutoResizeLimit!,
@@ -2666,6 +2713,7 @@ api.SqlInstancesVerifyExternalSyncSettingsRequest
     o.mysqlSyncConfig = buildMySqlSyncConfig();
     o.syncMode = 'foo';
     o.verifyConnectionOnly = true;
+    o.verifyReplicationOnly = true;
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsRequest--;
   return o;
@@ -2681,6 +2729,7 @@ void checkSqlInstancesVerifyExternalSyncSettingsRequest(
       unittest.equals('foo'),
     );
     unittest.expect(o.verifyConnectionOnly!, unittest.isTrue);
+    unittest.expect(o.verifyReplicationOnly!, unittest.isTrue);
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsRequest--;
 }
@@ -2791,6 +2840,33 @@ void checkSqlScheduledMaintenance(api.SqlScheduledMaintenance o) {
     );
   }
   buildCounterSqlScheduledMaintenance--;
+}
+
+core.int buildCounterSqlServerAuditConfig = 0;
+api.SqlServerAuditConfig buildSqlServerAuditConfig() {
+  final o = api.SqlServerAuditConfig();
+  buildCounterSqlServerAuditConfig++;
+  if (buildCounterSqlServerAuditConfig < 3) {
+    o.bucket = 'foo';
+    o.kind = 'foo';
+  }
+  buildCounterSqlServerAuditConfig--;
+  return o;
+}
+
+void checkSqlServerAuditConfig(api.SqlServerAuditConfig o) {
+  buildCounterSqlServerAuditConfig++;
+  if (buildCounterSqlServerAuditConfig < 3) {
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlServerAuditConfig--;
 }
 
 core.int buildCounterSqlServerDatabaseDetails = 0;
@@ -4002,6 +4078,16 @@ void main() {
       final od = api.SqlScheduledMaintenance.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSqlScheduledMaintenance(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerAuditConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerAuditConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerAuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlServerAuditConfig(od);
     });
   });
 
