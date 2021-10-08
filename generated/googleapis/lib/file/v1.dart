@@ -2365,7 +2365,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata02;
+typedef OperationMetadata = $OperationMetadata03;
 
 /// RestoreInstanceRequest restores an existing instances's file share from a
 /// backup.

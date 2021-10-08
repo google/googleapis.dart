@@ -2323,39 +2323,7 @@ typedef Lien = $Lien;
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
-class ListAvailableOrgPolicyConstraintsRequest {
-  /// Size of the pages to be returned.
-  ///
-  /// This is currently unsupported and will be ignored. The server may at any
-  /// point start using this field to limit page size.
-  core.int? pageSize;
-
-  /// Page token used to retrieve the next page.
-  ///
-  /// This is currently unsupported and will be ignored. The server may at any
-  /// point start using this field.
-  core.String? pageToken;
-
-  ListAvailableOrgPolicyConstraintsRequest({
-    this.pageSize,
-    this.pageToken,
-  });
-
-  ListAvailableOrgPolicyConstraintsRequest.fromJson(core.Map _json)
-      : this(
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
-              : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-      };
-}
+typedef ListAvailableOrgPolicyConstraintsRequest = $Request04;
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
 ///
@@ -2466,39 +2434,7 @@ class ListLiensResponse {
 }
 
 /// The request sent to the ListOrgPolicies method.
-class ListOrgPoliciesRequest {
-  /// Size of the pages to be returned.
-  ///
-  /// This is currently unsupported and will be ignored. The server may at any
-  /// point start using this field to limit page size.
-  core.int? pageSize;
-
-  /// Page token used to retrieve the next page.
-  ///
-  /// This is currently unsupported and will be ignored. The server may at any
-  /// point start using this field.
-  core.String? pageToken;
-
-  ListOrgPoliciesRequest({
-    this.pageSize,
-    this.pageToken,
-  });
-
-  ListOrgPoliciesRequest.fromJson(core.Map _json)
-      : this(
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
-              : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-      };
-}
+typedef ListOrgPoliciesRequest = $Request04;
 
 /// The response returned from the `ListOrgPolicies` method.
 ///
@@ -3338,28 +3274,7 @@ typedef Status = $Status;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// A status object which is used as the `metadata` field for the `Operation`
 /// returned by `UndeleteFolder`.

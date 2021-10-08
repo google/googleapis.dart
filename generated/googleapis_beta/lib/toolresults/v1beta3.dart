@@ -2711,27 +2711,7 @@ class Environment {
       };
 }
 
-class EnvironmentDimensionValueEntry {
-  core.String? key;
-  core.String? value;
-
-  EnvironmentDimensionValueEntry({
-    this.key,
-    this.value,
-  });
-
-  EnvironmentDimensionValueEntry.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef EnvironmentDimensionValueEntry = $Entry;
 
 /// An Execution represents a collection of Steps.
 ///
@@ -5462,49 +5442,8 @@ class Step {
       };
 }
 
-class StepDimensionValueEntry {
-  core.String? key;
-  core.String? value;
-
-  StepDimensionValueEntry({
-    this.key,
-    this.value,
-  });
-
-  StepDimensionValueEntry.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
-
-class StepLabelsEntry {
-  core.String? key;
-  core.String? value;
-
-  StepLabelsEntry({
-    this.key,
-    this.value,
-  });
-
-  StepLabelsEntry.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef StepDimensionValueEntry = $Entry;
+typedef StepLabelsEntry = $Entry;
 
 /// Lightweight summary of a step within this execution.
 typedef StepSummary = $Empty;

@@ -791,63 +791,7 @@ class GoogleCloudPolicysimulatorV1AccessStateDiff {
 }
 
 /// Information about the principal, resource, and permission to check.
-class GoogleCloudPolicysimulatorV1AccessTuple {
-  /// The full resource name that identifies the resource.
-  ///
-  /// For example,
-  /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
-  /// For examples of full resource names for Google Cloud services, see
-  /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
-  ///
-  /// Required.
-  core.String? fullResourceName;
-
-  /// The IAM permission to check for the specified principal and resource.
-  ///
-  /// For a complete list of IAM permissions, see
-  /// https://cloud.google.com/iam/help/permissions/reference. For a complete
-  /// list of predefined IAM roles and the permissions in each role, see
-  /// https://cloud.google.com/iam/help/roles/reference.
-  ///
-  /// Required.
-  core.String? permission;
-
-  /// The principal whose access you want to check, in the form of the email
-  /// address that represents that principal.
-  ///
-  /// For example, `alice@example.com` or
-  /// `my-service-account@my-project.iam.gserviceaccount.com`. The principal
-  /// must be a Google Account or a service account. Other types of principals
-  /// are not supported.
-  ///
-  /// Required.
-  core.String? principal;
-
-  GoogleCloudPolicysimulatorV1AccessTuple({
-    this.fullResourceName,
-    this.permission,
-    this.principal,
-  });
-
-  GoogleCloudPolicysimulatorV1AccessTuple.fromJson(core.Map _json)
-      : this(
-          fullResourceName: _json.containsKey('fullResourceName')
-              ? _json['fullResourceName'] as core.String
-              : null,
-          permission: _json.containsKey('permission')
-              ? _json['permission'] as core.String
-              : null,
-          principal: _json.containsKey('principal')
-              ? _json['principal'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (permission != null) 'permission': permission!,
-        if (principal != null) 'principal': principal!,
-      };
-}
+typedef GoogleCloudPolicysimulatorV1AccessTuple = $V1AccessTuple;
 
 /// Details about how a binding in a policy affects a principal's ability to use
 /// a permission.
@@ -1379,25 +1323,8 @@ class GoogleCloudPolicysimulatorV1ReplayDiff {
 }
 
 /// Metadata about a Replay operation.
-class GoogleCloudPolicysimulatorV1ReplayOperationMetadata {
-  /// Time when the request was received.
-  core.String? startTime;
-
-  GoogleCloudPolicysimulatorV1ReplayOperationMetadata({
-    this.startTime,
-  });
-
-  GoogleCloudPolicysimulatorV1ReplayOperationMetadata.fromJson(core.Map _json)
-      : this(
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef GoogleCloudPolicysimulatorV1ReplayOperationMetadata
+    = $ReplayOperationMetadata;
 
 /// The result of replaying a single access tuple against a simulated state.
 class GoogleCloudPolicysimulatorV1ReplayResult {
@@ -1663,26 +1590,8 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
 }
 
 /// Metadata about a Replay operation.
-class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata {
-  /// Time when the request was received.
-  core.String? startTime;
-
-  GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata({
-    this.startTime,
-  });
-
-  GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata.fromJson(
-      core.Map _json)
-      : this(
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
+    = $ReplayOperationMetadata;
 
 /// Summary statistics about the replayed log entries.
 class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {

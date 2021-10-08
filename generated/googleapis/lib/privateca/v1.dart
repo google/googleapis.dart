@@ -3788,38 +3788,7 @@ class CertificateTemplate {
 }
 
 /// Request message for CertificateAuthorityService.DisableCertificateAuthority.
-class DisableCertificateAuthorityRequest {
-  /// An ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  DisableCertificateAuthorityRequest({
-    this.requestId,
-  });
-
-  DisableCertificateAuthorityRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef DisableCertificateAuthorityRequest = $Request01;
 
 /// Describes an Elliptic Curve key that may be used in a Certificate issued
 /// from a CaPool.
@@ -3867,38 +3836,7 @@ class EcKeyType {
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
-class EnableCertificateAuthorityRequest {
-  /// An ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  EnableCertificateAuthorityRequest({
-    this.requestId,
-  });
-
-  EnableCertificateAuthorityRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef EnableCertificateAuthorityRequest = $Request01;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3998,38 +3936,7 @@ class ExtendedKeyUsageOptions {
 }
 
 /// Request message for CertificateAuthorityService.FetchCaCerts.
-class FetchCaCertsRequest {
-  /// An ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  FetchCaCertsRequest({
-    this.requestId,
-  });
-
-  FetchCaCertsRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef FetchCaCertsRequest = $Request01;
 
 /// Response message for CertificateAuthorityService.FetchCaCerts.
 class FetchCaCertsResponse {
@@ -5684,63 +5591,11 @@ class SubordinateConfigChain {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Request message for
 /// CertificateAuthorityService.UndeleteCertificateAuthority.
-class UndeleteCertificateAuthorityRequest {
-  /// An ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  UndeleteCertificateAuthorityRequest({
-    this.requestId,
-  });
-
-  UndeleteCertificateAuthorityRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef UndeleteCertificateAuthorityRequest = $Request01;
 
 /// An X509Extension specifies an X.509 extension, which may be used in
 /// different parts of X.509 objects like certificates, CSRs, and CRLs.

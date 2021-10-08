@@ -839,25 +839,8 @@ class GoogleCloudPolicysimulatorV1ReplayConfig {
 }
 
 /// Metadata about a Replay operation.
-class GoogleCloudPolicysimulatorV1ReplayOperationMetadata {
-  /// Time when the request was received.
-  core.String? startTime;
-
-  GoogleCloudPolicysimulatorV1ReplayOperationMetadata({
-    this.startTime,
-  });
-
-  GoogleCloudPolicysimulatorV1ReplayOperationMetadata.fromJson(core.Map _json)
-      : this(
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef GoogleCloudPolicysimulatorV1ReplayOperationMetadata
+    = $ReplayOperationMetadata;
 
 /// Summary statistics about the replayed log entries.
 class GoogleCloudPolicysimulatorV1ReplayResultsSummary {
@@ -1586,26 +1569,8 @@ class GoogleCloudPolicysimulatorV1beta1ReplayDiff {
 }
 
 /// Metadata about a Replay operation.
-class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata {
-  /// Time when the request was received.
-  core.String? startTime;
-
-  GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata({
-    this.startTime,
-  });
-
-  GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata.fromJson(
-      core.Map _json)
-      : this(
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
+    = $ReplayOperationMetadata;
 
 /// The result of replaying a single access tuple against a simulated state.
 class GoogleCloudPolicysimulatorV1beta1ReplayResult {

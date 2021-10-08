@@ -1356,27 +1356,7 @@ class GoogleApiHttpBody {
 typedef GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata = $Empty;
 
 /// Response message for TriggerCatalogRejoin method.
-class GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse {
-  /// Number of user events that were joined with latest catalog items.
-  core.String? rejoinedUserEventsCount;
-
-  GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse({
-    this.rejoinedUserEventsCount,
-  });
-
-  GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse.fromJson(
-      core.Map _json)
-      : this(
-          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
-              ? _json['rejoinedUserEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
-      };
-}
+typedef GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse = $Response;
 
 /// Metadata associated with a tune operation.
 class GoogleCloudRecommendationengineV1alphaTuningMetadata {
@@ -3610,27 +3590,8 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
 }
 
 /// Response message for RejoinUserEvents method.
-class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse {
-  /// Number of user events that were joined with latest catalog items.
-  core.String? rejoinedUserEventsCount;
-
-  GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse({
-    this.rejoinedUserEventsCount,
-  });
-
-  GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse.fromJson(
-      core.Map _json)
-      : this(
-          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
-              ? _json['rejoinedUserEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
-      };
-}
+typedef GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
+    = $Response;
 
 /// UserEvent captures all metadata information recommendation engine needs to
 /// know about how end users interact with customers' website.

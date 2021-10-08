@@ -459,63 +459,11 @@ class AliasContext {
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-class AnalyzePackagesMetadata {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  AnalyzePackagesMetadata({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  AnalyzePackagesMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
+typedef AnalyzePackagesMetadata = $AnalyzePackagesMetadata;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-class AnalyzePackagesMetadataV1 {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  AnalyzePackagesMetadataV1({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  AnalyzePackagesMetadataV1.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
+typedef AnalyzePackagesMetadataV1 = $AnalyzePackagesMetadata;
 
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
@@ -562,43 +510,11 @@ class AnalyzePackagesRequestV1 {
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-class AnalyzePackagesResponse {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  AnalyzePackagesResponse({
-    this.scan,
-  });
-
-  AnalyzePackagesResponse.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
+typedef AnalyzePackagesResponse = $AnalyzePackagesResponse;
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-class AnalyzePackagesResponseV1 {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  AnalyzePackagesResponseV1({
-    this.scan,
-  });
-
-  AnalyzePackagesResponseV1.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
+typedef AnalyzePackagesResponseV1 = $AnalyzePackagesResponse;
 
 /// Artifact describes a build product.
 class Artifact {
@@ -906,22 +822,7 @@ class BuildProvenance {
       };
 }
 
-class BuilderConfig {
-  core.String? id;
-
-  BuilderConfig({
-    this.id,
-  });
-
-  BuilderConfig.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
-}
+typedef BuilderConfig = $AbuseType;
 
 /// The category to which the update belongs.
 class Category {

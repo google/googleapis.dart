@@ -713,44 +713,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
 }
 
 /// Settings specific to the Key Management Service.
-class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
-  /// Input only.
-  ///
-  /// Immutable. The time at which the Key Management Service will automatically
-  /// create a new version of the crypto key and mark it as the primary.
-  ///
-  /// Required.
-  core.String? nextRotationTime;
-
-  /// Input only.
-  ///
-  /// Immutable. \[next_rotation_time\] will be advanced by this period when the
-  /// Key Management Service automatically rotates a key. Must be at least 24
-  /// hours and at most 876,000 hours.
-  ///
-  /// Required.
-  core.String? rotationPeriod;
-
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings({
-    this.nextRotationTime,
-    this.rotationPeriod,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map _json)
-      : this(
-          nextRotationTime: _json.containsKey('nextRotationTime')
-              ? _json['nextRotationTime'] as core.String
-              : null,
-          rotationPeriod: _json.containsKey('rotationPeriod')
-              ? _json['rotationPeriod'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-      };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadKMSSettings = $WorkloadKMSSettings;
 
 /// Represent the resources that are children of this Workload.
 class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
@@ -1269,44 +1232,8 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings {
 }
 
 /// Settings specific to the Key Management Service.
-class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
-  /// Input only.
-  ///
-  /// Immutable. The time at which the Key Management Service will automatically
-  /// create a new version of the crypto key and mark it as the primary.
-  ///
-  /// Required.
-  core.String? nextRotationTime;
-
-  /// Input only.
-  ///
-  /// Immutable. \[next_rotation_time\] will be advanced by this period when the
-  /// Key Management Service automatically rotates a key. Must be at least 24
-  /// hours and at most 876,000 hours.
-  ///
-  /// Required.
-  core.String? rotationPeriod;
-
-  GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings({
-    this.nextRotationTime,
-    this.rotationPeriod,
-  });
-
-  GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(core.Map _json)
-      : this(
-          nextRotationTime: _json.containsKey('nextRotationTime')
-              ? _json['nextRotationTime'] as core.String
-              : null,
-          rotationPeriod: _json.containsKey('rotationPeriod')
-              ? _json['rotationPeriod'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-      };
-}
+typedef GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings
+    = $WorkloadKMSSettings;
 
 /// Represent the resources that are children of this Workload.
 class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {

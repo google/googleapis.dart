@@ -20742,60 +20742,10 @@ class PostalCodeRange {
       };
 }
 
-class Price {
-  /// The currency of the price.
-  core.String? currency;
-
-  /// The price represented as a number.
-  core.String? value;
-
-  Price({
-    this.currency,
-    this.value,
-  });
-
-  Price.fromJson(core.Map _json)
-      : this(
-          currency: _json.containsKey('currency')
-              ? _json['currency'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currency != null) 'currency': currency!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef Price = $Price;
 
 /// The price represented as a number and currency.
-class PriceAmount {
-  /// The currency of the price.
-  core.String? currency;
-
-  /// The price represented as a number.
-  core.String? value;
-
-  PriceAmount({
-    this.currency,
-    this.value,
-  });
-
-  PriceAmount.fromJson(core.Map _json)
-      : this(
-          currency: _json.containsKey('currency')
-              ? _json['currency'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currency != null) 'currency': currency!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef PriceAmount = $Price;
 
 /// Required product attributes are primarily defined by the products data
 /// specification.
@@ -24748,50 +24698,10 @@ class RequestPhoneVerificationResponse {
 typedef RequestReviewBuyOnGoogleProgramRequest = $Empty;
 
 /// Request message for the RequestReviewFreeListings Program method.
-class RequestReviewFreeListingsRequest {
-  /// The code \[ISO 3166-1
-  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
-  /// for which review is to be requested.
-  core.String? regionCode;
-
-  RequestReviewFreeListingsRequest({
-    this.regionCode,
-  });
-
-  RequestReviewFreeListingsRequest.fromJson(core.Map _json)
-      : this(
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (regionCode != null) 'regionCode': regionCode!,
-      };
-}
+typedef RequestReviewFreeListingsRequest = $Request05;
 
 /// Request message for the RequestReviewShoppingAds program method.
-class RequestReviewShoppingAdsRequest {
-  /// The code \[ISO 3166-1
-  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
-  /// for which review is to be requested.
-  core.String? regionCode;
-
-  RequestReviewShoppingAdsRequest({
-    this.regionCode,
-  });
-
-  RequestReviewShoppingAdsRequest.fromJson(core.Map _json)
-      : this(
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (regionCode != null) 'regionCode': regionCode!,
-      };
-}
+typedef RequestReviewShoppingAdsRequest = $Request05;
 
 /// Return address resource.
 class ReturnAddress {

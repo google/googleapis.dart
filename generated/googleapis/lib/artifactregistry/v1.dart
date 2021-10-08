@@ -647,35 +647,7 @@ class ImportAptArtifactsErrorInfo {
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
-class ImportAptArtifactsGcsSource {
-  /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
-  core.List<core.String>? uris;
-
-  /// Supports URI wildcards for matching multiple objects from a single URI.
-  core.bool? useWildcards;
-
-  ImportAptArtifactsGcsSource({
-    this.uris,
-    this.useWildcards,
-  });
-
-  ImportAptArtifactsGcsSource.fromJson(core.Map _json)
-      : this(
-          uris: _json.containsKey('uris')
-              ? (_json['uris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          useWildcards: _json.containsKey('useWildcards')
-              ? _json['useWildcards'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uris != null) 'uris': uris!,
-        if (useWildcards != null) 'useWildcards': useWildcards!,
-      };
-}
+typedef ImportAptArtifactsGcsSource = $ArtifactsGcsSource;
 
 /// The response message from importing artifacts.
 class ImportAptArtifactsResponse {
@@ -744,35 +716,7 @@ class ImportYumArtifactsErrorInfo {
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
-class ImportYumArtifactsGcsSource {
-  /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
-  core.List<core.String>? uris;
-
-  /// Supports URI wildcards for matching multiple objects from a single URI.
-  core.bool? useWildcards;
-
-  ImportYumArtifactsGcsSource({
-    this.uris,
-    this.useWildcards,
-  });
-
-  ImportYumArtifactsGcsSource.fromJson(core.Map _json)
-      : this(
-          uris: _json.containsKey('uris')
-              ? (_json['uris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          useWildcards: _json.containsKey('useWildcards')
-              ? _json['useWildcards'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uris != null) 'uris': uris!,
-        if (useWildcards != null) 'useWildcards': useWildcards!,
-      };
-}
+typedef ImportYumArtifactsGcsSource = $ArtifactsGcsSource;
 
 /// The response message from importing artifacts.
 class ImportYumArtifactsResponse {

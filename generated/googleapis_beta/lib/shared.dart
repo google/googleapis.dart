@@ -15,6 +15,41 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
+class $AlertsRequest {
+  /// list of alert IDs.
+  ///
+  /// Required.
+  core.List<core.String>? alertId;
+
+  /// The unique identifier of the Google Workspace organization account of the
+  /// customer the alerts are associated with.
+  ///
+  /// Optional.
+  core.String? customerId;
+
+  $AlertsRequest({
+    this.alertId,
+    this.customerId,
+  });
+
+  $AlertsRequest.fromJson(core.Map _json)
+      : this(
+          alertId: _json.containsKey('alertId')
+              ? (_json['alertId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alertId != null) 'alertId': alertId!,
+        if (customerId != null) 'customerId': customerId!,
+      };
+}
+
 class $AliasContext {
   /// The alias kind.
   /// Possible string values are:
@@ -42,6 +77,52 @@ class $AliasContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
+      };
+}
+
+class $AnalyzePackagesMetadata {
+  /// When the scan was created.
+  core.String? createTime;
+
+  /// The resource URI of the container image being scanned.
+  core.String? resourceUri;
+
+  $AnalyzePackagesMetadata({
+    this.createTime,
+    this.resourceUri,
+  });
+
+  $AnalyzePackagesMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? _json['resourceUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+      };
+}
+
+class $AnalyzePackagesResponse {
+  /// The name of the scan resource created by this successful scan.
+  core.String? scan;
+
+  $AnalyzePackagesResponse({
+    this.scan,
+  });
+
+  $AnalyzePackagesResponse.fromJson(core.Map _json)
+      : this(
+          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scan != null) 'scan': scan!,
       };
 }
 
@@ -127,6 +208,64 @@ class $AuditLogConfig {
       };
 }
 
+class $ByProducts {
+  core.Map<core.String, core.String>? customValues;
+
+  $ByProducts({
+    this.customValues,
+  });
+
+  $ByProducts.fromJson(core.Map _json)
+      : this(
+          customValues: _json.containsKey('customValues')
+              ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customValues != null) 'customValues': customValues!,
+      };
+}
+
+class $CertificateAuthorityRequest {
+  /// An ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  $CertificateAuthorityRequest({
+    this.requestId,
+  });
+
+  $CertificateAuthorityRequest.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
 class $Command {
   /// Command-line arguments used when executing this command.
   core.List<core.String>? args;
@@ -192,6 +331,89 @@ class $Command {
       };
 }
 
+class $CommonOperationMetadata {
+  /// The creation time of the operation.
+  core.String? createTime;
+
+  /// The state of the operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "RUNNING" : Operation is still running.
+  /// - "CANCELLING" : Operation is being cancelled.
+  /// - "SUCCEEDED" : Operation succeeded.
+  /// - "FAILED" : Operation failed.
+  /// - "CANCELLED" : Operation is cancelled.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  core.String? stateMessage;
+
+  /// The last update time of the operation.
+  core.String? updateTime;
+
+  $CommonOperationMetadata({
+    this.createTime,
+    this.state,
+    this.stateMessage,
+    this.updateTime,
+  });
+
+  $CommonOperationMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class $Config {
+  /// Annotation spec set resource name.
+  ///
+  /// Required.
+  core.String? annotationSpecSet;
+
+  /// Instruction message showed on contributors UI.
+  ///
+  /// Optional.
+  core.String? instructionMessage;
+
+  $Config({
+    this.annotationSpecSet,
+    this.instructionMessage,
+  });
+
+  $Config.fromJson(core.Map _json)
+      : this(
+          annotationSpecSet: _json.containsKey('annotationSpecSet')
+              ? _json['annotationSpecSet'] as core.String
+              : null,
+          instructionMessage: _json.containsKey('instructionMessage')
+              ? _json['instructionMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
+        if (instructionMessage != null)
+          'instructionMessage': instructionMessage!,
+      };
+}
+
 class $Date {
   /// Day of a month.
   ///
@@ -229,15 +451,538 @@ class $Date {
       };
 }
 
-/// A reusable empty messages.
+class $Deployment {
+  /// Address of the runtime element hosting this deployment.
+  core.String? address;
+
+  /// Configuration used to create this deployment.
+  core.String? config;
+
+  /// Beginning of the lifetime of this deployment.
+  ///
+  /// Required.
+  core.String? deployTime;
+
+  /// Platform hosting this deployment.
+  /// Possible string values are:
+  /// - "PLATFORM_UNSPECIFIED" : Unknown.
+  /// - "GKE" : Google Container Engine.
+  /// - "FLEX" : Google App Engine: Flexible Environment.
+  /// - "CUSTOM" : Custom user-defined platform.
+  core.String? platform;
+
+  /// Resource URI for the artifact being deployed taken from the deployable
+  /// field with the same name.
+  ///
+  /// Output only.
+  core.List<core.String>? resourceUri;
+
+  /// End of the lifetime of this deployment.
+  core.String? undeployTime;
+
+  /// Identity of the user that triggered this deployment.
+  core.String? userEmail;
+
+  $Deployment({
+    this.address,
+    this.config,
+    this.deployTime,
+    this.platform,
+    this.resourceUri,
+    this.undeployTime,
+    this.userEmail,
+  });
+
+  $Deployment.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? _json['address'] as core.String
+              : null,
+          config: _json.containsKey('config')
+              ? _json['config'] as core.String
+              : null,
+          deployTime: _json.containsKey('deployTime')
+              ? _json['deployTime'] as core.String
+              : null,
+          platform: _json.containsKey('platform')
+              ? _json['platform'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? (_json['resourceUri'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          undeployTime: _json.containsKey('undeployTime')
+              ? _json['undeployTime'] as core.String
+              : null,
+          userEmail: _json.containsKey('userEmail')
+              ? _json['userEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (config != null) 'config': config!,
+        if (deployTime != null) 'deployTime': deployTime!,
+        if (platform != null) 'platform': platform!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (undeployTime != null) 'undeployTime': undeployTime!,
+        if (userEmail != null) 'userEmail': userEmail!,
+      };
+}
+
+class $DocumentEntityRelation {
+  /// Object entity id.
+  core.String? objectId;
+
+  /// Relationship description.
+  core.String? relation;
+
+  /// Subject entity id.
+  core.String? subjectId;
+
+  $DocumentEntityRelation({
+    this.objectId,
+    this.relation,
+    this.subjectId,
+  });
+
+  $DocumentEntityRelation.fromJson(core.Map _json)
+      : this(
+          objectId: _json.containsKey('objectId')
+              ? _json['objectId'] as core.String
+              : null,
+          relation: _json.containsKey('relation')
+              ? _json['relation'] as core.String
+              : null,
+          subjectId: _json.containsKey('subjectId')
+              ? _json['subjectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (relation != null) 'relation': relation!,
+        if (subjectId != null) 'subjectId': subjectId!,
+      };
+}
+
+class $DocumentPageDetectedLanguage {
+  /// Confidence of detected language.
+  ///
+  /// Range \[0, 1\].
+  core.double? confidence;
+
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String? languageCode;
+
+  $DocumentPageDetectedLanguage({
+    this.confidence,
+    this.languageCode,
+  });
+
+  $DocumentPageDetectedLanguage.fromJson(core.Map _json)
+      : this(
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (languageCode != null) 'languageCode': languageCode!,
+      };
+}
+
+class $DocumentPageDimension {
+  /// Page height.
+  core.double? height;
+
+  /// Dimension unit.
+  core.String? unit;
+
+  /// Page width.
+  core.double? width;
+
+  $DocumentPageDimension({
+    this.height,
+    this.unit,
+    this.width,
+  });
+
+  $DocumentPageDimension.fromJson(core.Map _json)
+      : this(
+          height: _json.containsKey('height')
+              ? (_json['height'] as core.num).toDouble()
+              : null,
+          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          width: _json.containsKey('width')
+              ? (_json['width'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (height != null) 'height': height!,
+        if (unit != null) 'unit': unit!,
+        if (width != null) 'width': width!,
+      };
+}
+
+class $DocumentPageImage {
+  /// Raw byte content of the image.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> _bytes) {
+    content =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Height of the image in pixels.
+  core.int? height;
+
+  /// Encoding mime type for the image.
+  core.String? mimeType;
+
+  /// Width of the image in pixels.
+  core.int? width;
+
+  $DocumentPageImage({
+    this.content,
+    this.height,
+    this.mimeType,
+    this.width,
+  });
+
+  $DocumentPageImage.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (height != null) 'height': height!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (width != null) 'width': width!,
+      };
+}
+
+class $DocumentPageMatrix {
+  /// Number of columns in the matrix.
+  core.int? cols;
+
+  /// The matrix data.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> _bytes) {
+    data =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Number of rows in the matrix.
+  core.int? rows;
+
+  /// This encodes information about what data type the matrix uses.
+  ///
+  /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
+  /// OpenCV primitive data types, please refer to
+  /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
+  core.int? type;
+
+  $DocumentPageMatrix({
+    this.cols,
+    this.data,
+    this.rows,
+    this.type,
+  });
+
+  $DocumentPageMatrix.fromJson(core.Map _json)
+      : this(
+          cols: _json.containsKey('cols') ? _json['cols'] as core.int : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          rows: _json.containsKey('rows') ? _json['rows'] as core.int : null,
+          type: _json.containsKey('type') ? _json['type'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cols != null) 'cols': cols!,
+        if (data != null) 'data': data!,
+        if (rows != null) 'rows': rows!,
+        if (type != null) 'type': type!,
+      };
+}
+
+class $DocumentPageTokenDetectedBreak {
+  /// Detected break type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified break type.
+  /// - "SPACE" : A single whitespace.
+  /// - "WIDE_SPACE" : A wider whitespace.
+  /// - "HYPHEN" : A hyphen that indicates that a token has been split across
+  /// lines.
+  core.String? type;
+
+  $DocumentPageTokenDetectedBreak({
+    this.type,
+  });
+
+  $DocumentPageTokenDetectedBreak.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
+
+class $DocumentProvenanceParent {
+  /// The id of the parent provenance.
+  core.int? id;
+
+  /// The index of the parent item in the corresponding item list (eg.
+  ///
+  /// list of entities, properties within entities, etc.) on parent revision.
+  core.int? index;
+
+  /// The index of the \[Document.revisions\] identifying the parent revision.
+  core.int? revision;
+
+  $DocumentProvenanceParent({
+    this.id,
+    this.index,
+    this.revision,
+  });
+
+  $DocumentProvenanceParent.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.int : null,
+          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (index != null) 'index': index!,
+        if (revision != null) 'revision': revision!,
+      };
+}
+
+class $DocumentRevisionHumanReview {
+  /// Human review state.
+  ///
+  /// e.g. `requested`, `succeeded`, `rejected`.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  ///
+  /// For example, the rejection reason when the state is `rejected`.
+  core.String? stateMessage;
+
+  $DocumentRevisionHumanReview({
+    this.state,
+    this.stateMessage,
+  });
+
+  $DocumentRevisionHumanReview.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
+class $DocumentShardInfo {
+  /// Total number of shards.
+  core.String? shardCount;
+
+  /// The 0-based index of this shard.
+  core.String? shardIndex;
+
+  /// The index of the first character in Document.text in the overall document
+  /// global text.
+  core.String? textOffset;
+
+  $DocumentShardInfo({
+    this.shardCount,
+    this.shardIndex,
+    this.textOffset,
+  });
+
+  $DocumentShardInfo.fromJson(core.Map _json)
+      : this(
+          shardCount: _json.containsKey('shardCount')
+              ? _json['shardCount'] as core.String
+              : null,
+          shardIndex: _json.containsKey('shardIndex')
+              ? _json['shardIndex'] as core.String
+              : null,
+          textOffset: _json.containsKey('textOffset')
+              ? _json['textOffset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (shardCount != null) 'shardCount': shardCount!,
+        if (shardIndex != null) 'shardIndex': shardIndex!,
+        if (textOffset != null) 'textOffset': textOffset!,
+      };
+}
+
+class $DocumentStyleFontSize {
+  /// Font size for the text.
+  core.double? size;
+
+  /// Unit for the font size.
+  ///
+  /// Follows CSS naming (in, px, pt, etc.).
+  core.String? unit;
+
+  $DocumentStyleFontSize({
+    this.size,
+    this.unit,
+  });
+
+  $DocumentStyleFontSize.fromJson(core.Map _json)
+      : this(
+          size: _json.containsKey('size')
+              ? (_json['size'] as core.num).toDouble()
+              : null,
+          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (size != null) 'size': size!,
+        if (unit != null) 'unit': unit!,
+      };
+}
+
+class $DocumentTextAnchorTextSegment {
+  /// TextSegment half open end UTF-8 char index in the Document.text.
+  core.String? endIndex;
+
+  /// TextSegment start UTF-8 char index in the Document.text.
+  core.String? startIndex;
+
+  $DocumentTextAnchorTextSegment({
+    this.endIndex,
+    this.startIndex,
+  });
+
+  $DocumentTextAnchorTextSegment.fromJson(core.Map _json)
+      : this(
+          endIndex: _json.containsKey('endIndex')
+              ? _json['endIndex'] as core.String
+              : null,
+          startIndex: _json.containsKey('startIndex')
+              ? _json['startIndex'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
+      };
+}
+
 class $Empty {
   $Empty();
 
   $Empty.fromJson(
       // ignore: avoid_unused_constructor_parameters
-      core.Map json);
+      core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+class $Encryption {
+  /// URI of the key delivery service.
+  ///
+  /// This URI is inserted into the M3U8 header.
+  ///
+  /// Required.
+  core.String? keyUri;
+
+  $Encryption({
+    this.keyUri,
+  });
+
+  $Encryption.fromJson(core.Map _json)
+      : this(
+          keyUri: _json.containsKey('keyUri')
+              ? _json['keyUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyUri != null) 'keyUri': keyUri!,
+      };
+}
+
+class $Entry {
+  core.String? key;
+  core.String? value;
+
+  $Entry({
+    this.key,
+    this.value,
+  });
+
+  $Entry.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+class $Event {
+  /// The URI of the image that was pulled.
+  core.String? imageUri;
+
+  $Event({
+    this.imageUri,
+  });
+
+  $Event.fromJson(core.Map _json)
+      : this(
+          imageUri: _json.containsKey('imageUri')
+              ? _json['imageUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri!,
+      };
 }
 
 class $Expr {
@@ -342,6 +1087,62 @@ class $Fingerprint {
       };
 }
 
+class $GcsDestination {
+  /// The format of the gcs destination.
+  ///
+  /// Only "text/csv" and "application/json" are supported.
+  ///
+  /// Required.
+  core.String? mimeType;
+
+  /// The output uri of destination file.
+  ///
+  /// Required.
+  core.String? outputUri;
+
+  $GcsDestination({
+    this.mimeType,
+    this.outputUri,
+  });
+
+  $GcsDestination.fromJson(core.Map _json)
+      : this(
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+          outputUri: _json.containsKey('outputUri')
+              ? _json['outputUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (outputUri != null) 'outputUri': outputUri!,
+      };
+}
+
+class $GcsFolderDestination {
+  /// Cloud Storage directory to export data to.
+  ///
+  /// Required.
+  core.String? outputFolderUri;
+
+  $GcsFolderDestination({
+    this.outputFolderUri,
+  });
+
+  $GcsFolderDestination.fromJson(core.Map _json)
+      : this(
+          outputFolderUri: _json.containsKey('outputFolderUri')
+              ? _json['outputFolderUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
+      };
+}
+
 class $GetPolicyOptions {
   /// The policy format version to be returned.
   ///
@@ -395,6 +1196,278 @@ class $GitSourceContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
         if (url != null) 'url': url!,
+      };
+}
+
+class $GoogleCloudDocumentaiV1beta2GcsSource {
+  core.String? uri;
+
+  $GoogleCloudDocumentaiV1beta2GcsSource({
+    this.uri,
+  });
+
+  $GoogleCloudDocumentaiV1beta2GcsSource.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+class $HumanAnnotationConfig {
+  /// A human-readable description for AnnotatedDataset.
+  ///
+  /// The description can be up to 10000 characters long.
+  ///
+  /// Optional.
+  core.String? annotatedDatasetDescription;
+
+  /// A human-readable name for AnnotatedDataset defined by users.
+  ///
+  /// Maximum of 64 characters .
+  ///
+  /// Required.
+  core.String? annotatedDatasetDisplayName;
+
+  /// If you want your own labeling contributors to manage and work on this
+  /// labeling request, you can set these contributors here.
+  ///
+  /// We will give them access to the question types in crowdcompute. Note that
+  /// these emails must be registered in crowdcompute worker UI:
+  /// https://crowd-compute.appspot.com/
+  ///
+  /// Optional.
+  core.List<core.String>? contributorEmails;
+
+  /// Instruction resource name.
+  ///
+  /// Required.
+  core.String? instruction;
+
+  /// A human-readable label used to logically group labeling tasks.
+  ///
+  /// This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
+  ///
+  /// Optional.
+  core.String? labelGroup;
+
+  /// The Language of this question, as a
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
+  ///
+  /// Default value is en-US. Only need to set this when task is language
+  /// related. For example, French text classification.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// Maximum duration for contributors to answer a question.
+  ///
+  /// Maximum is 3600 seconds. Default is 3600 seconds.
+  ///
+  /// Optional.
+  core.String? questionDuration;
+
+  /// Replication of questions.
+  ///
+  /// Each question will be sent to up to this number of contributors to label.
+  /// Aggregated answers will be returned. Default is set to 1. For image
+  /// related labeling, valid values are 1, 3, 5.
+  ///
+  /// Optional.
+  core.int? replicaCount;
+
+  /// Email of the user who started the labeling task and should be notified by
+  /// email.
+  ///
+  /// If empty no notification will be sent.
+  core.String? userEmailAddress;
+
+  $HumanAnnotationConfig({
+    this.annotatedDatasetDescription,
+    this.annotatedDatasetDisplayName,
+    this.contributorEmails,
+    this.instruction,
+    this.labelGroup,
+    this.languageCode,
+    this.questionDuration,
+    this.replicaCount,
+    this.userEmailAddress,
+  });
+
+  $HumanAnnotationConfig.fromJson(core.Map _json)
+      : this(
+          annotatedDatasetDescription:
+              _json.containsKey('annotatedDatasetDescription')
+                  ? _json['annotatedDatasetDescription'] as core.String
+                  : null,
+          annotatedDatasetDisplayName:
+              _json.containsKey('annotatedDatasetDisplayName')
+                  ? _json['annotatedDatasetDisplayName'] as core.String
+                  : null,
+          contributorEmails: _json.containsKey('contributorEmails')
+              ? (_json['contributorEmails'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          instruction: _json.containsKey('instruction')
+              ? _json['instruction'] as core.String
+              : null,
+          labelGroup: _json.containsKey('labelGroup')
+              ? _json['labelGroup'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          questionDuration: _json.containsKey('questionDuration')
+              ? _json['questionDuration'] as core.String
+              : null,
+          replicaCount: _json.containsKey('replicaCount')
+              ? _json['replicaCount'] as core.int
+              : null,
+          userEmailAddress: _json.containsKey('userEmailAddress')
+              ? _json['userEmailAddress'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotatedDatasetDescription != null)
+          'annotatedDatasetDescription': annotatedDatasetDescription!,
+        if (annotatedDatasetDisplayName != null)
+          'annotatedDatasetDisplayName': annotatedDatasetDisplayName!,
+        if (contributorEmails != null) 'contributorEmails': contributorEmails!,
+        if (instruction != null) 'instruction': instruction!,
+        if (labelGroup != null) 'labelGroup': labelGroup!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (questionDuration != null) 'questionDuration': questionDuration!,
+        if (replicaCount != null) 'replicaCount': replicaCount!,
+        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress!,
+      };
+}
+
+class $HumanReviewStatus {
+  /// The name of the operation triggered by the processed document.
+  ///
+  /// This field is populated only when the \[state\] is
+  /// \[HUMAN_REVIEW_IN_PROGRESS\]. It has the same response type and metadata
+  /// as the long running operation returned by \[ReviewDocument\] method.
+  core.String? humanReviewOperation;
+
+  /// The state of human review on the processing request.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
+  /// to an internal error.
+  /// - "SKIPPED" : Human review is skipped for the document. This can happen
+  /// because human review is not enabled on the processor or the processing
+  /// request has been set to skip this document.
+  /// - "VALIDATION_PASSED" : Human review validation is triggered and passed,
+  /// so no review is needed.
+  /// - "IN_PROGRESS" : Human review validation is triggered and the document is
+  /// under review.
+  /// - "ERROR" : Some error happened during triggering human review, see the
+  /// \[state_message\] for details.
+  core.String? state;
+
+  /// A message providing more details about the human review state.
+  core.String? stateMessage;
+
+  $HumanReviewStatus({
+    this.humanReviewOperation,
+    this.state,
+    this.stateMessage,
+  });
+
+  $HumanReviewStatus.fromJson(core.Map _json)
+      : this(
+          humanReviewOperation: _json.containsKey('humanReviewOperation')
+              ? _json['humanReviewOperation'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (humanReviewOperation != null)
+          'humanReviewOperation': humanReviewOperation!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
+class $ImportDataOperationResponse {
+  /// Ouptut only.
+  ///
+  /// The name of imported dataset.
+  core.String? dataset;
+
+  /// Number of examples imported successfully.
+  ///
+  /// Output only.
+  core.int? importCount;
+
+  /// Total number of examples requested to import
+  ///
+  /// Output only.
+  core.int? totalCount;
+
+  $ImportDataOperationResponse({
+    this.dataset,
+    this.importCount,
+    this.totalCount,
+  });
+
+  $ImportDataOperationResponse.fromJson(core.Map _json)
+      : this(
+          dataset: _json.containsKey('dataset')
+              ? _json['dataset'] as core.String
+              : null,
+          importCount: _json.containsKey('importCount')
+              ? _json['importCount'] as core.int
+              : null,
+          totalCount: _json.containsKey('totalCount')
+              ? _json['totalCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+        if (importCount != null) 'importCount': importCount!,
+        if (totalCount != null) 'totalCount': totalCount!,
+      };
+}
+
+class $LabelStats {
+  /// Map of each annotation spec's example count.
+  ///
+  /// Key is the annotation spec name and value is the number of examples for
+  /// that annotation spec. If the annotated dataset does not have annotation
+  /// spec, the map will return a pair where the key is empty string and value
+  /// is the total number of annotations.
+  core.Map<core.String, core.String>? exampleCount;
+
+  $LabelStats({
+    this.exampleCount,
+  });
+
+  $LabelStats.fromJson(core.Map _json)
+      : this(
+          exampleCount: _json.containsKey('exampleCount')
+              ? (_json['exampleCount'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exampleCount != null) 'exampleCount': exampleCount!,
       };
 }
 
@@ -466,6 +1539,66 @@ class $Location {
       };
 }
 
+class $MigrateLocationDestructivelyMetadata {
+  /// The time the LRO was created.
+  core.String? createTime;
+
+  /// The time the LRO was last updated.
+  core.String? lastUpdateTime;
+
+  /// The current state of the migration.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state. Should not be used.
+  /// - "PENDING" : The MigrateLocationDestructively request has passed
+  /// precondition checks and the bucket migration will begin soon.
+  /// - "CREATING_TEMP_BUCKET" : Generating a unique bucket name, storing the
+  /// source -> temp mapping in Spanner, and actually creating the temporary
+  /// bucket via Bigstore.
+  /// - "TRANSFERRING_TO_TEMP" : The first STS transfer to move all objects from
+  /// the source bucket to the temp bucket is underway.
+  /// - "DELETING_SOURCE_BUCKET" : The source bucket is being emptied and
+  /// deleted.
+  /// - "CREATING_DESTINATION_BUCKET" : The source bucket is being recreated in
+  /// the new location.
+  /// - "TRANSFERRING_TO_DESTINATION" : The second STS transfer to move all
+  /// objects from the temp bucket to the final bucket is underway.
+  /// - "DELETING_TEMP_BUCKET" : The temp bucket is being emptied and deleted.
+  /// - "SUCCEEDED" : All stages of the migration have completed and the
+  /// operation has been marked done and updated with a response.
+  /// - "FAILED" : The migration failed at some stage and it is not possible to
+  /// continue retrying that stage. Manual recovery may be needed. Rollback is
+  /// either impossible at this stage, or has been attempted and failed.
+  /// - "ROLLING_BACK" : The migration has encountered a permanent failure and
+  /// is now being rolled back so that the source bucket is restored to its
+  /// original state.
+  /// - "ROLLED_BACK" : The migration has been successfully rolled back.
+  core.String? state;
+
+  $MigrateLocationDestructivelyMetadata({
+    this.createTime,
+    this.lastUpdateTime,
+    this.state,
+  });
+
+  $MigrateLocationDestructivelyMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          lastUpdateTime: _json.containsKey('lastUpdateTime')
+              ? _json['lastUpdateTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
 class $Money {
   /// The three-letter currency code defined in ISO 4217.
   core.String? currencyCode;
@@ -507,7 +1640,142 @@ class $Money {
       };
 }
 
+class $NormalizedVertex {
+  /// X coordinate.
+  core.double? x;
+
+  /// Y coordinate (starts from the top of the image).
+  core.double? y;
+
+  $NormalizedVertex({
+    this.x,
+    this.y,
+  });
+
+  $NormalizedVertex.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x')
+              ? (_json['x'] as core.num).toDouble()
+              : null,
+          y: _json.containsKey('y')
+              ? (_json['y'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
+      };
+}
+
+class $OSPolicyInventoryFilter {
+  /// The OS short name
+  ///
+  /// Required.
+  core.String? osShortName;
+
+  /// The OS version Prefix matches are supported if asterisk(*) is provided as
+  /// the last character.
+  ///
+  /// For example, to match all versions with a major version of `7`, specify
+  /// the following value for this field `7.*` An empty string matches all OS
+  /// versions.
+  core.String? osVersion;
+
+  $OSPolicyInventoryFilter({
+    this.osShortName,
+    this.osVersion,
+  });
+
+  $OSPolicyInventoryFilter.fromJson(core.Map _json)
+      : this(
+          osShortName: _json.containsKey('osShortName')
+              ? _json['osShortName'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osShortName != null) 'osShortName': osShortName!,
+        if (osVersion != null) 'osVersion': osVersion!,
+      };
+}
+
+class $OSPolicyResourcePackageResourceYUM {
+  /// Package name.
+  ///
+  /// Required.
+  core.String? name;
+
+  $OSPolicyResourcePackageResourceYUM({
+    this.name,
+  });
+
+  $OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 class $OperationMetadata {
+  /// The creation time of the operation.
+  core.String? createTime;
+
+  /// The state of the current batch processing.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted.
+  /// - "ACCEPTED" : Request is received.
+  /// - "WAITING" : Request operation is waiting for scheduling.
+  /// - "RUNNING" : Request is being processed.
+  /// - "SUCCEEDED" : The batch processing completed successfully.
+  /// - "CANCELLED" : The batch processing was cancelled.
+  /// - "FAILED" : The batch processing has failed.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  core.String? stateMessage;
+
+  /// The last update time of the operation.
+  core.String? updateTime;
+
+  $OperationMetadata({
+    this.createTime,
+    this.state,
+    this.stateMessage,
+    this.updateTime,
+  });
+
+  $OperationMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class $OperationMetadata01 {
   /// API version used to start the operation.
   ///
   /// Output only.
@@ -547,7 +1815,7 @@ class $OperationMetadata {
   /// Output only.
   core.String? verb;
 
-  $OperationMetadata({
+  $OperationMetadata01({
     this.apiVersion,
     this.createTime,
     this.endTime,
@@ -557,7 +1825,7 @@ class $OperationMetadata {
     this.verb,
   });
 
-  $OperationMetadata.fromJson(core.Map _json)
+  $OperationMetadata01.fromJson(core.Map _json)
       : this(
           apiVersion: _json.containsKey('apiVersion')
               ? _json['apiVersion'] as core.String
@@ -825,6 +2093,67 @@ class $RelatedUrl {
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (url != null) 'url': url!,
+      };
+}
+
+class $ReplayOperationMetadata {
+  /// Time when the request was received.
+  core.String? startTime;
+
+  $ReplayOperationMetadata({
+    this.startTime,
+  });
+
+  $ReplayOperationMetadata.fromJson(core.Map _json)
+      : this(
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+class $Response {
+  /// Number of user events that were joined with latest catalog items.
+  core.String? rejoinedUserEventsCount;
+
+  $Response({
+    this.rejoinedUserEventsCount,
+  });
+
+  $Response.fromJson(core.Map _json)
+      : this(
+          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
+              ? _json['rejoinedUserEventsCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rejoinedUserEventsCount != null)
+          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
+      };
+}
+
+class $ReviewDocumentResponse {
+  /// The Cloud Storage uri for the human reviewed document.
+  core.String? gcsDestination;
+
+  $ReviewDocumentResponse({
+    this.gcsDestination,
+  });
+
+  $ReviewDocumentResponse.fromJson(core.Map _json)
+      : this(
+          gcsDestination: _json.containsKey('gcsDestination')
+              ? _json['gcsDestination'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -1805,5 +3134,29 @@ class $TestIamPermissionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+class $Vertex {
+  /// X coordinate.
+  core.int? x;
+
+  /// Y coordinate (starts from the top of the image).
+  core.int? y;
+
+  $Vertex({
+    this.x,
+    this.y,
+  });
+
+  $Vertex.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x') ? _json['x'] as core.int : null,
+          y: _json.containsKey('y') ? _json['y'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }

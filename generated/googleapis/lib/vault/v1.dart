@@ -2493,54 +2493,10 @@ class GroupsCountResult {
 }
 
 /// Options for Groups exports.
-class GroupsExportOptions {
-  /// The file format for exported messages.
-  /// Possible string values are:
-  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : Export as MBOX.
-  /// - "PST" : Export as PST.
-  core.String? exportFormat;
-
-  GroupsExportOptions({
-    this.exportFormat,
-  });
-
-  GroupsExportOptions.fromJson(core.Map _json)
-      : this(
-          exportFormat: _json.containsKey('exportFormat')
-              ? _json['exportFormat'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat!,
-      };
-}
+typedef GroupsExportOptions = $ExportOptions;
 
 /// Options for Chat exports.
-class HangoutsChatExportOptions {
-  /// The file format for exported messages.
-  /// Possible string values are:
-  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : Export as MBOX.
-  /// - "PST" : Export as PST.
-  core.String? exportFormat;
-
-  HangoutsChatExportOptions({
-    this.exportFormat,
-  });
-
-  HangoutsChatExportOptions.fromJson(core.Map _json)
-      : this(
-          exportFormat: _json.containsKey('exportFormat')
-              ? _json['exportFormat'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat!,
-      };
-}
+typedef HangoutsChatExportOptions = $ExportOptions;
 
 /// The Chat spaces to search
 class HangoutsChatInfo {
@@ -2689,45 +2645,7 @@ class HeldDriveQuery {
 }
 
 /// Query options for group holds.
-class HeldGroupsQuery {
-  /// The end time for the query.
-  ///
-  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
-  core.String? endTime;
-
-  /// The start time for the query.
-  ///
-  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
-  core.String? startTime;
-
-  /// The [search operators](https://support.google.com/vault/answer/2474474)
-  /// used to refine the messages covered by the hold.
-  core.String? terms;
-
-  HeldGroupsQuery({
-    this.endTime,
-    this.startTime,
-    this.terms,
-  });
-
-  HeldGroupsQuery.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          terms:
-              _json.containsKey('terms') ? _json['terms'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (terms != null) 'terms': terms!,
-      };
-}
+typedef HeldGroupsQuery = $Query;
 
 /// Options for Chat holds.
 class HeldHangoutsChatQuery {
@@ -2752,45 +2670,7 @@ class HeldHangoutsChatQuery {
 }
 
 /// Query options for Gmail holds.
-class HeldMailQuery {
-  /// The end time for the query.
-  ///
-  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
-  core.String? endTime;
-
-  /// The start time for the query.
-  ///
-  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
-  core.String? startTime;
-
-  /// The [search operators](https://support.google.com/vault/answer/2474474)
-  /// used to refine the messages covered by the hold.
-  core.String? terms;
-
-  HeldMailQuery({
-    this.endTime,
-    this.startTime,
-    this.terms,
-  });
-
-  HeldMailQuery.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          terms:
-              _json.containsKey('terms') ? _json['terms'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (terms != null) 'terms': terms!,
-      };
-}
+typedef HeldMailQuery = $Query;
 
 /// The organizational unit covered by a hold.
 ///

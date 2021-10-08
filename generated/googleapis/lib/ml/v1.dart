@@ -3937,28 +3937,7 @@ class GoogleCloudMlV1HyperparameterSpec {
 /// the model's fully differentiable structure.
 ///
 /// Refer to this paper for more details: https://arxiv.org/abs/1703.01365
-class GoogleCloudMlV1IntegratedGradientsAttribution {
-  /// Number of steps for approximating the path integral.
-  ///
-  /// A good value to start is 50 and gradually increase until the sum to diff
-  /// property is met within the desired error range.
-  core.int? numIntegralSteps;
-
-  GoogleCloudMlV1IntegratedGradientsAttribution({
-    this.numIntegralSteps,
-  });
-
-  GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(core.Map _json)
-      : this(
-          numIntegralSteps: _json.containsKey('numIntegralSteps')
-              ? _json['numIntegralSteps'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
-      };
-}
+typedef GoogleCloudMlV1IntegratedGradientsAttribution = $Attribution;
 
 /// Represents a training or prediction job.
 class GoogleCloudMlV1Job {
@@ -6859,28 +6838,7 @@ class GoogleCloudMlV1Version {
 ///
 /// Refer to this paper for more details: https://arxiv.org/abs/1906.02825
 /// Currently only implemented for models with natural image inputs.
-class GoogleCloudMlV1XraiAttribution {
-  /// Number of steps for approximating the path integral.
-  ///
-  /// A good value to start is 50 and gradually increase until the sum to diff
-  /// property is met within the desired error range.
-  core.int? numIntegralSteps;
-
-  GoogleCloudMlV1XraiAttribution({
-    this.numIntegralSteps,
-  });
-
-  GoogleCloudMlV1XraiAttribution.fromJson(core.Map _json)
-      : this(
-          numIntegralSteps: _json.containsKey('numIntegralSteps')
-              ? _json['numIntegralSteps'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
-      };
-}
+typedef GoogleCloudMlV1XraiAttribution = $Attribution;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -7174,28 +7132,7 @@ class GoogleIamV1SetIamPolicyRequest {
 typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class GoogleIamV1TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  GoogleIamV1TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

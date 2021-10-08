@@ -1438,7 +1438,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata02;
+typedef OperationMetadata = $OperationMetadata03;
 
 /// Request for ReimageNode.
 class ReimageNodeRequest {

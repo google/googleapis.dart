@@ -1180,52 +1180,10 @@ class CustomerManagedEncryptionStatus {
 }
 
 /// Request message for SecretManagerService.DestroySecretVersion.
-class DestroySecretVersionRequest {
-  /// Etag of the SecretVersion.
-  ///
-  /// The request succeeds if it matches the etag of the currently stored secret
-  /// version object. If the etag is omitted, the request succeeds.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  DestroySecretVersionRequest({
-    this.etag,
-  });
-
-  DestroySecretVersionRequest.fromJson(core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
-}
+typedef DestroySecretVersionRequest = $SecretVersionRequest;
 
 /// Request message for SecretManagerService.DisableSecretVersion.
-class DisableSecretVersionRequest {
-  /// Etag of the SecretVersion.
-  ///
-  /// The request succeeds if it matches the etag of the currently stored secret
-  /// version object. If the etag is omitted, the request succeeds.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  DisableSecretVersionRequest({
-    this.etag,
-  });
-
-  DisableSecretVersionRequest.fromJson(core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
-}
+typedef DisableSecretVersionRequest = $SecretVersionRequest;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1237,28 +1195,7 @@ class DisableSecretVersionRequest {
 typedef Empty = $Empty;
 
 /// Request message for SecretManagerService.EnableSecretVersion.
-class EnableSecretVersionRequest {
-  /// Etag of the SecretVersion.
-  ///
-  /// The request succeeds if it matches the etag of the currently stored secret
-  /// version object. If the etag is omitted, the request succeeds.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  EnableSecretVersionRequest({
-    this.etag,
-  });
-
-  EnableSecretVersionRequest.fromJson(core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
-}
+typedef EnableSecretVersionRequest = $SecretVersionRequest;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -1994,28 +1931,7 @@ class SetIamPolicyRequest {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// A Pub/Sub topic which Secret Manager will publish to when control plane
 /// events occur on this secret.

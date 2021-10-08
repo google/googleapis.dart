@@ -3154,22 +3154,7 @@ class GoogleAppsCardV1SelectionItem {
 /// A suggestion item.
 ///
 /// Only supports text for now.
-class GoogleAppsCardV1SuggestionItem {
-  core.String? text;
-
-  GoogleAppsCardV1SuggestionItem({
-    this.text,
-  });
-
-  GoogleAppsCardV1SuggestionItem.fromJson(core.Map _json)
-      : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleAppsCardV1SuggestionItem = $TextParagraph;
 
 /// A container wrapping elements necessary for showing suggestion items used in
 /// text input autocomplete.
@@ -4362,22 +4347,7 @@ class TextButton {
 /// A paragraph of text.
 ///
 /// Formatted text supported.
-class TextParagraph {
-  core.String? text;
-
-  TextParagraph({
-    this.text,
-  });
-
-  TextParagraph.fromJson(core.Map _json)
-      : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
-}
+typedef TextParagraph = $TextParagraph;
 
 /// A thread in Google Chat.
 class Thread {

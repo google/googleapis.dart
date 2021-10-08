@@ -3862,45 +3862,7 @@ class CancelBuildRequest {
 typedef CancelOperationRequest = $Empty;
 
 /// Metadata for `CreateGithubEnterpriseConfig` operation.
-class CreateGitHubEnterpriseConfigOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the GitHubEnterprise to be created.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
-  core.String? githubEnterpriseConfig;
-
-  CreateGitHubEnterpriseConfigOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.githubEnterpriseConfig,
-  });
-
-  CreateGitHubEnterpriseConfigOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-      };
-}
+typedef CreateGitHubEnterpriseConfigOperationMetadata = $OperationMetadata02;
 
 /// Metadata for the `CreateWorkerPool` operation.
 class CreateWorkerPoolOperationMetadata {
@@ -5052,7 +5014,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata02;
+typedef OperationMetadata = $OperationMetadata03;
 
 /// Details about how a build should be executed on a `WorkerPool`.
 ///
@@ -5113,45 +5075,7 @@ class PrivatePoolV1Config {
 }
 
 /// Metadata for `ProcessAppManifestCallback` operation.
-class ProcessAppManifestCallbackOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the GitHubEnterprise to be created.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
-  core.String? githubEnterpriseConfig;
-
-  ProcessAppManifestCallbackOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.githubEnterpriseConfig,
-  });
-
-  ProcessAppManifestCallbackOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-      };
-}
+typedef ProcessAppManifestCallbackOperationMetadata = $OperationMetadata02;
 
 /// PubsubConfig describes the configuration of a trigger that creates a build
 /// whenever a Pub/Sub message is published.

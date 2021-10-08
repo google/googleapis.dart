@@ -45909,60 +45909,12 @@ class BackendBucketCdnPolicy {
 ///
 /// Values are case insensitive. The presence of such a header overrides the
 /// cache_mode setting.
-class BackendBucketCdnPolicyBypassCacheOnRequestHeader {
-  /// The header field name to match on when bypassing cache.
-  ///
-  /// Values are case-insensitive.
-  core.String? headerName;
-
-  BackendBucketCdnPolicyBypassCacheOnRequestHeader({
-    this.headerName,
-  });
-
-  BackendBucketCdnPolicyBypassCacheOnRequestHeader.fromJson(core.Map _json)
-      : this(
-          headerName: _json.containsKey('headerName')
-              ? _json['headerName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (headerName != null) 'headerName': headerName!,
-      };
-}
+typedef BackendBucketCdnPolicyBypassCacheOnRequestHeader
+    = $CdnPolicyBypassCacheOnRequestHeader;
 
 /// Specify CDN TTLs for response error codes.
-class BackendBucketCdnPolicyNegativeCachingPolicy {
-  /// The HTTP status code to define a TTL against.
-  ///
-  /// Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451
-  /// and 501 are can be specified as values, and you cannot specify a status
-  /// code more than once.
-  core.int? code;
-
-  /// The TTL (in seconds) for which to cache responses with the corresponding
-  /// status code.
-  ///
-  /// The maximum allowed value is 1800s (30 minutes), noting that infrequently
-  /// accessed objects may be evicted from the cache before the defined TTL.
-  core.int? ttl;
-
-  BackendBucketCdnPolicyNegativeCachingPolicy({
-    this.code,
-    this.ttl,
-  });
-
-  BackendBucketCdnPolicyNegativeCachingPolicy.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (ttl != null) 'ttl': ttl!,
-      };
-}
+typedef BackendBucketCdnPolicyNegativeCachingPolicy
+    = $CdnPolicyNegativeCachingPolicy;
 
 class BackendBucketListWarningData {
   /// A key that provides more detail on the warning being returned.
@@ -47179,60 +47131,12 @@ class BackendServiceCdnPolicy {
 ///
 /// Values are case insensitive. The presence of such a header overrides the
 /// cache_mode setting.
-class BackendServiceCdnPolicyBypassCacheOnRequestHeader {
-  /// The header field name to match on when bypassing cache.
-  ///
-  /// Values are case-insensitive.
-  core.String? headerName;
-
-  BackendServiceCdnPolicyBypassCacheOnRequestHeader({
-    this.headerName,
-  });
-
-  BackendServiceCdnPolicyBypassCacheOnRequestHeader.fromJson(core.Map _json)
-      : this(
-          headerName: _json.containsKey('headerName')
-              ? _json['headerName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (headerName != null) 'headerName': headerName!,
-      };
-}
+typedef BackendServiceCdnPolicyBypassCacheOnRequestHeader
+    = $CdnPolicyBypassCacheOnRequestHeader;
 
 /// Specify CDN TTLs for response error codes.
-class BackendServiceCdnPolicyNegativeCachingPolicy {
-  /// The HTTP status code to define a TTL against.
-  ///
-  /// Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451
-  /// and 501 are can be specified as values, and you cannot specify a status
-  /// code more than once.
-  core.int? code;
-
-  /// The TTL (in seconds) for which to cache responses with the corresponding
-  /// status code.
-  ///
-  /// The maximum allowed value is 1800s (30 minutes), noting that infrequently
-  /// accessed objects may be evicted from the cache before the defined TTL.
-  core.int? ttl;
-
-  BackendServiceCdnPolicyNegativeCachingPolicy({
-    this.code,
-    this.ttl,
-  });
-
-  BackendServiceCdnPolicyNegativeCachingPolicy.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (ttl != null) 'ttl': ttl!,
-      };
-}
+typedef BackendServiceCdnPolicyNegativeCachingPolicy
+    = $CdnPolicyNegativeCachingPolicy;
 
 /// For load balancers that have configurable failover:
 /// [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview)
@@ -62286,28 +62190,7 @@ typedef InstanceGroupManagersDeleteInstancesRequest
     = $InstanceGroupManagersDeleteInstancesRequest;
 
 /// InstanceGroupManagers.deletePerInstanceConfigs
-class InstanceGroupManagersDeletePerInstanceConfigsReq {
-  /// The list of instance names for which we want to delete per-instance
-  /// configs on this managed instance group.
-  core.List<core.String>? names;
-
-  InstanceGroupManagersDeletePerInstanceConfigsReq({
-    this.names,
-  });
-
-  InstanceGroupManagersDeletePerInstanceConfigsReq.fromJson(core.Map _json)
-      : this(
-          names: _json.containsKey('names')
-              ? (_json['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (names != null) 'names': names!,
-      };
-}
+typedef InstanceGroupManagersDeletePerInstanceConfigsReq = $Req;
 
 class InstanceGroupManagersListErrorsResponse {
   /// The list of errors of the managed instance group.
@@ -62605,30 +62488,7 @@ class InstanceGroupManagersPatchPerInstanceConfigsReq {
       };
 }
 
-class InstanceGroupManagersRecreateInstancesRequest {
-  /// The URLs of one or more instances to recreate.
-  ///
-  /// This can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  InstanceGroupManagersRecreateInstancesRequest({
-    this.instances,
-  });
-
-  InstanceGroupManagersRecreateInstancesRequest.fromJson(core.Map _json)
-      : this(
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-      };
-}
+typedef InstanceGroupManagersRecreateInstancesRequest = $Request;
 
 class InstanceGroupManagersScopedListWarningData {
   /// A key that provides more detail on the warning being returned.
@@ -65103,34 +64963,7 @@ class InstancesSetMinCpuPlatformRequest {
       };
 }
 
-class InstancesSetServiceAccountRequest {
-  /// Email address of the service account.
-  core.String? email;
-
-  /// The list of scopes to be made available for this service account.
-  core.List<core.String>? scopes;
-
-  InstancesSetServiceAccountRequest({
-    this.email,
-    this.scopes,
-  });
-
-  InstancesSetServiceAccountRequest.fromJson(core.Map _json)
-      : this(
-          email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          scopes: _json.containsKey('scopes')
-              ? (_json['scopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (scopes != null) 'scopes': scopes!,
-      };
-}
+typedef InstancesSetServiceAccountRequest = $ServiceAccount;
 
 class InstancesStartWithEncryptionKeyRequest {
   /// Array of disks associated with this instance that are protected with a
@@ -81087,28 +80920,7 @@ class RegionInstanceGroupList {
 }
 
 /// RegionInstanceGroupManagers.deletePerInstanceConfigs
-class RegionInstanceGroupManagerDeleteInstanceConfigReq {
-  /// The list of instance names for which we want to delete per-instance
-  /// configs on this managed instance group.
-  core.List<core.String>? names;
-
-  RegionInstanceGroupManagerDeleteInstanceConfigReq({
-    this.names,
-  });
-
-  RegionInstanceGroupManagerDeleteInstanceConfigReq.fromJson(core.Map _json)
-      : this(
-          names: _json.containsKey('names')
-              ? (_json['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (names != null) 'names': names!,
-      };
-}
+typedef RegionInstanceGroupManagerDeleteInstanceConfigReq = $Req;
 
 class RegionInstanceGroupManagerListWarningData {
   /// A key that provides more detail on the warning being returned.
@@ -81681,30 +81493,7 @@ class RegionInstanceGroupManagersListInstancesResponse {
       };
 }
 
-class RegionInstanceGroupManagersRecreateRequest {
-  /// The URLs of one or more instances to recreate.
-  ///
-  /// This can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  RegionInstanceGroupManagersRecreateRequest({
-    this.instances,
-  });
-
-  RegionInstanceGroupManagersRecreateRequest.fromJson(core.Map _json)
-      : this(
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-      };
-}
+typedef RegionInstanceGroupManagersRecreateRequest = $Request;
 
 class RegionInstanceGroupManagersSetTargetPoolsRequest {
   /// Fingerprint of the target pools information, which is a hash of the
@@ -82276,51 +82065,7 @@ class RegionList {
       };
 }
 
-class RegionSetLabelsRequest {
-  /// The fingerprint of the previous set of labels for this resource, used to
-  /// detect conflicts.
-  ///
-  /// The fingerprint is initially generated by Compute Engine and changes after
-  /// every request to modify or update labels. You must always provide an
-  /// up-to-date fingerprint hash in order to update or change labels. Make a
-  /// get() request to the resource to get the latest fingerprint.
-  core.String? labelFingerprint;
-  core.List<core.int> get labelFingerprintAsBytes =>
-      convert.base64.decode(labelFingerprint!);
-
-  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
-    labelFingerprint =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// The labels to set for this resource.
-  core.Map<core.String, core.String>? labels;
-
-  RegionSetLabelsRequest({
-    this.labelFingerprint,
-    this.labels,
-  });
-
-  RegionSetLabelsRequest.fromJson(core.Map _json)
-      : this(
-          labelFingerprint: _json.containsKey('labelFingerprint')
-              ? _json['labelFingerprint'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
-        if (labels != null) 'labels': labels!,
-      };
-}
+typedef RegionSetLabelsRequest = $SetLabelsRequest;
 
 class RegionSetPolicyRequest {
   /// Flatten Policy to create a backwacd compatible wire-format.
@@ -88577,34 +88322,7 @@ class ServerBinding {
 }
 
 /// A service account.
-class ServiceAccount {
-  /// Email address of the service account.
-  core.String? email;
-
-  /// The list of scopes to be made available for this service account.
-  core.List<core.String>? scopes;
-
-  ServiceAccount({
-    this.email,
-    this.scopes,
-  });
-
-  ServiceAccount.fromJson(core.Map _json)
-      : this(
-          email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          scopes: _json.containsKey('scopes')
-              ? (_json['scopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (scopes != null) 'scopes': scopes!,
-      };
-}
+typedef ServiceAccount = $ServiceAccount;
 
 /// Represents a ServiceAttachment resource.
 ///
@@ -96656,30 +96374,7 @@ class TargetSslProxiesSetBackendServiceRequest {
       };
 }
 
-class TargetSslProxiesSetProxyHeaderRequest {
-  /// The new type of proxy header to append before sending data to the backend.
-  ///
-  /// NONE or PROXY_V1 are allowed.
-  /// Possible string values are:
-  /// - "NONE"
-  /// - "PROXY_V1"
-  core.String? proxyHeader;
-
-  TargetSslProxiesSetProxyHeaderRequest({
-    this.proxyHeader,
-  });
-
-  TargetSslProxiesSetProxyHeaderRequest.fromJson(core.Map _json)
-      : this(
-          proxyHeader: _json.containsKey('proxyHeader')
-              ? _json['proxyHeader'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (proxyHeader != null) 'proxyHeader': proxyHeader!,
-      };
-}
+typedef TargetSslProxiesSetProxyHeaderRequest = $ProxiesSetProxyHeaderRequest;
 
 class TargetSslProxiesSetSslCertificatesRequest {
   /// New set of URLs to SslCertificate resources to associate with this
@@ -97066,30 +96761,7 @@ class TargetTcpProxiesSetBackendServiceRequest {
       };
 }
 
-class TargetTcpProxiesSetProxyHeaderRequest {
-  /// The new type of proxy header to append before sending data to the backend.
-  ///
-  /// NONE or PROXY_V1 are allowed.
-  /// Possible string values are:
-  /// - "NONE"
-  /// - "PROXY_V1"
-  core.String? proxyHeader;
-
-  TargetTcpProxiesSetProxyHeaderRequest({
-    this.proxyHeader,
-  });
-
-  TargetTcpProxiesSetProxyHeaderRequest.fromJson(core.Map _json)
-      : this(
-          proxyHeader: _json.containsKey('proxyHeader')
-              ? _json['proxyHeader'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (proxyHeader != null) 'proxyHeader': proxyHeader!,
-      };
-}
+typedef TargetTcpProxiesSetProxyHeaderRequest = $ProxiesSetProxyHeaderRequest;
 
 /// Represents a Target TCP Proxy resource.
 ///
@@ -98275,29 +97947,7 @@ class TestFailure {
 }
 
 typedef TestPermissionsRequest = $TestPermissionsRequest;
-
-class TestPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestPermissionsResponse({
-    this.permissions,
-  });
-
-  TestPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestPermissionsResponse = $PermissionsResponse;
 
 class Uint128 {
   core.String? high;
@@ -102704,51 +102354,7 @@ class ZoneList {
       };
 }
 
-class ZoneSetLabelsRequest {
-  /// The fingerprint of the previous set of labels for this resource, used to
-  /// detect conflicts.
-  ///
-  /// The fingerprint is initially generated by Compute Engine and changes after
-  /// every request to modify or update labels. You must always provide an
-  /// up-to-date fingerprint hash in order to update or change labels. Make a
-  /// get() request to the resource to get the latest fingerprint.
-  core.String? labelFingerprint;
-  core.List<core.int> get labelFingerprintAsBytes =>
-      convert.base64.decode(labelFingerprint!);
-
-  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
-    labelFingerprint =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// The labels to set for this resource.
-  core.Map<core.String, core.String>? labels;
-
-  ZoneSetLabelsRequest({
-    this.labelFingerprint,
-    this.labels,
-  });
-
-  ZoneSetLabelsRequest.fromJson(core.Map _json)
-      : this(
-          labelFingerprint: _json.containsKey('labelFingerprint')
-              ? _json['labelFingerprint'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
-        if (labels != null) 'labels': labels!,
-      };
-}
+typedef ZoneSetLabelsRequest = $SetLabelsRequest;
 
 class ZoneSetPolicyRequest {
   /// Flatten Policy to create a backwacd compatible wire-format.

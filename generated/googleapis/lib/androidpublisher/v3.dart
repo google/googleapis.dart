@@ -5150,25 +5150,7 @@ class ProductPurchase {
 }
 
 /// Request for the product.purchases.acknowledge API.
-class ProductPurchasesAcknowledgeRequest {
-  /// Payload to attach to the purchase.
-  core.String? developerPayload;
-
-  ProductPurchasesAcknowledgeRequest({
-    this.developerPayload,
-  });
-
-  ProductPurchasesAcknowledgeRequest.fromJson(core.Map _json)
-      : this(
-          developerPayload: _json.containsKey('developerPayload')
-              ? _json['developerPayload'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (developerPayload != null) 'developerPayload': developerPayload!,
-      };
-}
+typedef ProductPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
 
 /// An Android app review.
 class Review {
@@ -5797,25 +5779,7 @@ class SubscriptionPurchase {
 }
 
 /// Request for the purchases.subscriptions.acknowledge API.
-class SubscriptionPurchasesAcknowledgeRequest {
-  /// Payload to attach to the purchase.
-  core.String? developerPayload;
-
-  SubscriptionPurchasesAcknowledgeRequest({
-    this.developerPayload,
-  });
-
-  SubscriptionPurchasesAcknowledgeRequest.fromJson(core.Map _json)
-      : this(
-          developerPayload: _json.containsKey('developerPayload')
-              ? _json['developerPayload'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (developerPayload != null) 'developerPayload': developerPayload!,
-      };
-}
+typedef SubscriptionPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
 
 /// Request for the purchases.subscriptions.defer API.
 class SubscriptionPurchasesDeferRequest {

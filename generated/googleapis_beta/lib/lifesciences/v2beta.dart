@@ -1654,46 +1654,10 @@ class Pipeline {
 }
 
 /// An event generated when the worker starts pulling an image.
-class PullStartedEvent {
-  /// The URI of the image that was pulled.
-  core.String? imageUri;
-
-  PullStartedEvent({
-    this.imageUri,
-  });
-
-  PullStartedEvent.fromJson(core.Map _json)
-      : this(
-          imageUri: _json.containsKey('imageUri')
-              ? _json['imageUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (imageUri != null) 'imageUri': imageUri!,
-      };
-}
+typedef PullStartedEvent = $Event;
 
 /// An event generated when the worker stops pulling an image.
-class PullStoppedEvent {
-  /// The URI of the image that was pulled.
-  core.String? imageUri;
-
-  PullStoppedEvent({
-    this.imageUri,
-  });
-
-  PullStoppedEvent.fromJson(core.Map _json)
-      : this(
-          imageUri: _json.containsKey('imageUri')
-              ? _json['imageUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (imageUri != null) 'imageUri': imageUri!,
-      };
-}
+typedef PullStoppedEvent = $Event;
 
 /// The system resources for the pipeline run.
 ///

@@ -1346,42 +1346,7 @@ class GoogleDatastoreAdminV1CommonMetadata {
 /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=\['Foo',
 /// 'Bar'\], namespace_ids=\['', 'Baz'\] The entire Baz namespace: kinds=\[\],
 /// namespace_ids=\['Baz'\]
-class GoogleDatastoreAdminV1EntityFilter {
-  /// If empty, then this represents all kinds.
-  core.List<core.String>? kinds;
-
-  /// An empty list represents all namespaces.
-  ///
-  /// This is the preferred usage for projects that don't use namespaces. An
-  /// empty string element represents the default namespace. This should be used
-  /// if the project has data in non-default namespaces, but doesn't want to
-  /// include them. Each namespace in this list must be unique.
-  core.List<core.String>? namespaceIds;
-
-  GoogleDatastoreAdminV1EntityFilter({
-    this.kinds,
-    this.namespaceIds,
-  });
-
-  GoogleDatastoreAdminV1EntityFilter.fromJson(core.Map _json)
-      : this(
-          kinds: _json.containsKey('kinds')
-              ? (_json['kinds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          namespaceIds: _json.containsKey('namespaceIds')
-              ? (_json['namespaceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kinds != null) 'kinds': kinds!,
-        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
-      };
-}
+typedef GoogleDatastoreAdminV1EntityFilter = $EntityFilter;
 
 /// Metadata for ExportEntities operations.
 class GoogleDatastoreAdminV1ExportEntitiesMetadata {
@@ -1862,37 +1827,7 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
 }
 
 /// Measures the progress of a particular metric.
-class GoogleDatastoreAdminV1Progress {
-  /// The amount of work that has been completed.
-  ///
-  /// Note that this may be greater than work_estimated.
-  core.String? workCompleted;
-
-  /// An estimate of how much work needs to be performed.
-  ///
-  /// May be zero if the work estimate is unavailable.
-  core.String? workEstimated;
-
-  GoogleDatastoreAdminV1Progress({
-    this.workCompleted,
-    this.workEstimated,
-  });
-
-  GoogleDatastoreAdminV1Progress.fromJson(core.Map _json)
-      : this(
-          workCompleted: _json.containsKey('workCompleted')
-              ? _json['workCompleted'] as core.String
-              : null,
-          workEstimated: _json.containsKey('workEstimated')
-              ? _json['workEstimated'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (workCompleted != null) 'workCompleted': workCompleted!,
-        if (workEstimated != null) 'workEstimated': workEstimated!,
-      };
-}
+typedef GoogleDatastoreAdminV1Progress = $Progress;
 
 /// Metadata common to all Datastore Admin operations.
 class GoogleDatastoreAdminV1beta1CommonMetadata {
@@ -1983,42 +1918,7 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
 /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=\['Foo',
 /// 'Bar'\], namespace_ids=\['', 'Baz'\] The entire Baz namespace: kinds=\[\],
 /// namespace_ids=\['Baz'\]
-class GoogleDatastoreAdminV1beta1EntityFilter {
-  /// If empty, then this represents all kinds.
-  core.List<core.String>? kinds;
-
-  /// An empty list represents all namespaces.
-  ///
-  /// This is the preferred usage for projects that don't use namespaces. An
-  /// empty string element represents the default namespace. This should be used
-  /// if the project has data in non-default namespaces, but doesn't want to
-  /// include them. Each namespace in this list must be unique.
-  core.List<core.String>? namespaceIds;
-
-  GoogleDatastoreAdminV1beta1EntityFilter({
-    this.kinds,
-    this.namespaceIds,
-  });
-
-  GoogleDatastoreAdminV1beta1EntityFilter.fromJson(core.Map _json)
-      : this(
-          kinds: _json.containsKey('kinds')
-              ? (_json['kinds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          namespaceIds: _json.containsKey('namespaceIds')
-              ? (_json['namespaceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kinds != null) 'kinds': kinds!,
-        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
-      };
-}
+typedef GoogleDatastoreAdminV1beta1EntityFilter = $EntityFilter;
 
 /// Metadata for ExportEntities operations.
 class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
@@ -2172,37 +2072,7 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
 }
 
 /// Measures the progress of a particular metric.
-class GoogleDatastoreAdminV1beta1Progress {
-  /// The amount of work that has been completed.
-  ///
-  /// Note that this may be greater than work_estimated.
-  core.String? workCompleted;
-
-  /// An estimate of how much work needs to be performed.
-  ///
-  /// May be zero if the work estimate is unavailable.
-  core.String? workEstimated;
-
-  GoogleDatastoreAdminV1beta1Progress({
-    this.workCompleted,
-    this.workEstimated,
-  });
-
-  GoogleDatastoreAdminV1beta1Progress.fromJson(core.Map _json)
-      : this(
-          workCompleted: _json.containsKey('workCompleted')
-              ? _json['workCompleted'] as core.String
-              : null,
-          workEstimated: _json.containsKey('workEstimated')
-              ? _json['workEstimated'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (workCompleted != null) 'workCompleted': workCompleted!,
-        if (workEstimated != null) 'workEstimated': workEstimated!,
-      };
-}
+typedef GoogleDatastoreAdminV1beta1Progress = $Progress;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

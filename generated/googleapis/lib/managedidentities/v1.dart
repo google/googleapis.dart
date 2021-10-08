@@ -2065,232 +2065,13 @@ typedef Empty = $Empty;
 typedef Expr = $Expr;
 
 /// Represents the metadata of the long-running operation.
-class GoogleCloudManagedidentitiesV1OpMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have successfully been cancelled have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? requestedCancellation;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  GoogleCloudManagedidentitiesV1OpMetadata({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.requestedCancellation,
-    this.target,
-    this.verb,
-  });
-
-  GoogleCloudManagedidentitiesV1OpMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          requestedCancellation: _json.containsKey('requestedCancellation')
-              ? _json['requestedCancellation'] as core.bool
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
+typedef GoogleCloudManagedidentitiesV1OpMetadata = $OpMetadata;
 
 /// Represents the metadata of the long-running operation.
-class GoogleCloudManagedidentitiesV1alpha1OpMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have successfully been cancelled have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? requestedCancellation;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  GoogleCloudManagedidentitiesV1alpha1OpMetadata({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.requestedCancellation,
-    this.target,
-    this.verb,
-  });
-
-  GoogleCloudManagedidentitiesV1alpha1OpMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          requestedCancellation: _json.containsKey('requestedCancellation')
-              ? _json['requestedCancellation'] as core.bool
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
+typedef GoogleCloudManagedidentitiesV1alpha1OpMetadata = $OpMetadata;
 
 /// Represents the metadata of the long-running operation.
-class GoogleCloudManagedidentitiesV1beta1OpMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have successfully been cancelled have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? requestedCancellation;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  GoogleCloudManagedidentitiesV1beta1OpMetadata({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.requestedCancellation,
-    this.target,
-    this.verb,
-  });
-
-  GoogleCloudManagedidentitiesV1beta1OpMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          requestedCancellation: _json.containsKey('requestedCancellation')
-              ? _json['requestedCancellation'] as core.bool
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
+typedef GoogleCloudManagedidentitiesV1beta1OpMetadata = $OpMetadata;
 
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// consumer_defined_name is the name that is set by the consumer.
@@ -3286,7 +3067,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata02;
+typedef OperationMetadata = $OperationMetadata03;
 
 /// Represents a Managed Service for Microsoft Active Directory Peering.
 class Peering {
@@ -3717,28 +3498,7 @@ typedef Status = $Status;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Represents a time of day.
 ///

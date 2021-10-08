@@ -432,63 +432,11 @@ typedef AliasContext = $AliasContext;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-class AnalyzePackagesMetadata {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  AnalyzePackagesMetadata({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  AnalyzePackagesMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
+typedef AnalyzePackagesMetadata = $AnalyzePackagesMetadata;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-class AnalyzePackagesMetadataV1 {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  AnalyzePackagesMetadataV1({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  AnalyzePackagesMetadataV1.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
+typedef AnalyzePackagesMetadataV1 = $AnalyzePackagesMetadata;
 
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
@@ -527,43 +475,11 @@ class AnalyzePackagesRequest {
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-class AnalyzePackagesResponse {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  AnalyzePackagesResponse({
-    this.scan,
-  });
-
-  AnalyzePackagesResponse.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
+typedef AnalyzePackagesResponse = $AnalyzePackagesResponse;
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-class AnalyzePackagesResponseV1 {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  AnalyzePackagesResponseV1({
-    this.scan,
-  });
-
-  AnalyzePackagesResponseV1.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
+typedef AnalyzePackagesResponseV1 = $AnalyzePackagesResponse;
 
 /// Artifact describes a build product.
 typedef Artifact = $Artifact;
@@ -1020,85 +936,7 @@ class DSSEAttestationOccurrence {
 }
 
 /// The period during which some deployable was active in a runtime.
-class DeploymentOccurrence {
-  /// Address of the runtime element hosting this deployment.
-  core.String? address;
-
-  /// Configuration used to create this deployment.
-  core.String? config;
-
-  /// Beginning of the lifetime of this deployment.
-  ///
-  /// Required.
-  core.String? deployTime;
-
-  /// Platform hosting this deployment.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Unknown.
-  /// - "GKE" : Google Container Engine.
-  /// - "FLEX" : Google App Engine: Flexible Environment.
-  /// - "CUSTOM" : Custom user-defined platform.
-  core.String? platform;
-
-  /// Resource URI for the artifact being deployed taken from the deployable
-  /// field with the same name.
-  ///
-  /// Output only.
-  core.List<core.String>? resourceUri;
-
-  /// End of the lifetime of this deployment.
-  core.String? undeployTime;
-
-  /// Identity of the user that triggered this deployment.
-  core.String? userEmail;
-
-  DeploymentOccurrence({
-    this.address,
-    this.config,
-    this.deployTime,
-    this.platform,
-    this.resourceUri,
-    this.undeployTime,
-    this.userEmail,
-  });
-
-  DeploymentOccurrence.fromJson(core.Map _json)
-      : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
-              : null,
-          config: _json.containsKey('config')
-              ? _json['config'] as core.String
-              : null,
-          deployTime: _json.containsKey('deployTime')
-              ? _json['deployTime'] as core.String
-              : null,
-          platform: _json.containsKey('platform')
-              ? _json['platform'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? (_json['resourceUri'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          undeployTime: _json.containsKey('undeployTime')
-              ? _json['undeployTime'] as core.String
-              : null,
-          userEmail: _json.containsKey('userEmail')
-              ? _json['userEmail'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (config != null) 'config': config!,
-        if (deployTime != null) 'deployTime': deployTime!,
-        if (platform != null) 'platform': platform!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (undeployTime != null) 'undeployTime': undeployTime!,
-        if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
+typedef DeploymentOccurrence = $Deployment;
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {

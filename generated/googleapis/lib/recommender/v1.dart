@@ -2436,130 +2436,13 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
 }
 
 /// Request for the `MarkRecommendationClaimed` Method.
-class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest {
-  /// Fingerprint of the Recommendation.
-  ///
-  /// Provides optimistic locking.
-  ///
-  /// Required.
-  core.String? etag;
-
-  /// State properties to include with this state.
-  ///
-  /// Overwrites any existing `state_metadata`. Keys must match the regex
-  /// /^a-z0-9{0,62}$/. Values must match the regex
-  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1MarkRecommendationClaimedRequest({
-    this.etag,
-    this.stateMetadata,
-  });
-
-  GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
-      core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
-}
+typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request07;
 
 /// Request for the `MarkRecommendationFailed` Method.
-class GoogleCloudRecommenderV1MarkRecommendationFailedRequest {
-  /// Fingerprint of the Recommendation.
-  ///
-  /// Provides optimistic locking.
-  ///
-  /// Required.
-  core.String? etag;
-
-  /// State properties to include with this state.
-  ///
-  /// Overwrites any existing `state_metadata`. Keys must match the regex
-  /// /^a-z0-9{0,62}$/. Values must match the regex
-  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1MarkRecommendationFailedRequest({
-    this.etag,
-    this.stateMetadata,
-  });
-
-  GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
-      core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
-}
+typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request07;
 
 /// Request for the `MarkRecommendationSucceeded` Method.
-class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
-  /// Fingerprint of the Recommendation.
-  ///
-  /// Provides optimistic locking.
-  ///
-  /// Required.
-  core.String? etag;
-
-  /// State properties to include with this state.
-  ///
-  /// Overwrites any existing `state_metadata`. Keys must match the regex
-  /// /^a-z0-9{0,62}$/. Values must match the regex
-  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1MarkRecommendationSucceededRequest({
-    this.etag,
-    this.stateMetadata,
-  });
-
-  GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
-      core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
-}
+typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request07;
 
 /// Contains an operation for a resource loosely based on the JSON-PATCH format
 /// with support for: * Custom filters for describing partial array patch.

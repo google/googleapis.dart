@@ -874,7 +874,7 @@ class GoogleCloudMemcacheV1LocationMetadata {
 }
 
 /// Represents the metadata of a long-running operation.
-typedef GoogleCloudMemcacheV1OperationMetadata = $OperationMetadata04;
+typedef GoogleCloudMemcacheV1OperationMetadata = $OperationMetadata06;
 typedef GoogleCloudMemcacheV1ZoneMetadata = $Empty;
 
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
@@ -2107,7 +2107,7 @@ class Operation {
 }
 
 /// Represents the metadata of a long-running operation.
-typedef OperationMetadata = $OperationMetadata04;
+typedef OperationMetadata = $OperationMetadata06;
 
 /// Configure the schedule.
 class Schedule {

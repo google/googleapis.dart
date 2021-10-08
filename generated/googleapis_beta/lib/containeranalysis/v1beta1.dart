@@ -1973,30 +1973,7 @@ class BuildStep {
 /// Defines an object for the byproducts field in in-toto links.
 ///
 /// The suggested fields are "stderr", "stdout", and "return-value".
-class ByProducts {
-  core.Map<core.String, core.String>? customValues;
-
-  ByProducts({
-    this.customValues,
-  });
-
-  ByProducts.fromJson(core.Map _json)
-      : this(
-          customValues: _json.containsKey('customValues')
-              ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customValues != null) 'customValues': customValues!,
-      };
-}
+typedef ByProducts = $ByProducts;
 
 /// Common Vulnerability Scoring System version 3.
 ///
@@ -2208,85 +2185,7 @@ class Deployable {
 }
 
 /// The period during which some deployable was active in a runtime.
-class Deployment {
-  /// Address of the runtime element hosting this deployment.
-  core.String? address;
-
-  /// Configuration used to create this deployment.
-  core.String? config;
-
-  /// Beginning of the lifetime of this deployment.
-  ///
-  /// Required.
-  core.String? deployTime;
-
-  /// Platform hosting this deployment.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Unknown.
-  /// - "GKE" : Google Container Engine.
-  /// - "FLEX" : Google App Engine: Flexible Environment.
-  /// - "CUSTOM" : Custom user-defined platform.
-  core.String? platform;
-
-  /// Resource URI for the artifact being deployed taken from the deployable
-  /// field with the same name.
-  ///
-  /// Output only.
-  core.List<core.String>? resourceUri;
-
-  /// End of the lifetime of this deployment.
-  core.String? undeployTime;
-
-  /// Identity of the user that triggered this deployment.
-  core.String? userEmail;
-
-  Deployment({
-    this.address,
-    this.config,
-    this.deployTime,
-    this.platform,
-    this.resourceUri,
-    this.undeployTime,
-    this.userEmail,
-  });
-
-  Deployment.fromJson(core.Map _json)
-      : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
-              : null,
-          config: _json.containsKey('config')
-              ? _json['config'] as core.String
-              : null,
-          deployTime: _json.containsKey('deployTime')
-              ? _json['deployTime'] as core.String
-              : null,
-          platform: _json.containsKey('platform')
-              ? _json['platform'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? (_json['resourceUri'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          undeployTime: _json.containsKey('undeployTime')
-              ? _json['undeployTime'] as core.String
-              : null,
-          userEmail: _json.containsKey('userEmail')
-              ? _json['userEmail'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (config != null) 'config': config!,
-        if (deployTime != null) 'deployTime': deployTime!,
-        if (platform != null) 'platform': platform!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (undeployTime != null) 'undeployTime': undeployTime!,
-        if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
+typedef Deployment = $Deployment;
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage
 /// relationship.
@@ -2825,30 +2724,7 @@ typedef Empty = $Empty;
 /// Defines an object for the environment field in in-toto links.
 ///
 /// The suggested fields are "variables", "filesystem", and "workdir".
-class Environment {
-  core.Map<core.String, core.String>? customValues;
-
-  Environment({
-    this.customValues,
-  });
-
-  Environment.fromJson(core.Map _json)
-      : this(
-          customValues: _json.containsKey('customValues')
-              ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customValues != null) 'customValues': customValues!,
-      };
-}
+typedef Environment = $ByProducts;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

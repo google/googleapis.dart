@@ -7287,26 +7287,7 @@ class ResetSearchApplicationRequest {
 }
 
 /// Debugging information about the response.
-class ResponseDebugInfo {
-  /// General debug info formatted for display.
-  core.String? formattedDebugInfo;
-
-  ResponseDebugInfo({
-    this.formattedDebugInfo,
-  });
-
-  ResponseDebugInfo.fromJson(core.Map _json)
-      : this(
-          formattedDebugInfo: _json.containsKey('formattedDebugInfo')
-              ? _json['formattedDebugInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo!,
-      };
-}
+typedef ResponseDebugInfo = $DebugInfo;
 
 /// Information relevant only to a restrict entry.
 ///
@@ -7393,26 +7374,7 @@ class ResultCounts {
 }
 
 /// Debugging information about the result.
-class ResultDebugInfo {
-  /// General debug info formatted for display.
-  core.String? formattedDebugInfo;
-
-  ResultDebugInfo({
-    this.formattedDebugInfo,
-  });
-
-  ResultDebugInfo.fromJson(core.Map _json)
-      : this(
-          formattedDebugInfo: _json.containsKey('formattedDebugInfo')
-              ? _json['formattedDebugInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo!,
-      };
-}
+typedef ResultDebugInfo = $DebugInfo;
 
 /// Display Fields for Search Results
 class ResultDisplayField {

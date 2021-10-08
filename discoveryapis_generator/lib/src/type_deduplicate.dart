@@ -48,21 +48,20 @@ extension ObjectTypeExtention on ObjectType {
 
     libraryValue.addUsedItem(duplicateItem);
 
-    if (duplicateItem != _DuplicateItem._empty) {
-      final initialCovertCallCount = imports.convert.callCount;
-      final initialDefinition = classDefinitionCore(
-        duplicateItem.className,
-        includeDescription: false,
-      );
+    final initialCovertCallCount = imports.convert.callCount;
+    final initialDefinition = classDefinitionCore(
+      duplicateItem.className,
+      includeDescription: false,
+    );
 
-      final convertUsed = imports.convert.callCount > initialCovertCallCount;
-      if (convertUsed) {
-        imports.convert.callCount = initialCovertCallCount;
-      }
-      duplicateItem.usedDartConvert = convertUsed;
-
-      duplicateItem.populateDefinition(initialDefinition);
+    final convertUsed = imports.convert.callCount > initialCovertCallCount;
+    if (convertUsed) {
+      imports.convert.callCount = initialCovertCallCount;
     }
+    duplicateItem.usedDartConvert = convertUsed;
+
+    duplicateItem.populateDefinition(initialDefinition);
+
     return '${comment.asDartDoc(0)}'
         'typedef $className = ${duplicateItem.className};';
   }
@@ -85,7 +84,6 @@ mixin DedupeMixin {
 
   Set<_DuplicateItem> wrapPackageDeduplicateLogic(void Function() action) {
     final dupes = <String, Set<MapEntry<String, String>>>{};
-    final emptySchema = <String>{};
 
     for (var api in descriptions) {
       for (var schemaEntry in api.schemas!.entries) {
@@ -100,31 +98,19 @@ mixin DedupeMixin {
         final innerMap = dupes.putIfAbsent(content, () => {});
 
         innerMap.add(MapEntry(api.id!, schema.id!));
-
-        if (schema.emptyType) {
-          emptySchema.add(content);
-        }
       }
     }
 
     final candidates = <String, _DuplicateItem>{};
 
     for (var dupe in dupes.entries) {
-      if (emptySchema.contains(dupe.key)) {
-        candidates.putIfAbsent(dupe.key, () => _DuplicateItem._empty);
-        continue;
-      }
-
       if (dupe.value.length < 2) {
         // Rule of 3 – only de-duplicate classes that show up 3x (or more)
         continue;
       }
 
       final allKeys = dupe.value.map((e) => e.value).toSet();
-      final shortestKey = allKeys.reduce((a, b) => a.length < b.length ? a : b);
-      if (allKeys.any((element) => !element.endsWith(shortestKey))) {
-        continue;
-      }
+      final shortestKey = _bestName(allKeys);
 
       if (!candidates.containsKey(dupe.key)) {
         // Need to add it! – but! We need to avoid non-exact duplicates
@@ -143,15 +129,6 @@ mixin DedupeMixin {
             className: className,
           ),
         );
-      }
-    }
-
-    for (var description in descriptions) {
-      for (var schema in description.schemas!.values) {
-        final key = _schemaUniqueId(schema);
-        if (schema.emptyType) {
-          candidates.putIfAbsent(key, () => _DuplicateItem._empty);
-        }
       }
     }
 
@@ -198,10 +175,6 @@ class _DuplicateItem implements Comparable<_DuplicateItem> {
   }) : _definition = definition;
 
   void populateDefinition(String value) {
-    if (this == _empty) {
-      assert(_definition != null);
-      return;
-    }
     _definition ??= value;
     if (_definition != value) {
       print('****\nexisting\n****');
@@ -211,24 +184,6 @@ class _DuplicateItem implements Comparable<_DuplicateItem> {
       throw UnimplementedError();
     }
   }
-
-  static final _empty = _DuplicateItem(
-    className: _sharedEmptyClassName,
-    usedDartConvert: false,
-    definition: '''
-/// A reusable empty messages.
-class $_sharedEmptyClassName {
-  $_sharedEmptyClassName();
-
-  $_sharedEmptyClassName.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}''',
-  );
-
-  static const _sharedEmptyClassName = r'$Empty';
 
   @override
   String toString() => className;
@@ -253,9 +208,48 @@ extension on JsonSchema {
 
   // TODO: support de-duplicated types referring to each other!
   bool get complex => P_ref != null;
+}
 
-  bool get emptyType =>
-      type == 'object' &&
-      (properties?.isEmpty ?? true) &&
-      additionalProperties == null;
+String _bestName(Set<String> allKeys) {
+  if (allKeys.contains('Empty')) {
+    return 'Empty';
+  }
+
+  final shortestKey = allKeys.reduce((a, b) => a.length < b.length ? a : b);
+
+  if (allKeys.every((element) => element.endsWith(shortestKey))) {
+    return shortestKey;
+  }
+
+  final indices = _upperIndices(shortestKey);
+  var subShortest = shortestKey;
+  for (var index in indices.reversed) {
+    String lastNChars(String value) => value.substring(
+        value.length - (shortestKey.length - index), value.length);
+
+    final mergedKeys = allKeys.map(lastNChars).toSet();
+    if (mergedKeys.length == 1) {
+      subShortest = lastNChars(allKeys.first);
+    } else {
+      return subShortest;
+    }
+  }
+
+  return subShortest;
+}
+
+final _upperCase = RegExp('[A-Z]');
+
+List<int> _upperIndices(String input) {
+  final output = <int>[];
+
+  var index = 0;
+  for (;;) {
+    index = input.indexOf(_upperCase, index);
+    if (index < 0) {
+      return output;
+    }
+    output.add(index);
+    index++;
+  }
 }

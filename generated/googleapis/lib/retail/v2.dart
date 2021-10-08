@@ -2716,102 +2716,12 @@ class GoogleCloudRetailV2ImportCompletionDataResponse {
 }
 
 /// Configuration of destination for Import related errors.
-class GoogleCloudRetailV2ImportErrorsConfig {
-  /// Google Cloud Storage path for import errors.
-  ///
-  /// This must be an empty, existing Cloud Storage bucket. Import errors will
-  /// be written to a file in this bucket, one per line, as a JSON-encoded
-  /// `google.rpc.Status` message.
-  core.String? gcsPrefix;
-
-  GoogleCloudRetailV2ImportErrorsConfig({
-    this.gcsPrefix,
-  });
-
-  GoogleCloudRetailV2ImportErrorsConfig.fromJson(core.Map _json)
-      : this(
-          gcsPrefix: _json.containsKey('gcsPrefix')
-              ? _json['gcsPrefix'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
-}
+typedef GoogleCloudRetailV2ImportErrorsConfig = $ImportErrorsConfig;
 
 /// Metadata related to the progress of the Import operation.
 ///
 /// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2ImportMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// Count of entries that encountered errors while processing.
-  core.String? failureCount;
-
-  /// Pub/Sub topic for receiving notification.
-  ///
-  /// If this field is set, when the import is finished, a notification will be
-  /// sent to specified Pub/Sub topic. The message data will be JSON string of a
-  /// Operation. Format of the Pub/Sub topic is
-  /// `projects/{project}/topics/{topic}`.
-  core.String? notificationPubsubTopic;
-
-  /// Id of the request / operation.
-  ///
-  /// This is parroting back the requestId that was passed in the request.
-  core.String? requestId;
-
-  /// Count of entries that were processed successfully.
-  core.String? successCount;
-
-  /// Operation last update time.
-  ///
-  /// If the operation is done, this is also the finish time.
-  core.String? updateTime;
-
-  GoogleCloudRetailV2ImportMetadata({
-    this.createTime,
-    this.failureCount,
-    this.notificationPubsubTopic,
-    this.requestId,
-    this.successCount,
-    this.updateTime,
-  });
-
-  GoogleCloudRetailV2ImportMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          failureCount: _json.containsKey('failureCount')
-              ? _json['failureCount'] as core.String
-              : null,
-          notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
-              ? _json['notificationPubsubTopic'] as core.String
-              : null,
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-          successCount: _json.containsKey('successCount')
-              ? _json['successCount'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (failureCount != null) 'failureCount': failureCount!,
-        if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic!,
-        if (requestId != null) 'requestId': requestId!,
-        if (successCount != null) 'successCount': successCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudRetailV2ImportMetadata = $ImportMetadata;
 
 /// Request message for Import methods.
 class GoogleCloudRetailV2ImportProductsRequest {
@@ -4379,25 +4289,7 @@ class GoogleCloudRetailV2PurgeUserEventsRequest {
 ///
 /// If the long running operation is successfully done, then this message is
 /// returned by the google.longrunning.Operations.response field.
-class GoogleCloudRetailV2PurgeUserEventsResponse {
-  /// The total count of events purged as a result of the operation.
-  core.String? purgedEventsCount;
-
-  GoogleCloudRetailV2PurgeUserEventsResponse({
-    this.purgedEventsCount,
-  });
-
-  GoogleCloudRetailV2PurgeUserEventsResponse.fromJson(core.Map _json)
-      : this(
-          purgedEventsCount: _json.containsKey('purgedEventsCount')
-              ? _json['purgedEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2PurgeUserEventsResponse = $PurgeUserEventsResponse;
 
 /// The rating of a Product.
 class GoogleCloudRetailV2Rating {
@@ -4486,26 +4378,7 @@ class GoogleCloudRetailV2RejoinUserEventsRequest {
 }
 
 /// Response message for RejoinUserEvents method.
-class GoogleCloudRetailV2RejoinUserEventsResponse {
-  /// Number of user events that were joined with latest product catalog.
-  core.String? rejoinedUserEventsCount;
-
-  GoogleCloudRetailV2RejoinUserEventsResponse({
-    this.rejoinedUserEventsCount,
-  });
-
-  GoogleCloudRetailV2RejoinUserEventsResponse.fromJson(core.Map _json)
-      : this(
-          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
-              ? _json['rejoinedUserEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2RejoinUserEventsResponse = $RejoinUserEventsResponse;
 
 /// Metadata related to the progress of the RemoveFulfillmentPlaces operation.
 ///
@@ -5941,35 +5814,7 @@ class GoogleCloudRetailV2UserEvent {
 /// A summary of import result.
 ///
 /// The UserEventImportSummary summarizes the import status for user events.
-class GoogleCloudRetailV2UserEventImportSummary {
-  /// Count of user events imported with complete existing catalog information.
-  core.String? joinedEventsCount;
-
-  /// Count of user events imported, but with catalog information not found in
-  /// the imported catalog.
-  core.String? unjoinedEventsCount;
-
-  GoogleCloudRetailV2UserEventImportSummary({
-    this.joinedEventsCount,
-    this.unjoinedEventsCount,
-  });
-
-  GoogleCloudRetailV2UserEventImportSummary.fromJson(core.Map _json)
-      : this(
-          joinedEventsCount: _json.containsKey('joinedEventsCount')
-              ? _json['joinedEventsCount'] as core.String
-              : null,
-          unjoinedEventsCount: _json.containsKey('unjoinedEventsCount')
-              ? _json['unjoinedEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
-        if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2UserEventImportSummary = $UserEventImportSummary;
 
 /// The inline source for the input config for ImportUserEvents method.
 class GoogleCloudRetailV2UserEventInlineSource {
@@ -6134,62 +5979,12 @@ typedef GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse = $Empty;
 typedef GoogleCloudRetailV2alphaEnrollSolutionMetadata = $Empty;
 
 /// Configuration of destination for Export related errors.
-class GoogleCloudRetailV2alphaExportErrorsConfig {
-  /// Google Cloud Storage path for import errors.
-  ///
-  /// This must be an empty, existing Cloud Storage bucket. Export errors will
-  /// be written to a file in this bucket, one per line, as a JSON-encoded
-  /// `google.rpc.Status` message.
-  core.String? gcsPrefix;
-
-  GoogleCloudRetailV2alphaExportErrorsConfig({
-    this.gcsPrefix,
-  });
-
-  GoogleCloudRetailV2alphaExportErrorsConfig.fromJson(core.Map _json)
-      : this(
-          gcsPrefix: _json.containsKey('gcsPrefix')
-              ? _json['gcsPrefix'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
-}
+typedef GoogleCloudRetailV2alphaExportErrorsConfig = $ExportErrorsConfig;
 
 /// Metadata related to the progress of the Export operation.
 ///
 /// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2alphaExportMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// Operation last update time.
-  ///
-  /// If the operation is done, this is also the finish time.
-  core.String? updateTime;
-
-  GoogleCloudRetailV2alphaExportMetadata({
-    this.createTime,
-    this.updateTime,
-  });
-
-  GoogleCloudRetailV2alphaExportMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudRetailV2alphaExportMetadata = $ExportMetadata;
 
 /// Response of the ExportProductsRequest.
 ///
@@ -6294,102 +6089,12 @@ class GoogleCloudRetailV2alphaImportCompletionDataResponse {
 }
 
 /// Configuration of destination for Import related errors.
-class GoogleCloudRetailV2alphaImportErrorsConfig {
-  /// Google Cloud Storage path for import errors.
-  ///
-  /// This must be an empty, existing Cloud Storage bucket. Import errors will
-  /// be written to a file in this bucket, one per line, as a JSON-encoded
-  /// `google.rpc.Status` message.
-  core.String? gcsPrefix;
-
-  GoogleCloudRetailV2alphaImportErrorsConfig({
-    this.gcsPrefix,
-  });
-
-  GoogleCloudRetailV2alphaImportErrorsConfig.fromJson(core.Map _json)
-      : this(
-          gcsPrefix: _json.containsKey('gcsPrefix')
-              ? _json['gcsPrefix'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
-}
+typedef GoogleCloudRetailV2alphaImportErrorsConfig = $ImportErrorsConfig;
 
 /// Metadata related to the progress of the Import operation.
 ///
 /// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2alphaImportMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// Count of entries that encountered errors while processing.
-  core.String? failureCount;
-
-  /// Pub/Sub topic for receiving notification.
-  ///
-  /// If this field is set, when the import is finished, a notification will be
-  /// sent to specified Pub/Sub topic. The message data will be JSON string of a
-  /// Operation. Format of the Pub/Sub topic is
-  /// `projects/{project}/topics/{topic}`.
-  core.String? notificationPubsubTopic;
-
-  /// Id of the request / operation.
-  ///
-  /// This is parroting back the requestId that was passed in the request.
-  core.String? requestId;
-
-  /// Count of entries that were processed successfully.
-  core.String? successCount;
-
-  /// Operation last update time.
-  ///
-  /// If the operation is done, this is also the finish time.
-  core.String? updateTime;
-
-  GoogleCloudRetailV2alphaImportMetadata({
-    this.createTime,
-    this.failureCount,
-    this.notificationPubsubTopic,
-    this.requestId,
-    this.successCount,
-    this.updateTime,
-  });
-
-  GoogleCloudRetailV2alphaImportMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          failureCount: _json.containsKey('failureCount')
-              ? _json['failureCount'] as core.String
-              : null,
-          notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
-              ? _json['notificationPubsubTopic'] as core.String
-              : null,
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-          successCount: _json.containsKey('successCount')
-              ? _json['successCount'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (failureCount != null) 'failureCount': failureCount!,
-        if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic!,
-        if (requestId != null) 'requestId': requestId!,
-        if (successCount != null) 'successCount': successCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudRetailV2alphaImportMetadata = $ImportMetadata;
 
 /// Response of the ImportProductsRequest.
 ///
@@ -6484,50 +6189,15 @@ typedef GoogleCloudRetailV2alphaPurgeMetadata = $Empty;
 ///
 /// If the long running operation is successfully done, then this message is
 /// returned by the google.longrunning.Operations.response field.
-class GoogleCloudRetailV2alphaPurgeUserEventsResponse {
-  /// The total count of events purged as a result of the operation.
-  core.String? purgedEventsCount;
-
-  GoogleCloudRetailV2alphaPurgeUserEventsResponse({
-    this.purgedEventsCount,
-  });
-
-  GoogleCloudRetailV2alphaPurgeUserEventsResponse.fromJson(core.Map _json)
-      : this(
-          purgedEventsCount: _json.containsKey('purgedEventsCount')
-              ? _json['purgedEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2alphaPurgeUserEventsResponse
+    = $PurgeUserEventsResponse;
 
 /// Metadata for RejoinUserEvents method.
 typedef GoogleCloudRetailV2alphaRejoinUserEventsMetadata = $Empty;
 
 /// Response message for RejoinUserEvents method.
-class GoogleCloudRetailV2alphaRejoinUserEventsResponse {
-  /// Number of user events that were joined with latest product catalog.
-  core.String? rejoinedUserEventsCount;
-
-  GoogleCloudRetailV2alphaRejoinUserEventsResponse({
-    this.rejoinedUserEventsCount,
-  });
-
-  GoogleCloudRetailV2alphaRejoinUserEventsResponse.fromJson(core.Map _json)
-      : this(
-          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
-              ? _json['rejoinedUserEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2alphaRejoinUserEventsResponse
+    = $RejoinUserEventsResponse;
 
 /// Metadata related to the progress of the RemoveFulfillmentPlaces operation.
 ///
@@ -6556,35 +6226,8 @@ typedef GoogleCloudRetailV2alphaSetInventoryResponse = $Empty;
 /// A summary of import result.
 ///
 /// The UserEventImportSummary summarizes the import status for user events.
-class GoogleCloudRetailV2alphaUserEventImportSummary {
-  /// Count of user events imported with complete existing catalog information.
-  core.String? joinedEventsCount;
-
-  /// Count of user events imported, but with catalog information not found in
-  /// the imported catalog.
-  core.String? unjoinedEventsCount;
-
-  GoogleCloudRetailV2alphaUserEventImportSummary({
-    this.joinedEventsCount,
-    this.unjoinedEventsCount,
-  });
-
-  GoogleCloudRetailV2alphaUserEventImportSummary.fromJson(core.Map _json)
-      : this(
-          joinedEventsCount: _json.containsKey('joinedEventsCount')
-              ? _json['joinedEventsCount'] as core.String
-              : null,
-          unjoinedEventsCount: _json.containsKey('unjoinedEventsCount')
-              ? _json['unjoinedEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
-        if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2alphaUserEventImportSummary
+    = $UserEventImportSummary;
 
 /// Metadata related to the progress of the AddFulfillmentPlaces operation.
 ///
@@ -6599,62 +6242,12 @@ typedef GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata = $Empty;
 typedef GoogleCloudRetailV2betaAddFulfillmentPlacesResponse = $Empty;
 
 /// Configuration of destination for Export related errors.
-class GoogleCloudRetailV2betaExportErrorsConfig {
-  /// Google Cloud Storage path for import errors.
-  ///
-  /// This must be an empty, existing Cloud Storage bucket. Export errors will
-  /// be written to a file in this bucket, one per line, as a JSON-encoded
-  /// `google.rpc.Status` message.
-  core.String? gcsPrefix;
-
-  GoogleCloudRetailV2betaExportErrorsConfig({
-    this.gcsPrefix,
-  });
-
-  GoogleCloudRetailV2betaExportErrorsConfig.fromJson(core.Map _json)
-      : this(
-          gcsPrefix: _json.containsKey('gcsPrefix')
-              ? _json['gcsPrefix'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
-}
+typedef GoogleCloudRetailV2betaExportErrorsConfig = $ExportErrorsConfig;
 
 /// Metadata related to the progress of the Export operation.
 ///
 /// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2betaExportMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// Operation last update time.
-  ///
-  /// If the operation is done, this is also the finish time.
-  core.String? updateTime;
-
-  GoogleCloudRetailV2betaExportMetadata({
-    this.createTime,
-    this.updateTime,
-  });
-
-  GoogleCloudRetailV2betaExportMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudRetailV2betaExportMetadata = $ExportMetadata;
 
 /// Response of the ExportProductsRequest.
 ///
@@ -6759,102 +6352,12 @@ class GoogleCloudRetailV2betaImportCompletionDataResponse {
 }
 
 /// Configuration of destination for Import related errors.
-class GoogleCloudRetailV2betaImportErrorsConfig {
-  /// Google Cloud Storage path for import errors.
-  ///
-  /// This must be an empty, existing Cloud Storage bucket. Import errors will
-  /// be written to a file in this bucket, one per line, as a JSON-encoded
-  /// `google.rpc.Status` message.
-  core.String? gcsPrefix;
-
-  GoogleCloudRetailV2betaImportErrorsConfig({
-    this.gcsPrefix,
-  });
-
-  GoogleCloudRetailV2betaImportErrorsConfig.fromJson(core.Map _json)
-      : this(
-          gcsPrefix: _json.containsKey('gcsPrefix')
-              ? _json['gcsPrefix'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
-}
+typedef GoogleCloudRetailV2betaImportErrorsConfig = $ImportErrorsConfig;
 
 /// Metadata related to the progress of the Import operation.
 ///
 /// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRetailV2betaImportMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// Count of entries that encountered errors while processing.
-  core.String? failureCount;
-
-  /// Pub/Sub topic for receiving notification.
-  ///
-  /// If this field is set, when the import is finished, a notification will be
-  /// sent to specified Pub/Sub topic. The message data will be JSON string of a
-  /// Operation. Format of the Pub/Sub topic is
-  /// `projects/{project}/topics/{topic}`.
-  core.String? notificationPubsubTopic;
-
-  /// Id of the request / operation.
-  ///
-  /// This is parroting back the requestId that was passed in the request.
-  core.String? requestId;
-
-  /// Count of entries that were processed successfully.
-  core.String? successCount;
-
-  /// Operation last update time.
-  ///
-  /// If the operation is done, this is also the finish time.
-  core.String? updateTime;
-
-  GoogleCloudRetailV2betaImportMetadata({
-    this.createTime,
-    this.failureCount,
-    this.notificationPubsubTopic,
-    this.requestId,
-    this.successCount,
-    this.updateTime,
-  });
-
-  GoogleCloudRetailV2betaImportMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          failureCount: _json.containsKey('failureCount')
-              ? _json['failureCount'] as core.String
-              : null,
-          notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
-              ? _json['notificationPubsubTopic'] as core.String
-              : null,
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-          successCount: _json.containsKey('successCount')
-              ? _json['successCount'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (failureCount != null) 'failureCount': failureCount!,
-        if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic!,
-        if (requestId != null) 'requestId': requestId!,
-        if (successCount != null) 'successCount': successCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudRetailV2betaImportMetadata = $ImportMetadata;
 
 /// Response of the ImportProductsRequest.
 ///
@@ -6949,50 +6452,15 @@ typedef GoogleCloudRetailV2betaPurgeMetadata = $Empty;
 ///
 /// If the long running operation is successfully done, then this message is
 /// returned by the google.longrunning.Operations.response field.
-class GoogleCloudRetailV2betaPurgeUserEventsResponse {
-  /// The total count of events purged as a result of the operation.
-  core.String? purgedEventsCount;
-
-  GoogleCloudRetailV2betaPurgeUserEventsResponse({
-    this.purgedEventsCount,
-  });
-
-  GoogleCloudRetailV2betaPurgeUserEventsResponse.fromJson(core.Map _json)
-      : this(
-          purgedEventsCount: _json.containsKey('purgedEventsCount')
-              ? _json['purgedEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2betaPurgeUserEventsResponse
+    = $PurgeUserEventsResponse;
 
 /// Metadata for RejoinUserEvents method.
 typedef GoogleCloudRetailV2betaRejoinUserEventsMetadata = $Empty;
 
 /// Response message for RejoinUserEvents method.
-class GoogleCloudRetailV2betaRejoinUserEventsResponse {
-  /// Number of user events that were joined with latest product catalog.
-  core.String? rejoinedUserEventsCount;
-
-  GoogleCloudRetailV2betaRejoinUserEventsResponse({
-    this.rejoinedUserEventsCount,
-  });
-
-  GoogleCloudRetailV2betaRejoinUserEventsResponse.fromJson(core.Map _json)
-      : this(
-          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
-              ? _json['rejoinedUserEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2betaRejoinUserEventsResponse
+    = $RejoinUserEventsResponse;
 
 /// Metadata related to the progress of the RemoveFulfillmentPlaces operation.
 ///
@@ -7021,35 +6489,7 @@ typedef GoogleCloudRetailV2betaSetInventoryResponse = $Empty;
 /// A summary of import result.
 ///
 /// The UserEventImportSummary summarizes the import status for user events.
-class GoogleCloudRetailV2betaUserEventImportSummary {
-  /// Count of user events imported with complete existing catalog information.
-  core.String? joinedEventsCount;
-
-  /// Count of user events imported, but with catalog information not found in
-  /// the imported catalog.
-  core.String? unjoinedEventsCount;
-
-  GoogleCloudRetailV2betaUserEventImportSummary({
-    this.joinedEventsCount,
-    this.unjoinedEventsCount,
-  });
-
-  GoogleCloudRetailV2betaUserEventImportSummary.fromJson(core.Map _json)
-      : this(
-          joinedEventsCount: _json.containsKey('joinedEventsCount')
-              ? _json['joinedEventsCount'] as core.String
-              : null,
-          unjoinedEventsCount: _json.containsKey('unjoinedEventsCount')
-              ? _json['unjoinedEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
-        if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount!,
-      };
-}
+typedef GoogleCloudRetailV2betaUserEventImportSummary = $UserEventImportSummary;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

@@ -1449,25 +1449,7 @@ typedef CustomErrorRule = $CustomErrorRule;
 typedef CustomHttpPattern = $CustomHttpPattern;
 
 /// Request message to delete tenant project resource from the tenancy unit.
-class DeleteTenantProjectRequest {
-  /// Tag of the resource within the tenancy unit.
-  ///
-  /// Required.
-  core.String? tag;
-
-  DeleteTenantProjectRequest({
-    this.tag,
-  });
-
-  DeleteTenantProjectRequest.fromJson(core.Map _json)
-      : this(
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (tag != null) 'tag': tag!,
-      };
-}
+typedef DeleteTenantProjectRequest = $TenantProjectRequest;
 
 /// `Documentation` provides the information for describing a service.
 ///
@@ -3142,25 +3124,7 @@ class Quota {
 typedef QuotaLimit = $QuotaLimit;
 
 /// Request message to remove a tenant project resource from the tenancy unit.
-class RemoveTenantProjectRequest {
-  /// Tag of the resource within the tenancy unit.
-  ///
-  /// Required.
-  core.String? tag;
-
-  RemoveTenantProjectRequest({
-    this.tag,
-  });
-
-  RemoveTenantProjectRequest.fromJson(core.Map _json)
-      : this(
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (tag != null) 'tag': tag!,
-      };
-}
+typedef RemoveTenantProjectRequest = $TenantProjectRequest;
 
 /// Response for the search query.
 class SearchTenancyUnitsResponse {
@@ -3961,25 +3925,7 @@ class Type {
 
 /// Request message to undelete tenant project resource previously deleted from
 /// the tenancy unit.
-class UndeleteTenantProjectRequest {
-  /// Tag of the resource within the tenancy unit.
-  ///
-  /// Required.
-  core.String? tag;
-
-  UndeleteTenantProjectRequest({
-    this.tag,
-  });
-
-  UndeleteTenantProjectRequest.fromJson(core.Map _json)
-      : this(
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (tag != null) 'tag': tag!,
-      };
-}
+typedef UndeleteTenantProjectRequest = $TenantProjectRequest;
 
 /// Configuration controlling usage of a service.
 class Usage {
@@ -4061,27 +4007,7 @@ typedef UsageRule = $UsageRule;
 ///
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
-class V1AddVisibilityLabelsResponse {
-  /// The updated set of visibility labels for this consumer on this service.
-  core.List<core.String>? labels;
-
-  V1AddVisibilityLabelsResponse({
-    this.labels,
-  });
-
-  V1AddVisibilityLabelsResponse.fromJson(core.Map _json)
-      : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
-}
+typedef V1AddVisibilityLabelsResponse = $VisibilityLabelsResponse;
 
 /// Response message for BatchCreateProducerOverrides
 class V1Beta1BatchCreateProducerOverridesResponse {
@@ -4581,27 +4507,7 @@ typedef V1RefreshConsumerResponse = $Empty;
 ///
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
-class V1RemoveVisibilityLabelsResponse {
-  /// The updated set of visibility labels for this consumer on this service.
-  core.List<core.String>? labels;
-
-  V1RemoveVisibilityLabelsResponse({
-    this.labels,
-  });
-
-  V1RemoveVisibilityLabelsResponse.fromJson(core.Map _json)
-      : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
-}
+typedef V1RemoveVisibilityLabelsResponse = $VisibilityLabelsResponse;
 
 /// A service account in the Identity and Access Management API.
 class V1ServiceAccount {

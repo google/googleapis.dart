@@ -14,13 +14,21 @@ library $shared;
 
 import 'dart:core' as core;
 
-/// A reusable empty messages.
-class $Empty {
-  $Empty();
+class $Response {
+  core.String? result;
 
-  $Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json);
+  $Response({
+    this.result,
+  });
 
-  core.Map<core.String, core.dynamic> toJson() => {};
+  $Response.fromJson(core.Map _json)
+      : this(
+          result: _json.containsKey('result')
+              ? _json['result'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (result != null) 'result': result!,
+      };
 }

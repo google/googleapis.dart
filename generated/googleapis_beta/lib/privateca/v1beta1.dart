@@ -3083,38 +3083,7 @@ class CertificateRevocationList {
 }
 
 /// Request message for CertificateAuthorityService.DisableCertificateAuthority.
-class DisableCertificateAuthorityRequest {
-  /// An ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  DisableCertificateAuthorityRequest({
-    this.requestId,
-  });
-
-  DisableCertificateAuthorityRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef DisableCertificateAuthorityRequest = $CertificateAuthorityRequest;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -3126,38 +3095,7 @@ class DisableCertificateAuthorityRequest {
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
-class EnableCertificateAuthorityRequest {
-  /// An ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  EnableCertificateAuthorityRequest({
-    this.requestId,
-  });
-
-  EnableCertificateAuthorityRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef EnableCertificateAuthorityRequest = $CertificateAuthorityRequest;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3930,7 +3868,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata;
+typedef OperationMetadata = $OperationMetadata01;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -4141,38 +4079,7 @@ class ReconciliationOperationMetadata {
 }
 
 /// Request message for CertificateAuthorityService.RestoreCertificateAuthority.
-class RestoreCertificateAuthorityRequest {
-  /// An ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  RestoreCertificateAuthorityRequest({
-    this.requestId,
-  });
-
-  RestoreCertificateAuthorityRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef RestoreCertificateAuthorityRequest = $CertificateAuthorityRequest;
 
 /// A ReusableConfig refers to a managed ReusableConfigValues.
 ///

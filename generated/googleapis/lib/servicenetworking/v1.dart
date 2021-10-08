@@ -2451,30 +2451,7 @@ class DeleteConnectionRequest {
 typedef DeletePeeredDnsDomainMetadata = $Empty;
 
 /// Request to disable VPC service controls.
-class DisableVpcServiceControlsRequest {
-  /// The network that the consumer is using to connect with services.
-  ///
-  /// Must be in the form of projects/{project}/global/networks/{network}
-  /// {project} is a project number, as in '12345' {network} is network name.
-  ///
-  /// Required.
-  core.String? consumerNetwork;
-
-  DisableVpcServiceControlsRequest({
-    this.consumerNetwork,
-  });
-
-  DisableVpcServiceControlsRequest.fromJson(core.Map _json)
-      : this(
-          consumerNetwork: _json.containsKey('consumerNetwork')
-              ? _json['consumerNetwork'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-      };
-}
+typedef DisableVpcServiceControlsRequest = $VpcServiceControlsRequest;
 
 /// Represents a DNS record set resource.
 class DnsRecordSet {
@@ -2684,30 +2661,7 @@ typedef DocumentationRule = $DocumentationRule;
 typedef Empty = $Empty;
 
 /// Request to enable VPC service controls.
-class EnableVpcServiceControlsRequest {
-  /// The network that the consumer is using to connect with services.
-  ///
-  /// Must be in the form of projects/{project}/global/networks/{network}
-  /// {project} is a project number, as in '12345' {network} is network name.
-  ///
-  /// Required.
-  core.String? consumerNetwork;
-
-  EnableVpcServiceControlsRequest({
-    this.consumerNetwork,
-  });
-
-  EnableVpcServiceControlsRequest.fromJson(core.Map _json)
-      : this(
-          consumerNetwork: _json.containsKey('consumerNetwork')
-              ? _json['consumerNetwork'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-      };
-}
+typedef EnableVpcServiceControlsRequest = $VpcServiceControlsRequest;
 
 /// `Endpoint` describes a network address of a service that serves a set of
 /// APIs.

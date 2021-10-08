@@ -3858,75 +3858,12 @@ class GoogleCloudSecuritycenterV1Resource {
 }
 
 /// Response of asset discovery run
-class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
-  /// The duration between asset discovery run start and end
-  core.String? duration;
-
-  /// The state of an asset discovery run.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Asset discovery run state was unspecified.
-  /// - "COMPLETED" : Asset discovery run completed successfully.
-  /// - "SUPERSEDED" : Asset discovery run was cancelled with tasks still
-  /// pending, as another run for the same organization was started with a
-  /// higher priority.
-  /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String? state;
-
-  GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse({
-    this.duration,
-    this.state,
-  });
-
-  GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse.fromJson(core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (state != null) 'state': state!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
+    = $RunAssetDiscoveryResponse;
 
 /// Response of asset discovery run
-class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
-  /// The duration between asset discovery run start and end
-  core.String? duration;
-
-  /// The state of an asset discovery run.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Asset discovery run state was unspecified.
-  /// - "COMPLETED" : Asset discovery run completed successfully.
-  /// - "SUPERSEDED" : Asset discovery run was cancelled with tasks still
-  /// pending, as another run for the same organization was started with a
-  /// higher priority.
-  /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String? state;
-
-  GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse({
-    this.duration,
-    this.state,
-  });
-
-  GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse.fromJson(
-      core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (state != null) 'state': state!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
+    = $RunAssetDiscoveryResponse;
 
 /// Security Command Center finding.
 ///
@@ -4222,40 +4159,8 @@ class GoogleCloudSecuritycenterV1p1beta1Resource {
 }
 
 /// Response of asset discovery run
-class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
-  /// The duration between asset discovery run start and end
-  core.String? duration;
-
-  /// The state of an asset discovery run.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Asset discovery run state was unspecified.
-  /// - "COMPLETED" : Asset discovery run completed successfully.
-  /// - "SUPERSEDED" : Asset discovery run was cancelled with tasks still
-  /// pending, as another run for the same organization was started with a
-  /// higher priority.
-  /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String? state;
-
-  GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse({
-    this.duration,
-    this.state,
-  });
-
-  GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse.fromJson(
-      core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (state != null) 'state': state!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse
+    = $RunAssetDiscoveryResponse;
 
 /// User specified security marks that are attached to the parent Security
 /// Command Center resource.
@@ -5732,28 +5637,7 @@ class StreamingConfig {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
 class Vulnerability {

@@ -2710,39 +2710,7 @@ class BatchClearValuesByDataFilterRequest {
 
 /// The response when clearing a range of values selected with DataFilters in a
 /// spreadsheet.
-class BatchClearValuesByDataFilterResponse {
-  /// The ranges that were cleared, in A1 notation.
-  ///
-  /// If the requests are for an unbounded range or a ranger larger than the
-  /// bounds of the sheet, this is the actual ranges that were cleared, bounded
-  /// to the sheet's limits.
-  core.List<core.String>? clearedRanges;
-
-  /// The spreadsheet the updates were applied to.
-  core.String? spreadsheetId;
-
-  BatchClearValuesByDataFilterResponse({
-    this.clearedRanges,
-    this.spreadsheetId,
-  });
-
-  BatchClearValuesByDataFilterResponse.fromJson(core.Map _json)
-      : this(
-          clearedRanges: _json.containsKey('clearedRanges')
-              ? (_json['clearedRanges'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          spreadsheetId: _json.containsKey('spreadsheetId')
-              ? _json['spreadsheetId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
-}
+typedef BatchClearValuesByDataFilterResponse = $Response;
 
 /// The request for clearing more than one range of values in a spreadsheet.
 class BatchClearValuesRequest {
@@ -2768,39 +2736,7 @@ class BatchClearValuesRequest {
 }
 
 /// The response when clearing a range of values in a spreadsheet.
-class BatchClearValuesResponse {
-  /// The ranges that were cleared, in A1 notation.
-  ///
-  /// If the requests are for an unbounded range or a ranger larger than the
-  /// bounds of the sheet, this is the actual ranges that were cleared, bounded
-  /// to the sheet's limits.
-  core.List<core.String>? clearedRanges;
-
-  /// The spreadsheet the updates were applied to.
-  core.String? spreadsheetId;
-
-  BatchClearValuesResponse({
-    this.clearedRanges,
-    this.spreadsheetId,
-  });
-
-  BatchClearValuesResponse.fromJson(core.Map _json)
-      : this(
-          clearedRanges: _json.containsKey('clearedRanges')
-              ? (_json['clearedRanges'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          spreadsheetId: _json.containsKey('spreadsheetId')
-              ? _json['spreadsheetId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
-}
+typedef BatchClearValuesResponse = $Response;
 
 /// The request for retrieving a range of values in a spreadsheet selected by a
 /// set of DataFilters.

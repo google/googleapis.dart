@@ -2174,25 +2174,7 @@ class ApiConfigHandler {
 }
 
 /// Uses Google Cloud Endpoints to handle requests.
-class ApiEndpointHandler {
-  /// Path to the script from the application root directory.
-  core.String? scriptPath;
-
-  ApiEndpointHandler({
-    this.scriptPath,
-  });
-
-  ApiEndpointHandler.fromJson(core.Map _json)
-      : this(
-          scriptPath: _json.containsKey('scriptPath')
-              ? _json['scriptPath'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scriptPath != null) 'scriptPath': scriptPath!,
-      };
-}
+typedef ApiEndpointHandler = $Handler;
 
 /// An Application resource contains the top-level configuration of an App
 /// Engine application.
@@ -2888,75 +2870,15 @@ class CpuUtilization {
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1.CreateVersionRequest.
-class CreateVersionMetadataV1 {
-  /// The Cloud Build ID if one was created as part of the version create.
-  ///
-  /// @OutputOnly
-  core.String? cloudBuildId;
-
-  CreateVersionMetadataV1({
-    this.cloudBuildId,
-  });
-
-  CreateVersionMetadataV1.fromJson(core.Map _json)
-      : this(
-          cloudBuildId: _json.containsKey('cloudBuildId')
-              ? _json['cloudBuildId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
-      };
-}
+typedef CreateVersionMetadataV1 = $CreateVersionMetadataV1;
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1alpha.CreateVersionRequest.
-class CreateVersionMetadataV1Alpha {
-  /// The Cloud Build ID if one was created as part of the version create.
-  ///
-  /// @OutputOnly
-  core.String? cloudBuildId;
-
-  CreateVersionMetadataV1Alpha({
-    this.cloudBuildId,
-  });
-
-  CreateVersionMetadataV1Alpha.fromJson(core.Map _json)
-      : this(
-          cloudBuildId: _json.containsKey('cloudBuildId')
-              ? _json['cloudBuildId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
-      };
-}
+typedef CreateVersionMetadataV1Alpha = $CreateVersionMetadataV1;
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1beta.CreateVersionRequest.
-class CreateVersionMetadataV1Beta {
-  /// The Cloud Build ID if one was created as part of the version create.
-  ///
-  /// @OutputOnly
-  core.String? cloudBuildId;
-
-  CreateVersionMetadataV1Beta({
-    this.cloudBuildId,
-  });
-
-  CreateVersionMetadataV1Beta.fromJson(core.Map _json)
-      : this(
-          cloudBuildId: _json.containsKey('cloudBuildId')
-              ? _json['cloudBuildId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
-      };
-}
+typedef CreateVersionMetadataV1Beta = $CreateVersionMetadataV1;
 
 /// Request message for Instances.DebugInstance.
 class DebugInstanceRequest {
@@ -4989,25 +4911,7 @@ class Resources {
 }
 
 /// Executes a script to handle the request that matches the URL pattern.
-class ScriptHandler {
-  /// Path to the script from the application root directory.
-  core.String? scriptPath;
-
-  ScriptHandler({
-    this.scriptPath,
-  });
-
-  ScriptHandler.fromJson(core.Map _json)
-      : this(
-          scriptPath: _json.containsKey('scriptPath')
-              ? _json['scriptPath'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scriptPath != null) 'scriptPath': scriptPath!,
-      };
-}
+typedef ScriptHandler = $Handler;
 
 /// A Service resource is a logical component of an application that can share
 /// state and communicate in a secure fashion with other services.

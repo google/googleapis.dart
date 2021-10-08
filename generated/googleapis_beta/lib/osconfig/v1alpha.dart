@@ -2626,40 +2626,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-class OSPolicyAssignmentInstanceFilterInventory {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  OSPolicyAssignmentInstanceFilterInventory({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  OSPolicyAssignmentInstanceFilterInventory.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
+typedef OSPolicyAssignmentInstanceFilterInventory = $OSPolicyInventoryFilter;
 
 /// Message representing label set.
 ///
@@ -3124,40 +3091,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-class OSPolicyInventoryFilter {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  OSPolicyInventoryFilter({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  OSPolicyInventoryFilter.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
+typedef OSPolicyInventoryFilter = $OSPolicyInventoryFilter;
 
 /// Filtering criteria to select VMs based on OS details.
 class OSPolicyOSFilter {
@@ -3893,25 +3827,8 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-class OSPolicyResourcePackageResourceAPT {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceAPT({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceAPT.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceAPT
+    = $OSPolicyResourcePackageResourceYUM;
 
 /// A deb package file.
 ///
@@ -3954,25 +3871,8 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-class OSPolicyResourcePackageResourceGooGet {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceGooGet({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceGooGet.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceGooGet
+    = $OSPolicyResourcePackageResourceYUM;
 
 /// An MSI package.
 ///
@@ -4053,48 +3953,14 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-class OSPolicyResourcePackageResourceYUM {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceYUM({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceYUM
+    = $OSPolicyResourcePackageResourceYUM;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-class OSPolicyResourcePackageResourceZypper {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceZypper({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceZypper.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceZypper
+    = $OSPolicyResourcePackageResourceYUM;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {

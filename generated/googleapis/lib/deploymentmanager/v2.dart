@@ -1576,30 +1576,7 @@ class Deployment {
 }
 
 /// Label object for Deployments
-class DeploymentLabelEntry {
-  /// Key of the label
-  core.String? key;
-
-  /// Value of the label
-  core.String? value;
-
-  DeploymentLabelEntry({
-    this.key,
-    this.value,
-  });
-
-  DeploymentLabelEntry.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef DeploymentLabelEntry = $LabelEntry;
 
 class DeploymentUpdate {
   /// An optional user-provided description of the deployment after the current
@@ -1653,30 +1630,7 @@ class DeploymentUpdate {
 }
 
 /// Label object for DeploymentUpdate
-class DeploymentUpdateLabelEntry {
-  /// Key of the label
-  core.String? key;
-
-  /// Value of the label
-  core.String? value;
-
-  DeploymentUpdateLabelEntry({
-    this.key,
-    this.value,
-  });
-
-  DeploymentUpdateLabelEntry.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef DeploymentUpdateLabelEntry = $LabelEntry;
 
 class DeploymentsCancelPreviewRequest {
   /// Specifies a fingerprint for `cancelPreview()` requests.
@@ -3364,29 +3318,7 @@ class TargetConfiguration {
 }
 
 typedef TestPermissionsRequest = $TestPermissionsRequest;
-
-class TestPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestPermissionsResponse({
-    this.permissions,
-  });
-
-  TestPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestPermissionsResponse = $PermissionsResponse;
 
 /// A resource type supported by Deployment Manager.
 class Type {

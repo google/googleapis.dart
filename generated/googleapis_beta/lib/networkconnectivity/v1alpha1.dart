@@ -1889,7 +1889,7 @@ class ListSpokesResponse {
 typedef Location = $Location;
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata;
+typedef OperationMetadata = $OperationMetadata01;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.

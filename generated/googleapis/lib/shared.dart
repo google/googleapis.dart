@@ -15,6 +15,23 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
+class $AbuseType {
+  core.String? id;
+
+  $AbuseType({
+    this.id,
+  });
+
+  $AbuseType.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
 class $AccessPolicy {
   /// An opaque identifier for the current version of the `AccessPolicy`.
   ///
@@ -392,6 +409,52 @@ class $AdvertiserGroup {
       };
 }
 
+class $AnalyzePackagesMetadata {
+  /// When the scan was created.
+  core.String? createTime;
+
+  /// The resource URI of the container image being scanned.
+  core.String? resourceUri;
+
+  $AnalyzePackagesMetadata({
+    this.createTime,
+    this.resourceUri,
+  });
+
+  $AnalyzePackagesMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? _json['resourceUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+      };
+}
+
+class $AnalyzePackagesResponse {
+  /// The name of the scan resource created by this successful scan.
+  core.String? scan;
+
+  $AnalyzePackagesResponse({
+    this.scan,
+  });
+
+  $AnalyzePackagesResponse.fromJson(core.Map _json)
+      : this(
+          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scan != null) 'scan': scan!,
+      };
+}
+
 class $ApiDataRow {
   core.double? clicks;
   core.double? ctr;
@@ -434,6 +497,79 @@ class $ApiDataRow {
         if (impressions != null) 'impressions': impressions!,
         if (keys != null) 'keys': keys!,
         if (position != null) 'position': position!,
+      };
+}
+
+class $ArtifactsGcsSource {
+  /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
+  core.List<core.String>? uris;
+
+  /// Supports URI wildcards for matching multiple objects from a single URI.
+  core.bool? useWildcards;
+
+  $ArtifactsGcsSource({
+    this.uris,
+    this.useWildcards,
+  });
+
+  $ArtifactsGcsSource.fromJson(core.Map _json)
+      : this(
+          uris: _json.containsKey('uris')
+              ? (_json['uris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          useWildcards: _json.containsKey('useWildcards')
+              ? _json['useWildcards'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uris != null) 'uris': uris!,
+        if (useWildcards != null) 'useWildcards': useWildcards!,
+      };
+}
+
+class $AssociationInfo {
+  /// The name of the base entitlement, for which this entitlement is an add-on.
+  core.String? baseEntitlement;
+
+  $AssociationInfo({
+    this.baseEntitlement,
+  });
+
+  $AssociationInfo.fromJson(core.Map _json)
+      : this(
+          baseEntitlement: _json.containsKey('baseEntitlement')
+              ? _json['baseEntitlement'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
+      };
+}
+
+class $Attribution {
+  /// Number of steps for approximating the path integral.
+  ///
+  /// A good value to start is 50 and gradually increase until the sum to diff
+  /// property is met within the desired error range.
+  core.int? numIntegralSteps;
+
+  $Attribution({
+    this.numIntegralSteps,
+  });
+
+  $Attribution.fromJson(core.Map _json)
+      : this(
+          numIntegralSteps: _json.containsKey('numIntegralSteps')
+              ? _json['numIntegralSteps'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
       };
 }
 
@@ -1018,6 +1154,60 @@ class $CampaignCreativeAssociation {
       };
 }
 
+class $CdnPolicyBypassCacheOnRequestHeader {
+  /// The header field name to match on when bypassing cache.
+  ///
+  /// Values are case-insensitive.
+  core.String? headerName;
+
+  $CdnPolicyBypassCacheOnRequestHeader({
+    this.headerName,
+  });
+
+  $CdnPolicyBypassCacheOnRequestHeader.fromJson(core.Map _json)
+      : this(
+          headerName: _json.containsKey('headerName')
+              ? _json['headerName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerName != null) 'headerName': headerName!,
+      };
+}
+
+class $CdnPolicyNegativeCachingPolicy {
+  /// The HTTP status code to define a TTL against.
+  ///
+  /// Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451
+  /// and 501 are can be specified as values, and you cannot specify a status
+  /// code more than once.
+  core.int? code;
+
+  /// The TTL (in seconds) for which to cache responses with the corresponding
+  /// status code.
+  ///
+  /// The maximum allowed value is 1800s (30 minutes), noting that infrequently
+  /// accessed objects may be evicted from the cache before the defined TTL.
+  core.int? ttl;
+
+  $CdnPolicyNegativeCachingPolicy({
+    this.code,
+    this.ttl,
+  });
+
+  $CdnPolicyNegativeCachingPolicy.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (ttl != null) 'ttl': ttl!,
+      };
+}
+
 class $ChangeLog {
   /// Account ID of the modified object.
   core.String? accountId;
@@ -1246,6 +1436,33 @@ class $Channel {
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (token != null) 'token': token!,
         if (type != null) 'type': type!,
+      };
+}
+
+class $Checksum {
+  /// The SHA256 hash of the client state; that is, of the sorted list of all
+  /// hashes present in the database.
+  core.String? sha256;
+  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
+
+  set sha256AsBytes(core.List<core.int> _bytes) {
+    sha256 =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  $Checksum({
+    this.sha256,
+  });
+
+  $Checksum.fromJson(core.Map _json)
+      : this(
+          sha256: _json.containsKey('sha256')
+              ? _json['sha256'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sha256 != null) 'sha256': sha256!,
       };
 }
 
@@ -1479,6 +1696,56 @@ class $Color {
       };
 }
 
+class $CommonOperationMetadata {
+  /// The creation time of the operation.
+  core.String? createTime;
+
+  /// The state of the operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "RUNNING" : Operation is still running.
+  /// - "CANCELLING" : Operation is being cancelled.
+  /// - "SUCCEEDED" : Operation succeeded.
+  /// - "FAILED" : Operation failed.
+  /// - "CANCELLED" : Operation is cancelled.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  core.String? stateMessage;
+
+  /// The last update time of the operation.
+  core.String? updateTime;
+
+  $CommonOperationMetadata({
+    this.createTime,
+    this.state,
+    this.stateMessage,
+    this.updateTime,
+  });
+
+  $CommonOperationMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 class $ConnectionType {
   /// ID of this connection type.
   core.String? id;
@@ -1626,6 +1893,59 @@ class $ContextRule {
       };
 }
 
+class $ContinuousTestResult {
+  /// The resource name for the continuous test result.
+  ///
+  /// Format:
+  /// `projects//locations//agents//environments//continuousTestResults/`.
+  core.String? name;
+
+  /// The result of this continuous test run, i.e. whether all the tests in this
+  /// continuous test run pass or not.
+  /// Possible string values are:
+  /// - "AGGREGATED_TEST_RESULT_UNSPECIFIED" : Not specified. Should never be
+  /// used.
+  /// - "PASSED" : All the tests passed.
+  /// - "FAILED" : At least one test did not pass.
+  core.String? result;
+
+  /// Time when the continuous testing run starts.
+  core.String? runTime;
+
+  /// A list of individual test case results names in this continuous test run.
+  core.List<core.String>? testCaseResults;
+
+  $ContinuousTestResult({
+    this.name,
+    this.result,
+    this.runTime,
+    this.testCaseResults,
+  });
+
+  $ContinuousTestResult.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          result: _json.containsKey('result')
+              ? _json['result'] as core.String
+              : null,
+          runTime: _json.containsKey('runTime')
+              ? _json['runTime'] as core.String
+              : null,
+          testCaseResults: _json.containsKey('testCaseResults')
+              ? (_json['testCaseResults'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (result != null) 'result': result!,
+        if (runTime != null) 'runTime': runTime!,
+        if (testCaseResults != null) 'testCaseResults': testCaseResults!,
+      };
+}
+
 class $Control {
   /// The service control environment to use.
   ///
@@ -1740,6 +2060,48 @@ class $Country {
       };
 }
 
+class $CreateAnalysisOperationMetadata {
+  /// The Conversation that this Analysis Operation belongs to.
+  ///
+  /// Output only.
+  core.String? conversation;
+
+  /// The time the operation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time the operation finished running.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  $CreateAnalysisOperationMetadata({
+    this.conversation,
+    this.createTime,
+    this.endTime,
+  });
+
+  $CreateAnalysisOperationMetadata.fromJson(core.Map _json)
+      : this(
+          conversation: _json.containsKey('conversation')
+              ? _json['conversation'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversation != null) 'conversation': conversation!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+      };
+}
+
 class $CreateFolderMetadata {
   /// The display name of the folder.
   core.String? displayName;
@@ -1804,6 +2166,50 @@ class $CreateProjectMetadata {
         if (createTime != null) 'createTime': createTime!,
         if (gettable != null) 'gettable': gettable!,
         if (ready != null) 'ready': ready!,
+      };
+}
+
+class $CreateVersionMetadataV1 {
+  /// The Cloud Build ID if one was created as part of the version create.
+  ///
+  /// @OutputOnly
+  core.String? cloudBuildId;
+
+  $CreateVersionMetadataV1({
+    this.cloudBuildId,
+  });
+
+  $CreateVersionMetadataV1.fromJson(core.Map _json)
+      : this(
+          cloudBuildId: _json.containsKey('cloudBuildId')
+              ? _json['cloudBuildId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
+      };
+}
+
+class $CreateVersionOperationMetadata {
+  /// Name of the created version.
+  ///
+  /// Format: `projects//locations//agents//flows//versions/`.
+  core.String? version;
+
+  $CreateVersionOperationMetadata({
+    this.version,
+  });
+
+  $CreateVersionOperationMetadata.fromJson(core.Map _json)
+      : this(
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2239,6 +2645,42 @@ class $CustomViewabilityMetricConfiguration {
       };
 }
 
+class $CustomerEvent {
+  /// Resource name of the customer.
+  ///
+  /// Format: accounts/{account_id}/customers/{customer_id}
+  core.String? customer;
+
+  /// Type of event which happened on the customer.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
+  /// error occurs.
+  /// - "PRIMARY_DOMAIN_CHANGED" : Primary domain for customer was changed.
+  /// - "PRIMARY_DOMAIN_VERIFIED" : Primary domain of the customer has been
+  /// verified.
+  core.String? eventType;
+
+  $CustomerEvent({
+    this.customer,
+    this.eventType,
+  });
+
+  $CustomerEvent.fromJson(core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+          eventType: _json.containsKey('eventType')
+              ? _json['eventType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (eventType != null) 'eventType': eventType!,
+      };
+}
+
 class $Date {
   /// Day of a month.
   ///
@@ -2389,6 +2831,27 @@ class $DayPartTargeting {
       };
 }
 
+class $DebugInfo {
+  /// General debug info formatted for display.
+  core.String? formattedDebugInfo;
+
+  $DebugInfo({
+    this.formattedDebugInfo,
+  });
+
+  $DebugInfo.fromJson(core.Map _json)
+      : this(
+          formattedDebugInfo: _json.containsKey('formattedDebugInfo')
+              ? _json['formattedDebugInfo'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (formattedDebugInfo != null)
+          'formattedDebugInfo': formattedDebugInfo!,
+      };
+}
+
 class $DefaultClickThroughEventTagProperties {
   /// ID of the click-through event tag to apply to all ads in this entity's
   /// scope.
@@ -2420,6 +2883,85 @@ class $DefaultClickThroughEventTagProperties {
           'defaultClickThroughEventTagId': defaultClickThroughEventTagId!,
         if (overrideInheritedEventTag != null)
           'overrideInheritedEventTag': overrideInheritedEventTag!,
+      };
+}
+
+class $DeleteIssueModelRequest {
+  /// The name of the issue model to delete.
+  ///
+  /// Required.
+  core.String? name;
+
+  $DeleteIssueModelRequest({
+    this.name,
+  });
+
+  $DeleteIssueModelRequest.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+class $DeployIssueModelRequest {
+  /// The issue model to deploy.
+  ///
+  /// Required.
+  core.String? name;
+
+  $DeployIssueModelRequest({
+    this.name,
+  });
+
+  $DeployIssueModelRequest.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+class $DetectedAttribute {
+  /// Detected attribute confidence.
+  ///
+  /// Range \[0, 1\].
+  core.double? confidence;
+
+  /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
+  ///
+  /// A full list of supported type names will be provided in the document.
+  core.String? name;
+
+  /// Text value of the detection result.
+  ///
+  /// For example, the value for "HairColor" can be "black", "blonde", etc.
+  core.String? value;
+
+  $DetectedAttribute({
+    this.confidence,
+    this.name,
+    this.value,
+  });
+
+  $DetectedAttribute.fromJson(core.Map _json)
+      : this(
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2689,6 +3231,351 @@ class $DisksRemoveResourcePoliciesRequest {
       };
 }
 
+class $DocumentEntityRelation {
+  /// Object entity id.
+  core.String? objectId;
+
+  /// Relationship description.
+  core.String? relation;
+
+  /// Subject entity id.
+  core.String? subjectId;
+
+  $DocumentEntityRelation({
+    this.objectId,
+    this.relation,
+    this.subjectId,
+  });
+
+  $DocumentEntityRelation.fromJson(core.Map _json)
+      : this(
+          objectId: _json.containsKey('objectId')
+              ? _json['objectId'] as core.String
+              : null,
+          relation: _json.containsKey('relation')
+              ? _json['relation'] as core.String
+              : null,
+          subjectId: _json.containsKey('subjectId')
+              ? _json['subjectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (relation != null) 'relation': relation!,
+        if (subjectId != null) 'subjectId': subjectId!,
+      };
+}
+
+class $DocumentPageDimension {
+  /// Page height.
+  core.double? height;
+
+  /// Dimension unit.
+  core.String? unit;
+
+  /// Page width.
+  core.double? width;
+
+  $DocumentPageDimension({
+    this.height,
+    this.unit,
+    this.width,
+  });
+
+  $DocumentPageDimension.fromJson(core.Map _json)
+      : this(
+          height: _json.containsKey('height')
+              ? (_json['height'] as core.num).toDouble()
+              : null,
+          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          width: _json.containsKey('width')
+              ? (_json['width'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (height != null) 'height': height!,
+        if (unit != null) 'unit': unit!,
+        if (width != null) 'width': width!,
+      };
+}
+
+class $DocumentPageImage {
+  /// Raw byte content of the image.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> _bytes) {
+    content =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Height of the image in pixels.
+  core.int? height;
+
+  /// Encoding mime type for the image.
+  core.String? mimeType;
+
+  /// Width of the image in pixels.
+  core.int? width;
+
+  $DocumentPageImage({
+    this.content,
+    this.height,
+    this.mimeType,
+    this.width,
+  });
+
+  $DocumentPageImage.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (height != null) 'height': height!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (width != null) 'width': width!,
+      };
+}
+
+class $DocumentPageMatrix {
+  /// Number of columns in the matrix.
+  core.int? cols;
+
+  /// The matrix data.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> _bytes) {
+    data =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Number of rows in the matrix.
+  core.int? rows;
+
+  /// This encodes information about what data type the matrix uses.
+  ///
+  /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
+  /// OpenCV primitive data types, please refer to
+  /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
+  core.int? type;
+
+  $DocumentPageMatrix({
+    this.cols,
+    this.data,
+    this.rows,
+    this.type,
+  });
+
+  $DocumentPageMatrix.fromJson(core.Map _json)
+      : this(
+          cols: _json.containsKey('cols') ? _json['cols'] as core.int : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          rows: _json.containsKey('rows') ? _json['rows'] as core.int : null,
+          type: _json.containsKey('type') ? _json['type'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cols != null) 'cols': cols!,
+        if (data != null) 'data': data!,
+        if (rows != null) 'rows': rows!,
+        if (type != null) 'type': type!,
+      };
+}
+
+class $DocumentPageTokenDetectedBreak {
+  /// Detected break type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified break type.
+  /// - "SPACE" : A single whitespace.
+  /// - "WIDE_SPACE" : A wider whitespace.
+  /// - "HYPHEN" : A hyphen that indicates that a token has been split across
+  /// lines.
+  core.String? type;
+
+  $DocumentPageTokenDetectedBreak({
+    this.type,
+  });
+
+  $DocumentPageTokenDetectedBreak.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
+
+class $DocumentProvenanceParent {
+  /// The id of the parent provenance.
+  core.int? id;
+
+  /// The index of the parent item in the corresponding item list (eg.
+  ///
+  /// list of entities, properties within entities, etc.) on parent revision.
+  core.int? index;
+
+  /// The index of the \[Document.revisions\] identifying the parent revision.
+  core.int? revision;
+
+  $DocumentProvenanceParent({
+    this.id,
+    this.index,
+    this.revision,
+  });
+
+  $DocumentProvenanceParent.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.int : null,
+          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (index != null) 'index': index!,
+        if (revision != null) 'revision': revision!,
+      };
+}
+
+class $DocumentRevisionHumanReview {
+  /// Human review state.
+  ///
+  /// e.g. `requested`, `succeeded`, `rejected`.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  ///
+  /// For example, the rejection reason when the state is `rejected`.
+  core.String? stateMessage;
+
+  $DocumentRevisionHumanReview({
+    this.state,
+    this.stateMessage,
+  });
+
+  $DocumentRevisionHumanReview.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
+class $DocumentShardInfo {
+  /// Total number of shards.
+  core.String? shardCount;
+
+  /// The 0-based index of this shard.
+  core.String? shardIndex;
+
+  /// The index of the first character in Document.text in the overall document
+  /// global text.
+  core.String? textOffset;
+
+  $DocumentShardInfo({
+    this.shardCount,
+    this.shardIndex,
+    this.textOffset,
+  });
+
+  $DocumentShardInfo.fromJson(core.Map _json)
+      : this(
+          shardCount: _json.containsKey('shardCount')
+              ? _json['shardCount'] as core.String
+              : null,
+          shardIndex: _json.containsKey('shardIndex')
+              ? _json['shardIndex'] as core.String
+              : null,
+          textOffset: _json.containsKey('textOffset')
+              ? _json['textOffset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (shardCount != null) 'shardCount': shardCount!,
+        if (shardIndex != null) 'shardIndex': shardIndex!,
+        if (textOffset != null) 'textOffset': textOffset!,
+      };
+}
+
+class $DocumentStyleFontSize {
+  /// Font size for the text.
+  core.double? size;
+
+  /// Unit for the font size.
+  ///
+  /// Follows CSS naming (in, px, pt, etc.).
+  core.String? unit;
+
+  $DocumentStyleFontSize({
+    this.size,
+    this.unit,
+  });
+
+  $DocumentStyleFontSize.fromJson(core.Map _json)
+      : this(
+          size: _json.containsKey('size')
+              ? (_json['size'] as core.num).toDouble()
+              : null,
+          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (size != null) 'size': size!,
+        if (unit != null) 'unit': unit!,
+      };
+}
+
+class $DocumentTextAnchorTextSegment {
+  /// TextSegment half open end UTF-8 char index in the Document.text.
+  core.String? endIndex;
+
+  /// TextSegment start UTF-8 char index in the Document.text.
+  core.String? startIndex;
+
+  $DocumentTextAnchorTextSegment({
+    this.endIndex,
+    this.startIndex,
+  });
+
+  $DocumentTextAnchorTextSegment.fromJson(core.Map _json)
+      : this(
+          endIndex: _json.containsKey('endIndex')
+              ? _json['endIndex'] as core.String
+              : null,
+          startIndex: _json.containsKey('startIndex')
+              ? _json['startIndex'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
+      };
+}
+
 class $DocumentationRule {
   /// Deprecation description of the selected element(s).
   ///
@@ -2737,6 +3624,34 @@ class $DocumentationRule {
           'deprecationDescription': deprecationDescription!,
         if (description != null) 'description': description!,
         if (selector != null) 'selector': selector!,
+      };
+}
+
+class $DtmfInput {
+  /// The dtmf digits.
+  core.String? digits;
+
+  /// The finish digit (if any).
+  core.String? finishDigit;
+
+  $DtmfInput({
+    this.digits,
+    this.finishDigit,
+  });
+
+  $DtmfInput.fromJson(core.Map _json)
+      : this(
+          digits: _json.containsKey('digits')
+              ? _json['digits'] as core.String
+              : null,
+          finishDigit: _json.containsKey('finishDigit')
+              ? _json['finishDigit'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digits != null) 'digits': digits!,
+        if (finishDigit != null) 'finishDigit': finishDigit!,
       };
 }
 
@@ -2840,13 +3755,12 @@ class $EgressFrom {
       };
 }
 
-/// A reusable empty messages.
 class $Empty {
   $Empty();
 
   $Empty.fromJson(
       // ignore: avoid_unused_constructor_parameters
-      core.Map json);
+      core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -2961,6 +3875,318 @@ class $Endpoint {
       };
 }
 
+class $EntitlementEvent {
+  /// Resource name of an entitlement of the form:
+  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+  core.String? entitlement;
+
+  /// Type of event which happened on the entitlement.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
+  /// error occurs.
+  /// - "CREATED" : A new entitlement was created.
+  /// - "PRICE_PLAN_SWITCHED" : The offer type associated with an entitlement
+  /// was changed. This is not triggered if an entitlement converts from a
+  /// commit offer to a flexible offer as part of a renewal.
+  /// - "COMMITMENT_CHANGED" : Annual commitment for a commit plan was changed.
+  /// - "RENEWED" : An annual entitlement was renewed.
+  /// - "SUSPENDED" : Entitlement was suspended.
+  /// - "ACTIVATED" : Entitlement was unsuspended.
+  /// - "CANCELLED" : Entitlement was cancelled.
+  /// - "SKU_CHANGED" : Entitlement was upgraded or downgraded (e.g. from Google
+  /// Workspace Business Standard to Google Workspace Business Plus).
+  /// - "RENEWAL_SETTING_CHANGED" : The renewal settings of an entitlement has
+  /// changed.
+  /// - "PAID_SERVICE_STARTED" : Paid service has started on trial entitlement.
+  /// - "LICENSE_ASSIGNMENT_CHANGED" : License was assigned to or revoked from a
+  /// user.
+  /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
+  core.String? eventType;
+
+  $EntitlementEvent({
+    this.entitlement,
+    this.eventType,
+  });
+
+  $EntitlementEvent.fromJson(core.Map _json)
+      : this(
+          entitlement: _json.containsKey('entitlement')
+              ? _json['entitlement'] as core.String
+              : null,
+          eventType: _json.containsKey('eventType')
+              ? _json['eventType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entitlement != null) 'entitlement': entitlement!,
+        if (eventType != null) 'eventType': eventType!,
+      };
+}
+
+class $Entity {
+  /// Textual description, e.g., `Fixed-gear bicycle`.
+  core.String? description;
+
+  /// Opaque entity ID.
+  ///
+  /// Some IDs may be available in
+  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
+  core.String? entityId;
+
+  /// Language code for `description` in BCP-47 format.
+  core.String? languageCode;
+
+  $Entity({
+    this.description,
+    this.entityId,
+    this.languageCode,
+  });
+
+  $Entity.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          entityId: _json.containsKey('entityId')
+              ? _json['entityId'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (entityId != null) 'entityId': entityId!,
+        if (languageCode != null) 'languageCode': languageCode!,
+      };
+}
+
+class $EntityFilter {
+  /// If empty, then this represents all kinds.
+  core.List<core.String>? kinds;
+
+  /// An empty list represents all namespaces.
+  ///
+  /// This is the preferred usage for projects that don't use namespaces. An
+  /// empty string element represents the default namespace. This should be used
+  /// if the project has data in non-default namespaces, but doesn't want to
+  /// include them. Each namespace in this list must be unique.
+  core.List<core.String>? namespaceIds;
+
+  $EntityFilter({
+    this.kinds,
+    this.namespaceIds,
+  });
+
+  $EntityFilter.fromJson(core.Map _json)
+      : this(
+          kinds: _json.containsKey('kinds')
+              ? (_json['kinds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          namespaceIds: _json.containsKey('namespaceIds')
+              ? (_json['namespaceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kinds != null) 'kinds': kinds!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
+      };
+}
+
+class $EntityTypeEntity {
+  /// A collection of value synonyms.
+  ///
+  /// For example, if the entity type is *vegetable*, and `value` is
+  /// *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity
+  /// types: * This collection must contain exactly one synonym equal to
+  /// `value`.
+  ///
+  /// Required.
+  core.List<core.String>? synonyms;
+
+  /// The primary value associated with this entity entry.
+  ///
+  /// For example, if the entity type is *vegetable*, the value could be
+  /// *scallions*. For `KIND_MAP` entity types: * A reference value to be used
+  /// in place of synonyms. For `KIND_LIST` entity types: * A string that can
+  /// contain references to other entity types (with or without aliases).
+  ///
+  /// Required.
+  core.String? value;
+
+  $EntityTypeEntity({
+    this.synonyms,
+    this.value,
+  });
+
+  $EntityTypeEntity.fromJson(core.Map _json)
+      : this(
+          synonyms: _json.containsKey('synonyms')
+              ? (_json['synonyms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (synonyms != null) 'synonyms': synonyms!,
+        if (value != null) 'value': value!,
+      };
+}
+
+class $EnvironmentTestCasesConfig {
+  /// Whether to run test cases in TestCasesConfig.test_cases periodically.
+  ///
+  /// Default false. If set to ture, run once a day.
+  core.bool? enableContinuousRun;
+
+  /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
+  /// flow version to the environment.
+  ///
+  /// Default false.
+  core.bool? enablePredeploymentRun;
+
+  /// A list of test case names to run.
+  ///
+  /// They should be under the same agent. Format of each test case name:
+  /// `projects//locations/ /agents//testCases/`
+  core.List<core.String>? testCases;
+
+  $EnvironmentTestCasesConfig({
+    this.enableContinuousRun,
+    this.enablePredeploymentRun,
+    this.testCases,
+  });
+
+  $EnvironmentTestCasesConfig.fromJson(core.Map _json)
+      : this(
+          enableContinuousRun: _json.containsKey('enableContinuousRun')
+              ? _json['enableContinuousRun'] as core.bool
+              : null,
+          enablePredeploymentRun: _json.containsKey('enablePredeploymentRun')
+              ? _json['enablePredeploymentRun'] as core.bool
+              : null,
+          testCases: _json.containsKey('testCases')
+              ? (_json['testCases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableContinuousRun != null)
+          'enableContinuousRun': enableContinuousRun!,
+        if (enablePredeploymentRun != null)
+          'enablePredeploymentRun': enablePredeploymentRun!,
+        if (testCases != null) 'testCases': testCases!,
+      };
+}
+
+class $EnvironmentVersionConfig {
+  /// Format: projects//locations//agents//flows//versions/.
+  ///
+  /// Required.
+  core.String? version;
+
+  $EnvironmentVersionConfig({
+    this.version,
+  });
+
+  $EnvironmentVersionConfig.fromJson(core.Map _json)
+      : this(
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
+      };
+}
+
+class $EventInput {
+  /// Name of the event.
+  core.String? event;
+
+  $EventInput({
+    this.event,
+  });
+
+  $EventInput.fromJson(core.Map _json)
+      : this(
+          event:
+              _json.containsKey('event') ? _json['event'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (event != null) 'event': event!,
+      };
+}
+
+class $EventInput01 {
+  /// The language of this query.
+  ///
+  /// See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
+  ///
+  /// Required.
+  core.String? languageCode;
+
+  /// The unique identifier of the event.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The collection of parameters associated with the event.
+  ///
+  /// Depending on your protocol or client library language, this is a map,
+  /// associative array, symbol table, dictionary, or JSON object composed of a
+  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
+  /// value: parameter name - MapValue type: - If parameter's entity type is a
+  /// composite entity: map - Else: depending on parameter value type, could be
+  /// one of string, number, boolean, null, list or map - MapValue value: - If
+  /// parameter's entity type is a composite entity: map from composite entity
+  /// property names to property values - Else: parameter value
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? parameters;
+
+  $EventInput01({
+    this.languageCode,
+    this.name,
+    this.parameters,
+  });
+
+  $EventInput01.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+        if (parameters != null) 'parameters': parameters!,
+      };
+}
+
 class $EventTagOverride {
   /// Whether this override is enabled.
   core.bool? enabled;
@@ -3011,6 +4237,43 @@ class $Explicit {
       };
 }
 
+class $ExplicitContentFrame {
+  /// Likelihood of the pornography content..
+  /// Possible string values are:
+  /// - "LIKELIHOOD_UNSPECIFIED" : Unspecified likelihood.
+  /// - "VERY_UNLIKELY" : Very unlikely.
+  /// - "UNLIKELY" : Unlikely.
+  /// - "POSSIBLE" : Possible.
+  /// - "LIKELY" : Likely.
+  /// - "VERY_LIKELY" : Very likely.
+  core.String? pornographyLikelihood;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String? timeOffset;
+
+  $ExplicitContentFrame({
+    this.pornographyLikelihood,
+    this.timeOffset,
+  });
+
+  $ExplicitContentFrame.fromJson(core.Map _json)
+      : this(
+          pornographyLikelihood: _json.containsKey('pornographyLikelihood')
+              ? _json['pornographyLikelihood'] as core.String
+              : null,
+          timeOffset: _json.containsKey('timeOffset')
+              ? _json['timeOffset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pornographyLikelihood != null)
+          'pornographyLikelihood': pornographyLikelihood!,
+        if (timeOffset != null) 'timeOffset': timeOffset!,
+      };
+}
+
 class $Exponential {
   /// Must be greater than 1.
   core.double? growthFactor;
@@ -3044,6 +4307,283 @@ class $Exponential {
         if (growthFactor != null) 'growthFactor': growthFactor!,
         if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
         if (scale != null) 'scale': scale!,
+      };
+}
+
+class $ExportAgentResponse {
+  /// Uncompressed raw byte content for agent.
+  core.String? agentContent;
+  core.List<core.int> get agentContentAsBytes =>
+      convert.base64.decode(agentContent!);
+
+  set agentContentAsBytes(core.List<core.int> _bytes) {
+    agentContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The URI to a file containing the exported agent.
+  ///
+  /// This field is populated only if `agent_uri` is specified in
+  /// ExportAgentRequest.
+  core.String? agentUri;
+
+  $ExportAgentResponse({
+    this.agentContent,
+    this.agentUri,
+  });
+
+  $ExportAgentResponse.fromJson(core.Map _json)
+      : this(
+          agentContent: _json.containsKey('agentContent')
+              ? _json['agentContent'] as core.String
+              : null,
+          agentUri: _json.containsKey('agentUri')
+              ? _json['agentUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentContent != null) 'agentContent': agentContent!,
+        if (agentUri != null) 'agentUri': agentUri!,
+      };
+}
+
+class $ExportAgentResponse01 {
+  /// Zip compressed raw byte content for agent.
+  core.String? agentContent;
+  core.List<core.int> get agentContentAsBytes =>
+      convert.base64.decode(agentContent!);
+
+  set agentContentAsBytes(core.List<core.int> _bytes) {
+    agentContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The URI to a file containing the exported agent.
+  ///
+  /// This field is populated only if `agent_uri` is specified in
+  /// `ExportAgentRequest`.
+  core.String? agentUri;
+
+  $ExportAgentResponse01({
+    this.agentContent,
+    this.agentUri,
+  });
+
+  $ExportAgentResponse01.fromJson(core.Map _json)
+      : this(
+          agentContent: _json.containsKey('agentContent')
+              ? _json['agentContent'] as core.String
+              : null,
+          agentUri: _json.containsKey('agentUri')
+              ? _json['agentUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentContent != null) 'agentContent': agentContent!,
+        if (agentUri != null) 'agentUri': agentUri!,
+      };
+}
+
+class $ExportErrorsConfig {
+  /// Google Cloud Storage path for import errors.
+  ///
+  /// This must be an empty, existing Cloud Storage bucket. Export errors will
+  /// be written to a file in this bucket, one per line, as a JSON-encoded
+  /// `google.rpc.Status` message.
+  core.String? gcsPrefix;
+
+  $ExportErrorsConfig({
+    this.gcsPrefix,
+  });
+
+  $ExportErrorsConfig.fromJson(core.Map _json)
+      : this(
+          gcsPrefix: _json.containsKey('gcsPrefix')
+              ? _json['gcsPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
+      };
+}
+
+class $ExportFlowResponse {
+  /// Uncompressed raw byte content for flow.
+  core.String? flowContent;
+  core.List<core.int> get flowContentAsBytes =>
+      convert.base64.decode(flowContent!);
+
+  set flowContentAsBytes(core.List<core.int> _bytes) {
+    flowContent =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The URI to a file containing the exported flow.
+  ///
+  /// This field is populated only if `flow_uri` is specified in
+  /// ExportFlowRequest.
+  core.String? flowUri;
+
+  $ExportFlowResponse({
+    this.flowContent,
+    this.flowUri,
+  });
+
+  $ExportFlowResponse.fromJson(core.Map _json)
+      : this(
+          flowContent: _json.containsKey('flowContent')
+              ? _json['flowContent'] as core.String
+              : null,
+          flowUri: _json.containsKey('flowUri')
+              ? _json['flowUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flowContent != null) 'flowContent': flowContent!,
+        if (flowUri != null) 'flowUri': flowUri!,
+      };
+}
+
+class $ExportInsightsDataRequestBigQueryDestination {
+  /// The name of the BigQuery dataset that the snapshot result should be
+  /// exported to.
+  ///
+  /// If this dataset does not exist, the export call returns an
+  /// INVALID_ARGUMENT error.
+  ///
+  /// Required.
+  core.String? dataset;
+
+  /// A project ID or number.
+  ///
+  /// If specified, then export will attempt to write data to this project
+  /// instead of the resource project. Otherwise, the resource project will be
+  /// used.
+  core.String? projectId;
+
+  /// The BigQuery table name to which the insights data should be written.
+  ///
+  /// If this table does not exist, the export call returns an INVALID_ARGUMENT
+  /// error.
+  core.String? table;
+
+  $ExportInsightsDataRequestBigQueryDestination({
+    this.dataset,
+    this.projectId,
+    this.table,
+  });
+
+  $ExportInsightsDataRequestBigQueryDestination.fromJson(core.Map _json)
+      : this(
+          dataset: _json.containsKey('dataset')
+              ? _json['dataset'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          table:
+              _json.containsKey('table') ? _json['table'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+        if (projectId != null) 'projectId': projectId!,
+        if (table != null) 'table': table!,
+      };
+}
+
+class $ExportMetadata {
+  /// Operation create time.
+  core.String? createTime;
+
+  /// Operation last update time.
+  ///
+  /// If the operation is done, this is also the finish time.
+  core.String? updateTime;
+
+  $ExportMetadata({
+    this.createTime,
+    this.updateTime,
+  });
+
+  $ExportMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class $ExportOptions {
+  /// The file format for exported messages.
+  /// Possible string values are:
+  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
+  /// - "MBOX" : Export as MBOX.
+  /// - "PST" : Export as PST.
+  core.String? exportFormat;
+
+  $ExportOptions({
+    this.exportFormat,
+  });
+
+  $ExportOptions.fromJson(core.Map _json)
+      : this(
+          exportFormat: _json.containsKey('exportFormat')
+              ? _json['exportFormat'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat!,
+      };
+}
+
+class $ExportTestCasesResponse {
+  /// Uncompressed raw byte content for test cases.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> _bytes) {
+    content =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The URI to a file containing the exported test cases.
+  ///
+  /// This field is populated only if `gcs_uri` is specified in
+  /// ExportTestCasesRequest.
+  core.String? gcsUri;
+
+  $ExportTestCasesResponse({
+    this.content,
+    this.gcsUri,
+  });
+
+  $ExportTestCasesResponse.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          gcsUri: _json.containsKey('gcsUri')
+              ? _json['gcsUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (gcsUri != null) 'gcsUri': gcsUri!,
       };
 }
 
@@ -3100,6 +4640,77 @@ class $Expr {
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
         if (title != null) 'title': title!,
+      };
+}
+
+class $FaqAnswer {
+  /// The piece of text from the `source` knowledge base document.
+  core.String? answer;
+
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// The system's confidence score that this Knowledge answer is a good match
+  /// for this conversational query, range from 0.0 (completely uncertain) to
+  /// 1.0 (completely certain).
+  core.double? confidence;
+
+  /// A map that contains metadata about the answer and the document from which
+  /// it originates.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The corresponding FAQ question.
+  core.String? question;
+
+  /// Indicates which Knowledge Document this answer was extracted from.
+  ///
+  /// Format: `projects//locations//agent/knowledgeBases//documents/`.
+  core.String? source;
+
+  $FaqAnswer({
+    this.answer,
+    this.answerRecord,
+    this.confidence,
+    this.metadata,
+    this.question,
+    this.source,
+  });
+
+  $FaqAnswer.fromJson(core.Map _json)
+      : this(
+          answer: _json.containsKey('answer')
+              ? _json['answer'] as core.String
+              : null,
+          answerRecord: _json.containsKey('answerRecord')
+              ? _json['answerRecord'] as core.String
+              : null,
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          question: _json.containsKey('question')
+              ? _json['question'] as core.String
+              : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answer != null) 'answer': answer!,
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (metadata != null) 'metadata': metadata!,
+        if (question != null) 'question': question!,
+        if (source != null) 'source': source!,
       };
 }
 
@@ -3493,6 +5104,37 @@ class $FsCommand {
       };
 }
 
+class $FulfillmentSetParameterAction {
+  /// Display name of the parameter.
+  core.String? parameter;
+
+  /// The new value of the parameter.
+  ///
+  /// A null value clears the parameter.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? value;
+
+  $FulfillmentSetParameterAction({
+    this.parameter,
+    this.value,
+  });
+
+  $FulfillmentSetParameterAction.fromJson(core.Map _json)
+      : this(
+          parameter: _json.containsKey('parameter')
+              ? _json['parameter'] as core.String
+              : null,
+          value: _json.containsKey('value') ? _json['value'] : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parameter != null) 'parameter': parameter!,
+        if (value != null) 'value': value!,
+      };
+}
+
 class $GcsDestination {
   /// Google Cloud Storage URI prefix where the results will be stored.
   ///
@@ -3847,6 +5489,37 @@ class $GoogleCloudDialogflowV2KnowledgeOperationMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
+      };
+}
+
+class $GoogleCloudDialogflowV2Sentiment {
+  /// A non-negative number in the \[0, +inf) range, which represents the
+  /// absolute magnitude of sentiment, regardless of score (positive or
+  /// negative).
+  core.double? magnitude;
+
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
+  core.double? score;
+
+  $GoogleCloudDialogflowV2Sentiment({
+    this.magnitude,
+    this.score,
+  });
+
+  $GoogleCloudDialogflowV2Sentiment.fromJson(core.Map _json)
+      : this(
+          magnitude: _json.containsKey('magnitude')
+              ? (_json['magnitude'] as core.num).toDouble()
+              : null,
+          score: _json.containsKey('score')
+              ? (_json['score'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude!,
+        if (score != null) 'score': score!,
       };
 }
 
@@ -4406,6 +6079,23 @@ class $GoogleCloudDialogflowV2beta1SmartReplyAnswer {
       };
 }
 
+class $GoogleCloudDocumentaiV1beta2GcsSource {
+  core.String? uri;
+
+  $GoogleCloudDocumentaiV1beta2GcsSource({
+    this.uri,
+  });
+
+  $GoogleCloudDocumentaiV1beta2GcsSource.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 class $GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// This field is deprecated, and will be always set to true since reschedule
   /// can happen multiple times now.
@@ -4543,6 +6233,26 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
       };
 }
 
+class $Handler {
+  /// Path to the script from the application root directory.
+  core.String? scriptPath;
+
+  $Handler({
+    this.scriptPath,
+  });
+
+  $Handler.fromJson(core.Map _json)
+      : this(
+          scriptPath: _json.containsKey('scriptPath')
+              ? _json['scriptPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scriptPath != null) 'scriptPath': scriptPath!,
+      };
+}
+
 class $Header {
   /// Header name.
   core.String? name;
@@ -4616,6 +6326,58 @@ class $HttpBody {
       };
 }
 
+class $HumanReviewStatus {
+  /// The name of the operation triggered by the processed document.
+  ///
+  /// This field is populated only when the \[state\] is
+  /// \[HUMAN_REVIEW_IN_PROGRESS\]. It has the same response type and metadata
+  /// as the long running operation returned by \[ReviewDocument\] method.
+  core.String? humanReviewOperation;
+
+  /// The state of human review on the processing request.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
+  /// to an internal error.
+  /// - "SKIPPED" : Human review is skipped for the document. This can happen
+  /// because human review is not enabled on the processor or the processing
+  /// request has been set to skip this document.
+  /// - "VALIDATION_PASSED" : Human review validation is triggered and passed,
+  /// so no review is needed.
+  /// - "IN_PROGRESS" : Human review validation is triggered and the document is
+  /// under review.
+  /// - "ERROR" : Some error happened during triggering human review, see the
+  /// \[state_message\] for details.
+  core.String? state;
+
+  /// A message providing more details about the human review state.
+  core.String? stateMessage;
+
+  $HumanReviewStatus({
+    this.humanReviewOperation,
+    this.state,
+    this.stateMessage,
+  });
+
+  $HumanReviewStatus.fromJson(core.Map _json)
+      : this(
+          humanReviewOperation: _json.containsKey('humanReviewOperation')
+              ? _json['humanReviewOperation'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (humanReviewOperation != null)
+          'humanReviewOperation': humanReviewOperation!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
 class $ImageAnnotationContext {
   /// If the file was a PDF or TIFF, this field gives the page number within the
   /// file used to produce the image.
@@ -4640,6 +6402,144 @@ class $ImageAnnotationContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (pageNumber != null) 'pageNumber': pageNumber!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+class $ImportErrorsConfig {
+  /// Google Cloud Storage path for import errors.
+  ///
+  /// This must be an empty, existing Cloud Storage bucket. Import errors will
+  /// be written to a file in this bucket, one per line, as a JSON-encoded
+  /// `google.rpc.Status` message.
+  core.String? gcsPrefix;
+
+  $ImportErrorsConfig({
+    this.gcsPrefix,
+  });
+
+  $ImportErrorsConfig.fromJson(core.Map _json)
+      : this(
+          gcsPrefix: _json.containsKey('gcsPrefix')
+              ? _json['gcsPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
+      };
+}
+
+class $ImportFlowResponse {
+  /// The unique identifier of the new flow.
+  ///
+  /// Format: `projects//locations//agents//flows/`.
+  core.String? flow;
+
+  $ImportFlowResponse({
+    this.flow,
+  });
+
+  $ImportFlowResponse.fromJson(core.Map _json)
+      : this(
+          flow: _json.containsKey('flow') ? _json['flow'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flow != null) 'flow': flow!,
+      };
+}
+
+class $ImportMetadata {
+  /// Operation create time.
+  core.String? createTime;
+
+  /// Count of entries that encountered errors while processing.
+  core.String? failureCount;
+
+  /// Pub/Sub topic for receiving notification.
+  ///
+  /// If this field is set, when the import is finished, a notification will be
+  /// sent to specified Pub/Sub topic. The message data will be JSON string of a
+  /// Operation. Format of the Pub/Sub topic is
+  /// `projects/{project}/topics/{topic}`.
+  core.String? notificationPubsubTopic;
+
+  /// Id of the request / operation.
+  ///
+  /// This is parroting back the requestId that was passed in the request.
+  core.String? requestId;
+
+  /// Count of entries that were processed successfully.
+  core.String? successCount;
+
+  /// Operation last update time.
+  ///
+  /// If the operation is done, this is also the finish time.
+  core.String? updateTime;
+
+  $ImportMetadata({
+    this.createTime,
+    this.failureCount,
+    this.notificationPubsubTopic,
+    this.requestId,
+    this.successCount,
+    this.updateTime,
+  });
+
+  $ImportMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          failureCount: _json.containsKey('failureCount')
+              ? _json['failureCount'] as core.String
+              : null,
+          notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
+              ? _json['notificationPubsubTopic'] as core.String
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+          successCount: _json.containsKey('successCount')
+              ? _json['successCount'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (failureCount != null) 'failureCount': failureCount!,
+        if (notificationPubsubTopic != null)
+          'notificationPubsubTopic': notificationPubsubTopic!,
+        if (requestId != null) 'requestId': requestId!,
+        if (successCount != null) 'successCount': successCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class $ImportTestCasesResponse {
+  /// The unique identifiers of the new test cases.
+  ///
+  /// Format: `projects//locations//agents//testCases/`.
+  core.List<core.String>? names;
+
+  $ImportTestCasesResponse({
+    this.names,
+  });
+
+  $ImportTestCasesResponse.fromJson(core.Map _json)
+      : this(
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
       };
 }
 
@@ -4682,6 +6582,167 @@ class $IngressSource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevel != null) 'accessLevel': accessLevel!,
         if (resource != null) 'resource': resource!,
+      };
+}
+
+class $InputAudioConfig {
+  /// Audio encoding of the audio content to process.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AUDIO_ENCODING_UNSPECIFIED" : Not specified.
+  /// - "AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed little-endian
+  /// samples (Linear PCM).
+  /// - "AUDIO_ENCODING_FLAC" :
+  /// \[`FLAC`\](https://xiph.org/flac/documentation.html) (Free Lossless Audio
+  /// Codec) is the recommended encoding because it is lossless (therefore
+  /// recognition is not compromised) and requires only about half the bandwidth
+  /// of `LINEAR16`. `FLAC` stream encoding supports 16-bit and 24-bit samples,
+  /// however, not all fields in `STREAMINFO` are supported.
+  /// - "AUDIO_ENCODING_MULAW" : 8-bit samples that compand 14-bit audio samples
+  /// using G.711 PCMU/mu-law.
+  /// - "AUDIO_ENCODING_AMR" : Adaptive Multi-Rate Narrowband codec.
+  /// `sample_rate_hertz` must be 8000.
+  /// - "AUDIO_ENCODING_AMR_WB" : Adaptive Multi-Rate Wideband codec.
+  /// `sample_rate_hertz` must be 16000.
+  /// - "AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio frames in Ogg container
+  /// ([OggOpus](https://wiki.xiph.org/OggOpus)). `sample_rate_hertz` must be
+  /// 16000.
+  /// - "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE" : Although the use of lossy
+  /// encodings is not recommended, if a very low bitrate encoding is required,
+  /// `OGG_OPUS` is highly preferred over Speex encoding. The
+  /// [Speex](https://speex.org/) encoding supported by Dialogflow API has a
+  /// header byte in each block, as in MIME type
+  /// `audio/x-speex-with-header-byte`. It is a variant of the RTP Speex
+  /// encoding defined in [RFC 5574](https://tools.ietf.org/html/rfc5574). The
+  /// stream is a sequence of blocks, one block per RTP packet. Each block
+  /// starts with a byte containing the length of the block, in bytes, followed
+  /// by one or more frames of Speex data, padded to an integral number of bytes
+  /// (octets) as specified in RFC 5574. In other words, each RTP header is
+  /// replaced with a single byte containing the block length. Only Speex
+  /// wideband is supported. `sample_rate_hertz` must be 16000.
+  core.String? audioEncoding;
+
+  /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
+  /// with information about the recognized speech words, e.g. start and end
+  /// time offsets.
+  ///
+  /// If false or unspecified, Speech doesn't return any word-level information.
+  ///
+  /// Optional.
+  core.bool? enableWordInfo;
+
+  /// Which Speech model to select for the given request.
+  ///
+  /// Select the model best suited to your domain to get best results. If a
+  /// model is not explicitly specified, then we auto-select a model based on
+  /// the parameters in the InputAudioConfig. If enhanced speech model is
+  /// enabled for the agent and an enhanced version of the specified model for
+  /// the language does not exist, then the speech is recognized using the
+  /// standard version of the specified model. Refer to
+  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
+  /// for more details.
+  ///
+  /// Optional.
+  core.String? model;
+
+  /// Which variant of the Speech model to use.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED" : No model variant specified. In this
+  /// case Dialogflow defaults to USE_BEST_AVAILABLE.
+  /// - "USE_BEST_AVAILABLE" : Use the best available variant of the Speech
+  /// model that the caller is eligible for. Please see the
+  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
+  /// for how to make your project eligible for enhanced models.
+  /// - "USE_STANDARD" : Use standard model variant even if an enhanced model is
+  /// available. See the
+  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
+  /// for details about enhanced models.
+  /// - "USE_ENHANCED" : Use an enhanced model variant: * If an enhanced variant
+  /// does not exist for the given model and request language, Dialogflow falls
+  /// back to the standard variant. The
+  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
+  /// describes which models have enhanced variants. * If the API caller isn't
+  /// eligible for enhanced models, Dialogflow returns an error. Please see the
+  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
+  /// for how to make your project eligible.
+  core.String? modelVariant;
+
+  /// A list of strings containing words and phrases that the speech recognizer
+  /// should recognize with higher likelihood.
+  ///
+  /// See
+  /// [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
+  /// for more details.
+  ///
+  /// Optional.
+  core.List<core.String>? phraseHints;
+
+  /// Sample rate (in Hertz) of the audio content sent in the query.
+  ///
+  /// Refer to
+  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics)
+  /// for more details.
+  core.int? sampleRateHertz;
+
+  /// If `false` (default), recognition does not cease until the client closes
+  /// the stream.
+  ///
+  /// If `true`, the recognizer will detect a single spoken utterance in input
+  /// audio. Recognition ceases when it detects the audio's voice has stopped or
+  /// paused. In this case, once a detected intent is received, the client
+  /// should close the stream and start a new request with a new stream as
+  /// needed. Note: This setting is relevant only for streaming methods.
+  ///
+  /// Optional.
+  core.bool? singleUtterance;
+
+  $InputAudioConfig({
+    this.audioEncoding,
+    this.enableWordInfo,
+    this.model,
+    this.modelVariant,
+    this.phraseHints,
+    this.sampleRateHertz,
+    this.singleUtterance,
+  });
+
+  $InputAudioConfig.fromJson(core.Map _json)
+      : this(
+          audioEncoding: _json.containsKey('audioEncoding')
+              ? _json['audioEncoding'] as core.String
+              : null,
+          enableWordInfo: _json.containsKey('enableWordInfo')
+              ? _json['enableWordInfo'] as core.bool
+              : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+          modelVariant: _json.containsKey('modelVariant')
+              ? _json['modelVariant'] as core.String
+              : null,
+          phraseHints: _json.containsKey('phraseHints')
+              ? (_json['phraseHints'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          sampleRateHertz: _json.containsKey('sampleRateHertz')
+              ? _json['sampleRateHertz'] as core.int
+              : null,
+          singleUtterance: _json.containsKey('singleUtterance')
+              ? _json['singleUtterance'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audioEncoding != null) 'audioEncoding': audioEncoding!,
+        if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
+        if (model != null) 'model': model!,
+        if (modelVariant != null) 'modelVariant': modelVariant!,
+        if (phraseHints != null) 'phraseHints': phraseHints!,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
+        if (singleUtterance != null) 'singleUtterance': singleUtterance!,
       };
 }
 
@@ -4833,6 +6894,726 @@ class $InstanceGroupManagersDeleteInstancesRequest {
       };
 }
 
+class $IntentFollowupIntentInfo {
+  /// The unique identifier of the followup intent.
+  ///
+  /// Format: `projects//agent/intents/`.
+  core.String? followupIntentName;
+
+  /// The unique identifier of the followup intent's parent.
+  ///
+  /// Format: `projects//agent/intents/`.
+  core.String? parentFollowupIntentName;
+
+  $IntentFollowupIntentInfo({
+    this.followupIntentName,
+    this.parentFollowupIntentName,
+  });
+
+  $IntentFollowupIntentInfo.fromJson(core.Map _json)
+      : this(
+          followupIntentName: _json.containsKey('followupIntentName')
+              ? _json['followupIntentName'] as core.String
+              : null,
+          parentFollowupIntentName:
+              _json.containsKey('parentFollowupIntentName')
+                  ? _json['parentFollowupIntentName'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (followupIntentName != null)
+          'followupIntentName': followupIntentName!,
+        if (parentFollowupIntentName != null)
+          'parentFollowupIntentName': parentFollowupIntentName!,
+      };
+}
+
+class $IntentInput {
+  /// The unique identifier of the intent.
+  ///
+  /// Format: `projects//locations//agents//intents/`.
+  ///
+  /// Required.
+  core.String? intent;
+
+  $IntentInput({
+    this.intent,
+  });
+
+  $IntentInput.fromJson(core.Map _json)
+      : this(
+          intent: _json.containsKey('intent')
+              ? _json['intent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intent != null) 'intent': intent!,
+      };
+}
+
+class $IntentMessageBasicCardButtonOpenUriAction {
+  /// The HTTP or HTTPS scheme URI.
+  ///
+  /// Required.
+  core.String? uri;
+
+  $IntentMessageBasicCardButtonOpenUriAction({
+    this.uri,
+  });
+
+  $IntentMessageBasicCardButtonOpenUriAction.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+class $IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
+  /// URL
+  ///
+  /// Required.
+  core.String? url;
+
+  /// Specifies the type of viewer that is used when opening the URL.
+  ///
+  /// Defaults to opening via web browser.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "URL_TYPE_HINT_UNSPECIFIED" : Unspecified
+  /// - "AMP_ACTION" : Url would be an amp action
+  /// - "AMP_CONTENT" : URL that points directly to AMP content, or to a
+  /// canonical URL which refers to AMP content via .
+  core.String? urlTypeHint;
+
+  $IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction({
+    this.url,
+    this.urlTypeHint,
+  });
+
+  $IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
+      core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          urlTypeHint: _json.containsKey('urlTypeHint')
+              ? _json['urlTypeHint'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (url != null) 'url': url!,
+        if (urlTypeHint != null) 'urlTypeHint': urlTypeHint!,
+      };
+}
+
+class $IntentMessageCardButton {
+  /// The text to send back to the Dialogflow API or a URI to open.
+  ///
+  /// Optional.
+  core.String? postback;
+
+  /// The text to show on the button.
+  ///
+  /// Optional.
+  core.String? text;
+
+  $IntentMessageCardButton({
+    this.postback,
+    this.text,
+  });
+
+  $IntentMessageCardButton.fromJson(core.Map _json)
+      : this(
+          postback: _json.containsKey('postback')
+              ? _json['postback'] as core.String
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postback != null) 'postback': postback!,
+        if (text != null) 'text': text!,
+      };
+}
+
+class $IntentMessageColumnProperties {
+  /// Column heading.
+  ///
+  /// Required.
+  core.String? header;
+
+  /// Defines text alignment for all cells in this column.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Text is aligned to the leading edge
+  /// of the column.
+  /// - "LEADING" : Text is aligned to the leading edge of the column.
+  /// - "CENTER" : Text is centered in the column.
+  /// - "TRAILING" : Text is aligned to the trailing edge of the column.
+  core.String? horizontalAlignment;
+
+  $IntentMessageColumnProperties({
+    this.header,
+    this.horizontalAlignment,
+  });
+
+  $IntentMessageColumnProperties.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? _json['header'] as core.String
+              : null,
+          horizontalAlignment: _json.containsKey('horizontalAlignment')
+              ? _json['horizontalAlignment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment!,
+      };
+}
+
+class $IntentMessageLinkOutSuggestion {
+  /// The name of the app or site this chip is linking to.
+  ///
+  /// Required.
+  core.String? destinationName;
+
+  /// The URI of the app or site to open when the user taps the suggestion chip.
+  ///
+  /// Required.
+  core.String? uri;
+
+  $IntentMessageLinkOutSuggestion({
+    this.destinationName,
+    this.uri,
+  });
+
+  $IntentMessageLinkOutSuggestion.fromJson(core.Map _json)
+      : this(
+          destinationName: _json.containsKey('destinationName')
+              ? _json['destinationName'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationName != null) 'destinationName': destinationName!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+class $IntentMessageQuickReplies {
+  /// The collection of quick replies.
+  ///
+  /// Optional.
+  core.List<core.String>? quickReplies;
+
+  /// The title of the collection of quick replies.
+  ///
+  /// Optional.
+  core.String? title;
+
+  $IntentMessageQuickReplies({
+    this.quickReplies,
+    this.title,
+  });
+
+  $IntentMessageQuickReplies.fromJson(core.Map _json)
+      : this(
+          quickReplies: _json.containsKey('quickReplies')
+              ? (_json['quickReplies'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (quickReplies != null) 'quickReplies': quickReplies!,
+        if (title != null) 'title': title!,
+      };
+}
+
+class $IntentMessageSelectItemInfo {
+  /// A unique key that will be sent back to the agent if this response is
+  /// given.
+  ///
+  /// Required.
+  core.String? key;
+
+  /// A list of synonyms that can also be used to trigger this item in dialog.
+  ///
+  /// Optional.
+  core.List<core.String>? synonyms;
+
+  $IntentMessageSelectItemInfo({
+    this.key,
+    this.synonyms,
+  });
+
+  $IntentMessageSelectItemInfo.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          synonyms: _json.containsKey('synonyms')
+              ? (_json['synonyms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (synonyms != null) 'synonyms': synonyms!,
+      };
+}
+
+class $IntentMessageSimpleResponse {
+  /// The text to display.
+  ///
+  /// Optional.
+  core.String? displayText;
+
+  /// One of text_to_speech or ssml must be provided.
+  ///
+  /// Structured spoken response to the user in the SSML format. Mutually
+  /// exclusive with text_to_speech.
+  core.String? ssml;
+
+  /// One of text_to_speech or ssml must be provided.
+  ///
+  /// The plain text of the speech output. Mutually exclusive with ssml.
+  core.String? textToSpeech;
+
+  $IntentMessageSimpleResponse({
+    this.displayText,
+    this.ssml,
+    this.textToSpeech,
+  });
+
+  $IntentMessageSimpleResponse.fromJson(core.Map _json)
+      : this(
+          displayText: _json.containsKey('displayText')
+              ? _json['displayText'] as core.String
+              : null,
+          ssml: _json.containsKey('ssml') ? _json['ssml'] as core.String : null,
+          textToSpeech: _json.containsKey('textToSpeech')
+              ? _json['textToSpeech'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayText != null) 'displayText': displayText!,
+        if (ssml != null) 'ssml': ssml!,
+        if (textToSpeech != null) 'textToSpeech': textToSpeech!,
+      };
+}
+
+class $IntentMessageSuggestion {
+  /// The text shown the in the suggestion chip.
+  ///
+  /// Required.
+  core.String? title;
+
+  $IntentMessageSuggestion({
+    this.title,
+  });
+
+  $IntentMessageSuggestion.fromJson(core.Map _json)
+      : this(
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (title != null) 'title': title!,
+      };
+}
+
+class $IntentMessageTableCardCell {
+  /// Text in this cell.
+  ///
+  /// Required.
+  core.String? text;
+
+  $IntentMessageTableCardCell({
+    this.text,
+  });
+
+  $IntentMessageTableCardCell.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
+
+class $IntentMessageText {
+  /// The collection of the agent's responses.
+  ///
+  /// Optional.
+  core.List<core.String>? text;
+
+  $IntentMessageText({
+    this.text,
+  });
+
+  $IntentMessageText.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text')
+              ? (_json['text'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
+
+class $IntentParameter {
+  /// The entity type of the parameter.
+  ///
+  /// Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity
+  /// types (for example,
+  /// `projects/-/locations/-/agents/-/entityTypes/sys.date`), or
+  /// `projects//locations//agents//entityTypes/` for developer entity types.
+  ///
+  /// Required.
+  core.String? entityType;
+
+  /// The unique identifier of the parameter.
+  ///
+  /// This field is used by training phrases to annotate their parts.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Indicates whether the parameter represents a list of values.
+  core.bool? isList;
+
+  /// Indicates whether the parameter content should be redacted in log.
+  ///
+  /// If redaction is enabled, the parameter content will be replaced by
+  /// parameter name during logging. Note: the parameter content is subject to
+  /// redaction if either parameter level redaction or entity type level
+  /// redaction is enabled.
+  core.bool? redact;
+
+  $IntentParameter({
+    this.entityType,
+    this.id,
+    this.isList,
+    this.redact,
+  });
+
+  $IntentParameter.fromJson(core.Map _json)
+      : this(
+          entityType: _json.containsKey('entityType')
+              ? _json['entityType'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          isList:
+              _json.containsKey('isList') ? _json['isList'] as core.bool : null,
+          redact:
+              _json.containsKey('redact') ? _json['redact'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entityType != null) 'entityType': entityType!,
+        if (id != null) 'id': id!,
+        if (isList != null) 'isList': isList!,
+        if (redact != null) 'redact': redact!,
+      };
+}
+
+class $IntentParameter01 {
+  /// The default value to use when the `value` yields an empty result.
+  ///
+  /// Default values can be extracted from contexts by using the following
+  /// syntax: `#context_name.parameter_name`.
+  ///
+  /// Optional.
+  core.String? defaultValue;
+
+  /// The name of the parameter.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The name of the entity type, prefixed with `@`, that describes values of
+  /// the parameter.
+  ///
+  /// If the parameter is required, this must be provided.
+  ///
+  /// Optional.
+  core.String? entityTypeDisplayName;
+
+  /// Indicates whether the parameter represents a list of values.
+  ///
+  /// Optional.
+  core.bool? isList;
+
+  /// Indicates whether the parameter is required.
+  ///
+  /// That is, whether the intent cannot be completed without collecting the
+  /// parameter value.
+  ///
+  /// Optional.
+  core.bool? mandatory;
+
+  /// The unique identifier of this parameter.
+  core.String? name;
+
+  /// The collection of prompts that the agent can present to the user in order
+  /// to collect a value for the parameter.
+  ///
+  /// Optional.
+  core.List<core.String>? prompts;
+
+  /// The definition of the parameter value.
+  ///
+  /// It can be: - a constant string, - a parameter value defined as
+  /// `$parameter_name`, - an original parameter value defined as
+  /// `$parameter_name.original`, - a parameter value from some context defined
+  /// as `#context_name.parameter_name`.
+  ///
+  /// Optional.
+  core.String? value;
+
+  $IntentParameter01({
+    this.defaultValue,
+    this.displayName,
+    this.entityTypeDisplayName,
+    this.isList,
+    this.mandatory,
+    this.name,
+    this.prompts,
+    this.value,
+  });
+
+  $IntentParameter01.fromJson(core.Map _json)
+      : this(
+          defaultValue: _json.containsKey('defaultValue')
+              ? _json['defaultValue'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityTypeDisplayName: _json.containsKey('entityTypeDisplayName')
+              ? _json['entityTypeDisplayName'] as core.String
+              : null,
+          isList:
+              _json.containsKey('isList') ? _json['isList'] as core.bool : null,
+          mandatory: _json.containsKey('mandatory')
+              ? _json['mandatory'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          prompts: _json.containsKey('prompts')
+              ? (_json['prompts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue!,
+        if (displayName != null) 'displayName': displayName!,
+        if (entityTypeDisplayName != null)
+          'entityTypeDisplayName': entityTypeDisplayName!,
+        if (isList != null) 'isList': isList!,
+        if (mandatory != null) 'mandatory': mandatory!,
+        if (name != null) 'name': name!,
+        if (prompts != null) 'prompts': prompts!,
+        if (value != null) 'value': value!,
+      };
+}
+
+class $IntentTrainingPhrasePart {
+  /// The parameter used to annotate this part of the training phrase.
+  ///
+  /// This field is required for annotated parts of the training phrase.
+  core.String? parameterId;
+
+  /// The text for this part.
+  ///
+  /// Required.
+  core.String? text;
+
+  $IntentTrainingPhrasePart({
+    this.parameterId,
+    this.text,
+  });
+
+  $IntentTrainingPhrasePart.fromJson(core.Map _json)
+      : this(
+          parameterId: _json.containsKey('parameterId')
+              ? _json['parameterId'] as core.String
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parameterId != null) 'parameterId': parameterId!,
+        if (text != null) 'text': text!,
+      };
+}
+
+class $IntentTrainingPhrasePart01 {
+  /// The parameter name for the value extracted from the annotated part of the
+  /// example.
+  ///
+  /// This field is required for annotated parts of the training phrase.
+  ///
+  /// Optional.
+  core.String? alias;
+
+  /// The entity type name prefixed with `@`.
+  ///
+  /// This field is required for annotated parts of the training phrase.
+  ///
+  /// Optional.
+  core.String? entityType;
+
+  /// The text for this part.
+  ///
+  /// Required.
+  core.String? text;
+
+  /// Indicates whether the text was manually annotated.
+  ///
+  /// This field is set to true when the Dialogflow Console is used to manually
+  /// annotate the part. When creating an annotated part with the API, you must
+  /// set this to true.
+  ///
+  /// Optional.
+  core.bool? userDefined;
+
+  $IntentTrainingPhrasePart01({
+    this.alias,
+    this.entityType,
+    this.text,
+    this.userDefined,
+  });
+
+  $IntentTrainingPhrasePart01.fromJson(core.Map _json)
+      : this(
+          alias:
+              _json.containsKey('alias') ? _json['alias'] as core.String : null,
+          entityType: _json.containsKey('entityType')
+              ? _json['entityType'] as core.String
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          userDefined: _json.containsKey('userDefined')
+              ? _json['userDefined'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (entityType != null) 'entityType': entityType!,
+        if (text != null) 'text': text!,
+        if (userDefined != null) 'userDefined': userDefined!,
+      };
+}
+
+class $IssueModelInputDataConfig {
+  /// A filter to reduce the conversations used for training the model to a
+  /// specific subset.
+  core.String? filter;
+
+  /// Medium of conversations used in training data.
+  ///
+  /// This field is being deprecated. To specify the medium to be used in
+  /// training a new issue model, set the `medium` field on `filter`.
+  /// Possible string values are:
+  /// - "MEDIUM_UNSPECIFIED" : Default value, if unspecified will default to
+  /// PHONE_CALL.
+  /// - "PHONE_CALL" : The format for conversations that took place over the
+  /// phone.
+  /// - "CHAT" : The format for conversations that took place over chat.
+  core.String? medium;
+
+  /// Number of conversations used in training.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
+  core.String? trainingConversationsCount;
+
+  $IssueModelInputDataConfig({
+    this.filter,
+    this.medium,
+    this.trainingConversationsCount,
+  });
+
+  $IssueModelInputDataConfig.fromJson(core.Map _json)
+      : this(
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          medium: _json.containsKey('medium')
+              ? _json['medium'] as core.String
+              : null,
+          trainingConversationsCount:
+              _json.containsKey('trainingConversationsCount')
+                  ? _json['trainingConversationsCount'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (medium != null) 'medium': medium!,
+        if (trainingConversationsCount != null)
+          'trainingConversationsCount': trainingConversationsCount!,
+      };
+}
+
+class $IssueModelLabelStatsIssueStats {
+  /// Issue resource.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
+  core.String? issue;
+
+  /// Number of conversations attached to the issue at this point in time.
+  core.String? labeledConversationsCount;
+
+  $IssueModelLabelStatsIssueStats({
+    this.issue,
+    this.labeledConversationsCount,
+  });
+
+  $IssueModelLabelStatsIssueStats.fromJson(core.Map _json)
+      : this(
+          issue:
+              _json.containsKey('issue') ? _json['issue'] as core.String : null,
+          labeledConversationsCount:
+              _json.containsKey('labeledConversationsCount')
+                  ? _json['labeledConversationsCount'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issue != null) 'issue': issue!,
+        if (labeledConversationsCount != null)
+          'labeledConversationsCount': labeledConversationsCount!,
+      };
+}
+
 class $Jwt {
   /// The compact encoding of a JWS, which is always three base64 encoded
   /// strings joined by periods.
@@ -4965,6 +7746,32 @@ class $KindExpression {
       };
 }
 
+class $KnowledgeOperationMetadata {
+  /// The current state of this operation.
+  ///
+  /// Required. Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "PENDING" : The operation has been created.
+  /// - "RUNNING" : The operation is currently running.
+  /// - "DONE" : The operation is done, either cancelled or completed.
+  core.String? state;
+
+  $KnowledgeOperationMetadata({
+    this.state,
+  });
+
+  $KnowledgeOperationMetadata.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
 class $LabelDescriptor {
   /// A human-readable description for the label.
   core.String? description;
@@ -5000,6 +7807,62 @@ class $LabelDescriptor {
         if (description != null) 'description': description!,
         if (key != null) 'key': key!,
         if (valueType != null) 'valueType': valueType!,
+      };
+}
+
+class $LabelEntry {
+  /// Key of the label
+  core.String? key;
+
+  /// Value of the label
+  core.String? value;
+
+  $LabelEntry({
+    this.key,
+    this.value,
+  });
+
+  $LabelEntry.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+class $LabelFrame {
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: \[0, 1\].
+  core.double? confidence;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String? timeOffset;
+
+  $LabelFrame({
+    this.confidence,
+    this.timeOffset,
+  });
+
+  $LabelFrame.fromJson(core.Map _json)
+      : this(
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          timeOffset: _json.containsKey('timeOffset')
+              ? _json['timeOffset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
 
@@ -5045,6 +7908,24 @@ class $Language {
         if (kind != null) 'kind': kind!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
+      };
+}
+
+class $LanguageTag {
+  core.String? value;
+
+  $LanguageTag({
+    this.value,
+  });
+
+  $LanguageTag.fromJson(core.Map _json)
+      : this(
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -6581,6 +9462,50 @@ class $NamespacedDebugInput {
       };
 }
 
+class $NormalizedBoundingBox {
+  /// Bottom Y coordinate.
+  core.double? bottom;
+
+  /// Left X coordinate.
+  core.double? left;
+
+  /// Right X coordinate.
+  core.double? right;
+
+  /// Top Y coordinate.
+  core.double? top;
+
+  $NormalizedBoundingBox({
+    this.bottom,
+    this.left,
+    this.right,
+    this.top,
+  });
+
+  $NormalizedBoundingBox.fromJson(core.Map _json)
+      : this(
+          bottom: _json.containsKey('bottom')
+              ? (_json['bottom'] as core.num).toDouble()
+              : null,
+          left: _json.containsKey('left')
+              ? (_json['left'] as core.num).toDouble()
+              : null,
+          right: _json.containsKey('right')
+              ? (_json['right'] as core.num).toDouble()
+              : null,
+          top: _json.containsKey('top')
+              ? (_json['top'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bottom != null) 'bottom': bottom!,
+        if (left != null) 'left': left!,
+        if (right != null) 'right': right!,
+        if (top != null) 'top': top!,
+      };
+}
+
 class $NormalizedVertex {
   /// X coordinate.
   core.double? x;
@@ -6594,6 +9519,34 @@ class $NormalizedVertex {
   });
 
   $NormalizedVertex.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x')
+              ? (_json['x'] as core.num).toDouble()
+              : null,
+          y: _json.containsKey('y')
+              ? (_json['y'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
+      };
+}
+
+class $NormalizedVertex01 {
+  /// X coordinate.
+  core.double? x;
+
+  /// Y coordinate (starts from the top of the image).
+  core.double? y;
+
+  $NormalizedVertex01({
+    this.x,
+    this.y,
+  });
+
+  $NormalizedVertex01.fromJson(core.Map _json)
       : this(
           x: _json.containsKey('x')
               ? (_json['x'] as core.num).toDouble()
@@ -6630,6 +9583,61 @@ class $OAuthRequirements {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalScopes != null) 'canonicalScopes': canonicalScopes!,
+      };
+}
+
+class $OSPolicyInventoryFilter {
+  /// The OS short name
+  ///
+  /// Required.
+  core.String? osShortName;
+
+  /// The OS version Prefix matches are supported if asterisk(*) is provided as
+  /// the last character.
+  ///
+  /// For example, to match all versions with a major version of `7`, specify
+  /// the following value for this field `7.*` An empty string matches all OS
+  /// versions.
+  core.String? osVersion;
+
+  $OSPolicyInventoryFilter({
+    this.osShortName,
+    this.osVersion,
+  });
+
+  $OSPolicyInventoryFilter.fromJson(core.Map _json)
+      : this(
+          osShortName: _json.containsKey('osShortName')
+              ? _json['osShortName'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osShortName != null) 'osShortName': osShortName!,
+        if (osVersion != null) 'osVersion': osVersion!,
+      };
+}
+
+class $OSPolicyResourcePackageResourceYUM {
+  /// Package name.
+  ///
+  /// Required.
+  core.String? name;
+
+  $OSPolicyResourcePackageResourceYUM({
+    this.name,
+  });
+
+  $OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -6783,6 +9791,81 @@ class $OmnitureSettings {
           'omnitureCostDataEnabled': omnitureCostDataEnabled!,
         if (omnitureIntegrationEnabled != null)
           'omnitureIntegrationEnabled': omnitureIntegrationEnabled!,
+      };
+}
+
+class $OpMetadata {
+  /// API version used to start the operation.
+  ///
+  /// Output only.
+  core.String? apiVersion;
+
+  /// The time the operation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time the operation finished running.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Identifies whether the user has requested cancellation of the operation.
+  ///
+  /// Operations that have successfully been cancelled have Operation.error
+  /// value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// Output only.
+  core.bool? requestedCancellation;
+
+  /// Server-defined resource path for the target of the operation.
+  ///
+  /// Output only.
+  core.String? target;
+
+  /// Name of the verb executed by the operation.
+  ///
+  /// Output only.
+  core.String? verb;
+
+  $OpMetadata({
+    this.apiVersion,
+    this.createTime,
+    this.endTime,
+    this.requestedCancellation,
+    this.target,
+    this.verb,
+  });
+
+  $OpMetadata.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          requestedCancellation: _json.containsKey('requestedCancellation')
+              ? _json['requestedCancellation'] as core.bool
+              : null,
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -6946,6 +10029,46 @@ class $OperationMetadata01 {
 }
 
 class $OperationMetadata02 {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the GitHubEnterprise to be created.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+  core.String? githubEnterpriseConfig;
+
+  $OperationMetadata02({
+    this.completeTime,
+    this.createTime,
+    this.githubEnterpriseConfig,
+  });
+
+  $OperationMetadata02.fromJson(core.Map _json)
+      : this(
+          completeTime: _json.containsKey('completeTime')
+              ? _json['completeTime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
+              ? _json['githubEnterpriseConfig'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
+      };
+}
+
+class $OperationMetadata03 {
   /// API version used to start the operation.
   ///
   /// Output only.
@@ -6985,7 +10108,7 @@ class $OperationMetadata02 {
   /// Output only.
   core.String? verb;
 
-  $OperationMetadata02({
+  $OperationMetadata03({
     this.apiVersion,
     this.cancelRequested,
     this.createTime,
@@ -6995,7 +10118,7 @@ class $OperationMetadata02 {
     this.verb,
   });
 
-  $OperationMetadata02.fromJson(core.Map _json)
+  $OperationMetadata03.fromJson(core.Map _json)
       : this(
           apiVersion: _json.containsKey('apiVersion')
               ? _json['apiVersion'] as core.String
@@ -7029,7 +10152,59 @@ class $OperationMetadata02 {
       };
 }
 
-class $OperationMetadata03 {
+class $OperationMetadata04 {
+  /// The creation time of the operation.
+  core.String? createTime;
+
+  /// The state of the current batch processing.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted.
+  /// - "ACCEPTED" : Request is received.
+  /// - "WAITING" : Request operation is waiting for scheduling.
+  /// - "RUNNING" : Request is being processed.
+  /// - "SUCCEEDED" : The batch processing completed successfully.
+  /// - "CANCELLED" : The batch processing was cancelled.
+  /// - "FAILED" : The batch processing has failed.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  core.String? stateMessage;
+
+  /// The last update time of the operation.
+  core.String? updateTime;
+
+  $OperationMetadata04({
+    this.createTime,
+    this.state,
+    this.stateMessage,
+    this.updateTime,
+  });
+
+  $OperationMetadata04.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class $OperationMetadata05 {
   /// The time when the batch request was received.
   core.String? createTime;
 
@@ -7045,13 +10220,13 @@ class $OperationMetadata03 {
   /// The time when the operation result was last updated.
   core.String? updateTime;
 
-  $OperationMetadata03({
+  $OperationMetadata05({
     this.createTime,
     this.state,
     this.updateTime,
   });
 
-  $OperationMetadata03.fromJson(core.Map _json)
+  $OperationMetadata05.fromJson(core.Map _json)
       : this(
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
@@ -7070,7 +10245,7 @@ class $OperationMetadata03 {
       };
 }
 
-class $OperationMetadata04 {
+class $OperationMetadata06 {
   /// API version used to start the operation.
   ///
   /// Output only.
@@ -7110,7 +10285,7 @@ class $OperationMetadata04 {
   /// Output only.
   core.String? verb;
 
-  $OperationMetadata04({
+  $OperationMetadata06({
     this.apiVersion,
     this.cancelRequested,
     this.createTime,
@@ -7120,7 +10295,7 @@ class $OperationMetadata04 {
     this.verb,
   });
 
-  $OperationMetadata04.fromJson(core.Map _json)
+  $OperationMetadata06.fromJson(core.Map _json)
       : this(
           apiVersion: _json.containsKey('apiVersion')
               ? _json['apiVersion'] as core.String
@@ -7380,6 +10555,62 @@ class $OrderContact {
       };
 }
 
+class $OriginalDetectIntentRequest {
+  /// This field is set to the value of the `QueryParameters.payload` field
+  /// passed in the request.
+  ///
+  /// Some integrations that query a Dialogflow agent may provide additional
+  /// information in the payload. In particular, for the Dialogflow Phone
+  /// Gateway integration, this field has the form: { "telephony": {
+  /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`)
+  /// will be redacted for Trial Edition agents and populated with the caller ID
+  /// in [E.164 format](https://en.wikipedia.org/wiki/E.164) for Essentials
+  /// Edition agents.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? payload;
+
+  /// The source of this request, e.g., `google`, `facebook`, `slack`.
+  ///
+  /// It is set by Dialogflow-owned servers.
+  core.String? source;
+
+  /// The version of the protocol used for this request.
+  ///
+  /// This field is AoG-specific.
+  ///
+  /// Optional.
+  core.String? version;
+
+  $OriginalDetectIntentRequest({
+    this.payload,
+    this.source,
+    this.version,
+  });
+
+  $OriginalDetectIntentRequest.fromJson(core.Map _json)
+      : this(
+          payload: _json.containsKey('payload')
+              ? _json['payload'] as core.Map<core.String, core.dynamic>
+              : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+        if (source != null) 'source': source!,
+        if (version != null) 'version': version!,
+      };
+}
+
 class $OsConstraint {
   /// The minimum allowed OS version.
   ///
@@ -7553,6 +10784,83 @@ class $PageInfo {
         if (resultPerPage != null) 'resultPerPage': resultPerPage!,
         if (startIndex != null) 'startIndex': startIndex!,
         if (totalResults != null) 'totalResults': totalResults!,
+      };
+}
+
+class $PageInfoFormInfoParameterInfo {
+  /// Always present for WebhookRequest.
+  ///
+  /// Required for WebhookResponse. The human-readable name of the parameter,
+  /// unique within the form. This field cannot be modified by the webhook.
+  core.String? displayName;
+
+  /// Optional for WebhookRequest.
+  ///
+  /// Ignored for WebhookResponse. Indicates if the parameter value was just
+  /// collected on the last conversation turn.
+  core.bool? justCollected;
+
+  /// Optional for both WebhookRequest and WebhookResponse.
+  ///
+  /// Indicates whether the parameter is required. Optional parameters will not
+  /// trigger prompts; however, they are filled if the user specifies them.
+  /// Required parameters must be filled before form filling concludes.
+  core.bool? required;
+
+  /// Always present for WebhookRequest.
+  ///
+  /// Required for WebhookResponse. The state of the parameter. This field can
+  /// be set to INVALID by the webhook to invalidate the parameter; other values
+  /// set by the webhook will be ignored.
+  /// Possible string values are:
+  /// - "PARAMETER_STATE_UNSPECIFIED" : Not specified. This value should be
+  /// never used.
+  /// - "EMPTY" : Indicates that the parameter does not have a value.
+  /// - "INVALID" : Indicates that the parameter value is invalid. This field
+  /// can be used by the webhook to invalidate the parameter and ask the server
+  /// to collect it from the user again.
+  /// - "FILLED" : Indicates that the parameter has a value.
+  core.String? state;
+
+  /// Optional for both WebhookRequest and WebhookResponse.
+  ///
+  /// The value of the parameter. This field can be set by the webhook to change
+  /// the parameter value.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? value;
+
+  $PageInfoFormInfoParameterInfo({
+    this.displayName,
+    this.justCollected,
+    this.required,
+    this.state,
+    this.value,
+  });
+
+  $PageInfoFormInfoParameterInfo.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          justCollected: _json.containsKey('justCollected')
+              ? _json['justCollected'] as core.bool
+              : null,
+          required: _json.containsKey('required')
+              ? _json['required'] as core.bool
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          value: _json.containsKey('value') ? _json['value'] : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (justCollected != null) 'justCollected': justCollected!,
+        if (required != null) 'required': required!,
+        if (state != null) 'state': state!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -7745,6 +11053,62 @@ class $Peer {
         if (port != null) 'port': port!,
         if (principal != null) 'principal': principal!,
         if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+class $Period {
+  /// Total duration of Period Type defined.
+  core.int? duration;
+
+  /// Period Type.
+  /// Possible string values are:
+  /// - "PERIOD_TYPE_UNSPECIFIED" : Not used.
+  /// - "DAY" : Day.
+  /// - "MONTH" : Month.
+  /// - "YEAR" : Year.
+  core.String? periodType;
+
+  $Period({
+    this.duration,
+    this.periodType,
+  });
+
+  $Period.fromJson(core.Map _json)
+      : this(
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.int
+              : null,
+          periodType: _json.containsKey('periodType')
+              ? _json['periodType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (periodType != null) 'periodType': periodType!,
+      };
+}
+
+class $PermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String>? permissions;
+
+  $PermissionsResponse({
+    this.permissions,
+  });
+
+  $PermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -8093,6 +11457,33 @@ class $PostalCode {
       };
 }
 
+class $Price {
+  /// The currency of the price.
+  core.String? currency;
+
+  /// The price represented as a number.
+  core.String? value;
+
+  $Price({
+    this.currency,
+    this.value,
+  });
+
+  $Price.fromJson(core.Map _json)
+      : this(
+          currency: _json.containsKey('currency')
+              ? _json['currency'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currency != null) 'currency': currency!,
+        if (value != null) 'value': value!,
+      };
+}
+
 class $PricingSchedulePricingPeriod {
   core.DateTime? endDate;
 
@@ -8147,6 +11538,38 @@ class $PricingSchedulePricingPeriod {
           'startDate':
               "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
         if (units != null) 'units': units!,
+      };
+}
+
+class $Progress {
+  /// The amount of work that has been completed.
+  ///
+  /// Note that this may be greater than work_estimated.
+  core.String? workCompleted;
+
+  /// An estimate of how much work needs to be performed.
+  ///
+  /// May be zero if the work estimate is unavailable.
+  core.String? workEstimated;
+
+  $Progress({
+    this.workCompleted,
+    this.workEstimated,
+  });
+
+  $Progress.fromJson(core.Map _json)
+      : this(
+          workCompleted: _json.containsKey('workCompleted')
+              ? _json['workCompleted'] as core.String
+              : null,
+          workEstimated: _json.containsKey('workEstimated')
+              ? _json['workEstimated'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (workCompleted != null) 'workCompleted': workCompleted!,
+        if (workEstimated != null) 'workEstimated': workEstimated!,
       };
 }
 
@@ -8251,6 +11674,75 @@ class $Property {
       };
 }
 
+class $ProvisionedService {
+  /// The product pertaining to the provisioning resource as specified in the
+  /// Offer.
+  ///
+  /// Output only.
+  core.String? productId;
+
+  /// Provisioning ID of the entitlement.
+  ///
+  /// For Google Workspace, this would be the underlying Subscription ID.
+  ///
+  /// Output only.
+  core.String? provisioningId;
+
+  /// The SKU pertaining to the provisioning resource as specified in the Offer.
+  ///
+  /// Output only.
+  core.String? skuId;
+
+  $ProvisionedService({
+    this.productId,
+    this.provisioningId,
+    this.skuId,
+  });
+
+  $ProvisionedService.fromJson(core.Map _json)
+      : this(
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+          provisioningId: _json.containsKey('provisioningId')
+              ? _json['provisioningId'] as core.String
+              : null,
+          skuId:
+              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
+        if (provisioningId != null) 'provisioningId': provisioningId!,
+        if (skuId != null) 'skuId': skuId!,
+      };
+}
+
+class $ProxiesSetProxyHeaderRequest {
+  /// The new type of proxy header to append before sending data to the backend.
+  ///
+  /// NONE or PROXY_V1 are allowed.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "PROXY_V1"
+  core.String? proxyHeader;
+
+  $ProxiesSetProxyHeaderRequest({
+    this.proxyHeader,
+  });
+
+  $ProxiesSetProxyHeaderRequest.fromJson(core.Map _json)
+      : this(
+          proxyHeader: _json.containsKey('proxyHeader')
+              ? _json['proxyHeader'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (proxyHeader != null) 'proxyHeader': proxyHeader!,
+      };
+}
+
 class $PubsubMessage {
   /// Attributes for this message.
   ///
@@ -8329,6 +11821,86 @@ class $PubsubMessage {
         if (messageId != null) 'messageId': messageId!,
         if (orderingKey != null) 'orderingKey': orderingKey!,
         if (publishTime != null) 'publishTime': publishTime!,
+      };
+}
+
+class $PurchasesAcknowledgeRequest {
+  /// Payload to attach to the purchase.
+  core.String? developerPayload;
+
+  $PurchasesAcknowledgeRequest({
+    this.developerPayload,
+  });
+
+  $PurchasesAcknowledgeRequest.fromJson(core.Map _json)
+      : this(
+          developerPayload: _json.containsKey('developerPayload')
+              ? _json['developerPayload'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (developerPayload != null) 'developerPayload': developerPayload!,
+      };
+}
+
+class $PurgeUserEventsResponse {
+  /// The total count of events purged as a result of the operation.
+  core.String? purgedEventsCount;
+
+  $PurgeUserEventsResponse({
+    this.purgedEventsCount,
+  });
+
+  $PurgeUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          purgedEventsCount: _json.containsKey('purgedEventsCount')
+              ? _json['purgedEventsCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
+      };
+}
+
+class $Query {
+  /// The end time for the query.
+  ///
+  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
+  core.String? endTime;
+
+  /// The start time for the query.
+  ///
+  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
+  core.String? startTime;
+
+  /// The [search operators](https://support.google.com/vault/answer/2474474)
+  /// used to refine the messages covered by the hold.
+  core.String? terms;
+
+  $Query({
+    this.endTime,
+    this.startTime,
+    this.terms,
+  });
+
+  $Query.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          terms:
+              _json.containsKey('terms') ? _json['terms'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (terms != null) 'terms': terms!,
       };
 }
 
@@ -8474,6 +12046,28 @@ class $QuotaLimit {
       };
 }
 
+class $RawIndices {
+  /// The indices to remove from a lexicographically-sorted local list.
+  core.List<core.int>? indices;
+
+  $RawIndices({
+    this.indices,
+  });
+
+  $RawIndices.fromJson(core.Map _json)
+      : this(
+          indices: _json.containsKey('indices')
+              ? (_json['indices'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (indices != null) 'indices': indices!,
+      };
+}
+
 class $Recipient {
   /// The delivery type for the recipient.
   /// Possible string values are:
@@ -8565,6 +12159,27 @@ class $Region {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+class $RejoinUserEventsResponse {
+  /// Number of user events that were joined with latest product catalog.
+  core.String? rejoinedUserEventsCount;
+
+  $RejoinUserEventsResponse({
+    this.rejoinedUserEventsCount,
+  });
+
+  $RejoinUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
+              ? _json['rejoinedUserEventsCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rejoinedUserEventsCount != null)
+          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
 }
 
@@ -8740,6 +12355,281 @@ class $ReplaceAllTextResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (occurrencesChanged != null)
           'occurrencesChanged': occurrencesChanged!,
+      };
+}
+
+class $ReplayOperationMetadata {
+  /// Time when the request was received.
+  core.String? startTime;
+
+  $ReplayOperationMetadata({
+    this.startTime,
+  });
+
+  $ReplayOperationMetadata.fromJson(core.Map _json)
+      : this(
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+class $Req {
+  /// The list of instance names for which we want to delete per-instance
+  /// configs on this managed instance group.
+  core.List<core.String>? names;
+
+  $Req({
+    this.names,
+  });
+
+  $Req.fromJson(core.Map _json)
+      : this(
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
+      };
+}
+
+class $Request {
+  /// The URLs of one or more instances to recreate.
+  ///
+  /// This can be a full URL or a partial URL, such as
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
+  core.List<core.String>? instances;
+
+  $Request({
+    this.instances,
+  });
+
+  $Request.fromJson(core.Map _json)
+      : this(
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instances != null) 'instances': instances!,
+      };
+}
+
+class $Request01 {
+  /// An ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  $Request01({
+    this.requestId,
+  });
+
+  $Request01.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+class $Request02 {
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
+  /// `customers/my_customer` If you're using this API to manage another
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
+  ///
+  /// Optional.
+  core.String? customer;
+
+  $Request02({
+    this.customer,
+  });
+
+  $Request02.fromJson(core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
+      };
+}
+
+class $Request03 {
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
+  ///
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  $Request03({
+    this.requestId,
+  });
+
+  $Request03.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+class $Request04 {
+  /// Size of the pages to be returned.
+  ///
+  /// This is currently unsupported and will be ignored. The server may at any
+  /// point start using this field to limit page size.
+  core.int? pageSize;
+
+  /// Page token used to retrieve the next page.
+  ///
+  /// This is currently unsupported and will be ignored. The server may at any
+  /// point start using this field.
+  core.String? pageToken;
+
+  $Request04({
+    this.pageSize,
+    this.pageToken,
+  });
+
+  $Request04.fromJson(core.Map _json)
+      : this(
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+      };
+}
+
+class $Request05 {
+  /// The code \[ISO 3166-1
+  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
+  /// for which review is to be requested.
+  core.String? regionCode;
+
+  $Request05({
+    this.regionCode,
+  });
+
+  $Request05.fromJson(core.Map _json)
+      : this(
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+class $Request06 {
+  /// If not specified, the agent's default language is used.
+  core.String? languageCode;
+
+  $Request06({
+    this.languageCode,
+  });
+
+  $Request06.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+      };
+}
+
+class $Request07 {
+  /// Fingerprint of the Recommendation.
+  ///
+  /// Provides optimistic locking.
+  ///
+  /// Required.
+  core.String? etag;
+
+  /// State properties to include with this state.
+  ///
+  /// Overwrites any existing `state_metadata`. Keys must match the regex
+  /// /^a-z0-9{0,62}$/. Values must match the regex
+  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
+  core.Map<core.String, core.String>? stateMetadata;
+
+  $Request07({
+    this.etag,
+    this.stateMetadata,
+  });
+
+  $Request07.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          stateMetadata: _json.containsKey('stateMetadata')
+              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
       };
 }
 
@@ -9049,6 +12939,251 @@ class $ResourceLocation {
       };
 }
 
+class $Response {
+  /// The ranges that were cleared, in A1 notation.
+  ///
+  /// If the requests are for an unbounded range or a ranger larger than the
+  /// bounds of the sheet, this is the actual ranges that were cleared, bounded
+  /// to the sheet's limits.
+  core.List<core.String>? clearedRanges;
+
+  /// The spreadsheet the updates were applied to.
+  core.String? spreadsheetId;
+
+  $Response({
+    this.clearedRanges,
+    this.spreadsheetId,
+  });
+
+  $Response.fromJson(core.Map _json)
+      : this(
+          clearedRanges: _json.containsKey('clearedRanges')
+              ? (_json['clearedRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          spreadsheetId: _json.containsKey('spreadsheetId')
+              ? _json['spreadsheetId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+      };
+}
+
+class $ResponseMessageConversationSuccess {
+  /// Custom metadata.
+  ///
+  /// Dialogflow doesn't impose any structure on this.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  $ResponseMessageConversationSuccess({
+    this.metadata,
+  });
+
+  $ResponseMessageConversationSuccess.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
+      };
+}
+
+class $ResponseMessageLiveAgentHandoff {
+  /// Custom metadata for your handoff procedure.
+  ///
+  /// Dialogflow doesn't impose any structure on this.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  $ResponseMessageLiveAgentHandoff({
+    this.metadata,
+  });
+
+  $ResponseMessageLiveAgentHandoff.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
+      };
+}
+
+class $ResponseMessageMixedAudioSegment {
+  /// Whether the playback of this segment can be interrupted by the end user's
+  /// speech and the client should then start the next Dialogflow request.
+  ///
+  /// Output only.
+  core.bool? allowPlaybackInterruption;
+
+  /// Raw audio synthesized from the Dialogflow agent's response using the
+  /// output config specified in the request.
+  core.String? audio;
+  core.List<core.int> get audioAsBytes => convert.base64.decode(audio!);
+
+  set audioAsBytes(core.List<core.int> _bytes) {
+    audio =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Client-specific URI that points to an audio clip accessible to the client.
+  ///
+  /// Dialogflow does not impose any validation on it.
+  core.String? uri;
+
+  $ResponseMessageMixedAudioSegment({
+    this.allowPlaybackInterruption,
+    this.audio,
+    this.uri,
+  });
+
+  $ResponseMessageMixedAudioSegment.fromJson(core.Map _json)
+      : this(
+          allowPlaybackInterruption:
+              _json.containsKey('allowPlaybackInterruption')
+                  ? _json['allowPlaybackInterruption'] as core.bool
+                  : null,
+          audio:
+              _json.containsKey('audio') ? _json['audio'] as core.String : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption!,
+        if (audio != null) 'audio': audio!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+class $ResponseMessageOutputAudioText {
+  /// Whether the playback of this message can be interrupted by the end user's
+  /// speech and the client can then starts the next Dialogflow request.
+  ///
+  /// Output only.
+  core.bool? allowPlaybackInterruption;
+
+  /// The SSML text to be synthesized.
+  ///
+  /// For more information, see \[SSML\](/speech/text-to-speech/docs/ssml).
+  core.String? ssml;
+
+  /// The raw text to be synthesized.
+  core.String? text;
+
+  $ResponseMessageOutputAudioText({
+    this.allowPlaybackInterruption,
+    this.ssml,
+    this.text,
+  });
+
+  $ResponseMessageOutputAudioText.fromJson(core.Map _json)
+      : this(
+          allowPlaybackInterruption:
+              _json.containsKey('allowPlaybackInterruption')
+                  ? _json['allowPlaybackInterruption'] as core.bool
+                  : null,
+          ssml: _json.containsKey('ssml') ? _json['ssml'] as core.String : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption!,
+        if (ssml != null) 'ssml': ssml!,
+        if (text != null) 'text': text!,
+      };
+}
+
+class $ResponseMessagePlayAudio {
+  /// Whether the playback of this message can be interrupted by the end user's
+  /// speech and the client can then starts the next Dialogflow request.
+  ///
+  /// Output only.
+  core.bool? allowPlaybackInterruption;
+
+  /// URI of the audio clip.
+  ///
+  /// Dialogflow does not impose any validation on this value. It is specific to
+  /// the client that reads it.
+  ///
+  /// Required.
+  core.String? audioUri;
+
+  $ResponseMessagePlayAudio({
+    this.allowPlaybackInterruption,
+    this.audioUri,
+  });
+
+  $ResponseMessagePlayAudio.fromJson(core.Map _json)
+      : this(
+          allowPlaybackInterruption:
+              _json.containsKey('allowPlaybackInterruption')
+                  ? _json['allowPlaybackInterruption'] as core.bool
+                  : null,
+          audioUri: _json.containsKey('audioUri')
+              ? _json['audioUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption!,
+        if (audioUri != null) 'audioUri': audioUri!,
+      };
+}
+
+class $ResponseMessageText {
+  /// Whether the playback of this message can be interrupted by the end user's
+  /// speech and the client can then starts the next Dialogflow request.
+  ///
+  /// Output only.
+  core.bool? allowPlaybackInterruption;
+
+  /// A collection of text responses.
+  ///
+  /// Required.
+  core.List<core.String>? text;
+
+  $ResponseMessageText({
+    this.allowPlaybackInterruption,
+    this.text,
+  });
+
+  $ResponseMessageText.fromJson(core.Map _json)
+      : this(
+          allowPlaybackInterruption:
+              _json.containsKey('allowPlaybackInterruption')
+                  ? _json['allowPlaybackInterruption'] as core.bool
+                  : null,
+          text: _json.containsKey('text')
+              ? (_json['text'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowPlaybackInterruption != null)
+          'allowPlaybackInterruption': allowPlaybackInterruption!,
+        if (text != null) 'text': text!,
+      };
+}
+
 class $ResponseMetadata {
   /// A unique id associated with this call.
   ///
@@ -9068,6 +13203,26 @@ class $ResponseMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+class $ReviewDocumentResponse {
+  /// The Cloud Storage uri for the human reviewed document.
+  core.String? gcsDestination;
+
+  $ReviewDocumentResponse({
+    this.gcsDestination,
+  });
+
+  $ReviewDocumentResponse.fromJson(core.Map _json)
+      : this(
+          gcsDestination: _json.containsKey('gcsDestination')
+              ? _json['gcsDestination'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -9147,6 +13302,40 @@ class $Rule {
         if (name != null) 'name': name!,
         if (targetingTemplateId != null)
           'targetingTemplateId': targetingTemplateId!,
+      };
+}
+
+class $RunAssetDiscoveryResponse {
+  /// The duration between asset discovery run start and end
+  core.String? duration;
+
+  /// The state of an asset discovery run.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Asset discovery run state was unspecified.
+  /// - "COMPLETED" : Asset discovery run completed successfully.
+  /// - "SUPERSEDED" : Asset discovery run was cancelled with tasks still
+  /// pending, as another run for the same organization was started with a
+  /// higher priority.
+  /// - "TERMINATED" : Asset discovery run was killed and terminated.
+  core.String? state;
+
+  $RunAssetDiscoveryResponse({
+    this.duration,
+    this.state,
+  });
+
+  $RunAssetDiscoveryResponse.fromJson(core.Map _json)
+      : this(
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -9243,6 +13432,29 @@ class $SafeSearchAnnotation {
       };
 }
 
+class $SecretVersionRequest {
+  /// Etag of the SecretVersion.
+  ///
+  /// The request succeeds if it matches the etag of the currently stored secret
+  /// version object. If the etag is omitted, the request succeeds.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  $SecretVersionRequest({
+    this.etag,
+  });
+
+  $SecretVersionRequest.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+      };
+}
+
 class $SecurityMarks {
   /// The canonical name of the marks.
   ///
@@ -9302,6 +13514,35 @@ class $SecurityMarks {
       };
 }
 
+class $ServiceAccount {
+  /// Email address of the service account.
+  core.String? email;
+
+  /// The list of scopes to be made available for this service account.
+  core.List<core.String>? scopes;
+
+  $ServiceAccount({
+    this.email,
+    this.scopes,
+  });
+
+  $ServiceAccount.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+        if (scopes != null) 'scopes': scopes!,
+      };
+}
+
 class $ServiceIdentity {
   /// The email address of the service account that a service producer would use
   /// to access consumer resources.
@@ -9329,6 +13570,95 @@ class $ServiceIdentity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (uniqueId != null) 'uniqueId': uniqueId!,
+      };
+}
+
+class $SessionInfo {
+  /// Optional for WebhookRequest.
+  ///
+  /// Optional for WebhookResponse. All parameters collected from forms and
+  /// intents during the session. Parameters can be created, updated, or removed
+  /// by the webhook. To remove a parameter from the session, the webhook should
+  /// explicitly set the parameter value to null in WebhookResponse. The map is
+  /// keyed by parameters' display names.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? parameters;
+
+  /// Always present for WebhookRequest.
+  ///
+  /// Ignored for WebhookResponse. The unique identifier of the session. This
+  /// field can be used by the webhook to identify a session. Format:
+  /// `projects//locations//agents//sessions/` or
+  /// `projects//locations//agents//environments//sessions/` if environment is
+  /// specified.
+  core.String? session;
+
+  $SessionInfo({
+    this.parameters,
+    this.session,
+  });
+
+  $SessionInfo.fromJson(core.Map _json)
+      : this(
+          parameters: _json.containsKey('parameters')
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
+              : null,
+          session: _json.containsKey('session')
+              ? _json['session'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parameters != null) 'parameters': parameters!,
+        if (session != null) 'session': session!,
+      };
+}
+
+class $SetLabelsRequest {
+  /// The fingerprint of the previous set of labels for this resource, used to
+  /// detect conflicts.
+  ///
+  /// The fingerprint is initially generated by Compute Engine and changes after
+  /// every request to modify or update labels. You must always provide an
+  /// up-to-date fingerprint hash in order to update or change labels. Make a
+  /// get() request to the resource to get the latest fingerprint.
+  core.String? labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes =>
+      convert.base64.decode(labelFingerprint!);
+
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The labels to set for this resource.
+  core.Map<core.String, core.String>? labels;
+
+  $SetLabelsRequest({
+    this.labelFingerprint,
+    this.labels,
+  });
+
+  $SetLabelsRequest.fromJson(core.Map _json)
+      : this(
+          labelFingerprint: _json.containsKey('labelFingerprint')
+              ? _json['labelFingerprint'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -10137,6 +14467,58 @@ class $TeardownTag {
       };
 }
 
+class $TenantProjectRequest {
+  /// Tag of the resource within the tenancy unit.
+  ///
+  /// Required.
+  core.String? tag;
+
+  $TenantProjectRequest({
+    this.tag,
+  });
+
+  $TenantProjectRequest.fromJson(core.Map _json)
+      : this(
+          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tag != null) 'tag': tag!,
+      };
+}
+
+class $TestConfig {
+  /// Flow name.
+  ///
+  /// If not set, default start flow is assumed. Format:
+  /// `projects//locations//agents//flows/`.
+  core.String? flow;
+
+  /// Session parameters to be compared when calculating differences.
+  core.List<core.String>? trackingParameters;
+
+  $TestConfig({
+    this.flow,
+    this.trackingParameters,
+  });
+
+  $TestConfig.fromJson(core.Map _json)
+      : this(
+          flow: _json.containsKey('flow') ? _json['flow'] as core.String : null,
+          trackingParameters: _json.containsKey('trackingParameters')
+              ? (_json['trackingParameters'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (flow != null) 'flow': flow!,
+        if (trackingParameters != null)
+          'trackingParameters': trackingParameters!,
+      };
+}
+
 class $TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
@@ -10184,6 +14566,77 @@ class $TestPermissionsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+class $TestRunDifference {
+  /// A description of the diff, showing the actual output vs expected output.
+  core.String? description;
+
+  /// The type of diff.
+  /// Possible string values are:
+  /// - "DIFF_TYPE_UNSPECIFIED" : Should never be used.
+  /// - "INTENT" : The intent.
+  /// - "PAGE" : The page.
+  /// - "PARAMETERS" : The parameters.
+  /// - "UTTERANCE" : The message utterance.
+  core.String? type;
+
+  $TestRunDifference({
+    this.description,
+    this.type,
+  });
+
+  $TestRunDifference.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (type != null) 'type': type!,
+      };
+}
+
+class $TextInput {
+  /// The UTF-8 encoded natural language text to be processed.
+  ///
+  /// Text length must not exceed 256 characters.
+  ///
+  /// Required.
+  core.String? text;
+
+  $TextInput({
+    this.text,
+  });
+
+  $TextInput.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
+
+class $TextParagraph {
+  core.String? text;
+
+  $TextParagraph({
+    this.text,
+  });
+
+  $TextParagraph.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
       };
 }
 
@@ -10389,6 +14842,46 @@ class $TokenPagination {
       };
 }
 
+class $TraceSamplingConfig {
+  /// Sampler of distributed tracing.
+  ///
+  /// OFF is the default value.
+  /// Possible string values are:
+  /// - "SAMPLER_UNSPECIFIED" : Sampler unspecified.
+  /// - "OFF" : OFF means distributed trace is disabled, or the sampling
+  /// probability is 0.
+  /// - "PROBABILITY" : PROBABILITY means traces are captured on a probability
+  /// that defined by sampling_rate. The sampling rate is limited to 0 to 0.5
+  /// when this is set.
+  core.String? sampler;
+
+  /// Field sampling rate.
+  ///
+  /// This value is only applicable when using the PROBABILITY sampler. The
+  /// supported values are > 0 and <= 0.5.
+  core.double? samplingRate;
+
+  $TraceSamplingConfig({
+    this.sampler,
+    this.samplingRate,
+  });
+
+  $TraceSamplingConfig.fromJson(core.Map _json)
+      : this(
+          sampler: _json.containsKey('sampler')
+              ? _json['sampler'] as core.String
+              : null,
+          samplingRate: _json.containsKey('samplingRate')
+              ? (_json['samplingRate'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sampler != null) 'sampler': sampler!,
+        if (samplingRate != null) 'samplingRate': samplingRate!,
+      };
+}
+
 class $TranscodeSetting {
   /// Allowlist of video formats to be served to this placement.
   ///
@@ -10419,6 +14912,39 @@ class $TranscodeSetting {
         if (enabledVideoFormats != null)
           'enabledVideoFormats': enabledVideoFormats!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+class $TrialSettings {
+  /// Date when the trial ends.
+  ///
+  /// The value is in milliseconds using the UNIX Epoch format. See an example
+  /// [Epoch converter](https://www.epochconverter.com).
+  core.String? endTime;
+
+  /// Determines if the entitlement is in a trial or not: * `true` - The
+  /// entitlement is in trial.
+  ///
+  /// * `false` - The entitlement is not in trial.
+  core.bool? trial;
+
+  $TrialSettings({
+    this.endTime,
+    this.trial,
+  });
+
+  $TrialSettings.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          trial:
+              _json.containsKey('trial') ? _json['trial'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (trial != null) 'trial': trial!,
       };
 }
 
@@ -10455,6 +14981,26 @@ class $TruncatableString {
         if (truncatedByteCount != null)
           'truncatedByteCount': truncatedByteCount!,
         if (value != null) 'value': value!,
+      };
+}
+
+class $UndeployIssueModelRequest {
+  /// The issue model to undeploy.
+  ///
+  /// Required.
+  core.String? name;
+
+  $UndeployIssueModelRequest({
+    this.name,
+  });
+
+  $UndeployIssueModelRequest.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -10686,6 +15232,36 @@ class $UserDefinedVariableConfiguration {
       };
 }
 
+class $UserEventImportSummary {
+  /// Count of user events imported with complete existing catalog information.
+  core.String? joinedEventsCount;
+
+  /// Count of user events imported, but with catalog information not found in
+  /// the imported catalog.
+  core.String? unjoinedEventsCount;
+
+  $UserEventImportSummary({
+    this.joinedEventsCount,
+    this.unjoinedEventsCount,
+  });
+
+  $UserEventImportSummary.fromJson(core.Map _json)
+      : this(
+          joinedEventsCount: _json.containsKey('joinedEventsCount')
+              ? _json['joinedEventsCount'] as core.String
+              : null,
+          unjoinedEventsCount: _json.containsKey('unjoinedEventsCount')
+              ? _json['unjoinedEventsCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
+        if (unjoinedEventsCount != null)
+          'unjoinedEventsCount': unjoinedEventsCount!,
+      };
+}
+
 class $UserProfile {
   /// The account ID to which this profile belongs.
   core.String? accountId;
@@ -10847,6 +15423,119 @@ class $UserRolePermissionGroup {
       };
 }
 
+class $V1AccessTuple {
+  /// The full resource name that identifies the resource.
+  ///
+  /// For example,
+  /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
+  /// For examples of full resource names for Google Cloud services, see
+  /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+  ///
+  /// Required.
+  core.String? fullResourceName;
+
+  /// The IAM permission to check for the specified principal and resource.
+  ///
+  /// For a complete list of IAM permissions, see
+  /// https://cloud.google.com/iam/help/permissions/reference. For a complete
+  /// list of predefined IAM roles and the permissions in each role, see
+  /// https://cloud.google.com/iam/help/roles/reference.
+  ///
+  /// Required.
+  core.String? permission;
+
+  /// The principal whose access you want to check, in the form of the email
+  /// address that represents that principal.
+  ///
+  /// For example, `alice@example.com` or
+  /// `my-service-account@my-project.iam.gserviceaccount.com`. The principal
+  /// must be a Google Account or a service account. Other types of principals
+  /// are not supported.
+  ///
+  /// Required.
+  core.String? principal;
+
+  $V1AccessTuple({
+    this.fullResourceName,
+    this.permission,
+    this.principal,
+  });
+
+  $V1AccessTuple.fromJson(core.Map _json)
+      : this(
+          fullResourceName: _json.containsKey('fullResourceName')
+              ? _json['fullResourceName'] as core.String
+              : null,
+          permission: _json.containsKey('permission')
+              ? _json['permission'] as core.String
+              : null,
+          principal: _json.containsKey('principal')
+              ? _json['principal'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (permission != null) 'permission': permission!,
+        if (principal != null) 'principal': principal!,
+      };
+}
+
+class $Value {
+  /// Represents a boolean value.
+  core.bool? boolValue;
+
+  /// Represents a double value.
+  core.double? doubleValue;
+
+  /// Represents an int64 value.
+  core.String? int64Value;
+
+  /// Represents an 'Any' proto value.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? protoValue;
+
+  /// Represents a string value.
+  core.String? stringValue;
+
+  $Value({
+    this.boolValue,
+    this.doubleValue,
+    this.int64Value,
+    this.protoValue,
+    this.stringValue,
+  });
+
+  $Value.fromJson(core.Map _json)
+      : this(
+          boolValue: _json.containsKey('boolValue')
+              ? _json['boolValue'] as core.bool
+              : null,
+          doubleValue: _json.containsKey('doubleValue')
+              ? (_json['doubleValue'] as core.num).toDouble()
+              : null,
+          int64Value: _json.containsKey('int64Value')
+              ? _json['int64Value'] as core.String
+              : null,
+          protoValue: _json.containsKey('protoValue')
+              ? _json['protoValue'] as core.Map<core.String, core.dynamic>
+              : null,
+          stringValue: _json.containsKey('stringValue')
+              ? _json['stringValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (protoValue != null) 'protoValue': protoValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+      };
+}
+
 class $VersionedPackage {
   /// The system architecture this package is intended for.
   core.String? architecture;
@@ -10887,7 +15576,7 @@ class $Vertex {
   /// X coordinate.
   core.int? x;
 
-  /// Y coordinate.
+  /// Y coordinate (starts from the top of the image).
   core.int? y;
 
   $Vertex({
@@ -10896,6 +15585,30 @@ class $Vertex {
   });
 
   $Vertex.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x') ? _json['x'] as core.int : null,
+          y: _json.containsKey('y') ? _json['y'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
+      };
+}
+
+class $Vertex01 {
+  /// X coordinate.
+  core.int? x;
+
+  /// Y coordinate.
+  core.int? y;
+
+  $Vertex01({
+    this.x,
+    this.y,
+  });
+
+  $Vertex01.fromJson(core.Map _json)
       : this(
           x: _json.containsKey('x') ? _json['x'] as core.int : null,
           y: _json.containsKey('y') ? _json['y'] as core.int : null,
@@ -10941,6 +15654,58 @@ class $VideoOffset {
       };
 }
 
+class $VideoSegment {
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// end of the segment (inclusive).
+  core.String? endTimeOffset;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// start of the segment (inclusive).
+  core.String? startTimeOffset;
+
+  $VideoSegment({
+    this.endTimeOffset,
+    this.startTimeOffset,
+  });
+
+  $VideoSegment.fromJson(core.Map _json)
+      : this(
+          endTimeOffset: _json.containsKey('endTimeOffset')
+              ? _json['endTimeOffset'] as core.String
+              : null,
+          startTimeOffset: _json.containsKey('startTimeOffset')
+              ? _json['startTimeOffset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+      };
+}
+
+class $VisibilityLabelsResponse {
+  /// The updated set of visibility labels for this consumer on this service.
+  core.List<core.String>? labels;
+
+  $VisibilityLabelsResponse({
+    this.labels,
+  });
+
+  $VisibilityLabelsResponse.fromJson(core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
+      };
+}
+
 class $VpcAccessibleServices {
   /// The list of APIs usable within the Service Perimeter.
   ///
@@ -10974,6 +15739,31 @@ class $VpcAccessibleServices {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedServices != null) 'allowedServices': allowedServices!,
         if (enableRestriction != null) 'enableRestriction': enableRestriction!,
+      };
+}
+
+class $VpcServiceControlsRequest {
+  /// The network that the consumer is using to connect with services.
+  ///
+  /// Must be in the form of projects/{project}/global/networks/{network}
+  /// {project} is a project number, as in '12345' {network} is network name.
+  ///
+  /// Required.
+  core.String? consumerNetwork;
+
+  $VpcServiceControlsRequest({
+    this.consumerNetwork,
+  });
+
+  $VpcServiceControlsRequest.fromJson(core.Map _json)
+      : this(
+          consumerNetwork: _json.containsKey('consumerNetwork')
+              ? _json['consumerNetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
       };
 }
 
@@ -11095,6 +15885,61 @@ class $WebLabel {
       };
 }
 
+class $WebhookRequestFulfillmentInfo {
+  /// Always present.
+  ///
+  /// The tag used to identify which fulfillment is being called.
+  core.String? tag;
+
+  $WebhookRequestFulfillmentInfo({
+    this.tag,
+  });
+
+  $WebhookRequestFulfillmentInfo.fromJson(core.Map _json)
+      : this(
+          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tag != null) 'tag': tag!,
+      };
+}
+
+class $WebhookRequestIntentInfoIntentParameterValue {
+  /// Always present.
+  ///
+  /// Original text value extracted from user utterance.
+  core.String? originalValue;
+
+  /// Always present.
+  ///
+  /// Structured value for the parameter extracted from user utterance.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? resolvedValue;
+
+  $WebhookRequestIntentInfoIntentParameterValue({
+    this.originalValue,
+    this.resolvedValue,
+  });
+
+  $WebhookRequestIntentInfoIntentParameterValue.fromJson(core.Map _json)
+      : this(
+          originalValue: _json.containsKey('originalValue')
+              ? _json['originalValue'] as core.String
+              : null,
+          resolvedValue: _json.containsKey('resolvedValue')
+              ? _json['resolvedValue']
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (originalValue != null) 'originalValue': originalValue!,
+        if (resolvedValue != null) 'resolvedValue': resolvedValue!,
+      };
+}
+
 class $WindowsQuickFixEngineeringPackage {
   /// A short textual description of the QFE update.
   core.String? caption;
@@ -11162,6 +16007,119 @@ class $WindowsUpdateCategory {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
+      };
+}
+
+class $WordInfo {
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
+  core.double? confidence;
+
+  /// Time offset relative to the beginning of the audio, and corresponding to
+  /// the end of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
+  core.String? endTime;
+
+  /// A distinct integer value is assigned for every speaker within the audio.
+  ///
+  /// This field specifies which one of those speakers was detected to have
+  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
+  /// is only set if speaker diarization is enabled.
+  ///
+  /// Output only.
+  core.int? speakerTag;
+
+  /// Time offset relative to the beginning of the audio, and corresponding to
+  /// the start of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
+  core.String? startTime;
+
+  /// The word corresponding to this set of information.
+  core.String? word;
+
+  $WordInfo({
+    this.confidence,
+    this.endTime,
+    this.speakerTag,
+    this.startTime,
+    this.word,
+  });
+
+  $WordInfo.fromJson(core.Map _json)
+      : this(
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          speakerTag: _json.containsKey('speakerTag')
+              ? _json['speakerTag'] as core.int
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          word: _json.containsKey('word') ? _json['word'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (endTime != null) 'endTime': endTime!,
+        if (speakerTag != null) 'speakerTag': speakerTag!,
+        if (startTime != null) 'startTime': startTime!,
+        if (word != null) 'word': word!,
+      };
+}
+
+class $WorkloadKMSSettings {
+  /// Input only.
+  ///
+  /// Immutable. The time at which the Key Management Service will automatically
+  /// create a new version of the crypto key and mark it as the primary.
+  ///
+  /// Required.
+  core.String? nextRotationTime;
+
+  /// Input only.
+  ///
+  /// Immutable. \[next_rotation_time\] will be advanced by this period when the
+  /// Key Management Service automatically rotates a key. Must be at least 24
+  /// hours and at most 876,000 hours.
+  ///
+  /// Required.
+  core.String? rotationPeriod;
+
+  $WorkloadKMSSettings({
+    this.nextRotationTime,
+    this.rotationPeriod,
+  });
+
+  $WorkloadKMSSettings.fromJson(core.Map _json)
+      : this(
+          nextRotationTime: _json.containsKey('nextRotationTime')
+              ? _json['nextRotationTime'] as core.String
+              : null,
+          rotationPeriod: _json.containsKey('rotationPeriod')
+              ? _json['rotationPeriod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
+        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
       };
 }
 

@@ -4592,7 +4592,7 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
 typedef GoogleCloudVisionV1p1beta1NormalizedVertex = $NormalizedVertex;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef GoogleCloudVisionV1p1beta1OperationMetadata = $OperationMetadata03;
+typedef GoogleCloudVisionV1p1beta1OperationMetadata = $OperationMetadata05;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p1beta1OutputConfig {
@@ -5136,7 +5136,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudVisionV1p1beta1Vertex = $Vertex;
+typedef GoogleCloudVisionV1p1beta1Vertex = $Vertex01;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p1beta1WebDetection {
@@ -6488,7 +6488,7 @@ class GoogleCloudVisionV1p2beta1LocationInfo {
 typedef GoogleCloudVisionV1p2beta1NormalizedVertex = $NormalizedVertex;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef GoogleCloudVisionV1p2beta1OperationMetadata = $OperationMetadata03;
+typedef GoogleCloudVisionV1p2beta1OperationMetadata = $OperationMetadata05;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p2beta1OutputConfig {
@@ -7032,7 +7032,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudVisionV1p2beta1Vertex = $Vertex;
+typedef GoogleCloudVisionV1p2beta1Vertex = $Vertex01;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p2beta1WebDetection {
@@ -8435,7 +8435,7 @@ class GoogleCloudVisionV1p3beta1LocationInfo {
 typedef GoogleCloudVisionV1p3beta1NormalizedVertex = $NormalizedVertex;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef GoogleCloudVisionV1p3beta1OperationMetadata = $OperationMetadata03;
+typedef GoogleCloudVisionV1p3beta1OperationMetadata = $OperationMetadata05;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p3beta1OutputConfig {
@@ -9033,7 +9033,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudVisionV1p3beta1Vertex = $Vertex;
+typedef GoogleCloudVisionV1p3beta1Vertex = $Vertex01;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p3beta1WebDetection {
@@ -10570,7 +10570,7 @@ class GoogleCloudVisionV1p4beta1LocationInfo {
 typedef GoogleCloudVisionV1p4beta1NormalizedVertex = $NormalizedVertex;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef GoogleCloudVisionV1p4beta1OperationMetadata = $OperationMetadata03;
+typedef GoogleCloudVisionV1p4beta1OperationMetadata = $OperationMetadata05;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p4beta1OutputConfig {
@@ -11168,7 +11168,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudVisionV1p4beta1Vertex = $Vertex;
+typedef GoogleCloudVisionV1p4beta1Vertex = $Vertex01;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p4beta1WebDetection {
@@ -12290,7 +12290,7 @@ class Operation {
 }
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef OperationMetadata = $OperationMetadata03;
+typedef OperationMetadata = $OperationMetadata05;
 
 /// The desired output location and metadata.
 class OutputConfig {
@@ -13076,7 +13076,7 @@ class TextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef Vertex = $Vertex;
+typedef Vertex = $Vertex01;
 
 /// Relevant information for the image from the Internet.
 class WebDetection {

@@ -20261,45 +20261,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
 ///
 /// Only the fields that are defined in the distributed trace configuration can
 /// be overridden using the distribute trace configuration override APIs.
-class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
-  /// Sampler of distributed tracing.
-  ///
-  /// OFF is the default value.
-  /// Possible string values are:
-  /// - "SAMPLER_UNSPECIFIED" : Sampler unspecified.
-  /// - "OFF" : OFF means distributed trace is disabled, or the sampling
-  /// probability is 0.
-  /// - "PROBABILITY" : PROBABILITY means traces are captured on a probability
-  /// that defined by sampling_rate. The sampling rate is limited to 0 to 0.5
-  /// when this is set.
-  core.String? sampler;
-
-  /// Field sampling rate.
-  ///
-  /// This value is only applicable when using the PROBABILITY sampler. The
-  /// supported values are > 0 and <= 0.5.
-  core.double? samplingRate;
-
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfig({
-    this.sampler,
-    this.samplingRate,
-  });
-
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(core.Map _json)
-      : this(
-          sampler: _json.containsKey('sampler')
-              ? _json['sampler'] as core.String
-              : null,
-          samplingRate: _json.containsKey('samplingRate')
-              ? (_json['samplingRate'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sampler != null) 'sampler': sampler!,
-        if (samplingRate != null) 'samplingRate': samplingRate!,
-      };
-}
+typedef GoogleCloudApigeeV1RuntimeTraceSamplingConfig = $TraceSamplingConfig;
 
 /// Response for Schema call
 class GoogleCloudApigeeV1Schema {
@@ -21459,45 +21421,7 @@ class GoogleCloudApigeeV1TraceConfigOverride {
 ///
 /// Only the fields that are defined in the distributed trace configuration can
 /// be overridden using the distribute trace configuration override APIs.
-class GoogleCloudApigeeV1TraceSamplingConfig {
-  /// Sampler of distributed tracing.
-  ///
-  /// OFF is the default value.
-  /// Possible string values are:
-  /// - "SAMPLER_UNSPECIFIED" : Sampler unspecified.
-  /// - "OFF" : OFF means distributed trace is disabled, or the sampling
-  /// probability is 0.
-  /// - "PROBABILITY" : PROBABILITY means traces are captured on a probability
-  /// that defined by sampling_rate. The sampling rate is limited to 0 to 0.5
-  /// when this is set.
-  core.String? sampler;
-
-  /// Field sampling rate.
-  ///
-  /// This value is only applicable when using the PROBABILITY sampler. The
-  /// supported values are > 0 and <= 0.5.
-  core.double? samplingRate;
-
-  GoogleCloudApigeeV1TraceSamplingConfig({
-    this.sampler,
-    this.samplingRate,
-  });
-
-  GoogleCloudApigeeV1TraceSamplingConfig.fromJson(core.Map _json)
-      : this(
-          sampler: _json.containsKey('sampler')
-              ? _json['sampler'] as core.String
-              : null,
-          samplingRate: _json.containsKey('samplingRate')
-              ? (_json['samplingRate'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sampler != null) 'sampler': sampler!,
-        if (samplingRate != null) 'samplingRate': samplingRate!,
-      };
-}
+typedef GoogleCloudApigeeV1TraceSamplingConfig = $TraceSamplingConfig;
 
 /// Details on why a resource update failed in the runtime.
 class GoogleCloudApigeeV1UpdateError {
@@ -21922,28 +21846,7 @@ class GoogleIamV1SetIamPolicyRequest {
 typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class GoogleIamV1TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  GoogleIamV1TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

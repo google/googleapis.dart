@@ -1373,40 +1373,7 @@ class BadWhitelist {
 }
 
 /// A request to perform batch delete on alerts.
-class BatchDeleteAlertsRequest {
-  /// list of alert IDs.
-  ///
-  /// Required.
-  core.List<core.String>? alertId;
-
-  /// The unique identifier of the Google Workspace organization account of the
-  /// customer the alerts are associated with.
-  ///
-  /// Optional.
-  core.String? customerId;
-
-  BatchDeleteAlertsRequest({
-    this.alertId,
-    this.customerId,
-  });
-
-  BatchDeleteAlertsRequest.fromJson(core.Map _json)
-      : this(
-          alertId: _json.containsKey('alertId')
-              ? (_json['alertId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alertId != null) 'alertId': alertId!,
-        if (customerId != null) 'customerId': customerId!,
-      };
-}
+typedef BatchDeleteAlertsRequest = $AlertsRequest;
 
 /// Response to batch delete operation on alerts.
 class BatchDeleteAlertsResponse {
@@ -1448,40 +1415,7 @@ class BatchDeleteAlertsResponse {
 }
 
 /// A request to perform batch undelete on alerts.
-class BatchUndeleteAlertsRequest {
-  /// list of alert IDs.
-  ///
-  /// Required.
-  core.List<core.String>? alertId;
-
-  /// The unique identifier of the Google Workspace organization account of the
-  /// customer the alerts are associated with.
-  ///
-  /// Optional.
-  core.String? customerId;
-
-  BatchUndeleteAlertsRequest({
-    this.alertId,
-    this.customerId,
-  });
-
-  BatchUndeleteAlertsRequest.fromJson(core.Map _json)
-      : this(
-          alertId: _json.containsKey('alertId')
-              ? (_json['alertId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alertId != null) 'alertId': alertId!,
-        if (customerId != null) 'customerId': customerId!,
-      };
-}
+typedef BatchUndeleteAlertsRequest = $AlertsRequest;
 
 /// Response to batch undelete operation on alerts.
 class BatchUndeleteAlertsResponse {
