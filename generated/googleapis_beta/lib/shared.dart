@@ -1,3 +1,8 @@
+/// Shared types to minimize the package size. Do not use directly.
+@core.Deprecated(
+  'Avoid importing this library. '
+  'Use the members defined in the target API library instead.',
+)
 library $shared;
 
 // ignore_for_file: camel_case_types
@@ -15,7 +20,7 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - alertcenter:v1beta1 : BatchDeleteAlertsRequest
 /// - alertcenter:v1beta1 : BatchUndeleteAlertsRequest
@@ -54,7 +59,7 @@ class $AlertsRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : AliasContext
 /// - ondemandscanning:v1beta1 : AliasContext
@@ -88,7 +93,7 @@ class $AliasContext {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : Artifact
 /// - ondemandscanning:v1beta1 : Artifact
@@ -136,7 +141,7 @@ class $Artifact {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : AuditLogConfig
 /// - domains:v1beta1 : AuditLogConfig
@@ -183,7 +188,7 @@ class $AuditLogConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - privateca:v1beta1 : DisableCertificateAuthorityRequest
 /// - privateca:v1beta1 : EnableCertificateAuthorityRequest
@@ -221,7 +226,7 @@ class $CertificateAuthorityRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : Command
 /// - ondemandscanning:v1beta1 : Command
@@ -290,7 +295,7 @@ class $Command {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1CommonOperationMetadata
@@ -345,7 +350,7 @@ class $CommonOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1BoundingPolyConfig
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1PolylineConfig
@@ -382,7 +387,7 @@ class $Config {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - adexchangebuyer2:v2beta1 : Date
 /// - documentai:v1beta3 : GoogleTypeDate
@@ -426,7 +431,7 @@ class $Date {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentEntityRelation
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentEntityRelation
@@ -467,7 +472,7 @@ class $DocumentEntityRelation {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
@@ -505,7 +510,7 @@ class $DocumentPageDetectedLanguage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageDimension
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageDimension
@@ -544,7 +549,7 @@ class $DocumentPageDimension {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageImage
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageImage
@@ -596,7 +601,7 @@ class $DocumentPageImage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageMatrix
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageMatrix
@@ -647,7 +652,7 @@ class $DocumentPageMatrix {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
@@ -676,7 +681,7 @@ class $DocumentPageTokenDetectedBreak {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentProvenanceParent
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentProvenanceParent
@@ -715,7 +720,7 @@ class $DocumentProvenanceParent {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview
@@ -751,7 +756,7 @@ class $DocumentRevisionHumanReview {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentShardInfo
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentShardInfo
@@ -793,7 +798,7 @@ class $DocumentShardInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentStyleFontSize
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentStyleFontSize
@@ -826,7 +831,7 @@ class $DocumentStyleFontSize {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
@@ -859,7 +864,7 @@ class $DocumentTextAnchorTextSegment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - adexchangebuyer2:v2beta1 : CancelNegotiationRequest
 /// - adexchangebuyer2:v2beta1 : CompleteSetupRequest
@@ -973,7 +978,7 @@ class $Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - transcoder:v1beta1 : Aes128Encryption
 /// - transcoder:v1beta1 : SampleAesEncryption
@@ -1001,7 +1006,7 @@ class $Encryption {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - toolresults:v1beta3 : EnvironmentDimensionValueEntry
 /// - toolresults:v1beta3 : StepDimensionValueEntry
@@ -1028,7 +1033,7 @@ class $Entry {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - lifesciences:v2beta : PullStartedEvent
 /// - lifesciences:v2beta : PullStoppedEvent
@@ -1052,7 +1057,7 @@ class $Event {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : Expr
 /// - containeranalysis:v1beta1 : Expr
@@ -1119,7 +1124,7 @@ class $Expr {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : Fingerprint
 /// - ondemandscanning:v1beta1 : Fingerprint
@@ -1169,7 +1174,7 @@ class $Fingerprint {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1GcsDestination
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1GcsDestination
@@ -1209,7 +1214,7 @@ class $GcsDestination {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1GcsFolderDestination
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1GcsFolderDestination
@@ -1237,7 +1242,7 @@ class $GcsFolderDestination {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : GetPolicyOptions
 /// - containeranalysis:v1beta1 : GetPolicyOptions
@@ -1272,7 +1277,7 @@ class $GetPolicyOptions {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : GitSourceContext
 /// - ondemandscanning:v1beta1 : GitSourceContext
@@ -1302,7 +1307,7 @@ class $GitSourceContext {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1HumanAnnotationConfig
@@ -1438,7 +1443,7 @@ class $HumanAnnotationConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1HumanReviewStatus
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3HumanReviewStatus
@@ -1494,7 +1499,7 @@ class $HumanReviewStatus {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1ImportDataOperationResponse
@@ -1542,7 +1547,7 @@ class $ImportDataOperationResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1LabelStats
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1LabelStats
@@ -1579,7 +1584,7 @@ class $LabelStats {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudLocationLocation
 /// - domains:v1beta1 : Location
@@ -1655,7 +1660,7 @@ class $Location {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - firebasestorage:v1beta : GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
 /// - firebasestorage:v1beta : GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
@@ -1719,7 +1724,7 @@ class $MigrateLocationDestructivelyMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - adexchangebuyer2:v2beta1 : Money
 /// - documentai:v1beta3 : GoogleTypeMoney
@@ -1765,7 +1770,7 @@ class $Money {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1NormalizedVertex
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2NormalizedVertex
@@ -1798,7 +1803,7 @@ class $NormalizedVertex {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - networkconnectivity:v1alpha1 : OperationMetadata
 /// - networksecurity:v1beta1 : OperationMetadata
@@ -1888,7 +1893,7 @@ class $OperationMetadata00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1OperationMetadata
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2OperationMetadata
@@ -1944,7 +1949,7 @@ class $OperationMetadata01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleTypePostalAddress
 /// - domains:v1beta1 : PostalAddress
@@ -2129,7 +2134,7 @@ class $PostalAddress {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : ProjectRepoId
 /// - ondemandscanning:v1beta1 : ProjectRepoId
@@ -2163,7 +2168,7 @@ class $ProjectRepoId {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : RelatedUrl
 /// - ondemandscanning:v1beta1 : RelatedUrl
@@ -2192,7 +2197,7 @@ class $RelatedUrl {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - policysimulator:v1beta1 : GoogleCloudPolicysimulatorV1ReplayOperationMetadata
 /// - policysimulator:v1beta1 : GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
@@ -2216,7 +2221,7 @@ class $ReplayOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse
 /// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
@@ -2241,7 +2246,7 @@ class $Response {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1ReviewDocumentResponse
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
@@ -2265,7 +2270,7 @@ class $ReviewDocumentResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalAssignment
 /// - sasportal:v1alpha1 : SasPortalAssignment
@@ -2304,7 +2309,7 @@ class $SasPortalAssignment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalCreateSignedDeviceRequest
 /// - sasportal:v1alpha1 : SasPortalCreateSignedDeviceRequest
@@ -2351,7 +2356,7 @@ class $SasPortalCreateSignedDeviceRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalCustomer
 /// - sasportal:v1alpha1 : SasPortalCustomer
@@ -2395,7 +2400,7 @@ class $SasPortalCustomer {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeployment
 /// - sasportal:v1alpha1 : SasPortalDeployment
@@ -2476,7 +2481,7 @@ class $SasPortalDeployment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceAirInterface
 /// - sasportal:v1alpha1 : SasPortalDeviceAirInterface
@@ -2525,7 +2530,7 @@ class $SasPortalDeviceAirInterface {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceMetadata
 /// - sasportal:v1alpha1 : SasPortalDeviceMetadata
@@ -2576,7 +2581,7 @@ class $SasPortalDeviceMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceModel
 /// - sasportal:v1alpha1 : SasPortalDeviceModel
@@ -2630,7 +2635,7 @@ class $SasPortalDeviceModel {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalFrequencyRange
 /// - sasportal:v1alpha1 : SasPortalFrequencyRange
@@ -2662,7 +2667,7 @@ class $SasPortalFrequencyRange {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalGenerateSecretResponse
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretResponse
@@ -2686,7 +2691,7 @@ class $SasPortalGenerateSecretResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalGetPolicyRequest
 /// - sasportal:v1alpha1 : SasPortalGetPolicyRequest
@@ -2712,7 +2717,7 @@ class $SasPortalGetPolicyRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalInstallationParams
 /// - sasportal:v1alpha1 : SasPortalInstallationParams
@@ -2896,7 +2901,7 @@ class $SasPortalInstallationParams {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalMoveDeploymentRequest
 /// - sasportal:v1alpha1 : SasPortalMoveDeploymentRequest
@@ -2923,7 +2928,7 @@ class $SasPortalMoveDeploymentRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalMoveDeviceRequest
 /// - sasportal:v1alpha1 : SasPortalMoveDeviceRequest
@@ -2950,7 +2955,7 @@ class $SasPortalMoveDeviceRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalMoveNodeRequest
 /// - sasportal:v1alpha1 : SasPortalMoveNodeRequest
@@ -2977,7 +2982,7 @@ class $SasPortalMoveNodeRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalNode
 /// - sasportal:v1alpha1 : SasPortalNode
@@ -3019,7 +3024,7 @@ class $SasPortalNode {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalTestPermissionsRequest
 /// - sasportal:v1alpha1 : SasPortalTestPermissionsRequest
@@ -3055,7 +3060,7 @@ class $SasPortalTestPermissionsRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalTestPermissionsResponse
 /// - sasportal:v1alpha1 : SasPortalTestPermissionsResponse
@@ -3081,7 +3086,7 @@ class $SasPortalTestPermissionsResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalUpdateSignedDeviceRequest
 /// - sasportal:v1alpha1 : SasPortalUpdateSignedDeviceRequest
@@ -3128,7 +3133,7 @@ class $SasPortalUpdateSignedDeviceRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalValidateInstallerRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerRequest
@@ -3177,7 +3182,7 @@ class $SasPortalValidateInstallerRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1GcsDestination
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1GcsSource
@@ -3200,7 +3205,7 @@ class $Shared00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - osconfig:v1alpha : OSPolicyResourcePackageResourceAPT
 /// - osconfig:v1alpha : OSPolicyResourcePackageResourceGooGet
@@ -3226,7 +3231,7 @@ class $Shared01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : ByProducts
 /// - containeranalysis:v1beta1 : Environment
@@ -3255,7 +3260,7 @@ class $Shared02 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : Deployment
 /// - ondemandscanning:v1beta1 : DeploymentOccurrence
@@ -3339,7 +3344,7 @@ class $Shared03 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - ondemandscanning:v1beta1 : AnalyzePackagesMetadata
 /// - ondemandscanning:v1beta1 : AnalyzePackagesMetadataV1
@@ -3371,7 +3376,7 @@ class $Shared04 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - ondemandscanning:v1beta1 : AnalyzePackagesResponse
 /// - ondemandscanning:v1beta1 : AnalyzePackagesResponseV1
@@ -3393,7 +3398,7 @@ class $Shared05 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - osconfig:v1alpha : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1alpha : OSPolicyInventoryFilter
@@ -3432,7 +3437,7 @@ class $Shared06 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - containeranalysis:v1beta1 : Signature
 /// - ondemandscanning:v1beta1 : Signature
@@ -3487,7 +3492,7 @@ class $Signature {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - alertcenter:v1beta1 : Status
 /// - containeranalysis:v1beta1 : Status
@@ -3552,7 +3557,7 @@ class $Status {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : TestIamPermissionsRequest
 /// - containeranalysis:v1beta1 : TestIamPermissionsRequest
@@ -3587,7 +3592,7 @@ class $TestIamPermissionsRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : TestIamPermissionsResponse
 /// - containeranalysis:v1beta1 : TestIamPermissionsResponse
@@ -3619,7 +3624,7 @@ class $TestIamPermissionsResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1Vertex
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2Vertex

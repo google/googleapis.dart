@@ -148,9 +148,12 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
       yield '';
 
       yield* [
-        if (generatedDuplicateLibraries()) "import '../shared.dart';",
+        if (generatedDuplicateLibraries())
+          """
+// ignore: deprecated_member_use_from_same_package
+import '../$sharedLibraryName';""",
         "import '../$userAgentDartFilePath';",
-      ]..sort();
+      ];
     }
     yield "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show ApiRequestError, DetailedApiRequestError$exportedMediaClasses;";
     if (!isPackage) {
