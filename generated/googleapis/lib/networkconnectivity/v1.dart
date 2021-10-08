@@ -2021,7 +2021,7 @@ class ListSpokesResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Represents the metadata of the long-running operation.
 class OperationMetadata {

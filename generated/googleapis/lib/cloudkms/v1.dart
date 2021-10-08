@@ -3993,7 +3993,7 @@ class ListLocationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Cloud KMS metadata for the given google.cloud.location.Location.
 class LocationMetadata {

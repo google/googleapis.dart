@@ -3868,7 +3868,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata01;
+typedef OperationMetadata = $OperationMetadata00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.

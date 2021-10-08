@@ -3521,7 +3521,7 @@ class MetricDescriptor {
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
-typedef MetricDescriptorMetadata = $MetricDescriptorMetadata;
+typedef MetricDescriptorMetadata = $MetricDescriptorMetadata00;
 
 /// Bind API methods to metrics.
 ///

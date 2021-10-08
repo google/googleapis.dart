@@ -1259,7 +1259,7 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudVideointelligenceV1NormalizedVertex = $NormalizedVertex;
+typedef GoogleCloudVideointelligenceV1NormalizedVertex = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
@@ -3068,7 +3068,8 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudVideointelligenceV1beta2NormalizedVertex = $NormalizedVertex;
+typedef GoogleCloudVideointelligenceV1beta2NormalizedVertex
+    = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
@@ -4460,7 +4461,7 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
 typedef GoogleCloudVideointelligenceV1p1beta1NormalizedVertex
-    = $NormalizedVertex;
+    = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
@@ -5857,7 +5858,7 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
 typedef GoogleCloudVideointelligenceV1p2beta1NormalizedVertex
-    = $NormalizedVertex;
+    = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
@@ -7370,7 +7371,7 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
 typedef GoogleCloudVideointelligenceV1p3beta1NormalizedVertex
-    = $NormalizedVertex;
+    = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {

@@ -2277,7 +2277,7 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
 typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata = $Empty;
 
 /// Request message for approving the device to access user data.
-typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request02;
+typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request00;
 
 /// Response message for approving the device to access user data.
 class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
@@ -2306,7 +2306,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
 typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata = $Empty;
 
 /// Request message for blocking account on device.
-typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request02;
+typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request00;
 
 /// Response message for blocking the device from accessing user data.
 class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
@@ -2335,7 +2335,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata = $Empty;
 
 /// Request message for cancelling an unfinished device wipe.
-typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request02;
+typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request00;
 
 /// Response message for cancelling an unfinished device wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
@@ -2367,7 +2367,7 @@ typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata = $Empty;
 
 /// Request message for cancelling an unfinished user account wipe.
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
-    = $Request02;
+    = $Request00;
 
 /// Response message for cancelling an unfinished user account wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
@@ -3256,7 +3256,7 @@ typedef GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata = $Empty;
 typedef GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata = $Empty;
 
 /// Request message for wiping all data on the device.
-typedef GoogleAppsCloudidentityDevicesV1WipeDeviceRequest = $Request02;
+typedef GoogleAppsCloudidentityDevicesV1WipeDeviceRequest = $Request00;
 
 /// Response message for wiping all data on the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
@@ -3286,7 +3286,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
 typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata = $Empty;
 
 /// Request message for starting an account wipe on device.
-typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request02;
+typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request00;
 
 /// Response message for wiping the user's account from the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {

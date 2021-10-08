@@ -1072,7 +1072,7 @@ class RequestMetadata {
 ///
 /// A resource is an addressable (named) entity provided by the destination
 /// service. For example, a file stored on a network storage service.
-typedef Resource = $Resource;
+typedef Resource = $Resource01;
 
 /// Describes a resource referenced in the request.
 class ResourceInfo {

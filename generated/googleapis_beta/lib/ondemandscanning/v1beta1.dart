@@ -432,11 +432,11 @@ typedef AliasContext = $AliasContext;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-typedef AnalyzePackagesMetadata = $Shared05;
+typedef AnalyzePackagesMetadata = $Shared04;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-typedef AnalyzePackagesMetadataV1 = $Shared05;
+typedef AnalyzePackagesMetadataV1 = $Shared04;
 
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
@@ -475,11 +475,11 @@ class AnalyzePackagesRequest {
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-typedef AnalyzePackagesResponse = $Shared06;
+typedef AnalyzePackagesResponse = $Shared05;
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-typedef AnalyzePackagesResponseV1 = $Shared06;
+typedef AnalyzePackagesResponseV1 = $Shared05;
 
 /// Artifact describes a build product.
 typedef Artifact = $Artifact;
@@ -936,7 +936,7 @@ class DSSEAttestationOccurrence {
 }
 
 /// The period during which some deployable was active in a runtime.
-typedef DeploymentOccurrence = $Shared02;
+typedef DeploymentOccurrence = $Shared03;
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {

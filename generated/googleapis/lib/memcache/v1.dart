@@ -874,7 +874,7 @@ class GoogleCloudMemcacheV1LocationMetadata {
 }
 
 /// Represents the metadata of a long-running operation.
-typedef GoogleCloudMemcacheV1OperationMetadata = $OperationMetadata06;
+typedef GoogleCloudMemcacheV1OperationMetadata = $OperationMetadata05;
 typedef GoogleCloudMemcacheV1ZoneMetadata = $Empty;
 
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
@@ -1719,7 +1719,7 @@ class ListOperationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Metadata for the given google.cloud.location.Location.
 class LocationMetadata {
@@ -2107,7 +2107,7 @@ class Operation {
 }
 
 /// Represents the metadata of a long-running operation.
-typedef OperationMetadata = $OperationMetadata06;
+typedef OperationMetadata = $OperationMetadata05;
 
 /// Configure the schedule.
 class Schedule {

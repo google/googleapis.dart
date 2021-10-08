@@ -2870,15 +2870,15 @@ class CpuUtilization {
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1.CreateVersionRequest.
-typedef CreateVersionMetadataV1 = $Shared;
+typedef CreateVersionMetadataV1 = $Shared03;
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1alpha.CreateVersionRequest.
-typedef CreateVersionMetadataV1Alpha = $Shared;
+typedef CreateVersionMetadataV1Alpha = $Shared03;
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1beta.CreateVersionRequest.
-typedef CreateVersionMetadataV1Beta = $Shared;
+typedef CreateVersionMetadataV1Beta = $Shared03;
 
 /// Request message for Instances.DebugInstance.
 class DebugInstanceRequest {
@@ -4110,7 +4110,7 @@ class LivenessCheck {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location;
+typedef Location = $Location01;
 
 /// Metadata for the given google.cloud.location.Location.
 typedef LocationMetadata = $LocationMetadata;

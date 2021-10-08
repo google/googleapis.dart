@@ -5442,7 +5442,7 @@ class AbuseReport {
       };
 }
 
-typedef AbuseType = $Shared03;
+typedef AbuseType = $Shared09;
 
 /// Rights management policy for YouTube resources.
 class AccessPolicy {
@@ -8234,7 +8234,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared06;
+typedef CommentSnippetAuthorChannelId = $Shared11;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -10541,7 +10541,7 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared06;
+typedef LanguageTag = $Shared11;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.

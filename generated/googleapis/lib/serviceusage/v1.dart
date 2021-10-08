@@ -2131,7 +2131,7 @@ class GoogleApiService {
 }
 
 /// The operation metadata returned for the batchend services operation.
-typedef GoogleApiServiceusageV1OperationMetadata = $OperationMetadata;
+typedef GoogleApiServiceusageV1OperationMetadata = $OperationMetadata06;
 
 /// A service that is available for use by the consumer.
 class GoogleApiServiceusageV1Service {
@@ -3251,7 +3251,7 @@ class MetricDescriptor {
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
-typedef MetricDescriptorMetadata = $MetricDescriptorMetadata;
+typedef MetricDescriptorMetadata = $MetricDescriptorMetadata00;
 
 /// Bind API methods to metrics.
 ///
@@ -3597,7 +3597,7 @@ class Operation {
 }
 
 /// The operation metadata returned for the batchend services operation.
-typedef OperationMetadata = $OperationMetadata;
+typedef OperationMetadata = $OperationMetadata06;
 
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.

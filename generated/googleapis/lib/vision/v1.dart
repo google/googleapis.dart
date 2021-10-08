@@ -3477,7 +3477,7 @@ class Feature {
 typedef GcsDestination = $GcsDestination;
 
 /// The Google Cloud Storage location where the input will be read from.
-typedef GcsSource = $GcsSource01;
+typedef GcsSource = $GcsSource00;
 
 /// Response to a single file annotation request.
 ///
@@ -4424,7 +4424,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
 typedef GoogleCloudVisionV1p1beta1GcsDestination = $GcsDestination;
 
 /// The Google Cloud Storage location where the input will be read from.
-typedef GoogleCloudVisionV1p1beta1GcsSource = $GcsSource01;
+typedef GoogleCloudVisionV1p1beta1GcsSource = $GcsSource00;
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
 /// information about the source of that image.
@@ -4589,10 +4589,10 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudVisionV1p1beta1NormalizedVertex = $NormalizedVertex;
+typedef GoogleCloudVisionV1p1beta1NormalizedVertex = $NormalizedVertex00;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef GoogleCloudVisionV1p1beta1OperationMetadata = $OperationMetadata05;
+typedef GoogleCloudVisionV1p1beta1OperationMetadata = $OperationMetadata01;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p1beta1OutputConfig {
@@ -5136,7 +5136,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudVisionV1p1beta1Vertex = $Vertex01;
+typedef GoogleCloudVisionV1p1beta1Vertex = $Vertex00;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p1beta1WebDetection {
@@ -6320,7 +6320,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
 typedef GoogleCloudVisionV1p2beta1GcsDestination = $GcsDestination;
 
 /// The Google Cloud Storage location where the input will be read from.
-typedef GoogleCloudVisionV1p2beta1GcsSource = $GcsSource01;
+typedef GoogleCloudVisionV1p2beta1GcsSource = $GcsSource00;
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
 /// information about the source of that image.
@@ -6485,10 +6485,10 @@ class GoogleCloudVisionV1p2beta1LocationInfo {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudVisionV1p2beta1NormalizedVertex = $NormalizedVertex;
+typedef GoogleCloudVisionV1p2beta1NormalizedVertex = $NormalizedVertex00;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef GoogleCloudVisionV1p2beta1OperationMetadata = $OperationMetadata05;
+typedef GoogleCloudVisionV1p2beta1OperationMetadata = $OperationMetadata01;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p2beta1OutputConfig {
@@ -7032,7 +7032,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudVisionV1p2beta1Vertex = $Vertex01;
+typedef GoogleCloudVisionV1p2beta1Vertex = $Vertex00;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p2beta1WebDetection {
@@ -8223,7 +8223,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
 typedef GoogleCloudVisionV1p3beta1GcsDestination = $GcsDestination;
 
 /// The Google Cloud Storage location where the input will be read from.
-typedef GoogleCloudVisionV1p3beta1GcsSource = $GcsSource01;
+typedef GoogleCloudVisionV1p3beta1GcsSource = $GcsSource00;
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
 /// information about the source of that image.
@@ -8432,10 +8432,10 @@ class GoogleCloudVisionV1p3beta1LocationInfo {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudVisionV1p3beta1NormalizedVertex = $NormalizedVertex;
+typedef GoogleCloudVisionV1p3beta1NormalizedVertex = $NormalizedVertex00;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef GoogleCloudVisionV1p3beta1OperationMetadata = $OperationMetadata05;
+typedef GoogleCloudVisionV1p3beta1OperationMetadata = $OperationMetadata01;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p3beta1OutputConfig {
@@ -9033,7 +9033,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudVisionV1p3beta1Vertex = $Vertex01;
+typedef GoogleCloudVisionV1p3beta1Vertex = $Vertex00;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p3beta1WebDetection {
@@ -10358,7 +10358,7 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
 typedef GoogleCloudVisionV1p4beta1GcsDestination = $GcsDestination;
 
 /// The Google Cloud Storage location where the input will be read from.
-typedef GoogleCloudVisionV1p4beta1GcsSource = $GcsSource01;
+typedef GoogleCloudVisionV1p4beta1GcsSource = $GcsSource00;
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
 /// information about the source of that image.
@@ -10567,10 +10567,10 @@ class GoogleCloudVisionV1p4beta1LocationInfo {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudVisionV1p4beta1NormalizedVertex = $NormalizedVertex;
+typedef GoogleCloudVisionV1p4beta1NormalizedVertex = $NormalizedVertex00;
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef GoogleCloudVisionV1p4beta1OperationMetadata = $OperationMetadata05;
+typedef GoogleCloudVisionV1p4beta1OperationMetadata = $OperationMetadata01;
 
 /// The desired output location and metadata.
 class GoogleCloudVisionV1p4beta1OutputConfig {
@@ -11168,7 +11168,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudVisionV1p4beta1Vertex = $Vertex01;
+typedef GoogleCloudVisionV1p4beta1Vertex = $Vertex00;
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p4beta1WebDetection {
@@ -12208,7 +12208,7 @@ class LocationInfo {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef NormalizedVertex = $NormalizedVertex;
+typedef NormalizedVertex = $NormalizedVertex00;
 
 /// Prediction for what the object in the bounding box is.
 typedef ObjectAnnotation = $ObjectAnnotation;
@@ -12290,7 +12290,7 @@ class Operation {
 }
 
 /// Contains metadata for the BatchAnnotateImages operation.
-typedef OperationMetadata = $OperationMetadata05;
+typedef OperationMetadata = $OperationMetadata01;
 
 /// The desired output location and metadata.
 class OutputConfig {
@@ -13076,7 +13076,7 @@ class TextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef Vertex = $Vertex01;
+typedef Vertex = $Vertex00;
 
 /// Relevant information for the image from the Internet.
 class WebDetection {

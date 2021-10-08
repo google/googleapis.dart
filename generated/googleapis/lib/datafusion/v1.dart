@@ -1561,7 +1561,7 @@ class ListOperationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Network configuration for a Data Fusion instance.
 ///

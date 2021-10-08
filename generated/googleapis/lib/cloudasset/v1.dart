@@ -2859,7 +2859,7 @@ typedef GoogleCloudAssetV1p7beta1RelationshipAttributes
     = $RelationshipAttributes;
 
 /// A representation of a Google Cloud resource.
-typedef GoogleCloudAssetV1p7beta1Resource = $Resource01;
+typedef GoogleCloudAssetV1p7beta1Resource = $Resource00;
 
 /// Used in `policy_type` to specify how `boolean_policy` will behave at this
 /// resource.
@@ -5232,7 +5232,7 @@ class RelatedResources {
 typedef RelationshipAttributes = $RelationshipAttributes;
 
 /// A representation of a Google Cloud resource.
-typedef Resource = $Resource01;
+typedef Resource = $Resource00;
 
 /// A result of Resource Search, containing information of a cloud resource.
 class ResourceSearchResult {

@@ -2857,7 +2857,7 @@ class ListSqlIntegrationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Defines policies to service maintenance events.
 class MaintenancePolicy {
@@ -3067,7 +3067,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata03;
+typedef OperationMetadata = $OperationMetadata02;
 
 /// Represents a Managed Service for Microsoft Active Directory Peering.
 class Peering {

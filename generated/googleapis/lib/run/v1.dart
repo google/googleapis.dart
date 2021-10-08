@@ -4032,7 +4032,7 @@ class LocalObjectReference {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
 /// persisted resources must have, which includes all objects users must create.

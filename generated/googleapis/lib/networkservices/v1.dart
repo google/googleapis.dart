@@ -1754,7 +1754,7 @@ class ListOperationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -1833,7 +1833,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata01;
+typedef OperationMetadata = $OperationMetadata00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.

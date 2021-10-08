@@ -62488,7 +62488,7 @@ class InstanceGroupManagersPatchPerInstanceConfigsReq {
       };
 }
 
-typedef InstanceGroupManagersRecreateInstancesRequest = $Request;
+typedef InstanceGroupManagersRecreateInstancesRequest = $Request05;
 
 class InstanceGroupManagersScopedListWarningData {
   /// A key that provides more detail on the warning being returned.
@@ -64963,7 +64963,7 @@ class InstancesSetMinCpuPlatformRequest {
       };
 }
 
-typedef InstancesSetServiceAccountRequest = $Shared04;
+typedef InstancesSetServiceAccountRequest = $Shared05;
 
 class InstancesStartWithEncryptionKeyRequest {
   /// Array of disks associated with this instance that are protected with a
@@ -81493,7 +81493,7 @@ class RegionInstanceGroupManagersListInstancesResponse {
       };
 }
 
-typedef RegionInstanceGroupManagersRecreateRequest = $Request;
+typedef RegionInstanceGroupManagersRecreateRequest = $Request05;
 
 class RegionInstanceGroupManagersSetTargetPoolsRequest {
   /// Fingerprint of the target pools information, which is a hash of the
@@ -88322,7 +88322,7 @@ class ServerBinding {
 }
 
 /// A service account.
-typedef ServiceAccount = $Shared04;
+typedef ServiceAccount = $Shared05;
 
 /// Represents a ServiceAttachment resource.
 ///

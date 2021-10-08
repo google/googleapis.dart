@@ -3757,10 +3757,10 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
-typedef GoogleCloudDocumentaiV1beta1GcsDestination = $Shared;
+typedef GoogleCloudDocumentaiV1beta1GcsDestination = $Shared00;
 
 /// The Google Cloud Storage location where the input file will be read from.
-typedef GoogleCloudDocumentaiV1beta1GcsSource = $Shared;
+typedef GoogleCloudDocumentaiV1beta1GcsSource = $Shared00;
 
 /// The desired input location and metadata.
 class GoogleCloudDocumentaiV1beta1InputConfig {
@@ -3808,7 +3808,7 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
 typedef GoogleCloudDocumentaiV1beta1NormalizedVertex = $NormalizedVertex;
 
 /// Contains metadata for the BatchProcessDocuments operation.
-typedef GoogleCloudDocumentaiV1beta1OperationMetadata = $OperationMetadata;
+typedef GoogleCloudDocumentaiV1beta1OperationMetadata = $OperationMetadata01;
 
 /// The desired output location and metadata.
 class GoogleCloudDocumentaiV1beta1OutputConfig {
@@ -5617,10 +5617,10 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
-typedef GoogleCloudDocumentaiV1beta2GcsDestination = $Shared;
+typedef GoogleCloudDocumentaiV1beta2GcsDestination = $Shared00;
 
 /// The Google Cloud Storage location where the input file will be read from.
-typedef GoogleCloudDocumentaiV1beta2GcsSource = $Shared;
+typedef GoogleCloudDocumentaiV1beta2GcsSource = $Shared00;
 
 /// The desired input location and metadata.
 class GoogleCloudDocumentaiV1beta2InputConfig {
@@ -5686,7 +5686,7 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
 typedef GoogleCloudDocumentaiV1beta2NormalizedVertex = $NormalizedVertex;
 
 /// Contains metadata for the BatchProcessDocuments operation.
-typedef GoogleCloudDocumentaiV1beta2OperationMetadata = $OperationMetadata;
+typedef GoogleCloudDocumentaiV1beta2OperationMetadata = $OperationMetadata01;
 
 /// The desired output location and metadata.
 class GoogleCloudDocumentaiV1beta2OutputConfig {

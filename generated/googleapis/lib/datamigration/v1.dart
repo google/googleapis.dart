@@ -2139,7 +2139,7 @@ class GenerateSshScriptRequest {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef GoogleCloudClouddmsV1OperationMetadata = $OperationMetadata01;
+typedef GoogleCloudClouddmsV1OperationMetadata = $OperationMetadata00;
 
 /// Response message for 'ListConnectionProfiles' request.
 class ListConnectionProfilesResponse {
@@ -2295,7 +2295,7 @@ class ListOperationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Represents a Database Migration Service migration job object.
 class MigrationJob {

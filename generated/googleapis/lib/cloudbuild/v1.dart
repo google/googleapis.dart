@@ -3862,7 +3862,7 @@ class CancelBuildRequest {
 typedef CancelOperationRequest = $Empty;
 
 /// Metadata for `CreateGithubEnterpriseConfig` operation.
-typedef CreateGitHubEnterpriseConfigOperationMetadata = $OperationMetadata02;
+typedef CreateGitHubEnterpriseConfigOperationMetadata = $OperationMetadata03;
 
 /// Metadata for the `CreateWorkerPool` operation.
 class CreateWorkerPoolOperationMetadata {
@@ -4418,7 +4418,7 @@ class GitRepoSource {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef GoogleDevtoolsCloudbuildV2OperationMetadata = $OperationMetadata01;
+typedef GoogleDevtoolsCloudbuildV2OperationMetadata = $OperationMetadata00;
 
 /// HTTPDelivery is the delivery configuration for an HTTP notification.
 class HTTPDelivery {
@@ -5014,7 +5014,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata03;
+typedef OperationMetadata = $OperationMetadata02;
 
 /// Details about how a build should be executed on a `WorkerPool`.
 ///
@@ -5075,7 +5075,7 @@ class PrivatePoolV1Config {
 }
 
 /// Metadata for `ProcessAppManifestCallback` operation.
-typedef ProcessAppManifestCallbackOperationMetadata = $OperationMetadata02;
+typedef ProcessAppManifestCallbackOperationMetadata = $OperationMetadata03;
 
 /// PubsubConfig describes the configuration of a trigger that creates a build
 /// whenever a Pub/Sub message is published.

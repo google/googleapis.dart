@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:convert' as convert;
 
+import 'package:collection/collection.dart';
+
 import 'dart_schema_types.dart';
 import 'generated_googleapis/discovery/v1.dart';
 
@@ -39,18 +41,18 @@ extension ObjectTypeExtention on ObjectType {
     // If we're within a package, this should never be null!
     final libraryValue = Zone.current[_libraryZoneKey] as _LibraryZoneData;
 
-    final schema = _expando[this];
+    final schema = _expando[this]!;
     final duplicateItem = packageValue.candidates[schema];
 
     if (duplicateItem == null) {
       return null;
     }
 
-    libraryValue.addUsedItem(duplicateItem);
+    libraryValue.addUsedItem(schema);
 
     final initialCovertCallCount = imports.convert.callCount;
-    final initialDefinition =
-        classDefinitionCore(duplicateItem.className, includeDescription: false);
+    final initialDefinition = classDefinitionCore(duplicateItem.outputName,
+        includeDescription: false);
 
     final convertUsed = imports.convert.callCount > initialCovertCallCount;
     if (convertUsed) {
@@ -62,7 +64,7 @@ extension ObjectTypeExtention on ObjectType {
     duplicateItem.populateDefinition(initialDefinition);
 
     return '${comment.asDartDoc(0)}'
-        'typedef $className = ${duplicateItem.className};';
+        'typedef $className = ${duplicateItem.outputName};';
   }
 }
 
@@ -72,7 +74,8 @@ T libraryDeduplicateLogic<T>(T Function() action) {
 
   final packageValue = Zone.current[_packageZoneKey] as _PackageZoneData?;
   if (packageValue != null) {
-    packageValue.usedItems.addAll(data.usedItems);
+    packageValue.usedItems
+        .addAll(data.usedItems.map((e) => packageValue.candidates[e]!));
   }
 
   return result;
@@ -108,31 +111,36 @@ mixin DedupeMixin {
 
     for (var dupe in dupes.entries) {
       if (dupe.value.length < 2) {
-        // Rule of 3 – only de-duplicate classes that show up 3x (or more)
         continue;
       }
 
       final allKeys = dupe.value.map((e) => e.classname).toSet();
       final shortestKey = _bestName(allKeys);
 
-      if (!candidates.containsKey(dupe.key)) {
-        // Need to add it! – but! We need to avoid non-exact duplicates
-        var className = '\$$shortestKey';
-        var count = 0;
-        while (candidates.values
-            .any((element) => element.className == className)) {
-          count++;
-          final countVal = count.toString().padLeft(2, '0');
-          className = '\$$shortestKey$countVal';
-        }
+      candidates.putIfAbsent(
+        dupe.key,
+        () => _DuplicateItem(
+          desiredClassName: shortestKey,
+          replacements: dupe.value,
+        ),
+      );
+    }
 
-        candidates.putIfAbsent(
-          dupe.key,
-          () => _DuplicateItem(
-            className: className,
-            replacements: dupe.value,
-          ),
-        );
+    // Now populate the names of the classes
+
+    // Group the classes by name
+    final groupByDesiredName =
+        candidates.values.groupListsBy((element) => element.desiredClassName);
+
+    for (var entry in groupByDesiredName.entries) {
+      final list = entry.value;
+      if (list.length == 1) {
+        list.single.outputName = '\$${entry.key}';
+      } else {
+        list.sort();
+        for (var i = 0; i < list.length; i++) {
+          list[i].outputName = '\$${entry.key}${i.toString().padLeft(2, '0')}';
+        }
       }
     }
 
@@ -144,17 +152,13 @@ mixin DedupeMixin {
 }
 
 class _LibraryZoneData {
-  void addUsedItem(_DuplicateItem item) {
-    if (_usedItems
-        .where((element) => element.className == item.className)
-        .isEmpty) {
-      _usedItems.add(item);
-    }
+  void addUsedItem(String schemaKey) {
+    _usedItems.add(schemaKey);
   }
 
-  final _usedItems = <_DuplicateItem>[];
+  final _usedItems = <String>{};
 
-  Iterable<_DuplicateItem> get usedItems => _usedItems;
+  Iterable<String> get usedItems => _usedItems;
 }
 
 class _PackageZoneData {
@@ -165,8 +169,10 @@ class _PackageZoneData {
 }
 
 class _DuplicateItem implements Comparable<_DuplicateItem> {
-  final String className;
+  final String desiredClassName;
   final Set<_Replacement> replacements;
+
+  late final String outputName;
 
   bool? usedDartConvert;
 
@@ -179,7 +185,7 @@ ${replacements.map((e) => '/// - $e').join('\n')}
 $_definition''';
 
   _DuplicateItem({
-    required this.className,
+    required this.desiredClassName,
     required this.replacements,
   });
 
@@ -195,10 +201,19 @@ $_definition''';
   }
 
   @override
-  String toString() => className;
+  String toString() => desiredClassName;
 
   @override
-  int compareTo(_DuplicateItem other) => className.compareTo(other.className);
+  int compareTo(_DuplicateItem other) {
+    var value = desiredClassName.compareTo(other.desiredClassName);
+    if (value == 0) {
+      value = other.replacements.length.compareTo(replacements.length);
+    }
+    if (value == 0) {
+      value = replacements.first.compareTo(other.replacements.first);
+    }
+    return value;
+  }
 }
 
 class _Replacement implements Comparable<_Replacement> {
@@ -208,17 +223,10 @@ class _Replacement implements Comparable<_Replacement> {
   _Replacement(this.library, this.classname);
 
   @override
-  bool operator ==(Object other) {
-    final value = other is _Replacement &&
-        library == other.library &&
-        classname == other.classname;
-
-    if (value) {
-      print(['same!', this, other]);
-    }
-
-    return value;
-  }
+  bool operator ==(Object other) =>
+      other is _Replacement &&
+      library == other.library &&
+      classname == other.classname;
 
   @override
   int get hashCode => Object.hash(library, classname);

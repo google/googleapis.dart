@@ -3225,7 +3225,7 @@ class ListOperationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Membership contains information about a member cluster.
 class Membership {

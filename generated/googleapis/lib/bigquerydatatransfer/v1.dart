@@ -2480,7 +2480,7 @@ class ListTransferRunsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Options customizing the data transfer schedule.
 class ScheduleOptions {

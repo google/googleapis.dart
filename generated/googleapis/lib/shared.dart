@@ -15,7 +15,7 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accesscontextmanager:v1 : AccessPolicy
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1AccessPolicy
@@ -77,7 +77,7 @@ class $AccessPolicy {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : AccountActiveAdSummary
 /// - dfareporting:v3.5 : AccountActiveAdSummary
@@ -143,7 +143,7 @@ class $AccountActiveAdSummary {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : AccountPermission
 /// - dfareporting:v3.5 : AccountPermission
@@ -210,7 +210,7 @@ class $AccountPermission {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : AccountPermissionGroup
 /// - dfareporting:v3.5 : AccountPermissionGroup
@@ -246,7 +246,7 @@ class $AccountPermissionGroup {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - chat:v1 : ActionParameter
 /// - chat:v1 : GoogleAppsCardV1ActionParameter
@@ -275,7 +275,7 @@ class $ActionParameter {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : AdSlot
 /// - dfareporting:v3.5 : AdSlot
@@ -369,7 +369,7 @@ class $AdSlot {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : AdvertiserGroup
 /// - dfareporting:v3.5 : AdvertiserGroup
@@ -420,7 +420,7 @@ class $AdvertiserGroup {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - searchconsole:v1 : ApiDataRow
 /// - webmasters:v3 : ApiDataRow
@@ -469,7 +469,7 @@ class $ApiDataRow {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - artifactregistry:v1 : ImportAptArtifactsGcsSource
 /// - artifactregistry:v1 : ImportYumArtifactsGcsSource
@@ -503,7 +503,7 @@ class $ArtifactsGcsSource {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1AssociationInfo
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1AssociationInfo
@@ -527,7 +527,7 @@ class $AssociationInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - ml:v1 : GoogleCloudMlV1__IntegratedGradientsAttribution
 /// - ml:v1 : GoogleCloudMlV1__XraiAttribution
@@ -554,7 +554,7 @@ class $Attribution {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : AudienceSegment
 /// - dfareporting:v3.5 : AudienceSegment
@@ -598,7 +598,7 @@ class $AudienceSegment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - apigateway:v1 : ApigatewayAuditLogConfig
 /// - apigee:v1 : GoogleIamV1AuditLogConfig
@@ -669,7 +669,7 @@ class $AuditLogConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - servicecontrol:v1 : Auth
 /// - servicecontrol:v2 : Auth
@@ -767,7 +767,7 @@ class $Auth {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : AuthRequirement
 /// - servicemanagement:v1 : AuthRequirement
@@ -815,7 +815,7 @@ class $AuthRequirement {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : BackendRule
 /// - servicemanagement:v1 : BackendRule
@@ -954,7 +954,7 @@ class $BackendRule {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : BatchOperationMetadata
 /// - vision:v1 : GoogleCloudVisionV1p3beta1BatchOperationMetadata
@@ -1006,7 +1006,7 @@ class $BatchOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : BillingDestination
 /// - servicemanagement:v1 : BillingDestination
@@ -1046,7 +1046,7 @@ class $BillingDestination {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : GoogleCloudOrgpolicyV1BooleanPolicy
 /// - cloudresourcemanager:v1 : BooleanPolicy
@@ -1095,7 +1095,7 @@ class $BooleanPolicy {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Browser
 /// - dfareporting:v3.5 : Browser
@@ -1177,7 +1177,7 @@ class $Browser {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : CampaignCreativeAssociation
 /// - dfareporting:v3.5 : CampaignCreativeAssociation
@@ -1211,7 +1211,7 @@ class $CampaignCreativeAssociation {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : BackendBucketCdnPolicyBypassCacheOnRequestHeader
 /// - compute:v1 : BackendServiceCdnPolicyBypassCacheOnRequestHeader
@@ -1237,7 +1237,7 @@ class $CdnPolicyBypassCacheOnRequestHeader {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : BackendBucketCdnPolicyNegativeCachingPolicy
 /// - compute:v1 : BackendServiceCdnPolicyNegativeCachingPolicy
@@ -1273,7 +1273,7 @@ class $CdnPolicyNegativeCachingPolicy {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ChangeLog
 /// - dfareporting:v3.5 : ChangeLog
@@ -1402,7 +1402,7 @@ class $ChangeLog {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - calendar:v3 : Channel
 /// - drive:v2 : Channel
@@ -1513,7 +1513,7 @@ class $Channel {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4Checksum
 /// - webrisk:v1 : GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
@@ -1544,7 +1544,7 @@ class $Checksum {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : City
 /// - dfareporting:v3.5 : City
@@ -1632,7 +1632,7 @@ class $City {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ClickThroughUrl
 /// - dfareporting:v3.5 : ClickThroughUrl
@@ -1696,7 +1696,7 @@ class $ClickThroughUrl {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ClickThroughUrlSuffixProperties
 /// - dfareporting:v3.5 : ClickThroughUrlSuffixProperties
@@ -1733,7 +1733,7 @@ class $ClickThroughUrlSuffixProperties {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - chat:v1 : Color
 /// - documentai:v1 : GoogleTypeColor
@@ -1793,7 +1793,7 @@ class $Color {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
 /// - documentai:v1 : GoogleCloudDocumentaiV1CommonOperationMetadata
@@ -1848,7 +1848,7 @@ class $CommonOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ConnectionType
 /// - dfareporting:v3.5 : ConnectionType
@@ -1884,7 +1884,7 @@ class $ConnectionType {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ContentCategory
 /// - dfareporting:v3.5 : ContentCategory
@@ -1935,7 +1935,7 @@ class $ContentCategory {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : ContextRule
 /// - servicemanagement:v1 : ContextRule
@@ -2009,7 +2009,7 @@ class $ContextRule {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ContinuousTestResult
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ContinuousTestResult
@@ -2068,7 +2068,7 @@ class $ContinuousTestResult {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : Control
 /// - servicemanagement:v1 : Control
@@ -2097,7 +2097,7 @@ class $Control {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ConversionError
 /// - dfareporting:v3.5 : ConversionError
@@ -2140,7 +2140,7 @@ class $ConversionError {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Country
 /// - dfareporting:v3.5 : Country
@@ -2196,7 +2196,7 @@ class $Country {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata
@@ -2242,7 +2242,7 @@ class $CreateAnalysisOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudresourcemanager:v1 : CreateFolderMetadata
 /// - cloudresourcemanager:v2 : CreateFolderMetadata
@@ -2276,7 +2276,7 @@ class $CreateFolderMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudresourcemanager:v1 : CreateProjectMetadata
 /// - cloudresourcemanager:v2 : CreateProjectMetadata
@@ -2319,7 +2319,7 @@ class $CreateProjectMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
@@ -2347,7 +2347,7 @@ class $CreateVersionOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : CreativeAssetId
 /// - dfareporting:v3.5 : CreativeAssetId
@@ -2390,7 +2390,7 @@ class $CreativeAssetId {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : CreativeClickThroughUrl
 /// - dfareporting:v3.5 : CreativeClickThroughUrl
@@ -2439,7 +2439,7 @@ class $CreativeClickThroughUrl {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : CreativeFieldAssignment
 /// - dfareporting:v3.5 : CreativeFieldAssignment
@@ -2472,7 +2472,7 @@ class $CreativeFieldAssignment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : CreativeFieldValue
 /// - dfareporting:v3.5 : CreativeFieldValue
@@ -2514,7 +2514,7 @@ class $CreativeFieldValue {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : CreativeGroupAssignment
 /// - dfareporting:v3.5 : CreativeGroupAssignment
@@ -2550,7 +2550,7 @@ class $CreativeGroupAssignment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : CustomErrorRule
 /// - servicemanagement:v1 : CustomErrorRule
@@ -2589,7 +2589,7 @@ class $CustomErrorRule {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : CustomFloodlightVariable
 /// - dfareporting:v3.5 : CustomFloodlightVariable
@@ -2731,7 +2731,7 @@ class $CustomFloodlightVariable {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : CustomHttpPattern
 /// - servicemanagement:v1 : CustomHttpPattern
@@ -2761,7 +2761,7 @@ class $CustomHttpPattern {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : CustomViewabilityMetricConfiguration
 /// - dfareporting:v3.5 : CustomViewabilityMetricConfiguration
@@ -2819,7 +2819,7 @@ class $CustomViewabilityMetricConfiguration {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1CustomerEvent
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1CustomerEvent
@@ -2859,7 +2859,7 @@ class $CustomerEvent {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - admob:v1 : Date
 /// - adsense:v2 : Date
@@ -2920,7 +2920,7 @@ class $Date {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : DateRange
 /// - dfareporting:v3.5 : DateRange
@@ -2985,7 +2985,7 @@ class $DateRange {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : DayPartTargeting
 /// - dfareporting:v3.5 : DayPartTargeting
@@ -3041,7 +3041,7 @@ class $DayPartTargeting {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudsearch:v1 : ResponseDebugInfo
 /// - cloudsearch:v1 : ResultDebugInfo
@@ -3066,7 +3066,7 @@ class $DebugInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : DefaultClickThroughEventTagProperties
 /// - dfareporting:v3.5 : DefaultClickThroughEventTagProperties
@@ -3104,7 +3104,7 @@ class $DefaultClickThroughEventTagProperties {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest
@@ -3128,7 +3128,7 @@ class $DeleteIssueModelRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeployIssueModelRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest
@@ -3152,7 +3152,7 @@ class $DeployIssueModelRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_DetectedAttribute
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_DetectedAttribute
@@ -3198,7 +3198,7 @@ class $DetectedAttribute {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : DetectedBreak
 /// - vision:v1 : GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak
@@ -3239,7 +3239,7 @@ class $DetectedBreak {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
@@ -3282,7 +3282,7 @@ class $DetectedLanguage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : DfpSettings
 /// - dfareporting:v3.5 : DfpSettings
@@ -3343,7 +3343,7 @@ class $DfpSettings {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Dimension
 /// - dfareporting:v3.5 : Dimension
@@ -3371,7 +3371,7 @@ class $Dimension {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : DimensionFilter
 /// - dfareporting:v3.5 : DimensionFilter
@@ -3408,7 +3408,7 @@ class $DimensionFilter {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : DimensionValue
 /// - dfareporting:v3.5 : DimensionValue
@@ -3475,7 +3475,7 @@ class $DimensionValue {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : DisksRemoveResourcePoliciesRequest
 /// - compute:v1 : RegionDisksRemoveResourcePoliciesRequest
@@ -3501,7 +3501,7 @@ class $DisksRemoveResourcePoliciesRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentEntityRelation
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentEntityRelation
@@ -3542,7 +3542,7 @@ class $DocumentEntityRelation {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageDimension
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageDimension
@@ -3581,7 +3581,7 @@ class $DocumentPageDimension {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageImage
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageImage
@@ -3633,7 +3633,7 @@ class $DocumentPageImage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageMatrix
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageMatrix
@@ -3684,7 +3684,7 @@ class $DocumentPageMatrix {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
@@ -3713,7 +3713,7 @@ class $DocumentPageTokenDetectedBreak {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentProvenanceParent
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentProvenanceParent
@@ -3752,7 +3752,7 @@ class $DocumentProvenanceParent {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentRevisionHumanReview
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview
@@ -3788,7 +3788,7 @@ class $DocumentRevisionHumanReview {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentShardInfo
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentShardInfo
@@ -3830,7 +3830,7 @@ class $DocumentShardInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentStyleFontSize
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentStyleFontSize
@@ -3863,7 +3863,7 @@ class $DocumentStyleFontSize {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
@@ -3896,7 +3896,7 @@ class $DocumentTextAnchorTextSegment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : DocumentationRule
 /// - servicemanagement:v1 : DocumentationRule
@@ -3953,7 +3953,7 @@ class $DocumentationRule {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3DtmfInput
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1DtmfInput
@@ -3987,7 +3987,7 @@ class $DtmfInput {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : DynamicTargetingKey
 /// - dfareporting:v3.5 : DynamicTargetingKey
@@ -4045,7 +4045,7 @@ class $DynamicTargetingKey {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accesscontextmanager:v1 : EgressFrom
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1EgressFrom
@@ -4095,7 +4095,7 @@ class $EgressFrom {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accessapproval:v1 : DismissApprovalRequestMessage
 /// - accessapproval:v1 : Empty
@@ -4630,7 +4630,7 @@ class $Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : EncryptionInfo
 /// - dfareporting:v3.5 : EncryptionInfo
@@ -4699,7 +4699,7 @@ class $EncryptionInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : Endpoint
 /// - servicemanagement:v1 : Endpoint
@@ -4750,7 +4750,7 @@ class $Endpoint {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1EntitlementEvent
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1EntitlementEvent
@@ -4803,7 +4803,7 @@ class $EntitlementEvent {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_Entity
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_Entity
@@ -4849,7 +4849,7 @@ class $Entity {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datastore:v1 : GoogleDatastoreAdminV1EntityFilter
 /// - datastore:v1 : GoogleDatastoreAdminV1beta1EntityFilter
@@ -4890,7 +4890,7 @@ class $EntityFilter {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2EntityTypeEntity
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1EntityTypeEntity
@@ -4939,7 +4939,7 @@ class $EntityTypeEntity {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
@@ -4993,7 +4993,7 @@ class $EnvironmentTestCasesConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3EnvironmentVersionConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
@@ -5021,21 +5021,21 @@ class $EnvironmentVersionConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3EventInput
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EventInput
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3EventInput
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1EventInput
-class $EventInput {
+class $EventInput00 {
   /// Name of the event.
   core.String? event;
 
-  $EventInput({
+  $EventInput00({
     this.event,
   });
 
-  $EventInput.fromJson(core.Map _json)
+  $EventInput00.fromJson(core.Map _json)
       : this(
           event:
               _json.containsKey('event') ? _json['event'] as core.String : null,
@@ -5046,7 +5046,7 @@ class $EventInput {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2EventInput
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1EventInput
@@ -5107,7 +5107,7 @@ class $EventInput01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : EventTagOverride
 /// - dfareporting:v3.5 : EventTagOverride
@@ -5139,7 +5139,7 @@ class $EventTagOverride {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - logging:v2 : Explicit
 /// - monitoring:v3 : Explicit
@@ -5165,7 +5165,7 @@ class $Explicit {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_ExplicitContentFrame
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame
@@ -5209,7 +5209,7 @@ class $ExplicitContentFrame {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - logging:v2 : Exponential
 /// - monitoring:v3 : Exponential
@@ -5249,13 +5249,13 @@ class $Exponential {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportAgentResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportAgentResponse
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ExportAgentResponse
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ExportAgentResponse
-class $ExportAgentResponse {
+class $ExportAgentResponse00 {
   /// Uncompressed raw byte content for agent.
   core.String? agentContent;
   core.List<core.int> get agentContentAsBytes =>
@@ -5272,12 +5272,12 @@ class $ExportAgentResponse {
   /// ExportAgentRequest.
   core.String? agentUri;
 
-  $ExportAgentResponse({
+  $ExportAgentResponse00({
     this.agentContent,
     this.agentUri,
   });
 
-  $ExportAgentResponse.fromJson(core.Map _json)
+  $ExportAgentResponse00.fromJson(core.Map _json)
       : this(
           agentContent: _json.containsKey('agentContent')
               ? _json['agentContent'] as core.String
@@ -5293,7 +5293,7 @@ class $ExportAgentResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2ExportAgentResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1ExportAgentResponse
@@ -5337,7 +5337,7 @@ class $ExportAgentResponse01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - retail:v2 : GoogleCloudRetailV2alphaExportErrorsConfig
 /// - retail:v2 : GoogleCloudRetailV2betaExportErrorsConfig
@@ -5365,7 +5365,7 @@ class $ExportErrorsConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportFlowResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportFlowResponse
@@ -5409,7 +5409,7 @@ class $ExportFlowResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination
@@ -5461,7 +5461,7 @@ class $ExportInsightsDataRequestBigQueryDestination {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - retail:v2 : GoogleCloudRetailV2alphaExportMetadata
 /// - retail:v2 : GoogleCloudRetailV2betaExportMetadata
@@ -5495,7 +5495,7 @@ class $ExportMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vault:v1 : GroupsExportOptions
 /// - vault:v1 : HangoutsChatExportOptions
@@ -5523,7 +5523,7 @@ class $ExportOptions {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportTestCasesResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse
@@ -5566,7 +5566,7 @@ class $ExportTestCasesResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accesscontextmanager:v1 : Expr
 /// - apigateway:v1 : ApigatewayExpr
@@ -5671,7 +5671,7 @@ class $Expr {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2FaqAnswer
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1FaqAnswer
@@ -5748,7 +5748,7 @@ class $FaqAnswer {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - fcm:v1 : AndroidFcmOptions
 /// - fcm:v1 : FcmOptions
@@ -5772,7 +5772,7 @@ class $FcmOptions {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - servicecontrol:v1 : FirstPartyPrincipal
 /// - servicecontrol:v2 : FirstPartyPrincipal
@@ -5811,7 +5811,7 @@ class $FirstPartyPrincipal {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Flight
 /// - dfareporting:v3.5 : Flight
@@ -5859,7 +5859,7 @@ class $Flight {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : FloodlightActivitiesGenerateTagResponse
 /// - dfareporting:v3.5 : FloodlightActivitiesGenerateTagResponse
@@ -5909,7 +5909,7 @@ class $FloodlightActivitiesGenerateTagResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : FloodlightActivityDynamicTag
 /// - dfareporting:v3.5 : FloodlightActivityDynamicTag
@@ -5945,7 +5945,7 @@ class $FloodlightActivityDynamicTag {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - securitycenter:v1 : Folder
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1p1beta1Folder
@@ -5982,7 +5982,7 @@ class $Folder {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudresourcemanager:v1 : CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
 /// - cloudresourcemanager:v1 : CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
@@ -6044,7 +6044,7 @@ class $FolderOperation {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudresourcemanager:v1 : FolderOperationError
 /// - cloudresourcemanager:v2 : FolderOperationError
@@ -6090,7 +6090,7 @@ class $FolderOperationError {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : FrequencyCap
 /// - dfareporting:v3.5 : FrequencyCap
@@ -6128,7 +6128,7 @@ class $FrequencyCap {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : FsCommand
 /// - dfareporting:v3.5 : FsCommand
@@ -6186,7 +6186,7 @@ class $FsCommand {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction
@@ -6223,7 +6223,7 @@ class $FulfillmentSetParameterAction {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GcsDestination
 /// - vision:v1 : GoogleCloudVisionV1p1beta1GcsDestination
@@ -6263,11 +6263,39 @@ class $GcsDestination {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - vision:v1 : GcsSource
+/// - vision:v1 : GoogleCloudVisionV1p1beta1GcsSource
+/// - vision:v1 : GoogleCloudVisionV1p2beta1GcsSource
+/// - vision:v1 : GoogleCloudVisionV1p3beta1GcsSource
+/// - vision:v1 : GoogleCloudVisionV1p4beta1GcsSource
+class $GcsSource00 {
+  /// Google Cloud Storage URI for the input file.
+  ///
+  /// This must only be a Google Cloud Storage object. Wildcards are not
+  /// currently supported.
+  core.String? uri;
+
+  $GcsSource00({
+    this.uri,
+  });
+
+  $GcsSource00.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - healthcare:v1 : GcsSource
 /// - healthcare:v1 : GoogleCloudHealthcareV1FhirGcsSource
-class $GcsSource {
+class $GcsSource01 {
   /// Points to a Cloud Storage URI containing file(s) to import.
   ///
   /// The URI must be in the following format: `gs://{bucket_id}/{object_id}`.
@@ -6281,34 +6309,6 @@ class $GcsSource {
   /// imports all files with `.ndjson` extensions in `my-directory/` and its
   /// sub-directories. * `?` to match 1 character Files matching the wildcard
   /// are expected to contain content only, no metadata.
-  core.String? uri;
-
-  $GcsSource({
-    this.uri,
-  });
-
-  $GcsSource.fromJson(core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
-}
-
-/// Replacement class for
-///
-/// - vision:v1 : GcsSource
-/// - vision:v1 : GoogleCloudVisionV1p1beta1GcsSource
-/// - vision:v1 : GoogleCloudVisionV1p2beta1GcsSource
-/// - vision:v1 : GoogleCloudVisionV1p3beta1GcsSource
-/// - vision:v1 : GoogleCloudVisionV1p4beta1GcsSource
-class $GcsSource01 {
-  /// Google Cloud Storage URI for the input file.
-  ///
-  /// This must only be a Google Cloud Storage object. Wildcards are not
-  /// currently supported.
   core.String? uri;
 
   $GcsSource01({
@@ -6325,7 +6325,7 @@ class $GcsSource01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - bigquery:v2 : GetPolicyOptions
 /// - bigtableadmin:v2 : GetPolicyOptions
@@ -6370,7 +6370,7 @@ class $GetPolicyOptions {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2AnnotatedMessagePart
 /// - dialogflow:v3 : GoogleCloudDialogflowV2AnnotatedMessagePart
@@ -6421,7 +6421,7 @@ class $GoogleCloudDialogflowV2AnnotatedMessagePart {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2ArticleAnswer
 /// - dialogflow:v3 : GoogleCloudDialogflowV2ArticleAnswer
@@ -6495,7 +6495,7 @@ class $GoogleCloudDialogflowV2ArticleAnswer {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Context
 /// - dialogflow:v3 : GoogleCloudDialogflowV2Context
@@ -6566,7 +6566,7 @@ class $GoogleCloudDialogflowV2Context {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageImage
 /// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageImage
@@ -6603,7 +6603,7 @@ class $GoogleCloudDialogflowV2IntentMessageImage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2KnowledgeOperationMetadata
 /// - dialogflow:v3 : GoogleCloudDialogflowV2KnowledgeOperationMetadata
@@ -6633,7 +6633,7 @@ class $GoogleCloudDialogflowV2KnowledgeOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1AnnotatedMessagePart
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1AnnotatedMessagePart
@@ -6690,7 +6690,7 @@ class $GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1ArticleAnswer
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1ArticleAnswer
@@ -6754,7 +6754,7 @@ class $GoogleCloudDialogflowV2beta1ArticleAnswer {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1Context
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1Context
@@ -6827,7 +6827,7 @@ class $GoogleCloudDialogflowV2beta1Context {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageImage
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageImage
@@ -6864,7 +6864,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageImage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
@@ -6929,7 +6929,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
@@ -6959,7 +6959,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAc
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
@@ -6984,7 +6984,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAc
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
@@ -7019,7 +7019,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
@@ -7056,7 +7056,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
@@ -7088,7 +7088,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
@@ -7118,7 +7118,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
@@ -7197,7 +7197,7 @@ class $GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1SmartReplyAnswer
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1SmartReplyAnswer
@@ -7241,7 +7241,7 @@ class $GoogleCloudDialogflowV2beta1SmartReplyAnswer {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
 /// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
@@ -7314,7 +7314,7 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
 /// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
@@ -7356,7 +7356,7 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
 /// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
@@ -7393,7 +7393,7 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - appengine:v1 : ApiEndpointHandler
 /// - appengine:v1 : ScriptHandler
@@ -7417,7 +7417,7 @@ class $Handler {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : UrlMapTestHeader
 /// - websecurityscanner:v1 : Header
@@ -7446,7 +7446,7 @@ class $Header {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - adsense:v2 : HttpBody
 /// - apigee:v1 : GoogleApiHttpBody
@@ -7503,7 +7503,7 @@ class $HttpBody {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1HumanReviewStatus
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta3HumanReviewStatus
@@ -7559,7 +7559,7 @@ class $HumanReviewStatus {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1ImageAnnotationContext
 /// - vision:v1 : GoogleCloudVisionV1p2beta1ImageAnnotationContext
@@ -7593,7 +7593,7 @@ class $ImageAnnotationContext {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - retail:v2 : GoogleCloudRetailV2ImportErrorsConfig
 /// - retail:v2 : GoogleCloudRetailV2alphaImportErrorsConfig
@@ -7622,7 +7622,7 @@ class $ImportErrorsConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ImportFlowResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ImportFlowResponse
@@ -7648,7 +7648,7 @@ class $ImportFlowResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - retail:v2 : GoogleCloudRetailV2ImportMetadata
 /// - retail:v2 : GoogleCloudRetailV2alphaImportMetadata
@@ -7723,7 +7723,7 @@ class $ImportMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ImportTestCasesResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse
@@ -7753,7 +7753,7 @@ class $ImportTestCasesResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accesscontextmanager:v1 : IngressSource
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1IngressSource
@@ -7799,7 +7799,7 @@ class $IngressSource {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3InputAudioConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1InputAudioConfig
@@ -7966,7 +7966,7 @@ class $InputAudioConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : InstanceGroupManagersAbandonInstancesRequest
 /// - compute:v1 : RegionInstanceGroupManagersAbandonInstancesRequest
@@ -7995,7 +7995,7 @@ class $InstanceGroupManagersAbandonInstancesRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : InstanceGroupManagersApplyUpdatesRequest
 /// - compute:v1 : RegionInstanceGroupManagersApplyUpdatesRequest
@@ -8080,7 +8080,7 @@ class $InstanceGroupManagersApplyUpdatesRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : InstanceGroupManagersDeleteInstancesRequest
 /// - compute:v1 : RegionInstanceGroupManagersDeleteInstancesRequest
@@ -8126,7 +8126,7 @@ class $InstanceGroupManagersDeleteInstancesRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentFollowupIntentInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo
@@ -8167,7 +8167,7 @@ class $IntentFollowupIntentInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentInput
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentInput
@@ -8197,7 +8197,7 @@ class $IntentInput {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction
@@ -8223,7 +8223,7 @@ class $IntentMessageBasicCardButtonOpenUriAction {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
@@ -8267,7 +8267,7 @@ class $IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageCardButton
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageCardButton
@@ -8303,7 +8303,7 @@ class $IntentMessageCardButton {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageColumnProperties
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
@@ -8348,7 +8348,7 @@ class $IntentMessageColumnProperties {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion
@@ -8384,7 +8384,7 @@ class $IntentMessageLinkOutSuggestion {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageQuickReplies
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageQuickReplies
@@ -8423,7 +8423,7 @@ class $IntentMessageQuickReplies {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSelectItemInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo
@@ -8462,7 +8462,7 @@ class $IntentMessageSelectItemInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSimpleResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse
@@ -8509,7 +8509,7 @@ class $IntentMessageSimpleResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSuggestion
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSuggestion
@@ -8536,7 +8536,7 @@ class $IntentMessageSuggestion {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageTableCardCell
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
@@ -8562,7 +8562,7 @@ class $IntentMessageTableCardCell {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageText
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageText
@@ -8592,13 +8592,13 @@ class $IntentMessageText {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentParameter
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentParameter
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3IntentParameter
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1IntentParameter
-class $IntentParameter {
+class $IntentParameter00 {
   /// The entity type of the parameter.
   ///
   /// Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity
@@ -8627,14 +8627,14 @@ class $IntentParameter {
   /// redaction is enabled.
   core.bool? redact;
 
-  $IntentParameter({
+  $IntentParameter00({
     this.entityType,
     this.id,
     this.isList,
     this.redact,
   });
 
-  $IntentParameter.fromJson(core.Map _json)
+  $IntentParameter00.fromJson(core.Map _json)
       : this(
           entityType: _json.containsKey('entityType')
               ? _json['entityType'] as core.String
@@ -8654,7 +8654,7 @@ class $IntentParameter {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentParameter
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentParameter
@@ -8764,13 +8764,13 @@ class $IntentParameter01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
-class $IntentTrainingPhrasePart {
+class $IntentTrainingPhrasePart00 {
   /// The parameter used to annotate this part of the training phrase.
   ///
   /// This field is required for annotated parts of the training phrase.
@@ -8781,12 +8781,12 @@ class $IntentTrainingPhrasePart {
   /// Required.
   core.String? text;
 
-  $IntentTrainingPhrasePart({
+  $IntentTrainingPhrasePart00({
     this.parameterId,
     this.text,
   });
 
-  $IntentTrainingPhrasePart.fromJson(core.Map _json)
+  $IntentTrainingPhrasePart00.fromJson(core.Map _json)
       : this(
           parameterId: _json.containsKey('parameterId')
               ? _json['parameterId'] as core.String
@@ -8800,7 +8800,7 @@ class $IntentTrainingPhrasePart {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentTrainingPhrasePart
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart
@@ -8864,7 +8864,7 @@ class $IntentTrainingPhrasePart01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig
@@ -8920,7 +8920,7 @@ class $IssueModelInputDataConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats
@@ -8956,7 +8956,7 @@ class $IssueModelLabelStatsIssueStats {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - binaryauthorization:v1 : Jwt
 /// - ondemandscanning:v1 : Jwt
@@ -8983,7 +8983,7 @@ class $Jwt {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : JwtLocation
 /// - servicemanagement:v1 : JwtLocation
@@ -9031,7 +9031,7 @@ class $JwtLocation {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1ProductKeyValue
 /// - vision:v1 : GoogleCloudVisionV1p2beta1ProductKeyValue
@@ -9067,7 +9067,7 @@ class $KeyValue {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : KeyValueTargetingExpression
 /// - dfareporting:v3.5 : KeyValueTargetingExpression
@@ -9091,7 +9091,7 @@ class $KeyValueTargetingExpression {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datastore:v1 : KindExpression
 /// - dlp:v2 : GooglePrivacyDlpV2KindExpression
@@ -9113,7 +9113,7 @@ class $KindExpression {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata
@@ -9149,7 +9149,7 @@ class $KnowledgeOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - logging:v2 : LabelDescriptor
 /// - serviceconsumermanagement:v1 : LabelDescriptor
@@ -9194,7 +9194,7 @@ class $LabelDescriptor {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - deploymentmanager:v2 : DeploymentLabelEntry
 /// - deploymentmanager:v2 : DeploymentUpdateLabelEntry
@@ -9223,7 +9223,7 @@ class $LabelEntry {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_LabelFrame
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_LabelFrame
@@ -9261,7 +9261,7 @@ class $LabelFrame {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Language
 /// - dfareporting:v3.5 : Language
@@ -9310,7 +9310,7 @@ class $Language {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : LastModifiedInfo
 /// - dfareporting:v3.5 : LastModifiedInfo
@@ -9332,7 +9332,7 @@ class $LastModifiedInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datastore:v1 : LatLng
 /// - dialogflow:v2 : GoogleTypeLatLng
@@ -9376,7 +9376,7 @@ class $LatLng {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudresourcemanager:v1 : Lien
 /// - cloudresourcemanager:v3 : Lien
@@ -9456,7 +9456,7 @@ class $Lien {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - logging:v2 : Linear
 /// - monitoring:v3 : Linear
@@ -9496,7 +9496,7 @@ class $Linear {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : GoogleCloudOrgpolicyV1ListPolicy
 /// - cloudresourcemanager:v1 : ListPolicy
@@ -9631,7 +9631,7 @@ class $ListPolicy {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ListPopulationTerm
 /// - dfareporting:v3.5 : ListPopulationTerm
@@ -9749,7 +9749,7 @@ class $ListPopulationTerm {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ListTargetingExpression
 /// - dfareporting:v3.5 : ListTargetingExpression
@@ -9773,79 +9773,7 @@ class $ListTargetingExpression {
       };
 }
 
-/// Replacement class for
-///
-/// - appengine:v1 : Location
-/// - logging:v2 : Location
-class $Location {
-  /// The friendly name for this location, typically a nearby city name.
-  ///
-  /// For example, "Tokyo".
-  core.String? displayName;
-
-  /// Cross-service attributes for the location.
-  ///
-  /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
-
-  /// The canonical id for this location.
-  ///
-  /// For example: "us-east1".
-  core.String? locationId;
-
-  /// Service-specific metadata.
-  ///
-  /// For example the available capacity at the given location.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Resource name for the location, which may vary between implementations.
-  ///
-  /// For example: "projects/example-project/locations/us-east1"
-  core.String? name;
-
-  $Location({
-    this.displayName,
-    this.labels,
-    this.locationId,
-    this.metadata,
-    this.name,
-  });
-
-  $Location.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - apigateway:v1 : ApigatewayLocation
 /// - bigquerydatatransfer:v1 : Location
@@ -9879,7 +9807,7 @@ class $Location {
 /// - tpu:v1 : Location
 /// - translate:v3 : Location
 /// - workflows:v1 : Location
-class $Location01 {
+class $Location00 {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
@@ -9906,6 +9834,78 @@ class $Location01 {
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
+  core.String? name;
+
+  $Location00({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
+
+  $Location00.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Shared implementation type for:
+///
+/// - appengine:v1 : Location
+/// - logging:v2 : Location
+class $Location01 {
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
+  core.String? displayName;
+
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
+  core.Map<core.String, core.String>? labels;
+
+  /// The canonical id for this location.
+  ///
+  /// For example: "us-east1".
+  core.String? locationId;
+
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// Resource name for the location, which may vary between implementations.
+  ///
+  /// For example: "projects/example-project/locations/us-east1"
   core.String? name;
 
   $Location01({
@@ -9947,7 +9947,7 @@ class $Location01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - appengine:v1 : GoogleAppengineV1betaLocationMetadata
 /// - appengine:v1 : LocationMetadata
@@ -9998,7 +9998,7 @@ class $LocationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : LoggingDestination
 /// - servicemanagement:v1 : LoggingDestination
@@ -10040,7 +10040,7 @@ class $LoggingDestination {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : LookbackConfiguration
 /// - dfareporting:v3.5 : LookbackConfiguration
@@ -10084,7 +10084,7 @@ class $LookbackConfiguration {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - chat:v1 : Media
 /// - cloudsearch:v1 : Media
@@ -10109,7 +10109,7 @@ class $Media {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accesscontextmanager:v1 : MethodSelector
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1MethodSelector
@@ -10146,7 +10146,7 @@ class $MethodSelector {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Metric
 /// - dfareporting:v3.5 : Metric
@@ -10174,13 +10174,13 @@ class $Metric {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : MetricDescriptorMetadata
 /// - servicemanagement:v1 : MetricDescriptorMetadata
 /// - servicenetworking:v1 : MetricDescriptorMetadata
 /// - serviceusage:v1 : MetricDescriptorMetadata
-class $MetricDescriptorMetadata {
+class $MetricDescriptorMetadata00 {
   /// The delay of data points caused by ingestion.
   ///
   /// Data points older than this age are guaranteed to be ingested and
@@ -10231,13 +10231,13 @@ class $MetricDescriptorMetadata {
   /// with a higher granularity have a smaller sampling period.
   core.String? samplePeriod;
 
-  $MetricDescriptorMetadata({
+  $MetricDescriptorMetadata00({
     this.ingestDelay,
     this.launchStage,
     this.samplePeriod,
   });
 
-  $MetricDescriptorMetadata.fromJson(core.Map _json)
+  $MetricDescriptorMetadata00.fromJson(core.Map _json)
       : this(
           ingestDelay: _json.containsKey('ingestDelay')
               ? _json['ingestDelay'] as core.String
@@ -10257,7 +10257,7 @@ class $MetricDescriptorMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - logging:v2 : MetricDescriptorMetadata
 /// - monitoring:v3 : MetricDescriptorMetadata
@@ -10338,7 +10338,7 @@ class $MetricDescriptorMetadata01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : MetricRule
 /// - servicemanagement:v1 : MetricRule
@@ -10385,7 +10385,7 @@ class $MetricRule {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Metro
 /// - dfareporting:v3.5 : Metro
@@ -10459,7 +10459,7 @@ class $Metro {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : Mixin
 /// - servicemanagement:v1 : Mixin
@@ -10489,7 +10489,7 @@ class $Mixin {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : MobileApp
 /// - dfareporting:v3.5 : MobileApp
@@ -10546,7 +10546,7 @@ class $MobileApp {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : MobileCarrier
 /// - dfareporting:v3.5 : MobileCarrier
@@ -10598,7 +10598,7 @@ class $MobileCarrier {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - androidpublisher:v3 : Money
 /// - apigee:v1 : GoogleTypeMoney
@@ -10653,7 +10653,7 @@ class $Money {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - logging:v2 : MonitoredResourceMetadata
 /// - monitoring:v3 : MonitoredResourceMetadata
@@ -10704,7 +10704,7 @@ class $MonitoredResourceMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : MonitoringDestination
 /// - servicemanagement:v1 : MonitoringDestination
@@ -10744,7 +10744,7 @@ class $MonitoringDestination {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudresourcemanager:v1 : MoveFolderMetadata
 /// - cloudresourcemanager:v2 : MoveFolderMetadata
@@ -10785,7 +10785,7 @@ class $MoveFolderMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - jobs:v3 : NamespacedDebugInput
 /// - jobs:v4 : NamespacedDebugInput
@@ -11011,7 +11011,7 @@ class $NamespacedDebugInput {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_NormalizedBoundingBox
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_NormalizedBoundingBox
@@ -11062,7 +11062,7 @@ class $NormalizedBoundingBox {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_NormalizedVertex
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_NormalizedVertex
@@ -11074,19 +11074,19 @@ class $NormalizedBoundingBox {
 /// - vision:v1 : GoogleCloudVisionV1p3beta1NormalizedVertex
 /// - vision:v1 : GoogleCloudVisionV1p4beta1NormalizedVertex
 /// - vision:v1 : NormalizedVertex
-class $NormalizedVertex {
+class $NormalizedVertex00 {
   /// X coordinate.
   core.double? x;
 
   /// Y coordinate.
   core.double? y;
 
-  $NormalizedVertex({
+  $NormalizedVertex00({
     this.x,
     this.y,
   });
 
-  $NormalizedVertex.fromJson(core.Map _json)
+  $NormalizedVertex00.fromJson(core.Map _json)
       : this(
           x: _json.containsKey('x')
               ? (_json['x'] as core.num).toDouble()
@@ -11102,7 +11102,7 @@ class $NormalizedVertex {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1NormalizedVertex
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1NormalizedVertex
@@ -11135,7 +11135,7 @@ class $NormalizedVertex01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : OAuthRequirements
 /// - servicemanagement:v1 : OAuthRequirements
@@ -11165,7 +11165,7 @@ class $OAuthRequirements {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
 /// - vision:v1 : GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
@@ -11217,7 +11217,7 @@ class $ObjectAnnotation {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ObjectFilter
 /// - dfareporting:v3.5 : ObjectFilter
@@ -11269,7 +11269,7 @@ class $ObjectFilter {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : OffsetPosition
 /// - dfareporting:v3.5 : OffsetPosition
@@ -11297,7 +11297,7 @@ class $OffsetPosition {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : OmnitureSettings
 /// - dfareporting:v3.5 : OmnitureSettings
@@ -11337,7 +11337,7 @@ class $OmnitureSettings {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - managedidentities:v1 : GoogleCloudManagedidentitiesV1OpMetadata
 /// - managedidentities:v1 : GoogleCloudManagedidentitiesV1alpha1OpMetadata
@@ -11417,7 +11417,7 @@ class $OpMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : OperatingSystem
 /// - dfareporting:v3.5 : OperatingSystem
@@ -11472,34 +11472,7 @@ class $OperatingSystem {
       };
 }
 
-/// Replacement class for
-///
-/// - serviceusage:v1 : GoogleApiServiceusageV1OperationMetadata
-/// - serviceusage:v1 : OperationMetadata
-class $OperationMetadata {
-  /// The full name of the resources that this operation is directly associated
-  /// with.
-  core.List<core.String>? resourceNames;
-
-  $OperationMetadata({
-    this.resourceNames,
-  });
-
-  $OperationMetadata.fromJson(core.Map _json)
-      : this(
-          resourceNames: _json.containsKey('resourceNames')
-              ? (_json['resourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceNames != null) 'resourceNames': resourceNames!,
-      };
-}
-
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudbuild:v1 : GoogleDevtoolsCloudbuildV2OperationMetadata
 /// - datamigration:v1 : GoogleCloudClouddmsV1OperationMetadata
@@ -11507,7 +11480,7 @@ class $OperationMetadata {
 /// - networksecurity:v1 : OperationMetadata
 /// - networkservices:v1 : OperationMetadata
 /// - privateca:v1 : OperationMetadata
-class $OperationMetadata01 {
+class $OperationMetadata00 {
   /// API version used to start the operation.
   ///
   /// Output only.
@@ -11547,7 +11520,7 @@ class $OperationMetadata01 {
   /// Output only.
   core.String? verb;
 
-  $OperationMetadata01({
+  $OperationMetadata00({
     this.apiVersion,
     this.createTime,
     this.endTime,
@@ -11557,7 +11530,7 @@ class $OperationMetadata01 {
     this.verb,
   });
 
-  $OperationMetadata01.fromJson(core.Map _json)
+  $OperationMetadata00.fromJson(core.Map _json)
       : this(
           apiVersion: _json.containsKey('apiVersion')
               ? _json['apiVersion'] as core.String
@@ -11592,57 +11565,61 @@ class $OperationMetadata01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - cloudbuild:v1 : CreateGitHubEnterpriseConfigOperationMetadata
-/// - cloudbuild:v1 : ProcessAppManifestCallbackOperationMetadata
-class $OperationMetadata02 {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
+/// - vision:v1 : GoogleCloudVisionV1p1beta1OperationMetadata
+/// - vision:v1 : GoogleCloudVisionV1p2beta1OperationMetadata
+/// - vision:v1 : GoogleCloudVisionV1p3beta1OperationMetadata
+/// - vision:v1 : GoogleCloudVisionV1p4beta1OperationMetadata
+/// - vision:v1 : OperationMetadata
+class $OperationMetadata01 {
+  /// The time when the batch request was received.
   core.String? createTime;
 
-  /// The resource name of the GitHubEnterprise to be created.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
-  core.String? githubEnterpriseConfig;
+  /// Current state of the batch operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Invalid.
+  /// - "CREATED" : Request is received.
+  /// - "RUNNING" : Request is actively being processed.
+  /// - "DONE" : The batch processing is done.
+  /// - "CANCELLED" : The batch processing was cancelled.
+  core.String? state;
 
-  $OperationMetadata02({
-    this.completeTime,
+  /// The time when the operation result was last updated.
+  core.String? updateTime;
+
+  $OperationMetadata01({
     this.createTime,
-    this.githubEnterpriseConfig,
+    this.state,
+    this.updateTime,
   });
 
-  $OperationMetadata02.fromJson(core.Map _json)
+  $OperationMetadata01.fromJson(core.Map _json)
       : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
         if (createTime != null) 'createTime': createTime!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudbuild:v1 : OperationMetadata
 /// - file:v1 : OperationMetadata
 /// - managedidentities:v1 : OperationMetadata
 /// - tpu:v1 : OperationMetadata
-class $OperationMetadata03 {
+class $OperationMetadata02 {
   /// API version used to start the operation.
   ///
   /// Output only.
@@ -11682,7 +11659,7 @@ class $OperationMetadata03 {
   /// Output only.
   core.String? verb;
 
-  $OperationMetadata03({
+  $OperationMetadata02({
     this.apiVersion,
     this.cancelRequested,
     this.createTime,
@@ -11692,7 +11669,7 @@ class $OperationMetadata03 {
     this.verb,
   });
 
-  $OperationMetadata03.fromJson(core.Map _json)
+  $OperationMetadata02.fromJson(core.Map _json)
       : this(
           apiVersion: _json.containsKey('apiVersion')
               ? _json['apiVersion'] as core.String
@@ -11726,7 +11703,51 @@ class $OperationMetadata03 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - cloudbuild:v1 : CreateGitHubEnterpriseConfigOperationMetadata
+/// - cloudbuild:v1 : ProcessAppManifestCallbackOperationMetadata
+class $OperationMetadata03 {
+  /// Time the operation was completed.
+  core.String? completeTime;
+
+  /// Time the operation was created.
+  core.String? createTime;
+
+  /// The resource name of the GitHubEnterprise to be created.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+  core.String? githubEnterpriseConfig;
+
+  $OperationMetadata03({
+    this.completeTime,
+    this.createTime,
+    this.githubEnterpriseConfig,
+  });
+
+  $OperationMetadata03.fromJson(core.Map _json)
+      : this(
+          completeTime: _json.containsKey('completeTime')
+              ? _json['completeTime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
+              ? _json['githubEnterpriseConfig'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completeTime != null) 'completeTime': completeTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1OperationMetadata
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta2OperationMetadata
@@ -11782,59 +11803,11 @@ class $OperationMetadata04 {
       };
 }
 
-/// Replacement class for
-///
-/// - vision:v1 : GoogleCloudVisionV1p1beta1OperationMetadata
-/// - vision:v1 : GoogleCloudVisionV1p2beta1OperationMetadata
-/// - vision:v1 : GoogleCloudVisionV1p3beta1OperationMetadata
-/// - vision:v1 : GoogleCloudVisionV1p4beta1OperationMetadata
-/// - vision:v1 : OperationMetadata
-class $OperationMetadata05 {
-  /// The time when the batch request was received.
-  core.String? createTime;
-
-  /// Current state of the batch operation.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Invalid.
-  /// - "CREATED" : Request is received.
-  /// - "RUNNING" : Request is actively being processed.
-  /// - "DONE" : The batch processing is done.
-  /// - "CANCELLED" : The batch processing was cancelled.
-  core.String? state;
-
-  /// The time when the operation result was last updated.
-  core.String? updateTime;
-
-  $OperationMetadata05({
-    this.createTime,
-    this.state,
-    this.updateTime,
-  });
-
-  $OperationMetadata05.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - memcache:v1 : GoogleCloudMemcacheV1OperationMetadata
 /// - memcache:v1 : OperationMetadata
-class $OperationMetadata06 {
+class $OperationMetadata05 {
   /// API version used to start the operation.
   ///
   /// Output only.
@@ -11874,7 +11847,7 @@ class $OperationMetadata06 {
   /// Output only.
   core.String? verb;
 
-  $OperationMetadata06({
+  $OperationMetadata05({
     this.apiVersion,
     this.cancelRequested,
     this.createTime,
@@ -11884,7 +11857,7 @@ class $OperationMetadata06 {
     this.verb,
   });
 
-  $OperationMetadata06.fromJson(core.Map _json)
+  $OperationMetadata05.fromJson(core.Map _json)
       : this(
           apiVersion: _json.containsKey('apiVersion')
               ? _json['apiVersion'] as core.String
@@ -11918,7 +11891,34 @@ class $OperationMetadata06 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - serviceusage:v1 : GoogleApiServiceusageV1OperationMetadata
+/// - serviceusage:v1 : OperationMetadata
+class $OperationMetadata06 {
+  /// The full name of the resources that this operation is directly associated
+  /// with.
+  core.List<core.String>? resourceNames;
+
+  $OperationMetadata06({
+    this.resourceNames,
+  });
+
+  $OperationMetadata06.fromJson(core.Map _json)
+      : this(
+          resourceNames: _json.containsKey('resourceNames')
+              ? (_json['resourceNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceNames != null) 'resourceNames': resourceNames!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - bigtableadmin:v2 : OperationProgress
 /// - spanner:v1 : OperationProgress
@@ -11961,7 +11961,7 @@ class $OperationProgress {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : Option
 /// - servicemanagement:v1 : Option
@@ -12005,7 +12005,7 @@ class $Option {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - content:v2.1 : OrderAddress
 /// - content:v2.1 : TestOrderAddress
@@ -12097,7 +12097,7 @@ class $OrderAddress {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : OrderContact
 /// - dfareporting:v3.5 : OrderContact
@@ -12162,7 +12162,7 @@ class $OrderContact {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2OriginalDetectIntentRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
@@ -12224,7 +12224,7 @@ class $OriginalDetectIntentRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accesscontextmanager:v1 : OsConstraint
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1OsConstraint
@@ -12283,7 +12283,7 @@ class $OsConstraint {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : OsInfo
 /// - osconfig:v1 : InventoryOsInfo
@@ -12369,7 +12369,7 @@ class $OsInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - androidenterprise:v1 : PageInfo
 /// - androidpublisher:v3 : PageInfo
@@ -12412,7 +12412,7 @@ class $PageInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo
@@ -12495,7 +12495,7 @@ class $PageInfoFormInfoParameterInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datastore:v1 : PartitionId
 /// - dlp:v2 : GooglePrivacyDlpV2PartitionId
@@ -12527,7 +12527,7 @@ class $PartitionId {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datastore:v1 : PathElement
 /// - dlp:v2 : GooglePrivacyDlpV2PathElement
@@ -12570,7 +12570,7 @@ class $PathElement {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : PathReportDimensionValue
 /// - dfareporting:v3.5 : PathReportDimensionValue
@@ -12639,7 +12639,7 @@ class $PathReportDimensionValue {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - servicecontrol:v1 : Peer
 /// - servicecontrol:v2 : Peer
@@ -12703,7 +12703,7 @@ class $Peer {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1Period
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1Period
@@ -12740,7 +12740,7 @@ class $Period {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
@@ -12805,7 +12805,7 @@ class $PermissionsResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : PlacementStrategy
 /// - dfareporting:v3.5 : PlacementStrategy
@@ -12855,7 +12855,7 @@ class $PlacementStrategy {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : PlatformType
 /// - dfareporting:v3.5 : PlatformType
@@ -12891,7 +12891,7 @@ class $PlatformType {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1Position
 /// - vision:v1 : GoogleCloudVisionV1p2beta1Position
@@ -12934,7 +12934,7 @@ class $Position {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
@@ -13124,7 +13124,7 @@ class $PostalAddress {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : PostalCode
 /// - dfareporting:v3.5 : PostalCode
@@ -13178,7 +13178,7 @@ class $PostalCode {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : PricingSchedulePricingPeriod
 /// - dfareporting:v3.5 : PricingSchedulePricingPeriod
@@ -13239,7 +13239,7 @@ class $PricingSchedulePricingPeriod {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datastore:v1 : GoogleDatastoreAdminV1Progress
 /// - datastore:v1 : GoogleDatastoreAdminV1beta1Progress
@@ -13275,7 +13275,7 @@ class $Progress {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudresourcemanager:v1 : ProjectCreationStatus
 /// - cloudresourcemanager:v2 : ProjectCreationStatus
@@ -13318,7 +13318,7 @@ class $ProjectCreationStatus {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - clouddebugger:v2 : ProjectRepoId
 /// - ondemandscanning:v1 : ProjectRepoId
@@ -13352,7 +13352,7 @@ class $ProjectRepoId {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1Property
 /// - vision:v1 : GoogleCloudVisionV1p2beta1Property
@@ -13392,7 +13392,7 @@ class $Property {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1ProvisionedService
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1ProvisionedService
@@ -13440,7 +13440,7 @@ class $ProvisionedService {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : TargetSslProxiesSetProxyHeaderRequest
 /// - compute:v1 : TargetTcpProxiesSetProxyHeaderRequest
@@ -13469,7 +13469,7 @@ class $ProxiesSetProxyHeaderRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudscheduler:v1 : PubsubMessage
 /// - pubsub:v1 : PubsubMessage
@@ -13554,7 +13554,7 @@ class $PubsubMessage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - androidpublisher:v3 : ProductPurchasesAcknowledgeRequest
 /// - androidpublisher:v3 : SubscriptionPurchasesAcknowledgeRequest
@@ -13578,7 +13578,7 @@ class $PurchasesAcknowledgeRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - retail:v2 : GoogleCloudRetailV2PurgeUserEventsResponse
 /// - retail:v2 : GoogleCloudRetailV2alphaPurgeUserEventsResponse
@@ -13603,7 +13603,7 @@ class $PurgeUserEventsResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vault:v1 : HeldGroupsQuery
 /// - vault:v1 : HeldMailQuery
@@ -13647,7 +13647,7 @@ class $Query {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : QuotaLimit
 /// - servicemanagement:v1 : QuotaLimit
@@ -13795,7 +13795,7 @@ class $QuotaLimit {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4RawIndices
 /// - webrisk:v1 : GoogleCloudWebriskV1RawIndices
@@ -13821,7 +13821,7 @@ class $RawIndices {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Recipient
 /// - dfareporting:v3.5 : Recipient
@@ -13861,7 +13861,7 @@ class $Recipient {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Region
 /// - dfareporting:v3.5 : Region
@@ -13923,7 +13923,7 @@ class $Region {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - retail:v2 : GoogleCloudRetailV2RejoinUserEventsResponse
 /// - retail:v2 : GoogleCloudRetailV2alphaRejoinUserEventsResponse
@@ -13949,7 +13949,7 @@ class $RejoinUserEventsResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : GoogleCloudAssetV1p7beta1RelatedAsset
 /// - cloudasset:v1 : RelatedAsset
@@ -14006,7 +14006,7 @@ class $RelatedAsset {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : GoogleCloudAssetV1p7beta1RelationshipAttributes
 /// - cloudasset:v1 : RelationshipAttributes
@@ -14060,7 +14060,7 @@ class $RelationshipAttributes {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : RemarketingListShare
 /// - dfareporting:v3.5 : RemarketingListShare
@@ -14115,7 +14115,7 @@ class $RemarketingListShare {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - docs:v1 : ReplaceAllTextResponse
 /// - slides:v1 : ReplaceAllTextResponse
@@ -14140,7 +14140,7 @@ class $ReplaceAllTextResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - policysimulator:v1 : GoogleCloudPolicysimulatorV1ReplayOperationMetadata
 /// - policysimulator:v1 : GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
@@ -14164,7 +14164,7 @@ class $ReplayOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : InstanceGroupManagersDeletePerInstanceConfigsReq
 /// - compute:v1 : RegionInstanceGroupManagerDeleteInstanceConfigReq
@@ -14191,54 +14191,58 @@ class $Req {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - compute:v1 : InstanceGroupManagersRecreateInstancesRequest
-/// - compute:v1 : RegionInstanceGroupManagersRecreateRequest
-class $Request {
-  /// The URLs of one or more instances to recreate.
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
+class $Request00 {
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
   ///
-  /// This can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
+  /// If you're using this API for your own organization, use
+  /// `customers/my_customer` If you're using this API to manage another
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
+  ///
+  /// Optional.
+  core.String? customer;
 
-  $Request({
-    this.instances,
+  $Request00({
+    this.customer,
   });
 
-  $Request.fromJson(core.Map _json)
+  $Request00.fromJson(core.Map _json)
       : this(
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
+        if (customer != null) 'customer': customer!,
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - privateca:v1 : DisableCertificateAuthorityRequest
-/// - privateca:v1 : EnableCertificateAuthorityRequest
-/// - privateca:v1 : FetchCaCertsRequest
-/// - privateca:v1 : UndeleteCertificateAuthorityRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1ActivateEntitlementRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1CancelEntitlementRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1StartPaidServiceRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1SuspendEntitlementRequest
 class $Request01 {
-  /// An ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -14259,67 +14263,34 @@ class $Request01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
+/// - privateca:v1 : DisableCertificateAuthorityRequest
+/// - privateca:v1 : EnableCertificateAuthorityRequest
+/// - privateca:v1 : FetchCaCertsRequest
+/// - privateca:v1 : UndeleteCertificateAuthorityRequest
 class $Request02 {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer.
+  /// An ID to identify requests.
   ///
-  /// If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer}`, where customer is the customer
-  /// to whom the device belongs.
-  ///
-  /// Optional.
-  core.String? customer;
-
-  $Request02({
-    this.customer,
-  });
-
-  $Request02.fromJson(core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
-}
-
-/// Replacement class for
-///
-/// - cloudchannel:v1 : GoogleCloudChannelV1ActivateEntitlementRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1CancelEntitlementRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1StartPaidServiceRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1SuspendEntitlementRequest
-class $Request03 {
-  /// You can specify an optional unique request ID, and if you need to retry
-  /// your request, the server will know to ignore the request if it's complete.
-  ///
-  /// For example, you make an initial request and the request times out. If you
-  /// make the request again with the same request ID, the server can check if
-  /// it received the original operation with the same request ID. If it did, it
-  /// will ignore the second request. The request ID must be a valid
-  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
-  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
   core.String? requestId;
 
-  $Request03({
+  $Request02({
     this.requestId,
   });
 
-  $Request03.fromJson(core.Map _json)
+  $Request02.fromJson(core.Map _json)
       : this(
           requestId: _json.containsKey('requestId')
               ? _json['requestId'] as core.String
@@ -14331,7 +14302,52 @@ class $Request03 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationClaimedRequest
+/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationFailedRequest
+/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationSucceededRequest
+class $Request03 {
+  /// Fingerprint of the Recommendation.
+  ///
+  /// Provides optimistic locking.
+  ///
+  /// Required.
+  core.String? etag;
+
+  /// State properties to include with this state.
+  ///
+  /// Overwrites any existing `state_metadata`. Keys must match the regex
+  /// /^a-z0-9{0,62}$/. Values must match the regex
+  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
+  core.Map<core.String, core.String>? stateMetadata;
+
+  $Request03({
+    this.etag,
+    this.stateMetadata,
+  });
+
+  $Request03.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          stateMetadata: _json.containsKey('stateMetadata')
+              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - cloudresourcemanager:v1 : ListAvailableOrgPolicyConstraintsRequest
 /// - cloudresourcemanager:v1 : ListOrgPoliciesRequest
@@ -14369,21 +14385,50 @@ class $Request04 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - compute:v1 : InstanceGroupManagersRecreateInstancesRequest
+/// - compute:v1 : RegionInstanceGroupManagersRecreateRequest
+class $Request05 {
+  /// The URLs of one or more instances to recreate.
+  ///
+  /// This can be a full URL or a partial URL, such as
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
+  core.List<core.String>? instances;
+
+  $Request05({
+    this.instances,
+  });
+
+  $Request05.fromJson(core.Map _json)
+      : this(
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instances != null) 'instances': instances!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - content:v2.1 : RequestReviewFreeListingsRequest
 /// - content:v2.1 : RequestReviewShoppingAdsRequest
-class $Request05 {
+class $Request06 {
   /// The code \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
   /// for which review is to be requested.
   core.String? regionCode;
 
-  $Request05({
+  $Request06({
     this.regionCode,
   });
 
-  $Request05.fromJson(core.Map _json)
+  $Request06.fromJson(core.Map _json)
       : this(
           regionCode: _json.containsKey('regionCode')
               ? _json['regionCode'] as core.String
@@ -14395,19 +14440,19 @@ class $Request05 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateAgentRequest
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateFlowRequest
-class $Request06 {
+class $Request07 {
   /// If not specified, the agent's default language is used.
   core.String? languageCode;
 
-  $Request06({
+  $Request07({
     this.languageCode,
   });
 
-  $Request06.fromJson(core.Map _json)
+  $Request07.fromJson(core.Map _json)
       : this(
           languageCode: _json.containsKey('languageCode')
               ? _json['languageCode'] as core.String
@@ -14419,56 +14464,111 @@ class $Request06 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationClaimedRequest
-/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationFailedRequest
-/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationSucceededRequest
-class $Request07 {
-  /// Fingerprint of the Recommendation.
+/// - cloudasset:v1 : GoogleCloudAssetV1p7beta1Resource
+/// - cloudasset:v1 : Resource
+class $Resource00 {
+  /// The content of the resource, in which some sensitive fields are removed
+  /// and may not be present.
   ///
-  /// Provides optimistic locking.
-  ///
-  /// Required.
-  core.String? etag;
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
 
-  /// State properties to include with this state.
+  /// The URL of the discovery document containing the resource's JSON schema.
   ///
-  /// Overwrites any existing `state_metadata`. Keys must match the regex
-  /// /^a-z0-9{0,62}$/. Values must match the regex
-  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
+  /// Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
+  /// This value is unspecified for resources that do not have an API based on a
+  /// discovery document, such as Cloud Bigtable.
+  core.String? discoveryDocumentUri;
 
-  $Request07({
-    this.etag,
-    this.stateMetadata,
+  /// The JSON schema name listed in the discovery document.
+  ///
+  /// Example: `Project` This value is unspecified for resources that do not
+  /// have an API based on a discovery document, such as Cloud Bigtable.
+  core.String? discoveryName;
+
+  /// The location of the resource in Google Cloud, such as its zone and region.
+  ///
+  /// For more information, see https://cloud.google.com/about/locations/.
+  core.String? location;
+
+  /// The full name of the immediate parent of this resource.
+  ///
+  /// See
+  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information. For Google Cloud assets, this value is the parent
+  /// resource defined in the
+  /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
+  /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
+  /// For third-party assets, this field may be set differently.
+  core.String? parent;
+
+  /// The REST URL for accessing the resource.
+  ///
+  /// An HTTP `GET` request using this URL returns the resource itself. Example:
+  /// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
+  /// This value is unspecified for resources without a REST API.
+  core.String? resourceUrl;
+
+  /// The API version.
+  ///
+  /// Example: `v1`
+  core.String? version;
+
+  $Resource00({
+    this.data,
+    this.discoveryDocumentUri,
+    this.discoveryName,
+    this.location,
+    this.parent,
+    this.resourceUrl,
+    this.version,
   });
 
-  $Request07.fromJson(core.Map _json)
+  $Resource00.fromJson(core.Map _json)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
+          data: _json.containsKey('data')
+              ? _json['data'] as core.Map<core.String, core.dynamic>
+              : null,
+          discoveryDocumentUri: _json.containsKey('discoveryDocumentUri')
+              ? _json['discoveryDocumentUri'] as core.String
+              : null,
+          discoveryName: _json.containsKey('discoveryName')
+              ? _json['discoveryName'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          resourceUrl: _json.containsKey('resourceUrl')
+              ? _json['resourceUrl'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
+        if (data != null) 'data': data!,
+        if (discoveryDocumentUri != null)
+          'discoveryDocumentUri': discoveryDocumentUri!,
+        if (discoveryName != null) 'discoveryName': discoveryName!,
+        if (location != null) 'location': location!,
+        if (parent != null) 'parent': parent!,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
+        if (version != null) 'version': version!,
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - servicecontrol:v1 : Resource
 /// - servicecontrol:v2 : Resource
-class $Resource {
+class $Resource01 {
   /// Annotations is an unstructured key-value map stored with a resource that
   /// may be set by external tools to store and retrieve arbitrary metadata.
   ///
@@ -14564,7 +14664,7 @@ class $Resource {
   /// Output only.
   core.String? updateTime;
 
-  $Resource({
+  $Resource01({
     this.annotations,
     this.createTime,
     this.deleteTime,
@@ -14579,7 +14679,7 @@ class $Resource {
     this.updateTime,
   });
 
-  $Resource.fromJson(core.Map _json)
+  $Resource01.fromJson(core.Map _json)
       : this(
           annotations: _json.containsKey('annotations')
               ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
@@ -14638,107 +14738,7 @@ class $Resource {
       };
 }
 
-/// Replacement class for
-///
-/// - cloudasset:v1 : GoogleCloudAssetV1p7beta1Resource
-/// - cloudasset:v1 : Resource
-class $Resource01 {
-  /// The content of the resource, in which some sensitive fields are removed
-  /// and may not be present.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? data;
-
-  /// The URL of the discovery document containing the resource's JSON schema.
-  ///
-  /// Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
-  /// This value is unspecified for resources that do not have an API based on a
-  /// discovery document, such as Cloud Bigtable.
-  core.String? discoveryDocumentUri;
-
-  /// The JSON schema name listed in the discovery document.
-  ///
-  /// Example: `Project` This value is unspecified for resources that do not
-  /// have an API based on a discovery document, such as Cloud Bigtable.
-  core.String? discoveryName;
-
-  /// The location of the resource in Google Cloud, such as its zone and region.
-  ///
-  /// For more information, see https://cloud.google.com/about/locations/.
-  core.String? location;
-
-  /// The full name of the immediate parent of this resource.
-  ///
-  /// See
-  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more information. For Google Cloud assets, this value is the parent
-  /// resource defined in the
-  /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
-  /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
-  /// For third-party assets, this field may be set differently.
-  core.String? parent;
-
-  /// The REST URL for accessing the resource.
-  ///
-  /// An HTTP `GET` request using this URL returns the resource itself. Example:
-  /// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
-  /// This value is unspecified for resources without a REST API.
-  core.String? resourceUrl;
-
-  /// The API version.
-  ///
-  /// Example: `v1`
-  core.String? version;
-
-  $Resource01({
-    this.data,
-    this.discoveryDocumentUri,
-    this.discoveryName,
-    this.location,
-    this.parent,
-    this.resourceUrl,
-    this.version,
-  });
-
-  $Resource01.fromJson(core.Map _json)
-      : this(
-          data: _json.containsKey('data')
-              ? _json['data'] as core.Map<core.String, core.dynamic>
-              : null,
-          discoveryDocumentUri: _json.containsKey('discoveryDocumentUri')
-              ? _json['discoveryDocumentUri'] as core.String
-              : null,
-          discoveryName: _json.containsKey('discoveryName')
-              ? _json['discoveryName'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
-              : null,
-          resourceUrl: _json.containsKey('resourceUrl')
-              ? _json['resourceUrl'] as core.String
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (discoveryDocumentUri != null)
-          'discoveryDocumentUri': discoveryDocumentUri!,
-        if (discoveryName != null) 'discoveryName': discoveryName!,
-        if (location != null) 'location': location!,
-        if (parent != null) 'parent': parent!,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
-        if (version != null) 'version': version!,
-      };
-}
-
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - servicecontrol:v1 : ResourceLocation
 /// - servicecontrol:v2 : ResourceLocation
@@ -14782,7 +14782,7 @@ class $ResourceLocation {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - sheets:v4 : BatchClearValuesByDataFilterResponse
 /// - sheets:v4 : BatchClearValuesResponse
@@ -14820,7 +14820,7 @@ class $Response {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess
@@ -14851,7 +14851,7 @@ class $ResponseMessageConversationSuccess {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff
@@ -14882,7 +14882,7 @@ class $ResponseMessageLiveAgentHandoff {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment
@@ -14935,7 +14935,7 @@ class $ResponseMessageMixedAudioSegment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
@@ -14980,7 +14980,7 @@ class $ResponseMessageOutputAudioText {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessagePlayAudio
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio
@@ -15024,7 +15024,7 @@ class $ResponseMessagePlayAudio {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageText
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageText
@@ -15067,7 +15067,7 @@ class $ResponseMessageText {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - jobs:v3 : ResponseMetadata
 /// - jobs:v4 : ResponseMetadata
@@ -15093,7 +15093,7 @@ class $ResponseMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1ReviewDocumentResponse
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
@@ -15117,7 +15117,7 @@ class $ReviewDocumentResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - docs:v1 : RgbColor
 /// - slides:v1 : RgbColor
@@ -15157,7 +15157,7 @@ class $RgbColor {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Rule
 /// - dfareporting:v3.5 : Rule
@@ -15204,7 +15204,7 @@ class $Rule {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
@@ -15243,7 +15243,7 @@ class $RunAssetDiscoveryResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1SafeSearchAnnotation
 /// - vision:v1 : GoogleCloudVisionV1p2beta1SafeSearchAnnotation
@@ -15343,7 +15343,7 @@ class $SafeSearchAnnotation {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - secretmanager:v1 : DestroySecretVersionRequest
 /// - secretmanager:v1 : DisableSecretVersionRequest
@@ -15371,7 +15371,7 @@ class $SecretVersionRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1p1beta1SecurityMarks
 /// - securitycenter:v1 : SecurityMarks
@@ -15434,7 +15434,7 @@ class $SecurityMarks {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceusage:v1 : GoogleApiServiceusageV1beta1ServiceIdentity
 /// - serviceusage:v1 : ServiceIdentity
@@ -15468,7 +15468,7 @@ class $ServiceIdentity {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3SessionInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1SessionInfo
@@ -15517,7 +15517,7 @@ class $SessionInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : RegionSetLabelsRequest
 /// - compute:v1 : ZoneSetLabelsRequest
@@ -15567,7 +15567,7 @@ class $SetLabelsRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - tagmanager:v1 : SetupTag
 /// - tagmanager:v2 : SetupTag
@@ -15603,22 +15603,113 @@ class $SetupTag {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
+/// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1Sentiment
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
+/// - dialogflow:v3 : GoogleCloudDialogflowV2Sentiment
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1Sentiment
+class $Shared00 {
+  /// A non-negative number in the \[0, +inf) range, which represents the
+  /// absolute magnitude of sentiment, regardless of score (positive or
+  /// negative).
+  core.double? magnitude;
+
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
+  core.double? score;
+
+  $Shared00({
+    this.magnitude,
+    this.score,
+  });
+
+  $Shared00.fromJson(core.Map _json)
+      : this(
+          magnitude: _json.containsKey('magnitude')
+              ? (_json['magnitude'] as core.num).toDouble()
+              : null,
+          score: _json.containsKey('score')
+              ? (_json['score'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude!,
+        if (score != null) 'score': score!,
+      };
+}
+
+/// Shared implementation type for:
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1GcsDestination
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1GcsSource
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2GcsDestination
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2GcsSource
+class $Shared01 {
+  core.String? uri;
+
+  $Shared01({
+    this.uri,
+  });
+
+  $Shared01.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Shared implementation type for:
+///
+/// - osconfig:v1 : OSPolicyResourcePackageResourceAPT
+/// - osconfig:v1 : OSPolicyResourcePackageResourceGooGet
+/// - osconfig:v1 : OSPolicyResourcePackageResourceYUM
+/// - osconfig:v1 : OSPolicyResourcePackageResourceZypper
+class $Shared02 {
+  /// Package name.
+  ///
+  /// Required.
+  core.String? name;
+
+  $Shared02({
+    this.name,
+  });
+
+  $Shared02.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - appengine:v1 : CreateVersionMetadataV1
 /// - appengine:v1 : CreateVersionMetadataV1Alpha
 /// - appengine:v1 : CreateVersionMetadataV1Beta
-class $Shared {
+class $Shared03 {
   /// The Cloud Build ID if one was created as part of the version create.
   ///
   /// @OutputOnly
   core.String? cloudBuildId;
 
-  $Shared({
+  $Shared03({
     this.cloudBuildId,
   });
 
-  $Shared.fromJson(core.Map _json)
+  $Shared03.fromJson(core.Map _json)
       : this(
           cloudBuildId: _json.containsKey('cloudBuildId')
               ? _json['cloudBuildId'] as core.String
@@ -15630,98 +15721,44 @@ class $Shared {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - ondemandscanning:v1 : AnalyzePackagesMetadata
-/// - ondemandscanning:v1 : AnalyzePackagesMetadataV1
-class $Shared01 {
-  /// When the scan was created.
-  core.String? createTime;
+/// - chat:v1 : GoogleAppsCardV1SuggestionItem
+/// - chat:v1 : TextParagraph
+class $Shared04 {
+  core.String? text;
 
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  $Shared01({
-    this.createTime,
-    this.resourceUri,
+  $Shared04({
+    this.text,
   });
 
-  $Shared01.fromJson(core.Map _json)
+  $Shared04.fromJson(core.Map _json)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (text != null) 'text': text!,
       };
 }
 
-/// Replacement class for
-///
-/// - ondemandscanning:v1 : AnalyzePackagesResponse
-/// - ondemandscanning:v1 : AnalyzePackagesResponseV1
-class $Shared02 {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  $Shared02({
-    this.scan,
-  });
-
-  $Shared02.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
-
-/// Replacement class for
-///
-/// - ondemandscanning:v1 : BuilderConfig
-/// - youtube:v3 : AbuseType
-class $Shared03 {
-  core.String? id;
-
-  $Shared03({
-    this.id,
-  });
-
-  $Shared03.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
-}
-
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
-class $Shared04 {
+class $Shared05 {
   /// Email address of the service account.
   core.String? email;
 
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared04({
+  $Shared05({
     this.email,
     this.scopes,
   });
 
-  $Shared04.fromJson(core.Map _json)
+  $Shared05.fromJson(core.Map _json)
       : this(
           email:
               _json.containsKey('email') ? _json['email'] as core.String : null,
@@ -15738,56 +15775,117 @@ class $Shared04 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - documentai:v1 : GoogleCloudDocumentaiV1beta1GcsDestination
-/// - documentai:v1 : GoogleCloudDocumentaiV1beta1GcsSource
-/// - documentai:v1 : GoogleCloudDocumentaiV1beta2GcsDestination
-/// - documentai:v1 : GoogleCloudDocumentaiV1beta2GcsSource
-class $Shared05 {
-  core.String? uri;
-
-  $Shared05({
-    this.uri,
-  });
-
-  $Shared05.fromJson(core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
-}
-
-/// Replacement class for
-///
-/// - youtube:v3 : CommentSnippetAuthorChannelId
-/// - youtube:v3 : LanguageTag
+/// - content:v2.1 : Price
+/// - content:v2.1 : PriceAmount
 class $Shared06 {
+  /// The currency of the price.
+  core.String? currency;
+
+  /// The price represented as a number.
   core.String? value;
 
   $Shared06({
+    this.currency,
     this.value,
   });
 
   $Shared06.fromJson(core.Map _json)
       : this(
+          currency: _json.containsKey('currency')
+              ? _json['currency'] as core.String
+              : null,
           value:
               _json.containsKey('value') ? _json['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (currency != null) 'currency': currency!,
         if (value != null) 'value': value!,
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - ondemandscanning:v1 : AnalyzePackagesMetadata
+/// - ondemandscanning:v1 : AnalyzePackagesMetadataV1
+class $Shared07 {
+  /// When the scan was created.
+  core.String? createTime;
+
+  /// The resource URI of the container image being scanned.
+  core.String? resourceUri;
+
+  $Shared07({
+    this.createTime,
+    this.resourceUri,
+  });
+
+  $Shared07.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? _json['resourceUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+      };
+}
+
+/// Shared implementation type for:
+///
+/// - ondemandscanning:v1 : AnalyzePackagesResponse
+/// - ondemandscanning:v1 : AnalyzePackagesResponseV1
+class $Shared08 {
+  /// The name of the scan resource created by this successful scan.
+  core.String? scan;
+
+  $Shared08({
+    this.scan,
+  });
+
+  $Shared08.fromJson(core.Map _json)
+      : this(
+          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scan != null) 'scan': scan!,
+      };
+}
+
+/// Shared implementation type for:
+///
+/// - ondemandscanning:v1 : BuilderConfig
+/// - youtube:v3 : AbuseType
+class $Shared09 {
+  core.String? id;
+
+  $Shared09({
+    this.id,
+  });
+
+  $Shared09.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1 : OSPolicyInventoryFilter
-class $Shared07 {
+class $Shared10 {
   /// The OS short name
   ///
   /// Required.
@@ -15801,12 +15899,12 @@ class $Shared07 {
   /// versions.
   core.String? osVersion;
 
-  $Shared07({
+  $Shared10({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared07.fromJson(core.Map _json)
+  $Shared10.fromJson(core.Map _json)
       : this(
           osShortName: _json.containsKey('osShortName')
               ? _json['osShortName'] as core.String
@@ -15822,127 +15920,29 @@ class $Shared07 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - osconfig:v1 : OSPolicyResourcePackageResourceAPT
-/// - osconfig:v1 : OSPolicyResourcePackageResourceGooGet
-/// - osconfig:v1 : OSPolicyResourcePackageResourceYUM
-/// - osconfig:v1 : OSPolicyResourcePackageResourceZypper
-class $Shared08 {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  $Shared08({
-    this.name,
-  });
-
-  $Shared08.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Replacement class for
-///
-/// - chat:v1 : GoogleAppsCardV1SuggestionItem
-/// - chat:v1 : TextParagraph
-class $Shared09 {
-  core.String? text;
-
-  $Shared09({
-    this.text,
-  });
-
-  $Shared09.fromJson(core.Map _json)
-      : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
-}
-
-/// Replacement class for
-///
-/// - content:v2.1 : Price
-/// - content:v2.1 : PriceAmount
-class $Shared10 {
-  /// The currency of the price.
-  core.String? currency;
-
-  /// The price represented as a number.
+/// - youtube:v3 : CommentSnippetAuthorChannelId
+/// - youtube:v3 : LanguageTag
+class $Shared11 {
   core.String? value;
 
-  $Shared10({
-    this.currency,
+  $Shared11({
     this.value,
   });
 
-  $Shared10.fromJson(core.Map _json)
+  $Shared11.fromJson(core.Map _json)
       : this(
-          currency: _json.containsKey('currency')
-              ? _json['currency'] as core.String
-              : null,
           value:
               _json.containsKey('value') ? _json['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currency != null) 'currency': currency!,
         if (value != null) 'value': value!,
       };
 }
 
-/// Replacement class for
-///
-/// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
-/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
-/// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
-/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1Sentiment
-/// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-/// - dialogflow:v3 : GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
-/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
-/// - dialogflow:v3 : GoogleCloudDialogflowV2Sentiment
-/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1Sentiment
-class $Shared11 {
-  /// A non-negative number in the \[0, +inf) range, which represents the
-  /// absolute magnitude of sentiment, regardless of score (positive or
-  /// negative).
-  core.double? magnitude;
-
-  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
-  /// sentiment).
-  core.double? score;
-
-  $Shared11({
-    this.magnitude,
-    this.score,
-  });
-
-  $Shared11.fromJson(core.Map _json)
-      : this(
-          magnitude: _json.containsKey('magnitude')
-              ? (_json['magnitude'] as core.num).toDouble()
-              : null,
-          score: _json.containsKey('score')
-              ? (_json['score'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
-      };
-}
-
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - notebooks:v1 : RuntimeShieldedInstanceConfig
 /// - notebooks:v1 : ShieldedInstanceConfig
@@ -15995,7 +15995,7 @@ class $ShieldedInstanceConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - binaryauthorization:v1 : Signature
 /// - ondemandscanning:v1 : Signature
@@ -16050,7 +16050,7 @@ class $Signature {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : SiteContact
 /// - dfareporting:v3.5 : SiteContact
@@ -16132,7 +16132,7 @@ class $SiteContact {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : SiteTranscodeSetting
 /// - dfareporting:v3.5 : SiteTranscodeSetting
@@ -16169,7 +16169,7 @@ class $SiteTranscodeSetting {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Size
 /// - dfareporting:v3.5 : Size
@@ -16226,7 +16226,7 @@ class $Size {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : SortedDimension
 /// - dfareporting:v3.5 : SortedDimension
@@ -16265,7 +16265,7 @@ class $SortedDimension {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : SourceContext
 /// - servicemanagement:v1 : SourceContext
@@ -16294,7 +16294,7 @@ class $SourceContext {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : SourceInfo
 /// - servicemanagement:v1 : SourceInfo
@@ -16325,7 +16325,7 @@ class $SourceInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - servicecontrol:v1 : SpanContext
 /// - servicecontrol:v2 : SpanContext
@@ -16356,7 +16356,7 @@ class $SpanContext {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - drive:v2 : StartPageToken
 /// - drive:v3 : StartPageToken
@@ -16388,7 +16388,7 @@ class $StartPageToken {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accesscontextmanager:v1 : Status
 /// - androiddeviceprovisioning:v1 : Status
@@ -16522,7 +16522,7 @@ class $Status {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : Subaccount
 /// - dfareporting:v3.5 : Subaccount
@@ -16584,7 +16584,7 @@ class $Subaccount {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : SystemParameter
 /// - servicemanagement:v1 : SystemParameter
@@ -16630,7 +16630,7 @@ class $SystemParameter {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : TagData
 /// - dfareporting:v3.5 : TagData
@@ -16708,7 +16708,7 @@ class $TagData {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : TagSetting
 /// - dfareporting:v3.5 : TagSetting
@@ -16773,7 +16773,7 @@ class $TagSetting {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : TagSettings
 /// - dfareporting:v3.5 : TagSettings
@@ -16805,7 +16805,7 @@ class $TagSettings {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : TargetWindow
 /// - dfareporting:v3.5 : TargetWindow
@@ -16843,7 +16843,7 @@ class $TargetWindow {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - tagmanager:v1 : TeardownTag
 /// - tagmanager:v2 : TeardownTag
@@ -16879,7 +16879,7 @@ class $TeardownTag {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : DeleteTenantProjectRequest
 /// - serviceconsumermanagement:v1 : RemoveTenantProjectRequest
@@ -16904,7 +16904,7 @@ class $TenantProjectRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3TestConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TestConfig
@@ -16942,7 +16942,7 @@ class $TestConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
@@ -17007,7 +17007,7 @@ class $TestIamPermissionsRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - compute:v1 : TestPermissionsRequest
 /// - deploymentmanager:v2 : TestPermissionsRequest
@@ -17035,7 +17035,7 @@ class $TestPermissionsRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3TestRunDifference
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TestRunDifference
@@ -17073,7 +17073,7 @@ class $TestRunDifference {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3TextInput
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TextInput
@@ -17101,7 +17101,7 @@ class $TextInput {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ThirdPartyAuthenticationToken
 /// - dfareporting:v3.5 : ThirdPartyAuthenticationToken
@@ -17132,7 +17132,7 @@ class $ThirdPartyAuthenticationToken {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - servicecontrol:v1 : ThirdPartyPrincipal
 /// - servicecontrol:v2 : ThirdPartyPrincipal
@@ -17159,7 +17159,7 @@ class $ThirdPartyPrincipal {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : ThirdPartyTrackingUrl
 /// - dfareporting:v3.5 : ThirdPartyTrackingUrl
@@ -17209,7 +17209,7 @@ class $ThirdPartyTrackingUrl {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - classroom:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
@@ -17274,7 +17274,7 @@ class $TimeOfDay {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - adsense:v2 : TimeZone
 /// - content:v2.1 : TimeZone
@@ -17309,7 +17309,7 @@ class $TimeZone {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - androidenterprise:v1 : TokenPagination
 /// - androidpublisher:v3 : TokenPagination
@@ -17341,7 +17341,7 @@ class $TokenPagination {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - apigee:v1 : GoogleCloudApigeeV1RuntimeTraceSamplingConfig
 /// - apigee:v1 : GoogleCloudApigeeV1TraceSamplingConfig
@@ -17385,7 +17385,7 @@ class $TraceSamplingConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : TranscodeSetting
 /// - dfareporting:v3.5 : TranscodeSetting
@@ -17422,7 +17422,7 @@ class $TranscodeSetting {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1TrialSettings
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1TrialSettings
@@ -17459,7 +17459,7 @@ class $TrialSettings {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudtrace:v2 : TruncatableString
 /// - servicecontrol:v1 : TruncatableString
@@ -17499,7 +17499,7 @@ class $TruncatableString {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest
@@ -17523,7 +17523,7 @@ class $UndeployIssueModelRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : UniversalAdId
 /// - dfareporting:v3.5 : UniversalAdId
@@ -17562,7 +17562,7 @@ class $UniversalAdId {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : UsageRule
 /// - servicemanagement:v1 : UsageRule
@@ -17614,7 +17614,7 @@ class $UsageRule {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : UserDefinedVariableConfiguration
 /// - dfareporting:v3.5 : UserDefinedVariableConfiguration
@@ -17765,7 +17765,7 @@ class $UserDefinedVariableConfiguration {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - retail:v2 : GoogleCloudRetailV2UserEventImportSummary
 /// - retail:v2 : GoogleCloudRetailV2alphaUserEventImportSummary
@@ -17800,7 +17800,7 @@ class $UserEventImportSummary {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : UserProfile
 /// - dfareporting:v3.5 : UserProfile
@@ -17878,7 +17878,7 @@ class $UserProfile {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : UserRolePermission
 /// - dfareporting:v3.5 : UserRolePermission
@@ -17937,7 +17937,7 @@ class $UserRolePermission {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : UserRolePermissionGroup
 /// - dfareporting:v3.5 : UserRolePermissionGroup
@@ -17973,7 +17973,7 @@ class $UserRolePermissionGroup {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - policysimulator:v1 : GoogleCloudPolicysimulatorV1AccessTuple
 /// - policytroubleshooter:v1 : GoogleCloudPolicytroubleshooterV1AccessTuple
@@ -18035,7 +18035,7 @@ class $V1AccessTuple {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1Value
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1Value
@@ -18094,7 +18094,7 @@ class $Value {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : VersionedPackage
 /// - osconfig:v1 : InventoryVersionedPackage
@@ -18134,24 +18134,26 @@ class $VersionedPackage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - documentai:v1 : GoogleCloudDocumentaiV1Vertex
-/// - documentai:v1 : GoogleCloudDocumentaiV1beta1Vertex
-/// - documentai:v1 : GoogleCloudDocumentaiV1beta2Vertex
-class $Vertex {
+/// - vision:v1 : GoogleCloudVisionV1p1beta1Vertex
+/// - vision:v1 : GoogleCloudVisionV1p2beta1Vertex
+/// - vision:v1 : GoogleCloudVisionV1p3beta1Vertex
+/// - vision:v1 : GoogleCloudVisionV1p4beta1Vertex
+/// - vision:v1 : Vertex
+class $Vertex00 {
   /// X coordinate.
   core.int? x;
 
-  /// Y coordinate (starts from the top of the image).
+  /// Y coordinate.
   core.int? y;
 
-  $Vertex({
+  $Vertex00({
     this.x,
     this.y,
   });
 
-  $Vertex.fromJson(core.Map _json)
+  $Vertex00.fromJson(core.Map _json)
       : this(
           x: _json.containsKey('x') ? _json['x'] as core.int : null,
           y: _json.containsKey('y') ? _json['y'] as core.int : null,
@@ -18163,18 +18165,16 @@ class $Vertex {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - vision:v1 : GoogleCloudVisionV1p1beta1Vertex
-/// - vision:v1 : GoogleCloudVisionV1p2beta1Vertex
-/// - vision:v1 : GoogleCloudVisionV1p3beta1Vertex
-/// - vision:v1 : GoogleCloudVisionV1p4beta1Vertex
-/// - vision:v1 : Vertex
+/// - documentai:v1 : GoogleCloudDocumentaiV1Vertex
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1Vertex
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2Vertex
 class $Vertex01 {
   /// X coordinate.
   core.int? x;
 
-  /// Y coordinate.
+  /// Y coordinate (starts from the top of the image).
   core.int? y;
 
   $Vertex01({
@@ -18194,7 +18194,7 @@ class $Vertex01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dfareporting:v3.4 : VideoOffset
 /// - dfareporting:v3.5 : VideoOffset
@@ -18232,7 +18232,7 @@ class $VideoOffset {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_VideoSegment
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_VideoSegment
@@ -18269,7 +18269,7 @@ class $VideoSegment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - serviceconsumermanagement:v1 : V1AddVisibilityLabelsResponse
 /// - serviceconsumermanagement:v1 : V1RemoveVisibilityLabelsResponse
@@ -18295,7 +18295,7 @@ class $VisibilityLabelsResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - accesscontextmanager:v1 : VpcAccessibleServices
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
@@ -18335,7 +18335,7 @@ class $VpcAccessibleServices {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - servicenetworking:v1 : DisableVpcServiceControlsRequest
 /// - servicenetworking:v1 : EnableVpcServiceControlsRequest
@@ -18364,7 +18364,7 @@ class $VpcServiceControlsRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - androidenterprise:v1 : WebAppIcon
 /// - androidmanagement:v1 : WebAppIcon
@@ -18392,7 +18392,7 @@ class $WebAppIcon {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebEntity
 /// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebEntity
@@ -18437,7 +18437,7 @@ class $WebEntity {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebImage
 /// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebImage
@@ -18470,7 +18470,7 @@ class $WebImage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebLabel
 /// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebLabel
@@ -18507,7 +18507,7 @@ class $WebLabel {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo
@@ -18533,7 +18533,7 @@ class $WebhookRequestFulfillmentInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
@@ -18574,7 +18574,7 @@ class $WebhookRequestIntentInfoIntentParameterValue {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : WindowsQuickFixEngineeringPackage
 /// - osconfig:v1 : InventoryWindowsQuickFixEngineeringPackage
@@ -18624,7 +18624,7 @@ class $WindowsQuickFixEngineeringPackage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : WindowsUpdateCategory
 /// - osconfig:v1 : InventoryWindowsUpdatePackageWindowsUpdateCategory
@@ -18652,7 +18652,7 @@ class $WindowsUpdateCategory {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_WordInfo
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_WordInfo
@@ -18733,7 +18733,7 @@ class $WordInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1WorkloadKMSSettings
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings
@@ -18776,7 +18776,7 @@ class $WorkloadKMSSettings {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - cloudasset:v1 : ZypperPatch
 /// - osconfig:v1 : InventoryZypperPatch

@@ -9137,7 +9137,7 @@ class GcsDestination {
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
-typedef GcsSource = $GcsSource;
+typedef GcsSource = $GcsSource01;
 
 /// The Cloud Storage location for export.
 class GoogleCloudHealthcareV1ConsentGcsDestination {
@@ -9428,7 +9428,7 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
-typedef GoogleCloudHealthcareV1FhirGcsSource = $GcsSource;
+typedef GoogleCloudHealthcareV1FhirGcsSource = $GcsSource01;
 
 /// Construct representing a logical group or a segment.
 class GroupOrSegment {
@@ -10538,7 +10538,7 @@ class ListUserDataMappingsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// A complete HL7v2 message.
 ///

@@ -20742,10 +20742,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared10;
+typedef Price = $Shared06;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared10;
+typedef PriceAmount = $Shared06;
 
 /// Required product attributes are primarily defined by the products data
 /// specification.
@@ -24698,10 +24698,10 @@ class RequestPhoneVerificationResponse {
 typedef RequestReviewBuyOnGoogleProgramRequest = $Empty;
 
 /// Request message for the RequestReviewFreeListings Program method.
-typedef RequestReviewFreeListingsRequest = $Request05;
+typedef RequestReviewFreeListingsRequest = $Request06;
 
 /// Request message for the RequestReviewShoppingAds program method.
-typedef RequestReviewShoppingAdsRequest = $Request05;
+typedef RequestReviewShoppingAdsRequest = $Request06;
 
 /// Return address resource.
 class ReturnAddress {

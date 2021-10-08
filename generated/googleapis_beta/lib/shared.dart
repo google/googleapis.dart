@@ -15,7 +15,7 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - alertcenter:v1beta1 : BatchDeleteAlertsRequest
 /// - alertcenter:v1beta1 : BatchUndeleteAlertsRequest
@@ -54,7 +54,7 @@ class $AlertsRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : AliasContext
 /// - ondemandscanning:v1beta1 : AliasContext
@@ -88,7 +88,7 @@ class $AliasContext {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : Artifact
 /// - ondemandscanning:v1beta1 : Artifact
@@ -136,7 +136,7 @@ class $Artifact {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - bigqueryconnection:v1beta1 : AuditLogConfig
 /// - domains:v1beta1 : AuditLogConfig
@@ -183,7 +183,7 @@ class $AuditLogConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - privateca:v1beta1 : DisableCertificateAuthorityRequest
 /// - privateca:v1beta1 : EnableCertificateAuthorityRequest
@@ -221,7 +221,7 @@ class $CertificateAuthorityRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : Command
 /// - ondemandscanning:v1beta1 : Command
@@ -290,7 +290,7 @@ class $Command {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1CommonOperationMetadata
@@ -345,7 +345,7 @@ class $CommonOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1BoundingPolyConfig
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1PolylineConfig
@@ -382,7 +382,7 @@ class $Config {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - adexchangebuyer2:v2beta1 : Date
 /// - documentai:v1beta3 : GoogleTypeDate
@@ -426,7 +426,7 @@ class $Date {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentEntityRelation
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentEntityRelation
@@ -467,7 +467,7 @@ class $DocumentEntityRelation {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
@@ -505,7 +505,7 @@ class $DocumentPageDetectedLanguage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageDimension
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageDimension
@@ -544,7 +544,7 @@ class $DocumentPageDimension {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageImage
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageImage
@@ -596,7 +596,7 @@ class $DocumentPageImage {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageMatrix
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageMatrix
@@ -647,7 +647,7 @@ class $DocumentPageMatrix {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
@@ -676,7 +676,7 @@ class $DocumentPageTokenDetectedBreak {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentProvenanceParent
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentProvenanceParent
@@ -715,7 +715,7 @@ class $DocumentProvenanceParent {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview
@@ -751,7 +751,7 @@ class $DocumentRevisionHumanReview {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentShardInfo
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentShardInfo
@@ -793,7 +793,7 @@ class $DocumentShardInfo {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentStyleFontSize
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentStyleFontSize
@@ -826,7 +826,7 @@ class $DocumentStyleFontSize {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
@@ -859,7 +859,7 @@ class $DocumentTextAnchorTextSegment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - adexchangebuyer2:v2beta1 : CancelNegotiationRequest
 /// - adexchangebuyer2:v2beta1 : CompleteSetupRequest
@@ -973,7 +973,7 @@ class $Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - transcoder:v1beta1 : Aes128Encryption
 /// - transcoder:v1beta1 : SampleAesEncryption
@@ -1001,7 +1001,7 @@ class $Encryption {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - toolresults:v1beta3 : EnvironmentDimensionValueEntry
 /// - toolresults:v1beta3 : StepDimensionValueEntry
@@ -1028,7 +1028,7 @@ class $Entry {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - lifesciences:v2beta : PullStartedEvent
 /// - lifesciences:v2beta : PullStoppedEvent
@@ -1052,7 +1052,7 @@ class $Event {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - bigqueryconnection:v1beta1 : Expr
 /// - containeranalysis:v1beta1 : Expr
@@ -1119,7 +1119,7 @@ class $Expr {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : Fingerprint
 /// - ondemandscanning:v1beta1 : Fingerprint
@@ -1169,7 +1169,7 @@ class $Fingerprint {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1GcsDestination
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1GcsDestination
@@ -1209,7 +1209,7 @@ class $GcsDestination {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1GcsFolderDestination
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1GcsFolderDestination
@@ -1237,7 +1237,7 @@ class $GcsFolderDestination {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - bigqueryconnection:v1beta1 : GetPolicyOptions
 /// - containeranalysis:v1beta1 : GetPolicyOptions
@@ -1272,7 +1272,7 @@ class $GetPolicyOptions {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : GitSourceContext
 /// - ondemandscanning:v1beta1 : GitSourceContext
@@ -1302,7 +1302,7 @@ class $GitSourceContext {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1HumanAnnotationConfig
@@ -1438,7 +1438,7 @@ class $HumanAnnotationConfig {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1HumanReviewStatus
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3HumanReviewStatus
@@ -1494,7 +1494,7 @@ class $HumanReviewStatus {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1ImportDataOperationResponse
@@ -1542,7 +1542,7 @@ class $ImportDataOperationResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1LabelStats
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1LabelStats
@@ -1579,7 +1579,7 @@ class $LabelStats {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudLocationLocation
 /// - domains:v1beta1 : Location
@@ -1655,7 +1655,7 @@ class $Location {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - firebasestorage:v1beta : GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
 /// - firebasestorage:v1beta : GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
@@ -1719,7 +1719,7 @@ class $MigrateLocationDestructivelyMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - adexchangebuyer2:v2beta1 : Money
 /// - documentai:v1beta3 : GoogleTypeMoney
@@ -1765,7 +1765,7 @@ class $Money {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1NormalizedVertex
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2NormalizedVertex
@@ -1798,68 +1798,12 @@ class $NormalizedVertex {
       };
 }
 
-/// Replacement class for
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1OperationMetadata
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2OperationMetadata
-class $OperationMetadata {
-  /// The creation time of the operation.
-  core.String? createTime;
-
-  /// The state of the current batch processing.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
-  /// is omitted.
-  /// - "ACCEPTED" : Request is received.
-  /// - "WAITING" : Request operation is waiting for scheduling.
-  /// - "RUNNING" : Request is being processed.
-  /// - "SUCCEEDED" : The batch processing completed successfully.
-  /// - "CANCELLED" : The batch processing was cancelled.
-  /// - "FAILED" : The batch processing has failed.
-  core.String? state;
-
-  /// A message providing more details about the current state of processing.
-  core.String? stateMessage;
-
-  /// The last update time of the operation.
-  core.String? updateTime;
-
-  $OperationMetadata({
-    this.createTime,
-    this.state,
-    this.stateMessage,
-    this.updateTime,
-  });
-
-  $OperationMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateMessage: _json.containsKey('stateMessage')
-              ? _json['stateMessage'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - networkconnectivity:v1alpha1 : OperationMetadata
 /// - networksecurity:v1beta1 : OperationMetadata
 /// - privateca:v1beta1 : OperationMetadata
-class $OperationMetadata01 {
+class $OperationMetadata00 {
   /// API version used to start the operation.
   ///
   /// Output only.
@@ -1899,7 +1843,7 @@ class $OperationMetadata01 {
   /// Output only.
   core.String? verb;
 
-  $OperationMetadata01({
+  $OperationMetadata00({
     this.apiVersion,
     this.createTime,
     this.endTime,
@@ -1909,7 +1853,7 @@ class $OperationMetadata01 {
     this.verb,
   });
 
-  $OperationMetadata01.fromJson(core.Map _json)
+  $OperationMetadata00.fromJson(core.Map _json)
       : this(
           apiVersion: _json.containsKey('apiVersion')
               ? _json['apiVersion'] as core.String
@@ -1944,7 +1888,63 @@ class $OperationMetadata01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1OperationMetadata
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2OperationMetadata
+class $OperationMetadata01 {
+  /// The creation time of the operation.
+  core.String? createTime;
+
+  /// The state of the current batch processing.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted.
+  /// - "ACCEPTED" : Request is received.
+  /// - "WAITING" : Request operation is waiting for scheduling.
+  /// - "RUNNING" : Request is being processed.
+  /// - "SUCCEEDED" : The batch processing completed successfully.
+  /// - "CANCELLED" : The batch processing was cancelled.
+  /// - "FAILED" : The batch processing has failed.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  core.String? stateMessage;
+
+  /// The last update time of the operation.
+  core.String? updateTime;
+
+  $OperationMetadata01({
+    this.createTime,
+    this.state,
+    this.stateMessage,
+    this.updateTime,
+  });
+
+  $OperationMetadata01.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleTypePostalAddress
 /// - domains:v1beta1 : PostalAddress
@@ -2129,7 +2129,7 @@ class $PostalAddress {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : ProjectRepoId
 /// - ondemandscanning:v1beta1 : ProjectRepoId
@@ -2163,7 +2163,7 @@ class $ProjectRepoId {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : RelatedUrl
 /// - ondemandscanning:v1beta1 : RelatedUrl
@@ -2192,7 +2192,7 @@ class $RelatedUrl {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - policysimulator:v1beta1 : GoogleCloudPolicysimulatorV1ReplayOperationMetadata
 /// - policysimulator:v1beta1 : GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
@@ -2216,7 +2216,7 @@ class $ReplayOperationMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse
 /// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
@@ -2241,7 +2241,7 @@ class $Response {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1ReviewDocumentResponse
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
@@ -2265,7 +2265,7 @@ class $ReviewDocumentResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalAssignment
 /// - sasportal:v1alpha1 : SasPortalAssignment
@@ -2304,7 +2304,7 @@ class $SasPortalAssignment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalCreateSignedDeviceRequest
 /// - sasportal:v1alpha1 : SasPortalCreateSignedDeviceRequest
@@ -2351,7 +2351,7 @@ class $SasPortalCreateSignedDeviceRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalCustomer
 /// - sasportal:v1alpha1 : SasPortalCustomer
@@ -2395,7 +2395,7 @@ class $SasPortalCustomer {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeployment
 /// - sasportal:v1alpha1 : SasPortalDeployment
@@ -2476,7 +2476,7 @@ class $SasPortalDeployment {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceAirInterface
 /// - sasportal:v1alpha1 : SasPortalDeviceAirInterface
@@ -2525,7 +2525,7 @@ class $SasPortalDeviceAirInterface {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceMetadata
 /// - sasportal:v1alpha1 : SasPortalDeviceMetadata
@@ -2576,7 +2576,7 @@ class $SasPortalDeviceMetadata {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceModel
 /// - sasportal:v1alpha1 : SasPortalDeviceModel
@@ -2630,7 +2630,7 @@ class $SasPortalDeviceModel {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalFrequencyRange
 /// - sasportal:v1alpha1 : SasPortalFrequencyRange
@@ -2662,7 +2662,7 @@ class $SasPortalFrequencyRange {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalGenerateSecretResponse
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretResponse
@@ -2686,7 +2686,7 @@ class $SasPortalGenerateSecretResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalGetPolicyRequest
 /// - sasportal:v1alpha1 : SasPortalGetPolicyRequest
@@ -2712,7 +2712,7 @@ class $SasPortalGetPolicyRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalInstallationParams
 /// - sasportal:v1alpha1 : SasPortalInstallationParams
@@ -2896,7 +2896,7 @@ class $SasPortalInstallationParams {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalMoveDeploymentRequest
 /// - sasportal:v1alpha1 : SasPortalMoveDeploymentRequest
@@ -2923,7 +2923,7 @@ class $SasPortalMoveDeploymentRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalMoveDeviceRequest
 /// - sasportal:v1alpha1 : SasPortalMoveDeviceRequest
@@ -2950,7 +2950,7 @@ class $SasPortalMoveDeviceRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalMoveNodeRequest
 /// - sasportal:v1alpha1 : SasPortalMoveNodeRequest
@@ -2977,7 +2977,7 @@ class $SasPortalMoveNodeRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalNode
 /// - sasportal:v1alpha1 : SasPortalNode
@@ -3019,7 +3019,7 @@ class $SasPortalNode {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalTestPermissionsRequest
 /// - sasportal:v1alpha1 : SasPortalTestPermissionsRequest
@@ -3055,7 +3055,7 @@ class $SasPortalTestPermissionsRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalTestPermissionsResponse
 /// - sasportal:v1alpha1 : SasPortalTestPermissionsResponse
@@ -3081,7 +3081,7 @@ class $SasPortalTestPermissionsResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalUpdateSignedDeviceRequest
 /// - sasportal:v1alpha1 : SasPortalUpdateSignedDeviceRequest
@@ -3128,7 +3128,7 @@ class $SasPortalUpdateSignedDeviceRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalValidateInstallerRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerRequest
@@ -3177,20 +3177,20 @@ class $SasPortalValidateInstallerRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1GcsDestination
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1GcsSource
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2GcsDestination
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2GcsSource
-class $Shared {
+class $Shared00 {
   core.String? uri;
 
-  $Shared({
+  $Shared00({
     this.uri,
   });
 
-  $Shared.fromJson(core.Map _json)
+  $Shared00.fromJson(core.Map _json)
       : this(
           uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
         );
@@ -3200,18 +3200,44 @@ class $Shared {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
-/// - containeranalysis:v1beta1 : ByProducts
-/// - containeranalysis:v1beta1 : Environment
+/// - osconfig:v1alpha : OSPolicyResourcePackageResourceAPT
+/// - osconfig:v1alpha : OSPolicyResourcePackageResourceGooGet
+/// - osconfig:v1alpha : OSPolicyResourcePackageResourceYUM
+/// - osconfig:v1alpha : OSPolicyResourcePackageResourceZypper
 class $Shared01 {
-  core.Map<core.String, core.String>? customValues;
+  /// Package name.
+  ///
+  /// Required.
+  core.String? name;
 
   $Shared01({
-    this.customValues,
+    this.name,
   });
 
   $Shared01.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Shared implementation type for:
+///
+/// - containeranalysis:v1beta1 : ByProducts
+/// - containeranalysis:v1beta1 : Environment
+class $Shared02 {
+  core.Map<core.String, core.String>? customValues;
+
+  $Shared02({
+    this.customValues,
+  });
+
+  $Shared02.fromJson(core.Map _json)
       : this(
           customValues: _json.containsKey('customValues')
               ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
@@ -3229,11 +3255,11 @@ class $Shared01 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : Deployment
 /// - ondemandscanning:v1beta1 : DeploymentOccurrence
-class $Shared02 {
+class $Shared03 {
   /// Address of the runtime element hosting this deployment.
   core.String? address;
 
@@ -3265,7 +3291,7 @@ class $Shared02 {
   /// Identity of the user that triggered this deployment.
   core.String? userEmail;
 
-  $Shared02({
+  $Shared03({
     this.address,
     this.config,
     this.deployTime,
@@ -3275,7 +3301,7 @@ class $Shared02 {
     this.userEmail,
   });
 
-  $Shared02.fromJson(core.Map _json)
+  $Shared03.fromJson(core.Map _json)
       : this(
           address: _json.containsKey('address')
               ? _json['address'] as core.String
@@ -3313,88 +3339,23 @@ class $Shared02 {
       };
 }
 
-/// Replacement class for
-///
-/// - osconfig:v1alpha : OSPolicyAssignmentInstanceFilterInventory
-/// - osconfig:v1alpha : OSPolicyInventoryFilter
-class $Shared03 {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  $Shared03({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  $Shared03.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
-
-/// Replacement class for
-///
-/// - osconfig:v1alpha : OSPolicyResourcePackageResourceAPT
-/// - osconfig:v1alpha : OSPolicyResourcePackageResourceGooGet
-/// - osconfig:v1alpha : OSPolicyResourcePackageResourceYUM
-/// - osconfig:v1alpha : OSPolicyResourcePackageResourceZypper
-class $Shared04 {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  $Shared04({
-    this.name,
-  });
-
-  $Shared04.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - ondemandscanning:v1beta1 : AnalyzePackagesMetadata
 /// - ondemandscanning:v1beta1 : AnalyzePackagesMetadataV1
-class $Shared05 {
+class $Shared04 {
   /// When the scan was created.
   core.String? createTime;
 
   /// The resource URI of the container image being scanned.
   core.String? resourceUri;
 
-  $Shared05({
+  $Shared04({
     this.createTime,
     this.resourceUri,
   });
 
-  $Shared05.fromJson(core.Map _json)
+  $Shared04.fromJson(core.Map _json)
       : this(
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
@@ -3410,19 +3371,19 @@ class $Shared05 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - ondemandscanning:v1beta1 : AnalyzePackagesResponse
 /// - ondemandscanning:v1beta1 : AnalyzePackagesResponseV1
-class $Shared06 {
+class $Shared05 {
   /// The name of the scan resource created by this successful scan.
   core.String? scan;
 
-  $Shared06({
+  $Shared05({
     this.scan,
   });
 
-  $Shared06.fromJson(core.Map _json)
+  $Shared05.fromJson(core.Map _json)
       : this(
           scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
         );
@@ -3432,7 +3393,46 @@ class $Shared06 {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
+///
+/// - osconfig:v1alpha : OSPolicyAssignmentInstanceFilterInventory
+/// - osconfig:v1alpha : OSPolicyInventoryFilter
+class $Shared06 {
+  /// The OS short name
+  ///
+  /// Required.
+  core.String? osShortName;
+
+  /// The OS version Prefix matches are supported if asterisk(*) is provided as
+  /// the last character.
+  ///
+  /// For example, to match all versions with a major version of `7`, specify
+  /// the following value for this field `7.*` An empty string matches all OS
+  /// versions.
+  core.String? osVersion;
+
+  $Shared06({
+    this.osShortName,
+    this.osVersion,
+  });
+
+  $Shared06.fromJson(core.Map _json)
+      : this(
+          osShortName: _json.containsKey('osShortName')
+              ? _json['osShortName'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osShortName != null) 'osShortName': osShortName!,
+        if (osVersion != null) 'osVersion': osVersion!,
+      };
+}
+
+/// Shared implementation type for:
 ///
 /// - containeranalysis:v1beta1 : Signature
 /// - ondemandscanning:v1beta1 : Signature
@@ -3487,7 +3487,7 @@ class $Signature {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - alertcenter:v1beta1 : Status
 /// - containeranalysis:v1beta1 : Status
@@ -3552,7 +3552,7 @@ class $Status {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - bigqueryconnection:v1beta1 : TestIamPermissionsRequest
 /// - containeranalysis:v1beta1 : TestIamPermissionsRequest
@@ -3587,7 +3587,7 @@ class $TestIamPermissionsRequest {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - bigqueryconnection:v1beta1 : TestIamPermissionsResponse
 /// - containeranalysis:v1beta1 : TestIamPermissionsResponse
@@ -3619,7 +3619,7 @@ class $TestIamPermissionsResponse {
       };
 }
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1Vertex
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2Vertex

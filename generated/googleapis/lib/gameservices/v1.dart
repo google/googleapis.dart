@@ -3484,7 +3484,7 @@ class ListRealmsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Specifies what kind of log the caller must write
 class LogConfig {

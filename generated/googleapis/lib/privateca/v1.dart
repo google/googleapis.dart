@@ -3788,7 +3788,7 @@ class CertificateTemplate {
 }
 
 /// Request message for CertificateAuthorityService.DisableCertificateAuthority.
-typedef DisableCertificateAuthorityRequest = $Request01;
+typedef DisableCertificateAuthorityRequest = $Request02;
 
 /// Describes an Elliptic Curve key that may be used in a Certificate issued
 /// from a CaPool.
@@ -3836,7 +3836,7 @@ class EcKeyType {
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
-typedef EnableCertificateAuthorityRequest = $Request01;
+typedef EnableCertificateAuthorityRequest = $Request02;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3936,7 +3936,7 @@ class ExtendedKeyUsageOptions {
 }
 
 /// Request message for CertificateAuthorityService.FetchCaCerts.
-typedef FetchCaCertsRequest = $Request01;
+typedef FetchCaCertsRequest = $Request02;
 
 /// Response message for CertificateAuthorityService.FetchCaCerts.
 class FetchCaCertsResponse {
@@ -4645,7 +4645,7 @@ class ListOperationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// An ObjectId specifies an object identifier (OID).
 ///
@@ -4753,7 +4753,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata01;
+typedef OperationMetadata = $OperationMetadata00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -5595,7 +5595,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Request message for
 /// CertificateAuthorityService.UndeleteCertificateAuthority.
-typedef UndeleteCertificateAuthorityRequest = $Request01;
+typedef UndeleteCertificateAuthorityRequest = $Request02;
 
 /// An X509Extension specifies an X.509 extension, which may be used in
 /// different parts of X.509 objects like certificates, CSRs, and CRLs.

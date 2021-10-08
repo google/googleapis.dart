@@ -3966,7 +3966,7 @@ class ListTablesResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// A create, update, or delete of a particular column family.
 class Modification {

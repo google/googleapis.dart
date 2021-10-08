@@ -2368,7 +2368,7 @@ class ApigatewayListOperationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef ApigatewayLocation = $Location01;
+typedef ApigatewayLocation = $Location00;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.

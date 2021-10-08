@@ -14,7 +14,7 @@ library $shared;
 
 import 'dart:core' as core;
 
-/// Replacement class for
+/// Shared implementation type for:
 ///
 /// - toyApi:0.1 : ToyResourceResponse
 /// - toyApi:0.1 : ToyResponse

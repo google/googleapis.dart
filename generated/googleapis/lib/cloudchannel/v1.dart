@@ -2629,7 +2629,7 @@ class ProductsSkusResource {
 }
 
 /// Request message for CloudChannelService.ActivateEntitlement.
-typedef GoogleCloudChannelV1ActivateEntitlementRequest = $Request03;
+typedef GoogleCloudChannelV1ActivateEntitlementRequest = $Request01;
 
 /// Information needed to create an Admin User for Google Workspace.
 class GoogleCloudChannelV1AdminUser {
@@ -2671,7 +2671,7 @@ class GoogleCloudChannelV1AdminUser {
 typedef GoogleCloudChannelV1AssociationInfo = $AssociationInfo;
 
 /// Request message for CloudChannelService.CancelEntitlement.
-typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request03;
+typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request01;
 
 /// Request message for CloudChannelService.ChangeOffer.
 class GoogleCloudChannelV1ChangeOfferRequest {
@@ -5264,7 +5264,7 @@ class GoogleCloudChannelV1Sku {
 }
 
 /// Request message for CloudChannelService.StartPaidService.
-typedef GoogleCloudChannelV1StartPaidServiceRequest = $Request03;
+typedef GoogleCloudChannelV1StartPaidServiceRequest = $Request01;
 
 /// Represents information which resellers will get as part of notification from
 /// Cloud Pub/Sub.
@@ -5300,7 +5300,7 @@ class GoogleCloudChannelV1SubscriberEvent {
 }
 
 /// Request message for CloudChannelService.SuspendEntitlement.
-typedef GoogleCloudChannelV1SuspendEntitlementRequest = $Request03;
+typedef GoogleCloudChannelV1SuspendEntitlementRequest = $Request01;
 
 /// Specifies transfer eligibility of a SKU.
 class GoogleCloudChannelV1TransferEligibility {

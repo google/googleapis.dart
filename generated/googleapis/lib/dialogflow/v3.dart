@@ -7062,7 +7062,7 @@ class GoogleCloudDialogflowCxV3EventHandler {
 }
 
 /// Represents the event to trigger.
-typedef GoogleCloudDialogflowCxV3EventInput = $EventInput;
+typedef GoogleCloudDialogflowCxV3EventInput = $EventInput00;
 
 /// Represents an experiment in an environment.
 class GoogleCloudDialogflowCxV3Experiment {
@@ -7516,7 +7516,7 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
 }
 
 /// The response message for Agents.ExportAgent.
-typedef GoogleCloudDialogflowCxV3ExportAgentResponse = $ExportAgentResponse;
+typedef GoogleCloudDialogflowCxV3ExportAgentResponse = $ExportAgentResponse00;
 
 /// The request message for Flows.ExportFlow.
 class GoogleCloudDialogflowCxV3ExportFlowRequest {
@@ -8662,7 +8662,7 @@ class GoogleCloudDialogflowCxV3IntentCoverageIntent {
 typedef GoogleCloudDialogflowCxV3IntentInput = $IntentInput;
 
 /// Represents an intent parameter.
-typedef GoogleCloudDialogflowCxV3IntentParameter = $IntentParameter;
+typedef GoogleCloudDialogflowCxV3IntentParameter = $IntentParameter00;
 
 /// Represents an example that the agent is trained on to identify the intent.
 class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
@@ -8722,7 +8722,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
 
 /// Represents a part of a training phrase.
 typedef GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
-    = $IntentTrainingPhrasePart;
+    = $IntentTrainingPhrasePart00;
 
 /// The response message for Agents.ListAgents.
 class GoogleCloudDialogflowCxV3ListAgentsResponse {
@@ -11040,7 +11040,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared11;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared00;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,
@@ -11907,10 +11907,10 @@ class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata {
 }
 
 /// The request message for Agents.ValidateAgent.
-typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request06;
+typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request07;
 
 /// The request message for Flows.ValidateFlow.
-typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Request06;
+typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Request07;
 
 /// Agent/flow validation message.
 class GoogleCloudDialogflowCxV3ValidationMessage {
@@ -12576,7 +12576,7 @@ typedef GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
 
 /// Represents the result of sentiment analysis.
 typedef GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
-    = $Shared11;
+    = $Shared00;
 
 /// The response message for a webhook call.
 class GoogleCloudDialogflowCxV3WebhookResponse {
@@ -13327,11 +13327,11 @@ class GoogleCloudDialogflowCxV3beta1EventHandler {
 }
 
 /// Represents the event to trigger.
-typedef GoogleCloudDialogflowCxV3beta1EventInput = $EventInput;
+typedef GoogleCloudDialogflowCxV3beta1EventInput = $EventInput00;
 
 /// The response message for Agents.ExportAgent.
 typedef GoogleCloudDialogflowCxV3beta1ExportAgentResponse
-    = $ExportAgentResponse;
+    = $ExportAgentResponse00;
 
 /// The response message for Flows.ExportFlow.
 typedef GoogleCloudDialogflowCxV3beta1ExportFlowResponse = $ExportFlowResponse;
@@ -13960,7 +13960,7 @@ class GoogleCloudDialogflowCxV3beta1Intent {
 typedef GoogleCloudDialogflowCxV3beta1IntentInput = $IntentInput;
 
 /// Represents an intent parameter.
-typedef GoogleCloudDialogflowCxV3beta1IntentParameter = $IntentParameter;
+typedef GoogleCloudDialogflowCxV3beta1IntentParameter = $IntentParameter00;
 
 /// Represents an example that the agent is trained on to identify the intent.
 class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
@@ -14020,7 +14020,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
 
 /// Represents a part of a training phrase.
 typedef GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
-    = $IntentTrainingPhrasePart;
+    = $IntentTrainingPhrasePart00;
 
 /// A Dialogflow CX conversation (session) can be described and visualized as a
 /// state machine.
@@ -15191,7 +15191,7 @@ typedef GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterVal
 
 /// Represents the result of sentiment analysis.
 typedef GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
-    = $Shared11;
+    = $Shared00;
 
 /// The response message for a webhook call.
 class GoogleCloudDialogflowCxV3beta1WebhookResponse {
@@ -17375,7 +17375,7 @@ class GoogleCloudDialogflowV2QueryResult {
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
-typedef GoogleCloudDialogflowV2Sentiment = $Shared11;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared00;
 
 /// The result of sentiment analysis.
 ///
@@ -20466,7 +20466,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
 
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
-typedef GoogleCloudDialogflowV2beta1Sentiment = $Shared11;
+typedef GoogleCloudDialogflowV2beta1Sentiment = $Shared00;
 
 /// The result of sentiment analysis.
 ///
@@ -21229,7 +21229,7 @@ class GoogleCloudLocationListLocationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef GoogleCloudLocationLocation = $Location01;
+typedef GoogleCloudLocationLocation = $Location00;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

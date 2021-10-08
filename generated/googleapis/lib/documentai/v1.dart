@@ -5163,7 +5163,7 @@ typedef GoogleCloudDocumentaiV1UndeployProcessorVersionResponse = $Empty;
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudDocumentaiV1Vertex = $Vertex;
+typedef GoogleCloudDocumentaiV1Vertex = $Vertex01;
 
 /// Response to an batch document processing request.
 ///
@@ -6832,10 +6832,10 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
-typedef GoogleCloudDocumentaiV1beta1GcsDestination = $Shared05;
+typedef GoogleCloudDocumentaiV1beta1GcsDestination = $Shared01;
 
 /// The Google Cloud Storage location where the input file will be read from.
-typedef GoogleCloudDocumentaiV1beta1GcsSource = $Shared05;
+typedef GoogleCloudDocumentaiV1beta1GcsSource = $Shared01;
 
 /// The desired input location and metadata.
 class GoogleCloudDocumentaiV1beta1InputConfig {
@@ -6965,7 +6965,7 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudDocumentaiV1beta1Vertex = $Vertex;
+typedef GoogleCloudDocumentaiV1beta1Vertex = $Vertex01;
 
 /// Response to an batch document processing request.
 ///
@@ -8692,10 +8692,10 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
-typedef GoogleCloudDocumentaiV1beta2GcsDestination = $Shared05;
+typedef GoogleCloudDocumentaiV1beta2GcsDestination = $Shared01;
 
 /// The Google Cloud Storage location where the input file will be read from.
-typedef GoogleCloudDocumentaiV1beta2GcsSource = $Shared05;
+typedef GoogleCloudDocumentaiV1beta2GcsSource = $Shared01;
 
 /// The desired input location and metadata.
 class GoogleCloudDocumentaiV1beta2InputConfig {
@@ -8843,7 +8843,7 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudDocumentaiV1beta2Vertex = $Vertex;
+typedef GoogleCloudDocumentaiV1beta2Vertex = $Vertex01;
 
 /// The long running operation metadata for batch process method.
 class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
@@ -9282,7 +9282,7 @@ class GoogleCloudLocationListLocationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef GoogleCloudLocationLocation = $Location01;
+typedef GoogleCloudLocationLocation = $Location00;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

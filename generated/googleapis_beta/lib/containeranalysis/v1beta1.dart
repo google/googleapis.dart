@@ -1973,7 +1973,7 @@ class BuildStep {
 /// Defines an object for the byproducts field in in-toto links.
 ///
 /// The suggested fields are "stderr", "stdout", and "return-value".
-typedef ByProducts = $Shared01;
+typedef ByProducts = $Shared02;
 
 /// Common Vulnerability Scoring System version 3.
 ///
@@ -2185,7 +2185,7 @@ class Deployable {
 }
 
 /// The period during which some deployable was active in a runtime.
-typedef Deployment = $Shared02;
+typedef Deployment = $Shared03;
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage
 /// relationship.
@@ -2724,7 +2724,7 @@ typedef Empty = $Empty;
 /// Defines an object for the environment field in in-toto links.
 ///
 /// The suggested fields are "variables", "filesystem", and "workdir".
-typedef Environment = $Shared01;
+typedef Environment = $Shared02;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

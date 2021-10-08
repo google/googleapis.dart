@@ -1759,7 +1759,7 @@ class ListTasksResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Contains information needed for generating an
 /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).

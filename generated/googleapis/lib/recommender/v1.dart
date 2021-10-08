@@ -2436,13 +2436,13 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
 }
 
 /// Request for the `MarkRecommendationClaimed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request07;
+typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request03;
 
 /// Request for the `MarkRecommendationFailed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request07;
+typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request03;
 
 /// Request for the `MarkRecommendationSucceeded` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request07;
+typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request03;
 
 /// Contains an operation for a resource loosely based on the JSON-PATCH format
 /// with support for: * Custom filters for describing partial array patch.

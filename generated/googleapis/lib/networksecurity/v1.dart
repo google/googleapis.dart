@@ -2439,7 +2439,7 @@ class ListServerTlsPoliciesResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// Specification of the MTLSPolicy.
 class MTLSPolicy {
@@ -2544,7 +2544,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata01;
+typedef OperationMetadata = $OperationMetadata00;
 
 /// Specification of rules.
 class Rule {

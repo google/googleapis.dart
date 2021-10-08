@@ -1069,7 +1069,7 @@ class ListTensorFlowVersionsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-typedef Location = $Location01;
+typedef Location = $Location00;
 
 /// A network endpoint over which a TPU worker can be reached.
 class NetworkEndpoint {
@@ -1438,7 +1438,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata03;
+typedef OperationMetadata = $OperationMetadata02;
 
 /// Request for ReimageNode.
 class ReimageNodeRequest {
